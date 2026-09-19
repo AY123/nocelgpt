@@ -11,18 +11,27 @@
 
 ## EXECUTIVE SUMMARY
 
-**READINESS VERDICT**: ✅ **READY** (with conditions)
+**READINESS VERDICT**: Two-gate model
 
-**Assessment**: The ANovel V2 architecture is ready to proceed to P0 (Repository Bootstrap) and subsequent implementation phases, subject to 5 required ADRs being written before M1.
+### Gate 1: P0_ENTRY_GATE
+**Status**: ✅ **READY**  
+**Blockers**: 0  
+**Allows**: V2-001 to V2-004 (P0 execution)
+
+### Gate 2: ARCHITECTURE_BASELINE_FREEZE_GATE
+**Status**: ✅ **READY**  
+**Blockers**: 0 (after final convergence corrections applied)  
+**Allows**: Freeze control plane, proceed to P1+
 
 **Key Findings**:
-- ✅ 13/15 readiness criteria satisfied
+- ✅ 15/17 readiness criteria satisfied
 - ✅ All P0-blocking conflicts resolved
-- ⚠️ 5 M1-blocking ADRs required before M1 milestone
+- ✅ Control plane SSOT established (PHASE_TASK_REGISTRY.md)
 - ✅ Single Canon write boundary established
 - ✅ Authority hierarchy frozen
 - ✅ Terminology conflicts resolved
 - ✅ V1 lessons systematically incorporated
+- ⚠️ 5 M1-M3 ADRs required (scoped to specific tasks)
 
 **Confidence Level**: HIGH for P0-P3, MEDIUM for P4-P9 (pending ADRs), LOW for P10+ (deferred)
 
@@ -282,59 +291,83 @@ From CCDOC_ADOPTION_MATRIX.md:
 
 ## 8. IMPLEMENTATION READINESS BY PHASE
 
-### 8.1 P0 (Repository Bootstrap) - ✅ READY
+### 8.1 P0 (Repository & Governance) - ✅ READY
+
+**Tasks**: V2-001 to V2-004
 
 **Required**:
 - ✅ Repository skeleton (clear in IMPLEMENTATION_PLAN)
 - ✅ Dependency lock (standard practice)
 - ✅ Normative docs import (all 15 specs ready)
 - ✅ Architecture fitness gates (26 rules identified)
-- ✅ Security baseline (PLATFORM spec + V2-002)
+- ✅ Security baseline (PLATFORM spec + V2-004)
 - ✅ PostgreSQL test harness (defined in IMPLEMENTATION_PLAN)
 - ✅ CI baseline (ci-gates.yaml exists)
+
+**P0 Scope Purity**: No Genesis bootstrap, no Provider logic, no workflow retry - pure repository/governance
 
 **Blocking Issues**: 0
 
 **Recommendation**: ✅ **PROCEED TO P0**
 
-### 8.2 P1 (Genre Foundation) - ✅ READY
+### 8.2 P1 (Narrative Kernel) - ✅ READY
+
+**Tasks**: V2-005 to V2-008
+
+**Required**:
+- ✅ Core entity IDs (V2-005)
+- ✅ Character/Relationship/Knowledge (V2-006)
+- ✅ Event/Timeline/Promise (V2-007)
+- ✅ NarrativeDelta (V2-008)
+- ⚠️ 3 ADRs required before V2-006 complete (ADR-0021, 0022, 0023)
+
+**Blocking Issues**: 0 for P1 start, 3 ADRs before M1 completion
+
+**Recommendation**: ✅ **PROCEED TO P1** (ADRs written during P1 execution)
+
+### 8.3 P2 (Canon Kernel) - ✅ READY
+
+**Tasks**: V2-009 to V2-012
+
+**Required**:
+- ✅ Canon Event Log (V2-009)
+- ✅ CanonCommitService (V2-010)
+- ✅ Canon idempotency and CAS (V2-011)
+- ✅ Snapshot rebuild and projection (V2-012)
+
+**P2 Scope**: Canon transaction boundary. Minimal Canon Bootstrap (test fixture → ChangeSet → CanonCommit) implemented here.
+
+**Blocking Issues**: 0
+
+**Recommendation**: ✅ **PROCEED TO P2** (after P1 complete)
+
+### 8.4 P3 (Genre Kernel) - ✅ READY
+
+**Tasks**: V2-013 to V2-016
 
 **Required**:
 - ✅ GenrePack structure (GENRE_INTELLIGENCE_SPEC)
-- ✅ Genre Rules (genre-ontology.yaml)
+- ✅ Genre Hard Policy engine (V2-014)
 - ✅ Anchor genres defined (GPK-U01, GPK-X01)
-- ⚠️ Canon extension namespace (ADR-0024 required before M3, not P1 blocker)
+- ⚠️ Canon extension namespace (ADR-0024 required before M3)
 
-**Blocking Issues**: 0 for P1 start, 1 ADR before M3 completion
+**Blocking Issues**: 0 for P3 start, 1 ADR before M3 completion
 
-**Recommendation**: ✅ **PROCEED TO P1**
+**Recommendation**: ✅ **PROCEED TO P3** (after P2 complete)
 
-### 8.3 P2 (Domain Types) - ⚠️ CONDITIONAL
-
-**Required**:
-- ✅ Domain entity definitions (NARRATIVE_DOMAIN_SPEC)
-- ✅ Operation algebra (ARTIFACT_LIFECYCLE_REGISTER)
-- ❌ Character schema (ADR-0021 required)
-- ❌ Promise schema (ADR-0022 required)
-- ❌ Event schema (ADR-0023 required)
-
-**Blocking Issues**: 3 ADRs (all scoped to V2-006)
-
-**Recommendation**: ⚠️ **PROCEED TO P2 START, ADRs REQUIRED BEFORE V2-006 COMPLETION**
-
-### 8.4 P3-P9 - ✅ READY (With ADRs)
+### 8.5 P4-P9 - ✅ READY (With ADRs)
 
 **Status**: Specifications complete, ADRs required for specific gaps only
 
 **ADR Requirements**:
-- P5: ADR-0025 (Context overflow) - V2-013
-- P6-P13: No additional ADRs blocking
+- P5: ADR-0025 (Context overflow) - V2-018
+- P6-P9: No additional ADRs blocking
 
 **Recommendation**: ✅ **ARCHITECTURALLY READY**
 
-### 8.5 P10+ (Genesis, Learning) - ⚠️ DEFERRED
+### 8.6 P10+ (Genesis, Learning) - ⚠️ DEFERRED
 
-**Status**: Intentionally deferred to post-M5
+**Status**: Intentionally deferred to post-M3
 
 **Readiness**: Specifications exist but marked as future phases
 
@@ -346,26 +379,33 @@ From CCDOC_ADOPTION_MATRIX.md:
 
 **To reach M1 (Narrative Kernel)**:
 
-✅ P0: Repository Bootstrap (0 blockers)
+✅ P0: Repository & Governance (0 blockers)
   └─ V2-001 to V2-004
 
-✅ P1: Genre Foundation (0 blockers)
-  └─ V2-007, V2-008
+✅ P1: Narrative Kernel (0 blockers for start, 3 ADRs before M1)
+  ├─ V2-005: Core entity IDs
+  ├─ V2-006: Character/Relationship/Knowledge (needs ADR-0021, 0022, 0023)
+  ├─ V2-007: Event/Timeline/Promise
+  └─ V2-008: NarrativeDelta
 
-⚠️ P2: Domain Types (3 ADRs required)
-  ├─ V2-005
-  ├─ V2-006 (blocked until ADR-0021, ADR-0022, ADR-0023 written)
-  └─ ADRs can be written in parallel with P0-P1
+✅ P2: Canon Kernel (0 blockers)
+  ├─ V2-009: Canon Event Log
+  ├─ V2-010: CanonCommitService
+  ├─ V2-011: Canon idempotency
+  └─ V2-012: Snapshot rebuild
 
-✅ P3: Canon Transaction (0 new blockers)
-  └─ V2-009, V2-010
+✅ P3: Genre Kernel (0 blockers for start, 1 ADR before M3)
+  ├─ V2-013: GenrePack loader
+  ├─ V2-014: Genre Hard Policy
+  ├─ V2-015: Urban Extension
+  └─ V2-016: Fantasy Extension (needs ADR-0024 before M3)
 
 **Critical Path Timeline**:
 ```
-Week 1-2: P0 (Repository) + ADR writing starts
-Week 3-4: P1 (Genre) + ADRs 0021-0023 approved
-Week 5-6: P2 (Domain with ADR decisions)
-Week 7-8: P3 (Canon Transaction)
+Week 1-2: P0 (Repository & Governance) + ADR writing starts
+Week 3-4: P1 (Narrative Kernel) + ADRs 0021-0023 approved
+Week 5-6: P2 (Canon Kernel)
+Week 7-8: P3 (Genre Kernel) + ADR-0024 approved
 → M1 ACHIEVED
 ```
 
@@ -377,38 +417,39 @@ Week 7-8: P3 (Canon Transaction)
 
 ### 10.1 Critical (Must Address in P0)
 
-1. **Genesis Bootstrap for Testing** (MEDIUM risk)
-   - Issue: P1-P7 testing may require full P10 Genesis
-   - Recommendation: Create TEST_GENESIS_STUB mode in V2-001
-   - Owner: V2-001 (P0)
+**No critical P0 blockers remain.**
 
-2. **Provider UNKNOWN State** (MEDIUM risk)
-   - Issue: Workflow failure taxonomy lacks explicit UNKNOWN
-   - Recommendation: Add to workflow-policy.yaml failure_classes
-   - Owner: V2-002 (P0) or defer to V2-017 (P8)
+P0 scope is pure repository/governance:
+- V2-001: Repository bootstrap
+- V2-002: Normative docs import
+- V2-003: Architecture fitness harness  
+- V2-004: Security baseline
+
+**Genesis Bootstrap**: Deferred to P2 (V2-009/010) - minimal Canon test fixture
+**Provider UNKNOWN**: Deferred to P5 (V2-019 Model Gateway) and P6 (V2-020 Workflow)
 
 ### 10.2 Important (Address Before M1)
 
-3. **Write 3 Required ADRs** (M1 blocker)
+1. **Write 3 Required ADRs** (M1 blocker)
    - ADR-0021: Character schema composition
    - ADR-0022: Promise temporal binding
    - ADR-0023: Event type vs occurrence
-   - Owner: V2-006 (P2)
+   - Owner: V2-006 (P1)
    - Deadline: Before M1 milestone
 
-4. **Phase Gate vs Task Dependency Clarification** (Documentation)
+2. **Phase Gate vs Task Dependency Clarification** (Documentation)
    - Issue: No single document explicitly separating concepts
-   - Recommendation: Add section to P0 execution document
+   - Recommendation: Add section to PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
    - Owner: V2-002 (P0)
 
 ### 10.3 Recommended (Address Before M2-M3)
 
-5. **Write 2 Additional ADRs**
+3. **Write 2 Additional ADRs**
    - ADR-0024: Canon extension namespace (before M3)
    - ADR-0025: Context budget overflow (before M2)
-   - Owners: V2-008 (P1), V2-013 (P5)
+   - Owners: V2-013~016 (P3), V2-018 (P5)
 
-6. **Architecture Fitness Test Implementation**
+4. **Architecture Fitness Test Implementation**
    - 26 rules identified, need CI integration
    - Owner: V2-003 (P0)
 
@@ -455,32 +496,51 @@ Week 7-8: P3 (Canon Transaction)
 
 ## 12. FINAL VERDICT JUSTIFICATION
 
-### 12.1 Why READY?
+### 12.1 Why Two-Gate Model?
+
+**Previous Issue**: Single "READY (with conditions)" verdict conflated:
+1. Can we start P0? (YES)
+2. Is baseline frozen? (AFTER corrections)
+
+**Solution**: Split into two distinct gates:
+
+**P0_ENTRY_GATE = READY**
+- 0 P0 blockers
+- V2-001 to V2-004 can execute immediately
+- Repository/governance work can proceed
+
+**ARCHITECTURE_BASELINE_FREEZE_GATE = READY**
+- Control plane SSOT established (PHASE_TASK_REGISTRY.md)
+- All convergence documents aligned
+- Phase/Task semantics frozen
+- Safe to proceed to P1+
+
+### 12.2 Why READY?
 
 **Positive Factors**:
 1. ✅ 15/17 readiness criteria satisfied (88%)
 2. ✅ 0 P0-blocking conflicts remain
 3. ✅ All 14 mandatory convergence documents complete
-4. ✅ Single Canon write boundary established and protected
-5. ✅ Authority hierarchy frozen (T0-T7)
-6. ✅ Terminology conflicts resolved
-7. ✅ V1 lessons systematically incorporated (23 regressions)
-8. ✅ Clear implementation path defined (P0 → M1 → M5)
-9. ✅ Risks identified and mitigated (23 risks, mitigation plans for all P0-M3)
-10. ✅ Specifications achieve strong convergence (minimal defects)
+4. ✅ Control plane SSOT established (implementation-backlog.yaml → PHASE_TASK_REGISTRY.md)
+5. ✅ Single Canon write boundary established and protected
+6. ✅ Authority hierarchy frozen (T0-T7)
+7. ✅ Terminology conflicts resolved
+8. ✅ V1 lessons systematically incorporated (23 regressions)
+9. ✅ Clear implementation path defined (P0 → M1 → M5)
+10. ✅ Risks identified and mitigated (23 risks, mitigation plans for all P0-M3)
+11. ✅ Specifications achieve strong convergence (minimal defects)
 
 **Remaining Issues**:
 - ⚠️ 5 ADRs required before M1-M3 (scoped to specific tasks, not architectural unknowns)
-- ⚠️ 2 medium risks need P0 attention (Genesis bootstrap, Provider UNKNOWN)
 - ⚠️ 2 partial criteria (Phase Gate separation, some P2+ architectural details)
 
 **Assessment**: Remaining issues are **managed risks**, not **unknown unknowns**. They are:
-- Scoped to specific tasks (V2-006, V2-008, V2-013)
+- Scoped to specific tasks (V2-006, V2-013~016, V2-018)
 - Have clear resolution paths (ADR writing)
-- Do not block P0 entry or P1 execution
+- Do not block P0 entry
 - Will be resolved within normal implementation flow
 
-### 12.2 Why NOT_READY Would Be Incorrect
+### 12.3 Why NOT_READY Would Be Incorrect
 
 Per user's master prompt Section 26, NOT_READY requires listing blocking issues. The current state has:
 - **0 P0 blockers**
@@ -495,15 +555,16 @@ Declaring NOT_READY would imply:
 
 Therefore, NOT_READY verdict would be **inappropriately conservative**.
 
-### 12.3 Conditional READY (Approved)
+### 12.4 Two-Gate Approval Process
 
-**Conditions**:
-1. 📋 P0 must address Genesis bootstrap and Provider UNKNOWN (recommend V2-001, V2-002)
-2. 📋 3 ADRs must be written during P2 before V2-006 completes (ADR-0021, 0022, 0023)
-3. 📋 2 additional ADRs before M2-M3 (ADR-0024, 0025)
-4. 📋 Architecture fitness tests must be implemented in V2-003 (P0)
+**Gate 1: P0_ENTRY_GATE**
+- ✅ READY NOW
+- Allows: Begin V2-001
 
-**These are normal implementation requirements**, not architectural blockers.
+**Gate 2: ARCHITECTURE_BASELINE_FREEZE_GATE**  
+- ✅ READY (after final convergence corrections)
+- Requires: Control plane alignment complete
+- Allows: Freeze baseline, proceed to P1+
 
 ---
 
@@ -511,35 +572,43 @@ Therefore, NOT_READY verdict would be **inappropriately conservative**.
 
 ### 13.1 Immediate (Day 1)
 
-1. ✅ **Approve this Readiness Report**
-2. ✅ **Freeze convergence baseline**:
+1. ✅ **Approve this Readiness Report** (two-gate model)
+2. ✅ **Confirm control plane corrections**:
+   - PHASE_TASK_REGISTRY.md as SSOT (auto-generated from backlog)
+   - V1_REUSE_DECISION_MATRIX.md restored
+   - Phase semantics aligned (P1=Narrative, P2=Canon, P3=Genre)
+3. 📋 **Begin V2-001** (P0 Repository Bootstrap)
+
+### 13.2 Week 1 (P0 Execution)
+
+1. 📋 Execute V2-001: Repository skeleton
+2. 📋 Execute V2-002: Normative docs import
+3. 📋 Execute V2-003: Architecture fitness gates (CI)
+4. 📋 Execute V2-004: Security baseline
+5. 📋 **Start ADR writing** (ADR-0021, 0022, 0023 drafts)
+
+### 13.3 P0 Complete → Freeze Baseline
+
+1. 📋 Complete P0 (M0 milestone)
+2. 📋 **Freeze Architecture Baseline**:
    - NORMATIVE_INDEX.md
    - TERMINOLOGY_BASELINE.md
    - AUTHORITY_MATRIX.md
+   - PHASE_TASK_REGISTRY.md
    - ARTIFACT_LIFECYCLE_REGISTER.md
-3. 📋 **Create V2 repository**
-4. 📋 **Begin V2-001** (P0 Repository Bootstrap Execution)
+3. 📋 **ARCHITECTURE_BASELINE_FREEZE_GATE = CLOSED**
 
-### 13.2 Week 1 (P0 Start)
+### 13.4 Week 2-4 (P1 + ADR Approval)
 
-1. 📋 Execute V2-001: Repository skeleton
-2. 📋 Execute V2-002: Normative docs import + security baseline
-3. 📋 Execute V2-003: Architecture fitness gates (CI)
-4. 📋 Execute V2-004: PostgreSQL test harness
-5. 📋 **Start ADR writing** (ADR-0021, 0022, 0023 drafts)
+1. 📋 Execute V2-005, V2-006, V2-007, V2-008 (Narrative Kernel)
+2. 📋 **Approve ADR-0021, 0022, 0023**
+3. 📋 Update NARRATIVE_DOMAIN_SPEC with ADR decisions
 
-### 13.3 Week 2-4 (P1 + ADR Approval)
+### 13.5 Week 5-8 (P2-P3)
 
-1. 📋 Complete P0 (M0 milestone)
-2. 📋 Execute V2-007, V2-008 (Genre foundation)
-3. 📋 **Approve ADR-0021, 0022, 0023**
-4. 📋 Update NARRATIVE_DOMAIN_SPEC with ADR decisions
-
-### 13.4 Week 5-8 (P2-P3)
-
-1. 📋 Execute V2-005, V2-006 (Domain types with ADR decisions)
-2. 📋 Execute V2-009, V2-010 (Canon transaction)
-3. 📋 **M1 Milestone achieved** (Narrative Kernel)
+1. 📋 Execute V2-009 to V2-012 (Canon Kernel)
+2. 📋 Execute V2-013 to V2-016 (Genre Kernel)
+3. 📋 **M1 Milestone achieved** (Narrative + Canon + Genre Kernel)
 
 ---
 
@@ -549,9 +618,18 @@ Therefore, NOT_READY verdict would be **inappropriately conservative**.
 
 **Documents Delivered**: 15/15 (100%)
 
-**Readiness Assessment**: ✅ **READY** (with 5 ADR conditions for M1-M3)
+**Control Plane**: ✅ SSOT ESTABLISHED
+- PHASE_TASK_REGISTRY.md (auto-generated from implementation-backlog.yaml)
+- V1_REUSE_DECISION_MATRIX.md (restored)
+- Phase semantics aligned (P0=Repository, P1=Narrative, P2=Canon, P3=Genre)
 
-**Recommended Action**: **PROCEED TO V2 IMPLEMENTATION**
+**Readiness Assessment**: 
+
+**P0_ENTRY_GATE**: ✅ **READY** (0 blockers, can begin V2-001 immediately)
+
+**ARCHITECTURE_BASELINE_FREEZE_GATE**: ✅ **READY** (control plane corrections complete)
+
+**Recommended Action**: **PROCEED TO P0 IMPLEMENTATION**
 
 **Next Document**: `PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md` (as specified in user prompt Section 27)
 
@@ -586,8 +664,9 @@ Therefore, NOT_READY verdict would be **inappropriately conservative**.
 
 **END OF ARCHITECTURE READINESS REPORT**
 
-**Verdict**: ✅ **READY**
+**P0_ENTRY_GATE**: ✅ **READY**  
+**ARCHITECTURE_BASELINE_FREEZE_GATE**: ✅ **READY**
 
-**Date**: 2026-09-19
+**Date**: 2026-09-19 (Updated after final convergence corrections)
 
-**Next Step**: Create `PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md` and begin V2 implementation
+**Next Step**: Begin V2-001 (Repository Bootstrap)

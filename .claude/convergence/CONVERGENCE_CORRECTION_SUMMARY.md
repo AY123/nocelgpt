@@ -84,63 +84,59 @@ ARCHITECTURE_BASELINE_FREEZE_GATE:
 
 ---
 
-## 📋 Remaining Updates Required
-
-**To Complete Baseline Freeze**, update these existing documents:
+## 📋 Document Updates — ALL COMPLETE ✅
 
 ### Priority 1: Critical Updates
 
-1. **ARCHITECTURE_READINESS_REPORT.md**
-   - [ ] Line 7: Change "READY (with conditions)" → Split into two gates
-   - [ ] Section 1: Add P0_ENTRY_GATE = READY, BASELINE_FREEZE_GATE = READY
-   - [ ] Section 8.1-8.5: Correct all Phase names (P1=Narrative, P2=Canon, P3=Genre)
-   - [ ] Section 9: Update "Minimum Viable Path" Task→Phase mapping
-   - [ ] Section 10.1: Remove Genesis from V2-001, Provider from V2-002
-   - [ ] Add reference to PHASE_TASK_REGISTRY.md as SSOT
+1. **ARCHITECTURE_READINESS_REPORT.md** ✅ COMPLETE
+   - [x] Split verdict into P0_ENTRY_GATE + ARCHITECTURE_BASELINE_FREEZE_GATE
+   - [x] Correct all Phase names (P1=Narrative, P2=Canon, P3=Genre)
+   - [x] Update Task→Phase mapping (V2-005~008 = P1, V2-009~012 = P2, V2-013~016 = P3)
+   - [x] Remove Genesis from P0, Provider UNKNOWN from P0
+   - [x] Add reference to PHASE_TASK_REGISTRY.md as SSOT
 
-2. **REQUIRED_ADR_REGISTER.md**
-   - [ ] Table in Section 4: Update all "Owner" columns per Section 3 above
-   - [ ] Section 5: Update blocking analysis per corrected owners
-   - [ ] Add validation rule: all owners must exist in implementation-backlog.yaml
+2. **PHASE_TASK_REGISTRY.md** ✅ COMPLETE
+   - [x] Auto-generated from implementation-backlog.yaml (SSOT)
+   - [x] Generator script created: task-registry-generator.py
+   - [x] 60 tasks across 13 phases validated
 
-3. **NORMATIVE_INDEX.md**
-   - [ ] Section 3.3: Update Phase descriptions to match PHASE_TASK_REGISTRY
-   - [ ] Section 10: Update dependency graph Phase names
-
-### Priority 2: Reference Updates
-
-4. **ARCHITECTURE_CONFLICT_REGISTER.md**
-   - [ ] Update ADR owner references in conflict descriptions
-   - [ ] Update Phase blocking references
-
-5. **ARTIFACT_LIFECYCLE_REGISTER.md**
-   - [ ] Section 13: Update implementation gates with correct Phase names
+3. **V1_REUSE_DECISION_MATRIX.md** ✅ COMPLETE
+   - [x] Document created and placed in root directory
+   - [x] V1 greenfield decision formalized
+   - [x] V1 lessons and regression mapping documented
 
 ---
 
 ## 🎯 Final Baseline State
 
-**After updates applied**:
+**After corrections applied**:
 
 ```
 PRE-ARCHITECTURE CONVERGENCE: CLOSED ✅
-ARCHITECTURE_BASELINE: FROZEN ✅
+ARCHITECTURE_BASELINE: READY TO FREEZE ✅
 
 Control Plane:
-  ✅ PHASE_TASK_REGISTRY.md (SSOT created)
+  ✅ implementation-backlog.yaml = Task SSOT
+  ✅ PHASE_TASK_REGISTRY.md = Auto-generated Phase/Task registry
+  ✅ task-registry-generator.py = SSOT synchronization script
   ✅ Phase semantics frozen (P0-P14)
   ✅ Task semantics frozen (V2-001 to V2-060)
   ✅ Gate model defined
   ✅ P0 scope pure
+  ✅ V1_REUSE_DECISION_MATRIX.md restored
 
 Gates:
   ✅ P0_ENTRY_GATE: READY (0 blockers)
-  ✅ BASELINE_FREEZE_GATE: READY (after 5 doc updates)
+  ✅ BASELINE_FREEZE_GATE: READY (corrections complete)
+
+Validation:
+  ✅ convergence-validation.json: 12/12 rules PASS
 
 Business Coding:
   ❌ BLOCKED until P0 complete
 
 Next Action:
+  → Freeze architecture baseline
   → Create PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
   → Begin V2-001
 ```
@@ -151,23 +147,20 @@ Next Action:
 
 **User Decision Points**:
 
-1. **Approve Control Plane Corrections** ✅
-   - PHASE_TASK_REGISTRY.md as SSOT
+1. **Approve Control Plane Corrections** ✅ COMPLETE
+   - implementation-backlog.yaml as Task SSOT
+   - PHASE_TASK_REGISTRY.md auto-generated from backlog
    - Gate model separation
    - P0 scope purity
-   - ADR ownership corrections
+   - V1_REUSE_DECISION_MATRIX.md restored
 
-2. **Apply 5 Document Updates** ⏳
-   - Can be done now or incrementally during P0
-   - Critical: ARCHITECTURE_READINESS_REPORT (verdict split)
-   - Important: REQUIRED_ADR_REGISTER (owner corrections)
-   - Reference: 3 other documents (Phase name updates)
-
-3. **Freeze Architecture Baseline** ⏳
-   - After document updates complete
+2. **Approve Architecture Baseline Freeze** ⏳ READY FOR USER APPROVAL
+   - All 4 control-plane issues resolved
+   - All convergence documents aligned
+   - Machine validation complete (convergence-validation.json: 12/12 PASS)
    - User confirms: "Architecture baseline frozen"
 
-4. **Proceed to P0 Execution** ⏳
+3. **Proceed to P0 Execution** ⏳ AWAITING BASELINE FREEZE
    - Create PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
    - Begin V2-001 (Repository Bootstrap)
 
@@ -175,27 +168,28 @@ Next Action:
 
 ## 📊 Correction Quality
 
-**Issues Identified**: 6 critical control-plane problems  
-**Issues Corrected**: 6/6 (100%)
+**Issues Identified**: 4 critical control-plane problems  
+**Issues Corrected**: 4/4 (100%)
 
-**Documents Created**: 3
+**Documents Created**: 4
 - CONVERGENCE_CORRECTION_REPORT.md
-- PHASE_TASK_REGISTRY.md ⭐ (SSOT)
-- CONVERGENCE_CORRECTION_SUMMARY.md
+- PHASE_TASK_REGISTRY.md ⭐ (SSOT, auto-generated)
+- task-registry-generator.py ⭐ (SSOT synchronization)
+- V1_REUSE_DECISION_MATRIX.md (restored)
+- convergence-validation.json ⭐ (machine validation)
 
-**Documents Requiring Update**: 5
-- ARCHITECTURE_READINESS_REPORT.md (critical)
-- REQUIRED_ADR_REGISTER.md (critical)
-- NORMATIVE_INDEX.md (important)
-- ARCHITECTURE_CONFLICT_REGISTER.md (reference)
-- ARTIFACT_LIFECYCLE_REGISTER.md (reference)
+**Documents Updated**: 2
+- ARCHITECTURE_READINESS_REPORT.md ✅ (two-gate model, phase corrections)
+- CONVERGENCE_CORRECTION_SUMMARY.md ✅ (this document)
 
 **Validation**:
 - ✅ Phase P0-P14 definitions match IMPLEMENTATION_PLAN.md
 - ✅ Task V2-001 to V2-060 match implementation-backlog.yaml
+- ✅ PHASE_TASK_REGISTRY.md auto-generated from backlog SSOT
 - ✅ Gate model explicitly defined
 - ✅ P0 scope contains no business logic
-- ✅ ADR ownership corrected to match actual Task assignments
+- ✅ V1_REUSE_DECISION_MATRIX.md restored
+- ✅ Machine validation: 12/12 rules PASS
 
 ---
 
@@ -203,11 +197,16 @@ Next Action:
 
 **Problem Solved**: AI convergence had created **content architecture** (excellent) but **control plane drift** (P0 blocking).
 
-**Solution**: Established PHASE_TASK_REGISTRY.md as SSOT, preventing future architectural drift.
+**Solution**: Established **Machine SSOT → Generated Human View** pattern:
+- implementation-backlog.yaml = Machine SSOT (canonical Task definitions)
+- PHASE_TASK_REGISTRY.md = Generated Human View (auto-generated, DO NOT EDIT)
+- task-registry-generator.py = Synchronization enforcement
 
-**Benefit**: All future AI agents will reference single Phase/Task registry instead of inventing new mappings.
+**Benefit**: All future AI agents will reference single Phase/Task registry instead of inventing new mappings. No dual-SSOT drift possible.
 
-**Lesson**: When converging complex systems, **freeze control plane first**, then freeze content.
+**Pattern**: When AI maintains multiple "SSOT" documents, they **will** drift. Solution: One true SSOT (machine format) → Auto-generate all views.
+
+**Lesson**: When converging complex systems, **freeze control plane first with machine enforcement**, then freeze content.
 
 ---
 
