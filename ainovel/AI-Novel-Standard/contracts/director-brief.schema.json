@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:director-brief:1.0",
+  "title": "DirectorBrief",
+  "description": "Phase 6 director contract: the brief artifact that compresses chapter objective and runtime context into actionable instructions for drafting or rewriting. This is a DERIVED production artifact, not a registry fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "authority",
+    "gating",
+    "chapter_id",
+    "objective_ref",
+    "inputs",
+    "summary",
+    "must_include",
+    "must_avoid",
+    "non_negotiables",
+    "rewrite_focus",
+    "decision_rationale"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^DBR-\\d{5,}$" },
+    "kind": { "type": "string", "const": "director_brief" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the brief is an internal production instruction the director prepares; it stages guidance, never auto-executes an outward/irreversible transition (publish, mint)."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a director brief NEVER blocks a build. It is advisory drafting/rewriting guidance."
+    },
+    "schema_version": { "type": "string", "default": "1.0" },
+    "brief_id": { "type": "string", "pattern": "^DBR-\\d{5,}$" },
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "objective_ref": { "type": "string", "pattern": "^OBJ-\\d{5,}$" },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "state_hash": { "type": "string" },
+        "character_runtime_hash": { "type": "string" },
+        "narrative_ir_hash": { "type": "string" },
+        "quality_summary_ref": { "type": "string" },
+        "commercial_summary_ref": { "type": "string" },
+        "signal_summary_ref": { "type": "string" }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["chapter_purpose", "tone", "priority"],
+      "properties": {
+        "chapter_purpose": { "type": "string", "minLength": 1 },
+        "tone": { "type": "string", "minLength": 1 },
+        "priority": { "type": "string", "minLength": 1 }
+      }
+    },
+    "must_include": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "must_avoid": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "non_negotiables": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "rewrite_focus": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "decision_rationale": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "notes": { "type": "string" }
+  }
+}

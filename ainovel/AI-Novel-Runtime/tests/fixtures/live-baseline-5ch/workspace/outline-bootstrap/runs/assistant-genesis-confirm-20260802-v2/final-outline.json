@@ -1,0 +1,5646 @@
+{
+  "characters": [
+    {
+      "abilities": [
+        "唯一能同时调用五份预言残片的人"
+      ],
+      "arc": "从求生者到秩序重建者",
+      "motivation": "从棋子成为唯一有资格改写规则的人",
+      "name": "林照夜",
+      "role": "protagonist"
+    },
+    {
+      "abilities": [],
+      "arc": "从秩序维护者到真相叛逃者",
+      "motivation": "维护旧秩序，视主角为最大变量",
+      "name": "沈无咎",
+      "role": "rival"
+    },
+    {
+      "abilities": [],
+      "arc": "守秘者面对旧错",
+      "motivation": "赎清一段被自己掩盖的旧纪元真相",
+      "name": "白砚",
+      "role": "mentor"
+    }
+  ],
+  "collaboration": {
+    "agents": [
+      {
+        "model": "mock-structure-v1",
+        "responsibility": "extract reusable narrative structures",
+        "role": "StructureAnalyst"
+      },
+      {
+        "model": "mock-trope-v1",
+        "responsibility": "identify genre expectations and reader rewards",
+        "role": "TropeAnalyst"
+      },
+      {
+        "model": "mock-originality-v1",
+        "responsibility": "prevent direct copying and similarity risk",
+        "role": "OriginalityGuard"
+      },
+      {
+        "model": "mock-world-v1",
+        "responsibility": "create an original world premise",
+        "role": "WorldBuilder"
+      },
+      {
+        "model": "mock-plot-v1",
+        "responsibility": "design main arc, volumes, and turning points",
+        "role": "PlotArchitect"
+      },
+      {
+        "model": "mock-character-v1",
+        "responsibility": "design protagonist, rivals, allies, and arcs",
+        "role": "CharacterDesigner"
+      },
+      {
+        "model": "mock-critic-v1",
+        "responsibility": "review candidate outlines",
+        "role": "Critic"
+      },
+      {
+        "model": "mock-synthesizer-v1",
+        "responsibility": "merge the best candidate into final outline",
+        "role": "Synthesizer"
+      }
+    ],
+    "reviews": [
+      {
+        "candidate_id": "CANDIDATE-A",
+        "concerns": [
+          "needs concrete act/volume breakdown",
+          "must avoid one-to-one mapping to any reference source"
+        ],
+        "critic": "Critic",
+        "evidence_originality": null,
+        "guardrails": [
+          "不得复用参考小说的专有名词、角色姓名、门派/组织名称。",
+          "只抽象结构与节奏，不复刻桥段顺序和关键反转。",
+          "最终大纲必须建立新的世界规则、人物动机与核心冲突。"
+        ],
+        "originality_guard": "OriginalityGuard",
+        "risk_level": "medium",
+        "score": 7,
+        "strengths": [
+          "clear commercial direction",
+          "can transform reference-level patterns into an original premise"
+        ]
+      },
+      {
+        "candidate_id": "CANDIDATE-B",
+        "concerns": [
+          "needs concrete act/volume breakdown",
+          "must avoid one-to-one mapping to any reference source"
+        ],
+        "critic": "Critic",
+        "evidence_originality": null,
+        "guardrails": [
+          "不得复用参考小说的专有名词、角色姓名、门派/组织名称。",
+          "只抽象结构与节奏，不复刻桥段顺序和关键反转。",
+          "最终大纲必须建立新的世界规则、人物动机与核心冲突。"
+        ],
+        "originality_guard": "OriginalityGuard",
+        "risk_level": "low",
+        "score": 8,
+        "strengths": [
+          "clear commercial direction",
+          "can transform reference-level patterns into an original premise"
+        ]
+      },
+      {
+        "candidate_id": "CANDIDATE-C",
+        "concerns": [
+          "needs concrete act/volume breakdown",
+          "must avoid one-to-one mapping to any reference source"
+        ],
+        "critic": "Critic",
+        "evidence_originality": null,
+        "guardrails": [
+          "不得复用参考小说的专有名词、角色姓名、门派/组织名称。",
+          "只抽象结构与节奏，不复刻桥段顺序和关键反转。",
+          "最终大纲必须建立新的世界规则、人物动机与核心冲突。"
+        ],
+        "originality_guard": "OriginalityGuard",
+        "risk_level": "low",
+        "score": 8,
+        "strengths": [
+          "clear commercial direction",
+          "can transform reference-level patterns into an original premise"
+        ]
+      }
+    ],
+    "selected_candidate": "CANDIDATE-B"
+  },
+  "conflict_ladder": [
+    {
+      "enemy": "起步阶段的小敌人",
+      "level": "小敌人",
+      "pressure_source": "眼前的生存威胁，逼主角用出金手指"
+    },
+    {
+      "enemy": "立足阶段的阶段boss",
+      "level": "阶段boss",
+      "pressure_source": "掌控一片地图/资源的势力，卡住主角上升通道"
+    },
+    {
+      "enemy": "崭露阶段的世界级敌人",
+      "level": "世界级敌人",
+      "pressure_source": "维系旧秩序的顶层力量，与主角的终极目标直接对立"
+    }
+  ],
+  "core_hook": "五个彼此敌对的年轻人同时继承一份破碎预言，必须在旧神复苏前决定谁有资格改写世界规则。",
+  "first_30_chapters": [
+    {
+      "chapter_no": 1,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。对手的追兵已逼近，来不及等待",
+      "end_hook": "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "身份落差暴露，金手指在绝境中被逼显性化",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 2,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。限时之内不解决，主角将陷入绝境",
+      "end_hook": "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 3,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "打脸成功，却因锋芒毕露引来更强者的注意",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "抓住对手的破绽完成第一次翻身打脸",
+      "reward_if_any": "打脸翻身"
+    },
+    {
+      "chapter_no": 4,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。必须在今夜之前动手，否则再无机会",
+      "end_hook": "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 5,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。对手的追兵已逼近，来不及等待",
+      "end_hook": "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "主角对「唯一能同时调用五份预言残片的人」的掌控突破一层，力量升级同时代价加深",
+      "goal": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 6,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。限时之内不解决，主角将陷入绝境",
+      "end_hook": "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+      "reward_if_any": "获得资源/宝物"
+    },
+    {
+      "chapter_no": 7,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 8,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。必须在今夜之前动手，否则再无机会",
+      "end_hook": "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 9,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。对手的追兵已逼近，来不及等待",
+      "end_hook": "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+      "reward_if_any": "身份跃升"
+    },
+    {
+      "chapter_no": 10,
+      "conflict": "主角目标与起步阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。限时之内不解决，主角将陷入绝境",
+      "end_hook": "旧目标兑现的同一刻，一个更大的势力露出獠牙",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "完成第一个小闭环，旧目标达成",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 11,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "新的压迫源登场：立足阶段的阶段boss，冲突层级整体抬高",
+      "goal": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 12,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。必须在今夜之前动手，否则再无机会",
+      "end_hook": "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+      "reward_if_any": "实力突破"
+    },
+    {
+      "chapter_no": 13,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。对手的追兵已逼近，来不及等待",
+      "end_hook": "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 14,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。限时之内不解决，主角将陷入绝境",
+      "end_hook": "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 15,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+      "reward_if_any": "打脸翻身"
+    },
+    {
+      "chapter_no": 16,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。必须在今夜之前动手，否则再无机会",
+      "end_hook": "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 17,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。对手的追兵已逼近，来不及等待",
+      "end_hook": "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 18,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。限时之内不解决，主角将陷入绝境",
+      "end_hook": "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+      "reward_if_any": "获得资源/宝物"
+    },
+    {
+      "chapter_no": 19,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 20,
+      "conflict": "主角目标与立足阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。必须在今夜之前动手，否则再无机会",
+      "end_hook": "boss倒下，却牵出其背后世界级力量的一线阴影",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "撕开阶段boss布下的困局",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 21,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。对手的追兵已逼近，来不及等待",
+      "end_hook": "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "新的压迫源登场：崭露阶段的世界级敌人，冲突层级整体抬高",
+      "goal": "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+      "reward_if_any": "身份跃升"
+    },
+    {
+      "chapter_no": 22,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。限时之内不解决，主角将陷入绝境",
+      "end_hook": "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 23,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 24,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。必须在今夜之前动手，否则再无机会",
+      "end_hook": "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+      "reward_if_any": "实力突破"
+    },
+    {
+      "chapter_no": 25,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。对手的追兵已逼近，来不及等待",
+      "end_hook": "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "主角对「唯一能同时调用五份预言残片的人」的掌控突破一层，力量升级同时代价加深",
+      "goal": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 26,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。限时之内不解决，主角将陷入绝境",
+      "end_hook": "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 27,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。拖延一步，代价便落到主角在乎的人身上",
+      "end_hook": "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+      "reward_if_any": "打脸翻身"
+    },
+    {
+      "chapter_no": 28,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。必须在今夜之前动手，否则再无机会",
+      "end_hook": "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 29,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。对手的追兵已逼近，来不及等待",
+      "end_hook": "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+      "escalation": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "goal": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+      "reward_if_any": ""
+    },
+    {
+      "chapter_no": 30,
+      "conflict": "主角目标与崭露阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。限时之内不解决，主角将陷入绝境",
+      "end_hook": "通往新地图的门被推开，旧规则彻底失效",
+      "escalation": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "goal": "以代价完成第一个大闭环，逼近核心真相",
+      "reward_if_any": "获得资源/宝物"
+    }
+  ],
+  "genre": [
+    "原创类型"
+  ],
+  "id": "OUTLINE-00001",
+  "kind": "novel_outline",
+  "logline": "五个彼此敌对的年轻人同时继承一份破碎预言，必须在旧神复苏前决定谁有资格改写世界规则。",
+  "market_position": {
+    "channel": "女频",
+    "competitor_refs": [
+      "当前原创类型在榜同类作品(结构对标，不复制专名)"
+    ],
+    "monetization_model": "章节订阅",
+    "reader_promise": "主角凭借独有金手指，在原创类型世界持续突破并兑现即时爽感。",
+    "site_profile": "订阅向长篇连载平台",
+    "sub_genre": "原创类型",
+    "target_wordcount_per_chapter": 3333,
+    "update_cadence": "日更"
+  },
+  "originality_delta": [
+    {
+      "axis": "金手指机制",
+      "our_variation": "改为带硬代价的机制：每调用一次，就与一名继承者结下不可逆的死敌",
+      "reference_pattern": "参考作品的能力获取方式(抽象自分析信号)"
+    },
+    {
+      "axis": "开局桥段",
+      "our_variation": "打散事件顺序，替换主角动机与因果链，避免一对一复刻",
+      "reference_pattern": "常见的遇袭/落魄开局"
+    },
+    {
+      "axis": "世界规则",
+      "our_variation": "建立全新专名与规则代价，不复用任何参考专有名词",
+      "reference_pattern": "参考作品的设定专名"
+    }
+  ],
+  "originality_report": {
+    "comparison_only": true,
+    "corpus_evidence": null,
+    "evidence": [
+      {
+        "axis": "金手指机制",
+        "our_variation": "改为带硬代价的机制：每调用一次，就与一名继承者结下不可逆的死敌"
+      },
+      {
+        "axis": "开局桥段",
+        "our_variation": "打散事件顺序，替换主角动机与因果链，避免一对一复刻"
+      },
+      {
+        "axis": "世界规则",
+        "our_variation": "建立全新专名与规则代价，不复用任何参考专有名词"
+      }
+    ],
+    "high_risk_candidates_excluded": [],
+    "legal_conclusion": false,
+    "notes": [
+      "不得复用参考小说的专有名词、角色姓名、门派/组织名称。",
+      "只抽象结构与节奏，不复刻桥段顺序和关键反转。",
+      "最终大纲必须建立新的世界规则、人物动机与核心冲突。"
+    ],
+    "risk_level": "low"
+  },
+  "plot": {
+    "chapters": [],
+    "main_arc": "五个彼此敌对的年轻人同时继承一份破碎预言，必须在旧神复苏前决定谁有资格改写世界规则。",
+    "volumes": [
+      {
+        "goal": "主角在本卷突破至「起步」并解决当前压迫源",
+        "id": "VOL-01",
+        "map": "第一处地图/新手区",
+        "oppressor": "起步阶段的小敌人",
+        "purpose": "建立主角、金手指、第一重追杀与核心谜团",
+        "settlement": "结算本卷收益，遗留一条跨卷长线谜团",
+        "title": "起势",
+        "twist": "本卷结尾揭示与起步阶段的小敌人相关的一个反转，抬高下一卷目标"
+      },
+      {
+        "goal": "主角在本卷突破至「崭露」并解决当前压迫源",
+        "id": "VOL-02",
+        "map": "第二处地图/进阶区",
+        "oppressor": "立足阶段的阶段boss",
+        "purpose": "扩展势力冲突，第一个大闭环与新地图",
+        "settlement": "结算本卷收益，遗留一条跨卷长线谜团",
+        "title": "破局",
+        "twist": "本卷结尾揭示与立足阶段的阶段boss相关的一个反转，抬高下一卷目标"
+      },
+      {
+        "goal": "主角在本卷突破至「问鼎」并解决当前压迫源",
+        "id": "VOL-03",
+        "map": "第三处地图/高阶区",
+        "oppressor": "崭露阶段的世界级敌人",
+        "purpose": "主角以代价完成阶段性秩序重建",
+        "settlement": "结算本卷收益，遗留一条跨卷长线谜团",
+        "title": "问鼎",
+        "twist": "本卷结尾揭示与崭露阶段的世界级敌人相关的一个反转，抬高下一卷目标"
+      }
+    ]
+  },
+  "power_system": {
+    "breakthrough_condition": "夺取或说服一名继承者交出预言残片",
+    "hard_limits": [
+      "残片总数固定为五",
+      "结仇不可撤销"
+    ],
+    "tiers": [
+      "起步",
+      "立足",
+      "崭露",
+      "掌局",
+      "问鼎"
+    ]
+  },
+  "protagonist_engine": {
+    "cost": "每调用一次，就与一名继承者结下不可逆的死敌",
+    "desire": "从棋子成为唯一有资格改写规则的人",
+    "flaw": "出身最低，被所有继承者轻视",
+    "golden_finger": "唯一能同时调用五份预言残片的人"
+  },
+  "provenance": {
+    "analysis_summary": {
+      "chapter_evidence_ledger": {
+        "chapter_count": 30,
+        "chapters": [
+          {
+            "accidents": [],
+            "chapter_index": 1,
+            "checkpoint": null,
+            "content_hash": "e6c6917774766980e8cc0b500b0882c2fbd4cf31eb8e66f4e501ed6e50e8e6eb",
+            "event_id": "EVENT-1",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 19,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-1",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 2,
+            "checkpoint": null,
+            "content_hash": "ab7457f9585e61000d74aa4d978c0261f8a93cb45ef6254ee26e506522f0514e",
+            "event_id": "EVENT-2",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 67,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-2",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 3,
+            "checkpoint": null,
+            "content_hash": "3cf3bc28c78c84fa9298a1bd4b5e93a64116ab56447b4adc7663f6285b29694e",
+            "event_id": "EVENT-3",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 16,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-3",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 4,
+            "checkpoint": null,
+            "content_hash": "54bcb287f71917e63fb1a9ffe9abdf3733a94aa678449bc54e3c2f16f890a629",
+            "event_id": "EVENT-4",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 74,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-4",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 5,
+            "checkpoint": null,
+            "content_hash": "0367e4588b7573c59668a996d212c75dc75a6dacf79933c1d51c6f0df654ae76",
+            "event_id": "EVENT-5",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 45,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-5",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 6,
+            "checkpoint": null,
+            "content_hash": "459e71a01a01cf99a9091f5f92cf10d632d64c6a66ab19eb23df4dd5068c3d27",
+            "event_id": "EVENT-6",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 37,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-6",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 7,
+            "checkpoint": null,
+            "content_hash": "1b8bbbf45aecf600b4eb01d6b2a27b7656023dc5edfacb02c6d5808e0a3062bc",
+            "event_id": "EVENT-7",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 96,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-7",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 8,
+            "checkpoint": null,
+            "content_hash": "1f63616df24763b710957887d5ddfd01b6fb9a20b9e75bb50986a9f127e105b6",
+            "event_id": "EVENT-8",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 74,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-8",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 9,
+            "checkpoint": null,
+            "content_hash": "f3714878703600de9b66c7b6dfee018aadc5fa0ddbbabadf23aa2236b6b4b59b",
+            "event_id": "EVENT-9",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 37,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-9",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 10,
+            "checkpoint": null,
+            "content_hash": "5f4d0dbb9570a092ab001f074b7fed7742edb05b2dd1dc50c36182515703074b",
+            "event_id": "EVENT-10",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 14,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-10",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 11,
+            "checkpoint": null,
+            "content_hash": "ab8cffeccea23d54880a152a5d7fb726fcde6a36ae4f118987d7461b77003ada",
+            "event_id": "EVENT-11",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 31,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-11",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 12,
+            "checkpoint": null,
+            "content_hash": "8925a82d44933c19c9cac48c1e039bfd5911a858da172d81869823534097334b",
+            "event_id": "EVENT-12",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 37,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-12",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 13,
+            "checkpoint": null,
+            "content_hash": "0f248f0f021a424915e5f888652682d6edd4130c84afbdae891710e759a07b00",
+            "event_id": "EVENT-13",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 76,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-13",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 14,
+            "checkpoint": null,
+            "content_hash": "4c313a09922b202308eebceee31791fe9f2b75affcbf7c2111fb2dba85fff410",
+            "event_id": "EVENT-14",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 75,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-14",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 15,
+            "checkpoint": null,
+            "content_hash": "806d8ad8206f9472f19e9b65277440cd3f2a61068119407240cba62cc7e1648e",
+            "event_id": "EVENT-15",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 37,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-15",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 16,
+            "checkpoint": null,
+            "content_hash": "52f2de065c952b2a6821da231ee1786cc1b47c2b3dd53378716650585a47b691",
+            "event_id": "EVENT-16",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 82,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-16",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 17,
+            "checkpoint": null,
+            "content_hash": "0283181ad03acd2f19351d7e3e81ec2f1e785331478e7a535e3a98402a9bd283",
+            "event_id": "EVENT-17",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 101,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-17",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 18,
+            "checkpoint": null,
+            "content_hash": "07d0e694b277f6e9c3d5ff955088824faba2bcb474dcc75a56218f73fde4cf18",
+            "event_id": "EVENT-18",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 37,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-18",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 19,
+            "checkpoint": null,
+            "content_hash": "f9bf3eee60eb3ece761e79f83b45f8c75013c072921f5cda7e92596cc9ea992d",
+            "event_id": "EVENT-19",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 79,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-19",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 20,
+            "checkpoint": null,
+            "content_hash": "34177da743004ed4e83c13d537da33bc511448c97eb35911b73d056be1e7bd4d",
+            "event_id": "EVENT-20",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 13,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-20",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 21,
+            "checkpoint": null,
+            "content_hash": "8000e06adc348b526ef0ba97d1568584070c7a40e420b9d294d3396b079a21a0",
+            "event_id": "EVENT-21",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 30,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-21",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 22,
+            "checkpoint": null,
+            "content_hash": "ae2143e34c8c2eed4c8ae71a4c834f4aa26b48b745de40fc9296b24520416898",
+            "event_id": "EVENT-22",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 76,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-22",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 23,
+            "checkpoint": null,
+            "content_hash": "9b76ee0dc8d96c88587d1d5f0ce9ea1d38a172a5092d13eab3bae0cf696a48b8",
+            "event_id": "EVENT-23",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 80,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-23",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 24,
+            "checkpoint": null,
+            "content_hash": "22b26ca871d04a9253ec39a09eac635b69ff9b77063ed0c2fd92beac3eca92bd",
+            "event_id": "EVENT-24",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 37,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-24",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 25,
+            "checkpoint": null,
+            "content_hash": "77b22e8d65a9599df982fcb759978d965551037322a5547604214547e585122d",
+            "event_id": "EVENT-25",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 47,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-25",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 26,
+            "checkpoint": null,
+            "content_hash": "776f581f8d025cc9f2ec3c8bf3963dd72a20b1334125487e3a14d8c7437ab8d1",
+            "event_id": "EVENT-26",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 76,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-26",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 27,
+            "checkpoint": null,
+            "content_hash": "c0a174e0b1b2b478523391a13239ad55d1f1ba7a991d08e619301563a706b9a4",
+            "event_id": "EVENT-27",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 62,
+              "lines": 1,
+              "words": 3
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-27",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 28,
+            "checkpoint": null,
+            "content_hash": "38a6ab72a59253aba3d844c8389bf1cb9243b7b15834dcf2feec9a2da725c0fa",
+            "event_id": "EVENT-28",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 83,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-28",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 29,
+            "checkpoint": null,
+            "content_hash": "b0b6b9c4b388603009eb00a6506a025bc421c5bf597ae5eb114bc4569c6a97c3",
+            "event_id": "EVENT-29",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 77,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-29",
+            "version": "1.0"
+          },
+          {
+            "accidents": [],
+            "chapter_index": 30,
+            "checkpoint": null,
+            "content_hash": "f8a6a1a3112310a41e4efabb59a116bcefd51f3c3620b7c6717fd1ba400c0aeb",
+            "event_id": "EVENT-30",
+            "facts": {
+              "approval_request_ids": [],
+              "candidates_mintable": null,
+              "candidates_staged": null,
+              "mint_receipt_ids": [],
+              "next_chapter_consumed": null
+            },
+            "hashes": {
+              "draft_hash": null,
+              "final_hash": null,
+              "state_hash": null,
+              "winner_id": null
+            },
+            "human": {
+              "accept": null,
+              "adjudication": null,
+              "edit_minutes": null,
+              "labels": [],
+              "notes": "",
+              "reviewer_ids": []
+            },
+            "kind": "chapter_evidence_row",
+            "length": {
+              "chars": 18,
+              "lines": 1,
+              "words": 1
+            },
+            "llm": {
+              "cost": null,
+              "latency_ms": null,
+              "model": null,
+              "provider": null,
+              "replay_ref": null,
+              "response_hash": null,
+              "token_usage": {
+                "cached_input_tokens": null,
+                "input_tokens": null,
+                "output_tokens": null,
+                "total_tokens": null,
+                "usage_estimated": null
+              }
+            },
+            "ok": true,
+            "output_path": null,
+            "prompt_provenance": {},
+            "quality": {
+              "commercial_verdict": null,
+              "overall_verdict": null,
+              "publish_readiness": {
+                "gates_build": null,
+                "rationale": null,
+                "recommendation": null
+              },
+              "scores": {},
+              "verdict": null
+            },
+            "stage": "outline",
+            "task_id": "CH-30",
+            "version": "1.0"
+          }
+        ],
+        "content_hash": "cb436ae0885ada238b5b1c9acb0302ccda4d0330f04e5797bfe7a522d79f5573",
+        "kind": "chapter_evidence_ledger",
+        "notes": "outline-derived chapter evidence",
+        "protocol_config_hash": "30",
+        "protocol_id": "N100-043",
+        "run_id": "OUTLINE-live-baseline-5ch",
+        "run_ref": {
+          "gating": false,
+          "kind": "outline_bootstrap",
+          "version": "1.0"
+        },
+        "totals": {
+          "cost": null,
+          "final_state_hash": null,
+          "live_calls": 0,
+          "planned": 30,
+          "produced": 30,
+          "skipped": 0,
+          "token_usage": {
+            "input": 0,
+            "output": 0,
+            "total": 0
+          }
+        },
+        "version": "1.0"
+      },
+      "ci_m4_ledger": {
+        "chapter_functions": [
+          {
+            "chapter_no": 1,
+            "evidence": [
+              "chapter:1",
+              "身份落差暴露，金手指在绝境中被逼显性化",
+              "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临"
+            ],
+            "function_type": "setup",
+            "payoff": "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "身份落差暴露，金手指在绝境中被逼显性化",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 2,
+            "evidence": [
+              "chapter:2",
+              "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "setup",
+            "payoff": "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 3,
+            "evidence": [
+              "chapter:3",
+              "抓住对手的破绽完成第一次翻身打脸",
+              "打脸成功，却因锋芒毕露引来更强者的注意"
+            ],
+            "function_type": "payoff",
+            "payoff": "打脸成功，却因锋芒毕露引来更强者的注意",
+            "promise": "打脸翻身",
+            "setup": "抓住对手的破绽完成第一次翻身打脸",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 4,
+            "evidence": [
+              "chapter:4",
+              "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 5,
+            "evidence": [
+              "chapter:5",
+              "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+              "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+            "tension": "主角对「唯一能同时调用五份预言残片的人」的掌控突破一层，力量升级同时代价加深"
+          },
+          {
+            "chapter_no": 6,
+            "evidence": [
+              "chapter:6",
+              "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "获得资源/宝物",
+            "setup": "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 7,
+            "evidence": [
+              "chapter:7",
+              "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 8,
+            "evidence": [
+              "chapter:8",
+              "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 9,
+            "evidence": [
+              "chapter:9",
+              "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "身份跃升",
+            "setup": "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 10,
+            "evidence": [
+              "chapter:10",
+              "完成第一个小闭环，旧目标达成",
+              "旧目标兑现的同一刻，一个更大的势力露出獠牙"
+            ],
+            "function_type": "escalation",
+            "payoff": "旧目标兑现的同一刻，一个更大的势力露出獠牙",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "完成第一个小闭环，旧目标达成",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 11,
+            "evidence": [
+              "chapter:11",
+              "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+              "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+            "tension": "新的压迫源登场：立足阶段的阶段boss，冲突层级整体抬高"
+          },
+          {
+            "chapter_no": 12,
+            "evidence": [
+              "chapter:12",
+              "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "实力突破",
+            "setup": "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 13,
+            "evidence": [
+              "chapter:13",
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 14,
+            "evidence": [
+              "chapter:14",
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 15,
+            "evidence": [
+              "chapter:15",
+              "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "打脸翻身",
+            "setup": "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 16,
+            "evidence": [
+              "chapter:16",
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 17,
+            "evidence": [
+              "chapter:17",
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 18,
+            "evidence": [
+              "chapter:18",
+              "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "获得资源/宝物",
+            "setup": "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 19,
+            "evidence": [
+              "chapter:19",
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 20,
+            "evidence": [
+              "chapter:20",
+              "撕开阶段boss布下的困局",
+              "boss倒下，却牵出其背后世界级力量的一线阴影"
+            ],
+            "function_type": "escalation",
+            "payoff": "boss倒下，却牵出其背后世界级力量的一线阴影",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "撕开阶段boss布下的困局",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 21,
+            "evidence": [
+              "chapter:21",
+              "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+              "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "身份跃升",
+            "setup": "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+            "tension": "新的压迫源登场：崭露阶段的世界级敌人，冲突层级整体抬高"
+          },
+          {
+            "chapter_no": 22,
+            "evidence": [
+              "chapter:22",
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 23,
+            "evidence": [
+              "chapter:23",
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 24,
+            "evidence": [
+              "chapter:24",
+              "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "实力突破",
+            "setup": "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 25,
+            "evidence": [
+              "chapter:25",
+              "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+              "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+            "tension": "主角对「唯一能同时调用五份预言残片的人」的掌控突破一层，力量升级同时代价加深"
+          },
+          {
+            "chapter_no": 26,
+            "evidence": [
+              "chapter:26",
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 27,
+            "evidence": [
+              "chapter:27",
+              "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "payoff",
+            "payoff": "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "打脸翻身",
+            "setup": "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          },
+          {
+            "chapter_no": 28,
+            "evidence": [
+              "chapter:28",
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 29,
+            "evidence": [
+              "chapter:29",
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "function_type": "escalation",
+            "payoff": "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "promise": "从棋子成为唯一有资格改写规则的人",
+            "setup": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "tension": "对手进逼、时间收窄，冲突较上一章升级且更难回头"
+          },
+          {
+            "chapter_no": 30,
+            "evidence": [
+              "chapter:30",
+              "以代价完成第一个大闭环，逼近核心真相",
+              "通往新地图的门被推开，旧规则彻底失效"
+            ],
+            "function_type": "payoff",
+            "payoff": "通往新地图的门被推开，旧规则彻底失效",
+            "promise": "获得资源/宝物",
+            "setup": "以代价完成第一个大闭环，逼近核心真相",
+            "tension": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高"
+          }
+        ],
+        "character_arcs": [
+          {
+            "arc_axis": "flaw_to_desire",
+            "character": "林照夜",
+            "ending_state": "从棋子成为唯一有资格改写规则的人",
+            "evidence": [
+              "chapter:1",
+              "chapter:2",
+              "chapter:3",
+              "chapter:4",
+              "chapter:5"
+            ],
+            "progression": "从求生者到秩序重建者",
+            "starting_state": "出身最低，被所有继承者轻视"
+          },
+          {
+            "arc_axis": "opposition_to_reckoning",
+            "character": "沈无咎",
+            "ending_state": "真相叛逃者",
+            "evidence": [
+              "chapter:1",
+              "chapter:2",
+              "chapter:3",
+              "chapter:4",
+              "chapter:5"
+            ],
+            "progression": "从秩序维护者到真相叛逃者",
+            "starting_state": "维护旧秩序，视主角为最大变量"
+          },
+          {
+            "arc_axis": "secrecy_to_confession",
+            "character": "白砚",
+            "ending_state": "赎罪",
+            "evidence": [
+              "chapter:1",
+              "chapter:2",
+              "chapter:3",
+              "chapter:4",
+              "chapter:5"
+            ],
+            "progression": "守秘者面对旧错",
+            "starting_state": "守秘"
+          }
+        ],
+        "comparison_only": true,
+        "gating": false,
+        "metadata": {
+          "chapter_count": 30,
+          "character_count": 3,
+          "overdue_count": 2,
+          "pending_count": 18,
+          "promise_count": 30,
+          "protagonist": "林照夜",
+          "resolved_count": 10
+        },
+        "narrative_economy": [
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 1,
+            "debt": 0,
+            "deferred": [
+              "P-01"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 2,
+            "debt": 0,
+            "deferred": [
+              "P-01"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 3,
+            "debt": 0,
+            "deferred": [
+              "P-01"
+            ],
+            "introduced": [
+              "打脸翻身"
+            ],
+            "paid_off": [
+              "打脸成功，却因锋芒毕露引来更强者的注意"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 4,
+            "debt": 0,
+            "deferred": [
+              "P-01"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 5,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 6,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [
+              "获得资源/宝物"
+            ],
+            "paid_off": [
+              "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 7,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 8,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 9,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [
+              "身份跃升"
+            ],
+            "paid_off": [
+              "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 10,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 11,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 12,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [
+              "实力突破"
+            ],
+            "paid_off": [
+              "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 13,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 14,
+            "debt": 1,
+            "deferred": [
+              "P-01",
+              "P-05"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 15,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [
+              "打脸翻身"
+            ],
+            "paid_off": [
+              "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 16,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 17,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 18,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [
+              "获得资源/宝物"
+            ],
+            "paid_off": [
+              "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 19,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 20,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 21,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [
+              "身份跃升"
+            ],
+            "paid_off": [
+              "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 22,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 23,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 24,
+            "debt": 2,
+            "deferred": [
+              "P-01",
+              "P-05",
+              "P-15"
+            ],
+            "introduced": [
+              "实力突破"
+            ],
+            "paid_off": [
+              "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 25,
+            "debt": 3,
+            "deferred": [
+              "P-05",
+              "P-15",
+              "P-25"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 26,
+            "debt": 3,
+            "deferred": [
+              "P-05",
+              "P-15",
+              "P-25"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 27,
+            "debt": 3,
+            "deferred": [
+              "P-05",
+              "P-15",
+              "P-25"
+            ],
+            "introduced": [
+              "打脸翻身"
+            ],
+            "paid_off": [
+              "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ]
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 28,
+            "debt": 3,
+            "deferred": [
+              "P-05",
+              "P-15",
+              "P-25"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 29,
+            "debt": 3,
+            "deferred": [
+              "P-05",
+              "P-15",
+              "P-25"
+            ],
+            "introduced": [],
+            "paid_off": []
+          },
+          {
+            "balance_note": "林照夜 向「从棋子成为唯一有资格改写规则的人」推进，背负「出身最低，被所有继承者轻视」",
+            "chapter_no": 30,
+            "debt": 3,
+            "deferred": [
+              "P-05",
+              "P-15",
+              "P-25"
+            ],
+            "introduced": [
+              "获得资源/宝物"
+            ],
+            "paid_off": [
+              "通往新地图的门被推开，旧规则彻底失效"
+            ]
+          }
+        ],
+        "promises": [
+          {
+            "chapter_no": 1,
+            "established_by": "身份落差暴露，金手指在绝境中被逼显性化",
+            "evidence": [
+              "身份落差暴露，金手指在绝境中被逼显性化",
+              "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临"
+            ],
+            "promise_id": "P-01",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch01"
+          },
+          {
+            "chapter_no": 2,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-02",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch02"
+          },
+          {
+            "chapter_no": 3,
+            "established_by": "抓住对手的破绽完成第一次翻身打脸",
+            "evidence": [
+              "抓住对手的破绽完成第一次翻身打脸",
+              "打脸成功，却因锋芒毕露引来更强者的注意",
+              "打脸翻身"
+            ],
+            "promise_id": "P-03",
+            "promise_text": "打脸翻身",
+            "resolved_by": "打脸成功，却因锋芒毕露引来更强者的注意",
+            "status": "resolved",
+            "window": "ch03"
+          },
+          {
+            "chapter_no": 4,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-04",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch04"
+          },
+          {
+            "chapter_no": 5,
+            "established_by": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+            "evidence": [
+              "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+              "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-05",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch05"
+          },
+          {
+            "chapter_no": 6,
+            "established_by": "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+              "获得资源/宝物"
+            ],
+            "promise_id": "P-06",
+            "promise_text": "获得资源/宝物",
+            "resolved_by": "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch06"
+          },
+          {
+            "chapter_no": 7,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-07",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch07"
+          },
+          {
+            "chapter_no": 8,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-08",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch08"
+          },
+          {
+            "chapter_no": 9,
+            "established_by": "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+              "身份跃升"
+            ],
+            "promise_id": "P-09",
+            "promise_text": "身份跃升",
+            "resolved_by": "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch09"
+          },
+          {
+            "chapter_no": 10,
+            "established_by": "完成第一个小闭环，旧目标达成",
+            "evidence": [
+              "完成第一个小闭环，旧目标达成",
+              "旧目标兑现的同一刻，一个更大的势力露出獠牙"
+            ],
+            "promise_id": "P-10",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch10"
+          },
+          {
+            "chapter_no": 11,
+            "established_by": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+            "evidence": [
+              "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+              "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-11",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch11"
+          },
+          {
+            "chapter_no": 12,
+            "established_by": "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+              "实力突破"
+            ],
+            "promise_id": "P-12",
+            "promise_text": "实力突破",
+            "resolved_by": "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch12"
+          },
+          {
+            "chapter_no": 13,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-13",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch13"
+          },
+          {
+            "chapter_no": 14,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-14",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch14"
+          },
+          {
+            "chapter_no": 15,
+            "established_by": "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+              "打脸翻身"
+            ],
+            "promise_id": "P-15",
+            "promise_text": "打脸翻身",
+            "resolved_by": "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch15"
+          },
+          {
+            "chapter_no": 16,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-16",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch16"
+          },
+          {
+            "chapter_no": 17,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-17",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch17"
+          },
+          {
+            "chapter_no": 18,
+            "established_by": "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+              "获得资源/宝物"
+            ],
+            "promise_id": "P-18",
+            "promise_text": "获得资源/宝物",
+            "resolved_by": "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch18"
+          },
+          {
+            "chapter_no": 19,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-19",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch19"
+          },
+          {
+            "chapter_no": 20,
+            "established_by": "撕开阶段boss布下的困局",
+            "evidence": [
+              "撕开阶段boss布下的困局",
+              "boss倒下，却牵出其背后世界级力量的一线阴影"
+            ],
+            "promise_id": "P-20",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "overdue",
+            "window": "ch20"
+          },
+          {
+            "chapter_no": 21,
+            "established_by": "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+            "evidence": [
+              "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+              "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+              "身份跃升"
+            ],
+            "promise_id": "P-21",
+            "promise_text": "身份跃升",
+            "resolved_by": "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch21"
+          },
+          {
+            "chapter_no": 22,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-22",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch22"
+          },
+          {
+            "chapter_no": 23,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-23",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch23"
+          },
+          {
+            "chapter_no": 24,
+            "established_by": "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+              "实力突破"
+            ],
+            "promise_id": "P-24",
+            "promise_text": "实力突破",
+            "resolved_by": "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch24"
+          },
+          {
+            "chapter_no": 25,
+            "established_by": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+            "evidence": [
+              "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+              "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-25",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "overdue",
+            "window": "ch25"
+          },
+          {
+            "chapter_no": 26,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-26",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch26"
+          },
+          {
+            "chapter_no": 27,
+            "established_by": "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "evidence": [
+              "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+              "打脸翻身"
+            ],
+            "promise_id": "P-27",
+            "promise_text": "打脸翻身",
+            "resolved_by": "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch27"
+          },
+          {
+            "chapter_no": 28,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-28",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch28"
+          },
+          {
+            "chapter_no": 29,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-29",
+            "promise_text": "从棋子成为唯一有资格改写规则的人",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch29"
+          },
+          {
+            "chapter_no": 30,
+            "established_by": "以代价完成第一个大闭环，逼近核心真相",
+            "evidence": [
+              "以代价完成第一个大闭环，逼近核心真相",
+              "通往新地图的门被推开，旧规则彻底失效",
+              "获得资源/宝物"
+            ],
+            "promise_id": "P-30",
+            "promise_text": "获得资源/宝物",
+            "resolved_by": "通往新地图的门被推开，旧规则彻底失效",
+            "status": "resolved",
+            "window": "ch30"
+          }
+        ]
+      },
+      "conflict_pressure": [
+        "REF-00001:chunk-1: conflict_score=0"
+      ],
+      "core_hooks": [
+        {
+          "hook": "第一章：旧城雨夜 雨下得很急，像要把整座城洗掉",
+          "reference_id": "REF-00001"
+        }
+      ],
+      "first_30_goal_variation_check": {
+        "chapter_count": 30,
+        "unique_goal_count": 28
+      },
+      "genre_signals": [
+        "待判定"
+      ],
+      "originality_guardrails": [
+        "不得复用参考小说的专有名词、角色姓名、门派/组织名称。",
+        "只抽象结构与节奏，不复刻桥段顺序和关键反转。",
+        "最终大纲必须建立新的世界规则、人物动机与核心冲突。"
+      ],
+      "promise_ledger": {
+        "comparison_only": true,
+        "gating": false,
+        "metadata": {
+          "chapter_count": 30
+        },
+        "overdue": [
+          "P-20",
+          "P-25"
+        ],
+        "pending": [
+          "P-01",
+          "P-02",
+          "P-04",
+          "P-05",
+          "P-07",
+          "P-08",
+          "P-10",
+          "P-11",
+          "P-13",
+          "P-14",
+          "P-16",
+          "P-17",
+          "P-19",
+          "P-22",
+          "P-23",
+          "P-26",
+          "P-28",
+          "P-29"
+        ],
+        "promises": [
+          {
+            "chapter_no": 1,
+            "established_by": "身份落差暴露，金手指在绝境中被逼显性化",
+            "evidence": [
+              "身份落差暴露，金手指在绝境中被逼显性化",
+              "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临"
+            ],
+            "promise_id": "P-01",
+            "promise_text": "身份落差暴露，金手指在绝境中被逼显性化",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch01"
+          },
+          {
+            "chapter_no": 2,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-02",
+            "promise_text": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch02"
+          },
+          {
+            "chapter_no": 3,
+            "established_by": "抓住对手的破绽完成第一次翻身打脸",
+            "evidence": [
+              "抓住对手的破绽完成第一次翻身打脸",
+              "打脸成功，却因锋芒毕露引来更强者的注意",
+              "打脸翻身"
+            ],
+            "promise_id": "P-03",
+            "promise_text": "打脸翻身",
+            "resolved_by": "打脸成功，却因锋芒毕露引来更强者的注意",
+            "status": "resolved",
+            "window": "ch03"
+          },
+          {
+            "chapter_no": 4,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-04",
+            "promise_text": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch04"
+          },
+          {
+            "chapter_no": 5,
+            "established_by": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+            "evidence": [
+              "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+              "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-05",
+            "promise_text": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch05"
+          },
+          {
+            "chapter_no": 6,
+            "established_by": "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+              "获得资源/宝物"
+            ],
+            "promise_id": "P-06",
+            "promise_text": "获得资源/宝物",
+            "resolved_by": "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch06"
+          },
+          {
+            "chapter_no": 7,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-07",
+            "promise_text": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch07"
+          },
+          {
+            "chapter_no": 8,
+            "established_by": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-08",
+            "promise_text": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch08"
+          },
+          {
+            "chapter_no": 9,
+            "established_by": "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+              "身份跃升"
+            ],
+            "promise_id": "P-09",
+            "promise_text": "身份跃升",
+            "resolved_by": "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch09"
+          },
+          {
+            "chapter_no": 10,
+            "established_by": "完成第一个小闭环，旧目标达成",
+            "evidence": [
+              "完成第一个小闭环，旧目标达成",
+              "旧目标兑现的同一刻，一个更大的势力露出獠牙"
+            ],
+            "promise_id": "P-10",
+            "promise_text": "完成第一个小闭环，旧目标达成",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch10"
+          },
+          {
+            "chapter_no": 11,
+            "established_by": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+            "evidence": [
+              "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+              "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-11",
+            "promise_text": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch11"
+          },
+          {
+            "chapter_no": 12,
+            "established_by": "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+              "实力突破"
+            ],
+            "promise_id": "P-12",
+            "promise_text": "实力突破",
+            "resolved_by": "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch12"
+          },
+          {
+            "chapter_no": 13,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-13",
+            "promise_text": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch13"
+          },
+          {
+            "chapter_no": 14,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-14",
+            "promise_text": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch14"
+          },
+          {
+            "chapter_no": 15,
+            "established_by": "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+              "打脸翻身"
+            ],
+            "promise_id": "P-15",
+            "promise_text": "打脸翻身",
+            "resolved_by": "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch15"
+          },
+          {
+            "chapter_no": 16,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-16",
+            "promise_text": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch16"
+          },
+          {
+            "chapter_no": 17,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-17",
+            "promise_text": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch17"
+          },
+          {
+            "chapter_no": 18,
+            "established_by": "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+              "获得资源/宝物"
+            ],
+            "promise_id": "P-18",
+            "promise_text": "获得资源/宝物",
+            "resolved_by": "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch18"
+          },
+          {
+            "chapter_no": 19,
+            "established_by": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-19",
+            "promise_text": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch19"
+          },
+          {
+            "chapter_no": 20,
+            "established_by": "撕开阶段boss布下的困局",
+            "evidence": [
+              "撕开阶段boss布下的困局",
+              "boss倒下，却牵出其背后世界级力量的一线阴影"
+            ],
+            "promise_id": "P-20",
+            "promise_text": "撕开阶段boss布下的困局",
+            "resolved_by": null,
+            "status": "overdue",
+            "window": "ch20"
+          },
+          {
+            "chapter_no": 21,
+            "established_by": "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+            "evidence": [
+              "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳",
+              "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+              "身份跃升"
+            ],
+            "promise_id": "P-21",
+            "promise_text": "身份跃升",
+            "resolved_by": "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch21"
+          },
+          {
+            "chapter_no": 22,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-22",
+            "promise_text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch22"
+          },
+          {
+            "chapter_no": 23,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-23",
+            "promise_text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch23"
+          },
+          {
+            "chapter_no": 24,
+            "established_by": "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+            "evidence": [
+              "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格",
+              "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+              "实力突破"
+            ],
+            "promise_id": "P-24",
+            "promise_text": "实力突破",
+            "resolved_by": "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch24"
+          },
+          {
+            "chapter_no": 25,
+            "established_by": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+            "evidence": [
+              "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+              "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-25",
+            "promise_text": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段",
+            "resolved_by": null,
+            "status": "overdue",
+            "window": "ch25"
+          },
+          {
+            "chapter_no": 26,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-26",
+            "promise_text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch26"
+          },
+          {
+            "chapter_no": 27,
+            "established_by": "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+            "evidence": [
+              "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+              "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+              "打脸翻身"
+            ],
+            "promise_id": "P-27",
+            "promise_text": "打脸翻身",
+            "resolved_by": "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+            "status": "resolved",
+            "window": "ch27"
+          },
+          {
+            "chapter_no": 28,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-28",
+            "promise_text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch28"
+          },
+          {
+            "chapter_no": 29,
+            "established_by": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "evidence": [
+              "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+              "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "promise_id": "P-29",
+            "promise_text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步",
+            "resolved_by": null,
+            "status": "pending",
+            "window": "ch29"
+          },
+          {
+            "chapter_no": 30,
+            "established_by": "以代价完成第一个大闭环，逼近核心真相",
+            "evidence": [
+              "以代价完成第一个大闭环，逼近核心真相",
+              "通往新地图的门被推开，旧规则彻底失效",
+              "获得资源/宝物"
+            ],
+            "promise_id": "P-30",
+            "promise_text": "获得资源/宝物",
+            "resolved_by": "通往新地图的门被推开，旧规则彻底失效",
+            "status": "resolved",
+            "window": "ch30"
+          }
+        ],
+        "resolved": [
+          "P-03",
+          "P-06",
+          "P-09",
+          "P-12",
+          "P-15",
+          "P-18",
+          "P-21",
+          "P-24",
+          "P-27",
+          "P-30"
+        ]
+      },
+      "proposal_comparison": {
+        "comparison_only": true,
+        "gating": false,
+        "kind": "multi_proposal_comparison",
+        "metadata": {
+          "proposal_count": 3
+        },
+        "project_id": "live-baseline-5ch",
+        "proposals": [
+          {
+            "logline": "废城少年在一次禁忌灾变中觉醒记录旧纪元真相的能力，被迫在原创类型势力追杀间重建失落秩序。",
+            "long_arc_clarity": 10.0,
+            "market_fit": 7.0,
+            "notes": "",
+            "opening_hook_strength": 7.0,
+            "originality_risk": "medium",
+            "proposal_id": "CANDIDATE-A",
+            "total_score": 8.0
+          },
+          {
+            "logline": "五个彼此敌对的年轻人同时继承一份破碎预言，必须在旧神复苏前决定谁有资格改写世界规则。",
+            "long_arc_clarity": 10.0,
+            "market_fit": 9.0,
+            "notes": "",
+            "opening_hook_strength": 8.0,
+            "originality_risk": "low",
+            "proposal_id": "CANDIDATE-B",
+            "total_score": 9.0
+          },
+          {
+            "logline": "一个会吞噬历史的天穹图书馆降临人间，主角必须用被遗忘者的故事修补现实裂缝。",
+            "long_arc_clarity": 10.0,
+            "market_fit": 9.0,
+            "notes": "",
+            "opening_hook_strength": 8.0,
+            "originality_risk": "low",
+            "proposal_id": "CANDIDATE-C",
+            "total_score": 9.0
+          }
+        ],
+        "publish_authority": "human",
+        "version": "1.0",
+        "winner_id": "CANDIDATE-B"
+      },
+      "reader_rewards": [
+        "REF-00001:chunk-1: reward_score=0"
+      ],
+      "reference_abstract": {
+        "character_patterns": {
+          "protagonist": "目标驱动、行动前置、情绪与能力同步升级",
+          "relationship": "关系张力与信息差共同驱动章节推进",
+          "supporting": "功能型配角围绕主线压力与回报循环展开"
+        },
+        "commercial_cadence": {
+          "chapter_end": "章末留钩子或未完成目标",
+          "long_run": "百章尺度仍可维持升级空间与矛盾层次",
+          "mid_arc": "每个小周期均有显性回报",
+          "opening": "前几章迅速建立卖点与冲突"
+        },
+        "evidence_spans": [
+          {
+            "excerpt": "第一章：旧城雨夜\n\n雨下得很急，像要把整座城洗掉。\n林照推开巷口的铁门时，手机屏幕突然亮了一下，只有一条匿名短信：\n\n“别回头。你要找的人，在档案楼里。”\n\n他站在原地，背后的脚步声却已经逼近。\n\n第二章：档案楼的钥匙\n\n林照在门卫室找到了那把钥匙，也找到了十年前失踪案的登记页。登记页上父亲的名字，被人用红笔重重划掉。\n\n第三章：被删去的证据\n\n他把登记页拍照发给唯一信得过的记者，对方只回了三个字：别发。\n\n第四章：追查的代价\n\n当晚，林照的出租屋被翻得一片狼藉。桌上的纸条写",
+            "heading": ""
+          }
+        ],
+        "id": "REFABSTRACT-001",
+        "kind": "reference_lm_abstraction",
+        "market_positioning": {
+          "commercial_thesis": "开篇强钩子 + 中段持续升级 + 章末钩子稳定兑现",
+          "core_promise": "强商业钩子与稳定回报",
+          "genre": "泛类型商业网文",
+          "reader_target": "中文商业网文核心读者"
+        },
+        "notes": [
+          "Observed information is separated from strategic abstraction.",
+          "This artifact is comparison-only and advisory."
+        ],
+        "profile_id": null,
+        "prohibited_specifics": [
+          "具体人物名",
+          "专有世界观名词",
+          "可唯一识别的情节细节"
+        ],
+        "schema_version": "1.0",
+        "source_ids": [
+          "REF-00001"
+        ],
+        "source_summaries": [
+          {
+            "chapters_estimated": 1,
+            "dominant_function": "开局/升级/兑现/关系推进",
+            "source_id": "REF-00001"
+          }
+        ],
+        "structural_patterns": {
+          "conflict": "主目标牵引下的连续冲突升级",
+          "continuity": "事实与关系状态持续累积，不做重置式推进",
+          "opening": "强钩子开局、目标先行、身份或处境反差迅速建立",
+          "payoff": "小周期兑现与章末悬念交替出现"
+        },
+        "transferable_abstractions": [
+          "反差开局",
+          "目标-阻力-回报循环",
+          "连续升级阶梯",
+          "关系张力驱动",
+          "章末钩子"
+        ],
+        "world_patterns": {
+          "constraints": "核心能力必须伴随成本、限制或条件触发",
+          "progression": "成长/升级/解谜至少有一条稳定推进线",
+          "rules": "设定先露边界，再逐步解释例外与代价"
+        }
+      },
+      "reference_abstract_id": "REFABSTRACT-001",
+      "reference_count": 1,
+      "semantic_ledger": {
+        "ability": [
+          {
+            "confidence": null,
+            "due_by": null,
+            "entry_id": "A-01",
+            "evidence": [
+              "林照夜"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": null,
+            "status": "active",
+            "text": "从求生者到秩序重建者"
+          }
+        ],
+        "comparison_only": true,
+        "conflict_detection": {
+          "conflict_types": [
+            "knowledge",
+            "ability",
+            "injury",
+            "items",
+            "relationship_expectation",
+            "promise"
+          ],
+          "enabled": true,
+          "outputs": [
+            "conflict_flag",
+            "conflict_type",
+            "evidence"
+          ]
+        },
+        "gating": false,
+        "injury": [],
+        "items": [],
+        "knowledge": [
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-01",
+            "evidence": [
+              "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 1,
+            "status": null,
+            "text": "身份落差暴露，金手指在绝境中被逼显性化"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-02",
+            "evidence": [
+              "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 2,
+            "status": null,
+            "text": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-03",
+            "evidence": [
+              "打脸成功，却因锋芒毕露引来更强者的注意"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 3,
+            "status": null,
+            "text": "抓住对手的破绽完成第一次翻身打脸"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-04",
+            "evidence": [
+              "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 4,
+            "status": null,
+            "text": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-05",
+            "evidence": [
+              "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 5,
+            "status": null,
+            "text": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-06",
+            "evidence": [
+              "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 6,
+            "status": null,
+            "text": "完成第 2 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-07",
+            "evidence": [
+              "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 7,
+            "status": null,
+            "text": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-08",
+            "evidence": [
+              "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 8,
+            "status": null,
+            "text": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-09",
+            "evidence": [
+              "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 9,
+            "status": null,
+            "text": "完成第 3 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-10",
+            "evidence": [
+              "旧目标兑现的同一刻，一个更大的势力露出獠牙"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 10,
+            "status": null,
+            "text": "完成第一个小闭环，旧目标达成"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-11",
+            "evidence": [
+              "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 11,
+            "status": null,
+            "text": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-12",
+            "evidence": [
+              "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 12,
+            "status": null,
+            "text": "完成第 4 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-13",
+            "evidence": [
+              "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 13,
+            "status": null,
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-14",
+            "evidence": [
+              "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 14,
+            "status": null,
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-15",
+            "evidence": [
+              "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 15,
+            "status": null,
+            "text": "完成第 5 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-16",
+            "evidence": [
+              "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 16,
+            "status": null,
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-17",
+            "evidence": [
+              "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 17,
+            "status": null,
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-18",
+            "evidence": [
+              "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 18,
+            "status": null,
+            "text": "完成第 6 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-19",
+            "evidence": [
+              "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 19,
+            "status": null,
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-20",
+            "evidence": [
+              "boss倒下，却牵出其背后世界级力量的一线阴影"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 20,
+            "status": null,
+            "text": "撕开阶段boss布下的困局"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-21",
+            "evidence": [
+              "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 21,
+            "status": null,
+            "text": "直面新登场的崭露阶段的世界级敌人，在更高一层的冲突中重新站稳"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-22",
+            "evidence": [
+              "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 22,
+            "status": null,
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-23",
+            "evidence": [
+              "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 23,
+            "status": null,
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-24",
+            "evidence": [
+              "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 24,
+            "status": null,
+            "text": "完成第 8 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-25",
+            "evidence": [
+              "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 25,
+            "status": null,
+            "text": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-26",
+            "evidence": [
+              "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 26,
+            "status": null,
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-27",
+            "evidence": [
+              "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 27,
+            "status": null,
+            "text": "完成第 9 次阶段翻身，把「从棋子成为唯一有资格改写规则的人」向前推进一格；同时被自身弱点（出身最低，被所有继承者轻视）反噬"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-28",
+            "evidence": [
+              "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 28,
+            "status": null,
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-29",
+            "evidence": [
+              "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 29,
+            "status": null,
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": 0.8,
+            "due_by": null,
+            "entry_id": "K-30",
+            "evidence": [
+              "通往新地图的门被推开，旧规则彻底失效"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 30,
+            "status": null,
+            "text": "以代价完成第一个大闭环，逼近核心真相"
+          }
+        ],
+        "metadata": {
+          "chapter_count": 30,
+          "protagonist": "林照夜"
+        },
+        "promise": [
+          {
+            "confidence": null,
+            "due_by": "ch01",
+            "entry_id": "P-01",
+            "evidence": [
+              "主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 1,
+            "status": "pending",
+            "text": "身份落差暴露，金手指在绝境中被逼显性化"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch02",
+            "entry_id": "P-02",
+            "evidence": [
+              "第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 2,
+            "status": "pending",
+            "text": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼起步阶段的小敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch03",
+            "entry_id": "P-03",
+            "evidence": [
+              "打脸成功，却因锋芒毕露引来更强者的注意"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 3,
+            "status": "resolved",
+            "text": "打脸翻身"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch04",
+            "entry_id": "P-04",
+            "evidence": [
+              "第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 4,
+            "status": "pending",
+            "text": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch05",
+            "entry_id": "P-05",
+            "evidence": [
+              "第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 5,
+            "status": "pending",
+            "text": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制起步阶段的小敌人的手段"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch06",
+            "entry_id": "P-06",
+            "evidence": [
+              "第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 6,
+            "status": "resolved",
+            "text": "获得资源/宝物"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch07",
+            "entry_id": "P-07",
+            "evidence": [
+              "第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 7,
+            "status": "pending",
+            "text": "在眼前的生存威胁，逼主角用出金手指下以牵制推进：牵制起步阶段的小敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch08",
+            "entry_id": "P-08",
+            "evidence": [
+              "第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 8,
+            "status": "pending",
+            "text": "在眼前的生存威胁，逼主角用出金手指下以情报推进：摸清起步阶段的小敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch09",
+            "entry_id": "P-09",
+            "evidence": [
+              "第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 9,
+            "status": "resolved",
+            "text": "身份跃升"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch10",
+            "entry_id": "P-10",
+            "evidence": [
+              "旧目标兑现的同一刻，一个更大的势力露出獠牙"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 10,
+            "status": "pending",
+            "text": "完成第一个小闭环，旧目标达成"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch11",
+            "entry_id": "P-11",
+            "evidence": [
+              "第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 11,
+            "status": "pending",
+            "text": "直面新登场的立足阶段的阶段boss，在更高一层的冲突中重新站稳"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch12",
+            "entry_id": "P-12",
+            "evidence": [
+              "第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 12,
+            "status": "resolved",
+            "text": "实力突破"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch13",
+            "entry_id": "P-13",
+            "evidence": [
+              "第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 13,
+            "status": "pending",
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch14",
+            "entry_id": "P-14",
+            "evidence": [
+              "第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 14,
+            "status": "pending",
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以试探推进：以一次试探逼立足阶段的阶段boss露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch15",
+            "entry_id": "P-15",
+            "evidence": [
+              "第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 15,
+            "status": "resolved",
+            "text": "打脸翻身"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch16",
+            "entry_id": "P-16",
+            "evidence": [
+              "第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 16,
+            "status": "pending",
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以情报推进：摸清立足阶段的阶段boss的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch17",
+            "entry_id": "P-17",
+            "evidence": [
+              "第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 17,
+            "status": "pending",
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以布局推进：抢在立足阶段的阶段boss动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步；同时被自身弱点（出身最低，被所有继承者轻视）反噬"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch18",
+            "entry_id": "P-18",
+            "evidence": [
+              "第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 18,
+            "status": "resolved",
+            "text": "获得资源/宝物"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch19",
+            "entry_id": "P-19",
+            "evidence": [
+              "第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 19,
+            "status": "pending",
+            "text": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制立足阶段的阶段boss，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch20",
+            "entry_id": "P-20",
+            "evidence": [
+              "boss倒下，却牵出其背后世界级力量的一线阴影"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 20,
+            "status": "pending",
+            "text": "撕开阶段boss布下的困局"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch21",
+            "entry_id": "P-21",
+            "evidence": [
+              "第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 21,
+            "status": "resolved",
+            "text": "身份跃升"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch22",
+            "entry_id": "P-22",
+            "evidence": [
+              "第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 22,
+            "status": "pending",
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch23",
+            "entry_id": "P-23",
+            "evidence": [
+              "第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 23,
+            "status": "pending",
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以牵制推进：牵制崭露阶段的世界级敌人，为下一步争取喘息与筹码，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch24",
+            "entry_id": "P-24",
+            "evidence": [
+              "第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 24,
+            "status": "resolved",
+            "text": "实力突破"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch25",
+            "entry_id": "P-25",
+            "evidence": [
+              "第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 25,
+            "status": "pending",
+            "text": "逼出「唯一能同时调用五份预言残片的人」的新用法，以加深的代价换取压制崭露阶段的世界级敌人的手段"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch26",
+            "entry_id": "P-26",
+            "evidence": [
+              "第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 26,
+            "status": "pending",
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以试探推进：以一次试探逼崭露阶段的世界级敌人露出破绽，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch27",
+            "entry_id": "P-27",
+            "evidence": [
+              "第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 27,
+            "status": "resolved",
+            "text": "打脸翻身"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch28",
+            "entry_id": "P-28",
+            "evidence": [
+              "第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 28,
+            "status": "pending",
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清崭露阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch29",
+            "entry_id": "P-29",
+            "evidence": [
+              "第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 29,
+            "status": "pending",
+            "text": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以布局推进：抢在崭露阶段的世界级敌人动手前布下应对的局，向「从棋子成为唯一有资格改写规则的人」再逼近一步"
+          },
+          {
+            "confidence": null,
+            "due_by": "ch30",
+            "entry_id": "P-30",
+            "evidence": [
+              "通往新地图的门被推开，旧规则彻底失效"
+            ],
+            "expectation": null,
+            "location": null,
+            "owner": null,
+            "parties": [],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": 30,
+            "status": "resolved",
+            "text": "获得资源/宝物"
+          }
+        ],
+        "relationship_expectation": [
+          {
+            "confidence": null,
+            "due_by": null,
+            "entry_id": "R-02",
+            "evidence": [
+              "rival"
+            ],
+            "expectation": "从秩序维护者到真相叛逃者",
+            "location": null,
+            "owner": null,
+            "parties": [
+              "林照夜",
+              "沈无咎"
+            ],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": null,
+            "status": "active",
+            "text": "维护旧秩序，视主角为最大变量"
+          },
+          {
+            "confidence": null,
+            "due_by": null,
+            "entry_id": "R-03",
+            "evidence": [
+              "mentor"
+            ],
+            "expectation": "守秘者面对旧错",
+            "location": null,
+            "owner": null,
+            "parties": [
+              "林照夜",
+              "白砚"
+            ],
+            "recovery_status": null,
+            "severity": null,
+            "source_chapter": null,
+            "status": "active",
+            "text": "赎清一段被自己掩盖的旧纪元真相"
+          }
+        ]
+      },
+      "structure_signals": [
+        "single-reference-abstraction",
+        "shortform-analysis",
+        "compact-opening-material"
+      ],
+      "total_chars": 334,
+      "total_chunks": 1,
+      "tournament": {
+        "comparison_only": true,
+        "gating": false,
+        "kind": "outline_tournament",
+        "reviewer": "outline-tournament-v1",
+        "tournament": {
+          "calibrates": false,
+          "candidates": [
+            "CANDIDATE-A",
+            "CANDIDATE-B",
+            "CANDIDATE-C"
+          ],
+          "comparison_only": true,
+          "gating": false,
+          "matches": [
+            {
+              "comparison": {
+                "axis": "evaluative",
+                "calibrates": false,
+                "comparison_only": true,
+                "dimensions": {
+                  "character_consistency": {
+                    "evidence": "",
+                    "order_ab": "tie",
+                    "order_ba": "tie",
+                    "verdict": "tie"
+                  },
+                  "character_growth": {
+                    "evidence": "",
+                    "order_ab": "tie",
+                    "order_ba": "tie",
+                    "verdict": "tie"
+                  }
+                },
+                "gating": false,
+                "judge_provenance": {
+                  "degraded": true,
+                  "model_id": "gpt-5.6-sol",
+                  "reason": "one or both pairwise calls failed to parse"
+                },
+                "label_a": "CANDIDATE-A",
+                "label_b": "CANDIDATE-B",
+                "reviewer": "outline-tournament-v1",
+                "winner": "tie"
+              },
+              "label_a": "CANDIDATE-A",
+              "label_b": "CANDIDATE-B"
+            },
+            {
+              "comparison": {
+                "axis": "evaluative",
+                "calibrates": false,
+                "comparison_only": true,
+                "dimensions": {
+                  "character_consistency": {
+                    "evidence": "",
+                    "order_ab": "tie",
+                    "order_ba": "tie",
+                    "verdict": "tie"
+                  },
+                  "character_growth": {
+                    "evidence": "",
+                    "order_ab": "tie",
+                    "order_ba": "tie",
+                    "verdict": "tie"
+                  }
+                },
+                "gating": false,
+                "judge_provenance": {
+                  "degraded": true,
+                  "model_id": "gpt-5.6-sol",
+                  "reason": "one or both pairwise calls failed to parse"
+                },
+                "label_a": "CANDIDATE-A",
+                "label_b": "CANDIDATE-C",
+                "reviewer": "outline-tournament-v1",
+                "winner": "tie"
+              },
+              "label_a": "CANDIDATE-A",
+              "label_b": "CANDIDATE-C"
+            },
+            {
+              "comparison": {
+                "axis": "evaluative",
+                "calibrates": false,
+                "comparison_only": true,
+                "dimensions": {
+                  "character_consistency": {
+                    "evidence": "",
+                    "order_ab": "tie",
+                    "order_ba": "tie",
+                    "verdict": "tie"
+                  },
+                  "character_growth": {
+                    "evidence": "",
+                    "order_ab": "tie",
+                    "order_ba": "tie",
+                    "verdict": "tie"
+                  }
+                },
+                "gating": false,
+                "judge_provenance": {
+                  "degraded": true,
+                  "model_id": "gpt-5.6-sol",
+                  "reason": "one or both pairwise calls failed to parse"
+                },
+                "label_a": "CANDIDATE-B",
+                "label_b": "CANDIDATE-C",
+                "reviewer": "outline-tournament-v1",
+                "winner": "tie"
+              },
+              "label_a": "CANDIDATE-B",
+              "label_b": "CANDIDATE-C"
+            }
+          ],
+          "metadata": {
+            "match_count": 3
+          },
+          "reviewer": "outline-tournament-v1",
+          "summary": {
+            "calibrates": false,
+            "comparison_only": true,
+            "decisive_win_rate_a": null,
+            "gating": false,
+            "n_degraded": 3,
+            "n_pairs": 3,
+            "overall": {
+              "a": 0,
+              "b": 0,
+              "tie": 3
+            },
+            "per_dimension": {
+              "character_consistency": {
+                "a": 0,
+                "b": 0,
+                "tie": 3
+              },
+              "character_growth": {
+                "a": 0,
+                "b": 0,
+                "tie": 3
+              }
+            },
+            "reviewer": "outline-tournament-v1"
+          }
+        },
+        "winner": null
+      },
+      "version": "0.2"
+    },
+    "project_id": "live-baseline-5ch",
+    "reference_sources": [
+      {
+        "extension": ".txt",
+        "filename": "reference-01.txt",
+        "id": "REF-00001",
+        "path": "sources/reference-novels/reference-01.txt",
+        "sha256": "6bd90b4868f5ee4f0b6715bd3ed06830efcc24f1a736d6efd3fef2aa9555beb0",
+        "size_bytes": 948
+      }
+    ]
+  },
+  "reward_loop": {
+    "cadence_chapters": 3,
+    "reward_types": [
+      "实力突破",
+      "打脸翻身",
+      "获得资源/宝物",
+      "身份跃升"
+    ]
+  },
+  "schema_version": "0.2",
+  "themes": [
+    "秩序重建",
+    "个人代价",
+    "被遗忘者的价值"
+  ],
+  "title": "群星下的无名王座",
+  "world": {
+    "rules": [
+      "灾变周期改变势力版图，但不复用参考作品专有设定",
+      "历史记录本身是可争夺资源",
+      "力量成长必须伴随记忆、关系或身份代价"
+    ],
+    "summary": "一个周期性灾变改写资源、记忆与权力结构的原创世界。主角的能力与旧纪元真相绑定，但每次使用都会改变现实记录。"
+  }
+}

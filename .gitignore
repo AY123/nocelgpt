@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Env / secrets (保留 .env.example 模板)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*credential*
+*secret*.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# GitLab CI local
+.gitlab-ci-local/

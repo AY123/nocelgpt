@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/event.schema.json",
+  "title": "NarrativeEvent",
+  "type": "object",
+  "required": [
+    "id",
+    "event_type",
+    "story_time",
+    "participants",
+    "outcomes",
+    "authority",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "event_type": {
+      "type": "string"
+    },
+    "story_time": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "earliest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latest": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "precision": {
+          "enum": [
+            "exact",
+            "day",
+            "month",
+            "season",
+            "year",
+            "range",
+            "unknown"
+          ]
+        }
+      }
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "preconditions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "outcomes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "caused_by": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "enables": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "resolves": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reveals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "recorded_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "committed_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

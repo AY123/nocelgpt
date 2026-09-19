@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:corpus-snapshot:1.0",
+  "title": "CorpusSnapshot",
+  "description": "An immutable, derived inventory of external novel corpus inputs. It fixes authorization, deduplication, analysis fitness, content hashes, and toolchain versions for reproducible narrative mining. It is external evidence, never a project fact, and contains no source prose.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "schema_version", "created_at", "corpus_policy", "books", "counts", "toolchain", "manifest_hash"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^CORPUS-[A-Z0-9][A-Z0-9._-]{2,63}$" },
+    "kind": { "type": "string", "const": "corpus_snapshot" },
+    "schema_version": { "type": "string", "const": "1.0" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "corpus_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorization_scope", "allowed_uses", "prohibited_uses"],
+      "properties": {
+        "authorization_scope": { "type": "string", "minLength": 1 },
+        "allowed_uses": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "prohibited_uses": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true }
+      }
+    },
+    "books": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/book" }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total", "by_performance_tier", "authorized", "ready_for_analysis"],
+      "properties": {
+        "total": { "type": "integer", "minimum": 0 },
+        "by_performance_tier": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["top", "control", "high_open_low_finish", "unknown"],
+          "properties": {
+            "top": { "type": "integer", "minimum": 0 },
+            "control": { "type": "integer", "minimum": 0 },
+            "high_open_low_finish": { "type": "integer", "minimum": 0 },
+            "unknown": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "authorized": { "type": "integer", "minimum": 0 },
+        "ready_for_analysis": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "toolchain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["segmenter_version", "analyzer_version", "prompt_version", "model_policy_version"],
+      "properties": {
+        "segmenter_version": { "type": "string", "minLength": 1 },
+        "analyzer_version": { "type": "string", "minLength": 1 },
+        "prompt_version": { "type": "string", "minLength": 1 },
+        "model_policy_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "manifest_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  },
+  "$defs": {
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "relative_path", "content_sha256", "size_bytes", "genre", "performance_tier", "completion_status", "authorization_status", "cleaning_status", "duplicate_cluster_id", "analysis_status"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^CBK-[0-9]{8}$" },
+        "relative_path": { "type": "string", "minLength": 1 },
+        "content_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "size_bytes": { "type": "integer", "minimum": 0 },
+        "genre": { "type": "string", "minLength": 1 },
+        "performance_tier": { "enum": ["top", "control", "high_open_low_finish", "unknown"] },
+        "completion_status": { "enum": ["completed", "ongoing", "unknown"] },
+        "authorization_status": { "enum": ["authorized", "restricted", "unknown"] },
+        "cleaning_status": { "enum": ["ready", "pending", "rejected"] },
+        "duplicate_cluster_id": { "type": ["string", "null"], "pattern": "^DUP-[A-Z0-9][A-Z0-9._-]{2,63}$" },
+        "analysis_status": { "enum": ["ready", "pending", "completed", "failed", "excluded"] }
+      }
+    }
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "checkpoints": [],
+  "content_hash": "8e5b5b5cadb1b5e9bbc471c49f4aa3ac243264f8521b6fc362dd7f0933f70ac4",
+  "kind": "run_aggregate",
+  "notes": "serial run aggregate for RUN-00006",
+  "project_path": "../novel-dushi",
+  "run_summary": {
+    "bundle": {
+      "link_ids": [],
+      "plan_ids": [],
+      "report_ids": [],
+      "run_ids": []
+    },
+    "content_hash": "63a3dc30ca4e98a71020e9f25fc98db651a31139c44b7a8e724117ebc5dff4f4",
+    "kind": "30ch_launch_summary",
+    "link": {
+      "content_hash": "9c76bd2cda845591eac52d0e7eea87014a4898f982d8dbf95e695a05d0ed1486",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00006",
+      "notes": "serial run aggregate for RUN-00006",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00006.json",
+      "version": "1.0"
+    },
+    "notes": "serial run aggregate for RUN-00006",
+    "plan": {
+      "budget_limit": null,
+      "chapter_target": 30,
+      "content_hash": "ac3ee899ee1faf79d24dcb43ab6d83c468704f938d39706380add69757cabb3e",
+      "kind": "30ch_launch_plan",
+      "model_id": "gpt-5.6-sol",
+      "model_provider": "cc-vibe-openai",
+      "project_path": "../novel-dushi",
+      "prompt_version": "6.0.0",
+      "standard_root": "../AI-Novel-Standard",
+      "version": "1.0"
+    },
+    "report": {
+      "content_hash": "ab6ba4475575a9d09553725a3f6c7a97ecb1b534d7a276624d0aff580ee3a0e1",
+      "kind": "30ch_launch_report",
+      "notes": "serial run aggregate for RUN-00006",
+      "plan": {
+        "budget_limit": null,
+        "chapter_target": 30,
+        "content_hash": "ac3ee899ee1faf79d24dcb43ab6d83c468704f938d39706380add69757cabb3e",
+        "kind": "30ch_launch_plan",
+        "model_id": "gpt-5.6-sol",
+        "model_provider": "cc-vibe-openai",
+        "project_path": "../novel-dushi",
+        "prompt_version": "6.0.0",
+        "standard_root": "../AI-Novel-Standard",
+        "version": "1.0"
+      },
+      "version": "1.0"
+    },
+    "run": {
+      "content_hash": "9c76bd2cda845591eac52d0e7eea87014a4898f982d8dbf95e695a05d0ed1486",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00006",
+      "notes": "serial run aggregate for RUN-00006",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00006.json",
+      "version": "1.0"
+    },
+    "version": "1.0"
+  },
+  "version": "1.0"
+}

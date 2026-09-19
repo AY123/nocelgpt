@@ -1,0 +1,26 @@
+{
+  "kind": "w12_synthetic_next_chapter_projection",
+  "version": "1.0",
+  "status": "synthetic_not_final",
+  "purpose": "Test whether the resolved fact state is consumed by the next chapter projection.",
+  "projection": {
+    "chapter_id": "chapter-15",
+    "consumed_facts": ["W12-MF-001", "INJ-001", "PR-001"],
+    "state_summary": {
+      "knowledge": "identity remains unknown",
+      "injury": "recovery in progress",
+      "promise": "identity reveal remains open"
+    },
+    "continuity_checks": [
+      "does not overwrite unknown identity",
+      "preserves ongoing recovery",
+      "keeps the promise open"
+    ],
+    "recompute_status": "ok"
+  },
+  "next_actions": [
+    "use the projection as the chapter-15 state input",
+    "confirm continuity checks pass",
+    "keep the promise unresolved until due by chapter-20"
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "checkpoints": [
+    {
+      "_incomplete_fields": [
+        "chapter_failed",
+        "draft_hash",
+        "final_hash",
+        "m7",
+        "quality_snapshot"
+      ],
+      "chapter_id": "TASK-00010",
+      "chapter_index": 10,
+      "commercial_verdict": null,
+      "draft_hash": null,
+      "event_id": "EVT-90013",
+      "final_hash": null,
+      "kind": "serial_checkpoint",
+      "m7": null,
+      "quality_snapshot": null,
+      "state_hash": null,
+      "verdict": null,
+      "version": "1.0"
+    },
+    {
+      "_incomplete_fields": [
+        "chapter_failed",
+        "draft_hash",
+        "final_hash",
+        "m7",
+        "quality_snapshot"
+      ],
+      "chapter_id": "TASK-00020",
+      "chapter_index": 20,
+      "commercial_verdict": null,
+      "draft_hash": null,
+      "event_id": "EVT-90023",
+      "final_hash": null,
+      "kind": "serial_checkpoint",
+      "m7": null,
+      "quality_snapshot": null,
+      "state_hash": null,
+      "verdict": null,
+      "version": "1.0"
+    },
+    {
+      "_incomplete_fields": [
+        "chapter_failed",
+        "draft_hash",
+        "final_hash",
+        "m7",
+        "quality_snapshot"
+      ],
+      "chapter_id": "TASK-00030",
+      "chapter_index": 30,
+      "commercial_verdict": null,
+      "draft_hash": null,
+      "event_id": "EVT-90033",
+      "final_hash": null,
+      "kind": "serial_checkpoint",
+      "m7": null,
+      "quality_snapshot": null,
+      "state_hash": null,
+      "verdict": null,
+      "version": "1.0"
+    }
+  ],
+  "content_hash": "6b11113cdecb652f3f82bc336cdef62774531c6dea4efde34b7a416753a41f56",
+  "kind": "run_aggregate",
+  "notes": "serial run aggregate for RUN-00029",
+  "project_path": "../novel-dushi",
+  "run_summary": {
+    "bundle": {
+      "link_ids": [],
+      "plan_ids": [],
+      "report_ids": [],
+      "run_ids": []
+    },
+    "content_hash": "8a14cea68ac8e52491f219330ebadc0a6c593561aba337f3b2d79f21dad0214c",
+    "kind": "30ch_launch_summary",
+    "link": {
+      "content_hash": "fde04ec81a8cecced48cf5b1b28b0e104d4fb34169884c5c24898cf662042373",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00029",
+      "notes": "serial run aggregate for RUN-00029",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00029.json",
+      "version": "1.0"
+    },
+    "notes": "serial run aggregate for RUN-00029",
+    "plan": {
+      "budget_limit": null,
+      "chapter_target": 30,
+      "content_hash": "dd85f617721b24eae659d220bacd840ae132544b4e0548b5284ea31d46db9b22",
+      "kind": "30ch_launch_plan",
+      "model_id": "claude-fable-5",
+      "model_provider": "claude",
+      "project_path": "../novel-dushi",
+      "prompt_version": "6.0.0",
+      "standard_root": "../AI-Novel-Standard",
+      "version": "1.0"
+    },
+    "report": {
+      "content_hash": "b31e192bfef89d96d12d87b8fe02e107512163d03d171fd81918eeda0be572e0",
+      "kind": "30ch_launch_report",
+      "notes": "serial run aggregate for RUN-00029",
+      "plan": {
+        "budget_limit": null,
+        "chapter_target": 30,
+        "content_hash": "dd85f617721b24eae659d220bacd840ae132544b4e0548b5284ea31d46db9b22",
+        "kind": "30ch_launch_plan",
+        "model_id": "claude-fable-5",
+        "model_provider": "claude",
+        "project_path": "../novel-dushi",
+        "prompt_version": "6.0.0",
+        "standard_root": "../AI-Novel-Standard",
+        "version": "1.0"
+      },
+      "version": "1.0"
+    },
+    "run": {
+      "content_hash": "fde04ec81a8cecced48cf5b1b28b0e104d4fb34169884c5c24898cf662042373",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00029",
+      "notes": "serial run aggregate for RUN-00029",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00029.json",
+      "version": "1.0"
+    },
+    "version": "1.0"
+  },
+  "version": "1.0"
+}

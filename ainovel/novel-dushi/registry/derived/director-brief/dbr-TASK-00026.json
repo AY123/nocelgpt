@@ -1,0 +1,32 @@
+{
+  "id": "DBR-00026",
+  "kind": "director_brief",
+  "authority": "human",
+  "gating": false,
+  "schema_version": "1.0",
+  "brief_id": "DBR-00026",
+  "chapter_id": "TASK-00026",
+  "objective_ref": "OBJ-00026",
+  "inputs": {},
+  "summary": {
+    "chapter_purpose": "在维系旧秩序的顶层力量，与主角的终极目标直接对立下以情报推进：摸清私募基金经理管理十亿资金阶段的世界级敌人的底细，先拿到弱点的第一条线索，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+    "tone": "紧张、克制",
+    "priority": "push_conflict_and_hook"
+  },
+  "must_include": [],
+  "must_avoid": [
+    "无意义说明性扩写",
+    "角色行为与 runtime 冲突"
+  ],
+  "non_negotiables": [
+    "不得破坏角色连续性",
+    "不得引入未授权新事实"
+  ],
+  "rewrite_focus": [
+    "强化动机",
+    "压缩铺陈",
+    "增强结尾钩子"
+  ],
+  "decision_rationale": [],
+  "notes": ""
+}

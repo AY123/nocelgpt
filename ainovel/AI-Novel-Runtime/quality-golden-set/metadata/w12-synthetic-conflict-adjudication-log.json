@@ -1,0 +1,37 @@
+{
+  "kind": "w12_synthetic_conflict_adjudication_log",
+  "version": "1.0",
+  "status": "synthetic_not_final",
+  "purpose": "Record synthetic adjudication outcomes for W12 conflict tests.",
+  "entries": [
+    {
+      "candidate_fact_id": "W12-CF-004",
+      "conflict_type": "knowledge",
+      "decision": "rejected",
+      "adjudicator": "synthetic_editor_a",
+      "reason": "Later evidence contradicts the claim that the identity is already known.",
+      "ledger_update": "keep_unknown_identity"
+    },
+    {
+      "candidate_fact_id": "W12-CF-005",
+      "conflict_type": "knowledge",
+      "decision": "approved",
+      "adjudicator": "synthetic_editor_b",
+      "reason": "This preserves the uncertainty state and matches the caution in the source chapter.",
+      "ledger_update": "unknown_identity"
+    },
+    {
+      "candidate_fact_id": "W12-CF-006",
+      "conflict_type": "injury",
+      "decision": "rejected",
+      "adjudicator": "synthetic_editor_a",
+      "reason": "Recovery is incomplete; the text only shows reduced pain, not full recovery.",
+      "ledger_update": "injury_recovery_in_progress"
+    }
+  ],
+  "next_actions": [
+    "write the resolved ledger state",
+    "recompute the next-chapter projection",
+    "keep unresolved conflicts blocked from minting"
+  ]
+}

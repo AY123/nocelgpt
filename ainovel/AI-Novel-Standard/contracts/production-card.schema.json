@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:production-card:1.0",
+  "title": "ProductionCard",
+  "description": "A per-chapter PRODUCTION CARD (roadmap 4.6, Publishing OS). It is the single read-side summary a human consults when deciding whether to PUBLISH one chapter: it folds together every signal the pipeline already produced for that chapter — its lifecycle status (drafted/reviewed/published), its quality-report v2 scores, its commercial-loop movement, its pacing, and — the anchor — its publish-readiness recommendation. It introduces no new judgment: every field is a deterministic read of an existing artifact, so the same chapter always yields the same card. Written to registry/derived/production-card/, NEVER to registry/facts/ (a card is not a story fact, ADR-006). Two structural invariants: `gating` const false — a card NEVER blocks a build (ADR-003); `authority` const human — the publish decision the card informs is an outward, irreversible transition only a human executes (ADR-009). The card CITES the publish-readiness verdict; it does not recompute or override it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "version", "authority", "gating", "chapter_id", "status", "publish_readiness"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^PCARD-" },
+    "kind": { "type": "string", "const": "production_card" },
+    "version": { "type": "string" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the publish decision this card informs is executed only by a human."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a production card NEVER blocks a build; it is advisory read-side aggregation."
+    },
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "draft_content_hash": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["drafted", "reviewed", "published"],
+      "description": "Lifecycle stage from the inventory funnel (P19): the highest stage this chapter has reached. 'published' comes only from the authored log (ADR-009)."
+    },
+    "publish_readiness": {
+      "type": "object",
+      "description": "The CITED publish-readiness verdict (Phase 4.1) — the anchor of the card. Lifted from the draft envelope's publish_readiness, not recomputed. Absent envelope degrades to recommendation='unknown'.",
+      "additionalProperties": false,
+      "required": ["recommendation"],
+      "properties": {
+        "recommendation": { "type": "string", "enum": ["recommend", "hold", "block", "unknown"] },
+        "redline_passed": { "type": ["boolean", "null"] },
+        "rationale": { "type": "string" }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "description": "The chapter's quality-report v2 commercial signals, lifted from its qa_review envelope. Advisory; absent when the chapter carries no quality report.",
+      "additionalProperties": true,
+      "properties": {
+        "reviewer": { "type": "string" },
+        "retention": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "subscription": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "payoff": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "reader_drop_risk": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "commercial": {
+      "type": "object",
+      "description": "The commercial-loop movement for this chapter (Phase 4.4), lifted from its commercial_session envelope. Comparison-only movement, never an absolute score.",
+      "additionalProperties": false,
+      "properties": {
+        "verdict": { "type": "string" },
+        "pay_probability_delta": { "type": "integer", "minimum": -100, "maximum": 100 },
+        "pay_leak_personas": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "pacing": {
+      "type": "object",
+      "description": "The chapter's intra-chapter pacing readout (P22), recomputed from its persisted scene plan when present.",
+      "additionalProperties": false,
+      "properties": {
+        "warnings": { "type": "integer", "minimum": 0 },
+        "peak": { "type": "integer" }
+      }
+    },
+    "flags": {
+      "type": "array",
+      "description": "Deterministic attention flags synthesized from the above (e.g. 'publish-blocked', 'publish-hold', 'high-drop-risk', 'pay-leak', 'pacing-warning'). A human reads these to triage; they never gate.",
+      "items": { "type": "string" }
+    },
+    "rationale": { "type": "string", "description": "Human-readable one-line summary of the card." }
+  }
+}

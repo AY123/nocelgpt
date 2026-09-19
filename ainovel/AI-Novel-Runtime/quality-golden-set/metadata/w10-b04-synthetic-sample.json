@@ -1,0 +1,20 @@
+{
+  "kind": "w10_blind_review_batch_result",
+  "version": "1.0",
+  "batch_id": "W10-B04",
+  "status": "synthetic_not_final",
+  "note": "Synthetic sample only. Not a formal reviewer result and must not be used as final truth.",
+  "candidate_ids": ["QGS-00010", "QGS-00011", "QGS-00012"],
+  "order_blinded": ["C", "B", "A"],
+  "review_notes": [
+    "C 的信息结构最清楚，结尾钩子也最完整。",
+    "B 有一定推进，但中段略显重复。",
+    "A 的设定不错，不过整体张力略弱。"
+  ],
+  "comparison_result": {
+    "winner": "C",
+    "confidence": "medium",
+    "reason_codes": ["improves_continuity", "improves_hook"]
+  },
+  "next_action": "use only for pipeline testing; replace with real blind-review input before any formal decision"
+}

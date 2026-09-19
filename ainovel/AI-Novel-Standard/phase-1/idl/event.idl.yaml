@@ -1,0 +1,66 @@
+# event.idl.yaml — Event entity (EVT)
+# Authoritative source. Hand-edited. Facts only (ADR-006).
+# An Event is a dated story-world occurrence positioned on a Timeline.
+idl_version: "1.0"
+entity: Event
+type_code: EVT
+description: "A story-world occurrence positioned on a timeline."
+registry:
+  facts_dir: events
+  scope: project
+  order: 2
+
+
+fields:
+  timeline:
+    type: ref
+    ref_types: [TML]
+    required: true
+    doc: "the time axis this event sits on"
+
+  when_absolute:
+    type: date
+    format: "in-world-date"
+    doc: "in-world date token, if the timeline is absolute"
+
+  sequence_index:
+    type: int
+    min: 0
+    doc: "ordering position when the timeline is relative"
+
+  duration:
+    type: string
+    doc: "span of the event, e.g. 'instant', '3 days'"
+
+  participants:
+    type: ref[]
+    ref_types: [CHR, FAC]
+    doc: "entities involved in the event"
+
+  locations:
+    type: ref[]
+    ref_types: [LOC]
+    doc: "where the event takes place"
+
+  causes:
+    type: ref[]
+    ref_types: [EVT]
+    doc: "events that causally precede this one (causality DAG edges)"
+
+  effects:
+    type: ref[]
+    ref_types: [EVT]
+    doc: "events this one causally leads to"
+
+  certainty:
+    type: enum
+    enum_ref: certainty
+    default: canon
+
+  summary:
+    type: text
+    doc: "factual statement of what occurred; NOT an interpretation (ADR-006)"
+
+  notes:
+    type: text
+    doc: "free-text authoring notes; not a resolution source"

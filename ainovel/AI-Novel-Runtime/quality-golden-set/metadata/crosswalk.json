@@ -1,0 +1,61 @@
+{
+  "kind": "quality_golden_set_crosswalk",
+  "version": "1.0",
+  "rubric_ref": "../../quality-rubric.yaml",
+  "rules": [
+    {
+      "sample_category": "positive",
+      "primary_dimensions": ["opening_hook", "chapter_goal", "conflict_progression", "ending_hook", "continue_intent"],
+      "secondary_dimensions": ["character_motivation", "payoff_delivery", "paying_intent"],
+      "regression_purpose": "validate high-quality production path"
+    },
+    {
+      "sample_category": "negative",
+      "primary_dimensions": ["conflict_progression", "payoff_delivery", "ending_hook", "continue_intent"],
+      "secondary_dimensions": ["information_density", "ai_voice_risk"],
+      "regression_purpose": "catch low-function chapters"
+    },
+    {
+      "sample_category": "boundary",
+      "primary_dimensions": ["opening_hook", "conflict_progression", "ai_voice_risk", "ending_hook"],
+      "secondary_dimensions": ["chapter_goal", "continuity"],
+      "regression_purpose": "calibrate scorer disagreement and threshold edges"
+    },
+    {
+      "sample_category": "ai_voice",
+      "primary_dimensions": ["ai_voice_risk", "information_density", "continuity"],
+      "secondary_dimensions": ["opening_hook", "continue_intent"],
+      "regression_purpose": "detect template taste and abstraction drift"
+    },
+    {
+      "sample_category": "padding",
+      "primary_dimensions": ["information_density", "conflict_progression", "ending_hook"],
+      "secondary_dimensions": ["ai_voice_risk", "continue_intent"],
+      "regression_purpose": "detect drift, repetition, and low-density prose"
+    },
+    {
+      "sample_category": "no_conflict",
+      "primary_dimensions": ["chapter_goal", "conflict_progression", "payoff_delivery", "ending_hook"],
+      "secondary_dimensions": ["opening_hook", "continue_intent"],
+      "regression_purpose": "catch event-only but non-progressive chapters"
+    },
+    {
+      "sample_category": "character_degradation",
+      "primary_dimensions": ["character_motivation", "continuity", "conflict_progression"],
+      "secondary_dimensions": ["emotion_flow", "ai_voice_risk"],
+      "regression_purpose": "catch motive breaks and persona drift"
+    },
+    {
+      "sample_category": "ending_failure",
+      "primary_dimensions": ["ending_hook", "continue_intent", "payoff_delivery"],
+      "secondary_dimensions": ["conflict_progression", "chapter_goal"],
+      "regression_purpose": "catch weak chapter endings and poor continuation cues"
+    }
+  ],
+  "coverage_requirements": {
+    "every_rubric_dimension_must_appear_as_primary_or_secondary": true,
+    "every_sample_category_must_map_to_at_least_two_dimensions": true,
+    "boundary_samples_must_include_ai_voice_or_continuity": true,
+    "positive_and_negative_categories_must_span_hook_and_payoff": true
+  }
+}

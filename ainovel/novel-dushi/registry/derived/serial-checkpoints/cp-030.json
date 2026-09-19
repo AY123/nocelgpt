@@ -1,0 +1,70 @@
+{
+  "kind": "serial_checkpoint",
+  "version": "1.0",
+  "chapter_index": 30,
+  "chapter_id": "TASK-00030",
+  "event_id": "EVT-90033",
+  "draft_hash": "sha256:e0d4c47dc5396ed2bbbbc1739f12ce436f17599bd241620edad6659ed6703dce",
+  "state_hash": "sha256:0d184ac1cd8a7af6f3d8a58c9d0673267d34c753bd9391616e10172803742c87",
+  "final_hash": "sha256:62ce9bb937ede7a37cea39054b6433d573a4082ab31d33b3c9157fcd5246be23",
+  "verdict": null,
+  "commercial_verdict": null,
+  "quality_snapshot": {
+    "kind": "quality_snapshot",
+    "version": "1.0",
+    "chapter_id": "TASK-00030",
+    "warning_count": 1,
+    "length": {
+      "body_chars": 2953,
+      "nonspace_chars": 2824,
+      "line_count": 129,
+      "paragraph_count": 65,
+      "token_estimate": 1661
+    },
+    "language": {
+      "body_chars": 2953,
+      "ascii_word_count": 4,
+      "chinese_char_count": 2422,
+      "ascii_ratio": 0.00141643059490085,
+      "chinese_ratio": 0.8576487252124646,
+      "long_ascii_run": false,
+      "english_dominant": false
+    },
+    "findings": [
+      {
+        "check": "ai-taste",
+        "severity": "warning",
+        "message": "模板表达过度使用：「沉默了片刻」出现1次（每千字0.37次，参考基准0.1次，超用3.66倍）"
+      }
+    ]
+  },
+  "m7": {
+    "chapter_id": "TASK-00030",
+    "authority": "human",
+    "gates_build": true,
+    "recommendation": "recommend",
+    "risk_level": "L0",
+    "redline_passed": true,
+    "redline_hits": [],
+    "similarity": {
+      "overall_similarity": 0.3375,
+      "risk_level": "L0",
+      "matches": [
+        {
+          "source_id": "REF-00001",
+          "source_type": "reference_novel",
+          "similarity": 0.3375,
+          "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+          "risk_type": "semantic_overlap",
+          "aligned_spans": [],
+          "method": "ngram_containment"
+        }
+      ],
+      "suspicious_spans": [],
+      "embedding_similarity": 0.5367,
+      "containment": 0.0388,
+      "reference_count": 1
+    },
+    "rationale": "未命中硬红线，原创性风险可接受。"
+  }
+}

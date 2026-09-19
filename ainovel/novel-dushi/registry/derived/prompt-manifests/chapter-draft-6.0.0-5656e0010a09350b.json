@@ -1,0 +1,64 @@
+{
+  "artifact_format": "1.0",
+  "content_hash": "sha256:5656e0010a09350bb578a8e4ba7c2e5a8e122a0af3c353626b1b562b7116a0de",
+  "id": "chapter-draft-6.0.0-5656e0010a09350b",
+  "kind": "prompt-manifest",
+  "manifest": {
+    "binding_hash": "sha256:f588b14a6e02242cfeea1ee2f509c85c1b6a406c2c8d888c01fab3b08e244852",
+    "cache_hit": false,
+    "capability": "ChapterDraft",
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90012@v1",
+      "EVT-90011@v1",
+      "EVT-90013@v1",
+      "TML-90001@v1",
+      "EVT-90010@v1",
+      "EVT-90014@v1"
+    ],
+    "package_hash": "sha256:f436c6da8770a0baf014f5aba2e36ef897123d6649ec835ebfee5b2883ca7aad",
+    "prompt_id": "chapter-draft",
+    "rendered_at": "2026-09-08T09:46:56.416034+00:00",
+    "rendered_hash": "sha256:5656e0010a09350bb578a8e4ba7c2e5a8e122a0af3c353626b1b562b7116a0de",
+    "renderer_version": "1.0.0",
+    "replay_ref": null,
+    "route_summary": {
+      "constraint_pack_id": null,
+      "metadata": {
+        "constraint_directives": [],
+        "failure_pack_map": {
+          "ai-tell": "deepseek-v13",
+          "dash-aside": "deepseek-v13",
+          "dialogue": "gpt-v13",
+          "em-dash": "deepseek-v13",
+          "length": "gpt-v13",
+          "opening variety": "deepseek-v13"
+        },
+        "known_failure_mode": null,
+        "profile_found": false,
+        "target_style": null,
+        "task_type": "ChapterDraft"
+      },
+      "model_id": "claude-fable-5",
+      "prompt_version": "6.0.0",
+      "provider": "claude",
+      "rationale": "task=ChapterDraft"
+    },
+    "source_version": 4,
+    "template_hash": "sha256:3bc77f915851bc4d507646f32b7c68512c287521915c9314547bbe0a0d16aca2",
+    "version": "6.0.0"
+  },
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90012@v1",
+      "EVT-90011@v1",
+      "EVT-90013@v1",
+      "TML-90001@v1",
+      "EVT-90010@v1",
+      "EVT-90014@v1"
+    ],
+    "package_hash": "sha256:f436c6da8770a0baf014f5aba2e36ef897123d6649ec835ebfee5b2883ca7aad",
+    "source_version": 4
+  }
+}

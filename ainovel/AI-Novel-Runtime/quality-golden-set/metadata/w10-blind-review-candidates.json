@@ -1,0 +1,431 @@
+{
+  "kind": "w10_blind_review_candidates",
+  "version": "1.0",
+  "status": "ready_for_execution",
+  "note": "Candidate QGS slots are now bound to real 30-chapter baseline chapter ids (worst-first by warning load). original+automatic arms are real; human arm pending.",
+  "execution_note": "W10-01 completed with 30 blind-review candidates prepared for triple-version comparison.",
+  "candidates": [
+    {
+      "sample_id": "QGS-00001",
+      "category": "boundary",
+      "bound_chapter_id": "TASK-00020",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 9,
+        "ref_oob": 4,
+        "tags": [
+          "pacing:1",
+          "integrity:8"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00002",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00001",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 3,
+        "ref_oob": 4,
+        "tags": [
+          "ai_taste:1",
+          "end_hook:1",
+          "integrity:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00003",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00013",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 6,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00004",
+      "category": "ai_voice",
+      "bound_chapter_id": "TASK-00007",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 5,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00005",
+      "category": "padding",
+      "bound_chapter_id": "TASK-00010",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 5,
+        "tags": [
+          "end_hook:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00006",
+      "category": "no_conflict",
+      "bound_chapter_id": "TASK-00016",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 5,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00007",
+      "category": "character_degradation",
+      "bound_chapter_id": "TASK-00028",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 5,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00008",
+      "category": "ending_failure",
+      "bound_chapter_id": "TASK-00033",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 5,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00009",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00011",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 4,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00010",
+      "category": "boundary",
+      "bound_chapter_id": "TASK-00023",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 4,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00011",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00029",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 4,
+        "tags": [
+          "density:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00012",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00003",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 3,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00013",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00017",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 3,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00014",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00018",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 3,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00015",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00030",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 3,
+        "tags": [
+          "density:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00016",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00031",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 2,
+        "tags": [
+          "end_hook:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00017",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00006",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 1,
+        "ref_oob": 1,
+        "tags": [
+          "ai_taste:1"
+        ]
+      }
+    },
+    {
+      "sample_id": "QGS-00018",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00002",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 5,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00019",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00005",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00020",
+      "category": "positive",
+      "bound_chapter_id": "TASK-00008",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00021",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00009",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00022",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00012",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00023",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00021",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00024",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00025",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00025",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00026",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 4,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00026",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00004",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 3,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00027",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00015",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 3,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00028",
+      "category": "negative",
+      "bound_chapter_id": "TASK-00019",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 3,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00029",
+      "category": "boundary",
+      "bound_chapter_id": "TASK-00022",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 3,
+        "tags": []
+      }
+    },
+    {
+      "sample_id": "QGS-00033",
+      "category": "ai_voice",
+      "bound_chapter_id": "TASK-00024",
+      "source": "baseline_30ch",
+      "warning_rank": {
+        "warnings": 0,
+        "ref_oob": 3,
+        "tags": []
+      }
+    }
+  ],
+  "selection_rules": {
+    "total_target": 30,
+    "preferred_mix": [
+      "positive",
+      "negative",
+      "boundary",
+      "ai_voice",
+      "padding",
+      "no_conflict",
+      "character_degradation",
+      "ending_failure"
+    ],
+    "blind_requires_original_auto_human_triple": true,
+    "preserve_source_identity": false,
+    "randomize_order": true
+  },
+  "next_actions": [
+    "map these sample ids to the actual 30-chapter baseline chapter ids",
+    "create original/auto/human triples for each candidate",
+    "hide provenance during blind review",
+    "run W10-02 comparison once triples are ready"
+  ],
+  "binding_status": "bound_to_real_baseline",
+  "candidate_chapter_map": {
+    "QGS-00001": "TASK-00020",
+    "QGS-00002": "TASK-00001",
+    "QGS-00003": "TASK-00013",
+    "QGS-00004": "TASK-00007",
+    "QGS-00005": "TASK-00010",
+    "QGS-00006": "TASK-00016",
+    "QGS-00007": "TASK-00028",
+    "QGS-00008": "TASK-00033",
+    "QGS-00009": "TASK-00011",
+    "QGS-00010": "TASK-00023",
+    "QGS-00011": "TASK-00029",
+    "QGS-00012": "TASK-00003",
+    "QGS-00013": "TASK-00017",
+    "QGS-00014": "TASK-00018",
+    "QGS-00015": "TASK-00030",
+    "QGS-00016": "TASK-00031",
+    "QGS-00017": "TASK-00006",
+    "QGS-00018": "TASK-00002",
+    "QGS-00019": "TASK-00005",
+    "QGS-00020": "TASK-00008",
+    "QGS-00021": "TASK-00009",
+    "QGS-00022": "TASK-00012",
+    "QGS-00023": "TASK-00021",
+    "QGS-00024": "TASK-00025",
+    "QGS-00025": "TASK-00026",
+    "QGS-00026": "TASK-00004",
+    "QGS-00027": "TASK-00015",
+    "QGS-00028": "TASK-00019",
+    "QGS-00029": "TASK-00022",
+    "QGS-00033": "TASK-00024"
+  }
+}

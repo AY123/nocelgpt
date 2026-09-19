@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 3,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 3,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "editor_a_note": "解释过多、抽象总结和模板句式严重削弱了人味和代入感，缺乏具体动作和自然对话，导致钩子、冲突和付费意愿均偏低。",
+  "editor_b_note": "解释过多、抽象总结和模板句式削弱了人味与代入感，缺乏具体行动和自然对话，导致整体平淡且AI腔明显。",
+  "consensus_scores": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 3,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

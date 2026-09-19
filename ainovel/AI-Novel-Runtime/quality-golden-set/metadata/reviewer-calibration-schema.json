@@ -1,0 +1,43 @@
+{
+  "kind": "reviewer_calibration_schema",
+  "version": "1.0",
+  "inputs": {
+    "sample_id": true,
+    "sample_category": true,
+    "rubric_ref": true,
+    "body_ref": true,
+    "human_labels_ref": true,
+    "human_scores_ref": true,
+    "notes_ref": true
+  },
+  "outputs": {
+    "dimension_scores": true,
+    "severity_labels": true,
+    "continue_probability": true,
+    "pay_probability": true,
+    "risk_flags": true,
+    "evidence_spans": true,
+    "recommendation": true,
+    "decision_mode": true
+  },
+  "decision_modes": [
+    "advisory",
+    "calibration",
+    "regression",
+    "selection_hint"
+  ],
+  "severity_scale": {
+    "0": "not_assessed",
+    "1": "minor",
+    "2": "moderate",
+    "3": "major",
+    "4": "critical"
+  },
+  "guardrails": {
+    "human_editor_is_authoritative": true,
+    "simulator_cannot_gate_publish": true,
+    "simulator_cannot_override_human_label": true,
+    "simulator_must_return_evidence_spans": true,
+    "simulator_must_mark_uncertainty": true
+  }
+}

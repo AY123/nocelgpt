@@ -1,0 +1,15 @@
+# Build artifacts are disposable & reproducible (ADR-001) — never committed.
+build/
+**/build/
+build-serial/
+**/build-serial/
+
+# Test-generated derived artifacts under fixtures — regenerated on every run,
+# reproducible (ADR-001). Fixtures track facts/ + _meta/ (inputs) only; derived/
+# is output, never committed (mirrors the live-baseline-5ch fixture convention).
+tests/fixtures/*/registry/derived/
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/

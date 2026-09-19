@@ -1,0 +1,1243 @@
+{
+  "chapters": [
+    {
+      "chapter_final": {
+        "artifact_id": "TASK-00001",
+        "chapter_id": "TASK-00001",
+        "commercial_notes": [
+          "整体节奏更顺",
+          "追读动机有增强",
+          "题材卖点对齐度一般"
+        ],
+        "comparison_report": {
+          "authority": "human",
+          "brief_ref": "TASK-00001",
+          "chapter_id": "TASK-00001",
+          "gating": false,
+          "id": "CMP-00001",
+          "kind": "version_comparison",
+          "notes": "Comparison ranks scores supplied by commercial/quality signals; advisory, never gating.",
+          "objective_ref": {
+            "authority": "human",
+            "chapter_id": "TASK-00001",
+            "character_focus": [],
+            "cliffhanger_type": "reveal",
+            "commercial_intent": {
+              "drop_risk_target": "low",
+              "payoff_type": "partial_payoff",
+              "retention_focus": "next_chapter_pull"
+            },
+            "constraints": [
+              "不得破坏角色连续性",
+              "不得引入未授权新事实"
+            ],
+            "gating": false,
+            "id": "OBJ-00001",
+            "kind": "chapter_objective",
+            "notes": "",
+            "objective_id": "OBJ-00001",
+            "pacing_role": "rising_action",
+            "plot_threads": [],
+            "primary_goal": "draft chapter 1: 35岁负债累累的陈默在一场车祸后醒来，发现自己回到了18岁高考前的教室里",
+            "promise_to_deliver": [],
+            "reader_question": "主角接下来如何反应？",
+            "schema_version": "1.0",
+            "secondary_goals": [],
+            "source": {},
+            "success_criteria": [
+              "reader_question 明确",
+              "章节末有追读动力",
+              "角色行为符合 runtime 状态"
+            ]
+          },
+          "pipeline_decision": {
+            "action": "revise",
+            "advance_to_next_chapter": false,
+            "hold_for_human_review": true,
+            "reasons": {
+              "editorial_verdict": "accept",
+              "risk_count": 2,
+              "summary_recommendation": "rollback"
+            },
+            "trigger_revision_round": true
+          },
+          "risk_summary": {
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "risks": [
+              "hook_strength_not_improved",
+              "qa_verdict_shift"
+            ],
+            "verdict_shift": [
+              "revise",
+              "pass"
+            ]
+          },
+          "schema_version": "1.0",
+          "selection_metadata": {
+            "ranking": [
+              {
+                "input_index": 0,
+                "score": 0.7,
+                "version_id": "draft"
+              },
+              {
+                "input_index": 1,
+                "score": 0.7,
+                "version_id": "revision"
+              }
+            ],
+            "tie_break_applied": true,
+            "winner_index": 0
+          },
+          "selection_policy": {
+            "primary_metric": "reader_pull",
+            "secondary_metric": "quality_consistency",
+            "tie_break": "earlier_input_order"
+          },
+          "summary": {
+            "commercial_focus": null,
+            "editorial": {
+              "editorial_verdict": "accept",
+              "market_fit": "moderate",
+              "notes": [
+                "整体节奏更顺",
+                "追读动机有增强",
+                "题材卖点对齐度一般"
+              ],
+              "readability": "improved",
+              "retention": "improved"
+            },
+            "headline": "改动率0.00%｜QA=pass｜商业钩子stable",
+            "long_arc_band": null,
+            "major_change_rate_percent": 0.0,
+            "qa_score_deltas": {
+              "character_consistency": 0.7,
+              "commercial_pull": 0.7,
+              "emotion_progress": 0.7,
+              "hook_strength": 0.6,
+              "pacing": 0.85,
+              "platform_feedback_alignment": 0.7,
+              "readability": 0.8,
+              "reader_signal_alignment": 0.7,
+              "setting_consistency": 0.7,
+              "structure": 0.85
+            },
+            "recommendation": "rollback"
+          },
+          "versions": [
+            {
+              "commercial_change": {
+                "commercial_target": null,
+                "hook_alignment": "stable",
+                "hook_target": null,
+                "length_delta_words": 0,
+                "pacing_shift_words": 0,
+                "retention_signal": "improved"
+              },
+              "decision_score_mean": null,
+              "decision_scores": {},
+              "diff_summary": {
+                "added_terms": [],
+                "added_tokens": 0,
+                "after_length": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "before_length": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "change_rate_percent": 0.0,
+                "removed_terms": [],
+                "removed_tokens": 0
+              },
+              "input_index": 0,
+              "qa_change": {
+                "after_verdict": "pass",
+                "before_verdict": "revise",
+                "issues_added": [],
+                "issues_removed": [],
+                "score_delta": {
+                  "character_consistency": 0.7,
+                  "commercial_pull": 0.7,
+                  "emotion_progress": 0.7,
+                  "hook_strength": 0.6,
+                  "pacing": 0.85,
+                  "platform_feedback_alignment": 0.7,
+                  "readability": 0.8,
+                  "reader_signal_alignment": 0.7,
+                  "setting_consistency": 0.7,
+                  "structure": 0.85
+                },
+                "strengths_added": [
+                  "draft produced"
+                ],
+                "strengths_removed": []
+              },
+              "reason": "initial draft",
+              "risk_and_recovery": {
+                "recommendation": "rollback",
+                "recovery_actions": [
+                  "restore stronger chapter hook",
+                  "rebalance pacing and scene load",
+                  "tighten issue-focused QA pass"
+                ],
+                "risks": [
+                  "hook_strength_not_improved",
+                  "qa_verdict_shift"
+                ],
+                "verdict_shift": [
+                  "revise",
+                  "pass"
+                ]
+              },
+              "score": 0.7,
+              "text_summary": {
+                "after": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "before": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "delta_chars": 0,
+                "delta_lines": 0,
+                "delta_words": 0
+              },
+              "version_id": "draft"
+            },
+            {
+              "commercial_change": {
+                "commercial_target": null,
+                "hook_alignment": "stable",
+                "hook_target": null,
+                "length_delta_words": 0,
+                "pacing_shift_words": 0,
+                "retention_signal": "improved"
+              },
+              "decision_score_mean": null,
+              "decision_scores": {},
+              "diff_summary": {
+                "added_terms": [],
+                "added_tokens": 0,
+                "after_length": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "before_length": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "change_rate_percent": 0.0,
+                "removed_terms": [],
+                "removed_tokens": 0
+              },
+              "input_index": 1,
+              "qa_change": {
+                "after_verdict": "pass",
+                "before_verdict": "pass",
+                "issues_added": [],
+                "issues_removed": [],
+                "score_delta": {
+                  "character_consistency": 0.0,
+                  "commercial_pull": 0.0,
+                  "emotion_progress": 0.0,
+                  "hook_strength": 0.0,
+                  "pacing": 0.0,
+                  "platform_feedback_alignment": 0.0,
+                  "readability": 0.0,
+                  "reader_signal_alignment": 0.0,
+                  "setting_consistency": 0.0,
+                  "structure": 0.0
+                },
+                "strengths_added": [],
+                "strengths_removed": []
+              },
+              "reason": "no revision needed",
+              "risk_and_recovery": {
+                "recommendation": "revise",
+                "recovery_actions": [
+                  "restore stronger chapter hook",
+                  "rebalance pacing and scene load",
+                  "tighten issue-focused QA pass"
+                ],
+                "risks": [
+                  "hook_strength_not_improved"
+                ],
+                "verdict_shift": [
+                  "pass",
+                  "pass"
+                ]
+              },
+              "score": 0.7,
+              "text_summary": {
+                "after": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "before": {
+                  "chars": 2565,
+                  "lines": 147,
+                  "words": 292
+                },
+                "delta_chars": 0,
+                "delta_lines": 0,
+                "delta_words": 0
+              },
+              "version_id": "revision"
+            }
+          ],
+          "winner": "draft"
+        },
+        "continuity_notes": [
+          "hook_strength_not_improved",
+          "qa_verdict_shift"
+        ],
+        "final_hash": "sha256:338b4154871fc8bd4a3a25b7c854f659626c3b2c69a9ac70ec15a1bfcd0617cb",
+        "final_review": {
+          "chapter_id": "TASK-00001",
+          "gating_recommendation": "advisory",
+          "issues": [],
+          "overall_verdict": "pass",
+          "publish_readiness": "ready",
+          "revision_suggestions": [],
+          "scores": {
+            "character_consistency": 0.7,
+            "commercial_pull": 0.7,
+            "emotion_progress": 0.7,
+            "hook_strength": 0.6,
+            "pacing": 0.85,
+            "platform_feedback_alignment": 0.7,
+            "readability": 0.8,
+            "reader_signal_alignment": 0.7,
+            "setting_consistency": 0.7,
+            "structure": 0.85
+          },
+          "strengths": [
+            "draft produced"
+          ]
+        },
+        "final_status": null,
+        "final_strategy": null,
+        "final_text": "# 第一章：重生\n\n陈默睁开眼的瞬间，刺眼的阳光透过窗户打在脸上。\n\n头很疼。\n\n不对——他应该死了才对。那辆失控的渣土车，刹车失灵的尖啸声，撞击前最后一秒看到的车牌号……这些画面还清晰地停留在脑海里。\n\n可现在，耳边传来的是窸窸窣窣的翻书声，粉笔在黑板上摩擦的声音,还有……高中教室特有的那种混合着汗味、书本味和廉价香水味的空气。\n\n陈默猛地坐直身体。\n\n周围的一切让他的心脏几乎停跳——陈旧的木制课桌,桌面上刻满了\"高考必胜\"之类的励志标语,墙上贴着的倒计时牌写着\"距离高考还有37天\",讲台上的老式挂钟指针停在下午两点二十分。\n\n2006年5月3日。\n\n这个日期像一记重锤砸在陈默脑门上。\n\n十八年前。他十八岁的那个春天。\n\n\"陈默,你没事吧？\"\n\n一个略带关切的女声从右侧传来。陈默僵硬地转过头,看到了一张他以为这辈子再也见不到的脸——林晓雨。\n\n十八岁的林晓雨。\n\n她还梳着马尾辫,穿着宽大的校服,脸上没有三十五岁时那些岁月留下的痕迹,眼神清澈得让人心疼。她微微皱着眉,手里还拿着一支圆珠笔,显然是做题做到一半被他的动静惊动。\n\n\"你脸色很差,要不要去医务室？\"林晓雨又问了一遍。\n\n陈默张了张嘴,却发不出声音。\n\n前世——不,应该说上一世——他和林晓雨在高考后的那个暑假因为一场误会分道扬镳。她去了北京读大学,他留在本地的二本院校。后来听说她结婚了,嫁给了一个家境优渥的师兄,过得很好。\n\n而他自己呢？\n\n三十五岁,负债两百三十万,妻子带着女儿离婚走了,父亲因为替他还债累倒住院,他连ICU的押金都凑不齐。那天下午,他从银行贷款被拒后走出来,脑子里一片空白,连那辆渣土车冲过来都没反应过来。\n\n\"陈默？\"林晓雨伸手在他眼前晃了晃。\n\n\"我……我没事。\"陈默听到自己的声音,年轻、清亮,完全不是三十五岁烟酒嗓的沙哑。\n\n他低头看自己的手——没有老茧,没有因为常年熬夜敲键盘而变形的关节,手背上也没有那道前年签合同时被骗子划伤的疤。\n\n这是十八岁的手。\n\n心跳开始加速。陈默猛地站起来,椅子腿在地面上发出刺耳的声音,前排几个同学回过头来,用奇怪的眼神看着他。\n\n\"陈默同学,有什么问题吗？\"讲台上,班主任老李放下粉笔,推了推眼镜。\n\n老李。\n\n陈默记得这个人——三年后死于肝癌,死前还在医院病床上给学生批改作文。葬礼那天,来了三百多个学生。\n\n\"老师,我想去趟厕所。\"陈默听到自己说。\n\n老李挥挥手,示意他快去快回。\n\n陈默几乎是逃出教室的。走廊里阳光明媚,操场上有人在上体育课,远处传来口号声。一切都那么真实,真实到他开始怀疑之前那三十五年才是一场梦。\n\n他冲进厕所,打开水龙头,捧起冷水泼在脸上。\n\n镜子里的脸年轻、稚嫩,带着十八岁特有的青涩——这是他自己的脸,十八岁时的陈默。\n\n不是梦。\n\n他真的回来了。\n\n回到了一切还没搞砸的时候,回到了还有无数种可能的2006年。\n\n陈默扶住洗手台,大口喘着气。脑子里开始飞速运转——如果这是真的,如果他真的重生了,那么接下来……\n\n高考。他记得今年的高考题,记得哪些题型会考,记得标准答案。\n\n大学。他知道该选哪个专业,知道哪些行业会在未来十年井喷,知道哪些坑千万不能踩。\n\n互联网。2006年,淘宝刚起步,微博还没诞生,智能手机还是概念,移动支付更是天方夜谭。但他记得所有的时间节点,记得哪些公司会崛起,哪些会倒闭,记得比特币、记得共享经济、记得短视频……\n\n他记得一切。\n\n前世三十五年的记忆,此刻变成了最宝贵的财富。\n\n陈默抬起头,看着镜子里的自己。年轻的脸上慢慢浮现出一个笑容——不是十八岁男生那种青涩的笑,而是一个在商海沉浮十几年、见过无数风浪的中年人,劫后余生的笑。\n\n他有三十七天准备高考。\n\n高考之后,他要做的第一件事,就是去抢注那批域名——前世他在2010年的一篇财经报道里看到过,有人在2006年注册了一批后来价值暴涨的双拼域名,四年后转手卖出,净赚两千万。\n\n那篇报道他记得清清楚楚,因为当时他正因为投资失败欠下巨债,看着那篇报道整整失眠了一夜,想着如果当年自己也有那个眼光该多好。\n\n现在,机会来了。\n\n陈默深吸一口气,用冷水又洗了把脸,整理好表情,推开厕所门往教室走。\n\n走到教室门口时,他停顿了一下,透过后门的玻璃窗看进去。\n\n林晓雨还坐在那里做题,阳光从窗户斜照进来,在她侧脸上镀了一层金边。她咬着笔帽,微微皱眉,显然是遇到了难题。\n\n前世,他因为自卑和怯懦,眼睁睁看着她走进别人的生活。\n\n这一世,他不会再犯同样的错误。\n\n陈默推门进去,在林晓雨身边坐下。她抬头看了他一眼：\"好点了吗？\"\n\n\"好多了。\"陈默说,目光落在她的试卷上,\"数学大题？\"\n\n\"嗯,这道立体几何我算了三遍,答案总是对不上。\"林晓雨有些懊恼地说。\n\n陈默看了一眼题目——他记得这种题型,前世高考压轴题就是类似的变形。他拿过草稿纸,飞快地写下解题步骤：\"你第二步建系的时候,Z轴方向取反了。\"\n\n林晓雨接过草稿纸,眼睛一亮：\"对啊!我就说哪里不对劲……\"她抬起头,有些惊讶地看着陈默,\"你什么时候立体几何变这么好了？\"\n\n陈默愣了一下,才想起来十八岁的自己数学成绩一般,尤其不擅长立体几何。\n\n\"最近突然开窍了。\"他随口说道。\n\n林晓雨若有所思地看了他几秒,然后笑了笑：\"那太好了,高考加油。\"\n\n\"一起加油。\"陈默说。\n\n窗外,五月的风吹过梧桐树,叶子发出沙沙的声音。教室里,老李在讲台上讲着文言文,粉笔字一笔一划写在黑板上。一切都是那么平常,那么普通。\n\n但陈默知道,一切都已经不一样了。\n\n他有三十五年的人生经验,有对未来十八年的精确记忆,有一颗迫切想要改变命运的心。\n\n这一次,他不会再搞砸了。\n\n绝不。\n\n下课铃响起的时候,陈默从书包里翻出一个旧笔记本,翻到空白页,开始写字。\n\n第一行:高考倒计时37天——目标,省理科前五十。\n\n第二行:6月10日,注册域名——目标,第一桶金100万。\n\n第三行……\n\n他停下笔,转头看向正在收拾书本的林晓雨。\n\n第三行他没有写下来,但那行字已经刻在心里——\n\n林晓雨,这次我不会再错过你。\n\n笔记本合上的瞬间,陈默看到窗外天空飘过一片云。云的形状像一扇门,正在缓缓打开。\n\n而他,站在门的这一边,准备走进一个完全不同的未来。",
+        "genre_contract_version": null,
+        "genre_profile_id": null,
+        "next_chapter_bridge": "改动率0.00%｜QA=pass｜商业钩子stable; recommendation=rollback",
+        "production_decision": {
+          "action": "revise",
+          "advance_to_next_chapter": false,
+          "hold_for_human_review": true,
+          "reasons": {
+            "editorial_verdict": "accept",
+            "risk_count": 2,
+            "summary_recommendation": "rollback"
+          },
+          "trigger_revision_round": true
+        },
+        "quality_summary": "verdict=pass; score_keys=character_consistency,commercial_pull,emotion_progress,hook_strength,pacing,platform_feedback_alignment,readability,reader_signal_alignment,setting_consistency,structure"
+      },
+      "commercial_verdict": null,
+      "draft_hash": "sha256:9498a86db85cd10c236e8fd815014f598426ed188e4864ba7dd32d33cc5280db",
+      "event": "EVT-00001",
+      "events_so_far": 1,
+      "index": 1,
+      "llm": {
+        "cost": null,
+        "latency_ms": 62313,
+        "model": "claude-fable-5",
+        "provider": "claude",
+        "replay_ref": null,
+        "response_hash": "sha256:f0084b368fb4575a6102133a9ca058cd448cdb0dc2cd3d801eed68a3ce0685e8",
+        "token_usage": {
+          "cached_input_tokens": 0,
+          "input_tokens": 2034,
+          "output_tokens": 3056,
+          "reasoning_tokens": 0,
+          "total_tokens": 5090,
+          "usage_estimated": false
+        }
+      },
+      "message": "draft produced (2348 words)",
+      "ok": true,
+      "open_setups": 0,
+      "output_path": "registry/derived/drafts/TASK-00001.json",
+      "publish_readiness": {
+        "authority": "human",
+        "basis": {
+          "quality": {
+            "below_threshold": []
+          },
+          "redline": {
+            "hits": [],
+            "passed": true
+          }
+        },
+        "gates_build": false,
+        "policy": {
+          "drop_risk_hold_at": 60,
+          "hold_threshold": 60
+        },
+        "rationale": "未命中红线，商业信号达标，可发布(仍需人工授权，ADR-009)。",
+        "recommendation": "recommend",
+        "schema_version": "1.0",
+        "subject": {
+          "chapter_id": "TASK-00001",
+          "draft_content_hash": "sha256:9498a86db85cd10c236e8fd815014f598426ed188e4864ba7dd32d33cc5280db"
+        }
+      },
+      "stage": "done",
+      "state_hash": "sha256:8520388b4bc525b238e8b8d64a6b162dc657048d6fcdd595f83ef0175d242fbd",
+      "task_id": "TASK-00001",
+      "verdict": null
+    },
+    {
+      "chapter_final": {
+        "artifact_id": "TASK-00002",
+        "chapter_id": "TASK-00002",
+        "commercial_notes": [
+          "整体节奏更顺",
+          "追读动机有增强",
+          "题材卖点对齐度一般"
+        ],
+        "comparison_report": {
+          "authority": "human",
+          "brief_ref": "TASK-00002",
+          "chapter_id": "TASK-00002",
+          "gating": false,
+          "id": "CMP-00002",
+          "kind": "version_comparison",
+          "notes": "Comparison ranks scores supplied by commercial/quality signals; advisory, never gating.",
+          "objective_ref": {
+            "authority": "human",
+            "chapter_id": "TASK-00002",
+            "character_focus": [],
+            "cliffhanger_type": "reveal",
+            "commercial_intent": {
+              "drop_risk_target": "low",
+              "payoff_type": "partial_payoff",
+              "retention_focus": "next_chapter_pull"
+            },
+            "constraints": [
+              "不得破坏角色连续性",
+              "不得引入未授权新事实"
+            ],
+            "gating": false,
+            "id": "OBJ-00002",
+            "kind": "chapter_objective",
+            "notes": "",
+            "objective_id": "OBJ-00002",
+            "pacing_role": "rising_action",
+            "plot_threads": [],
+            "primary_goal": "draft chapter 2: 重生第一天，陈默在教室里再次见到前世错过的初恋林晓雨，决心这次不再错过",
+            "promise_to_deliver": [],
+            "reader_question": "主角接下来如何反应？",
+            "schema_version": "1.0",
+            "secondary_goals": [],
+            "source": {
+              "state_hash": "sha256:8520388b4bc525b238e8b8d64a6b162dc657048d6fcdd595f83ef0175d242fbd"
+            },
+            "success_criteria": [
+              "reader_question 明确",
+              "章节末有追读动力",
+              "角色行为符合 runtime 状态"
+            ]
+          },
+          "pipeline_decision": {
+            "action": "revise",
+            "advance_to_next_chapter": false,
+            "hold_for_human_review": true,
+            "reasons": {
+              "editorial_verdict": "accept",
+              "risk_count": 2,
+              "summary_recommendation": "rollback"
+            },
+            "trigger_revision_round": true
+          },
+          "risk_summary": {
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "risks": [
+              "hook_strength_not_improved",
+              "qa_verdict_shift"
+            ],
+            "verdict_shift": [
+              "revise",
+              "pass"
+            ]
+          },
+          "schema_version": "1.0",
+          "selection_metadata": {
+            "ranking": [
+              {
+                "input_index": 0,
+                "score": 0.7,
+                "version_id": "draft"
+              },
+              {
+                "input_index": 1,
+                "score": 0.7,
+                "version_id": "revision"
+              }
+            ],
+            "tie_break_applied": true,
+            "winner_index": 0
+          },
+          "selection_policy": {
+            "primary_metric": "reader_pull",
+            "secondary_metric": "quality_consistency",
+            "tie_break": "earlier_input_order"
+          },
+          "summary": {
+            "commercial_focus": null,
+            "editorial": {
+              "editorial_verdict": "accept",
+              "market_fit": "moderate",
+              "notes": [
+                "整体节奏更顺",
+                "追读动机有增强",
+                "题材卖点对齐度一般"
+              ],
+              "readability": "improved",
+              "retention": "improved"
+            },
+            "headline": "改动率0.00%｜QA=pass｜商业钩子stable",
+            "long_arc_band": null,
+            "major_change_rate_percent": 0.0,
+            "qa_score_deltas": {
+              "character_consistency": 0.7,
+              "commercial_pull": 0.7,
+              "emotion_progress": 0.7,
+              "hook_strength": 0.6,
+              "pacing": 0.84,
+              "platform_feedback_alignment": 0.7,
+              "readability": 0.8,
+              "reader_signal_alignment": 0.7,
+              "setting_consistency": 0.7,
+              "structure": 0.82
+            },
+            "recommendation": "rollback"
+          },
+          "versions": [
+            {
+              "commercial_change": {
+                "commercial_target": null,
+                "hook_alignment": "stable",
+                "hook_target": null,
+                "length_delta_words": 0,
+                "pacing_shift_words": 0,
+                "retention_signal": "improved"
+              },
+              "decision_score_mean": null,
+              "decision_scores": {},
+              "diff_summary": {
+                "added_terms": [],
+                "added_tokens": 0,
+                "after_length": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "before_length": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "change_rate_percent": 0.0,
+                "removed_terms": [],
+                "removed_tokens": 0
+              },
+              "input_index": 0,
+              "qa_change": {
+                "after_verdict": "pass",
+                "before_verdict": "revise",
+                "issues_added": [],
+                "issues_removed": [],
+                "score_delta": {
+                  "character_consistency": 0.7,
+                  "commercial_pull": 0.7,
+                  "emotion_progress": 0.7,
+                  "hook_strength": 0.6,
+                  "pacing": 0.84,
+                  "platform_feedback_alignment": 0.7,
+                  "readability": 0.8,
+                  "reader_signal_alignment": 0.7,
+                  "setting_consistency": 0.7,
+                  "structure": 0.82
+                },
+                "strengths_added": [
+                  "draft produced"
+                ],
+                "strengths_removed": []
+              },
+              "reason": "initial draft",
+              "risk_and_recovery": {
+                "recommendation": "rollback",
+                "recovery_actions": [
+                  "restore stronger chapter hook",
+                  "rebalance pacing and scene load",
+                  "tighten issue-focused QA pass"
+                ],
+                "risks": [
+                  "hook_strength_not_improved",
+                  "qa_verdict_shift"
+                ],
+                "verdict_shift": [
+                  "revise",
+                  "pass"
+                ]
+              },
+              "score": 0.7,
+              "text_summary": {
+                "after": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "before": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "delta_chars": 0,
+                "delta_lines": 0,
+                "delta_words": 0
+              },
+              "version_id": "draft"
+            },
+            {
+              "commercial_change": {
+                "commercial_target": null,
+                "hook_alignment": "stable",
+                "hook_target": null,
+                "length_delta_words": 0,
+                "pacing_shift_words": 0,
+                "retention_signal": "improved"
+              },
+              "decision_score_mean": null,
+              "decision_scores": {},
+              "diff_summary": {
+                "added_terms": [],
+                "added_tokens": 0,
+                "after_length": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "before_length": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "change_rate_percent": 0.0,
+                "removed_terms": [],
+                "removed_tokens": 0
+              },
+              "input_index": 1,
+              "qa_change": {
+                "after_verdict": "pass",
+                "before_verdict": "pass",
+                "issues_added": [],
+                "issues_removed": [],
+                "score_delta": {
+                  "character_consistency": 0.0,
+                  "commercial_pull": 0.0,
+                  "emotion_progress": 0.0,
+                  "hook_strength": 0.0,
+                  "pacing": 0.0,
+                  "platform_feedback_alignment": 0.0,
+                  "readability": 0.0,
+                  "reader_signal_alignment": 0.0,
+                  "setting_consistency": 0.0,
+                  "structure": 0.0
+                },
+                "strengths_added": [],
+                "strengths_removed": []
+              },
+              "reason": "no revision needed",
+              "risk_and_recovery": {
+                "recommendation": "revise",
+                "recovery_actions": [
+                  "restore stronger chapter hook",
+                  "rebalance pacing and scene load",
+                  "tighten issue-focused QA pass"
+                ],
+                "risks": [
+                  "hook_strength_not_improved"
+                ],
+                "verdict_shift": [
+                  "pass",
+                  "pass"
+                ]
+              },
+              "score": 0.7,
+              "text_summary": {
+                "after": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "before": {
+                  "chars": 2829,
+                  "lines": 138,
+                  "words": 303
+                },
+                "delta_chars": 0,
+                "delta_lines": 0,
+                "delta_words": 0
+              },
+              "version_id": "revision"
+            }
+          ],
+          "winner": "draft"
+        },
+        "continuity_notes": [
+          "hook_strength_not_improved",
+          "qa_verdict_shift"
+        ],
+        "final_hash": "sha256:7520b5c9eb191355663a7c7b393b393589689014bbdcd9e7a272cc2f97668004",
+        "final_review": {
+          "chapter_id": "TASK-00002",
+          "gating_recommendation": "advisory",
+          "issues": [],
+          "overall_verdict": "pass",
+          "publish_readiness": "ready",
+          "revision_suggestions": [],
+          "scores": {
+            "character_consistency": 0.7,
+            "commercial_pull": 0.7,
+            "emotion_progress": 0.7,
+            "hook_strength": 0.6,
+            "pacing": 0.84,
+            "platform_feedback_alignment": 0.7,
+            "readability": 0.8,
+            "reader_signal_alignment": 0.7,
+            "setting_consistency": 0.7,
+            "structure": 0.82
+          },
+          "strengths": [
+            "draft produced"
+          ]
+        },
+        "final_status": null,
+        "final_strategy": null,
+        "final_text": "# 第二章：十八岁的林晓雨\n\n陈默深吸一口气，强迫自己从重生的震撼中抽离出来。\n\n教室里的喧闹声渐渐清晰——有人在讨论昨晚的足球赛，有人在抱怨数学作业，还有人趴在桌上补觉。这些声音曾在他生命中存在过,又在十七年的岁月里被彻底遗忘,此刻却像潮水般涌回耳畔。\n\n他的目光不由自主地投向窗边第三排。\n\n那里坐着一个扎着马尾的女生,正低头翻看着什么。六月的阳光透过玻璃窗洒在她身上,在她白皙的侧脸上镀上一层柔和的光晕。她穿着普通的校服,但领口处别着一枚小小的蝴蝶胸针——那是她母亲送给她的生日礼物,她曾在前世告诉过他。\n\n林晓雨。\n\n陈默的心脏猛地收紧。\n\n这个名字在他生命中留下过太深的痕迹。前世的他懦弱、自卑,不敢向她表白,只能远远地看着她。高考后她去了北京读大学,他留在本地的三流院校。后来听说她嫁给了一个商人,生活富足。而他自己呢?创业失败、婚姻破裂、负债累累,直到那辆失控的货车冲过来……\n\n\"要不是你当年那么怂,现在也不至于混成这样。\"\n\n前世临终前,酒醉的他曾在出租屋里对着镜子说过这句话。那时他已经知道,林晓雨的婚姻并不幸福,她丈夫出轨、家暴,她独自带着女儿艰难度日。而他自己也好不到哪去——妻子带着孩子离开,公司破产,债主天天上门。\n\n两个本该在一起的人,在错误的时间里,各自走向了错误的人生。\n\n陈默闭了闭眼。\n\n不会了。这一次,绝不会再重蹈覆辙。\n\n他站起身,在周围同学诧异的目光中,径直走向林晓雨的座位。\n\n每一步都像踩在记忆的碎片上。前世的他曾无数次幻想过走到她面前,说些什么,做些什么,但从未真正付诸行动。现在,他拥有了三十五岁的灵魂,十八岁的身体,以及一个改写一切的机会。\n\n林晓雨正在看一本英语词汇书,纸页上密密麻麻地标注着笔记。她专注的样子和记忆中一模一样——认真、安静,带着一种拒人千里之外的疏离感。\n\n陈默在她桌前停下。\n\n\"林晓雨。\"\n\n他的声音比预想中更平稳。\n\n女孩抬起头,眼中闪过一丝疑惑。那双眼睛清澈干净,还没有被日后的生活磨出疲惫和防备。她打量着站在面前的陈默,似乎在搜索记忆里这个同班同学的名字。\n\n\"陈默?\"她不确定地问,\"有事吗?\"\n\n陈默注意到,她的语气是礼貌的疏离。他们确实不熟——前世的他太内向,从未主动和她说过话,顶多在小组作业时有过几次公事公办的交流。在林晓雨的认知里,陈默只是个成绩中等、存在感极低的普通同学。\n\n\"能借我看看你的英语笔记吗?\"陈默指了指她手中的词汇书,\"我有几个词组总是记混。\"\n\n这是个合理的请求。林晓雨的英语成绩在班里名列前茅,笔记做得详细清晰,经常有同学向她借阅。\n\n\"哦,可以。\"林晓雨点点头,把词汇书递给他,\"不过我现在要用,你等会儿还我。\"\n\n\"谢谢。\"\n\n陈默接过书,手指不经意地触碰到她的指尖。那一瞬间的触感让他心跳加速——这是真实的,不是梦境,不是幻觉。他真的回到了十八岁,真的站在林晓雨面前。\n\n但他知道,仅仅借本书是不够的。\n\n前世的失败告诉他,林晓雨不是那种会对平庸男生心动的女孩。她优秀、独立、有主见,身边从不缺追求者。如果只是像其他男生那样献殷勤、讨好她,只会让她反感。\n\n他需要一个契机,一个让她真正注意到他的契机。\n\n陈默翻开词汇书,目光在页面上扫过。林晓雨的字迹娟秀工整,每个词组下方都标注着用法和例句。他看到\"by the time\"这个词组,旁边写着:\"表示'到……时候',主句用完成时。\"\n\n前世高考英语题里有一道关于这个词组的题,很多人都做错了。\n\n\"你这个标注不太准确。\"陈默突然说。\n\n林晓雨一愣,抬起头,眼中闪过一丝不悦:\"什么?\"\n\n\"'by the time'后面接过去时,主句用过去完成时;接现在时,主句用现在完成时或将来完成时。但你这里只写了'主句用完成时',没有区分时态对应关系。\"陈默平静地说,\"高考很可能会考这个细节。\"\n\n教室里的声音似乎都远去了。林晓雨盯着陈默,眼中的疑惑更深:\"你英语什么时候这么好了?\"\n\n在她的印象里,陈默的英语成绩一直在及格线上下徘徊,连她的笔记都要借,怎么可能指出她的错误?\n\n\"我最近重新复习了语法。\"陈默把书还给她,在她座位旁边的空位上坐下,\"不信的话,你可以查字典验证。\"\n\n林晓雨犹豫了一下,拿出牛津高阶词典,翻到相应页面。她的手指在纸页上滑动,眉头逐渐皱起。\n\n\"你说得对。\"她抬起头,看向陈默的目光多了一分认真,\"我确实没有区分清楚。\"\n\n\"没事,这个考点比较隐蔽。\"陈默说,\"不过高考英语选择题第12题,八成会考这个。\"\n\n这句话是他前世考完试后,和同学对答案时听到的。那道题他做错了,林晓雨做对了。\n\n林晓雨的眼神变了。\n\n\"你怎么知道高考会考这个?\"她问。\n\n陈默心里一紧——说得太多了。他还没有建立起在她面前的可信度,就直接预言高考题,只会让她觉得他在吹牛。\n\n\"猜的。\"他尽量让语气听起来随意,\"我做了很多模拟卷,这种冷门考点往往容易出现在压轴题里。你想想,如果出卷老师要拉开分数差距,肯定不会考那些人人都会的基础题。\"\n\n这个解释合情合理。林晓雨沉默了几秒,点了点头:\"有道理。\"\n\n她拿起笔,在词汇书上补充了陈默指出的内容。然后她抬起头,第一次用一种平等的、带着一丝兴趣的目光打量陈默。\n\n\"你最近在用什么复习资料?\"\n\n\"五年高考三年模拟,还有一些从网上下载的冲刺卷。\"陈默说,\"你呢?\"\n\n\"差不多。\"林晓雨顿了顿,\"不过我还在做《高考英语语法专项突破》,你要是感兴趣,可以借给你。\"\n\n陈默心脏狂跳。\n\n这是前世从未发生过的对话。前世的林晓雨从未主动和他说过这么多话,更不会提出借书给他。现在,仅仅因为他指出了一个语法错误,两人之间的关系就发生了微妙的变化。\n\n\"好,谢谢。\"他说。\n\n\"明天带过来给你。\"林晓雨说完,又低下头继续看书,但陈默注意到,她的嘴角带着一丝几不可察的笑意。\n\n陈默站起身,回到自己的座位。他的手心全是汗,心跳快得像要冲出胸腔。\n\n但他知道,这只是开始。\n\n他翻开课桌里的笔记本,在空白页上写下几行字:\n\n\"2006年6月7日,高考倒计时3天。\n第一步:建立学霸人设,获得林晓雨注意——完成。\n第二步:高考后约她一起出去玩,制造单独相处机会。\n第三步:……\"\n\n他停下笔,抬头看向窗外。\n\n远处的教学楼、操场、国旗台,一切都和记忆中一模一样。但这一次,他不会再让十八岁的自己活成前世那个懦弱、失败的模样。\n\n他要抓住林晓雨,抓住即将到来的互联网浪潮,抓住这个重新来过的人生。\n\n窗边,林晓雨合上词汇书,侧过头看了陈默一眼。那个一直沉默寡言的男生,今天突然变得不太一样了。\n\n她收回目光,心里浮起一个念头:也许,我应该重新认识一下陈默。\n\n---\n\n下课铃响起时,陈默依然坐在座位上,盯着笔记本上那些未完成的计划。\n\n他知道,仅仅靠一次对话,不足以挽回前世错过的十七年。但他也知道,所有改变都始于第一步。\n\n而这一步,他已经迈出去了。",
+        "genre_contract_version": null,
+        "genre_profile_id": null,
+        "next_chapter_bridge": "改动率0.00%｜QA=pass｜商业钩子stable; recommendation=rollback",
+        "production_decision": {
+          "action": "revise",
+          "advance_to_next_chapter": false,
+          "hold_for_human_review": true,
+          "reasons": {
+            "editorial_verdict": "accept",
+            "risk_count": 2,
+            "summary_recommendation": "rollback"
+          },
+          "trigger_revision_round": true
+        },
+        "quality_summary": "verdict=pass; score_keys=character_consistency,commercial_pull,emotion_progress,hook_strength,pacing,platform_feedback_alignment,readability,reader_signal_alignment,setting_consistency,structure"
+      },
+      "commercial_verdict": null,
+      "draft_hash": "sha256:8e294eb4b85a32040ab3fd7fb2367dec40a70fc0d6b150b72e998d0d2aac98d1",
+      "event": "EVT-00002",
+      "events_so_far": 2,
+      "index": 2,
+      "llm": {
+        "cost": null,
+        "latency_ms": 185838,
+        "model": "claude-fable-5",
+        "provider": "claude",
+        "replay_ref": null,
+        "response_hash": "sha256:7dbae648162cb87477c50735724261f437f4d11be0d7e7e287a2ef3e9e17bd02",
+        "token_usage": {
+          "cached_input_tokens": 0,
+          "input_tokens": 2003,
+          "output_tokens": 3329,
+          "reasoning_tokens": 0,
+          "total_tokens": 5332,
+          "usage_estimated": false
+        }
+      },
+      "message": "draft produced (2601 words)",
+      "ok": true,
+      "open_setups": 0,
+      "output_path": "registry/derived/drafts/TASK-00002.json",
+      "publish_readiness": {
+        "authority": "human",
+        "basis": {
+          "quality": {
+            "below_threshold": []
+          },
+          "redline": {
+            "hits": [],
+            "passed": true
+          }
+        },
+        "gates_build": false,
+        "policy": {
+          "drop_risk_hold_at": 60,
+          "hold_threshold": 60
+        },
+        "rationale": "未命中红线，商业信号达标，可发布(仍需人工授权，ADR-009)。",
+        "recommendation": "recommend",
+        "schema_version": "1.0",
+        "subject": {
+          "chapter_id": "TASK-00002",
+          "draft_content_hash": "sha256:8e294eb4b85a32040ab3fd7fb2367dec40a70fc0d6b150b72e998d0d2aac98d1"
+        }
+      },
+      "stage": "done",
+      "state_hash": "sha256:eeceb2e16f70128bfa71b430a777258c5dcbd70c1509697521f192c7fe980fe3",
+      "task_id": "TASK-00002",
+      "verdict": null
+    },
+    {
+      "chapter_final": {
+        "artifact_id": "TASK-00003",
+        "chapter_id": "TASK-00003",
+        "commercial_notes": [
+          "整体节奏更顺",
+          "追读动机有增强",
+          "题材卖点对齐度一般"
+        ],
+        "comparison_report": {
+          "authority": "human",
+          "brief_ref": "TASK-00003",
+          "chapter_id": "TASK-00003",
+          "gating": false,
+          "id": "CMP-00003",
+          "kind": "version_comparison",
+          "notes": "Comparison ranks scores supplied by commercial/quality signals; advisory, never gating.",
+          "objective_ref": {
+            "authority": "human",
+            "chapter_id": "TASK-00003",
+            "character_focus": [],
+            "cliffhanger_type": "reveal",
+            "commercial_intent": {
+              "drop_risk_target": "low",
+              "payoff_type": "partial_payoff",
+              "retention_focus": "next_chapter_pull"
+            },
+            "constraints": [
+              "不得破坏角色连续性",
+              "不得引入未授权新事实"
+            ],
+            "gating": false,
+            "id": "OBJ-00003",
+            "kind": "chapter_objective",
+            "notes": "",
+            "objective_id": "OBJ-00003",
+            "pacing_role": "rising_action",
+            "plot_threads": [],
+            "primary_goal": "draft chapter 3: 陈默利用前世记忆，计划在高考后通过倒卖域名赚取第一桶金",
+            "promise_to_deliver": [],
+            "reader_question": "主角接下来如何反应？",
+            "schema_version": "1.0",
+            "secondary_goals": [],
+            "source": {
+              "state_hash": "sha256:eeceb2e16f70128bfa71b430a777258c5dcbd70c1509697521f192c7fe980fe3"
+            },
+            "success_criteria": [
+              "reader_question 明确",
+              "章节末有追读动力",
+              "角色行为符合 runtime 状态"
+            ]
+          },
+          "pipeline_decision": {
+            "action": "revise",
+            "advance_to_next_chapter": false,
+            "hold_for_human_review": true,
+            "reasons": {
+              "editorial_verdict": "accept",
+              "risk_count": 2,
+              "summary_recommendation": "rollback"
+            },
+            "trigger_revision_round": true
+          },
+          "risk_summary": {
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "risks": [
+              "hook_strength_not_improved",
+              "qa_verdict_shift"
+            ],
+            "verdict_shift": [
+              "revise",
+              "pass"
+            ]
+          },
+          "schema_version": "1.0",
+          "selection_metadata": {
+            "ranking": [
+              {
+                "input_index": 0,
+                "score": 0.7,
+                "version_id": "draft"
+              },
+              {
+                "input_index": 1,
+                "score": 0.7,
+                "version_id": "revision"
+              }
+            ],
+            "tie_break_applied": true,
+            "winner_index": 0
+          },
+          "selection_policy": {
+            "primary_metric": "reader_pull",
+            "secondary_metric": "quality_consistency",
+            "tie_break": "earlier_input_order"
+          },
+          "summary": {
+            "commercial_focus": null,
+            "editorial": {
+              "editorial_verdict": "accept",
+              "market_fit": "moderate",
+              "notes": [
+                "整体节奏更顺",
+                "追读动机有增强",
+                "题材卖点对齐度一般"
+              ],
+              "readability": "improved",
+              "retention": "improved"
+            },
+            "headline": "改动率0.00%｜QA=pass｜商业钩子stable",
+            "long_arc_band": null,
+            "major_change_rate_percent": 0.0,
+            "qa_score_deltas": {
+              "character_consistency": 0.7,
+              "commercial_pull": 0.7,
+              "emotion_progress": 0.7,
+              "hook_strength": 0.6,
+              "pacing": 0.75,
+              "platform_feedback_alignment": 0.7,
+              "readability": 0.8,
+              "reader_signal_alignment": 0.7,
+              "setting_consistency": 0.7,
+              "structure": 0.8
+            },
+            "recommendation": "rollback"
+          },
+          "versions": [
+            {
+              "commercial_change": {
+                "commercial_target": null,
+                "hook_alignment": "stable",
+                "hook_target": null,
+                "length_delta_words": 0,
+                "pacing_shift_words": 0,
+                "retention_signal": "improved"
+              },
+              "decision_score_mean": null,
+              "decision_scores": {},
+              "diff_summary": {
+                "added_terms": [],
+                "added_tokens": 0,
+                "after_length": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "before_length": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "change_rate_percent": 0.0,
+                "removed_terms": [],
+                "removed_tokens": 0
+              },
+              "input_index": 0,
+              "qa_change": {
+                "after_verdict": "pass",
+                "before_verdict": "revise",
+                "issues_added": [],
+                "issues_removed": [],
+                "score_delta": {
+                  "character_consistency": 0.7,
+                  "commercial_pull": 0.7,
+                  "emotion_progress": 0.7,
+                  "hook_strength": 0.6,
+                  "pacing": 0.75,
+                  "platform_feedback_alignment": 0.7,
+                  "readability": 0.8,
+                  "reader_signal_alignment": 0.7,
+                  "setting_consistency": 0.7,
+                  "structure": 0.8
+                },
+                "strengths_added": [
+                  "draft produced"
+                ],
+                "strengths_removed": []
+              },
+              "reason": "initial draft",
+              "risk_and_recovery": {
+                "recommendation": "rollback",
+                "recovery_actions": [
+                  "restore stronger chapter hook",
+                  "rebalance pacing and scene load",
+                  "tighten issue-focused QA pass"
+                ],
+                "risks": [
+                  "hook_strength_not_improved",
+                  "qa_verdict_shift"
+                ],
+                "verdict_shift": [
+                  "revise",
+                  "pass"
+                ]
+              },
+              "score": 0.7,
+              "text_summary": {
+                "after": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "before": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "delta_chars": 0,
+                "delta_lines": 0,
+                "delta_words": 0
+              },
+              "version_id": "draft"
+            },
+            {
+              "commercial_change": {
+                "commercial_target": null,
+                "hook_alignment": "stable",
+                "hook_target": null,
+                "length_delta_words": 0,
+                "pacing_shift_words": 0,
+                "retention_signal": "improved"
+              },
+              "decision_score_mean": null,
+              "decision_scores": {},
+              "diff_summary": {
+                "added_terms": [],
+                "added_tokens": 0,
+                "after_length": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "before_length": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "change_rate_percent": 0.0,
+                "removed_terms": [],
+                "removed_tokens": 0
+              },
+              "input_index": 1,
+              "qa_change": {
+                "after_verdict": "pass",
+                "before_verdict": "pass",
+                "issues_added": [],
+                "issues_removed": [],
+                "score_delta": {
+                  "character_consistency": 0.0,
+                  "commercial_pull": 0.0,
+                  "emotion_progress": 0.0,
+                  "hook_strength": 0.0,
+                  "pacing": 0.0,
+                  "platform_feedback_alignment": 0.0,
+                  "readability": 0.0,
+                  "reader_signal_alignment": 0.0,
+                  "setting_consistency": 0.0,
+                  "structure": 0.0
+                },
+                "strengths_added": [],
+                "strengths_removed": []
+              },
+              "reason": "no revision needed",
+              "risk_and_recovery": {
+                "recommendation": "revise",
+                "recovery_actions": [
+                  "restore stronger chapter hook",
+                  "rebalance pacing and scene load",
+                  "tighten issue-focused QA pass"
+                ],
+                "risks": [
+                  "hook_strength_not_improved"
+                ],
+                "verdict_shift": [
+                  "pass",
+                  "pass"
+                ]
+              },
+              "score": 0.7,
+              "text_summary": {
+                "after": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "before": {
+                  "chars": 3933,
+                  "lines": 246,
+                  "words": 476
+                },
+                "delta_chars": 0,
+                "delta_lines": 0,
+                "delta_words": 0
+              },
+              "version_id": "revision"
+            }
+          ],
+          "winner": "draft"
+        },
+        "continuity_notes": [
+          "hook_strength_not_improved",
+          "qa_verdict_shift"
+        ],
+        "final_hash": "sha256:f12fb550ba96503d4dcd80eeafc550d48fdf11090cb124efeae474822bddef69",
+        "final_review": {
+          "chapter_id": "TASK-00003",
+          "gating_recommendation": "advisory",
+          "issues": [],
+          "overall_verdict": "pass",
+          "publish_readiness": "ready",
+          "revision_suggestions": [],
+          "scores": {
+            "character_consistency": 0.7,
+            "commercial_pull": 0.7,
+            "emotion_progress": 0.7,
+            "hook_strength": 0.6,
+            "pacing": 0.75,
+            "platform_feedback_alignment": 0.7,
+            "readability": 0.8,
+            "reader_signal_alignment": 0.7,
+            "setting_consistency": 0.7,
+            "structure": 0.8
+          },
+          "strengths": [
+            "draft produced"
+          ]
+        },
+        "final_status": null,
+        "final_strategy": null,
+        "final_text": "# 第三章：第一桶金\n\n高考结束的第二天，陈默坐在家里那台老旧的联想台式机前，手指敲击着发黄的键盘。\n\n屏幕上是万网的域名注册页面——2006年的互联网还处在野蛮生长期，域名注册规则简单得可笑，没有实名认证，没有复杂的审核流程，只要付钱就能立刻拿下。\n\n他在笔记本上列出了一串域名：\n\nweibo.com（微博）\ndouyin.com（抖音）\nmeituan.com（美团）\ndidi.com（滴滴）\nzhihu.com（知乎）\n\n前世的记忆告诉他，这些域名在未来会价值千万甚至上亿。但陈默很清楚，现在的自己没有资本坐等十年后的收获。他需要的是能在三个月内变现的快钱。\n\n他划掉了这些\"理想清单\"，重新写下另一组名字：\n\nhao123.cn（已被注册）\n58.com（已被注册）\nganji.com（已被注册）\n\n\"果然。\"陈默自嘲地笑了笑。真正有价值的域名早就被专业团队盯上了。2006年虽然早，但绝不是荒野时代。\n\n他需要换个思路。\n\n陈默重新打开搜索引擎，开始查询最近的新闻。屏幕上跳出一条条信息：\n\n\"百度贴吧用户突破三千万\"\n\"淘宝网日交易额破亿\"\n\"QQ同时在线人数突破两千万\"\n\n他的目光停在一条不起眼的新闻上：\"地方门户网站兴起，资本关注本地化互联网服务\"。\n\n对了。\n\n前世到2008年，几乎每个二三线城市都出现了本地门户网站热潮——XX在线、XX热线、XX网。那些创业者疯狂抢注地方域名，有些拿到了天使投资，有些直接被地方媒体集团收购。\n\n而现在是2006年6月，这波浪潮还没有真正爆发。\n\n陈默迅速在笔记本上写下新的清单：\n\nsuzhou.com（苏州）\nningbo.com（宁波）\ndongguan.com（东莞）\nfoshan.com（佛山）\n\n他逐个查询，前三个都已被注册。只有foshan.com还显示\"可注册\"状态。\n\n\"佛山……\"陈默咬着笔帽思考。前世他记得，2007年佛山本地有一家陶瓷企业想做电商平台，最后花了八十万从域名投资人手里买下这个域名。\n\n八十万。\n\n对现在的他来说，这是一笔巨款。但问题是——他现在手里只有三百块钱。\n\n域名注册费一年一百三十九元，他最多只能注册两个域名。\n\n陈默深吸一口气，开始重新评估策略。他不能把宝全押在一个域名上，必须构建一个投资组合。\n\n他需要找到那些：\n1. 注册成本低\n2. 半年内能出手\n3. 买家明确且有支付能力\n\n符合这三个条件的域名。\n\n陈默重新搜索近期的商业新闻，目光在屏幕上快速扫过——\n\n\"温州民间资本活跃，私营企业主寻求互联网转型\"\n\"义乌小商品城筹备电子商务平台\"\n\"东莞制造业企业试水网络营销\"\n\n有了。\n\n他迅速列出新的清单：\n\nyiwu.com（义乌，已注册）\nyiwugo.com（义乌购，可注册）\n0769.com（东莞区号，已注册）\ndg.com（东莞简称，已注册）\ndgbuy.com（东莞购，可注册）\n\n陈默的手指在桌面上轻敲。yiwugo.com和dgbuy.com都还没被抢注，但他只能选一个。\n\n前世的记忆开始在脑海中翻涌——2007年初，义乌工商学院有个学生创业团队想做义乌小商品的网络分销平台，他们的融资BP里提到因为拿不到yiwu.com，只能用yiwugo作为品牌名。那个项目最后拿到了五十万天使投资。\n\n而dgbuy.com……他印象中没有特别明确的买家。\n\n决定了。\n\n陈默点开万网的注册页面，输入yiwugo.com，确认可注册，然后开始填写信息。\n\n就在他准备点击\"提交订单\"的瞬间，房门突然被推开。\n\n\"陈默！\"母亲的声音带着明显的不满，\"你天天对着电脑干什么？高考完了就该出去找暑假工，你看隔壁小李都在超市做收银了！\"\n\n陈默的手指悬在鼠标上，屏幕上的注册页面还停留在付款步骤。\n\n\"妈，我在查资料。\"他没有回头。\n\n\"查什么资料？都考完了还查！\"母亲走过来，看到屏幕上密密麻麻的英文字母，皱起了眉，\"你不会是在玩游戏吧？\"\n\n\"不是，我在注册域名。\"陈默平静地说。\n\n\"域名？那是什么东西？\"\n\n\"就是网址。注册下来以后可以转手卖出去，赚差价。\"\n\n母亲的表情从疑惑变成了警惕：\"你该不会是被什么传销骗了吧？天天说什么互联网赚钱，我看都是骗人的！\"\n\n陈默转过头，认真地看着母亲：\"妈，给我一个月时间。如果我能用这三百块钱赚到一万块，你就不要再管我做什么。\"\n\n\"一万块？\"母亲愣了一下，随即冷笑，\"你以为钱是大风刮来的？三百块变一万，你做梦呢？\"\n\n\"如果做不到，我立刻去找暑假工。\"陈默的语气没有任何动摇，\"但在这之前，请让我试一次。\"\n\n母亲盯着他看了几秒钟，最终摆了摆手：\"随便你。反正到时候别哭着说后悔。\"\n\n房门重新关上。\n\n陈默转回屏幕，深吸一口气，点击了\"提交订单\"。\n\n支付成功。\n\nyiwugo.com正式成为他的资产。\n\n但他很清楚，注册域名只是第一步。真正的挑战在于如何找到买家，如何证明这个域名的价值，如何在没有资源、没有人脉的情况下，让那些企业主相信一个十八岁高中毕业生手里的域名值得他们掏钱。\n\n陈默打开QQ，开始搜索\"义乌创业论坛\"\"义乌电商交流群\"\"义乌小商品城\"等关键词。\n\n前世的经验告诉他，2006年的互联网创业者都有一个共同特点——他们活跃在各种论坛和QQ群里，渴望交流，渴望信息，渴望抓住任何一个可能的机会。\n\n他需要进入那些圈子，找到真正的潜在买家。\n\n但就在他刚加入第一个\"义乌电商创业交流群\"的时候，QQ消息窗口突然弹出。\n\n是林晓雨。\n\n\"陈默，明天学校要返校拿成绩单和档案，你去吗？\"\n\n陈默看着这条消息，愣了两秒钟。\n\n前世的他因为高考失利，根本没脸回学校，是母亲替他拿回了成绩单。而这一世——\n\n他看了眼墙上的日历。\n\n6月29号。距离高考成绩公布还有四天。\n\n如果他没记错，前世的自己考了498分，离二本线差了十二分。而现在，重生后的第一次考试，他的成绩会是多少？\n\n陈默的手指悬在键盘上，犹豫了片刻，最终回复：\n\n\"去。\"\n\n发送完消息，他重新看向电脑屏幕上的域名管理后台。\n\nyiwugo.com的状态显示为\"已注册\"。\n\n这是他重生后的第一个筹码。\n\n但他心里很清楚，如果四天后的高考成绩依然是498分，那么一切计划都将被迫调整——一个高考失利的人，很难在家人和周围人的质疑中坚持创业计划。\n\n他需要两手准备。\n\n陈默重新拿起笔记本,开始制定B计划——如果高考成绩不理想,他必须在最短时间内用这个域名变现,证明自己的判断和能力,赢得继续行动的空间。\n\n窗外的蝉鸣声传来,2006年的夏天闷热而漫长。\n\n陈默盯着屏幕上yiwugo.com的后台页面,忽然意识到一个更严重的问题——\n\n前世的记忆只能告诉他\"谁会需要这个域名\",但不能告诉他\"如何让对方相信一个十八岁高中生手里的域名值得买\"。\n\n那个拿到五十万天使投资的义乌工商学院创业团队,是在2007年3月才启动项目的。距离现在还有九个月。\n\n而他只给了自己一个月时间。\n\n这意味着他必须主动创造需求,而不是被动等待买家出现。\n\n陈默重新打开搜索引擎,输入\"义乌小商品城 电子商务\",开始寻找任何可能的切入点。\n\n屏幕上跳出几条相关新闻,其中一条引起了他的注意:\n\n\"义乌市政府发布《关于加快电子商务发展的若干意见》,鼓励传统企业开展网络营销\"。\n\n发布时间:2006年5月。\n\n陈默的眼睛亮了。\n\n政府推动意味着会有配套的扶持政策,意味着会有一批企业被要求或鼓励\"触网\",意味着这些企业会需要域名、网站、网络营销方案。\n\n而那些传统的义乌商人,绝大多数不懂互联网,他们需要的不只是一个域名,而是一整套\"如何在网上卖货\"的解决方案。\n\n如果他能把yiwugo.com包装成一个\"现成的网络营销平台品牌\",而不只是一个域名……\n\n陈默迅速在笔记本上写下新的计划:\n\n1. 注册一个免费博客,搭建\"义乌购·小商品网络营销平台\"的概念展示页\n2. 加入所有义乌相关的电商群和论坛,以\"义乌购\"的名义发布行业分析和营销建议\n3. 寻找那些刚开始尝试电商、但没有技术团队的义乌企业主\n4. 用\"品牌+域名+概念\"打包出售,而不是单纯卖域名\n\n这需要时间,需要持续的内容输出,需要在圈子里建立可信度。\n\n一个月够吗？\n\n陈默看了眼日历,又看了眼QQ群列表里刚加入的\"义乌电商创业交流群(3/500)\"。\n\n不知道。\n\n但他必须试。\n\n电脑屏幕的光映在他脸上,18岁的面孔上带着35岁灵魂的沉着与决绝。\n\nQQ消息再次闪烁。\n\n还是林晓雨:\"那明天早上八点半校门口见?\"\n\n陈默盯着这条消息,忽然想起前世的那个夏天——他因为高考失利躲在家里,错过了返校日,也错过了林晓雨最后一次主动约他见面的机会。\n\n那之后,两人再也没有单独说过话。\n\n他的手指在键盘上停留了几秒钟,最终打下两个字:\n\n\"好。\"\n\n发送完消息,陈默关掉QQ,重新打开域名后台。\n\nyiwugo.com的注册信息静静地显示在屏幕上,像是一张还没有兑现的支票。\n\n他还剩一百六十一块钱。\n\n四天后会公布高考成绩。\n\n明天要去学校见林晓雨。\n\n一个月后要向母亲证明三百块能变成一万。\n\n而现在,他手里唯一的资产是一个没有任何人知道、没有任何流量、没有任何内容的域名。\n\n陈默深吸一口气,打开记事本,开始撰写\"义乌购\"的第一篇内容——\n\n《义乌小商品如何通过网络打开全国市场:三个你必须知道的渠道》\n\n窗外的天色渐暗,2006年6月29日的夜晚即将来临。\n\n而在这个十八岁少年的房间里,一场关于域名、关于创业、关于如何用信息差赚取第一桶金的计划,正在悄然展开。",
+        "genre_contract_version": null,
+        "genre_profile_id": null,
+        "next_chapter_bridge": "改动率0.00%｜QA=pass｜商业钩子stable; recommendation=rollback",
+        "production_decision": {
+          "action": "revise",
+          "advance_to_next_chapter": false,
+          "hold_for_human_review": true,
+          "reasons": {
+            "editorial_verdict": "accept",
+            "risk_count": 2,
+            "summary_recommendation": "rollback"
+          },
+          "trigger_revision_round": true
+        },
+        "quality_summary": "verdict=pass; score_keys=character_consistency,commercial_pull,emotion_progress,hook_strength,pacing,platform_feedback_alignment,readability,reader_signal_alignment,setting_consistency,structure"
+      },
+      "commercial_verdict": null,
+      "draft_hash": "sha256:8e4e46921e993ed4176e0ed790d64bd6bd1f57f37c04b577b14cb4984b7178c5",
+      "event": "EVT-00003",
+      "events_so_far": 3,
+      "index": 3,
+      "llm": {
+        "cost": null,
+        "latency_ms": 199786,
+        "model": "claude-fable-5",
+        "provider": "claude",
+        "replay_ref": null,
+        "response_hash": "sha256:85f70464ac5c3a1643cd9fbd1ec3806c3f941a9ef84ed58ff6f9adfce8541f16",
+        "token_usage": {
+          "cached_input_tokens": 0,
+          "input_tokens": 1923,
+          "output_tokens": 4046,
+          "reasoning_tokens": 0,
+          "total_tokens": 5969,
+          "usage_estimated": false
+        }
+      },
+      "message": "draft produced (3280 words)",
+      "ok": true,
+      "open_setups": 0,
+      "output_path": "registry/derived/drafts/TASK-00003.json",
+      "publish_readiness": {
+        "authority": "human",
+        "basis": {
+          "quality": {
+            "below_threshold": []
+          },
+          "redline": {
+            "hits": [],
+            "passed": true
+          }
+        },
+        "gates_build": false,
+        "policy": {
+          "drop_risk_hold_at": 60,
+          "hold_threshold": 60
+        },
+        "rationale": "未命中红线，商业信号达标，可发布(仍需人工授权，ADR-009)。",
+        "recommendation": "recommend",
+        "schema_version": "1.0",
+        "subject": {
+          "chapter_id": "TASK-00003",
+          "draft_content_hash": "sha256:8e4e46921e993ed4176e0ed790d64bd6bd1f57f37c04b577b14cb4984b7178c5"
+        }
+      },
+      "stage": "done",
+      "state_hash": "sha256:5432e05b57862a3e5c89b4e2c1c0ec10543f786c7cb7c99504be03c40db9a146",
+      "task_id": "TASK-00003",
+      "verdict": null
+    }
+  ],
+  "gating": false,
+  "id": "RUN-00012",
+  "kind": "production_run_manifest",
+  "rationale": "produced 3, skipped 0 of 3; cost UNKNOWN: 3 unpriced live call(s) (claude:claude-fable-5) — not free",
+  "run": {
+    "commercial": false,
+    "finished_at": "2026-09-07T10:06:26.145527+00:00",
+    "max_chapters": 10,
+    "model_id": "claude-fable-5",
+    "model_provider": "claude",
+    "prompt_version": "6.0.0",
+    "reviewer": "serial-v1",
+    "started_at": "2026-09-07T09:58:53.848850+00:00"
+  },
+  "serial_pacing": null,
+  "totals": {
+    "cost": null,
+    "final_state_hash": "sha256:5432e05b57862a3e5c89b4e2c1c0ec10543f786c7cb7c99504be03c40db9a146",
+    "live_calls": 3,
+    "planned": 3,
+    "produced": 3,
+    "skipped": 0,
+    "token_usage": {
+      "input": 5960,
+      "output": 10431,
+      "total": 16391
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,836 @@
+{
+  "kind": "w10_blind_review_inputs",
+  "version": "1.0",
+  "status": "ready_for_execution",
+  "purpose": "Assemble blind-review input payloads for each W10 batch.",
+  "execution_note": "original arm bound to real chapter-final text; automatic_revision bound to market-anchored prose-hygiene output; human_revision pending (no human material exists yet).",
+  "inputs": [
+    {
+      "batch_id": "W10-B01",
+      "candidate_ids": [
+        "QGS-00001",
+        "QGS-00002",
+        "QGS-00003"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00001",
+          "bound_chapter_id": "TASK-00020",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00020.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00020.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00002",
+          "bound_chapter_id": "TASK-00001",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00001.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00001.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00003",
+          "bound_chapter_id": "TASK-00013",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00013.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00013.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B02",
+      "candidate_ids": [
+        "QGS-00004",
+        "QGS-00005",
+        "QGS-00006"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00004",
+          "bound_chapter_id": "TASK-00007",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00007.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00007.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00005",
+          "bound_chapter_id": "TASK-00010",
+          "auto_verdict": "rejected_gutting",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00010.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00010.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00006",
+          "bound_chapter_id": "TASK-00016",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00016.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00016.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B03",
+      "candidate_ids": [
+        "QGS-00007",
+        "QGS-00008",
+        "QGS-00009"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00007",
+          "bound_chapter_id": "TASK-00028",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00028.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00028.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00008",
+          "bound_chapter_id": "TASK-00033",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00033.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00033.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00009",
+          "bound_chapter_id": "TASK-00011",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00011.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00011.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B04",
+      "candidate_ids": [
+        "QGS-00010",
+        "QGS-00011",
+        "QGS-00012"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00010",
+          "bound_chapter_id": "TASK-00023",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00023.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00023.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00011",
+          "bound_chapter_id": "TASK-00029",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00029.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00029.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00012",
+          "bound_chapter_id": "TASK-00003",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00003.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00003.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B05",
+      "candidate_ids": [
+        "QGS-00013",
+        "QGS-00014",
+        "QGS-00015"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00013",
+          "bound_chapter_id": "TASK-00017",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00017.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00017.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00014",
+          "bound_chapter_id": "TASK-00018",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00018.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00018.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00015",
+          "bound_chapter_id": "TASK-00030",
+          "auto_verdict": "rejected_gutting",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00030.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00030.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B06",
+      "candidate_ids": [
+        "QGS-00016",
+        "QGS-00017",
+        "QGS-00018"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00016",
+          "bound_chapter_id": "TASK-00031",
+          "auto_verdict": "no_improvement",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00031.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00031.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00017",
+          "bound_chapter_id": "TASK-00006",
+          "auto_verdict": "no_improvement",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00006.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00006.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00018",
+          "bound_chapter_id": "TASK-00002",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00002.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00002.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B07",
+      "candidate_ids": [
+        "QGS-00019",
+        "QGS-00020",
+        "QGS-00021"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00019",
+          "bound_chapter_id": "TASK-00005",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00005.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00005.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00020",
+          "bound_chapter_id": "TASK-00008",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00008.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00008.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00021",
+          "bound_chapter_id": "TASK-00009",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00009.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00009.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B08",
+      "candidate_ids": [
+        "QGS-00022",
+        "QGS-00023",
+        "QGS-00024"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00022",
+          "bound_chapter_id": "TASK-00012",
+          "auto_verdict": "rejected_gutting",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00012.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00012.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00023",
+          "bound_chapter_id": "TASK-00021",
+          "auto_verdict": "rejected_gutting",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00021.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00021.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00024",
+          "bound_chapter_id": "TASK-00025",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00025.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00025.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B09",
+      "candidate_ids": [
+        "QGS-00025",
+        "QGS-00026",
+        "QGS-00027"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00025",
+          "bound_chapter_id": "TASK-00026",
+          "auto_verdict": "rejected_gutting",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00026.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00026.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00026",
+          "bound_chapter_id": "TASK-00004",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00004.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00004.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00027",
+          "bound_chapter_id": "TASK-00015",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00015.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00015.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "W10-B10",
+      "candidate_ids": [
+        "QGS-00028",
+        "QGS-00029",
+        "QGS-00033"
+      ],
+      "bound_candidates": [
+        {
+          "candidate_id": "QGS-00028",
+          "bound_chapter_id": "TASK-00019",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00019.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00019.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00029",
+          "bound_chapter_id": "TASK-00022",
+          "auto_verdict": "rejected_gutting",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00022.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00022.json#artifact.body",
+              "status": "identical_to_original",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        },
+        {
+          "candidate_id": "QGS-00033",
+          "bound_chapter_id": "TASK-00024",
+          "auto_verdict": "improved",
+          "payloads": [
+            {
+              "version_id": "original",
+              "content_ref": "genesis-pilot/registry/derived/chapter-final/final-TASK-00024.json#final_text",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "automatic_revision",
+              "content_ref": "AI-Novel-Runtime/quality-golden-set/w10-auto-revision/auto-TASK-00024.json#artifact.body",
+              "status": "bound",
+              "provenance_hidden": true
+            },
+            {
+              "version_id": "human_revision",
+              "content_ref": null,
+              "status": "pending_human",
+              "provenance_hidden": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "next_actions": [
+    "bind real chapter payloads to the redacted content refs",
+    "shuffle each batch before review",
+    "collect blind ranking and reason codes",
+    "persist results to the W10 comparison record"
+  ],
+  "binding_status": "original_and_auto_bound_human_pending"
+}

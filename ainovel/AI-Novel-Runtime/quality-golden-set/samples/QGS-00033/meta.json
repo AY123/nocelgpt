@@ -1,0 +1,15 @@
+{
+  "sample_id": "QGS-00033",
+  "title": "抽象情绪堆叠无具体动作",
+  "genre": "都市商战",
+  "chapter_position": "chapter-1",
+  "source_type": "synthetic",
+  "source_hint": "句子看似完整，但缺少可验证动作与具体变化",
+  "risk_flags": [],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "ai_voice_risk",
+    "low_information_density",
+    "weak_hook"
+  ]
+}

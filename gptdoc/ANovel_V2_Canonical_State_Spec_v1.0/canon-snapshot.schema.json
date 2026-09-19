@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/canon-snapshot.schema.json",
+  "title": "CanonSnapshot",
+  "type": "object",
+  "required": [
+    "snapshot_id",
+    "project_id",
+    "branch_id",
+    "head_commit_id",
+    "head_sequence",
+    "snapshot_hash",
+    "state"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "branch_id": {
+      "type": "string"
+    },
+    "head_commit_id": {
+      "type": "string"
+    },
+    "head_sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "snapshot_hash": {
+      "type": "string"
+    },
+    "state": {
+      "type": "object"
+    },
+    "schema_versions": {
+      "type": "object"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

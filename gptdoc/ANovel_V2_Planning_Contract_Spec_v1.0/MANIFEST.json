@@ -1,0 +1,37 @@
+{
+  "package": "ANovel V2 Planning & Narrative Contract Specification v1.0",
+  "files": [
+    {
+      "name": "PLANNING_CONTRACT_SPEC.md",
+      "sha256": "b5313d2a5ecc2c886c03269cf336d9b5d79ceaf08a1c2d8191809416b50b4087"
+    },
+    {
+      "name": "series-vision.schema.json",
+      "sha256": "dc7afbe4e27535e2fa83786d91a44a6f03b038a985fc1bbf09698c0702c70e52"
+    },
+    {
+      "name": "arc-plan.schema.json",
+      "sha256": "19078cafdc8025b0117670f09c75db32a3d4b1d6eb6e71da1d3a21e8656a4144"
+    },
+    {
+      "name": "chapter-contract.schema.json",
+      "sha256": "2719ca99767d580ab0311f0dd56850e5104de59876bbf20c9dd2de695f19b278"
+    },
+    {
+      "name": "scene-contract.schema.json",
+      "sha256": "0fad9336b6c2a5f18826befb0ce5c61c2aab4a84ab41be8bd213ddf789a7ad5c"
+    },
+    {
+      "name": "plan-diff.schema.json",
+      "sha256": "d0d01df6f136551279396f399729dae596753ca0f7051b22ee83e4b233887b65"
+    },
+    {
+      "name": "planning-policy.yaml",
+      "sha256": "6f7919398735cfe5d513e0787313e74e85c4a0473be14abb0a8db9653cd472b3"
+    },
+    {
+      "name": "planning-contract-test-matrix.yaml",
+      "sha256": "818e710f37da8606b73cd6517e92bccfee905948b3a337f7511a8906a8b4bbf2"
+    }
+  ]
+}

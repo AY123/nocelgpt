@@ -1,0 +1,15 @@
+{
+  "sample_id": "QGS-00035",
+  "title": "角色说话像同一个人",
+  "genre": "都市逆袭",
+  "chapter_position": "chapter-3",
+  "source_type": "synthetic",
+  "source_hint": "不同角色的措辞、节奏、态度区分不足",
+  "risk_flags": [],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "ai_voice_risk",
+    "character_motivation",
+    "continuity"
+  ]
+}

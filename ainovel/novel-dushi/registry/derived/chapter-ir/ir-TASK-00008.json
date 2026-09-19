@@ -1,0 +1,107 @@
+{
+  "artifact_format": "1.0",
+  "kind": "chapter_ir",
+  "chapter_no": 8,
+  "task_id": "TASK-00008",
+  "outline_ref": "OUTLINE-00001",
+  "reference_anchor": {
+    "id": "REFABSTRACT-001",
+    "kind": "reference_lm_abstraction",
+    "market_positioning": {
+      "genre": "都市/言情",
+      "reader_target": "中文商业网文核心读者",
+      "core_promise": "以高频反转与局部兑现维持追读",
+      "commercial_thesis": "开篇强钩子 + 中段持续升级 + 章末钩子稳定兑现"
+    },
+    "structural_patterns": {
+      "opening": "强钩子开局、目标先行、身份或处境反差迅速建立",
+      "conflict": "主目标牵引下的连续冲突升级",
+      "payoff": "小周期兑现与章末悬念交替出现",
+      "continuity": "事实与关系状态持续累积，不做重置式推进"
+    },
+    "commercial_cadence": {
+      "opening": "前几章迅速建立卖点与冲突",
+      "mid_arc": "每个小周期均有显性回报",
+      "chapter_end": "章末留钩子或未完成目标",
+      "long_run": "百章尺度仍可维持升级空间与矛盾层次"
+    },
+    "transferable_abstractions": [
+      "反差开局",
+      "目标-阻力-回报循环",
+      "连续升级阶梯",
+      "关系张力驱动",
+      "章末钩子"
+    ]
+  },
+  "intent": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼实习生月入三千阶段的小敌人露出破绽，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+  "beats": [
+    {
+      "index": 1,
+      "role": "setup",
+      "intent": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼实习生月入三千阶段的小敌人露出破绽，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "读者了解本章处境：在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼实习生月入三千阶段的小敌人露出破绽，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+      "reader_question": "本章目标能否达成：在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼实习生月入三千阶段的小敌人露出破绽，向「在商业世界证明自己，改写前世失败命运」再逼近一步？",
+      "emotion_shift": {
+        "to": 35,
+        "tone": "铺垫"
+      }
+    },
+    {
+      "index": 2,
+      "role": "escalation",
+      "intent": "升级：压力加码，把冲突推向临界",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "新的压力浮现：对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "reader_question": "局面还会更糟吗？",
+      "emotion_shift": {
+        "to": 55,
+        "tone": "紧张"
+      }
+    },
+    {
+      "index": 3,
+      "role": "turn",
+      "intent": "转折：局面反转或主角做出关键选择",
+      "participants": [
+        "CHR-90001"
+      ],
+      "turning_point": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "information_gain": "局势因反转而改变",
+      "reader_question": "反转之后会怎样？",
+      "emotion_shift": {
+        "to": 70,
+        "tone": "转机"
+      }
+    },
+    {
+      "index": 4,
+      "role": "exit_hook",
+      "intent": "收尾钩子：留下让读者追更的悬念",
+      "reader_question": "第8章结尾，实习生月入三千阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "exit_hook": "第8章结尾，实习生月入三千阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "emotion_shift": {
+        "to": 75,
+        "tone": "悬念"
+      }
+    }
+  ],
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90011@v1",
+      "EVT-90010@v1",
+      "EVT-90012@v1",
+      "TML-90001@v1",
+      "EVT-90009@v1",
+      "EVT-90013@v1"
+    ],
+    "source_version": 4
+  },
+  "dramatic_question": "主角目标与实习生月入三千阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。必须在今夜之前动手，否则再无机会",
+  "content_hash": "sha256:fa98fc33f305af4ea19c8c757d7b39bd2eb96073441beb89c421368511027cf7"
+}

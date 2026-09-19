@@ -1,0 +1,2010 @@
+{
+  "chapter_count": 30,
+  "chapters": [
+    {
+      "accidents": [],
+      "chapter_index": 1,
+      "checkpoint": null,
+      "content_hash": "e6c6917774766980e8cc0b500b0882c2fbd4cf31eb8e66f4e501ed6e50e8e6eb",
+      "event_id": "EVENT-1",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 19,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-1",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 2,
+      "checkpoint": null,
+      "content_hash": "ab7457f9585e61000d74aa4d978c0261f8a93cb45ef6254ee26e506522f0514e",
+      "event_id": "EVENT-2",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 67,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-2",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 3,
+      "checkpoint": null,
+      "content_hash": "3cf3bc28c78c84fa9298a1bd4b5e93a64116ab56447b4adc7663f6285b29694e",
+      "event_id": "EVENT-3",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 16,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-3",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 4,
+      "checkpoint": null,
+      "content_hash": "54bcb287f71917e63fb1a9ffe9abdf3733a94aa678449bc54e3c2f16f890a629",
+      "event_id": "EVENT-4",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 74,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-4",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 5,
+      "checkpoint": null,
+      "content_hash": "0367e4588b7573c59668a996d212c75dc75a6dacf79933c1d51c6f0df654ae76",
+      "event_id": "EVENT-5",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 45,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-5",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 6,
+      "checkpoint": null,
+      "content_hash": "459e71a01a01cf99a9091f5f92cf10d632d64c6a66ab19eb23df4dd5068c3d27",
+      "event_id": "EVENT-6",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 37,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-6",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 7,
+      "checkpoint": null,
+      "content_hash": "1b8bbbf45aecf600b4eb01d6b2a27b7656023dc5edfacb02c6d5808e0a3062bc",
+      "event_id": "EVENT-7",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 96,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-7",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 8,
+      "checkpoint": null,
+      "content_hash": "1f63616df24763b710957887d5ddfd01b6fb9a20b9e75bb50986a9f127e105b6",
+      "event_id": "EVENT-8",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 74,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-8",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 9,
+      "checkpoint": null,
+      "content_hash": "f3714878703600de9b66c7b6dfee018aadc5fa0ddbbabadf23aa2236b6b4b59b",
+      "event_id": "EVENT-9",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 37,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-9",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 10,
+      "checkpoint": null,
+      "content_hash": "5f4d0dbb9570a092ab001f074b7fed7742edb05b2dd1dc50c36182515703074b",
+      "event_id": "EVENT-10",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 14,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-10",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 11,
+      "checkpoint": null,
+      "content_hash": "ab8cffeccea23d54880a152a5d7fb726fcde6a36ae4f118987d7461b77003ada",
+      "event_id": "EVENT-11",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 31,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-11",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 12,
+      "checkpoint": null,
+      "content_hash": "8925a82d44933c19c9cac48c1e039bfd5911a858da172d81869823534097334b",
+      "event_id": "EVENT-12",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 37,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-12",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 13,
+      "checkpoint": null,
+      "content_hash": "0f248f0f021a424915e5f888652682d6edd4130c84afbdae891710e759a07b00",
+      "event_id": "EVENT-13",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 76,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-13",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 14,
+      "checkpoint": null,
+      "content_hash": "4c313a09922b202308eebceee31791fe9f2b75affcbf7c2111fb2dba85fff410",
+      "event_id": "EVENT-14",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 75,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-14",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 15,
+      "checkpoint": null,
+      "content_hash": "806d8ad8206f9472f19e9b65277440cd3f2a61068119407240cba62cc7e1648e",
+      "event_id": "EVENT-15",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 37,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-15",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 16,
+      "checkpoint": null,
+      "content_hash": "52f2de065c952b2a6821da231ee1786cc1b47c2b3dd53378716650585a47b691",
+      "event_id": "EVENT-16",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 82,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-16",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 17,
+      "checkpoint": null,
+      "content_hash": "0283181ad03acd2f19351d7e3e81ec2f1e785331478e7a535e3a98402a9bd283",
+      "event_id": "EVENT-17",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 101,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-17",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 18,
+      "checkpoint": null,
+      "content_hash": "07d0e694b277f6e9c3d5ff955088824faba2bcb474dcc75a56218f73fde4cf18",
+      "event_id": "EVENT-18",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 37,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-18",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 19,
+      "checkpoint": null,
+      "content_hash": "f9bf3eee60eb3ece761e79f83b45f8c75013c072921f5cda7e92596cc9ea992d",
+      "event_id": "EVENT-19",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 79,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-19",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 20,
+      "checkpoint": null,
+      "content_hash": "34177da743004ed4e83c13d537da33bc511448c97eb35911b73d056be1e7bd4d",
+      "event_id": "EVENT-20",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 13,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-20",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 21,
+      "checkpoint": null,
+      "content_hash": "8000e06adc348b526ef0ba97d1568584070c7a40e420b9d294d3396b079a21a0",
+      "event_id": "EVENT-21",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 30,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-21",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 22,
+      "checkpoint": null,
+      "content_hash": "ae2143e34c8c2eed4c8ae71a4c834f4aa26b48b745de40fc9296b24520416898",
+      "event_id": "EVENT-22",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 76,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-22",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 23,
+      "checkpoint": null,
+      "content_hash": "9b76ee0dc8d96c88587d1d5f0ce9ea1d38a172a5092d13eab3bae0cf696a48b8",
+      "event_id": "EVENT-23",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 80,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-23",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 24,
+      "checkpoint": null,
+      "content_hash": "22b26ca871d04a9253ec39a09eac635b69ff9b77063ed0c2fd92beac3eca92bd",
+      "event_id": "EVENT-24",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 37,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-24",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 25,
+      "checkpoint": null,
+      "content_hash": "77b22e8d65a9599df982fcb759978d965551037322a5547604214547e585122d",
+      "event_id": "EVENT-25",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 47,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-25",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 26,
+      "checkpoint": null,
+      "content_hash": "776f581f8d025cc9f2ec3c8bf3963dd72a20b1334125487e3a14d8c7437ab8d1",
+      "event_id": "EVENT-26",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 76,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-26",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 27,
+      "checkpoint": null,
+      "content_hash": "c0a174e0b1b2b478523391a13239ad55d1f1ba7a991d08e619301563a706b9a4",
+      "event_id": "EVENT-27",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 62,
+        "lines": 1,
+        "words": 3
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-27",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 28,
+      "checkpoint": null,
+      "content_hash": "38a6ab72a59253aba3d844c8389bf1cb9243b7b15834dcf2feec9a2da725c0fa",
+      "event_id": "EVENT-28",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 83,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-28",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 29,
+      "checkpoint": null,
+      "content_hash": "b0b6b9c4b388603009eb00a6506a025bc421c5bf597ae5eb114bc4569c6a97c3",
+      "event_id": "EVENT-29",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 77,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-29",
+      "version": "1.0"
+    },
+    {
+      "accidents": [],
+      "chapter_index": 30,
+      "checkpoint": null,
+      "content_hash": "f8a6a1a3112310a41e4efabb59a116bcefd51f3c3620b7c6717fd1ba400c0aeb",
+      "event_id": "EVENT-30",
+      "facts": {
+        "approval_request_ids": [],
+        "candidates_mintable": null,
+        "candidates_staged": null,
+        "mint_receipt_ids": [],
+        "next_chapter_consumed": null
+      },
+      "hashes": {
+        "draft_hash": null,
+        "final_hash": null,
+        "state_hash": null,
+        "winner_id": null
+      },
+      "human": {
+        "accept": null,
+        "adjudication": null,
+        "edit_minutes": null,
+        "labels": [],
+        "notes": "",
+        "reviewer_ids": []
+      },
+      "kind": "chapter_evidence_row",
+      "length": {
+        "chars": 18,
+        "lines": 1,
+        "words": 1
+      },
+      "llm": {
+        "cost": null,
+        "latency_ms": null,
+        "model": null,
+        "provider": null,
+        "replay_ref": null,
+        "response_hash": null,
+        "token_usage": {
+          "cached_input_tokens": null,
+          "input_tokens": null,
+          "output_tokens": null,
+          "total_tokens": null,
+          "usage_estimated": null
+        }
+      },
+      "ok": true,
+      "output_path": null,
+      "prompt_provenance": {},
+      "quality": {
+        "commercial_verdict": null,
+        "overall_verdict": null,
+        "publish_readiness": {
+          "gates_build": null,
+          "rationale": null,
+          "recommendation": null
+        },
+        "scores": {},
+        "verdict": null
+      },
+      "stage": "outline",
+      "task_id": "CH-30",
+      "version": "1.0"
+    }
+  ],
+  "content_hash": "cb436ae0885ada238b5b1c9acb0302ccda4d0330f04e5797bfe7a522d79f5573",
+  "kind": "chapter_evidence_ledger",
+  "notes": "outline-derived chapter evidence",
+  "protocol_config_hash": "30",
+  "protocol_id": "N100-043",
+  "run_id": "OUTLINE-live-baseline-5ch",
+  "run_ref": {
+    "gating": false,
+    "kind": "outline_bootstrap",
+    "version": "1.0"
+  },
+  "totals": {
+    "cost": null,
+    "final_state_hash": null,
+    "live_calls": 0,
+    "planned": 30,
+    "produced": 30,
+    "skipped": 0,
+    "token_usage": {
+      "input": 0,
+      "output": 0,
+      "total": 0
+    }
+  },
+  "version": "1.0"
+}

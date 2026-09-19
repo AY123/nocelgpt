@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 1,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 2,
+    "continuity": 1,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 1,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 1,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 2
+  },
+  "editor_a_note": "角色降智和逻辑断裂严重破坏代入感，缺乏付费和追读动力，需重写动机与冲突链条。",
+  "editor_b_note": "角色动机断裂和降智处理严重削弱了故事可信度，读者难以共情，追读意愿低。",
+  "consensus_scores": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 1,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 1,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 2
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

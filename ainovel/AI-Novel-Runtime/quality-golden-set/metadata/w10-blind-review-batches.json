@@ -1,0 +1,36 @@
+{
+  "kind": "w10_blind_review_batches",
+  "version": "1.0",
+  "status": "ready_for_execution",
+  "purpose": "Materialize the W10 blind-review candidate pool into batch-sized review units.",
+  "execution_note": "Ten blind-review batches have been prepared, each containing three candidate chapters.",
+  "batch_count_target": 10,
+  "batch_size_target": 3,
+  "batches": [
+    {"batch_id": "W10-B01", "candidate_ids": ["QGS-00001", "QGS-00002", "QGS-00003"]},
+    {"batch_id": "W10-B02", "candidate_ids": ["QGS-00004", "QGS-00005", "QGS-00006"]},
+    {"batch_id": "W10-B03", "candidate_ids": ["QGS-00007", "QGS-00008", "QGS-00009"]},
+    {"batch_id": "W10-B04", "candidate_ids": ["QGS-00010", "QGS-00011", "QGS-00012"]},
+    {"batch_id": "W10-B05", "candidate_ids": ["QGS-00013", "QGS-00014", "QGS-00015"]},
+    {"batch_id": "W10-B06", "candidate_ids": ["QGS-00016", "QGS-00017", "QGS-00018"]},
+    {"batch_id": "W10-B07", "candidate_ids": ["QGS-00019", "QGS-00020", "QGS-00021"]},
+    {"batch_id": "W10-B08", "candidate_ids": ["QGS-00022", "QGS-00023", "QGS-00024"]},
+    {"batch_id": "W10-B09", "candidate_ids": ["QGS-00025", "QGS-00026", "QGS-00027"]},
+    {"batch_id": "W10-B10", "candidate_ids": ["QGS-00028", "QGS-00029", "QGS-00033"]}
+  ],
+  "review_protocol": {
+    "triple_versions_required": true,
+    "shuffle_before_review": true,
+    "hide_provenance": true,
+    "record_reviewer_notes": true,
+    "record_winner": true,
+    "record_confidence": true,
+    "record_reason_codes": true
+  },
+  "next_actions": [
+    "attach original/automatic/human payloads for each batch",
+    "shuffle and blind the three versions",
+    "run reviewer comparison batch by batch",
+    "persist comparison result to the W10 result file"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "package": "ANovel V2 Production Workflow Specification v1.0",
+  "files": [
+    {
+      "name": "PRODUCTION_WORKFLOW_SPEC.md",
+      "sha256": "99857254e0bc9d04d4bf80c18e2d43079bc2550e2cbf95ad53f08fe17b25dd8c"
+    },
+    {
+      "name": "workflow-run.schema.json",
+      "sha256": "69363fbe90923369376e41c5aaf465ac5252825f8d5f84216b294149ef071eee"
+    },
+    {
+      "name": "stage-contract.schema.json",
+      "sha256": "b260df20803b2c3e579c1d2359acc6a6bea981d0a1ff3873dbc530f770672540"
+    },
+    {
+      "name": "checkpoint.schema.json",
+      "sha256": "7fe6e35dddbcc6f85dc2a2720051f1b85f90a422ff6807a6f9d49033f45ebf6d"
+    },
+    {
+      "name": "retry-policy.schema.json",
+      "sha256": "34b8546101499c8a0b210fb9c7a0754b413796581856a11fc7c4bac035c61c13"
+    },
+    {
+      "name": "stage-artifact.schema.json",
+      "sha256": "7dfce285d7810aa3ed3c9b85abcbae9e2ef49fb30ff95922bd9bba765645c60f"
+    },
+    {
+      "name": "budget-ledger.schema.json",
+      "sha256": "42145faa83bf988a2e430c713b2ff36adbb1e33efdecbde7071cbf3789d8497c"
+    },
+    {
+      "name": "model-run.schema.json",
+      "sha256": "dbf492a8ce33db3c87e6decfb44ba1a8fc3d9744791bbc6e09b90935138b5fb5"
+    },
+    {
+      "name": "workflow-policy.yaml",
+      "sha256": "06b7521e94550c3e0b12226c4f82447769c1b64eafc679b7f03dc967ddf638fa"
+    },
+    {
+      "name": "workflow-test-matrix.yaml",
+      "sha256": "b70ee8112af763de3da03a1b3f5e29ae5dbb88c1c83d3635b5fabf09a3fbd71c"
+    }
+  ]
+}

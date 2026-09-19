@@ -1,0 +1,101 @@
+{
+  "kind": "consumption_ab_live_acceptance_summary",
+  "date": "2026-08-05",
+  "task_id": "CI-M2-04",
+  "status": "passed",
+  "comparison_only": true,
+  "gating": false,
+  "chapter_id": "TASK-00005",
+  "package_hash": "sha256:01bc56c66fb1688a52ebdc518a07a913e6333797074fa6ade81c4fb484cf335f",
+  "prompt_version": "14.0.0",
+  "approved_fact": {
+    "id": "ITM-00001",
+    "name": "赤纹星钥",
+    "mint_receipt_id": "MINT-00001",
+    "recompute_report_id": "RCP-00001"
+  },
+  "report_hash": "sha256:741bddd2e93790f725879e7c86e9fe8a8c53be6a7396a24dfb14ff8685de1e5e",
+  "consumption_hash": "sha256:20a414a7de5f91c5753896d40446e2eaa9eb951810951c8f583b7488d30e96fb",
+  "criteria": {
+    "prompt_content_changed": true,
+    "prompt_manifest_hash_changed": true,
+    "draft_content_hash_changed": true,
+    "historical_fact_hashes_unchanged": true,
+    "semantic_ledger_stable": true,
+    "approved_facts_absent_without": true,
+    "approved_facts_reflected": true,
+    "report_replayable": true,
+    "source_project_unchanged": true
+  },
+  "arms": {
+    "without": {
+      "provider": "92code",
+      "model": "gpt-5.6-sol",
+      "finish_reason": "stop",
+      "provider_request_id": "resp_0e3eb7e938de4698016a734f9e053c8191bb721f8a73c244f8",
+      "request_hash": "sha256:bbd8f5968c84dacb3cf127809bf5fb62b39b1675048c3bab094c594cdc2bd120",
+      "response_hash": "sha256:9dcdfcec961289b9ec2965f45e00ab26d569cdc5b1b3849b168a579f15a3cfc3",
+      "prompt_manifest_hash": "sha256:81bc211c12f7a10734d781d0c0b06dcfa4e07014437e20a8842caff8b81a7c64",
+      "prompt_rendered_hash": "sha256:47ef187cb36d8f3c84401759035c7158c276dd4f8b3be0f1329b06cde2d8b521",
+      "draft_content_hash": "sha256:6db66afc5eabb6079ba09ab4dd91008f0cb37ebf56e89abdd5522cfbc50050f5",
+      "word_count": 3504,
+      "approved_fact_mentions": 0,
+      "token_usage": {
+        "input_tokens": 3556,
+        "output_tokens": 3345,
+        "reasoning_tokens": 113,
+        "total_tokens": 6901,
+        "usage_estimated": false
+      },
+      "cost": {
+        "status": "priced",
+        "currency": "CNY",
+        "total": 0.159159,
+        "pricing_version": "92code-derived-from-billing-2026-08-01"
+      }
+    },
+    "with": {
+      "provider": "92code",
+      "model": "gpt-5.6-sol",
+      "finish_reason": "stop",
+      "provider_request_id": "resp_0773d15762cdd2f1016a735004b0c88191aa054d5ab2e858a4",
+      "request_hash": "sha256:d437e08d9fe4aa7aa126490c545d232c28f7c26a5fd6c468879ef1b215994aeb",
+      "response_hash": "sha256:2637aa81c8b1edd3c9e4227917ffb4be03df9bfb3e435e33d6a804b7deb9d6c0",
+      "prompt_manifest_hash": "sha256:7137360090dcc2cc7bb1f4211b88ace6240ef0a5c46ee6de9137e9c35b1d69f5",
+      "prompt_rendered_hash": "sha256:19f16c8f7ad2ddea583b9c37c368430b707f25f328e148465f47b162509d53a2",
+      "draft_content_hash": "sha256:d99ea1d780635d90db5f5b278407994cb3735e71e160a8d1875e770797747fc1",
+      "word_count": 3584,
+      "approved_fact_mentions": 6,
+      "token_usage": {
+        "input_tokens": 3792,
+        "output_tokens": 3531,
+        "reasoning_tokens": 236,
+        "total_tokens": 7323,
+        "usage_estimated": false
+      },
+      "cost": {
+        "status": "priced",
+        "currency": "CNY",
+        "total": 0.16821,
+        "pricing_version": "92code-derived-from-billing-2026-08-01"
+      }
+    }
+  },
+  "total_cost": {
+    "status": "priced",
+    "currency": "CNY",
+    "total": 0.327369,
+    "pricing_version": "92code-derived-from-billing-2026-08-01"
+  },
+  "manual_semantic_review": {
+    "status": "passed",
+    "reviewer": "human-supervised-agent",
+    "finding": "The WITH arm makes 赤纹星钥 causal: the protagonist inserts and turns it to open the stone platform and restore the water channels, suffers an explicit physical backlash, and follows its renewed signal into the next hook. The WITHOUT arm contains no mention of the fact.",
+    "mere_name_drop": false
+  },
+  "archive_policy": {
+    "full_drafts_committed": false,
+    "replay_payloads_committed": false,
+    "reason": "Keep the stable audit hashes and semantic conclusion without committing two duplicate full chapter payloads or provider replay bodies."
+  }
+}

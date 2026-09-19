@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anes.local/schemas/chapter/beat-plan.schema.json",
+  "title": "Beat Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chapter_id", "beats"],
+  "properties": {
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "length_target": { "type": ["integer", "null"], "minimum": 1 },
+    "emotion_curve": {
+      "type": ["array", "null"],
+      "items": { "type": "number" }
+    },
+    "information_curve": {
+      "type": ["array", "null"],
+      "items": { "type": "number" }
+    },
+    "hook_plan": { "type": ["string", "null"] },
+    "turning_points": { "type": "array", "items": { "type": "string" } },
+    "beats": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["beat_id", "purpose", "summary"],
+        "properties": {
+          "beat_id": { "type": "string", "minLength": 1 },
+          "purpose": { "type": "string", "minLength": 1 },
+          "summary": { "type": "string", "minLength": 1 },
+          "participants": { "type": "array", "items": { "type": "string" } },
+          "required_information": { "type": "array", "items": { "type": "string" } },
+          "expected_emotion": { "type": ["string", "null"] },
+          "turn": { "type": ["string", "null"] },
+          "scene_weight": { "type": ["number", "null"] }
+        }
+      }
+    }
+  }
+}

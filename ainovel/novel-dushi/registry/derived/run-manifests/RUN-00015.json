@@ -1,0 +1,84 @@
+{
+  "chapters": [
+    {
+      "commercial_verdict": null,
+      "draft_hash": null,
+      "event": "EVT-00001",
+      "events_so_far": 0,
+      "index": 1,
+      "llm": null,
+      "message": "PermanentLLMError: Error code: 403 - {'code': 'INSUFFICIENT_BALANCE', 'message': 'Insufficient account balance'}",
+      "ok": false,
+      "open_setups": 0,
+      "output_path": null,
+      "publish_readiness": null,
+      "stage": "execute:generation-error",
+      "state_hash": null,
+      "task_id": "TASK-00001",
+      "verdict": null
+    },
+    {
+      "commercial_verdict": null,
+      "draft_hash": null,
+      "event": "EVT-00002",
+      "events_so_far": 0,
+      "index": 2,
+      "llm": null,
+      "message": "PermanentLLMError: Error code: 403 - {'code': 'INSUFFICIENT_BALANCE', 'message': 'Insufficient account balance'}",
+      "ok": false,
+      "open_setups": 0,
+      "output_path": null,
+      "publish_readiness": null,
+      "stage": "execute:generation-error",
+      "state_hash": null,
+      "task_id": "TASK-00002",
+      "verdict": null
+    },
+    {
+      "commercial_verdict": null,
+      "draft_hash": null,
+      "event": "EVT-00003",
+      "events_so_far": 0,
+      "index": 3,
+      "llm": null,
+      "message": "PermanentLLMError: Error code: 403 - {'code': 'INSUFFICIENT_BALANCE', 'message': 'Insufficient account balance'}",
+      "ok": false,
+      "open_setups": 0,
+      "output_path": null,
+      "publish_readiness": null,
+      "stage": "execute:generation-error",
+      "state_hash": null,
+      "task_id": "TASK-00003",
+      "verdict": null
+    }
+  ],
+  "gating": false,
+  "id": "RUN-00015",
+  "kind": "production_run_manifest",
+  "rationale": "produced 0, skipped 3 of 3; no live-model cost",
+  "run": {
+    "commercial": false,
+    "finished_at": "2026-09-07T15:17:00.238890+00:00",
+    "max_chapters": 10,
+    "model_id": "claude-fable-5",
+    "model_provider": "claude",
+    "prompt_version": "6.0.0",
+    "reviewer": "serial-v1",
+    "started_at": "2026-09-07T15:16:58.791470+00:00"
+  },
+  "serial_pacing": null,
+  "totals": {
+    "cost": null,
+    "final_state_hash": null,
+    "live_calls": 0,
+    "planned": 3,
+    "produced": 0,
+    "skipped": 3,
+    "token_usage": {
+      "input": 0,
+      "output": 0,
+      "total": 0
+    }
+  },
+  "version": "1.0"
+}

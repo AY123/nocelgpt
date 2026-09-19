@@ -1,0 +1,420 @@
+{
+  "metadata": {
+    "analyzed_at": "20260811_211659",
+    "start_chapter": 1,
+    "end_chapter": 100,
+    "sample_rate": 10,
+    "total_analyzed": 10,
+    "errors": 0
+  },
+  "results": [
+    {
+      "chapter": 1,
+      "length": 5483,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 82.0,
+        "curiosity": 80.0,
+        "tension": 70.0,
+        "emotion": 88.0,
+        "continue_rate": 0.82,
+        "drop_risk": 0.18,
+        "what_works": [
+          "目标清晰且紧迫：主角段奕尘必须离开，但又不逃远，因为账还没算完。这种'走而不逃'的双重目标制造了强烈的叙事张力。",
+          "情感驱动强烈：三条人命（爹、娘、妹妹小雨）形成沉重的道德债，'欠一条命，欠一本账'的表述极具煽动力，让读者立刻站到主角一边。",
+          "细节描写生动：手指破皮出血、井口冷月、妹妹的旧手帕等意象，将身体的痛、环境的冷和记忆的暖交织，情感浓度高。",
+          "结尾象征性极强：月光在右手指节上折出'暗金色光泽'，暗示主角隐藏的能力或秘密，被夜色吞没则预示着危险与未知，留下深刻悬念。",
+          "章节封口干净利落：'第一章完'配合'账要从今天开始算'，明确宣告故事进入新阶段，读者会期待主角如何开始算账。"
+        ],
+        "what_fails": [
+          "紧张度相对偏低：虽然主角在攀爬逃离，但威胁（马平带人回来）只是提及，并未实时逼近，缺乏时间上的紧迫感。",
+          "信息量略大但未展开：'真账'、'晶屑'、'暗金色光泽'等元素集中抛出，但没有一个得到解释，可能让部分读者感到困惑而非好奇。",
+          "节奏稍显平缓：从攀爬到取铁箱再到走向青岩沟，动作线是连续的，但缺少一个突然的打断或意外，减弱了悬念的冲击力。"
+        ]
+      },
+      "paywall_score": {
+        "overall": 82.0,
+        "cliffhanger": 75.0,
+        "curiosity": 88.0,
+        "emotion": 90.0,
+        "conflict": 78.0,
+        "conversion": 0.71
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (70.0分)",
+          "gain": 15.0
+        },
+        {
+          "type": "add",
+          "target": "curiosity_trigger",
+          "reason": "好奇心分数过低 (80.0分)",
+          "gain": 10.0
+        }
+      ]
+    },
+    {
+      "chapter": 11,
+      "length": 5221,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 92.0,
+        "curiosity": 95.0,
+        "tension": 90.0,
+        "emotion": 78.0,
+        "continue_rate": 0.95,
+        "drop_risk": 0.05,
+        "what_works": [],
+        "what_fails": []
+      },
+      "paywall_score": {
+        "overall": 86.0,
+        "cliffhanger": 93.0,
+        "curiosity": 92.0,
+        "emotion": 78.0,
+        "conflict": 88.0,
+        "conversion": 0.82
+      },
+      "improvements": []
+    },
+    {
+      "chapter": 21,
+      "length": 4457,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 87.0,
+        "curiosity": 92.0,
+        "tension": 78.0,
+        "emotion": 74.0,
+        "continue_rate": 0.91,
+        "drop_risk": 0.12,
+        "what_works": [
+          "双重悬念叠加：段奕尘的'花'是什么形态，以及老者那句'开出来的到底会是什么'，形成对称谜题，一个从主角视角，一个从反派视角，强化了读者对未知力量的好奇。",
+          "反叛宣言有力度：'不是按他的节奏来'和'他接不住'，将被动危机转化为主动挑战，制造了强烈的目标导向冲突。",
+          "意象描写精炼：'影子边缘有光流动'和'皮肤底下重新排列形状'，用身体异化暗示实力质变，视觉冲击力强且不直白。",
+          "反派首次动摇：'眼里第一次露出了一点不确定'，直接改变了力量对比的心理预期，暗示主角有翻盘底牌。"
+        ],
+        "what_fails": [
+          "情感锚点稍弱：主角的动机（'才有资格站在他面前'）指向模糊的'他'，读者对段奕尘与这个'他'的关系缺乏背景铺垫，情感共鸣门槛略高。",
+          "紧张度略被宣言冲淡：主角明确表态'翻'并主动离开，瞬间从'被围猎'转为'主动出击'，危险迫近感被削弱，读者更期待结果而非担忧过程。"
+        ]
+      },
+      "paywall_score": {
+        "overall": 82.0,
+        "cliffhanger": 78.0,
+        "curiosity": 88.0,
+        "emotion": 80.0,
+        "conflict": 75.0,
+        "conversion": 0.79
+      },
+      "improvements": []
+    },
+    {
+      "chapter": 31,
+      "length": 3614,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 92.0,
+        "curiosity": 95.0,
+        "tension": 88.0,
+        "emotion": 85.0,
+        "continue_rate": 0.93,
+        "drop_risk": 0.08,
+        "what_works": [
+          "信息反转极具冲击力：主角自以为凝聚的曜能种，被敌人当场否定，并揭示其与妹妹晶化病因同源，直接推翻主角的核心认知，同时将个人战斗与亲情悲剧绑定",
+          "多重钩子叠加：战斗结果（截断引导）+ 身体代价（晶痕蔓延）+ 身份谜团（光纹三瓣）+ 亲情线索（妹妹白点），四个悬念在同一段落集中引爆，形成密集的信息轰炸",
+          "敌人态度转变营造心理压迫：灰衣男人从杀意到'原来如此'的冷静观察，再到主动展示光纹，暗示主角可能成为某种'研究对象'，比单纯的追杀更具深层威胁",
+          "视觉符号高效串联：三瓣光纹、晶白点、晶痕蔓延，三个意象反复出现，既作为力量体系的标识，又成为悬疑线索的载体，读者会不由自主地拼图"
+        ],
+        "what_fails": [
+          "情感冲击稍弱于信息冲击：妹妹的线索出现得较为突然，如果前文对兄妹关系的铺垫不够充分，读者可能难以立刻产生强烈共情，更多是'信息震惊'而非'情感疼痛'",
+          "敌人行为动机略模糊：灰衣男人为何突然停手展示光纹？虽然营造了压迫感，但若后续解释力度不足，可能显得工具化"
+        ]
+      },
+      "paywall_score": {
+        "overall": 86.0,
+        "cliffhanger": 90.0,
+        "curiosity": 95.0,
+        "emotion": 82.0,
+        "conflict": 88.0,
+        "conversion": 0.5
+      },
+      "improvements": []
+    },
+    {
+      "chapter": 41,
+      "length": 5162,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 72.0,
+        "curiosity": 78.0,
+        "tension": 65.0,
+        "emotion": 55.0,
+        "continue_rate": 0.78,
+        "drop_risk": 0.25,
+        "what_works": [
+          "目标明确且具象化：'点亮叶脉'的过程描写细腻，读者能清晰感知主角的进度和剩余能量（三分之二曜能换三根主脉），形成可量化的期待感",
+          "威胁潜伏制造张力：'藏在矿脉深处的人'、'警戒曜能丝线'暗示外部危险，与主角专注突破形成对比，营造'暴风雨前的宁静'氛围",
+          "时间压力植入：钟声三响标志换班时间，暗示时间窗口有限，增强紧迫感",
+          "身份反差引发好奇：底层矿工突然展现曜师巅峰潜质，'值不值得掐灭'的疑问直接抛给读者"
+        ],
+        "what_fails": [
+          "情感共鸣较弱：主角内心活动仅停留在理性判断（'够他再走一截'），缺乏对自身命运的深层情绪（如恐惧、渴望、孤独感），削弱代入感",
+          "威胁具象化不足：'那些藏在矿脉深处的人'过于模糊，未给出任何具体形象或行动迹象，紧张感停留在概念层面",
+          "章节结尾缺乏直接冲击：以钟声收尾偏平静，相比开篇的'蓝光燃烧'意象，最终落点力度不足"
+        ]
+      },
+      "paywall_score": {
+        "overall": 50.0,
+        "cliffhanger": 50.0,
+        "curiosity": 50.0,
+        "emotion": 50.0,
+        "conflict": 50.0,
+        "conversion": 0.4
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (65.0分)",
+          "gain": 15.0
+        },
+        {
+          "type": "add",
+          "target": "curiosity_trigger",
+          "reason": "好奇心分数过低 (78.0分)",
+          "gain": 10.0
+        }
+      ]
+    },
+    {
+      "chapter": 51,
+      "length": 2683,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 50.0,
+        "curiosity": 50.0,
+        "tension": 50.0,
+        "emotion": 50.0,
+        "continue_rate": 0.6,
+        "drop_risk": 0.4,
+        "what_works": [],
+        "what_fails": []
+      },
+      "paywall_score": {
+        "overall": 85.0,
+        "cliffhanger": 88.0,
+        "curiosity": 92.0,
+        "emotion": 75.0,
+        "conflict": 80.0,
+        "conversion": 0.5
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (50.0分)",
+          "gain": 15.0
+        },
+        {
+          "type": "add",
+          "target": "curiosity_trigger",
+          "reason": "好奇心分数过低 (50.0分)",
+          "gain": 10.0
+        }
+      ]
+    },
+    {
+      "chapter": 61,
+      "length": 4217,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 82.0,
+        "curiosity": 88.0,
+        "tension": 75.0,
+        "emotion": 55.0,
+        "continue_rate": 0.92,
+        "drop_risk": 0.08,
+        "what_works": [
+          "核心谜题升级：从'这里藏着什么'到'门后是什么'，再到最终揭示'无数曜能种'，三层递进，每层都刷新读者的认知预期。",
+          "视觉冲击力强：'漆黑中的无数光点'营造出强烈的画面感和神秘感，'曜能种'的揭示是典型的'视觉奇观式'反转。",
+          "对话制造紧迫感：'知道得越多，死得越快'与'再也回不了头'的警告，为后续探索埋下危险伏笔。",
+          "主角行动果断：'没有犹豫，迈步走向石门'，强化了主角性格，也让读者期待他面对未知时的反应。"
+        ],
+        "what_fails": [
+          "情感投入较弱：主角与配角（镜见川、寒鹿吟）之间缺乏情感互动或内心描写，读者对角色安危的担忧有限。",
+          "威胁感未实体化：虽然警告了危险，但'受伤的男人'没有表现出即时威胁，黑暗中的空间也未展现直接危险，紧张感被悬疑感稀释。",
+          "信息密度不足：'无数曜能种'的具体价值、稀有度、用途没有铺垫，对不了解设定的读者冲击力打折。"
+        ]
+      },
+      "paywall_score": {
+        "overall": 74.0,
+        "cliffhanger": 78.0,
+        "curiosity": 88.0,
+        "emotion": 62.0,
+        "conflict": 72.0,
+        "conversion": 0.68
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (75.0分)",
+          "gain": 15.0
+        }
+      ]
+    },
+    {
+      "chapter": 71,
+      "length": 3590,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 82.0,
+        "curiosity": 85.0,
+        "tension": 75.0,
+        "emotion": 90.0,
+        "continue_rate": 0.88,
+        "drop_risk": 0.15,
+        "what_works": [
+          "情感钩子非常强：'什么都愿意'这句台词将主角的决心推至顶点，直接触及读者对兄妹之情的共鸣",
+          "谜题层层递进：老者的身份、'眼睛'的隐喻、遗册的故意安排、问题的深意，多个谜题交织",
+          "关键问题'你愿意为了她，把自己变成什么？'具有双重含义——既指晶化病的代价，也暗示更深层的道德抉择",
+          "环境描写强化氛围：晶石杖移开后温度下降，用物理环境的冷衬托对话的沉重",
+          "主角的沉默和左臂的细节描写，将内心挣扎具象化，增加真实感"
+        ],
+        "what_fails": [
+          "老者提出的问题稍显抽象，'变成什么'的指向不够具体，可能让部分读者难以立即产生紧迫感",
+          "前文'老周'的信息量较大，但在此处没有充分展开，可能让新读者感到困惑",
+          "对话节奏在'你故意留了那本遗册给我？'之后稍有松弛，老者的回避回答虽有意为之，但可以更紧凑"
+        ]
+      },
+      "paywall_score": {
+        "overall": 50.0,
+        "cliffhanger": 50.0,
+        "curiosity": 50.0,
+        "emotion": 50.0,
+        "conflict": 50.0,
+        "conversion": 0.4
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (75.0分)",
+          "gain": 15.0
+        }
+      ]
+    },
+    {
+      "chapter": 81,
+      "length": 3365,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 50.0,
+        "curiosity": 50.0,
+        "tension": 50.0,
+        "emotion": 50.0,
+        "continue_rate": 0.6,
+        "drop_risk": 0.4,
+        "what_works": [],
+        "what_fails": []
+      },
+      "paywall_score": {
+        "overall": 82.0,
+        "cliffhanger": 78.0,
+        "curiosity": 85.0,
+        "emotion": 80.0,
+        "conflict": 84.0,
+        "conversion": 0.72
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (50.0分)",
+          "gain": 15.0
+        },
+        {
+          "type": "add",
+          "target": "curiosity_trigger",
+          "reason": "好奇心分数过低 (50.0分)",
+          "gain": 10.0
+        }
+      ]
+    },
+    {
+      "chapter": 91,
+      "length": 2845,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 88.0,
+        "curiosity": 90.0,
+        "tension": 85.0,
+        "emotion": 80.0,
+        "continue_rate": 0.85,
+        "drop_risk": 0.15,
+        "what_works": [
+          "核心谜题升级：影子声称妹妹的晶化病是它下的种子，这直接关联主角的核心动机，将个人目标与宏大阴谋绑定",
+          "双重威胁叠加：曜能种被标记（身体威胁）+ 妹妹病因可能被操控（亲情威胁），形成复合张力",
+          "悬念设置精准：'三天后，矿脉尽头' 给出了明确的时间与地点，但答案未知，形成强行动驱动",
+          "身体异变可视化：晶纹像蛇一样蔓延，既是物理标记又象征命运纠缠，意象鲜明",
+          "对话中的信任博弈：'你信它？'——'我不信它，但我不能不去'，展现了主角的理性与情感冲突，强化人物弧光",
+          "结尾的'棋盘'隐喻：将个人旅程升华为命运对抗，提升了格局"
+        ],
+        "what_fails": [
+          "情感冲击稍弱：妹妹的病情已被提及，但此处没有新的情感细节（如回忆、症状描写），读者对'晶化病'的共情基础不足",
+          "反派动机模糊：影子只说'下了种子'，未透露任何目的，可能让部分读者觉得信息量过少，耐心受考验",
+          "镜见川的回应略显被动：她的'沉默很久'和'你信它'是标准反应，缺乏独特视角或情绪波动"
+        ]
+      },
+      "paywall_score": {
+        "overall": 85.0,
+        "cliffhanger": 88.0,
+        "curiosity": 92.0,
+        "emotion": 78.0,
+        "conflict": 82.0,
+        "conversion": 0.74
+      },
+      "improvements": []
+    }
+  ],
+  "errors": []
+}

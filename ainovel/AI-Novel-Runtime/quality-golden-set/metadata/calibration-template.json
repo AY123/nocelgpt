@@ -1,0 +1,33 @@
+{
+  "kind": "reviewer_calibration_result",
+  "version": "1.0",
+  "sample_id": "QGS-00000",
+  "sample_category": "boundary",
+  "decision_mode": "calibration",
+  "dimension_scores": {
+    "opening_hook": 0,
+    "chapter_goal": 0,
+    "conflict_progression": 0,
+    "character_motivation": 0,
+    "emotion_flow": 0,
+    "information_density": 0,
+    "payoff_delivery": 0,
+    "ending_hook": 0,
+    "continuity": 0,
+    "ai_voice_risk": 0,
+    "paying_intent": 0,
+    "continue_intent": 0
+  },
+  "severity_labels": [],
+  "continue_probability": 0.0,
+  "pay_probability": 0.0,
+  "risk_flags": [],
+  "evidence_spans": [],
+  "recommendation": "review_only",
+  "uncertainty": "high",
+  "comparison": {
+    "human_score_ref": null,
+    "golden_reference": null,
+    "delta_summary": null
+  }
+}

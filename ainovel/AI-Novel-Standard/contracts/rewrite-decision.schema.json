@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:rewrite-decision:1.0",
+  "title": "RewriteDecision",
+  "description": "Phase 6 director contract: the decision artifact that turns critique into an explicit rewrite strategy, scope, and acceptance threshold. This is a DERIVED production artifact, not a registry fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "authority",
+    "gating",
+    "chapter_id",
+    "round",
+    "decision",
+    "trigger_sources",
+    "problem_dimensions",
+    "rewrite_strategy",
+    "priority",
+    "expected_improvement",
+    "acceptance_threshold"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^RWD-\\d{5,}$" },
+    "kind": { "type": "string", "const": "rewrite_decision" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the director may decide to rewrite a draft internally, but no rewrite decision auto-executes an outward/irreversible transition (publish, mint). Internal draft selection follows the Commercial Loop precedent; outward commitment stays human."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a rewrite decision NEVER blocks a build. It drives whether the director attempts a rewrite; it does not fail a chapter. `acceptance_threshold` below is a REWRITE BUDGET (when to stop trying), NOT a build gate."
+    },
+    "schema_version": { "type": "string", "default": "1.0" },
+    "decision_id": { "type": "string", "pattern": "^RWD-\\d{5,}$" },
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "round": { "type": "integer", "minimum": 1 },
+    "decision": { "type": "string", "enum": ["rewrite", "keep", "revise_minor"] },
+    "trigger_sources": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "problem_dimensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["dimension", "severity", "issue"],
+        "properties": {
+          "dimension": { "type": "string", "minLength": 1 },
+          "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+          "issue": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "rewrite_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "scope", "actions"],
+      "properties": {
+        "mode": { "type": "string", "enum": ["targeted_rewrite", "partial_rewrite", "full_rewrite", "keep"] },
+        "scope": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+        "actions": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+      }
+    },
+    "priority": { "type": "string", "enum": ["low", "medium", "high", "urgent"] },
+    "expected_improvement": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "acceptance_threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quality_min": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "commercial_min": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "retention_min": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "human_notes": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "kind": "outline_qa_live_acceptance",
+  "date": "2026-08-05",
+  "gating": false,
+  "axis": "evaluative",
+  "contract": {
+    "reviewer": "outline-llm-reviewer-v1",
+    "required_findings": 9,
+    "failure_policy": "degraded_advisory_never_gates"
+  },
+  "workflow_acceptance": {
+    "provider": "92code",
+    "model": "gpt-5.6-sol",
+    "path": "runtime.cli outline bootstrap --outline-qa-model",
+    "status": "completed",
+    "finding_count": 9,
+    "outline_hash": "sha256:34e26e3034032f3d23cb4485e5707d3b1cab76021262b6277cd48719bb833d8e",
+    "persisted_outline_hash": "sha256:34e26e3034032f3d23cb4485e5707d3b1cab76021262b6277cd48719bb833d8e",
+    "hash_matches": true,
+    "request_hash": "sha256:8ece46246144c03da022285557af4198053049c18c8ba3a283f0bad082755a7b",
+    "response_hash": "sha256:8778e026d2f0cd00d2f55ad2fb1a6beb7a11a76b0b1f1f2fc8fc057450125277",
+    "token_usage": {
+      "input_tokens": 9978,
+      "output_tokens": 462,
+      "total_tokens": 10440,
+      "cached_input_tokens": 8780,
+      "reasoning_tokens": 0,
+      "usage_estimated": false
+    },
+    "cost": {
+      "currency": "CNY",
+      "input_cost": 0.0523845,
+      "output_cost": 0.019404,
+      "total_cost": 0.0717885,
+      "pricing_version": "92code-derived-from-billing-2026-08-01"
+    },
+    "cost_status": "priced",
+    "finish_reason": "stop",
+    "parse_ok": true,
+    "error": null
+  },
+  "same_outline_dual_model_acceptance": {
+    "outline_hash": "sha256:ec1df3f2f22ce7ba96849061ff165862080069a4d63aeca31d37348752fb5718",
+    "all_completed": true,
+    "all_parse_ok": true,
+    "results": [
+      {
+        "provider": "92code",
+        "model": "gpt-5.6-sol",
+        "status": "completed",
+        "finding_count": 9,
+        "request_hash": "sha256:f44a1a118f4bf9b186a60c5dd92b7ef3bab4ef2a728ae56ba684ff24d071ceb8",
+        "response_hash": "sha256:89d4cae3d23555c899a1c6210da406935a29948502c141e0ebba6c1602833e57",
+        "token_usage": {
+          "input_tokens": 47386,
+          "output_tokens": 489,
+          "total_tokens": 47875,
+          "cached_input_tokens": 42647,
+          "reasoning_tokens": 0,
+          "usage_estimated": false
+        },
+        "cost": {
+          "currency": "CNY",
+          "input_cost": 0.2487765,
+          "output_cost": 0.020538,
+          "total_cost": 0.2693145,
+          "pricing_version": "92code-derived-from-billing-2026-08-01"
+        },
+        "cost_status": "priced",
+        "finish_reason": "stop",
+        "parse_ok": true,
+        "error": null,
+        "severities": {
+          "opening_hook": "warning",
+          "protagonist_engine": "error",
+          "core_fantasy": "warning",
+          "reward_progression": "warning",
+          "volume_one_promise": "error",
+          "thirty_chapter_progression": "error",
+          "long_run_sustainability": "error",
+          "character_world_leverage": "error",
+          "originality_risk": "warning"
+        }
+      },
+      {
+        "provider": "claude",
+        "model": "claude-opus-5",
+        "structured_output": "forced Anthropic tool schema",
+        "status": "completed",
+        "finding_count": 9,
+        "request_hash": "sha256:cc60db5fca0ee3cffc79d8b11e92e84ce5a03de5260d1f064771ff55e46ab1e2",
+        "response_hash": "sha256:7c6ca81a43203c34c93d8919e54fca0a6a82825453ce3bca7ad571383a8e22fb",
+        "token_usage": {
+          "input_tokens": 6504,
+          "output_tokens": 575,
+          "total_tokens": 7079,
+          "cached_input_tokens": 0,
+          "reasoning_tokens": 0,
+          "usage_estimated": false
+        },
+        "cost": null,
+        "cost_status": "unpriced",
+        "finish_reason": "tool_call",
+        "parse_ok": true,
+        "error": null,
+        "severities": {
+          "opening_hook": "warning",
+          "protagonist_engine": "warning",
+          "core_fantasy": "info",
+          "reward_progression": "warning",
+          "volume_one_promise": "warning",
+          "thirty_chapter_progression": "error",
+          "long_run_sustainability": "warning",
+          "character_world_leverage": "error",
+          "originality_risk": "warning"
+        }
+      }
+    ],
+    "shared_high_priority_findings": [
+      "thirty_chapter_progression",
+      "character_world_leverage"
+    ]
+  }
+}

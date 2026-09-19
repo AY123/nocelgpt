@@ -1,0 +1,28 @@
+{
+  "kind": "w10_blind_review_triple_structure",
+  "version": "1.0",
+  "status": "ready_for_execution",
+  "purpose": "Define the required triple-version comparison structure for W10 blind review.",
+  "execution_note": "Triple-version comparison schema is frozen for blind review execution.",
+  "triple_versions": ["original", "automatic_revision", "human_revision"],
+  "required_fields": [
+    "candidate_id",
+    "source_sample_id",
+    "triple_versions",
+    "order_blinded",
+    "review_notes",
+    "comparison_result"
+  ],
+  "comparison_result_schema": {
+    "winner": "original | automatic_revision | human_revision | tie",
+    "confidence": "low | medium | high",
+    "reason_codes": ["improves_hook", "improves_continuity", "fixes_padding", "fixes_ai_voice", "fixes_conflict", "introduces_regression", "no_net_gain"]
+  },
+  "workflow": [
+    "attach candidate chapter ids",
+    "attach the three version payloads",
+    "shuffle order before review",
+    "collect blind ranking",
+    "unblind and write outcome"
+  ]
+}

@@ -1,0 +1,17 @@
+id: EVT-00004
+name: The Hidden Ledger
+status: active
+fact_version: 1
+timeline: TML-00001
+when_absolute: "IR-2001-05-07"
+duration: "1 day"
+participants:
+  - CHR-00001
+  - CHR-00002
+locations: []
+causes:
+  - EVT-00003
+effects:
+  - EVT-00005
+certainty: canon
+summary: Lin Yue discovers the archive hides a ledger proving the mentor's betrayal was planned.

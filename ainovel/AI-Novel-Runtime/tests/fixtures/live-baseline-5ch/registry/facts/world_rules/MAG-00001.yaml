@@ -1,0 +1,15 @@
+id: MAG-00001
+name: Oathbinding
+status: active
+fact_version: 1
+rule_kind: magic
+statement: A sworn oath binds the speaker's life-force to its fulfillment; breaking it exacts a proportional toll.
+constraints:
+  - The oath must be spoken aloud and freely.
+  - The toll cannot be transferred to another.
+enables: []
+requires: []
+known_by:
+  - CHR-00001
+invariant_links: []
+certainty: canon

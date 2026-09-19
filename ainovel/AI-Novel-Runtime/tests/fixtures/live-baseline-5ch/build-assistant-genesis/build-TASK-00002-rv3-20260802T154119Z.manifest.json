@@ -1,0 +1,22 @@
+{
+  "build_id": "build-TASK-00002-rv3-20260802T154119Z",
+  "capability": "ChapterDraft",
+  "created_at": "2026-08-02T15:41:19.439087+00:00",
+  "derived_from": [
+    "EVT-00039@v1",
+    "EVT-00040@v1",
+    "TML-00003@v1",
+    "EVT-00041@v1"
+  ],
+  "notes": null,
+  "package_hash": "sha256:a26f3728724c3417d5e5b649ebbcf4cea1669ed7bc1b0fbfc728b1edeba23577",
+  "package_path": "AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-genesis/TASK-00002.package.json",
+  "registry_version": 3,
+  "runtime_python": "3.9.6",
+  "seeds": [
+    "EVT-00039"
+  ],
+  "standard_version": "2.0.0",
+  "task_id": "TASK-00002",
+  "validation": "PASS (0 error(s), 0 warning(s))"
+}

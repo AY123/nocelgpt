@@ -1,0 +1,229 @@
+{
+  "session": {
+    "controller": "prose-hygiene-v1",
+    "gating": false,
+    "terminate_reason": "rejected_gutting",
+    "verdict": "rejected_gutting",
+    "selected_draft_hash": "sha256:41e0c404e4302761dd4fc456c04aef0f1ee6aad010f89e12f5689ef131243add",
+    "rounds": [
+      {
+        "round": 1,
+        "draft_hash_before": "sha256:41e0c404e4302761dd4fc456c04aef0f1ee6aad010f89e12f5689ef131243add",
+        "draft_hash_after": "sha256:4611fc56b18262f150077f256105c38e762b10c1958ea4f84e74227c826a76a3",
+        "warnings_before": 3,
+        "warnings_after": 2,
+        "defect_distance_before": 11.9683,
+        "defect_distance_after": 0.96,
+        "length_before": 2879,
+        "length_after": 1388,
+        "length_floor": 2303,
+        "rejected_as_gutting": true,
+        "targeted_dimensions": [
+          "density",
+          "density",
+          "density"
+        ],
+        "degraded": false,
+        "reference_gap": {
+          "features": {
+            "density.dialogue_ratio": {
+              "value": 0.1671,
+              "median": 0.2181,
+              "band": [
+                0.1307,
+                0.3159
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "density.simile_per_1000": {
+              "value": 2.16,
+              "median": 0.96,
+              "band": [
+                0.45,
+                1.59
+              ],
+              "in_band": false,
+              "direction": "above",
+              "edge_gap": 0.57,
+              "band_widths_out": 0.5
+            },
+            "density.opening_simile_per_1000": {
+              "value": 2.16,
+              "median": 0.87,
+              "band": [
+                0.0,
+                1.77
+              ],
+              "in_band": false,
+              "direction": "above",
+              "edge_gap": 0.39,
+              "band_widths_out": 0.22
+            },
+            "ai_taste.anaphora_run": {
+              "value": 2.0,
+              "median": 2.0,
+              "band": [
+                2.0,
+                2.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "ai_taste.dash_aside_per_1000": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "ai_taste.sentence_length_cv": {
+              "value": 0.747,
+              "median": 0.692,
+              "band": [
+                0.611,
+                0.774
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_question": {
+              "value": 1.0,
+              "median": 1.0,
+              "band": [
+                0.0,
+                1.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_suspension": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "hook.has_turn": {
+              "value": 1.0,
+              "median": 1.0,
+              "band": [
+                0.0,
+                1.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_closure": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            }
+          },
+          "features_compared": 10,
+          "in_band": 8,
+          "out_of_band": 2,
+          "comparison_only": true,
+          "gating": false
+        }
+      }
+    ]
+  },
+  "artifact": {
+    "artifact_format": "1.0",
+    "body": "# 第二十二章 梦墟猎食者\n\n他盯着前方梦墟边缘那道扭曲的轮廓，心脏被无形的手攥紧。\n\n那是世界级敌人的标志——一个行走于梦墟的猎食者，正蹲伏在灰雾与幽蓝光晕的交界处，像一头等待猎物的野兽。周洛铭压低身形，手指在腰间短刀刀柄上摩挲，每一根神经都在尖叫着危险。\n\n他刚踏入这片区域不到三分钟，就感知到了对方的存在。\n\n周围梦墟的雾气开始向那道轮廓汇聚，空气里弥漫着铁锈味与低沉的嗡鸣，像是某种巨大生物的心跳声。敌人正在吸取这片区域的梦晶能量——像蜘蛛等待猎物靠近蛛网，而他，已经踩上了蛛丝。\n\n“找回记忆……代价就是先活过这一关。”\n\n他低声自语，声音干涩，像砂纸摩擦喉咙。左手不自觉地按在胸口——那里藏着一颗从上一场战斗中获得的梦晶碎片，里面封存着一段模糊的车祸记忆。碎片温热，像在提醒他，真相就在前方，但每一步都要用命去换。\n\n他需要更多梦晶。需要更强的力量。需要在那座巨塔深处的某个房间里，找到父亲失踪前留下的最后线索。\n\n而眼前这个猎食者，是绕不过去的关隘。\n\n梦墟的规则很残酷——要么猎取梦晶突破，要么变成梦晶被他人猎取。没有第三条路。\n\n他深吸一口气，开始压低重心向前移动。\n\n---\n\n敌人突然转身。\n\n没有预兆，没有蓄力动作，只是一道无形的冲击波横扫而来，撕裂雾气，在地面上犁出一道焦黑的沟壑。\n\n周洛铭本能地翻滚躲开，身后地面炸开一道裂缝，梦墟碎片飞溅，划破他的右侧脸颊。温热的液体顺着下颌滴落，在灰白色的地面上留下暗红斑点。\n\n还没等他站稳，第二波攻击已至。\n\n这次是实质性的——一道由梦晶能量凝聚的锁链从敌人手中甩出，像蛇一样蜿蜒而来，精准地缠向他左腿。他挥刀斩断锁链，但能量碰撞产生的冲击把他整个人掀飞，重重砸在十米外的梦墟废墟上。\n\n背骨传来钝痛，肺部空气被挤压出去。\n\n他挣扎着撑起身体，视线因为剧痛而模糊。敌人站在十步之外，身形在雾气中若隐若现——那是一个穿着深灰色长袍的人形轮廓，面部被一层流动的梦晶能量覆盖，看不清五官，只有一双眼睛的位置闪烁着幽绿的光。\n\n“又一个来送梦晶的蝼蚁。”\n\n声音沙哑低沉，像砂纸摩擦金属，带着一种居高临下的嘲弄。\n\n“你的记忆，就埋在我的胃里吧。”\n\n话音未落，第三波攻击已至。\n\n这次是全方位碾压——敌人脚下的地面炸裂，无数道梦晶能量尖刺从四面八方刺向周洛铭。他咬牙硬抗，用双臂交叉格挡，能量尖刺撞上他的前臂，发出刺耳的碎裂声。\n\n骨裂声从左手小臂传来。\n\n剧痛像电流一样窜过全身，让他几乎失去意识。但他没退半步——右脚死死踩住地面，身体前倾，用肩膀顶住后续的压力。血从袖口渗出，滴落在地面上，很快被梦墟吸收。\n\n“意志还算不错。”敌人发出沙哑的笑声，“可惜，意志不能当饭吃。在梦墟里，只有梦晶才是硬通货。你的梦晶，我收下了。”\n\n周洛铭没有回答。\n\n他在等一个机会。\n\n---\n\n剧痛中，一段破碎的记忆突然闪过。\n\n不是车祸的场景，而是车祸前夜——他躺在医院的病床上，有人在他耳边低语，声音很轻，像是从很远的地方传来。\n\n“梦墟的规则，是意志决定存在。”\n\n“恐惧才是武器。你的恐惧，就是敌人的子弹。”\n\n“记住，周洛铭——你怕什么，梦墟就给你什么。”\n\n画面一闪而逝，像水面上的涟漪，很快消失不见。\n\n但他抓住了那句话的核心。\n\n*恐惧才是武器。*\n\n不是他的恐惧——是敌人的恐惧。\n\n他猛地抬起头，直视敌人那双幽绿的眼睛。那双眼睛里有绝对的自信，有对猎物的轻视，有对即将到手的梦晶的贪婪。\n\n但没有恐惧。\n\n因为敌人还没意识到，自己面对的猎物，已经看穿了梦墟的底层规则。\n\n周洛铭松开刀柄，缓缓站直身体。\n\n“你说得对，意志不能当饭吃。”他的声音平静得出奇，“但意志可以改变梦墟的形状。”\n\n敌人愣了一瞬——这个猎物的反应，和预想中完全不同。\n\n周洛铭没有给它反应的时间。\n\n他放弃防守，任由敌人下一击穿透右肩——一道能量尖刺贯穿肩胛骨，血花飞溅。剧痛让他眼前发黑，但他借着这股冲击力向前冲去，同时反手抽出腰间短刀，用最后的力量刺入敌人梦晶核心的位置。\n\n那是一个流动的光点，在敌人胸口正中央。\n\n刀尖没入光点。\n\n“我的记忆，不是你的猎物！”\n\n他嘶吼出声，声音在梦墟中回荡。\n\n敌人身形开始崩解，像被打破的瓷器，裂纹从胸口向四周蔓延。那双幽绿的眼睛里终于出现了恐惧——但已经太迟了。\n\n“不……你不可能……你只是……”\n\n话音未落，敌人化为碎片消散，像一场灰白色的雪。\n\n一颗梦晶落在周洛铭的掌心。\n\n温热而明亮。\n\n---\n\n他跪倒在地，大口喘气。\n\n右肩的伤口在流血，左臂的骨裂让每一下呼吸都像刀割。但他握着那颗梦晶，感觉掌心传来一阵奇异的温热——像是某种回应，像是这颗梦晶在告诉他，里面藏着什么。\n\n他缓缓摊开手掌。\n\n梦晶表面光滑如镜，半透明，里面隐约浮现出一张模糊的脸。\n\n那是车祸中的另一个身影。\n\n不是他父亲。不是他认识的人。但那张脸让他心脏猛地一缩——某种深埋的记忆碎片在意识深处颤动，像被触碰的琴弦，发出微弱的回响。\n\n他把梦晶举到眼前，指尖触碰到表面。\n\n一股电流般的刺痛传遍全身。\n\n梦晶中的脸突然睁开眼，嘴唇翕动，无声地说出一个名字。\n\n那个名字像一把钥匙，插入记忆深处某个锁孔。\n\n但他想不起是谁。\n\n只感到一阵彻骨的寒意，仿佛触碰到了更深层的真相边缘——那场车祸不是意外，而是某种精心设计的陷阱，而他只是棋盘上的一颗棋子。\n\n他低头看掌心的梦晶，里面的脸已经消失，只留下一行字：\n\n*“下一个，是她的记忆。”*\n\n她的记忆？\n\n谁？\n\n周洛铭攥紧梦晶，指尖发白。\n\n---\n\n梦墟的雾气重新聚拢，像活物一样在他周围盘旋。\n\n远处传来更沉重的脚步声——不是一个人，而是一群。像巨兽在逼近，每一步都让地面震颤，让雾气翻涌。\n\n他抬头望向声音传来的方向。\n\n雾中出现了三道轮廓，比刚才那个猎食者更大，更强。它们没有急着靠近，而是停在远处，像在观察，像在等待。\n\n周洛铭低头看掌心的梦晶。\n\n那颗梦晶还在发光，但光芒已经变得暗淡——里面的信息正在流失，像沙漏里的沙子，一点一点从指缝间溜走。\n\n他需要更多时间。需要更多梦晶。需要在那道信息完全消失之前，解读出它想告诉他什么。\n\n但远处的脚步声越来越近。\n\n三道轮廓开始移动，从不同方向包围过来。\n\n周洛铭站起身，把梦晶塞进胸口的口袋，握紧刀柄。\n\n右肩还在流血，左臂几乎抬不起来，呼吸时肺里传来火烧般的痛。\n\n但他没有退路。\n\n那行字还在他脑海里盘旋，像某种诅咒，像某种预告——\n\n*“下一个，是她的记忆。”*\n\n她是谁？\n\n他的记忆里，到底还藏着多少他不知道的东西？\n\n远处，三道轮廓停下脚步。\n\n一个声音从雾中传来，低沉而冰冷，像从深渊底部升起：\n\n“交出那颗梦晶，我们可以给你一个痛快的死法。”\n\n周洛铭没有回答。\n\n他只是握紧刀柄，向前迈出一步。\n\n---\n\n*（章末钩子：那颗梦晶里封存的脸，究竟是谁？那行字指向的“她”，又是什么人？远处逼近的三道轮廓，是新的猎食者，还是……某个更古老的存在的使者？）*",
+    "capability": "ChapterDraft",
+    "content_hash": "sha256:41e0c404e4302761dd4fc456c04aef0f1ee6aad010f89e12f5689ef131243add",
+    "kind": "prose",
+    "produced_by": {
+      "llm": {
+        "attempts": [],
+        "cost": null,
+        "finish_reason": "stop",
+        "latency_ms": 19143,
+        "model": "deepseek-chat",
+        "model_pin": {
+          "adapter_version": "1.0.0",
+          "api_base": "https://api.deepseek.com",
+          "api_version": null,
+          "model": "deepseek-chat",
+          "provider": "deepseek"
+        },
+        "prompt_provenance": {
+          "derived_from": [
+            "CHR-00001@v1",
+            "EVT-00022@v1",
+            "EVT-00021@v1",
+            "EVT-00023@v1",
+            "TML-00001@v1",
+            "EVT-00020@v1",
+            "EVT-00024@v1"
+          ],
+          "package_hash": "sha256:e8b5d423d992316a94ef239f9037108603dbc0fea9b303295f0195a1064fe98c",
+          "prompt_hash": "sha256:db9312d941f6047d2228333bcaa60c5e303759157c81e72e74ffcc94c88b59c5",
+          "prompt_id": "chapter-draft",
+          "rendered_at": "2026-07-19T02:53:15.829199+00:00",
+          "template_id": "chapter-draft",
+          "template_version": "10.0.0"
+        },
+        "provider": "deepseek",
+        "provider_request_id": "2fc72fa5-f4ee-4474-bbe6-8b71650a8400",
+        "replay_ref": "../genesis-pilot/build-serial/replay-v10sp-gen/sha256_e4795e83ffee738dea45331c467f62aae423854fee9105ab995ba297f148d14b.json",
+        "request_id": "LLM-211d7c20874d4fd4a27630878e37ea1b",
+        "response_hash": "sha256:85d7e9183403ebfb6b748ce01f78659a2ced73f12be7977a648bb27fb7e24334",
+        "token_usage": {
+          "cached_input_tokens": 3200,
+          "input_tokens": 4712,
+          "output_tokens": 1788,
+          "reasoning_tokens": 0,
+          "total_tokens": 6500,
+          "usage_estimated": false
+        }
+      },
+      "model_id": "deepseek-chat",
+      "model_kind": "llm"
+    },
+    "provenance": {
+      "derived_from": [
+        "CHR-00001@v1",
+        "EVT-00022@v1",
+        "EVT-00021@v1",
+        "EVT-00023@v1",
+        "TML-00001@v1",
+        "EVT-00020@v1",
+        "EVT-00024@v1"
+      ],
+      "package_hash": "sha256:e8b5d423d992316a94ef239f9037108603dbc0fea9b303295f0195a1064fe98c",
+      "source_version": 2
+    },
+    "task_id": "TASK-00022",
+    "word_count": 2622
+  }
+}

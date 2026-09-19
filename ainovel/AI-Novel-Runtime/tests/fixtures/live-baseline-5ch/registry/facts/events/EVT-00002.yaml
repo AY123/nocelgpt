@@ -1,0 +1,17 @@
+id: EVT-00002
+name: The Cost Appears
+status: active
+fact_version: 1
+timeline: TML-00001
+when_absolute: "IR-2001-05-03"
+duration: "1 day"
+participants:
+  - CHR-00001
+  - CHR-00002
+locations: []
+causes:
+  - EVT-00001
+effects:
+  - EVT-00003
+certainty: canon
+summary: The oath's toll arrives when Lin Yue's mentor demands she surrender the archive key.

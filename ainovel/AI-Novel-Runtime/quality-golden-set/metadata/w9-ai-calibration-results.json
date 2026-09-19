@@ -1,0 +1,188 @@
+{
+  "kind": "w9_ai_calibration_flow_validation",
+  "version": "1.0",
+  "disclaimer": "AI consensus as reviewer vs REAL human_mean. Validates the W9 pipeline end-to-end; NOT a real calibration.",
+  "sample_count": 43,
+  "samples": [
+    "QGS-00001",
+    "QGS-00002",
+    "QGS-00003",
+    "QGS-00011",
+    "QGS-00012",
+    "QGS-00013",
+    "QGS-00014",
+    "QGS-00015",
+    "QGS-00016",
+    "QGS-00017",
+    "QGS-00018",
+    "QGS-00019",
+    "QGS-00020",
+    "QGS-00021",
+    "QGS-00022",
+    "QGS-00023",
+    "QGS-00024",
+    "QGS-00025",
+    "QGS-00026",
+    "QGS-00027",
+    "QGS-00028",
+    "QGS-00029",
+    "QGS-00030",
+    "QGS-00031",
+    "QGS-00032",
+    "QGS-00033",
+    "QGS-00034",
+    "QGS-00035",
+    "QGS-00036",
+    "QGS-00037",
+    "QGS-00038",
+    "QGS-00039",
+    "QGS-00040",
+    "QGS-00041",
+    "QGS-00042",
+    "QGS-00043",
+    "QGS-00044",
+    "QGS-00045",
+    "QGS-00046",
+    "QGS-00047",
+    "QGS-00048",
+    "QGS-00049",
+    "QGS-00050"
+  ],
+  "summary": {
+    "kind": "w9_reviewer_calibration_report",
+    "version": "1.0",
+    "sample_count": 43,
+    "dimension_stats": {
+      "opening_hook": {
+        "sample_count": 43,
+        "correlation": 0.9220158685451215,
+        "mean_abs_error": 0.4883720930232558,
+        "ci95_half_width": 0.25364023613941644,
+        "level": "decision",
+        "rationale": "信号稳定，适合驱动自动选择或硬门控"
+      },
+      "chapter_goal": {
+        "sample_count": 43,
+        "correlation": 0.794236897300607,
+        "mean_abs_error": 0.4069767441860465,
+        "ci95_half_width": 0.24676979314625724,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "conflict_progression": {
+        "sample_count": 43,
+        "correlation": 0.8473846390777743,
+        "mean_abs_error": 0.4418604651162791,
+        "ci95_half_width": 0.18508569729081215,
+        "level": "decision",
+        "rationale": "信号稳定，适合驱动自动选择或硬门控"
+      },
+      "character_motivation": {
+        "sample_count": 43,
+        "correlation": 0.7473856327402053,
+        "mean_abs_error": 0.4418604651162791,
+        "ci95_half_width": 0.2192785259225658,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "emotion_flow": {
+        "sample_count": 43,
+        "correlation": 0.7835952654973312,
+        "mean_abs_error": 0.313953488372093,
+        "ci95_half_width": 0.21638307076873106,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "information_density": {
+        "sample_count": 43,
+        "correlation": 0.6296084861106532,
+        "mean_abs_error": 0.6046511627906976,
+        "ci95_half_width": 0.2364297877353318,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "payoff_delivery": {
+        "sample_count": 43,
+        "correlation": 0.7813776332388114,
+        "mean_abs_error": 0.5348837209302325,
+        "ci95_half_width": 0.18561947113818927,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "ending_hook": {
+        "sample_count": 43,
+        "correlation": 0.8503850990436814,
+        "mean_abs_error": 0.5581395348837209,
+        "ci95_half_width": 0.22877354632182628,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "continuity": {
+        "sample_count": 43,
+        "correlation": 0.7679807834113174,
+        "mean_abs_error": 0.7441860465116279,
+        "ci95_half_width": 0.26966317150872676,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "ai_voice_risk": {
+        "sample_count": 43,
+        "correlation": 0.5283064784496544,
+        "mean_abs_error": 0.6395348837209303,
+        "ci95_half_width": 0.328277980232837,
+        "level": "diagnostic",
+        "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择"
+      },
+      "paying_intent": {
+        "sample_count": 43,
+        "correlation": 0.8672243110837119,
+        "mean_abs_error": 0.686046511627907,
+        "ci95_half_width": 0.17264002737412795,
+        "level": "decision",
+        "rationale": "信号稳定，适合驱动自动选择或硬门控"
+      },
+      "continue_intent": {
+        "sample_count": 43,
+        "correlation": 0.8686986353646816,
+        "mean_abs_error": 0.47674418604651164,
+        "ci95_half_width": 0.22346840653261513,
+        "level": "decision",
+        "rationale": "信号稳定，适合驱动自动选择或硬门控"
+      }
+    },
+    "dimension_grading": {
+      "decision": [
+        "opening_hook",
+        "conflict_progression",
+        "paying_intent",
+        "continue_intent"
+      ],
+      "diagnostic": [
+        "chapter_goal",
+        "character_motivation",
+        "emotion_flow",
+        "information_density",
+        "payoff_delivery",
+        "ending_hook",
+        "continuity",
+        "ai_voice_risk"
+      ],
+      "unreliable": []
+    },
+    "trusted_dimensions": [
+      "opening_hook",
+      "chapter_goal",
+      "conflict_progression",
+      "character_motivation",
+      "emotion_flow",
+      "information_density",
+      "payoff_delivery",
+      "ending_hook",
+      "continuity",
+      "paying_intent",
+      "continue_intent"
+    ],
+    "notes": "calibration summary from real reviewer backfill",
+    "content_hash": "dc6afa87d3612598662dba6006d077f891906ec10c9fb49788dd65b66eb58fcb"
+  }
+}

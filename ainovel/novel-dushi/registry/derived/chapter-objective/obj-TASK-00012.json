@@ -1,0 +1,37 @@
+{
+  "id": "OBJ-00012",
+  "kind": "chapter_objective",
+  "authority": "human",
+  "gating": false,
+  "schema_version": "1.0",
+  "objective_id": "OBJ-00012",
+  "chapter_id": "TASK-00012",
+  "source": {
+    "state_hash": "sha256:ffddecf7f937219249d3bc57bd7e132c6890ed2f66a34ee4561c2c49869484d9"
+  },
+  "primary_goal": "完成第 4 次阶段翻身，把「在商业世界证明自己，改写前世失败命运」向前推进一格",
+  "secondary_goals": [],
+  "reader_question": "主角目标与操盘手年入百万阶段的阶段boss正面碰撞——掌控一片地图/资源的势力，卡住主角上升通道。必须在今夜之前动手，否则再无机会",
+  "promise_to_deliver": [
+    "事业翻盘"
+  ],
+  "character_focus": [],
+  "plot_threads": [],
+  "commercial_intent": {
+    "retention_focus": "next_chapter_pull",
+    "payoff_type": "partial_payoff",
+    "drop_risk_target": "low"
+  },
+  "pacing_role": "rising_action",
+  "cliffhanger_type": "reveal",
+  "constraints": [
+    "不得破坏角色连续性",
+    "不得引入未授权新事实"
+  ],
+  "success_criteria": [
+    "reader_question 明确",
+    "章节末有追读动力",
+    "角色行为符合 runtime 状态"
+  ],
+  "notes": ""
+}

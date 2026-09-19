@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:reader-simulation:1.1",
+  "title": "ReaderSimulation",
+  "description": "Output of the Reader Simulator: several reader PERSONAS each simulate reading a chapter and report satisfaction, whether they would continue, where they would drop, and their expectations. The v1 set is a reader-APPETITE panel (老白/小白/男频党/女频党/爽文党/剧情党); v1.1 adds an optional commercial-BEHAVIOR panel (首订党/追订党/白嫖党/打赏党/月票党/养肥党) plus per-persona continue_probability / pay_probability so the Commercial Loop v2 can compare rewrites by predicted retention AND willingness to pay — still comparison-only. This is the LAST piece of the pipeline BY DESIGN: reader reaction is unfalsifiable prediction, so it is strictly ADVISORY and COMPARISON-ONLY. axis=evaluative, gating=false, comparison_only=true are STRUCTURAL INVARIANTS (const) enforced by schema — a reader simulation can NEVER gate a build and its numbers are only meaningful as a RELATIVE comparison between revisions, never as absolute truth (the North Star discipline). Rides the Runtime envelope beside the draft, never inside the frozen ChapterDraft schema. All v1.1 additions are OPTIONAL, so a v1 report still validates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reviewer", "axis", "gating", "comparison_only", "personas", "aggregate"],
+  "properties": {
+    "reviewer": { "type": "string", "minLength": 1 },
+    "axis": { "type": "string", "const": "evaluative" },
+    "gating": { "type": "boolean", "const": false },
+    "comparison_only": { "type": "boolean", "const": true },
+    "personas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "satisfaction", "would_continue", "degraded"],
+        "properties": {
+          "name": { "type": "string" },
+          "satisfaction": { "type": "integer", "minimum": 0, "maximum": 100 },
+          "would_continue": { "type": "boolean" },
+          "continue_probability": {
+            "type": "integer", "minimum": 0, "maximum": 100,
+            "description": "v1.1: softer, comparison-only estimate of追读概率 — how likely this persona reads the NEXT chapter. Distinct from the boolean would_continue."
+          },
+          "pay_probability": {
+            "type": "integer", "minimum": 0, "maximum": 100,
+            "description": "v1.1: the COMMERCIAL signal — how likely this persona pays (订阅/打赏/月票) at this point. Only commercial-behavior personas report it meaningfully; appetite personas may omit it."
+          },
+          "drop_point": { "type": "string" },
+          "drop_reason": { "type": "string" },
+          "expectations": { "type": "array", "items": { "type": "string" } },
+          "degraded": { "type": "boolean" }
+        }
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mean_satisfaction", "continue_rate"],
+      "properties": {
+        "mean_satisfaction": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "continue_rate": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "mean_continue_probability": {
+          "type": "integer", "minimum": 0, "maximum": 100,
+          "description": "v1.1: mean of per-persona continue_probability over non-degraded personas that reported it."
+        },
+        "mean_pay_probability": {
+          "type": "integer", "minimum": 0, "maximum": 100,
+          "description": "v1.1: mean of per-persona pay_probability over non-degraded personas that reported it — the aggregate commercial signal. Comparison-only."
+        },
+        "pay_personas": {
+          "type": "array", "items": { "type": "string" },
+          "description": "v1.1: personas whose pay_probability cleared a soft interest bar (>=50) — who would likely pay."
+        },
+        "drop_personas": { "type": "array", "items": { "type": "string" } },
+        "common_expectations": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "severity", "message"],
+        "properties": {
+          "check": { "type": "string" },
+          "severity": { "type": "string", "enum": ["info", "warning", "error"] },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "judge_provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "model_id": { "type": "string" },
+        "degraded": { "type": "boolean" }
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:chapter-objective:1.0",
+  "title": "ChapterObjective",
+  "description": "Phase 6 director contract: the chapter-level objective artifact. It defines what this chapter must accomplish for story, character, pacing, retention, and commercial intent. This is a DERIVED production artifact, not a registry fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "authority",
+    "gating",
+    "chapter_id",
+    "primary_goal",
+    "reader_question",
+    "promise_to_deliver",
+    "character_focus",
+    "plot_threads",
+    "commercial_intent",
+    "pacing_role",
+    "cliffhanger_type",
+    "constraints",
+    "success_criteria"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^OBJ-\\d{5,}$" },
+    "kind": { "type": "string", "const": "chapter_objective" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the director may prepare a chapter objective, but committing to a book's direction is an outward decision a human owns. This artifact stages a recommendation, never auto-executes an outward/irreversible transition."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a chapter objective NEVER blocks a build. It is advisory production intent; an unmet objective does not fail a chapter."
+    },
+    "schema_version": { "type": "string", "default": "1.0" },
+    "objective_id": { "type": "string", "pattern": "^OBJ-\\d{5,}$" },
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "narrative_ir_id": { "type": "string" },
+        "state_hash": { "type": "string" },
+        "quality_summary_ref": { "type": "string" },
+        "commercial_summary_ref": { "type": "string" },
+        "signal_summary_ref": { "type": "string" }
+      }
+    },
+    "primary_goal": { "type": "string", "minLength": 1 },
+    "secondary_goals": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "reader_question": { "type": "string", "minLength": 1 },
+    "promise_to_deliver": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "character_focus": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "plot_threads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["thread_id", "role", "description"],
+        "properties": {
+          "thread_id": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "enum": ["advance", "maintain", "resolve", "seed"] },
+          "description": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "commercial_intent": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["retention_focus", "payoff_type", "drop_risk_target"],
+      "properties": {
+        "retention_focus": { "type": "string", "minLength": 1 },
+        "payoff_type": { "type": "string", "minLength": 1 },
+        "drop_risk_target": { "type": "string", "minLength": 1 },
+        "payment_trigger": { "type": "string" }
+      }
+    },
+    "pacing_role": { "type": "string", "enum": ["setup", "rising_action", "climax", "resolution", "bridge"] },
+    "cliffhanger_type": { "type": "string", "enum": ["reveal", "threat", "choice", "arrival", "loss", "promise", "none"] },
+    "constraints": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "success_criteria": { "type": "array", "items": { "type": "string", "minLength": 1 } },
+    "notes": { "type": "string" }
+  }
+}

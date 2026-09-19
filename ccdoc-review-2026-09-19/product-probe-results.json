@@ -1,0 +1,46 @@
+{
+  "scope": "planning-document examples only; not production implementation",
+  "source": "/Users/angyang/Documents/AI/ANovelOS/ccdoc/17_QUALITY_ASSURANCE_FRAMEWORK.md",
+  "source_sha256": "14d76d0998471ebc38913cf81ef5caeb9d11db44666277829621e554ed86da2d",
+  "ab_one_observation_per_arm": {
+    "results": {
+      "control": {
+        "count": 1,
+        "avg_score": 75.0
+      },
+      "variant_1": {
+        "count": 1,
+        "avg_score": 81.0
+      }
+    },
+    "best_variant": "variant_1",
+    "improvement": 8.0,
+    "recommendation": "deploy"
+  },
+  "reader_pilot_two_of_three": {
+    "observed_rate": 0.6666666666666666,
+    "passes_document_threshold_gt_0_60": true,
+    "illustrative_wilson_95_interval": [
+      0.2076549551264879,
+      0.9385096847238394
+    ],
+    "warning": "Interval assumes independent Bernoulli samples, not established by the document; real selection bias is additional."
+  },
+  "draft_cost_arithmetic": {
+    "weighted_cost_from_document_mix": 0.0192,
+    "claim_0_020_less_than_0_01": false,
+    "thirty_chapters_at_0_020": 0.6
+  },
+  "quality_weight_counterexample": {
+    "assumption": "Interpret the documented five dimension weights as a linear score, not an executed aggregator.",
+    "all_other_dimensions_100_reader_appeal_0": 90.0,
+    "document_grade_a_threshold": 90
+  },
+  "workload_arithmetic": {
+    "adr_part3_m1_listed_person_weeks": 9,
+    "adr_part3_m1_calendar_weeks": 6,
+    "adr_part3_m2_listed_person_weeks": 12,
+    "adr_part3_m2_calendar_weeks": 8,
+    "warning": "Parallel resources or overlapping work can reconcile totals, but are not stated in this table."
+  }
+}

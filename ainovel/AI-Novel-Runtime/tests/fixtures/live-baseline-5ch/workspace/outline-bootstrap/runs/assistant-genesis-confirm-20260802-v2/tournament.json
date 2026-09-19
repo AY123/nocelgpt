@@ -1,0 +1,148 @@
+{
+  "comparison_only": true,
+  "gating": false,
+  "kind": "outline_tournament",
+  "reviewer": "outline-tournament-v1",
+  "tournament": {
+    "calibrates": false,
+    "candidates": [
+      "CANDIDATE-A",
+      "CANDIDATE-B",
+      "CANDIDATE-C"
+    ],
+    "comparison_only": true,
+    "gating": false,
+    "matches": [
+      {
+        "comparison": {
+          "axis": "evaluative",
+          "calibrates": false,
+          "comparison_only": true,
+          "dimensions": {
+            "character_consistency": {
+              "evidence": "",
+              "order_ab": "tie",
+              "order_ba": "tie",
+              "verdict": "tie"
+            },
+            "character_growth": {
+              "evidence": "",
+              "order_ab": "tie",
+              "order_ba": "tie",
+              "verdict": "tie"
+            }
+          },
+          "gating": false,
+          "judge_provenance": {
+            "degraded": true,
+            "model_id": "gpt-5.6-sol",
+            "reason": "one or both pairwise calls failed to parse"
+          },
+          "label_a": "CANDIDATE-A",
+          "label_b": "CANDIDATE-B",
+          "reviewer": "outline-tournament-v1",
+          "winner": "tie"
+        },
+        "label_a": "CANDIDATE-A",
+        "label_b": "CANDIDATE-B"
+      },
+      {
+        "comparison": {
+          "axis": "evaluative",
+          "calibrates": false,
+          "comparison_only": true,
+          "dimensions": {
+            "character_consistency": {
+              "evidence": "",
+              "order_ab": "tie",
+              "order_ba": "tie",
+              "verdict": "tie"
+            },
+            "character_growth": {
+              "evidence": "",
+              "order_ab": "tie",
+              "order_ba": "tie",
+              "verdict": "tie"
+            }
+          },
+          "gating": false,
+          "judge_provenance": {
+            "degraded": true,
+            "model_id": "gpt-5.6-sol",
+            "reason": "one or both pairwise calls failed to parse"
+          },
+          "label_a": "CANDIDATE-A",
+          "label_b": "CANDIDATE-C",
+          "reviewer": "outline-tournament-v1",
+          "winner": "tie"
+        },
+        "label_a": "CANDIDATE-A",
+        "label_b": "CANDIDATE-C"
+      },
+      {
+        "comparison": {
+          "axis": "evaluative",
+          "calibrates": false,
+          "comparison_only": true,
+          "dimensions": {
+            "character_consistency": {
+              "evidence": "",
+              "order_ab": "tie",
+              "order_ba": "tie",
+              "verdict": "tie"
+            },
+            "character_growth": {
+              "evidence": "",
+              "order_ab": "tie",
+              "order_ba": "tie",
+              "verdict": "tie"
+            }
+          },
+          "gating": false,
+          "judge_provenance": {
+            "degraded": true,
+            "model_id": "gpt-5.6-sol",
+            "reason": "one or both pairwise calls failed to parse"
+          },
+          "label_a": "CANDIDATE-B",
+          "label_b": "CANDIDATE-C",
+          "reviewer": "outline-tournament-v1",
+          "winner": "tie"
+        },
+        "label_a": "CANDIDATE-B",
+        "label_b": "CANDIDATE-C"
+      }
+    ],
+    "metadata": {
+      "match_count": 3
+    },
+    "reviewer": "outline-tournament-v1",
+    "summary": {
+      "calibrates": false,
+      "comparison_only": true,
+      "decisive_win_rate_a": null,
+      "gating": false,
+      "n_degraded": 3,
+      "n_pairs": 3,
+      "overall": {
+        "a": 0,
+        "b": 0,
+        "tie": 3
+      },
+      "per_dimension": {
+        "character_consistency": {
+          "a": 0,
+          "b": 0,
+          "tie": 3
+        },
+        "character_growth": {
+          "a": 0,
+          "b": 0,
+          "tie": 3
+        }
+      },
+      "reviewer": "outline-tournament-v1"
+    }
+  },
+  "winner": null
+}

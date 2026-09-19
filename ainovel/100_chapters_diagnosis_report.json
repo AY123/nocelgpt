@@ -1,0 +1,261 @@
+{
+  "continuity_issues": [
+    {
+      "type": "句子未完成",
+      "location": "Ch2→Ch3",
+      "severity": "高",
+      "detail": "Ch2结尾: 但那根弦，"
+    },
+    {
+      "type": "句子未完成",
+      "location": "Ch34→Ch35",
+      "severity": "高",
+      "detail": "Ch34结尾: 又一下。"
+    },
+    {
+      "type": "句子未完成",
+      "location": "Ch93→Ch94",
+      "severity": "高",
+      "detail": "Ch93结尾: 他来了。"
+    }
+  ],
+  "ai_taste_patterns": {
+    "不是因为": 42,
+    "他知道": 82,
+    "深吸一口气": 31,
+    "这不是": 50,
+    "沉默了一会": 13,
+    "她知道": 6,
+    "沉默了片刻": 36,
+    "嘴角扬起": 1,
+    "沉默片刻": 6,
+    "嘴角勾起": 1
+  },
+  "hook_issues": {
+    "low_hook_chapters": [
+      {
+        "chapter": 1,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 3,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 4,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 5,
+        "strength": 50.0,
+        "type": "none"
+      },
+      {
+        "chapter": 7,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 10,
+        "strength": 50.0,
+        "type": "none"
+      },
+      {
+        "chapter": 11,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 12,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 13,
+        "strength": 50.0,
+        "type": "none"
+      },
+      {
+        "chapter": 16,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 17,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 18,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 20,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 24,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 25,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 26,
+        "strength": 50.0,
+        "type": "none"
+      },
+      {
+        "chapter": 27,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 28,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 32,
+        "strength": 50.0,
+        "type": "none"
+      },
+      {
+        "chapter": 41,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 45,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 46,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 51,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 54,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 55,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 63,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 64,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 66,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 73,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 75,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 76,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 80,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 86,
+        "strength": 50.0,
+        "type": "none"
+      },
+      {
+        "chapter": 89,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 90,
+        "strength": 40.0,
+        "type": "none"
+      },
+      {
+        "chapter": 97,
+        "strength": 50.0,
+        "type": "none"
+      }
+    ],
+    "no_hook_chapters": [
+      1,
+      3,
+      4,
+      5,
+      7,
+      10,
+      11,
+      12,
+      13,
+      16,
+      17,
+      18,
+      20,
+      24,
+      25,
+      26,
+      27,
+      28,
+      32,
+      41,
+      45,
+      46,
+      51,
+      54,
+      55,
+      63,
+      64,
+      66,
+      73,
+      75,
+      76,
+      80,
+      86,
+      89,
+      90,
+      97
+    ]
+  },
+  "quality_issues": {
+    "short_chapters": [],
+    "empty_chapters": []
+  },
+  "setting_issues": []
+}

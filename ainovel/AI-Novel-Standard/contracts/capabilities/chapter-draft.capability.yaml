@@ -1,0 +1,26 @@
+contract_format: "1.0"
+capability: ChapterDraft
+description: "Draft a chapter's prose from a compiled Task Package."
+input:
+  artifact: "anes:contract:task-package:1.0"
+  constraints:
+    seed_types: [CHR, EVT]      # seeds must be Characters or Events
+    min_seeds: 1
+    max_seeds: 8
+    required_extra: []          # keys that must be present in task.extra
+output:
+  artifact: ChapterDraft
+  kind: prose
+  schema: chapter-draft.schema.json   # output Artifact Contract this capability must satisfy
+determinism: generative
+idempotency:
+  safe_to_retry: true
+  cacheable: false
+retry:
+  max_attempts: 2
+  backoff: linear
+gating: evaluative
+notes: >
+  Generative writing capability. Its output is judged on the evaluative QA axis
+  (voice, pacing) and MUST NOT gate a build (ADR-003). The input Task Package was
+  itself produced by a deterministic, gated compile.

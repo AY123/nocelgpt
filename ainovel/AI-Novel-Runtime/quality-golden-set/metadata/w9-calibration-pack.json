@@ -1,0 +1,74 @@
+{
+  "kind": "w9_reviewer_calibration_pack",
+  "version": "1.0",
+  "decision_mode": "calibration",
+  "sample_count": 50,
+  "source": "quality-golden-set/samples",
+  "sample_groups": [
+    {
+      "category": "positive",
+      "samples": ["QGS-00002", "QGS-00009", "QGS-00011", "QGS-00012", "QGS-00013", "QGS-00014", "QGS-00015", "QGS-00016", "QGS-00017", "QGS-00018", "QGS-00019", "QGS-00020"]
+    },
+    {
+      "category": "negative",
+      "samples": ["QGS-00003", "QGS-00021", "QGS-00022", "QGS-00023", "QGS-00024", "QGS-00025", "QGS-00026", "QGS-00027", "QGS-00028"]
+    },
+    {
+      "category": "boundary",
+      "samples": ["QGS-00001", "QGS-00010", "QGS-00029", "QGS-00030", "QGS-00031", "QGS-00032"]
+    },
+    {
+      "category": "ai_voice",
+      "samples": ["QGS-00004", "QGS-00023", "QGS-00033", "QGS-00034", "QGS-00035", "QGS-00036", "QGS-00037"]
+    },
+    {
+      "category": "padding",
+      "samples": ["QGS-00005", "QGS-00024", "QGS-00038", "QGS-00039", "QGS-00040", "QGS-00041", "QGS-00042"]
+    },
+    {
+      "category": "no_conflict",
+      "samples": ["QGS-00006", "QGS-00021", "QGS-00022", "QGS-00043", "QGS-00044", "QGS-00045", "QGS-00046"]
+    },
+    {
+      "category": "character_degradation",
+      "samples": ["QGS-00007", "QGS-00025", "QGS-00028", "QGS-00047", "QGS-00048"]
+    },
+    {
+      "category": "ending_failure",
+      "samples": ["QGS-00008", "QGS-00026", "QGS-00032", "QGS-00042", "QGS-00049", "QGS-00050"]
+    }
+  ],
+  "calibration_targets": {
+    "dimensions": [
+      "opening_hook",
+      "chapter_goal",
+      "conflict_progression",
+      "character_motivation",
+      "emotion_flow",
+      "information_density",
+      "payoff_delivery",
+      "ending_hook",
+      "continuity",
+      "ai_voice_risk",
+      "paying_intent",
+      "continue_intent"
+    ],
+    "outputs": [
+      "dimension_scores",
+      "severity_labels",
+      "continue_probability",
+      "pay_probability",
+      "risk_flags",
+      "evidence_spans",
+      "recommendation",
+      "decision_mode"
+    ]
+  },
+  "guardrails": {
+    "human_editor_is_authoritative": true,
+    "simulator_cannot_gate_publish": true,
+    "simulator_cannot_override_human_label": true,
+    "simulator_must_return_evidence_spans": true,
+    "simulator_must_mark_uncertainty": true
+  }
+}

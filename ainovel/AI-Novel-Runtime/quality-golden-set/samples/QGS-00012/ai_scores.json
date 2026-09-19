@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 4,
+    "chapter_goal": 5,
+    "conflict_progression": 4,
+    "character_motivation": 4,
+    "emotion_flow": 3,
+    "information_density": 3,
+    "payoff_delivery": 4,
+    "ending_hook": 5,
+    "continuity": 4,
+    "ai_voice_risk": 2,
+    "paying_intent": 4,
+    "continue_intent": 5
+  },
+  "editor_b": {
+    "opening_hook": 4,
+    "chapter_goal": 5,
+    "conflict_progression": 4,
+    "character_motivation": 4,
+    "emotion_flow": 3,
+    "information_density": 3,
+    "payoff_delivery": 3,
+    "ending_hook": 4,
+    "continuity": 4,
+    "ai_voice_risk": 2,
+    "paying_intent": 3,
+    "continue_intent": 4
+  },
+  "editor_a_note": "压力与选择设计到位，结尾悬念强，但情绪流动稍显平直，信息密度可再提升。",
+  "editor_b_note": "章节结构清晰，压力与选择感强，但情绪渲染和细节填充稍显单薄，可加强内心挣扎以提升代入感。",
+  "consensus_scores": {
+    "opening_hook": 4,
+    "chapter_goal": 5,
+    "conflict_progression": 4,
+    "character_motivation": 4,
+    "emotion_flow": 3,
+    "information_density": 3,
+    "payoff_delivery": 4,
+    "ending_hook": 4,
+    "continuity": 4,
+    "ai_voice_risk": 2,
+    "paying_intent": 4,
+    "continue_intent": 4
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

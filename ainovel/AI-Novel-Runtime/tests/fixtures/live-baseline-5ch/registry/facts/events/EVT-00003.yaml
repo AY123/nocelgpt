@@ -1,0 +1,17 @@
+id: EVT-00003
+name: The Archive Test
+status: active
+fact_version: 1
+timeline: TML-00001
+when_absolute: "IR-2001-05-05"
+duration: "1 day"
+participants:
+  - CHR-00001
+  - CHR-00003
+locations: []
+causes:
+  - EVT-00002
+effects:
+  - EVT-00004
+certainty: canon
+summary: Elder Mo challenges Lin Yue to prove the oath by opening the sealed archive door.

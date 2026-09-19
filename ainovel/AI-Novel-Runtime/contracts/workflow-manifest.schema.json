@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anes.local/schemas/workflow-manifest.schema.json",
+  "title": "Workflow Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "story_id", "status", "cursor", "completed_chapters", "failed_chapters", "version"],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "story_id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "enum": ["pending", "running", "paused", "completed"] },
+    "cursor": { "type": "integer", "minimum": 1 },
+    "completed_chapters": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1 },
+      "uniqueItems": true
+    },
+    "failed_chapters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["chapter", "stage", "message", "ok"],
+        "properties": {
+          "chapter": { "type": "integer", "minimum": 1 },
+          "stage": { "type": "string" },
+          "message": { "type": "string" },
+          "ok": { "type": "boolean" }
+        }
+      }
+    },
+    "replay_dir": { "type": ["string", "null"] },
+    "output_dir": { "type": ["string", "null"] },
+    "last_successful_checkpoint": { "type": ["integer", "null"], "minimum": 1 },
+    "input_hash": { "type": ["string", "null"] },
+    "budget_limit": { "type": ["number", "null"], "minimum": 0 },
+    "budget_spent": { "type": ["number", "null"], "minimum": 0 },
+    "admission_status": { "type": ["string", "null"], "enum": ["admit", "hold", null] },
+    "admission_reason": { "type": ["string", "null"] },
+    "selection_policy": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["kind", "version", "status", "decision_dimensions", "diagnostic_dimensions", "unreliable_dimensions", "blocked_dimensions", "trusted_dimensions"],
+      "properties": {
+        "kind": { "type": "string", "const": "w9_selection_policy" },
+        "version": { "type": "string", "minLength": 1 },
+        "status": { "type": ["string", "null"] },
+        "decision_dimensions": { "type": "array", "items": { "type": "string" } },
+        "diagnostic_dimensions": { "type": "array", "items": { "type": "string" } },
+        "unreliable_dimensions": { "type": "array", "items": { "type": "string" } },
+        "blocked_dimensions": { "type": "array", "items": { "type": "string" } },
+        "trusted_dimensions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "version": { "type": "integer", "const": 1 },
+    "created_at": { "type": ["string", "null"] },
+    "updated_at": { "type": ["string", "null"] }
+  }
+}

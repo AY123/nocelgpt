@@ -1,0 +1,37 @@
+{
+  "kind": "w10_blind_review_sample_pool",
+  "version": "1.0",
+  "status": "ready_for_execution",
+  "purpose": "Prepare at least 30 candidate chapters for blind comparison between original, automatic revision, and human revision.",
+  "note": "W10-01 sample preparation completed with 30 candidate entries arranged into 10 blind-review batches.",
+  "source_buckets": [
+    {
+      "bucket": "30_ch_baseline",
+      "preferred_count": 18,
+      "note": "Use completed 30-chapter baseline outputs as primary comparison material."
+    },
+    {
+      "bucket": "golden_set_boundary",
+      "preferred_count": 6,
+      "note": "Use boundary samples to stress the revision decision line."
+    },
+    {
+      "bucket": "golden_set_negative",
+      "preferred_count": 6,
+      "note": "Use clear failure samples to test whether revisions fix the actual problem."
+    }
+  ],
+  "selection_rules": {
+    "total_target_minimum": 30,
+    "blind_requires_original_auto_human_triple": true,
+    "preserve_source_identity": false,
+    "randomize_order": true,
+    "exclude_official_reviewer_results": true
+  },
+  "next_actions": [
+    "collect candidate chapter ids from the 30-chapter baseline outputs",
+    "map each candidate to original/auto/human versions",
+    "prepare blind comparison batches and reviewer notes",
+    "only then proceed to W10-02"
+  ]
+}

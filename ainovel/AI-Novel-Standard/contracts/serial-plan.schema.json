@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:serial-plan:1.0",
+  "title": "SerialPlan",
+  "description": "The AUTHORED serialization plan of a novel (roadmap P17): when publishing starts, how many chapters per day, the target backlog to keep, and which weekdays are rest days. Like the Novel Brain it is an AUTHORED input the author writes by hand — NOT a story fact (ADR-006) and NOT a recomputed projection. It lives under sources/serial-plan.yaml, never under registry/. It is the INPUT to the schedule projection (runtime.schedule), which folds it together with the count of produced drafts into an advisory backlog / break-risk / update-calendar readout. The projection is ADVISORY and never gates (ADR-003): a thin backlog warns, it does not block a build.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "version", "start_date", "daily_target"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^PLAN-\\d{5,}$" },
+    "kind": { "type": "string", "const": "serial_plan" },
+    "version": { "type": "string" },
+    "start_date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "ISO date (YYYY-MM-DD) publishing starts / started."
+    },
+    "daily_target": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Chapters to publish per active (non-rest) day."
+    },
+    "backlog_target": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Desired stock of produced-but-unpublished chapters (库存). Falling below it is the break-risk warning threshold (advisory)."
+    },
+    "rest_days": {
+      "type": "array",
+      "description": "ISO weekday numbers (1=Mon .. 7=Sun) on which nothing is published.",
+      "items": { "type": "integer", "minimum": 1, "maximum": 7 },
+      "uniqueItems": true
+    },
+    "note": { "type": "string" }
+  }
+}

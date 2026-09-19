@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/genre-pack.schema.json",
+  "title": "ANovel GenrePack",
+  "type": "object",
+  "required": [
+    "id",
+    "version",
+    "status",
+    "identity",
+    "constitution",
+    "reality_model",
+    "narrative_engines",
+    "progression_engines",
+    "reader_promises",
+    "canon_extensions",
+    "certification"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9_.-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "status": {
+      "enum": [
+        "DRAFT",
+        "RESEARCHED",
+        "IMPLEMENTED",
+        "CERTIFIED_10",
+        "CERTIFIED_30",
+        "PRODUCTION_READY",
+        "DEPRECATED",
+        "RETIRED"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "family",
+        "subgenre"
+      ],
+      "properties": {
+        "family": {
+          "type": "string"
+        },
+        "subgenre": {
+          "type": "string"
+        },
+        "platform_mapping": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "constitution": {
+      "$ref": "genre-constitution.schema.json"
+    },
+    "reality_model": {
+      "type": "string"
+    },
+    "setting_model": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "mechanics": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tones": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cast_models": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "domain_packs": {
+      "type": "object",
+      "properties": {
+        "required": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "optional": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "narrative_engines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "progression_engines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "conflict_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reader_promises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "config": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "payoff_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hook_patterns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "canon_extensions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "schema_ref",
+          "owner_domain"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "schema_ref": {
+            "type": "string"
+          },
+          "owner_domain": {
+            "type": "string"
+          },
+          "mutable": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "fusion_policy": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "quality_rubric": {
+      "type": "object"
+    },
+    "reference_profile": {
+      "type": "object"
+    },
+    "certification": {
+      "type": "object",
+      "required": [
+        "required_level"
+      ],
+      "properties": {
+        "required_level": {
+          "enum": [
+            "C0",
+            "C1",
+            "C2",
+            "C3",
+            "C4",
+            "C5",
+            "C6",
+            "C7",
+            "C8"
+          ]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,2975 @@
+{
+  "total_issues": 346,
+  "checked_pairs": 99,
+  "by_severity": {
+    "medium": 97,
+    "low": 41,
+    "info": 196,
+    "high": 12
+  },
+  "issues": [
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch1→Ch2",
+      "prev_location": "矿井内部：由四号井逃入三号井通风道，位于主巷道之外的狭窄通风道",
+      "next_location": "矿工棚屋内及木门外",
+      "description": "地点从\"矿井内部：由四号井逃入三号井通风道，位于主巷道之外的狭窄通风\"跳转到\"矿工棚屋内及木门外\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch1→Ch2",
+      "missing_characters": [
+        "黑袍人（自称段奕尘的二叔，暂未现身）",
+        "正在追捕段奕尘的四名以上追兵"
+      ],
+      "description": "人物消失：黑袍人（自称段奕尘的二叔，暂未现身）, 正在追捕段奕尘的四名以上追兵",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch1→Ch2",
+      "unfinished_action": "段奕尘尚未摆脱追兵，也未能追问或确认黑袍人的真实身份与当年清远矿难的真相；他必须继续利用通风道逃亡并保护怀中的晶石碎块",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch1→Ch2",
+      "hook_promise": "揭示本应死于十七年前清远矿难中的二叔为何仍然活着，以及段奕尘发光右手、晶石碎块和矿难之间的关联；同时承诺展开一场来自神秘势力的追捕",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch2前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch2→Ch3",
+      "prev_location": "矿工棚屋内及木门外",
+      "next_location": "镜家药圃西墙外的砂岩墙根阴影处",
+      "description": "地点从\"矿工棚屋内及木门外\"跳转到\"镜家药圃西墙外的砂岩墙根阴影处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch2→Ch3",
+      "unfinished_action": "黑线连接地下与晶化女人嘴唇，持续传递无法被听见的音节；与此同时，门外来者停步潜伏，段奕尘尚未确认其身份或采取行动。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch2→Ch3",
+      "hook_promise": "揭示昏迷容器与地下黑线、晶化女人之间的联系，并解答门外来者是谁、其出现是否与这股转移到新容器中的力量有关。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch3前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch3→Ch4",
+      "prev_location": "镜家药圃西墙外的砂岩墙根阴影处",
+      "next_location": "废矿巷道入口附近，靠近矿渣堆与废料棚，正向废矿深处延伸",
+      "description": "地点从\"镜家药圃西墙外的砂岩墙根阴影处\"跳转到\"废矿巷道入口附近，靠近矿渣堆与废料棚，正向废矿深处延伸\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch3→Ch4",
+      "unfinished_action": "段奕尘尚未追问黑色令牌与父亲的关系；回忆中的他正准备潜入拒绝为欠债矿工看病的镜家药圃",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch3→Ch4",
+      "hook_promise": "揭示段奕尘父亲与残月令牌、镜见川及镜家之间的隐秘联系，并说明镜见川为何会接近段奕尘",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch4前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch4→Ch5",
+      "prev_location": "废矿巷道入口附近，靠近矿渣堆与废料棚，正向废矿深处延伸",
+      "next_location": "矿场北侧通风口通往的矿道岔口阴影处",
+      "description": "地点从\"废矿巷道入口附近，靠近矿渣堆与废料棚，正向废矿深处延伸\"跳转到\"矿场北侧通风口通往的矿道岔口阴影处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch4→Ch5",
+      "unfinished_action": "掌心异眼传入脑海的陌生嘶哑声音尚未说出具体内容，山腹深处的庞然之物与青铜巨门仍未揭晓；段奕尘在三天后遭到多名追兵围堵，正准备进入废矿深处应对追杀",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch4→Ch5",
+      "hook_promise": "揭示掌心异眼、混沌曜能与山腹深处未知存在之间的联系，并兑现陌生声音所传递的信息；同时展开段奕尘利用新觉醒力量对抗专业追兵的危机",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch5前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch5→Ch6",
+      "prev_location": "矿场北侧通风口通往的矿道岔口阴影处",
+      "next_location": "矿道深处通往岔口的通道；下一章衔接地点为青矸镇矿区病房门口",
+      "description": "地点从\"矿场北侧通风口通往的矿道岔口阴影处\"跳转到\"矿道深处通往岔口的通道；下一章衔接地点为青矸镇矿区病房门口\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch5→Ch6",
+      "unfinished_action": "段奕尘躲入矿道后持续追踪镜见川残留在矿脉中的曜能痕迹；废料巷出现的“下一批”人员身份、目的及是否会循迹追来尚未揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch5→Ch6",
+      "hook_promise": "妹妹留下的晶石碎片将推动段奕尘继续行动；镜见川的曜能痕迹正在矿脉中扩散，暗示矿道深处存在新的线索或危险，而后续抵达废料巷的人可能使追踪局势进一步升级",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch6前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch6→Ch7",
+      "prev_location": "矿道深处通往岔口的通道；下一章衔接地点为青矸镇矿区病房门口",
+      "next_location": "矿镇住处及门外走廊，下一场冲突将转入矿镇的幽暗巷道",
+      "description": "地点从\"矿道深处通往岔口的通道；下一章衔接地点为青矸镇矿区病房门口\"跳转到\"矿镇住处及门外走廊，下一场冲突将转入矿镇的幽暗巷道\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch6→Ch7",
+      "missing_characters": [
+        "镜见川（已逃离，通过曜能印记施加影响）"
+      ],
+      "description": "人物消失：镜见川（已逃离，通过曜能印记施加影响）",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch6→Ch7",
+      "unfinished_action": "段奕尘正赶往岔口救助晶化病恶化的矿工，具体救援过程及他如何抵达病房尚未交代；病房内与巡曜队的对峙即将展开。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch6→Ch7",
+      "hook_promise": "曜能陷阱将造成矿工大规模晶化危机，段奕尘必须争分夺秒救人；同时，巡曜队的介入可能把矿难、私藏晶石和段奕尘吞噬晶核的秘密串联起来，引发新的冲突。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch7前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch7→Ch8",
+      "prev_location": "矿镇住处及门外走廊，下一场冲突将转入矿镇的幽暗巷道",
+      "next_location": "矿务司附近的漫长巷道，下一场景转入矿洞深处",
+      "description": "地点从\"矿镇住处及门外走廊，下一场冲突将转入矿镇的幽暗巷道\"跳转到\"矿务司附近的漫长巷道，下一场景转入矿洞深处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch7→Ch8",
+      "unfinished_action": "段奕尘尚未吞噬晶核，也未能将段小禾送出矿镇；巡曜队正准备封死矿道、调来隔离队并活捉他，同时刻意向镜见川隐瞒吞曜者情报。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch7→Ch8",
+      "hook_promise": "段奕尘的吞曜者身份已经暴露，巡曜队即将展开秘密围捕；镜见川却会在不知完整内情的情况下与段奕尘正面交锋，晶核吞噬、第一次蜕变的能力及双方冲突都将爆发。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch8前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch8→Ch9",
+      "prev_location": "矿务司附近的漫长巷道，下一场景转入矿洞深处",
+      "next_location": "昏暗矿道内，寒鹿吟所在的碎石区域",
+      "description": "地点从\"矿务司附近的漫长巷道，下一场景转入矿洞深处\"跳转到\"昏暗矿道内，寒鹿吟所在的碎石区域\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch8→Ch9",
+      "unfinished_action": "段奕尘尚未确认女子身份、她怀中物品以及她与妹妹晶化症状的关联，也未交代他如何从火场追查至矿洞深处",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch8→Ch9",
+      "hook_promise": "揭示神秘女子为何拥有与段奕尘妹妹相同的银色晶芒，并进一步说明晶化、曜能与矿务司事件之间的联系",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch9前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch9→Ch10",
+      "prev_location": "昏暗矿道内，寒鹿吟所在的碎石区域",
+      "next_location": "镇外废弃矿道，疑似与镇中段家地窖的异变同步发生",
+      "description": "地点从\"昏暗矿道内，寒鹿吟所在的碎石区域\"跳转到\"镇外废弃矿道，疑似与镇中段家地窖的异变同步发生\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch9→Ch10",
+      "prev_time": "紧接上一章，同一时刻",
+      "next_time": "与上一章结尾同时，紧接当前事件发生",
+      "description": "时间可能倒退：\"与上一章结尾同时，紧接当前事件发生\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch9→Ch10",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch9→Ch10",
+      "unfinished_action": "确认寒鹿吟是否脱离晶化威胁并继续救治，同时查明十二股气息、“样本九号”以及段奕尘作为“钥匙”的真正含义",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch9→Ch10",
+      "hook_promise": "段奕尘不仅拥有救回妹妹的能力，还将因“样本九号”和“钥匙”身份卷入更深层的阴谋，与十二股未知气息背后的势力正面接触",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch10前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch10→Ch11",
+      "prev_location": "镇外废弃矿道，疑似与镇中段家地窖的异变同步发生",
+      "next_location": "矿场三号竖井旁的矿渣堆",
+      "description": "地点从\"镇外废弃矿道，疑似与镇中段家地窖的异变同步发生\"跳转到\"矿场三号竖井旁的矿渣堆\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch10→Ch11",
+      "unfinished_action": "段奕尘尚未释放指尖的曜能，也尚未确认暗中监视者的位置与身份；段家地窖中裂开的黑色药石及其中的金色眼瞳，也尚未揭示其与段奕尘之间的联系",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch10→Ch11",
+      "hook_promise": "第九具容器已经归来，黑色药石中的金色眼瞳正在注视段奕尘，预示他可能已成为某种容器、召唤目标或异变核心，并将与矿道中的未知存在发生直接接触",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch11前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch11→Ch12",
+      "prev_location": "矿场三号竖井旁的矿渣堆",
+      "next_location": "晶石矿深处的甬道及其下方矿脉",
+      "description": "地点从\"矿场三号竖井旁的矿渣堆\"跳转到\"晶石矿深处的甬道及其下方矿脉\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch11→Ch12",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch11→Ch12",
+      "unfinished_action": "段奕尘尚未回应竖瞳存在提出的交易，也未确认所谓“心脏”的真相；黑暗过后，他与镜见川形成即将交手的对峙，正在寻找突破守势的方法。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch11→Ch12",
+      "hook_promise": "揭示段奕尘携带的“心脏”究竟是什么、竖瞳存在与他的关系，以及归还心脏是否真能救活妹妹；同时解释镜见川为何对实力远弱于自己的段奕尘采取守势。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch12前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch12→Ch13",
+      "prev_location": "晶石矿深处的甬道及其下方矿脉",
+      "next_location": "矿区更深处的矿道内",
+      "description": "地点从\"晶石矿深处的甬道及其下方矿脉\"跳转到\"矿区更深处的矿道内\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch12→Ch13",
+      "unfinished_action": "段奕尘正沿矿脉追踪神秘曜能波动，却被一道属于曜士的曜能屏障阻挡；地底未知存在仍在苏醒，双方尚未正式接触。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch12→Ch13",
+      "hook_promise": "揭示段奕尘的觉醒为何提前触发后天速凝、曜晶盘黑雾与矿场共鸣的原因，以及沉睡十年的存在和矿脉中曜士气息的真实身份与威胁。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch13前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch13→Ch14",
+      "prev_location": "矿区更深处的矿道内",
+      "next_location": "晶石矿脉深处，北四号矿道更下方、沿未坍塌裂隙延伸的地下矿道",
+      "description": "地点从\"矿区更深处的矿道内\"跳转到\"晶石矿脉深处，北四号矿道更下方、沿未坍塌裂隙延伸的地下矿道\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch13→Ch14",
+      "unfinished_action": "曜士正去请暗曜使，段奕尘则在矿道深处使用新凝结的曜能种进行某种尚未揭示的行动，同时遭到身份未明者跟踪和质问。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch13→Ch14",
+      "hook_promise": "暗曜使即将降临矿区并对段奕尘形成致命威胁；段奕尘新获得的曜能种、他在矿壁上的操作以及跟踪者的真实身份都将被进一步揭示。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch14前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch14→Ch15",
+      "prev_location": "晶石矿脉深处，北四号矿道更下方、沿未坍塌裂隙延伸的地下矿道",
+      "next_location": "潮湿的地下晶石矿洞，晶石矿脉所在的岩壁附近",
+      "description": "地点从\"晶石矿脉深处，北四号矿道更下方、沿未坍塌裂隙延伸的地下矿道\"跳转到\"潮湿的地下晶石矿洞，晶石矿脉所在的岩壁附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch14→Ch15",
+      "unfinished_action": "段奕尘必须阻止左腕晶化灰斑继续扩散，并查明或应对从北四号矿道更深处沿裂隙逼近的古老存在；曜能种暗红光线与地底之物之间的联系尚未揭示",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch14→Ch15",
+      "hook_promise": "矿脉深处苏醒的古老存在将循着吞噬者的气味逼近，段奕尘不仅要面对未知敌人，还要在晶化侵蚀彻底扩散前寻找自救方法",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch15前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch15→Ch16",
+      "prev_location": "潮湿的地下晶石矿洞，晶石矿脉所在的岩壁附近",
+      "next_location": "矿司辖区矿洞内，矿司大院封矿钟声可闻之处",
+      "description": "地点从\"潮湿的地下晶石矿洞，晶石矿脉所在的岩壁附近\"跳转到\"矿司辖区矿洞内，矿司大院封矿钟声可闻之处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch15→Ch16",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch15→Ch16",
+      "unfinished_action": "秦俨收到信号后将去寻找并攻击段奕尘最在乎的东西，但目标尚未揭示；段奕尘也尚未查明晶石矿脉正在吸收什么、吸收了多少曜能",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch15→Ch16",
+      "hook_promise": "段奕尘突破成为曜士将引发新的责任与追杀危机，秦俨即将以段奕尘最在乎之物为目标；与此同时，地下晶石矿脉异常吸收曜能的真相即将展开",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch16前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch16→Ch17",
+      "prev_location": "矿司辖区矿洞内，矿司大院封矿钟声可闻之处",
+      "next_location": "寒鹿吟的石室内，位于南三甬道第三试炼间附近",
+      "description": "地点从\"矿司辖区矿洞内，矿司大院封矿钟声可闻之处\"跳转到\"寒鹿吟的石室内，位于南三甬道第三试炼间附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch16→Ch17",
+      "missing_characters": [
+        "段奕尘的妹妹"
+      ],
+      "description": "人物消失：段奕尘的妹妹",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch16→Ch17",
+      "unfinished_action": "尚未查明妹妹为何知晓辰时排空、是谁借她发声、所谓排空与献矿的真实含义；段奕尘必须在次日辰时前应对自己被指定为首祭的危机。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch16→Ch17",
+      "hook_promise": "次日辰时将发生以整座矿区或矿民为对象的献祭，段奕尘是首个祭品；妹妹、晶巢、曜脉与封矿钟之间存在被唤醒的古老联系。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch17前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch17→Ch18",
+      "prev_location": "寒鹿吟的石室内，位于南三甬道第三试炼间附近",
+      "next_location": "青室地下区域的碎石甬道，靠近石门与甬道尽头的松脂灯光区",
+      "description": "地点从\"寒鹿吟的石室内，位于南三甬道第三试炼间附近\"跳转到\"青室地下区域的碎石甬道，靠近石门与甬道尽头的松脂灯光区\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch17→Ch18",
+      "unfinished_action": "门外来者要求交出偷走‘寒鹿心’的矿民，段奕尘等人尚未回应；晶化左手的暗纹正在回应门外力量，石室内的曜石辉光也被神秘力量调度、压缩，其源头尚未揭明",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch17→Ch18",
+      "hook_promise": "门外强者身份及其与矿脉暗纹、晶化左手的关系即将揭晓；‘寒鹿心’失窃事件将引发追捕和正面冲突，段奕尘可能暴露矿民身份或特殊能力",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch18前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch18→Ch19",
+      "prev_location": "青室地下区域的碎石甬道，靠近石门与甬道尽头的松脂灯光区",
+      "next_location": "地下铜晶石脉的坡道甬道内，通往地下约七百丈处铜晶曜种的入口附近",
+      "description": "地点从\"青室地下区域的碎石甬道，靠近石门与甬道尽头的松脂灯光区\"跳转到\"地下铜晶石脉的坡道甬道内，通往地下约七百丈处铜晶曜种的入口附\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch18→Ch19",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch18→Ch19",
+      "unfinished_action": "段奕尘尚未打开石门，也未确认门后两个声音的来源及所谓另一个“进青室的人”；甬道深处规律移动的目标和推车上人形对象的身份仍待揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch18→Ch19",
+      "hook_promise": "揭示青室中存在另一个与段奕尘声音乃至身份相同的人，并解释“钥匙”、曜能种追踪和神秘人形对象之间的关系",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch19前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch19→Ch20",
+      "prev_location": "地下铜晶石脉的坡道甬道内，通往地下约七百丈处铜晶曜种的入口附近",
+      "next_location": "通往府城方向的一片残垣废墟，段奕尘身处半截断墙旁",
+      "description": "地点从\"地下铜晶石脉的坡道甬道内，通往地下约七百丈处铜晶曜种的入口附\"跳转到\"通往府城方向的一片残垣废墟，段奕尘身处半截断墙旁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch19→Ch20",
+      "unfinished_action": "段奕尘尚未抵达地下七百丈处的铜晶曜种，也未查明身后撞门逼近者的身份；他正准备持匕首继续深入或应对追击",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch19→Ch20",
+      "hook_promise": "向下深入将揭示铜晶曜种及其与段奕尘三曜脉的联系，并提供破解葛清源布局的关键；与此同时，堵塞地面通道并撞门逼近的未知威胁将迫使他立即作出选择",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch20前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch20→Ch21",
+      "prev_location": "通往府城方向的一片残垣废墟，段奕尘身处半截断墙旁",
+      "next_location": "废墟之外的地下甬道，段奕尘背靠石壁，与曜师相隔十步",
+      "description": "地点从\"通往府城方向的一片残垣废墟，段奕尘身处半截断墙旁\"跳转到\"废墟之外的地下甬道，段奕尘背靠石壁，与曜师相隔十步\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch20→Ch21",
+      "unfinished_action": "段奕尘尚未查明暗红小字所指地点、妹妹死亡的真相以及死去女子回应召唤的原因，便遭到未知强大气息压制；他将寒鹿吟推开后准备独自面对来者。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch20→Ch21",
+      "hook_promise": "揭示妹妹之死与府城、矿场主钥匙及死去女子之间的关联，并让段奕尘直面一个能够压制其曜能与曜种的未知存在。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch21前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch21→Ch22",
+      "prev_location": "废墟之外的地下甬道，段奕尘背靠石壁，与曜师相隔十步",
+      "next_location": "废弃矿道的甬道尽头，晶尘凝结形成的晶尘之幕下方",
+      "description": "地点从\"废墟之外的地下甬道，段奕尘背靠石壁，与曜师相隔十步\"跳转到\"废弃矿道的甬道尽头，晶尘凝结形成的晶尘之幕下方\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch21→Ch22",
+      "unfinished_action": "段奕尘尚未完全消化吞噬的曜能，也未揭示曜种最终会“开出什么花”；他与拦路曜师形成对峙，蓄力动作尚未转化为攻击或应答",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch21→Ch22",
+      "hook_promise": "下一章将进一步揭示段奕尘隐藏的曜种能力、晶化病与七年前矿难的关联，并通过他与曜师的冲突检验这种新生力量是否失控或完成蜕变",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch22前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch22→Ch23",
+      "prev_location": "废弃矿道的甬道尽头，晶尘凝结形成的晶尘之幕下方",
+      "next_location": "矿道出口外、建安堂方向附近",
+      "description": "地点从\"废弃矿道的甬道尽头，晶尘凝结形成的晶尘之幕下方\"跳转到\"矿道出口外、建安堂方向附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch22→Ch23",
+      "unfinished_action": "段奕尘尚未查明曜师残留在石壁和晶尘中的力量究竟是标记、警告还是证明，也尚未走出甬道；曜师留下的曜能残迹正在沿晶体纹理剥落并进一步凝结成晶尘之幕",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch22→Ch23",
+      "hook_promise": "曜师的力量控制并不完美，残留曜能携带着他的意志印记，可能会对段奕尘形成追踪、警告、束缚或后续冲突的触发点",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch23前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch23→Ch24",
+      "prev_location": "矿道出口外、建安堂方向附近",
+      "next_location": "地下矿道，正从突破地点向矿道另一头行进",
+      "description": "地点从\"矿道出口外、建安堂方向附近\"跳转到\"地下矿道，正从突破地点向矿道另一头行进\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch23→Ch24",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch23→Ch24",
+      "unfinished_action": "段奕尘刚走出矿道，尚未弄清警钟原因；镜见川正指引某个方向并要求他隐藏气息、不要行动，等待未知人物到来",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch23→Ch24",
+      "hook_promise": "建安堂响起非报时的警钟，镜见川警告一个强大人物即将出现，且对方足以碾压段奕尘目前的手段，预示双方即将发生隐蔽而危险的遭遇",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch24前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch24→Ch25",
+      "prev_location": "地下矿道，正从突破地点向矿道另一头行进",
+      "next_location": "碎脊山脉附近、通往目标区域的警戒甬道",
+      "description": "地点从\"地下矿道，正从突破地点向矿道另一头行进\"跳转到\"碎脊山脉附近、通往目标区域的警戒甬道\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch24→Ch25",
+      "unfinished_action": "段奕尘正离开突破地点，准备在四十至六十天的期限内完成计划的第一步；吞噬曜术造成的三道晶痕仍在蔓延，其后果尚未明朗",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch24→Ch25",
+      "hook_promise": "揭示段奕尘所说的“第一步”具体是什么、他为何只有四十至六十天，以及晶痕蔓延将造成何种代价；同时继续牵引尚未现身的“更高层”威胁",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch25前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch25→Ch26",
+      "prev_location": "碎脊山脉附近、通往目标区域的警戒甬道",
+      "next_location": "地下矿道内，已崩塌甬道的另一侧",
+      "description": "地点从\"碎脊山脉附近、通往目标区域的警戒甬道\"跳转到\"地下矿道内，已崩塌甬道的另一侧\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch25→Ch26",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch25→Ch26",
+      "unfinished_action": "段奕尘攥住令牌，尚未明确答应荧惑的要求，便必须赶在执律使抵达和天亮之前行动；进入警戒甬道后，他又触发晶尘异动与晶芒攻击，并发现旧裂缝中渗出的淡蓝色光正在引发晶痕灼痛。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch25→Ch26",
+      "hook_promise": "段奕尘将被迫揭示或动用令法盟忌惮的吞噬曜能，同时令牌、甬道异变、淡蓝色光芒与他体内晶痕之间的联系即将暴露；法盟执律使的集结构成倒计时压力。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch26前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch26→Ch27",
+      "prev_location": "地下矿道内，已崩塌甬道的另一侧",
+      "next_location": "三处分结界所在区域附近的崖壁窄径",
+      "description": "地点从\"地下矿道内，已崩塌甬道的另一侧\"跳转到\"三处分结界所在区域附近的崖壁窄径\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch26→Ch27",
+      "unfinished_action": "段奕尘尚未查明镜见川暴露破绽的真实意图，也无法确认自己得到的根治晶化病线索是否是更大布局中的诱饵；曜师仍存活并可能反制，而崩塌甬道暂时埋葬了答案。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch26→Ch27",
+      "hook_promise": "后续将揭示段奕尘究竟是破局者还是被操纵的棋子，以及镜见川、曜师与维系旧秩序的顶层力量在更大棋局中的真实关系。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch27前20%段落中回应"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch27→Ch28",
+      "unfinished_action": "段奕尘准备一次性吞噬三个分结界术式，主动暴露封禁已破的事实，引诱镜见川在紧急状态下完整施术，并从其曜能构造中追查神秘力量的残留；镜见川随后展开搜索，正逐步逼近段奕尘的藏身位置。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch27→Ch28",
+      "hook_promise": "镜见川将被诱入局中并被迫暴露完整曜能构造，但段奕尘也会因此陷入近乎无法逃脱的搜捕；双方将围绕那股神秘力量的残留展开一次高风险的施术与解析对抗。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch28前20%段落中回应"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch28→Ch29",
+      "prev_time": "未提取",
+      "next_time": "曜师总攻前六个时辰，与下一章开头紧密衔接",
+      "description": "时间可能倒退：\"曜师总攻前六个时辰，与下一章开头紧密衔接\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch29→Ch30",
+      "prev_location": "关外与关门内侧阵眼附近",
+      "next_location": "寒鹿岭旧时代遗迹内的石台旁",
+      "description": "地点从\"关外与关门内侧阵眼附近\"跳转到\"寒鹿岭旧时代遗迹内的石台旁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch29→Ch30",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch29→Ch30",
+      "unfinished_action": "段奕尘刚让第一根黑线爬向第一个阵眼，减缓曜师三成速度的布局尚未完成；与此同时，镜见川正在逼近曜晶核，段奕尘却没有出手阻挡",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch29→Ch30",
+      "hook_promise": "段奕尘必须在六个时辰内、在晶化彻底吞没自己之前完成布局，并应对镜见川对曜晶核的试探或争夺；他的吞噬余韵可能成为震慑镜见川和扭转战局的关键",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch30前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch30→Ch31",
+      "prev_location": "寒鹿岭旧时代遗迹内的石台旁",
+      "next_location": "灰衣男人揭露真相的现场，段奕尘身旁",
+      "description": "地点从\"寒鹿岭旧时代遗迹内的石台旁\"跳转到\"灰衣男人揭露真相的现场，段奕尘身旁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch30→Ch31",
+      "unfinished_action": "两人正在接触并查验石台上的曜晶核；晶核仅剩三次明灭，且已在警告落下后消耗一次，真相尚待进一步开启",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch30→Ch31",
+      "hook_promise": "寒鹿岭旧时代遗迹、矿难第七日便盯上其妹妹的神秘人物，以及他体内那根“刺”的真实作用与代价将被揭开；曜晶核有限的明灭次数构成迫近的倒计时",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch31前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch31→Ch32",
+      "prev_location": "灰衣男人揭露真相的现场，段奕尘身旁",
+      "next_location": "矿道深处的石道与晶钉阵眼处",
+      "description": "地点从\"灰衣男人揭露真相的现场，段奕尘身旁\"跳转到\"矿道深处的石道与晶钉阵眼处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch31→Ch32",
+      "prev_time": "紧接上一章，曜晶核第七道裂纹炸开之时",
+      "next_time": "紧接前一刻，同时发生",
+      "description": "时间可能倒退：\"紧接前一刻，同时发生\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch31→Ch32",
+      "unfinished_action": "段奕尘体内的晶种尚未彻底显形，他正把濒临崩解的曜晶核按向胸口，吞噬之力已自行扑向晶核，寒鹿吟试图阻止这一危险融合。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch31→Ch32",
+      "hook_promise": "揭晓段奕尘所谓的曜能种其实与妹妹及病人体内的异物同源，并兑现晶痕入心、吞噬曜晶核后可能导致心脉崩裂或晶种异变的危机。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch32前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch32→Ch33",
+      "prev_location": "矿道深处的石道与晶钉阵眼处",
+      "next_location": "矿道尽头，曜晶核与兜帽人所在之处",
+      "description": "地点从\"矿道深处的石道与晶钉阵眼处\"跳转到\"矿道尽头，曜晶核与兜帽人所在之处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch32→Ch33",
+      "unfinished_action": "段奕尘亲手凝成曜能种后，石道深处的同源力量被唤醒；晶钉阵即将发动，矿道前后出口已经开始封闭，镜见川仍在以流血的手压制阵眼",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch32→Ch33",
+      "hook_promise": "段奕尘凝成的曜能种并非单纯的力量觉醒，而是开启某个等待已久的阵法或仪式的关键；矿道封锁后，众人将被迫面对阵法启动带来的后果",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch33前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch33→Ch34",
+      "prev_location": "矿道尽头，曜晶核与兜帽人所在之处",
+      "next_location": "深渊重岩层下方，升井闸附近",
+      "description": "地点从\"矿道尽头，曜晶核与兜帽人所在之处\"跳转到\"深渊重岩层下方，升井闸附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch33→Ch34",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch33→Ch34",
+      "unfinished_action": "段奕尘尚未成功切断异变，曜能花瓣已经展开并向远处未知存在发出脉动；与此同时，曜晶核的核髓开始凝固，众人必须在六十息内完成处理。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch33→Ch34",
+      "hook_promise": "揭示“她”的身份、远处回应的来源及其苏醒后果，并兑现曜能失控与花瓣展开引发的危机。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch34前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch34→Ch35",
+      "prev_location": "深渊重岩层下方，升井闸附近",
+      "next_location": "矿井深处的升井闸内侧，石匣旁",
+      "description": "地点从\"深渊重岩层下方，升井闸附近\"跳转到\"矿井深处的升井闸内侧，石匣旁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch34→Ch35",
+      "missing_characters": [
+        "与段奕尘交谈后失去力气的人"
+      ],
+      "description": "人物消失：与段奕尘交谈后失去力气的人",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch34→Ch35",
+      "unfinished_action": "升井闸尚未完全封闭，距离封井还剩一百息；段奕尘尚未查明深渊呼唤的来源，也未决定是否追踪回应",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch34→Ch35",
+      "hook_promise": "段奕尘体内的曜能种与深渊中的未知存在产生共鸣，暗示深渊里有人或某种东西与他有关，并可能即将与他接触",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch35前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch35→Ch36",
+      "prev_location": "矿井深处的升井闸内侧，石匣旁",
+      "next_location": "矿洞深处、封闭石门之后的藏身处",
+      "description": "地点从\"矿井深处的升井闸内侧，石匣旁\"跳转到\"矿洞深处、封闭石门之后的藏身处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch35→Ch36",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch35→Ch36",
+      "unfinished_action": "升井闸外的高阶曜能者正在逼近并认出段奕尘体内的副种；与此同时，尚未收起的晶髓持续逸散曜光、灰纹加深，并开始使寒鹿吟的皮肤晶化。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch35→Ch36",
+      "hook_promise": "揭晓副种真正主人的身份、其将曜能种植入段奕尘体内的目的，以及晶髓异变与副种之间是否存在联系；一场无法回避的正面对峙即将发生。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch36前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch36→Ch37",
+      "prev_location": "矿洞深处、封闭石门之后的藏身处",
+      "next_location": "晶核与晶髓所在的石台旁",
+      "description": "地点从\"矿洞深处、封闭石门之后的藏身处\"跳转到\"晶核与晶髓所在的石台旁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch36→Ch37",
+      "missing_characters": [
+        "段奕尘的同伴"
+      ],
+      "description": "人物消失：段奕尘的同伴",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch36→Ch37",
+      "unfinished_action": "花形烙印暴露了段奕尘的位置，敌人已经锁定矿洞并正在熔穿石门；段奕尘一行尚未完成藏匿或防御，晶髓归属与争夺尚未解决",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch36→Ch37",
+      "hook_promise": "幕后持有者能够感知凝种者的位置，并将派人前来夺取晶髓；段奕尘一行将立即遭遇强敌围攻",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch37前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch37→Ch38",
+      "prev_location": "晶核与晶髓所在的石台旁",
+      "next_location": "矿道深处的密室，石门与被赤红曜能烧穿的孔洞前",
+      "description": "地点从\"晶核与晶髓所在的石台旁\"跳转到\"矿道深处的密室，石门与被赤红曜能烧穿的孔洞前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch37→Ch38",
+      "missing_characters": [
+        "段奕尘"
+      ],
+      "description": "人物消失：段奕尘",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch37→Ch38",
+      "unfinished_action": "病种被段奕尘吞下后正在引发未知异变，陌生意念的来源、灰白晶质与妹妹之间的关联尚未揭晓，晶髓还在进一步牵动其体内曜能",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch37→Ch38",
+      "hook_promise": "揭示病种的真实性质、陌生意念背后的存在，以及段奕尘妹妹与灰白晶质之间的秘密，同时兑现吞下病种所带来的身体代价或力量变化",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch38前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch38→Ch39",
+      "prev_location": "矿道深处的密室，石门与被赤红曜能烧穿的孔洞前",
+      "next_location": "矿脉深处的厚重岩层之间，段奕尘所在处",
+      "description": "地点从\"矿道深处的密室，石门与被赤红曜能烧穿的孔洞前\"跳转到\"矿脉深处的厚重岩层之间，段奕尘所在处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch38→Ch39",
+      "missing_characters": [
+        "镜见川",
+        "镜见川的妹妹"
+      ],
+      "description": "人物消失：镜见川, 镜见川的妹妹",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch38→Ch39",
+      "unfinished_action": "镜见川尚未让妹妹说出矿难时看到的真相，凝种却惊醒了内矿中的未知存在；该存在正循着曜能种逼近，同时赤红曜能侵入密室，石门开裂，密室即将坍塌。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch38→Ch39",
+      "hook_promise": "揭示内矿未知存在的身份与威胁方式，并迫使众人在十息内应对赤红曜能、密室坍塌和未知存在的追猎；妹妹掌握的矿难真相也将成为后续核心秘密。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch39前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch39→Ch40",
+      "prev_location": "矿脉深处的厚重岩层之间，段奕尘所在处",
+      "next_location": "地下矿场深处的湿滑岩洞",
+      "description": "地点从\"矿脉深处的厚重岩层之间，段奕尘所在处\"跳转到\"地下矿场深处的湿滑岩洞\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch39→Ch40",
+      "unfinished_action": "矿脉深处的未知力量正在继续压制并控制段奕尘的曜能种；寒鹿吟对晶髓的处理尚未完成，赤痕仍在向晶髓深处侵入",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch39→Ch40",
+      "hook_promise": "晶髓并非普通宝物，而是与矿脉深处的未知强大存在相连；段奕尘吞下的晶髓已经反过来暴露并牵制了他的曜能种，后续将揭示这股力量的身份及其目的",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch40前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch40→Ch41",
+      "prev_location": "地下矿场深处的湿滑岩洞",
+      "next_location": "第三层矿场通风巷尽头、石门内侧",
+      "description": "地点从\"地下矿场深处的湿滑岩洞\"跳转到\"第三层矿场通风巷尽头、石门内侧\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch40→Ch41",
+      "unfinished_action": "段奕尘尚未查明陌生意识的身份、所谓“饵”的含义，以及四枚种纹为何能将饵凝成曜种；同时，他正深入岩洞追查被刻意压缩的异常曜能点。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch40→Ch41",
+      "hook_promise": "揭示曜种并非单纯机缘，而可能是某个古老存在预设的诱饵；段奕尘的凝种行为已经触发对方等待已久的布局。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch41前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch41→Ch42",
+      "prev_location": "第三层矿场通风巷尽头、石门内侧",
+      "next_location": "镜见川战斗后的废墟；下一章转入湿冷的矿道深处",
+      "description": "地点从\"第三层矿场通风巷尽头、石门内侧\"跳转到\"镜见川战斗后的废墟；下一章转入湿冷的矿道深处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch41→Ch42",
+      "prev_time": "换班钟敲响后不久，紧接上一章",
+      "next_time": "当前时刻；下一章大概率切至同一时段的另一条线",
+      "description": "时间可能倒退：\"当前时刻；下一章大概率切至同一时段的另一条线\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch41→Ch42",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch41→Ch42",
+      "unfinished_action": "段奕尘尚未完成叶脉点亮，三道警戒曜能丝线也未被触发说明；镜见川为何现身、如何越过警戒并对段奕尘出手仍是悬念，其刺向段奕尘膝盖的一刀尚未落定",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch41→Ch42",
+      "hook_promise": "换班时刻打破了暂时的安全，段奕尘的新能力即将在实战中接受检验，并揭示镜见川的来意、潜入方式以及双方冲突的结果",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch42前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch42→Ch43",
+      "prev_location": "镜见川战斗后的废墟；下一章转入湿冷的矿道深处",
+      "next_location": "矿区第七层主矿道入口附近，通往矿道尽头的晶脉区域",
+      "description": "地点从\"镜见川战斗后的废墟；下一章转入湿冷的矿道深处\"跳转到\"矿区第七层主矿道入口附近，通往矿道尽头的晶脉区域\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch42→Ch43",
+      "missing_characters": [
+        "段奕尘"
+      ],
+      "description": "人物消失：段奕尘",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch42→Ch43",
+      "unfinished_action": "本章视角人物尚未见到妹妹，也未解释为何不去北境；废墟下的晶髓暂未取走。下一章中，段奕尘必须在交出本命曜种与正面对抗之间作出选择。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch42→Ch43",
+      "hook_promise": "后续将揭示妹妹的处境、主角临时改道可能引发的风险，以及段奕尘遭遇的矿道逼杀是否会与主线汇合。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch43前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch43→Ch44",
+      "prev_location": "矿区第七层主矿道入口附近，通往矿道尽头的晶脉区域",
+      "next_location": "通往落星城的矿道尽头、接近地面出口处",
+      "description": "地点从\"矿区第七层主矿道入口附近，通往矿道尽头的晶脉区域\"跳转到\"通往落星城的矿道尽头、接近地面出口处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch43→Ch44",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch43→Ch44",
+      "unfinished_action": "镜见川尚需在三天内完成蜕变、修复左臂，并在第七层主矿道布置足以困住曜士的陷阱；眼下还要查明矿道尽头琥珀色荧光与凝实威压屏障的来源",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch43→Ch44",
+      "hook_promise": "第七层主矿道深处出现沿晶脉渗出的琥珀色异光，其源头存在能够碾碎曜能感知的强大屏障，预示矿脉深处隐藏着异常力量或关键存在",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch44前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch44→Ch45",
+      "prev_location": "通往落星城的矿道尽头、接近地面出口处",
+      "next_location": "碎晶山谷的断崖，接近矿脉之心的区域",
+      "description": "地点从\"通往落星城的矿道尽头、接近地面出口处\"跳转到\"碎晶山谷的断崖，接近矿脉之心的区域\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch44→Ch45",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch44→Ch45",
+      "unfinished_action": "众人尚未走出矿道抵达落星城；段奕尘胸口的金光仍在持续泄漏，荧惑对他施加的曜能尚未完成作用，矿脉深处疑似有某种古老存在正在苏醒",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch44→Ch45",
+      "hook_promise": "揭示段奕尘破裂本命曜种、吞噬曜能副作用以及他与另一颗破碎之心之间的联系，同时兑现矿脉深处古老力量即将觉醒的威胁",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch45前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch45→Ch46",
+      "prev_location": "碎晶山谷的断崖，接近矿脉之心的区域",
+      "next_location": "卫戎边军驻守的废矿脉内，巨石附近",
+      "description": "地点从\"碎晶山谷的断崖，接近矿脉之心的区域\"跳转到\"卫戎边军驻守的废矿脉内，巨石附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch45→Ch46",
+      "unfinished_action": "七曜同源体尚未完全觉醒，段奕尘体内的冰壳和曜能种正在继续裂开；他也尚未确认这场觉醒将带来的后果",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch45→Ch46",
+      "hook_promise": "所谓杀戮命令其实是唤醒段奕尘体内的七曜同源体，且觉醒可能必须通过生死冲突完成；体内冰壳已经开始破裂，力量即将真正苏醒",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch46前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch46→Ch47",
+      "prev_location": "卫戎边军驻守的废矿脉内，巨石附近",
+      "next_location": "从矿脉深处转至镜湖崖壁上的七座石殿，段奕尘所在的崖边栈道",
+      "description": "地点从\"卫戎边军驻守的废矿脉内，巨石附近\"跳转到\"从矿脉深处转至镜湖崖壁上的七座石殿，段奕尘所在的崖边栈道\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch46→Ch47",
+      "unfinished_action": "牧千夜表明将清剿一切非卫戎所属的曜能反应，三人被其锁定；镜见川暗中按住曜晶枢纽，尚未正式引动。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch46→Ch47",
+      "hook_promise": "牧千夜与段奕尘三人的冲突即将爆发，镜见川可能发动足以摧毁大片矿脉的曜晶力量，而刚突破的段奕尘必须在能力尚未稳定时应战或阻止局势失控。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch47前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch47→Ch48",
+      "prev_location": "从矿脉深处转至镜湖崖壁上的七座石殿，段奕尘所在的崖边栈道",
+      "next_location": "矿道岔口的暗处，位于镜湖矿区地下，三条甬道分别通往废矿堆场、炼晶窑和地面哨卡",
+      "description": "地点从\"从矿脉深处转至镜湖崖壁上的七座石殿，段奕尘所在的崖边栈道\"跳转到\"矿道岔口的暗处，位于镜湖矿区地下，三条甬道分别通往废矿堆场、\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch47→Ch48",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch47→Ch48",
+      "unfinished_action": "荧惑关于镜见川妹妹生死的质问被打断，镜见川尚未解释妹妹究竟是否还活着、为何仍在矿脉之中；段奕尘也尚未决定是否答应带其妹妹离开",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch47→Ch48",
+      "hook_promise": "镜见川掌握源初曜晶的位置和夺取路线，却以带妹妹离开矿脉为交换条件；章节结尾暗示这名妹妹并未如荧惑所认定的那样死去，或其真实状态另有隐情。同时，下一场景将揭开镜见川与段奕尘之间更直接的保护与追逐危机",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch48前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch48→Ch49",
+      "prev_location": "矿道岔口的暗处，位于镜湖矿区地下，三条甬道分别通往废矿堆场、炼晶窑和地面哨卡",
+      "next_location": "废矿区出口附近、两名曜士把守的石门外",
+      "description": "地点从\"矿道岔口的暗处，位于镜湖矿区地下，三条甬道分别通往废矿堆场、\"跳转到\"废矿区出口附近、两名曜士把守的石门外\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch48→Ch49",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch48→Ch49",
+      "unfinished_action": "她刚承认段奕尘妹妹的晶化病是由自己造成的，镜湖底的影子停止下沉但尚未显露后续反应；段奕尘也尚未决定前往哪一条矿道",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch48→Ch49",
+      "hook_promise": "晶化病的真正成因与她有关，可能牵连曜能潮汐、镜湖底的神秘影子及段奕尘的行动目标；同时，段奕尘面临废矿堆场、炼晶窑和地面哨卡三条路线的选择",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch49前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch49→Ch50",
+      "prev_location": "废矿区出口附近、两名曜士把守的石门外",
+      "next_location": "矿道深处，靠近矿道尽头的岩壁",
+      "description": "地点从\"废矿区出口附近、两名曜士把守的石门外\"跳转到\"矿道深处，靠近矿道尽头的岩壁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch49→Ch50",
+      "unfinished_action": "段奕尘正迎面逼近两名曜士，准备突破阻拦，去找尚未露面的目标人物算账",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch49→Ch50",
+      "hook_promise": "段奕尘将完成力量突破，强行闯过石门，与仇敌正面对峙并清算旧账",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch50前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch50→Ch51",
+      "prev_location": "矿道深处，靠近矿道尽头的岩壁",
+      "next_location": "矿脉深处的石殿，靠近晶髓池与封印核心",
+      "description": "地点从\"矿道深处，靠近矿道尽头的岩壁\"跳转到\"矿脉深处的石殿，靠近晶髓池与封印核心\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch50→Ch51",
+      "unfinished_action": "段奕尘尚未查看玉简中关于妹妹下落的信息；矿道尽头的异动及风所证明的事实尚未揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch50→Ch51",
+      "hook_promise": "矿道深处存在可连通或突破的空间，并即将显露异常；妹妹下落的线索也将在后续推进",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch51前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch51→Ch52",
+      "prev_location": "矿脉深处的石殿，靠近晶髓池与封印核心",
+      "next_location": "由段奕尘与程阔对峙之处转入地底第三层的断裂曜脉前",
+      "description": "地点从\"矿脉深处的石殿，靠近晶髓池与封印核心\"跳转到\"由段奕尘与程阔对峙之处转入地底第三层的断裂曜脉前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch51→Ch52",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch51→Ch52",
+      "unfinished_action": "晶化锁链上的封印正在松动，被封印的曜士已经苏醒；段奕尘胸口的莲花与其持续共振，而尚未凝结的曜能种仍在剧烈搏动，双方关系及后续异变尚未揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch51→Ch52",
+      "hook_promise": "揭示段奕尘新生莲花、尚未凝结的曜能种与被封印曜士之间的同源联系，并说明所谓“花已经开了”将触发何种后果",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch52前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch52→Ch53",
+      "prev_location": "由段奕尘与程阔对峙之处转入地底第三层的断裂曜脉前",
+      "next_location": "废弃矿洞内部，章末位于洞口附近；下一章转入矿道深处布满阵纹的暗室",
+      "description": "地点从\"由段奕尘与程阔对峙之处转入地底第三层的断裂曜脉前\"跳转到\"废弃矿洞内部，章末位于洞口附近；下一章转入矿道深处布满阵纹的\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch52→Ch53",
+      "prev_time": "紧接上章，具体时间未明",
+      "next_time": "章末为石奎抵达矿洞、双方即将交战之时；下一章开头回溯至当天早些时候",
+      "description": "时间可能倒退：\"章末为石奎抵达矿洞、双方即将交战之时；下一章开头回溯至当天早些时候\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch52→Ch53",
+      "unfinished_action": "程阔尚未将段奕尘的回应带给曜士，双方冲突也未真正解决；段奕尘体内花苞为何回应威胁、他吞噬的力量将引发什么后果仍未揭晓。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch52→Ch53",
+      "hook_promise": "段奕尘拒绝归还已经吞噬的东西，意味着他将正面对抗曜士及其势力；心口花苞的异常反应还预示吞噬之物正在改变或唤醒他体内的力量。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch53前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch53→Ch54",
+      "prev_location": "废弃矿洞内部，章末位于洞口附近；下一章转入矿道深处布满阵纹的暗室",
+      "next_location": "地底矿道第四层入口，测曜仪所在区域附近",
+      "description": "地点从\"废弃矿洞内部，章末位于洞口附近；下一章转入矿道深处布满阵纹的\"跳转到\"地底矿道第四层入口，测曜仪所在区域附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch53→Ch54",
+      "unfinished_action": "段奕尘与曜士第七席石奎形成对峙，石奎准备夺取刚刚绽放的曜能之花，战斗尚未开始",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch53→Ch54",
+      "hook_promise": "揭示石奎如何追踪到矿洞、曜士为何要夺取曜能之花，以及刚完成突破且负伤的段奕尘能否保护镜见川并击退第七席",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch54前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch54→Ch55",
+      "prev_location": "地底矿道第四层入口，测曜仪所在区域附近",
+      "next_location": "地底第四层的石室及其通往废弃矿道的通道",
+      "description": "地点从\"地底矿道第四层入口，测曜仪所在区域附近\"跳转到\"地底第四层的石室及其通往废弃矿道的通道\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch54→Ch55",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch54→Ch55",
+      "unfinished_action": "段奕尘正深入第四层寻找曜士，准备在不必击败对方的情况下夺取其腰间的曜士府内库钥匙；第四层入口已被曜士抽干曜脉并封锁，尚待破解。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch54→Ch55",
+      "hook_promise": "段奕尘将与掌握内库钥匙的曜士发生正面或智谋交锋，同时揭示丹田花苞的作用、第四层深处的威胁以及曜士封锁通道的真实目的。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch55前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch55→Ch56",
+      "prev_location": "地底第四层的石室及其通往废弃矿道的通道",
+      "next_location": "地底矿区第五层的矿道石壁前",
+      "description": "地点从\"地底第四层的石室及其通往废弃矿道的通道\"跳转到\"地底矿区第五层的矿道石壁前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch55→Ch56",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch55→Ch56",
+      "unfinished_action": "通道尽头的深紫色光晕正在逼近，疑似某个强大存在归来，段奕尘即将与其正面碰撞；来者身份及来意尚未揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch55→Ch56",
+      "hook_promise": "强敌或关键人物提前返回并逼近石室，下一步将爆发正面冲突，同时可能揭示其身份、实力与对曜能种及众人的威胁",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch56前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch56→Ch57",
+      "prev_location": "地底矿区第五层的矿道石壁前",
+      "next_location": "地底第四层入口附近的晶髓池边，距半开的石门约三十步",
+      "description": "地点从\"地底矿区第五层的矿道石壁前\"跳转到\"地底第四层入口附近的晶髓池边，距半开的石门约三十步\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch56→Ch57",
+      "unfinished_action": "段奕尘正在吸收曜髓及石壁裂纹中近乎透明的白色能量，促使曜能种开花，但突破尚未完成",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch56→Ch57",
+      "hook_promise": "揭示曜能种破壳后将产生何种变化、段奕尘能否在三天内突破曜师境界，以及透明白光是否会带来特殊力量或危险",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch57前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch57→Ch58",
+      "prev_location": "地底第四层入口附近的晶髓池边，距半开的石门约三十步",
+      "next_location": "矿道尽头、正在震颤并出现裂纹的岩壁前",
+      "description": "地点从\"地底第四层入口附近的晶髓池边，距半开的石门约三十步\"跳转到\"矿道尽头、正在震颤并出现裂纹的岩壁前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch57→Ch58",
+      "prev_time": "三天后",
+      "next_time": "紧接上一章结尾，三天前摸清曜纹规律后的当天",
+      "description": "时间可能倒退：\"紧接上一章结尾，三天前摸清曜纹规律后的当天\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch57→Ch58",
+      "unfinished_action": "灰袍人尚未揭示晶化病的真相及其作为第一批患者的经历；通道深处疑似心跳的异响来源仍未确认；段奕尘仍在完成曜能种开花后与曜纹、身体的融合",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch57→Ch58",
+      "hook_promise": "开花的曜能种将赋予段奕尘接触晶化病核心真相的资格，并引向地底更深处某个具有生命迹象或正在苏醒的存在",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch58前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch58→Ch59",
+      "prev_location": "矿道尽头、正在震颤并出现裂纹的岩壁前",
+      "next_location": "矿区穹顶下方暗门后的下行通道，正前往矿井底层第八层",
+      "description": "地点从\"矿道尽头、正在震颤并出现裂纹的岩壁前\"跳转到\"矿区穹顶下方暗门后的下行通道，正前往矿井底层第八层\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch58→Ch59",
+      "unfinished_action": "段奕尘尚未解释影像中女人的身份，也未查明曜士首领如何用活人培育曜能种；矿道尽头的岩壁开始回应并催促他的曜能，壁后存在未知的心跳般反应",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch58→Ch59",
+      "hook_promise": "将揭露曜士首领以活人培育曜能种的秘密，并进一步确认影像中的女人是否与段奕尘的妹妹有关；岩壁深处还藏着一个能与段奕尘曜能共鸣的未知存在",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch59前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch59→Ch60",
+      "prev_location": "矿区穹顶下方暗门后的下行通道，正前往矿井底层第八层",
+      "next_location": "第八层废墟深处的矿道及其尽头",
+      "description": "地点从\"矿区穹顶下方暗门后的下行通道，正前往矿井底层第八层\"跳转到\"第八层废墟深处的矿道及其尽头\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch59→Ch60",
+      "unfinished_action": "段奕尘与镜见川正在深入矿井底层，尚未找到并处理持续渗透、导致矿工晶化的碎片，也未揭开碎片下方压着的未知之物",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch59→Ch60",
+      "hook_promise": "底层碎片及其下方的未知存在即将被发现；碎片的渗透、矿工晶化和妹妹的安危将进一步汇合为更大的危机",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch60前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch60→Ch61",
+      "prev_location": "第八层废墟深处的矿道及其尽头",
+      "next_location": "晶石矿道第九层深处，石门后的曜能种密室及其附近的岩壁裂隙",
+      "description": "地点从\"第八层废墟深处的矿道及其尽头\"跳转到\"晶石矿道第九层深处，石门后的曜能种密室及其附近的岩壁裂隙\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch60→Ch61",
+      "prev_time": "紧接上章结尾，当下",
+      "next_time": "紧接上一刻；距三十天前的矿难已过去三十天",
+      "description": "时间可能倒退：\"紧接上一刻；距三十天前的矿难已过去三十天\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch60→Ch61",
+      "unfinished_action": "段奕尘尚未查明低鸣的来源，正准备带领镜见川、寒鹿吟和荧惑继续深入废墟调查；碎裂令牌中出现的神秘光纹及其对应的地下矿脉也尚未被重新挖开",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch60→Ch61",
+      "hook_promise": "神秘光纹与地下矿脉将引出曜士、曜师之外的未知力量，同时废墟深处潜伏着能够发出呼吸般低鸣的未知生物或存在",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch61前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch61→Ch62",
+      "prev_location": "晶石矿道第九层深处，石门后的曜能种密室及其附近的岩壁裂隙",
+      "next_location": "第十七层矿洞的岩壁前",
+      "description": "地点从\"晶石矿道第九层深处，石门后的曜能种密室及其附近的岩壁裂隙\"跳转到\"第十七层矿洞的岩壁前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch61→Ch62",
+      "prev_time": "紧接上一刻；距三十天前的矿难已过去三十天",
+      "next_time": "破晓前，紧接曜主力量完整觉醒之后",
+      "description": "时间可能倒退：\"破晓前，紧接曜主力量完整觉醒之后\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch61→Ch62",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch61→Ch62",
+      "unfinished_action": "石门已被推开，无数曜能种显现，但其来源、用途、危险以及与段奕尘体内曜能种质变的关系尚未揭晓。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch61→Ch62",
+      "hook_promise": "密室中的海量曜能种将推动段奕尘的力量发生关键跃迁，并揭示他正在显现的“曜主”征兆。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch62前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch62→Ch63",
+      "prev_location": "第十七层矿洞的岩壁前",
+      "next_location": "地底深处的矿洞核心区域，巨大晶石祭坛前",
+      "description": "地点从\"第十七层矿洞的岩壁前\"跳转到\"地底深处的矿洞核心区域，巨大晶石祭坛前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch62→Ch63",
+      "unfinished_action": "段奕尘尚未揭开晶化病背后的完整真相，也未向抛弃患者的势力正式问责；与此同时，矿洞岩壁出现疑似构建领域所造成的暗金裂纹，其来源与目的仍待查明",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch62→Ch63",
+      "hook_promise": "完整觉醒的曜主将凭借逆转晶化病的方法追查幕后真相、清算弃置患者之人，并揭示矿洞中正在形成的神秘领域",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch63前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch63→Ch64",
+      "prev_location": "地底深处的矿洞核心区域，巨大晶石祭坛前",
+      "next_location": "地底矿洞深处，通往更大祭坛的通道附近",
+      "description": "地点从\"地底深处的矿洞核心区域，巨大晶石祭坛前\"跳转到\"地底矿洞深处，通往更大祭坛的通道附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch63→Ch64",
+      "unfinished_action": "段奕尘尚未完成曜主领域，也尚未挑战曜士并掌握突破方法；他还需要查明晶核能量与本源曜能的关系，并决定是否摧毁晶核",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch63→Ch64",
+      "hook_promise": "段奕尘体内的曜能种正在回应地底深处的神秘共鸣，巨大晶石祭坛可能隐藏着形成曜主领域、提取本源曜能或突破曜士境界的关键",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch64前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch64→Ch65",
+      "prev_location": "地底矿洞深处，通往更大祭坛的通道附近",
+      "next_location": "矿洞第二十七层的神秘空间；下一章切回第十八层坍塌边缘",
+      "description": "地点从\"地底矿洞深处，通往更大祭坛的通道附近\"跳转到\"矿洞第二十七层的神秘空间；下一章切回第十八层坍塌边缘\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch64→Ch65",
+      "missing_characters": [
+        "镜见川",
+        "荧惑"
+      ],
+      "description": "人物消失：镜见川, 荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch64→Ch65",
+      "unfinished_action": "四人进入通往更深处的通道后，尚未与祭坛前的神秘人影正面交锋；段奕尘体内曜石碎片引发的共鸣也尚未揭示其真正作用",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch64→Ch65",
+      "hook_promise": "更深处祭坛前等待众人的神秘黑袍人，以及段奕尘吞噬曜石碎片后打开的未知领域，将引发新的冲突；下一章还将揭示镜见川为何阻止他们继续前进",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch65前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch65→Ch66",
+      "prev_location": "矿洞第二十七层的神秘空间；下一章切回第十八层坍塌边缘",
+      "next_location": "由石室转移至废墟边缘的碎石堆",
+      "description": "地点从\"矿洞第二十七层的神秘空间；下一章切回第十八层坍塌边缘\"跳转到\"由石室转移至废墟边缘的碎石堆\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch65→Ch66",
+      "missing_characters": [
+        "与段奕尘妹妹容貌相同的少女"
+      ],
+      "description": "人物消失：与段奕尘妹妹容貌相同的少女",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch65→Ch66",
+      "unfinished_action": "段奕尘尚未确认少女为何是妹妹的真身、晶化病源头意味着什么，也未弄清曜师的身份、目的以及自己如何抵达第二十七层；第十八层发生的曜能异变与这场遭遇之间的关系仍待揭示",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch65→Ch66",
+      "hook_promise": "揭开段奕尘妹妹的真实身份、晶化病的起源、第二十七层的秘密，以及曜师长期等待段奕尘的原因",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch66前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch66→Ch67",
+      "prev_location": "由石室转移至废墟边缘的碎石堆",
+      "next_location": "晶石废墟尽头及荒芜矿洞塌陷区边缘",
+      "description": "地点从\"由石室转移至废墟边缘的碎石堆\"跳转到\"晶石废墟尽头及荒芜矿洞塌陷区边缘\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch66→Ch67",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch66→Ch67",
+      "unfinished_action": "镜见川持镜家令牌要求带走段奕尘，打断苏郁寒的拘押行动；她如何成功带走段奕尘、众人为何转移到废墟边缘，以及她为何突然重伤，均尚未交代。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch66→Ch67",
+      "hook_promise": "镜家将介入段奕尘的归属争夺，镜见川可能为带走或保护段奕尘付出重伤代价；后续将揭示石室对峙后的突变、曜能种反噬的原因及镜见川能否获救。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch67前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch67→Ch68",
+      "prev_location": "晶石废墟尽头及荒芜矿洞塌陷区边缘",
+      "next_location": "废矿深处的战斗废墟边缘",
+      "description": "地点从\"晶石废墟尽头及荒芜矿洞塌陷区边缘\"跳转到\"废矿深处的战斗废墟边缘\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch67→Ch68",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch67→Ch68",
+      "unfinished_action": "神秘巨型身影从废墟尽头现身，但其真实身份、目的以及是否会对寒鹿吟和荧惑出手尚未揭晓；段奕尘的晶化异变也尚未得到控制",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch67→Ch68",
+      "hook_promise": "曜能种之上存在更高层级的强大生命或力量体系，神秘巨型存在即将带来新的威胁与世界观升级；同时段奕尘突破曜主后的晶化代价将成为持续冲突",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch68前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch68→Ch69",
+      "prev_location": "废矿深处的战斗废墟边缘",
+      "next_location": "残留曜能乱流痕迹与晶石碎屑的废墟中央",
+      "description": "地点从\"废矿深处的战斗废墟边缘\"跳转到\"残留曜能乱流痕迹与晶石碎屑的废墟中央\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch68→Ch69",
+      "unfinished_action": "段奕尘继续深入废矿猎杀畸变体、稳固领域；体内曜能种正尝试突破；爆炸深坑中的晶体碎片仍在秘密聚合复生",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch68→Ch69",
+      "hook_promise": "段奕尘将迎来曜能种突破及更危险的矿下实战，而尚未死透的晶体畸变体可能重组、进化并再次袭击",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch69前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch69→Ch70",
+      "prev_location": "残留曜能乱流痕迹与晶石碎屑的废墟中央",
+      "next_location": "晶石矿脉深处，一座废矿的底部",
+      "description": "地点从\"残留曜能乱流痕迹与晶石碎屑的废墟中央\"跳转到\"晶石矿脉深处，一座废矿的底部\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch69→Ch70",
+      "unfinished_action": "段奕尘准备追寻远处金色流光所代表的更强存在，但尚未决定具体行动，并面临镜见川的劝阻",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch69→Ch70",
+      "hook_promise": "金色流光带来曜师级气息，预示段奕尘即将接触远超当前实力的强敌；同时，下一章提出的曜士级威胁与章末曜师级气息存在等级信息差，需要进一步揭示目标身份与真实危险",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch70前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch70→Ch71",
+      "prev_location": "晶石矿脉深处，一座废矿的底部",
+      "next_location": "晶石矿脉内部的矿道拐角，靠近出现淡青色晶纹的新裂口",
+      "description": "地点从\"晶石矿脉深处，一座废矿的底部\"跳转到\"晶石矿脉内部的矿道拐角，靠近出现淡青色晶纹的新裂口\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch70→Ch71",
+      "prev_time": "当夜，紧接上一章结尾",
+      "next_time": "同时或紧接前一场景；矿脉异变始于三天前，正在持续加剧",
+      "description": "时间可能倒退：\"同时或紧接前一场景；矿脉异变始于三天前，正在持续加剧\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch70→Ch71",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch70→Ch71",
+      "unfinished_action": "段奕尘尚未完成对矿脉深处的探索，正准备与镜见川继续确认并进入废矿底部，调查曜师巢穴及曜能种共鸣所感知到的猎物",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch70→Ch71",
+      "hook_promise": "段奕尘晋升为曜主后，将遭遇隐藏在废矿深处的曜师巢穴，并由此开启与更高阶曜士及未知敌人的后续冲突",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch71前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch71→Ch72",
+      "prev_location": "晶石矿脉内部的矿道拐角，靠近出现淡青色晶纹的新裂口",
+      "next_location": "矿脉深处、矿道尽头的岩壁前",
+      "description": "地点从\"晶石矿脉内部的矿道拐角，靠近出现淡青色晶纹的新裂口\"跳转到\"矿脉深处、矿道尽头的岩壁前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch71→Ch72",
+      "unfinished_action": "老者尚未给出承诺的答案，男子愿意把自己变成什么、又将付出何种代价仍未揭晓；与此同时，镜见川的传讯内容及矿脉下方苏醒之物的身份也尚不明确",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch71→Ch72",
+      "hook_promise": "后续将揭示男子为救她所接受的异变或牺牲，并把他的晶石化与矿脉深处正在苏醒的存在联系起来",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch72前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch72→Ch73",
+      "prev_location": "矿脉深处、矿道尽头的岩壁前",
+      "next_location": "矿脉深处的矿道内，段奕尘布下的隔音阵附近；衔接至矿镇边缘的矿道入口与阵盘处",
+      "description": "地点从\"矿脉深处、矿道尽头的岩壁前\"跳转到\"矿脉深处的矿道内，段奕尘布下的隔音阵附近；衔接至矿镇边缘的矿\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch72→Ch73",
+      "prev_time": "紧接上章结尾，曜师枯萎后的片刻；距离追兵抵达最迟还有三天",
+      "next_time": "同一事件进程中，较镜见川预估提前十二个时辰；下一章开头为暮色时分",
+      "description": "时间可能倒退：\"同一事件进程中，较镜见川预估提前十二个时辰；下一章开头为暮色时分\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch72→Ch73",
+      "unfinished_action": "段奕尘正准备带着曜晶离开矿道，但曜晶内部的光点正在迅速暗淡，岩壁晶纹持续蔓延，曜师的人也将在最迟三天内抵达矿脉入口",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch72→Ch73",
+      "hook_promise": "段奕尘已将曜师留下的印记刻入领域规则，获得了针对曜师的第一张底牌；后续将验证这张底牌能否对抗追来的曜师势力，并保住曜晶中妹妹活下去的希望",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch73前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch73→Ch74",
+      "prev_location": "矿脉深处的矿道内，段奕尘布下的隔音阵附近；衔接至矿镇边缘的矿道入口与阵盘处",
+      "next_location": "曜晶矿脉深处的矿道内，北壁裂隙前三十步处；外部关联矿道口与远处矿镇",
+      "description": "地点从\"矿脉深处的矿道内，段奕尘布下的隔音阵附近；衔接至矿镇边缘的矿\"跳转到\"曜晶矿脉深处的矿道内，北壁裂隙前三十步处；外部关联矿道口与远\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch73→Ch74",
+      "unfinished_action": "段奕尘的曜能种即将开花，但突破尚未完成；神秘人物提前十二个时辰现身并突破隔音阵的防护逻辑，其身份、目的及下一步行动未知；段奕尘布阵后的结果及镜见川带来的紧急消息尚未揭示",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch73→Ch74",
+      "hook_promise": "揭晓金色瞳孔神秘人物的身份与来意，解释其为何提前出现、为何不受隔音阵阻挡，并展现这场突袭如何影响段奕尘的曜能种开花及原定计划",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch74前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch74→Ch75",
+      "prev_location": "曜晶矿脉深处的矿道内，北壁裂隙前三十步处；外部关联矿道口与远处矿镇",
+      "next_location": "地下城通往矿道深处的裂隙区域",
+      "description": "地点从\"曜晶矿脉深处的矿道内，北壁裂隙前三十步处；外部关联矿道口与远\"跳转到\"地下城通往矿道深处的裂隙区域\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch74→Ch75",
+      "unfinished_action": "镜见川尚未完成刻画，段奕尘的阵法效果与目的仍未揭示；矿脉轰鸣引发的山体裂隙正在晶化扩张，矿镇灯火全灭的原因不明，段奕尘询问的持续时间尚待回答",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch74→Ch75",
+      "hook_promise": "矿脉中某种疑似具有生命或意志的巨大存在正在苏醒或突破封锁，并将通过裂隙、晶化与熔金色异光显露其真实形态及威胁，同时矿镇可能已被异变波及",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch75前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch75→Ch76",
+      "prev_location": "地下城通往矿道深处的裂隙区域",
+      "next_location": "矿镇西侧的废弃晶石熔炉",
+      "description": "地点从\"地下城通往矿道深处的裂隙区域\"跳转到\"矿镇西侧的废弃晶石熔炉\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch75→Ch76",
+      "unfinished_action": "段奕尘尚未抵达并稳定晶棺封阵，也未能阻止妹妹晶化加速；他必须继续深入地下城，查明曜能异常汇聚和矿道裂变的原因",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch75→Ch76",
+      "hook_promise": "晶棺封阵即将失效、妹妹晶化加速，段奕尘初成的领域可能引发或控制地下城中的曜能异变，新的力量觉醒与危机将同时展开",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch76前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch76→Ch77",
+      "prev_location": "矿镇西侧的废弃晶石熔炉",
+      "next_location": "赤曜矿脉的废渣堆，矿层最深处",
+      "description": "地点从\"矿镇西侧的废弃晶石熔炉\"跳转到\"赤曜矿脉的废渣堆，矿层最深处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch76→Ch77",
+      "missing_characters": [
+        "镜见川",
+        "荧惑"
+      ],
+      "description": "人物消失：镜见川, 荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch76→Ch77",
+      "unfinished_action": "段奕尘必须在日出前把体内的种子转化为自己的领域，并解决废弃熔炉残留阵纹可能使曜能偏离的问题",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch76→Ch77",
+      "hook_promise": "段奕尘将进行一次高风险的领域突破；成功便可能获得反抗曜师、改变矿镇命运的力量，失败则可能因曜能失控或阵纹干扰付出代价",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch77前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch77→Ch78",
+      "prev_location": "赤曜矿脉的废渣堆，矿层最深处",
+      "next_location": "晶石熔炉底层的暗室",
+      "description": "地点从\"赤曜矿脉的废渣堆，矿层最深处\"跳转到\"晶石熔炉底层的暗室\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch77→Ch78",
+      "unfinished_action": "段奕尘带着镜见川和荧惑前往曜宫寻找那条裂缝，但尚未确认裂缝的位置；下一章中他转而在赤曜矿脉深处探查一块异常搏动的曜晶原石",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch77→Ch78",
+      "hook_promise": "曜宫中存在一条可能被曜师修补的裂缝，段奕尘必须在其消失前找到它；赤曜矿脉深处的曜晶原石似乎与这条裂缝或曜能领域的质变有关",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch78前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch78→Ch79",
+      "prev_location": "晶石熔炉底层的暗室",
+      "next_location": "矿镇北面的乱葬岗，远处连接赤曜矿脉、疗养院与白岩城",
+      "description": "地点从\"晶石熔炉底层的暗室\"跳转到\"矿镇北面的乱葬岗，远处连接赤曜矿脉、疗养院与白岩城\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch78→Ch79",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch78→Ch79",
+      "unfinished_action": "灰袍人已经找到目标，石楼中的神秘人正关注贯穿矿镇的地脉线，青灰色曜纹令牌上的两个字尚未揭示；与此同时，段奕尘仍在过量吞噬曜晶残片，晶核即将发生未知变化。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch78→Ch79",
+      "hook_promise": "揭示灰袍人寻找的对象、石楼神秘人的身份与令牌文字，并让正在苏醒的曜晶矿脉、被圈出的地脉线和段奕尘体内晶核产生实质关联。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch79前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch79→Ch80",
+      "prev_location": "矿镇北面的乱葬岗，远处连接赤曜矿脉、疗养院与白岩城",
+      "next_location": "曜师府邸地宫，倒悬曜晶的穹顶正下方",
+      "description": "地点从\"矿镇北面的乱葬岗，远处连接赤曜矿脉、疗养院与白岩城\"跳转到\"曜师府邸地宫，倒悬曜晶的穹顶正下方\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch79→Ch80",
+      "unfinished_action": "段奕尘尚未前往白岩城取得曜师手令并查阅《晶化溯源录》，也尚未找到阻止阿念及其他患者继续晶化的方法",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch79→Ch80",
+      "hook_promise": "段奕尘将带着新获得但未驯服的吞晶力量进入白岩城，借曜师手令追查《晶化溯源录》，寻找晶化病的源头与救治之法",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch80前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch80→Ch81",
+      "prev_location": "曜师府邸地宫，倒悬曜晶的穹顶正下方",
+      "next_location": "北三巷相关区域的地宫深处，倒悬曜晶所在的晶簇旁",
+      "description": "地点从\"曜师府邸地宫，倒悬曜晶的穹顶正下方\"跳转到\"北三巷相关区域的地宫深处，倒悬曜晶所在的晶簇旁\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch80→Ch81",
+      "unfinished_action": "灰鸦暗中传出的消息将段奕尘引向曜师；曜师准备以领域测试这个新晋曜主，同时段奕尘妹妹的晶壳裂变仍在继续，其结果未知",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch80→Ch81",
+      "hook_promise": "段奕尘将与曜师发生领域层面的正面对抗，其吞噬渊晶后的身体异变也将被检验；妹妹晶壳开裂则预示另一条觉醒或失控线即将启动",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch81前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch81→Ch82",
+      "prev_location": "北三巷相关区域的地宫深处，倒悬曜晶所在的晶簇旁",
+      "next_location": "曜晶矿脉深处的隧道，矿难当夜矿脉断裂的源头附近",
+      "description": "地点从\"北三巷相关区域的地宫深处，倒悬曜晶所在的晶簇旁\"跳转到\"曜晶矿脉深处的隧道，矿难当夜矿脉断裂的源头附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch81→Ch82",
+      "unfinished_action": "段奕尘正用自己的方式尝试开启北三巷，但倒悬曜晶始终没有能量反应，开启行动尚未成功",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch81→Ch82",
+      "hook_promise": "揭示段奕尘掌心金色纹路与地宫曜晶、北三巷开启机制之间的联系，并兑现他所谓的“自己的方式”",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch82前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch82→Ch83",
+      "prev_location": "曜晶矿脉深处的隧道，矿难当夜矿脉断裂的源头附近",
+      "next_location": "曜师府邸地宫及其通往后山断崖的最后一道石门处",
+      "description": "地点从\"曜晶矿脉深处的隧道，矿难当夜矿脉断裂的源头附近\"跳转到\"曜师府邸地宫及其通往后山断崖的最后一道石门处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch82→Ch83",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch82→Ch83",
+      "unfinished_action": "段奕尘尚未查明晶核灌入脑海的信息、矿脉断裂真相及银光裂纹的性质，还必须应对提前一夜抵达的镇狱司",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch82→Ch83",
+      "hook_promise": "镇狱司的提前到来将压缩调查时间，而矿难源头的异常断层与银光可能揭开曜晶矿脉、晶核以及王朝覆灭信息之间的联系",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch83前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch83→Ch84",
+      "prev_location": "曜师府邸地宫及其通往后山断崖的最后一道石门处",
+      "next_location": "地宫最深处，失去光芒的曜晶前",
+      "description": "地点从\"曜师府邸地宫及其通往后山断崖的最后一道石门处\"跳转到\"地宫最深处，失去光芒的曜晶前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch83→Ch84",
+      "unfinished_action": "尚未找到取出体内银色种子的方法，也尚未阻止它开花成为新的曜师；段奕尘即将采取行动，寻找能够解决种子和曜师本体问题的关键节点",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch83→Ch84",
+      "hook_promise": "段奕尘必须在妹妹醒来之前、银色种子开花之前作出并完成选择，否则他可能成为新的曜师；曜师本体及其曜能网络则暗示了更大的阴谋和可被破坏的目标",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch84前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch84→Ch85",
+      "prev_location": "地宫最深处，失去光芒的曜晶前",
+      "next_location": "曜师府邸的残垣，坍塌的地宫入口",
+      "description": "地点从\"地宫最深处，失去光芒的曜晶前\"跳转到\"曜师府邸的残垣，坍塌的地宫入口\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch84→Ch85",
+      "unfinished_action": "远古曜晶正在以吞噬宿主的方式完成认主，段奕尘尚未证明自己能否撑过侵蚀并驱使它；曜晶与妹妹晶化气息之间的关联也尚未揭明",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch84→Ch85",
+      "hook_promise": "段奕尘可能以自身为代价换取远古曜晶的力量，而曜晶认主、妹妹矿难真相及镜见川掌握的隐情将被进一步揭开",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch85前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch85→Ch86",
+      "prev_location": "曜师府邸的残垣，坍塌的地宫入口",
+      "next_location": "地宫内；下一章转至曜师府邸的断壁残垣间",
+      "description": "地点从\"曜师府邸的残垣，坍塌的地宫入口\"跳转到\"地宫内；下一章转至曜师府邸的断壁残垣间\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch85→Ch86",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch85→Ch86",
+      "unfinished_action": "段奕尘尚未进入或调查曜师府邸，也尚未找到曜师并完成告知；他正在查看坍塌地宫中的碎晶，碎晶的异常反应暗示其中仍隐藏着秘密",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch85→Ch86",
+      "hook_promise": "段奕尘将以曜师等候三百年的那个人身份进入七国命运棋局，为唤醒妹妹而踏碎旧秩序，并揭开曜晶、曜师府邸及三百年前秘密的真相",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch86前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch86→Ch87",
+      "prev_location": "地宫内；下一章转至曜师府邸的断壁残垣间",
+      "next_location": "曜师府邸断壁废墟及正殿祭坛，叙事即将转入废墟下方第三层地宫",
+      "description": "地点从\"地宫内；下一章转至曜师府邸的断壁残垣间\"跳转到\"曜师府邸断壁废墟及正殿祭坛，叙事即将转入废墟下方第三层地宫\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch86→Ch87",
+      "unfinished_action": "一道携带旧秩序气息的强大存在正急速逼近地宫，段奕尘已经锁定对方并准备迎战，但来者身份、目的及双方冲突均未揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch86→Ch87",
+      "hook_promise": "即将揭示强大来者的身份，并兑现段奕尘力量蜕变后的首次实战，同时展开新力量与旧秩序之间的正面碰撞",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch87前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch87→Ch88",
+      "prev_location": "曜师府邸断壁废墟及正殿祭坛，叙事即将转入废墟下方第三层地宫",
+      "next_location": "地宫内，通往第三层的区域",
+      "description": "地点从\"曜师府邸断壁废墟及正殿祭坛，叙事即将转入废墟下方第三层地宫\"跳转到\"地宫内，通往第三层的区域\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch87→Ch88",
+      "unfinished_action": "暗红曜晶完成未知交接，力量或印记转移至段奕尘体内；主曜晶开裂并释放神秘存在，对方已经锁定段奕尘所在方向；仪仗队尚未出发。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch87→Ch88",
+      "hook_promise": "揭示曜晶力量交接的真实含义、段奕尘掌心纹路的作用，以及主曜晶中苏醒的黑气人脸是谁、为何盯上段奕尘。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch88前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch88→Ch89",
+      "prev_location": "地宫内，通往第三层的区域",
+      "next_location": "曜师府邸地下第三层，被段奕尘以吞噬之力破开的墙后甬道入口",
+      "description": "地点从\"地宫内，通往第三层的区域\"跳转到\"曜师府邸地下第三层，被段奕尘以吞噬之力破开的墙后甬道入口\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch88→Ch89",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch88→Ch89",
+      "unfinished_action": "段奕尘发现曜师借远古曜晶将曜能印记植入自己经脉，但尚未查明印记的具体作用，也未解除隐患；众人仍在继续深入地宫。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch88→Ch89",
+      "hook_promise": "曜师已经提前出手并可能通过暗红色曜能印记追踪、操控或侵蚀段奕尘，地宫深处将揭示其布局与真正目的。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch89前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch89→Ch90",
+      "prev_location": "曜师府邸地下第三层，被段奕尘以吞噬之力破开的墙后甬道入口",
+      "next_location": "曜师府邸废墟最深处的地下祭台前",
+      "description": "地点从\"曜师府邸地下第三层，被段奕尘以吞噬之力破开的墙后甬道入口\"跳转到\"曜师府邸废墟最深处的地下祭台前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch89→Ch90",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch89→Ch90",
+      "unfinished_action": "段奕尘尚未查明失落曜晶能否救妹妹，也未决定是否冒险深入陌生甬道；甬道尽头传来如远古心脏般的呼吸脉动，上方人物只给他们半刻钟时间",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch89→Ch90",
+      "hook_promise": "失落曜晶与妹妹的生死存在关键关联，而曜师府邸地下甬道尽头埋藏着一个沉睡千百年的未知存在或力量，可能带来救治希望，也可能成为新的致命威胁",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch90前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch90→Ch91",
+      "prev_location": "曜师府邸废墟最深处的地下祭台前",
+      "next_location": "曜石矿脉最深处的裂隙边",
+      "description": "地点从\"曜师府邸废墟最深处的地下祭台前\"跳转到\"曜石矿脉最深处的裂隙边\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch90→Ch91",
+      "unfinished_action": "段奕尘尚未揭示自己的真实身份与曜王之光的来源，也尚未接触或开启祭台中封存的远古曜晶",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch90→Ch91",
+      "hook_promise": "段奕尘可能拥有曜王资格，并将借远古曜晶进一步确认、继承或释放这股足以颠覆旧秩序的力量",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch91前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch91→Ch92",
+      "prev_location": "曜石矿脉最深处的裂隙边",
+      "next_location": "从矿坑外岩脊前往北面三里外的曜师府邸废墟",
+      "description": "地点从\"曜石矿脉最深处的裂隙边\"跳转到\"从矿坑外岩脊前往北面三里外的曜师府邸废墟\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch91→Ch92",
+      "unfinished_action": "段奕尘尚未确认远古影子是否说真话，也未查明妹妹晶化病的源头；他必须前往矿脉尽头，寻找能够验证真相的远古曜晶",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch91→Ch92",
+      "hook_promise": "妹妹的晶化病可能是远古存在埋下的种子，段奕尘一路以来或许都处在对方的操控之中；矿脉尽头将揭示与病因及曜能种子有关的关键线索",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch92前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch92→Ch93",
+      "prev_location": "从矿坑外岩脊前往北面三里外的曜师府邸废墟",
+      "next_location": "废墟石室及其外部上空，下一章聚焦石室内的晶阵核心",
+      "description": "地点从\"从矿坑外岩脊前往北面三里外的曜师府邸废墟\"跳转到\"废墟石室及其外部上空，下一章聚焦石室内的晶阵核心\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch92→Ch93",
+      "unfinished_action": "段奕尘决定前往曜师府邸向曜师追问真相，但问题尚未说出；两队人马正在从北面合围，母曜、掌心金纹与曜晶碎片之间的联系也尚未揭明",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch92→Ch93",
+      "hook_promise": "曜王之路所需付出的代价、曜师掌握的秘密以及妹妹的命运即将揭晓；段奕尘携带的曜晶力量正在主动回应地下某个等待已久的存在",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch93前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch93→Ch94",
+      "prev_location": "废墟石室及其外部上空，下一章聚焦石室内的晶阵核心",
+      "next_location": "曜师府邸地宫正中央，失落远古曜晶前",
+      "description": "地点从\"废墟石室及其外部上空，下一章聚焦石室内的晶阵核心\"跳转到\"曜师府邸地宫正中央，失落远古曜晶前\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch93→Ch94",
+      "prev_time": "与此同时，曜师降临废墟、段奕尘准备进入晶阵的同一时刻",
+      "next_time": "紧接上一章，前往曜师府邸后",
+      "description": "时间可能倒退：\"紧接上一章，前往曜师府邸后\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch93→Ch94",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch93→Ch94",
+      "unfinished_action": "曜师已经降临并准备取走成熟的目标，荧惑却在启动晶阵前停手，等待段奕尘确认是否立刻进入；段奕尘尚未作答，也尚未完成进入晶阵的行动",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch93→Ch94",
+      "hook_promise": "曜师逼近造成外部追杀压力，段奕尘必须在无路可退的情况下立刻进入危险晶阵；下一章将揭示他的选择、晶阵内部的风险，以及曜师能否及时阻止他",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch94前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch94→Ch95",
+      "prev_location": "曜师府邸地宫正中央，失落远古曜晶前",
+      "next_location": "曜师主祭坛外围的地窟入口，正对月光下的山脊",
+      "description": "地点从\"曜师府邸地宫正中央，失落远古曜晶前\"跳转到\"曜师主祭坛外围的地窟入口，正对月光下的山脊\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch94→Ch95",
+      "unfinished_action": "段奕尘准备在曜师府邸地宫与失落远古曜晶进行共鸣，但共鸣尚未正式完成，曜晶纹路与妹妹受伤时出现的纹路之间的关系仍未揭晓。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch94→Ch95",
+      "hook_promise": "段奕尘将借远古曜晶寻找撼动曜师的力量或弱点，同时揭开暗金纹路、曜晶异变与段晚晴昏迷之间的秘密，并面临被曜师耳目发现的风险。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch95前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch95→Ch96",
+      "prev_location": "曜师主祭坛外围的地窟入口，正对月光下的山脊",
+      "next_location": "北方区域的矿洞深处",
+      "description": "地点从\"曜师主祭坛外围的地窟入口，正对月光下的山脊\"跳转到\"北方区域的矿洞深处\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch95→Ch96",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch95→Ch96",
+      "unfinished_action": "段奕尘尚未查明胸口纹路中苏醒之物的本质，同时准备依据残图潜入曜师主祭坛，以曜晶共鸣挽救妹妹。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch95→Ch96",
+      "hook_promise": "远古曜晶背后存在一个以整座天穹为敌的庞大传承，段奕尘正在成为其继承者或载体；潜入曜师主祭坛将进一步触发共鸣，并迫使他直面这股力量的代价。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch96前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch96→Ch97",
+      "prev_location": "北方区域的矿洞深处",
+      "next_location": "矿道尽头、塌方形成的石室及其出口附近",
+      "description": "地点从\"北方区域的矿洞深处\"跳转到\"矿道尽头、塌方形成的石室及其出口附近\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch96→Ch97",
+      "unfinished_action": "段奕尘正前往会见尚未明确身份的目标人物并完成某件关键事务，同时必须应对体内失落远古曜晶突然苏醒与失控的问题",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch96→Ch97",
+      "hook_promise": "北方沉睡的巨大阴影已经苏醒，段奕尘体内缺失的部分可能与失落远古曜晶及其被淡化的妹妹记忆有关；接下来将揭示曜晶苏醒的代价、阴影的真实身份以及他要见的人",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch97前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch97→Ch98",
+      "prev_location": "矿道尽头、塌方形成的石室及其出口附近",
+      "next_location": "矿道深处，接近矿道尽头与曜能种所在的矿脉核心区域",
+      "description": "地点从\"矿道尽头、塌方形成的石室及其出口附近\"跳转到\"矿道深处，接近矿道尽头与曜能种所在的矿脉核心区域\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch97→Ch98",
+      "missing_characters": [
+        "荧惑"
+      ],
+      "description": "人物消失：荧惑",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch97→Ch98",
+      "unfinished_action": "段奕尘尚未找到能够救妹妹的曜能种根，也尚未得到远古曜晶对其力量或使命的回答；三人仍需离开矿道并返回城中",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch97→Ch98",
+      "hook_promise": "段奕尘必须在三天内找到曜能种的根，否则妹妹会变成下一个曜师；与此同时，他作为曜王与失落远古曜晶共鸣后，还将面对盘踞旧秩序顶端三百年的曜师",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch98前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch98→Ch99",
+      "prev_location": "矿道深处，接近矿道尽头与曜能种所在的矿脉核心区域",
+      "next_location": "曜晶矿场矿道出口，连接矿脉深处与核心真相入口的位置",
+      "description": "地点从\"矿道深处，接近矿道尽头与曜能种所在的矿脉核心区域\"跳转到\"曜晶矿场矿道出口，连接矿脉深处与核心真相入口的位置\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch98→Ch99",
+      "unfinished_action": "段奕尘与镜见川继续深入矿道，准备拔除已开到第八瓣的曜能种；远古曜晶、段奕尘体内暗金纹路与苏醒矿脉之间的关系尚未揭晓",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch98→Ch99",
+      "hook_promise": "曜能种已经苏醒，力量可能覆盖整条矿脉；段奕尘将直面开花曜师级威胁，并可能因远古曜晶的共鸣发生异变或获得新的力量",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch99前20%段落中回应"
+    },
+    {
+      "type": "location_jump",
+      "severity": "medium",
+      "chapters": "Ch99→Ch100",
+      "prev_location": "曜晶矿场矿道出口，连接矿脉深处与核心真相入口的位置",
+      "next_location": "矿场及其边缘的乱石堆",
+      "description": "地点从\"曜晶矿场矿道出口，连接矿脉深处与核心真相入口的位置\"跳转到\"矿场及其边缘的乱石堆\"",
+      "suggestion": "检查是否需要添加场景转换描述"
+    },
+    {
+      "type": "time_backward",
+      "severity": "high",
+      "chapters": "Ch99→Ch100",
+      "prev_time": "紧接上一章，几乎同时",
+      "next_time": "当前时刻，同时",
+      "description": "时间可能倒退：\"当前时刻，同时\"",
+      "suggestion": "检查时间线是否合理"
+    },
+    {
+      "type": "character_disappear",
+      "severity": "low",
+      "chapters": "Ch99→Ch100",
+      "missing_characters": [
+        "镜见川"
+      ],
+      "description": "人物消失：镜见川",
+      "suggestion": "检查是否有退场说明"
+    },
+    {
+      "type": "unfinished_action_check",
+      "severity": "info",
+      "chapters": "Ch99→Ch100",
+      "unfinished_action": "段奕尘已经迈向曜师背后通往核心真相的唯一入口，但尚未真正进入；与此同时，矿场异变爆发，失落远古曜晶被远处逼近的意志强行唤醒。",
+      "description": "存在未完成动作",
+      "suggestion": "需要在下一章中消费或延续此动作"
+    },
+    {
+      "type": "hook_promise",
+      "severity": "info",
+      "chapters": "Ch99→Ch100",
+      "hook_promise": "核心真相的入口即将开启，花影可能走向毁灭，而地底正在升起的吞光之物及其意志将与失落远古曜晶产生正面联动。",
+      "description": "章末有钩子承诺",
+      "suggestion": "需要在Ch100前20%段落中回应"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "constitution_id": "CONST-LINGSE-001",
+  "work_title": "灵色",
+  "target_platform": "qidian",
+  "primary_genre": "xuanhuan",
+  "secondary_genres": ["xiuzhen"],
+  "primary_audience": {
+    "age_group": "young_adult",
+    "gender": "male",
+    "payment_willingness": "high",
+    "reading_speed": "fast",
+    "content_preference": [
+      "爽文",
+      "升级",
+      "战斗",
+      "剧情"
+    ],
+    "pain_points": [
+      "无聊",
+      "压力",
+      "焦虑"
+    ],
+    "fulfillment_needs": [
+      "成就感",
+      "代入感",
+      "情绪宣泄",
+      "智力挑战"
+    ]
+  },
+  "secondary_audiences": [],
+  "core_selling_points": [
+    {
+      "name": "修炼升级",
+      "description": "主角通过修炼不断突破境界，获得强大力量",
+      "type": "power",
+      "delivery_mechanism": "每3-5章一次小突破，每10-15章一次大境界提升",
+      "frequency": "every_3_chapters",
+      "validation_keywords": [
+        "突破",
+        "境界",
+        "修炼",
+        "实力提升",
+        "灵力",
+        "功法"
+      ],
+      "minimum_intensity": 0.6
+    },
+    {
+      "name": "战斗爽感",
+      "description": "精彩的战斗场面，主角展现实力碾压对手",
+      "type": "emotional",
+      "delivery_mechanism": "每章至少有一次冲突或战斗元素",
+      "frequency": "every_chapter",
+      "validation_keywords": [
+        "战斗",
+        "对决",
+        "攻击",
+        "防御",
+        "胜利",
+        "压制"
+      ],
+      "minimum_intensity": 0.5
+    },
+    {
+      "name": "智慧布局",
+      "description": "主角运用智慧解决问题，展现谋略",
+      "type": "plot",
+      "delivery_mechanism": "关键剧情节点展现智慧",
+      "frequency": "arc_milestone",
+      "validation_keywords": [
+        "计划",
+        "策略",
+        "布局",
+        "推理",
+        "洞察",
+        "破局"
+      ],
+      "minimum_intensity": 0.4
+    },
+    {
+      "name": "悬念钩子",
+      "description": "章末留下悬念，吸引读者继续阅读",
+      "type": "emotional",
+      "delivery_mechanism": "每章结尾必须有明确的悬念或期待",
+      "frequency": "every_chapter",
+      "validation_keywords": [
+        "但是",
+        "然而",
+        "突然",
+        "竟然",
+        "没想到",
+        "发现"
+      ],
+      "minimum_intensity": 0.7
+    }
+  ],
+  "differentiation_tags": [
+    "修炼体系独特",
+    "智慧型主角",
+    "快节奏剧情",
+    "强对抗战斗"
+  ],
+  "unique_selling_proposition": "融合修炼升级与智慧布局的玄幻爽文，快节奏强爽感",
+  "constraints": {
+    "forbidden_elements": [
+      "政治敏感内容",
+      "过度暴力描写",
+      "低俗色情",
+      "消极价值观"
+    ],
+    "required_elements": [
+      "主角正面形象",
+      "正能量价值观",
+      "逻辑自洽",
+      "明确目标动机"
+    ],
+    "min_hook_score": 75,
+    "max_chapters_without_payoff": 3,
+    "target_chapter_length": 3000,
+    "paywall_earliest_chapter": 30,
+    "genre_drift_tolerance": 0.25
+  },
+  "created_at": "2024-08-18T00:00:00Z",
+  "updated_at": "2024-08-18T00:00:00Z",
+  "version": "1.0"
+}

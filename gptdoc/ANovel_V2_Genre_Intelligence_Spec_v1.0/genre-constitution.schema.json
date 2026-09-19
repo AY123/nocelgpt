@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/genre-constitution.schema.json",
+  "title": "ANovel Genre Constitution",
+  "type": "object",
+  "required": [
+    "rules"
+  ],
+  "properties": {
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "severity",
+          "target",
+          "operator",
+          "on_violation"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_-]+$"
+          },
+          "description": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": [
+              "hard",
+              "soft",
+              "advisory"
+            ]
+          },
+          "target": {
+            "type": "string"
+          },
+          "operator": {
+            "enum": [
+              "equals",
+              "not_equals",
+              "in",
+              "not_in",
+              "exists",
+              "not_exists",
+              "range",
+              "custom_policy"
+            ]
+          },
+          "expected": {},
+          "policy_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "on_violation": {
+            "enum": [
+              "block",
+              "repair",
+              "review",
+              "warn",
+              "ignore"
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "severity": {
+                  "const": "hard"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "on_violation": {
+                  "enum": [
+                    "block"
+                  ]
+                }
+              }
+            }
+          }
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

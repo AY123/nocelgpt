@@ -1,0 +1,1101 @@
+document_id: PLAN-IMPLEMENTATION-0001-BACKLOG
+version: 1.0.0
+tasks:
+- task_id: V2-001
+  title: Repository bootstrap
+  phase: P0
+  priority: P0
+  goal: Repository bootstrap
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Repository bootstrap implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-001
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-002
+  title: Normative documentation index
+  phase: P0
+  priority: P0
+  goal: Normative documentation index
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Normative documentation index implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-002
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-003
+  title: Architecture fitness harness
+  phase: P0
+  priority: P0
+  goal: Architecture fitness harness
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Architecture fitness harness implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-003
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-004
+  title: Secret and dependency CI gates
+  phase: P0
+  priority: P0
+  goal: Secret and dependency CI gates
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Secret and dependency CI gates implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-004
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-005
+  title: Core entity IDs and alias resolution
+  phase: P1
+  priority: P0
+  goal: Core entity IDs and alias resolution
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-001
+  acceptance_criteria:
+  - Core entity IDs and alias resolution implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-005
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-006
+  title: Character relationship knowledge core
+  phase: P1
+  priority: P0
+  goal: Character relationship knowledge core
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-005
+  acceptance_criteria:
+  - Character relationship knowledge core implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-006
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-007
+  title: Event timeline promise core
+  phase: P1
+  priority: P0
+  goal: Event timeline promise core
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-005
+  acceptance_criteria:
+  - Event timeline promise core implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-007
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-008
+  title: NarrativeDelta implementation
+  phase: P1
+  priority: P0
+  goal: NarrativeDelta implementation
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-006
+  - V2-007
+  acceptance_criteria:
+  - NarrativeDelta implementation implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-008
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-009
+  title: Canon persistence schema and repository
+  phase: P2
+  priority: P0
+  goal: Canon persistence schema and repository
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-008
+  acceptance_criteria:
+  - Canon persistence schema and repository implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-009
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-010
+  title: CanonCommitService
+  phase: P2
+  priority: P0
+  goal: CanonCommitService
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-009
+  acceptance_criteria:
+  - CanonCommitService implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-010
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-011
+  title: Canon idempotency and CAS
+  phase: P2
+  priority: P0
+  goal: Canon idempotency and CAS
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-010
+  acceptance_criteria:
+  - Canon idempotency and CAS implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-011
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-012
+  title: Snapshot rebuild and projection
+  phase: P2
+  priority: P0
+  goal: Snapshot rebuild and projection
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-010
+  acceptance_criteria:
+  - Snapshot rebuild and projection implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-012
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-013
+  title: GenreProfile and GenrePack loader
+  phase: P3
+  priority: P0
+  goal: GenreProfile and GenrePack loader
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-005
+  acceptance_criteria:
+  - GenreProfile and GenrePack loader implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-013
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-014
+  title: Genre hard policy engine
+  phase: P3
+  priority: P0
+  goal: Genre hard policy engine
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-013
+  acceptance_criteria:
+  - Genre hard policy engine implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-014
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-015
+  title: Urban Business canon extension
+  phase: P3
+  priority: P1
+  goal: Urban Business canon extension
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-014
+  - V2-010
+  acceptance_criteria:
+  - Urban Business canon extension implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-015
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-016
+  title: Eastern Fantasy canon extension
+  phase: P3
+  priority: P1
+  goal: Eastern Fantasy canon extension
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-014
+  - V2-010
+  acceptance_criteria:
+  - Eastern Fantasy canon extension implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-016
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-017
+  title: Contract Compiler
+  phase: P4
+  priority: P0
+  goal: Contract Compiler
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-012
+  - V2-014
+  acceptance_criteria:
+  - Contract Compiler implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-017
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-018
+  title: Context Compiler
+  phase: P5
+  priority: P0
+  goal: Context Compiler
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-017
+  acceptance_criteria:
+  - Context Compiler implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-018
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-019
+  title: Model Gateway and provider abstraction
+  phase: P5
+  priority: P0
+  goal: Model Gateway and provider abstraction
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-018
+  acceptance_criteria:
+  - Model Gateway and provider abstraction implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-019
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-020
+  title: Single Chapter Workflow
+  phase: P6
+  priority: P0
+  goal: Single Chapter Workflow
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-019
+  - V2-011
+  acceptance_criteria:
+  - Single Chapter Workflow implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-020
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-021
+  title: NarrativeDelta extractor
+  phase: P6
+  priority: P0
+  goal: NarrativeDelta extractor
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-020
+  acceptance_criteria:
+  - NarrativeDelta extractor implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-021
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-022
+  title: Q0 deterministic validators
+  phase: P7
+  priority: P0
+  goal: Q0 deterministic validators
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-021
+  acceptance_criteria:
+  - Q0 deterministic validators implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-022
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-023
+  title: Q1 Canon validators
+  phase: P7
+  priority: P0
+  goal: Q1 Canon validators
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-021
+  - V2-012
+  acceptance_criteria:
+  - Q1 Canon validators implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-023
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-024
+  title: Q2 Genre validators
+  phase: P7
+  priority: P0
+  goal: Q2 Genre validators
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-021
+  - V2-014
+  acceptance_criteria:
+  - Q2 Genre validators implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-024
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-025
+  title: Q3 Transition validators
+  phase: P7
+  priority: P0
+  goal: Q3 Transition validators
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-021
+  - V2-017
+  acceptance_criteria:
+  - Q3 Transition validators implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-025
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-026
+  title: CommitPermit integration
+  phase: P7
+  priority: P0
+  goal: CommitPermit integration
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-022
+  - V2-023
+  - V2-024
+  - V2-025
+  acceptance_criteria:
+  - CommitPermit integration implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-026
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-027
+  title: Workflow retry and checkpoint
+  phase: P6
+  priority: P0
+  goal: Workflow retry and checkpoint
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-020
+  acceptance_criteria:
+  - Workflow retry and checkpoint implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-027
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-028
+  title: Kill restart fault harness
+  phase: P8
+  priority: P1
+  goal: Kill restart fault harness
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-027
+  acceptance_criteria:
+  - Kill restart fault harness implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-028
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-029
+  title: QualityAggregator
+  phase: P7
+  priority: P1
+  goal: QualityAggregator
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-022
+  - V2-023
+  - V2-024
+  - V2-025
+  acceptance_criteria:
+  - QualityAggregator implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-029
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-030
+  title: Diagnosis engine
+  phase: P7
+  priority: P1
+  goal: Diagnosis engine
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-029
+  acceptance_criteria:
+  - Diagnosis engine implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-030
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-031
+  title: Patch-first Repairer
+  phase: P7
+  priority: P1
+  goal: Patch-first Repairer
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-030
+  acceptance_criteria:
+  - Patch-first Repairer implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-031
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-032
+  title: Repair regression validator
+  phase: P7
+  priority: P1
+  goal: Repair regression validator
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-031
+  acceptance_criteria:
+  - Repair regression validator implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-032
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-033
+  title: Three-chapter smoke certification
+  phase: P8
+  priority: P0
+  goal: Three-chapter smoke certification
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-026
+  - V2-027
+  - V2-032
+  acceptance_criteria:
+  - Three-chapter smoke certification implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-033
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-034
+  title: Urban 10-chapter certification
+  phase: P8
+  priority: P0
+  goal: Urban 10-chapter certification
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-033
+  - V2-015
+  acceptance_criteria:
+  - Urban 10-chapter certification implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-034
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-035
+  title: Fantasy 10-chapter certification
+  phase: P8
+  priority: P0
+  goal: Fantasy 10-chapter certification
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-033
+  - V2-016
+  acceptance_criteria:
+  - Fantasy 10-chapter certification implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-035
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-036
+  title: Fault injection suite
+  phase: P8
+  priority: P0
+  goal: Fault injection suite
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-034
+  - V2-035
+  acceptance_criteria:
+  - Fault injection suite implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-036
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-037
+  title: Context inspector
+  phase: P8
+  priority: P2
+  goal: Context inspector
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Context inspector implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-037
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-038
+  title: Canon inspector
+  phase: P8
+  priority: P2
+  goal: Canon inspector
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Canon inspector implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-038
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-039
+  title: Lineage inspector
+  phase: P8
+  priority: P2
+  goal: Lineage inspector
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies: []
+  acceptance_criteria:
+  - Lineage inspector implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-039
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-040
+  title: 30-chapter certification runner
+  phase: P9
+  priority: P0
+  goal: 30-chapter certification runner
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-036
+  acceptance_criteria:
+  - 30-chapter certification runner implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-040
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-041
+  title: Idea-driven Genesis
+  phase: P10
+  priority: P1
+  goal: Idea-driven Genesis
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-040
+  acceptance_criteria:
+  - Idea-driven Genesis implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-041
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-042
+  title: Reference ingestion
+  phase: P10
+  priority: P1
+  goal: Reference ingestion
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-040
+  acceptance_criteria:
+  - Reference ingestion implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-042
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-043
+  title: BookNarrativeProfile
+  phase: P10
+  priority: P1
+  goal: BookNarrativeProfile
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-042
+  acceptance_criteria:
+  - BookNarrativeProfile implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-043
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-044
+  title: ReferenceEvidencePack
+  phase: P10
+  priority: P1
+  goal: ReferenceEvidencePack
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-043
+  acceptance_criteria:
+  - ReferenceEvidencePack implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-044
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-045
+  title: Originality firewall
+  phase: P10
+  priority: P0
+  goal: Originality firewall
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-044
+  acceptance_criteria:
+  - Originality firewall implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-045
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-046
+  title: Genesis Tournament
+  phase: P10
+  priority: P1
+  goal: Genesis Tournament
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-041
+  - V2-044
+  - V2-045
+  acceptance_criteria:
+  - Genesis Tournament implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-046
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-047
+  title: GenesisSpec compiler
+  phase: P10
+  priority: P0
+  goal: GenesisSpec compiler
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-046
+  acceptance_criteria:
+  - GenesisSpec compiler implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-047
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-048
+  title: GenesisCommit integration
+  phase: P10
+  priority: P0
+  goal: GenesisCommit integration
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-047
+  - V2-010
+  acceptance_criteria:
+  - GenesisCommit integration implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-048
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-049
+  title: Corpus Registry
+  phase: P11
+  priority: P1
+  goal: Corpus Registry
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-040
+  acceptance_criteria:
+  - Corpus Registry implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-049
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-050
+  title: GoldenSet migration
+  phase: P11
+  priority: P1
+  goal: GoldenSet migration
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-049
+  acceptance_criteria:
+  - GoldenSet migration implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-050
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-051
+  title: RegressionSet migration
+  phase: P11
+  priority: P0
+  goal: RegressionSet migration
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-049
+  acceptance_criteria:
+  - RegressionSet migration implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-051
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-052
+  title: ExperimentDefinition
+  phase: P11
+  priority: P1
+  goal: ExperimentDefinition
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-049
+  acceptance_criteria:
+  - ExperimentDefinition implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-052
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-053
+  title: Benchmark runner
+  phase: P11
+  priority: P1
+  goal: Benchmark runner
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-052
+  acceptance_criteria:
+  - Benchmark runner implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-053
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-054
+  title: Blind pairwise evaluator
+  phase: P11
+  priority: P1
+  goal: Blind pairwise evaluator
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-053
+  acceptance_criteria:
+  - Blind pairwise evaluator implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-054
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-055
+  title: Human evaluation ingestion
+  phase: P11
+  priority: P1
+  goal: Human evaluation ingestion
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-054
+  acceptance_criteria:
+  - Human evaluation ingestion implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-055
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-056
+  title: Calibration pipeline
+  phase: P11
+  priority: P1
+  goal: Calibration pipeline
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-055
+  acceptance_criteria:
+  - Calibration pipeline implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-056
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-057
+  title: Promotion gate
+  phase: P11
+  priority: P1
+  goal: Promotion gate
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-056
+  acceptance_criteria:
+  - Promotion gate implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-057
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-058
+  title: Backup restore validation
+  phase: P12
+  priority: P0
+  goal: Backup restore validation
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-012
+  acceptance_criteria:
+  - Backup restore validation implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-058
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-059
+  title: Release manifest
+  phase: P12
+  priority: P1
+  goal: Release manifest
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-004
+  - V2-058
+  acceptance_criteria:
+  - Release manifest implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-059
+  artifacts: []
+  out_of_scope: []
+  status: OPEN
+- task_id: V2-060
+  title: 100-chapter reliability runner
+  phase: P12
+  priority: P0
+  goal: 100-chapter reliability runner
+  normative_specs:
+  - PROJECT_CONSTITUTION.md
+  dependencies:
+  - V2-040
+  - V2-057
+  - V2-058
+  acceptance_criteria:
+  - 100-chapter reliability runner implemented according to normative specs
+  - Required tests pass
+  - CI hard gates pass
+  tests:
+  - TEST-V2-060
+  artifacts: []
+  out_of_scope: []
+  status: OPEN

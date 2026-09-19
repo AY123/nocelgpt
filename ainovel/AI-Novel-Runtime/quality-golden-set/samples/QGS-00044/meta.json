@@ -1,0 +1,15 @@
+{
+  "sample_id": "QGS-00044",
+  "title": "角色互动热闹但缺少对抗",
+  "genre": "现实向创业",
+  "chapter_position": "chapter-2",
+  "source_type": "synthetic",
+  "source_hint": "角色在交流，但立场冲突和利益冲突不明显",
+  "risk_flags": [],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "no_conflict",
+    "character_motivation",
+    "continue_intent"
+  ]
+}

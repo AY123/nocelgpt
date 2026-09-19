@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 4,
+    "chapter_goal": 4,
+    "conflict_progression": 4,
+    "character_motivation": 4,
+    "emotion_flow": 4,
+    "information_density": 5,
+    "payoff_delivery": 4,
+    "ending_hook": 5,
+    "continuity": 4,
+    "ai_voice_risk": 1,
+    "paying_intent": 4,
+    "continue_intent": 5
+  },
+  "editor_b": {
+    "opening_hook": 4,
+    "chapter_goal": 4,
+    "conflict_progression": 4,
+    "character_motivation": 4,
+    "emotion_flow": 4,
+    "information_density": 5,
+    "payoff_delivery": 4,
+    "ending_hook": 5,
+    "continuity": 4,
+    "ai_voice_risk": 1,
+    "paying_intent": 4,
+    "continue_intent": 5
+  },
+  "editor_a_note": "信息密度与节奏控制出色，开篇压力与结尾悬念形成强钩子，付费追读潜力高。",
+  "editor_b_note": "信息密度高且自然，动作与对话承载设定，开篇压力与悬念设置到位，结尾钩子强烈，但情绪流动稍显平稳，可加强角色内心波动。",
+  "consensus_scores": {
+    "opening_hook": 4,
+    "chapter_goal": 4,
+    "conflict_progression": 4,
+    "character_motivation": 4,
+    "emotion_flow": 4,
+    "information_density": 5,
+    "payoff_delivery": 4,
+    "ending_hook": 5,
+    "continuity": 4,
+    "ai_voice_risk": 1,
+    "paying_intent": 4,
+    "continue_intent": 5
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

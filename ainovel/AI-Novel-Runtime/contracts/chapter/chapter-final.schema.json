@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anes.local/schemas/chapter/chapter-final.schema.json",
+  "title": "Chapter Final",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chapter_id", "final_text"],
+  "properties": {
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "final_text": { "type": "string", "minLength": 1 },
+    "final_hash": { "type": ["string", "null"] },
+    "final_review": { "type": ["object", "null"], "additionalProperties": true },
+    "comparison_report": { "type": ["object", "null"], "additionalProperties": true },
+    "quality_summary": { "type": ["string", "null"] },
+    "continuity_notes": { "type": "array", "items": { "type": "string" } },
+    "commercial_notes": { "type": "array", "items": { "type": "string" } },
+    "next_chapter_bridge": { "type": ["string", "null"] },
+    "production_state": {
+      "type": "string",
+      "enum": ["generated", "needs_revision", "blocked", "human_approved", "published", "invalidated"],
+      "default": "generated",
+      "description": "Unified production state (authoritative). Determines if chapter can be exported or proceed to next chapter.",
+      "$comment": "This is the single source of truth for chapter production status. Added in C2 phase."
+    },
+    "production_decision": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
+      "description": "ADVISORY: Legacy field for compatibility. Use production_state for decisions.",
+      "$comment": "DEPRECATED: This field is advisory only. New code should use production_state instead."
+    },
+    "final_strategy": { "type": ["string", "null"], "enum": ["baseline", "length_and_hook", "pacing_compaction", "hook_strengthening", "conflict_escalation", "relationship_depthening", "worldbuilding_clarity", null] },
+    "final_status": {
+      "type": ["string", "null"],
+      "enum": ["accepted", "revised", "review", null],
+      "description": "ADVISORY: Legacy field for compatibility. Use production_state for decisions.",
+      "$comment": "DEPRECATED: This field is advisory only. New code should use production_state instead."
+    }
+  }
+}

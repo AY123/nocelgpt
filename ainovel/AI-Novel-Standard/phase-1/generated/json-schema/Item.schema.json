@@ -1,0 +1,89 @@
+{
+  "$id": "anes:phase-1:Item",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A physical or conceptual object that exists in the story world.",
+  "properties": {
+    "category": {
+      "description": "free classification, e.g. 'weapon', 'artifact', 'document'",
+      "type": "string"
+    },
+    "certainty": {
+      "default": "canon",
+      "enum": [
+        "canon",
+        "provisional",
+        "contested"
+      ],
+      "type": "string"
+    },
+    "fact_version": {
+      "description": "Registry version of this record",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "grants_rules": {
+      "description": "world-rule elements this item enables for its user",
+      "items": {
+        "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:MAG|TEC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "id": {
+      "description": "permanent immutable identifier",
+      "pattern": "^ITM-\\d{5,}$",
+      "type": "string"
+    },
+    "location": {
+      "description": "where the item canonically resides",
+      "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+      "type": "string"
+    },
+    "name": {
+      "description": "mutable human label",
+      "type": "string"
+    },
+    "notes": {
+      "description": "free-text authoring notes; not a resolution source",
+      "type": "string"
+    },
+    "origin_event": {
+      "description": "event where the item was created/acquired, if established",
+      "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:EVT)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+      "type": "string"
+    },
+    "owner": {
+      "description": "current canonical owner, if any",
+      "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:CHR|FAC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+      "type": "string"
+    },
+    "properties": {
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "declared properties as key->value facts",
+      "type": "object"
+    },
+    "status": {
+      "default": "active",
+      "description": "lifecycle state",
+      "enum": [
+        "active",
+        "deprecated",
+        "tombstoned"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "fact_version",
+    "id",
+    "name"
+  ],
+  "title": "Item",
+  "type": "object",
+  "x-anes-generated": "DO NOT EDIT — generated from item.idl.yaml by tools/idl_to_jsonschema.py",
+  "x-anes-idl-version": "1.0",
+  "x-anes-type-code": "ITM"
+}

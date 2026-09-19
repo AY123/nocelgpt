@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:version-selection:1.0",
+  "title": "VersionSelection",
+  "description": "Phase 6/7 director contract: the selection record that names which draft version was chosen for one chapter, and why. It is the auditable output of a VersionComparison. This is a DERIVED production artifact, not a registry fact (ADR-006). Two structural invariants: `gating` const false (ADR-003) — a selection NEVER blocks a build. `authority` const human (ADR-009) — choosing a version for INTERNAL production follows the Commercial Loop precedent; the outward transition (publish) stays a separate human decision, never triggered by this record.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "authority",
+    "gating",
+    "chapter_id",
+    "selected_version",
+    "reason"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^SEL-\\d{5,}$" },
+    "kind": { "type": "string", "const": "version_selection" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): internal selection may be automatic; the outward publish transition stays human and is never triggered by this record."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a version selection NEVER blocks a build."
+    },
+    "schema_version": { "type": "string", "default": "1.0" },
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "comparison_ref": { "type": ["string", "null"] },
+    "selected_version": { "type": ["string", "null"] },
+    "reason": { "type": "string", "minLength": 1 },
+    "selection_policy": { "type": "object", "additionalProperties": true },
+    "notes": { "type": "string" }
+  }
+}

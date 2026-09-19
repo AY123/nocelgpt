@@ -1,0 +1,16 @@
+{
+  "sample_id": "QGS-00015",
+  "title": "人物动机清晰的高追读样本",
+  "genre": "女频都市",
+  "chapter_position": "chapter-4",
+  "source_type": "synthetic",
+  "source_hint": "主角行动有清晰动机，情绪推进自然，阅读阻力低",
+  "risk_flags": [],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "character_motivation",
+    "emotion_flow",
+    "continue_intent",
+    "continuity"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "artifact_format": "1.0",
+  "kind": "scene_plan",
+  "chapter_no": 7,
+  "task_id": "TASK-00007",
+  "outline_ref": "OUTLINE-00001",
+  "ir_ref": "ir-TASK-00007",
+  "scenes": [
+    {
+      "index": 1,
+      "beat": "setup",
+      "purpose": "在眼前的生存威胁，逼主角用出金手指下以布局推进：抢在实习生月入三千阶段的小敌人动手前布下应对的局，向「在商业世界证明自己，改写前世失败命运」再逼近一步；同时被自身弱点（过度自信，容易忽视人际关系）反噬",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "读者了解本章处境：在眼前的生存威胁，逼主角用出金手指下以布局推进：抢在实习生月入三千阶段的小敌人动手前布下应对的局，向「在商业世界证明自己，改写前世失败命运」再逼近一步；同时被自身弱点（过度自信，容易忽视人际关系）反噬",
+      "reader_question": "本章目标能否达成：在眼前的生存威胁，逼主角用出金手指下以布局推进：抢在实习生月入三千阶段的小敌人动手前布下应对的局，向「在商业世界证明自己，改写前世失败命运」再逼近一步；同时被自身弱点（过度自信，容易忽视人际关系）反噬？",
+      "emotion": {
+        "valence": 35,
+        "tone": "铺垫"
+      }
+    },
+    {
+      "index": 2,
+      "beat": "escalation",
+      "purpose": "升级：压力加码，把冲突推向临界",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "新的压力浮现：对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "reader_question": "局面还会更糟吗？",
+      "emotion": {
+        "valence": 55,
+        "tone": "紧张"
+      }
+    },
+    {
+      "index": 3,
+      "beat": "turn",
+      "purpose": "转折：局面反转或主角做出关键选择",
+      "participants": [
+        "CHR-90001"
+      ],
+      "turn": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "information_gain": "局势因反转而改变",
+      "reader_question": "反转之后会怎样？",
+      "emotion": {
+        "valence": 70,
+        "tone": "转机"
+      }
+    },
+    {
+      "index": 4,
+      "beat": "exit_hook",
+      "purpose": "收尾钩子：留下让读者追更的悬念",
+      "exit_hook": "第7章结尾，实习生月入三千阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "reader_question": "第7章结尾，实习生月入三千阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+      "emotion": {
+        "valence": 75,
+        "tone": "悬念"
+      }
+    }
+  ],
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90010@v1",
+      "EVT-90009@v1",
+      "EVT-90011@v1",
+      "TML-90001@v1",
+      "EVT-90008@v1",
+      "EVT-90012@v1"
+    ],
+    "source_version": 4
+  },
+  "content_hash": "sha256:79dd0006c744e73abff0fb9b81e50544770a48ce5f93c9d17e283d84f3ed7a4a"
+}

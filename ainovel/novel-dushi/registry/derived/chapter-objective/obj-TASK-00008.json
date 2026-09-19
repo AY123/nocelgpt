@@ -1,0 +1,35 @@
+{
+  "id": "OBJ-00008",
+  "kind": "chapter_objective",
+  "authority": "human",
+  "gating": false,
+  "schema_version": "1.0",
+  "objective_id": "OBJ-00008",
+  "chapter_id": "TASK-00008",
+  "source": {
+    "state_hash": "sha256:1d026aa9e6957016b33f437ff39bd388ea0b08b1f4664b14636509453e84d5a7"
+  },
+  "primary_goal": "在眼前的生存威胁，逼主角用出金手指下以试探推进：以一次试探逼实习生月入三千阶段的小敌人露出破绽，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+  "secondary_goals": [],
+  "reader_question": "主角目标与实习生月入三千阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。必须在今夜之前动手，否则再无机会",
+  "promise_to_deliver": [],
+  "character_focus": [],
+  "plot_threads": [],
+  "commercial_intent": {
+    "retention_focus": "next_chapter_pull",
+    "payoff_type": "partial_payoff",
+    "drop_risk_target": "low"
+  },
+  "pacing_role": "rising_action",
+  "cliffhanger_type": "reveal",
+  "constraints": [
+    "不得破坏角色连续性",
+    "不得引入未授权新事实"
+  ],
+  "success_criteria": [
+    "reader_question 明确",
+    "章节末有追读动力",
+    "角色行为符合 runtime 状态"
+  ],
+  "notes": ""
+}

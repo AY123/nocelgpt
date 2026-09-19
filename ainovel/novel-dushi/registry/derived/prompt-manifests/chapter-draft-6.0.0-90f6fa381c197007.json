@@ -1,0 +1,62 @@
+{
+  "artifact_format": "1.0",
+  "content_hash": "sha256:90f6fa381c19700726d8fab05eb1c10b838b4ba83b02a29e7ceac0199e3afec0",
+  "id": "chapter-draft-6.0.0-90f6fa381c197007",
+  "kind": "prompt-manifest",
+  "manifest": {
+    "binding_hash": "sha256:9c1791d5392bd6a3dad8d87608870a5610d9d62664706194c7d6f83a8b792643",
+    "cache_hit": false,
+    "capability": "ChapterDraft",
+    "derived_from": [
+      "CHR-00001@v1",
+      "EVT-00003@v1",
+      "EVT-00001@v1",
+      "EVT-00002@v1",
+      "TML-00001@v1",
+      "CHR-00002@v1"
+    ],
+    "package_hash": "sha256:c4a7c2d5af7b18199398a3545dcfee0cde7d4968af6c7488ec0a5e57d61c9360",
+    "prompt_id": "chapter-draft",
+    "rendered_at": "2026-09-08T04:51:56.883360+00:00",
+    "rendered_hash": "sha256:90f6fa381c19700726d8fab05eb1c10b838b4ba83b02a29e7ceac0199e3afec0",
+    "renderer_version": "1.0.0",
+    "replay_ref": null,
+    "route_summary": {
+      "constraint_pack_id": null,
+      "metadata": {
+        "constraint_directives": [],
+        "failure_pack_map": {
+          "ai-tell": "deepseek-v13",
+          "dash-aside": "deepseek-v13",
+          "dialogue": "gpt-v13",
+          "em-dash": "deepseek-v13",
+          "length": "gpt-v13",
+          "opening variety": "deepseek-v13"
+        },
+        "known_failure_mode": null,
+        "profile_found": false,
+        "target_style": null,
+        "task_type": "ChapterDraft"
+      },
+      "model_id": "claude-fable-5",
+      "prompt_version": "6.0.0",
+      "provider": "claude",
+      "rationale": "task=ChapterDraft"
+    },
+    "source_version": 4,
+    "template_hash": "sha256:3bc77f915851bc4d507646f32b7c68512c287521915c9314547bbe0a0d16aca2",
+    "version": "6.0.0"
+  },
+  "provenance": {
+    "derived_from": [
+      "CHR-00001@v1",
+      "EVT-00003@v1",
+      "EVT-00001@v1",
+      "EVT-00002@v1",
+      "TML-00001@v1",
+      "CHR-00002@v1"
+    ],
+    "package_hash": "sha256:c4a7c2d5af7b18199398a3545dcfee0cde7d4968af6c7488ec0a5e57d61c9360",
+    "source_version": 4
+  }
+}

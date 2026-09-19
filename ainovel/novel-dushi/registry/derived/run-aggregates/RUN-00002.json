@@ -1,0 +1,66 @@
+{
+  "checkpoints": [],
+  "content_hash": "ba4ee902c0335c65c9a97f6965468f0afb5d01f7d74c2e230d5067df2011aff7",
+  "kind": "run_aggregate",
+  "notes": "serial run aggregate for RUN-00002",
+  "project_path": "../novel-dushi",
+  "run_summary": {
+    "bundle": {
+      "link_ids": [],
+      "plan_ids": [],
+      "report_ids": [],
+      "run_ids": []
+    },
+    "content_hash": "481d3597c3e0942b8f4ad15de5c2c64861294bcdc0fb53898fcff20e3b078b3f",
+    "kind": "30ch_launch_summary",
+    "link": {
+      "content_hash": "f098c81b1611ccb2c886369edf6a77d16d0516502d8b88b13b928b9864220a9f",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00002",
+      "notes": "serial run aggregate for RUN-00002",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00002.json",
+      "version": "1.0"
+    },
+    "notes": "serial run aggregate for RUN-00002",
+    "plan": {
+      "budget_limit": null,
+      "chapter_target": 30,
+      "content_hash": "7b5c77e20a0fbfd624beee1708e115ee1fe60922b50d876f17140538b1d6537a",
+      "kind": "30ch_launch_plan",
+      "model_id": "gpt-5.6-sol",
+      "model_provider": "openai",
+      "project_path": "../novel-dushi",
+      "prompt_version": "6.0.0",
+      "standard_root": "../AI-Novel-Standard",
+      "version": "1.0"
+    },
+    "report": {
+      "content_hash": "f7eb7280f978c2a7aad78053475fda2b98f401b1cf24d18b6a6f54b14cb70832",
+      "kind": "30ch_launch_report",
+      "notes": "serial run aggregate for RUN-00002",
+      "plan": {
+        "budget_limit": null,
+        "chapter_target": 30,
+        "content_hash": "7b5c77e20a0fbfd624beee1708e115ee1fe60922b50d876f17140538b1d6537a",
+        "kind": "30ch_launch_plan",
+        "model_id": "gpt-5.6-sol",
+        "model_provider": "openai",
+        "project_path": "../novel-dushi",
+        "prompt_version": "6.0.0",
+        "standard_root": "../AI-Novel-Standard",
+        "version": "1.0"
+      },
+      "version": "1.0"
+    },
+    "run": {
+      "content_hash": "f098c81b1611ccb2c886369edf6a77d16d0516502d8b88b13b928b9864220a9f",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00002",
+      "notes": "serial run aggregate for RUN-00002",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00002.json",
+      "version": "1.0"
+    },
+    "version": "1.0"
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anes.local/schemas/chapter/chapter-review.schema.json",
+  "title": "Chapter Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chapter_id", "overall_verdict", "scores"],
+  "properties": {
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "overall_verdict": { "type": "string", "enum": ["pass", "revise", "reject", "advisory"] },
+    "scores": { "type": "object", "additionalProperties": { "type": "number" } },
+    "issues": { "type": "array", "items": { "type": "string" } },
+    "strengths": { "type": "array", "items": { "type": "string" } },
+    "revision_suggestions": { "type": "array", "items": { "type": "string" } },
+    "gating_recommendation": { "type": ["string", "null"] },
+    "publish_readiness": { "type": ["string", "null"] }
+  }
+}

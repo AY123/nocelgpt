@@ -1,0 +1,110 @@
+{
+  "content_hash": "sha256:b3593cba7fe59e3cabcaf90bf0dee0395fd695fb316f343c744b931e55fa96f6",
+  "context": {
+    "EVT": [
+      {
+        "certainty": "canon",
+        "effects": [
+          "EVT-00040"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00039",
+        "name": "起势",
+        "notes": "候选卷级事件，来源 VOL-01。",
+        "sequence_index": 1,
+        "status": "active",
+        "summary": "建立主角、金手指、第一重追杀与核心谜团",
+        "timeline": "TML-00003"
+      },
+      {
+        "causes": [
+          "EVT-00039"
+        ],
+        "certainty": "canon",
+        "effects": [
+          "EVT-00041"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00040",
+        "name": "破局",
+        "notes": "候选卷级事件，来源 VOL-02。",
+        "sequence_index": 2,
+        "status": "active",
+        "summary": "扩展势力冲突，第一个大闭环与新地图",
+        "timeline": "TML-00003"
+      },
+      {
+        "causes": [
+          "EVT-00040"
+        ],
+        "certainty": "canon",
+        "effects": [
+          "EVT-00042"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00041",
+        "name": "问鼎",
+        "notes": "候选卷级事件，来源 VOL-03。",
+        "sequence_index": 3,
+        "status": "active",
+        "summary": "主角以代价完成阶段性秩序重建",
+        "timeline": "TML-00003"
+      },
+      {
+        "causes": [
+          "EVT-00041"
+        ],
+        "certainty": "canon",
+        "effects": [
+          "EVT-00043"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00042",
+        "name": "第1章：身份落差暴露，金手指在绝境中被逼显性化",
+        "notes": "候选章节事件（第1章），钩子：主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临",
+        "participants": [
+          "CHR-00007"
+        ],
+        "sequence_index": 4,
+        "status": "active",
+        "summary": "身份落差暴露，金手指在绝境中被逼显性化",
+        "timeline": "TML-00003"
+      }
+    ],
+    "TML": [
+      {
+        "fact_version": 1,
+        "id": "TML-00003",
+        "kind": "main",
+        "name": "主时间线",
+        "notes": "候选时间线，来源大纲 OUTLINE-00001。",
+        "ordering": "relative",
+        "status": "active"
+      }
+    ]
+  },
+  "entity_count": 5,
+  "package_format": "1.0",
+  "provenance": {
+    "derived_from": [
+      "EVT-00040@v1",
+      "EVT-00039@v1",
+      "EVT-00041@v1",
+      "TML-00003@v1",
+      "EVT-00042@v1"
+    ],
+    "source_version": 3
+  },
+  "registry_version": 3,
+  "standard_version": "2.0.0",
+  "task": {
+    "capability": "ChapterDraft",
+    "extra": {},
+    "goal": "draft chapter 4: 扩展势力冲突，第一个大闭环与新地图",
+    "seeds": [
+      "EVT-00040"
+    ],
+    "task_id": "TASK-00004"
+  },
+  "token_budget": null
+}

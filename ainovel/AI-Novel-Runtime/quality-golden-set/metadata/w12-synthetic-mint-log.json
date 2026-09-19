@@ -1,0 +1,32 @@
+{
+  "kind": "w12_synthetic_mint_log",
+  "version": "1.0",
+  "status": "synthetic_not_final",
+  "note": "Synthetic mint log for testing the single mint entry point and recompute trigger.",
+  "minted_facts": [
+    {
+      "candidate_fact_id": "W12-CF-001",
+      "minted_fact_id": "W12-MF-001",
+      "projection_version": "P-001",
+      "recompute_status": "ok"
+    },
+    {
+      "candidate_fact_id": "W12-CF-002",
+      "minted_fact_id": "W12-MF-002",
+      "projection_version": "P-002",
+      "recompute_status": "ok"
+    }
+  ],
+  "held_facts": [
+    {
+      "candidate_fact_id": "W12-CF-003",
+      "reason": "conflicting",
+      "status": "held_for_adjudication"
+    }
+  ],
+  "next_actions": [
+    "write minted facts into semantic ledgers",
+    "recompute next-chapter state",
+    "resolve held conflicts before further minting"
+  ]
+}

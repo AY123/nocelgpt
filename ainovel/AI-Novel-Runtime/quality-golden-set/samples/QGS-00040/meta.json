@@ -1,0 +1,15 @@
+{
+  "sample_id": "QGS-00040",
+  "title": "内心独白过长",
+  "genre": "女频都市",
+  "chapter_position": "chapter-3",
+  "source_type": "synthetic",
+  "source_hint": "人物想法铺陈过多，事件推进被压缩",
+  "risk_flags": [],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "padding",
+    "character_motivation",
+    "weak_hook"
+  ]
+}

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/calibration-report.schema.json",
+  "title": "CalibrationReport",
+  "type": "object",
+  "required": [
+    "calibration_id",
+    "judge_policy_version",
+    "dataset_refs",
+    "sample_size",
+    "metrics",
+    "status"
+  ],
+  "properties": {
+    "calibration_id": {
+      "type": "string"
+    },
+    "judge_policy_version": {
+      "type": "string"
+    },
+    "dataset_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sample_size": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "split": {
+      "enum": [
+        "VALIDATION",
+        "HOLDOUT"
+      ]
+    },
+    "metrics": {
+      "type": "object"
+    },
+    "confidence_intervals": {
+      "type": "object"
+    },
+    "bias_findings": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "notes": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

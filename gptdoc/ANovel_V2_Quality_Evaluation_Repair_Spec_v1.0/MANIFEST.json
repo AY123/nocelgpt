@@ -1,0 +1,49 @@
+{
+  "package": "ANovel V2 Quality Evaluation & Repair Specification v1.0",
+  "files": [
+    {
+      "name": "QUALITY_EVALUATION_REPAIR_SPEC.md",
+      "sha256": "e147c3ff1d5c05b569203b7a337250f22f30d02c97e30ad127bc868819908776"
+    },
+    {
+      "name": "evidence-record.schema.json",
+      "sha256": "a2601ef7dcafd97bbc6be8893482366d3699048a35e89c1d5706feeb2b69103e"
+    },
+    {
+      "name": "quality-report.schema.json",
+      "sha256": "6120fe7b6e895eba775743f024ce8b9fe16600871e84a8f85401d1508387cea3"
+    },
+    {
+      "name": "repair-plan.schema.json",
+      "sha256": "b3216fa887641931b022fe182166d956095c37d5b1d47189fb4b9c179669fc91"
+    },
+    {
+      "name": "pairwise-evaluation.schema.json",
+      "sha256": "9c7d8cc9ed1a215a6284f366fd032c4827faa447d845ae1c33779b101642d44c"
+    },
+    {
+      "name": "golden-set-item.schema.json",
+      "sha256": "e24888d36d420bc726e067f353bddf3f2e37c0d00a9fffb08f81dcb200a8b740"
+    },
+    {
+      "name": "human-evaluation.schema.json",
+      "sha256": "45afc1f3ef2d851ffe3cb9595ee459a33815516cf550d4d8a8569f4a4b7318d6"
+    },
+    {
+      "name": "calibration-report.schema.json",
+      "sha256": "fb927584bd9cb4a73d45c793fd89f1eac86cdb43a337b375ef33e3575508e572"
+    },
+    {
+      "name": "quality-policy.yaml",
+      "sha256": "15c191966198745ee259abbf2d06f950602ea25c8d94c66471c9d5d374cd15ac"
+    },
+    {
+      "name": "quality-test-matrix.yaml",
+      "sha256": "bc1cf26742f72460ce28f04e22312a13e36ba47d6fbe57efe7c4e1277851336e"
+    },
+    {
+      "name": "SCHEMA_VALIDATION.json",
+      "sha256": "4909bf9ad6a0e48682fa5208be0b75d6f030622fac58448e1e04dee4771757f2"
+    }
+  ]
+}

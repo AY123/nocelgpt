@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anes.local/schemas/chapter/chapter-revision.schema.json",
+  "title": "Chapter Revision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["chapter_id", "revision_round", "after_text"],
+  "properties": {
+    "chapter_id": { "type": "string", "minLength": 1 },
+    "base_draft_hash": { "type": ["string", "null"] },
+    "revision_round": { "type": "integer", "minimum": 1 },
+    "before_text": { "type": ["string", "null"] },
+    "after_text": { "type": "string", "minLength": 1 },
+    "changes": { "type": "array", "items": { "type": "string" } },
+    "revision_reason": { "type": ["string", "null"] },
+    "revision_strategy": { "type": ["string", "null"] }
+  }
+}

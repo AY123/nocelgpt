@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:publish-readiness:1.0",
+  "title": "PublishReadiness",
+  "description": "The 'Build Gate ≠ Publish Readiness' layer (Phase 4.1). This is a PRODUCTION DECISION artifact that sits BESIDE the deterministic build gate — it does NOT violate ADR-003. A build is never blocked by an evaluative judgment (quality-report gating stays false). Separately, this artifact advises whether a chapter should be PUBLISHED. It is ADVISORY toward a human: `authority` is const 'human' (ADR-009) — the system may recommend 'block'/'hold', but only a human executes the irreversible publish transition. Two inputs feed the recommendation: the DETERMINISTIC safety red-line gate (which CAN hard-block, unlike the evaluative safety_risk score) and the evaluative quality-report v2 signals (retention/subscription/payoff/reader_drop_risk). Rides the Runtime envelope beside the draft.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["subject", "authority", "gates_build", "recommendation", "basis"],
+  "properties": {
+    "schema_version": { "type": "string", "const": "1.0" },
+    "subject": {
+      "type": "object",
+      "description": "What this readiness verdict is about.",
+      "additionalProperties": false,
+      "required": ["chapter_id"],
+      "properties": {
+        "chapter_id": { "type": "string", "minLength": 1 },
+        "draft_content_hash": { "type": "string" },
+        "quality_report_ref": { "type": "string", "description": "Pointer to the quality-report v2 this decision consumed." }
+      }
+    },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the publish transition is irreversible/outward, so only a human executes it. This artifact stages a recommendation, never auto-publishes."
+    },
+    "gates_build": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant: this artifact NEVER blocks a build. Build-blocking is only ever done by the deterministic red-line gate, reported under `basis.redline`, which is a separate concern from publish readiness."
+    },
+    "recommendation": {
+      "type": "string",
+      "enum": ["recommend", "hold", "block"],
+      "description": "recommend = publish-ready; hold = fix advised before publish (soft); block = must not publish (a red-line hit forces this)."
+    },
+    "basis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["redline", "quality"],
+      "properties": {
+        "redline": {
+          "type": "object",
+          "description": "The DETERMINISTIC safety check result. Unlike the evaluative safety_risk score, a red-line hit is objective and forces recommendation=block. This is the axis of safety that legitimately gates (ADR-003).",
+          "additionalProperties": false,
+          "required": ["passed"],
+          "properties": {
+            "passed": { "type": "boolean" },
+            "hits": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["rule", "severity"],
+                "properties": {
+                  "rule": { "type": "string" },
+                  "severity": { "type": "string", "enum": ["hard", "soft"] },
+                  "evidence": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "quality": {
+          "type": "object",
+          "description": "Evaluative signals lifted from quality-report v2. Advisory only; can lower a recommendation to 'hold' but never to 'block' on its own (only a hard red-line blocks).",
+          "additionalProperties": false,
+          "properties": {
+            "retention": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "subscription": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "payoff": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "reader_drop_risk": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "below_threshold": {
+              "type": "array",
+              "description": "Dimensions under the hold threshold, driving a 'hold' recommendation.",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "policy": {
+      "type": "object",
+      "description": "The thresholds that produced this recommendation, recorded for auditability/reproducibility.",
+      "additionalProperties": false,
+      "properties": {
+        "hold_threshold": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "drop_risk_hold_at": { "type": "integer", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "rationale": { "type": "string", "description": "Human-readable summary of why this recommendation was made." }
+  }
+}

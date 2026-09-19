@@ -1,0 +1,34 @@
+{
+  "chapter": 3,
+  "approved": true,
+  "entry_state": {
+    "location_id": "loc_mysterious_ruins",
+    "time_relation": "immediately_after",
+    "pov": "third_limited",
+    "required_characters": ["CHR-00001", "CHR-00002"],
+    "hook_to_consume": "hook_002_mentor",
+    "must_address": "主角必须面对导师警告的危机"
+  },
+  "chapter_intent": {
+    "objective": "主角首次使用能力对抗威胁",
+    "main_conflict": "主角与敌对势力的首次交锋",
+    "irreversible_change": "主角的身份被敌对势力发现"
+  },
+  "exit_target": {
+    "location_id": "loc_safe_house",
+    "characters_present": ["CHR-00001", "CHR-00002"],
+    "unfinished_action": "主角需要决定下一步行动",
+    "hook_id": "hook_003_pursuit",
+    "hook_promise": "敌对势力开始追踪主角"
+  },
+  "transition_to_next": {
+    "scene_continuity": "cut",
+    "location_change": true,
+    "pov_change": false
+  },
+  "sources": {
+    "generated_at": "2026-08-14T12:00:00Z",
+    "generated_from": "outline",
+    "content_hash": "test-ch3-hash"
+  }
+}

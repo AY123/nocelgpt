@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:character-speech-profile:1.0",
+  "title": "CharacterSpeechProfile",
+  "description": "The AUTHORED speech-layer spec for a novel's characters (roadmap §15). It answers HOW each character talks — register/vocabulary, sentence shape, verbal habits, taboos, thinking pattern, default emotion — the one thing the §14 real-model baseline found NO model fixes on its own (all three models wrote every character in the same voice, because the system never told any of them how two people should sound different). It is a THIRD artifact class alongside the Novel Brain and market-position: an authored, near-static input the author writes by hand, so it lives under sources/ (sources/character-speech-profiles.yaml), NEVER under registry/facts/ (it is not a story fact — the Character fact schema has NO language field) and NEVER under registry/derived/ (it is not a recomputed projection — character_runtime folds motivation goal/pressure/fear/desire, which is ORTHOGONAL to expression). Each profile points at a Character fact by character_id; at render time the serial loop injects the language block for each LEAD appearing in the chapter into the v7 chapter-draft prompt. ADVISORY — validating it (runtime.cli speech check) never gates a build (ADR-003); absent/pristine is treated as no profiles and the draft degrades to v6 behavior.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["kind", "authority", "gating", "schema_version", "profiles"],
+  "properties": {
+    "kind": { "type": "string", "const": "character_speech_profile" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the speech profile is an AUTHORED input the author writes by hand (like the Novel Brain / market-position). The system may later prepare/stage candidates (P8 Genesis CharacterDesigner), but a profile only becomes authoritative once a human confirms it — it never auto-executes an outward/irreversible transition."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a speech profile NEVER blocks a build. It is advisory expression-layer guidance fed into the draft prompt; it serves character_consistency (角色不串味) and dialogue realism, but validating or missing it does not gate."
+    },
+    "schema_version": { "type": "string", "default": "1.0" },
+    "profiles": {
+      "type": "array",
+      "description": "One entry per character whose voice the author has specified. A character with no entry simply gets no language block injected (clean degradation) — profiles are additive, not exhaustive.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["character_id", "name"],
+        "properties": {
+          "character_id": {
+            "type": "string",
+            "pattern": "^CHR-\\d{5,}$",
+            "description": "The Character fact this voice belongs to. Points at registry/facts/characters/<id>; the loop matches it against the leads appearing in a chapter."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "The character's name, carried for a readable prompt block and for name-resolution against the outline/roster."
+          },
+          "vocabulary": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "① 词汇域 — the register the character speaks in and the words they reach for or refuse.",
+            "properties": {
+              "register": {
+                "type": "string",
+                "enum": ["crude", "colloquial", "neutral", "formal", "archaic"],
+                "description": "Overall diction level, from coarse street speech to archaic/literary."
+              },
+              "signature_words": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Recurring words/phrases that mark this character's voice (e.g. 废铁 / 该还的债)."
+              },
+              "avoids": {
+                "type": "array",
+                "items": { "type": "string" },
+                "description": "Word classes this character does NOT use (e.g. 华丽辞藻 / 书面成语), which keeps them from drifting into another voice."
+              }
+            }
+          },
+          "sentence": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "② 句式 — sentence length and shaping.",
+            "properties": {
+              "length": {
+                "type": "string",
+                "enum": ["terse", "short", "medium", "long", "winding"],
+                "description": "Typical sentence length, from clipped fragments to long winding clauses."
+              },
+              "style": {
+                "type": "string",
+                "description": "How the sentences are built (e.g. 直接、少修饰)."
+              }
+            }
+          },
+          "verbal_habits": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "③ 语言习惯 — recurring speech tics/behaviors (e.g. 说话压低声音 / 习惯用反问 / 不叫敬称)."
+          },
+          "taboo": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "④ 禁忌 — things this character never does in speech (e.g. 不会主动示弱 / 不用贵族腔). The anti-cross-contamination guard: it keeps a character from bleeding into another's voice."
+          },
+          "thinking_pattern": {
+            "type": "string",
+            "description": "⑤ 思维模式 — how the character reasons, which shapes what they say and how (e.g. 务实、先算代价、警惕陌生人)."
+          },
+          "emotion_default": {
+            "type": "string",
+            "description": "⑥ 情绪默认态 — the character's baseline emotional register when not pushed (e.g. 沉静克制)."
+          }
+        }
+      }
+    }
+  }
+}

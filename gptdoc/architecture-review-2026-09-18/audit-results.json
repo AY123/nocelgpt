@@ -1,0 +1,2782 @@
+{
+  "scope": "Static specification audit; no production/runtime certification",
+  "environment": {
+    "python": "3.9.6",
+    "PyYAML": "6.0.1",
+    "jsonschema": "4.25.1",
+    "referencing": "0.36.2"
+  },
+  "inventory": [
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md",
+      "bytes": 24693,
+      "sha256": "d114d6fb4a666e6e0d048a22d6d48577cdc59bc933c7d819bb9f2bd9da2ffbcc"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/MANIFEST.json",
+      "bytes": 1464,
+      "sha256": "3059b79e8c857afa194e47ad14b4101c2803e3693d8700c6d88d96ee9c47dbf6"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-commit-policy.yaml",
+      "bytes": 589,
+      "sha256": "89e69ee2f9f4a28ab70b82b22607f38edd2bfb74ef0e88e9671c67b4a1f7ac2b"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-commit.schema.json",
+      "bytes": 1366,
+      "sha256": "4bcbb33e3deea1737feadc06847604fbc569b7ebf91878cd1232f242f3c7a13f"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-event.schema.json",
+      "bytes": 913,
+      "sha256": "9feedb127cc3ebc16867d63ee0483b77ced7f3cd28ab0dcfa18653a9151ba19b"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-snapshot.schema.json",
+      "bytes": 893,
+      "sha256": "ee6105b94f4ea05167fa42287943706f20e2deab0b7eca4bcc5d0d4caa14d680"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-test-matrix.yaml",
+      "bytes": 919,
+      "sha256": "f4100ead035c18b3f873e7fb090f39e174bd9b47f398825bd06429eb2568693e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-transaction.schema.json",
+      "bytes": 1333,
+      "sha256": "05869dccf4f365ed255fe3ea8f919fc617de9d42b6071117b0b77f63ead34a9a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/change-set.schema.json",
+      "bytes": 1683,
+      "sha256": "eed617378231317dcae65486cf413ff6925bd717e98bd255072f6f7f1b7bc929"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/commit-permit.schema.json",
+      "bytes": 1494,
+      "sha256": "3f9f4f04ccefc6941999d1d89de1db54247ed2bab776926a011eb351ab19de7d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/retcon-request.schema.json",
+      "bytes": 1387,
+      "sha256": "b164722c6879d74b7cc2daf3ec72908fbc438f7da2e3ed55ebf76fe89e785ca5"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/CONTEXT_INTELLIGENCE_SPEC.md",
+      "bytes": 22704,
+      "sha256": "403a93a8e5b45e7e13530689ed8e5df4e05f73112985286cb5995790676a1d03"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/MANIFEST.json",
+      "bytes": 1188,
+      "sha256": "e999aaa2f67a3cc1d058403f68f02a8894ca7088a68bf89674dfa5fcc5e172bc"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-artifact.schema.json",
+      "bytes": 1854,
+      "sha256": "f056ae69bc62acddf8f8f2d5669c670c3a58a4b115f88636987bde5f8f7749c0"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-budget.schema.json",
+      "bytes": 1304,
+      "sha256": "5307c601fddc8183b91770b1b72552358ee7dd676eb1d5a6c4b3d0a2ae0485b8"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-item.schema.json",
+      "bytes": 1554,
+      "sha256": "2ca345b460467ed9ba9153d24776aa43297c24dd432dc1d42b46748af20a7c5c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-policy.yaml",
+      "bytes": 659,
+      "sha256": "cf39ecca85be80206de4843e167e659a100b9135034fe0c3ce1ddb0895a38c2a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-test-matrix.yaml",
+      "bytes": 782,
+      "sha256": "0740673263237842ff76ee25710a0120da2d74335c7870b0f961eeb26ba73145"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/model-policy.schema.json",
+      "bytes": 1311,
+      "sha256": "4103d8e73a78b47454f588e8281d1cf4d3e1aaf156ac7348886da05952d0dca1"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/role-registry.yaml",
+      "bytes": 1268,
+      "sha256": "b422717b376f5b6183a63686223833ffebd802ad5015f02fc5a191f5042c5172"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/CORPUS_EVALUATION_LEARNING_SPEC.md",
+      "bytes": 26219,
+      "sha256": "b0aab3921ba43ee1d0019071a9f37fdecceaf7b0ffd4330ae026d174e0eecdad"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/MANIFEST.json",
+      "bytes": 1633,
+      "sha256": "dd46a0f28101a571a0883e73c4a0f239f13ac8e3b0c5ef2d3065ec3aa6bf680d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/SCHEMA_VALIDATION.json",
+      "bytes": 294,
+      "sha256": "582a5fdc197611c7e351f74e88360f74636c96ae29a1e61a65c2b3dbd1577388"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/benchmark-run.schema.json",
+      "bytes": 1168,
+      "sha256": "7caf5eb2d0af781bf5e41f28e5600a8f22fae9c62fd36674b029fd02cbd58bfe"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/corpus-item.schema.json",
+      "bytes": 2368,
+      "sha256": "2f334f3f29d39cb638b44e78a98599350f9af28812b1888e873e65754bf2762d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/experiment-definition.schema.json",
+      "bytes": 1671,
+      "sha256": "b1380d73107835218b2f6d44b185f01d7452fd9439f3b26f663799e2160a73ea"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/learning-event.schema.json",
+      "bytes": 1272,
+      "sha256": "94ef948b2126691f08167ebb9f800c2f4038a29fe9d3ced15bfda9ad05391c31"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/learning-policy.yaml",
+      "bytes": 1057,
+      "sha256": "6952d1dee770ba2e12720471f9299f84d2e2e722ad779b732fd2f09c18daba3e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/learning-test-matrix.yaml",
+      "bytes": 996,
+      "sha256": "855aa6650db8b4c8756b2ba81ee8b5951efaffac4c68958ef34ef549d2ab8c5a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/market-signal.schema.json",
+      "bytes": 1093,
+      "sha256": "9b996ff4b21b8e4abbd4c358852ef85fe447ba0c6731a4dc4a1bfc4a189685f6"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/promotion-decision.schema.json",
+      "bytes": 1178,
+      "sha256": "bf36df2f90b3c163dfedafc54308082f28dfdc67a361296f594caa5d5b1017bb"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/reader-signal.schema.json",
+      "bytes": 1315,
+      "sha256": "ee0ea39002c8a75da3c7d4ed49b7c999193c9379dc6c2296329c85e74f57fb61"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md",
+      "bytes": 22772,
+      "sha256": "56280a10d2486da1000a9e5a0d15e4b876bdef383c6ae85aafe245d23d7459bf"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/MANIFEST.json",
+      "bytes": 1090,
+      "sha256": "fd0258c97b80cd6ccde846098642c2ad75f553b0014650817a408bd907257112"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/example-urban-business-realistic.genre-pack.yaml",
+      "bytes": 1984,
+      "sha256": "bdaf350539b3276b546ec2c6a8c8a04a68e727d57e8b82ee364f12a1699cadee"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-certification.schema.json",
+      "bytes": 2382,
+      "sha256": "1abdbcb91af16d78236e82911c0b88e8ff6de81feb3fbd274b941eddec90e976"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-constitution.schema.json",
+      "bytes": 2002,
+      "sha256": "45d480a97f4e38fcc3ff2c9effd00efcc53fe166fe66b257562107a49e30ee8e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-ontology.yaml",
+      "bytes": 1279,
+      "sha256": "825501956c8255309f0f657774b919b29bc6044ae08f73750cade184ee6212aa"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-pack.schema.json",
+      "bytes": 4568,
+      "sha256": "a8ce1aa3d3fbce0b912a95b72cbb22b6ce0a0a6ccbd44e7b7ebd61046ffa9c5d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/market-trend-snapshot.schema.json",
+      "bytes": 2011,
+      "sha256": "359b56b0850b5031d3a618258498eb106aedecea0b3b0e1a705080dbea561039"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md",
+      "bytes": 30934,
+      "sha256": "dbf41842ff5a665ecaf3a245544b8b2e57a2049ac6f383374011f9bcf868bc39"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/MANIFEST.json",
+      "bytes": 1379,
+      "sha256": "5ec63173cb01960ae22f9e49f26b251e5fa4e5c4a01e924acba84ce3adb4a537"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/SCHEMA_VALIDATION.json",
+      "bytes": 137,
+      "sha256": "15fe7bf6e9d9870b26665ea7c66a1d2ca759b029505695480f095155981e0de2"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/architecture-dependency-graph.yaml",
+      "bytes": 256,
+      "sha256": "1a6a3eb26845d5527aa04f0cd3ea9fcca12c75d9108ae2d260b367dfb4d67b6c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/certification-roadmap.yaml",
+      "bytes": 707,
+      "sha256": "2627ce0cb2fe0a2919e689ae354a1a7137fd128b5a25222336794b49691844a3"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/ci-gates.yaml",
+      "bytes": 924,
+      "sha256": "341f18c703098a4d7188b2f1a0f0f9b6275f602080819d95c5e2d97b753a1c6a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml",
+      "bytes": 24364,
+      "sha256": "0a7d0f768abd7226d3d3bfe24101474fc2c9b7db4512755632079e981f088b00"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-phase.schema.json",
+      "bytes": 1099,
+      "sha256": "8db76b1d54ed57af4776c169fc8773b07004eb265970100dfdca43495450b25f"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-task.schema.json",
+      "bytes": 1467,
+      "sha256": "a2d7b4a5206a4a9a027b43f3ea5c9848fef9b625d2f3324532754ebfe770fd6f"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Implementation_Plan_v1.0/milestone-plan.yaml",
+      "bytes": 1740,
+      "sha256": "a131c9de4010918845009420eb4b00c563bb3d47691a7098341acbe2d000c83a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/MANIFEST.json",
+      "bytes": 1519,
+      "sha256": "8da6910cca22aa0c7ba83a763d9e0a887cfaae9a61f3c0118566ea647ad03047"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/MULTI_SOURCE_GENESIS_SPEC.md",
+      "bytes": 27597,
+      "sha256": "e153185a9b6083433e40885beca156213143cc0b7889aca1a32157519f26b663"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/book-narrative-profile.schema.json",
+      "bytes": 2743,
+      "sha256": "5f5d9ac5cd2c1371f6da4bc1f29842b88e0a9188a3d4a2559ba414fc4c8ebc5d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-candidate.schema.json",
+      "bytes": 1603,
+      "sha256": "f424e9c5e11b01f4a5d1c8b7fc6e45a81a0c11ec35c0c2be3749bf92d7cefc07"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-intake.schema.json",
+      "bytes": 1519,
+      "sha256": "c5434fec213c147fa2b35e50c3e0f7224d7c69d65835fb7edded48c7533c36fa"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-spec.schema.json",
+      "bytes": 2425,
+      "sha256": "338506b639da772e9f4350b10a5f20ccc59d78b2a9536e01a70dc374605acb23"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-test-matrix.yaml",
+      "bytes": 799,
+      "sha256": "8a28c72ae260c4f0b40359f54680bfec7714afc10238b4f28ec0d30b6f7d15c1"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-tournament.schema.json",
+      "bytes": 1042,
+      "sha256": "8946c50d4956aa8baeb166f07e514915919a4ce9aaf6c9641cc0cad14aa56139"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/originality-report.schema.json",
+      "bytes": 1924,
+      "sha256": "cafb49ee5d22cd501d4d76e7ce566bbcaeb943f3cedef09b79d90ae567efbea1"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/reference-evidence-pack.schema.json",
+      "bytes": 2167,
+      "sha256": "84713874bf930e471ef473756dc4e8537c98d8daff0a51b52c77e9050a7274ff"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/reference-intelligence-policy.yaml",
+      "bytes": 668,
+      "sha256": "2c4c260842837b9dc02d89ff0bd7bdb4bd728e441966aa1665ab8fa0c209518f"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/MANIFEST.json",
+      "bytes": 1459,
+      "sha256": "a250a336d69f05cd6a078e3b7bb9e7c9744d6a3f534a3323b576f97af38841f6"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/NARRATIVE_DOMAIN_SPEC.md",
+      "bytes": 25634,
+      "sha256": "a3de41c02b707da502348f34180a0e3984dff7227acd450ce4f66ce18b04187e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/character.schema.json",
+      "bytes": 1728,
+      "sha256": "71723037b167bb0b52ea6e636c2338bcb75e3b58d658d6f4dc685f5fae2a1111"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/event.schema.json",
+      "bytes": 2354,
+      "sha256": "129080c73c1c47a9cbf10b5507875d2eb94315c9bf216f09af7800b389db03c0"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/fact-mutability-policy.schema.json",
+      "bytes": 756,
+      "sha256": "5f84ddfcf2601f1ee80f97fd1bf87821988be66ece61a80c041ac2e10ad656cf"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/knowledge.schema.json",
+      "bytes": 1402,
+      "sha256": "6417ae77cbfee3da49fb88756e8ff3658e17d50b034bb1838527b9bc5772cb41"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/narrative-delta.schema.json",
+      "bytes": 2175,
+      "sha256": "cd25dbaba5dc3d7d18e224a6f5e4b1e88cdcd0ec40724c263869e2068074bfad"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/narrative-entity.schema.json",
+      "bytes": 1219,
+      "sha256": "715855828c03c2747ee222f4fdddd143626bd7cdc60dc140ef6f08084cf8dcb4"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/narrative-ontology.yaml",
+      "bytes": 1082,
+      "sha256": "591c78f61f5edd52db1f8fb62c2649ece9dc3ec0dab9aa93f8d7fb1bc7ac8f0c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/promise.schema.json",
+      "bytes": 1119,
+      "sha256": "3f0103c54136e5703f297cc50a0f5431d6fb1b391f0d4adcbad4390f2484bf67"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/relationship.schema.json",
+      "bytes": 1760,
+      "sha256": "e1d503cfd477e6a62513511c3d0cf28e3a252dec4483989fb76e997486f2c70b"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/MANIFEST.json",
+      "bytes": 1205,
+      "sha256": "b5039b291402543c07794fafa74963f8a6b13567003a143d0cf1064da08054a2"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/PLANNING_CONTRACT_SPEC.md",
+      "bytes": 22262,
+      "sha256": "b5313d2a5ecc2c886c03269cf336d9b5d79ceaf08a1c2d8191809416b50b4087"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/arc-plan.schema.json",
+      "bytes": 1658,
+      "sha256": "19078cafdc8025b0117670f09c75db32a3d4b1d6eb6e71da1d3a21e8656a4144"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/chapter-contract.schema.json",
+      "bytes": 2489,
+      "sha256": "2719ca99767d580ab0311f0dd56850e5104de59876bbf20c9dd2de695f19b278"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/plan-diff.schema.json",
+      "bytes": 1218,
+      "sha256": "d0d01df6f136551279396f399729dae596753ca0f7051b22ee83e4b233887b65"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/planning-contract-test-matrix.yaml",
+      "bytes": 1032,
+      "sha256": "818e710f37da8606b73cd6517e92bccfee905948b3a337f7511a8906a8b4bbf2"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/planning-policy.yaml",
+      "bytes": 851,
+      "sha256": "6f7919398735cfe5d513e0787313e74e85c4a0473be14abb0a8db9653cd472b3"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/scene-contract.schema.json",
+      "bytes": 2251,
+      "sha256": "0fad9336b6c2a5f18826befb0ce5c61c2aab4a84ab41be8bd213ddf789a7ad5c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/series-vision.schema.json",
+      "bytes": 1557,
+      "sha256": "dc7afbe4e27535e2fa83786d91a44a6f03b038a985fc1bbf09698c0702c70e52"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/MANIFEST.json",
+      "bytes": 1819,
+      "sha256": "c32a813516e4c87cdb982eda5ac9f45fb7193fdc16e5f2ec70a64bdf417fbd15"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md",
+      "bytes": 28278,
+      "sha256": "3b0a3e9302e850c70cdc9caa52317197c014481cbc33b77a459c40553c98bfb5"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/SCHEMA_VALIDATION.json",
+      "bytes": 303,
+      "sha256": "eda2f3bcee746b0cbefd3db476776ee6f017dfcec40106d6214d616a931d1305"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/architecture-fitness-rules.yaml",
+      "bytes": 914,
+      "sha256": "59a28108f84108b0e8b6b6b4a94d257f1683b90ecf20c0cf75d5ff816e9471df"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/audit-event.schema.json",
+      "bytes": 1196,
+      "sha256": "6e186c21cb18c4836903ae1f5510d4acc9770784a01fd0245d2a371f3b07190c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/authorization-decision.schema.json",
+      "bytes": 1047,
+      "sha256": "45e54a94cc54321dd5348fc35799109e8d1c51b1a201f4cd76e3ba66b2dde34e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/backup-record.schema.json",
+      "bytes": 971,
+      "sha256": "18509dfcb7296b9a1ba5df5df7561b7b1d825b76912ec72b2ee383ba07b36ca4"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/incident-record.schema.json",
+      "bytes": 1488,
+      "sha256": "cd12bb7b0d7f9b9b184a3bb88469dbaaf1d123e134455c080be9262465c8c023"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/platform-policy.yaml",
+      "bytes": 824,
+      "sha256": "83aa926bc4a67387980fa9786134627e394cb084e27ff203a14d36e9caac473e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/platform-test-matrix.yaml",
+      "bytes": 928,
+      "sha256": "b845faad728c104049f95571438ae6aa2529a2e1cbfcd8e6efe4653a35e275cb"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/provenance-record.schema.json",
+      "bytes": 1390,
+      "sha256": "3287b4ce1734e62084c990437cc8de50350b37c626fa0378799304e101dafc57"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/release-manifest.schema.json",
+      "bytes": 1121,
+      "sha256": "dadd2a4544159e365ed37f743c772a46a04b95005587679151b4a9a10c434af5"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/restore-validation.schema.json",
+      "bytes": 1123,
+      "sha256": "6d4bfa42f4f646525d43bd106bc8f471a3df4846ef0202857c5f2ab21a2a2562"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/MANIFEST.json",
+      "bytes": 1464,
+      "sha256": "f9a8e40fc61cfab61e267cc0a48e1e3e4308a61239e7e7a64fff192fadfeb284"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md",
+      "bytes": 23210,
+      "sha256": "99857254e0bc9d04d4bf80c18e2d43079bc2550e2cbf95ad53f08fe17b25dd8c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/budget-ledger.schema.json",
+      "bytes": 840,
+      "sha256": "42145faa83bf988a2e430c713b2ff36adbb1e33efdecbde7071cbf3789d8497c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/checkpoint.schema.json",
+      "bytes": 1353,
+      "sha256": "7fe6e35dddbcc6f85dc2a2720051f1b85f90a422ff6807a6f9d49033f45ebf6d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/model-run.schema.json",
+      "bytes": 1401,
+      "sha256": "dbf492a8ce33db3c87e6decfb44ba1a8fc3d9744791bbc6e09b90935138b5fb5"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/retry-policy.schema.json",
+      "bytes": 799,
+      "sha256": "34b8546101499c8a0b210fb9c7a0754b413796581856a11fc7c4bac035c61c13"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/stage-artifact.schema.json",
+      "bytes": 1032,
+      "sha256": "7dfce285d7810aa3ed3c9b85abcbae9e2ef49fb30ff95922bd9bba765645c60f"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/stage-contract.schema.json",
+      "bytes": 1641,
+      "sha256": "b260df20803b2c3e579c1d2359acc6a6bea981d0a1ff3873dbc530f770672540"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/workflow-policy.yaml",
+      "bytes": 806,
+      "sha256": "06b7521e94550c3e0b12226c4f82447769c1b64eafc679b7f03dc967ddf638fa"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/workflow-run.schema.json",
+      "bytes": 1731,
+      "sha256": "69363fbe90923369376e41c5aaf465ac5252825f8d5f84216b294149ef071eee"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/workflow-test-matrix.yaml",
+      "bytes": 975,
+      "sha256": "b70ee8112af763de3da03a1b3f5e29ae5dbb88c1c83d3635b5fabf09a3fbd71c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Project_Constitution_v1.0/MANIFEST.json",
+      "bytes": 436,
+      "sha256": "7639acc35611f82c82d23cae874ff5120ac0916fef52e66c4ce6a9a303b01705"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Project_Constitution_v1.0/PROJECT_CONSTITUTION.md",
+      "bytes": 31119,
+      "sha256": "d3215a034589e1820b522b0e1faf574922bfba050c0b0cce08b31a4a5389b56e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Project_Constitution_v1.0/project-constitution.yaml",
+      "bytes": 3573,
+      "sha256": "346a0f63fd8259cd9f1695f6c39412928ff8cb0600875993819f3465b47a302d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/MANIFEST.json",
+      "bytes": 1636,
+      "sha256": "35715e061ae5385a4c718b37ec0f0a0fe6d01b643ab8a598ab74220c4221ac4a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md",
+      "bytes": 27158,
+      "sha256": "e147c3ff1d5c05b569203b7a337250f22f30d02c97e30ad127bc868819908776"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/SCHEMA_VALIDATION.json",
+      "bytes": 299,
+      "sha256": "4909bf9ad6a0e48682fa5208be0b75d6f030622fac58448e1e04dee4771757f2"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/calibration-report.schema.json",
+      "bytes": 1197,
+      "sha256": "fb927584bd9cb4a73d45c793fd89f1eac86cdb43a337b375ef33e3575508e572"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/evidence-record.schema.json",
+      "bytes": 1890,
+      "sha256": "a2601ef7dcafd97bbc6be8893482366d3699048a35e89c1d5706feeb2b69103e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/golden-set-item.schema.json",
+      "bytes": 1178,
+      "sha256": "e24888d36d420bc726e067f353bddf3f2e37c0d00a9fffb08f81dcb200a8b740"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/human-evaluation.schema.json",
+      "bytes": 1136,
+      "sha256": "45afc1f3ef2d851ffe3cb9595ee459a33815516cf550d4d8a8569f4a4b7318d6"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/pairwise-evaluation.schema.json",
+      "bytes": 1171,
+      "sha256": "9c7d8cc9ed1a215a6284f366fd032c4827faa447d845ae1c33779b101642d44c"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/quality-policy.yaml",
+      "bytes": 1190,
+      "sha256": "15c191966198745ee259abbf2d06f950602ea25c8d94c66471c9d5d374cd15ac"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/quality-report.schema.json",
+      "bytes": 2402,
+      "sha256": "6120fe7b6e895eba775743f024ce8b9fe16600871e84a8f85401d1508387cea3"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/quality-test-matrix.yaml",
+      "bytes": 946,
+      "sha256": "bc1cf26742f72460ce28f04e22312a13e36ba47d6fbe57efe7c4e1277851336e"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/repair-plan.schema.json",
+      "bytes": 1899,
+      "sha256": "b3216fa887641931b022fe182166d956095c37d5b1d47189fb4b9c179669fc91"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/MANIFEST.json",
+      "bytes": 672,
+      "sha256": "3a11bef32981ef35b10a6b9b826524d25306e827a7334110fa3c0d4f1d9b8c3f"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md",
+      "bytes": 31196,
+      "sha256": "9435a54dec70dc9e418922893b1874348c12c6597f3507a4908af794e04d1a73"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/adr-candidates.yaml",
+      "bytes": 1518,
+      "sha256": "2614326f8fee70ac4b2f9e671cbc5744daf235ce96f7feb00db0fc748d225c2d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/borrow-matrix.yaml",
+      "bytes": 2055,
+      "sha256": "e44f08679dcf17fd4c427577ff7863a2df0d91544db6a4726fc335a561f42377"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml",
+      "bytes": 2530,
+      "sha256": "cee8c9a2b742c3f18d05780e71eb75e58280958b88b9ae34a699b3e4fb4c37fc"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/MANIFEST.json",
+      "bytes": 745,
+      "sha256": "01613fd491434ee97216f413d6321b5f994c968d20c856e1f4bdd80f65a11c76"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/V1_FORENSIC_LESSONS.md",
+      "bytes": 34307,
+      "sha256": "e31038f4a7ad412c4340fa821494063e4f30efa580aa191da60657d37f7cfa17"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/evidence-index.yaml",
+      "bytes": 2479,
+      "sha256": "b0da8372532d09325cea13d68870828ba3d2ca3cce5e041d34b74e31b0cfac75"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/v1-migration-decisions.yaml",
+      "bytes": 2121,
+      "sha256": "1d91ab7cd8d3f0e239475a926e3c95a1c79bf150c9beac0293c480445d07f851"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/v2-regression-seeds.yaml",
+      "bytes": 2311,
+      "sha256": "dc6cd9af4bba86faaaaf436731c243ac08dc883f421271c116d4b0ec96b5248a"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/MANIFEST.json",
+      "bytes": 833,
+      "sha256": "1e65757dbcd23a089e3851bbcdeb7fae14c7b4b00ba20e26b6e68932f3b1e408"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/WEBNOVEL_MARKET_GENRE_RESEARCH.md",
+      "bytes": 32889,
+      "sha256": "fbb331777b7814554635d39034471d9b4e114247d5f3f30af6fde4c438c81e59"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/genre-ontology-candidate.yaml",
+      "bytes": 713,
+      "sha256": "45fa8288e46b7b8a84304f7950aea5562aae61386ae807c0d0204140a675be0d"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/genre-pack-candidates.yaml",
+      "bytes": 2376,
+      "sha256": "d3395e99f2623a624fa3e14a058150ab5f625a573692abee459888ab4e2545e7"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/market-trend-snapshot-2026.yaml",
+      "bytes": 1712,
+      "sha256": "654329aee09716fe0afbaa91d953c6f37723c33a65975231c6f58b6f64456f7b"
+    },
+    {
+      "path": "gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/source-registry.yaml",
+      "bytes": 1983,
+      "sha256": "f316169743e0fc66017855ab5304331e1b9fbe7636e3715db2ee585d9d1a12ab"
+    }
+  ],
+  "parse_errors": [],
+  "schema_errors": [],
+  "manifest_errors": [],
+  "manifest_checked_entries": 121,
+  "duplicate_schema_ids": {},
+  "refs": [
+    {
+      "base": "https://anovel.dev/schemas/context-artifact.schema.json",
+      "pointer": "/properties/items/items",
+      "ref": "context-item.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/context-item.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/context-artifact.schema.json",
+      "pointer": "/properties/token_budget",
+      "ref": "context-budget.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/context-budget.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/genre-pack.schema.json",
+      "pointer": "/properties/constitution",
+      "ref": "genre-constitution.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/genre-constitution.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/character.schema.json",
+      "pointer": "/allOf/0",
+      "ref": "narrative-entity.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/narrative-entity.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/stage-contract.schema.json",
+      "pointer": "/properties/retry_policy",
+      "ref": "retry-policy.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/retry-policy.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q0/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q1/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q2/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q3/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q4/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q5/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q6/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    },
+    {
+      "base": "https://anovel.dev/schemas/quality-report.schema.json",
+      "pointer": "/properties/layers/properties/Q7/items",
+      "ref": "evidence-record.schema.json",
+      "resolved": true,
+      "absolute": "https://anovel.dev/schemas/evidence-record.schema.json",
+      "error": null
+    }
+  ],
+  "probes": [
+    {
+      "id": "CONTROL-01",
+      "schema": "genre-pack.schema.json",
+      "description": "Supplied urban pack is structurally valid",
+      "desired_contract_acceptance": true,
+      "schema_accepts": true,
+      "matches_desired_contract": true,
+      "specimen": {
+        "id": "urban.business.realistic",
+        "version": "1.0.0",
+        "status": "DRAFT",
+        "identity": {
+          "family": "urban",
+          "subgenre": "urban.business",
+          "platform_mapping": [
+            {
+              "platform": "qidian",
+              "channel": "male",
+              "category": "urban",
+              "subcategory": "business_workplace"
+            }
+          ]
+        },
+        "constitution": {
+          "rules": [
+            {
+              "id": "GEN-U-BIZ-001",
+              "description": "Realistic urban business forbids cultivation",
+              "severity": "hard",
+              "target": "world.supernatural.cultivation",
+              "operator": "equals",
+              "expected": false,
+              "policy_ref": null,
+              "on_violation": "block"
+            },
+            {
+              "id": "GEN-U-BIZ-002",
+              "description": "Realistic urban business forbids magic",
+              "severity": "hard",
+              "target": "world.supernatural.magic",
+              "operator": "equals",
+              "expected": false,
+              "policy_ref": null,
+              "on_violation": "block"
+            }
+          ]
+        },
+        "reality_model": "realistic",
+        "setting_model": "contemporary",
+        "mechanics": [
+          "rebirth"
+        ],
+        "tones": [
+          "realistic",
+          "humorous"
+        ],
+        "cast_models": [
+          "ensemble"
+        ],
+        "domain_packs": {
+          "required": [
+            "business"
+          ],
+          "optional": [
+            "finance",
+            "internet_startup"
+          ],
+          "forbidden": []
+        },
+        "narrative_engines": [
+          {
+            "id": "entrepreneurship",
+            "config": {}
+          },
+          {
+            "id": "market_competition",
+            "config": {}
+          }
+        ],
+        "progression_engines": [
+          {
+            "id": "wealth",
+            "config": {}
+          },
+          {
+            "id": "company_scale",
+            "config": {}
+          },
+          {
+            "id": "social_status",
+            "config": {}
+          }
+        ],
+        "conflict_patterns": [
+          "market_competition",
+          "institutional_pressure",
+          "class_conflict"
+        ],
+        "reader_promises": [
+          {
+            "id": "upward_mobility",
+            "config": {}
+          },
+          {
+            "id": "strategic_business_victory",
+            "config": {}
+          }
+        ],
+        "payoff_patterns": [
+          "competitive_win",
+          "deal_closed",
+          "status_upgrade"
+        ],
+        "hook_patterns": [
+          "opportunity",
+          "threat",
+          "reversal"
+        ],
+        "canon_extensions": [
+          {
+            "id": "company",
+            "schema_ref": "schemas/company.schema.json",
+            "owner_domain": "business",
+            "mutable": true
+          },
+          {
+            "id": "equity",
+            "schema_ref": "schemas/equity.schema.json",
+            "owner_domain": "business",
+            "mutable": true
+          },
+          {
+            "id": "cash",
+            "schema_ref": "schemas/cash.schema.json",
+            "owner_domain": "business",
+            "mutable": true
+          }
+        ],
+        "fusion_policy": null,
+        "quality_rubric": {
+          "generic_risks": [
+            "vague_business_success",
+            "stupid_competitor",
+            "random_money_growth"
+          ]
+        },
+        "reference_profile": {
+          "signals": [
+            "business",
+            "company",
+            "equity",
+            "market",
+            "financing"
+          ]
+        },
+        "certification": {
+          "required_level": "C6"
+        }
+      },
+      "errors": []
+    },
+    {
+      "id": "CONTROL-02",
+      "schema": "genre-pack.schema.json",
+      "description": "Hard genre rule cannot ignore violation",
+      "desired_contract_acceptance": false,
+      "schema_accepts": false,
+      "matches_desired_contract": true,
+      "specimen": {
+        "id": "urban.business.realistic",
+        "version": "1.0.0",
+        "status": "DRAFT",
+        "identity": {
+          "family": "urban",
+          "subgenre": "urban.business",
+          "platform_mapping": [
+            {
+              "platform": "qidian",
+              "channel": "male",
+              "category": "urban",
+              "subcategory": "business_workplace"
+            }
+          ]
+        },
+        "constitution": {
+          "rules": [
+            {
+              "id": "GEN-U-BIZ-001",
+              "description": "Realistic urban business forbids cultivation",
+              "severity": "hard",
+              "target": "world.supernatural.cultivation",
+              "operator": "equals",
+              "expected": false,
+              "policy_ref": null,
+              "on_violation": "ignore"
+            },
+            {
+              "id": "GEN-U-BIZ-002",
+              "description": "Realistic urban business forbids magic",
+              "severity": "hard",
+              "target": "world.supernatural.magic",
+              "operator": "equals",
+              "expected": false,
+              "policy_ref": null,
+              "on_violation": "block"
+            }
+          ]
+        },
+        "reality_model": "realistic",
+        "setting_model": "contemporary",
+        "mechanics": [
+          "rebirth"
+        ],
+        "tones": [
+          "realistic",
+          "humorous"
+        ],
+        "cast_models": [
+          "ensemble"
+        ],
+        "domain_packs": {
+          "required": [
+            "business"
+          ],
+          "optional": [
+            "finance",
+            "internet_startup"
+          ],
+          "forbidden": []
+        },
+        "narrative_engines": [
+          {
+            "id": "entrepreneurship",
+            "config": {}
+          },
+          {
+            "id": "market_competition",
+            "config": {}
+          }
+        ],
+        "progression_engines": [
+          {
+            "id": "wealth",
+            "config": {}
+          },
+          {
+            "id": "company_scale",
+            "config": {}
+          },
+          {
+            "id": "social_status",
+            "config": {}
+          }
+        ],
+        "conflict_patterns": [
+          "market_competition",
+          "institutional_pressure",
+          "class_conflict"
+        ],
+        "reader_promises": [
+          {
+            "id": "upward_mobility",
+            "config": {}
+          },
+          {
+            "id": "strategic_business_victory",
+            "config": {}
+          }
+        ],
+        "payoff_patterns": [
+          "competitive_win",
+          "deal_closed",
+          "status_upgrade"
+        ],
+        "hook_patterns": [
+          "opportunity",
+          "threat",
+          "reversal"
+        ],
+        "canon_extensions": [
+          {
+            "id": "company",
+            "schema_ref": "schemas/company.schema.json",
+            "owner_domain": "business",
+            "mutable": true
+          },
+          {
+            "id": "equity",
+            "schema_ref": "schemas/equity.schema.json",
+            "owner_domain": "business",
+            "mutable": true
+          },
+          {
+            "id": "cash",
+            "schema_ref": "schemas/cash.schema.json",
+            "owner_domain": "business",
+            "mutable": true
+          }
+        ],
+        "fusion_policy": null,
+        "quality_rubric": {
+          "generic_risks": [
+            "vague_business_success",
+            "stupid_competitor",
+            "random_money_growth"
+          ]
+        },
+        "reference_profile": {
+          "signals": [
+            "business",
+            "company",
+            "equity",
+            "market",
+            "financing"
+          ]
+        },
+        "certification": {
+          "required_level": "C6"
+        }
+      },
+      "errors": [
+        {
+          "path": [
+            "constitution",
+            "rules",
+            0,
+            "on_violation"
+          ],
+          "message": "'ignore' is not one of ['block']"
+        }
+      ]
+    },
+    {
+      "id": "CONTROL-03",
+      "schema": "character.schema.json",
+      "description": "Base entity without Character fields",
+      "desired_contract_acceptance": true,
+      "schema_accepts": true,
+      "matches_desired_contract": true,
+      "specimen": {
+        "id": "x",
+        "entity_type": "Character",
+        "canonical_name": "x",
+        "lifecycle": "ACTIVE",
+        "authority": "canon",
+        "provenance": {},
+        "identity": {
+          "species": "human"
+        }
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-01",
+      "schema": "character.schema.json",
+      "description": "Declared Character.identity cannot extend closed base schema",
+      "desired_contract_acceptance": true,
+      "schema_accepts": false,
+      "matches_desired_contract": false,
+      "specimen": {
+        "id": "x",
+        "entity_type": "Character",
+        "canonical_name": "x",
+        "lifecycle": "ACTIVE",
+        "authority": "canon",
+        "provenance": {},
+        "identity": {
+          "species": "human"
+        }
+      },
+      "errors": [
+        {
+          "path": [],
+          "message": "Additional properties are not allowed ('identity' was unexpected)"
+        }
+      ]
+    },
+    {
+      "id": "PROBE-02",
+      "schema": "character.schema.json",
+      "description": "Character accepts wrong entity type and non-lifecycle condition",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "id": "x",
+        "entity_type": "Location",
+        "canonical_name": "x",
+        "lifecycle": "受伤",
+        "authority": "canon",
+        "provenance": {}
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-03",
+      "schema": "narrative-delta.schema.json",
+      "description": "SET_FACT without path/value/evidence",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "id": "x",
+        "source_artifact": "x",
+        "operations": [
+          {
+            "op": "SET_FACT",
+            "subject": "char_1"
+          }
+        ],
+        "uncertain_claims": [],
+        "conflicts": [],
+        "provenance": {}
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-04",
+      "schema": "change-set.schema.json",
+      "description": "ChangeSet accepts arbitrary operation and empty validation_summary",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "change_set_id": "x",
+        "project_id": "x",
+        "branch_id": "x",
+        "expected_parent_commit_id": "x",
+        "source_artifact_id": "x",
+        "source_text_hash": "x",
+        "operations": [
+          {
+            "op": "UNREGISTERED_OPERATION",
+            "subject": "char_1"
+          }
+        ],
+        "risk_level": "R0",
+        "validation_summary": {}
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-05",
+      "schema": "commit-permit.schema.json",
+      "description": "ALLOW with no validation refs and no issuer/issued_at",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "permit_id": "x",
+        "project_id": "x",
+        "branch_id": "x",
+        "change_set_hash": "x",
+        "source_text_hash": "x",
+        "expected_parent_hash": "x",
+        "contract_hash": "x",
+        "genre_pack_hash": "x",
+        "policy_hash": "x",
+        "decision": "ALLOW",
+        "validation_refs": []
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-06",
+      "schema": "quality-report.schema.json",
+      "description": "PASS with every quality layer empty",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "report_id": "x",
+        "candidate_id": "x",
+        "candidate_hash": "x",
+        "context_hash": "x",
+        "contract_hash": "x",
+        "quality_policy_version": "x",
+        "layers": {
+          "Q0": [],
+          "Q1": [],
+          "Q2": [],
+          "Q3": [],
+          "Q4": [],
+          "Q5": [],
+          "Q6": [],
+          "Q7": []
+        },
+        "decision": "PASS"
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-07",
+      "schema": "quality-report.schema.json",
+      "description": "PASS despite confirmed Q0 HARD_FAIL",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "report_id": "x",
+        "candidate_id": "x",
+        "candidate_hash": "x",
+        "context_hash": "x",
+        "contract_hash": "x",
+        "quality_policy_version": "x",
+        "layers": {
+          "Q0": [
+            {
+              "evidence_id": "x",
+              "quality_layer": "Q0",
+              "evidence_level": "E0",
+              "subject_hash": "x",
+              "producer": {},
+              "finding": {},
+              "severity": "HARD_FAIL",
+              "confidence": 0,
+              "status": "CONFIRMED",
+              "provenance": {}
+            }
+          ],
+          "Q1": [],
+          "Q2": [],
+          "Q3": [],
+          "Q4": [],
+          "Q5": [],
+          "Q6": [],
+          "Q7": []
+        },
+        "decision": "PASS"
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-08",
+      "schema": "genre-certification.schema.json",
+      "description": "C6 PASS with empty metrics and cases",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "genre_pack_id": "x",
+        "genre_pack_version": "x",
+        "level": "C6",
+        "status": "PASS",
+        "metrics": {},
+        "cases": []
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-09",
+      "schema": "implementation-task.schema.json",
+      "description": "CLOSED task without tests, acceptance criteria or evidence",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "task_id": "x",
+        "title": "x",
+        "phase": "x",
+        "priority": "P0",
+        "goal": "x",
+        "dependencies": [],
+        "acceptance_criteria": [],
+        "tests": [],
+        "status": "CLOSED"
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-10",
+      "schema": "scene-contract.schema.json",
+      "description": "SceneContract cannot carry directly required GenrePack binding",
+      "desired_contract_acceptance": true,
+      "schema_accepts": false,
+      "matches_desired_contract": false,
+      "specimen": {
+        "contract_id": "x",
+        "scene_id": "x",
+        "parent_chapter_id": "x",
+        "canon_parent_hash": "x",
+        "entry_state_ref": "x",
+        "participants": [],
+        "scene_goal": "x",
+        "required_transitions": [],
+        "forbidden_transitions": [],
+        "protected_facts": [],
+        "knowledge_boundary": [],
+        "contract_hash": "x",
+        "genre_pack_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "errors": [
+        {
+          "path": [],
+          "message": "Additional properties are not allowed ('genre_pack_hash' was unexpected)"
+        }
+      ]
+    },
+    {
+      "id": "PROBE-11",
+      "schema": "context-item.schema.json",
+      "description": "ContextItem has no project or branch binding",
+      "desired_contract_acceptance": false,
+      "schema_accepts": true,
+      "matches_desired_contract": false,
+      "specimen": {
+        "item_id": "x",
+        "source_ref": "x",
+        "source_type": "x",
+        "authority": "constitution",
+        "priority": 0,
+        "mandatory": false,
+        "relevance": 0,
+        "token_cost": 0,
+        "inclusion_reason": "x",
+        "content_hash": "x"
+      },
+      "errors": []
+    },
+    {
+      "id": "PROBE-12",
+      "schema": "model-run.schema.json",
+      "description": "Provider failure before response should be representable",
+      "desired_contract_acceptance": true,
+      "schema_accepts": false,
+      "matches_desired_contract": false,
+      "specimen": {
+        "model_run_id": "x",
+        "run_id": "x",
+        "stage_id": "x",
+        "semantic_request_fingerprint": "x",
+        "actual_provider": "x",
+        "actual_model": "x",
+        "context_hash": "x",
+        "prompt_template_hash": "x",
+        "status": "FAILED"
+      },
+      "errors": [
+        {
+          "path": [],
+          "message": "'response_hash' is a required property"
+        }
+      ]
+    }
+  ],
+  "backlog": {
+    "count": 60,
+    "duplicate_ids": [],
+    "schema_failures": [],
+    "cycles": [],
+    "missing_dependencies": [],
+    "only_constitution_count": 60,
+    "empty_artifacts_count": 60,
+    "empty_out_of_scope_count": 60,
+    "test_matrix_id_count": 114,
+    "unmapped_test_refs": [
+      "TEST-V2-001",
+      "TEST-V2-002",
+      "TEST-V2-003",
+      "TEST-V2-004",
+      "TEST-V2-005",
+      "TEST-V2-006",
+      "TEST-V2-007",
+      "TEST-V2-008",
+      "TEST-V2-009",
+      "TEST-V2-010",
+      "TEST-V2-011",
+      "TEST-V2-012",
+      "TEST-V2-013",
+      "TEST-V2-014",
+      "TEST-V2-015",
+      "TEST-V2-016",
+      "TEST-V2-017",
+      "TEST-V2-018",
+      "TEST-V2-019",
+      "TEST-V2-020",
+      "TEST-V2-021",
+      "TEST-V2-022",
+      "TEST-V2-023",
+      "TEST-V2-024",
+      "TEST-V2-025",
+      "TEST-V2-026",
+      "TEST-V2-027",
+      "TEST-V2-028",
+      "TEST-V2-029",
+      "TEST-V2-030",
+      "TEST-V2-031",
+      "TEST-V2-032",
+      "TEST-V2-033",
+      "TEST-V2-034",
+      "TEST-V2-035",
+      "TEST-V2-036",
+      "TEST-V2-037",
+      "TEST-V2-038",
+      "TEST-V2-039",
+      "TEST-V2-040",
+      "TEST-V2-041",
+      "TEST-V2-042",
+      "TEST-V2-043",
+      "TEST-V2-044",
+      "TEST-V2-045",
+      "TEST-V2-046",
+      "TEST-V2-047",
+      "TEST-V2-048",
+      "TEST-V2-049",
+      "TEST-V2-050",
+      "TEST-V2-051",
+      "TEST-V2-052",
+      "TEST-V2-053",
+      "TEST-V2-054",
+      "TEST-V2-055",
+      "TEST-V2-056",
+      "TEST-V2-057",
+      "TEST-V2-058",
+      "TEST-V2-059",
+      "TEST-V2-060"
+    ],
+    "ancestry": {
+      "V2-001": [],
+      "V2-002": [],
+      "V2-003": [],
+      "V2-004": [],
+      "V2-005": [
+        "V2-001"
+      ],
+      "V2-006": [
+        "V2-001",
+        "V2-005"
+      ],
+      "V2-007": [
+        "V2-001",
+        "V2-005"
+      ],
+      "V2-008": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007"
+      ],
+      "V2-009": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008"
+      ],
+      "V2-010": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009"
+      ],
+      "V2-011": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010"
+      ],
+      "V2-012": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010"
+      ],
+      "V2-013": [
+        "V2-001",
+        "V2-005"
+      ],
+      "V2-014": [
+        "V2-001",
+        "V2-005",
+        "V2-013"
+      ],
+      "V2-015": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-013",
+        "V2-014"
+      ],
+      "V2-016": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-013",
+        "V2-014"
+      ],
+      "V2-017": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-012",
+        "V2-013",
+        "V2-014"
+      ],
+      "V2-018": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017"
+      ],
+      "V2-019": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018"
+      ],
+      "V2-020": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019"
+      ],
+      "V2-021": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020"
+      ],
+      "V2-022": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021"
+      ],
+      "V2-023": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021"
+      ],
+      "V2-024": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021"
+      ],
+      "V2-025": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021"
+      ],
+      "V2-026": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025"
+      ],
+      "V2-027": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020"
+      ],
+      "V2-028": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-027"
+      ],
+      "V2-029": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025"
+      ],
+      "V2-030": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-029"
+      ],
+      "V2-031": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-029",
+        "V2-030"
+      ],
+      "V2-032": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-029",
+        "V2-030",
+        "V2-031"
+      ],
+      "V2-033": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032"
+      ],
+      "V2-034": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033"
+      ],
+      "V2-035": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033"
+      ],
+      "V2-036": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035"
+      ],
+      "V2-037": [],
+      "V2-038": [],
+      "V2-039": [],
+      "V2-040": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036"
+      ],
+      "V2-041": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040"
+      ],
+      "V2-042": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040"
+      ],
+      "V2-043": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-042"
+      ],
+      "V2-044": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-042",
+        "V2-043"
+      ],
+      "V2-045": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-042",
+        "V2-043",
+        "V2-044"
+      ],
+      "V2-046": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-041",
+        "V2-042",
+        "V2-043",
+        "V2-044",
+        "V2-045"
+      ],
+      "V2-047": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-041",
+        "V2-042",
+        "V2-043",
+        "V2-044",
+        "V2-045",
+        "V2-046"
+      ],
+      "V2-048": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-041",
+        "V2-042",
+        "V2-043",
+        "V2-044",
+        "V2-045",
+        "V2-046",
+        "V2-047"
+      ],
+      "V2-049": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040"
+      ],
+      "V2-050": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049"
+      ],
+      "V2-051": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049"
+      ],
+      "V2-052": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049"
+      ],
+      "V2-053": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049",
+        "V2-052"
+      ],
+      "V2-054": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049",
+        "V2-052",
+        "V2-053"
+      ],
+      "V2-055": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049",
+        "V2-052",
+        "V2-053",
+        "V2-054"
+      ],
+      "V2-056": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049",
+        "V2-052",
+        "V2-053",
+        "V2-054",
+        "V2-055"
+      ],
+      "V2-057": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049",
+        "V2-052",
+        "V2-053",
+        "V2-054",
+        "V2-055",
+        "V2-056"
+      ],
+      "V2-058": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-012"
+      ],
+      "V2-059": [
+        "V2-001",
+        "V2-004",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-012",
+        "V2-058"
+      ],
+      "V2-060": [
+        "V2-001",
+        "V2-005",
+        "V2-006",
+        "V2-007",
+        "V2-008",
+        "V2-009",
+        "V2-010",
+        "V2-011",
+        "V2-012",
+        "V2-013",
+        "V2-014",
+        "V2-015",
+        "V2-016",
+        "V2-017",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-021",
+        "V2-022",
+        "V2-023",
+        "V2-024",
+        "V2-025",
+        "V2-026",
+        "V2-027",
+        "V2-029",
+        "V2-030",
+        "V2-031",
+        "V2-032",
+        "V2-033",
+        "V2-034",
+        "V2-035",
+        "V2-036",
+        "V2-040",
+        "V2-049",
+        "V2-052",
+        "V2-053",
+        "V2-054",
+        "V2-055",
+        "V2-056",
+        "V2-057",
+        "V2-058"
+      ]
+    }
+  },
+  "summary": {
+    "files": 136,
+    "extensions": {
+      ".md": 15,
+      ".json": 84,
+      ".yaml": 37
+    },
+    "schemas": 65,
+    "manifests": 15,
+    "schema_refs": 13,
+    "unresolved_schema_refs": 0,
+    "probes": 15,
+    "probe_contract_mismatches": 12
+  }
+}

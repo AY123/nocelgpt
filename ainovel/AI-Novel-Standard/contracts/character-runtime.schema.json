@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:character-runtime:1.0",
+  "title": "ChapterCharacterRuntime",
+  "description": "Artifact Contract (ADR-002) for a per-chapter CHARACTER RUNTIME: the standing of each LEAD character as the chapter opens. Like Story State (ADR-008), this is a PROJECTION, not mutable state: it is folded deterministically from the Registry's declarative facts (characters, relationships, events) up to the chapter's cursor event, plus the authored outline. Advancing the story never mutates a character's runtime -- it appends a fact (an event the lead participates in, a relationship that ends), and the projection recomputes; a lead's growth_stage advancing is a CONSEQUENCE of appearing in more events, not a written-back field. Where Story State projects the whole world at headline granularity, the Character Runtime zooms into the leads and makes each one's dramatic engine explicit: goal / pressure / secret / fear / desire / relationship_tension / growth_stage / next_likely_action. This is what lets the drafter keep a character's behavior CONTINUOUS across chapters (they act from a standing goal + pressure, not reinvented each chapter) and lets an editor trace growth causally. A Character Runtime is a DERIVED artifact (ADR-006): written to registry/derived/character-runtime/, never to registry/facts/, carrying provenance pinning the sources it was folded from so staleness is detectable. Schema validity is DETERMINISTIC and may gate a single runtime; the qualitative accuracy of goal/pressure/next_likely_action is EVALUATIVE and never gates (ADR-003). next_likely_action is a PREDICTION derived deterministically from goal+pressure; it CONSTRAINS the drafter (a plausible next move) but is advisory -- the chapter may legitimately subvert it.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_format",
+    "kind",
+    "chapter_no",
+    "task_id",
+    "up_to_event",
+    "leads",
+    "provenance",
+    "content_hash"
+  ],
+  "properties": {
+    "artifact_format": { "type": "string", "const": "1.0" },
+    "kind": { "type": "string", "const": "character_runtime" },
+    "chapter_no": { "type": "integer", "minimum": 1 },
+    "task_id": { "type": "string", "pattern": "^TASK-\\d{5,}$" },
+    "up_to_event": {
+      "type": ["string", "null"],
+      "description": "The fold cursor: the last event id folded into this runtime (the leads' standing as they ENTER this chapter -- i.e. the previous chapter's event). null on the opening chapter (no prior events)."
+    },
+    "outline_ref": {
+      "type": ["string", "null"],
+      "description": "The outline artifact id the leads' goals/desires were drawn from, or null when no outline was available (goals then degrade to the character fact's arc/notes)."
+    },
+    "leads": {
+      "type": "array",
+      "description": "One entry per LEAD character (protagonist + major roles). Deliberately NOT every character -- a bit player has no runtime engine worth carrying. Empty is legal (a project with no lead facts).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["character_id", "name", "goal", "growth_stage", "next_likely_action"],
+        "properties": {
+          "character_id": { "type": "string", "pattern": "^CHR-\\d{5,}$" },
+          "name": { "type": "string", "minLength": 1 },
+          "role": {
+            "type": "string",
+            "description": "The lead's narrative role if the outline/fact declared one (protagonist/mentor/antagonist/...)."
+          },
+          "goal": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What this character is pursuing right now -- the standing objective the drafter should have them act from. Folded from the outline (protagonist_engine.desire / character.motivation / arc) or the character fact's arc/notes."
+          },
+          "pressure": {
+            "type": "string",
+            "description": "The force pushing against the goal right now -- an active antagonistic relationship, an open threat, an unresolved setup the lead is entangled in. The source of dramatic tension the chapter should apply."
+          },
+          "secret": {
+            "type": "string",
+            "description": "Something the character knows/hides that the reader or other characters do not, if the facts/outline declared one. Drives dramatic irony."
+          },
+          "fear": {
+            "type": "string",
+            "description": "What the character most wants to avoid -- the flaw/cost side of the protagonist engine. Optional."
+          },
+          "desire": {
+            "type": "string",
+            "description": "The deeper want beneath the immediate goal (the emotional through-line). Optional; distinct from `goal` (tactical) -- desire is why the goal matters."
+          },
+          "emotion": {
+            "type": "string",
+            "description": "The lead's STANDING emotional state as the chapter opens, folded deterministically from pressure + growth_stage + active relationship tension (a consequence of the fold, not an authored/mutated field). Distinct from mandate.inner_shift, which is the per-chapter emotional MOVEMENT; this is the position before it. Optional."
+          },
+          "belief": {
+            "type": "string",
+            "description": "The core conviction driving the lead's choices, folded from the protagonist engine's desire + how far the growth_stage has come (early = tentative, late = hardened). Standing state, not movement. Optional."
+          },
+          "value": {
+            "type": "string",
+            "description": "The principle the lead prioritizes under pressure, taken from the outline where authored, else synthesized from the tension between desire and fear. Standing state. Optional."
+          },
+          "decision_policy": {
+            "type": "string",
+            "description": "How this lead characteristically decides under pressure (e.g. cautious/avoidant early, confronts head-on once transformed), folded deterministically from fear + growth_stage. Constrains continuous behavior; advisory. Optional."
+          },
+          "relationship_tension": {
+            "type": "array",
+            "description": "The lead's currently-active charged relationships (folded from REL facts not yet ended by their until_event), each summarizing the standing tension. This is what makes relationship change CAUSAL: a tension appears/ends because a fact did.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["with", "kind"],
+              "properties": {
+                "with": { "type": "string", "pattern": "^CHR-\\d{5,}$" },
+                "with_name": { "type": "string" },
+                "kind": { "type": "string", "description": "The relationship kind (mentor/rival/ally/enemy/...)." },
+                "tension": { "type": "string", "description": "The standing charge in one line." }
+              }
+            }
+          },
+          "growth_stage": {
+            "type": "string",
+            "enum": ["introduced", "developing", "tested", "transformed"],
+            "description": "A BUCKETED projection of how far the lead has come, derived from how many folded events they appear in (a consequence of the fold, not an authored/mutated field): introduced (just on stage) -> developing -> tested -> transformed. Lets an editor trace growth without a written-back counter."
+          },
+          "appears_in": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^EVT-\\d{5,}$" },
+            "description": "The folded events (up to the cursor) this lead participates in -- the fold evidence behind growth_stage. Bounded/ordered."
+          },
+          "last_event": {
+            "type": ["string", "null"],
+            "description": "The most recent folded event the lead appeared in (their last on-stage moment before this chapter)."
+          },
+          "next_likely_action": {
+            "type": "string",
+            "minLength": 1,
+            "description": "A PLAUSIBLE next move for this lead, synthesized DETERMINISTICALLY from goal + pressure (no model). It CONSTRAINS the drafter toward continuous behavior (the lead acts from where they stand) but is ADVISORY (ADR-003): the chapter may subvert it deliberately. Not a fact, not a mandate."
+          }
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["derived_from", "source_version"],
+      "properties": {
+        "derived_from": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(?:[a-z0-9-]{1,32}:)?[A-Z]{3,4}-\\d{5,}@v\\d+$"
+          }
+        },
+        "source_version": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "content_hash": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "kind": "reference_analysis",
+  "version": "2.0",
+  "analysis_id": "RA-00000",
+  "reference_set": [
+    {
+      "source_id": "REF-00001",
+      "title": "参考小说标题",
+      "author": "unknown",
+      "genre": "都市/玄幻/悬疑",
+      "position_in_set": 1,
+      "source_span": "chapter-1..chapter-3"
+    }
+  ],
+  "genre_positioning": {
+    "market_category": "待填",
+    "subgenre": "待填",
+    "competitive_context": "待填"
+  },
+  "target_reader": {
+    "age_band": "待填",
+    "reading_context": "待填",
+    "retention_drivers": []
+  },
+  "core_promise": {
+    "surface": "待填",
+    "deeper": "待填",
+    "payoff_expectation": "待填"
+  },
+  "conflict_structure": {
+    "external": [],
+    "internal": [],
+    "power": [],
+    "relationship": []
+  },
+  "payoff_cycle": {
+    "unit": "chapter",
+    "cycle_description": "待填",
+    "repeatability": "待填"
+  },
+  "progression_structure": {
+    "chapter_function": [],
+    "upgrades": [],
+    "turning_points": []
+  },
+  "character_relations": [],
+  "information_gap": {
+    "what_reader_knows": [],
+    "what_character_knows": [],
+    "what_is_delayed": []
+  },
+  "chapter_hooks": [],
+  "free_to_paid_design": {
+    "free_phase_hooks": [],
+    "paid_phase_promises": [],
+    "paywall_strategy": "待填"
+  },
+  "abandonment_risks": [],
+  "borrowable_abstract_features": [],
+  "forbidden_specific_elements": [],
+  "source_spans": []
+}

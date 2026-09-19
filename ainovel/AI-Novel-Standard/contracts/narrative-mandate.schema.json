@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:narrative-mandate:1.0",
+  "title": "NarrativeMandate",
+  "description": "Phase 9 Narrative Intelligence contract: the chapter-level narrative mandate. It sits ABOVE the chapter objective and answers the four anti-流水账 questions — why THIS chapter must happen NOW, how far the conflict escalates vs the previous chapter, how the protagonist's inner arc moves, and what irreversible main-line advance it commits. It is a CROSS-CHAPTER projection folded from the previous mandate + StoryState (ADR-008), a DERIVED production artifact, not a registry fact.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "kind",
+    "authority",
+    "gating",
+    "chapter_no",
+    "task_id",
+    "why_now",
+    "escalation",
+    "inner_shift",
+    "net_advance"
+  ],
+  "properties": {
+    "id": { "type": "string", "pattern": "^MND-\\d{5,}$" },
+    "kind": { "type": "string", "const": "narrative_mandate" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the planner may prepare a narrative mandate, but committing to a book's tension arc / direction is an outward decision a human owns. This artifact stages a recommendation, never auto-executes an outward/irreversible transition."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a narrative mandate NEVER blocks a build. It is advisory production intent; an unmet mandate (a 温水章 / flat escalation / no net advance) is warned, not failed."
+    },
+    "schema_version": { "type": "string", "default": "1.0" },
+    "chapter_no": { "type": "integer", "minimum": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "why_now": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["trigger", "cost_of_delay"],
+      "description": "① Why the protagonist must act NOW, not later (the anti-温水章 field).",
+      "properties": {
+        "trigger": { "type": "string", "minLength": 1 },
+        "cost_of_delay": {
+          "type": "string",
+          "enum": ["none", "low", "medium", "high"],
+          "description": "none = no time pressure = 流水章 signal."
+        },
+        "clock": { "type": "string" }
+      }
+    },
+    "escalation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_level", "to_level", "kind"],
+      "description": "② Whether conflict escalated vs the previous chapter (the cross-chapter tension ladder). from_level folds from the previous mandate's to_level (ADR-008).",
+      "properties": {
+        "from_level": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "to_level": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "kind": {
+          "type": "string",
+          "enum": ["stakes_raise", "new_antagonist", "reversal", "betrayal", "time_pressure", "power_reveal", "flat"],
+          "description": "flat = a stall warning."
+        },
+        "vs_previous": { "type": "string" }
+      }
+    },
+    "inner_shift": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dimension", "from", "to"],
+      "description": "③ Whether the protagonist's psychology/belief moved (the anti-扁平主角 field). `from` folds from the previous mandate's `to` (ADR-008).",
+      "properties": {
+        "dimension": {
+          "type": "string",
+          "enum": ["belief", "goal", "fear", "value", "relationship", "resolve"]
+        },
+        "from": { "type": "string", "minLength": 1 },
+        "to": { "type": "string", "minLength": 1 },
+        "cause": { "type": "string" }
+      }
+    },
+    "net_advance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["main_line", "irreversible"],
+      "description": "④ What main line this chapter net-advanced (the anti-原地打转 field).",
+      "properties": {
+        "main_line": { "type": "string", "minLength": 1 },
+        "irreversible": { "type": "boolean" },
+        "advances_thread": { "type": "string" }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "derived_from": { "type": "array", "items": { "type": "string" } },
+        "source_version": { "type": "integer" },
+        "prev_mandate_id": { "type": "string" }
+      }
+    },
+    "content_hash": { "type": "string" },
+    "notes": { "type": "string" }
+  }
+}

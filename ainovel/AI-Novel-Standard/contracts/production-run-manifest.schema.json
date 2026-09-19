@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:production-run-manifest:1.0",
+  "title": "ProductionRunManifest",
+  "description": "The AUDIT RECORD of ONE serial production run (roadmap Phase 5.5). run_serial (runtime/serialize/) drives the production chain over a planned chapter sequence — build → execute(Brain) → project state — and returns a rich in-memory result (per-chapter outcome, draft/state hashes, verdicts, skips, pacing) that, before this manifest, was printed and discarded. This artifact persists that result as a governable record: what a run produced (artifacts + output paths + draft hashes), what it skipped and why (failures), what it cost (model-calls + token usage + money, folded from each produced chapter's persisted produced_by.llm block), what it staged for human approval (publish_readiness), and enough pins (draft_hash + state_hash + prompt_version + model params + replay_ref) to REPRODUCE the run. REPRODUCIBILITY STANCE, mirroring the build manifest (manifest.py): the DRAFTS a run produces are byte-reproducible (each carries a content_hash pinned to its package + source versions), but THIS manifest is a time-stamped audit record — it embeds started_at/finished_at and live cost/latency, so it is deliberately NOT byte-reproducible and must never be hashed as if it were. Two disciplines hold: `gating` const false — a run manifest is an audit record, it never gates a build (ADR-003); and it is written to registry/derived/run-manifests/, NEVER to registry/facts/ (a production record is not a story fact, and runtime/serialize/ is not a fact-writer — only runtime/mint/ is, ADR-006, fitness guard #10). HONEST SCOPE: cost/token data exists only for chapters produced by a LIVE model; a deterministic-stub run records cost null and live_calls 0 (the stub sets no token/cost metadata), so the manifest never fabricates costs it did not incur.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "version", "gating", "run", "totals", "chapters"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^RUN-\\d{5,}$", "description": "Manifest-local audit id (like MINT-/FCP-/RCP-). NOT an entity id — it names a production event, not a story fact, so it is not allocated through the ID Mint Ledger." },
+    "kind": { "type": "string", "const": "production_run_manifest" },
+    "version": { "type": "string" },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a run manifest is an audit record, not a build gate. The serial it records never gates either — a chapter that fails its own deterministic gate is skipped, the run goes on."
+    },
+    "run": {
+      "type": "object",
+      "description": "The run's parameters + wall-clock bounds. started_at/finished_at are timestamps (why this manifest is not byte-reproducible).",
+      "additionalProperties": false,
+      "required": ["reviewer", "prompt_version"],
+      "properties": {
+        "started_at": { "type": "string", "description": "ISO-8601 UTC time the run began." },
+        "finished_at": { "type": "string", "description": "ISO-8601 UTC time the run finished." },
+        "reviewer": { "type": "string", "description": "The serial reviewer id (SerialResult.reviewer)." },
+        "prompt_version": { "type": "string", "description": "The chapter-draft prompt template MAJOR version used (1.0.0 plain, 2.0.0 story-so-far, 3/4/5 scene/IR/character)." },
+        "commercial": { "type": "boolean", "description": "Whether the per-chapter Commercial Optimization Loop (P16) ran." },
+        "panel": { "type": "string", "description": "The reader panel for --commercial (appetite/commercial/both), when commercial ran." },
+        "model_provider": { "type": "string", "description": "The generation model provider (deterministic when the stub produced the drafts)." },
+        "model_id": { "type": "string", "description": "The generation model id, when a live provider was used." },
+        "max_chapters": { "type": ["integer", "null"], "description": "The cap on chapters produced this run, if any." }
+      }
+    },
+    "totals": {
+      "type": "object",
+      "description": "Run-level roll-ups folded from the chapters.",
+      "additionalProperties": false,
+      "required": ["planned", "produced", "skipped"],
+      "properties": {
+        "planned": { "type": "integer", "minimum": 0, "description": "Chapters in the plan this run attempted." },
+        "produced": { "type": "integer", "minimum": 0, "description": "Chapters that completed (a draft was written)." },
+        "skipped": { "type": "integer", "minimum": 0, "description": "Chapters skipped (build or per-chapter gate failed) — the run's failures." },
+        "final_state_hash": { "type": ["string", "null"], "description": "The StoryState fold hash after the last produced chapter (ADR-008)." },
+        "live_calls": { "type": "integer", "minimum": 0, "description": "Chapters whose draft was produced by a LIVE model (carried a produced_by.llm block). 0 for a deterministic-stub run." },
+        "token_usage": {
+          "type": "object",
+          "additionalProperties": false,
+          "description": "Summed token usage across live-model chapters. All zero when no live model ran.",
+          "required": ["input", "output", "total"],
+          "properties": {
+            "input": { "type": "integer", "minimum": 0 },
+            "output": { "type": "integer", "minimum": 0 },
+            "total": { "type": "integer", "minimum": 0 }
+          }
+        },
+        "cost": {
+          "type": ["object", "null"],
+          "description": "Summed money cost across live-model chapters, or null when no live model ran (the deterministic stub incurs no cost — never fabricated).",
+          "additionalProperties": false,
+          "required": ["currency", "total_cost"],
+          "properties": {
+            "currency": { "type": "string" },
+            "total_cost": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    },
+    "chapters": {
+      "type": "array",
+      "description": "One entry per attempted chapter, produced or skipped, in run order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["index", "task_id", "event", "ok", "stage"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 1 },
+          "task_id": { "type": "string" },
+          "event": { "type": "string", "description": "The event id this chapter dramatizes." },
+          "ok": { "type": "boolean", "description": "Whether the chapter was produced (false = skipped)." },
+          "stage": { "type": "string", "description": "The stage reached (done, or build:*/execute:* for a skip)." },
+          "message": { "type": "string", "description": "Detail — populated for skips (the failure reason)." },
+          "draft_hash": { "type": ["string", "null"], "description": "The produced draft's content_hash (byte-reproducible; a reproduction pin)." },
+          "state_hash": { "type": ["string", "null"], "description": "The StoryState fold hash as of this chapter (ADR-008)." },
+          "verdict": { "type": ["string", "null"], "description": "The chapter's evaluative QA verdict (advisory, never gated)." },
+          "commercial_verdict": { "type": ["string", "null"], "description": "The Commercial Optimization Loop verdict (comparison-only), when commercial ran." },
+          "events_so_far": { "type": "integer", "minimum": 0 },
+          "open_setups": { "type": "integer", "minimum": 0 },
+          "output_path": { "type": ["string", "null"], "description": "The persisted draft envelope's path under registry/derived/ (the output artifact)." },
+          "llm": {
+            "type": ["object", "null"],
+            "description": "The model-call record folded from the produced draft's produced_by.llm. Null for a skipped chapter or a deterministic-stub draft.",
+            "additionalProperties": false,
+            "properties": {
+              "model": { "type": "string" },
+              "provider": { "type": "string" },
+              "token_usage": { "type": "object", "description": "Per-chapter token usage (shape as produced_by.llm.token_usage)." },
+              "cost": { "type": ["object", "null"], "description": "Per-chapter cost, or null." },
+              "latency_ms": { "type": ["integer", "null"] },
+              "response_hash": { "type": ["string", "null"] },
+              "replay_ref": { "type": ["string", "null"], "description": "The replay cache ref — a reproduction pin for this call." }
+            }
+          },
+          "publish_readiness": {
+            "type": ["object", "null"],
+            "description": "The 'Build Gate ≠ Publish Readiness' verdict folded from the chapter's envelope (Phase 4.1) — the run's staged approvals. Never gates the build; a human-authority decision (ADR-009). Null when not assessed."
+          },
+          "chapter_final": {
+            "type": ["object", "null"],
+            "description": "The chapter-final derived artifact folded from registry/derived/chapter-final/ for this chapter, when present."
+          }
+        }
+      }
+    },
+    "serial_pacing": {
+      "type": ["object", "null"],
+      "description": "The cross-chapter climax-rhythm check over the run's produced chapters (advisory, never gates). Null when fewer than two enriched chapters existed."
+    },
+    "rationale": { "type": "string", "description": "Human-readable summary (n produced, m skipped, cost)." }
+  }
+}

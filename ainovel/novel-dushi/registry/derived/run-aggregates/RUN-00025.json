@@ -1,0 +1,66 @@
+{
+  "checkpoints": [],
+  "content_hash": "34624e384c66f994718b37aedc13712f13957f483946554aaa9a80bef7783251",
+  "kind": "run_aggregate",
+  "notes": "serial run aggregate for RUN-00025",
+  "project_path": "../novel-dushi",
+  "run_summary": {
+    "bundle": {
+      "link_ids": [],
+      "plan_ids": [],
+      "report_ids": [],
+      "run_ids": []
+    },
+    "content_hash": "5ecd8912209a6350b5328947688ac78c034115bcbf010faf84d0ea7cd5284c51",
+    "kind": "30ch_launch_summary",
+    "link": {
+      "content_hash": "151ee037d6af38dfe6e1f01ba7695f363e9e4620f64b9726f0f45ed886ef90ee",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00025",
+      "notes": "serial run aggregate for RUN-00025",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00025.json",
+      "version": "1.0"
+    },
+    "notes": "serial run aggregate for RUN-00025",
+    "plan": {
+      "budget_limit": null,
+      "chapter_target": 30,
+      "content_hash": "dd85f617721b24eae659d220bacd840ae132544b4e0548b5284ea31d46db9b22",
+      "kind": "30ch_launch_plan",
+      "model_id": "claude-fable-5",
+      "model_provider": "claude",
+      "project_path": "../novel-dushi",
+      "prompt_version": "6.0.0",
+      "standard_root": "../AI-Novel-Standard",
+      "version": "1.0"
+    },
+    "report": {
+      "content_hash": "5ccbe00693e97aad95392d4c4fd4f5a936eefb66244ff0329a4208326b01b6e3",
+      "kind": "30ch_launch_report",
+      "notes": "serial run aggregate for RUN-00025",
+      "plan": {
+        "budget_limit": null,
+        "chapter_target": 30,
+        "content_hash": "dd85f617721b24eae659d220bacd840ae132544b4e0548b5284ea31d46db9b22",
+        "kind": "30ch_launch_plan",
+        "model_id": "claude-fable-5",
+        "model_provider": "claude",
+        "project_path": "../novel-dushi",
+        "prompt_version": "6.0.0",
+        "standard_root": "../AI-Novel-Standard",
+        "version": "1.0"
+      },
+      "version": "1.0"
+    },
+    "run": {
+      "content_hash": "151ee037d6af38dfe6e1f01ba7695f363e9e4620f64b9726f0f45ed886ef90ee",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00025",
+      "notes": "serial run aggregate for RUN-00025",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00025.json",
+      "version": "1.0"
+    },
+    "version": "1.0"
+  },
+  "version": "1.0"
+}

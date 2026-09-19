@@ -1,0 +1,33 @@
+{
+  "kind": "w12_fact_reflow_validation_summary",
+  "version": "1.0",
+  "status": "synthetic_validated",
+  "scope": [
+    "candidate extraction",
+    "approval queue",
+    "mint/recompute",
+    "semantic ledger",
+    "conflict adjudication",
+    "next-chapter projection"
+  ],
+  "validated_artifacts": [
+    "w12-fact-reflow-plan.json",
+    "w12-candidate-facts.json",
+    "w12-approval-queue.json",
+    "w12-mint-recompute.json",
+    "w12-semantic-ledger.json",
+    "w12-synthetic-fact-candidates.json",
+    "w12-synthetic-approval-records.json",
+    "w12-synthetic-mint-log.json",
+    "w12-synthetic-conflict-test.json",
+    "w12-synthetic-conflict-adjudication-log.json",
+    "w12-synthetic-resolved-ledger-state.json",
+    "w12-synthetic-next-chapter-projection.json"
+  ],
+  "outcome": {
+    "flow_can_run": true,
+    "authoritative_real_data_still_required": true,
+    "no_backdoor_fact_writes": true
+  },
+  "next_step": "wait_for_real_fact_inputs"
+}

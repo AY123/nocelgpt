@@ -1,0 +1,152 @@
+{
+  "batch_count_target": 10,
+  "batch_size_target": 3,
+  "batches": [
+    {
+      "batch_id": "W10-B01",
+      "candidate_ids": [
+        "QGS-00001",
+        "QGS-00002",
+        "QGS-00003"
+      ]
+    },
+    {
+      "batch_id": "W10-B02",
+      "candidate_ids": [
+        "QGS-00004",
+        "QGS-00005",
+        "QGS-00006"
+      ]
+    },
+    {
+      "batch_id": "W10-B03",
+      "candidate_ids": [
+        "QGS-00007",
+        "QGS-00008",
+        "QGS-00009"
+      ]
+    },
+    {
+      "batch_id": "W10-B04",
+      "candidate_ids": [
+        "QGS-00010",
+        "QGS-00011",
+        "QGS-00012"
+      ]
+    },
+    {
+      "batch_id": "W10-B05",
+      "candidate_ids": [
+        "QGS-00013",
+        "QGS-00014",
+        "QGS-00015"
+      ]
+    },
+    {
+      "batch_id": "W10-B06",
+      "candidate_ids": [
+        "QGS-00016",
+        "QGS-00017",
+        "QGS-00018"
+      ]
+    },
+    {
+      "batch_id": "W10-B07",
+      "candidate_ids": [
+        "QGS-00019",
+        "QGS-00020",
+        "QGS-00021"
+      ]
+    },
+    {
+      "batch_id": "W10-B08",
+      "candidate_ids": [
+        "QGS-00022",
+        "QGS-00023",
+        "QGS-00024"
+      ]
+    },
+    {
+      "batch_id": "W10-B09",
+      "candidate_ids": [
+        "QGS-00025",
+        "QGS-00026",
+        "QGS-00027"
+      ]
+    },
+    {
+      "batch_id": "W10-B10",
+      "candidate_ids": [
+        "QGS-00028",
+        "QGS-00029",
+        "QGS-00033"
+      ]
+    }
+  ],
+  "content_hash": "2b4ee41f28039025c4b3fe8109f263f08777f84936ebbfe22eabbe37290c8b62",
+  "kind": "w10_blind_review_package",
+  "next_actions": [
+    "attach original/automatic/human payloads for each batch",
+    "shuffle and blind the three versions",
+    "run reviewer comparison batch by batch",
+    "persist comparison result to the W10 result file"
+  ],
+  "result_template": {
+    "batch_record_example": {
+      "batch_id": "W10-B01",
+      "candidate_ids": [
+        "QGS-00001",
+        "QGS-00002",
+        "QGS-00003"
+      ],
+      "comparison_result": {
+        "confidence": null,
+        "reason_codes": [],
+        "winner": null
+      },
+      "reviewer_notes": [
+        ""
+      ]
+    },
+    "comparison_result": {
+      "confidence": "low | medium | high",
+      "reason_codes": [
+        "improves_hook",
+        "improves_continuity",
+        "fixes_padding",
+        "fixes_ai_voice",
+        "fixes_conflict",
+        "introduces_regression",
+        "no_net_gain"
+      ],
+      "winner": "original | automatic_revision | human_revision | tie"
+    },
+    "kind": "w10_blind_review_result_template",
+    "purpose": "Template for filling one blind-review batch result once actual reviewer scores are available.",
+    "required_fields": [
+      "batch_id",
+      "candidate_ids",
+      "reviewer_notes",
+      "comparison_result"
+    ],
+    "status": "draft",
+    "version": "1.0",
+    "writeback_rules": {
+      "do_not_override_human_judgement": true,
+      "fill_after_blind_review_only": true,
+      "one_batch_one_record": true,
+      "persist_reviewer_notes": true
+    }
+  },
+  "review_protocol": {
+    "hide_provenance": true,
+    "record_confidence": true,
+    "record_reason_codes": true,
+    "record_reviewer_notes": true,
+    "record_winner": true,
+    "shuffle_before_review": true,
+    "triple_versions_required": true
+  },
+  "status": "ready_for_execution",
+  "version": "1.0"
+}

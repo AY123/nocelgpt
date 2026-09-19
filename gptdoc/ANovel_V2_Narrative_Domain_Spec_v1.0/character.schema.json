@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/character.schema.json",
+  "title": "Character",
+  "allOf": [
+    {
+      "$ref": "narrative-entity.schema.json"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "identity": {
+      "type": "object",
+      "properties": {
+        "birth_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "gender": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "species": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "public_identity": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "secret_identities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "personality": {
+      "type": "object"
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "belief_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "knowledge_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "capability_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "relationship_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "current_location": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "emotion_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "health_state": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  }
+}

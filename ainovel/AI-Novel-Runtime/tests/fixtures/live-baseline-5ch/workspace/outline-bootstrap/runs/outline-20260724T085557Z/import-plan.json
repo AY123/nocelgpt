@@ -1,0 +1,1194 @@
+{
+  "items": [
+    {
+      "action": "create_candidate",
+      "candidate_id": "TML-90001",
+      "facts_dir": "timelines",
+      "plan_id": "PLAN-00001",
+      "reason": "final outline defines a main plot axis",
+      "record": {
+        "fact_version": 1,
+        "id": "TML-90001",
+        "kind": "main",
+        "name": "主时间线",
+        "notes": "候选时间线，来源大纲 OUTLINE-00001。",
+        "ordering": "relative",
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Timeline"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "CHR-90001",
+      "facts_dir": "characters",
+      "plan_id": "PLAN-00002",
+      "reason": "final outline proposes a named character",
+      "record": {
+        "abilities": [],
+        "affiliations": [],
+        "age_facts": [],
+        "aliases": [],
+        "arcs": [],
+        "certainty": "canon",
+        "fact_version": 1,
+        "id": "CHR-90001",
+        "importance": "central",
+        "locations_known": [],
+        "name": "林照夜",
+        "notes": "protagonist arc: 从求生者到秩序重建者",
+        "physical_facts": {},
+        "possessions": [],
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Character"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "CHR-90002",
+      "facts_dir": "characters",
+      "plan_id": "PLAN-00003",
+      "reason": "final outline proposes a named character",
+      "record": {
+        "abilities": [],
+        "affiliations": [],
+        "age_facts": [],
+        "aliases": [],
+        "arcs": [],
+        "certainty": "canon",
+        "fact_version": 1,
+        "id": "CHR-90002",
+        "importance": "supporting",
+        "locations_known": [],
+        "name": "沈无咎",
+        "notes": "rival arc: 从秩序维护者到真相叛逃者",
+        "physical_facts": {},
+        "possessions": [],
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Character"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "CHR-90003",
+      "facts_dir": "characters",
+      "plan_id": "PLAN-00004",
+      "reason": "final outline proposes a named character",
+      "record": {
+        "abilities": [],
+        "affiliations": [],
+        "age_facts": [],
+        "aliases": [],
+        "arcs": [],
+        "certainty": "canon",
+        "fact_version": 1,
+        "id": "CHR-90003",
+        "importance": "supporting",
+        "locations_known": [],
+        "name": "白砚",
+        "notes": "mentor arc: 守秘者面对旧错",
+        "physical_facts": {},
+        "possessions": [],
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Character"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "MAG-90001",
+      "facts_dir": "world_rules",
+      "plan_id": "PLAN-00005",
+      "reason": "final outline proposes a testable world rule",
+      "record": {
+        "certainty": "canon",
+        "constraints": [],
+        "enables": [],
+        "fact_version": 1,
+        "id": "MAG-90001",
+        "invariant_links": [],
+        "known_by": [],
+        "name": "世界规则1",
+        "notes": "候选世界规则，来源大纲 OUTLINE-00001。",
+        "requires": [],
+        "rule_kind": "natural_law",
+        "statement": "灾变周期改变势力版图，但不复用参考作品专有设定",
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "WorldRule"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "MAG-90002",
+      "facts_dir": "world_rules",
+      "plan_id": "PLAN-00006",
+      "reason": "final outline proposes a testable world rule",
+      "record": {
+        "certainty": "canon",
+        "constraints": [],
+        "enables": [],
+        "fact_version": 1,
+        "id": "MAG-90002",
+        "invariant_links": [],
+        "known_by": [],
+        "name": "世界规则2",
+        "notes": "候选世界规则，来源大纲 OUTLINE-00001。",
+        "requires": [],
+        "rule_kind": "natural_law",
+        "statement": "历史记录本身是可争夺资源",
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "WorldRule"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "MAG-90003",
+      "facts_dir": "world_rules",
+      "plan_id": "PLAN-00007",
+      "reason": "final outline proposes a testable world rule",
+      "record": {
+        "certainty": "canon",
+        "constraints": [],
+        "enables": [],
+        "fact_version": 1,
+        "id": "MAG-90003",
+        "invariant_links": [],
+        "known_by": [],
+        "name": "世界规则3",
+        "notes": "候选世界规则，来源大纲 OUTLINE-00001。",
+        "requires": [],
+        "rule_kind": "natural_law",
+        "statement": "力量成长必须伴随记忆、关系或身份代价",
+        "status": "active"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "WorldRule"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90001",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00008",
+      "reason": "final outline volume can seed a timeline event",
+      "record": {
+        "causes": [],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90002"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90001",
+        "locations": [],
+        "name": "起势",
+        "notes": "候选卷级事件，来源 VOL-01。",
+        "participants": [],
+        "sequence_index": 1,
+        "status": "active",
+        "summary": "建立主角、金手指、第一重追杀与核心谜团",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90002",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00009",
+      "reason": "final outline volume can seed a timeline event",
+      "record": {
+        "causes": [
+          "EVT-90001"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90003"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90002",
+        "locations": [],
+        "name": "破局",
+        "notes": "候选卷级事件，来源 VOL-02。",
+        "participants": [],
+        "sequence_index": 2,
+        "status": "active",
+        "summary": "扩展势力冲突，第一个大闭环与新地图",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90003",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00010",
+      "reason": "final outline volume can seed a timeline event",
+      "record": {
+        "causes": [
+          "EVT-90002"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90004"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90003",
+        "locations": [],
+        "name": "问鼎",
+        "notes": "候选卷级事件，来源 VOL-03。",
+        "participants": [],
+        "sequence_index": 3,
+        "status": "active",
+        "summary": "主角以代价完成阶段性秩序重建",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90004",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00011",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90003"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90005"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90004",
+        "locations": [],
+        "name": "第1章：身份落差暴露，金手指在绝境中被逼显性化",
+        "notes": "候选章节事件（第1章），钩子：主角在生死一线首次触发「唯一能同时调用五份预言残片的人」，代价（每调用一次，就与一名继承者结下不可逆的死敌）随之降临",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 4,
+        "status": "active",
+        "summary": "身份落差暴露，金手指在绝境中被逼显性化",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90005",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00012",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90004"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90006"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90005",
+        "locations": [],
+        "name": "第2章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第2章），钩子：第2章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 5,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90006",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00013",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90005"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90007"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90006",
+        "locations": [],
+        "name": "第3章：抓住对手的破绽完成第一次翻身打脸",
+        "notes": "候选章节事件（第3章），钩子：打脸成功，却因锋芒毕露引来更强者的注意",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 6,
+        "status": "active",
+        "summary": "抓住对手的破绽完成第一次翻身打脸",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90007",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00014",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90006"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90008"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90007",
+        "locations": [],
+        "name": "第4章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第4章），钩子：第4章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 7,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90008",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00015",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90007"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90009"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90008",
+        "locations": [],
+        "name": "第5章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第5章），钩子：第5章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 8,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90009",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00016",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90008"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90010"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90009",
+        "locations": [],
+        "name": "第6章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第6章），钩子：第6章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 9,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90010",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00017",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90009"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90011"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90010",
+        "locations": [],
+        "name": "第7章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第7章），钩子：第7章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 10,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90011",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00018",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90010"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90012"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90011",
+        "locations": [],
+        "name": "第8章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第8章），钩子：第8章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 11,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90012",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00019",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90011"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90013"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90012",
+        "locations": [],
+        "name": "第9章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第9章），钩子：第9章结尾，起步阶段的小敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 12,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面起步阶段的小敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90013",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00020",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90012"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90014"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90013",
+        "locations": [],
+        "name": "第10章：完成第一个小闭环，旧目标达成",
+        "notes": "候选章节事件（第10章），钩子：旧目标兑现的同一刻，一个更大的势力露出獠牙",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 13,
+        "status": "active",
+        "summary": "完成第一个小闭环，旧目标达成",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90014",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00021",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90013"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90015"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90014",
+        "locations": [],
+        "name": "第11章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第11章），钩子：第11章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 14,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90015",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00022",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90014"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90016"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90015",
+        "locations": [],
+        "name": "第12章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第12章），钩子：第12章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 15,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90016",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00023",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90015"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90017"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90016",
+        "locations": [],
+        "name": "第13章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第13章），钩子：第13章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 16,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90017",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00024",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90016"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90018"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90017",
+        "locations": [],
+        "name": "第14章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第14章），钩子：第14章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 17,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90018",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00025",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90017"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90019"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90018",
+        "locations": [],
+        "name": "第15章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第15章），钩子：第15章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 18,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90019",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00026",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90018"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90020"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90019",
+        "locations": [],
+        "name": "第16章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第16章），钩子：第16章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 19,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90020",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00027",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90019"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90021"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90020",
+        "locations": [],
+        "name": "第17章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第17章），钩子：第17章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 20,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90021",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00028",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90020"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90022"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90021",
+        "locations": [],
+        "name": "第18章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第18章），钩子：第18章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 21,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90022",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00029",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90021"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90023"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90022",
+        "locations": [],
+        "name": "第19章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第19章），钩子：第19章结尾，立足阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 22,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面立足阶段的阶段boss",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90023",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00030",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90022"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90024"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90023",
+        "locations": [],
+        "name": "第20章：撕开阶段boss布下的困局",
+        "notes": "候选章节事件（第20章），钩子：boss倒下，却牵出其背后世界级力量的一线阴影",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 23,
+        "status": "active",
+        "summary": "撕开阶段boss布下的困局",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90024",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00031",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90023"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90025"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90024",
+        "locations": [],
+        "name": "第21章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第21章），钩子：第21章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 24,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90025",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00032",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90024"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90026"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90025",
+        "locations": [],
+        "name": "第22章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第22章），钩子：第22章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 25,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90026",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00033",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90025"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90027"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90026",
+        "locations": [],
+        "name": "第23章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第23章），钩子：第23章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 26,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90027",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00034",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90026"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90028"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90027",
+        "locations": [],
+        "name": "第24章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第24章），钩子：第24章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 27,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90028",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00035",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90027"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90029"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90028",
+        "locations": [],
+        "name": "第25章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第25章），钩子：第25章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 28,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90029",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00036",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90028"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90030"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90029",
+        "locations": [],
+        "name": "第26章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第26章），钩子：第26章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 29,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90030",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00037",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90029"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90031"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90030",
+        "locations": [],
+        "name": "第27章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第27章），钩子：第27章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 30,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人；同时被自身弱点（出身最低，被所有继承者轻视）反噬",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90031",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00038",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90030"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90032"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90031",
+        "locations": [],
+        "name": "第28章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第28章），钩子：第28章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 31,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90032",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00039",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90031"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [
+          "EVT-90033"
+        ],
+        "fact_version": 1,
+        "id": "EVT-90032",
+        "locations": [],
+        "name": "第29章：逼近「从棋子成为唯一有资格改写规则的人」的下一步",
+        "notes": "候选章节事件（第29章），钩子：第29章结尾，崭露阶段的世界级敌人的反制骤然逼近，抛出新的威胁悬念",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 32,
+        "status": "active",
+        "summary": "逼近「从棋子成为唯一有资格改写规则的人」的下一步，直面崭露阶段的世界级敌人",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    },
+    {
+      "action": "create_candidate",
+      "candidate_id": "EVT-90033",
+      "facts_dir": "events",
+      "plan_id": "PLAN-00040",
+      "reason": "final outline chapter seeds a runnable timeline event",
+      "record": {
+        "causes": [
+          "EVT-90032"
+        ],
+        "certainty": "canon",
+        "duration": "",
+        "effects": [],
+        "fact_version": 1,
+        "id": "EVT-90033",
+        "locations": [],
+        "name": "第30章：以代价完成第一个大闭环，逼近核心真相",
+        "notes": "候选章节事件（第30章），钩子：通往新地图的门被推开，旧规则彻底失效",
+        "participants": [
+          "CHR-90001"
+        ],
+        "sequence_index": 33,
+        "status": "active",
+        "summary": "以代价完成第一个大闭环，逼近核心真相",
+        "timeline": "TML-90001"
+      },
+      "review_status": "needs_human_review",
+      "target_type": "Event"
+    }
+  ],
+  "kind": "outline_import_plan",
+  "policy": {
+    "requires_human_approval": true,
+    "requires_id_mint_review": true,
+    "writes_registry_facts": false
+  },
+  "review_status": "needs_human_review",
+  "source_outline_id": "OUTLINE-00001",
+  "version": 1
+}

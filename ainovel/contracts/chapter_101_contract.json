@@ -1,0 +1,69 @@
+{
+  "chapter": 101,
+  "version": "v1.0",
+  "approved": true,
+  "approved_at": "2026-08-14T17:21:24.949115",
+  "entry_state": {
+    "location_id": "loc_矿场边缘_乱石堆",
+    "time_relation": "immediate",
+    "pov": "段奕尘",
+    "required_characters": [
+      "段奕尘",
+      "镜见川"
+    ],
+    "hook_to_consume": "hook_100_01",
+    "must_address": "曜师听见了段奕尘的呼唤，远处晶石碎片发光，段奕尘和镜见川站在矿场边缘，刚刚揭示了妹妹被拖入晶石的真相"
+  },
+  "chapter_intent": {
+    "objective": "段奕尘与镜见川商议下一步计划，决定深入寻找曜师踪迹，同时处理失落远古曜晶融合后的身体变化",
+    "main_conflict": "段奕尘急于行动vs镜见川的理性警告，失落曜晶融合带来的未知风险vs必须尽快找到曜师救妹妹",
+    "plot_lines": [
+      "主线-寻找曜师",
+      "成长线-掌握失落曜晶",
+      "悬念线-妹妹的状态",
+      "关系线-与镜见川的信任加深"
+    ],
+    "irreversible_change": "段奕尘公开了寻找曜师的真正目的（救妹妹），镜见川知晓了矿难真相，两人的合作关系深化"
+  },
+  "exit_target": {
+    "location_id": "loc_矿场_秘密通道入口",
+    "time_state": "当夜子时左右",
+    "characters_present": [
+      "段奕尘",
+      "镜见川"
+    ],
+    "unfinished_action": "两人决定进入秘密通道，但通道入口突然出现异常能量波动",
+    "hook_id": "hook_101_01",
+    "hook_promise": "通道深处传来的诡异声音，似乎有什么在等待他们"
+  },
+  "transition_to_next": {
+    "scene_continuity": "immediate",
+    "location_change": true,
+    "pov_change": false,
+    "consume_hook_by_percent": 20,
+    "transition_note": "从矿场边缘到秘密通道入口，需要有明确的移动过程"
+  },
+  "sources": {
+    "outline_ref": null,
+    "long_arc_band": 11,
+    "generated_at": "2026-08-14T17:10:00.000000",
+    "generated_from": "manual",
+    "content_hash": "ch101_based_on_ch100",
+    "based_on_chapter": 100,
+    "ch100_exit_analysis": {
+      "location": "矿场边缘乱石堆",
+      "characters": [
+        "段奕尘",
+        "镜见川"
+      ],
+      "key_reveals": [
+        "妹妹被曜师拖入晶石",
+        "矿难是曜师选种子",
+        "段奕尘要用曜师换妹妹命"
+      ],
+      "hook": "曜师听见了呼唤，远处晶石发光",
+      "emotional_state": "决心、紧张、期待"
+    }
+  },
+  "notes": "基于Ch100实际结尾完善。Ch100核心：段奕尘揭示真相（妹妹被曜师选中），呼唤曜师，远处晶石响应。Ch101必须紧接这个状态开始，处理镜见川的反应、制定下一步计划。approved=false，需要人工最终审核。"
+}

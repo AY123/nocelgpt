@@ -1,0 +1,75 @@
+{
+  "artifact_format": "1.0",
+  "kind": "scene_plan",
+  "chapter_no": 1,
+  "task_id": "TASK-00001",
+  "outline_ref": "OUTLINE-00001",
+  "ir_ref": "ir-TASK-00001",
+  "scenes": [
+    {
+      "index": 1,
+      "beat": "setup",
+      "purpose": "身份落差暴露，金手指在绝境中被逼显性化",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "读者了解本章处境：身份落差暴露，金手指在绝境中被逼显性化",
+      "reader_question": "本章目标能否达成：身份落差暴露，金手指在绝境中被逼显性化？",
+      "emotion": {
+        "valence": 35,
+        "tone": "铺垫"
+      }
+    },
+    {
+      "index": 2,
+      "beat": "escalation",
+      "purpose": "升级：压力加码，把冲突推向临界",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "新的压力浮现：对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "reader_question": "局面还会更糟吗？",
+      "emotion": {
+        "valence": 55,
+        "tone": "紧张"
+      }
+    },
+    {
+      "index": 3,
+      "beat": "turn",
+      "purpose": "转折：局面反转或主角做出关键选择",
+      "participants": [
+        "CHR-90001"
+      ],
+      "turn": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "information_gain": "局势因反转而改变",
+      "reader_question": "反转之后会怎样？",
+      "emotion": {
+        "valence": 70,
+        "tone": "转机"
+      }
+    },
+    {
+      "index": 4,
+      "beat": "exit_hook",
+      "purpose": "收尾钩子：留下让读者追更的悬念",
+      "exit_hook": "主角在生死一线首次触发「前世17年完整记忆，知道所有商机和危机」，代价（改变历史轨迹可能导致蝴蝶效应，熟悉的人和事发生变化）随之降临",
+      "reader_question": "主角在生死一线首次触发「前世17年完整记忆，知道所有商机和危机」，代价（改变历史轨迹可能导致蝴蝶效应，熟悉的人和事发生变化）随之降临",
+      "emotion": {
+        "valence": 75,
+        "tone": "悬念"
+      }
+    }
+  ],
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90004@v1",
+      "EVT-90005@v1",
+      "TML-90001@v1",
+      "EVT-90006@v1"
+    ],
+    "source_version": 4
+  },
+  "content_hash": "sha256:a2e30bfa09d9c73c03f7339455fcf463a7d07265806743562db8237420fe8915"
+}

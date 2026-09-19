@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 2,
+    "chapter_goal": 1,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 1,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 1,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 1,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "editor_a_note": "注水严重，信息零增量，缺乏有效冲突和推进，读者毫无付费追读动力。",
+  "editor_b_note": "章节信息重复、缺乏推进，读者难以获得阅读满足感，需大幅精简并增加实质冲突或情感变化。",
+  "consensus_scores": {
+    "opening_hook": 2,
+    "chapter_goal": 1,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 1,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

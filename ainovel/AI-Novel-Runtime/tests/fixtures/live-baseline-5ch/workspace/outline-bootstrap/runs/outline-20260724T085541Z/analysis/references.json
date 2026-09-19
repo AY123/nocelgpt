@@ -1,0 +1,32 @@
+[
+  {
+    "avoid_direct_copy": [
+      "不得复用参考小说的专有名词、角色姓名、门派/组织名称。",
+      "只抽象结构与节奏，不复刻桥段顺序和关键反转。",
+      "最终大纲必须建立新的世界规则、人物动机与核心冲突。"
+    ],
+    "chars": 334,
+    "chunk_count": 1,
+    "chunks": [
+      {
+        "chars": 333,
+        "conflict_score": 0,
+        "index": 1,
+        "reward_score": 0,
+        "summary": "第一章：旧城雨夜 雨下得很急，像要把整座城洗掉"
+      }
+    ],
+    "core_hook": "第一章：旧城雨夜 雨下得很急，像要把整座城洗掉",
+    "filename": "reference-01.txt",
+    "genre_hints": [
+      "待判定"
+    ],
+    "main_conflicts": [
+      "chunk-1: conflict_score=0"
+    ],
+    "reader_rewards": [
+      "chunk-1: reward_score=0"
+    ],
+    "reference_id": "REF-00001"
+  }
+]

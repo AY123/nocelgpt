@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/promise.schema.json",
+  "title": "NarrativePromise",
+  "type": "object",
+  "required": [
+    "id",
+    "promise_type",
+    "status",
+    "opened_at",
+    "authority",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "promise_type": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "REINFORCED",
+        "DELAYED",
+        "PARTIAL",
+        "PAID",
+        "BROKEN",
+        "ABANDONED",
+        "SUPERSEDED"
+      ]
+    },
+    "opened_at": {
+      "type": "string"
+    },
+    "target_window": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "related_entities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "payoff_condition": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "authority": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

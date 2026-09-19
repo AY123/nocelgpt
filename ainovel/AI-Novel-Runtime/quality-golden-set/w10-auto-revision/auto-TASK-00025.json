@@ -1,0 +1,331 @@
+{
+  "session": {
+    "controller": "prose-hygiene-v1",
+    "gating": false,
+    "terminate_reason": "no_improvement",
+    "verdict": "improved",
+    "selected_draft_hash": "sha256:e76d7765fb2beeec571b86d0f256035985ac94e65dccc4e12564ed8047794ec3",
+    "rounds": [
+      {
+        "round": 1,
+        "draft_hash_before": "sha256:84d18a4e8273778b4e454bbc6bce1b0ed9afddeac77f9a29594ea6d73f8dff29",
+        "draft_hash_after": "sha256:e76d7765fb2beeec571b86d0f256035985ac94e65dccc4e12564ed8047794ec3",
+        "warnings_before": 3,
+        "warnings_after": 1,
+        "defect_distance_before": 3.44,
+        "defect_distance_after": 0.52,
+        "length_before": 4265,
+        "length_after": 3842,
+        "length_floor": 3412,
+        "rejected_as_gutting": false,
+        "targeted_dimensions": [
+          "ai-taste",
+          "density",
+          "density"
+        ],
+        "degraded": false,
+        "reference_gap": {
+          "features": {
+            "density.dialogue_ratio": {
+              "value": 0.2952,
+              "median": 0.2181,
+              "band": [
+                0.1307,
+                0.3159
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "density.simile_per_1000": {
+              "value": 1.04,
+              "median": 0.96,
+              "band": [
+                0.45,
+                1.59
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "density.opening_simile_per_1000": {
+              "value": 0.78,
+              "median": 0.87,
+              "band": [
+                0.0,
+                1.77
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "ai_taste.anaphora_run": {
+              "value": 2.0,
+              "median": 2.0,
+              "band": [
+                2.0,
+                2.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "ai_taste.dash_aside_per_1000": {
+              "value": 0.52,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": false,
+              "direction": "above",
+              "edge_gap": 0.52,
+              "band_widths_out": null
+            },
+            "ai_taste.sentence_length_cv": {
+              "value": 0.786,
+              "median": 0.692,
+              "band": [
+                0.611,
+                0.774
+              ],
+              "in_band": false,
+              "direction": "above",
+              "edge_gap": 0.012,
+              "band_widths_out": 0.074
+            },
+            "hook.has_question": {
+              "value": 0.0,
+              "median": 1.0,
+              "band": [
+                0.0,
+                1.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_suspension": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "hook.has_turn": {
+              "value": 1.0,
+              "median": 1.0,
+              "band": [
+                0.0,
+                1.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_closure": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            }
+          },
+          "features_compared": 10,
+          "in_band": 8,
+          "out_of_band": 2,
+          "comparison_only": true,
+          "gating": false
+        }
+      },
+      {
+        "round": 2,
+        "draft_hash_before": "sha256:e76d7765fb2beeec571b86d0f256035985ac94e65dccc4e12564ed8047794ec3",
+        "draft_hash_after": "sha256:9754ed93652e82770e9dc57f3eea5b865dfe6c65d98685a9b27594ed763e4215",
+        "warnings_before": 1,
+        "warnings_after": 1,
+        "defect_distance_before": 0.52,
+        "defect_distance_after": 0.52,
+        "length_before": 4265,
+        "length_after": 3832,
+        "length_floor": 3412,
+        "rejected_as_gutting": false,
+        "targeted_dimensions": [
+          "ai-taste"
+        ],
+        "degraded": false,
+        "reference_gap": {
+          "features": {
+            "density.dialogue_ratio": {
+              "value": 0.2959,
+              "median": 0.2181,
+              "band": [
+                0.1307,
+                0.3159
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "density.simile_per_1000": {
+              "value": 1.04,
+              "median": 0.96,
+              "band": [
+                0.45,
+                1.59
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "density.opening_simile_per_1000": {
+              "value": 0.78,
+              "median": 0.87,
+              "band": [
+                0.0,
+                1.77
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "ai_taste.anaphora_run": {
+              "value": 2.0,
+              "median": 2.0,
+              "band": [
+                2.0,
+                2.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "ai_taste.dash_aside_per_1000": {
+              "value": 0.52,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": false,
+              "direction": "above",
+              "edge_gap": 0.52,
+              "band_widths_out": null
+            },
+            "ai_taste.sentence_length_cv": {
+              "value": 0.712,
+              "median": 0.692,
+              "band": [
+                0.611,
+                0.774
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_question": {
+              "value": 0.0,
+              "median": 1.0,
+              "band": [
+                0.0,
+                1.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_suspension": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            },
+            "hook.has_turn": {
+              "value": 1.0,
+              "median": 1.0,
+              "band": [
+                0.0,
+                1.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": 0.0
+            },
+            "hook.has_closure": {
+              "value": 0.0,
+              "median": 0.0,
+              "band": [
+                0.0,
+                0.0
+              ],
+              "in_band": true,
+              "direction": "in_band",
+              "edge_gap": 0.0,
+              "band_widths_out": null
+            }
+          },
+          "features_compared": 10,
+          "in_band": 9,
+          "out_of_band": 1,
+          "comparison_only": true,
+          "gating": false
+        }
+      }
+    ]
+  },
+  "artifact": {
+    "artifact_format": "1.0",
+    "kind": "prose",
+    "capability": "ChapterDraft",
+    "task_id": "TASK-00025",
+    "provenance": {
+      "derived_from": [
+        "CHR-00001@v1",
+        "EVT-00025@v1",
+        "EVT-00024@v1",
+        "EVT-00026@v1",
+        "TML-00001@v1",
+        "EVT-00023@v1",
+        "EVT-00027@v1"
+      ],
+      "package_hash": "sha256:4c93c833a376e31e219d3291508a7b220efcf6a7b2198cfaa7c21f274c9cc983",
+      "source_version": 2
+    },
+    "body": "# 第二十五章\n\n窗外的雨声持续不断。\n\n周洛铭站在公寓窗前，指尖抵着冰凉的玻璃。掌心那颗梦晶还在发烫——从世界级猎食者身上剥离的战利品，正隔着皮肤传递一种奇异的脉动。\n\n他低头看了一眼。梦晶表面的幽蓝光芒在雨夜中格外刺目，里面那张脸已经消失，但那行字还刻在记忆里——“下一个，是她的记忆。”\n\n她。谁是她？\n\n周洛铭攥紧拳头，梦晶的边缘硌进掌心。疼痛让他从恍惚中清醒。他已经站了四十分钟，脑子里反复回放着梦墟中的战斗画面——那道扭曲的轮廓转身时的压迫感，冲击波撕裂地面的轰鸣，骨裂声从左臂传来时的钝痛，最后一刻刀刃刺入光点时敌人崩解的模样。\n\n那不是普通的梦墟猎食者。\n\n他的手指在玻璃上画着圈。梦墟行者——父亲留下的笔记里提过这个称呼，那是已经掌握梦境行走本质的存在，能在不同层级的梦境之间穿梭，猎取梦晶来强化自身。刚才被他杀死的那个，只是其中最低层级的一员。\n\n世界级敌人的追兵已经逼近。\n\n周洛铭转身走向书桌。台灯的光晕照亮了摊开的笔记本，上面密密麻麻记录着父亲留下的线索——“梦墟的规则，是意志决定存在”。这句话在战斗中被唤醒的记忆里反复出现。\n\n他坐下来，手指抚过纸页的纹路。车祸前夜，是谁在他耳边说了这句话？那个人知道他会失去记忆吗？还是说，那句话本身就是某种暗示？\n\n桌上的手机突然震动。\n\n周洛铭瞥了一眼屏幕——苏凌霜。他接了起来。\n\n“你在哪？”她的声音很轻，但带着紧绷的急切，“我感应到梦墟的波动，就在你那边。你碰到什么了？”\n\n“猎食者。”他说，“世界级的。”\n\n电话那头沉默了几秒。苏凌霜的呼吸声变得急促：“你杀了他？”\n\n“嗯。”\n\n“不可能。”她的声音里带着难以置信，“梦墟行者级别的猎食者，你现在的阶段根本——”\n\n“但我做到了。”周洛铭打断她，目光落在掌心的梦晶上，“代价是一条手臂的骨裂和半条命的体力，但我做到了。”\n\n又是一阵沉默。然后苏凌霜说：“我马上过来。”\n\n“不用。”\n\n“周洛铭，你根本不知道你面对的是什么——”她的声音突然拔高，“梦墟行者不是独立的猎食者，他们有组织，有层级，有——”\n\n“我知道。”周洛铭握紧梦晶，感受着那股温热在掌心蔓延，“父亲留下的笔记里写过。每一个梦墟行者都隶属于某个更大的结构，杀死一个，就会引来更高级别的追捕。”\n\n“那你还——”\n\n“因为我没有选择。”他说，声音里第一次出现裂缝，“苏凌霜，那颗梦晶里有一张脸。车祸现场的另一张脸。我触碰它的时候，它告诉我——下一个，是她的记忆。”\n\n“她？”\n\n“我不知道。”周洛铭闭上眼，脑海里浮现出那张模糊的面容，“但我知道，如果我不继续走下去，我永远都不会知道她是谁。”\n\n苏凌霜没有再说话。过了很久，她轻声说：“你确定要这样？”\n\n“确定。”\n\n“那你要做好准备。”她的声音恢复了平静，“梦墟行者级别的猎食者被杀，他们的上层会在十二小时内感应到。你最多还有十个小时。”\n\n十个小时。\n\n周洛铭挂断电话，盯着窗外的雨幕。雨势更大了，雨水砸在玻璃上发出密集的声响。\n\n他低头看着掌心的梦晶。那里面有答案——关于车祸，关于父亲失踪，关于那些被剥离的记忆。但现在他还无法读取，因为梦晶的层级太高，他的“梦蚀之眼”还不足以穿透它的保护层。\n\n他需要突破。\n\n周洛铭闭上眼，让意识沉入体内。他能感觉到那股力量在血管里流动——那是“梦蚀之眼”的根基，一种能潜入任意熟睡者梦境的能力，能将梦境具象化为可探索的异空间。但这股力量还不够强，像一条刚刚解冻的河流，流动缓慢，随时可能再次冰封。\n\n他需要让它沸腾。\n\n周洛铭睁开眼，目光落在书桌抽屉上。里面躺着一叠病历——车祸后的诊断报告，上面写着“选择性失忆症”，还有医生建议的康复方案。他抽出最下面那张纸，那是一张脑部CT扫描图，图上有一处不自然的阴影。\n\n父亲留下的笔记里提到过一种方法——通过主动承受梦境撕裂的痛苦来刺激“梦蚀之眼”的成长。但这种方法的代价是巨大的：每突破一层，情感就会淡薄一分，共情能力就会减弱一分。\n\n周洛铭把CT扫描图举到灯下，看着那处阴影。那就是被剥离的记忆的痕迹，是车祸真相的锁孔。而要打开那个锁，他需要一把足够强的钥匙。\n\n他放下扫描图，从抽屉里拿出一把小刀。\n\n刀刃在台灯下闪着冷光。周洛铭握着刀柄，刀尖对准左手掌心——这是父亲笔记里记载的最后一个方法，也是最危险的一个。\n\n他深吸一口气，刀尖轻轻划过掌心。\n\n鲜血涌出，剧痛瞬间传遍全身。周洛铭咬紧牙关，强迫自己保持清醒，同时引导那股力量向伤口汇聚。他能感觉到“梦蚀之眼”在剧痛中苏醒，像一头被惊醒的野兽，开始在血管里狂奔。\n\n视野开始模糊。\n\n梦境与现实之间的边界在晃动。周洛铭看到自己的手掌开始发光，那是“梦蚀之眼”的力量在渗透进现实，将他的意识拖入更深层的梦境空间。\n\n然后他看到了。\n\n一个房间，窗帘紧闭，只有一盏台灯亮着。一个男人坐在书桌前，背对着他，正在写着什么。那个背影很熟悉——是父亲。\n\n周洛铭想靠近，但身体像被钉在原地。他只能看着父亲的背影，看着笔尖在纸上划过，留下一行行字。\n\n“洛铭，如果你看到这段记忆，说明你已经走到了这一步。”\n\n父亲的声音从四面八方传来。\n\n“我知道你有很多问题。为什么我会失踪？为什么你的记忆会被剥离？那场车祸里到底发生了什么？”\n\n笔尖停顿了一下。\n\n“答案就在这里——在梦墟的最深处。但你要做好准备，因为真相不是你想的那样。那些被剥离的记忆里，有一些东西是我亲手封存的。”\n\n周洛铭的心脏猛地一紧。\n\n“因为那些记忆太痛苦了。”父亲的声音变得沙哑，“痛苦到你无法承受。我选择剥离它们，是为了保护你。但现在，既然你已经走到了这一步，说明你已经有了面对它们的勇气。”\n\n笔尖继续移动。\n\n“记住，梦墟的规则是意志决定存在。你的意志越强，你能看到的东西就越多。但代价也在那里——每接近真相一步，你的情感就会淡薄一分。到最后，你可能会变成一个没有感情的人。”\n\n“但那是唯一的办法。”\n\n父亲的背影开始模糊。\n\n“找到她。找到那个在车祸中救了你的人。她的记忆里，有所有的答案。”\n\n画面崩塌。\n\n周洛铭猛地睁开眼，发现自己还坐在书桌前，掌心的伤口已经愈合，只留下一道淡淡的疤痕。梦晶还在桌面上，但表面的幽蓝光芒比之前更亮了。\n\n他伸手拿起梦晶，这一次，他能感觉到里面的力量在流动。\n\n他的“梦蚀之眼”突破了。\n\n代价也来了。\n\n周洛铭看着窗外的雨幕，发现自己再也感受不到雨声里的诗意。那些曾经让他心动的细节——雨滴在玻璃上留下的痕迹，空气中弥漫的潮湿气息——全都变成了纯粹的数据，被大脑处理成“下雨，湿度高，能见度低”的客观信息。\n\n他低头看着自己的手，发现掌心的疤痕看起来像某种符号——一个圆圈，里面有三条交叉的线。\n\n梦晶突然震动了一下。\n\n周洛铭抬头，看到窗外的雨幕中，有一道更深的阴影在移动。那是一个人影，比周围的黑暗更暗，正在朝着他的方向走来。\n\n追兵来了。比他预想的早了两个小时。\n\n周洛铭站起身，把梦晶塞进口袋，抽出腰间的短刀。刀刃上还残留着上一个猎食者的气息。\n\n他没有逃。因为逃没有用。梦墟行者级的猎食者能在梦境中追踪目标，不管你逃到哪里，他们都能找到你。唯一的办法，就是正面应对。\n\n周洛铭打开门，走进雨幕。\n\n雨水瞬间打湿了他的衣服，寒意渗入皮肤，但他的身体已经不再像普通人那样对寒冷产生反应。这是突破的代价——情感淡薄的同时，身体对物理刺激的感知也在减弱。\n\n那个人影在十米外停下。\n\n雨水在两人之间形成一道帘幕。但周洛铭能感觉到对方身上散发出的压迫感——比上一个猎食者强得多，至少高出两个层级。\n\n“你杀了我的部下。”对方开口，声音低沉，“一个刚晋级的梦墟行者，还没来得及报上名字，就被你这种连梦晶都还没凝聚的蝼蚁干掉了。”\n\n周洛铭握紧刀柄：“他挡了我的路。”\n\n“挡了你的路？”对方发出一声冷笑，“你知道他花了多少年才走到那一步吗？你这种连梦墟的真正规则都没摸透的废物，凭什么——”\n\n“凭我杀了他。”\n\n周洛铭打断对方，语气平静。他能感觉到情感正在从体内流失——面对一个比自己强太多的敌人，他应该感到恐惧，应该心跳加速，应该手心出汗。\n\n但他什么都没有。只有冷静。一种近乎冷酷的理智，正在帮他分析敌人的弱点，计算攻击的角度，预测对方下一步的动作。\n\n“有意思。”对方突然笑了，笑声在雨幕中显得格外诡异，“看来你已经尝到了力量的代价。情感剥离，对吧？每突破一层，就会失去一部分人性。到最后，你会变成一个只知道杀戮的空壳。”\n\n周洛铭没有回答。\n\n“但你知道吗？”对方向前迈了一步，雨水在他周围形成一道漩涡，“那种状态，才是梦墟行者真正的形态。没有恐惧，没有犹豫，没有怜悯——只有纯粹的意志，只有对力量的渴望。”\n\n他伸出手，掌心凝聚出一团黑色的光芒。\n\n“来吧，让我看看——你愿意为真相付出多少代价。”\n\n周洛铭盯着那团黑光，脑海里突然闪过父亲最后那句话——“找到她。她的记忆里，有所有的答案。”\n\n他深吸一口气，握紧刀柄，迎着那团黑光走过去。\n\n“我的代价，我自己付。”\n\n雨幕中，两道身影同时动了。\n\n刀刃与黑光碰撞的瞬间，一道刺目的光芒炸开，照亮了整个夜空。雨水在光芒中蒸发成白雾，将两人的身影吞没。\n\n而在公寓的书桌上，那颗梦晶正发出越来越亮的光芒，里面那张脸重新浮现，嘴唇翕动，无声地说着同一句话——\n\n“下一个，是她的记忆。”\n\n远处，更沉重的脚步声正在逼近。",
+    "content_hash": "sha256:e76d7765fb2beeec571b86d0f256035985ac94e65dccc4e12564ed8047794ec3",
+    "word_count": 3549,
+    "produced_by": {
+      "model_id": "deepseek-chat",
+      "model_kind": "llm"
+    }
+  }
+}

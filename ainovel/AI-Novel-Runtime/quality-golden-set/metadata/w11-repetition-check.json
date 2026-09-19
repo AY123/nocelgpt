@@ -1,0 +1,35 @@
+{
+  "kind": "w11_repetition_check",
+  "version": "1.1",
+  "status": "implemented",
+  "purpose": "Detect repeated chapter functions across the long arc.",
+  "implemented_by": "runtime/scene/serial_function_repeat.py::check_serial_function_repeat",
+  "wired_into": "runtime/serialize/loop.py — folded over the produced sequence as result.function_repeat (advisory, never gates, ADR-003)",
+  "tested_by": "tests/test_serial_function_repeat.py (3 patterns + healthy/short degrade + v8 liveness + reproducibility)",
+  "repetition_patterns": [
+    "continuous_repeat",
+    "cyclical_repeat",
+    "renamed_same_function"
+  ],
+  "function_signature_fields": [
+    "objective.pacing_role",
+    "objective.cliffhanger_type",
+    "objective.commercial_intent.payoff_type",
+    "mandate.escalation.kind"
+  ],
+  "surface_fields_that_should_vary": [
+    "objective.plot_threads",
+    "objective.character_focus"
+  ],
+  "thresholds": {
+    "continuous_run": 3,
+    "cycle_repeats": 3,
+    "max_cycle_period": 4
+  },
+  "output_shape": "ReviewReport {reviewer, axis=evaluative, gating=false, findings:[{check:function-repeat, severity, message}]}",
+  "notes": [
+    "Signature keys on stable enum-like fields the generation chain already produces; surface fields are excluded so renamed_same_function can be distinguished from a true duplicate.",
+    "The real 33-ch baseline (RUN-00025) has 25 consecutive chapters sharing one signature — the finding this detector was built to surface.",
+    "stalled_progression from the original scaffold is covered by the sibling director/mandate_check.check_mandate_series (张力停滞/原地打转), not duplicated here."
+  ]
+}

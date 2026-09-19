@@ -1,0 +1,65 @@
+document_id: SPEC-CONTEXT-0001-ROLE-REGISTRY
+version: 1.0.0
+roles:
+  PLANNER:
+    required_sources:
+    - genesis
+    - genre
+    - canon
+    - plan
+    optional_sources:
+    - reference
+    - market
+    - reader_signal
+    forbidden_sources: []
+    can_write_canon: false
+  WRITER:
+    required_sources:
+    - genre
+    - canon
+    - contract
+    - recent_context
+    - knowledge_boundary
+    optional_sources:
+    - abstract_reference
+    - style
+    forbidden_sources:
+    - raw_reference
+    - market_report
+    - alternate_branch
+    can_write_canon: false
+  EXTRACTOR:
+    required_sources:
+    - candidate_text
+    - ontology
+    - entity_roster
+    - canon_subset
+    optional_sources: []
+    forbidden_sources:
+    - market_report
+    can_write_canon: false
+    can_propose_delta: true
+  REVIEWER:
+    required_sources:
+    - candidate_text
+    - genre
+    - canon_parent
+    - contract
+    - rubric
+    optional_sources:
+    - writer_context_ref
+    forbidden_sources:
+    - future_canon
+    can_write_canon: false
+  REPAIRER:
+    required_sources:
+    - candidate_text
+    - findings
+    - protected_facts
+    - contract
+    - canon_subset
+    optional_sources:
+    - writer_context_ref
+    forbidden_sources:
+    - raw_reference
+    can_write_canon: false

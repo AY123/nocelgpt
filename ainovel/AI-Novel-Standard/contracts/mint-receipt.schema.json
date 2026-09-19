@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:mint-receipt:1.1",
+  "title": "MintReceipt",
+  "description": "The AUDIT RECORD of a mint transaction (roadmap Phase 5.2 additive path; 5.4b new path) — the EXECUTION half of prose→fact evolution, the moment the system crosses the ADR-009 human-authority boundary. A FactCandidatePlan (fact-candidate-plan.schema.json) stages candidates for review; mint is the distinct, human-authorized action that promotes ACCEPTED candidates into registry/facts/ — the first and only fact-writing operation in the system. This receipt records exactly what a single mint did, so an irreversible SSOT change is never silent: which plan authorized it, which candidates a human accepted, each entity's fact_version transition, and the registry-version transition. Mint applies two candidate classes: `additive` (fill an empty field on an existing entity + bump fact_version — the monotone-safe subset that never overwrites a declared fact and needs no new id) and, since 5.4b, `new` (establish a brand-new entity BY NAME: an id is allocated through the append-only ID Mint Ledger, a minimal fact record is written, fact_version goes 0→1). The `new` path is deliberately narrow this phase: it mints only a name-establishing candidate whose target_type resolves to exactly one type_code and whose new-fact requirements are satisfiable from {id,name,fact_version,status} (Character/Item); an ambiguous type (WorldRule→MAG|TEC), a structured-required type (Event/Timeline/Relationship), or a non-name field on a not-yet-existent entity is REFUSED, not guessed. `conflicting` candidates (a retcon overwrite — the highest-risk SSOT operation) remain out of scope and MUST be refused. The mint is validate-then-write: the post-mint registry is validated in memory against the full deterministic gate and committed ONLY if it passes (a mint that would introduce a dangling ref, a tombstone ref, or a causality cycle is rejected and writes nothing). A plan that has gone STALE (a pinned fact advanced since reconciliation) MUST be refused. Two structural invariants: `authority` const human — mint is the authorized crossing itself, so the receipt records the human authorization, it is never auto-issued; and `gating` const false — a receipt is an audit record, it does not gate a build (ADR-003). Written to registry/derived/mint-receipts/, NEVER to registry/facts/ (a receipt is not a story fact, ADR-006).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "version", "authority", "gating", "authorized", "source_plan", "registry_version", "minted"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^MINT-\\d{5,}$" },
+    "kind": { "type": "string", "const": "mint_receipt" },
+    "version": { "type": "string" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): minting into the SSOT is an irreversible transition only a human authorizes. The receipt records that authorization; it is never issued by an automatic step."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a mint receipt is an audit record, not a build gate."
+    },
+    "authorized": {
+      "type": "object",
+      "description": "The explicit human authorization that crossed the boundary. Its presence is what distinguishes a committed mint from a preview (which writes nothing and issues no receipt).",
+      "additionalProperties": false,
+      "required": ["confirmed"],
+      "properties": {
+        "confirmed": {
+          "type": "boolean",
+          "const": true,
+          "description": "A committed receipt only exists when a human confirmed the mint (CLI --confirm). A preview never produces a receipt."
+        },
+        "actor": { "type": "string", "description": "Optional record of who authorized (operator id / name)." },
+        "accepted_candidates": {
+          "type": "array",
+          "description": "The candidate ids (CAND-*) the human accepted from the plan. Only these were considered for minting; everything else in the plan was left untouched.",
+          "items": { "type": "string", "pattern": "^CAND-\\d{5,}$" }
+        }
+      }
+    },
+    "source_plan": {
+      "type": "object",
+      "description": "The FactCandidatePlan this mint executed. Pinning it makes the mint auditable back to the exact reconciliation (and its prose source).",
+      "additionalProperties": false,
+      "required": ["plan_id"],
+      "properties": {
+        "plan_id": { "type": "string", "pattern": "^FCP-\\d{5,}$" },
+        "plan_content_hash": { "type": "string", "description": "The plan's content_hash at mint time (sha256:...)." },
+        "chapter_draft_id": { "type": "string", "description": "The prose the plan's candidates ultimately came from (carried through for audit)." }
+      }
+    },
+    "registry_version": {
+      "type": "object",
+      "description": "The monotone registry version transition this mint caused. A mint that writes any fact bumps the registry version once.",
+      "additionalProperties": false,
+      "required": ["before", "after"],
+      "properties": {
+        "before": { "type": "integer", "minimum": 0 },
+        "after": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "minted": {
+      "type": "array",
+      "description": "One entry per fact written. An `additive` entry filled an empty field on an existing entity and bumped its fact_version; a `new` entry (5.4b) established a brand-new entity by name at a ledger-allocated id, with fact_version 0→1.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_id", "entity_id", "classification", "field", "value", "fact_version"],
+        "properties": {
+          "candidate_id": { "type": "string", "pattern": "^CAND-\\d{5,}$" },
+          "entity_id": { "type": "string", "description": "The fact the value was written to: an existing entity (additive) or the newly ledger-minted id (new)." },
+          "classification": {
+            "type": "string",
+            "enum": ["additive", "new"],
+            "description": "Which mintable class this entry applied. `additive`: fill an empty field on an existing entity. `new`: establish a brand-new entity by name at a minted id. `conflicting`/`consistent`/`unverifiable` are refused before commit, so they never appear here."
+          },
+          "type_code": {
+            "type": "string",
+            "pattern": "^[A-Z]{3,4}$",
+            "description": "Present on a `new` entry: the frozen type code the minted id belongs to (CHR/ITM/…), resolved from the candidate's target_type. Absent on `additive` (the entity already exists)."
+          },
+          "field": { "type": "string", "description": "The (possibly dotted) fact field that was filled. For a `new` entry this is the name-establishing field (`name`)." },
+          "value": { "description": "The value written (any JSON type)." },
+          "fact_version": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["before", "after"],
+            "properties": {
+              "before": { "type": "integer", "minimum": 0, "description": "0 for a `new` entity (it did not exist); the prior version for `additive`." },
+              "after": { "type": "integer", "minimum": 1 }
+            }
+          }
+        }
+      }
+    },
+    "revalidation": {
+      "type": "object",
+      "description": "The post-mint deterministic re-gate result. The mint committed only because this passed; recorded for audit.",
+      "additionalProperties": false,
+      "properties": {
+        "passed": { "type": "boolean" },
+        "checks": { "type": "array", "items": { "type": "string" }, "description": "The gate checks the post-mint registry was validated against." }
+      }
+    },
+    "rationale": { "type": "string", "description": "Human-readable summary of what was minted." }
+  }
+}

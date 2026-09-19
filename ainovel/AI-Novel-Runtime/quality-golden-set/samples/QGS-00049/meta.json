@@ -1,0 +1,15 @@
+{
+  "sample_id": "QGS-00049",
+  "title": "结尾收束平淡无钩子",
+  "genre": "都市商战",
+  "chapter_position": "chapter-1",
+  "source_type": "synthetic",
+  "source_hint": "章节结尾只做总结，没有留下新的悬念或压力",
+  "risk_flags": [],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "ending_failure",
+    "continue_intent",
+    "payoff_delivery"
+  ]
+}

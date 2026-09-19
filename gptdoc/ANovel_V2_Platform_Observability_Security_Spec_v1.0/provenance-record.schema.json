@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/provenance-record.schema.json",
+  "title": "ProvenanceRecord",
+  "type": "object",
+  "required": [
+    "provenance_id",
+    "artifact_id",
+    "artifact_type",
+    "producer_type",
+    "producer_ref",
+    "input_refs",
+    "input_hashes",
+    "code_version",
+    "schema_version",
+    "created_at"
+  ],
+  "properties": {
+    "provenance_id": {
+      "type": "string"
+    },
+    "artifact_id": {
+      "type": "string"
+    },
+    "artifact_type": {
+      "type": "string"
+    },
+    "producer_type": {
+      "enum": [
+        "HUMAN",
+        "SERVICE",
+        "AI_WORKER",
+        "WORKFLOW",
+        "MIGRATION",
+        "IMPORT"
+      ]
+    },
+    "producer_ref": {
+      "type": "string"
+    },
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "input_hashes": {
+      "type": "object"
+    },
+    "code_version": {
+      "type": "string"
+    },
+    "schema_version": {
+      "type": "string"
+    },
+    "policy_versions": {
+      "type": "object"
+    },
+    "run_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "stage_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

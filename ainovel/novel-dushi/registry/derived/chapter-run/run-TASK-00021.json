@@ -1,0 +1,700 @@
+{
+  "index": 21,
+  "task_id": "TASK-00021",
+  "event": "EVT-90024",
+  "ok": true,
+  "stage": "done",
+  "draft_hash": "sha256:dcd07f616f9ec71af614770cb3c9defa2e160722fef68f61d0b2c2e8815f5f7e",
+  "state_hash": "sha256:595e2d90898487aaa1327bdb68795e62862fe2cfd5fc5aeaf921b8211b0e9454",
+  "open_setups": 0,
+  "events_so_far": 21,
+  "verdict": null,
+  "qa_scores": null,
+  "commercial_verdict": null,
+  "pacing": {
+    "reviewer": "pacing-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "pacing",
+        "severity": "info",
+        "message": "情绪曲线起伏健康（振幅 50，标准差 17.4）：35→55→70→85→75"
+      }
+    ]
+  },
+  "pacing_peak": 85,
+  "density": {
+    "reviewer": "density-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "density",
+        "severity": "info",
+        "message": "信息密度健康（对白占比 38.1%，每千字比喻 0.2）"
+      }
+    ]
+  },
+  "ai_taste": {
+    "reviewer": "ai-taste-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "ai-taste",
+        "severity": "info",
+        "message": "未见明显 AI 味信号（最长同头 1 句，句长 CV 0.61）"
+      }
+    ]
+  },
+  "hygiene": null,
+  "end_hook": {
+    "reviewer": "hook-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "end-hook",
+        "severity": "info",
+        "message": "章末留有钩子（转折/威胁）"
+      }
+    ]
+  },
+  "meta_reference": {
+    "reviewer": "meta-reference-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": []
+  },
+  "integrity": {
+    "reviewer": "text-integrity-gate-v1",
+    "axis": "gate",
+    "gating": true,
+    "status": "review_required",
+    "reason_codes": [
+      "word_internal_punctuation"
+    ],
+    "evidence_spans": [
+      {
+        "start": 123,
+        "end": 126,
+        "context": "项目的最大竞争对手。而华融资本,管理规"
+      }
+    ],
+    "severity": "medium",
+    "action": "require_review",
+    "findings": [
+      {
+        "check": "word_internal_punctuation",
+        "severity": "critical",
+        "message": "Detected high confidence word-internal punctuation in Chinese text. Found 34 instance(s). This may indicate serialization errors breaking words. Examples: ['目标项目的最大竞争对手。而华融资本,管理规模超', '挺,笑容得体却不达眼底。照片说明写着:华融资本', '渊。\\n\\n他认识这个名字。前世2010年前后,沈']",
+        "start": 123,
+        "end": 126
+      }
+    ]
+  },
+  "length": {
+    "reviewer": "length-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "length",
+        "severity": "info",
+        "message": "篇幅达标（3951 字，目标 3333，118%，在 60%–150% 带宽内，advance章带宽）"
+      }
+    ]
+  },
+  "mandate": {
+    "reviewer": "mandate-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "mandate",
+        "severity": "info",
+        "message": "本章无叙事强制令，跳过温水章分析"
+      }
+    ]
+  },
+  "m7": {
+    "chapter_id": "TASK-00021",
+    "authority": "human",
+    "gates_build": true,
+    "recommendation": "recommend",
+    "risk_level": "L0",
+    "redline_passed": true,
+    "redline_hits": [],
+    "similarity": {
+      "overall_similarity": 0.3634,
+      "risk_level": "L0",
+      "matches": [
+        {
+          "source_id": "REF-00001",
+          "source_type": "reference_novel",
+          "similarity": 0.3634,
+          "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+          "risk_type": "semantic_overlap",
+          "aligned_spans": [],
+          "method": "ngram_containment"
+        }
+      ],
+      "suspicious_spans": [],
+      "embedding_similarity": 0.583,
+      "containment": 0.0339,
+      "reference_count": 1
+    },
+    "rationale": "未命中硬红线，原创性风险可接受。"
+  },
+  "m7_approval_id": null,
+  "llm_cost": {
+    "total_cost": 0.0,
+    "currency": null,
+    "pricing_version": null
+  },
+  "llm_usage": {
+    "input": 3336,
+    "output": 4527,
+    "total": 7863
+  },
+  "m5_final": {
+    "chapter_id": "TASK-00021",
+    "final_text": "# 第二十一章\n\n办公室里的空调嗡嗡作响,林舟盯着电脑屏幕上刚刚弹出的新闻推送,手指在鼠标上停住了。\n\n\"华融资本宣布战略入股金汇集团,持股比例达12%——\"\n\n金汇集团。那个在全国布局了三百多家商业广场的地产巨头,也是他这次目标项目的最大竞争对手。而华融资本,管理规模超过十亿美金的私募基金,在业内以\"狼性并购\"著称。\n\n林舟的视线扫过新闻配图,那个站在金汇集团董事长身旁的中年男人,西装笔挺,笑容得体却不达眼底。照片说明写着:华融资本管理合伙人沈博渊。\n\n他认识这个名字。前世2010年前后,沈博渊操盘过几起震动业界的并购案,手法凌厉,被称为\"资本猎手\"。只是前世那时候,林舟还只是个在底层挣扎的项目经理,这种级别的人物离他太远。\n\n现在不一样了。\n\n手机震动,是赵建发来的消息:\"林总,金汇那边突然提高报价了,比我们高出15%。\"\n\n林舟眉头微皱。他们盯着的那块地,位置绝佳,正适合做城市综合体。前期已经谈得差不多,就等最后签约。金汇突然插手,而且恰好在华融入股的消息公布后——这不是巧合。\n\n\"稳住,先不要回应。\"林舟快速回复。\n\n他打开另一个文件夹,里面是这段时间收集的关于金汇集团的资料。资金链紧张,几个项目回款不理想,急需新项目支撑估值——这些都是公开信息能推导出的。但华融的入股改变了局面,十二个点的股份,意味着金汇拿到了至少五亿的现金流。\n\n办公桌上的座机响了。\n\n\"林总,前台说有位沈先生要见您,没有预约。\"秘书小陈的声音有些迟疑,\"他说您会愿意见他的。\"\n\n林舟心里一紧,面上却很平静:\"让他上来。\"\n\n五分钟后,沈博渊推门而入。比照片上看起来更年轻些,大概四十出头,眼神锐利,步伐沉稳。他环视了一圈办公室,目光在林舟桌上那几份项目文件上停留了一秒。\n\n\"林总果然是做大事的人,办公室简洁高效。\"沈博渊在会客沙发上坐下,姿态随意却隐含压迫感,\"我就开门见山了——你手上那个项目,让给金汇,我给你补偿。\"\n\n林舟倒了两杯茶,动作不紧不慢:\"沈总远道而来,就为了说这个?\"\n\n\"你应该知道金汇现在的分量。\"沈博渊端起茶杯,却没有喝,\"有华融在背后,他们能给的价格和资源,不是你现在能比的。识时务者为俊杰,林总年纪轻轻就做到这个位置,想必不是不懂变通的人。\"\n\n这是赤裸裸的施压。林舟垂眸看着自己杯中的茶水,表面波澜不兴,心里却在飞速推演。沈博渊亲自登门,说明对方很看重这个项目——或者说,很在意阻止自己拿下这个项目。为什么?仅仅是商业竞争?\n\n\"沈总说得有道理。\"林舟抬起头,脸上带着浅淡的笑,\"但我有个疑问——华融入股金汇,按理说应该去拓展新市场,为什么专门盯着我这个小项目?\"\n\n沈博渊眼中闪过一丝意外,随即恢复平静:\"林总多虑了,这只是正常的商业布局。\"\n\n\"是吗?\"林舟靠回椅背,手指轻敲扶手,\"金汇在南方的三个项目都遇到了资金问题,沈总选在这个时候入股,应该是要帮他们盘活资产。按照华融以往的风格,会选择那些能快速见效的大项目。而我手上这块地,开发周期至少三年,不符合你们的投资逻辑。\"\n\n沈博渊的笑容淡了几分。\n\n\"除非——\"林舟语气平静,目光却锋利起来,\"这块地对金汇来说另有价值。比如,它能卡住某个竞争对手的战略布局。沈总,您不是来买地的,是来阻击我的。\"\n\n会客室里安静了几秒。\n\n沈博渊放下茶杯,重新打量林舟,眼神变得认真:\"林总比我想象的要敏锐。既然话说到这份上,我也不绕圈子——你的扩张速度太快了,触动了一些人的利益。给你个机会,收手,我保证你现有的项目不会遇到麻烦。\"\n\n\"如果我不收手呢?\"\n\n\"那就别怪市场规则残酷。\"沈博渊站起身,整理了一下袖口,\"华融在这个行业经营十几年,关系和资源远超你的想象。你很聪明,但聪明人更应该懂得进退。三天时间考虑,我等你消息。\"\n\n他走到门口,又回头补充:\"对了,金汇那边已经开始接触政府部门了,你的竞争优势正在消失。好自为之。\"\n\n门关上,办公室重归安静。\n\n林舟没有立刻动,他盯着沙发上还有余温的位置,脑子里飞速整理刚才对话中的每一个细节。沈博渊的话有七分真三分假,真的是华融确实在施压,假的是所谓的\"补偿\"——对方根本没打算让他体面退出,只是想用最小的代价逼他就范。\n\n更关键的是最后那句话。\"你的扩张速度太快了,触动了一些人的利益\"——这些人是谁?是地产圈的既得利益者?还是更上层的某个群体?\n\n前世他失败的根源之一,就是在关键时刻看不清真正的对手。这一世,他不会再犯同样的错误。\n\n林舟拿起手机,拨通了一个号码。\n\n\"李律,帮我查一下华融资本近期的所有投资动向,重点是他们在地产领域的布局。另外,金汇集团董事会成员的背景,越详细越好。\"他顿了顿,\"三个小时内要。\"\n\n挂掉电话,林舟打开电脑,调出那份被他标注为\"备用方案\"的文件。既然对方要打资源战,他就不能按常规路数来。他需要一个出其不意的反击点。\n\n下午四点,李律师的邮件到了。林舟快速浏览,目光在某一行字上停住——\"金汇集团副董事长王明远,同时持有南城开发区管委会顾问身份,其子王凯在华融资本担任投资总监\"。\n\n一条隐秘的利益链浮出水面。难怪金汇能这么快接触到政府部门,原来关键节点早就打通了。但这条链也意味着,金汇和华融的结合,没有外界看起来那么稳固——这是一场利益交换,而利益交换就会有裂缝。\n\n林舟嘴角勾起一个弧度。他拿起电话,这次拨给了赵建:\"通知项目组,准备调整方案。今天晚上加班,明天上午我要看到新的投标文件。\"\n\n\"林总,我们还要继续跟?\"赵建声音里有些犹豫。\n\n\"跟,而且要让他们意想不到地跟。\"林舟语气坚定,\"另外,联系一下城建局的张处,就说我想请他喝茶。\"\n\n挂掉电话,林舟起身走到落地窗前。夕阳把城市染成金红色,玻璃幕墙反射着刺目的光。沈博渊以为用规模和关系就能压制他,但对方忘了一点——在商业世界,真正的武器从来不是明面上的资源,而是对人性和利益的精准把握。\n\n他前世用二十年时间学到的教训,这一世会成为他最锋利的刀。\n\n晚上十点,项目组还在加班。林舟站在白板前,给团队讲解新方案的逻辑:\"金汇的优势是资金和政府关系,我们的优势是灵活和对市场的理解。他们想用规模压我们,我们就用模式创新突围。\"\n\n赵建皱眉:\"但林总,即使我们方案再好,政府那边如果已经被金汇搞定...\"\n\n\"所以我们不走寻常路。\"林舟在白板上画了一个新的架构图,\"我们引入第三方战略投资者,把项目从单纯的地产开发变成产业综合体。这样一来,政府的评估标准就会改变,金汇那套传统打法就失效了。\"\n\n\"第三方投资者从哪里来?\"有人问。\n\n\"我已经在联系了。\"林舟没有细说,但心里已经有了目标——一家专注智慧城市建设的科技公司,正好需要一个试点项目。把他们拉进来,项目性质就从商业地产变成了城市升级工程,政绩考量会大于利益输送。\n\n这一招,是用更高维度的逻辑降维打击。\n\n深夜十二点,林舟回到家,脱掉西装外套,倒在沙发上。身体疲惫,但精神却异常清醒。沈博渊的出现,让他真正意识到自己已经走到了一个新的层级——那些真正掌握资本和资源的人开始注意到他,并且视他为威胁。\n\n这既是危险,也是机会。\n\n前世他失败,很大程度上是因为永远在跟小对手缠斗,等发现真正的敌人时已经太晚。这一世,敌人提前出现了,反而给了他提前布局的机会。\n\n手机震动,是一条陌生号码发来的短信:\"林总,考虑得怎么样了?我们的耐心有限。——沈\"\n\n林舟看着短信,没有回复。他打开通讯录,给那位科技公司的CEO发了条消息:\"陈总,之前聊的合作项目,我这边准备好了,方便明天见面详谈吗?\"\n\n几乎是秒回:\"没问题,明天上午十点,我去你公司。\"\n\n林舟放下手机,走到窗边。城市的夜景灯火通明,每一栋楼里都藏着看不见的较量。沈博渊给了他三天时间考虑,但他不需要三天——反击从现在就开始。\n\n第二天上午,陈总如约而至。两人在会议室里谈了一个小时,最后握手敲定合作框架。等陈总离开,林舟立刻召集团队完善方案细节,下午四点就提交给了政府审批部门。\n\n当天晚上,沈博渊的电话打来:\"林总,你这是什么意思?\"\n\n\"沈总不是给了三天时间吗?我只是在考虑。\"林舟语气平静,\"顺便优化了一下方案而已。\"\n\n\"你引入第三方投资者,改变项目性质,这是在跟我对着干?\"沈博渊声音里有了火气。\n\n\"是在跟市场规则对着干,还是在适应市场规则,沈总心里清楚。\"林舟靠在椅背上,望着窗外夜色,\"您说华融在这个行业经营十几年,关系和资源深厚。但您忘了,这个行业最大的规则不是关系,是创造价值。我的方案能给政府带来更大的政绩,能给城市带来更好的发展——您觉得他们会选谁?\"\n\n沈博渊沉默了几秒:\"林总,你会后悔的。\"\n\n\"我已经后悔过一次了,这辈子不想再后悔第二次。\"林舟语气很轻,却带着不容置疑的坚定,\"沈总,市场上见真章吧。\"\n\n挂掉电话,林舟长出一口气。他知道这个反击只是开始,沈博渊和华融不会善罢甘休,更大的风暴还在后面。但至少现在,他证明了自己不是可以随意捏的软柿子。\n\n在这个层级的战场上,他重新站稳了脚跟。\n\n三天后,政府审批部门传来消息——林舟的方案通过初审,并被列为重点关注项目。金汇的报价优势瞬间失效。\n\n赵建兴奋地跑进办公室:\"林总,我们赢了!\"\n\n\"还早。\"林舟很冷静,\"这只是第一回合。沈博渊不会这么轻易放手。\"\n\n他的预感很快应验了。\n\n当天下午,一个意外的访客出现在公司楼下。前台打来电话时,声音有些紧张:\"林总,楼下来了很多人,带头的自称是华商联合会的秘书长,说要跟您谈谈行业规范的问题...\"\n\n林舟看向窗外,几辆黑色轿车停在公司门口,十几个穿着正装的人正往楼里走。\n\n沈博渊的反击,来得比他想象的更快,也更凶狠。",
+    "final_hash": "sha256:2de96fba08bc92dff7f626f085e343ebfe206ab0c6e7712a481877dc5f712168",
+    "final_review": {
+      "chapter_id": "TASK-00021",
+      "overall_verdict": "pass",
+      "scores": {
+        "structure": 0.8,
+        "pacing": 0.75,
+        "readability": 0.8,
+        "character_consistency": 0.7,
+        "setting_consistency": 0.7,
+        "emotion_progress": 0.7,
+        "hook_strength": 0.6,
+        "commercial_pull": 0.7,
+        "reader_signal_alignment": 0.7,
+        "platform_feedback_alignment": 0.7
+      },
+      "issues": [],
+      "strengths": [
+        "draft produced"
+      ],
+      "revision_suggestions": [],
+      "gating_recommendation": "advisory",
+      "publish_readiness": "ready"
+    },
+    "comparison_report": {
+      "id": "CMP-00021",
+      "kind": "version_comparison",
+      "authority": "human",
+      "gating": false,
+      "schema_version": "1.0",
+      "chapter_id": "TASK-00021",
+      "objective_ref": {
+        "id": "OBJ-00021",
+        "kind": "chapter_objective",
+        "authority": "human",
+        "gating": false,
+        "schema_version": "1.0",
+        "objective_id": "OBJ-00021",
+        "chapter_id": "TASK-00021",
+        "source": {
+          "state_hash": "sha256:812b0d925db8098beebe7b77aca54f921b161cc85e692c8d5932578ce9da4a76"
+        },
+        "primary_goal": "直面新登场的私募基金经理管理十亿资金阶段的世界级敌人，在更高一层的冲突中重新站稳",
+        "secondary_goals": [],
+        "reader_question": "主角目标与私募基金经理管理十亿资金阶段的世界级敌人正面碰撞——维系旧秩序的顶层力量，与主角的终极目标直接对立。对手的追兵已逼近，来不及等待",
+        "promise_to_deliver": [
+          "打脸翻身"
+        ],
+        "character_focus": [],
+        "plot_threads": [],
+        "commercial_intent": {
+          "retention_focus": "next_chapter_pull",
+          "payoff_type": "partial_payoff",
+          "drop_risk_target": "low"
+        },
+        "pacing_role": "rising_action",
+        "cliffhanger_type": "reveal",
+        "constraints": [
+          "不得破坏角色连续性",
+          "不得引入未授权新事实"
+        ],
+        "success_criteria": [
+          "reader_question 明确",
+          "章节末有追读动力",
+          "角色行为符合 runtime 状态"
+        ],
+        "notes": ""
+      },
+      "brief_ref": "TASK-00021",
+      "versions": [
+        {
+          "version_id": "draft",
+          "input_index": 0,
+          "score": 0.7,
+          "reason": "initial draft",
+          "decision_score_mean": null,
+          "decision_scores": {},
+          "diff_summary": {
+            "added_tokens": 0,
+            "removed_tokens": 0,
+            "change_rate_percent": 0.0,
+            "added_terms": [],
+            "removed_terms": [],
+            "before_length": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            },
+            "after_length": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            }
+          },
+          "text_summary": {
+            "before": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            },
+            "after": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            },
+            "delta_chars": 0,
+            "delta_words": 0,
+            "delta_lines": 0
+          },
+          "qa_change": {
+            "before_verdict": "revise",
+            "after_verdict": "pass",
+            "score_delta": {
+              "character_consistency": 0.7,
+              "commercial_pull": 0.7,
+              "emotion_progress": 0.7,
+              "hook_strength": 0.6,
+              "pacing": 0.75,
+              "platform_feedback_alignment": 0.7,
+              "readability": 0.8,
+              "reader_signal_alignment": 0.7,
+              "setting_consistency": 0.7,
+              "structure": 0.8
+            },
+            "issues_added": [],
+            "issues_removed": [],
+            "strengths_added": [
+              "draft produced"
+            ],
+            "strengths_removed": []
+          },
+          "commercial_change": {
+            "hook_alignment": "stable",
+            "commercial_target": null,
+            "hook_target": null,
+            "pacing_shift_words": 0,
+            "length_delta_words": 0,
+            "retention_signal": "improved"
+          },
+          "risk_and_recovery": {
+            "risks": [
+              "hook_strength_not_improved",
+              "qa_verdict_shift"
+            ],
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "verdict_shift": [
+              "revise",
+              "pass"
+            ],
+            "recommendation": "rollback"
+          }
+        },
+        {
+          "version_id": "revision",
+          "input_index": 1,
+          "score": 0.7,
+          "reason": "no revision needed",
+          "decision_score_mean": null,
+          "decision_scores": {},
+          "diff_summary": {
+            "added_tokens": 0,
+            "removed_tokens": 0,
+            "change_rate_percent": 0.0,
+            "added_terms": [],
+            "removed_terms": [],
+            "before_length": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            },
+            "after_length": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            }
+          },
+          "text_summary": {
+            "before": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            },
+            "after": {
+              "chars": 3951,
+              "words": 402,
+              "lines": 143
+            },
+            "delta_chars": 0,
+            "delta_words": 0,
+            "delta_lines": 0
+          },
+          "qa_change": {
+            "before_verdict": "pass",
+            "after_verdict": "pass",
+            "score_delta": {
+              "character_consistency": 0.0,
+              "commercial_pull": 0.0,
+              "emotion_progress": 0.0,
+              "hook_strength": 0.0,
+              "pacing": 0.0,
+              "platform_feedback_alignment": 0.0,
+              "readability": 0.0,
+              "reader_signal_alignment": 0.0,
+              "setting_consistency": 0.0,
+              "structure": 0.0
+            },
+            "issues_added": [],
+            "issues_removed": [],
+            "strengths_added": [],
+            "strengths_removed": []
+          },
+          "commercial_change": {
+            "hook_alignment": "stable",
+            "commercial_target": null,
+            "hook_target": null,
+            "pacing_shift_words": 0,
+            "length_delta_words": 0,
+            "retention_signal": "improved"
+          },
+          "risk_and_recovery": {
+            "risks": [
+              "hook_strength_not_improved"
+            ],
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "verdict_shift": [
+              "pass",
+              "pass"
+            ],
+            "recommendation": "revise"
+          }
+        }
+      ],
+      "winner": "draft",
+      "selection_policy": {
+        "primary_metric": "reader_pull",
+        "secondary_metric": "quality_consistency",
+        "tie_break": "earlier_input_order"
+      },
+      "selection_metadata": {
+        "winner_index": 0,
+        "tie_break_applied": true,
+        "ranking": [
+          {
+            "version_id": "draft",
+            "score": 0.7,
+            "input_index": 0
+          },
+          {
+            "version_id": "revision",
+            "score": 0.7,
+            "input_index": 1
+          }
+        ]
+      },
+      "summary": {
+        "headline": "改动率0.00%｜QA=pass｜商业钩子stable",
+        "major_change_rate_percent": 0.0,
+        "qa_score_deltas": {
+          "character_consistency": 0.7,
+          "commercial_pull": 0.7,
+          "emotion_progress": 0.7,
+          "hook_strength": 0.6,
+          "pacing": 0.75,
+          "platform_feedback_alignment": 0.7,
+          "readability": 0.8,
+          "reader_signal_alignment": 0.7,
+          "setting_consistency": 0.7,
+          "structure": 0.8
+        },
+        "commercial_focus": null,
+        "long_arc_band": null,
+        "recommendation": "rollback",
+        "editorial": {
+          "readability": "improved",
+          "retention": "improved",
+          "market_fit": "moderate",
+          "editorial_verdict": "accept",
+          "notes": [
+            "整体节奏更顺",
+            "追读动机有增强",
+            "题材卖点对齐度一般"
+          ]
+        }
+      },
+      "risk_summary": {
+        "risks": [
+          "hook_strength_not_improved",
+          "qa_verdict_shift"
+        ],
+        "recovery_actions": [
+          "restore stronger chapter hook",
+          "rebalance pacing and scene load",
+          "tighten issue-focused QA pass"
+        ],
+        "verdict_shift": [
+          "revise",
+          "pass"
+        ]
+      },
+      "pipeline_decision": {
+        "advance_to_next_chapter": false,
+        "trigger_revision_round": true,
+        "hold_for_human_review": true,
+        "action": "revise",
+        "reasons": {
+          "summary_recommendation": "rollback",
+          "editorial_verdict": "accept",
+          "risk_count": 2
+        }
+      },
+      "notes": "Comparison ranks scores supplied by commercial/quality signals; advisory, never gating."
+    },
+    "quality_summary": "verdict=pass; score_keys=character_consistency,commercial_pull,emotion_progress,hook_strength,pacing,platform_feedback_alignment,readability,reader_signal_alignment,setting_consistency,structure",
+    "continuity_notes": [
+      "hook_strength_not_improved",
+      "qa_verdict_shift"
+    ],
+    "commercial_notes": [
+      "整体节奏更顺",
+      "追读动机有增强",
+      "题材卖点对齐度一般"
+    ],
+    "next_chapter_bridge": "改动率0.00%｜QA=pass｜商业钩子stable; recommendation=rollback",
+    "production_decision": {
+      "advance_to_next_chapter": false,
+      "trigger_revision_round": true,
+      "hold_for_human_review": true,
+      "action": "revise",
+      "reasons": {
+        "summary_recommendation": "rollback",
+        "editorial_verdict": "accept",
+        "risk_count": 2
+      }
+    },
+    "final_strategy": null,
+    "final_status": null,
+    "artifact_id": "TASK-00021",
+    "genre_profile_id": "都市-v1",
+    "genre_contract_version": "1.0"
+  },
+  "reference_gap": null,
+  "budget_note": null,
+  "w12": null,
+  "contract_validation": null,
+  "contract_revision_session": null,
+  "final_contract_validation": null,
+  "production_card": {
+    "chapter": 21,
+    "draft_hash": "sha256:dcd07f616f9ec71af614770cb3c9defa2e160722fef68f61d0b2c2e8815f5f7e",
+    "draft_timestamp": "2026-09-09T01:00:31.876255+00:00",
+    "contract_status": "pass",
+    "contract_deviations": 0,
+    "critical_deviations": 0,
+    "high_deviations": 0,
+    "medium_deviations": 0,
+    "minor_deviations": 0,
+    "final_quality_scores": {},
+    "initial_quality_scores": {},
+    "quality_delta": {},
+    "reader_simulation": null,
+    "dropout_risk": null,
+    "continuation_rate": null,
+    "promises_delivered": [],
+    "promises_pending": [],
+    "governance_reports": {
+      "promise_debt": null,
+      "character_arc": null,
+      "world_consistency": {
+        "total_rules": 0,
+        "total_inconsistencies": 0,
+        "critical_count": 0,
+        "high_count": 0,
+        "consistency_score": 1.0,
+        "recommendations": []
+      }
+    },
+    "constitution_compliance": null,
+    "prose_checks": {
+      "hygiene": {},
+      "density": {
+        "reviewer": "density-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "density",
+            "severity": "info",
+            "message": "信息密度健康（对白占比 38.1%，每千字比喻 0.2）"
+          }
+        ]
+      },
+      "ai_taste": {
+        "reviewer": "ai-taste-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "ai-taste",
+            "severity": "info",
+            "message": "未见明显 AI 味信号（最长同头 1 句，句长 CV 0.61）"
+          }
+        ]
+      },
+      "integrity": {
+        "reviewer": "text-integrity-gate-v1",
+        "axis": "gate",
+        "gating": true,
+        "status": "review_required",
+        "reason_codes": [
+          "word_internal_punctuation"
+        ],
+        "evidence_spans": [
+          {
+            "start": 123,
+            "end": 126,
+            "context": "项目的最大竞争对手。而华融资本,管理规"
+          }
+        ],
+        "severity": "medium",
+        "action": "require_review",
+        "findings": [
+          {
+            "check": "word_internal_punctuation",
+            "severity": "critical",
+            "message": "Detected high confidence word-internal punctuation in Chinese text. Found 34 instance(s). This may indicate serialization errors breaking words. Examples: ['目标项目的最大竞争对手。而华融资本,管理规模超', '挺,笑容得体却不达眼底。照片说明写着:华融资本', '渊。\\n\\n他认识这个名字。前世2010年前后,沈']",
+            "start": 123,
+            "end": 126
+          }
+        ]
+      },
+      "end_hook": {
+        "reviewer": "hook-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "end-hook",
+            "severity": "info",
+            "message": "章末留有钩子（转折/威胁）"
+          }
+        ]
+      },
+      "meta_reference": {
+        "reviewer": "meta-reference-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": []
+      },
+      "length": {
+        "reviewer": "length-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "length",
+            "severity": "info",
+            "message": "篇幅达标（3951 字，目标 3333，118%，在 60%–150% 带宽内，advance章带宽）"
+          }
+        ]
+      }
+    },
+    "m7_originality": {
+      "chapter_id": "TASK-00021",
+      "authority": "human",
+      "gates_build": true,
+      "recommendation": "recommend",
+      "risk_level": "L0",
+      "redline_passed": true,
+      "redline_hits": [],
+      "similarity": {
+        "overall_similarity": 0.3634,
+        "risk_level": "L0",
+        "matches": [
+          {
+            "source_id": "REF-00001",
+            "source_type": "reference_novel",
+            "similarity": 0.3634,
+            "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+            "risk_type": "semantic_overlap",
+            "aligned_spans": [],
+            "method": "ngram_containment"
+          }
+        ],
+        "suspicious_spans": [],
+        "embedding_similarity": 0.583,
+        "containment": 0.0339,
+        "reference_count": 1
+      },
+      "rationale": "未命中硬红线，原创性风险可接受。"
+    },
+    "publish_recommendation": "recommend",
+    "redline_passed": true,
+    "blocking_issues": [],
+    "warnings": [],
+    "canonical_decision": {
+      "state": "approved",
+      "advance_to_next": true,
+      "blocking_issues": [],
+      "warnings": [],
+      "human_approval_required": false,
+      "decision_provenance": {
+        "engine": "ProductionDecisionEngine",
+        "version": "P0-1",
+        "timestamp": "2026-09-09T01:00:31.876196+00:00"
+      },
+      "can_advance": true,
+      "requires_human_review": false,
+      "is_terminal": false
+    },
+    "human_decision": "pending",
+    "human_decision_by": null,
+    "human_decision_at": null,
+    "human_decision_notes": null,
+    "generated_at": "2026-09-09T01:00:31.876351+00:00",
+    "review_model": null,
+    "strict_mode": false
+  },
+  "quality_gate": {
+    "passed": true,
+    "blocked": false,
+    "requires_approval": false,
+    "issues": [],
+    "block_count": 0,
+    "hold_count": 0,
+    "warn_count": 0,
+    "recommendation": "proceed"
+  },
+  "message": "draft produced (3687 words)"
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "w10_blind_review_batch_result",
+  "version": "1.0",
+  "batch_id": "W10-B02",
+  "status": "synthetic_not_final",
+  "note": "Synthetic sample only. Not a formal reviewer result and must not be used as final truth.",
+  "candidate_ids": ["QGS-00004", "QGS-00005", "QGS-00006"],
+  "order_blinded": ["A", "C", "B"],
+  "review_notes": [
+    "A 的情绪推进最顺，读感最稳定。",
+    "C 的想法不错，但转场略生硬。",
+    "B 的冲突点有力度，但连续性不如 A。"
+  ],
+  "comparison_result": {
+    "winner": "A",
+    "confidence": "medium",
+    "reason_codes": ["improves_continuity", "improves_hook"]
+  },
+  "next_action": "use only for pipeline testing; replace with real blind-review input before any formal decision"
+}

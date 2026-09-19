@@ -1,0 +1,85 @@
+{
+  "total": 10,
+  "fixes": [
+    {
+      "id": "FIX_01",
+      "chapters": "Ch31→Ch32",
+      "prev_time": "紧接上一章，曜晶核第七道裂纹炸开之时",
+      "next_time": "紧接前一刻，同时发生",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_02",
+      "chapters": "Ch41→Ch42",
+      "prev_time": "换班钟敲响后不久，紧接上一章",
+      "next_time": "当前时刻；下一章大概率切至同一时段的另一条线",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_03",
+      "chapters": "Ch52→Ch53",
+      "prev_time": "紧接上章，具体时间未明",
+      "next_time": "章末为石奎抵达矿洞、双方即将交战之时；下一章开头回溯至当天早些时候",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_04",
+      "chapters": "Ch57→Ch58",
+      "prev_time": "三天后",
+      "next_time": "紧接上一章结尾，三天前摸清曜纹规律后的当天",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_05",
+      "chapters": "Ch60→Ch61",
+      "prev_time": "紧接上章结尾，当下",
+      "next_time": "紧接上一刻；距三十天前的矿难已过去三十天",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_06",
+      "chapters": "Ch61→Ch62",
+      "prev_time": "紧接上一刻；距三十天前的矿难已过去三十天",
+      "next_time": "破晓前，紧接曜主力量完整觉醒之后",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_07",
+      "chapters": "Ch70→Ch71",
+      "prev_time": "当夜，紧接上一章结尾",
+      "next_time": "同时或紧接前一场景；矿脉异变始于三天前，正在持续加剧",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_08",
+      "chapters": "Ch72→Ch73",
+      "prev_time": "紧接上章结尾，曜师枯萎后的片刻；距离追兵抵达最迟还有三天",
+      "next_time": "同一事件进程中，较镜见川预估提前十二个时辰；下一章开头为暮色时分",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_09",
+      "chapters": "Ch93→Ch94",
+      "prev_time": "与此同时，曜师降临废墟、段奕尘准备进入晶阵的同一时刻",
+      "next_time": "紧接上一章，前往曜师府邸后",
+      "action": "需人工审核判断",
+      "priority": "high"
+    },
+    {
+      "id": "FIX_10",
+      "chapters": "Ch99→Ch100",
+      "prev_time": "紧接上一章，几乎同时",
+      "next_time": "当前时刻，同时",
+      "action": "需人工审核判断",
+      "priority": "high"
+    }
+  ]
+}

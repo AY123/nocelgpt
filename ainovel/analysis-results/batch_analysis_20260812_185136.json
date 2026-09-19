@@ -1,0 +1,211 @@
+{
+  "metadata": {
+    "analyzed_at": "20260812_185136",
+    "start_chapter": 1,
+    "end_chapter": 5,
+    "sample_rate": 1,
+    "total_analyzed": 5,
+    "errors": 0
+  },
+  "results": [
+    {
+      "chapter": 1,
+      "length": 5483,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 40.0,
+        "curiosity": 40.0,
+        "tension": 40.0,
+        "emotion": 40.0,
+        "continue_rate": 0.5,
+        "drop_risk": 0.5,
+        "what_works": [],
+        "what_fails": [
+          "解析错误: ['mystery', 'goal', 'emotional'] is not a valid HookType"
+        ]
+      },
+      "paywall_score": {
+        "overall": 78.0,
+        "cliffhanger": 82.0,
+        "curiosity": 75.0,
+        "emotion": 80.0,
+        "conflict": 74.0,
+        "conversion": 0.58
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (40.0分)",
+          "gain": 15.0
+        },
+        {
+          "type": "add",
+          "target": "curiosity_trigger",
+          "reason": "好奇心分数过低 (40.0分)",
+          "gain": 10.0
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "length": 6524,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 92.0,
+        "curiosity": 95.0,
+        "tension": 85.0,
+        "emotion": 80.0,
+        "continue_rate": 0.93,
+        "drop_risk": 0.12,
+        "what_works": [
+          "双重悬念叠加：既有表层危机（矿监长离开但威胁未解），又有深层谜团（源石转移、晶化女人身份）",
+          "关键揭示精准：'源石没有消失，它只是换了一个容器'——颠覆前文认知，制造强烈信息差",
+          "意象链构建出色：冷蓝荧光→黑线与晶化女人→弦——视觉与听觉意象交织，形成诗性张力",
+          "节奏控制极佳：从紧张对峙（矿监长）到静谧观察（手指蜷曲）再到认知冲击（共振裂纹），节奏张弛有度",
+          "开放式意象收尾：'那根弦'悬而未决，既呼应前文'弦'的隐喻，又为后续埋下多重可能性"
+        ],
+        "what_fails": [
+          "矿监长的退场略显突兀——'等天亮再说'的威胁感因缺乏具体条件而稍显软化",
+          "段奕尘的昏迷状态使读者缺少一个可共情的即时反应锚点",
+          "'晶化女人'的引入信息量较大，可能让部分读者感到信息过载"
+        ]
+      },
+      "paywall_score": {
+        "overall": 50.0,
+        "cliffhanger": 50.0,
+        "curiosity": 50.0,
+        "emotion": 50.0,
+        "conflict": 50.0,
+        "conversion": 0.4
+      },
+      "improvements": []
+    },
+    {
+      "chapter": 3,
+      "length": 4364,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 40.0,
+        "curiosity": 40.0,
+        "tension": 40.0,
+        "emotion": 40.0,
+        "continue_rate": 0.5,
+        "drop_risk": 0.5,
+        "what_works": [],
+        "what_fails": [
+          "解析错误: ['mystery', 'threat'] is not a valid HookType"
+        ]
+      },
+      "paywall_score": {
+        "overall": 50.0,
+        "cliffhanger": 50.0,
+        "curiosity": 50.0,
+        "emotion": 50.0,
+        "conflict": 50.0,
+        "conversion": 0.4
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (40.0分)",
+          "gain": 15.0
+        },
+        {
+          "type": "add",
+          "target": "curiosity_trigger",
+          "reason": "好奇心分数过低 (40.0分)",
+          "gain": 10.0
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "length": 6012,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 78.0,
+        "curiosity": 85.0,
+        "tension": 75.0,
+        "emotion": 60.0,
+        "continue_rate": 0.82,
+        "drop_risk": 0.18,
+        "what_works": [],
+        "what_fails": []
+      },
+      "paywall_score": {
+        "overall": 82.0,
+        "cliffhanger": 85.0,
+        "curiosity": 88.0,
+        "emotion": 75.0,
+        "conflict": 80.0,
+        "conversion": 0.74
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (75.0分)",
+          "gain": 15.0
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "length": 6646,
+      "hook_analysis": {
+        "type": "none",
+        "strength": 82.0,
+        "curiosity": 85.0,
+        "tension": 78.0,
+        "emotion": 74.0,
+        "continue_rate": 0.6,
+        "drop_risk": 0.4,
+        "what_works": [],
+        "what_fails": []
+      },
+      "paywall_score": {
+        "overall": 50.0,
+        "cliffhanger": 50.0,
+        "curiosity": 50.0,
+        "emotion": 50.0,
+        "conflict": 50.0,
+        "conversion": 0.4
+      },
+      "improvements": [
+        {
+          "type": "add",
+          "target": "hook",
+          "reason": "完全缺少钩子",
+          "gain": 20.0
+        },
+        {
+          "type": "strengthen",
+          "target": "tension",
+          "reason": "紧张度不足 (78.0分)",
+          "gain": 15.0
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

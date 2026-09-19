@@ -1,0 +1,156 @@
+{
+  "kind": "w9_simulated_production",
+  "version": "1.0",
+  "status": "synthetic_not_final",
+  "note": "This file contains simulated production outputs only. It must not be used as authoritative reviewer calibration output.",
+  "sample_count": 5,
+  "samples": [
+    {
+      "sample_id": "QGS-00001",
+      "sample_category": "boundary",
+      "decision_mode": "calibration",
+      "simulated_output": {
+        "dimension_scores": {
+          "opening_hook": 4,
+          "chapter_goal": 3,
+          "conflict_progression": 2,
+          "character_motivation": 3,
+          "emotion_flow": 3,
+          "information_density": 4,
+          "payoff_delivery": 2,
+          "ending_hook": 3,
+          "continuity": 4,
+          "ai_voice_risk": 2,
+          "paying_intent": 3,
+          "continue_intent": 3
+        },
+        "severity_labels": ["boundary"],
+        "continue_probability": 0.62,
+        "pay_probability": 0.41,
+        "risk_flags": [],
+        "evidence_spans": ["开篇有一定抓力", "冲突推进不足"],
+        "recommendation": "use_for_calibration_only",
+        "uncertainty": "high"
+      }
+    },
+    {
+      "sample_id": "QGS-00002",
+      "sample_category": "positive",
+      "decision_mode": "calibration",
+      "simulated_output": {
+        "dimension_scores": {
+          "opening_hook": 5,
+          "chapter_goal": 5,
+          "conflict_progression": 4,
+          "character_motivation": 4,
+          "emotion_flow": 4,
+          "information_density": 4,
+          "payoff_delivery": 4,
+          "ending_hook": 5,
+          "continuity": 5,
+          "ai_voice_risk": 1,
+          "paying_intent": 5,
+          "continue_intent": 5
+        },
+        "severity_labels": ["positive"],
+        "continue_probability": 0.94,
+        "pay_probability": 0.81,
+        "risk_flags": [],
+        "evidence_spans": ["开篇即给出公司危机", "结尾引入即时升级事件"],
+        "recommendation": "keep",
+        "uncertainty": "low"
+      }
+    },
+    {
+      "sample_id": "QGS-00003",
+      "sample_category": "negative",
+      "decision_mode": "calibration",
+      "simulated_output": {
+        "dimension_scores": {
+          "opening_hook": 2,
+          "chapter_goal": 2,
+          "conflict_progression": 1,
+          "character_motivation": 2,
+          "emotion_flow": 2,
+          "information_density": 2,
+          "payoff_delivery": 1,
+          "ending_hook": 2,
+          "continuity": 2,
+          "ai_voice_risk": 4,
+          "paying_intent": 2,
+          "continue_intent": 2
+        },
+        "severity_labels": ["negative"],
+        "continue_probability": 0.28,
+        "pay_probability": 0.09,
+        "risk_flags": ["contains_ai_voice"],
+        "evidence_spans": ["冲突推进不足", "缺少有效冲突"],
+        "recommendation": "use_for_calibration_only",
+        "uncertainty": "medium"
+      }
+    },
+    {
+      "sample_id": "QGS-00029",
+      "sample_category": "boundary",
+      "decision_mode": "calibration",
+      "simulated_output": {
+        "dimension_scores": {
+          "opening_hook": 4,
+          "chapter_goal": 4,
+          "conflict_progression": 3,
+          "character_motivation": 4,
+          "emotion_flow": 3,
+          "information_density": 4,
+          "payoff_delivery": 3,
+          "ending_hook": 4,
+          "continuity": 4,
+          "ai_voice_risk": 2,
+          "paying_intent": 4,
+          "continue_intent": 4
+        },
+        "severity_labels": ["boundary"],
+        "continue_probability": 0.73,
+        "pay_probability": 0.52,
+        "risk_flags": [],
+        "evidence_spans": ["开头抓人", "局势推进略浅"],
+        "recommendation": "use_for_calibration_only",
+        "uncertainty": "high"
+      }
+    },
+    {
+      "sample_id": "QGS-00033",
+      "sample_category": "ai_voice",
+      "decision_mode": "calibration",
+      "simulated_output": {
+        "dimension_scores": {
+          "opening_hook": 2,
+          "chapter_goal": 2,
+          "conflict_progression": 2,
+          "character_motivation": 2,
+          "emotion_flow": 2,
+          "information_density": 2,
+          "payoff_delivery": 2,
+          "ending_hook": 2,
+          "continuity": 2,
+          "ai_voice_risk": 5,
+          "paying_intent": 2,
+          "continue_intent": 2
+        },
+        "severity_labels": ["negative"],
+        "continue_probability": 0.24,
+        "pay_probability": 0.08,
+        "risk_flags": ["contains_ai_voice"],
+        "evidence_spans": ["句子看似完整，但缺少可验证动作", "模板化"],
+        "recommendation": "use_for_calibration_only",
+        "uncertainty": "medium"
+      }
+    }
+  ],
+  "guardrails": {
+    "human_editor_is_authoritative": true,
+    "simulator_cannot_gate_publish": true,
+    "simulator_cannot_override_human_label": true,
+    "simulator_must_return_evidence_spans": true,
+    "simulator_must_mark_uncertainty": true
+  }
+}

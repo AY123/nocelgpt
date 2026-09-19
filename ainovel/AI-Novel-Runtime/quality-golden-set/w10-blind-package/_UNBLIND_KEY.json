@@ -1,0 +1,490 @@
+{
+  "kind": "w10_blind_unblind_key",
+  "warning": "Do NOT open before recording human winners.",
+  "map": {
+    "QGS-00001": {
+      "bound_chapter_id": "TASK-00020",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 9.2779,
+          "chars": 3884
+        },
+        "automatic_revision": {
+          "out_of_band": 2,
+          "in_band": 8,
+          "defect_distance": 0.4,
+          "chars": 3512
+        },
+        "defect_distance_delta": -8.8779,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00002": {
+      "bound_chapter_id": "TASK-00001",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 5.42,
+          "chars": 5457
+        },
+        "automatic_revision": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 3.84,
+          "chars": 5646
+        },
+        "defect_distance_delta": -1.58,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00003": {
+      "bound_chapter_id": "TASK-00013",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 6,
+          "in_band": 4,
+          "defect_distance": 5.7845,
+          "chars": 4189
+        },
+        "automatic_revision": {
+          "out_of_band": 1,
+          "in_band": 9,
+          "defect_distance": 1.0,
+          "chars": 3802
+        },
+        "defect_distance_delta": -4.7845,
+        "oob_delta": -5,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00004": {
+      "bound_chapter_id": "TASK-00007",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 8.1616,
+          "chars": 4414
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 3.17,
+          "chars": 4292
+        },
+        "defect_distance_delta": -4.9916,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00006": {
+      "bound_chapter_id": "TASK-00016",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 10.2839,
+          "chars": 3570
+        },
+        "automatic_revision": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 8.6431,
+          "chars": 3729
+        },
+        "defect_distance_delta": -1.6408,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00007": {
+      "bound_chapter_id": "TASK-00028",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 11.6262,
+          "chars": 3378
+        },
+        "automatic_revision": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 6.148,
+          "chars": 3372
+        },
+        "defect_distance_delta": -5.4782,
+        "oob_delta": -1,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00008": {
+      "bound_chapter_id": "TASK-00033",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 6.77,
+          "chars": 3617
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 4.53,
+          "chars": 3546
+        },
+        "defect_distance_delta": -2.24,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00009": {
+      "bound_chapter_id": "TASK-00011",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 5.56,
+          "chars": 4295
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 2.44,
+          "chars": 4167
+        },
+        "defect_distance_delta": -3.12,
+        "oob_delta": -1,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00010": {
+      "bound_chapter_id": "TASK-00023",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 11.99,
+          "chars": 3905
+        },
+        "automatic_revision": {
+          "out_of_band": 2,
+          "in_band": 8,
+          "defect_distance": 9.77,
+          "chars": 3811
+        },
+        "defect_distance_delta": -2.22,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00011": {
+      "bound_chapter_id": "TASK-00029",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 4.6962,
+          "chars": 3261
+        },
+        "automatic_revision": {
+          "out_of_band": 2,
+          "in_band": 8,
+          "defect_distance": 1.5799,
+          "chars": 2882
+        },
+        "defect_distance_delta": -3.1163,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00012": {
+      "bound_chapter_id": "TASK-00003",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 4.51,
+          "chars": 4080
+        },
+        "automatic_revision": {
+          "out_of_band": 1,
+          "in_band": 9,
+          "defect_distance": 2.34,
+          "chars": 3819
+        },
+        "defect_distance_delta": -2.17,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00013": {
+      "bound_chapter_id": "TASK-00017",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 1.66,
+          "chars": 4715
+        },
+        "automatic_revision": {
+          "out_of_band": 1,
+          "in_band": 9,
+          "defect_distance": 0.64,
+          "chars": 4668
+        },
+        "defect_distance_delta": -1.02,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00014": {
+      "bound_chapter_id": "TASK-00018",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 3.28,
+          "chars": 4248
+        },
+        "automatic_revision": {
+          "out_of_band": 1,
+          "in_band": 9,
+          "defect_distance": 0.41,
+          "chars": 4004
+        },
+        "defect_distance_delta": -2.87,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00018": {
+      "bound_chapter_id": "TASK-00002",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 9.9512,
+          "chars": 3999
+        },
+        "automatic_revision": {
+          "out_of_band": 5,
+          "in_band": 5,
+          "defect_distance": 7.0964,
+          "chars": 3849
+        },
+        "defect_distance_delta": -2.8548,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00019": {
+      "bound_chapter_id": "TASK-00005",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 9.9265,
+          "chars": 5122
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 0.399,
+          "chars": 4138
+        },
+        "defect_distance_delta": -9.5275,
+        "oob_delta": -1,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00020": {
+      "bound_chapter_id": "TASK-00008",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 7.078,
+          "chars": 4726
+        },
+        "automatic_revision": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 3.973,
+          "chars": 4551
+        },
+        "defect_distance_delta": -3.105,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00021": {
+      "bound_chapter_id": "TASK-00009",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 8.0523,
+          "chars": 4384
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 1.44,
+          "chars": 4163
+        },
+        "defect_distance_delta": -6.6123,
+        "oob_delta": -1,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00024": {
+      "bound_chapter_id": "TASK-00025",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 4,
+          "in_band": 6,
+          "defect_distance": 3.44,
+          "chars": 4265
+        },
+        "automatic_revision": {
+          "out_of_band": 2,
+          "in_band": 8,
+          "defect_distance": 0.52,
+          "chars": 3842
+        },
+        "defect_distance_delta": -2.92,
+        "oob_delta": -2,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00026": {
+      "bound_chapter_id": "TASK-00004",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 10.62,
+          "chars": 4508
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 4.01,
+          "chars": 4072
+        },
+        "defect_distance_delta": -6.61,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00027": {
+      "bound_chapter_id": "TASK-00015",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 3.24,
+          "chars": 3934
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 1.02,
+          "chars": 3886
+        },
+        "defect_distance_delta": -2.22,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00028": {
+      "bound_chapter_id": "TASK-00019",
+      "version_A": "original",
+      "version_B": "automatic_revision",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 8.72,
+          "chars": 3644
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 6.57,
+          "chars": 3525
+        },
+        "defect_distance_delta": -2.15,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    },
+    "QGS-00033": {
+      "bound_chapter_id": "TASK-00024",
+      "version_A": "automatic_revision",
+      "version_B": "original",
+      "advisory_instrument_delta": {
+        "original": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 6.23,
+          "chars": 3545
+        },
+        "automatic_revision": {
+          "out_of_band": 3,
+          "in_band": 7,
+          "defect_distance": 2.71,
+          "chars": 3297
+        },
+        "defect_distance_delta": -3.52,
+        "oob_delta": 0,
+        "note": "ADVISORY ONLY — deterministic instrument reading, NOT the blind winner. Negative deltas mean the auto arm moved toward the market band. The LLM judge is known-biased and is deliberately NOT used to pick winners here."
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "blocked_dimensions": [
+    "ai_voice_risk",
+    "chapter_goal",
+    "character_motivation",
+    "continuity",
+    "emotion_flow",
+    "ending_hook",
+    "information_density",
+    "payoff_delivery"
+  ],
+  "consumption_rules": {
+    "decision_may_gate_with_human_authorization": true,
+    "decision_may_sort": true,
+    "diagnostic_may_not_gate_alone": true,
+    "publish_requires_human": true,
+    "unreliable_disabled": true
+  },
+  "content_hash": "1b550eaf813671d3be8634cd699876491bcfbd6c7f62a9b4e4984da5780f1050",
+  "decision_dimensions": [
+    "conflict_progression",
+    "continue_intent",
+    "opening_hook",
+    "paying_intent"
+  ],
+  "diagnostic_dimensions": [
+    "ai_voice_risk",
+    "chapter_goal",
+    "character_motivation",
+    "continuity",
+    "emotion_flow",
+    "ending_hook",
+    "information_density",
+    "payoff_delivery"
+  ],
+  "kind": "n100_selection_consumer_policy",
+  "project_root": "/Users/angyang/Documents/xiaoshuo/AINovel",
+  "status": "complete_with_skeleton_seeds",
+  "trusted_dimensions": [
+    "chapter_goal",
+    "character_motivation",
+    "conflict_progression",
+    "continue_intent",
+    "continuity",
+    "emotion_flow",
+    "ending_hook",
+    "information_density",
+    "opening_hook",
+    "paying_intent",
+    "payoff_delivery"
+  ],
+  "unreliable_dimensions": [],
+  "version": "1.0"
+}

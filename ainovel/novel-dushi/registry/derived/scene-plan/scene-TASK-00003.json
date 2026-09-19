@@ -1,0 +1,91 @@
+{
+  "artifact_format": "1.0",
+  "kind": "scene_plan",
+  "chapter_no": 3,
+  "task_id": "TASK-00003",
+  "outline_ref": "OUTLINE-00001",
+  "ir_ref": "ir-TASK-00003",
+  "scenes": [
+    {
+      "index": 1,
+      "beat": "setup",
+      "purpose": "抓住对手的破绽完成第一次翻身打脸",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "读者了解本章处境：抓住对手的破绽完成第一次翻身打脸",
+      "reader_question": "本章目标能否达成：抓住对手的破绽完成第一次翻身打脸？",
+      "emotion": {
+        "valence": 35,
+        "tone": "铺垫"
+      }
+    },
+    {
+      "index": 2,
+      "beat": "escalation",
+      "purpose": "升级：压力加码，把冲突推向临界",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "新的压力浮现：冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "reader_question": "局面还会更糟吗？",
+      "emotion": {
+        "valence": 55,
+        "tone": "紧张"
+      }
+    },
+    {
+      "index": 3,
+      "beat": "turn",
+      "purpose": "转折：局面反转或主角做出关键选择",
+      "participants": [
+        "CHR-90001"
+      ],
+      "turn": "冲突在本章反转，主角实现打脸翻身，赌注较上一章明显抬高",
+      "information_gain": "局势因反转而改变",
+      "reader_question": "反转之后会怎样？",
+      "emotion": {
+        "valence": 70,
+        "tone": "转机"
+      }
+    },
+    {
+      "index": 4,
+      "beat": "reward",
+      "purpose": "兑现：交付本章的爽点/成长回报",
+      "participants": [
+        "CHR-90001"
+      ],
+      "turn": "打脸权贵",
+      "information_gain": "承诺兑现：打脸权贵",
+      "emotion": {
+        "valence": 85,
+        "tone": "爽快"
+      }
+    },
+    {
+      "index": 5,
+      "beat": "exit_hook",
+      "purpose": "收尾钩子：留下让读者追更的悬念",
+      "exit_hook": "打脸成功，却因锋芒毕露引来更强者的注意",
+      "reader_question": "打脸成功，却因锋芒毕露引来更强者的注意",
+      "emotion": {
+        "valence": 75,
+        "tone": "悬念"
+      }
+    }
+  ],
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90006@v1",
+      "EVT-90005@v1",
+      "EVT-90007@v1",
+      "TML-90001@v1",
+      "EVT-90004@v1",
+      "EVT-90008@v1"
+    ],
+    "source_version": 4
+  },
+  "content_hash": "sha256:9231ff4443873f7f95840e24c9e519bd28f12e829882363def230a9ed1675a4c"
+}

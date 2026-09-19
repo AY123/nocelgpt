@@ -1,0 +1,110 @@
+{
+  "$id": "anes:phase-1:Event",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "A story-world occurrence positioned on a timeline.",
+  "properties": {
+    "causes": {
+      "description": "events that causally precede this one (causality DAG edges)",
+      "items": {
+        "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:EVT)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "certainty": {
+      "default": "canon",
+      "enum": [
+        "canon",
+        "provisional",
+        "contested"
+      ],
+      "type": "string"
+    },
+    "duration": {
+      "description": "span of the event, e.g. 'instant', '3 days'",
+      "type": "string"
+    },
+    "effects": {
+      "description": "events this one causally leads to",
+      "items": {
+        "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:EVT)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "fact_version": {
+      "description": "Registry version of this record",
+      "minimum": 1,
+      "type": "integer"
+    },
+    "id": {
+      "description": "permanent immutable identifier",
+      "pattern": "^EVT-\\d{5,}$",
+      "type": "string"
+    },
+    "locations": {
+      "description": "where the event takes place",
+      "items": {
+        "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "name": {
+      "description": "mutable human label",
+      "type": "string"
+    },
+    "notes": {
+      "description": "free-text authoring notes; not a resolution source",
+      "type": "string"
+    },
+    "participants": {
+      "description": "entities involved in the event",
+      "items": {
+        "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:CHR|FAC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "sequence_index": {
+      "description": "ordering position when the timeline is relative",
+      "minimum": 0,
+      "type": "integer"
+    },
+    "status": {
+      "default": "active",
+      "description": "lifecycle state",
+      "enum": [
+        "active",
+        "deprecated",
+        "tombstoned"
+      ],
+      "type": "string"
+    },
+    "summary": {
+      "description": "factual statement of what occurred; NOT an interpretation (ADR-006)",
+      "type": "string"
+    },
+    "timeline": {
+      "description": "the time axis this event sits on",
+      "pattern": "^(?:[a-z0-9-]{1,32}:)?(?:TML)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$",
+      "type": "string"
+    },
+    "when_absolute": {
+      "description": "date token (in-world-date)",
+      "type": "string"
+    }
+  },
+  "required": [
+    "fact_version",
+    "id",
+    "name",
+    "timeline"
+  ],
+  "title": "Event",
+  "type": "object",
+  "x-anes-generated": "DO NOT EDIT — generated from event.idl.yaml by tools/idl_to_jsonschema.py",
+  "x-anes-idl-version": "1.0",
+  "x-anes-type-code": "EVT"
+}

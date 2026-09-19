@@ -1,0 +1,187 @@
+ANovel V2
+ANovel V2 Engineering Roadmap, Governance & Certification
+从零重建实施顺序、架构治理、测试认证与阶段 DoD
+
+文档编号
+D09
+版本
+v1.0
+状态
+Architecture Baseline
+基准日期
+2026-09-15
+定位
+ANovel V2 前期规划 / 架构建设基线
+
+原则：代码可以从零开始，认知、证据和失败经验不能从零开始。
+
+1. 总原则：先证明生产真值，再扩功能
+V2 第一阶段绝不复制 V1 的“模块数量驱动”。开发顺序必须从 Domain/State/Contract/Workflow 向上生长，直到单章事务闭环和双 Genre 隔离通过认证，才允许扩大 Agent、UI、Corpus 和商业预测。
+2. L0–L9 推荐架构层
+层
+名称
+核心职责
+L0
+Product / Market
+平台、用户、商业目标、ReaderSignal 定义
+L1
+Genre Intelligence
+Ontology/Pack/Constitution/Fusion/Trend mapping
+L2
+Narrative Domain
+Character/World/Relation/Knowledge/Promise/Genre extensions
+L3
+Canonical State
+Event/Snapshot/ChangeSet/Commit/Provenance
+L4
+Planning & Contracts
+Series/Volume/Arc/Chapter/Scene plan & contract
+L5
+Context & Intelligence
+Context Compiler + stateless model workers
+L6
+Workflow & Production
+durable stage graph, budget, resume, idempotency
+L7
+Quality & Repair
+Q0–Q8, originality, patch-first repair, human gates
+L8
+Corpus / Evaluation / Learning
+reference/corpus evidence, golden set, calibration
+L9
+Platform / Reader / Market
+publishing package, reader signal, commercial feedback
+
+3. Milestone Roadmap
+Milestone
+交付
+禁止提前
+M0 Architecture Freeze
+D00–D09 + ADR + repo skeleton
+正文 Agent 大开发
+M1 Genre Kernel
+Urban + Fantasy Pack/Constitution/Certification
+支持十几个 Genre
+M2 Canon Kernel
+Core Domain/Event/Snapshot/ChangeSet/Commit
+复杂商业评分
+M3 One-Chapter Transaction
+Contract→Context→Draft→Validate→Commit
+100章 Scheduler
+M4 10-Chapter Run
+状态回流、Knowledge/Promise、Kill/Resume
+大规模 Corpus
+M5 30-Chapter Dual-Genre
+都市30 + 玄幻30；0重大硬错误
+漂亮 Studio/复杂 Persona
+M6 Quality Calibration
+Golden Set、Pairwise、Human blind review
+自动无限修订
+M7 100-Chapter Durable Run
+Long Arc、cost/resume/trend
+百万字宣传
+M8 Reference/Corpus Productionization
+多参考 Evidence 改善 Genesis
+参考原文直接喂 Writer
+M9 Market Loop
+真实上架/ReaderSignal/校准
+把模拟分当真实收益
+
+4. 首批 ADR
+ADR
+决策
+ADR-001
+Greenfield V2 + Selective Migration
+ADR-002
+Genre Intelligence 为基础域
+ADR-003
+Draft != Canon；仅 accepted exact body 可 Commit
+ADR-004
+Core Canon + Genre Extension
+ADR-005
+多入口、单 GenesisSpec 内核
+ADR-006
+Production Fail-Closed
+ADR-007
+Workers 尽量 Stateless；State 在持久层
+ADR-008
+Workflow Graph = actual executor
+ADR-009
+Patch-first Repair
+ADR-010
+LLM Judge 不是最终真值
+ADR-011
+Market trends versioned snapshot
+ADR-012
+Reference Evidence 无 Canon 权限
+
+5. Repo Skeleton
+anovel-v2/├─ domain/├─ genre/├─ canon/├─ contracts/├─ planning/├─ context/├─ intelligence/├─ workflow/├─ quality/├─ corpus/├─ evaluation/├─ infrastructure/├─ api/ cli/ studio/├─ tests/fixtures/certification/├─ docs/adr/└─ tools/
+6. Architecture Governance Checklist
+每个新模块必须回答
+要求
+属于哪个 Domain？
+不能用“工具类/杂项”长期逃避归属
+谁拥有 State？
+必须唯一明确
+输入/输出 Contract？
+必须版本化且可验证
+失败语义？
+BLOCK/RETRY/WARN/DEFER 明确
+是否改变 Canon？
+若是必须经过 Commit API
+是否真的需要 Agent？
+优先普通函数/规则/Worker
+是否已有能力可扩展？
+禁止平行 Schema/平行 State
+如何测试？
+至少 unit + contract + certification/regression
+
+7. CI 最小门禁
+format/lint/type/unit tests。
+schema/contract compatibility。
+architecture dependency guard。
+secret scanning + dependency/security scanning。
+Genre certification suite。
+Canon transaction/invariant tests。
+deterministic integration fixtures。
+resume/idempotency/budget tests。
+originality/reference firewall tests。
+8. Run Fingerprint
+run_fingerprint = SHA256( code_version + schema_hash + genre_pack_hash + story_bible_hash + canon_snapshot_hash + prompt_hash + model_spec + sampling_spec + workflow_version + quality_policy + feature_flags)
+9. 30章出口标准
+维度
+必须满足
+Genre
+Urban / Fantasy cross-contamination = 0 major
+Canon
+身份/时间/世界硬事实重大冲突 = 0
+Commit
+废稿、失败稿、修订前稿不污染 Canon
+Resume
+随机 kill ≥5 次恢复成功且不重复 side effect
+Evidence
+每章 body/contract/context/validation/changeset/receipt 可追溯
+Quality
+关键章人工复盘可接受；代理分不作为唯一结论
+
+10. 100章出口标准
+后 50 章相对前 50 章不存在持续性质量坍塌。
+Major unresolved promise/continuity violations 在阈值内且均可解释。
+成本/重试/缓存/人工干预分钟数可报告。
+事实回流确实改变下一章 Contract/Context，而不是只写数据库无人消费。
+同一 run 可重放核心决策链，版本漂移被明确阻断。
+11. 项目管理原则
+README 只做事实入口；Roadmap 只做计划；ADR 记录不可逆/高成本决策。
+“完成”必须绑定可执行测试/真实消费者/运行证据。
+任何市场/模型相关假设必须注明时间、样本和校准状态。
+每个 Sprint 结束必须删除或归档无消费者原型，防止长期腐化。
+12. 开工顺序（推荐）
+建立新仓与 CI/secret scan/architecture guard。
+实现 Genre Ontology + Urban/Fantasy Pack skeleton。
+实现 Canon core + event/snapshot + transaction API。
+实现 Chapter/Scene Contract 与 frozen ContextArtifact。
+接入单一 Writer/Extractor/Validator，不做多 Agent。
+完成 1 章→10 章→30 章双 Genre 认证。
+再引入多模型、Repair、Human calibration。
+最后扩 Reference/Corpus、100章、平台反馈。

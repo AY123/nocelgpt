@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 1,
+    "chapter_goal": 1,
+    "conflict_progression": 2,
+    "character_motivation": 1,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 1,
+    "conflict_progression": 2,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 2
+  },
+  "editor_a_note": "开篇缺乏钩子，主角无目标，节奏松散，无冲突推进，结尾无悬念，整体缺乏付费和追读动力。",
+  "editor_b_note": "章节缺乏明确目标和冲突推进，节奏松散，读者获得感不足，AI腔调明显。",
+  "consensus_scores": {
+    "opening_hook": 2,
+    "chapter_goal": 1,
+    "conflict_progression": 2,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 2,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 2
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

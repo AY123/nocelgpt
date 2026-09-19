@@ -1,0 +1,35 @@
+{
+  "kind": "n100_golden_three_review",
+  "version": "1.0",
+  "book_id": "GENESIS-PILOT-001",
+  "outline_id": "OUTLINE-00001",
+  "review_subject": "final-outline.json",
+  "review_mode": "structure_review",
+  "reviewers": [
+    {
+      "candidate_id": "CANDIDATE-A",
+      "score": 7,
+      "risk_level": "medium",
+      "summary": "clear commercial direction, but needs concrete act/volume breakdown and originality assurance"
+    },
+    {
+      "candidate_id": "CANDIDATE-B",
+      "score": 8,
+      "risk_level": "low",
+      "summary": "clear commercial direction and low originality risk; best fit for the final outline"
+    },
+    {
+      "candidate_id": "CANDIDATE-C",
+      "score": 8,
+      "risk_level": "low",
+      "summary": "same score as B, but not selected in the synthesis output"
+    }
+  ],
+  "selected_candidate": "CANDIDATE-B",
+  "adjudication": {
+    "status": "approved",
+    "reason": "selected candidate has low risk and clear commercial direction; outline contains concrete act/volume structure",
+    "confidence": "high"
+  },
+  "content_hash": "b7c4a0d32b18b8f6a2be7a7cf1f4a2d19c7e2f9f95d9d5ab0f8d5f4c9e8a1b2c"
+}

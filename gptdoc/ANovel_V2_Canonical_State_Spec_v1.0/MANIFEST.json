@@ -1,0 +1,45 @@
+{
+  "package": "ANovel V2 Canonical State Specification v1.0",
+  "files": [
+    {
+      "name": "CANONICAL_STATE_SPEC.md",
+      "sha256": "d114d6fb4a666e6e0d048a22d6d48577cdc59bc933c7d819bb9f2bd9da2ffbcc"
+    },
+    {
+      "name": "canon-event.schema.json",
+      "sha256": "9feedb127cc3ebc16867d63ee0483b77ced7f3cd28ab0dcfa18653a9151ba19b"
+    },
+    {
+      "name": "canon-snapshot.schema.json",
+      "sha256": "ee6105b94f4ea05167fa42287943706f20e2deab0b7eca4bcc5d0d4caa14d680"
+    },
+    {
+      "name": "change-set.schema.json",
+      "sha256": "eed617378231317dcae65486cf413ff6925bd717e98bd255072f6f7f1b7bc929"
+    },
+    {
+      "name": "commit-permit.schema.json",
+      "sha256": "3f9f4f04ccefc6941999d1d89de1db54247ed2bab776926a011eb351ab19de7d"
+    },
+    {
+      "name": "canon-commit.schema.json",
+      "sha256": "4bcbb33e3deea1737feadc06847604fbc569b7ebf91878cd1232f242f3c7a13f"
+    },
+    {
+      "name": "canon-transaction.schema.json",
+      "sha256": "05869dccf4f365ed255fe3ea8f919fc617de9d42b6071117b0b77f63ead34a9a"
+    },
+    {
+      "name": "retcon-request.schema.json",
+      "sha256": "b164722c6879d74b7cc2daf3ec72908fbc438f7da2e3ed55ebf76fe89e785ca5"
+    },
+    {
+      "name": "canon-commit-policy.yaml",
+      "sha256": "89e69ee2f9f4a28ab70b82b22607f38edd2bfb74ef0e88e9671c67b4a1f7ac2b"
+    },
+    {
+      "name": "canon-test-matrix.yaml",
+      "sha256": "f4100ead035c18b3f873e7fb090f39e174bd9b47f398825bd06429eb2568693e"
+    }
+  ]
+}

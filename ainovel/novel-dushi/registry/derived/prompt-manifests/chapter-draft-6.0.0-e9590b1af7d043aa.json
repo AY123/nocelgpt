@@ -1,0 +1,64 @@
+{
+  "artifact_format": "1.0",
+  "content_hash": "sha256:e9590b1af7d043aa2b981592a4e424535811729a31f26266ecd185fcd6cb3013",
+  "id": "chapter-draft-6.0.0-e9590b1af7d043aa",
+  "kind": "prompt-manifest",
+  "manifest": {
+    "binding_hash": "sha256:35115a739278d90987c422b83d98f9cbca40863e862f2b1c59bc7822ced385d5",
+    "cache_hit": false,
+    "capability": "ChapterDraft",
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90026@v1",
+      "EVT-90025@v1",
+      "EVT-90027@v1",
+      "TML-90001@v1",
+      "EVT-90024@v1",
+      "EVT-90028@v1"
+    ],
+    "package_hash": "sha256:d3ae2c404c4d41a98a5130e1e619650af8bc7e40247f3d0767650d88d298d4d5",
+    "prompt_id": "chapter-draft",
+    "rendered_at": "2026-09-09T01:01:50.472583+00:00",
+    "rendered_hash": "sha256:e9590b1af7d043aa2b981592a4e424535811729a31f26266ecd185fcd6cb3013",
+    "renderer_version": "1.0.0",
+    "replay_ref": null,
+    "route_summary": {
+      "constraint_pack_id": null,
+      "metadata": {
+        "constraint_directives": [],
+        "failure_pack_map": {
+          "ai-tell": "deepseek-v13",
+          "dash-aside": "deepseek-v13",
+          "dialogue": "gpt-v13",
+          "em-dash": "deepseek-v13",
+          "length": "gpt-v13",
+          "opening variety": "deepseek-v13"
+        },
+        "known_failure_mode": null,
+        "profile_found": false,
+        "target_style": null,
+        "task_type": "ChapterDraft"
+      },
+      "model_id": "claude-fable-5",
+      "prompt_version": "6.0.0",
+      "provider": "claude",
+      "rationale": "task=ChapterDraft"
+    },
+    "source_version": 4,
+    "template_hash": "sha256:3bc77f915851bc4d507646f32b7c68512c287521915c9314547bbe0a0d16aca2",
+    "version": "6.0.0"
+  },
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90026@v1",
+      "EVT-90025@v1",
+      "EVT-90027@v1",
+      "TML-90001@v1",
+      "EVT-90024@v1",
+      "EVT-90028@v1"
+    ],
+    "package_hash": "sha256:d3ae2c404c4d41a98a5130e1e619650af8bc7e40247f3d0767650d88d298d4d5",
+    "source_version": 4
+  }
+}

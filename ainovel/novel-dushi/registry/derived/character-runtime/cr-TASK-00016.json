@@ -1,0 +1,55 @@
+{
+  "artifact_format": "1.0",
+  "kind": "character_runtime",
+  "chapter_no": 16,
+  "task_id": "TASK-00016",
+  "up_to_event": "EVT-90018",
+  "outline_ref": "OUTLINE-00001",
+  "leads": [
+    {
+      "character_id": "CHR-90001",
+      "name": "未命名主角",
+      "goal": "在商业世界证明自己，改写前世失败命运",
+      "growth_stage": "transformed",
+      "next_likely_action": "在“眼前的生存威胁，逼主角用出金手指”的压力下，继续为“在商业世界证明自己，改写前世失败命运”采取行动",
+      "role": "protagonist",
+      "pressure": "眼前的生存威胁，逼主角用出金手指",
+      "fear": "过度自信，容易忽视人际关系",
+      "emotion": "沉着中透着戒备，压力下仍能自持",
+      "belief": "坚信“在商业世界证明自己，改写前世失败命运”值得付出一切代价",
+      "value": "在“在商业世界证明自己，改写前世失败命运”与“过度自信，容易忽视人际关系”之间，选择前者时最见其底线",
+      "decision_policy": "已能直面“过度自信，容易忽视人际关系”，压力下迎难而上",
+      "appears_in": [
+        "EVT-90004",
+        "EVT-90005",
+        "EVT-90006",
+        "EVT-90007",
+        "EVT-90008",
+        "EVT-90009",
+        "EVT-90010",
+        "EVT-90011",
+        "EVT-90012",
+        "EVT-90013",
+        "EVT-90014",
+        "EVT-90015",
+        "EVT-90016",
+        "EVT-90017",
+        "EVT-90018"
+      ],
+      "last_event": "EVT-90018"
+    }
+  ],
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90019@v1",
+      "EVT-90018@v1",
+      "EVT-90020@v1",
+      "TML-90001@v1",
+      "EVT-90017@v1",
+      "EVT-90021@v1"
+    ],
+    "source_version": 4
+  },
+  "content_hash": "sha256:600600f2f253501e087a6d9daf6b9e555f49a47b6bd33c6bfe8c000eec45dd77"
+}

@@ -1,0 +1,77 @@
+{
+  "artifact_format": "1.0",
+  "kind": "scene_plan",
+  "chapter_no": 13,
+  "task_id": "TASK-00013",
+  "outline_ref": "OUTLINE-00001",
+  "ir_ref": "ir-TASK-00013",
+  "scenes": [
+    {
+      "index": 1,
+      "beat": "setup",
+      "purpose": "在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制操盘手年入百万阶段的阶段boss，为下一步争取喘息与筹码，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "读者了解本章处境：在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制操盘手年入百万阶段的阶段boss，为下一步争取喘息与筹码，向「在商业世界证明自己，改写前世失败命运」再逼近一步",
+      "reader_question": "本章目标能否达成：在掌控一片地图/资源的势力，卡住主角上升通道下以牵制推进：牵制操盘手年入百万阶段的阶段boss，为下一步争取喘息与筹码，向「在商业世界证明自己，改写前世失败命运」再逼近一步？",
+      "emotion": {
+        "valence": 35,
+        "tone": "铺垫"
+      }
+    },
+    {
+      "index": 2,
+      "beat": "escalation",
+      "purpose": "升级：压力加码，把冲突推向临界",
+      "participants": [
+        "CHR-90001"
+      ],
+      "information_gain": "新的压力浮现：对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "reader_question": "局面还会更糟吗？",
+      "emotion": {
+        "valence": 55,
+        "tone": "紧张"
+      }
+    },
+    {
+      "index": 3,
+      "beat": "turn",
+      "purpose": "转折：局面反转或主角做出关键选择",
+      "participants": [
+        "CHR-90001"
+      ],
+      "turn": "对手进逼、时间收窄，冲突较上一章升级且更难回头",
+      "information_gain": "局势因反转而改变",
+      "reader_question": "反转之后会怎样？",
+      "emotion": {
+        "valence": 70,
+        "tone": "转机"
+      }
+    },
+    {
+      "index": 4,
+      "beat": "exit_hook",
+      "purpose": "收尾钩子：留下让读者追更的悬念",
+      "exit_hook": "第13章结尾，操盘手年入百万阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "reader_question": "第13章结尾，操盘手年入百万阶段的阶段boss的反制骤然逼近，抛出新的威胁悬念",
+      "emotion": {
+        "valence": 75,
+        "tone": "悬念"
+      }
+    }
+  ],
+  "provenance": {
+    "derived_from": [
+      "CHR-90001@v1",
+      "EVT-90016@v1",
+      "EVT-90015@v1",
+      "EVT-90017@v1",
+      "TML-90001@v1",
+      "EVT-90014@v1",
+      "EVT-90018@v1"
+    ],
+    "source_version": 4
+  },
+  "content_hash": "sha256:55ac9a76137c92c940f0ad6a1de49a8ff09340fd87e4c7b4f8cfa4f58b1f108e"
+}

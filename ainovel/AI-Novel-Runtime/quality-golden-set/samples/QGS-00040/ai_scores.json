@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 3,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 3,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "editor_a_note": "内心独白和重复信息严重拖慢节奏，缺乏有效钩子和冲突推进，付费与追读意愿低。",
+  "editor_b_note": "内心独白和重复信息严重拖累节奏，事件推进不足，需精简并强化冲突与钩子。",
+  "consensus_scores": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 3,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

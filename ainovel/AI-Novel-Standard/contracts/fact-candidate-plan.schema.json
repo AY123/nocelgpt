@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:fact-candidate-plan:1.0",
+  "title": "FactCandidatePlan",
+  "description": "The PROSE-TO-FACT candidate plan (roadmap Phase 5, Fact Candidate Pipeline). A serial novel grows facts as it is written: chapter prose reveals a character's new ability, a location, an age — knowledge the authored Registry does not yet hold. Without a channel back, the fact layer (and every projection folded from it: Character Runtime, Story State, Timeline) drifts behind the prose over a long serial. This artifact is the PREPARATION half of the closed loop: it EXTRACTS candidate facts from a produced ChapterDraft (a derived prose artifact) and RECONCILES each against the current Registry, classifying it as new / additive / consistent / conflicting / unverifiable. It is written to registry/derived/fact-candidates/, NEVER to registry/facts/ (a candidate is not yet a fact, ADR-006). Extraction is generative/evaluative (a model reads prose) and NEVER gates; reconciliation-classification is DETERMINISTIC (a candidate value either matches, extends, contradicts, or cannot be compared against a declared fact). The plan MUST NOT auto-resolve a conflict: a contradiction between prose and an existing fact is surfaced for a human to judge (prose typo? retcon? new fact superseding old?), because auto-overwriting the SSOT from inference is exactly the rot ADR-006 forbids. Two structural invariants: `gating` const false — a candidate plan NEVER blocks a build (ADR-003); and `authority` const human — minting a candidate into registry/facts/ is an irreversible SSOT transition, so the system may prepare/stage but only a human authorizes the mint (ADR-009). This schema deliberately stops at the boundary: it stages candidates; the mint executor (which writes facts and bumps fact_version) and the derived recompute it triggers are SEPARATE workflows, described in `next_workflow` but not performed here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "version", "authority", "gating", "review_status", "policy", "source", "reconciled_against", "items"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^FCP-\\d{5,}$" },
+    "kind": { "type": "string", "const": "fact_candidate_plan" },
+    "version": { "type": "string" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): promoting a candidate into registry/facts/ is an irreversible SSOT transition. The system prepares and stages this plan; only a human authorizes the mint. The plan's mere existence is never consent."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a candidate plan NEVER blocks a build. Extraction is a model reading prose (evaluative); the deterministic reconciliation only classifies, it does not gate."
+    },
+    "review_status": {
+      "type": "string",
+      "const": "needs_human_review",
+      "description": "Mirrors runtime/outline/import_plan.py: a staged plan is inert until a human reviews it. Only value permitted at stage time."
+    },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["writes_registry_facts", "requires_human_approval", "requires_id_mint_review"],
+      "properties": {
+        "writes_registry_facts": {
+          "type": "boolean",
+          "const": false,
+          "description": "Structural invariant: staging a candidate plan writes ONLY a derived artifact, never registry/facts/. Enforced by an architecture-fitness guard on the candidates subdomain."
+        },
+        "requires_human_approval": { "type": "boolean", "const": true },
+        "requires_id_mint_review": {
+          "type": "boolean",
+          "const": true,
+          "description": "A `new` candidate needs a real minted ID (the temporary CAND-* id is not an SSOT id); minting is a separate human-authorized workflow paired with the ID Mint Ledger."
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "description": "The produced prose this plan extracted candidates FROM. Pinning the draft's content_hash makes the plan reproducible and lets a consumer detect that the prose it was extracted from has since changed.",
+      "additionalProperties": false,
+      "required": ["chapter_draft_id", "content_hash"],
+      "properties": {
+        "chapter_draft_id": { "type": "string", "description": "The ChapterDraft derived-artifact id (e.g. its task_id)." },
+        "content_hash": { "type": "string", "description": "The draft's content_hash at extraction time (sha256:...)." },
+        "extractor": {
+          "type": "string",
+          "description": "Which extractor produced the raw candidates: 'deterministic' (CI stub) or a model id. Extraction is evaluative; this records provenance, it does not gate."
+        }
+      }
+    },
+    "reconciled_against": {
+      "type": "array",
+      "description": "The fact pins (ID@vN) each candidate was deterministically classified against, at the Registry version this plan was staged at. This is the plan's own `derived_from`: if any of these facts advances before the plan is minted, the plan is STALE (runtime/derived.py) and must be re-run — you must not mint from a reconciliation computed against superseded facts.",
+      "items": { "type": "string", "pattern": "^[A-Z]+-\\d+@v\\d+$" }
+    },
+    "items": {
+      "type": "array",
+      "description": "One entry per candidate fact extracted from the prose, each carrying its deterministic reconciliation classification.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_id", "classification", "target_type", "field", "extracted_value", "evidence"],
+        "properties": {
+          "candidate_id": {
+            "type": "string",
+            "pattern": "^CAND-\\d{5,}$",
+            "description": "A TEMPORARY plan-local id. NOT an SSOT id — a `new` candidate gets a real minted id only when a human authorizes the mint (ADR-009 + ID Mint Ledger)."
+          },
+          "classification": {
+            "type": "string",
+            "enum": ["new", "additive", "consistent", "conflicting", "unverifiable"],
+            "description": "The DETERMINISTIC reconciliation verdict. new = no matching entity; additive = matches an entity, the field is currently empty (extends it, bumps fact_version); consistent = matches an entity and the value equals the declared fact (confirmation only, low signal); conflicting = matches an entity and the value CONTRADICTS the declared fact (NEVER auto-resolved — routed to a human); unverifiable = free text that cannot be deterministically compared to a declared fact (routed to a human)."
+          },
+          "target_type": { "type": "string", "description": "Entity type the candidate is about (Character, Event, WorldRule, ...), by catalog." },
+          "matched_entity_id": {
+            "type": "string",
+            "description": "For additive/consistent/conflicting: the existing fact id this candidate reconciles against. Absent for `new`."
+          },
+          "field": { "type": "string", "description": "The fact field the candidate asserts (e.g. physical_facts.eye_color, abilities)." },
+          "extracted_value": { "description": "The value the prose asserts (any JSON type)." },
+          "existing_value": { "description": "For additive/consistent/conflicting: the current declared value in facts (null/absent shows why `additive`). Present so a reviewer sees prose-vs-fact side by side." },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "description": "Extractor's confidence (evaluative, advisory). Never gates and never changes a deterministic classification; it only helps a human triage."
+          },
+          "evidence": {
+            "type": "string",
+            "description": "The prose span (a short quote) the candidate was extracted from. Grounds the reviewer's judgement — especially for a `conflicting` item, where they must decide prose-typo vs retcon vs new-fact-supersedes-old."
+          },
+          "reason": { "type": "string", "description": "Human-readable note on why this classification / why routed to review." }
+        }
+      }
+    },
+    "next_workflow": {
+      "type": "object",
+      "description": "What happens AFTER a human reviews this plan — described, never performed here (ADR-009 preparation/execution split). Records the boundary so no reader mistakes staging for minting.",
+      "additionalProperties": false,
+      "properties": {
+        "mint": { "type": "string", "description": "The human-authorized mint step: accepted new/additive candidates are written to registry/facts/ and fact_version is bumped. A separate workflow, paired with the ID Mint Ledger." },
+        "recompute": { "type": "string", "description": "After a mint, derived artifacts pinned to the changed facts go stale and must be recomputed. A separate workflow (Derived Recompute Engine)." }
+      }
+    },
+    "rationale": { "type": "string", "description": "Human-readable summary of what the plan found (counts per classification, notable conflicts)." }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "kind": "w12_semantic_ledger",
+  "version": "1.0",
+  "status": "draft",
+  "purpose": "Track long-form state across knowledge, ability, injury, items, relationship expectations, and promises.",
+  "ledgers": {
+    "knowledge": {
+      "fields": ["fact_id", "fact_text", "source_chapter", "confidence", "last_verified"]
+    },
+    "ability": {
+      "fields": ["ability_id", "ability_text", "acquired_in", "current_level", "constraints"]
+    },
+    "injury": {
+      "fields": ["injury_id", "injury_text", "source_chapter", "severity", "recovery_status"]
+    },
+    "items": {
+      "fields": ["item_id", "item_text", "owner", "status", "location"]
+    },
+    "relationship_expectation": {
+      "fields": ["relation_id", "relation_text", "parties", "expectation", "status"]
+    },
+    "promise": {
+      "fields": ["promise_id", "promise_text", "made_in", "due_by", "status"]
+    }
+  },
+  "conflict_detection": {
+    "enabled": true,
+    "outputs": ["conflict_flag", "conflict_type", "evidence"],
+    "conflict_types": ["knowledge", "ability", "injury", "items", "relationship_expectation", "promise"]
+  },
+  "next_actions": [
+    "mint approved facts into the ledgers",
+    "recompute ledger projections for the next chapter",
+    "detect and flag contradictions",
+    "carry the updated state forward into production"
+  ]
+}

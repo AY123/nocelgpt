@@ -1,0 +1,20 @@
+{
+  "kind": "w10_blind_review_batch_result",
+  "version": "1.0",
+  "batch_id": "W10-B02",
+  "status": "fillable_template",
+  "candidate_ids": ["QGS-00004", "QGS-00005", "QGS-00006"],
+  "order_blinded": [],
+  "versions": [
+    {"version_id": "original", "content_ref": null, "provenance_ref": null, "redacted": true},
+    {"version_id": "automatic_revision", "content_ref": null, "provenance_ref": null, "redacted": true},
+    {"version_id": "human_revision", "content_ref": null, "provenance_ref": null, "redacted": true}
+  ],
+  "review_notes": [],
+  "comparison_result": {
+    "winner": null,
+    "confidence": null,
+    "reason_codes": []
+  },
+  "next_action": "fill real blind-review payloads and reviewer notes"
+}

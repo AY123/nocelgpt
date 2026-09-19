@@ -1,0 +1,431 @@
+{
+  "kind": "w10_blind_review_comparison_results",
+  "version": "1.0",
+  "status": "aggregated",
+  "purpose": "Store blind-review outcomes for W10 version comparisons.",
+  "review_type": "two_way_original_vs_automatic",
+  "readiness_note": "human_revision arm absent -> only a two-way (original vs automatic_revision) blind review is runnable, over the 22/30 candidates whose auto arm differs. Blind packets: quality-golden-set/w10-blind-package/. Winners MUST be filled by a human (do_not_override_human_judgement).",
+  "advisory_instrument_caveat": "A deterministic advisory (in the unblind key) shows all 22 auto arms moved CLOSER to the market band. This is NOT evidence the auto arm reads better: closeness-to-band is exactly what the hygiene loop optimizes, so the reading is tautological. The known-biased LLM judge is deliberately NOT used to pick winners. Only the human blind result is the verdict.",
+  "batch_results": [
+    {
+      "batch_id": "W10-B01",
+      "candidate_ids": [
+        "QGS-00001",
+        "QGS-00002",
+        "QGS-00003"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B02",
+      "candidate_ids": [
+        "QGS-00004",
+        "QGS-00005",
+        "QGS-00006"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B03",
+      "candidate_ids": [
+        "QGS-00007",
+        "QGS-00008",
+        "QGS-00009"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B04",
+      "candidate_ids": [
+        "QGS-00010",
+        "QGS-00011",
+        "QGS-00012"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B05",
+      "candidate_ids": [
+        "QGS-00013",
+        "QGS-00014",
+        "QGS-00015"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B06",
+      "candidate_ids": [
+        "QGS-00016",
+        "QGS-00017",
+        "QGS-00018"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B07",
+      "candidate_ids": [
+        "QGS-00019",
+        "QGS-00020",
+        "QGS-00021"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B08",
+      "candidate_ids": [
+        "QGS-00022",
+        "QGS-00023",
+        "QGS-00024"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B09",
+      "candidate_ids": [
+        "QGS-00025",
+        "QGS-00026",
+        "QGS-00027"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    },
+    {
+      "batch_id": "W10-B10",
+      "candidate_ids": [
+        "QGS-00028",
+        "QGS-00029",
+        "QGS-00033"
+      ],
+      "reviewer_notes": [],
+      "comparison_result": {
+        "winner": null,
+        "confidence": null,
+        "reason_codes": []
+      }
+    }
+  ],
+  "result_schema": {
+    "winner": "original | automatic_revision | human_revision | tie",
+    "confidence": "low | medium | high",
+    "reason_codes": [
+      "improves_hook",
+      "improves_continuity",
+      "fixes_padding",
+      "fixes_ai_voice",
+      "fixes_conflict",
+      "introduces_regression",
+      "no_net_gain"
+    ]
+  },
+  "next_actions": [
+    "fill reviewer notes after each blind batch",
+    "select a winner for each batch",
+    "mark confidence and reason codes",
+    "aggregate batch results into the W10 decision record"
+  ],
+  "aggregate": {
+    "reviewed_count": 22,
+    "total_packets": 22,
+    "auto_wins": 8,
+    "original_wins": 14,
+    "ties": 0,
+    "regression_count": 0,
+    "net_win_rate": -0.2727,
+    "regression_rate": 0.0,
+    "decision": "disable",
+    "rationale": "净胜率 -27% 为负（auto 8 / orig 14），自动修订无净收益，默认链路禁用。"
+  },
+  "per_candidate": [
+    {
+      "candidate_id": "QGS-00001",
+      "batch_id": "W10-B01",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [
+        "improves_hook",
+        "improves_continuity",
+        "fixes_ai_voice"
+      ],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T18:07:06+08:00"
+    },
+    {
+      "candidate_id": "QGS-00002",
+      "batch_id": "W10-B01",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [
+        "improves_hook",
+        "improves_continuity"
+      ],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T18:13:02+08:00"
+    },
+    {
+      "candidate_id": "QGS-00003",
+      "batch_id": "W10-B01",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T18:14:32+08:00"
+    },
+    {
+      "candidate_id": "QGS-00004",
+      "batch_id": "W10-B02",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T18:23:34+08:00"
+    },
+    {
+      "candidate_id": "QGS-00006",
+      "batch_id": "W10-B02",
+      "blind_winner": "A",
+      "arm_winner": "original",
+      "confidence": "high",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T18:26:00+08:00"
+    },
+    {
+      "candidate_id": "QGS-00007",
+      "batch_id": "W10-B03",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T18:27:47+08:00"
+    },
+    {
+      "candidate_id": "QGS-00008",
+      "batch_id": "W10-B03",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:13:47+08:00"
+    },
+    {
+      "candidate_id": "QGS-00009",
+      "batch_id": "W10-B03",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:15:53+08:00"
+    },
+    {
+      "candidate_id": "QGS-00010",
+      "batch_id": "W10-B04",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:17:49+08:00"
+    },
+    {
+      "candidate_id": "QGS-00011",
+      "batch_id": "W10-B04",
+      "blind_winner": "A",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:18:45+08:00"
+    },
+    {
+      "candidate_id": "QGS-00012",
+      "batch_id": "W10-B04",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:20:35+08:00"
+    },
+    {
+      "candidate_id": "QGS-00013",
+      "batch_id": "W10-B05",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:20:55+08:00"
+    },
+    {
+      "candidate_id": "QGS-00014",
+      "batch_id": "W10-B05",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:02+08:00"
+    },
+    {
+      "candidate_id": "QGS-00018",
+      "batch_id": "W10-B06",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:08+08:00"
+    },
+    {
+      "candidate_id": "QGS-00019",
+      "batch_id": "W10-B07",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:13+08:00"
+    },
+    {
+      "candidate_id": "QGS-00020",
+      "batch_id": "W10-B07",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:17+08:00"
+    },
+    {
+      "candidate_id": "QGS-00021",
+      "batch_id": "W10-B07",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:21+08:00"
+    },
+    {
+      "candidate_id": "QGS-00024",
+      "batch_id": "W10-B08",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:24+08:00"
+    },
+    {
+      "candidate_id": "QGS-00026",
+      "batch_id": "W10-B09",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:28+08:00"
+    },
+    {
+      "candidate_id": "QGS-00027",
+      "batch_id": "W10-B09",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:31+08:00"
+    },
+    {
+      "candidate_id": "QGS-00028",
+      "batch_id": "W10-B10",
+      "blind_winner": "B",
+      "arm_winner": "automatic_revision",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:35+08:00"
+    },
+    {
+      "candidate_id": "QGS-00033",
+      "batch_id": "W10-B10",
+      "blind_winner": "B",
+      "arm_winner": "original",
+      "confidence": "medium",
+      "reason_codes": [],
+      "reviewer": "ayit",
+      "reviewed_at": "2026-07-24T21:21:39+08:00"
+    }
+  ],
+  "decision_record": {
+    "decision": "disable",
+    "rationale": "净胜率 -27% 为负（auto 8 / orig 14），自动修订无净收益，默认链路禁用。",
+    "aggregated_at": "2026-07-24T21:59:44+08:00"
+  },
+  "governance_decision": {
+    "authority": "human",
+    "adr": "ADR-009",
+    "decision": "restrict",
+    "supersedes_script_decision": "disable",
+    "rationale": "脚本确定性读数为 disable（净胜率 -27%）。但本次盲评为单评审者且 91%（20/22）偏 B 位，存在强位置偏好污染——负净胜率不能干净归因于自动修订更差，不足以支撑硬禁用。人类治理裁定收敛为 restrict：自动修订保持 opt-in（--hygiene / --hygiene-model），不进默认链路；不作为质量标准。质量真值的校准交给后续真实写作的生产信号（ReaderSignal）。",
+    "caveats": [
+      "single_reviewer",
+      "positional_bias_91pct_B",
+      "reason_codes_sparse_2of22",
+      "not_a_quality_standard"
+    ],
+    "decided_by": "ayit",
+    "decided_at": "2026-07-24T21:35:12+08:00"
+  }
+}

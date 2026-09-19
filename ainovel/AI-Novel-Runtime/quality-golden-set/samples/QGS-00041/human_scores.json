@@ -1,0 +1,35 @@
+{
+  "editor_a": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 2,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 2,
+    "ending_hook": 2,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 2,
+    "continue_intent": 2
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 2,
+    "continuity": 2,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 2
+  },
+  "consensus": "negative",
+  "disagreement_notes": [
+    "主问题为 padding，其他维度不作为主要判断依据。"
+  ],
+  "final_judgement": "use_for_calibration_only"
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "serial_checkpoint",
+  "version": "1.0",
+  "chapter_index": 10,
+  "chapter_id": "TASK-00010",
+  "event_id": "EVT-90013",
+  "draft_hash": "sha256:e1d76e1a237200a994f0b2393e5f8291f52f123cf60e1dd173fc1ee840caaacb",
+  "state_hash": "sha256:5eaea8ba9cfea174dd72786f7e751e231e3d0b336bfebe410f2aa3dc3eaacb4f",
+  "final_hash": "sha256:0a4e2ed4a351e7c968238a198e9ca90225d017cb3513a7f0a358cfa94e5b709c",
+  "verdict": null,
+  "commercial_verdict": null,
+  "quality_snapshot": {
+    "kind": "quality_snapshot",
+    "version": "1.0",
+    "chapter_id": "TASK-00010",
+    "warning_count": 0,
+    "length": {
+      "body_chars": 3531,
+      "nonspace_chars": 3370,
+      "line_count": 161,
+      "paragraph_count": 81,
+      "token_estimate": 1982
+    },
+    "language": {
+      "body_chars": 3531,
+      "ascii_word_count": 6,
+      "chinese_char_count": 2905,
+      "ascii_ratio": 0.0017804154302670622,
+      "chinese_ratio": 0.8620178041543026,
+      "long_ascii_run": false,
+      "english_dominant": false
+    },
+    "findings": []
+  },
+  "m7": {
+    "chapter_id": "TASK-00010",
+    "authority": "human",
+    "gates_build": true,
+    "recommendation": "recommend",
+    "risk_level": "L0",
+    "redline_passed": true,
+    "redline_hits": [],
+    "similarity": {
+      "overall_similarity": 0.3506,
+      "risk_level": "L0",
+      "matches": [
+        {
+          "source_id": "REF-00001",
+          "source_type": "reference_novel",
+          "similarity": 0.3506,
+          "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+          "risk_type": "semantic_overlap",
+          "aligned_spans": [],
+          "method": "ngram_containment"
+        }
+      ],
+      "suspicious_spans": [],
+      "embedding_similarity": 0.556,
+      "containment": 0.0424,
+      "reference_count": 1
+    },
+    "rationale": "未命中硬红线，原创性风险可接受。"
+  }
+}

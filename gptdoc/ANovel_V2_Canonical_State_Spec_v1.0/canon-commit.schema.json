@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/canon-commit.schema.json",
+  "title": "CanonCommit",
+  "type": "object",
+  "required": [
+    "commit_id",
+    "project_id",
+    "branch_id",
+    "parent_commit_id",
+    "sequence",
+    "source_artifact_id",
+    "source_text_hash",
+    "change_set_hash",
+    "permit_id",
+    "commit_hash",
+    "idempotency_key"
+  ],
+  "properties": {
+    "commit_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "branch_id": {
+      "type": "string"
+    },
+    "parent_commit_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "parent_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sequence": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "source_artifact_id": {
+      "type": "string"
+    },
+    "source_text_hash": {
+      "type": "string"
+    },
+    "change_set_hash": {
+      "type": "string"
+    },
+    "permit_id": {
+      "type": "string"
+    },
+    "commit_hash": {
+      "type": "string"
+    },
+    "idempotency_key": {
+      "type": "string"
+    },
+    "event_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

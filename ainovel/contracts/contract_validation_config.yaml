@@ -1,0 +1,64 @@
+# Contract Validation 配置文件
+# Task 3.1: Validator 去硬编码
+
+# 地点关键词映射
+# 格式: location_id -> [关键词列表]
+location_keywords:
+  loc_city_square:
+    - 广场
+    - 市中心
+    - 城市广场
+
+  loc_mysterious_ruins:
+    - 遗迹
+    - 废墟
+    - 古迹
+
+  loc_safe_house:
+    - 安全屋
+    - 藏身处
+    - 秘密基地
+
+  loc_矿场边缘_乱石堆:
+    - 矿场
+    - 乱石堆
+    - 边缘
+
+  # 默认行为：如果地点ID不在此列表，自动从ID提取关键词
+  # 例如: loc_dark_forest -> ['dark', 'forest']
+
+# 检查策略
+validation_strategy:
+  # 地点检查范围（文本前 N%）
+  location_check_portion: 0.33  # 前 33%
+
+  # 钩子消费检查范围（文本前 N%）
+  hook_consumption_portion: 0.30  # 前 30%
+
+  # 钩子设置检查范围（文本后 N%）
+  hook_setup_portion: 0.20  # 后 20%
+
+# 严格程度
+strictness:
+  # 地点不匹配的严重程度
+  location_mismatch: critical
+
+  # 钩子未消费的严重程度
+  hook_not_consumed: critical
+
+  # 必需人物缺失的严重程度
+  required_character_missing: major
+
+  # 章末钩子缺失的严重程度
+  end_hook_missing: major
+
+# 是否启用自动回退
+fallback:
+  # 如果没有预定义关键词，是否从 location_id 自动提取
+  auto_extract_from_id: true
+
+  # 提取时的分隔符
+  id_separator: "_"
+
+  # 是否移除 loc_ 前缀
+  strip_loc_prefix: true

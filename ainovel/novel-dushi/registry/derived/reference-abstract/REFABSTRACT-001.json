@@ -1,0 +1,70 @@
+{
+  "id": "REFABSTRACT-001",
+  "kind": "reference_lm_abstraction",
+  "schema_version": "1.0",
+  "profile_id": null,
+  "source_ids": [
+    "REF-00001"
+  ],
+  "market_positioning": {
+    "genre": "都市/言情",
+    "reader_target": "中文商业网文核心读者",
+    "core_promise": "以高频反转与局部兑现维持追读",
+    "commercial_thesis": "开篇强钩子 + 中段持续升级 + 章末钩子稳定兑现"
+  },
+  "structural_patterns": {
+    "opening": "强钩子开局、目标先行、身份或处境反差迅速建立",
+    "conflict": "主目标牵引下的连续冲突升级",
+    "payoff": "小周期兑现与章末悬念交替出现",
+    "continuity": "事实与关系状态持续累积，不做重置式推进"
+  },
+  "character_patterns": {
+    "protagonist": "目标驱动、行动前置、情绪与能力同步升级",
+    "supporting": "功能型配角围绕主线压力与回报循环展开",
+    "relationship": "关系张力与信息差共同驱动章节推进"
+  },
+  "world_patterns": {
+    "rules": "设定先露边界，再逐步解释例外与代价",
+    "progression": "成长/升级/解谜至少有一条稳定推进线",
+    "constraints": "核心能力必须伴随成本、限制或条件触发"
+  },
+  "commercial_cadence": {
+    "opening": "前几章迅速建立卖点与冲突",
+    "mid_arc": "每个小周期均有显性回报",
+    "chapter_end": "章末留钩子或未完成目标",
+    "long_run": "百章尺度仍可维持升级空间与矛盾层次"
+  },
+  "transferable_abstractions": [
+    "反差开局",
+    "目标-阻力-回报循环",
+    "连续升级阶梯",
+    "关系张力驱动",
+    "章末钩子"
+  ],
+  "prohibited_specifics": [
+    "具体人物名",
+    "专有世界观名词",
+    "可唯一识别的情节细节"
+  ],
+  "source_summaries": [
+    {
+      "source_id": "REF-00001",
+      "chapters_estimated": 1069,
+      "dominant_function": "开局/升级/兑现/关系推进"
+    }
+  ],
+  "evidence_spans": [
+    {
+      "heading": "第1章、喝酒不开车",
+      "excerpt": "建邺国际酒店金碧辉煌的包厢里，一群衣冠楚楚的男男女女推杯换盏，喝的面红耳赤。\n　　“陈总，以后的生意还请多照顾。”\n　　“陈总，我再敬您一杯，您随意，我干了。”\n　　“陈总，祝您以后财源广进，蒸蒸日上。”\n　　……\n　　酒桌上的主角叫陈汉升，基本上敬酒或者奉承总和他有关系。\n　　“也不知道哪个女人那么好运，能够嫁给陈总这样的男人。”\n　　一个脸色酡红的女人端起酒杯，娇滴滴地说道。\n　　三十五岁的陈汉升，正是男人精力、阅历、能力处于巅峰的时候，社会地位给予他收放自如的心态，再加"
+    },
+    {
+      "heading": "第2章、你是谁？",
+      "excerpt": "两人晃晃悠悠来到学校门口，一路上王梓博说的多，陈汉升基本不回应，他正在努力适应十七年前的港城。\n　　当年大学毕业后，陈汉升觉得家乡经济发展不好，所以一直留在省会建邺打拼，偶尔回家看看爹娘，也是匆匆的来，匆匆的走，根本没时间留意老家的变化。\n　　也只有在醉酒的凌晨，才会从心底涌出莫名的触动和回忆，不过第二天很快就被现实的忙碌所取代。\n　　“我这样的人重生有什么意思呢？”\n　　陈汉升觉得十分憋闷，2019年的自己有钱有地位，有公司有下属，根本不符合重生人士“头戴绿帽、父母双亡、穷"
+    }
+  ],
+  "notes": [
+    "Observed information is separated from strategic abstraction.",
+    "This artifact is comparison-only and advisory."
+  ]
+}

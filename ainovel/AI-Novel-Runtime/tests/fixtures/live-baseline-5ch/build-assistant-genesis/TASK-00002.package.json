@@ -1,0 +1,89 @@
+{
+  "content_hash": "sha256:a26f3728724c3417d5e5b649ebbcf4cea1669ed7bc1b0fbfc728b1edeba23577",
+  "context": {
+    "EVT": [
+      {
+        "certainty": "canon",
+        "effects": [
+          "EVT-00040"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00039",
+        "name": "起势",
+        "notes": "候选卷级事件，来源 VOL-01。",
+        "sequence_index": 1,
+        "status": "active",
+        "summary": "建立主角、金手指、第一重追杀与核心谜团",
+        "timeline": "TML-00003"
+      },
+      {
+        "causes": [
+          "EVT-00039"
+        ],
+        "certainty": "canon",
+        "effects": [
+          "EVT-00041"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00040",
+        "name": "破局",
+        "notes": "候选卷级事件，来源 VOL-02。",
+        "sequence_index": 2,
+        "status": "active",
+        "summary": "扩展势力冲突，第一个大闭环与新地图",
+        "timeline": "TML-00003"
+      },
+      {
+        "causes": [
+          "EVT-00040"
+        ],
+        "certainty": "canon",
+        "effects": [
+          "EVT-00042"
+        ],
+        "fact_version": 1,
+        "id": "EVT-00041",
+        "name": "问鼎",
+        "notes": "候选卷级事件，来源 VOL-03。",
+        "sequence_index": 3,
+        "status": "active",
+        "summary": "主角以代价完成阶段性秩序重建",
+        "timeline": "TML-00003"
+      }
+    ],
+    "TML": [
+      {
+        "fact_version": 1,
+        "id": "TML-00003",
+        "kind": "main",
+        "name": "主时间线",
+        "notes": "候选时间线，来源大纲 OUTLINE-00001。",
+        "ordering": "relative",
+        "status": "active"
+      }
+    ]
+  },
+  "entity_count": 4,
+  "package_format": "1.0",
+  "provenance": {
+    "derived_from": [
+      "EVT-00039@v1",
+      "EVT-00040@v1",
+      "TML-00003@v1",
+      "EVT-00041@v1"
+    ],
+    "source_version": 3
+  },
+  "registry_version": 3,
+  "standard_version": "2.0.0",
+  "task": {
+    "capability": "ChapterDraft",
+    "extra": {},
+    "goal": "draft chapter 2: 建立主角、金手指、第一重追杀与核心谜团",
+    "seeds": [
+      "EVT-00039"
+    ],
+    "task_id": "TASK-00002"
+  },
+  "token_budget": null
+}

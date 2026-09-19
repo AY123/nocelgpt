@@ -1,0 +1,48 @@
+{
+  "kind": "w10_blind_review_batch_template",
+  "version": "1.0",
+  "status": "draft",
+  "purpose": "Template for one blind-review batch containing original / automatic / human versions.",
+  "batch_fields": [
+    "candidate_id",
+    "source_sample_id",
+    "batch_index",
+    "order_blinded",
+    "versions",
+    "review_notes",
+    "comparison_result"
+  ],
+  "versions_schema": [
+    {
+      "version_id": "original",
+      "content_ref": "string",
+      "provenance_ref": "string",
+      "redacted": true
+    },
+    {
+      "version_id": "automatic_revision",
+      "content_ref": "string",
+      "provenance_ref": "string",
+      "redacted": true
+    },
+    {
+      "version_id": "human_revision",
+      "content_ref": "string",
+      "provenance_ref": "string",
+      "redacted": true
+    }
+  ],
+  "comparison_result_schema": {
+    "winner": "original | automatic_revision | human_revision | tie",
+    "confidence": "low | medium | high",
+    "reason_codes": ["improves_hook", "improves_continuity", "fixes_padding", "fixes_ai_voice", "fixes_conflict", "introduces_regression", "no_net_gain"]
+  },
+  "workflow": [
+    "pick candidate sample id",
+    "attach original, automatic, and human revision payloads",
+    "redact provenance and order labels",
+    "shuffle the three versions",
+    "collect reviewer ranking and notes",
+    "unblind and persist the result"
+  ]
+}

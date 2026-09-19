@@ -1,0 +1,56 @@
+{
+  "total_ai_taste": 223,
+  "target_after_fix": 50,
+  "reduction_rate": "78%",
+  "recommendations": [
+    {
+      "pattern": "这不是",
+      "count": 50,
+      "priority": "🔴 P1",
+      "strategy": "否定句→肯定句 (50%) + 添加证据 (30%) + 疑问句 (20%)",
+      "example": "❌ '这不是巧合' → ✅ '两次异变精确到十息'",
+      "estimated_time": "2小时"
+    },
+    {
+      "pattern": "沉默了片刻",
+      "count": 49,
+      "priority": "🔴 P1",
+      "strategy": "具体动作 (70%) + 直接删除 (30%)",
+      "example": "❌ '他沉默了片刻' → ✅ '他的目光停留了三息' / 删除",
+      "estimated_time": "2小时"
+    },
+    {
+      "pattern": "不是因为",
+      "count": 42,
+      "priority": "🟡 P1",
+      "strategy": "删除双重否定，直接说原因",
+      "example": "❌ '不是因为害怕，而是...' → ✅ '他看到了那双眼睛里的绝望'",
+      "estimated_time": "1.5小时"
+    },
+    {
+      "pattern": "深吸一口气",
+      "count": 32,
+      "priority": "🟡 P2",
+      "strategy": "直接删除 (60%) + 替换为有意义动作 (40%)",
+      "example": "❌ '他深吸一口气，推开门' → ✅ '他推开门' / '他握紧晶石，推开门'",
+      "estimated_time": "1.5小时"
+    },
+    {
+      "pattern": "他必须",
+      "count": 29,
+      "priority": "🟢 P2",
+      "strategy": "改为具体行动描写，避免心理旁白",
+      "example": "❌ '他知道他必须...' → ✅ 直接描写行动",
+      "estimated_time": "1小时"
+    },
+    {
+      "pattern": "他知道",
+      "count": 19,
+      "priority": "🟢 P3",
+      "strategy": "改为具体感知 (60%) + 删除 (40%)",
+      "example": "❌ '他知道，这不是...' → ✅ '晶石的纹路扭曲成...'",
+      "estimated_time": "1小时"
+    }
+  ],
+  "estimated_total_time": "9.0小时 (人工) / 2-3小时 (LLM辅助)"
+}

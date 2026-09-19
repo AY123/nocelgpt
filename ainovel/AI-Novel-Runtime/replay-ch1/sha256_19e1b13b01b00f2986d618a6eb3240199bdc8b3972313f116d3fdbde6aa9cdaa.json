@@ -1,0 +1,73 @@
+{
+  "request": {
+    "capability": "ChapterDraft",
+    "max_output_tokens": 3000,
+    "messages": [
+      {
+        "content": "You are a professional long-form fiction drafting assistant.\nHonor all facts exactly. Do not contradict source context.",
+        "role": "system"
+      },
+      {
+        "content": "# Task TASK-00001\nGoal: Chapter 1: The Founding Oath — Vael swears the oath; plant the Severance and Maesa's prior loss as foreshadow\n\n# Source Pins\nCHR-00001@v5\nEVT-00001@v3\nEVT-00002@v2\nITM-00001@v1\nMAG-00001@v1\nTML-00001@v1\nCHR-00002@v2\n\n# Context\n- CHR-00001 (CHR): Vael Ardyn\n  Protagonist of the demo fixture.\n- CHR-00002 (CHR): Maesa Korrin\n  The protagonist's mentor.\n- EVT-00001 (EVT): The Founding Oath\n  The protagonist swears the founding oath that binds her to the order.\n- EVT-00002 (EVT): The Severance\n  A rift forms between the protagonist and her mentor after the oath's cost comes due.\n- ITM-00001 (ITM): The Oathblade\n  \n- MAG-00001 (MAG): Oathbinding\n  A sworn oath binds the speaker's life-force to its fulfillment; breaking it exacts a proportional toll.\n- TML-00001 (TML): Main Line\n  Primary chronological axis for the demo project.\n\n# Style\nneutral literary prose\n\n# Requirements\nWrite a coherent chapter draft.",
+        "role": "user"
+      }
+    ],
+    "metadata": {
+      "bridge": "execution.LLMExecutionModel.generate_rendered",
+      "source_version": "12"
+    },
+    "model_pin": {
+      "adapter_version": "1.0.0",
+      "api_base": "https://api.deepseek.com",
+      "api_version": null,
+      "model": "deepseek-chat",
+      "provider": "deepseek"
+    },
+    "prompt_provenance": {
+      "derived_from": [
+        "CHR-00001@v5",
+        "EVT-00001@v3",
+        "EVT-00002@v2",
+        "ITM-00001@v1",
+        "MAG-00001@v1",
+        "TML-00001@v1",
+        "CHR-00002@v2"
+      ],
+      "package_hash": "sha256:f12aed38e1690c889378a390ddffe94d4228a3d15f4ce257080fae93555b913f",
+      "prompt_hash": "sha256:606cb3d43917cdfc4b076510caae39a6cac0c1b34992820620684979c41f4ac7",
+      "prompt_id": "chapter-draft",
+      "rendered_at": "2026-06-30T14:07:30.809557+00:00",
+      "template_id": "chapter-draft",
+      "template_version": "1.0.0"
+    },
+    "request_id": "LLM-4965a5a714354316a3d2bee3433c1f8c",
+    "temperature": {
+      "seed": null,
+      "temperature": 0.8,
+      "top_p": null
+    },
+    "timeout_seconds": 120
+  },
+  "request_hash": "sha256:19e1b13b01b00f2986d618a6eb3240199bdc8b3972313f116d3fdbde6aa9cdaa",
+  "response": {
+    "attempts": [],
+    "cost": null,
+    "finish_reason": "stop",
+    "latency_ms": 18992,
+    "model": "deepseek-chat",
+    "provider": "deepseek",
+    "provider_request_id": "c84e1fca-0c0e-4965-bdd8-90526916ee76",
+    "replay_ref": null,
+    "request_id": "LLM-4965a5a714354316a3d2bee3433c1f8c",
+    "response_hash": "sha256:427cfe0634e6296d2d079fa18df4fc389f02a03dbad22d3228d7c15eae4a9762",
+    "text": "# Chapter 1: The Founding Oath\n\nThe dawn came gray through the high windows of the Sanctum, casting long shadows across the stone floor. Vael Ardyn stood at the center of the circle, her breath visible in the chill air, though whether the cold came from the season or from within her own chest, she could not say.\n\nMaesa Korrin moved around the perimeter, lighting the seven candles that marked the cardinal points of the oathbinding. Her hands were steady, her movements precise—the same hands that had taught Vael to hold a blade, to read the old scripts, to recognize the weight of a promise before it was spoken.\n\n\"You understand what this means,\" Maesa said, not a question.\n\n\"Yes.\" Vael's voice came out firmer than she felt. \"I have prepared.\"\n\n\"Preparation is not the same as understanding.\" Maesa paused at the eastern candle, her fingers hovering over the flame. \"An oathbound blade does not merely cut flesh. It cuts the future. It binds your life-force to a purpose, and that purpose will demand from you until the debt is paid or you are broken.\"\n\nVael had heard these words before, in various forms, over the years of her training. She had memorized the texts, recited the histories, watched others take the oath and emerge changed but whole. She had never seen anyone emerge broken.\n\nShe did not believe she would be the first.\n\n\"I understand the cost,\" Vael said.\n\nMaesa turned to face her, and for a moment, something flickered in the older woman's eyes—not doubt, exactly, but a recognition of distance. The space between mentor and student, widening as the student prepared to step beyond.\n\n\"Then let us begin.\"\n\nThe ritual was simple in its structure, devastating in its mechanics. Vael knelt on the cold stone. Maesa placed the Oathblade across her palms—the blade itself was unremarkable, plain steel with a leather-wrapped grip, but its edge caught the candlelight in a way that suggested it was never truly dull.\n\n\"Speak your oath,\" Maesa instructed.\n\nVael had written it herself, as tradition demanded. She had spent weeks choosing each word, weighing each phrase, ensuring that the promise she made would be precise enough to hold meaning but broad enough to allow for the unknown paths her life might take.\n\n\"I, Vael Ardyn, do swear myself to the Order of the Severed Chain,\" she said, the words feeling both foreign and inevitable on her tongue. \"I bind my strength to its preservation, my will to its purpose, my life to its continuation. From this day until the oath is fulfilled or I am no more, I am the Order's servant, its shield, and its blade.\"\n\nAs she spoke the final word, the Oathblade flared with cold light. Vael felt something shift within her chest—a thread of her own life-force, pulled taut and tied to something vast and unseen. The binding took hold, and she gasped at the sensation, at the sudden awareness of a new weight in her soul.\n\nMaesa watched in silence as the light faded. When she spoke, her voice was quiet.\n\n\"It is done.\"\n\nVael rose, her legs unsteady. She looked at her mentor, expecting pride, expecting the warmth of shared accomplishment. Instead, she saw something else—a shadow passing behind Maesa's eyes, quickly hidden.\n\n\"You knew someone who took the oath before,\" Vael said. It was not a guess.\n\nMaesa's jaw tightened. \"I did.\"\n\n\"What happened to them?\"\n\nThe silence stretched. The candles flickered. Maesa turned away, beginning to extinguish the flames one by one.\n\n\"The oath demands what it demands,\" she said finally. \"And some demands are greater than others.\"\n\n---\n\nLater that evening, Vael sat alone in her quarters, turning the Oathblade over in her hands. The binding felt different now—not painful, but present, like a second heartbeat beneath her own. She could sense the Order's existence as a distant pulse, could feel the weight of her promise pressing against the edges of her consciousness.\n\nShe thought of Maesa's face during the ritual. She thought of the shadow she had seen, the grief that her mentor carried like a blade she could not sheathe.\n\n*Some demands are greater than others.*\n\nVael had sworn her oath. She had bound herself to the Order. She had become, in that moment, something more than she had been—and something less, too. The freedom of an unbound life was gone, traded for purpose and protection.\n\nShe told herself it was worth it.\n\nShe told herself she would never regret it.\n\nBut as she lay down to sleep, the Oathblade resting on the table beside her, she dreamed of a rift opening in the earth, and of Maesa standing on the far side, growing smaller and smaller until she vanished into the darkness.\n\nThe Severance had not yet come.\n\nBut it was already waiting.",
+    "token_usage": {
+      "cached_input_tokens": 0,
+      "input_tokens": 332,
+      "output_tokens": 1028,
+      "reasoning_tokens": 0,
+      "total_tokens": 1360,
+      "usage_estimated": false
+    }
+  }
+}

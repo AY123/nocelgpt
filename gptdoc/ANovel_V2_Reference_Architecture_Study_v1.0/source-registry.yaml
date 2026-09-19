@@ -1,0 +1,74 @@
+document_id: RES-0002-SOURCES
+version: 1.0.0
+research_cutoff: 2026-09-18
+sources:
+  - id: SRC-NSA
+    name: Novel Studio AI
+    type: open_source
+    url: https://github.com/YfengJ/novel-studio-ai
+    key_topics: [canon_boundary, context_pack, character_state, timeline, retrieval]
+  - id: SRC-NF
+    name: NovelForge
+    type: open_source
+    url: https://github.com/hzhang092/novel-agent
+    key_topics: [chinese_web_novel, approval, character_intent, state_update, model_routing]
+  - id: SRC-DOME
+    name: DOME
+    type: research
+    url: https://aclanthology.org/2025.naacl-long.63/
+    key_topics: [dynamic_hierarchical_outline, temporal_kg, conflict_analyzer]
+  - id: SRC-CW
+    name: ConWriter
+    type: research
+    url: https://arxiv.org/abs/2608.05169
+    key_topics: [symbolic_state, required_transition, localized_repair, risk]
+  - id: SRC-MA
+    name: MAGNET_ATLAS
+    type: research
+    url: https://arxiv.org/abs/2607.00918
+    key_topics: [character_goal, shared_world_state, graph_verification]
+  - id: SRC-CSB
+    name: ConStory-Bench
+    type: research
+    url: https://aclanthology.org/volumes/2026.findings-acl/
+    key_topics: [long_form_consistency, taxonomy, evidence_grounded_checker]
+  - id: SRC-NC
+    name: Novelcrafter
+    type: commercial
+    url: https://www.novelcrafter.com/
+    key_topics: [codex, provider_independence, series_knowledge]
+  - id: SRC-SW
+    name: Sudowrite
+    type: commercial
+    url: https://docs.sudowrite.com/
+    key_topics: [story_bible, artifact_dependencies, scene_first]
+  - id: SRC-NAI
+    name: NovelAI
+    type: commercial
+    url: https://docs.novelai.net/
+    key_topics: [lorebook, context_budget, activation, placement]
+  - id: SRC-TMP
+    name: Temporal
+    type: infrastructure
+    url: https://docs.temporal.io/
+    key_topics: [durable_execution, event_history, activity_retry, human_wait]
+  - id: SRC-LG
+    name: LangGraph
+    type: infrastructure
+    url: https://langchain-ai.github.io/langgraph/
+    key_topics: [checkpoint, store, pending_writes, human_in_loop]
+  - id: SRC-OPA
+    name: Open Policy Agent
+    type: infrastructure
+    url: https://www.openpolicyagent.org/docs
+    key_topics: [policy_as_code, decision_enforcement_separation]
+  - id: SRC-OL
+    name: OpenLineage
+    type: infrastructure
+    url: https://openlineage.io/docs/
+    key_topics: [job, run, dataset, facets, lineage]
+  - id: SRC-OTEL
+    name: OpenTelemetry
+    type: infrastructure
+    url: https://opentelemetry.io/docs/
+    key_topics: [traces, metrics, logs, baggage]

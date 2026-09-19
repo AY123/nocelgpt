@@ -1,0 +1,71 @@
+{
+  "audit_date": "2026-09-19",
+  "excludes_self": true,
+  "files": [
+    {
+      "file": "CCDOC_ARCHITECTURE_AUDIT_REPORT.md",
+      "bytes": 53555,
+      "sha256": "11edc89b81b9acd3c17ccf8d0544ac08cfd6b2d01e31b0212c8989edfea59561"
+    },
+    {
+      "file": "README.md",
+      "bytes": 3417,
+      "sha256": "bc2511cc66ce604c8172f2bea2bee5ee5016fcc4c154b5bf0c1aaa51831d79a7"
+    },
+    {
+      "file": "REMEDIATION_REGISTER.json",
+      "bytes": 47460,
+      "sha256": "b581e24d5a9ba58683d1b1d3d17b70d769d5538ff06f305a50faad901ef60b94"
+    },
+    {
+      "file": "audit-results.json",
+      "bytes": 13387,
+      "sha256": "156969c4db7a4bb9d0281ce321fa8acd68d3ac1bb037a32bf6affa7580046361"
+    },
+    {
+      "file": "audit_ccdoc.py",
+      "bytes": 8557,
+      "sha256": "603c666b9b56f318f62fb73efb470ad9326c89d88d284ca6f87d94218ef24e53"
+    },
+    {
+      "file": "build_delivery.py",
+      "bytes": 5285,
+      "sha256": "cd4997402b5fc070e2d72375f4f15cf2752efd9285a42c28d8f4ff6a97063776"
+    },
+    {
+      "file": "core-probe-results.json",
+      "bytes": 2862,
+      "sha256": "72357a9b3ee067ea792afcde96985777280588337ed1c288af9a701313acff82"
+    },
+    {
+      "file": "core-probes.py",
+      "bytes": 6978,
+      "sha256": "13b65d3fa4a49bec2b35e20e0de06ada04dc79b2547abb289be174ade7b0d21c"
+    },
+    {
+      "file": "delivery-probe-results.json",
+      "bytes": 3251,
+      "sha256": "fb9a0ce20226c58f2816596759ea044e824e076df992810260c142430c8c99bb"
+    },
+    {
+      "file": "delivery-probes.py",
+      "bytes": 8606,
+      "sha256": "22888aa5d3027fa98afbb0eff19bd292bb91cd526c8aadba69f39c61fbbd142a"
+    },
+    {
+      "file": "product-probe-results.json",
+      "bytes": 1631,
+      "sha256": "173f977b45de4b038b07f952ed9e51ed9abb2420903e1bd6cb568ac377cced5c"
+    },
+    {
+      "file": "product-probes.py",
+      "bytes": 3087,
+      "sha256": "fb4ca742dc9561ae12fdee64e8dd98160d5294fe4170a615918cc554b5f8c213"
+    },
+    {
+      "file": "product-review.md",
+      "bytes": 28885,
+      "sha256": "cb5a9acca6425ee2686c28855569c7abaefabad6d89cbae84589f847092fccea"
+    }
+  ]
+}

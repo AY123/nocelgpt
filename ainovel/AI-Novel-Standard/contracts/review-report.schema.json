@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:review-report:1.0",
+  "title": "ReviewReport",
+  "description": "A periodic PRODUCTION REVIEW over a window of chapters (roadmap 4.6, Publishing OS). ONE schema covers both cadences the North Star names — a 10-chapter VOLUME review (卷末复盘: is this volume holding quality/retention?) and a 30-chapter DIRECTION review (大方向复盘: is the book still on its commercial thesis?) — distinguished by `scope`, so there are not two near-identical stub schemas. It is a deterministic read-side FOLD over the production cards / quality trend / commercial signals already produced for the window; it introduces no new judgment. The DIRECTION scope additionally carries a `market_position_revision`: a concrete PROPOSAL to revise the authored Market Position (4.5) where 30 chapters of production reality diverged from the pre-book thesis — this is the feedback loop that closes Phase 4 (production reality -> revised positioning). Two structural invariants: `gating` const false — a review NEVER blocks a build (ADR-003); `authority` const human — the review only PROPOSES; revising the Market Position and any production-direction change are outward decisions a human makes (ADR-009). The proposal is never auto-written to sources/market-position.yaml. Written to registry/derived/review-report/, NEVER to registry/facts/.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "version", "authority", "gating", "scope", "window", "summary"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^REVIEW-" },
+    "kind": { "type": "string", "const": "review_report" },
+    "version": { "type": "string" },
+    "authority": {
+      "type": "string",
+      "const": "human",
+      "description": "Structural invariant (ADR-009): the review PROPOSES; a human decides whether to act on it (revise positioning, change direction)."
+    },
+    "gating": {
+      "type": "boolean",
+      "const": false,
+      "description": "Structural invariant (ADR-003): a review report NEVER blocks a build; it is advisory read-side aggregation."
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["volume", "direction"],
+      "description": "volume = a ~10-chapter 卷末复盘 (quality/retention health of the block); direction = a ~30-chapter 大方向复盘 (is the book still on its commercial thesis; carries market_position_revision)."
+    },
+    "window": {
+      "type": "object",
+      "description": "The chapter window this review folded.",
+      "additionalProperties": false,
+      "required": ["chapters_in_window"],
+      "properties": {
+        "start_chapter": { "type": "string" },
+        "end_chapter": { "type": "string" },
+        "chapters_in_window": { "type": "integer", "minimum": 0 },
+        "target_size": { "type": "integer", "minimum": 1, "description": "The scope's nominal size (10 for volume, 30 for direction); an under-filled window is reviewed as-is and flagged." }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "description": "The deterministic health fold over the window: averaged quality signals, drop-risk, commercial movement, publish-readiness distribution, pacing warnings.",
+      "additionalProperties": false,
+      "required": ["health"],
+      "properties": {
+        "health": { "type": "string", "enum": ["healthy", "watch", "at_risk"], "description": "Synthesized window health, mirroring the dashboard's book_health verdict but scoped to this window." },
+        "quality_averages": { "type": "object", "additionalProperties": { "type": "number" } },
+        "mean_reader_drop_risk": { "type": ["number", "null"] },
+        "publish_recommendation_counts": { "type": "object", "additionalProperties": { "type": "integer" } },
+        "commercial_pay_movement": { "type": "integer", "description": "Sum of per-chapter commercial pay_probability_delta across the window (comparison-only movement)." },
+        "pacing_warning_chapters": { "type": "integer", "minimum": 0 },
+        "observations": { "type": "array", "items": { "type": "string" }, "description": "Deterministic human-readable findings (e.g. 'retention trending down across the volume', 'drop-risk elevated in 3 of 10')." }
+      }
+    },
+    "market_position_revision": {
+      "type": "object",
+      "description": "DIRECTION scope only. A concrete PROPOSAL to revise the authored Market Position (4.5) where production reality diverged from the pre-book thesis. Never auto-applied — staged for a human (ADR-009). Absent for volume scope, or when no Market Position is authored.",
+      "additionalProperties": false,
+      "required": ["proposed"],
+      "properties": {
+        "proposed": { "type": "boolean", "description": "Whether the review found grounds to propose a revision at all." },
+        "market_position_id": { "type": "string" },
+        "edits": {
+          "type": "array",
+          "description": "Concrete proposed edits, each pointing at a positioning field with the evidence from production.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["field", "issue", "suggestion"],
+            "properties": {
+              "field": { "type": "string", "description": "Positioning field to revise, e.g. commercial_promise.sustainability_100 / reader_segment.drop_triggers." },
+              "issue": { "type": "string", "description": "How production reality diverged from the authored thesis." },
+              "suggestion": { "type": "string", "description": "The concrete proposed revision." },
+              "evidence": { "type": "string", "description": "The production signal that grounds this proposal." }
+            }
+          }
+        }
+      }
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "market_position_id": { "type": "string" },
+        "novel_brain_id": { "type": "string" },
+        "chapter_ids": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "rationale": { "type": "string" }
+  }
+}

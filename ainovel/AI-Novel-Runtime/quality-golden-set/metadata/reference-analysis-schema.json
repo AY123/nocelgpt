@@ -1,0 +1,42 @@
+{
+  "kind": "reference_analysis_schema",
+  "version": "2.0",
+  "required_fields": [
+    "analysis_id",
+    "reference_set",
+    "genre_positioning",
+    "target_reader",
+    "core_promise",
+    "conflict_structure",
+    "payoff_cycle",
+    "progression_structure",
+    "character_relations",
+    "information_gap",
+    "chapter_hooks",
+    "free_to_paid_design",
+    "abandonment_risks",
+    "borrowable_abstract_features",
+    "forbidden_specific_elements",
+    "source_spans"
+  ],
+  "reference_set_fields": [
+    "source_id",
+    "title",
+    "author",
+    "genre",
+    "position_in_set",
+    "source_span"
+  ],
+  "analysis_constraints": {
+    "must_separate_abstract_from_specific": true,
+    "must_include_forbidden_elements": true,
+    "must_include_source_spans": true,
+    "must_not_copy_verbatim_forbidden_elements": true,
+    "must_note_uncertainty": true
+  },
+  "output_policy": {
+    "candidate_only": true,
+    "approval_required_for_minting": true,
+    "llm_output_is_advisory": true
+  }
+}

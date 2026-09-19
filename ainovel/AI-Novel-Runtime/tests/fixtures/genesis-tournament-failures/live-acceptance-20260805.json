@@ -1,0 +1,140 @@
+{
+  "kind": "genesis_pairwise_live_acceptance_summary",
+  "date": "2026-08-05",
+  "candidate_hash": "sha256:29f970b463503a08962e1f9ffe1e6feb40527f4791035b50f627a20a56b8635b",
+  "comparison_only": true,
+  "gating": false,
+  "calibrates": false,
+  "winner": "CANDIDATE-C",
+  "human_review_required": true,
+  "overall_status": "passed",
+  "reason": "Both independent providers passed all acceptance criteria on one frozen candidate hash and agreed on CANDIDATE-C. The winner remains advisory and human authority is unchanged.",
+  "providers": [
+    {
+      "provider": "92code",
+      "model": "gpt-5.6-sol",
+      "status": "passed",
+      "winner": "CANDIDATE-C",
+      "completed_pairs": 3,
+      "completed_calls": 6,
+      "n_degraded": 0,
+      "call_error_count": 0,
+      "position_consistency_rate": 0.8889,
+      "token_usage": {
+        "input_tokens": 76129,
+        "output_tokens": 5293,
+        "total_tokens": 81422,
+        "cached_input_tokens": 67124
+      },
+      "cost": {
+        "status": "priced",
+        "currency": "CNY",
+        "total": 0.62198325,
+        "pricing_version": "92code-derived-from-billing-2026-08-01"
+      },
+      "request_hashes": [
+        "sha256:2da4245c1534d58b55c7ee9ea8f480fb861561b09523b7c497780ca17f8a3d91",
+        "sha256:00b5f40d18d734587ee7e2cdfd7613ef26d67e82e5920df5905fdec19a2e9c3f",
+        "sha256:5d6c34cf3853b475a5366c5675f0e97cdb65e5dbb39bb726e81dd9fb4eacbf82",
+        "sha256:07e3a640deb7c9035a5eb19baaa76ba7351b241f78dd1a0ef01cffb5c05ab99b",
+        "sha256:44a21c5487350aea4dcc4cca4b51be1ba4b29c4784a7562f0310320f46f35823",
+        "sha256:db0b4f34054b3a1b50513d432c15c47d79c14de5098df82c9a7786d18f751105"
+      ],
+      "response_hashes": [
+        "sha256:b4b493cd33dd6884a487847b5d597e545d4b647d025067da7424ba79f0879595",
+        "sha256:6026772ab2fc6bbeb6cbbe06d7d37b0a520dd0708a24a936c013a538607e9664",
+        "sha256:df10a4d301bc40241e5bf9e6b9d2578aeecc8bfb36e4a0a63b09c95414c4a714",
+        "sha256:774ab3bb674710a193d42f0a6b1df27e9871f0997db47949bb37c1ad870952bf",
+        "sha256:7f955259b65bb245a697fb7e0ca4c460dafa85f8610b92e4f0af8f20e9f851f3",
+        "sha256:714bc0a7966df45879312afd3a8759f16e56b9b5594011b1f4f37a77ee6f7ed3"
+      ]
+    },
+    {
+      "provider": "claude",
+      "model": "claude-opus-5",
+      "status": "passed",
+      "winner": "CANDIDATE-C",
+      "structured_output": "forced Anthropic tool schema",
+      "completed_pairs": 3,
+      "completed_calls": 6,
+      "n_degraded": 0,
+      "call_error_count": 0,
+      "position_consistency_rate": 0.8519,
+      "token_usage": {
+        "input_tokens": 10957,
+        "output_tokens": 2569,
+        "total_tokens": 13526,
+        "cached_input_tokens": 0
+      },
+      "cost": {"status": "unpriced"},
+      "request_hashes": [
+        "sha256:2524e6f21bda14bd2b10897d550a6c4c917c7716ec0350d373f2350a74260fd6",
+        "sha256:fc5cab3ad38bd91e2896c18c66865e49e0434723b2d285e7b527b6d0e5db6e96",
+        "sha256:e7e4d6a7fbfe71348f2ad7ff33aecdfe8c2e5a8dd22db9785eff6e35caa5a1bc",
+        "sha256:d06d0da2a5dcd074cc01945705be8c9f612e6144b51b3a2751ba60e2b6b2dd58",
+        "sha256:4d8473de54845abdbbd3f07e6ef560a58d46e3eb5f29021a6ffdf16a43de3213",
+        "sha256:5c95959f5320683f9b1a74f45b1538a89774106869e97f245dd2d75cd0d8ffa4"
+      ],
+      "response_hashes": [
+        "sha256:d1e471cf656301b1be2f181ba18d196cbbb916d4682ae7185c641f75edbfff8c",
+        "sha256:b8671ec6fa59acdc2721927d9c584f5e3e3852415cb77befea7dfc73155b4fae",
+        "sha256:4ab0141e7d062efa8d8ed52baacf1f7a5bff933ca34bf299ac7618b29ce05044",
+        "sha256:631ac30d9051614f6cd1ad115eec6d314ed78cbf84048bc369be3154cdccdefb",
+        "sha256:84ba0c942da347b466cb2cf6ef86cef5c12b281b41b5dba125cbe660a605c342",
+        "sha256:c0aeba2431fb6ede70bd338383906c77e57e0ce0d29411bf7b077c39c9a594c6"
+      ],
+      "previous_failed_attempts": {
+        "zero_degraded_but_below_bias_threshold": {
+          "winner": "CANDIDATE-B",
+          "position_consistency_rate": 0.7037
+        },
+        "prompt_only_final_recheck": {
+          "n_degraded": 2,
+          "position_consistency_rate": 0.4444
+        }
+      },
+      "previous_best_zero_degraded_run": {
+        "winner": "CANDIDATE-B",
+        "completed_pairs": 3,
+        "completed_calls": 6,
+        "n_degraded": 0,
+        "call_error_count": 0,
+        "position_consistency_rate": 0.7037,
+        "token_usage": {
+          "input_tokens": 8242,
+          "output_tokens": 1883,
+          "total_tokens": 10125
+        },
+        "cost": {"status": "unpriced"},
+        "request_hashes": [
+          "sha256:d21fb98488765f6996a33b3b86d375dc63fb112d89d3b639bed58edf4ce50600",
+          "sha256:4001313d41627e323b26ec93bdf1206bb47c550172039ac7821e1909328b092b",
+          "sha256:7d54520083d5d15c7ff43901764892ff0cd42194c32dabb18d9b5d9bae1c5747",
+          "sha256:bb3c69c3c404674110e9d67ddd016dba810e39f001d56ea7b63e4f20e3df517b",
+          "sha256:73dc541e7b053c80312bb85251658e33ec3bc059e5f717e72516e4bb90f74ad1",
+          "sha256:2f9070f1f882941dfdc8cad3a7c304e475061b52dd1ed6879a3ff7691513e78c"
+        ],
+        "response_hashes": [
+          "sha256:1789d84ee15a4bd5175860b7a976604175456802609bca462dd68ca4768ade34",
+          "sha256:5afed6a6a49fa89e88db1d9a91555fc8e57924cf0135ac1201a0f4d52f1147a2",
+          "sha256:be70095993884b97bc7f2f01d482bf77068878ae8267c900066b466d82b953dd",
+          "sha256:c144d013ee98e4609dd1efe1d560a845a0dc14eec72e4fa114dc76bca354b9a6",
+          "sha256:02d145e11fb5581be8225db40b675898a50afdd852beb9ccc0a749d5fe6350b4",
+          "sha256:f2be2ac1bdc599cf71d9ea5e4e275058824adf318e6c748e0ae9708f90ceca9a"
+        ]
+      },
+      "previous_final_recheck": {
+        "completed_pairs": 3,
+        "completed_calls": 6,
+        "n_degraded": 2,
+        "call_error_count": 2,
+        "position_consistency_rate": 0.4444,
+        "cost": {"status": "unpriced"}
+      }
+    }
+  ],
+  "outline_qa": {
+    "status": "not_model_integrated",
+    "note": "Outline QA remains a separate unfinished capability."
+  }
+}

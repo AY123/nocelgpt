@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/pairwise-evaluation.schema.json",
+  "title": "PairwiseEvaluation",
+  "type": "object",
+  "required": [
+    "evaluation_id",
+    "candidate_a_hash",
+    "candidate_b_hash",
+    "blind_labels",
+    "rubric_version",
+    "judge",
+    "decision",
+    "confidence"
+  ],
+  "properties": {
+    "evaluation_id": {
+      "type": "string"
+    },
+    "candidate_a_hash": {
+      "type": "string"
+    },
+    "candidate_b_hash": {
+      "type": "string"
+    },
+    "blind_labels": {
+      "type": "object"
+    },
+    "rubric_version": {
+      "type": "string"
+    },
+    "judge": {
+      "type": "object"
+    },
+    "decision": {
+      "enum": [
+        "A",
+        "B",
+        "TIE",
+        "UNCERTAIN"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "dimension_results": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "rationale": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

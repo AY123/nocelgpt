@@ -1,0 +1,70 @@
+{
+  "kind": "w11_long_arc_plan",
+  "version": "1.0",
+  "status": "draft",
+  "purpose": "Define a 100-chapter arc plan with stage goals, commercial peaks, and map-change conditions.",
+  "chapters": {
+    "1_10": {
+      "stage_goal": "establish premise, conflict, and reader commitment",
+      "commercial_goal": "hook and retention",
+      "checkpoint": "clear protagonist goal, clear pressure, clear continuing hook"
+    },
+    "11_20": {
+      "stage_goal": "expand conflict field and sharpen relationships",
+      "commercial_goal": "stabilize continued reading",
+      "checkpoint": "reliable conflict escalation and character differentiation"
+    },
+    "21_30": {
+      "stage_goal": "deliver first major payoff and commit to the larger track",
+      "commercial_goal": "convert interest into sustained follow-through",
+      "checkpoint": "first arc payoff and consequence"
+    },
+    "31_40": {
+      "stage_goal": "raise stakes and test the protagonist under pressure",
+      "commercial_goal": "avoid plateau",
+      "checkpoint": "new pressure source and new consequence"
+    },
+    "41_50": {
+      "stage_goal": "force a choice and redirect the arc",
+      "commercial_goal": "renew urgency",
+      "checkpoint": "map-change candidate and new objective"
+    },
+    "51_60": {
+      "stage_goal": "open the next layer of conflict",
+      "commercial_goal": "re-engage lapsed readers",
+      "checkpoint": "new enemy / new constraint / new reveal"
+    },
+    "61_70": {
+      "stage_goal": "pay down the larger promise",
+      "commercial_goal": "strengthen trust",
+      "checkpoint": "visible progress toward the larger promise"
+    },
+    "71_80": {
+      "stage_goal": "deepen emotional investment and stakes",
+      "commercial_goal": "sustain momentum",
+      "checkpoint": "emotional consequence and strategic consequence"
+    },
+    "81_90": {
+      "stage_goal": "approach the next climax and consolidate gains",
+      "commercial_goal": "prepare peak retention",
+      "checkpoint": "clear runway to climax"
+    },
+    "91_100": {
+      "stage_goal": "deliver climax and set up the next long arc",
+      "commercial_goal": "maximize payoff and transition",
+      "checkpoint": "climax, resolution, transition hook"
+    }
+  },
+  "constraints": {
+    "every_10_chapters_requires_a_checkpoint": true,
+    "map_change_must_be_explicit": true,
+    "commercial_peaks_must_be_described": true,
+    "arc_goals_must_be_revisable": true
+  },
+  "next_actions": [
+    "write stage goals into the generation chain as objectives",
+    "tag chapter groups with checkpoint metadata",
+    "mark map-change conditions explicitly",
+    "check for repeated chapter functions"
+  ]
+}

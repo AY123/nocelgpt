@@ -1,0 +1,41 @@
+novel-pilot/
+ANES_v2_从零验证流程.md
+.env
+.env.*
+!.env.example
+myNovel/
+genesis-pilot/
+novel-lingse/
+审核报告.txt
+.DS_Store
+**/.DS_Store
+
+# live-baseline 一次性运行产物；正式确认基线单独显式提交。
+AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-92code-5ch/
+AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-mock-5ch/
+AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-mock-20ch/
+AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/workflow-assistant-5ch/
+AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/workspace/outline-bootstrap/runs/assistant-genesis-20260802/
+AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/workspace/outline-bootstrap/runs/assistant-genesis-confirm-20260802/
+
+# 模型对比临时项目(含版权参考小说副本,正文已导出到 novel-lingse/manuscript/AB-*)
+novel-lingse-ab-*/
+novel-lingse-kimi-test/
+# CI-M2-04 双臂运行临时项目(一次性实验,结论已归档 novel-lingse/analysis/ci-m2-04-ab-report.json)
+novel-lingse-m2*/
+# v11-vs-v12 工艺约束双臂运行临时项目(含版权参考小说副本,结论归档 docs/craft-ab-v11-v12-report.json)
+ab-craft-*/
+# 三臂跨模型实验临时项目(DeepSeek-v12 / GPT-v11 / GPT-v12,含版权参考小说副本,
+# 结论归档 docs/craft-ab3-cross-model-report.json,正文导出 novel-lingse/manuscript/AB3-*)
+ab3-*/
+# v12-vs-v13 元指代防泄漏双臂运行临时项目(含版权参考小说副本;
+# 结论归档 docs/craft-ab-v12-v13-pooled.json + docs/craft-ab-v13-{lingse,guhai}.json)
+v13ab-*/
+
+# novel-dushi: 版权参考小说不进远程(9.3MB,与 novel-lingse/sources/reference-novels 未追踪先例一致)
+novel-dushi/sources/reference-novels/
+# novel-dushi: outline 中间运行产物不进远程(6 份重复 runs,约 4.2MB, reproducible)
+novel-dushi/workspace/
+# 并发锁与失败标记不进版本
+**/*.lock
+**/*.INVALID

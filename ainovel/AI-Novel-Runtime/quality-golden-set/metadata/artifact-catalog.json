@@ -1,0 +1,42 @@
+{
+  "kind": "artifact_catalog",
+  "version": "1.0",
+  "description": "Unified catalog of ANovel runtime governance artifacts and templates",
+  "sections": [
+    {
+      "section": "quality",
+      "artifacts": [
+        "metadata/schema.json",
+        "metadata/index.json",
+        "metadata/distribution.json",
+        "metadata/editor-guide.md",
+        "metadata/sample-schema.json",
+        "metadata/sample-protocol.json",
+        "metadata/seed-manifest.json",
+        "metadata/rollout-plan.json",
+        "metadata/reviewer-calibration-schema.json",
+        "metadata/calibration-template.json",
+        "metadata/crosswalk.json"
+      ]
+    },
+    {
+      "section": "reference_and_genesis",
+      "artifacts": [
+        "metadata/reference-analysis-schema.json",
+        "metadata/reference-analysis-template.json"
+      ]
+    },
+    {
+      "section": "release_and_scale",
+      "artifacts": [
+        "runtime/serialize/live_baseline_report.py"
+      ]
+    }
+  ],
+  "governance": {
+    "catalog_is_read_only": true,
+    "catalog_is_for_discovery_and_validation": true,
+    "catalog_must_reference_existing_artifacts_only": true,
+    "catalog_entries_need_tests": true
+  }
+}

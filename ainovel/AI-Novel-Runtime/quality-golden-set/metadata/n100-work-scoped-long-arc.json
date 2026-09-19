@@ -1,0 +1,80 @@
+{
+  "kind": "work_scoped_long_arc",
+  "version": "1.0",
+  "book_id": "GENESIS-PILOT-001",
+  "source_constitution": "n100-book-constitution.json",
+  "long_arc_content_hash": "sha256:b069532deffdb61038f8877342ef3378d8274904c7123f1dcfb9a88143f040a9",
+  "chapters": 100,
+  "bands": [
+    {
+      "band_id": "BAND-001-010",
+      "status_change": "建立核心冲突与人物目标",
+      "payoff": "匿名短信与档案楼线索",
+      "commercial_goal": "hook / retention",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-011-020",
+      "status_change": "扩展删证系统并确认追查风险",
+      "payoff": "证据链拼接与代价升级",
+      "commercial_goal": "retention / differentiation",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-021-030",
+      "status_change": "完成第一轮真相回报",
+      "payoff": "父亲线索首次落点",
+      "commercial_goal": "payoff / follow-through",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-031-040",
+      "status_change": "抬升代价并防止中段停滞",
+      "payoff": "监控者身份露出一角",
+      "commercial_goal": "avoid plateau",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-041-050",
+      "status_change": "逼迫关键选择并准备换地图",
+      "payoff": "证据被迫外流或失守",
+      "commercial_goal": "renew urgency",
+      "map_change_condition": "新目标 / 新地点 / 新敌源"
+    },
+    {
+      "band_id": "BAND-051-060",
+      "status_change": "打开下一层冲突",
+      "payoff": "删证系统全貌显露",
+      "commercial_goal": "new layer of conflict",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-061-070",
+      "status_change": "推进更大的承诺与兑现",
+      "payoff": "个人真相与公共真相首次对齐",
+      "commercial_goal": "promise delivery",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-071-080",
+      "status_change": "放大情感投资与策略压力",
+      "payoff": "关系重排与信任翻转",
+      "commercial_goal": "sustain momentum",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-081-090",
+      "status_change": "逼近次高潮并收束前置线",
+      "payoff": "幕后守门人现身",
+      "commercial_goal": "climax runway",
+      "map_change_condition": "无"
+    },
+    {
+      "band_id": "BAND-091-100",
+      "status_change": "交付高潮并接到下一长弧",
+      "payoff": "真相揭晓并保留后续钩子",
+      "commercial_goal": "climax / transition",
+      "map_change_condition": "高潮解决并切入下一弧"
+    }
+  ]
+}

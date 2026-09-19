@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "PromptManifest",
+  "type": "object",
+  "required": [
+    "prompt_id",
+    "version",
+    "capability",
+    "template_hash",
+    "binding_hash",
+    "rendered_hash",
+    "package_hash",
+    "derived_from",
+    "source_version",
+    "rendered_at",
+    "renderer_version",
+    "cache_hit",
+    "replay_ref"
+  ],
+  "properties": {
+    "prompt_id": { "type": "string", "minLength": 1 },
+    "version": { "type": "string", "minLength": 1 },
+    "capability": { "type": "string", "minLength": 1 },
+    "template_hash": { "type": "string", "pattern": "^sha256:" },
+    "binding_hash": { "type": "string", "pattern": "^sha256:" },
+    "rendered_hash": { "type": "string", "pattern": "^sha256:" },
+    "package_hash": { "type": "string", "pattern": "^sha256:" },
+    "derived_from": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "source_version": { "type": "integer", "minimum": 1 },
+    "rendered_at": { "type": "string" },
+    "renderer_version": { "type": "string" },
+    "cache_hit": { "type": "boolean" },
+    "replay_ref": { "type": ["string", "null"] },
+    "route_summary": {
+      "type": ["object", "null"],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

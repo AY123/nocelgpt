@@ -1,0 +1,17 @@
+{
+  "sample_id": "QGS-00001",
+  "title": "示例样本：开篇抓力校准",
+  "genre": "中文商业网文",
+  "chapter_position": "chapter-1",
+  "source_type": "synthetic",
+  "source_hint": "用于校准 Rubric 和双编辑盲评流程的结构样本",
+  "risk_flags": [
+    "contains_ai_voice"
+  ],
+  "revision_candidate": true,
+  "target_dimensions": [
+    "opening_hook",
+    "chapter_goal",
+    "ending_hook"
+  ]
+}

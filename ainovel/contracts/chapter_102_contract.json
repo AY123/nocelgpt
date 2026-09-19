@@ -1,0 +1,53 @@
+{
+  "chapter": 102,
+  "version": "v1.0",
+  "approved": true,
+  "approved_at": "2026-08-14T17:21:24.949712",
+  "entry_state": {
+    "location_id": "loc_矿场_秘密通道入口",
+    "time_relation": "immediate",
+    "pov": "段奕尘",
+    "required_characters": [
+      "段奕尘",
+      "镜见川"
+    ],
+    "hook_to_consume": "hook_101_01",
+    "must_address": "通道深处传来的诡异声音，两人面对异常能量波动，决定是否进入"
+  },
+  "chapter_intent": {
+    "objective": "进入秘密通道，遇到第一个考验或障碍，展现失落曜晶的部分能力",
+    "main_conflict": "通道内的未知危险vs必须前进的决心，失落曜晶力量的不稳定性",
+    "plot_lines": [
+      "主线-深入危险区域",
+      "成长线-失落曜晶实战",
+      "悬念线-通道的秘密"
+    ],
+    "irreversible_change": "段奕尘在实战中使用失落曜晶，镜见川见证其真正力量，两人进入无法轻易退出的深层区域"
+  },
+  "exit_target": {
+    "location_id": "loc_秘密通道_第一层深处",
+    "time_state": "子时过后半个时辰",
+    "characters_present": [
+      "段奕尘",
+      "镜见川"
+    ],
+    "unfinished_action": "通道更深处出现分叉路口，两条路都透出不同的能量波动",
+    "hook_id": "hook_102_01",
+    "hook_promise": "左右两条路，选择关乎生死"
+  },
+  "transition_to_next": {
+    "scene_continuity": "immediate",
+    "location_change": false,
+    "pov_change": false,
+    "consume_hook_by_percent": 20
+  },
+  "sources": {
+    "outline_ref": null,
+    "long_arc_band": 11,
+    "generated_at": "2026-08-14T17:15:00.000000",
+    "generated_from": "manual",
+    "content_hash": "ch102_progressive",
+    "based_on_chapter": 101
+  },
+  "notes": "承接Ch101，进入通道的第一个实质性推进。展现危险和挑战，同时让段奕尘使用失落曜晶能力。结尾制造选择困境，为Ch103做铺垫。"
+}

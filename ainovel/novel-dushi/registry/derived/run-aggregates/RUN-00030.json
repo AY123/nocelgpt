@@ -1,0 +1,265 @@
+{
+  "checkpoints": [
+    {
+      "chapter_id": "TASK-00010",
+      "chapter_index": 10,
+      "commercial_verdict": null,
+      "draft_hash": "sha256:e1d76e1a237200a994f0b2393e5f8291f52f123cf60e1dd173fc1ee840caaacb",
+      "event_id": "EVT-90013",
+      "final_hash": "sha256:0a4e2ed4a351e7c968238a198e9ca90225d017cb3513a7f0a358cfa94e5b709c",
+      "kind": "serial_checkpoint",
+      "m7": {
+        "authority": "human",
+        "chapter_id": "TASK-00010",
+        "gates_build": true,
+        "rationale": "未命中硬红线，原创性风险可接受。",
+        "recommendation": "recommend",
+        "redline_hits": [],
+        "redline_passed": true,
+        "risk_level": "L0",
+        "similarity": {
+          "containment": 0.0424,
+          "embedding_similarity": 0.556,
+          "matches": [
+            {
+              "aligned_spans": [],
+              "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+              "method": "ngram_containment",
+              "risk_type": "semantic_overlap",
+              "similarity": 0.3506,
+              "source_id": "REF-00001",
+              "source_type": "reference_novel"
+            }
+          ],
+          "overall_similarity": 0.3506,
+          "reference_count": 1,
+          "risk_level": "L0",
+          "suspicious_spans": []
+        }
+      },
+      "quality_snapshot": {
+        "chapter_id": "TASK-00010",
+        "findings": [],
+        "kind": "quality_snapshot",
+        "language": {
+          "ascii_ratio": 0.0017804154302670622,
+          "ascii_word_count": 6,
+          "body_chars": 3531,
+          "chinese_char_count": 2905,
+          "chinese_ratio": 0.8620178041543026,
+          "english_dominant": false,
+          "long_ascii_run": false
+        },
+        "length": {
+          "body_chars": 3531,
+          "line_count": 161,
+          "nonspace_chars": 3370,
+          "paragraph_count": 81,
+          "token_estimate": 1982
+        },
+        "version": "1.0",
+        "warning_count": 0
+      },
+      "state_hash": "sha256:5eaea8ba9cfea174dd72786f7e751e231e3d0b336bfebe410f2aa3dc3eaacb4f",
+      "verdict": null,
+      "version": "1.0"
+    },
+    {
+      "chapter_id": "TASK-00020",
+      "chapter_index": 20,
+      "commercial_verdict": null,
+      "draft_hash": "sha256:262eba91a4dd2bfb07fdfa8168bff1bd91306583de7e1ac5dc16adeea6f3a029",
+      "event_id": "EVT-90023",
+      "final_hash": "sha256:d1455647cfe237a8a7c67c122ba2d1a5f05f302127320d35ab2761adcfdafdeb",
+      "kind": "serial_checkpoint",
+      "m7": {
+        "authority": "human",
+        "chapter_id": "TASK-00020",
+        "gates_build": true,
+        "rationale": "未命中硬红线，原创性风险可接受。",
+        "recommendation": "recommend",
+        "redline_hits": [],
+        "redline_passed": true,
+        "risk_level": "L0",
+        "similarity": {
+          "containment": 0.0492,
+          "embedding_similarity": 0.5146,
+          "matches": [
+            {
+              "aligned_spans": [],
+              "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+              "method": "ngram_containment",
+              "risk_type": "semantic_overlap",
+              "similarity": 0.3284,
+              "source_id": "REF-00001",
+              "source_type": "reference_novel"
+            }
+          ],
+          "overall_similarity": 0.3284,
+          "reference_count": 1,
+          "risk_level": "L0",
+          "suspicious_spans": []
+        }
+      },
+      "quality_snapshot": {
+        "chapter_id": "TASK-00020",
+        "findings": [],
+        "kind": "quality_snapshot",
+        "language": {
+          "ascii_ratio": 0.0,
+          "ascii_word_count": 0,
+          "body_chars": 3119,
+          "chinese_char_count": 2551,
+          "chinese_ratio": 0.8514686248331108,
+          "english_dominant": false,
+          "long_ascii_run": false
+        },
+        "length": {
+          "body_chars": 3119,
+          "line_count": 123,
+          "nonspace_chars": 2996,
+          "paragraph_count": 62,
+          "token_estimate": 1762
+        },
+        "version": "1.0",
+        "warning_count": 0
+      },
+      "state_hash": "sha256:812b0d925db8098beebe7b77aca54f921b161cc85e692c8d5932578ce9da4a76",
+      "verdict": null,
+      "version": "1.0"
+    },
+    {
+      "chapter_id": "TASK-00030",
+      "chapter_index": 30,
+      "commercial_verdict": null,
+      "draft_hash": "sha256:e0d4c47dc5396ed2bbbbc1739f12ce436f17599bd241620edad6659ed6703dce",
+      "event_id": "EVT-90033",
+      "final_hash": "sha256:62ce9bb937ede7a37cea39054b6433d573a4082ab31d33b3c9157fcd5246be23",
+      "kind": "serial_checkpoint",
+      "m7": {
+        "authority": "human",
+        "chapter_id": "TASK-00030",
+        "gates_build": true,
+        "rationale": "未命中硬红线，原创性风险可接受。",
+        "recommendation": "recommend",
+        "redline_hits": [],
+        "redline_passed": true,
+        "risk_level": "L0",
+        "similarity": {
+          "containment": 0.0388,
+          "embedding_similarity": 0.5367,
+          "matches": [
+            {
+              "aligned_spans": [],
+              "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+              "method": "ngram_containment",
+              "risk_type": "semantic_overlap",
+              "similarity": 0.3375,
+              "source_id": "REF-00001",
+              "source_type": "reference_novel"
+            }
+          ],
+          "overall_similarity": 0.3375,
+          "reference_count": 1,
+          "risk_level": "L0",
+          "suspicious_spans": []
+        }
+      },
+      "quality_snapshot": {
+        "chapter_id": "TASK-00030",
+        "findings": [
+          {
+            "check": "ai-taste",
+            "message": "模板表达过度使用：「沉默了片刻」出现1次（每千字0.37次，参考基准0.1次，超用3.66倍）",
+            "severity": "warning"
+          }
+        ],
+        "kind": "quality_snapshot",
+        "language": {
+          "ascii_ratio": 0.00141643059490085,
+          "ascii_word_count": 4,
+          "body_chars": 2953,
+          "chinese_char_count": 2422,
+          "chinese_ratio": 0.8576487252124646,
+          "english_dominant": false,
+          "long_ascii_run": false
+        },
+        "length": {
+          "body_chars": 2953,
+          "line_count": 129,
+          "nonspace_chars": 2824,
+          "paragraph_count": 65,
+          "token_estimate": 1661
+        },
+        "version": "1.0",
+        "warning_count": 1
+      },
+      "state_hash": "sha256:0d184ac1cd8a7af6f3d8a58c9d0673267d34c753bd9391616e10172803742c87",
+      "verdict": null,
+      "version": "1.0"
+    }
+  ],
+  "content_hash": "57e3239895f5cae868c3d87d2b7eb7072633b1dcf385cf94fc08b03f9521ec3b",
+  "kind": "run_aggregate",
+  "notes": "serial run aggregate for RUN-00030",
+  "project_path": "../novel-dushi",
+  "run_summary": {
+    "bundle": {
+      "link_ids": [],
+      "plan_ids": [],
+      "report_ids": [],
+      "run_ids": []
+    },
+    "content_hash": "ab17a0092281677d18ec24ff95dbcbf55df5b443cbafb6074e56992f4640b5f4",
+    "kind": "30ch_launch_summary",
+    "link": {
+      "content_hash": "4f85966d6fd5aa47ffc918c36630a0dbf062f603d2bbe7e882ab958b134557ac",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00030",
+      "notes": "serial run aggregate for RUN-00030",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00030.json",
+      "version": "1.0"
+    },
+    "notes": "serial run aggregate for RUN-00030",
+    "plan": {
+      "budget_limit": null,
+      "chapter_target": 30,
+      "content_hash": "dd85f617721b24eae659d220bacd840ae132544b4e0548b5284ea31d46db9b22",
+      "kind": "30ch_launch_plan",
+      "model_id": "claude-fable-5",
+      "model_provider": "claude",
+      "project_path": "../novel-dushi",
+      "prompt_version": "6.0.0",
+      "standard_root": "../AI-Novel-Standard",
+      "version": "1.0"
+    },
+    "report": {
+      "content_hash": "99b9798b489f42aa32a2f61bddf9f585f6637379adcc43613b30388951725734",
+      "kind": "30ch_launch_report",
+      "notes": "serial run aggregate for RUN-00030",
+      "plan": {
+        "budget_limit": null,
+        "chapter_target": 30,
+        "content_hash": "dd85f617721b24eae659d220bacd840ae132544b4e0548b5284ea31d46db9b22",
+        "kind": "30ch_launch_plan",
+        "model_id": "claude-fable-5",
+        "model_provider": "claude",
+        "project_path": "../novel-dushi",
+        "prompt_version": "6.0.0",
+        "standard_root": "../AI-Novel-Standard",
+        "version": "1.0"
+      },
+      "version": "1.0"
+    },
+    "run": {
+      "content_hash": "4f85966d6fd5aa47ffc918c36630a0dbf062f603d2bbe7e882ab958b134557ac",
+      "kind": "30ch_launch_link",
+      "launch_report_id": "RUN-00030",
+      "notes": "serial run aggregate for RUN-00030",
+      "run_manifest_ref": "registry/derived/run-manifests/RUN-00030.json",
+      "version": "1.0"
+    },
+    "version": "1.0"
+  },
+  "version": "1.0"
+}

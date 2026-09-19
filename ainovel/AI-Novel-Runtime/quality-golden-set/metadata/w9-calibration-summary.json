@@ -1,0 +1,176 @@
+{
+  "boundary": {
+    "boundary_mean_continue_probability": 0.5,
+    "boundary_sample_count": 5,
+    "boundary_status_counts": {
+      "calibration": 5
+    },
+    "boundary_trust_flags": {
+      "has_evidence_spans": false,
+      "has_uncertainty": true
+    },
+    "dimension_grading": {
+      "decision": [],
+      "diagnostic": [
+        "ai_voice_risk",
+        "chapter_goal",
+        "character_motivation",
+        "conflict_progression",
+        "continue_intent",
+        "continuity",
+        "emotion_flow",
+        "ending_hook",
+        "information_density",
+        "opening_hook",
+        "paying_intent",
+        "payoff_delivery"
+      ],
+      "unreliable": []
+    }
+  },
+  "content_hash": "2084a3bb76a26cbc806ba6b13407b0373e2adc67e79a034bd09fe8855531bb46",
+  "dimension_grading": {
+    "decision": [],
+    "diagnostic": [
+      "ai_voice_risk",
+      "chapter_goal",
+      "character_motivation",
+      "conflict_progression",
+      "continue_intent",
+      "continuity",
+      "emotion_flow",
+      "ending_hook",
+      "information_density",
+      "opening_hook",
+      "paying_intent",
+      "payoff_delivery"
+    ],
+    "unreliable": []
+  },
+  "dimension_stats": {
+    "ai_voice_risk": {
+      "ci95_half_width": 0.328277980232837,
+      "correlation": 0.5283064784496544,
+      "level": "diagnostic",
+      "mean_abs_error": 0.6395348837209303,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "chapter_goal": {
+      "ci95_half_width": 0.24676979314625724,
+      "correlation": 0.794236897300607,
+      "level": "diagnostic",
+      "mean_abs_error": 0.4069767441860465,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "character_motivation": {
+      "ci95_half_width": 0.2192785259225658,
+      "correlation": 0.7473856327402053,
+      "level": "diagnostic",
+      "mean_abs_error": 0.4418604651162791,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "conflict_progression": {
+      "ci95_half_width": 0.18508569729081215,
+      "correlation": 0.8473846390777743,
+      "level": "diagnostic",
+      "mean_abs_error": 0.4418604651162791,
+      "rationale": "降级：仅 3 个真实样本（正文 ≥200 字），低于 5 的下限；相关性由标签样本得出，不足以驱动自动决策",
+      "real_sample_count": 3,
+      "sample_count": 43
+    },
+    "continue_intent": {
+      "ci95_half_width": 0.22346840653261513,
+      "correlation": 0.8686986353646816,
+      "level": "diagnostic",
+      "mean_abs_error": 0.47674418604651164,
+      "rationale": "降级：仅 3 个真实样本（正文 ≥200 字），低于 5 的下限；相关性由标签样本得出，不足以驱动自动决策",
+      "real_sample_count": 3,
+      "sample_count": 43
+    },
+    "continuity": {
+      "ci95_half_width": 0.26966317150872676,
+      "correlation": 0.7679807834113174,
+      "level": "diagnostic",
+      "mean_abs_error": 0.7441860465116279,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "emotion_flow": {
+      "ci95_half_width": 0.21638307076873106,
+      "correlation": 0.7835952654973312,
+      "level": "diagnostic",
+      "mean_abs_error": 0.313953488372093,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "ending_hook": {
+      "ci95_half_width": 0.22877354632182628,
+      "correlation": 0.8503850990436814,
+      "level": "diagnostic",
+      "mean_abs_error": 0.5581395348837209,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "information_density": {
+      "ci95_half_width": 0.2364297877353318,
+      "correlation": 0.6296084861106532,
+      "level": "diagnostic",
+      "mean_abs_error": 0.6046511627906976,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    },
+    "opening_hook": {
+      "ci95_half_width": 0.25364023613941644,
+      "correlation": 0.9220158685451215,
+      "level": "diagnostic",
+      "mean_abs_error": 0.4883720930232558,
+      "rationale": "降级：仅 3 个真实样本（正文 ≥200 字），低于 5 的下限；相关性由标签样本得出，不足以驱动自动决策",
+      "real_sample_count": 3,
+      "sample_count": 43
+    },
+    "paying_intent": {
+      "ci95_half_width": 0.17264002737412795,
+      "correlation": 0.8672243110837119,
+      "level": "diagnostic",
+      "mean_abs_error": 0.686046511627907,
+      "rationale": "降级：仅 3 个真实样本（正文 ≥200 字），低于 5 的下限；相关性由标签样本得出，不足以驱动自动决策",
+      "real_sample_count": 3,
+      "sample_count": 43
+    },
+    "payoff_delivery": {
+      "ci95_half_width": 0.18561947113818927,
+      "correlation": 0.7813776332388114,
+      "level": "diagnostic",
+      "mean_abs_error": 0.5348837209302325,
+      "rationale": "相关性足够高，但更适合用于诊断/复盘，不直接单独决定选择",
+      "sample_count": 43
+    }
+  },
+  "grading_downgraded": {
+    "demoted_from_decision": [
+      "conflict_progression",
+      "continue_intent",
+      "opening_hook",
+      "paying_intent"
+    ],
+    "min_real_body_chars": 200,
+    "min_real_samples_for_decision": 5,
+    "real_sample_count": 3,
+    "reason": "insufficient_real_samples"
+  },
+  "kind": "w9_reviewer_calibration_summary",
+  "label_only_sample_count": 40,
+  "metadata_root": "/Users/angyang/Documents/xiaoshuo/AINovel/AI-Novel-Runtime/quality-golden-set/metadata",
+  "notes": "calibration summary from real reviewer backfill",
+  "real_sample_count": 3,
+  "row_count": 43,
+  "sample_count": 43,
+  "skeleton_seed_count": 7,
+  "skipped_sample_count": 0,
+  "status": "uncalibrated_insufficient_real_samples",
+  "trusted_dimensions": [],
+  "version": "1.1"
+}

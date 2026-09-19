@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/knowledge.schema.json",
+  "title": "KnowledgeState",
+  "type": "object",
+  "required": [
+    "id",
+    "knower",
+    "proposition",
+    "knowledge_level",
+    "confidence",
+    "authority",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "knower": {
+      "type": "string"
+    },
+    "proposition": {
+      "type": "object",
+      "required": [
+        "subject",
+        "predicate"
+      ],
+      "properties": {
+        "subject": {
+          "type": "string"
+        },
+        "predicate": {
+          "type": "string"
+        },
+        "object": {}
+      }
+    },
+    "knowledge_level": {
+      "enum": [
+        "KNOWN",
+        "BELIEVED",
+        "SUSPECTED",
+        "HEARD",
+        "UNKNOWN",
+        "FALSELY_BELIEVED"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "source": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "acquired_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "validity": {
+      "enum": [
+        "valid",
+        "invalid",
+        "unverified",
+        "unknown"
+      ]
+    },
+    "authority": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

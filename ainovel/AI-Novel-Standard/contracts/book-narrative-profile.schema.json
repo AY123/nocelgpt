@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "anes:contract:book-narrative-profile:1.0",
+  "title": "BookNarrativeProfile",
+  "description": "A derived, evidence-linked narrative and commercial profile for one corpus book. It contains abstractions only, never source prose or external identity.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "kind", "schema_version", "book_id", "corpus_snapshot_id", "corpus_manifest_hash", "analysis", "positioning", "protagonist", "progression", "commercial", "sustainability", "evidence", "confidence"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^BNP-[0-9]{8}$"},
+    "kind": {"const": "book_narrative_profile"},
+    "schema_version": {"const": "1.0"},
+    "book_id": {"type": "string", "pattern": "^CBK-[0-9]{8}$"},
+    "corpus_snapshot_id": {"type": "string", "pattern": "^CORPUS-[A-Z0-9][A-Z0-9._-]{2,63}$"},
+    "corpus_manifest_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "analysis": {
+      "type": "object", "additionalProperties": false,
+      "required": ["method", "analyzer_version", "prompt_version", "model_policy_version"],
+      "properties": {
+        "method": {"enum": ["deterministic", "llm", "consensus"]},
+        "analyzer_version": {"type": "string", "minLength": 1},
+        "prompt_version": {"type": "string", "minLength": 1},
+        "model_policy_version": {"type": "string", "minLength": 1}
+      }
+    },
+    "positioning": {
+      "type": "object", "additionalProperties": false,
+      "required": ["genre", "subgenres", "core_fantasy", "target_reader", "one_line_selling_point"],
+      "properties": {
+        "genre": {"type": "string", "minLength": 1},
+        "subgenres": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "core_fantasy": {"type": "string", "minLength": 1},
+        "target_reader": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "one_line_selling_point": {"type": "string", "minLength": 1}
+      }
+    },
+    "protagonist": {
+      "type": "object", "additionalProperties": false,
+      "required": ["initial_deficit", "long_term_desire", "agency_level"],
+      "properties": {
+        "initial_deficit": {"type": "string", "minLength": 1},
+        "long_term_desire": {"type": "string", "minLength": 1},
+        "agency_level": {"enum": ["high", "medium", "low", "unknown"]}
+      }
+    },
+    "progression": {
+      "type": "object", "additionalProperties": false,
+      "required": ["core_ability", "limitations", "growth_axes"],
+      "properties": {
+        "core_ability": {"type": "string", "minLength": 1},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "growth_axes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "commercial": {
+      "type": "object", "additionalProperties": false,
+      "required": ["first_visible_payoff_chapter", "first_volume_promise"],
+      "properties": {
+        "first_visible_payoff_chapter": {"type": ["integer", "null"], "minimum": 1},
+        "first_volume_promise": {"type": "string", "minLength": 1}
+      }
+    },
+    "sustainability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sources_30_100", "mid_stage_risks"],
+      "properties": {
+        "sources_30_100": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "mid_stage_risks": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["field", "chapter_indexes", "feature_codes"],
+        "properties": {
+          "field": {"type": "string", "minLength": 1},
+          "chapter_indexes": {"type": "array", "items": {"type": "integer", "minimum": 1}, "uniqueItems": true},
+          "feature_codes": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+        }
+      }
+    },
+    "confidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["level", "score", "limitations"],
+      "properties": {
+        "level": {"enum": ["high", "medium", "low"]},
+        "score": {"type": "number", "minimum": 0, "maximum": 1},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    }
+  }
+}

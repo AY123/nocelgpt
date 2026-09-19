@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/restore-validation.schema.json",
+  "title": "RestoreValidation",
+  "type": "object",
+  "required": [
+    "restore_id",
+    "backup_ref",
+    "environment",
+    "status",
+    "checks",
+    "created_at"
+  ],
+  "properties": {
+    "restore_id": {
+      "type": "string"
+    },
+    "backup_ref": {
+      "type": "string"
+    },
+    "environment": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "PARTIAL"
+      ]
+    },
+    "checks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "canon_rebuild_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN"
+      ]
+    },
+    "artifact_integrity_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN"
+      ]
+    },
+    "workflow_state_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_RUN"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

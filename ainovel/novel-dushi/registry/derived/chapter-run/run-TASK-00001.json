@@ -1,0 +1,696 @@
+{
+  "index": 1,
+  "task_id": "TASK-00001",
+  "event": "EVT-90004",
+  "ok": true,
+  "stage": "done",
+  "draft_hash": "sha256:4fa3b346a8e487ef15a113867250f61ebd115e062265b82ead03df7bc1b1a08d",
+  "state_hash": "sha256:10ae13be35317053bcc85795d9849ea5fefb1dc114747932b7a7182c856813f4",
+  "open_setups": 0,
+  "events_so_far": 1,
+  "verdict": null,
+  "qa_scores": null,
+  "commercial_verdict": null,
+  "pacing": {
+    "reviewer": "pacing-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "pacing",
+        "severity": "warning",
+        "message": "情绪曲线单调（全程只升或只降），章内缺少转折/张弛：35→55→70→75"
+      }
+    ]
+  },
+  "pacing_peak": 75,
+  "density": {
+    "reviewer": "density-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "density",
+        "severity": "info",
+        "message": "信息密度健康（对白占比 13.4%，每千字比喻 1.7）"
+      }
+    ]
+  },
+  "ai_taste": {
+    "reviewer": "ai-taste-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "ai-taste",
+        "severity": "info",
+        "message": "未见明显 AI 味信号（最长同头 2 句，句长 CV 0.65）"
+      }
+    ]
+  },
+  "hygiene": null,
+  "end_hook": {
+    "reviewer": "hook-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "end-hook",
+        "severity": "info",
+        "message": "章末留有钩子（转折/威胁）"
+      }
+    ]
+  },
+  "meta_reference": {
+    "reviewer": "meta-reference-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": []
+  },
+  "integrity": {
+    "reviewer": "text-integrity-gate-v1",
+    "axis": "gate",
+    "gating": true,
+    "status": "review_required",
+    "reason_codes": [
+      "word_internal_punctuation"
+    ],
+    "evidence_spans": [
+      {
+        "start": 190,
+        "end": 193,
+        "context": "个月薪三千的实习生。本以为手握未来十七"
+      }
+    ],
+    "severity": "medium",
+    "action": "require_review",
+    "findings": [
+      {
+        "check": "word_internal_punctuation",
+        "severity": "critical",
+        "message": "Detected high confidence word-internal punctuation in Chinese text. Found 16 instance(s). This may indicate serialization errors breaking words. Examples: ['了这个月薪三千的实习生。本以为手握未来十七年的', '—温和、礼貌、滴水不漏。作为这家名为\"盛达咨询', '紧。\\n\\n赵鹏程说得没错。前世的这个时间点,他也']",
+        "start": 190,
+        "end": 193
+      }
+    ]
+  },
+  "length": {
+    "reviewer": "length-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "length",
+        "severity": "info",
+        "message": "篇幅达标（4107 字，目标 3333，123%，在 80%–160% 带宽内，opening章带宽）"
+      }
+    ]
+  },
+  "mandate": {
+    "reviewer": "mandate-check-v1",
+    "axis": "evaluative",
+    "gating": false,
+    "findings": [
+      {
+        "check": "mandate",
+        "severity": "info",
+        "message": "本章无叙事强制令，跳过温水章分析"
+      }
+    ]
+  },
+  "m7": {
+    "chapter_id": "TASK-00001",
+    "authority": "human",
+    "gates_build": true,
+    "recommendation": "recommend",
+    "risk_level": "L0",
+    "redline_passed": true,
+    "redline_hits": [],
+    "similarity": {
+      "overall_similarity": 0.37,
+      "risk_level": "L0",
+      "matches": [
+        {
+          "source_id": "REF-00001",
+          "source_type": "reference_novel",
+          "similarity": 0.37,
+          "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+          "risk_type": "semantic_overlap",
+          "aligned_spans": [],
+          "method": "ngram_containment"
+        }
+      ],
+      "suspicious_spans": [],
+      "embedding_similarity": 0.5855,
+      "containment": 0.0468,
+      "reference_count": 1
+    },
+    "rationale": "未命中硬红线，原创性风险可接受。"
+  },
+  "m7_approval_id": null,
+  "llm_cost": {
+    "total_cost": 0.0,
+    "currency": null,
+    "pricing_version": null
+  },
+  "llm_usage": {
+    "input": 2953,
+    "output": 4671,
+    "total": 7624
+  },
+  "m5_final": {
+    "chapter_id": "TASK-00001",
+    "final_text": "# 第一章 重生者的末路\n\n林远知道自己要完了。\n\n不是比喻意义上的\"完\"，而是字面意义上的——三十万违约金，七天内必须交齐，否则法院强制执行，冻结所有账户。他看着手机屏幕上那封来自律师事务所的最后通牒，日期是2009年4月15日，距离最后期限还有72小时。\n\n他的银行卡余额是四千二百块。\n\n重生回来整整三个月，他从一个在2026年混得风生水起的投资人，变回了这个月薪三千的实习生。本以为手握未来十七年的完整记忆，能轻松改写前世那场导致家破人亡的商业败局——结果第一步就栽了。\n\n栽在自己的自负上。\n\n\"林远，合同的事考虑得怎么样了?\"\n\n办公室门口站着的人叫赵鹏程,他穿着得体的深灰色西装,脸上挂着那种生意场上特有的笑容——温和、礼貌、滴水不漏。作为这家名为\"盛达咨询\"的公司法务总监,他这三个月来一直\"关心\"林远的违约纠纷。\n\n林远抬起头:\"赵总监,我说过了,那份合同存在欺诈条款,我不可能——\"\n\n\"不可能什么?不可能承认你当初签字时根本没仔细看?\"赵鹏程笑容收敛了一些,\"林远,你一个刚毕业的实习生,拿什么跟恒泰地产的法务团队打官司?就凭你那四千块存款?\"\n\n林远的手指在桌面上收紧。\n\n赵鹏程说得没错。前世的这个时间点,他也遭遇过类似的陷阱——只不过前世的他选择了妥协,接受了对方开出的\"和解方案\",从此背上了一笔永远还不清的债务。那笔债务像滚雪球一样越滚越大,最终压垮了他的家庭,毁掉了他父母的晚年,也葬送了他本该有的人生。\n\n所以这一世,他发誓要用另一种方式解决。\n\n他记得恒泰地产在2009年6月会爆出一桩重大的财务造假丑闻,公司高层集体入狱,股价暴跌。他原本的计划是拖到那个时间点,用这个把柄逼对方撤诉——但他算错了一件事:对方根本不给他拖延的机会。\n\n\"我给你指条路,\"赵鹏程在他对面的椅子上坐下,语气变得\"恳切\"起来,\"盛达这边正好有个项目需要人手,短期合同工,三个月能赚二十万。你先把违约金的窟窿堵上,剩下的钱还能缓口气,怎么样?\"\n\n林远看着他,没有说话。\n\n他当然知道这是个陷阱。所谓的\"项目\"大概率是某种灰色地带的业务,而\"短期合同\"则意味着随时可以被踢开,甚至背上新的法律风险。赵鹏程代表的不仅仅是盛达咨询,背后还牵扯着恒泰地产那群人——他们要的不是三十万违约金,而是要把他彻底按在泥里,让他成为一个可以随意拿捏的棋子。\n\n前世的他,就是这样一步步走进深渊的。\n\n\"不用考虑了?\"赵鹏程站起身,整理了一下袖口,\"那行,你自己想清楚。不过我得提醒你,法院那边已经立案了,强制执行程序一旦启动,你的征信记录——\"\n\n\"我需要见一个人。\"林远突然开口。\n\n赵鹏程动作一顿:\"谁?\"\n\n\"恒泰地产的副总裁,周子铭。\"林远盯着他的眼睛,\"我知道这个案子是他在背后推动,我要跟他当面谈。\"\n\n赵鹏程的表情变了,笑容彻底消失,取而代之的是一种审视的目光。他重新坐回椅子上,手指在扶手上轻轻敲击,像是在评估什么。\n\n\"你一个实习生,怎么会知道周总?\"\n\n\"我有我的渠道。\"林远的声音很平静,\"你只需要告诉他,我手里有他想要的东西。\"\n\n这是一场豪赌。\n\n林远知道周子铭这个人——准确说,是他前世的记忆里知道。2009年的周子铭还只是恒泰地产的二号人物,野心勃勃但处处受制于董事长。而六月那场财务造假丑闻,真正的始作俑者不是董事长,恰恰是这位看起来光鲜亮丽的周副总裁。他利用董事长的信任,在账目上做了大量手脚,把公司当成自己的提款机。\n\n如果能用这个秘密作为筹码——\n\n\"你疯了吧?\"赵鹏程盯着他,眼神里第一次出现了某种接近惊讶的东西,\"你知道你在说什么吗?\"\n\n\"我很清楚。\"林远站起来,从抽屉里拿出一个U盘,放在桌上,\"这里面是部分证据,足够让周子铭重视。告诉他,我要的不多,只要他撤销对我的诉讼,这些东西我可以当作没见过。\"\n\n赵鹏程没有去拿那个U盘,而是盯着林远看了很久。\n\n办公室里安静得只能听见空调的嗡鸣声。时间一秒一秒过去,林远的心跳越来越快,但他强迫自己保持镇定。这是他能想到的唯一出路——与其等到六月让历史自然发生,不如主动出击,用这个秘密在事发之前换取自己的安全。\n\n只是他赌不准周子铭会怎么反应。\n\n如果对方选择杀人灭口——不,不会的,现在还不到那个地步。周子铭需要时间来确认信息的真实性,而那段时间就是他的机会。\n\n\"有意思。\"赵鹏程终于伸手拿起了U盘,放进西装口袋,\"我会转达给周总。不过林远,你最好祈祷你手里的东西真的有价值,否则——\"\n\n他没有把话说完,但威胁的意味已经足够明显。\n\n赵鹏程离开后,林远坐回椅子上,双手撑着额头。他的后背已经被冷汗浸透,刚才那几分钟,他几乎是在用全部的意志力维持表面的冷静。\n\nU盘里的\"证据\"其实是他这三个月来根据前世记忆整理出的资料——恒泰地产的几笔可疑交易记录、周子铭名下的离岸公司信息、以及几个关键时间节点的资金流向。这些东西单独看不算什么,但如果有人愿意深挖,顺着这些线索查下去,就能拼凑出完整的财务造假链条。\n\n问题在于,他现在手里只有线索,没有实锤。\n\n真正的证据要到六月才会浮出水面,由证监会和检察院联合调查后公开。他现在做的,是在用未来的信息差制造一个认知陷阱——让周子铭以为他掌握了完整证据,从而不敢轻举妄动。\n\n这个策略的风险在于:一旦周子铭发现他在虚张声势,后果不堪设想。\n\n林远看了一眼手机,距离违约金最后期限还有71小时52分钟。\n\n他需要在这段时间内,让周子铭相信他的价值,同时拿到撤诉的承诺。时间不多了。\n\n手机震动了一下,一条新消息弹了出来,发件人是陌生号码:\n\n\"明天晚上八点,云顶会所,来的时候别带任何录音设备。——周\"\n\n林远盯着那条消息,指尖微微发抖。\n\n他成功了——至少成功了第一步。周子铭愿意见他,意味着对方确实在乎那些资料,也意味着他暂时安全了。但同时,这也意味着他正式踏入了一个远比违约纠纷更危险的局面。\n\n云顶会所,那是江城商界高层的社交场所,进出的都是身家千万以上的人物。在那种地方,一个月薪三千的实习生,连给人递茶水的资格都没有。\n\n可是他必须去。\n\n林远深吸一口气,开始在脑海中推演明天的谈判。他需要表现得足够自信,让周子铭相信他真的掌握了致命证据;同时又要足够谨慎,不能暴露出他其实只有皮毛信息的事实。这是一场话术和心理的博弈,稍有不慎就会满盘皆输。\n\n窗外的夜色渐浓,办公楼里的灯光一盏盏熄灭。林远坐在黑暗中,脑子里飞速转动。\n\n他想起前世的自己,在类似的困境中选择了妥协,然后一步步滑向深渊。那些年他背着债务,看着父母为他奔波劳累,看着曾经爱他的人离他而去,看着所有的梦想在现实面前化为泡影。他用了整整十七年,才终于在2026年翻身,成为投资界的一匹黑马——然后在一场车祸中重生回了2009年。\n\n他发誓这一次要改变一切。\n\n可是现在,他才发现改变命运比想象中难得多。重生带来的不仅是先知先觉,还有一种危险的傲慢——他以为自己掌握了未来,就能轻易碾压过去的对手,结果反而让自己陷入了更被动的境地。\n\n如果明天的谈判失败——\n\n不,不能失败。\n\n林远闭上眼睛,开始在记忆中搜索关于周子铭的所有细节。他的性格、喜好、弱点、行为模式……前世的报道里提到过,周子铭是个极度谨慎的人,做任何事都会留三条后路。这样的人不会轻易被威胁,但也不会轻易冒险。\n\n那么关键就在于,如何让他相信,与其冒险灭口或者硬刚,不如选择和解。\n\n林远睁开眼睛,拿起手机,开始给自己设置明天的行动提醒。他列出了十几个可能的谈判走向,以及每个走向下的应对策略。做完这些,已经是凌晨两点。\n\n他合上电脑,收拾东西准备离开。走到办公室门口时,他突然停下脚步,回头看了一眼自己的工位。\n\n就在三个月前,他重生回到这个时间点时,满心以为自己会像网络小说里的主角那样,凭借先知先觉在商业战场上所向披靡。现在他才明白,知道未来和改变未来,完全是两回事。\n\n历史的惯性比他想象中更强大,而每一次试图改变,都会引发无法预料的连锁反应。\n\n他想起重生前看过的一部电影,里面有句台词:当你凝视深渊时,深渊也在凝视你。\n\n现在他终于理解了这句话的含义。\n\n林远关上办公室的灯,走进夜色。身后的大楼逐渐远去,前方的云顶会所还在等他。他不知道明天会发生什么,但他知道,无论如何,他都不能再走前世的老路。\n\n就在他走出大楼大门的那一刻,脑海中突然闪过一段画面——清晰、具体、充满细节,就像亲眼所见一样。\n\n那是2009年6月18日,恒泰地产总部,周子铭被警方带走的场景。他看见了周子铭脸上的表情,听见了警察宣读逮捕令的声音,甚至看清了周子铭西装口袋里露出的一角文件——那是一份转账记录,金额是八百万,收款人是一个离岸账户。\n\n林远停下脚步,倒吸一口凉气。\n\n这不是普通的回忆。前世的他虽然关注过这个案子,但只是通过新闻报道了解,根本不可能知道这么多细节。可是刚才那个画面,清晰得就像他站在现场一样——\n\n这是什么?\n\n他的手开始微微颤抖,一种难以名状的恐惧涌上心头。重生三个月来,他一直以为自己只是单纯地回到了过去,带着前世的记忆重新来过。可是现在,他突然意识到,也许事情没那么简单。\n\n也许他的\"金手指\",不仅仅是记忆。\n\n也许每当他试图改变历史,每当他主动介入那些本该自然发生的事件,某种更深层的能力就会被激活——让他看见更多、知道更多。\n\n但代价是什么?\n\n林远想起刚才那个画面里的一个细节:在周子铭被带走的背景中,有一块电子屏幕,上面显示的新闻标题是\"江城发生重大交通事故,三人死亡\"。而那个日期——6月18日——在他前世的记忆里,那天江城风平浪静,没有任何重大事故。\n\n历史变了。\n\n或者说,正在变。\n\n他站在空荡荡的街头,看着远处霓虹闪烁的夜景,突然明白了一件事:他以为自己在利用未来的信息改写命运,但实际上,每一次改写都在制造新的变量,而那些变量会像蝴蝶效应一样扩散开来,最终改变整个世界的走向。\n\n他熟悉的2026年,也许永远不会到来了。\n\n而那些他在前世珍视的人、事、物,也许会因为他的介入而彻底消失。\n\n这就是代价。",
+    "final_hash": "sha256:e109a08dc10bfd96be9c20b33032a4d747750b9df579f137dd6f520355e61291",
+    "final_review": {
+      "chapter_id": "TASK-00001",
+      "overall_verdict": "pass",
+      "scores": {
+        "structure": 0.85,
+        "pacing": 0.85,
+        "readability": 0.8,
+        "character_consistency": 0.7,
+        "setting_consistency": 0.7,
+        "emotion_progress": 0.7,
+        "hook_strength": 0.6,
+        "commercial_pull": 0.7,
+        "reader_signal_alignment": 0.7,
+        "platform_feedback_alignment": 0.7
+      },
+      "issues": [],
+      "strengths": [
+        "draft produced"
+      ],
+      "revision_suggestions": [],
+      "gating_recommendation": "advisory",
+      "publish_readiness": "ready"
+    },
+    "comparison_report": {
+      "id": "CMP-00001",
+      "kind": "version_comparison",
+      "authority": "human",
+      "gating": false,
+      "schema_version": "1.0",
+      "chapter_id": "TASK-00001",
+      "objective_ref": {
+        "id": "OBJ-00001",
+        "kind": "chapter_objective",
+        "authority": "human",
+        "gating": false,
+        "schema_version": "1.0",
+        "objective_id": "OBJ-00001",
+        "chapter_id": "TASK-00001",
+        "source": {},
+        "primary_goal": "身份落差暴露，金手指在绝境中被逼显性化",
+        "secondary_goals": [],
+        "reader_question": "主角目标与实习生月入三千阶段的小敌人正面碰撞——眼前的生存威胁，逼主角用出金手指。对手的追兵已逼近，来不及等待",
+        "promise_to_deliver": [],
+        "character_focus": [],
+        "plot_threads": [],
+        "commercial_intent": {
+          "retention_focus": "next_chapter_pull",
+          "payoff_type": "partial_payoff",
+          "drop_risk_target": "low"
+        },
+        "pacing_role": "rising_action",
+        "cliffhanger_type": "reveal",
+        "constraints": [
+          "不得破坏角色连续性",
+          "不得引入未授权新事实"
+        ],
+        "success_criteria": [
+          "reader_question 明确",
+          "章节末有追读动力",
+          "角色行为符合 runtime 状态"
+        ],
+        "notes": ""
+      },
+      "brief_ref": "TASK-00001",
+      "versions": [
+        {
+          "version_id": "draft",
+          "input_index": 0,
+          "score": 0.7,
+          "reason": "initial draft",
+          "decision_score_mean": null,
+          "decision_scores": {},
+          "diff_summary": {
+            "added_tokens": 0,
+            "removed_tokens": 0,
+            "change_rate_percent": 0.0,
+            "added_terms": [],
+            "removed_terms": [],
+            "before_length": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            },
+            "after_length": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            }
+          },
+          "text_summary": {
+            "before": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            },
+            "after": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            },
+            "delta_chars": 0,
+            "delta_words": 0,
+            "delta_lines": 0
+          },
+          "qa_change": {
+            "before_verdict": "revise",
+            "after_verdict": "pass",
+            "score_delta": {
+              "character_consistency": 0.7,
+              "commercial_pull": 0.7,
+              "emotion_progress": 0.7,
+              "hook_strength": 0.6,
+              "pacing": 0.85,
+              "platform_feedback_alignment": 0.7,
+              "readability": 0.8,
+              "reader_signal_alignment": 0.7,
+              "setting_consistency": 0.7,
+              "structure": 0.85
+            },
+            "issues_added": [],
+            "issues_removed": [],
+            "strengths_added": [
+              "draft produced"
+            ],
+            "strengths_removed": []
+          },
+          "commercial_change": {
+            "hook_alignment": "stable",
+            "commercial_target": null,
+            "hook_target": null,
+            "pacing_shift_words": 0,
+            "length_delta_words": 0,
+            "retention_signal": "improved"
+          },
+          "risk_and_recovery": {
+            "risks": [
+              "hook_strength_not_improved",
+              "qa_verdict_shift"
+            ],
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "verdict_shift": [
+              "revise",
+              "pass"
+            ],
+            "recommendation": "rollback"
+          }
+        },
+        {
+          "version_id": "revision",
+          "input_index": 1,
+          "score": 0.7,
+          "reason": "no revision needed",
+          "decision_score_mean": null,
+          "decision_scores": {},
+          "diff_summary": {
+            "added_tokens": 0,
+            "removed_tokens": 0,
+            "change_rate_percent": 0.0,
+            "added_terms": [],
+            "removed_terms": [],
+            "before_length": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            },
+            "after_length": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            }
+          },
+          "text_summary": {
+            "before": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            },
+            "after": {
+              "chars": 4107,
+              "words": 431,
+              "lines": 161
+            },
+            "delta_chars": 0,
+            "delta_words": 0,
+            "delta_lines": 0
+          },
+          "qa_change": {
+            "before_verdict": "pass",
+            "after_verdict": "pass",
+            "score_delta": {
+              "character_consistency": 0.0,
+              "commercial_pull": 0.0,
+              "emotion_progress": 0.0,
+              "hook_strength": 0.0,
+              "pacing": 0.0,
+              "platform_feedback_alignment": 0.0,
+              "readability": 0.0,
+              "reader_signal_alignment": 0.0,
+              "setting_consistency": 0.0,
+              "structure": 0.0
+            },
+            "issues_added": [],
+            "issues_removed": [],
+            "strengths_added": [],
+            "strengths_removed": []
+          },
+          "commercial_change": {
+            "hook_alignment": "stable",
+            "commercial_target": null,
+            "hook_target": null,
+            "pacing_shift_words": 0,
+            "length_delta_words": 0,
+            "retention_signal": "improved"
+          },
+          "risk_and_recovery": {
+            "risks": [
+              "hook_strength_not_improved"
+            ],
+            "recovery_actions": [
+              "restore stronger chapter hook",
+              "rebalance pacing and scene load",
+              "tighten issue-focused QA pass"
+            ],
+            "verdict_shift": [
+              "pass",
+              "pass"
+            ],
+            "recommendation": "revise"
+          }
+        }
+      ],
+      "winner": "draft",
+      "selection_policy": {
+        "primary_metric": "reader_pull",
+        "secondary_metric": "quality_consistency",
+        "tie_break": "earlier_input_order"
+      },
+      "selection_metadata": {
+        "winner_index": 0,
+        "tie_break_applied": true,
+        "ranking": [
+          {
+            "version_id": "draft",
+            "score": 0.7,
+            "input_index": 0
+          },
+          {
+            "version_id": "revision",
+            "score": 0.7,
+            "input_index": 1
+          }
+        ]
+      },
+      "summary": {
+        "headline": "改动率0.00%｜QA=pass｜商业钩子stable",
+        "major_change_rate_percent": 0.0,
+        "qa_score_deltas": {
+          "character_consistency": 0.7,
+          "commercial_pull": 0.7,
+          "emotion_progress": 0.7,
+          "hook_strength": 0.6,
+          "pacing": 0.85,
+          "platform_feedback_alignment": 0.7,
+          "readability": 0.8,
+          "reader_signal_alignment": 0.7,
+          "setting_consistency": 0.7,
+          "structure": 0.85
+        },
+        "commercial_focus": null,
+        "long_arc_band": null,
+        "recommendation": "rollback",
+        "editorial": {
+          "readability": "improved",
+          "retention": "improved",
+          "market_fit": "moderate",
+          "editorial_verdict": "accept",
+          "notes": [
+            "整体节奏更顺",
+            "追读动机有增强",
+            "题材卖点对齐度一般"
+          ]
+        }
+      },
+      "risk_summary": {
+        "risks": [
+          "hook_strength_not_improved",
+          "qa_verdict_shift"
+        ],
+        "recovery_actions": [
+          "restore stronger chapter hook",
+          "rebalance pacing and scene load",
+          "tighten issue-focused QA pass"
+        ],
+        "verdict_shift": [
+          "revise",
+          "pass"
+        ]
+      },
+      "pipeline_decision": {
+        "advance_to_next_chapter": false,
+        "trigger_revision_round": true,
+        "hold_for_human_review": true,
+        "action": "revise",
+        "reasons": {
+          "summary_recommendation": "rollback",
+          "editorial_verdict": "accept",
+          "risk_count": 2
+        }
+      },
+      "notes": "Comparison ranks scores supplied by commercial/quality signals; advisory, never gating."
+    },
+    "quality_summary": "verdict=pass; score_keys=character_consistency,commercial_pull,emotion_progress,hook_strength,pacing,platform_feedback_alignment,readability,reader_signal_alignment,setting_consistency,structure",
+    "continuity_notes": [
+      "hook_strength_not_improved",
+      "qa_verdict_shift"
+    ],
+    "commercial_notes": [
+      "整体节奏更顺",
+      "追读动机有增强",
+      "题材卖点对齐度一般"
+    ],
+    "next_chapter_bridge": "改动率0.00%｜QA=pass｜商业钩子stable; recommendation=rollback",
+    "production_decision": {
+      "advance_to_next_chapter": false,
+      "trigger_revision_round": true,
+      "hold_for_human_review": true,
+      "action": "revise",
+      "reasons": {
+        "summary_recommendation": "rollback",
+        "editorial_verdict": "accept",
+        "risk_count": 2
+      }
+    },
+    "final_strategy": null,
+    "final_status": null,
+    "artifact_id": "TASK-00001",
+    "genre_profile_id": "都市-v1",
+    "genre_contract_version": "1.0"
+  },
+  "reference_gap": null,
+  "budget_note": null,
+  "w12": null,
+  "contract_validation": null,
+  "contract_revision_session": null,
+  "final_contract_validation": null,
+  "production_card": {
+    "chapter": 1,
+    "draft_hash": "sha256:4fa3b346a8e487ef15a113867250f61ebd115e062265b82ead03df7bc1b1a08d",
+    "draft_timestamp": "2026-09-08T15:25:46.166063+00:00",
+    "contract_status": "pass",
+    "contract_deviations": 0,
+    "critical_deviations": 0,
+    "high_deviations": 0,
+    "medium_deviations": 0,
+    "minor_deviations": 0,
+    "final_quality_scores": {},
+    "initial_quality_scores": {},
+    "quality_delta": {},
+    "reader_simulation": null,
+    "dropout_risk": null,
+    "continuation_rate": null,
+    "promises_delivered": [],
+    "promises_pending": [],
+    "governance_reports": {
+      "promise_debt": null,
+      "character_arc": null,
+      "world_consistency": {
+        "total_rules": 0,
+        "total_inconsistencies": 0,
+        "critical_count": 0,
+        "high_count": 0,
+        "consistency_score": 1.0,
+        "recommendations": []
+      }
+    },
+    "constitution_compliance": null,
+    "prose_checks": {
+      "hygiene": {},
+      "density": {
+        "reviewer": "density-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "density",
+            "severity": "info",
+            "message": "信息密度健康（对白占比 13.4%，每千字比喻 1.7）"
+          }
+        ]
+      },
+      "ai_taste": {
+        "reviewer": "ai-taste-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "ai-taste",
+            "severity": "info",
+            "message": "未见明显 AI 味信号（最长同头 2 句，句长 CV 0.65）"
+          }
+        ]
+      },
+      "integrity": {
+        "reviewer": "text-integrity-gate-v1",
+        "axis": "gate",
+        "gating": true,
+        "status": "review_required",
+        "reason_codes": [
+          "word_internal_punctuation"
+        ],
+        "evidence_spans": [
+          {
+            "start": 190,
+            "end": 193,
+            "context": "个月薪三千的实习生。本以为手握未来十七"
+          }
+        ],
+        "severity": "medium",
+        "action": "require_review",
+        "findings": [
+          {
+            "check": "word_internal_punctuation",
+            "severity": "critical",
+            "message": "Detected high confidence word-internal punctuation in Chinese text. Found 16 instance(s). This may indicate serialization errors breaking words. Examples: ['了这个月薪三千的实习生。本以为手握未来十七年的', '—温和、礼貌、滴水不漏。作为这家名为\"盛达咨询', '紧。\\n\\n赵鹏程说得没错。前世的这个时间点,他也']",
+            "start": 190,
+            "end": 193
+          }
+        ]
+      },
+      "end_hook": {
+        "reviewer": "hook-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "end-hook",
+            "severity": "info",
+            "message": "章末留有钩子（转折/威胁）"
+          }
+        ]
+      },
+      "meta_reference": {
+        "reviewer": "meta-reference-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": []
+      },
+      "length": {
+        "reviewer": "length-check-v1",
+        "axis": "evaluative",
+        "gating": false,
+        "findings": [
+          {
+            "check": "length",
+            "severity": "info",
+            "message": "篇幅达标（4107 字，目标 3333，123%，在 80%–160% 带宽内，opening章带宽）"
+          }
+        ]
+      }
+    },
+    "m7_originality": {
+      "chapter_id": "TASK-00001",
+      "authority": "human",
+      "gates_build": true,
+      "recommendation": "recommend",
+      "risk_level": "L0",
+      "redline_passed": true,
+      "redline_hits": [],
+      "similarity": {
+        "overall_similarity": 0.37,
+        "risk_level": "L0",
+        "matches": [
+          {
+            "source_id": "REF-00001",
+            "source_type": "reference_novel",
+            "similarity": 0.37,
+            "excerpt": "\n我真没想重生啊\n作者：柳岸花又明\n\n内容简介：\n　　万万没想到，社会精英、钻石单身汉的陈汉升居然重生了，一觉醒来变成了高三毕业生。\n　　十字路口的陈汉升也在犹",
+            "risk_type": "semantic_overlap",
+            "aligned_spans": [],
+            "method": "ngram_containment"
+          }
+        ],
+        "suspicious_spans": [],
+        "embedding_similarity": 0.5855,
+        "containment": 0.0468,
+        "reference_count": 1
+      },
+      "rationale": "未命中硬红线，原创性风险可接受。"
+    },
+    "publish_recommendation": "recommend",
+    "redline_passed": true,
+    "blocking_issues": [],
+    "warnings": [],
+    "canonical_decision": {
+      "state": "approved",
+      "advance_to_next": true,
+      "blocking_issues": [],
+      "warnings": [],
+      "human_approval_required": false,
+      "decision_provenance": {
+        "engine": "ProductionDecisionEngine",
+        "version": "P0-1",
+        "timestamp": "2026-09-08T15:25:46.166038+00:00"
+      },
+      "can_advance": true,
+      "requires_human_review": false,
+      "is_terminal": false
+    },
+    "human_decision": "pending",
+    "human_decision_by": null,
+    "human_decision_at": null,
+    "human_decision_notes": null,
+    "generated_at": "2026-09-08T15:25:46.166084+00:00",
+    "review_model": null,
+    "strict_mode": false
+  },
+  "quality_gate": {
+    "passed": true,
+    "blocked": false,
+    "requires_approval": false,
+    "issues": [],
+    "block_count": 0,
+    "hold_count": 0,
+    "warn_count": 0,
+    "recommendation": "proceed"
+  },
+  "message": "draft produced (3850 words)"
+}

@@ -1,0 +1,50 @@
+{
+  "_source": "AI-simulated (deepseek-chat, temp=0) — NOT human ground truth",
+  "editor_a": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "editor_b": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "editor_a_note": "危机轻易化解、缺乏角色抉择，导致张力与付费意愿双低，AI腔明显。",
+  "editor_b_note": "危机化解过于轻易，缺乏角色抉择与情感张力，整体平淡无起伏，难以吸引读者继续追读。",
+  "consensus_scores": {
+    "opening_hook": 2,
+    "chapter_goal": 2,
+    "conflict_progression": 1,
+    "character_motivation": 2,
+    "emotion_flow": 2,
+    "information_density": 2,
+    "payoff_delivery": 1,
+    "ending_hook": 1,
+    "continuity": 3,
+    "ai_voice_risk": 4,
+    "paying_intent": 1,
+    "continue_intent": 1
+  },
+  "disputed_dimensions": [],
+  "agreement_rate": 1.0,
+  "final_judgement": "use_for_pipeline_validation_only"
+}

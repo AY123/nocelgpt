@@ -1,0 +1,32 @@
+{
+  "id": "DBR-00025",
+  "kind": "director_brief",
+  "authority": "human",
+  "gating": false,
+  "schema_version": "1.0",
+  "brief_id": "DBR-00025",
+  "chapter_id": "TASK-00025",
+  "objective_ref": "OBJ-00025",
+  "inputs": {},
+  "summary": {
+    "chapter_purpose": "逼出「前世17年完整记忆，知道所有商机和危机」的新用法，以加深的代价换取压制私募基金经理管理十亿资金阶段的世界级敌人的手段",
+    "tone": "紧张、克制",
+    "priority": "push_conflict_and_hook"
+  },
+  "must_include": [],
+  "must_avoid": [
+    "无意义说明性扩写",
+    "角色行为与 runtime 冲突"
+  ],
+  "non_negotiables": [
+    "不得破坏角色连续性",
+    "不得引入未授权新事实"
+  ],
+  "rewrite_focus": [
+    "强化动机",
+    "压缩铺陈",
+    "增强结尾钩子"
+  ],
+  "decision_rationale": [],
+  "notes": ""
+}

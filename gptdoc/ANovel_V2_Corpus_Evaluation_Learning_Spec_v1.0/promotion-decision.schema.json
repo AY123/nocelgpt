@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/promotion-decision.schema.json",
+  "title": "PromotionDecision",
+  "type": "object",
+  "required": [
+    "promotion_id",
+    "candidate_config_ref",
+    "baseline_config_ref",
+    "evidence_refs",
+    "primary_results",
+    "guardrail_results",
+    "decision",
+    "rollback_plan"
+  ],
+  "properties": {
+    "promotion_id": {
+      "type": "string"
+    },
+    "candidate_config_ref": {
+      "type": "string"
+    },
+    "baseline_config_ref": {
+      "type": "string"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "primary_results": {
+      "type": "object"
+    },
+    "guardrail_results": {
+      "type": "object"
+    },
+    "decision": {
+      "enum": [
+        "PROMOTE",
+        "REJECT",
+        "MORE_EVIDENCE",
+        "SHADOW_ONLY"
+      ]
+    },
+    "approver_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rollback_plan": {
+      "type": "object"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
