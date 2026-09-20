@@ -1,0 +1,787 @@
+version: 1.0.0
+meaning: 验收场景是计划；目标测试路径尚未实现
+suites:
+- id: AT-V2-001
+  task_id: V2-001
+  phase: P0
+  status: PLANNED
+  target_path: tests/integration/test_repository_bootstrap.py
+  scenarios:
+  - id: AT-V2-001-01
+    required_assertion: 干净环境锁定安装并导入最小包
+  - id: AT-V2-001-02
+    required_assertion: 隔离 PostgreSQL 启动连接清理成功
+  - id: AT-V2-001-03
+    required_assertion: 缺配置明确失败且无真实凭证
+  execution_evidence: []
+- id: AT-V2-002
+  task_id: V2-002
+  phase: P0
+  status: PLANNED
+  target_path: tests/contract/test_plan_governance.py
+  scenarios:
+  - id: AT-V2-002-01
+    required_assertion: 任务阶段与生成视图一致且失效引用失败
+  - id: AT-V2-002-02
+    required_assertion: 无证据 CLOSED 与未满足 Gate 的任务启动被拒绝
+  - id: AT-V2-002-03
+    required_assertion: 旧档案不会被当作当前规范自动加载
+  execution_evidence: []
+- id: AT-V2-003
+  task_id: V2-003
+  phase: P0
+  status: PLANNED
+  target_path: tests/architecture/test_dependency_boundaries.py
+  scenarios:
+  - id: AT-V2-003-01
+    required_assertion: 合法依赖图通过且领域导入 Provider 的负例失败
+  - id: AT-V2-003-02
+    required_assertion: 非授权模块访问 Canon 写入口的夹具失败
+  - id: AT-V2-003-03
+    required_assertion: 新增模块纳入扫描而非空扫描报成功
+  execution_evidence: []
+- id: AT-V2-004
+  task_id: V2-004
+  phase: P0
+  status: PLANNED
+  target_path: tests/contract/test_delivery_gates.py
+  scenarios:
+  - id: AT-V2-004-01
+    required_assertion: 适用硬门禁失败使 CI 失败
+  - id: AT-V2-004-02
+    required_assertion: 无害 Secret 与违规依赖夹具被阻断
+  - id: AT-V2-004-03
+    required_assertion: PostgreSQL job 实际连接且当前提交 CI 证据可查
+  execution_evidence: []
+- id: AT-V2-005
+  task_id: V2-005
+  phase: P1
+  status: PLANNED
+  target_path: tests/contract/test_v2_005.py
+  scenarios:
+  - id: AT-V2-005-01
+    required_assertion: 同名不同项目实体不混淆
+  - id: AT-V2-005-02
+    required_assertion: 改名保留稳定 ID
+  - id: AT-V2-005-03
+    required_assertion: 歧义别名返回明确冲突而非随机选择
+  execution_evidence: []
+- id: AT-V2-006
+  task_id: V2-006
+  phase: P1
+  status: PLANNED
+  target_path: tests/contract/test_v2_006.py
+  scenarios:
+  - id: AT-V2-006-01
+    required_assertion: 合法派生字段和非默认值往返不丢失
+  - id: AT-V2-006-02
+    required_assertion: 错误实体类型与生命周期被拒绝
+  - id: AT-V2-006-03
+    required_assertion: 角色误信与客观事实并存且角色不能凭空知情
+  execution_evidence: []
+- id: AT-V2-007
+  task_id: V2-007
+  phase: P1
+  status: PLANNED
+  target_path: tests/contract/test_v2_007.py
+  scenarios:
+  - id: AT-V2-007-01
+    required_assertion: 同章多事件与插叙的时间顺序可区分
+  - id: AT-V2-007-02
+    required_assertion: Promise 有承诺兑现窗口和生命周期
+  - id: AT-V2-007-03
+    required_assertion: Event 身份与 occurrence 可追溯且未知不等于已发生
+  execution_evidence: []
+- id: AT-V2-008
+  task_id: V2-008
+  phase: P1
+  status: PLANNED
+  target_path: tests/contract/test_v2_008.py
+  scenarios:
+  - id: AT-V2-008-01
+    required_assertion: SET_FACT 缺必要路径值证据被拒绝
+  - id: AT-V2-008-02
+    required_assertion: UNKNOWN 与 NO_CHANGE 及撤销明确区分
+  - id: AT-V2-008-03
+    required_assertion: 未注册操作和错类型载荷不能成为提交提议
+  execution_evidence: []
+- id: AT-V2-009
+  task_id: V2-009
+  phase: P2
+  status: PLANNED
+  target_path: tests/integration/test_v2_009.py
+  scenarios:
+  - id: AT-V2-009-01
+    required_assertion: 空 PostgreSQL 库迁移成功且作用域外键正确
+  - id: AT-V2-009-02
+    required_assertion: 跨项目关系写入被拒绝
+  - id: AT-V2-009-03
+    required_assertion: 根提交并发唯一并且测试初始化无旁路
+  execution_evidence: []
+- id: AT-V2-010
+  task_id: V2-010
+  phase: P2
+  status: PLANNED
+  target_path: tests/integration/test_v2_010.py
+  scenarios:
+  - id: AT-V2-010-01
+    required_assertion: 无授权或无有效 Permit 不可提交
+  - id: AT-V2-010-02
+    required_assertion: 事务故障无半写入且 HEAD 与事件一致
+  - id: AT-V2-010-03
+    required_assertion: 已接受提交长期证据可定位且不是只有无法解析的 hash
+  execution_evidence: []
+- id: AT-V2-011
+  task_id: V2-011
+  phase: P2
+  status: PLANNED
+  target_path: tests/integration/test_v2_011.py
+  scenarios:
+  - id: AT-V2-011-01
+    required_assertion: 同键同载荷返回原收据
+  - id: AT-V2-011-02
+    required_assertion: 同键异载荷冲突且并发 CAS 仅一个成功
+  - id: AT-V2-011-03
+    required_assertion: 提交成功响应丢失后重试不产生第二提交
+  execution_evidence: []
+- id: AT-V2-012
+  task_id: V2-012
+  phase: P2
+  status: PLANNED
+  target_path: tests/integration/test_v2_012.py
+  scenarios:
+  - id: AT-V2-012-01
+    required_assertion: 全事件重建与原快照摘要一致
+  - id: AT-V2-012-02
+    required_assertion: 投影失败不能被报告为 Canon 回滚
+  - id: AT-V2-012-03
+    required_assertion: 按 reducer 与 Schema 版本恢复旧快照
+  execution_evidence: []
+- id: AT-V2-013
+  task_id: V2-013
+  phase: P3
+  status: PLANNED
+  target_path: tests/contract/test_v2_013.py
+  scenarios:
+  - id: AT-V2-013-01
+    required_assertion: ID 版本 hash 均被绑定并核验
+  - id: AT-V2-013-02
+    required_assertion: 未知 Pack 与扩展拒绝而非默认 fallback
+  - id: AT-V2-013-03
+    required_assertion: 全局只读目录绑定到项目后仍可追溯
+  execution_evidence: []
+- id: AT-V2-014
+  task_id: V2-014
+  phase: P3
+  status: PLANNED
+  target_path: tests/contract/test_v2_014.py
+  scenarios:
+  - id: AT-V2-014-01
+    required_assertion: 现实中实际修炼被拒绝
+  - id: AT-V2-014-02
+    required_assertion: 人物讨论小说或梦境不自动成为世界事实
+  - id: AT-V2-014-03
+    required_assertion: 语义不确定返回显式待处理而不是 PASS
+  execution_evidence: []
+- id: AT-V2-015
+  task_id: V2-015
+  phase: P3
+  status: PLANNED
+  target_path: tests/contract/test_v2_015.py
+  scenarios:
+  - id: AT-V2-015-01
+    required_assertion: 公司股权现金类型和资源前置条件正确
+  - id: AT-V2-015-02
+    required_assertion: 禁止现实 Anchor 注入重生系统或修炼事实
+  - id: AT-V2-015-03
+    required_assertion: 合法商业样本通过且不会读取玄幻专属字段
+  execution_evidence: []
+- id: AT-V2-016
+  task_id: V2-016
+  phase: P3
+  status: PLANNED
+  target_path: tests/contract/test_v2_016.py
+  scenarios:
+  - id: AT-V2-016-01
+    required_assertion: 境界能力资源代价具有注册类型和合法前置条件
+  - id: AT-V2-016-02
+    required_assertion: 玄幻交易商会不因商业词汇误拒绝
+  - id: AT-V2-016-03
+    required_assertion: 未声明的现代股权制度不能污染扩展
+  execution_evidence: []
+- id: AT-V2-017
+  task_id: V2-017
+  phase: P4
+  status: PLANNED
+  target_path: tests/contract/test_v2_017.py
+  scenarios:
+  - id: AT-V2-017-01
+    required_assertion: 从人工 SeriesVision 编译且不依赖 P10
+  - id: AT-V2-017-02
+    required_assertion: RequiredTransition 与 Delta 使用同一语义
+  - id: AT-V2-017-03
+    required_assertion: 计划冲突或不可满足合约返回诊断而非改写 Canon
+  - id: AT-V2-017-04
+    required_assertion: 双书 fixture 经人工审定并包含知识及揭示边界
+  execution_evidence: []
+- id: AT-V2-018
+  task_id: V2-018
+  phase: P5
+  status: PLANNED
+  target_path: tests/contract/test_v2_018.py
+  scenarios:
+  - id: AT-V2-018-01
+    required_assertion: 低语义相关但必需的旧事实不被裁剪
+  - id: AT-V2-018-02
+    required_assertion: 预算溢出必需项时明确阻断
+  - id: AT-V2-018-03
+    required_assertion: 错项目未来知识无泄漏且每项 inclusion 可解释
+  execution_evidence: []
+- id: AT-V2-019
+  task_id: V2-019
+  phase: P5
+  status: PLANNED
+  target_path: tests/integration/test_v2_019.py
+  scenarios:
+  - id: AT-V2-019-01
+    required_assertion: 真实 Provider 结构化响应及错误分类有受控证据
+  - id: AT-V2-019-02
+    required_assertion: 超时 UNKNOWN 可表示且无响应不伪造 hash
+  - id: AT-V2-019-03
+    required_assertion: 请求 attempt 模型指纹和待核费用可查
+  - id: AT-V2-019-04
+    required_assertion: 无总预算不启动真实调用
+  execution_evidence: []
+- id: AT-V2-020
+  task_id: V2-020
+  phase: P6
+  status: PLANNED
+  target_path: tests/contract/test_v2_020.py
+  scenarios:
+  - id: AT-V2-020-01
+    required_assertion: 缺前置产物不继续到提交
+  - id: AT-V2-020-02
+    required_assertion: 章内 overlay 可供后续场景消费但失败后不入 Canon
+  - id: AT-V2-020-03
+    required_assertion: Draft accepted published 状态独立且测试 Gate 不被当生产 Gate
+  execution_evidence: []
+- id: AT-V2-021
+  task_id: V2-021
+  phase: P6
+  status: PLANNED
+  target_path: tests/contract/test_v2_021.py
+  scenarios:
+  - id: AT-V2-021-01
+    required_assertion: 候选正文与 Delta 绑定同一 hash
+  - id: AT-V2-021-02
+    required_assertion: 误信传闻和已发生事实不混淆
+  - id: AT-V2-021-03
+    required_assertion: 故意遗漏正文后半段违规能够进入覆盖诊断
+  execution_evidence: []
+- id: AT-V2-022
+  task_id: V2-022
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_022.py
+  scenarios:
+  - id: AT-V2-022-01
+    required_assertion: 缺必要 Artifact 或错 hash 拒绝
+  - id: AT-V2-022-02
+    required_assertion: 空 Findings 不视为已执行
+  - id: AT-V2-022-03
+    required_assertion: 检查 ERROR UNKNOWN 和无授权 SKIP 阻断
+  execution_evidence: []
+- id: AT-V2-023
+  task_id: V2-023
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_023.py
+  scenarios:
+  - id: AT-V2-023-01
+    required_assertion: 过期前值与死亡角色无解释复活拒绝
+  - id: AT-V2-023-02
+    required_assertion: 跨书关系和知识越界拒绝
+  - id: AT-V2-023-03
+    required_assertion: 合法误信与读者先知场景通过
+  execution_evidence: []
+- id: AT-V2-024
+  task_id: V2-024
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_024.py
+  scenarios:
+  - id: AT-V2-024-01
+    required_assertion: 双 Pack 污染负例被发现
+  - id: AT-V2-024-02
+    required_assertion: 合法引用梦境商会样本不过度阻断
+  - id: AT-V2-024-03
+    required_assertion: 正文遗漏或不确定结果不能静默 PASS
+  execution_evidence: []
+- id: AT-V2-025
+  task_id: V2-025
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_025.py
+  scenarios:
+  - id: AT-V2-025-01
+    required_assertion: 必需转移缺失被报告
+  - id: AT-V2-025-02
+    required_assertion: 保护事实变更被拒绝
+  - id: AT-V2-025-03
+    required_assertion: 安静或信息揭示章节满足其合约时可通过
+  execution_evidence: []
+- id: AT-V2-026
+  task_id: V2-026
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_026.py
+  scenarios:
+  - id: AT-V2-026-01
+    required_assertion: 空证据 ALLOW 和伪造 issuer 拒绝
+  - id: AT-V2-026-02
+    required_assertion: 旧候选旧 parent 或旧 policy 证据不可复用
+  - id: AT-V2-026-03
+    required_assertion: 完整必跑检查后才能经唯一服务接受正文
+  execution_evidence: []
+- id: AT-V2-027
+  task_id: V2-027
+  phase: P6
+  status: PLANNED
+  target_path: tests/integration/test_v2_027.py
+  scenarios:
+  - id: AT-V2-027-01
+    required_assertion: 不同阶段崩溃恢复同一逻辑请求
+  - id: AT-V2-027-02
+    required_assertion: 取消后迟到响应不自动提交
+  - id: AT-V2-027-03
+    required_assertion: 重复投递及 UNKNOWN 不伪报成功或零费用
+  execution_evidence: []
+- id: AT-V2-028
+  task_id: V2-028
+  phase: P8
+  status: PLANNED
+  target_path: tests/certification/test_v2_028.py
+  scenarios:
+  - id: AT-V2-028-01
+    required_assertion: 提交前后 kill 能恢复无半写
+  - id: AT-V2-028-02
+    required_assertion: 响应丢失后取得同一收据
+  - id: AT-V2-028-03
+    required_assertion: 投影落后可重建且无第二权威路径
+  execution_evidence: []
+- id: AT-V2-029
+  task_id: V2-029
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_029.py
+  scenarios:
+  - id: AT-V2-029-01
+    required_assertion: 高软分不能覆盖硬失败
+  - id: AT-V2-029-02
+    required_assertion: required check 集合缺失则不能 PASS
+  - id: AT-V2-029-03
+    required_assertion: 证据来源 E1 E2 与 E3 E4 不混标
+  execution_evidence: []
+- id: AT-V2-030
+  task_id: V2-030
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_030.py
+  scenarios:
+  - id: AT-V2-030-01
+    required_assertion: 诊断包含正文位置与受影响依赖
+  - id: AT-V2-030-02
+    required_assertion: 区分表达事实与不可满足合约
+  - id: AT-V2-030-03
+    required_assertion: 重复无改善能升级重规划并保留原证据
+  execution_evidence: []
+- id: AT-V2-031
+  task_id: V2-031
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_031.py
+  scenarios:
+  - id: AT-V2-031-01
+    required_assertion: 补丁只改计划授权范围且保留保护区域
+  - id: AT-V2-031-02
+    required_assertion: 达到预算或轮次上限停止
+  - id: AT-V2-031-03
+    required_assertion: 新文本新 hash 使旧 Permit 失效
+  execution_evidence: []
+- id: AT-V2-032
+  task_id: V2-032
+  phase: P7
+  status: PLANNED
+  target_path: tests/contract/test_v2_032.py
+  scenarios:
+  - id: AT-V2-032-01
+    required_assertion: 修复题材后新增事实错误可检出
+  - id: AT-V2-032-02
+    required_assertion: 删除兑现或改变关键动机触发诊断
+  - id: AT-V2-032-03
+    required_assertion: 重新抽取重验完整前提后才可接受
+  execution_evidence: []
+- id: AT-V2-033
+  task_id: V2-033
+  phase: P8
+  status: PLANNED
+  target_path: tests/certification/test_v2_033.py
+  scenarios:
+  - id: AT-V2-033-01
+    required_assertion: 三个连续接受章节有完整收据链
+  - id: AT-V2-033-02
+    required_assertion: 失败尝试和修复未从分母删除
+  - id: AT-V2-033-03
+    required_assertion: 适用硬门禁全执行且无测试旁路
+  execution_evidence: []
+- id: AT-V2-034
+  task_id: V2-034
+  phase: P8
+  status: PLANNED
+  target_path: tests/certification/test_v2_034.py
+  scenarios:
+  - id: AT-V2-034-01
+    required_assertion: 都市连续十章有全文题材覆盖与 Canon 证据
+  - id: AT-V2-034-02
+    required_assertion: 真实调用预算与人工介入完整记录
+  - id: AT-V2-034-03
+    required_assertion: 真人最小读稿和基线对照有原始记录且不冒称市场成功
+  execution_evidence: []
+- id: AT-V2-035
+  task_id: V2-035
+  phase: P8
+  status: PLANNED
+  target_path: tests/certification/test_v2_035.py
+  scenarios:
+  - id: AT-V2-035-01
+    required_assertion: 玄幻连续十章使用同一生产内核
+  - id: AT-V2-035-02
+    required_assertion: 进阶资源代价及合法交易样本可验证
+  - id: AT-V2-035-03
+    required_assertion: 真人阅读成本人工贡献与全部失败尝试可查
+  execution_evidence: []
+- id: AT-V2-036
+  task_id: V2-036
+  phase: P8
+  status: PLANNED
+  target_path: tests/certification/test_v2_036.py
+  scenarios:
+  - id: AT-V2-036-01
+    required_assertion: 两类十章运行覆盖故障与恢复矩阵
+  - id: AT-V2-036-02
+    required_assertion: 隔离竞争重复投递全部有断言
+  - id: AT-V2-036-03
+    required_assertion: 证据与双题材运行汇合后才确认最终 G-P8
+  execution_evidence: []
+- id: AT-V2-037
+  task_id: V2-037
+  phase: P8
+  status: PLANNED
+  target_path: tests/contract/test_v2_037.py
+  scenarios:
+  - id: AT-V2-037-01
+    required_assertion: 可查看上下文必需项及省略理由
+  - id: AT-V2-037-02
+    required_assertion: 有来源版本和作用域
+  - id: AT-V2-037-03
+    required_assertion: 无权限内容不因诊断界面泄漏
+  execution_evidence: []
+- id: AT-V2-038
+  task_id: V2-038
+  phase: P8
+  status: PLANNED
+  target_path: tests/contract/test_v2_038.py
+  scenarios:
+  - id: AT-V2-038-01
+    required_assertion: 可追踪 HEAD parent 事件和变化
+  - id: AT-V2-038-02
+    required_assertion: 支持核对历史与投影
+  - id: AT-V2-038-03
+    required_assertion: 检查器无旁路修改能力
+  execution_evidence: []
+- id: AT-V2-039
+  task_id: V2-039
+  phase: P8
+  status: PLANNED
+  target_path: tests/contract/test_v2_039.py
+  scenarios:
+  - id: AT-V2-039-01
+    required_assertion: 正文合约检查许可提交链可查询
+  - id: AT-V2-039-02
+    required_assertion: 失效证据有原因
+  - id: AT-V2-039-03
+    required_assertion: 长期引用不会只剩不可解析 ID
+  execution_evidence: []
+- id: AT-V2-040
+  task_id: V2-040
+  phase: P9
+  status: PLANNED
+  target_path: tests/certification/test_v2_040.py
+  scenarios:
+  - id: AT-V2-040-01
+    required_assertion: 双题材各三十章及恢复证据成立
+  - id: AT-V2-040-02
+    required_assertion: 承诺债务重复和人物持续性有文本审阅
+  - id: AT-V2-040-03
+    required_assertion: 独立样本与版本绑定明确且失败成本全部记录
+  execution_evidence: []
+- id: AT-V2-041
+  task_id: V2-041
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_041.py
+  scenarios:
+  - id: AT-V2-041-01
+    required_assertion: Idea 输入编译为版本化候选
+  - id: AT-V2-041-02
+    required_assertion: 候选与初始事实分离
+  - id: AT-V2-041-03
+    required_assertion: 继续使用既有生产入口不新建 Writer 分支
+  execution_evidence: []
+- id: AT-V2-042
+  task_id: V2-042
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_042.py
+  scenarios:
+  - id: AT-V2-042-01
+    required_assertion: 参考来源权限与版本可追溯
+  - id: AT-V2-042-02
+    required_assertion: 外部文本指令不能越过资料边界
+  - id: AT-V2-042-03
+    required_assertion: 原文不直接传入 Writer
+  execution_evidence: []
+- id: AT-V2-043
+  task_id: V2-043
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_043.py
+  scenarios:
+  - id: AT-V2-043-01
+    required_assertion: 抽象叙事结构与具体专有桥段分开
+  - id: AT-V2-043-02
+    required_assertion: 每条判断有来源及不确定性
+  - id: AT-V2-043-03
+    required_assertion: 不把单本参考当整个 Genre 的规则
+  execution_evidence: []
+- id: AT-V2-044
+  task_id: V2-044
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_044.py
+  scenarios:
+  - id: AT-V2-044-01
+    required_assertion: EvidencePack 与 Quality EvidenceRecord 不混型
+  - id: AT-V2-044-02
+    required_assertion: Pack 不能直接修改 Canon
+  - id: AT-V2-044-03
+    required_assertion: 引用摘要来源和有效期可查
+  execution_evidence: []
+- id: AT-V2-045
+  task_id: V2-045
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_045.py
+  scenarios:
+  - id: AT-V2-045-01
+    required_assertion: 换名复写负例不能因没有原文输入而通过
+  - id: AT-V2-045-02
+    required_assertion: 相似度低不自动证明原创
+  - id: AT-V2-045-03
+    required_assertion: 风险结果进入适用检查而非自动发布
+  execution_evidence: []
+- id: AT-V2-046
+  task_id: V2-046
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_046.py
+  scenarios:
+  - id: AT-V2-046-01
+    required_assertion: 候选比较保留全部样本和预算
+  - id: AT-V2-046-02
+    required_assertion: 未校准分数不自动授予提交权
+  - id: AT-V2-046-03
+    required_assertion: 选择记录可定位并说明局限
+  execution_evidence: []
+- id: AT-V2-047
+  task_id: V2-047
+  phase: P10
+  status: PLANNED
+  target_path: tests/contract/test_v2_047.py
+  scenarios:
+  - id: AT-V2-047-01
+    required_assertion: 多入口收敛到同一 GenesisSpec
+  - id: AT-V2-047-02
+    required_assertion: Scope Pack 初始事实与规划字段一致
+  - id: AT-V2-047-03
+    required_assertion: 编译器拒绝跨作用域和缺少必要输入
+  execution_evidence: []
+- id: AT-V2-048
+  task_id: V2-048
+  phase: P10
+  status: PLANNED
+  target_path: tests/integration/test_v2_048.py
+  scenarios:
+  - id: AT-V2-048-01
+    required_assertion: Genesis 通过同一 CanonCommitService
+  - id: AT-V2-048-02
+    required_assertion: 重复初始化和并发 root 不产生第二根
+  - id: AT-V2-048-03
+    required_assertion: 后续 Workflow 不因开书来源改变
+  execution_evidence: []
+- id: AT-V2-049
+  task_id: V2-049
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_049.py
+  scenarios:
+  - id: AT-V2-049-01
+    required_assertion: 语料来源用途和版本登记完整
+  - id: AT-V2-049-02
+    required_assertion: 开发训练校准 holdout 分区明确
+  - id: AT-V2-049-03
+    required_assertion: 重复或无可用来源条目不静默进入学习
+  execution_evidence: []
+- id: AT-V2-050
+  task_id: V2-050
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_050.py
+  scenarios:
+  - id: AT-V2-050-01
+    required_assertion: 真人 Gold 保留原审核者和版本
+  - id: AT-V2-050-02
+    required_assertion: 模拟读者不迁成 E3
+  - id: AT-V2-050-03
+    required_assertion: 历史语义不明标签保持待判定
+  execution_evidence: []
+- id: AT-V2-051
+  task_id: V2-051
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_051.py
+  scenarios:
+  - id: AT-V2-051-01
+    required_assertion: V1 失败模式绑定稳定输入与期望
+  - id: AT-V2-051-02
+    required_assertion: 目录数与实际执行测试数分开
+  - id: AT-V2-051-03
+    required_assertion: 修复后样本保留避免重新回归
+  execution_evidence: []
+- id: AT-V2-052
+  task_id: V2-052
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_052.py
+  scenarios:
+  - id: AT-V2-052-01
+    required_assertion: 实验先定义假设样本分母预算和停止条件
+  - id: AT-V2-052-02
+    required_assertion: 对照配置可追溯
+  - id: AT-V2-052-03
+    required_assertion: 观察后改指标必须产生新版本
+  execution_evidence: []
+- id: AT-V2-053
+  task_id: V2-053
+  phase: P11
+  status: PLANNED
+  target_path: tests/certification/test_v2_053.py
+  scenarios:
+  - id: AT-V2-053-01
+    required_assertion: 基线与实验条件可说明且保留全部运行
+  - id: AT-V2-053-02
+    required_assertion: holdout 不混入调参
+  - id: AT-V2-053-03
+    required_assertion: 模型政策版本和实际成本完整
+  execution_evidence: []
+- id: AT-V2-054
+  task_id: V2-054
+  phase: P11
+  status: PLANNED
+  target_path: tests/certification/test_v2_054.py
+  scenarios:
+  - id: AT-V2-054-01
+    required_assertion: 隐藏生成方法并处理呈现顺序
+  - id: AT-V2-054-02
+    required_assertion: 偏好与弃权原始记录保留
+  - id: AT-V2-054-03
+    required_assertion: 小样本不宣称总体市场优胜
+  execution_evidence: []
+- id: AT-V2-055
+  task_id: V2-055
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_055.py
+  scenarios:
+  - id: AT-V2-055-01
+    required_assertion: 人工输入来源权限时间明确
+  - id: AT-V2-055-02
+    required_assertion: 人工评价不直接写 Canon
+  - id: AT-V2-055-03
+    required_assertion: E3 与真实行为 E4 分开存储
+  execution_evidence: []
+- id: AT-V2-056
+  task_id: V2-056
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_056.py
+  scenarios:
+  - id: AT-V2-056-01
+    required_assertion: 评价器与人工 Gold 的差异可测
+  - id: AT-V2-056-02
+    required_assertion: 训练校准 holdout 无交叉
+  - id: AT-V2-056-03
+    required_assertion: 新评价器不直接继承旧证据
+  execution_evidence: []
+- id: AT-V2-057
+  task_id: V2-057
+  phase: P11
+  status: PLANNED
+  target_path: tests/contract/test_v2_057.py
+  scenarios:
+  - id: AT-V2-057-01
+    required_assertion: 无对照单样本或缺校准不能自动晋级
+  - id: AT-V2-057-02
+    required_assertion: 硬失败不能被更高软分抵消
+  - id: AT-V2-057-03
+    required_assertion: 策略晋级版本影响和回退记录齐全
+  execution_evidence: []
+- id: AT-V2-058
+  task_id: V2-058
+  phase: P12
+  status: PLANNED
+  target_path: tests/integration/test_v2_058.py
+  scenarios:
+  - id: AT-V2-058-01
+    required_assertion: 备份恢复到隔离环境并核对 HEAD 与 hash
+  - id: AT-V2-058-02
+    required_assertion: dump 失败和截断备份明确失败
+  - id: AT-V2-058-03
+    required_assertion: 旧 Schema 及事件可按版本重建
+  execution_evidence: []
+- id: AT-V2-059
+  task_id: V2-059
+  phase: P12
+  status: PLANNED
+  target_path: tests/contract/test_v2_059.py
+  scenarios:
+  - id: AT-V2-059-01
+    required_assertion: release 绑定代码锁依赖规范模型和认证
+  - id: AT-V2-059-02
+    required_assertion: 缺必要证据不能发布
+  - id: AT-V2-059-03
+    required_assertion: 组件变更触发适用重验而非继承永久 PASS
+  execution_evidence: []
+- id: AT-V2-060
+  task_id: V2-060
+  phase: P12
+  status: PLANNED
+  target_path: tests/certification/test_v2_060.py
+  scenarios:
+  - id: AT-V2-060-01
+    required_assertion: 连续百章状态增长上下文与成本趋势可查
+  - id: AT-V2-060-02
+    required_assertion: 承诺债务人物记忆和恢复通过
+  - id: AT-V2-060-03
+    required_assertion: 人工介入可见且不能外推为三百章或百万字通过
+  execution_evidence: []

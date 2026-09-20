@@ -1,0 +1,35 @@
+document_id: SPEC-PLATFORM-0001-POLICY
+version: 1.0.0
+data_classes:
+- PUBLIC
+- INTERNAL
+- PRIVATE
+- SECRET
+privileged_actions:
+- CANON_COMMIT
+- RETCON_APPROVE
+- GENRE_HARD_RULE_CHANGE
+- POLICY_PROMOTION
+- PUBLISH_EXTERNAL
+- SECRET_ROTATION
+- CORPUS_EXPORT
+- DATA_DELETE
+- ROLE_ASSIGNMENT
+- BACKUP_RESTORE
+hard_rules:
+- id: PLAT-POL-001
+  rule: secrets_never_in_artifacts_logs_or_prompts
+- id: PLAT-POL-002
+  rule: ai_worker_cannot_self_authorize
+- id: PLAT-POL-003
+  rule: private_corpus_policy_propagates_to_derivatives
+- id: PLAT-POL-004
+  rule: feature_flags_cannot_bypass_hard_rules
+- id: PLAT-POL-005
+  rule: backup_requires_restore_validation
+- id: PLAT-POL-006
+  rule: production_runtime_dependencies_pinned
+- id: PLAT-POL-007
+  rule: cross_project_access_denied
+- id: PLAT-POL-008
+  rule: privileged_actions_audited

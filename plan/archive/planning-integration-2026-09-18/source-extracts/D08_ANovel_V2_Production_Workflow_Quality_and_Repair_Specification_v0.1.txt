@@ -1,0 +1,174 @@
+ANovel V2
+ANovel V2 Production Workflow, Quality & Repair Specification
+耐久生产工作流、Context Compiler、验证层级、受控修订与发布门禁
+
+文档编号
+D08
+版本
+v0.1
+状态
+Architecture Baseline
+基准日期
+2026-09-15
+定位
+ANovel V2 前期规划 / 架构建设基线
+
+原则：代码可以从零开始，认知、证据和失败经验不能从零开始。
+
+1. 核心原则
+Workflow 是唯一真实执行图；架构图不能只存在于文档/测试。
+每个 Stage 必须声明 input/output schema、idempotency key、authority、retry、budget、checkpoint、side effect。
+生产模式 Fail-Closed。
+正文质量与事实合法性分层：硬事实错误不能被“平均分高”抵消。
+Repair 优先局部 Patch，不默认整章重写。
+2. 统一生产链
+Canonical State + Genre/Story/Arc Goals        ↓Chapter Planner → Chapter Contract        ↓Scene Planner → Scene Contract        ↓Context Compiler (frozen artifact)        ↓Candidate Generator        ↓Q0 deterministic / Q1 canon / Q2 genre / Q3 transition        ↓Q4 narrative / Q5 character / Q6 commercial / Q7 originality        ↓Targeted Repair        ↓Final Validation        ↓Approval / Auto Permit        ↓Canon Commit + Receipt        ↓Next State
+3. Context Compiler
+Context 不应由 Writer 临时搜索和拼 Prompt。Compiler 根据 Contract、State 与 token budget 生成冻结的 ContextArtifact；生成、Reviewer 和修订都引用同一 artifact 或明确版本差异。
+Context 层
+内容
+优先级
+Constitution
+Genre/World hard rules
+最高
+Contract
+当前章/场景必须完成和禁止事项
+最高
+Active State
+当前人物/关系/位置/资源/知识
+高
+Recent Canon
+近章摘要、上一章结尾
+高
+Relevant Memory
+按实体/事件/Promise 检索的历史
+中
+Long Arc
+卷/弧目标和未来约束
+中
+Style
+风格/语域/视角
+中
+Evidence
+参考/Corpus 抽象模式
+低且受防火墙控制
+
+4. Q0–Q8 Quality Ladder
+层级
+性质
+示例
+是否可硬阻断
+Q0 Deterministic
+可程序证明
+长度、空文本、名称、数值格式、重复
+是
+Q1 Canon
+事实
+人物状态、地点、物品、死亡/存活
+是
+Q2 Genre
+题材规则
+都市修仙泄漏、时代科技越界
+是
+Q3 Transition
+状态变化合法性
+无因暴富、越级突破、知识越界
+是
+Q4 Narrative
+故事质量
+因果、推进、信息增量
+通常修订
+Q5 Character
+人物质量
+声音、动机、成长、关系张力
+修订/人工
+Q6 Commercial
+追读代理
+钩子、爽点、承诺兑现、疲劳
+诊断/排序
+Q7 Originality
+相似风险
+文本/事件/关系/设定相似
+高风险可阻断
+Q8 Human/Market
+外部真值
+盲评、留存、付费
+用于校准策略
+
+5. Judge 证据等级
+证据等级
+来源
+用途
+E1
+确定性规则/可验证事实
+Hard Gate
+E2
+多模型匿名 Pairwise / 独立评审
+候选排序/诊断
+E3
+模拟读者/商业预测
+仅诊断，真实市场前不得称真值
+E4
+人工双盲/编辑评价
+校准与关键门禁
+E5
+真实 ReaderSignal/Revenue
+商业最终校准
+
+6. Patch-first Repair
+Violation ↓ locate exact span / state mismatchRepairPlan {target_span, intent, protected_facts, allowed_delta} ↓Patch Candidate ↓Regression: Q0–Q7 ↓accept patch OR rollback
+整章 rewrite 只在结构性失败时启用，并且必须重新跑全部 hard gates 和 delta extraction。
+7. Durable Workflow Contract
+字段
+说明
+stage_id/version
+阶段唯一标识
+input_hash
+完整输入指纹
+idempotency_key
+防止重复副作用
+checkpoint
+恢复位置与已完成产物
+retry_policy
+可重试错误/退避/上限
+budget_reservation
+调用前预留、调用后 reconcile
+authority
+该 Stage 能否产生 side effect
+output_artifact_hash
+产物证据
+status
+PENDING/RUNNING/BLOCKED/FAILED/SUCCEEDED
+
+8. Resume 语义
+Kill 任意 Stage 后重启，已成功且输入指纹一致的阶段不得重复计费。
+Canon Commit 必须 exactly-once 或通过幂等键实现等价语义。
+输入指纹变化时必须显式 invalidation downstream，而不是悄悄复用旧结果。
+恢复后使用同一 accepted body hash；不能 Reviewer 验证 A、最终发布 B。
+9. Human Gate
+V2 的目标是高度自动化而非取消人类权威。发布、商业定价、重大 retcon、版权/相似性高风险、未校准 Genre 等默认保留 Human Gate；未来可按风险分级自动放行。
+10. Observability
+trace_id 串联 Genesis → Chapter → Model Call → Quality → Commit。
+记录 token/cost/latency/retry/cache hit、validation failures、repair gain、manual intervention。
+区分事实指标和代理指标，Dashboard 不得把“模拟分”展示成真实商业 KPI。
+11. 长跑验证
+里程碑
+验证
+10章
+事务闭环与硬规则
+30章
+Genre/Canon/Resume 基础可靠
+100章
+长弧、质量趋势、重复/疲劳、成本
+300章
+跨卷扩张与长期人物/Promise
+百万字
+工程可恢复 + 叙事不系统崩坏 + 真实市场校准
+
+参考资料与证据来源
+本节记录本规范使用的公开资料快照。市场事实具有时间属性；后续若市场环境变化，应更新 MarketTrendSnapshot，而不是静默改写长期架构规则。
+[1] Novel Studio AIhttps://github.com/YfengJ/novel-studio-ai借鉴 accepted chapter 才更新 Canon 和 Context Pack。
+[2] Xiaoyangy/novel-studiohttps://github.com/Xiaoyangy/novel-studio借鉴 sealed plan、exact body SHA、atomic publish 与 acceptance receipt。
+[3] DOMEhttps://aclanthology.org/2025.naacl-long.63/借鉴动态分层规划与 temporal memory。
+[4] ConWriterhttps://arxiv.org/abs/2608.05169借鉴 transition constraint、risk signals、localized repair。
+[5] ConStory-Benchhttps://aclanthology.org/2026.findings-acl.410/借鉴长篇一致性错误 taxonomy 与证据化检查。

@@ -1,0 +1,37 @@
+document_id: SPEC-PLAN-0001-TESTS
+version: 1.0.0
+tests:
+- id: TEST-PLAN-001
+  name: far_future_is_abstract
+- id: TEST-PLAN-002
+  name: current_scene_is_concrete
+- id: TEST-PLAN-003
+  name: canon_change_invalidates_future_contract
+- id: TEST-PLAN-004
+  name: replan_does_not_mutate_canon
+- id: TEST-PLAN-005
+  name: freeze_horizon_prevents_jitter
+- id: TEST-PLAN-006
+  name: promise_debt_detected
+- id: TEST-PLAN-007
+  name: engine_repetition_detected
+- id: TEST-PLAN-008
+  name: plan_diff_preserves_history
+- id: TEST-CONTRACT-001
+  name: no_hardcoded_project_data
+- id: TEST-CONTRACT-002
+  name: missing_contract_blocks
+- id: TEST-CONTRACT-003
+  name: stale_contract_blocks
+- id: TEST-CONTRACT-004
+  name: required_transition_validated
+- id: TEST-CONTRACT-005
+  name: forbidden_transition_blocks
+- id: TEST-CONTRACT-006
+  name: protected_fact_blocks_change
+- id: TEST-CONTRACT-007
+  name: knowledge_boundary_enforced
+- id: TEST-CONTRACT-008
+  name: capability_required
+- id: TEST-CONTRACT-009
+  name: contract_hash_bound_to_commit

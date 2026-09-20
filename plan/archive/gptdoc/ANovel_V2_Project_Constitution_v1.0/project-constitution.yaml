@@ -1,0 +1,112 @@
+project:
+  id: anovel-v2
+  name: ANovel V2
+  constitution_version: "1.0.0"
+  status: baseline
+  authority: project-constitution
+  mission: "AI-native commercial web-novel production operating system"
+
+creation_modes:
+  - idea_driven
+  - reference_guided
+  - hybrid
+  - corpus_market_driven
+
+truth_hierarchy:
+  - T0: project_constitution
+  - T1: approved_architecture_and_adr
+  - T2: genre_and_domain_contracts
+  - T3: canonical_narrative_state
+  - T4: approved_plan_and_production_contract
+  - T5: external_evidence
+  - T6: generated_artifact
+  - T7: ai_analysis
+
+principles:
+  P-001: canon_over_model_memory
+  P-002: genre_is_foundational_domain
+  P-003: draft_is_not_canon
+  P-004: canon_changes_only_through_canon_commit
+  P-005: production_is_fail_closed
+  P-006: state_owns_truth_worker_owns_computation
+  P-007: agents_are_replaceable_workers
+  P-008: multi_source_genesis_single_production_kernel
+  P-009: market_trend_is_not_genre_truth
+  P-010: ai_judge_is_not_ground_truth
+  P-011: reference_evidence_is_not_project_canon
+  P-012: persistent_artifacts_require_provenance
+  P-013: new_modules_require_real_consumers
+  P-014: long_form_correctness_before_feature_breadth
+  P-015: real_model_validation_required_for_model_seams
+  P-016: context_is_compiled
+  P-017: plan_is_intention_canon_is_history
+  P-018: repair_before_rewrite
+  P-019: deterministic_facts_outrank_semantic_preference
+  P-020: reader_market_signal_calibrates_ai_metrics
+
+hard_invariants:
+  INV-001: production_requires_versioned_genre_pack
+  INV-002: genre_hard_violation_blocks_commit
+  INV-003: canon_commit_requires_valid_parent
+  INV-004: single_authoritative_canon_write_path
+  INV-005: evaluated_hash_matches_accepted_hash
+  INV-006: retry_resume_no_duplicate_irreversible_side_effects
+  INV-007: reference_cannot_mutate_canon
+  INV-008: model_cannot_self_authorize
+  INV-010: production_run_requires_fingerprint
+  INV-011: market_snapshot_is_versioned_and_time_bounded
+  INV-012: ai_evidence_level_is_explicit
+  INV-013: persisted_artifact_has_lifecycle
+  INV-014: certified_genre_has_negative_contamination_tests
+  INV-015: unsafe_bypass_is_non_production
+
+prohibitions:
+  PROHIBIT-001: no_provider_specific_domain
+  PROHIBIT-002: no_second_canon_store
+  PROHIBIT-003: no_draft_direct_canon_write
+  PROHIBIT-004: no_prompt_only_hard_constraints
+  PROHIBIT-005: no_agent_per_feature
+  PROHIBIT-006: no_consumerless_schema
+  PROHIBIT-007: no_market_trend_hardcoding
+  PROHIBIT-008: no_raw_reference_leakage_to_writer
+  PROHIBIT-009: no_single_judge_commit_authority
+  PROHIBIT-010: no_silent_retcon
+  PROHIBIT-011: no_hidden_mutable_agent_truth_state
+  PROHIBIT-012: no_unversioned_production_assets
+  PROHIBIT-013: no_duplicate_orchestration_paths
+  PROHIBIT-014: no_fake_success_metrics
+
+evidence_levels:
+  E0:
+    name: deterministic
+    may_hard_gate: true
+  E1:
+    name: structured_extraction
+    may_hard_gate: false
+  E2:
+    name: llm_multi_model_evaluation
+    may_hard_gate: false
+  E3:
+    name: human_gold_blind_review
+    may_hard_gate: false
+  E4:
+    name: real_reader_market_signal
+    may_hard_gate: false
+
+documentation:
+  normative: markdown
+  machine_contracts: [yaml, json, json_schema, openapi]
+  exports: [docx, pdf]
+
+milestones:
+  M0: constitution
+  M1: narrative_kernel
+  M2: single_chapter_transaction
+  M3: dual_genre_isolation
+  M4: ten_chapter_continuity
+  M5: thirty_chapter_certification
+  M6: human_calibration
+  M7: hundred_chapter_durable_run
+  M8: multi_source_genesis
+  M9: real_reader_signal_loop
+  M10: three_hundred_plus_and_million_word_validation

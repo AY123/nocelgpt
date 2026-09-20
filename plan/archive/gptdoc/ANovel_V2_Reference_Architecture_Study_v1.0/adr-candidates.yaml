@@ -1,0 +1,46 @@
+document_id: RES-0002-ADR-CANDIDATES
+version: 1.0.0
+status: research_candidates
+candidates:
+  - id: ADR-0021
+    title: Explicit Canon Commit Boundary
+    source: [novel-studio-ai, novelforge]
+  - id: ADR-0022
+    title: Stateless Character Reasoning over Authoritative Character State
+    source: [novelforge, magnet]
+  - id: ADR-0023
+    title: Dynamic Versioned Hierarchical Planning
+    source: [dome, sudowrite]
+  - id: ADR-0024
+    title: Transition-oriented Narrative Validation
+    source: [conwriter]
+  - id: ADR-0025
+    title: Character State over Persistent Character Agents
+    source: [magnet, anovel-v1-lessons]
+  - id: ADR-0026
+    title: First-class Long-form Consistency Benchmark
+    source: [constory-bench]
+  - id: ADR-0027
+    title: Scoped Canon and Provider-independent Intelligence
+    source: [novelcrafter]
+  - id: ADR-0028
+    title: Narrative Artifact Dependency DAG
+    source: [sudowrite, dome]
+  - id: ADR-0029
+    title: Compiled Versioned Context Artifact
+    source: [novel-studio-ai, novelai, novelcrafter]
+  - id: ADR-0030
+    title: Durable Execution Semantics
+    source: [temporal, langgraph]
+  - id: ADR-0031
+    title: Workflow State is Separate from Narrative Canon
+    source: [langgraph, anovel-v1-lessons]
+  - id: ADR-0032
+    title: Policy-as-Code Interface for Deterministic Rules
+    source: [opa]
+  - id: ADR-0033
+    title: Narrative Production Lineage
+    source: [openlineage]
+  - id: ADR-0034
+    title: Native Production Observability
+    source: [opentelemetry]

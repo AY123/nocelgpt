@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/narrative-entity.schema.json",
+  "title": "NarrativeEntity",
+  "type": "object",
+  "required": [
+    "id",
+    "entity_type",
+    "canonical_name",
+    "lifecycle",
+    "authority",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "scope": {
+      "enum": [
+        "book",
+        "series",
+        "universe"
+      ]
+    },
+    "lifecycle": {
+      "type": "string"
+    },
+    "authority": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "updated_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "extensions": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,155 @@
+version: 1.0.0
+supersedes: 旧宪章 M 编号；采用用户冻结实施计划编号，M4 关闭时点明确为 P7 集成后
+milestones:
+- id: M0
+  name: Repository & Governance
+  introduced_phase: P0
+  earliest_close_phase: P0
+  required_tasks:
+  - V2-001
+  - V2-002
+  - V2-003
+  - V2-004
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M1
+  name: Narrative Kernel
+  introduced_phase: P1
+  earliest_close_phase: P1
+  required_tasks:
+  - V2-005
+  - V2-006
+  - V2-007
+  - V2-008
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M2
+  name: Canon Kernel
+  introduced_phase: P2
+  earliest_close_phase: P2
+  required_tasks:
+  - V2-009
+  - V2-010
+  - V2-011
+  - V2-012
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M3
+  name: Dual Genre Kernel
+  introduced_phase: P3
+  earliest_close_phase: P3
+  required_tasks:
+  - V2-013
+  - V2-014
+  - V2-015
+  - V2-016
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M4
+  name: Single Chapter E2E
+  introduced_phase: P6
+  earliest_close_phase: P7
+  required_tasks:
+  - V2-017
+  - V2-018
+  - V2-019
+  - V2-020
+  - V2-021
+  - V2-022
+  - V2-023
+  - V2-024
+  - V2-025
+  - V2-026
+  - V2-027
+  - V2-029
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M5
+  name: Patch Repair
+  introduced_phase: P7
+  earliest_close_phase: P7
+  required_tasks:
+  - V2-029
+  - V2-030
+  - V2-031
+  - V2-032
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M6
+  name: 10-Chapter Certification
+  introduced_phase: P8
+  earliest_close_phase: P8
+  required_tasks:
+  - V2-028
+  - V2-033
+  - V2-034
+  - V2-035
+  - V2-036
+  - V2-037
+  - V2-038
+  - V2-039
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M7
+  name: 30-Chapter Certification
+  introduced_phase: P9
+  earliest_close_phase: P9
+  required_tasks:
+  - V2-040
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M8
+  name: Multi-source Genesis
+  introduced_phase: P10
+  earliest_close_phase: P10
+  required_tasks:
+  - V2-041
+  - V2-042
+  - V2-043
+  - V2-044
+  - V2-045
+  - V2-046
+  - V2-047
+  - V2-048
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M9
+  name: Human Calibration
+  introduced_phase: P11
+  earliest_close_phase: P11
+  required_tasks:
+  - V2-049
+  - V2-050
+  - V2-051
+  - V2-052
+  - V2-053
+  - V2-054
+  - V2-055
+  - V2-056
+  - V2-057
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M10
+  name: 100-Chapter Reliability
+  introduced_phase: P12
+  earliest_close_phase: P12
+  required_tasks:
+  - V2-058
+  - V2-059
+  - V2-060
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M11
+  name: Reader/Market Feedback
+  introduced_phase: P13
+  earliest_close_phase: P13
+  required_tasks: []
+  status: NOT_VERIFIED
+  evidence_refs: []
+- id: M12
+  name: 300+ Chapter Reliability
+  introduced_phase: P14
+  earliest_close_phase: P14
+  required_tasks: []
+  status: NOT_VERIFIED
+  evidence_refs: []

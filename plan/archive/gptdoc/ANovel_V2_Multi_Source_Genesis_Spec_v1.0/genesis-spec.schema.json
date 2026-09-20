@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/genesis-spec.schema.json",
+  "title": "GenesisSpec",
+  "type": "object",
+  "required": [
+    "genesis_spec_id",
+    "project_identity",
+    "target_market",
+    "genre_profile",
+    "core_fantasy",
+    "reader_promises",
+    "premise",
+    "story_question",
+    "protagonist_model",
+    "cast_model",
+    "world_model",
+    "narrative_engines",
+    "progression_engines",
+    "conflict_engines",
+    "originality_policy",
+    "forbidden_patterns",
+    "long_run_expansion",
+    "provenance"
+  ],
+  "properties": {
+    "genesis_spec_id": {
+      "type": "string"
+    },
+    "project_identity": {
+      "type": "object"
+    },
+    "target_market": {
+      "type": "object"
+    },
+    "target_reader": {
+      "type": "object"
+    },
+    "genre_profile": {
+      "type": "object"
+    },
+    "core_fantasy": {
+      "type": "string"
+    },
+    "reader_promises": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "premise": {
+      "type": "string"
+    },
+    "story_question": {
+      "type": "string"
+    },
+    "protagonist_model": {
+      "enum": [
+        "person",
+        "family",
+        "faction",
+        "ensemble",
+        "multi_generation"
+      ]
+    },
+    "cast_model": {
+      "type": "string"
+    },
+    "world_model": {
+      "type": "object"
+    },
+    "narrative_engines": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "progression_engines": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "conflict_engines": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "relationship_engine": {
+      "type": "object"
+    },
+    "commercial_engine": {
+      "type": "object"
+    },
+    "tone_style": {
+      "type": "object"
+    },
+    "pacing_model": {
+      "type": "object"
+    },
+    "originality_policy": {
+      "type": "object"
+    },
+    "reference_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "forbidden_patterns": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "long_run_expansion": {
+      "type": "object"
+    },
+    "initial_canon_plan": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

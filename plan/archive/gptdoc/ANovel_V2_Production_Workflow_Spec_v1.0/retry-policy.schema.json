@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/retry-policy.schema.json",
+  "title": "RetryPolicy",
+  "type": "object",
+  "required": [
+    "max_attempts",
+    "retryable_classes",
+    "backoff"
+  ],
+  "properties": {
+    "max_attempts": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "retryable_classes": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "TRANSIENT",
+          "SEMANTIC_INVALID",
+          "CONCURRENCY_CONFLICT"
+        ]
+      }
+    },
+    "backoff": {
+      "type": "object"
+    },
+    "fallback_policy": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "retry_budget": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

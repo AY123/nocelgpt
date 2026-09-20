@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/context-budget.schema.json",
+  "title": "ContextBudget",
+  "type": "object",
+  "required": [
+    "max_input_tokens",
+    "response_reserve_tokens",
+    "allocations"
+  ],
+  "properties": {
+    "max_input_tokens": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "response_reserve_tokens": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "allocations": {
+      "type": "object",
+      "properties": {
+        "system_policy": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "genre": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "contract": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "canon": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recent_context": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "character_state": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "reference_evidence": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "style": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

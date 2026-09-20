@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/corpus-item.schema.json",
+  "title": "CorpusItem",
+  "type": "object",
+  "required": [
+    "corpus_item_id",
+    "item_type",
+    "content_ref",
+    "content_hash",
+    "source",
+    "rights",
+    "authority",
+    "lifecycle",
+    "created_at"
+  ],
+  "properties": {
+    "corpus_item_id": {
+      "type": "string"
+    },
+    "item_type": {
+      "enum": [
+        "REFERENCE_WORK",
+        "GENERATED_CHAPTER",
+        "FAILED_CANDIDATE",
+        "REPAIRED_CANDIDATE",
+        "PUBLISHED_CHAPTER",
+        "HUMAN_REVIEW_SAMPLE",
+        "MARKET_SIGNAL_SAMPLE",
+        "GOLDEN_SAMPLE",
+        "REGRESSION_SAMPLE",
+        "BENCHMARK_SAMPLE",
+        "PROMPT_EXPERIMENT_SAMPLE",
+        "MODEL_EXPERIMENT_SAMPLE",
+        "GENRE_CERT_SAMPLE"
+      ]
+    },
+    "content_ref": {
+      "type": "string"
+    },
+    "content_hash": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "genre_profile": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "source": {
+      "type": "object"
+    },
+    "rights": {
+      "type": "object",
+      "required": [
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "owned",
+            "licensed",
+            "public_metadata",
+            "user_provided",
+            "analysis_only",
+            "restricted",
+            "unknown"
+          ]
+        },
+        "reuse_allowed": {
+          "type": "boolean"
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "authority": {
+      "type": "string"
+    },
+    "labels": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "quality_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "market_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lifecycle": {
+      "enum": [
+        "INGESTED",
+        "VALIDATED",
+        "CURATED",
+        "ACTIVE",
+        "QUARANTINED",
+        "DEPRECATED",
+        "RETIRED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

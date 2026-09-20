@@ -1,0 +1,33 @@
+document_id: SPEC-WORKFLOW-0001-TESTS
+version: 1.0.0
+tests:
+- id: TEST-WF-001
+  name: restart_after_successful_model_call_reuses_artifact
+- id: TEST-WF-002
+  name: timeout_does_not_change_semantic_model_key
+- id: TEST-WF-003
+  name: retry_does_not_duplicate_commit
+- id: TEST-WF-004
+  name: retry_does_not_duplicate_publish
+- id: TEST-WF-005
+  name: crash_after_commit_recovers_projection
+- id: TEST-WF-006
+  name: stale_contract_blocks_stage
+- id: TEST-WF-007
+  name: canon_parent_change_blocks_commit
+- id: TEST-WF-008
+  name: budget_exhaustion_blocks_expensive_stage
+- id: TEST-WF-009
+  name: fallback_records_actual_model
+- id: TEST-WF-010
+  name: manual_pause_is_durable
+- id: TEST-WF-011
+  name: worker_lease_loss_fenced
+- id: TEST-WF-012
+  name: stage_graph_drives_execution
+- id: TEST-WF-013
+  name: checkpoint_corruption_blocks_resume
+- id: TEST-WF-014
+  name: production_state_has_single_writer
+- id: TEST-WF-015
+  name: failed_candidate_never_becomes_next_context

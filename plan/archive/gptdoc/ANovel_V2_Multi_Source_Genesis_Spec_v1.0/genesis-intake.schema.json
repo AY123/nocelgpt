@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/genesis-intake.schema.json",
+  "title": "GenesisIntake",
+  "type": "object",
+  "required": [
+    "id",
+    "mode",
+    "user_intent",
+    "target_platform",
+    "references",
+    "originality_policy"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "mode": {
+      "enum": [
+        "IDEA_DRIVEN",
+        "REFERENCE_GUIDED",
+        "HYBRID",
+        "CORPUS_MARKET_DRIVEN"
+      ]
+    },
+    "user_intent": {
+      "type": "object"
+    },
+    "target_platform": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "target_reader": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "genre_hints": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hard_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "soft_preferences": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "corpus_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "market_snapshot_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "originality_policy": {
+      "type": "object"
+    },
+    "budget": {
+      "type": [
+        "object",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

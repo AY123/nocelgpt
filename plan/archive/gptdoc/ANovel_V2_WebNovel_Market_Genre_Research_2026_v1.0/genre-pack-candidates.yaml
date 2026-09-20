@@ -1,0 +1,128 @@
+document_id: RES-0003-GENRE-PACK-CANDIDATES
+version: 0.1.0
+packs:
+- id: urban.business.realistic
+  family: urban
+  reality: realistic
+  engines:
+  - entrepreneurship
+  - market_competition
+  - career_growth
+  progression:
+  - wealth
+  - company_scale
+  - social_status
+  - network
+  canon_extensions:
+  - company
+  - equity
+  - cash
+  - contract
+  - market
+  - product
+  - career
+  - reputation
+  hard_risks:
+  - unauthorized_supernatural
+  - financial_state_inconsistency
+  - impossible_company_growth
+- id: urban.rebirth.era
+  family: urban
+  reality: realistic
+  mechanics:
+  - rebirth
+  engines:
+  - second_chance
+  - social_repositioning
+  - career_growth
+  canon_extensions:
+  - future_knowledge_confidence
+  - timeline_divergence
+  - period_fact
+  - price
+  - salary
+  - technology_availability
+  hard_risks:
+  - period_anachronism
+  - future_knowledge_without_divergence_decay
+- id: fantasy.eastern.progression
+  family: fantasy
+  reality: full_fantasy
+  engines:
+  - cultivation
+  - resource_competition
+  - faction_conflict
+  - world_expansion
+  progression:
+  - realm
+  - skill
+  - resource
+  - artifact
+  canon_extensions:
+  - realm
+  - technique
+  - resource
+  - artifact
+  - faction
+  hard_risks:
+  - illegal_realm_jump
+  - ability_without_prerequisite
+  - world_law_violation
+- id: fantasy.high_martial
+  family: fantasy
+  reality: open_supernatural
+  engines:
+  - institutional_progression
+  - public_threat
+  - competition
+  canon_extensions:
+  - rank
+  - association
+  - school
+  - military
+  - legal_privilege
+  - public_threat
+  hard_risks:
+  - modern_institution_missing
+  - rank_social_meaning_drift
+- id: xianxia.family
+  family: xianxia
+  reality: full_fantasy
+  cast_model: multi_generation
+  engines:
+  - family_growth
+  - resource_competition
+  - succession
+  - faction_conflict
+  canon_extensions:
+  - family
+  - generation
+  - branch
+  - succession
+  - bloodline
+  - territory
+  - marriage_alliance
+  - legacy
+  - realm
+  - lifespan
+  hard_risks:
+  - lineage_inconsistency
+  - succession_conflict
+  - lifespan_violation
+- id: xianxia.realist_cultivation
+  family: xianxia
+  reality: full_fantasy
+  engines:
+  - cultivation
+  - survival
+  - class_pressure
+  - resource_competition
+  progression:
+  - realm
+  - resource
+  - dao_understanding
+  - lifespan
+  hard_risks:
+  - realm_inconsistency
+  - resource_free_progression
+  - social_model_collapse

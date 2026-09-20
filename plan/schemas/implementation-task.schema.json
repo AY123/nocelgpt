@@ -1,0 +1,311 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:anovelos:plan:implementation-task:1",
+  "title": "Execution task, not runtime narrative data",
+  "type": "object",
+  "required": [
+    "task_id",
+    "title",
+    "phase",
+    "priority",
+    "goal",
+    "normative_specs",
+    "dependencies",
+    "acceptance_criteria",
+    "tests",
+    "artifacts",
+    "out_of_scope",
+    "status",
+    "owner_role",
+    "readiness",
+    "start_gate",
+    "required_decisions",
+    "related_findings",
+    "evidence",
+    "design_references"
+  ],
+  "properties": {
+    "task_id": {
+      "type": "string",
+      "pattern": "^V2-[0-9]{3}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "phase": {
+      "enum": [
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "P8",
+        "P9",
+        "P10",
+        "P11",
+        "P12",
+        "P13",
+        "P14"
+      ]
+    },
+    "priority": {
+      "type": "string"
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "normative_specs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "out_of_scope": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "IN_PROGRESS",
+        "IMPLEMENTED",
+        "VERIFIED",
+        "CLOSED"
+      ]
+    },
+    "owner_role": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readiness": {
+      "enum": [
+        "READY_TO_START",
+        "PLANNED",
+        "READY_AFTER_GATES"
+      ]
+    },
+    "start_gate": {
+      "type": "string"
+    },
+    "required_decisions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "related_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "code",
+        "tests",
+        "ci",
+        "acceptance"
+      ],
+      "properties": {
+        "code": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "ref",
+              "revision",
+              "status"
+            ],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "const": "PASS"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "tests": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "ref",
+              "revision",
+              "status"
+            ],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "const": "PASS"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "ci": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "ref",
+              "revision",
+              "status"
+            ],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "const": "PASS"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "acceptance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "ref",
+              "revision",
+              "status"
+            ],
+            "properties": {
+              "ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "revision": {
+                "type": "string",
+                "minLength": 1
+              },
+              "status": {
+                "const": "PASS"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "design_references": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "VERIFIED",
+              "CLOSED"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "evidence": {
+            "properties": {
+              "code": {
+                "minItems": 1
+              },
+              "tests": {
+                "minItems": 1
+              },
+              "ci": {
+                "minItems": 1
+              },
+              "acceptance": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

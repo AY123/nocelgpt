@@ -1,0 +1,33 @@
+{
+  "package": "ANovel V2 Genre Intelligence Specification v1.0",
+  "files": [
+    {
+      "name": "GENRE_INTELLIGENCE_SPEC.md",
+      "sha256": "56280a10d2486da1000a9e5a0d15e4b876bdef383c6ae85aafe245d23d7459bf"
+    },
+    {
+      "name": "genre-ontology.yaml",
+      "sha256": "825501956c8255309f0f657774b919b29bc6044ae08f73750cade184ee6212aa"
+    },
+    {
+      "name": "genre-pack.schema.json",
+      "sha256": "a8ce1aa3d3fbce0b912a95b72cbb22b6ce0a0a6ccbd44e7b7ebd61046ffa9c5d"
+    },
+    {
+      "name": "genre-constitution.schema.json",
+      "sha256": "45d480a97f4e38fcc3ff2c9effd00efcc53fe166fe66b257562107a49e30ee8e"
+    },
+    {
+      "name": "market-trend-snapshot.schema.json",
+      "sha256": "359b56b0850b5031d3a618258498eb106aedecea0b3b0e1a705080dbea561039"
+    },
+    {
+      "name": "genre-certification.schema.json",
+      "sha256": "1abdbcb91af16d78236e82911c0b88e8ff6de81feb3fbd274b941eddec90e976"
+    },
+    {
+      "name": "example-urban-business-realistic.genre-pack.yaml",
+      "sha256": "bdaf350539b3276b546ec2c6a8c8a04a68e727d57e8b82ee364f12a1699cadee"
+    }
+  ]
+}

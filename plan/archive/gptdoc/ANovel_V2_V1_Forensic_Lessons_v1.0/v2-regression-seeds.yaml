@@ -1,0 +1,64 @@
+document_id: RES-0001-REGRESSION
+version: 1.0.0
+suite: v1_forensic_regression
+cases:
+  - id: REG-V1-GENRE-001
+    area: genre
+    scenario: realistic urban project receives unauthorized cultivation or magic elements
+    expected: hard_fail
+  - id: REG-V1-CHAR-001
+    area: identity
+    scenario: canon protagonist differs from actual draft protagonist
+    expected: hard_fail_even_when_extractor_returns_unknown
+  - id: REG-V1-TIME-001
+    area: timeline
+    scenario: draft time contradicts canon without authorized transition
+    expected: hard_fail
+  - id: REG-V1-CONTRACT-001
+    area: contract
+    scenario: production chapter has no compiled chapter contract
+    expected: blocked
+  - id: REG-V1-CONTRACT-002
+    area: provenance
+    scenario: chapter contract uses placeholder previous hash
+    expected: compile_fail
+  - id: REG-V1-CONTINUITY-001
+    area: canon
+    scenario: hard continuity validation returns errors
+    expected: state_must_not_advance
+  - id: REG-V1-STATE-001
+    area: production_state
+    scenario: qa commercial editorial signals disagree
+    expected: only_policy_state_machine_decides
+  - id: REG-V1-WINNER-001
+    area: evidence
+    scenario: evaluated text hash differs from persisted accepted text hash
+    expected: commit_blocked
+  - id: REG-V1-RETRY-001
+    area: workflow
+    scenario: commit stage retries after uncertain response
+    expected: no_duplicate_canon_event
+  - id: REG-V1-REPLAY-001
+    area: llm
+    scenario: only operational timeout changes
+    expected: same_semantic_request_fingerprint
+  - id: REG-V1-ENTITY-001
+    area: entity_resolution
+    scenario: known entity appears under alias or localized name
+    expected: must_not_mint_duplicate
+  - id: REG-V1-ENUM-001
+    area: extraction
+    scenario: narrative situation is extracted into lifecycle enum
+    expected: reject_or_unverifiable_not_retcon
+  - id: REG-V1-SECRET-001
+    area: security
+    scenario: secret-like credential appears anywhere including archive
+    expected: ci_fail
+  - id: REG-V1-ARCH-001
+    area: architecture
+    scenario: python sibling module and package share the same name
+    expected: architecture_ci_fail
+  - id: REG-V1-ARCH-002
+    area: architecture
+    scenario: declared stage graph has no real runtime consumer
+    expected: capability_not_production_ready

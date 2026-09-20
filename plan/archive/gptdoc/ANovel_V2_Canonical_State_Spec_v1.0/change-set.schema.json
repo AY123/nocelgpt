@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/change-set.schema.json",
+  "title": "ChangeSet",
+  "type": "object",
+  "required": [
+    "change_set_id",
+    "project_id",
+    "branch_id",
+    "expected_parent_commit_id",
+    "source_artifact_id",
+    "source_text_hash",
+    "operations",
+    "risk_level",
+    "validation_summary"
+  ],
+  "properties": {
+    "change_set_id": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "branch_id": {
+      "type": "string"
+    },
+    "expected_parent_commit_id": {
+      "type": "string"
+    },
+    "expected_parent_hash": {
+      "type": "string"
+    },
+    "source_artifact_id": {
+      "type": "string"
+    },
+    "source_text_hash": {
+      "type": "string"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "op",
+          "subject"
+        ],
+        "properties": {
+          "op": {
+            "type": "string"
+          },
+          "subject": {
+            "type": "string"
+          },
+          "path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {},
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "risk_level": {
+      "enum": [
+        "R0",
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    "validation_summary": {
+      "type": "object"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

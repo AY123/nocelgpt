@@ -1,0 +1,116 @@
+ANovel V2
+ANovel V2 Product Charter & Final Goals
+产品章程、最终实现目标与成功判据
+
+文档编号
+D01
+版本
+v1.0
+状态
+Architecture Baseline
+基准日期
+2026-09-15
+定位
+ANovel V2 前期规划 / 架构建设基线
+
+原则：代码可以从零开始，认知、证据和失败经验不能从零开始。
+
+1. 文档目的
+本文件冻结 ANovel V2 的产品使命、边界、核心创作范式与最终验收标准。它是所有后续架构、功能、模型选择与开发优先级的上位依据。任何新模块若不能显著帮助系统稳定生产“类型正确、长期一致、人物可信、剧情持续推进、读者愿意追读和付费”的原创商业长篇，应默认不进入核心路线。
+2. 正式使命
+Mission：构建一个以 Genre Intelligence、Canonical Narrative State、Hierarchical Planning、Narrative Contract、Durable Workflow、Quality Calibration 与 Reader Signal 为核心的 AI 原生商业长篇小说生产操作系统，使 AI 能在可控创作自由度下，持续、稳定、可恢复、可验证地生产几十万至数百万字的高质量原创商业网文。
+
+3. 四种开书模式
+模式
+用户输入
+系统职责
+风险控制
+Idea-Driven
+题材 + 核心创意 + 目标读者/平台
+独立完成 Genre、世界、人物、Story Bible、Long Arc 与正文
+防止模型自行越权改题材
+Reference-Guided
+一本或多本参考小说
+抽象其叙事机制、商业规律和长期结构，形成 Evidence Pack，再原创开书
+Reference 永不直接拥有 Canon 权限；禁止剧情/角色映射复制
+Hybrid
+创意 + 正向/负向参考 + 禁止项
+把作者意图与多源证据编译成统一 GenesisSpec
+显式记录哪些维度从哪些参考学习
+Corpus/Market-Driven
+平台、频道、读者、时期、题材约束
+从版本化 CorpusSnapshot / MarketTrendSnapshot 检索多源模式，生成候选开书方案
+市场热点是版本化证据，不进入长期核心规则
+
+4. 多入口、单内核
+Idea / References / Corpus / Hybrid            ↓       Genesis Compiler            ↓        GenesisSpec            ↓   Genre Constitution            ↓       Story Bible            ↓ Canonical Narrative State            ↓ Hierarchical Planning            ↓ Contract → Context → Draft → Validate → Repair → Commit
+四种入口不能发展成四套生产引擎。所有输入必须在 Genesis 阶段收敛为统一 GenesisSpec，后续共享同一套 Genre、Canon、Contract、Workflow 和 Quality 内核。
+5. 最终能力边界
+能力域
+最终目标
+非目标
+创意与开书
+从高层创意或参考资料自主完成原创项目设计
+不是“一个 Prompt 直接写整本书”
+题材与类型
+类型是机器可执行的 Constitution + Pack，不是字符串标签
+不硬编码某个平台当前目录
+长期记忆
+Canon/Event/Snapshot 维护事实、知识、关系、时间与承诺
+不依赖聊天历史或无限上下文
+规划
+系列→卷→弧→章→场景动态分层规划
+不在开书日冻结 1000 章细纲
+正文
+模型在 Contract 允许的自由空间中创作
+不以规则模板替代文学创造
+质量
+确定性规则 + 语义评价 + 人工/市场校准
+不把单一 LLM Judge 当真值
+生产
+断点恢复、幂等、成本控制、可追溯
+不允许失败后从头重跑或重复提交 Canon
+商业
+用真实读者和平台信号校准内部代理指标
+不把模拟付费率称为真实商业结论
+
+6. Canonical Truth 原则
+Draft 不是事实。只有通过 Final Validation 并获得合法 Commit Permit 的正文，才允许产生 Canon ChangeSet。
+所有事实变化必须可追踪到正文证据、Contract、模型运行和 commit receipt。
+人物知识边界、时间、关系、资源、能力、伤势、资产、承诺等必须有明确状态语义。
+生产模式默认 Fail-Closed：缺失 Genre/Story/Arc/Chapter Contract、上一合法状态或关键事实时必须 BLOCK。
+7. 最终产品成功标准
+阶段
+必须证明的结果
+主要指标
+30章
+生产闭环正确
+重大 Genre 泄漏=0；核心身份漂移=0；严重时间线冲突=0；每章 provenance 完整
+100章
+长期叙事仍稳定
+关键人物/关系/伏笔/世界规则稳定；随机中断可恢复；后50章质量不持续下滑
+300+章
+叙事发动机可持续
+系统性重复受控；卷/弧转换有效；长期承诺按计划兑现
+接近百万字
+仍然是同一本小说
+世界/人物/主线可审计连续；成本、恢复、事实链稳定
+市场验证
+不只“AI觉得好”
+真人编辑盲评、三章留存、十章追读、首订/追订/付费等真实信号形成校准闭环
+
+8. 非功能目标
+可恢复：Stage 级 checkpoint/resume，幂等提交。
+可审计：每一章可回答“为什么写成这样”。
+可替换：Planner/Writer/Reviewer 等角色与具体模型供应商彻底解耦。
+可扩展：Core Canon + Genre Extension，不用一个巨型 Schema 包打天下。
+安全：密钥、版权/参考内容、来源、授权边界、原创性检测进入治理。
+可测试：V1 的所有真实失败转化为 regression/certification fixtures。
+9. 明确不做的事情
+不以 Agent 数量、Schema 数量、报告数量作为项目进度。
+第一阶段不追求一次支持全部网文分类。
+不把参考小说原文直接喂给正文 Writer 作为默认工作流。
+不允许未经认证的 GenrePack 进入 Production。
+不在 30 章闭环稳定前建设大量 Reader Simulator、复杂 UI 和大规模 Corpus。
+10. Product North Star
+North Star：给系统一个新题材/核心创意，或一本/多本参考作品，在不提供人工章节正文的情况下，系统能独立完成原创开书、世界与人物设计、Genre Constitution、Story Bible、长弧规划，并持续生产到百章/百万字；同时保持题材正确、事实连续、人物可信、剧情有推进、读者有追读理由。

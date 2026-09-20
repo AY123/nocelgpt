@@ -1,0 +1,29 @@
+document_id: SPEC-CONTEXT-0001-TESTS
+version: 1.0.0
+tests:
+- id: TEST-CTX-001
+  name: mandatory_facts_never_trimmed
+- id: TEST-CTX-002
+  name: stale_canon_blocks_context
+- id: TEST-CTX-003
+  name: stale_contract_blocks_context
+- id: TEST-CTX-004
+  name: raw_reference_absent_from_writer
+- id: TEST-CTX-005
+  name: project_isolation
+- id: TEST-CTX-006
+  name: branch_isolation
+- id: TEST-CTX-007
+  name: knowledge_boundary_present
+- id: TEST-CTX-008
+  name: extractor_has_alias_roster
+- id: TEST-CTX-009
+  name: failed_draft_not_used_as_recent_context
+- id: TEST-CTX-010
+  name: same_semantic_inputs_same_context_hash
+- id: TEST-CTX-011
+  name: context_too_large_blocks
+- id: TEST-CTX-012
+  name: reviewer_binds_writer_parent
+- id: TEST-CTX-013
+  name: fallback_records_actual_model

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/backup-record.schema.json",
+  "title": "BackupRecord",
+  "type": "object",
+  "required": [
+    "backup_id",
+    "scope",
+    "status",
+    "created_at",
+    "integrity_hash",
+    "storage_ref"
+  ],
+  "properties": {
+    "backup_id": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "enum": [
+        "CREATED",
+        "VERIFIED",
+        "FAILED",
+        "EXPIRED"
+      ]
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "integrity_hash": {
+      "type": "string"
+    },
+    "storage_ref": {
+      "type": "string"
+    },
+    "encrypted": {
+      "type": "boolean"
+    },
+    "retention_until": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

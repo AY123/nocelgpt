@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/release-manifest.schema.json",
+  "title": "ReleaseManifest",
+  "type": "object",
+  "required": [
+    "release_id",
+    "code_commit",
+    "schema_versions",
+    "workflow_version",
+    "policy_versions",
+    "dependency_lock_hash",
+    "created_at"
+  ],
+  "properties": {
+    "release_id": {
+      "type": "string"
+    },
+    "code_commit": {
+      "type": "string"
+    },
+    "schema_versions": {
+      "type": "object"
+    },
+    "workflow_version": {
+      "type": "string"
+    },
+    "policy_versions": {
+      "type": "object"
+    },
+    "dependency_lock_hash": {
+      "type": "string"
+    },
+    "image_digest": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sbom_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "migration_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "config_hash": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}

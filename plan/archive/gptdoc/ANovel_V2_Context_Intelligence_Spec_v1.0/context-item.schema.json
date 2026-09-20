@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/context-item.schema.json",
+  "title": "ContextItem",
+  "type": "object",
+  "required": [
+    "item_id",
+    "source_ref",
+    "source_type",
+    "authority",
+    "priority",
+    "mandatory",
+    "relevance",
+    "token_cost",
+    "inclusion_reason",
+    "content_hash"
+  ],
+  "properties": {
+    "item_id": {
+      "type": "string"
+    },
+    "source_ref": {
+      "type": "string"
+    },
+    "source_type": {
+      "type": "string"
+    },
+    "authority": {
+      "enum": [
+        "constitution",
+        "genre",
+        "canon",
+        "contract",
+        "plan",
+        "derived",
+        "reference",
+        "market",
+        "diagnostic"
+      ]
+    },
+    "priority": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "mandatory": {
+      "type": "boolean"
+    },
+    "relevance": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "recency": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "risk": {
+      "enum": [
+        "R0",
+        "R1",
+        "R2",
+        "R3"
+      ]
+    },
+    "token_cost": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "inclusion_reason": {
+      "type": "string"
+    },
+    "content_hash": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string"
+    },
+    "branch_id": {
+      "type": "string"
+    },
+    "payload": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

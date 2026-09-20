@@ -1,0 +1,1222 @@
+[
+  {
+    "path": "00_GOVERNANCE_AND_SOURCE_AUTHORITY.md",
+    "bytes": 4449,
+    "sha256": "5b6fd5c7166ab676da4d9e0776580c356f48b0ef69fa2c444656d41be2ac834d"
+  },
+  {
+    "path": "01_PRODUCT_SCOPE_AND_SUCCESS.md",
+    "bytes": 3054,
+    "sha256": "636d804d3dadd15fc190a3cef5d96ad13c01c7d8063733b3d5350fd6db3d3668"
+  },
+  {
+    "path": "02_ARCHITECTURE_BASELINE.md",
+    "bytes": 3941,
+    "sha256": "017f780030dec34fb6a659dd3d1301fd28110ff08ea0ccba6c0e18c35264a7da"
+  },
+  {
+    "path": "03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md",
+    "bytes": 5353,
+    "sha256": "d1ba48c582f0ef1de43b42edcc79820f7734beb75b5b460c0c349c6e0e3e0ffb"
+  },
+  {
+    "path": "04_GENRE_AND_STORY_FIXTURES.md",
+    "bytes": 3133,
+    "sha256": "c3505417bdaf42c56d73c218bee32e217d4bb54fe8658940a8b7b3a766fec80f"
+  },
+  {
+    "path": "05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md",
+    "bytes": 5153,
+    "sha256": "e842ed45ee5de2a03e1bc9729b752c9fc3bdc3b1d5d6eb6fa40f5beed5ee1667"
+  },
+  {
+    "path": "06_CERTIFICATION_AND_PRODUCT_EVALUATION.md",
+    "bytes": 3644,
+    "sha256": "53a1f8d655087ddd064a8e5f6c58bed6d03225ef2dd551b0d704749ce5feedfa"
+  },
+  {
+    "path": "07_PLATFORM_SECURITY_AND_DELIVERY.md",
+    "bytes": 3029,
+    "sha256": "073a54e45205297f2dc658c54ab13709eba1348ccaaf4147b7192198faee13db"
+  },
+  {
+    "path": "08_ROADMAP_AND_GATES.md",
+    "bytes": 2204,
+    "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+  },
+  {
+    "path": "09_TASK_EXECUTION_GUIDE.md",
+    "bytes": 2886,
+    "sha256": "2d963ff9d016f18df55ed26ea10a45612c8dc03fb4a6a5b9819d41a628db3c04"
+  },
+  {
+    "path": "10_DECISIONS_AND_REMEDIATION.md",
+    "bytes": 2524,
+    "sha256": "73b72701a2fc2bfa912306bde46072f089c8b698d7ebb62cbe21796911c2ef95"
+  },
+  {
+    "path": "PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "bytes": 3779,
+    "sha256": "528e9dceee8cb642be0e9c3df3aed1ffbd6551adced5f6ab4abdb674457af163"
+  },
+  {
+    "path": "README.md",
+    "bytes": 3843,
+    "sha256": "be6b78d2af0a93d8dceb6ca54f6281556ba89b64946bab8565fc45bd9c6925a1"
+  },
+  {
+    "path": "archive/README.md",
+    "bytes": 376,
+    "sha256": "85d03ead8ca59128507cac22caa5917cc4b141e0f15d2666914ceaed9844c290"
+  },
+  {
+    "path": "archive/architecture-review-2026-09-18/ARCHITECTURE_AUDIT_REPORT.md",
+    "bytes": 59471,
+    "sha256": "6c741a2aba207a4b3b8759ef834ba31cad08129d202df5c9c54a1834cb48f6d6"
+  },
+  {
+    "path": "archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml",
+    "bytes": 6897,
+    "sha256": "e97e0335775adb9d7a71fbf8bd15b063ec82cdc251c5e62a7f126d29b122effd"
+  },
+  {
+    "path": "archive/architecture-review-2026-09-18/audit-results.json",
+    "bytes": 73599,
+    "sha256": "cd9c9300854d118e9ebf4c96297549dfd96c8f6f28b1ce4735dab4a146036e2b"
+  },
+  {
+    "path": "archive/architecture-review-2026-09-18/audit_specs.py",
+    "bytes": 10886,
+    "sha256": "b5c6b4bff246084ddda093c92c6941409922192ea393fbf657eb14931498c290"
+  },
+  {
+    "path": "archive/ccdoc/00_PROJECT_REFACTOR_ASSESSMENT.md",
+    "bytes": 10117,
+    "sha256": "dc2a99f568eabf24c400bc6d387d52a77534cbebc6c26b949135ad9cd338b53a"
+  },
+  {
+    "path": "archive/ccdoc/01_GENRE_SYSTEM_ARCHITECTURE_DESIGN.md",
+    "bytes": 27301,
+    "sha256": "2329db7597bf56d1c08c6321bcbb0993b5c9be29b5e40365b8c4d14df7e36df2"
+  },
+  {
+    "path": "archive/ccdoc/02_STRATEGIC_REFACTOR_ROADMAP.md",
+    "bytes": 20011,
+    "sha256": "4dc8b0719f3212b252d17dc350e7d227d9f73fa568cdca7a9730df68ac634940"
+  },
+  {
+    "path": "archive/ccdoc/03_KEEP_REFACTOR_DELETE_CHECKLIST.md",
+    "bytes": 13461,
+    "sha256": "8461e8a37001f32f0ad21a2c1603f3aadff30a2b0ee73ab2a994e16aca090ad9"
+  },
+  {
+    "path": "archive/ccdoc/04_GENRE_SPECIFIC_PROMPT_TEMPLATES.md",
+    "bytes": 19662,
+    "sha256": "fd1422e0258af35a33766fe72ece812ce22dfc50cc2e2db79a8ae8c1c6b67151"
+  },
+  {
+    "path": "archive/ccdoc/05_V1_LESSONS_LEARNED.md",
+    "bytes": 13982,
+    "sha256": "5413c9c2ac52858e4052afd435de76d3739ecc3d338213c7d77751a1a40b5a3a"
+  },
+  {
+    "path": "archive/ccdoc/06_MILESTONE_DEFINITIONS.md",
+    "bytes": 18334,
+    "sha256": "2037688d4f034d172593521aea285278d18294ce7bd85daa64ab9bdbcc1d2026"
+  },
+  {
+    "path": "archive/ccdoc/07_PROJECT_KICKOFF_CHECKLIST.md",
+    "bytes": 13104,
+    "sha256": "6181f0413e679759e2feba5437edb117d02c31def6d1bf73c17857aa7a59f143"
+  },
+  {
+    "path": "archive/ccdoc/08_COMPETITIVE_ANALYSIS.md",
+    "bytes": 23583,
+    "sha256": "0075b15151db8daf83eeeba4c7683e815327278d7afb7746e124164491eb7927"
+  },
+  {
+    "path": "archive/ccdoc/09_PREARCHITECTURE_VS_INDUSTRY_DEEP_DIVE.md",
+    "bytes": 27168,
+    "sha256": "e34f61d526194c3b0e33cf36b67be0a18175f2c05849789e8be1c8a89d9ccb0f"
+  },
+  {
+    "path": "archive/ccdoc/10_ULTIMATE_COMPETITIVE_LANDSCAPE_ANALYSIS.md",
+    "bytes": 43565,
+    "sha256": "2bd52b550c790dc62f3bbcda85122b7c88525e5db52e180342ef484cf9e8a5d7"
+  },
+  {
+    "path": "archive/ccdoc/11_FINAL_EXECUTABLE_GUIDE.md",
+    "bytes": 46807,
+    "sha256": "6c73ce7b16315f634b3a8f556cc15453ac4c5873e31b50f2f396c6c0b449b0a8"
+  },
+  {
+    "path": "archive/ccdoc/12_ARCHITECTURE_DECISION_RECORD_PART1.md",
+    "bytes": 9030,
+    "sha256": "8d92e52043cfb3399c1d9ab1e4c583ec247c6d1eaf11e76eec4dafc9cb1cefcd"
+  },
+  {
+    "path": "archive/ccdoc/12_ARCHITECTURE_DECISION_RECORD_PART2.md",
+    "bytes": 31744,
+    "sha256": "ad989e05e18d88c97858ceb99b72e40c1c6779a898fe4e9ab85882ca0ea5e1fb"
+  },
+  {
+    "path": "archive/ccdoc/12_ARCHITECTURE_DECISION_RECORD_PART3.md",
+    "bytes": 23519,
+    "sha256": "ed98a2f8015a9acd40c033239d5a0d249c44c4ff70dab3f54f22d65661807a8c"
+  },
+  {
+    "path": "archive/ccdoc/13_DATA_MODEL_COMPLETE_DEFINITION.md",
+    "bytes": 43546,
+    "sha256": "1c2e0525221fa73e52c9fd2ac122542c097847620f4dac0c1b53b5c51f05a24f"
+  },
+  {
+    "path": "archive/ccdoc/14_TECHNICAL_STACK_SELECTION.md",
+    "bytes": 20914,
+    "sha256": "4d3a8ab29346e41fb530a766f761ab4e828561800715510b4d6c0b5004de6c8a"
+  },
+  {
+    "path": "archive/ccdoc/15_SYSTEM_ARCHITECTURE_DESIGN.md",
+    "bytes": 37454,
+    "sha256": "e7be53efcfd6ece12562d3c29e0603edf38c4394c8208e5ceafcd4cf545a8119"
+  },
+  {
+    "path": "archive/ccdoc/16_LLM_INTEGRATION_STRATEGY.md",
+    "bytes": 23847,
+    "sha256": "9cf5a24f9d6f3089cfb8d9ccfc8f0f45302bd506bec38402fd0148aec7ebb69c"
+  },
+  {
+    "path": "archive/ccdoc/17_QUALITY_ASSURANCE_FRAMEWORK.md",
+    "bytes": 31663,
+    "sha256": "14d76d0998471ebc38913cf81ef5caeb9d11db44666277829621e554ed86da2d"
+  },
+  {
+    "path": "archive/ccdoc/18_DATABASE_SCHEMA_DESIGN.md",
+    "bytes": 29632,
+    "sha256": "87bcc55f0b659c65094e4291a73d3de43623ee46ce6ca6743c9169ae86069b3f"
+  },
+  {
+    "path": "archive/ccdoc/19_API_SPECIFICATION.md",
+    "bytes": 21693,
+    "sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1"
+  },
+  {
+    "path": "archive/ccdoc/20_DEPLOYMENT_OPERATIONS_GUIDE.md",
+    "bytes": 27015,
+    "sha256": "599290e0c78c626f6e6ef029c30862b52ce562d0dd18a08c8efb8e87ad487964"
+  },
+  {
+    "path": "archive/ccdoc/21_TESTING_STRATEGY.md",
+    "bytes": 29721,
+    "sha256": "c34d631394b05626297fc5c5d87aea10b8d0939bdd3373ce83038c311ee5caf8"
+  },
+  {
+    "path": "archive/ccdoc/README.md",
+    "bytes": 13595,
+    "sha256": "a70039cac99ab38297ccd64b418fde7f9f5557c26be6a9b69b94b18dc808eb65"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/CCDOC_ARCHITECTURE_AUDIT_REPORT.md",
+    "bytes": 53555,
+    "sha256": "11edc89b81b9acd3c17ccf8d0544ac08cfd6b2d01e31b0212c8989edfea59561"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/README.md",
+    "bytes": 3417,
+    "sha256": "bc2511cc66ce604c8172f2bea2bee5ee5016fcc4c154b5bf0c1aaa51831d79a7"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json",
+    "bytes": 47460,
+    "sha256": "b581e24d5a9ba58683d1b1d3d17b70d769d5538ff06f305a50faad901ef60b94"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/audit-results.json",
+    "bytes": 13387,
+    "sha256": "156969c4db7a4bb9d0281ce321fa8acd68d3ac1bb037a32bf6affa7580046361"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/audit_ccdoc.py",
+    "bytes": 8557,
+    "sha256": "603c666b9b56f318f62fb73efb470ad9326c89d88d284ca6f87d94218ef24e53"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/core-probe-results.json",
+    "bytes": 2862,
+    "sha256": "72357a9b3ee067ea792afcde96985777280588337ed1c288af9a701313acff82"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/core-probes.py",
+    "bytes": 6978,
+    "sha256": "13b65d3fa4a49bec2b35e20e0de06ada04dc79b2547abb289be174ade7b0d21c"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/delivery-probe-results.json",
+    "bytes": 3251,
+    "sha256": "fb9a0ce20226c58f2816596759ea044e824e076df992810260c142430c8c99bb"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/delivery-probes.py",
+    "bytes": 8606,
+    "sha256": "22888aa5d3027fa98afbb0eff19bd292bb91cd526c8aadba69f39c61fbbd142a"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/product-probe-results.json",
+    "bytes": 1631,
+    "sha256": "173f977b45de4b038b07f952ed9e51ed9abb2420903e1bd6cb568ac377cced5c"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/product-probes.py",
+    "bytes": 3087,
+    "sha256": "fb4ca742dc9561ae12fdee64e8dd98160d5294fe4170a615918cc554b5f8c213"
+  },
+  {
+    "path": "archive/ccdoc-review-2026-09-19/product-review.md",
+    "bytes": 28885,
+    "sha256": "cb5a9acca6425ee2686c28855569c7abaefabad6d89cbae84589f847092fccea"
+  },
+  {
+    "path": "archive/convergence/ARCHITECTURE_CONFLICT_REGISTER.md",
+    "bytes": 18061,
+    "sha256": "5b3005ea6c9ef25c0536c827936be3af7923ac655821dad48f4dcd1c239cd2fa"
+  },
+  {
+    "path": "archive/convergence/ARCHITECTURE_READINESS_REPORT.md",
+    "bytes": 25044,
+    "sha256": "184517f57f0dc3064c12eeac527309070ac20a549f6ddbe61d5a8c5ef6f8d8e1"
+  },
+  {
+    "path": "archive/convergence/ARTIFACT_LIFECYCLE_REGISTER.md",
+    "bytes": 18669,
+    "sha256": "7a7a72f6a7f33650047ae2ef2f211ccf593c093146fc0c286062c16c3ceb29c9"
+  },
+  {
+    "path": "archive/convergence/AUTHORITY_MATRIX.md",
+    "bytes": 38742,
+    "sha256": "ce94cf5e3d4365ecc5ca312044f2861fa5778a50580da90a267c8ad137dfb883"
+  },
+  {
+    "path": "archive/convergence/FINAL_CONVERGENCE_INTEGRITY_FIX_REPORT.md",
+    "bytes": 6244,
+    "sha256": "e607759dcfb29fd6edede71f62e392ab9b0c7888dcd14c9f691fb4ea5e793313"
+  },
+  {
+    "path": "archive/convergence/NORMATIVE_INDEX.md",
+    "bytes": 21221,
+    "sha256": "b33ba10349fcc28455f8b7f120bf8a8bf9e391bae8a7e48a8f3638a4c6874c78"
+  },
+  {
+    "path": "archive/convergence/PHASE_TASK_REGISTRY.md",
+    "bytes": 6106,
+    "sha256": "a0fa0d40e754e5b1119461a4be194fd8fc3929953cd5fb2eceb77d766650a528"
+  },
+  {
+    "path": "archive/convergence/REQUIRED_ADR_REGISTER.md",
+    "bytes": 19532,
+    "sha256": "8baf41ccbcd70c5b97000ea6c8213e9623a331c2b47a70b8b699ef794cff65a2"
+  },
+  {
+    "path": "archive/convergence/SOURCE_AUTHORITY_INVENTORY.md",
+    "bytes": 13437,
+    "sha256": "9d2d65ba814c0a80ad1c46fa3d989a18d58ab4f21ecfb01f8e2eff6bfb5dbb9e"
+  },
+  {
+    "path": "archive/convergence/TERMINOLOGY_BASELINE.md",
+    "bytes": 27978,
+    "sha256": "4cec4225fb2c9bf84be5c0bf775be36e03b4f287e0105687c2f2de715a84ca45"
+  },
+  {
+    "path": "archive/convergence/convergence-validation.json",
+    "bytes": 5836,
+    "sha256": "9ec3fe15a2f79ae70f9dbab4ec5792eb8646d1ba33ac7bba1c778f79e82cc34a"
+  },
+  {
+    "path": "archive/convergence/task-registry-generator.py",
+    "bytes": 3353,
+    "sha256": "099b6efd2e68e0efa36ba76f6fe73085cdd609e4c5f15b9a93cec5a3ecd42229"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md",
+    "bytes": 24693,
+    "sha256": "d114d6fb4a666e6e0d048a22d6d48577cdc59bc933c7d819bb9f2bd9da2ffbcc"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/MANIFEST.json",
+    "bytes": 1464,
+    "sha256": "3059b79e8c857afa194e47ad14b4101c2803e3693d8700c6d88d96ee9c47dbf6"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-commit-policy.yaml",
+    "bytes": 589,
+    "sha256": "89e69ee2f9f4a28ab70b82b22607f38edd2bfb74ef0e88e9671c67b4a1f7ac2b"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-commit.schema.json",
+    "bytes": 1366,
+    "sha256": "4bcbb33e3deea1737feadc06847604fbc569b7ebf91878cd1232f242f3c7a13f"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-event.schema.json",
+    "bytes": 913,
+    "sha256": "9feedb127cc3ebc16867d63ee0483b77ced7f3cd28ab0dcfa18653a9151ba19b"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-snapshot.schema.json",
+    "bytes": 893,
+    "sha256": "ee6105b94f4ea05167fa42287943706f20e2deab0b7eca4bcc5d0d4caa14d680"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-test-matrix.yaml",
+    "bytes": 919,
+    "sha256": "f4100ead035c18b3f873e7fb090f39e174bd9b47f398825bd06429eb2568693e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/canon-transaction.schema.json",
+    "bytes": 1333,
+    "sha256": "05869dccf4f365ed255fe3ea8f919fc617de9d42b6071117b0b77f63ead34a9a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/change-set.schema.json",
+    "bytes": 1683,
+    "sha256": "eed617378231317dcae65486cf413ff6925bd717e98bd255072f6f7f1b7bc929"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/commit-permit.schema.json",
+    "bytes": 1494,
+    "sha256": "3f9f4f04ccefc6941999d1d89de1db54247ed2bab776926a011eb351ab19de7d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/retcon-request.schema.json",
+    "bytes": 1387,
+    "sha256": "b164722c6879d74b7cc2daf3ec72908fbc438f7da2e3ed55ebf76fe89e785ca5"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/CONTEXT_INTELLIGENCE_SPEC.md",
+    "bytes": 22704,
+    "sha256": "403a93a8e5b45e7e13530689ed8e5df4e05f73112985286cb5995790676a1d03"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/MANIFEST.json",
+    "bytes": 1188,
+    "sha256": "e999aaa2f67a3cc1d058403f68f02a8894ca7088a68bf89674dfa5fcc5e172bc"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-artifact.schema.json",
+    "bytes": 1854,
+    "sha256": "f056ae69bc62acddf8f8f2d5669c670c3a58a4b115f88636987bde5f8f7749c0"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-budget.schema.json",
+    "bytes": 1304,
+    "sha256": "5307c601fddc8183b91770b1b72552358ee7dd676eb1d5a6c4b3d0a2ae0485b8"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-item.schema.json",
+    "bytes": 1554,
+    "sha256": "2ca345b460467ed9ba9153d24776aa43297c24dd432dc1d42b46748af20a7c5c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-policy.yaml",
+    "bytes": 659,
+    "sha256": "cf39ecca85be80206de4843e167e659a100b9135034fe0c3ce1ddb0895a38c2a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/context-test-matrix.yaml",
+    "bytes": 782,
+    "sha256": "0740673263237842ff76ee25710a0120da2d74335c7870b0f961eeb26ba73145"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/model-policy.schema.json",
+    "bytes": 1311,
+    "sha256": "4103d8e73a78b47454f588e8281d1cf4d3e1aaf156ac7348886da05952d0dca1"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/role-registry.yaml",
+    "bytes": 1268,
+    "sha256": "b422717b376f5b6183a63686223833ffebd802ad5015f02fc5a191f5042c5172"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/CORPUS_EVALUATION_LEARNING_SPEC.md",
+    "bytes": 26219,
+    "sha256": "b0aab3921ba43ee1d0019071a9f37fdecceaf7b0ffd4330ae026d174e0eecdad"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/MANIFEST.json",
+    "bytes": 1633,
+    "sha256": "dd46a0f28101a571a0883e73c4a0f239f13ac8e3b0c5ef2d3065ec3aa6bf680d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/SCHEMA_VALIDATION.json",
+    "bytes": 294,
+    "sha256": "582a5fdc197611c7e351f74e88360f74636c96ae29a1e61a65c2b3dbd1577388"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/benchmark-run.schema.json",
+    "bytes": 1168,
+    "sha256": "7caf5eb2d0af781bf5e41f28e5600a8f22fae9c62fd36674b029fd02cbd58bfe"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/corpus-item.schema.json",
+    "bytes": 2368,
+    "sha256": "2f334f3f29d39cb638b44e78a98599350f9af28812b1888e873e65754bf2762d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/experiment-definition.schema.json",
+    "bytes": 1671,
+    "sha256": "b1380d73107835218b2f6d44b185f01d7452fd9439f3b26f663799e2160a73ea"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/learning-event.schema.json",
+    "bytes": 1272,
+    "sha256": "94ef948b2126691f08167ebb9f800c2f4038a29fe9d3ced15bfda9ad05391c31"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/learning-policy.yaml",
+    "bytes": 1057,
+    "sha256": "6952d1dee770ba2e12720471f9299f84d2e2e722ad779b732fd2f09c18daba3e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/learning-test-matrix.yaml",
+    "bytes": 996,
+    "sha256": "855aa6650db8b4c8756b2ba81ee8b5951efaffac4c68958ef34ef549d2ab8c5a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/market-signal.schema.json",
+    "bytes": 1093,
+    "sha256": "9b996ff4b21b8e4abbd4c358852ef85fe447ba0c6731a4dc4a1bfc4a189685f6"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/promotion-decision.schema.json",
+    "bytes": 1178,
+    "sha256": "bf36df2f90b3c163dfedafc54308082f28dfdc67a361296f594caa5d5b1017bb"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/reader-signal.schema.json",
+    "bytes": 1315,
+    "sha256": "ee0ea39002c8a75da3c7d4ed49b7c999193c9379dc6c2296329c85e74f57fb61"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md",
+    "bytes": 22772,
+    "sha256": "56280a10d2486da1000a9e5a0d15e4b876bdef383c6ae85aafe245d23d7459bf"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/MANIFEST.json",
+    "bytes": 1090,
+    "sha256": "fd0258c97b80cd6ccde846098642c2ad75f553b0014650817a408bd907257112"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/example-urban-business-realistic.genre-pack.yaml",
+    "bytes": 1984,
+    "sha256": "bdaf350539b3276b546ec2c6a8c8a04a68e727d57e8b82ee364f12a1699cadee"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-certification.schema.json",
+    "bytes": 2382,
+    "sha256": "1abdbcb91af16d78236e82911c0b88e8ff6de81feb3fbd274b941eddec90e976"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-constitution.schema.json",
+    "bytes": 2002,
+    "sha256": "45d480a97f4e38fcc3ff2c9effd00efcc53fe166fe66b257562107a49e30ee8e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-ontology.yaml",
+    "bytes": 1279,
+    "sha256": "825501956c8255309f0f657774b919b29bc6044ae08f73750cade184ee6212aa"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/genre-pack.schema.json",
+    "bytes": 4568,
+    "sha256": "a8ce1aa3d3fbce0b912a95b72cbb22b6ce0a0a6ccbd44e7b7ebd61046ffa9c5d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/market-trend-snapshot.schema.json",
+    "bytes": 2011,
+    "sha256": "359b56b0850b5031d3a618258498eb106aedecea0b3b0e1a705080dbea561039"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md",
+    "bytes": 30934,
+    "sha256": "dbf41842ff5a665ecaf3a245544b8b2e57a2049ac6f383374011f9bcf868bc39"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/MANIFEST.json",
+    "bytes": 1379,
+    "sha256": "5ec63173cb01960ae22f9e49f26b251e5fa4e5c4a01e924acba84ce3adb4a537"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/SCHEMA_VALIDATION.json",
+    "bytes": 137,
+    "sha256": "15fe7bf6e9d9870b26665ea7c66a1d2ca759b029505695480f095155981e0de2"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/architecture-dependency-graph.yaml",
+    "bytes": 256,
+    "sha256": "1a6a3eb26845d5527aa04f0cd3ea9fcca12c75d9108ae2d260b367dfb4d67b6c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/certification-roadmap.yaml",
+    "bytes": 707,
+    "sha256": "2627ce0cb2fe0a2919e689ae354a1a7137fd128b5a25222336794b49691844a3"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/ci-gates.yaml",
+    "bytes": 924,
+    "sha256": "341f18c703098a4d7188b2f1a0f0f9b6275f602080819d95c5e2d97b753a1c6a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml",
+    "bytes": 24364,
+    "sha256": "0a7d0f768abd7226d3d3bfe24101474fc2c9b7db4512755632079e981f088b00"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-phase.schema.json",
+    "bytes": 1099,
+    "sha256": "8db76b1d54ed57af4776c169fc8773b07004eb265970100dfdca43495450b25f"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-task.schema.json",
+    "bytes": 1467,
+    "sha256": "a2d7b4a5206a4a9a027b43f3ea5c9848fef9b625d2f3324532754ebfe770fd6f"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/milestone-plan.yaml",
+    "bytes": 1740,
+    "sha256": "a131c9de4010918845009420eb4b00c563bb3d47691a7098341acbe2d000c83a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/MANIFEST.json",
+    "bytes": 1519,
+    "sha256": "8da6910cca22aa0c7ba83a763d9e0a887cfaae9a61f3c0118566ea647ad03047"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/MULTI_SOURCE_GENESIS_SPEC.md",
+    "bytes": 27597,
+    "sha256": "e153185a9b6083433e40885beca156213143cc0b7889aca1a32157519f26b663"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/book-narrative-profile.schema.json",
+    "bytes": 2743,
+    "sha256": "5f5d9ac5cd2c1371f6da4bc1f29842b88e0a9188a3d4a2559ba414fc4c8ebc5d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-candidate.schema.json",
+    "bytes": 1603,
+    "sha256": "f424e9c5e11b01f4a5d1c8b7fc6e45a81a0c11ec35c0c2be3749bf92d7cefc07"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-intake.schema.json",
+    "bytes": 1519,
+    "sha256": "c5434fec213c147fa2b35e50c3e0f7224d7c69d65835fb7edded48c7533c36fa"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-spec.schema.json",
+    "bytes": 2425,
+    "sha256": "338506b639da772e9f4350b10a5f20ccc59d78b2a9536e01a70dc374605acb23"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-test-matrix.yaml",
+    "bytes": 799,
+    "sha256": "8a28c72ae260c4f0b40359f54680bfec7714afc10238b4f28ec0d30b6f7d15c1"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/genesis-tournament.schema.json",
+    "bytes": 1042,
+    "sha256": "8946c50d4956aa8baeb166f07e514915919a4ce9aaf6c9641cc0cad14aa56139"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/originality-report.schema.json",
+    "bytes": 1924,
+    "sha256": "cafb49ee5d22cd501d4d76e7ce566bbcaeb943f3cedef09b79d90ae567efbea1"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/reference-evidence-pack.schema.json",
+    "bytes": 2167,
+    "sha256": "84713874bf930e471ef473756dc4e8537c98d8daff0a51b52c77e9050a7274ff"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/reference-intelligence-policy.yaml",
+    "bytes": 668,
+    "sha256": "2c4c260842837b9dc02d89ff0bd7bdb4bd728e441966aa1665ab8fa0c209518f"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/MANIFEST.json",
+    "bytes": 1459,
+    "sha256": "a250a336d69f05cd6a078e3b7bb9e7c9744d6a3f534a3323b576f97af38841f6"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/NARRATIVE_DOMAIN_SPEC.md",
+    "bytes": 25634,
+    "sha256": "a3de41c02b707da502348f34180a0e3984dff7227acd450ce4f66ce18b04187e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/character.schema.json",
+    "bytes": 1728,
+    "sha256": "71723037b167bb0b52ea6e636c2338bcb75e3b58d658d6f4dc685f5fae2a1111"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/event.schema.json",
+    "bytes": 2354,
+    "sha256": "129080c73c1c47a9cbf10b5507875d2eb94315c9bf216f09af7800b389db03c0"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/fact-mutability-policy.schema.json",
+    "bytes": 756,
+    "sha256": "5f84ddfcf2601f1ee80f97fd1bf87821988be66ece61a80c041ac2e10ad656cf"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/knowledge.schema.json",
+    "bytes": 1402,
+    "sha256": "6417ae77cbfee3da49fb88756e8ff3658e17d50b034bb1838527b9bc5772cb41"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/narrative-delta.schema.json",
+    "bytes": 2175,
+    "sha256": "cd25dbaba5dc3d7d18e224a6f5e4b1e88cdcd0ec40724c263869e2068074bfad"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/narrative-entity.schema.json",
+    "bytes": 1219,
+    "sha256": "715855828c03c2747ee222f4fdddd143626bd7cdc60dc140ef6f08084cf8dcb4"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/narrative-ontology.yaml",
+    "bytes": 1082,
+    "sha256": "591c78f61f5edd52db1f8fb62c2649ece9dc3ec0dab9aa93f8d7fb1bc7ac8f0c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/promise.schema.json",
+    "bytes": 1119,
+    "sha256": "3f0103c54136e5703f297cc50a0f5431d6fb1b391f0d4adcbad4390f2484bf67"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/relationship.schema.json",
+    "bytes": 1760,
+    "sha256": "e1d503cfd477e6a62513511c3d0cf28e3a252dec4483989fb76e997486f2c70b"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/MANIFEST.json",
+    "bytes": 1205,
+    "sha256": "b5039b291402543c07794fafa74963f8a6b13567003a143d0cf1064da08054a2"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/PLANNING_CONTRACT_SPEC.md",
+    "bytes": 22262,
+    "sha256": "b5313d2a5ecc2c886c03269cf336d9b5d79ceaf08a1c2d8191809416b50b4087"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/arc-plan.schema.json",
+    "bytes": 1658,
+    "sha256": "19078cafdc8025b0117670f09c75db32a3d4b1d6eb6e71da1d3a21e8656a4144"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/chapter-contract.schema.json",
+    "bytes": 2489,
+    "sha256": "2719ca99767d580ab0311f0dd56850e5104de59876bbf20c9dd2de695f19b278"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/plan-diff.schema.json",
+    "bytes": 1218,
+    "sha256": "d0d01df6f136551279396f399729dae596753ca0f7051b22ee83e4b233887b65"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/planning-contract-test-matrix.yaml",
+    "bytes": 1032,
+    "sha256": "818e710f37da8606b73cd6517e92bccfee905948b3a337f7511a8906a8b4bbf2"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/planning-policy.yaml",
+    "bytes": 851,
+    "sha256": "6f7919398735cfe5d513e0787313e74e85c4a0473be14abb0a8db9653cd472b3"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/scene-contract.schema.json",
+    "bytes": 2251,
+    "sha256": "0fad9336b6c2a5f18826befb0ce5c61c2aab4a84ab41be8bd213ddf789a7ad5c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/series-vision.schema.json",
+    "bytes": 1557,
+    "sha256": "dc7afbe4e27535e2fa83786d91a44a6f03b038a985fc1bbf09698c0702c70e52"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/MANIFEST.json",
+    "bytes": 1819,
+    "sha256": "c32a813516e4c87cdb982eda5ac9f45fb7193fdc16e5f2ec70a64bdf417fbd15"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md",
+    "bytes": 28278,
+    "sha256": "3b0a3e9302e850c70cdc9caa52317197c014481cbc33b77a459c40553c98bfb5"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/SCHEMA_VALIDATION.json",
+    "bytes": 303,
+    "sha256": "eda2f3bcee746b0cbefd3db476776ee6f017dfcec40106d6214d616a931d1305"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/architecture-fitness-rules.yaml",
+    "bytes": 914,
+    "sha256": "59a28108f84108b0e8b6b6b4a94d257f1683b90ecf20c0cf75d5ff816e9471df"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/audit-event.schema.json",
+    "bytes": 1196,
+    "sha256": "6e186c21cb18c4836903ae1f5510d4acc9770784a01fd0245d2a371f3b07190c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/authorization-decision.schema.json",
+    "bytes": 1047,
+    "sha256": "45e54a94cc54321dd5348fc35799109e8d1c51b1a201f4cd76e3ba66b2dde34e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/backup-record.schema.json",
+    "bytes": 971,
+    "sha256": "18509dfcb7296b9a1ba5df5df7561b7b1d825b76912ec72b2ee383ba07b36ca4"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/incident-record.schema.json",
+    "bytes": 1488,
+    "sha256": "cd12bb7b0d7f9b9b184a3bb88469dbaaf1d123e134455c080be9262465c8c023"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/platform-policy.yaml",
+    "bytes": 824,
+    "sha256": "83aa926bc4a67387980fa9786134627e394cb084e27ff203a14d36e9caac473e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/platform-test-matrix.yaml",
+    "bytes": 928,
+    "sha256": "b845faad728c104049f95571438ae6aa2529a2e1cbfcd8e6efe4653a35e275cb"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/provenance-record.schema.json",
+    "bytes": 1390,
+    "sha256": "3287b4ce1734e62084c990437cc8de50350b37c626fa0378799304e101dafc57"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/release-manifest.schema.json",
+    "bytes": 1121,
+    "sha256": "dadd2a4544159e365ed37f743c772a46a04b95005587679151b4a9a10c434af5"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/restore-validation.schema.json",
+    "bytes": 1123,
+    "sha256": "6d4bfa42f4f646525d43bd106bc8f471a3df4846ef0202857c5f2ab21a2a2562"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/MANIFEST.json",
+    "bytes": 1464,
+    "sha256": "f9a8e40fc61cfab61e267cc0a48e1e3e4308a61239e7e7a64fff192fadfeb284"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md",
+    "bytes": 23210,
+    "sha256": "99857254e0bc9d04d4bf80c18e2d43079bc2550e2cbf95ad53f08fe17b25dd8c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/budget-ledger.schema.json",
+    "bytes": 840,
+    "sha256": "42145faa83bf988a2e430c713b2ff36adbb1e33efdecbde7071cbf3789d8497c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/checkpoint.schema.json",
+    "bytes": 1353,
+    "sha256": "7fe6e35dddbcc6f85dc2a2720051f1b85f90a422ff6807a6f9d49033f45ebf6d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/model-run.schema.json",
+    "bytes": 1401,
+    "sha256": "dbf492a8ce33db3c87e6decfb44ba1a8fc3d9744791bbc6e09b90935138b5fb5"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/retry-policy.schema.json",
+    "bytes": 799,
+    "sha256": "34b8546101499c8a0b210fb9c7a0754b413796581856a11fc7c4bac035c61c13"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/stage-artifact.schema.json",
+    "bytes": 1032,
+    "sha256": "7dfce285d7810aa3ed3c9b85abcbae9e2ef49fb30ff95922bd9bba765645c60f"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/stage-contract.schema.json",
+    "bytes": 1641,
+    "sha256": "b260df20803b2c3e579c1d2359acc6a6bea981d0a1ff3873dbc530f770672540"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/workflow-policy.yaml",
+    "bytes": 806,
+    "sha256": "06b7521e94550c3e0b12226c4f82447769c1b64eafc679b7f03dc967ddf638fa"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/workflow-run.schema.json",
+    "bytes": 1731,
+    "sha256": "69363fbe90923369376e41c5aaf465ac5252825f8d5f84216b294149ef071eee"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/workflow-test-matrix.yaml",
+    "bytes": 975,
+    "sha256": "b70ee8112af763de3da03a1b3f5e29ae5dbb88c1c83d3635b5fabf09a3fbd71c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Project_Constitution_v1.0/MANIFEST.json",
+    "bytes": 436,
+    "sha256": "7639acc35611f82c82d23cae874ff5120ac0916fef52e66c4ce6a9a303b01705"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Project_Constitution_v1.0/PROJECT_CONSTITUTION.md",
+    "bytes": 31119,
+    "sha256": "d3215a034589e1820b522b0e1faf574922bfba050c0b0cce08b31a4a5389b56e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Project_Constitution_v1.0/project-constitution.yaml",
+    "bytes": 3573,
+    "sha256": "346a0f63fd8259cd9f1695f6c39412928ff8cb0600875993819f3465b47a302d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/MANIFEST.json",
+    "bytes": 1636,
+    "sha256": "35715e061ae5385a4c718b37ec0f0a0fe6d01b643ab8a598ab74220c4221ac4a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md",
+    "bytes": 27158,
+    "sha256": "e147c3ff1d5c05b569203b7a337250f22f30d02c97e30ad127bc868819908776"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/SCHEMA_VALIDATION.json",
+    "bytes": 299,
+    "sha256": "4909bf9ad6a0e48682fa5208be0b75d6f030622fac58448e1e04dee4771757f2"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/calibration-report.schema.json",
+    "bytes": 1197,
+    "sha256": "fb927584bd9cb4a73d45c793fd89f1eac86cdb43a337b375ef33e3575508e572"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/evidence-record.schema.json",
+    "bytes": 1890,
+    "sha256": "a2601ef7dcafd97bbc6be8893482366d3699048a35e89c1d5706feeb2b69103e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/golden-set-item.schema.json",
+    "bytes": 1178,
+    "sha256": "e24888d36d420bc726e067f353bddf3f2e37c0d00a9fffb08f81dcb200a8b740"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/human-evaluation.schema.json",
+    "bytes": 1136,
+    "sha256": "45afc1f3ef2d851ffe3cb9595ee459a33815516cf550d4d8a8569f4a4b7318d6"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/pairwise-evaluation.schema.json",
+    "bytes": 1171,
+    "sha256": "9c7d8cc9ed1a215a6284f366fd032c4827faa447d845ae1c33779b101642d44c"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/quality-policy.yaml",
+    "bytes": 1190,
+    "sha256": "15c191966198745ee259abbf2d06f950602ea25c8d94c66471c9d5d374cd15ac"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/quality-report.schema.json",
+    "bytes": 2402,
+    "sha256": "6120fe7b6e895eba775743f024ce8b9fe16600871e84a8f85401d1508387cea3"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/quality-test-matrix.yaml",
+    "bytes": 946,
+    "sha256": "bc1cf26742f72460ce28f04e22312a13e36ba47d6fbe57efe7c4e1277851336e"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/repair-plan.schema.json",
+    "bytes": 1899,
+    "sha256": "b3216fa887641931b022fe182166d956095c37d5b1d47189fb4b9c179669fc91"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/MANIFEST.json",
+    "bytes": 672,
+    "sha256": "3a11bef32981ef35b10a6b9b826524d25306e827a7334110fa3c0d4f1d9b8c3f"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md",
+    "bytes": 31196,
+    "sha256": "9435a54dec70dc9e418922893b1874348c12c6597f3507a4908af794e04d1a73"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/adr-candidates.yaml",
+    "bytes": 1518,
+    "sha256": "2614326f8fee70ac4b2f9e671cbc5744daf235ce96f7feb00db0fc748d225c2d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/borrow-matrix.yaml",
+    "bytes": 2055,
+    "sha256": "e44f08679dcf17fd4c427577ff7863a2df0d91544db6a4726fc335a561f42377"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml",
+    "bytes": 2530,
+    "sha256": "cee8c9a2b742c3f18d05780e71eb75e58280958b88b9ae34a699b3e4fb4c37fc"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/MANIFEST.json",
+    "bytes": 745,
+    "sha256": "01613fd491434ee97216f413d6321b5f994c968d20c856e1f4bdd80f65a11c76"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/V1_FORENSIC_LESSONS.md",
+    "bytes": 34307,
+    "sha256": "e31038f4a7ad412c4340fa821494063e4f30efa580aa191da60657d37f7cfa17"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/evidence-index.yaml",
+    "bytes": 2479,
+    "sha256": "b0da8372532d09325cea13d68870828ba3d2ca3cce5e041d34b74e31b0cfac75"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/v1-migration-decisions.yaml",
+    "bytes": 2121,
+    "sha256": "1d91ab7cd8d3f0e239475a926e3c95a1c79bf150c9beac0293c480445d07f851"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_V1_Forensic_Lessons_v1.0/v2-regression-seeds.yaml",
+    "bytes": 2311,
+    "sha256": "dc6cd9af4bba86faaaaf436731c243ac08dc883f421271c116d4b0ec96b5248a"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/MANIFEST.json",
+    "bytes": 833,
+    "sha256": "1e65757dbcd23a089e3851bbcdeb7fae14c7b4b00ba20e26b6e68932f3b1e408"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/WEBNOVEL_MARKET_GENRE_RESEARCH.md",
+    "bytes": 32889,
+    "sha256": "fbb331777b7814554635d39034471d9b4e114247d5f3f30af6fde4c438c81e59"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/genre-ontology-candidate.yaml",
+    "bytes": 713,
+    "sha256": "45fa8288e46b7b8a84304f7950aea5562aae61386ae807c0d0204140a675be0d"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/genre-pack-candidates.yaml",
+    "bytes": 2376,
+    "sha256": "d3395e99f2623a624fa3e14a058150ab5f625a573692abee459888ab4e2545e7"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/market-trend-snapshot-2026.yaml",
+    "bytes": 1712,
+    "sha256": "654329aee09716fe0afbaa91d953c6f37723c33a65975231c6f58b6f64456f7b"
+  },
+  {
+    "path": "archive/gptdoc/ANovel_V2_WebNovel_Market_Genre_Research_2026_v1.0/source-registry.yaml",
+    "bytes": 1983,
+    "sha256": "f316169743e0fc66017855ab5304331e1b9fbe7636e3715db2ee585d9d1a12ab"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D00_ANovel_V2_PreArchitecture_Knowledge_Pack_Master_Index_v1.0.txt",
+    "bytes": 4478,
+    "sha256": "ff22ff05390483c0c65f22d7426e5b364ec9619cfa31a20fbd0b11bdef7c52ee"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D01_ANovel_V2_Product_Charter_and_Final_Goals_v1.0.txt",
+    "bytes": 5874,
+    "sha256": "313e33a20deb8c4e2392422e49c62cc962a83b5497aa23bc623f951af1ec32a9"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D02_ANovel_V2_V1_Lessons_and_Selective_Migration_Strategy_v1.0.txt",
+    "bytes": 5584,
+    "sha256": "415f9005f3e8e6b477cfda890f26ec7878006e2be2b725f456ae7b9310bf8000"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D03_ANovel_V2_WebNovel_Market_and_Hit_Pattern_Research_2026_v1.0.txt",
+    "bytes": 8124,
+    "sha256": "765fc5cae263bb9df7e341bec8f38abc67ccceb1fb66ce5a6fc80583094e5090"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D04_ANovel_V2_Reference_Architecture_Competitive_Design_Specification_2026_v1.0.txt",
+    "bytes": 61660,
+    "sha256": "b1042be07d6c36ef1919244ba9b9cd2944e92f963a4202a67b69fbd40aaabdb3"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D05_ANovel_V2_Genre_Intelligence_and_WebNovel_Taxonomy_Specification_v0.1.txt",
+    "bytes": 6129,
+    "sha256": "4194cfab33e00aa04c7de9f76eafd9cc053ee255531ee34b1a42b52bbd83349b"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D06_ANovel_V2_MultiSource_Genesis_Reference_and_Corpus_Intelligence_v0.1.txt",
+    "bytes": 6079,
+    "sha256": "ae64ba8c605eb32f226212f885bfb01742f12909235e0f15fbce4fb1533ca424"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D07_ANovel_V2_Narrative_Domain_and_Canonical_State_Specification_v0.1.txt",
+    "bytes": 4830,
+    "sha256": "9fdf63a39ecff1bf2077df08585aeeb8781aacfe38143240a34549572bcfbbe7"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D08_ANovel_V2_Production_Workflow_Quality_and_Repair_Specification_v0.1.txt",
+    "bytes": 5734,
+    "sha256": "0eccbde22e4ed25f99d44603d1f62c6eb2957dd0881043704505edcb0f6d8dfd"
+  },
+  {
+    "path": "archive/planning-integration-2026-09-18/source-extracts/D09_ANovel_V2_Engineering_Roadmap_Governance_and_Certification_v1.0.txt",
+    "bytes": 5886,
+    "sha256": "6ee310f8d9042fcc6371bb1506c3e4fd8dd48116cab6a00b1f3878f97da4cbd8"
+  },
+  {
+    "path": "archive/project-analysis-2026-09-18/PROJECT_DEEP_ANALYSIS.md",
+    "bytes": 28307,
+    "sha256": "7346f274846118489276479f15fc3e699b0d577410dd3a9547c9e247d3ba0a8b"
+  },
+  {
+    "path": "archive/project-analysis-2026-09-18/audit-metrics.json",
+    "bytes": 804,
+    "sha256": "ead244d704926e6abf90953e40acc77de740d2c72a6fabe2100353b3c0335716"
+  },
+  {
+    "path": "archive/project-analysis-2026-09-18/reproduce_findings.py",
+    "bytes": 5324,
+    "sha256": "bf6191cb88c2f8048e7660936426ba1ea630e46fab1364624ad13d830f443e36"
+  },
+  {
+    "path": "archive/project-analysis-2026-09-18/reproduction-results.json",
+    "bytes": 1132,
+    "sha256": "03735a34faa6864cb475a1354ee2ec999dae72434a275d461b1106ad8595ae91"
+  },
+  {
+    "path": "archive/readiness-review-2026-09-20/PROJECT_PREPARATION_READINESS_REVIEW.md",
+    "bytes": 29235,
+    "sha256": "f86e8bd198f04924c96d7e2c49c71d3eb91e92aa0ab5bf7e7a95bde7245a9555"
+  },
+  {
+    "path": "archive/readiness-review-2026-09-20/README.md",
+    "bytes": 1228,
+    "sha256": "8cefa830789a0176da010448206da5251341479b6999afe183a168de548c7503"
+  },
+  {
+    "path": "archive/readiness-review-2026-09-20/readiness-evidence.json",
+    "bytes": 26963,
+    "sha256": "485d4c3331871fc32596cb5c26857c09aa797d78ce3d557388bd99b384ba4aea"
+  },
+  {
+    "path": "archive/readiness-review-2026-09-20/review-actions.json",
+    "bytes": 6146,
+    "sha256": "3691f85613c440af2e1af61560ad9a634e0eedd46abef3156c24160482cb84bf"
+  },
+  {
+    "path": "archive/readiness-review-2026-09-20/verify_readiness.py",
+    "bytes": 9236,
+    "sha256": "793aacb66e57062ada7add76ca77e7bca973741d74f2c08c441744b3dac9ad57"
+  },
+  {
+    "path": "archive/root_matrices/ARCHITECTURE_RISK_REGISTER.md",
+    "bytes": 57005,
+    "sha256": "1e75c9f57e2af98621f6b4a9bdf50c6181110d3994bf2fe21c5e1d880e73e902"
+  },
+  {
+    "path": "archive/root_matrices/CCDOC_ADOPTION_MATRIX.md",
+    "bytes": 33746,
+    "sha256": "623722cd6468b2333937a1efa2b5c1dbf68013667304b337129b96511e1c73cf"
+  },
+  {
+    "path": "archive/root_matrices/DATA_OWNERSHIP_MATRIX.md",
+    "bytes": 45709,
+    "sha256": "83fda2e699653c3f987f4629c25be63538c5b1d3abb83c18626db96db418de0d"
+  },
+  {
+    "path": "archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+    "bytes": 34891,
+    "sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5"
+  },
+  {
+    "path": "archive/root_matrices/V1_REUSE_DECISION_MATRIX.md",
+    "bytes": 7301,
+    "sha256": "e5bc7fcaccd65c0e5242d6955ae0f9247a549ad835d8a90a44c4138ec810e879"
+  },
+  {
+    "path": "generated/MILESTONE_MAP.md",
+    "bytes": 954,
+    "sha256": "0564a4c3eb2dbd07280042ad7bccffbc371171b94403becb524932c10debb1a5"
+  },
+  {
+    "path": "generated/PHASE_TASK_REGISTRY.md",
+    "bytes": 6112,
+    "sha256": "64f14a2541c36c89dc799a6e10ee1fbd609ccd75239b61dac73a38e95c0971ce"
+  },
+  {
+    "path": "machine/authority-policy.yaml",
+    "bytes": 927,
+    "sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91"
+  },
+  {
+    "path": "machine/ci-gates.yaml",
+    "bytes": 1999,
+    "sha256": "8385db23bc64d8d8a40bb422539be53da6f01ed41c0d57c013171c9c91420fcf"
+  },
+  {
+    "path": "machine/decision-register.yaml",
+    "bytes": 4640,
+    "sha256": "84eb82bdf05fcdd920116e8414fa66500b6a67aea4a148b7b1b4d62f718ea1cd"
+  },
+  {
+    "path": "machine/implementation-backlog.yaml",
+    "bytes": 65834,
+    "sha256": "cb5f56c74383bfc9487c1772e3717208a020cf415c2f71d21ba2d901404b24ed"
+  },
+  {
+    "path": "machine/milestones.yaml",
+    "bytes": 2756,
+    "sha256": "bb6f97a37f96af986b4f7392ab1203d40c9827f82398b79d83d5e643cf4845cc"
+  },
+  {
+    "path": "machine/phase-gates.yaml",
+    "bytes": 5478,
+    "sha256": "12b1f6b6ddc124b86cbe9a1068d924359de9519d7d1df2a3dd4fd2557f574409"
+  },
+  {
+    "path": "machine/remediation-register.yaml",
+    "bytes": 30517,
+    "sha256": "dec45148fe104b55b9e561873f9b403ec87b796a0a71f2b25d43d5c822658661"
+  },
+  {
+    "path": "machine/source-register.yaml",
+    "bytes": 66336,
+    "sha256": "b9ccf3d37285234a7cab020b1f94840d296b2a9a429f585ab437dc159e69125a"
+  },
+  {
+    "path": "machine/test-catalog.yaml",
+    "bytes": 25319,
+    "sha256": "9a874b6c6b097f2121006fa5707cb1298eb013e86ec12fbdcafb86ebf3fce09a"
+  },
+  {
+    "path": "schemas/implementation-task.schema.json",
+    "bytes": 6289,
+    "sha256": "30ac5e89e51f80b211c24d66f7592679188cc53a2001872c18578fe2f5e54485"
+  },
+  {
+    "path": "scripts/validate_plan.py",
+    "bytes": 22604,
+    "sha256": "c82fd38868791a748e6238f5c9c80fe38358733f3e9cd610f1ce5082c7c1be28"
+  },
+  {
+    "path": "templates/ADR.md",
+    "bytes": 566,
+    "sha256": "0781752fdd9f39af31e740a3f58617942f6873b9b825ec68cecc60a9575e62a6"
+  },
+  {
+    "path": "templates/CHAPTER_CERTIFICATION_RECORD.yaml",
+    "bytes": 473,
+    "sha256": "0dfece474d69eb2c46498c41cc552115b99b0b196c9870aec3374f6b0e24821d"
+  },
+  {
+    "path": "templates/STORY_FIXTURE.yaml",
+    "bytes": 461,
+    "sha256": "6cc25339543b10c15e6f5f66a0fde907d40e73fdf489e012ee105a03cc2739c2"
+  },
+  {
+    "path": "templates/TASK_ACCEPTANCE_RECORD.yaml",
+    "bytes": 280,
+    "sha256": "c9574e2c9775e9458edcfb90ae96d2794764d3eaaf448efc597aacdbc04de342"
+  }
+]

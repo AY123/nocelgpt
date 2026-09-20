@@ -1,0 +1,76 @@
+document_id: RES-0001-MATRIX
+version: 1.0.0
+source_repo: ayitnovel/ainovel
+source_ref: main
+source_commit: 334518d96e8f19daee27bb2eb545cfe258518a1c
+items:
+  - asset: product_vision
+    decision: KEEP
+    priority: P0
+  - asset: story_bible
+    decision: EXTRACT_CONCEPT
+    priority: P0
+    target: canon_and_contract_compiler
+  - asset: story_state_projection
+    decision: KEEP_CONCEPT
+    priority: P0
+    target: canon_projector
+  - asset: mint_unique_writer
+    decision: EXTRACT_CONCEPT
+    priority: P0
+    target: canon_commit_service
+  - asset: production_state
+    decision: KEEP_CONCEPT
+    priority: P0
+    target: production_state_machine
+  - asset: chapter_contract
+    decision: REWRITE
+    priority: P0
+    reason: project-specific hardcodes, fail-open integration, incomplete provenance
+  - asset: contract_integration
+    decision: REWRITE
+    priority: P0
+    reason: optional by default and fail-open paths
+  - asset: genre_taxonomy_knowledge
+    decision: MIGRATE_KNOWLEDGE
+    priority: P0
+  - asset: genre_keyword_contract
+    decision: ARCHIVE_EVIDENCE
+    priority: P0
+    target: genre_constitution_policy
+  - asset: novel_dushi_invalidated_finals
+    decision: MIGRATE_NEGATIVE_FIXTURE
+    priority: P0
+  - asset: llm_gateway_retry_replay
+    decision: SELECTIVE_REIMPLEMENT
+    priority: P1
+  - asset: run_manifest
+    decision: KEEP_CONCEPT
+    priority: P1
+  - asset: serialize_package
+    decision: DO_NOT_MIGRATE
+    priority: P0
+    reason: god package with workflow/evaluation/calibration/experiments mixed
+  - asset: stage_graph
+    decision: REWRITE
+    priority: P1
+    reason: metadata graph does not drive real scheduler
+  - asset: golden_set
+    decision: MIGRATE_DATA
+    priority: P2
+    conditions:
+      - copyright_clear
+      - human_vs_ai_scores_separated
+      - provenance_complete
+  - asset: reader_simulation
+    decision: ARCHIVE_RESEARCH
+    priority: P3
+  - asset: commercial_loop
+    decision: ARCHIVE_RESEARCH
+    priority: P3
+  - asset: historical_docs
+    decision: ARCHIVE_EVIDENCE
+    priority: P3
+  - asset: leaked_secrets
+    decision: PURGE
+    priority: P0

@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/evidence-record.schema.json",
+  "title": "EvidenceRecord",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "quality_layer",
+    "evidence_level",
+    "subject_hash",
+    "producer",
+    "finding",
+    "severity",
+    "confidence",
+    "status",
+    "provenance"
+  ],
+  "properties": {
+    "evidence_id": {
+      "type": "string"
+    },
+    "quality_layer": {
+      "enum": [
+        "Q0",
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4",
+        "Q5",
+        "Q6",
+        "Q7",
+        "Q8"
+      ]
+    },
+    "evidence_level": {
+      "enum": [
+        "E0",
+        "E1",
+        "E2",
+        "E3",
+        "E4"
+      ]
+    },
+    "subject_hash": {
+      "type": "string"
+    },
+    "context_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contract_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "producer": {
+      "type": "object"
+    },
+    "finding": {
+      "type": "object"
+    },
+    "severity": {
+      "enum": [
+        "INFO",
+        "WARN",
+        "REPAIR",
+        "HARD_FAIL"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "status": {
+      "enum": [
+        "OPEN",
+        "CONFIRMED",
+        "DISMISSED",
+        "REPAIRED",
+        "REGRESSION",
+        "WAIVED"
+      ]
+    },
+    "location": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "repairability": {
+      "enum": [
+        "LOCAL",
+        "SCENE",
+        "CHAPTER_STRUCTURE",
+        "PLAN_LEVEL",
+        "CANON_LEVEL",
+        "NOT_REPAIRABLE_IN_TEXT"
+      ]
+    },
+    "rationale": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

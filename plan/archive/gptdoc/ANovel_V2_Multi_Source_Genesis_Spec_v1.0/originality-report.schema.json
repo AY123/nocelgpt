@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/originality-report.schema.json",
+  "title": "OriginalityReport",
+  "type": "object",
+  "required": [
+    "report_id",
+    "candidate_id",
+    "dimensions",
+    "overall_risk",
+    "decision"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string"
+    },
+    "candidate_id": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "object",
+      "required": [
+        "lexical",
+        "semantic",
+        "event_sequence",
+        "character_graph",
+        "world_signature",
+        "progression_sequence"
+      ],
+      "properties": {
+        "lexical": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "semantic": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "event_sequence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "character_graph": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "world_signature": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "progression_sequence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "signature_collisions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "name_leakage": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overall_risk": {
+      "enum": [
+        "LOW",
+        "MEDIUM",
+        "HIGH",
+        "BLOCK"
+      ]
+    },
+    "decision": {
+      "enum": [
+        "ALLOW",
+        "REVISE",
+        "REJECT"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

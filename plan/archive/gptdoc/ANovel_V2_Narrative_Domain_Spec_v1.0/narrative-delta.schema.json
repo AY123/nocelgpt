@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/narrative-delta.schema.json",
+  "title": "NarrativeDelta",
+  "type": "object",
+  "required": [
+    "id",
+    "source_artifact",
+    "operations",
+    "uncertain_claims",
+    "conflicts",
+    "provenance"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "source_artifact": {
+      "type": "string"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "op",
+          "subject"
+        ],
+        "properties": {
+          "op": {
+            "enum": [
+              "CREATE_ENTITY",
+              "SET_FACT",
+              "END_FACT",
+              "ADD_RELATIONSHIP",
+              "UPDATE_RELATIONSHIP",
+              "ADD_KNOWLEDGE",
+              "UPDATE_BELIEF",
+              "CREATE_EVENT",
+              "OPEN_PROMISE",
+              "PAY_PROMISE",
+              "UPDATE_GOAL",
+              "MOVE_ENTITY",
+              "TRANSFER_OBJECT",
+              "CHANGE_RESOURCE"
+            ]
+          },
+          "subject": {
+            "type": "string"
+          },
+          "path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "value": {},
+          "from_value": {},
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "risk": {
+            "enum": [
+              "R0",
+              "R1",
+              "R2",
+              "R3"
+            ]
+          },
+          "extension_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "uncertain_claims": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "provenance": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}

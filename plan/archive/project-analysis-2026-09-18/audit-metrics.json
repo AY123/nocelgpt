@@ -1,0 +1,39 @@
+{
+  "commit": "334518d96e8f19daee27bb2eb545cfe258518a1c",
+  "tests": {
+    "passed": 2122,
+    "failed": 15,
+    "skipped": 3,
+    "warnings": 37,
+    "seconds": 84.88,
+    "excluded_live_files": [
+      "test_llm_with_env.py",
+      "test_deepseek_reasoner.py"
+    ]
+  },
+  "custom_runners": {
+    "spine": 11,
+    "execution": 33,
+    "conformance": 19
+  },
+  "projects": {
+    "novel-dushi": {
+      "facts": 38,
+      "chapter_finals": 30,
+      "final_text_characters": 106278,
+      "production_states": {
+        "invalidated": 30
+      },
+      "missing_final_provenance": 30
+    },
+    "novel-lingse": {
+      "facts": 41,
+      "chapter_finals": 30,
+      "final_text_characters": 139953,
+      "production_states": {
+        "None": 30
+      },
+      "missing_final_provenance": 7
+    }
+  }
+}
