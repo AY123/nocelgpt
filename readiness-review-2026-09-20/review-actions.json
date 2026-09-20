@@ -1,0 +1,213 @@
+{
+  "status": "REVIEW_RECOMMENDATIONS_NOT_NORMATIVE",
+  "audit_head": "05511b525a659d15a193107905839a6fa5a3faaa",
+  "note": "Owners are proposed existing task associations, not authorization to implement or replacements for the backlog. All statuses are review statuses.",
+  "actions": [
+    {
+      "id": "RR-01",
+      "title": "阶段、任务和里程碑权威一致",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 基线冻结前",
+      "proposed_related_tasks": [
+        "V2-002"
+      ],
+      "closure_evidence": [
+        "所有现行规范阶段/任务引用匹配唯一注册表",
+        "宪章与实施计划旧 M 编号有明确替代关系"
+      ]
+    },
+    {
+      "id": "RR-02",
+      "title": "证据来源、可信度与权限语义统一",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 冻结术语；P7 验证执行",
+      "proposed_related_tasks": [
+        "V2-002",
+        "V2-022",
+        "V2-026"
+      ],
+      "closure_evidence": [
+        "E 编码版本唯一",
+        "模拟读者不能冒充人工 Gold",
+        "质量来源不隐式获得提交权限"
+      ]
+    },
+    {
+      "id": "RR-03",
+      "title": "用真实生成结果替换失真收敛记录",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 基线冻结前",
+      "proposed_related_tasks": [
+        "V2-002",
+        "V2-003"
+      ],
+      "closure_evidence": [
+        "验证记录绑定提交和源哈希",
+        "计数由源生成且相符",
+        "已移除文件有明确替代证据",
+        "全量规范检查能够捕获残留旧引用"
+      ]
+    },
+    {
+      "id": "RR-04",
+      "title": "任务执行契约与阶段门禁",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 首批；每个后续任务启动前",
+      "proposed_related_tasks": [
+        "V2-001",
+        "V2-002",
+        "V2-003",
+        "V2-004"
+      ],
+      "closure_evidence": [
+        "前四任务有具体规范/产物/测试/范围",
+        "CLOSED 缺证据被拒绝",
+        "P0 未验证时 P1 不能被放行"
+      ]
+    },
+    {
+      "id": "RR-05",
+      "title": "ADR 归属及决定时点纠正",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 修正归属；接口首次实现前决策",
+      "proposed_related_tasks": [
+        "V2-002",
+        "V2-006",
+        "V2-007",
+        "V2-013",
+        "V2-018",
+        "V2-019",
+        "V2-020",
+        "V2-031"
+      ],
+      "closure_evidence": [
+        "ADR 指向真实任务与负责角色",
+        "基础类型决定先于对应持久接口实现"
+      ]
+    },
+    {
+      "id": "RR-06",
+      "title": "修正当前启用的机器契约",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "治理 CLOSED 约束 P0；业务契约随对应阶段",
+      "proposed_related_tasks": [
+        "V2-002",
+        "V2-006",
+        "V2-008",
+        "V2-010",
+        "V2-019",
+        "V2-026"
+      ],
+      "closure_evidence": [
+        "正反例映射到结构/领域/权限/数据库负责层",
+        "不以 Schema 通过代替业务放行",
+        "历史探针中适用项取得修复后证据"
+      ]
+    },
+    {
+      "id": "RR-07",
+      "title": "保留已接受提交的证据闭包",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P2 定义；P4/P5 接入验证",
+      "proposed_related_tasks": [
+        "V2-009",
+        "V2-010",
+        "V2-017",
+        "V2-018"
+      ],
+      "closure_evidence": [
+        "失效 Permit 历史记录或自足收据仍可核验",
+        "保留策略不留下无法解析的接受提交依赖"
+      ]
+    },
+    {
+      "id": "RR-08",
+      "title": "确定性哈希与稳定逻辑请求身份",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P2 基础；P5/P6 Provider 与恢复",
+      "proposed_related_tasks": [
+        "V2-010",
+        "V2-011",
+        "V2-019",
+        "V2-027"
+      ],
+      "closure_evidence": [
+        "固定规范化测试向量",
+        "同键同载荷同收据",
+        "同键异载荷冲突",
+        "重试 attempt 不改变逻辑幂等身份"
+      ]
+    },
+    {
+      "id": "RR-09",
+      "title": "实际 P0 工程产物和验证",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 退出",
+      "proposed_related_tasks": [
+        "V2-001",
+        "V2-003",
+        "V2-004"
+      ],
+      "closure_evidence": [
+        "可复现构建和锁定",
+        "真实架构/安全/依赖门禁",
+        "PostgreSQL 测试环境",
+        "当前提交 CI 与验收记录"
+      ]
+    },
+    {
+      "id": "RR-10",
+      "title": "V1 目录转为可运行回归",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P0 起随对应任务",
+      "proposed_related_tasks": [
+        "V2-003",
+        "V2-004",
+        "V2-010",
+        "V2-020"
+      ],
+      "closure_evidence": [
+        "回归条目有原证据/输入/期望/测试路径/结果",
+        "目录数不冒充失败测试数",
+        "计划态与验证态分开"
+      ]
+    },
+    {
+      "id": "RR-11",
+      "title": "双 Genre 与连续章节认证协议",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P3 边界；P8 前协议冻结",
+      "proposed_related_tasks": [
+        "V2-013",
+        "V2-015",
+        "V2-016",
+        "V2-034",
+        "V2-035",
+        "V2-040"
+      ],
+      "closure_evidence": [
+        "正例/污染/合法语境/遗漏样本",
+        "自然生成和故障注入分别报告",
+        "版本、误报漏报弃权、全部尝试分母可查"
+      ]
+    },
+    {
+      "id": "RR-12",
+      "title": "阅读质量、人工贡献和成本验收",
+      "status": "OPEN_REVIEW_FINDING",
+      "latest_gate": "P5 日志；P8/P9 最小真人验收；P11/P13 升级",
+      "proposed_related_tasks": [
+        "V2-019",
+        "V2-020",
+        "V2-034",
+        "V2-035",
+        "V2-040"
+      ],
+      "closure_evidence": [
+        "接受章节全成本与人工介入可见",
+        "同条件基线比较",
+        "工程/阅读/市场结果分别记录"
+      ]
+    }
+  ]
+}
