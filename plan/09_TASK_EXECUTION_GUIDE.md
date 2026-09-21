@@ -41,3 +41,9 @@ python3 plan/scripts/validate_plan.py --self-test
 ## 5. 工作纪律
 
 优先完成当前关键链及必要防线，不新增没有消费者的模块或 Schema。不从 archive 直接抄入已知缺陷实现。不把外部研究结论当本系统收益证明。用户新决策进入机器源/正文及影响登记，避免依靠聊天隐式维护版本。
+
+## 6. 外部机制的任务接入
+
+任务可通过 `external_practices` 引用[外部经验登记](machine/external-practice-register.yaml)。登记项的关联任务和场景必须双向匹配；修改验收要求时同步任务清单与 test-catalog，验证器拒绝只改一边。
+
+开始相关任务时核对来源局限，在既有 ADR 中细化本地接口，不新增同职责框架。验收记录中的 `external_practice_results` 写明采纳 ID、独立实现/复用方式、适用版本或来源说明、本地测试引用、收益结论与局限。复用上游代码/提示词时补齐不可变 revision、文件路径及许可处理；没有上游代码复用则明确标注，不伪造 commit。

@@ -1,8 +1,8 @@
 [
   {
     "path": "00_GOVERNANCE_AND_SOURCE_AUTHORITY.md",
-    "bytes": 4449,
-    "sha256": "5b6fd5c7166ab676da4d9e0776580c356f48b0ef69fa2c444656d41be2ac834d"
+    "bytes": 5586,
+    "sha256": "8c083329d20ba0d666e66833523762ef1f40c06f5a1a3799d9394115edc8c65e"
   },
   {
     "path": "01_PRODUCT_SCOPE_AND_SUCCESS.md",
@@ -11,28 +11,28 @@
   },
   {
     "path": "02_ARCHITECTURE_BASELINE.md",
-    "bytes": 3941,
-    "sha256": "017f780030dec34fb6a659dd3d1301fd28110ff08ea0ccba6c0e18c35264a7da"
+    "bytes": 4607,
+    "sha256": "7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9"
   },
   {
     "path": "03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md",
-    "bytes": 5353,
-    "sha256": "d1ba48c582f0ef1de43b42edcc79820f7734beb75b5b460c0c349c6e0e3e0ffb"
+    "bytes": 6324,
+    "sha256": "2dcbc88e9d1bac2ccdf77172b134d701288ac1ef48b6d7fe5b2d7a3e7a424d1e"
   },
   {
     "path": "04_GENRE_AND_STORY_FIXTURES.md",
-    "bytes": 3133,
-    "sha256": "c3505417bdaf42c56d73c218bee32e217d4bb54fe8658940a8b7b3a766fec80f"
+    "bytes": 4074,
+    "sha256": "9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0"
   },
   {
     "path": "05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md",
-    "bytes": 5153,
-    "sha256": "e842ed45ee5de2a03e1bc9729b752c9fc3bdc3b1d5d6eb6fa40f5beed5ee1667"
+    "bytes": 7643,
+    "sha256": "4925cfdf81509d14f656b6fef567e2286eee648403ea2984d3a73c7d4688ccbe"
   },
   {
     "path": "06_CERTIFICATION_AND_PRODUCT_EVALUATION.md",
-    "bytes": 3644,
-    "sha256": "53a1f8d655087ddd064a8e5f6c58bed6d03225ef2dd551b0d704749ce5feedfa"
+    "bytes": 4782,
+    "sha256": "1a70c1c098d92443b0d8bf5c200f98fe3ef7cc1602f0a79859b7caa236f8b4ca"
   },
   {
     "path": "07_PLATFORM_SECURITY_AND_DELIVERY.md",
@@ -46,23 +46,23 @@
   },
   {
     "path": "09_TASK_EXECUTION_GUIDE.md",
-    "bytes": 2886,
-    "sha256": "2d963ff9d016f18df55ed26ea10a45612c8dc03fb4a6a5b9819d41a628db3c04"
+    "bytes": 3598,
+    "sha256": "8094c7a34b65a4d6d61fc509e9cc028538e7ec1692117c532e09bac25bf33039"
   },
   {
     "path": "10_DECISIONS_AND_REMEDIATION.md",
-    "bytes": 2524,
-    "sha256": "73b72701a2fc2bfa912306bde46072f089c8b698d7ebb62cbe21796911c2ef95"
+    "bytes": 2941,
+    "sha256": "08db7bda26f67639ac673ec6797b0b7468232c8dc7a1374f9b093cae78ad10f9"
   },
   {
     "path": "PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
-    "bytes": 3779,
-    "sha256": "528e9dceee8cb642be0e9c3df3aed1ffbd6551adced5f6ab4abdb674457af163"
+    "bytes": 4048,
+    "sha256": "92bb61b048310e6dc159a58562598dc770afafe4d53b7096efce75b55a4c2c4a"
   },
   {
     "path": "README.md",
-    "bytes": 3843,
-    "sha256": "be6b78d2af0a93d8dceb6ca54f6281556ba89b64946bab8565fc45bd9c6925a1"
+    "bytes": 4353,
+    "sha256": "902f1826389ea3d74187581a05fb5737a136b26dcb4004d98d0e20da93b32238"
   },
   {
     "path": "archive/README.md",
@@ -1135,6 +1135,16 @@
     "sha256": "e5bc7fcaccd65c0e5242d6955ae0f9247a549ad835d8a90a44c4138ec810e879"
   },
   {
+    "path": "changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md",
+    "bytes": 8457,
+    "sha256": "6af104fd33ea84e5f223697470ff026c6c75c6528e6f21e0deefee671b71c8b4"
+  },
+  {
+    "path": "generated/EXTERNAL_PRACTICE_MAP.md",
+    "bytes": 3286,
+    "sha256": "1a4bf3f578631a8795ba023d06bc2cf2e07482e37446da9e1e1d9bd6a275000d"
+  },
+  {
     "path": "generated/MILESTONE_MAP.md",
     "bytes": 954,
     "sha256": "0564a4c3eb2dbd07280042ad7bccffbc371171b94403becb524932c10debb1a5"
@@ -1160,9 +1170,14 @@
     "sha256": "84eb82bdf05fcdd920116e8414fa66500b6a67aea4a148b7b1b4d62f718ea1cd"
   },
   {
+    "path": "machine/external-practice-register.yaml",
+    "bytes": 15235,
+    "sha256": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42"
+  },
+  {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 65834,
-    "sha256": "cb5f56c74383bfc9487c1772e3717208a020cf415c2f71d21ba2d901404b24ed"
+    "bytes": 70954,
+    "sha256": "17f52afc82b10f51e91f800aae291fec084730a9103907d46bbf92a97c216b09"
   },
   {
     "path": "machine/milestones.yaml",
@@ -1186,18 +1201,18 @@
   },
   {
     "path": "machine/test-catalog.yaml",
-    "bytes": 25319,
-    "sha256": "9a874b6c6b097f2121006fa5707cb1298eb013e86ec12fbdcafb86ebf3fce09a"
+    "bytes": 29364,
+    "sha256": "b17be23f67a3fa70e1033a992f9210a833bab40af1fe768bb98606d38d172e59"
   },
   {
     "path": "schemas/implementation-task.schema.json",
-    "bytes": 6289,
-    "sha256": "30ac5e89e51f80b211c24d66f7592679188cc53a2001872c18578fe2f5e54485"
+    "bytes": 6482,
+    "sha256": "8422099ef4e24f363c953a375082364811826ae6743d6847317d8d5b991d131c"
   },
   {
     "path": "scripts/validate_plan.py",
-    "bytes": 22604,
-    "sha256": "c82fd38868791a748e6238f5c9c80fe38358733f3e9cd610f1ce5082c7c1be28"
+    "bytes": 30444,
+    "sha256": "d222de80c99f025ecdcb6775a5e7f8561935911ba6ddb6e9400c8c193fa8d402"
   },
   {
     "path": "templates/ADR.md",
@@ -1206,8 +1221,8 @@
   },
   {
     "path": "templates/CHAPTER_CERTIFICATION_RECORD.yaml",
-    "bytes": 473,
-    "sha256": "0dfece474d69eb2c46498c41cc552115b99b0b196c9870aec3374f6b0e24821d"
+    "bytes": 586,
+    "sha256": "fc8aca3f2551491dc07949fc04069565c62203a463454770858140495b0172b8"
   },
   {
     "path": "templates/STORY_FIXTURE.yaml",
@@ -1216,7 +1231,7 @@
   },
   {
     "path": "templates/TASK_ACCEPTANCE_RECORD.yaml",
-    "bytes": 280,
-    "sha256": "c9574e2c9775e9458edcfb90ae96d2794764d3eaaf448efc597aacdbc04de342"
+    "bytes": 310,
+    "sha256": "df55d0ebbbb19c3283dbf2a37e5782366c48fc5916beb2f1eb5a5a6ad46ecfdf"
   }
 ]

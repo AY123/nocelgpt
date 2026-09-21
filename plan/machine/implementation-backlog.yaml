@@ -1,5 +1,5 @@
 document_id: ANOVELOS-PLAN-BACKLOG
-version: 1.0.0
+version: 1.1.0
 status: ACTIVE_PLANNING_BASELINE
 supersedes: archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml
 note: 保留首批 60 任务身份、阶段与原任务依赖；新增阶段门禁和具体执行要求；不是工程完成证据
@@ -71,6 +71,7 @@ tasks:
   - 任务阶段与生成视图一致且失效引用失败
   - 无证据 CLOSED 与未满足 Gate 的任务启动被拒绝
   - 旧档案不会被当作当前规范自动加载
+  - 外部来源/采纳项/任务/场景双向可定位；悬空来源、错误场景归属和无证据 VERIFIED 被拒绝
   tests:
   - AT-V2-002
   artifacts:
@@ -111,6 +112,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-009
 - task_id: V2-003
   title: Architecture fitness harness
   phase: P0
@@ -247,12 +251,14 @@ tasks:
   goal: 合法派生字段和非默认值往返不丢失
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   dependencies:
   - V2-005
   acceptance_criteria:
   - 合法派生字段和非默认值往返不丢失
   - 错误实体类型与生命周期被拒绝
   - 角色误信与客观事实并存且角色不能凭空知情
+  - 角色目标/意图、误信与客观事件分别建模，计划动作不被当作已发生事实
   tests:
   - AT-V2-006
   artifacts:
@@ -283,6 +289,9 @@ tasks:
   - SUP-03
   design_references:
   - archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/NARRATIVE_DOMAIN_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-005
 - task_id: V2-007
   title: Event timeline promise core
   phase: P1
@@ -425,6 +434,7 @@ tasks:
   - 无授权或无有效 Permit 不可提交
   - 事务故障无半写入且 HEAD 与事件一致
   - 已接受提交长期证据可定位且不是只有无法解析的 hash
+  - 没有正式更正流程时对已接受正文的就地替换被拒绝且历史正文/提交证据保持可重建
   tests:
   - AT-V2-010
   artifacts:
@@ -462,6 +472,9 @@ tasks:
   - RR-10
   design_references:
   - archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-006
 - task_id: V2-011
   title: Canon idempotency and CAS
   phase: P2
@@ -557,6 +570,7 @@ tasks:
   - ID 版本 hash 均被绑定并核验
   - 未知 Pack 与扩展拒绝而非默认 fallback
   - 全局只读目录绑定到项目后仍可追溯
+  - 显式 Pack 存在而可选策略无命中时保留原 ID/version/hash，不替换为第一条相近子流派
   tests:
   - AT-V2-013
   artifacts:
@@ -587,6 +601,9 @@ tasks:
   - SUP-08
   design_references:
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-001
 - task_id: V2-014
   title: Genre hard policy engine
   phase: P3
@@ -601,6 +618,7 @@ tasks:
   - 现实中实际修炼被拒绝
   - 人物讨论小说或梦境不自动成为世界事实
   - 语义不确定返回显式待处理而不是 PASS
+  - 可选套路与冻结世界机制冲突时拒绝该策略；正常无匹配不制造世界规则
   tests:
   - AT-V2-014
   artifacts:
@@ -626,6 +644,9 @@ tasks:
   - CA-09
   design_references:
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-001
 - task_id: V2-015
   title: Urban Business canon extension
   phase: P3
@@ -729,6 +750,8 @@ tasks:
   - RequiredTransition 与 Delta 使用同一语义
   - 计划冲突或不可满足合约返回诊断而非改写 Canon
   - 双书 fixture 经人工审定并包含知识及揭示边界
+  - 接续合约绑定前章正文 hash/实际结束证据及本章起点；前章修订使旧接续失效，第一章显式无前章
+  - 场景可消费角色目标/知识与预期代价；安静或认知推进章节无需强制升级战斗字段
   tests:
   - AT-V2-017
   artifacts:
@@ -765,6 +788,10 @@ tasks:
   - SUP-04
   design_references:
   - archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/PLANNING_CONTRACT_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-002
+  - EXT-005
 - task_id: V2-018
   title: Context Compiler
   phase: P5
@@ -773,12 +800,15 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - 02_ARCHITECTURE_BASELINE.md
   dependencies:
   - V2-017
   acceptance_criteria:
   - 低语义相关但必需的旧事实不被裁剪
   - 预算溢出必需项时明确阻断
   - 错项目未来知识无泄漏且每项 inclusion 可解释
+  - 必要的前章实际末段与接续约束不被可选检索挤出；无法容纳时阻断而非以钩子摘要替代
+  - 冻结输入在不调用生成模型时可编译 ContextArtifact，审查者专用事实不会通过缓存进入 Writer 或角色知识
   tests:
   - AT-V2-018
   artifacts:
@@ -810,6 +840,10 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/CONTEXT_INTELLIGENCE_SPEC.md
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-002
+  - EXT-003
 - task_id: V2-019
   title: Model Gateway and provider abstraction
   phase: P5
@@ -869,6 +903,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - 02_ARCHITECTURE_BASELINE.md
   dependencies:
   - V2-019
   - V2-011
@@ -876,6 +911,8 @@ tasks:
   - 缺前置产物不继续到提交
   - 章内 overlay 可供后续场景消费但失败后不入 Canon
   - Draft accepted published 状态独立且测试 Gate 不被当生产 Gate
+  - CLI 与任务入口适配同一 Workflow 应用服务，模型返回已完成但无持久化产物/收据时不能转 accepted
+  - 操作者改稿产生新候选并使旧抽取/检查/确认失效；检测到外部文件 hash 改变时停止旧流程
   tests:
   - AT-V2-020
   artifacts:
@@ -907,6 +944,10 @@ tasks:
   - SUP-06
   design_references:
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-004
+  - EXT-006
 - task_id: V2-021
   title: NarrativeDelta extractor
   phase: P6
@@ -1040,6 +1081,7 @@ tasks:
   - 双 Pack 污染负例被发现
   - 合法引用梦境商会样本不过度阻断
   - 正文遗漏或不确定结果不能静默 PASS
+  - 正文实际发生由错误套路引入的非法能力时被拦截，合法引述或梦境对照不被误拒绝
   tests:
   - AT-V2-024
   artifacts:
@@ -1066,6 +1108,9 @@ tasks:
   - CA-09
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-001
 - task_id: V2-025
   title: Q3 Transition validators
   phase: P7
@@ -1081,6 +1126,8 @@ tasks:
   - 必需转移缺失被报告
   - 保护事实变更被拒绝
   - 安静或信息揭示章节满足其合约时可通过
+  - 正文重复前章收尾动作的反例被报告；显式回忆或不同视角复述不因词面重叠直接硬拒绝，未知不伪报 PASS
+  - 角色基于误信做出错误选择的合法样本可通过；违背已冻结知识/揭示边界的样本不能靠动机评分放行
   tests:
   - AT-V2-025
   artifacts:
@@ -1107,6 +1154,10 @@ tasks:
   - SUP-04
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-002
+  - EXT-005
 - task_id: V2-026
   title: CommitPermit integration
   phase: P7
@@ -1124,6 +1175,7 @@ tasks:
   - 空证据 ALLOW 和伪造 issuer 拒绝
   - 旧候选旧 parent 或旧 policy 证据不可复用
   - 完整必跑检查后才能经唯一服务接受正文
+  - 人工点击同意但缺必跑检查或绑定旧候选的请求不能获得有效 Permit
   tests:
   - AT-V2-026
   artifacts:
@@ -1153,6 +1205,9 @@ tasks:
   - RR-06
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-006
 - task_id: V2-027
   title: Workflow retry and checkpoint
   phase: P6
@@ -1160,12 +1215,14 @@ tasks:
   goal: 不同阶段崩溃恢复同一逻辑请求
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - 02_ARCHITECTURE_BASELINE.md
   dependencies:
   - V2-020
   acceptance_criteria:
   - 不同阶段崩溃恢复同一逻辑请求
   - 取消后迟到响应不自动提交
   - 重复投递及 UNKNOWN 不伪报成功或零费用
+  - 人工改稿或 Contract/Pack/parent 改变后，旧检查点不得跳过重验继续提交
   tests:
   - AT-V2-027
   artifacts:
@@ -1196,6 +1253,9 @@ tasks:
   - SUP-05
   design_references:
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-004
 - task_id: V2-028
   title: Kill restart fault harness
   phase: P8
@@ -1205,12 +1265,14 @@ tasks:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - 02_ARCHITECTURE_BASELINE.md
   dependencies:
   - V2-027
   acceptance_criteria:
   - 提交前后 kill 能恢复无半写
   - 响应丢失后取得同一收据
   - 投影落后可重建且无第二权威路径
+  - 两种入口适配器重复投递同一逻辑请求并在提交响应丢失后恢复，只产生一个权威提交
   tests:
   - AT-V2-028
   artifacts:
@@ -1237,6 +1299,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-004
 - task_id: V2-029
   title: QualityAggregator
   phase: P7
@@ -1329,6 +1394,7 @@ tasks:
   - 补丁只改计划授权范围且保留保护区域
   - 达到预算或轮次上限停止
   - 新文本新 hash 使旧 Permit 失效
+  - 相同硬缺陷持续存在或缺陷在候选间往返时停止并保留升级诊断，不因正文 hash 改变或评分上升重置计数
   tests:
   - AT-V2-031
   artifacts:
@@ -1356,6 +1422,9 @@ tasks:
   - SUP-05
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-007
 - task_id: V2-032
   title: Repair regression validator
   phase: P7
@@ -1370,6 +1439,7 @@ tasks:
   - 修复题材后新增事实错误可检出
   - 删除兑现或改变关键动机触发诊断
   - 重新抽取重验完整前提后才可接受
+  - 补丁使原硬缺陷消失但引入新硬缺陷时仍拒绝；已有正确区域回归结果保留
   tests:
   - AT-V2-032
   artifacts:
@@ -1395,6 +1465,9 @@ tasks:
   - SUP-05
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-007
 - task_id: V2-033
   title: Three-chapter smoke certification
   phase: P8
@@ -1411,6 +1484,7 @@ tasks:
   - 三个连续接受章节有完整收据链
   - 失败尝试和修复未从分母删除
   - 适用硬门禁全执行且无测试旁路
+  - 三章样本核对实际正文接续，包含高潮后有收尾动作而下一章不重复执行的案例
   tests:
   - AT-V2-033
   artifacts:
@@ -1437,6 +1511,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-002
 - task_id: V2-034
   title: Urban 10-chapter certification
   phase: P8
@@ -1452,6 +1529,7 @@ tasks:
   - 都市连续十章有全文题材覆盖与 Canon 证据
   - 真实调用预算与人工介入完整记录
   - 真人最小读稿和基线对照有原始记录且不冒称市场成功
+  - 都市对照预先冻结输入/篇幅/模型/预算政策并记录实际成本；基线不绕过硬门禁进入 Canon
   tests:
   - AT-V2-034
   artifacts:
@@ -1491,6 +1569,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-008
 - task_id: V2-035
   title: Fantasy 10-chapter certification
   phase: P8
@@ -1506,6 +1587,7 @@ tasks:
   - 玄幻连续十章使用同一生产内核
   - 进阶资源代价及合法交易样本可验证
   - 真人阅读成本人工贡献与全部失败尝试可查
+  - 玄幻对照保留盲评顺序与人工介入记录，报告允许无改善和证据不足而不修改评估分母
   tests:
   - AT-V2-035
   artifacts:
@@ -1545,6 +1627,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-008
 - task_id: V2-036
   title: Fault injection suite
   phase: P8
@@ -1593,11 +1678,13 @@ tasks:
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - 02_ARCHITECTURE_BASELINE.md
   dependencies: []
   acceptance_criteria:
   - 可查看上下文必需项及省略理由
   - 有来源版本和作用域
   - 无权限内容不因诊断界面泄漏
+  - 两个 ContextArtifact 可比较纳入/排除和裁剪变化，显示来源/hash/作用域/角色/预算且不触发生成调用
   tests:
   - AT-V2-037
   artifacts:
@@ -1622,6 +1709,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-003
 - task_id: V2-038
   title: Canon inspector
   phase: P8
@@ -1635,6 +1725,7 @@ tasks:
   - 可追踪 HEAD parent 事件和变化
   - 支持核对历史与投影
   - 检查器无旁路修改能力
+  - 最小只读审阅显示接受正文及当次 ChangeSet/parent/检查证据，不能从 inspector 直接改事实
   tests:
   - AT-V2-038
   artifacts:
@@ -1659,6 +1750,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-006
 - task_id: V2-039
   title: Lineage inspector
   phase: P8
@@ -1710,6 +1804,7 @@ tasks:
   - 双题材各三十章及恢复证据成立
   - 承诺债务重复和人物持续性有文本审阅
   - 独立样本与版本绑定明确且失败成本全部记录
+  - 三十章报告区分工程/阅读/成本结论，比较持续收益并披露模型预算和人工差异，不将复杂管线默认判优
   tests:
   - AT-V2-040
   artifacts:
@@ -1746,6 +1841,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/PLANNING_CONTRACT_SPEC.md
+  - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  external_practices:
+  - EXT-008
 - task_id: V2-041
   title: Idea-driven Genesis
   phase: P10

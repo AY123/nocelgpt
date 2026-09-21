@@ -1,7 +1,7 @@
 {
   "scope": "planning validator self-test only",
-  "generated_at_utc": "2026-09-20T06:40:42.408683+00:00",
-  "manifest_sha256": "c1cc9310c09f71d6073a811cd63446987c852ff779ac34efff7ba700a3f2f97f",
+  "generated_at_utc": "2026-09-20T15:36:32.765959+00:00",
+  "manifest_sha256": "4340e256fc32e329c8cf291af9ae59b80dd93360e0db4e77bce642d06b5114bd",
   "status": "PASS",
   "cases": [
     {
@@ -67,7 +67,8 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_SCHEMA V2-001 ['acceptance_criteria']: [] should be non-empty"
+        "TASK_SCHEMA V2-001 ['acceptance_criteria']: [] should be non-empty",
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
       ]
     },
     {
@@ -75,7 +76,8 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_TEST V2-001: unknown MISSING-SUITE"
+        "TASK_TEST V2-001: unknown MISSING-SUITE",
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
       ]
     },
     {
@@ -158,6 +160,7 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ",
         "SCENARIO AT-V2-001-01: empty assertion"
       ]
     },
@@ -168,6 +171,105 @@
       "evidence": [
         "TASK_FINDING V2-012: invalid SUP-08",
         "TASK_FINDING V2-013: invalid SUP-08"
+      ]
+    },
+    {
+      "case": "acceptance and scenario drift",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+      ]
+    },
+    {
+      "case": "unknown external source",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_SOURCE_REF EXT-001: missing/unknown/duplicate"
+      ]
+    },
+    {
+      "case": "duplicate external source",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_SOURCE_IDS: duplicate source"
+      ]
+    },
+    {
+      "case": "duplicate external practice",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_PRACTICE_IDS: duplicate practice"
+      ]
+    },
+    {
+      "case": "missing external task backlink",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_BACKLINK EXT-001: absent on V2-013",
+        "EXTERNAL_TASK_REF V2-013: unknown/wrong practice EXT-009"
+      ]
+    },
+    {
+      "case": "wrong external scenario owner",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_CASE_OWNER EXT-001: scenario owners differ"
+      ]
+    },
+    {
+      "case": "missing external scenario",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_CASES EXT-001: unknown scenario",
+        "EXTERNAL_CASE_OWNER EXT-001: scenario owners differ"
+      ]
+    },
+    {
+      "case": "false verified adoption",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_VERIFIED EXT-001: absent evidence",
+        "EXTERNAL_VERIFIED EXT-001: unfinished tasks"
+      ]
+    },
+    {
+      "case": "deferred work attached to early task",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_DEFER_SCOPE EXT-D01: unapproved task/evidence"
+      ]
+    },
+    {
+      "case": "deferred work moved to P0",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_DEFER_PHASE EXT-D01: advanced work moved early"
+      ]
+    },
+    {
+      "case": "public document mislabeled runtime verified",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_SOURCE_EVIDENCE SRC-INKOS: source audit requires separate evidence registry"
+      ]
+    },
+    {
+      "case": "unknown task practice",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_TASK_REF V2-001: unknown/wrong practice EXT-999"
       ]
     }
   ]

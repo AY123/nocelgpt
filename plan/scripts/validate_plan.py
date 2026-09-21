@@ -22,7 +22,8 @@ from jsonschema import Draft202012Validator
 
 PLAN = Path(__file__).resolve().parents[1]
 NAMES = ['implementation-backlog', 'phase-gates', 'milestones', 'test-catalog',
-         'decision-register', 'remediation-register', 'authority-policy', 'ci-gates', 'source-register']
+         'decision-register', 'remediation-register', 'authority-policy', 'ci-gates', 'source-register',
+         'external-practice-register']
 EVIDENCE = {'E0': 'deterministic_check', 'E1': 'structured_extraction',
             'E2': 'model_evaluation_including_simulated_reader', 'E3': 'human_gold_blind_review',
             'E4': 'real_reader_market_observation'}
@@ -107,6 +108,9 @@ def validate_objects(data):
                 check(suite_by[ref]['task_id'] == tid, f'TASK_TEST {tid}: wrong owner {ref}')
                 if task['status'] in complete:
                     check(suite_by[ref]['status'] == 'VERIFIED', f'TASK_TEST {tid}: planned suite cannot close task')
+        assertions = {c['required_assertion'] for ref in task['tests'] if ref in suite_by
+                      for c in suite_by[ref]['scenarios']}
+        check(set(task['acceptance_criteria']) == assertions, f'TASK_ACCEPTANCE {tid}: task and scenario assertions differ')
         for ref in task['required_decisions']:
             check(ref in decision_by, f'TASK_ADR {tid}: unknown {ref}')
             if ref in decision_by:
@@ -162,6 +166,61 @@ def validate_objects(data):
             check(bool(suite['execution_evidence']), f'SUITE_EVIDENCE {suite["id"]}: missing')
     check(len(scenario_ids) == len(set(scenario_ids)), 'SCENARIO_IDS: duplicate case IDs')
 
+    external = data['external-practice-register']
+    sources = external['sources']
+    source_by = {s['id']: s for s in sources}
+    practices = external['practices']
+    practice_by = {p['id']: p for p in practices}
+    scenario_by = {c['id']: s for s in suites for c in s['scenarios']}
+    check(len(sources) == len(source_by), 'EXTERNAL_SOURCE_IDS: duplicate source')
+    check(len(practices) == len(practice_by), 'EXTERNAL_PRACTICE_IDS: duplicate practice')
+    for source in sources:
+        sid = source['id']
+        url = urlparse(source.get('url', ''))
+        check(url.scheme == 'https' and bool(url.netloc), f'EXTERNAL_SOURCE_URL {sid}: invalid URL')
+        check(source.get('source_kind') in {'OFFICIAL_REPOSITORY', 'PUBLIC_ISSUE_REPORT', 'OFFICIAL_PRODUCT_DOCUMENTATION'}, f'EXTERNAL_SOURCE_KIND {sid}: invalid')
+        check(bool(re.fullmatch(r'\d{4}-\d{2}-\d{2}', str(source.get('reviewed_on', '')))), f'EXTERNAL_SOURCE_DATE {sid}: absent')
+        check(source.get('review_level') == 'PUBLIC_DOCUMENT_REVIEW', f'EXTERNAL_SOURCE_LEVEL {sid}: document registry cannot certify runtime')
+        check(source.get('code_review') == source.get('runtime_verification') == 'NOT_PERFORMED', f'EXTERNAL_SOURCE_EVIDENCE {sid}: source audit requires separate evidence registry')
+        check(bool(source.get('observation')) and bool(source.get('limitation')), f'EXTERNAL_SOURCE_LIMIT {sid}: absent observation/limitation')
+    for practice in practices:
+        pid = practice['id']
+        check(practice['decision'] in {'REFINE_EXISTING','ADD_TRACEABILITY','DEFER','REJECT'}, f'EXTERNAL_DECISION {pid}: invalid')
+        check(practice['status'] in {'PLANNED','VERIFIED','DEFERRED','REJECTED'}, f'EXTERNAL_STATUS {pid}: invalid')
+        refs = practice['source_refs']
+        check(bool(refs) and len(refs) == len(set(refs)) and all(r in source_by for r in refs), f'EXTERNAL_SOURCE_REF {pid}: missing/unknown/duplicate')
+        for key in ('baseline_coverage', 'local_adaptation', 'expected_benefit', 'normative_refs'):
+            check(bool(practice.get(key)), f'EXTERNAL_MEANING {pid}: absent {key}')
+        owners = practice['related_tasks']
+        cases = practice['acceptance_scenarios']
+        check(len(owners) == len(set(owners)), f'EXTERNAL_TASKS {pid}: duplicate owner')
+        check(len(cases) == len(set(cases)), f'EXTERNAL_CASES {pid}: duplicate scenario')
+        deferred = practice['decision'] in {'DEFER','REJECT'}
+        if deferred:
+            check(practice['status'] == ('DEFERRED' if practice['decision'] == 'DEFER' else 'REJECTED'), f'EXTERNAL_DEFER_STATUS {pid}: invalid')
+            check(not owners and not cases and not practice['verification_refs'], f'EXTERNAL_DEFER_SCOPE {pid}: unapproved task/evidence')
+            phase = practice.get('earliest_reconsider_phase')
+            if practice['decision'] == 'DEFER':
+                check(phase in phase_by and int(phase[1:]) >= 10, f'EXTERNAL_DEFER_PHASE {pid}: advanced work moved early')
+        else:
+            check(practice['status'] in {'PLANNED','VERIFIED'}, f'EXTERNAL_ADOPT_STATUS {pid}: invalid')
+            check(bool(owners) and bool(cases), f'EXTERNAL_MAPPING {pid}: empty')
+            check(all(t in by for t in owners), f'EXTERNAL_TASKS {pid}: unknown owner')
+            check(all(c in scenario_by for c in cases), f'EXTERNAL_CASES {pid}: unknown scenario')
+            case_owners = {scenario_by[c]['task_id'] for c in cases if c in scenario_by}
+            check(case_owners == set(owners), f'EXTERNAL_CASE_OWNER {pid}: scenario owners differ')
+            for tid in owners:
+                if tid in by:
+                    check(pid in by[tid].get('external_practices', []), f'EXTERNAL_BACKLINK {pid}: absent on {tid}')
+                    check(set(practice['normative_refs']).issubset(by[tid]['normative_specs']), f'EXTERNAL_NORMATIVE {pid}: task {tid} omits specification')
+            if practice['status'] == 'VERIFIED':
+                check(bool(practice['verification_refs']), f'EXTERNAL_VERIFIED {pid}: absent evidence')
+                check(all(by.get(t, {}).get('status') in complete for t in owners), f'EXTERNAL_VERIFIED {pid}: unfinished tasks')
+                check(all(scenario_by.get(c, {}).get('status') == 'VERIFIED' for c in cases), f'EXTERNAL_VERIFIED {pid}: unverified suites')
+    for task in tasks:
+        for pid in task.get('external_practices', []):
+            check(pid in practice_by and task['task_id'] in practice_by[pid]['related_tasks'], f'EXTERNAL_TASK_REF {task["task_id"]}: unknown/wrong practice {pid}')
+
     for adr in decisions:
         check(adr['status'] in {'REQUIRED','ACCEPTED','SUPERSEDED'}, f'ADR_STATUS {adr["id"]}: unsupported status')
         check(adr['decision_due_task'] in adr['related_tasks'], f'ADR_DUE {adr["id"]}: no responsible task')
@@ -210,7 +269,15 @@ def expected_views(data):
     ms = ['# 里程碑映射（自动生成）', '', '唯一源：`machine/milestones.yaml`。编号采用冻结实施计划；M4 关闭时点按真实集成纠正。', '', '| ID | 名称 | 引入阶段 | 最早关闭阶段 | 状态 |', '|---|---|---|---|---|']
     for m in data['milestones']['milestones']:
         ms.append(f'| {m["id"]} | {m["name"]} | {m["introduced_phase"]} | {m["earliest_close_phase"]} | {m["status"]} |')
-    return {'generated/PHASE_TASK_REGISTRY.md':'\n'.join(lines)+'\n', 'generated/MILESTONE_MAP.md':'\n'.join(ms)+'\n'}
+    ext = ['# 外部经验与任务映射（自动生成）', '',
+           '唯一源：`machine/external-practice-register.yaml`。PLANNED 是采纳计划；不是上游或本项目运行认证。', '',
+           '| ID | 本地改进 | 处理 | 状态 | 关联任务 | 计划验收 |', '|---|---|---|---|---|---|']
+    for p in data['external-practice-register']['practices']:
+        ext.append(f'| {p["id"]} | {p["title"]} | {p["decision"]} | {p["status"]} | {", ".join(p["related_tasks"]) or "未安排"} | {", ".join(p["acceptance_scenarios"]) or "无早期实施要求"} |')
+    ext += ['', '来源均为公开资料查阅，未完成源码审计或运行验证；不可变上游版本按实际复用需要在实施时补齐。', '', '| 来源 ID | 原始页面 |', '|---|---|']
+    ext += [f'| {s["id"]} | [{s["name"]}]({s["url"]}) |' for s in data['external-practice-register']['sources']]
+    return {'generated/PHASE_TASK_REGISTRY.md':'\n'.join(lines)+'\n', 'generated/MILESTONE_MAP.md':'\n'.join(ms)+'\n',
+            'generated/EXTERNAL_PRACTICE_MAP.md':'\n'.join(ext)+'\n'}
 
 
 def manifest_files():
@@ -239,6 +306,8 @@ def check_files(data, views):
             paths.append(d['decision_record'])
     for r in data['remediation-register']['findings']:
         paths += [r['source']] + r['closure_refs']
+    for p in data['external-practice-register']['practices']:
+        paths += p['normative_refs'] + p['verification_refs']
     for source in data['source-register']['files']:
         p = (PLAN/source['archive_path']).resolve()
         if (PLAN/'archive').resolve() not in p.parents or not p.is_file() or sha(p) != source['sha256']:
@@ -290,6 +359,18 @@ def self_test(data):
         ('closed finding without evidence', lambda d: d['remediation-register']['findings'][0].update(status='CLOSED')),
         ('scenario assertion removed', lambda d: d['test-catalog']['suites'][0]['scenarios'][0].update(required_assertion='')),
         ('missing audit mapping', lambda d: d['remediation-register']['findings'].pop()),
+        ('acceptance and scenario drift', lambda d: task(d)['acceptance_criteria'].append('Unmapped criterion')),
+        ('unknown external source', lambda d: d['external-practice-register']['practices'][0].update(source_refs=['MISSING'])),
+        ('duplicate external source', lambda d: d['external-practice-register']['sources'].append(deepcopy(d['external-practice-register']['sources'][0]))),
+        ('duplicate external practice', lambda d: d['external-practice-register']['practices'].append(deepcopy(d['external-practice-register']['practices'][0]))),
+        ('missing external task backlink', lambda d: task(d,12).update(external_practices=['EXT-009'])),
+        ('wrong external scenario owner', lambda d: d['external-practice-register']['practices'][0].update(acceptance_scenarios=['AT-V2-001-01'])),
+        ('missing external scenario', lambda d: d['external-practice-register']['practices'][0].update(acceptance_scenarios=['MISSING'])),
+        ('false verified adoption', lambda d: d['external-practice-register']['practices'][0].update(status='VERIFIED')),
+        ('deferred work attached to early task', lambda d: d['external-practice-register']['practices'][9].update(related_tasks=['V2-001'])),
+        ('deferred work moved to P0', lambda d: d['external-practice-register']['practices'][9].update(earliest_reconsider_phase='P0')),
+        ('public document mislabeled runtime verified', lambda d: d['external-practice-register']['sources'][0].update(runtime_verification='VERIFIED')),
+        ('unknown task practice', lambda d: task(d).update(external_practices=['EXT-999'])),
     ]
     results = [{'case':'valid current package objects','expected':'ACCEPT','actual':'ACCEPT' if not validate_objects(data) else 'REJECT'}]
     for name, mutate in mutations:
@@ -330,7 +411,7 @@ def main():
         errors += check_files(data, views)
         tasks = data['implementation-backlog']['tasks']
         report = {'generated_at_utc':datetime.now(timezone.utc).isoformat(),
-                  'scope':'planning file structure, IDs, graph, ownership, evidence fields, snapshots, links and generated views',
+                  'scope':'planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views',
                   'status':'PASS' if not errors else 'FAIL',
                   'not_certified':['P0 engineering exit','runtime','PostgreSQL','remote CI','live provider','reader/market result'],
                   'source_git_head':data['source-register']['source_git_head'],
@@ -341,7 +422,9 @@ def main():
                             'scenarios':sum(len(s['scenarios']) for s in data['test-catalog']['suites']),
                             'decisions':len(data['decision-register']['decisions']),
                             'findings':len(data['remediation-register']['findings']),
-                            'source_snapshots':len(data['source-register']['files'])},
+                            'source_snapshots':len(data['source-register']['files']),
+                            'external_sources':len(data['external-practice-register']['sources']),
+                            'external_practices':dict(Counter(p['status'] for p in data['external-practice-register']['practices']))},
                   'errors':errors}
         (PLAN/'validation/plan-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
         print(json.dumps(report,ensure_ascii=False,indent=2))

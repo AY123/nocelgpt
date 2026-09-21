@@ -1,4 +1,4 @@
-version: 1.0.0
+version: 1.1.0
 meaning: 验收场景是计划；目标测试路径尚未实现
 suites:
 - id: AT-V2-001
@@ -26,6 +26,8 @@ suites:
     required_assertion: 无证据 CLOSED 与未满足 Gate 的任务启动被拒绝
   - id: AT-V2-002-03
     required_assertion: 旧档案不会被当作当前规范自动加载
+  - id: AT-V2-002-04
+    required_assertion: 外部来源/采纳项/任务/场景双向可定位；悬空来源、错误场景归属和无证据 VERIFIED 被拒绝
   execution_evidence: []
 - id: AT-V2-003
   task_id: V2-003
@@ -78,6 +80,8 @@ suites:
     required_assertion: 错误实体类型与生命周期被拒绝
   - id: AT-V2-006-03
     required_assertion: 角色误信与客观事实并存且角色不能凭空知情
+  - id: AT-V2-006-04
+    required_assertion: 角色目标/意图、误信与客观事件分别建模，计划动作不被当作已发生事实
   execution_evidence: []
 - id: AT-V2-007
   task_id: V2-007
@@ -130,6 +134,8 @@ suites:
     required_assertion: 事务故障无半写入且 HEAD 与事件一致
   - id: AT-V2-010-03
     required_assertion: 已接受提交长期证据可定位且不是只有无法解析的 hash
+  - id: AT-V2-010-04
+    required_assertion: 没有正式更正流程时对已接受正文的就地替换被拒绝且历史正文/提交证据保持可重建
   execution_evidence: []
 - id: AT-V2-011
   task_id: V2-011
@@ -169,6 +175,8 @@ suites:
     required_assertion: 未知 Pack 与扩展拒绝而非默认 fallback
   - id: AT-V2-013-03
     required_assertion: 全局只读目录绑定到项目后仍可追溯
+  - id: AT-V2-013-04
+    required_assertion: 显式 Pack 存在而可选策略无命中时保留原 ID/version/hash，不替换为第一条相近子流派
   execution_evidence: []
 - id: AT-V2-014
   task_id: V2-014
@@ -182,6 +190,8 @@ suites:
     required_assertion: 人物讨论小说或梦境不自动成为世界事实
   - id: AT-V2-014-03
     required_assertion: 语义不确定返回显式待处理而不是 PASS
+  - id: AT-V2-014-04
+    required_assertion: 可选套路与冻结世界机制冲突时拒绝该策略；正常无匹配不制造世界规则
   execution_evidence: []
 - id: AT-V2-015
   task_id: V2-015
@@ -223,6 +233,10 @@ suites:
     required_assertion: 计划冲突或不可满足合约返回诊断而非改写 Canon
   - id: AT-V2-017-04
     required_assertion: 双书 fixture 经人工审定并包含知识及揭示边界
+  - id: AT-V2-017-05
+    required_assertion: 接续合约绑定前章正文 hash/实际结束证据及本章起点；前章修订使旧接续失效，第一章显式无前章
+  - id: AT-V2-017-06
+    required_assertion: 场景可消费角色目标/知识与预期代价；安静或认知推进章节无需强制升级战斗字段
   execution_evidence: []
 - id: AT-V2-018
   task_id: V2-018
@@ -236,6 +250,10 @@ suites:
     required_assertion: 预算溢出必需项时明确阻断
   - id: AT-V2-018-03
     required_assertion: 错项目未来知识无泄漏且每项 inclusion 可解释
+  - id: AT-V2-018-04
+    required_assertion: 必要的前章实际末段与接续约束不被可选检索挤出；无法容纳时阻断而非以钩子摘要替代
+  - id: AT-V2-018-05
+    required_assertion: 冻结输入在不调用生成模型时可编译 ContextArtifact，审查者专用事实不会通过缓存进入 Writer 或角色知识
   execution_evidence: []
 - id: AT-V2-019
   task_id: V2-019
@@ -264,6 +282,10 @@ suites:
     required_assertion: 章内 overlay 可供后续场景消费但失败后不入 Canon
   - id: AT-V2-020-03
     required_assertion: Draft accepted published 状态独立且测试 Gate 不被当生产 Gate
+  - id: AT-V2-020-04
+    required_assertion: CLI 与任务入口适配同一 Workflow 应用服务，模型返回已完成但无持久化产物/收据时不能转 accepted
+  - id: AT-V2-020-05
+    required_assertion: 操作者改稿产生新候选并使旧抽取/检查/确认失效；检测到外部文件 hash 改变时停止旧流程
   execution_evidence: []
 - id: AT-V2-021
   task_id: V2-021
@@ -316,6 +338,8 @@ suites:
     required_assertion: 合法引用梦境商会样本不过度阻断
   - id: AT-V2-024-03
     required_assertion: 正文遗漏或不确定结果不能静默 PASS
+  - id: AT-V2-024-04
+    required_assertion: 正文实际发生由错误套路引入的非法能力时被拦截，合法引述或梦境对照不被误拒绝
   execution_evidence: []
 - id: AT-V2-025
   task_id: V2-025
@@ -329,6 +353,10 @@ suites:
     required_assertion: 保护事实变更被拒绝
   - id: AT-V2-025-03
     required_assertion: 安静或信息揭示章节满足其合约时可通过
+  - id: AT-V2-025-04
+    required_assertion: 正文重复前章收尾动作的反例被报告；显式回忆或不同视角复述不因词面重叠直接硬拒绝，未知不伪报 PASS
+  - id: AT-V2-025-05
+    required_assertion: 角色基于误信做出错误选择的合法样本可通过；违背已冻结知识/揭示边界的样本不能靠动机评分放行
   execution_evidence: []
 - id: AT-V2-026
   task_id: V2-026
@@ -342,6 +370,8 @@ suites:
     required_assertion: 旧候选旧 parent 或旧 policy 证据不可复用
   - id: AT-V2-026-03
     required_assertion: 完整必跑检查后才能经唯一服务接受正文
+  - id: AT-V2-026-04
+    required_assertion: 人工点击同意但缺必跑检查或绑定旧候选的请求不能获得有效 Permit
   execution_evidence: []
 - id: AT-V2-027
   task_id: V2-027
@@ -355,6 +385,8 @@ suites:
     required_assertion: 取消后迟到响应不自动提交
   - id: AT-V2-027-03
     required_assertion: 重复投递及 UNKNOWN 不伪报成功或零费用
+  - id: AT-V2-027-04
+    required_assertion: 人工改稿或 Contract/Pack/parent 改变后，旧检查点不得跳过重验继续提交
   execution_evidence: []
 - id: AT-V2-028
   task_id: V2-028
@@ -368,6 +400,8 @@ suites:
     required_assertion: 响应丢失后取得同一收据
   - id: AT-V2-028-03
     required_assertion: 投影落后可重建且无第二权威路径
+  - id: AT-V2-028-04
+    required_assertion: 两种入口适配器重复投递同一逻辑请求并在提交响应丢失后恢复，只产生一个权威提交
   execution_evidence: []
 - id: AT-V2-029
   task_id: V2-029
@@ -407,6 +441,8 @@ suites:
     required_assertion: 达到预算或轮次上限停止
   - id: AT-V2-031-03
     required_assertion: 新文本新 hash 使旧 Permit 失效
+  - id: AT-V2-031-04
+    required_assertion: 相同硬缺陷持续存在或缺陷在候选间往返时停止并保留升级诊断，不因正文 hash 改变或评分上升重置计数
   execution_evidence: []
 - id: AT-V2-032
   task_id: V2-032
@@ -420,6 +456,8 @@ suites:
     required_assertion: 删除兑现或改变关键动机触发诊断
   - id: AT-V2-032-03
     required_assertion: 重新抽取重验完整前提后才可接受
+  - id: AT-V2-032-04
+    required_assertion: 补丁使原硬缺陷消失但引入新硬缺陷时仍拒绝；已有正确区域回归结果保留
   execution_evidence: []
 - id: AT-V2-033
   task_id: V2-033
@@ -433,6 +471,8 @@ suites:
     required_assertion: 失败尝试和修复未从分母删除
   - id: AT-V2-033-03
     required_assertion: 适用硬门禁全执行且无测试旁路
+  - id: AT-V2-033-04
+    required_assertion: 三章样本核对实际正文接续，包含高潮后有收尾动作而下一章不重复执行的案例
   execution_evidence: []
 - id: AT-V2-034
   task_id: V2-034
@@ -446,6 +486,8 @@ suites:
     required_assertion: 真实调用预算与人工介入完整记录
   - id: AT-V2-034-03
     required_assertion: 真人最小读稿和基线对照有原始记录且不冒称市场成功
+  - id: AT-V2-034-04
+    required_assertion: 都市对照预先冻结输入/篇幅/模型/预算政策并记录实际成本；基线不绕过硬门禁进入 Canon
   execution_evidence: []
 - id: AT-V2-035
   task_id: V2-035
@@ -459,6 +501,8 @@ suites:
     required_assertion: 进阶资源代价及合法交易样本可验证
   - id: AT-V2-035-03
     required_assertion: 真人阅读成本人工贡献与全部失败尝试可查
+  - id: AT-V2-035-04
+    required_assertion: 玄幻对照保留盲评顺序与人工介入记录，报告允许无改善和证据不足而不修改评估分母
   execution_evidence: []
 - id: AT-V2-036
   task_id: V2-036
@@ -485,6 +529,8 @@ suites:
     required_assertion: 有来源版本和作用域
   - id: AT-V2-037-03
     required_assertion: 无权限内容不因诊断界面泄漏
+  - id: AT-V2-037-04
+    required_assertion: 两个 ContextArtifact 可比较纳入/排除和裁剪变化，显示来源/hash/作用域/角色/预算且不触发生成调用
   execution_evidence: []
 - id: AT-V2-038
   task_id: V2-038
@@ -498,6 +544,8 @@ suites:
     required_assertion: 支持核对历史与投影
   - id: AT-V2-038-03
     required_assertion: 检查器无旁路修改能力
+  - id: AT-V2-038-04
+    required_assertion: 最小只读审阅显示接受正文及当次 ChangeSet/parent/检查证据，不能从 inspector 直接改事实
   execution_evidence: []
 - id: AT-V2-039
   task_id: V2-039
@@ -524,6 +572,8 @@ suites:
     required_assertion: 承诺债务重复和人物持续性有文本审阅
   - id: AT-V2-040-03
     required_assertion: 独立样本与版本绑定明确且失败成本全部记录
+  - id: AT-V2-040-04
+    required_assertion: 三十章报告区分工程/阅读/成本结论，比较持续收益并披露模型预算和人工差异，不将复杂管线默认判优
   execution_evidence: []
 - id: AT-V2-041
   task_id: V2-041

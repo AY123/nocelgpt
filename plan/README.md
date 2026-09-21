@@ -1,6 +1,8 @@
 # ANovelOS 正式架构建设实施资料
 
-版本：1.0.0；整理日期：2026-09-20；来源基线：`5cffff8`。本目录是本次用户要求统一整理后的实施入口。
+版本：1.1.0；更新日期：2026-09-20；历史资料来源基线：`5cffff8`。本目录是正式实施入口。
+
+本次修订将外部项目的可用机制和失败案例转为现有任务的验收要求。见[采纳与范围判断](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)及[机器采纳登记](machine/external-practice-register.yaml)。P0—P14、双 Anchor、60 个任务的身份/阶段/依赖保持冻结；新增断言仍是计划，不是运行通过证据。
 
 **当前状态：资料基线已整理，可启动 P0；V2 工程、P0 退出、业务内核及题材认证尚未完成。** 文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
 
@@ -35,6 +37,7 @@
 - [验收场景目录](machine/test-catalog.yaml)：当前均为计划场景，不冒充已实现测试。
 - [决策登记](machine/decision-register.yaml)、[整改登记](machine/remediation-register.yaml)。
 - [权限与证据政策](machine/authority-policy.yaml)、[来源登记](machine/source-register.yaml)。
+- [外部经验采纳登记](machine/external-practice-register.yaml)：公开来源、证据局限、本地改造、关联任务/验收场景及暂缓范围。
 - [机器结构约束](schemas/implementation-task.schema.json)、[校验程序](scripts/validate_plan.py)、[校验结果](validation/plan-validation.json)。
 
 `machine/` 保存事实，`generated/` 是其只读视图。运行 `python3 plan/scripts/validate_plan.py --write-views` 更新视图；运行 `python3 plan/scripts/validate_plan.py --check` 检查一致性。需要 PyYAML、jsonschema；P0 时纳入正式依赖锁定。
