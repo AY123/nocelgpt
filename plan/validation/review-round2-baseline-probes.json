@@ -1,0 +1,18 @@
+{
+  "scope": "two isolated metadata probes before the round-2 fixes, not runtime evidence",
+  "governance_checks_sha256": "27792c50eadf70bc54d90ad762b8288bdd62902e567c874f97ca04523be74e03",
+  "cases": [
+    {
+      "case": "normalized_template_alias",
+      "expected": "REJECT",
+      "actual": "ACCEPT",
+      "errors": []
+    },
+    {
+      "case": "milestone_phase_revision_mismatch",
+      "expected": "REJECT",
+      "actual": "ACCEPT",
+      "errors": []
+    }
+  ]
+}

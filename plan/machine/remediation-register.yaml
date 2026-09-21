@@ -1,4 +1,4 @@
-version: 1.2.0
+version: 1.2.1
 meaning: 分配与规范修订不等于运行修复；所有条目等待独立关闭证据
 findings:
 - id: AR-01
@@ -967,6 +967,7 @@ findings:
   closure_refs: []
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+  supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
 - id: DA-03
   title: 里程碑最低内容和完成聚合未受到可靠约束
   status: OPEN_TRACKED
@@ -980,6 +981,7 @@ findings:
   closure_refs: []
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+  supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
 - id: DA-04
   title: readiness、ADR 反向完整性及 P0 准入执行不完整
   status: OPEN_TRACKED

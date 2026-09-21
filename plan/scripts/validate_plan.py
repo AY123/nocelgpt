@@ -4,7 +4,8 @@
 --write-views regenerates read-only views and the content manifest.
 --check verifies them without repairing inconsistencies.
 --self-test checks the validator against deliberately invalid in-memory plans.
-Results are written only to plan/validation/. Requires PyYAML and jsonschema.
+Results default to plan/validation/; --output-dir separates CI artifacts from
+versioned planning inputs. Requires PyYAML and jsonschema.
 """
 from collections import Counter
 from copy import deepcopy
@@ -410,7 +411,11 @@ def main():
     mode.add_argument('--check',action='store_true')
     mode.add_argument('--write-views',action='store_true')
     mode.add_argument('--self-test',action='store_true')
+    parser.add_argument('--output-dir', type=Path, default=PLAN/'validation',
+                        help='Directory for generated validation reports, not source views')
     args = parser.parse_args()
+    output_dir = args.output_dir.resolve()
+    output_dir.mkdir(parents=True, exist_ok=True)
     try:
         data = load()
         errors = validate_objects(data)
@@ -425,10 +430,10 @@ def main():
                       'generated_at_utc':datetime.now(timezone.utc).isoformat(),
                       'manifest_sha256':sha(PLAN/'FILE_MANIFEST.json') if (PLAN/'FILE_MANIFEST.json').exists() else None,
                       'status':'PASS' if all(r['expected']==r['actual'] for r in cases) else 'FAIL','cases':cases}
-            (PLAN/'validation/validator-self-test.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+            (output_dir/'validator-self-test.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
             print(json.dumps({'scope':report['scope'],'status':report['status'],'cases':len(cases)},ensure_ascii=False))
             return 0 if report['status']=='PASS' else 1
-        output = PLAN/'validation/plan-validation.json'
+        output = output_dir/'plan-validation.json'
         if not output.exists():
             output.write_text(json.dumps({'scope':'planning validation','status':'IN_PROGRESS'})+'\n')
         errors += check_files(data, views)
@@ -450,12 +455,12 @@ def main():
                             'external_sources':len(data['external-practice-register']['sources']),
                             'external_practices':dict(Counter(p['status'] for p in data['external-practice-register']['practices']))},
                   'errors':errors}
-        (PLAN/'validation/plan-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+        output.write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
         print(json.dumps(report,ensure_ascii=False,indent=2))
         return 1 if errors else 0
     except Exception as exc:
         report={'scope':'planning validation','status':'FAIL','errors':[f'{type(exc).__name__}: {exc}']}
-        (PLAN/'validation/plan-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+        (output_dir/'plan-validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
         print(json.dumps(report,ensure_ascii=False,indent=2))
         return 1
 

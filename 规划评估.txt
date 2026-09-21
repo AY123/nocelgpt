@@ -1,1313 +1,273 @@
-ANovelOS V2 项目全面深度评估报告一
+ANovelOS 项目更新后全面深度评估报告 v1.3
+
+  📊 核心结论
+
+  ✅ 项目可以启动 P0
+
+  本次更新（commit 6a4f6bc）成功修复了 v1.1 中识别的 5 个核心治理缺陷（DA-01至DA
+  -05），建立了类型化证据体系、治理基线和完整的双向校验机制。
+
+  但必须明确当前状态边界：这是一份经过深度整理的规划资料包，而非已完成的工程系统
+  。
+
+  🎯 就绪度评级（更新）
+
+  ┌──────────┬───────────┬───────────┬──────┬────────────────────────────┐
+  │   维度   │ v1.1 评级 │ v1.2 评级 │ 变化 │            状态            │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 战略层面 │  3.5/5.0  │  3.8/5.0  │ +0.3 │ 目标明确，商业模式待验证   │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 架构层面 │  4.2/5.0  │  4.2/5.0  │  0   │ 主架构可靠，接口待细化     │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 工程层面 │  2.8/5.0  │  3.5/5.0  │ +0.7 │ 治理大幅改善，代码尚未开始 │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 执行层面 │  3.8/5.0  │  4.3/5.0  │ +0.5 │ 任务清晰，证据体系完善     │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 质量层面 │  3.5/5.0  │  3.7/5.0  │ +0.2 │ 标准明确，运行待验证       │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 治理层面 │  2.5/5.0  │  4.0/5.0  │ +1.5 │ 核心缺陷已修复 ✅          │
+  ├──────────┼───────────┼───────────┼──────┼────────────────────────────┤
+  │ 总体评级 │  3.4/5.0  │  3.9/5.0  │ +0.5 │ 接近可启动状态             │
+  └──────────┴───────────┴───────────┴──────┴────────────────────────────┘
+
+  ✅ 已解决的问题（DA-01至DA-05）
+
+  五大核心缺陷已完全修复
+
+  ┌───────┬─────────────────────┬─────────────────────────────┬──────────────┐
+  │  ID   │        问题         │          修复方案           │   验证结果   │
+  ├───────┼─────────────────────┼─────────────────────────────┼──────────────┤
+  │ DA-01 │ CI集合可删减        │ governance-baseline.yaml    │ ✅           │
+  │       │                     │ 强制约束                    │ 3项测试通过  │
+  ├───────┼─────────────────────┼─────────────────────────────┼──────────────┤
+  │ DA-02 │ 证据可伪造          │ evidence-record.schema.json │ ✅           │
+  │       │                     │                             │ 11项测试通过 │
+  ├───────┼─────────────────────┼─────────────────────────────┼──────────────┤
+  │ DA-03 │ 里程碑可缩水        │ 最低任务集合约束            │ ✅           │
+  │       │                     │                             │ 2项测试通过  │
+  ├───────┼─────────────────────┼─────────────────────────────┼──────────────┤
+  │ DA-04 │ readiness/ADR可绕过 │ 双向完整性检查              │ ✅           │
+  │       │                     │                             │ 3项测试通过  │
+  ├───────┼─────────────────────┼─────────────────────────────┼──────────────┤
+  │ DA-05 │ finding可不处置     │ 验收记录逐项处置            │ ✅           │
+  │       │                     │                             │ 2项测试通过  │
+  └───────┴─────────────────────┴─────────────────────────────┴──────────────┘
+
+  治理验证增强：
+  - ✅ governance_checks.py（225行）：对象约束和证据校验
+  - ✅ test_governance.py（239行）：33项回归测试全部通过
+  - ✅ governance-baseline.yaml（330行）：不可弱化的最低义务
   
-  📊 总体评级：★★★★☆ (4.0/5.0)
+  ⏳ 待解决的问题（DA-06至DA-11）
 
-  执行摘要
+  按设计推迟到对应阶段，这是合理的：
 
-  核心结论：项目具备高质量的规划基础和清晰的技术路线，可以启动P0阶段。架构设计方
-  向正确，问题识别透彻，风险管控意识强。
+  ┌───────┬──────────────────────┬──────────────┬────────┐
+  │  ID   │         问题         │ 最晚处理时点 │ 优先级 │
+  ├───────┼──────────────────────┼──────────────┼────────┤
+  │ DA-06 │ 取消与提交的原子次序 │ P2前         │ 高     │
+  ├───────┼──────────────────────┼──────────────┼────────┤
+  │ DA-07 │ 语义硬门禁缺少协议   │ P7前         │ 高     │
+  ├───────┼──────────────────────┼──────────────┼────────┤
+  │ DA-08 │ 预算字段缺少约束     │ P5前         │ 中     │
+  ├───────┼──────────────────────┼──────────────┼────────┤
+  │ DA-09 │ 认证协议缺少字段     │ P8前         │ 中     │
+  ├───────┼──────────────────────┼──────────────┼────────┤
+  │ DA-10 │ 投入决策不明确       │ P9后         │ 中     │
+  ├───────┼──────────────────────┼──────────────┼────────┤
+  │ DA-11 │ 数据恢复缺少验收点   │ P8前         │ 中     │
+  └───────┴──────────────────────┴──────────────┴────────┘
 
-  关键发现：
-  - ✅ 最新的2026-09-21深度审核报告已识别11个核心问题（DA-01至DA-11）
-  - ✅ 架构核心决策经得起检验（Narrative/Canon分离、单一提交边界、Genre扩展）
-  - ⚠️  60个任务全部OPEN状态，无任何业务代码实现（src/目录不存在）
-  - ⚠️  规划验证器存在5个已复现缺陷
-  - ⚠️  产品目标与实施路径存在现实性张力
+  📦 本次更新内容质量评估
   
-  ---
-  六大维度详细评级
+  新增文件（23个）
 
-  1. 战略层面 ★★★☆☆ (3.5/5)
+  ┌─────────────────────────────────────┬─────┬─────────┬─────────────────┐
+  │                内容                 │ 行  │ 质量评  │    主要价值     │
+  │                                     │ 数  │   分    │                 │
+  ├─────────────────────────────────────┼─────┼─────────┼─────────────────┤
+  │ governance_checks.py                │ 225 │ ★★★★☆   │ 强制约束执行    │
+  ├─────────────────────────────────────┼─────┼─────────┼─────────────────┤
+  │ test_governance.py                  │ 239 │ ★★★★★   │ 完整回归覆盖    │
+  ├─────────────────────────────────────┼─────┼─────────┼─────────────────┤
+  │ evidence-record.schema.json         │ 437 │ ★★★★★   │ 类型化证据严格  │
+  ├─────────────────────────────────────┼─────┼─────────┼─────────────────┤
+  │ governance-baseline.yaml            │ 330 │ ★★★★★   │ 最低义务不可弱  │
+  │                                     │     │         │ 化              │
+  ├─────────────────────────────────────┼─────┼─────────┼─────────────────┤
+  │ foundational-reference-register.yam │ 128 │ ★★★☆☆   │ 设计理由可追溯  │
+  │ l                                   │     │         │                 │
+  ├─────────────────────────────────────┼─────┼─────────┼─────────────────┤
+  │ V2-017_PLANNING_CONTRACT_PACKET.md  │  29 │ ★★★★☆   │ 职责分解清晰    │
+  └─────────────────────────────────────┴─────┴─────────┴─────────────────┘
 
-  优势：
-  - ✅ 三条独立证据链清晰（可靠性、阅读竞争力、市场结果）
-  - ✅ 明确区分工程能力与市场结果
-  - ✅ 15阶段路线清晰
+  总体评价：新增内容质量很高，核心治理能力大幅提升。
   
-  问题：
-  - ⚠️  "起点中文网阅读竞争力"标准模糊
-  - ⚠️  商业模式不清晰（客户、定价、收入来源）
-  - ⚠️  P13/P14缺乏具体任务
+  🚨 关键边界说明
+
+  1. 治理验证器的边界
+
+  ✅ 验证器能做什么：
+  - 检查文档一致性
+  - 验证证据类型和结构
+  - 检查本地文件存在性和哈希
+  - 拒绝已知的违规模式
+
+  ❌ 验证器不能做什么：
+  - 不能认证远程CI的真实性（需要可追溯URL）
+  - 不能防止有仓库写权限的恶意修改
+  - 不能验证代码的功能正确性
+  - 不能替代真实工程测试
   
-  2. 架构层面 ★★★★★ (4.5/5)
+  2. 当前项目状态
 
-  核心决策正确性验证：
-
-  ✅ 决策1：Narrative Core与Genre分离 - 正确，避免题材耦合
-  ✅ 决策2：唯一Canon提交边界 - 正确，针对V1状态污染的根本改进
-  ✅ 决策3：Contract与Context编译绑定 - 正确，比堆叠Prompt更可靠
-  ✅ 决策4：先可靠内核、再高级智能 - 正确，避免过早优化
-
-  技术选型：Python 3.12、PostgreSQL、SQLAlchemy、Pydantic v2、uv - 全部合理
-
-  3. 工程层面 ★★★☆☆ (3.5/5)
-
-  优势：
-  - ✅ 目标目录结构规划完善
-  - ✅ 测试分层设计优秀（7层、207场景）
-  - ✅ CI门禁分阶段启用（10个门禁）
-  - ✅ 文档完整性优秀（11规范+213历史+4审核）
-
-  问题：
-  - ❌ src/目录不存在 - 无任何业务代码
-  - ❌ tests/目录不存在 - 无任何测试代码
-  - ❌ 所有测试状态为PLANNED - 100%未实施
-  - ⚠️  缺乏开发者快速上手文档
+  ✅ 已完成：
+  - 规划资料包完整（11规范+60任务+230场景）
+  - 治理验证器强大（33项回归测试）
+  - 架构设计可靠（核心决策经过验证）
+  - 风险识别透彻（76个finding全追踪）
   
-  4. 执行层面 ★★★★☆ (4.0/5)
-
-  优势：
-  - ✅ 60任务分解合理、粒度适中
-  - ✅ DAG无循环依赖
-  - ✅ 验收标准明确、可测试
-
-  问题：
-  - ❌ 无时间估算 - 60个任务无预期工时
-  - ❌ 无人力配置 - 未明确需要几个工程师
-  - ❌ 无成本预算 - 模型费用、云服务、人力成本
+  ❌ 尚未开始：
+  - src/ 目录不存在
+  - tests/ 目录不存在
+  - .gitlab-ci.yml 不存在
+  - 60个任务全部OPEN状态
+  - 230个测试场景全部PLANNED状态
   
-  5. 质量层面 ★★★★★ (4.5/5)
+  3. 治理回归测试的性质
 
-  优势：
-  - ✅ Q0-Q3质量栈定义清晰
-  - ✅ 硬失败不可抵消机制
-  - ✅ UNKNOWN显式建模
-  - ✅ 真人盲评、holdout、失败分母记录
+  明确说明（test_governance.py头部注释）：
+  """Positive closure fixtures and isolated governance regressions, 
+  not runtime tests."""
   
-  问题：
-  - ⚠️  DA-07：语义检查裁决协议未细化
-  - ⚠️  人工审查流程未定义
+  测试使用合成证据：
+  raw.write_text('SYNTHETIC ISOLATED TEST INPUT. 
+  NOT REAL ENGINEERING OR CI EVIDENCE.\n')
   
-  6. 治理层面 ★★★★☆ (4.0/5)
+  这是正确的：
+  - 治理回归测试验证约束逻辑
+  - 不能也不应替代真实工程测试
+  - 报告明确："synthetic records are not runtime evidence"
+  
+  ✅ 启动决策
 
-  优势：
-  - ✅ machine/单一真相源
-  - ✅ 16个ADR责任明确
-  - ✅ 双向验证机制
-  - ✅ 64个整改项全部追踪
-  
-  问题：
-  - ⚠️  DA-01至DA-05：5个已复现治理缺陷
-  - ⚠️  变更评审流程未定义
-  - ⚠️  人员映射、审批流程缺失
-  
-  ---
-  🔴 11个核心问题清单
-  
-  基于2026-09-21深度审核报告：
+  可以启动P0，但需满足以下条件：
 
-  ┌───────┬────────┬────────────────────────────────┬────────────┐
-  │  ID   │ 严重性 │              问题              │ 最晚处理点 │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-01 │ H      │ 必需CI集合可删除或整体后移     │ G-P0前     │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-02 │ H      │ 证据缺失、错类型可支撑虚假关闭 │ G-P0前     │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-03 │ H      │ 里程碑必要范围可缩减           │ G-P0前     │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-04 │ H      │ readiness、ADR反向关系未执行   │ G-P0前     │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-05 │ M      │ 任务关闭缺少问题处置           │ 首次关闭前 │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-06 │ H      │ 取消与提交竞争未明确           │ V2-026前   │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-07 │ H      │ 语义PASS裁决无规则             │ V2-021前   │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-08 │ M      │ 预算上限未落到并发调用         │ V2-019前   │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-09 │ M      │ 认证协议缺少具体字段           │ V2-033前   │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-10 │ M      │ 阅读不改善投资条件不明         │ V2-040前   │
-  ├───────┼────────┼────────────────────────────────┼────────────┤
-  │ DA-11 │ M      │ 数据恢复责任未落位             │ V2-028前   │
-  └───────┴────────┴────────────────────────────────┴────────────┘
-
-  ---
+  1. 理解当前状态
+  - ✅ 这是规划资料包，非工程系统
+  - ✅ 治理验证器已修复，但不替代真实测试
+  - ✅ 60任务待执行，预计1.0-1.5年
+  
+  2. 明确P0目标
+  - ✅ V2-001：建立可复现环境
+  - ✅ V2-002：完成治理验证（已基本完成）
+  - ✅ V2-003：建立架构边界检查
+  - ✅ V2-004：建立真实CI
+  
+  3. 团队与资源
+  - ⏳ 需要至少1-2名全职工程师
+  - ⏳ P0预计2-4周
+  - ⏳ P0-P7预计3-6个月
+  
+  4. 后续决策点
+  - P2后：核心架构可行性
+  - M4后：单章闭环能力
+  - P9后：继续或调整
+  
   📋 立即行动建议
-  
-  本周内（P0启动前）
 
-  1. ✅ 修复DA-01至DA-05 - 补强validate_plan.py
-  2. ✅ 启动V2-001 - Repository bootstrap（uv、PostgreSQL、ADR-001）
-  3. ✅ 补充文档 - DEVELOPMENT.md、QUICKSTART.md、TEAM.md
+  本周内（P0启动）
 
-  2-4周内（P0阶段）
+  1. ✅ 启动V2-001 - 建立可复现环境
+    - Python 3.12、PostgreSQL、uv
+    - pyproject.toml、uv.lock
+    - compose.yaml
+  2. ✅ 完成V2-002剩余工作
+    - 治理验证器已大幅改善
+    - 补充任何遗漏的边界检查
+  3. ✅ 启动V2-003 - 架构适应性测试
+    - 非法导入拒绝
+    - 正负例夹具
+  4. ✅ 启动V2-004 - 建立真实CI
+    - .gitlab-ci.yml
+    - 真实Pipeline运行
+    - 合并保护规则
 
-  4. ✅ 完成V2-001～004全部任务
-  5. ✅ 建立真实CI流水线
-  6. ✅ 通过G-P0门禁评审
+  2-4周内（P0完成）
 
-  1-3个月内（P1-P2）
+  5. ✅ 通过G-P0门禁评审
+  6. ✅ 所有治理回归测试保持绿色
+  7. ✅ 获得P1启动许可
 
-  7. ✅ 完成Narrative Kernel（V2-005～008）
-  8. ✅ 完成Canon Kernel（V2-009～012）
-  9. ✅ 细化DA-06接口契约
+  📊 最终评级
 
-  ---
-  🎯 项目整体就绪度
-  
-  规划阶段  ████████████████████████ 100%  ✅ READY
-  设计阶段  ████████████████████░░░  90%   ✅ READY
-  决策阶段  ████░░░░░░░░░░░░░░░░░░  20%   ❌ NOT READY
-  工程阶段  █░░░░░░░░░░░░░░░░░░░░░  5%    ❌ NOT READY
-  测试阶段  █░░░░░░░░░░░░░░░░░░░░░  5%    ❌ NOT READY
+  ┌─────────────────────────────────────────────┐
+  │         项目就绪度评估矩阵 v1.2            │
+  ├─────────────────────────────────────────────┤
+  │ 规划阶段  ████████████████████████ 100% ✅ │
+  │ 治理体系  ████████████████████░░░  90% ✅  │
+  │ 架构设计  ████████████████████░░░  85% ✅  │
+  │ 任务定义  ████████████████████████ 100% ✅ │
+  │ 决策机制  ████████████████░░░░░░░  75% ⚠️   │
+  │ 工程实施  ██░░░░░░░░░░░░░░░░░░░░  10% ❌  │
+  │ 测试验证  ██░░░░░░░░░░░░░░░░░░░░  10% ❌  │
+  │                                             │
+  │ 总体就绪度: ★★★★☆ 3.9/5.0 (78%)          │
+  │                                             │
+  │ 状态: 🟢 可以启动P0                        │
+  │       但需明确这是规划→实施的起点          │
+  └─────────────────────────────────────────────┘
 
-  综合就绪度：★★★★☆ 75%
+  💡 核心建议
 
-  ---
-  🚦 启动决策
-
-  ✅ 可以启动P0仓库建设
-
-  充分条件：
-  - ✅ 规划文档完善
-  - ✅ 架构设计优秀
-  - ✅ 问题识别透彻
-  - ✅ P0四任务明确
-  
-  必要前提：
-  - ⚠️  必须在P0内修复DA-01至DA-05
-  - ⚠️  必须建立最小团队（1-2名全职工程师）
-  - ⚠️  必须明确时间预期（P0预计2-4周）
-  
-  ❌ 不可宣称已完成或具备生产能力
-
-  禁止声明：
-  - ❌ "P0已完成"
-  - ❌ "具备爆款网文生产能力"
-  - ❌ "治理验证器已完善"
-  
-  正确表述：
-  - ✅ "规划已完成，可启动P0仓库建设"
-  - ✅ "架构设计方向正确，已识别11个待解决问题"
+  1. 保持治理优势 - 这是项目最大改进，继续维护
+  2. 务实推进 - 从P0小步开始，每阶段验证
+  3. 管理预期 - 向外部明确"规划完成，实施开始"
+  4. 及时决策 - P2/M4/P9都是关键决策点
+  5. 记录学习 - 实施中发现的问题及时反馈到规划
 
   ---
-  💡 三个关键判断
-  
-  1. 可以启动P0：规划基础扎实，架构方向正确，治理缺陷可在P0内修复
-  2. 需要务实预期：这是高风险、高不确定性的技术探索项目，成功定义应是"建立可验证
-  的创作与生产能力"，而非"保证爆款"
-  3. 建议分阶段验证：P0验证治理→P2验证架构→M4验证闭环→P9验证规模，每阶段保留调整
-  /暂停权利
+  报告完成 - 这是项目启动前的最后一次全面审核。项目具备启动条件，治理体系显著改
+  善，可以自信地开始P0工程实施。
 
-  ---
-  最终建议
-  
-  ✅ 有条件启动，审慎推进，理性评估，及时决策
 
-  - 立即启动P0（2-4周）
-  - 快速验证P1-P2（4-6周，评估继续/调整/暂停）
-  - 审慎推进P3-P7（3-4个月，M4后评估单章能力）
-  - 谨慎评估P8-P9（2-3个月，允许"不优于基线"）
-  - 理性对待P10+（基于P9真实结果决策，保留止损权利）
+  我已经按当前 GitLab main@6a4f6bcd574064c66b2e9edd4c6ff1163873007d 重新做了整轮复核。和上一轮相比，这次更新是实质性进步，不是简单增加报告。
 
+我的最终结论是：
 
+ANovel V2 的架构前准备现在已经达到可以正式停止总体规划、进入真实 P0 实施的水平。
 
+P0_ENTRY：READY。
 
-ANovelOS V2 项目全面深度评估报告二
+M0 / G-P0：仍未 VERIFIED。
 
-  我已经按当前 main@b835d698 重新做了一轮深度审核。和上一版相比，这次更新有实质进步，尤其是外部优秀项目经验已经正式进入机器控制面；但新加入的独立深度审计也确实挖出了此前验证器的几个真实缺口。
+P1 / V2-005：继续 BLOCKED。
 
-我的最终判断是：
+与上一轮最大的区别是：上一轮发现的 DA-01～DA-05 已经不只是被记录，而是被真正转化成了机器约束 + 反例回归 + Typed Evidence + Baseline。
 
-总体架构不需要推倒重来，也不需要再做一轮总体设计。
+一、最新状态确认
 
-允许正式进入 P0。
+当前 HEAD：
 
-但 P0 不能关闭，P1 绝不能开始，直到当前发现的 5 类治理缺陷修复并用反例重新验证。
+6a4f6bcd
+docs: add comprehensive deep evaluation report v1.2
 
-一、当前真实状态
+本次更新规模：
 
-最新提交：
++7,342
+-162
 
-b835d69821a6cad640b0db39fe76a15c2601a857
-docs: add comprehensive project readiness evaluation and enhancements
+但仍然主要是：
 
-本次提交：
+planning
+governance
+validation
+task packets
+evidence contracts
 
-+2437
--48
+还不是业务工程实现。
 
-仍然属于规划/审核增强，不是 P0 工程实现。
-
-当前仓库根目录仍然没有：
-
-pyproject.toml
-uv.lock
-src/
-tests/
-specs/
-migrations/
-compose.yaml
-.gitlab-ci.yml
-
-因此现在的真实状态仍然是：
-
-Architecture / Planning       → 已成熟
-P0 Engineering               → 尚未开始
-M0                            → NOT_VERIFIED
-P1 Narrative Kernel          → BLOCKED
-
-这是正确状态，没有发现 AI 把文档进展冒充工程进展。
-
-二、这次更新最重要的进步：外部优秀项目不再只是 archive 研究资料
-
-这是这次更新里我最认可的一部分。
-
-新增了：
-
-plan/machine/external-practice-register.yaml
-plan/generated/EXTERNAL_PRACTICE_MAP.md
-plan/changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
-
-并将原先：
-
-182 个验收场景
-
-增加到：
-
-207 个验收场景
-
-其中：
-
-14 个外部来源
-9 个 PLANNED 采纳机制
-2 个 DEFERRED
-1 个 REJECTED
-
-而且不是简单写：
-
-“借鉴 NovelForge”。
-
-现在形成了：
-
-External Source
-      ↓
-Observed Mechanism
-      ↓
-Local Adaptation
-      ↓
-Normative Spec
-      ↓
-Task
-      ↓
-Acceptance Scenario
-
-例如：
-
-NovelForge/QMAI
-→ Character intent + knowledge
-→ EXT-005
-→ V2-006 / 017 / 025
-→ AT-V2-006-04 / ...
-
-这已经是真正的可执行吸收。
-
-三、这次对外部项目的借鉴方式也很克制
-
-当前没有犯：
-
-别人用了 Agent
-→ 我也加 20 Agent
-
-或者：
-
-别人用了 Graph DB
-→ V2 也必须上 Neo4j
-
-而是大量采用：
-
-REFINE_EXISTING
-
-例如：
-
-外部机制	ANovel 处理
-Genre fallback 问题	转成明确 Genre routing 反例
-Context Pack	强化现有 Context Compiler
-Character intent	加入 Contract 消费
-人工改稿	旧证据失效 + 重验
-Workflow recovery	强化指纹、迟到结果、重复投递
-修复循环	增加 stagnation / regression detection
-自动评分	不取得 Canon Authority
-商业评价	必须与真人/市场分离
-
-这一点说明项目目前已经从：
-
-“竞品功能学习”
-
-升级到了：
-
-“失败机制和架构机制学习”。
-
-这是正确方向。
-
-四、新增的 plan v1.1 独立审计非常有价值
-
-新增：
-
-plan-review-2026-09-21/
-
-其中不是只有一份 Markdown 报告，还包括：
-
-PLAN_V1_1_DEEP_AUDIT_REPORT.md
-audit-findings.json
-governance-probe-results.json
-probe_plan_governance.py
-delivery-integrity.json
-
-这一轮审计做得比此前多数“AI 自我审查”可靠。
-
-它没有只问：
-
-YAML 能不能 parse？
-Schema 能不能 validate？
-
-而是主动篡改临时副本，然后看验证器是否真的能阻止错误状态。
-
-结果：
-
-13 个 Probe
-
-3 个 control
-10 个违规反例被错误 ACCEPT
-
-最终归纳成：
-
-5 类真实 Governance Defect
-+
-6 个阶段性 Contract / Product Refinement
-
-这种测试方法值得长期保留。
-
-五、我独立检查当前 validate_plan.py 后，确认 DA-01～DA-05 不是误报
-
-这一点非常重要。
-
-这些问题在当前 main 确实仍然存在。
-
-DA-01 — CI Gate 可以被删除
-
-当前代码大概逻辑是：
-
-for gate in ci_gates:
-    assert gate.allow_failure is False
-
-问题是：
-
-如果 gates = []
-
-循环什么都不检查。
-
-因此：
-
-STATIC
-UNIT
-SCHEMA_CONTRACT
-ARCH_FITNESS
-SECRET_DEPENDENCY
-POSTGRES_ENV
-
-理论上可以全部删除，而 validator 仍可能通过。
-
-同样也可以：
-
-activation_phase:
-P0 → P14
-
-而现有验证没有冻结“最晚启用阶段”。
-
-这必须在 P0 修
-
-正确机制应是：
-
-Required CI Gate Registry
-
-明确：
-
-STATIC             <= P0
-UNIT               <= P0
-SCHEMA_CONTRACT    <= P0
-ARCH_FITNESS       <= P0
-SECRET_DEPENDENCY  <= P0
-POSTGRES_ENV       <= P0
-
-CANON_CAS          <= P2
-LIVE_PROVIDER      <= P5
-DETERMINISTIC_E2E  <= P7
-GENRE_SMOKE        <= P8
-
-删除或后移必须失败。
-
-六、DA-02 是目前最危险的控制面问题：Evidence 太容易伪造
-
-现在 Task Evidence 结构基本是：
-
-ref: something
-revision: something
-status: PASS
-
-只要非空。
-
-这意味着理论上可以：
-
-code:
-  ref: README.md
-  revision: SYNTHETIC
-  status: PASS
-
-然后把：
-
-README.md
-
-同时当作：
-
-代码证据
-测试证据
-CI 证据
-验收证据
-
-现有 validator 不能真正证明这些东西是什么。
-
-更严重的是：
-
-ADR template
-
-理论上也可以冒充正式 Accepted ADR。
-
-七、这一项必须升级为 Typed Evidence
-
-建议 P0 直接增加：
-
-evidence-record.schema.json
-
-至少：
-
-evidence_id:
-evidence_type:
-
-task_id:
-scenario_id:
-
-revision:
-environment:
-
-producer:
-executed_at:
-
-status:
-
-artifact_ref:
-artifact_sha256:
-
-command:
-exit_code:
-
-ci_pipeline_id:
-ci_job_id:
-
-decision:
-
-其中：
-
-CODE
-TEST_RESULT
-CI_RUN
-POSTGRES_RUN
-SECURITY_SCAN
-ARCH_FITNESS
-ACCEPTANCE_RECORD
-ADR_DECISION
-
-必须是不同类型。
-
-这样：
-
-README.md
-
-就不能冒充：
-
-TEST_RESULT
-八、DA-03 — Milestone 可以被偷偷缩水
-
-现在 validator 会检查：
-
-M6.required_tasks
-
-中列出来的 Task 是否存在。
-
-但它没有检查：
-
-M6 本来必须包含哪些 Task。
-
-所以理论上：
-
-M6:
-  required_tasks:
-    - V2-001
-
-仍然可能满足当前 validator。
-
-那就会出现：
-
-Repository Bootstrap
-→ 10 Chapter Certification VERIFIED
-
-这种明显荒谬状态。
-
-目前只有：
-
-M4
-
-被特殊 hard-code 保护了一部分。
-
-九、Milestone 也必须拥有 Machine Baseline
-
-建议采用与 Task Registry 相同的思想：
-
-milestone-baseline.yaml
-
-冻结：
-
-M0
-→ V2-001..004
-
-M1
-→ V2-005..008
-
-...
-
-M6
-→ V2-028 + 033..039
-
-之后：
-
-current milestone
-
-不能比：
-
-minimum baseline
-
-更弱。
-
-可以增加要求，不能静默删除最低要求。
-
-十、DA-04 — Task Readiness / Entry Gate / ADR 仍然可以被部分绕过
-
-当前 validator 有：
-
-if task.phase != P0:
-    check(previous_phase_verified)
-
-这个逻辑有一个明显缺口：
-
-P0 被特意排除了。
-
-所以：
-
-P0_ENTRY_READY = BLOCKED
-
-理论上 P0 Task 仍可能进入：
-
-IN_PROGRESS
-
-同时：
-
-task → required_decisions
-
-是单向检查。
-
-如果把 Task 中：
-
-required_decisions:
-  - ADR-001
-
-删掉，
-
-而：
-
-ADR-001
-
-仍然认为自己属于 V2-001，
-
-现有 validator 不一定能发现反向关系断裂。
-
-十一、应该建立真正的双向关系
-
-即：
-
-Task.required_decisions
-        ↕
-ADR.related_tasks
-
-必须完全一致。
-
-类似：
-
-Task.related_findings
-        ↕
-Finding.related_tasks
-
-也应该有强约束。
-
-并且 Task 开始必须检查：
-
-task.readiness
-start_gate
-dependencies
-due ADRs
-phase gate
-
-而不是只检查其中几个。
-
-十二、DA-05 — Task CLOSED 时没有逐项说明 Finding 怎么处理
-
-这是一个容易被忽略，但很重要的问题。
-
-比如：
-
-V2-002
-
-关联：
-
-AR-01
-AR-02
-AR-06
-AR-07
-...
-
-Task 自己可以 CLOSED，
-
-但：
-
-这些 Finding 到底：
-- 本 Task 已解决？
-- 部分解决？
-- 推迟到哪个 Task？
-- 谁继续负责？
-
-当前没有机器级 Closure Disposition。
-
-十三、建议升级 TASK_ACCEPTANCE_RECORD
-
-增加：
-
-finding_dispositions:
-
-  - finding_id: AR-01
-
-    responsibility:
-      FULL
-      PARTIAL
-      NONE
-
-    disposition:
-      RESOLVED
-      PARTIALLY_RESOLVED
-      TRANSFERRED
-      NOT_APPLICABLE
-
-    evidence_refs: []
-
-    remaining_work:
-    next_task:
-
-然后：
-
-Task CLOSED
-
-要求每一个：
-
-related_finding
-
-都有 disposition。
-
-十四、更重要的新问题：DA-01～DA-11 现在还没有进入正式 /plan 控制面
-
-这是我本轮审核认为最应该马上修的地方。
-
-目前：
-
-DA-01 ～ DA-11
-
-只存在于：
-
-plan-review-2026-09-21/
-
-我搜索当前：
-
-plan/machine/remediation-register.yaml
-
-没有任何：
-
-DA-01
-...
-DA-11
-
-也就是说：
-
-审计已经发现了问题，但执行 AI 并没有机器义务去处理这些问题。
-
-下一位 AI 如果只按照：
-
-plan/README
-plan/machine/*
-
-执行，
-
-完全可以不知道 plan-review-2026-09-21 的存在。
-
-十五、这必须马上修
-
-建议把：
-
-DA-01 ~ DA-11
-
-正式合并进：
-
-plan/machine/remediation-register.yaml
-
-并绑定 Task。
-
-例如：
-
-Finding	Task
-DA-01 CI gate baseline	V2-002 / V2-004
-DA-02 Typed evidence	V2-002
-DA-03 Milestone baseline	V2-002
-DA-04 Gate/ADR bidirectional	V2-002
-DA-05 Finding disposition	V2-002
-DA-06 Cancel vs Commit	V2-009/010/026/027
-DA-07 semantic PASS/UNKNOWN	V2-021/022/026
-DA-08 unknown cost budget	V2-019
-DA-09 certification protocol	V2-033
-DA-10 investment continuation gate	V2-040/041
-DA-11 recovery obligation	V2-028/058
-
-这样审计结果才从：
-
-Report
-
-升级成：
-
-Engineering Obligation
-十六、DA-06～DA-11 不需要阻塞 P0
-
-这几个属于合理的渐进式设计问题。
-
-我认同审核报告没有要求全部在 P0 解决。
-
-例如：
-
-Cancel vs Commit
-
-应该在：
-
-P2 Canon
-+
-P6/P7 Workflow/Permit
-
-真正落地。
-
-核心问题是：
-
-Permit 已发
-Worker 正准备 Commit
-此时用户 cancel
-
-到底谁赢？
-
-必须最终形成类似：
-
-execution epoch / authorization token / fencing
-
-否则只是：
-
-UI 显示 cancelled
-
-并不能阻止迟到 Worker Commit。
-
-这是值得在 P2/P6 处理的问题。
-
-十七、Provider UNKNOWN / Budget 仍是优秀设计方向
-
-V2-019 当前 AC：
-
-真实 Provider 结构化响应
-UNKNOWN 可表示
-没有 response 不伪造 hash
-ModelFingerprint
-未知费用
-无预算不开真实调用
-
-这仍然是整个架构里非常成熟的一部分。
-
-但是 DA-08 提得对：
-
-并发调用
-+
-UNKNOWN cost
-
-必须进入预算算法。
-
-例如：
-
-available_budget
--
-committed_cost
--
-reserved_inflight_cost
--
-unreconciled_unknown_cost
-
-而不是：
-
-confirmed usage only
-
-否则多个并发 request 会一起穿透预算。
-
-十八、外部项目学习这次明显进步，但还不算“完整追踪”
-
-新增 14 个来源很好。
-
-但我注意到这套新的 Machine Register 没有覆盖我们此前研究的几个基础架构来源：
-
-DOME
-ConWriter
-MAGNET / ATLAS
-ConStory-Bench
-
-Temporal
-LangGraph
-OPA
-OpenLineage
-OpenTelemetry
-
-这些目前仍然只存在于历史：
-
-plan/archive/gptdoc/
-ANovel_V2_Reference_Architecture_Study_v1.0/
-
-但它们实际上支持的是 V2 最重要的一批设计：
-
-DOME
-→ dynamic planning
-
-ConWriter
-→ transition validation / patch repair
-
-ConStory-Bench
-→ consistency benchmark
-
-Temporal
-→ durable workflow
-
-LangGraph
-→ workflow state != narrative truth
-
-OPA
-→ policy semantics
-
-OpenLineage
-→ lineage
-
-OpenTelemetry
-→ observability
-十九、建议不要再做新竞品报告，只把这些来源补入 Machine Traceability
-
-不需要重新研究。
-
-只需要在：
-
-external-practice-register.yaml
-
-或者另建：
-
-foundational-reference-register.yaml
-
-增加：
-
-FOUNDATIONAL_RESEARCH
-INFRASTRUCTURE_PATTERN
-
-类型。
-
-然后映射：
-
-source
-→ adopted mechanism
-→ spec
-→ task
-
-即可。
-
-这不是 P0 blocker。
-
-二十、我发现 P4 仍然存在一个架构实施风险
-
-目前：
-
-P4 Planning & Contracts
-
-只有一个 Task：
-
-V2-017 Contract Compiler
-
-但你的 Planning 实际承担：
-
-SeriesVision
-ArcPlan
-ChapterPlan
-ScenePlan
-
-rolling planning
-replanning
-plan versioning
-supersession
-freeze horizon
-
-RequiredTransition
-ForbiddenTransition
-
-character goals
-knowledge
-cost
-
-continuity seam
-
-这实际上已经不只是一个：
-
-compiler.py
-
-的问题。
-
-当前 artifacts 仍然主要写：
-
-src/anovel/contracts/compiler.py
-specs/fixtures/stories
-
-存在未来把大量 Planning 逻辑重新塞进一个模块的风险。
-
-二十一、我不建议改 60 Task 编号，但 V2-017 必须在实施前展开内部 Task Packet
-
-建议至少落成：
-
-src/anovel/planning/
-    series.py
-    arc.py
-    chapter.py
-    scene.py
-    versions.py
-    replanning.py
-
-src/anovel/contracts/
-    models.py
-    compiler.py
-
-并明确：
-
-Freeze Horizon
-PlanVersion
-PlanDiff
-SupersededBy
-InvalidatedByCanon
-ReplanTrigger
-
-这一项不是 P0 blocker。
-
-但我会把它列成：
-
-P4 高优先级实施风险
-
-否则未来很容易长成第二个 serialize/loop.py。
-
-二十二、根 README 仍然是明显问题
-
-当前：
-
-README.md
-
-仍然是 GitLab 默认模板。
-
-这是一个全 AI 项目不应该继续保留的状态。
-
-任何新 Agent 进入 repo 第一眼看到的还是：
-
-GitLab Getting Started
-
-而不是：
-
-Current Stage
-Authoritative plan
-Machine SSOT
-Allowed tasks
-Forbidden phases
-
-P0 第一批必须改。
-
-二十三、AGENTS.md 仍然不存在
-
-我再次检查：
-
-AGENTS.md
-CLAUDE.md
-AI_ENGINEERING_PROTOCOL.md
-
-根级都不存在。
-
-.claude/ 现在只有历史 convergence。
-
-对于一个：
-
-整个项目架构和开发长期主要由 AI 推进
-
-的项目，这是一个明显缺口。
-
-我仍然建议 P0 增加：
-
-AGENTS.md
-
-但只做短的执行协议。
-
-不是另写架构。
-
-二十四、当前 GitLab CI 也没有任何实际工程证据
-
-这是事实层面必须说清楚的。
-
-当前：
-
-.gitlab-ci.yml
-
-不存在。
-
-GitLab Project 目前：
-
-HEAD last_pipeline = null
-
-同时项目设置：
-
-only_allow_merge_if_pipeline_succeeds = false
-
-我尝试通过 GitLab connector 读取 Pipeline API 时还得到：
-
-403 Forbidden
-
-所以我无法独立查询可能存在的历史 CI。
-
-但从：
-
-main tree
-HEAD metadata
-
-本身已经可以确认：
-
-当前 P0 CI baseline 尚未建立。
-
-这与 /plan 的：
-
-NOT_IMPLEMENTED
-
-一致。
-
-没有发现虚假宣称。
-
-二十五、还有一个证据命名问题值得 P0 顺手修
-
-当前：
-
-plan-validation.json
-
-写：
-
-source_git_head:
-5cffff...
-
-而当前 main：
-
-b835d698
-
-不过 /plan/README 已说明：
-
-历史资料来源基线：5cffff8
-
-因此这不一定是数据错误。
-
-但字段名：
-
-source_git_head
-
-非常容易被 AI 理解为：
-
-“这个 validation 是针对 commit 5cffff 执行的。”
-
-建议拆成：
-
-source_snapshot_baseline_commit:
-  5cffff...
-
-validated_repository_revision:
-  b835d698...
-
-这对 Evidence binding 很重要。
-
-二十六、当前规划本身的质量，我仍然给很高评价
-
-如果分开评价：
-
-项目	当前判断
-产品目标	A
-Narrative/Canon 架构	A
-Genre Architecture	A
-Context/Model Gateway	A-
-Workflow semantics	A
-Quality/Repair	A
-Long-run Certification	A-
-V1 lessons absorption	A
-External project absorption	A-
-Scope discipline	A
-Machine planning model	A-
-Validator robustness	B-/C+
-Evidence trust model	B-
-AI-agent onboarding	C
-Actual engineering implementation	尚未开始
-Runtime evidence	无
-
-所以目前不是架构内容有问题。
-
-主要问题已经转移到了：
-
-“怎样证明 AI 真的按照架构执行，而不是通过修改元数据让自己看起来完成了。”
-
-这是一个好现象。
-
-因为说明项目已经从：
-
-What architecture?
-
-走到了：
-
-How do we trust execution?
-二十七、最新 /plan v1.1 比上一版确实更优秀
-
-特别是这几个新增点：
-
-外部经验 source→task→scenario
-人工编辑使旧 evidence 失效
-真实正文末段参与 continuity
-角色 intent/knowledge 进入 Contract
-修复 stagnation detection
-简单 baseline 与复杂 pipeline 对照
-允许“不优于 baseline”的实验结论
-
-这些都不是装饰性功能。
-
-它们直接提高了未来结果可信度。
-
-二十八、但最新审计报告也揭示：现在必须停止“继续写规划”，开始修治理并执行 P0
-
-我认为当前已经到了一个非常明确的分界点。
-
-不应该继续：
-
-再研究 30 个竞品
-再生成 Architecture Final v2
-再增加 100 个 Task
-
-现在应该进入：
-
-P0 Governance Hardening
-+
-Repository Bootstrap
-二十九、我建议 P0 的实际执行顺序稍微调整
-
-原本可以从 V2-001 开始。
-
-但由于这次刚发现 Governance Validator 有真实漏洞，我建议：
-
-P0-A
-V2-002 Governance Hardening
-
-先做最小防线，然后再全面铺工程。
-
-具体顺序：
-
-V2-002A
-整合 DA-01~11 到 remediation register
-
-V2-002B
-修复 validator DA-01~05
-
-V2-002C
-新增 10 个 Probe Regression Tests
-
-V2-001
-Repository Bootstrap
-
-V2-003
-Architecture Fitness
-
-V2-004
-CI / Security / Dependency / PostgreSQL
-
-并不改变 Task ID。
-
-只是 P0 内部实施顺序。
-
-三十、P0 关闭前我会要求这些反例全部变成 RED
-
-当前审计中的 10 个“错误 ACCEPT”必须全部变成：
-
-REJECT
-
-至少包括：
-
-删除全部 CI gates
-→ REJECT
-
-把 P0 gate 推迟到 P14
-→ REJECT
-
-不存在的 test evidence
-→ REJECT
-
-不存在的 phase evidence
-→ REJECT
-
-README 冒充所有 evidence
-→ REJECT
-
-PROPOSED ADR template 冒充 Accepted ADR
-→ REJECT
-
-M6 缩成 V2-001
-→ REJECT
-
-删除 Task required ADR
-→ REJECT
-
-P0_ENTRY blocked 仍启动
-→ REJECT
-
-无 finding disposition 关闭 Task
-→ REJECT
-
-只有这些真的 RED：
-
-Plan Validator
-
-才有资格成为：
-
-AI 工程控制平面。
-
-三十一、P0 最终关闭标准
-
-我现在会把 M0 要求定得非常清晰：
-
-M0 CLOSED
-
-必须同时看到：
-
-真实 repository skeleton
+当前仍然没有：
 
 pyproject.toml
 uv.lock
@@ -1315,91 +275,1193 @@ src/anovel/
 tests/
 specs/
 migrations/
+.gitlab-ci.yml
 
-PostgreSQL real connection
+所以真实状态仍应写成：
 
-Plan validator green
+层面	当前状态
+Research / Forensics	✅ 完成
+Architecture convergence	✅ 完成
+Planning baseline	✅ 成熟
+Governance validator	✅ 明显增强
+P0 entry	✅ READY
+P0 engineering	❌ 未开始
+GitLab CI	❌ 未建立
+PostgreSQL harness	❌ 未建立
+Runtime	❌ 无
+Narrative Kernel	❌ 未开始
+Canon Kernel	❌ 未开始
+Genre Kernel	❌ 未开始
+章节生成	❌ 未开始
 
-Governance negative probes red
+这个状态表达是诚实的。
 
-Architecture fitness positive + negative
+二、上一轮最重要的 5 个治理缺陷，现在已经真正修复了“规划层”
 
-Secret scan positive + negative
+上一轮发现：
 
-Dependency scan
+DA-01 CI gate 可以被删掉
+DA-02 假 Evidence 可以关任务
+DA-03 Milestone 可以缩水
+DA-04 readiness / ADR / Gate 可部分绕过
+DA-05 Finding 不处理也能 CLOSED
 
-GitLab CI real pipeline
+这次已经新增：
 
-CI bound current commit
+plan/machine/governance-baseline.yaml
+plan/schemas/evidence-record.schema.json
+plan/scripts/governance_checks.py
+plan/scripts/test_governance.py
+plan/scripts/probe_governance_legacy.py
 
-Task acceptance records typed
+这是正确方向。
 
-DA-01~05 closure evidence
+三、DA-01：CI minimum baseline 已经补上
 
-V2-001~004 CLOSED
+现在不再只是：
 
-G-P0 VERIFIED
+for gate in gates:
+    assert allow_failure == false
 
-否则：
+而是新增了真正的：
 
-V2-005
+required_ci
 
-不能开始。
+最低义务。
 
-最终审核结论
+例如：
 
-本轮更新后，我对项目的判断比上一轮更有信心，不是更悲观。
+STATIC             P0
+UNIT               P0
+SCHEMA_CONTRACT    P0
+ARCH_FITNESS       P0
+SECRET_DEPENDENCY  P0
+POSTGRES_ENV       P0
+
+CANON_CAS          P2
+LIVE_PROVIDER      P5
+DETERMINISTIC_E2E  P7
+GENRE_SMOKE        P8
+
+并检查：
+
+gate 必须存在
+activation 不能后移
+required checks 不能被删除
+trigger policy 不能静默改变
+
+这正是上一轮真正缺的东西。
+
+四、DA-03：Milestone 也终于有了最低不可缩水基线
+
+新增：
+
+governance-baseline.yaml
+
+包含：
+
+M0 → V2-001..004
+M1 → V2-005..008
+...
+M6 → V2-028 + V2-033..039
+
+现在 validator 检查：
+
+baseline.required_tasks
+⊆
+current.required_tasks
+
+因此：
+
+M6:
+  required_tasks:
+    - V2-001
+
+这种荒谬修改会被拒绝。
+
+这一项已经从根上解决了上一轮的问题。
+
+五、DA-02：Typed Evidence 有了真正的 Schema
+
+这次新增的：
+
+evidence-record.schema.json
+
+是非常重要的升级。
+
+现在 Evidence 不再只是：
+
+ref:
+revision:
+status: PASS
+
+而明确区分：
+
+CODE
+TEST_RESULT
+CI_RUN
+ACCEPTANCE_RECORD
+ADR_DECISION
+PHASE_DECISION
+MILESTONE_DECISION
+FINDING_CLOSURE
+
+并且带：
+
+subject_id
+revision
+producer
+executed_at
+environment_fingerprint
+artifact ref
+artifact sha256
+input evidence refs
+check IDs
+command
+exit code
+pipeline/job
+decision
+rationale
+
+这是明显更可信的。
+
+六、Evidence 还真正检查了 Artifact Hash
+
+EvidenceReader 现在会：
+
+打开真实文件
+↓
+验证 Schema
+↓
+检查 Artifact 是否存在
+↓
+重新 SHA-256
+↓
+对比记录 hash
+
+而且明确拒绝：
+
+templates/*
+
+作为执行证据。
+
+所以：
+
+README.md
+
+或：
+
+templates/ADR.md
+
+不能再轻易冒充测试/ADR/验收结果。
+
+这比上一版强很多。
+
+七、Evidence graph 也开始有真正的血缘关系
+
+现在：
+
+ACCEPTANCE_RECORD
+
+必须引用：
+
+code evidence
+test evidence
+CI evidence
+finding evidence
+external practice evidence
+
+并且验证：
+
+input_evidence_refs
+
+不能凭空声称：
+
+“我已经验收。”
+
+这一点非常符合 ANovel V2 自己的整体思想：
+
+有结果
+≠
+有权限
+≠
+有证据
+八、DA-04：ADR 与 Task 现在已经双向检查
+
+以前只检查：
+
+Task → ADR
+
+现在：
+
+Task.required_decisions
+↕
+ADR.related_tasks
+
+要求完整一致。
+
+同样：
+
+Task.related_findings
+↕
+Finding.related_tasks
+
+也进入双向约束。
+
+这是一个非常好的变化。
+
+以后 AI 不能通过：
+
+从 Task 删除 required_decision
+
+来偷偷绕过 ADR。
+
+九、P0 Entry Gate 现在也被真正执行
+
+之前：
+
+P0 task
+
+因为特殊逻辑可能不检查：
+
+P0_ENTRY_READY
+
+现在：
+
+P0_ENTRY_READY = BLOCKED
+
+时 P0 Task 进入执行状态会被拒绝。
+
+这一点已经补齐。
+
+十、DA-05：Finding disposition 终于有正式结构
+
+新的：
+
+TASK_ACCEPTANCE_RECORD
+
+要求针对每一个 related finding 说明：
+
+FULL / PARTIAL / NONE
+
+RESOLVED
+PARTIALLY_RESOLVED
+TRANSFERRED
+NOT_APPLICABLE
+
+如果只是部分解决，还必须写：
+
+remaining_work
+next_task
+owner_role
+due_gate
+
+这非常重要。
+
+因为很多 ANovel 问题确实跨多个阶段。
+
+现在可以表达：
+
+V2-002
+解决 DA-05 的治理部分
+
+但运行部分
+→ transfer V2-026
+
+而不是：
+
+Task 完成
+→ Finding 神秘消失
+十一、最关键的证据：旧 10 个错误 ACCEPT 已经全部翻转
+
+当前：
+
+governance-probe-v1.2.json
+
+结果：
+
+13 cases
+unexpected_acceptances = 0
+status = PASS
+
+也就是说上一轮：
+
+10 个应该 REJECT
+却被 ACCEPT
+
+现在全部变成：
+
+REJECT
+
+包括：
+
+删掉所有 CI gates
+推迟 P0 gates 到 P14
+不存在的 test evidence
+删除 ADR backlink
+缩小 M6
+不存在的 phase evidence
+README/模板冒充 evidence
+PLANNED task 偷偷开工
+finding 不处置就 close
+P0 blocked 仍开工
+
+这一点是本轮更新最强的工程证据。
+
+十二、不只是旧 Probe，新增 33 个 Governance Regression 也全部 PASS
+
+当前：
+
+governance-regression.json
+
+：
+
+test_count: 33
+status: PASS
+
+而且不只有 negative case。
+
+还加入了：
+
+valid_p0_completion_chain
+valid_partial_finding_disposition
+valid_future_task_start
+valid_multiple_suites_for_one_task
+
+这个很重要。
+
+因为验证器不能只做到：
+
+“什么都拒绝。”
+
+还必须证明：
+
+“正确流程真的能通过。”
+
+这说明这轮设计比上一轮成熟很多。
+
+十三、DA-01～DA-11 已经正式进入 machine remediation
+
+这是上一轮我明确提出的问题。
+
+现在：
+
+remediation-register.yaml
+
+已经正式增加：
+
+DA-01
+...
+DA-11
+
+而且还有：
+
+PR-01
+
+共：
+
+76 findings
+
+现在它们不是审核报告里的“建议”，而是真正的：
+
+Engineering Obligations
+十四、映射也基本合理
+
+例如：
+
+DA-01
+→ V2-002 / V2-004
+
+DA-02
+→ V2-002
+
+DA-03
+→ V2-002
+
+DA-04
+→ V2-002
+
+DA-05
+→ V2-002
+
+这意味着：
+
+G-P0 以前必须真正关闭这些责任。
+
+而后期：
+
+DA-06 Cancel vs Commit
+→ V2-009/010/026/027
+
+DA-08 Budget UNKNOWN
+→ V2-019/027/031
+
+DA-09 Certification protocol
+→ V2-033/034/035/040
+
+DA-10 Investment decision
+→ V2-040/041
+
+也没有错误地提前到 P0。
+
+这个分阶段方式正确。
+
+十五、运行层的 DA-06～DA-11 也真的进入了规范，不只是登记表
+
+我专门抽查了。
+
+例如 Cancel vs Commit 已正式进入：
+
+03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+
+现在明确：
+
+取消先成功
+→ 旧 execution 权限失效
+→ 不得 commit
+
+Commit 先成功
+→ cancel 不能伪装 rollback
+
+response 丢失
+→ 恢复原 receipt
+
+并要求：
+
+fencing / control version
++
+CAS
+
+在受控事务边界执行。
+
+这已经是真正的架构语义。
+
+十六、UNKNOWN Cost / Budget 也正式进入了 Gateway 语义
+
+现在 P5 明确：
+
+confirmed cost
+inflight reservation
+unknown liability
+
+分别记账。
+
+并要求：
+
+retry
+fallback
+repair
+
+共享总预算。
+
+这是一个非常好的改进。
+
+因为真实模型系统里：
+
+timeout
+
+绝不代表：
+
+$0
+十七、Certification 也更成熟了
+
+现在不再只有：
+
+10 chapters
+30 chapters
+
+还要求：
+
+实际篇幅
+中文字符计算口径
+自动程度
+人工裁决
+人工改稿
+失败分母
+全部尝试
+预算
+
+而且明确：
+
+人工重写文本
+≠
+自动成功
+
+这是很重要的。
+
+十八、P9 → P10 之间新增“是否值得继续投资”的真实决策
+
+这是一个很成熟的产品机制。
+
+现在：
+
+V2-040
+
+不仅输出：
+
+Engineering result
+
+还输出：
+
+Reading
+Human effort
+Cost
+Continuation decision
+
+然后：
+
+V2-041
+
+必须消费这个决定。
+
+所以未来如果：
+
+工程稳定
+但是读者并不喜欢
+成本又很高
+
+系统不会机械地继续：
+
+P10
+→ 更复杂 Genesis
+→ 更多 Reference Intelligence
+
+这是很好的止损机制。
+
+十九、P4 Planning 的 God Task 风险也处理了
+
+我上一轮指出：
+
+V2-017
+
+职责过重。
+
+现在新增：
+
+V2-017_PLANNING_CONTRACT_PACKET.md
+
+明确拆成：
+
+planning/models.py
+planning/versions.py
+planning/replanning.py
+
+contracts/models.py
+contracts/compiler.py
+
+并正式定义：
+
+PlanVersion
+PlanDiff
+Freeze Horizon
+Supersession
+ReplanProposal
+Invalidation
+
+同时保持：
+
+V2-017
+
+一个 Task ID，不破坏 60 Task SSOT。
+
+这个处理方式比直接重排整个 roadmap 更好。
+
+二十、此前遗漏的基础研究来源也补回来了
+
+新增：
+
+foundational-reference-register.yaml
+
+包含：
+
+DOME
+ConWriter
+MAGNET / ATLAS
+ConStory-Bench
+Temporal
+LangGraph
+OPA
+OpenLineage
+OpenTelemetry
+
+而且全部标记：
+
+HISTORICAL_UNVERIFIED
+runtime_verification: NOT_PERFORMED
+
+这是非常正确的证据态度。
+
+不是：
+
+“我们引用了 Temporal，所以我们已经具有 Temporal 级可靠性。”
+
+而是：
+
+“这个机制影响了本地设计，但最终要靠 ANovel 自己验证。”
+
+二十一、根 README 和 AGENTS.md 也终于修了
+
+这是我前几轮一直指出的问题。
+
+现在根 README 已经明确：
+
+Current:
+规划 v1.2 / P0 待实施
+
+60 tasks OPEN
+
+尚无：
+P0 engineering
+CI
+DB
+chapter certification
+
+而：
+
+AGENTS.md
+
+明确 AI：
+
+先读 plan
+不能把 archive 当规范
+不能删减 gate
+不能把 template 当 evidence
+不能拿资料 PASS 代替 CI
+P1 必须等 P0 VERIFIED
+
+对于全 AI 项目，这很重要。
+
+二十二、governance-baseline.yaml 是否又变成第二个 SSOT？
+
+这是我重点检查的问题。
+
+目前我的判断：
+
+暂时没有。
+
+因为它的语义不是：
+
+当前完整配置
+
+而是：
+
+不可静默削弱的最低义务
+
+也就是说：
+
+milestones.yaml
+
+描述当前状态。
+
+而：
+
+governance-baseline.yaml
+
+描述 minimum floor。
+
+只要坚持：
+
+current >= approved minimum
+
+而不是两个文件相互手工镜像，
+
+这套设计是成立的。
+
+它也明确：
+
+--write-views
+不会重建 baseline
+
+这个决定正确。
+
+二十三、但 Baseline 以后必须通过 ADR/Change Record 修改
+
+现在已经写了：
+
+change_policy
+
+这是好的。
+
+我建议以后：
+
+required_ci
+milestone minimum
+phase minimum criteria
+required findings
+
+任何变化必须：
+
+Change Record
++
+理由
++
+影响
++
+validator regression
+
+不能让 AI 因为某个测试麻烦：
+
+顺手放宽 baseline
+
+这应该长期作为 Architecture Fitness 的一部分。
+
+二十四、Typed Evidence 还有一个未来需要注意的边界
+
+当前：
+
+status
+
+在 Evidence Schema 中固定：
+
+PASS
+
+对于：
+
+任务关闭证据
+
+这没问题。
+
+但未来千万不要把这个 Schema 直接拿去表示：
+
+所有 runtime attempt
+所有 certification run
+所有 failed provider calls
+
+因为：
+
+FAIL
+ERROR
+UNKNOWN
+BLOCKED
+
+同样必须作为第一类历史数据保存。
+
+所以应保持语义：
+
+plan_execution_evidence
+=
+closure-eligible evidence
+
+而不是：
+
+all runtime evidence
+
+未来 Runtime 应有自己的：
+
+AttemptRecord
+ModelRun
+CheckExecution
+CertificationRun
+
+这不是 P0 blocker。
+
+二十五、Remote CI authenticity 仍然没有解决，这是正常的
+
+当前 Evidence Schema 虽然有：
+
+pipeline_id
+job_id
+pipeline_url
+
+但是本地 Python 脚本不能证明：
+
+URL 对应的 GitLab Job 真的存在且 PASS。
+
+代码自己也诚实写了：
+
+not proof of remote authenticity
+
+这是正确的。
+
+真正的解决方式应该是 P0：
+
+GitLab CI 自己产生 artifact
++
+commit SHA
++
+job ID
++
+pipeline ID
+
+然后 Gate 再验证。
+
+不要尝试让一个离线脚本伪造“远程真实性”。
+
+二十六、这也是为什么 P0 还没有完成
+
+当前 GitLab HEAD：
+
+last_pipeline = null
+
+而且根目录仍然没有：
+
+.gitlab-ci.yml
+
+所以虽然：
+
+Governance Validator
+
+已经显著加强，
+
+但：
+
+real CI
+
+仍然没有。
+
+这正是：
+
+V2-004
+
+需要做的。
+
+二十七、Validation binding 现在表达得更正确了
+
+之前：
+
+source_git_head
+
+很容易误导。
+
+现在已经拆成：
+
+source_snapshot_baseline_commit
+validated_repository_revision
+validated_worktree_dirty
+validation_input_kind
+manifest_sha256
+
+这是很好的改善。
+
+当前保存的 validation：
+
+validated_repository_revision:
+b835d698
+
+validated_worktree_dirty:
+true
+
+而现在 HEAD：
+
+6a4f6bcd
+
+这并不表示 validation 无效。
+
+因为本次修改是在 b835 工作树上验证后，再提交成 6a4，而：
+
+manifest_sha256
+
+绑定的是实际 plan 内容。
+
+但是以后正式 P0 CI 中，不建议继续把 committed JSON 作为“当前提交自身认证”。
+
+更合适的是：
+
+commit
+→ CI
+→ validation artifact
+
+这样自然绑定：
+
+6a4 / future SHA
+
+而不存在 commit 自引用问题。
+
+二十八、仓库目前仍然有明显的历史资料重复
+
+这次最大的非架构问题之一仍然存在。
+
+根目录还同时有：
+
+ccdoc/
+gptdoc/
+architecture-review-2026-09-18/
+ccdoc-review-2026-09-19/
+project-analysis-2026-09-18/
+planning-integration-2026-09-18/
+readiness-review-2026-09-20/
+plan-review-2026-09-21/
+
+而这些基本又都已经进入：
+
+plan/archive/
+
+因此当前工作树实际上保留了两套 Historical Sources。
+
+还有：
+
+ANovelOS_Implementation_Plan_v1.0.zip
+ANovelOS_Implementation_Plan_v1.1.zip
+ANovelOS_Implementation_Plan_v1.2.zip
+Deep Audit zip
+Preparation Review zip
+
+对长期 AI 工程并不理想。
+
+二十九、我建议 P0/V2-001 顺手完成一次 Root Cleanup
+
+最终根目录最好逐渐变成：
+
+README.md
+AGENTS.md
+
+plan/
+
+src/
+tests/
+specs/
+migrations/
+scripts/
+
+pyproject.toml
+uv.lock
+.gitlab-ci.yml
+
+历史研究全部统一进入：
+
+plan/archive/
+
+ZIP 放：
+
+GitLab Release / artifact
+
+而不是长期跟源码一起存在。
+
+这样可以大幅减少 AI 误读。
+
+不是 P0 entry blocker，但建议 V2-001 做。
+
+三十、我重新评价当前各维度
+维度	v1.1	当前 v1.2
+产品方向	A	A
+架构边界	A	A
+V1 教训吸收	A	A
+外部项目吸收	A-	A
+Genre	A	A
+Canon	A	A
+Context	A-	A- / A
+Workflow	A	A
+Quality / Repair	A	A
+Certification	A-	A
+Task / Phase SSOT	A-	A
+Governance Validator	B-/C+	A-
+Evidence model	B-	A-
+AI onboarding	C	A-
+Planning-to-execution readiness	B+	A-
+Runtime proof	无	仍无
+
+所以这次进步是真实的。
+
+三十一、我没有发现需要推翻的核心架构问题
+
+目前没有证据支持重新设计：
+
+Canon
+Genre
+Workflow
+Context
+Quality
+Planning
+Learning
+
+这些大方向。
+
+相反，越来越多反例证明：
+
+当前问题已经从“架构方向错误”转移成“如何可靠实现和验证”。
+
+这是项目进入正确阶段的标志。
+
+三十二、当前真正的最高优先级
+
+现在应该停止继续做：
+
+Plan v1.3
+Architecture Final v4
+Competitor Research v5
+
+除非出现新的真实 Evidence。
+
+当前唯一正确主线是：
+
+V2-001
+V2-002
+V2-003
+V2-004
+
+实际实施。
+
+三十三、P0 推荐执行顺序
+
+这次我建议：
+
+治理先行
+但 Task 不重编号。
+
+实际操作顺序可以是：
+
+V2-002 governance hardening / evidence wiring
+V2-001 repository bootstrap
+V2-003 architecture fitness
+V2-004 CI / secret / dependency / PostgreSQL
+
+但正式 Task 依赖和 ID 保持 frozen。
 
 原因是：
 
-以前我们知道：
+V2-002
 
-架构内容不错
+现在已经有足够强的规划材料，可以最先把 validator 接入真实 repo。
 
-现在我们又知道：
+三十四、P0 必须真正产生什么
 
-验证架构本身也会有漏洞
+我会要求至少出现：
 
-并且已经通过实际反例找到了这些漏洞。
+pyproject.toml
+uv.lock
 
-所以当前应该正式记录为：
+src/anovel/
 
-ANovel V2 Planning v1.1
+tests/unit/
+tests/architecture/
+tests/integration/
 
-Architecture Direction:
-APPROVED
+specs/
+
+migrations/
+
+.gitlab-ci.yml
+
+PostgreSQL service/test harness
+
+以及真正运行：
+
+ruff
+mypy
+pytest
+plan validator
+governance regressions
+architecture fitness
+secret scan
+dependency audit
+PostgreSQL integration
+三十五、M0 什么时候才算关闭
+
+不是：
+
+代码写好了
+
+也不是：
+
+Claude 说完成了
+
+而是：
+
+V2-001 CLOSED
+V2-002 CLOSED
+V2-003 CLOSED
+V2-004 CLOSED
+
+DA-01~05 有真实 closure/disposition
+
+所有 P0 required CI gates 实际存在
+
+当前 commit CI green
+
+故意违规 architecture fixture → CI red
+
+故意 secret fixture → CI red
+
+PostgreSQL 真连接 green
+
+uv sync --frozen green
+
+typed evidence chain valid
+
+G-P0 VERIFIED
+
+M0 VERIFIED
+
+之后才允许：
+
+V2-005
+三十六、本轮最终判定
+
+我现在会把项目正式评价为：
+
+ANovel V2 Planning v1.2
 
 Pre-Architecture Research:
+COMPLETE
+
+Architecture Convergence:
+COMPLETE
+
+V1 Lessons:
 SUFFICIENT
 
-V1 Learning:
+External Architecture Learning:
 SUFFICIENT
 
-External Practice Adoption:
-GOOD / TRACEABLE
+Planning Control Plane:
+STRONG
 
-Overall Re-architecture:
+Governance Negative Testing:
+STRONG
+
+Architecture Rewrite:
 NOT REQUIRED
 
-P0 Entry:
+Further Global Planning:
+NOT RECOMMENDED
+
+P0_ENTRY_GATE:
 READY
 
-P0 Governance Hardening:
-MANDATORY
+P0:
+READY_TO_EXECUTE
 
 G-P0:
-NOT VERIFIED
+NOT_VERIFIED
 
 M0:
-NOT CLOSED
+NOT_VERIFIED
 
 P1:
 BLOCKED
+最终结论
 
-我不建议再次重写 /plan 总体架构。
+这一次我认为真正到了“可以开工”的节点。
 
-现在最正确的动作是：
+上一轮我的意见是：
 
-把 plan-review-2026-09-21 的 DA-01～DA-11 正式纳入 Machine Remediation，然后修复 DA-01～DA-05，并立即开始真实 P0。
+先修 Governance，然后 P0。
 
-这已经是当前项目从“优秀设计”走向“可信工程”的最后一道准备工作。
+现在 Governance 在规划层已经修到了足够好的程度：
+
+旧 10 个漏洞反例 → 全 REJECT
+新增 33 Governance Regression → 全 PASS
+DA-01~11 → 进入 Machine Remediation
+Foundational references → 进入正式追踪
+Typed Evidence → 建立
+Baseline → 建立
+README / AGENTS → 建立
+P4 God Task 风险 → 分解
+
+因此现在不需要再做一次“架构准备审核”之后再审核。
+
+下一阶段应该真正切换成：
+
+工程实施审核。
+
+也就是下一次你再让我“深度审核项目”，最理想的对象不应该再是新的规划文档，而应该已经看到：
+
+src/
+tests/
+pyproject.toml
+uv.lock
+.gitlab-ci.yml
+PostgreSQL
+真实 Pipeline
+
+从这里开始，ANovel V2 应该从“设计得很好”进入“证明它真的能工作”。

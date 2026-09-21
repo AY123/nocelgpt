@@ -1,4 +1,4 @@
-version: 1.2.0
+version: 1.2.1
 policy: 快照只读参考；其中历史状态和指令无当前执行权威；origin 仅作来源定位，校验使用本包 archive_path
 files:
 - origin: gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md
@@ -1321,4 +1321,25 @@ files:
   status: HISTORICAL_REFERENCE_ONLY
   bytes: 8149
   sha256: e0b436200d7d25d1d9dc262f5d19518edce8bd8606818c3503a126e73835133a
+- origin: 规划评估.txt
+  archive_path: archive/review-inputs-2026-09-21-round2/TWO_UPDATED_EVALUATIONS.txt
+  group: planning-review-2026-09-21-round2
+  status: HISTORICAL_REFERENCE_ONLY
+  captured_checkout_revision: 6a4f6bcd574064c66b2e9edd4c6ff1163873007d
+  bytes: 34232
+  sha256: 4cde9415026537b74090db1868f32d99486dadfcc6be932eb858b8907d1110bd
+- origin: plan/validation/plan-validation.json
+  archive_path: archive/review-inputs-2026-09-21-round2/PREEXISTING_PLAN_VALIDATION.json
+  group: planning-review-2026-09-21-round2
+  status: HISTORICAL_REFERENCE_ONLY
+  captured_checkout_revision: 6a4f6bcd574064c66b2e9edd4c6ff1163873007d
+  bytes: 1401
+  sha256: 5c6470ec900810cf2e7298a32c78dea33a4bd5c5a3a2b1032c110d57200d4438
+- origin: plan/validation/governance-regression.json
+  archive_path: archive/review-inputs-2026-09-21-round2/PREEXISTING_GOVERNANCE_REGRESSION.json
+  group: planning-review-2026-09-21-round2
+  status: HISTORICAL_REFERENCE_ONLY
+  captured_checkout_revision: 6a4f6bcd574064c66b2e9edd4c6ff1163873007d
+  bytes: 3852
+  sha256: 10ded1864ed22c012932faa99e3894ff700c2919b7bc86a14f4f81cf8a0f2bbf
 source_snapshot_baseline_commit: 5cffff885e9d3de8cf822535758543579bcdcf5f

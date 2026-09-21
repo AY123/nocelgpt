@@ -1,5 +1,5 @@
 document_id: ANOVELOS-PLAN-BACKLOG
-version: 1.2.0
+version: 1.2.1
 status: ACTIVE_PLANNING_BASELINE
 supersedes: archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml
 note: 保留首批 60 任务身份、阶段与原任务依赖；新增阶段门禁和具体执行要求；不是工程完成证据
@@ -20,6 +20,7 @@ tasks:
   - 隔离 PostgreSQL 启动连接清理成功
   - 缺配置明确失败且无真实凭证
   - 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，运行环境与负责人分配在开工记录中可查
+  - 形成历史目录与分发包处置清单，核对归档覆盖/hash/引用与独有资料；迁移不得丢失唯一版本或让 archive 进入业务构建
   tests:
   - AT-V2-001
   artifacts:
@@ -30,6 +31,7 @@ tasks:
   - src/anovel/__init__.py
   - tests/integration/test_repository_bootstrap.py
   - tests/integration/test_postgres_environment.py
+  - docs/repository-layout-migration.md
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
@@ -56,6 +58,7 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
+  - changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
 - task_id: V2-002
   title: Normative documentation index
   phase: P0
@@ -77,6 +80,10 @@ tasks:
   - 不存在文件、目录、README 或未接受 ADR 模板冒充类型化证据均被拒绝；证据的类型归属版本与 hash 一致
   - readiness、P0 entry 和 ADR/finding 双向关系受校验；任务 CLOSED 必须逐项处置关联 finding
   - 治理回归包含合格完成链正例及单点负例；深层失败不能被更早的无效夹具掩盖
+  - 仅 PASS 的 plan_execution_evidence 用于放行见证，失败/UNKNOWN 原始执行记录独立保留且不得冒充完成证据
+  - 校验产物可输出到 plan 外的独立目录（如项目内 dist/validation）；该模式不回写被测计划，已提交 JSON 不视为当前提交认证
+  - 模板 Artifact 按解析后路径判定；相对路径别名与符号链接不能冒充执行结果，合法产物不被误拒绝
+  - 里程碑与其阶段决定及阶段适用 CI 绑定同一被核验 revision，同时允许保留适用的历史任务证据
   tests:
   - AT-V2-002
   artifacts:
@@ -129,6 +136,7 @@ tasks:
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
   - changes/2026-09-21_REVIEW_ADOPTION.md
+  - changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
   external_practices:
   - EXT-009
 - task_id: V2-003
@@ -192,6 +200,7 @@ tasks:
   - 无害 Secret 与违规依赖夹具被阻断
   - PostgreSQL job 实际连接且当前提交 CI 证据可查
   - 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
+  - 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实 CI 放行证据
   tests:
   - AT-V2-004
   artifacts:
@@ -225,6 +234,7 @@ tasks:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
   - changes/2026-09-21_REVIEW_ADOPTION.md
+  - changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
 - task_id: V2-005
   title: Core entity IDs and alias resolution
   phase: P1

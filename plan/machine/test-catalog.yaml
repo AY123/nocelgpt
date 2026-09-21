@@ -1,4 +1,4 @@
-version: 1.2.0
+version: 1.2.1
 meaning: 验收场景是计划；目标测试路径尚未实现
 suites:
 - id: AT-V2-001
@@ -15,6 +15,8 @@ suites:
     required_assertion: 缺配置明确失败且无真实凭证
   - id: AT-V2-001-04
     required_assertion: 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，运行环境与负责人分配在开工记录中可查
+  - id: AT-V2-001-05
+    required_assertion: 形成历史目录与分发包处置清单，核对归档覆盖/hash/引用与独有资料；迁移不得丢失唯一版本或让 archive 进入业务构建
   execution_evidence: []
 - id: AT-V2-002
   task_id: V2-002
@@ -38,6 +40,14 @@ suites:
     required_assertion: readiness、P0 entry 和 ADR/finding 双向关系受校验；任务 CLOSED 必须逐项处置关联 finding
   - id: AT-V2-002-08
     required_assertion: 治理回归包含合格完成链正例及单点负例；深层失败不能被更早的无效夹具掩盖
+  - id: AT-V2-002-09
+    required_assertion: 仅 PASS 的 plan_execution_evidence 用于放行见证，失败/UNKNOWN 原始执行记录独立保留且不得冒充完成证据
+  - id: AT-V2-002-10
+    required_assertion: 校验产物可输出到 plan 外的独立目录（如项目内 dist/validation）；该模式不回写被测计划，已提交 JSON 不视为当前提交认证
+  - id: AT-V2-002-11
+    required_assertion: 模板 Artifact 按解析后路径判定；相对路径别名与符号链接不能冒充执行结果，合法产物不被误拒绝
+  - id: AT-V2-002-12
+    required_assertion: 里程碑与其阶段决定及阶段适用 CI 绑定同一被核验 revision，同时允许保留适用的历史任务证据
   execution_evidence: []
 - id: AT-V2-003
   task_id: V2-003
@@ -66,6 +76,8 @@ suites:
     required_assertion: PostgreSQL job 实际连接且当前提交 CI 证据可查
   - id: AT-V2-004-04
     required_assertion: 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
+  - id: AT-V2-004-05
+    required_assertion: 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实 CI 放行证据
   execution_evidence: []
 - id: AT-V2-005
   task_id: V2-005

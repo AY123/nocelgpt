@@ -2,14 +2,14 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **规划 v1.2 / P0 待实施**。60 个任务仍为 OPEN，尚未取得 P0 工程、真实 CI、数据库或章节认证证据。
+当前为 **规划 v1.2.1 / P0 待实施**。60 个任务仍为 OPEN，尚未取得 P0 工程、真实 CI、数据库或章节认证证据。
 
 ## 从这里开始
 
 1. [正式规划入口](plan/README.md)与[短执行协议](AGENTS.md)。
 2. [P0 执行方案](plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)：V2-001～004。
 3. [任务清单](plan/machine/implementation-backlog.yaml)、[阶段门禁](plan/machine/phase-gates.yaml)、[整改义务](plan/machine/remediation-register.yaml)。
-4. [两份评估报告的核实与采纳](plan/changes/2026-09-21_REVIEW_ADOPTION.md)。
+4. [更新版两份评估报告的核实与采纳](plan/changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)及[上一轮采纳记录](plan/changes/2026-09-21_REVIEW_ADOPTION.md)。
 
 `plan/machine/` 是现行机器资料，`plan/generated/` 是生成视图。`gptdoc/`、`ccdoc/`、历史审核和 `plan/archive/` 是设计或证据输入，不是平行执行规范。
 

@@ -49,7 +49,8 @@
       "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
     },
     "status": {
-      "const": "PASS"
+      "const": "PASS",
+      "description": "PASS is required for this closure witness; do not coerce FAIL, ERROR, UNKNOWN or BLOCKED raw execution records to PASS."
     },
     "producer": {
       "type": "string",
@@ -433,5 +434,6 @@
         }
       }
     }
-  ]
+  ],
+  "description": "Closure-eligible PASS attestations only. Runtime attempts, failed/unknown checks and certification runs retain their own status records. A typed local attestation does not authenticate a remote CI job."
 }

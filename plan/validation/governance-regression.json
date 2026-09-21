@@ -1,9 +1,9 @@
 {
   "scope": "Planning governance regressions in disposable copies; synthetic records are not runtime evidence",
-  "generated_at_utc": "2026-09-21T05:25:12.992328+00:00",
-  "manifest_sha256": "67a962a9ec99680a4a6206005dc768fda6a613898a8e554e42a26b81086c8191",
+  "generated_at_utc": "2026-09-21T14:01:46.183923+00:00",
+  "manifest_sha256": "30bcce703e2110dfce630a0d41b06bc08d751a7257e9409b5d9053c6c9bee0c1",
   "status": "PASS",
-  "test_count": 33,
+  "test_count": 39,
   "cases": [
     {
       "case": "__main__.GovernanceTests.test_adr_backlink_removed",
@@ -34,6 +34,10 @@
       "status": "PASS"
     },
     {
+      "case": "__main__.GovernanceTests.test_cli_external_reports_do_not_change_plan",
+      "status": "PASS"
+    },
+    {
       "case": "__main__.GovernanceTests.test_directory_not_record",
       "status": "PASS"
     },
@@ -54,6 +58,10 @@
       "status": "PASS"
     },
     {
+      "case": "__main__.GovernanceTests.test_milestone_revision_matches_phase_decision",
+      "status": "PASS"
+    },
+    {
       "case": "__main__.GovernanceTests.test_milestone_shrink",
       "status": "PASS"
     },
@@ -67,6 +75,10 @@
     },
     {
       "case": "__main__.GovernanceTests.test_missing_suite_file",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_normalized_template_aliases_are_rejected",
       "status": "PASS"
     },
     {
@@ -94,6 +106,10 @@
       "status": "PASS"
     },
     {
+      "case": "__main__.GovernanceTests.test_runtime_failure_states_are_not_closure_witnesses",
+      "status": "PASS"
+    },
+    {
       "case": "__main__.GovernanceTests.test_source_registry_does_not_claim_fresh_verification",
       "status": "PASS"
     },
@@ -106,11 +122,19 @@
       "status": "PASS"
     },
     {
+      "case": "__main__.GovernanceTests.test_valid_artifact_in_nested_templates_named_directory",
+      "status": "PASS"
+    },
+    {
       "case": "__main__.GovernanceTests.test_valid_exported_cli_and_single_negative",
       "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_future_task_start",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_historical_task_revision_in_current_phase",
       "status": "PASS"
     },
     {

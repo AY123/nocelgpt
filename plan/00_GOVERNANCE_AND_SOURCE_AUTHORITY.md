@@ -67,4 +67,6 @@
 
 v1.2 的 `plan_execution_evidence` 是任务/CI/决策的执行见证格式，不替代本节 E0–E4 叙事/评价证据体系。最低 CI、里程碑和阶段义务见 [governance-baseline.yaml](machine/governance-baseline.yaml)，批准摘要由验证器核对；生成视图不能重建最低义务。双向 ADR/finding 关联和 readiness/entry gate 都是实际检查。
 
+该格式仅表示具备放行资格的 PASS 见证，不是全部执行历史的通用 Schema。FAIL、ERROR、UNKNOWN、BLOCKED 及取消、中止保留在原始 CI 报告或对应任务定义的 Attempt/ModelRun/CheckExecution/CertificationRun 中，不得为适配关闭格式而丢弃或改记 PASS。治理 Schema 不提前规定全部运行域模型；现有失败分母与审计保留要求继续适用。
+
 [基础参考索引](machine/foundational-reference-register.yaml)只把历史研究归属接入现行任务，统一标 HISTORICAL_UNVERIFIED。它不声称本轮核实过论文、产品页面、性能数字或来源名称，不赋予历史报告执行权威，也不引入对应基础设施依赖。

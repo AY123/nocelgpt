@@ -3,6 +3,7 @@
 from copy import deepcopy
 from pathlib import Path
 from datetime import datetime, timezone
+import argparse
 import hashlib
 import json
 import shutil
@@ -139,11 +140,42 @@ class GovernanceTests(unittest.TestCase):
         self.mutate_record('ADR_DECISION','ADR-001',lambda r:r.update(artifacts=[{'ref':'templates/ADR.md','sha256':hashlib.sha256(template.read_bytes()).hexdigest()}]))
         self.reject('EVIDENCE_ARTIFACT')
 
+    def test_normalized_template_aliases_are_rejected(self):
+        template = self.plan/'templates/ADR.md'
+        link = self.records/'template-link.md'
+        link.symlink_to(template)
+        for ref in ('./templates/ADR.md','validation/../templates/ADR.md','validation/fixture/template-link.md'):
+            with self.subTest(ref=ref):
+                self.mutate_record('ADR_DECISION','ADR-001',lambda r:r.update(artifacts=[{'ref':ref,'sha256':hashlib.sha256(template.read_bytes()).hexdigest()}]))
+                self.reject('EVIDENCE_ARTIFACT')
+
+    def test_valid_artifact_in_nested_templates_named_directory(self):
+        artifact = self.records/'templates/result.txt'
+        artifact.parent.mkdir()
+        artifact.write_text('Synthetic execution result; not a plan template')
+        self.mutate_record('ADR_DECISION','ADR-001',lambda r:r.update(artifacts=[{'ref':str(artifact.relative_to(self.plan)),'sha256':hashlib.sha256(artifact.read_bytes()).hexdigest()}]))
+        self.assertEqual(self.errors(), [])
+
     def test_milestone_shrink(self):
         self.data['milestones']['milestones'][6]['required_tasks']=['V2-001']; self.reject('MILESTONE_BASELINE')
 
     def test_milestone_requires_phase(self):
         self.data['phase-gates']['phases'][0]['status']='NOT_VERIFIED'; self.reject('MILESTONE_PHASE')
+
+    def test_milestone_revision_matches_phase_decision(self):
+        self.mutate_record('MILESTONE_DECISION','M0',lambda r:r.update(revision='b'*40))
+        self.reject('EVIDENCE_REVISION')
+
+    def test_valid_historical_task_revision_in_current_phase(self):
+        task = self.data['implementation-backlog']['tasks'][0]
+        for pointers in task['evidence'].values():
+            for pointer in pointers:
+                pointer['revision'] = 'b'*40
+                path = self.plan/pointer['ref']
+                record = json.loads(path.read_text())
+                record['revision'] = 'b'*40
+                path.write_text(json.dumps(record)+'\n')
+        self.assertEqual(self.errors(), [])
 
     def test_adr_backlink_removed(self):
         self.data['implementation-backlog']['tasks'][0]['required_decisions']=[]; self.reject('ADR_BACKLINK')
@@ -181,6 +213,28 @@ class GovernanceTests(unittest.TestCase):
 
     def test_failed_run_rejected(self):
         self.mutate_record('CI_RUN','V2-001',lambda r:r.update(exit_code=1)); self.reject('EVIDENCE_RECORD')
+
+    def test_runtime_failure_states_are_not_closure_witnesses(self):
+        path = self.records/'CI_RUN-V2-001.json'
+        original = json.loads(path.read_text())
+        for status in ('FAIL','ERROR','UNKNOWN','BLOCKED'):
+            with self.subTest(status=status):
+                record = deepcopy(original)
+                record['status'] = status
+                path.write_text(json.dumps(record)+'\n')
+                self.reject('EVIDENCE_RECORD')
+
+    def test_cli_external_reports_do_not_change_plan(self):
+        def inventory():
+            return {str(p.relative_to(self.plan)):hashlib.sha256(p.read_bytes()).hexdigest()
+                    for p in self.plan.rglob('*') if p.is_file()}
+        before = inventory()
+        reports = Path(self.tmp.name)/'dist/validation/job-1'
+        for mode, name in [('--check','plan-validation.json'),('--self-test','validator-self-test.json')]:
+            result = subprocess.run([sys.executable,'-B',str(self.plan/'scripts/validate_plan.py'),mode,'--output-dir',str(reports)], capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+            self.assertEqual(json.loads((reports/name).read_text())['status'],'PASS')
+        self.assertEqual(before,inventory())
 
     def test_phase_requires_applicable_ci(self):
         self.mutate_record('CI_RUN','P0',lambda r:r.update(check_ids=['STATIC'])); self.reject('EVIDENCE_COVERAGE')
@@ -228,6 +282,10 @@ class RecordedResult(unittest.TextTestResult):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, default=validator.PLAN/'validation')
+    args = parser.parse_args()
+    args.output_dir.mkdir(parents=True, exist_ok=True)
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(GovernanceTests)
     result = unittest.TextTestRunner(verbosity=2, resultclass=RecordedResult).run(suite)
     report = {'scope':'Planning governance regressions in disposable copies; synthetic records are not runtime evidence',
@@ -235,5 +293,5 @@ if __name__ == '__main__':
               'manifest_sha256':validator.sha(validator.PLAN/'FILE_MANIFEST.json'),
               'status':'PASS' if result.wasSuccessful() else 'FAIL',
               'test_count':result.testsRun,'cases':result.cases}
-    (validator.PLAN/'validation/governance-regression.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
+    (args.output_dir/'governance-regression.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
     sys.exit(0 if result.wasSuccessful() else 1)

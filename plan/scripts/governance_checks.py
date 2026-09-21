@@ -106,7 +106,7 @@ class EvidenceReader:
                     p = self.path(artifact['ref'])
                     if p is None or hashlib.sha256(p.read_bytes()).hexdigest() != artifact['sha256']:
                         self.errors.append(f'EVIDENCE_ARTIFACT {ref}: missing/changed {artifact["ref"]}')
-                    elif Path(artifact['ref']).parts[0] == 'templates':
+                    elif p.relative_to(self.plan).parts[0] == 'templates':
                         self.errors.append(f'EVIDENCE_ARTIFACT {ref}: a template is not an execution result')
                 for child in record['input_evidence_refs']:
                     self.read(child)
@@ -210,7 +210,10 @@ def evidence_checks(data, plan):
         for ref in m['evidence_refs']:
             record = reader.read(ref, {'MILESTONE_DECISION'}, m['id'])
             if record and m['status'] == 'VERIFIED':
-                required = set(phases[m['earliest_close_phase']]['evidence_refs']) | {x['ref'] for tid in m['required_tasks'] for x in tasks[tid]['evidence']['acceptance']}
+                phase = phases[m['earliest_close_phase']]
+                for phase_ref in phase['evidence_refs']:
+                    reader.read(phase_ref, {'PHASE_DECISION'}, phase['id'], record['revision'])
+                required = set(phase['evidence_refs']) | {x['ref'] for tid in m['required_tasks'] for x in tasks[tid]['evidence']['acceptance']}
                 require(required.issubset(record['input_evidence_refs']), f'MILESTONE_INPUTS {m["id"]}: missing phase/task evidence')
     for f in data['remediation-register']['findings']:
         for ref in f['closure_refs']:
