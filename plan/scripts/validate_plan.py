@@ -15,15 +15,20 @@ import hashlib
 import json
 import re
 import sys
+import subprocess
 from urllib.parse import urlparse, unquote
 
 import yaml
 from jsonschema import Draft202012Validator
 
 PLAN = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from governance_checks import object_checks, evidence_checks
+
+APPROVED_GOVERNANCE_BASELINE = "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
 NAMES = ['implementation-backlog', 'phase-gates', 'milestones', 'test-catalog',
          'decision-register', 'remediation-register', 'authority-policy', 'ci-gates', 'source-register',
-         'external-practice-register']
+         'external-practice-register', 'governance-baseline', 'foundational-reference-register']
 EVIDENCE = {'E0': 'deterministic_check', 'E1': 'structured_extraction',
             'E2': 'model_evaluation_including_simulated_reader', 'E3': 'human_gold_blind_review',
             'E4': 'real_reader_market_observation'}
@@ -231,9 +236,10 @@ def validate_objects(data):
         check(finding['status'] in {'OPEN_TRACKED','IN_PROGRESS','VERIFIED','CLOSED'}, f'FINDING_STATUS {finding["id"]}: unsupported status')
         check(bool(finding['related_tasks']) and all(t in by for t in finding['related_tasks']), f'FINDING_OWNER {finding["id"]}: invalid')
         check(bool(finding['acceptance_evidence']), f'FINDING_CRITERIA {finding["id"]}: absent')
-        if finding['status'] == 'CLOSED':
+        if finding['status'] in {'VERIFIED', 'CLOSED'}:
             check(bool(finding['closure_refs']), f'FINDING_CLOSURE {finding["id"]}: absent evidence')
     expected_findings = {f'AR-{i:02d}' for i in range(1,21)} | {f'CA-{i:02d}' for i in range(1,25)} | {f'RR-{i:02d}' for i in range(1,13)} | {f'SUP-{i:02d}' for i in range(1,9)}
+    expected_findings |= {f'DA-{i:02d}' for i in range(1,12)} | {'PR-01'}
     check(set(finding_by) == expected_findings, 'FINDING_COVERAGE: missing/extra audit mappings')
 
     milestones = data['milestones']['milestones']
@@ -253,6 +259,7 @@ def validate_objects(data):
     for gate in data['ci-gates']['gates']:
         check(gate['allow_failure'] is False, f'CI_HARD_GATE {gate["id"]}: allow_failure must be false when applicable')
         check(gate['activation_phase'] in phase_by, f'CI_PHASE {gate["id"]}: unknown phase')
+    errors += object_checks(data)
     return errors
 
 
@@ -296,7 +303,11 @@ def check_files(data, views):
         p = PLAN/name
         if not p.exists() or p.read_text() != expected:
             errors.append(f'GENERATED_VIEW: stale or missing {name}')
-    paths = []
+    paths = list(data['phase-gates']['entry_gate'].get('evidence', []))
+    baseline = PLAN/'machine/governance-baseline.yaml'
+    if not baseline.is_file() or sha(baseline) != APPROVED_GOVERNANCE_BASELINE:
+        errors.append('GOVERNANCE_BASELINE: change needs explicit baseline revision')
+    errors += evidence_checks(data, PLAN)
     for task in data['implementation-backlog']['tasks']:
         paths += task['normative_specs']
         paths += task['design_references']
@@ -308,6 +319,8 @@ def check_files(data, views):
         paths += [r['source']] + r['closure_refs']
     for p in data['external-practice-register']['practices']:
         paths += p['normative_refs'] + p['verification_refs']
+    for f in data['foundational-reference-register']['references']:
+        paths += [f['source_ref'], f['study_ref']] + f['normative_refs']
     for source in data['source-register']['files']:
         p = (PLAN/source['archive_path']).resolve()
         if (PLAN/'archive').resolve() not in p.parents or not p.is_file() or sha(p) != source['sha256']:
@@ -320,7 +333,7 @@ def check_files(data, views):
         if urlparse(ref).scheme in {'https', 'http'}:
             continue  # Presence only; does not assert remote CI or acceptance result.
         p = (PLAN/ref).resolve()
-        if PLAN.resolve() not in p.parents or not p.exists():
+        if PLAN.resolve() not in p.parents or not p.is_file():
             errors.append(f'LOCAL_REF: absent/outside package {ref}')
     for p in PLAN.rglob('*.md'):
         if 'archive' in p.relative_to(PLAN).parts:
@@ -381,6 +394,16 @@ def self_test(data):
     return results
 
 
+def repository_identity():
+    try:
+        revision = subprocess.run(['git','-C',str(PLAN.parent),'rev-parse','HEAD'], capture_output=True, text=True, check=True).stdout.strip()
+        dirty = subprocess.run(['git','-C',str(PLAN.parent),'status','--porcelain'], capture_output=True, text=True, check=True).stdout
+        return {'validated_repository_revision':revision, 'validated_worktree_dirty':bool(dirty),
+                'validation_input_kind':'WORKTREE_SNAPSHOT', 'input_identity_note':'manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed'}
+    except (OSError, subprocess.CalledProcessError):
+        return {'validated_repository_revision':None,'validated_worktree_dirty':None,'validation_input_kind':'EXPORTED_PACKAGE'}
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group(required=True)
@@ -392,7 +415,7 @@ def main():
         data = load()
         errors = validate_objects(data)
         views = expected_views(data)
-        if args.write_views and not errors:
+        if args.write_views and not errors and not evidence_checks(data, PLAN):
             for name, value in views.items():
                 (PLAN/name).write_text(value)
             (PLAN/'FILE_MANIFEST.json').write_text(json.dumps(build_manifest(),ensure_ascii=False,indent=2)+'\n')
@@ -414,7 +437,8 @@ def main():
                   'scope':'planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views',
                   'status':'PASS' if not errors else 'FAIL',
                   'not_certified':['P0 engineering exit','runtime','PostgreSQL','remote CI','live provider','reader/market result'],
-                  'source_git_head':data['source-register']['source_git_head'],
+                  'source_snapshot_baseline_commit':data['source-register']['source_snapshot_baseline_commit'],
+                  **repository_identity(),
                   'manifest_sha256':sha(PLAN/'FILE_MANIFEST.json') if (PLAN/'FILE_MANIFEST.json').exists() else None,
                   'counts':{'tasks':len(tasks),'phase_distribution':dict(Counter(t['phase'] for t in tasks)),
                             'statuses':dict(Counter(t['status'] for t in tasks)),

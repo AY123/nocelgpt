@@ -1,8 +1,8 @@
 # ANovelOS 正式架构建设实施资料
 
-版本：1.1.0；更新日期：2026-09-20；历史资料来源基线：`5cffff8`。本目录是正式实施入口。
+版本：1.2.0；更新日期：2026-09-21；历史资料来源基线：`5cffff8`。本目录是正式实施入口。
 
-本次修订将外部项目的可用机制和失败案例转为现有任务的验收要求。见[采纳与范围判断](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)及[机器采纳登记](machine/external-practice-register.yaml)。P0—P14、双 Anchor、60 个任务的身份/阶段/依赖保持冻结；新增断言仍是计划，不是运行通过证据。
+本次审慎采纳两份评估报告，补强资料治理验证、执行入口与阶段性契约。见[核实与采纳记录](changes/2026-09-21_REVIEW_ADOPTION.md)。保留 v1.1 [外部经验采纳](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)；P0—P14、双 Anchor、60 个任务身份/阶段/依赖不变。当前 230 个验收场景均为计划，局部资料回归不是业务运行认证。
 
 **当前状态：资料基线已整理，可启动 P0；V2 工程、P0 退出、业务内核及题材认证尚未完成。** 文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
 
@@ -32,6 +32,7 @@
 
 ## 机器资料
 
+- [最低治理义务](machine/governance-baseline.yaml)、[类型化执行证据](schemas/evidence-record.schema.json)、[基础来源历史索引](machine/foundational-reference-register.yaml)。
 - [任务清单](machine/implementation-backlog.yaml)：60 个任务的唯一身份、阶段、依赖和验收映射。
 - [阶段门禁](machine/phase-gates.yaml)、[里程碑](machine/milestones.yaml)、[CI 门禁](machine/ci-gates.yaml)。
 - [验收场景目录](machine/test-catalog.yaml)：当前均为计划场景，不冒充已实现测试。
@@ -46,4 +47,6 @@
 
 [archive/](archive/) 保留来源快照；内部的 NORMATIVE、FINAL、READY、PASS 等标签都是历史内容，不构成当前授权。旧 Schema 不进入生产验证器的自动扫描路径，需经任务修正、正反例测试后进入未来的 `specs/`。
 
-60 个任务初始状态全部为 OPEN。本次完成的是实施资料整理，不因此关闭 V2-001～004，不创建生产服务，不调用真实模型，也不发布作品。未来任务关闭的证据须写入任务记录并通过检查。
+60 个任务状态仍全部为 OPEN。本次完成的是实施资料整理，不因此关闭 V2-001～004，不创建生产服务，不调用真实模型，也不发布作品。未来任务关闭的证据须写入任务记录并通过检查。
+
+规划验证还需运行 `python3 -B plan/scripts/test_governance.py`。最低义务基线不可由 `--write-views` 自动放宽；原始审核和新复测结果分开保留。V2-017 的[执行包](task-packets/V2-017_PLANNING_CONTRACT_PACKET.md)在 P4 消费。

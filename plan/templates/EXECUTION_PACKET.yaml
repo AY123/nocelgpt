@@ -1,0 +1,23 @@
+record_type: execution_packet_template
+status: TEMPLATE_NOT_EVIDENCE
+task_id: null
+implementer: null
+verifier: null
+owner_role: null
+scope: null
+inputs: []
+expected_outputs: []
+required_decisions: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: null
+  infrastructure_cap: null
+  maximum_attempts: null
+  maximum_runtime: null
+stop_conditions: []
+review_notes: []

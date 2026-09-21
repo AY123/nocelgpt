@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-20T15:36:31.775035+00:00",
+  "generated_at_utc": "2026-09-21T05:26:14.719502+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "PASS",
   "not_certified": [
@@ -10,8 +10,12 @@
     "live provider",
     "reader/market result"
   ],
-  "source_git_head": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "manifest_sha256": "4340e256fc32e329c8cf291af9ae59b80dd93360e0db4e77bce642d06b5114bd",
+  "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
+  "validated_repository_revision": "b835d69821a6cad640b0db39fe76a15c2601a857",
+  "validated_worktree_dirty": true,
+  "validation_input_kind": "WORKTREE_SNAPSHOT",
+  "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
+  "manifest_sha256": "67a962a9ec99680a4a6206005dc768fda6a613898a8e554e42a26b81086c8191",
   "counts": {
     "tasks": 60,
     "phase_distribution": {
@@ -33,10 +37,10 @@
       "OPEN": 60
     },
     "suites": 60,
-    "scenarios": 207,
+    "scenarios": 230,
     "decisions": 16,
-    "findings": 64,
-    "source_snapshots": 213,
+    "findings": 76,
+    "source_snapshots": 220,
     "external_sources": 14,
     "external_practices": {
       "PLANNED": 9,

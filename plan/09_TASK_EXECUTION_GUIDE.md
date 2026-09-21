@@ -47,3 +47,30 @@ python3 plan/scripts/validate_plan.py --self-test
 任务可通过 `external_practices` 引用[外部经验登记](machine/external-practice-register.yaml)。登记项的关联任务和场景必须双向匹配；修改验收要求时同步任务清单与 test-catalog，验证器拒绝只改一边。
 
 开始相关任务时核对来源局限，在既有 ADR 中细化本地接口，不新增同职责框架。验收记录中的 `external_practice_results` 写明采纳 ID、独立实现/复用方式、适用版本或来源说明、本地测试引用、收益结论与局限。复用上游代码/提示词时补齐不可变 revision、文件路径及许可处理；没有上游代码复用则明确标注，不伪造 commit。
+
+## 7. v1.2 类型化完成证据
+
+`evidence.*[].ref` 指向包内正式证据 JSON/YAML，不直接指向 README、模板或远程 URL。记录服从 [evidence-record.schema.json](schemas/evidence-record.schema.json)，包含身份、种类、subject、实现 revision、生产者、时间、环境、原始产物引用/hash 与上游证据引用。原始代码/运行输出可归档到 `validation/`，远端 CI 另记录 pipeline/job ID 和 URL。Git SHA 格式与哈希匹配只能证明结构和绑定，不能认证操作者或远端来源真实性。
+
+| 引用位置 | 必需种类/约束 |
+|---|---|
+| task code / tests / ci / acceptance | CODE / TEST_RESULT / CI_RUN / ACCEPTANCE_RECORD，所属 task 与 revision 匹配 |
+| suite execution_evidence | TEST_RESULT，覆盖本套件全部 scenario ID |
+| ADR decision_record | ADR_DECISION，decision=ACCEPTED，并引用正式决定原文；模板不作决定 |
+| phase evidence_refs | PHASE_DECISION，绑定本阶段任务验收及本次适用 CI |
+| milestone evidence_refs | MILESTONE_DECISION，绑定对应已验证阶段与必要任务验收 |
+| finding closure_refs | FINDING_CLOSURE，绑定已履行责任任务的验收 |
+
+测试/CI 记录还需命令、退出码及检查 ID；任务验收需覆盖验收场景并逐项记录 finding_dispositions。处置包括已解决、部分解决、转交或有理由的不适用；部分解决/转交需剩余工作、接手任务、责任角色和 gate。证据来自当前任务的实际责任范围，不强迫一个早期任务关闭整个跨阶段 finding。
+
+阶段关闭聚合已启用的 every_change CI；真实 Provider 在首个 P5、P8/P9 认证及模型/Provider 影响发布时取得适用证据，仍不要求每次普通提交调用 Provider。先验证任务和 CI，再验证阶段，再汇总里程碑；阶段不等待里程碑字段回写，避免互相依赖。
+
+离线校验无法抵抗仓库写入者同时伪造记录、原始输出和校验代码。V2-004 仍负责真实 CI 接入与保护策略；有权限的核验者核对远端 run/revision/artifact。结构通过不授权自动关闭任务，也不证明业务正确。
+
+另运行 `python3 -B plan/scripts/test_governance.py`，验证合格完成链与单点反例。旧审核探针保留在 archive 和原审核包，新运行结果不得覆盖旧证据。
+
+## 8. 开工记录与变更记录
+
+实施时使用[执行包模板](templates/EXECUTION_PACKET.yaml)明确本任务操作者、验证者、输入输出、估算区间及假设、付费上限与停止条件。一个人可以承担多个角色，但不能称其为独立审核。没有实测吞吐时允许估算未定，不把报告中的固定团队人数或日历工期设为准入条件；付费调用没有批准的上限则不能开始。
+
+规划修改记录来源、采纳/调整/延后/不采纳理由、影响任务/ADR/场景和验证结果。既有用户授权范围内的完善无需额外逐项审批。修改冻结路线、任务身份或最低门禁属于显式基线变更，需说明用户授权依据和影响，不能用 `--write-views` 悄悄生成更弱基线。

@@ -1,0 +1,437 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:anovelos:plan:execution-evidence:1",
+  "title": "Local typed execution attestation; not proof of remote authenticity",
+  "type": "object",
+  "required": [
+    "record_type",
+    "schema_version",
+    "evidence_id",
+    "evidence_type",
+    "subject_id",
+    "revision",
+    "status",
+    "producer",
+    "executed_at",
+    "environment_fingerprint",
+    "artifacts",
+    "input_evidence_refs"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "plan_execution_evidence"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "evidence_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_type": {
+      "enum": [
+        "CODE",
+        "TEST_RESULT",
+        "CI_RUN",
+        "ACCEPTANCE_RECORD",
+        "ADR_DECISION",
+        "PHASE_DECISION",
+        "MILESTONE_DECISION",
+        "FINDING_CLOSURE"
+      ]
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "status": {
+      "const": "PASS"
+    },
+    "producer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "environment_fingerprint": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "ref",
+          "sha256"
+        ],
+        "properties": {
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "input_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "check_ids": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "command": {
+      "type": "string",
+      "minLength": 1
+    },
+    "exit_code": {
+      "const": 0
+    },
+    "pipeline_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "job_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "pipeline_url": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "decision": {
+      "enum": [
+        "ACCEPTED",
+        "VERIFIED",
+        "CLOSED"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "ci_evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "finding_dispositions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "finding_id",
+          "responsibility",
+          "disposition",
+          "evidence_refs",
+          "reason"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "responsibility": {
+            "enum": [
+              "FULL",
+              "PARTIAL",
+              "NONE"
+            ]
+          },
+          "disposition": {
+            "enum": [
+              "RESOLVED",
+              "PARTIALLY_RESOLVED",
+              "TRANSFERRED",
+              "NOT_APPLICABLE"
+            ]
+          },
+          "evidence_refs": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "remaining_work": {
+            "type": "string",
+            "minLength": 1
+          },
+          "next_task": {
+            "type": "string",
+            "pattern": "^V2-[0-9]{3}$"
+          },
+          "owner_role": {
+            "type": "string",
+            "minLength": 1
+          },
+          "due_gate": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "disposition": {
+                  "enum": [
+                    "PARTIALLY_RESOLVED",
+                    "TRANSFERRED"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "required": [
+                "remaining_work",
+                "next_task",
+                "owner_role",
+                "due_gate"
+              ]
+            }
+          }
+        ]
+      },
+      "uniqueItems": true
+    },
+    "external_practice_results": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "practice_id",
+          "adoption_mode",
+          "source_version_note",
+          "verification_refs",
+          "conclusion",
+          "limitations"
+        ],
+        "properties": {
+          "practice_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adoption_mode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_version_note": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verification_refs": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "conclusion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "limitations": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "TEST_RESULT",
+              "CI_RUN"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "check_ids",
+          "command",
+          "exit_code"
+        ],
+        "properties": {
+          "check_ids": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "CI_RUN"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "pipeline_id",
+          "job_id",
+          "pipeline_url"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "ACCEPTANCE_RECORD"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "finding_dispositions",
+          "check_ids",
+          "decision",
+          "rationale"
+        ],
+        "properties": {
+          "decision": {
+            "const": "ACCEPTED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "ADR_DECISION"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "decision",
+          "rationale"
+        ],
+        "properties": {
+          "decision": {
+            "const": "ACCEPTED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "PHASE_DECISION"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "decision",
+          "rationale",
+          "ci_evidence_refs"
+        ],
+        "properties": {
+          "decision": {
+            "const": "VERIFIED"
+          },
+          "ci_evidence_refs": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "MILESTONE_DECISION"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "decision",
+          "rationale"
+        ],
+        "properties": {
+          "decision": {
+            "const": "VERIFIED"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "enum": [
+              "FINDING_CLOSURE"
+            ]
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "decision",
+          "rationale"
+        ],
+        "properties": {
+          "decision": {
+            "const": "CLOSED"
+          }
+        }
+      }
+    }
+  ]
+}

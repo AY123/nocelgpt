@@ -1,5 +1,5 @@
 document_id: ANOVELOS-PLAN-BACKLOG
-version: 1.1.0
+version: 1.2.0
 status: ACTIVE_PLANNING_BASELINE
 supersedes: archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml
 note: 保留首批 60 任务身份、阶段与原任务依赖；新增阶段门禁和具体执行要求；不是工程完成证据
@@ -19,6 +19,7 @@ tasks:
   - 干净环境锁定安装并导入最小包
   - 隔离 PostgreSQL 启动连接清理成功
   - 缺配置明确失败且无真实凭证
+  - 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，运行环境与负责人分配在开工记录中可查
   tests:
   - AT-V2-001
   artifacts:
@@ -72,6 +73,10 @@ tasks:
   - 无证据 CLOSED 与未满足 Gate 的任务启动被拒绝
   - 旧档案不会被当作当前规范自动加载
   - 外部来源/采纳项/任务/场景双向可定位；悬空来源、错误场景归属和无证据 VERIFIED 被拒绝
+  - CI 必需集合与最晚启用阶段、里程碑最低义务不可静默删减，已验证阶段聚合真实适用证据
+  - 不存在文件、目录、README 或未接受 ADR 模板冒充类型化证据均被拒绝；证据的类型归属版本与 hash 一致
+  - readiness、P0 entry 和 ADR/finding 双向关系受校验；任务 CLOSED 必须逐项处置关联 finding
+  - 治理回归包含合格完成链正例及单点负例；深层失败不能被更早的无效夹具掩盖
   tests:
   - AT-V2-002
   artifacts:
@@ -79,6 +84,11 @@ tasks:
   - plan/scripts/validate_plan.py
   - README.md
   - tests/contract/test_plan_governance.py
+  - AGENTS.md
+  - plan/machine/governance-baseline.yaml
+  - plan/schemas/evidence-record.schema.json
+  - plan/scripts/governance_checks.py
+  - plan/scripts/test_governance.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
@@ -109,10 +119,16 @@ tasks:
   - RR-04
   - RR-05
   - RR-06
+  - DA-01
+  - DA-02
+  - DA-03
+  - DA-04
+  - DA-05
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-009
 - task_id: V2-003
@@ -175,6 +191,7 @@ tasks:
   - 适用硬门禁失败使 CI 失败
   - 无害 Secret 与违规依赖夹具被阻断
   - PostgreSQL job 实际连接且当前提交 CI 证据可查
+  - 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
   tests:
   - AT-V2-004
   artifacts:
@@ -203,9 +220,11 @@ tasks:
   - RR-04
   - RR-09
   - RR-10
+  - DA-01
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-005
   title: Core entity IDs and alias resolution
   phase: P1
@@ -292,6 +311,8 @@ tasks:
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
   external_practices:
   - EXT-005
+  foundational_references:
+  - FND-003
 - task_id: V2-007
   title: Event timeline promise core
   phase: P1
@@ -387,6 +408,7 @@ tasks:
   - 空 PostgreSQL 库迁移成功且作用域外键正确
   - 跨项目关系写入被拒绝
   - 根提交并发唯一并且测试初始化无旁路
+  - 取消与提交的原子次序、执行权限版本及早期数据恢复边界在持久化接口前明确
   tests:
   - AT-V2-009
   artifacts:
@@ -419,8 +441,11 @@ tasks:
   - CA-06
   - CA-18
   - RR-07
+  - DA-06
+  - DA-11
   design_references:
   - archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-010
   title: CanonCommitService
   phase: P2
@@ -435,6 +460,7 @@ tasks:
   - 事务故障无半写入且 HEAD 与事件一致
   - 已接受提交长期证据可定位且不是只有无法解析的 hash
   - 没有正式更正流程时对已接受正文的就地替换被拒绝且历史正文/提交证据保持可重建
+  - 取消先成功时旧执行许可不得产生新提交；提交先成功时取消不伪装回滚且可恢复原收据
   tests:
   - AT-V2-010
   artifacts:
@@ -470,9 +496,11 @@ tasks:
   - RR-07
   - RR-08
   - RR-10
+  - DA-06
   design_references:
   - archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-006
 - task_id: V2-011
@@ -555,8 +583,10 @@ tasks:
   - CA-18
   - CA-19
   - SUP-08
+  - DA-11
   design_references:
   - archive/gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-013
   title: GenreProfile and GenrePack loader
   phase: P3
@@ -742,6 +772,7 @@ tasks:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - task-packets/V2-017_PLANNING_CONTRACT_PACKET.md
   dependencies:
   - V2-012
   - V2-014
@@ -752,12 +783,18 @@ tasks:
   - 双书 fixture 经人工审定并包含知识及揭示边界
   - 接续合约绑定前章正文 hash/实际结束证据及本章起点；前章修订使旧接续失效，第一章显式无前章
   - 场景可消费角色目标/知识与预期代价；安静或认知推进章节无需强制升级战斗字段
+  - 规划输入有版本与 supersession，冻结区和可调整未来计划分离；失效输入不得静默编译
+  - Canon/Pack/计划修订触发有范围的失效和重规划提议，批准新计划后重新编译且不改写 Canon
   tests:
   - AT-V2-017
   artifacts:
   - src/anovel/contracts/compiler.py
   - specs/fixtures/stories
   - tests/contract/test_v2_017.py
+  - src/anovel/planning/models.py
+  - src/anovel/planning/versions.py
+  - src/anovel/planning/replanning.py
+  - src/anovel/contracts/models.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现完整多入口 Genesis 或作者富文本工作台
@@ -786,12 +823,16 @@ tasks:
   - SUP-01
   - SUP-02
   - SUP-04
+  - PR-01
   design_references:
   - archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/PLANNING_CONTRACT_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-002
   - EXT-005
+  foundational_references:
+  - FND-001
 - task_id: V2-018
   title: Context Compiler
   phase: P5
@@ -859,6 +900,7 @@ tasks:
   - 超时 UNKNOWN 可表示且无响应不伪造 hash
   - 请求 attempt 模型指纹和待核费用可查
   - 无总预算不启动真实调用
+  - 额度不足、UNKNOWN 待核和 inflight 预留参与预算准入；重启重试及 fallback 不重置预算
   tests:
   - AT-V2-019
   artifacts:
@@ -892,9 +934,13 @@ tasks:
   - RR-08
   - RR-12
   - SUP-06
+  - DA-08
   design_references:
   - archive/gptdoc/ANovel_V2_Context_Intelligence_Spec_v1.0/CONTEXT_INTELLIGENCE_SPEC.md
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
+  foundational_references:
+  - FND-009
 - task_id: V2-020
   title: Single Chapter Workflow
   phase: P6
@@ -948,6 +994,9 @@ tasks:
   external_practices:
   - EXT-004
   - EXT-006
+  foundational_references:
+  - FND-005
+  - FND-006
 - task_id: V2-021
   title: NarrativeDelta extractor
   phase: P6
@@ -962,6 +1011,7 @@ tasks:
   - 候选正文与 Delta 绑定同一 hash
   - 误信传闻和已发生事实不混淆
   - 故意遗漏正文后半段违规能够进入覆盖诊断
+  - 语义抽取证据缺失冲突或正文位置错误不能凭模型置信度获得硬门禁 PASS
   tests:
   - AT-V2-021
   artifacts:
@@ -975,7 +1025,8 @@ tasks:
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P5
-  required_decisions: []
+  required_decisions:
+  - ADR-011
   evidence:
     code: []
     tests: []
@@ -984,8 +1035,10 @@ tasks:
   related_findings:
   - AR-12
   - SUP-03
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-022
   title: Q0 deterministic validators
   phase: P7
@@ -999,6 +1052,7 @@ tasks:
   - 缺必要 Artifact 或错 hash 拒绝
   - 空 Findings 不视为已执行
   - 检查 ERROR UNKNOWN 和无授权 SKIP 阻断
+  - ADR-011 定义逐检查 PASS/FAIL/UNKNOWN/ERROR 与证据可接受性；授权人工裁决有范围且不绕过硬失败
   tests:
   - AT-V2-022
   artifacts:
@@ -1024,8 +1078,10 @@ tasks:
   - AR-05
   - AR-12
   - RR-02
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-023
   title: Q1 Canon validators
   phase: P7
@@ -1064,8 +1120,12 @@ tasks:
   related_findings:
   - AR-05
   - AR-12
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
+  foundational_references:
+  - FND-003
 - task_id: V2-024
   title: Q2 Genre validators
   phase: P7
@@ -1106,9 +1166,11 @@ tasks:
   - AR-05
   - AR-12
   - CA-09
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-001
 - task_id: V2-025
@@ -1152,12 +1214,16 @@ tasks:
   - AR-05
   - AR-12
   - SUP-04
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-002
   - EXT-005
+  foundational_references:
+  - FND-002
 - task_id: V2-026
   title: CommitPermit integration
   phase: P7
@@ -1176,6 +1242,7 @@ tasks:
   - 旧候选旧 parent 或旧 policy 证据不可复用
   - 完整必跑检查后才能经唯一服务接受正文
   - 人工点击同意但缺必跑检查或绑定旧候选的请求不能获得有效 Permit
+  - 许可签发后取消或控制版本变化，提交端原子核验执行权限；过期执行不能复活
   tests:
   - AT-V2-026
   artifacts:
@@ -1203,11 +1270,16 @@ tasks:
   - CA-03
   - RR-02
   - RR-06
+  - DA-06
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-006
+  foundational_references:
+  - FND-007
 - task_id: V2-027
   title: Workflow retry and checkpoint
   phase: P6
@@ -1223,6 +1295,7 @@ tasks:
   - 取消后迟到响应不自动提交
   - 重复投递及 UNKNOWN 不伪报成功或零费用
   - 人工改稿或 Contract/Pack/parent 改变后，旧检查点不得跳过重验继续提交
+  - 取消与提交并发覆盖双方先赢、已发许可、重启旧执行和已提交收据恢复
   tests:
   - AT-V2-027
   artifacts:
@@ -1251,11 +1324,17 @@ tasks:
   - CA-15
   - RR-08
   - SUP-05
+  - DA-06
+  - DA-08
   design_references:
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-004
+  foundational_references:
+  - FND-005
+  - FND-006
 - task_id: V2-028
   title: Kill restart fault harness
   phase: P8
@@ -1273,6 +1352,7 @@ tasks:
   - 响应丢失后取得同一收据
   - 投影落后可重建且无第二权威路径
   - 两种入口适配器重复投递同一逻辑请求并在提交响应丢失后恢复，只产生一个权威提交
+  - 首次有价值持久运行的最小备份可隔离恢复；HEAD 正文 Delta 收据许可与政策证据闭包一致
   tests:
   - AT-V2-028
   artifacts:
@@ -1296,10 +1376,12 @@ tasks:
   - AR-07
   - AR-14
   - CA-04
+  - DA-11
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-004
 - task_id: V2-029
@@ -1342,8 +1424,12 @@ tasks:
   - AR-05
   - CA-12
   - SUP-04
+  - DA-07
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
+  foundational_references:
+  - FND-007
 - task_id: V2-030
   title: Diagnosis engine
   phase: P7
@@ -1381,6 +1467,8 @@ tasks:
   - SUP-05
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
+  foundational_references:
+  - FND-002
 - task_id: V2-031
   title: Patch-first Repairer
   phase: P7
@@ -1395,6 +1483,7 @@ tasks:
   - 达到预算或轮次上限停止
   - 新文本新 hash 使旧 Permit 失效
   - 相同硬缺陷持续存在或缺陷在候选间往返时停止并保留升级诊断，不因正文 hash 改变或评分上升重置计数
+  - 修复共享 Gateway 总预算及待核责任；到达额度或停滞边界停止，不重启计数
   tests:
   - AT-V2-031
   artifacts:
@@ -1420,11 +1509,15 @@ tasks:
   - CA-22
   - RR-05
   - SUP-05
+  - DA-08
   design_references:
   - archive/gptdoc/ANovel_V2_Quality_Evaluation_Repair_Spec_v1.0/QUALITY_EVALUATION_REPAIR_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-007
+  foundational_references:
+  - FND-002
 - task_id: V2-032
   title: Repair regression validator
   phase: P7
@@ -1485,6 +1578,7 @@ tasks:
   - 失败尝试和修复未从分母删除
   - 适用硬门禁全执行且无测试旁路
   - 三章样本核对实际正文接续，包含高潮后有收尾动作而下一章不重复执行的案例
+  - 认证协议先冻结版本、中文篇幅计量、人工介入等级、全部分母、读稿和停止条件
   tests:
   - AT-V2-033
   artifacts:
@@ -1508,12 +1602,16 @@ tasks:
   related_findings:
   - AR-07
   - AR-16
+  - DA-09
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-002
+  foundational_references:
+  - FND-004
 - task_id: V2-034
   title: Urban 10-chapter certification
   phase: P8
@@ -1530,6 +1628,7 @@ tasks:
   - 真实调用预算与人工介入完整记录
   - 真人最小读稿和基线对照有原始记录且不冒称市场成功
   - 都市对照预先冻结输入/篇幅/模型/预算政策并记录实际成本；基线不绕过硬门禁进入 Canon
+  - 报告实际篇幅与自动程度，区分人工裁决和改稿，不用人工重写冒充自动成功
   tests:
   - AT-V2-034
   artifacts:
@@ -1566,10 +1665,12 @@ tasks:
   - SUP-06
   - SUP-07
   - SUP-08
+  - DA-09
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-008
 - task_id: V2-035
@@ -1588,6 +1689,7 @@ tasks:
   - 进阶资源代价及合法交易样本可验证
   - 真人阅读成本人工贡献与全部失败尝试可查
   - 玄幻对照保留盲评顺序与人工介入记录，报告允许无改善和证据不足而不修改评估分母
+  - 报告实际篇幅与自动程度，区分人工裁决和改稿，不用人工重写冒充自动成功
   tests:
   - AT-V2-035
   artifacts:
@@ -1624,10 +1726,12 @@ tasks:
   - SUP-06
   - SUP-07
   - SUP-08
+  - DA-09
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-008
 - task_id: V2-036
@@ -1667,9 +1771,11 @@ tasks:
   related_findings:
   - AR-07
   - AR-16
+  - DA-11
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-037
   title: Context inspector
   phase: P8
@@ -1790,6 +1896,9 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Genre_Intelligence_Spec_v1.0/GENRE_INTELLIGENCE_SPEC.md
+  foundational_references:
+  - FND-008
+  - FND-009
 - task_id: V2-040
   title: 30-chapter certification runner
   phase: P9
@@ -1805,6 +1914,7 @@ tasks:
   - 承诺债务重复和人物持续性有文本审阅
   - 独立样本与版本绑定明确且失败成本全部记录
   - 三十章报告区分工程/阅读/成本结论，比较持续收益并披露模型预算和人工差异，不将复杂管线默认判优
+  - 工程阅读人工和成本结论独立；不优或证据不足时形成有责任人和预算的继续投入决定
   tests:
   - AT-V2-040
   artifacts:
@@ -1838,10 +1948,13 @@ tasks:
   - SUP-02
   - SUP-07
   - SUP-08
+  - DA-09
+  - DA-10
   design_references:
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Planning_Contract_Spec_v1.0/PLANNING_CONTRACT_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
   external_practices:
   - EXT-008
 - task_id: V2-041
@@ -1858,6 +1971,7 @@ tasks:
   - Idea 输入编译为版本化候选
   - 候选与初始事实分离
   - 继续使用既有生产入口不新建 Writer 分支
+  - 开始高级智能前消费 V2-040 继续投入决定；暂停或补证结果不能自动解锁完整投入
   tests:
   - AT-V2-041
   artifacts:
@@ -1877,9 +1991,11 @@ tasks:
     tests: []
     ci: []
     acceptance: []
-  related_findings: []
+  related_findings:
+  - DA-10
   design_references:
   - archive/gptdoc/ANovel_V2_Multi_Source_Genesis_Spec_v1.0/MULTI_SOURCE_GENESIS_SPEC.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-042
   title: Reference ingestion
   phase: P10
@@ -2325,6 +2441,8 @@ tasks:
   - CA-23
   design_references:
   - archive/gptdoc/ANovel_V2_Corpus_Evaluation_Learning_Spec_v1.0/CORPUS_EVALUATION_LEARNING_SPEC.md
+  foundational_references:
+  - FND-004
 - task_id: V2-054
   title: Blind pairwise evaluator
   phase: P11
@@ -2487,6 +2605,7 @@ tasks:
   - 备份恢复到隔离环境并核对 HEAD 与 hash
   - dump 失败和截断备份明确失败
   - 旧 Schema 及事件可按版本重建
+  - 正式恢复承接早期恢复包与实际演练，验证不可重建 Artifact 保留及版本兼容
   tests:
   - AT-V2-058
   artifacts:
@@ -2510,9 +2629,11 @@ tasks:
   related_findings:
   - AR-18
   - CA-19
+  - DA-11
   design_references:
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
+  - changes/2026-09-21_REVIEW_ADOPTION.md
 - task_id: V2-059
   title: Release manifest
   phase: P12

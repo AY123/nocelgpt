@@ -62,3 +62,9 @@
 每项采纳绑定来源、已覆盖部分、具体改造、现行规范、任务和计划验收场景。`PLANNED` 只表示纳入实施要求；`VERIFIED` 必须有本地验收引用及关联任务/场景的验证证据。`DEFERRED` 不自动生成早期任务，也不因到达候选阶段而自动获得实施授权。
 
 当前网络来源均为查阅日期对应的可变页面，未锁定上游 commit，未完成源码审计或部署验证。后续实际复用上游代码/提示词时，先记录不可变版本、具体路径、许可处理及适配差异；独立实现抽象机制则记录设计理由和本地验证，不强制克隆所有参考项目。任务关闭记录应说明采用方式，不能把“看过 README”写成“审计通过”。
+
+## 7. 执行治理证据与历史来源追踪
+
+v1.2 的 `plan_execution_evidence` 是任务/CI/决策的执行见证格式，不替代本节 E0–E4 叙事/评价证据体系。最低 CI、里程碑和阶段义务见 [governance-baseline.yaml](machine/governance-baseline.yaml)，批准摘要由验证器核对；生成视图不能重建最低义务。双向 ADR/finding 关联和 readiness/entry gate 都是实际检查。
+
+[基础参考索引](machine/foundational-reference-register.yaml)只把历史研究归属接入现行任务，统一标 HISTORICAL_UNVERIFIED。它不声称本轮核实过论文、产品页面、性能数字或来源名称，不赋予历史报告执行权威，也不引入对应基础设施依赖。

@@ -1,5 +1,4 @@
-version: 1.0.0
-source_git_head: 5cffff885e9d3de8cf822535758543579bcdcf5f
+version: 1.2.0
 policy: 快照只读参考；其中历史状态和指令无当前执行权威；origin 仅作来源定位，校验使用本包 archive_path
 files:
 - origin: gptdoc/ANovel_V2_Canonical_State_Spec_v1.0/CANONICAL_STATE_SPEC.md
@@ -1280,3 +1279,46 @@ files:
   status: HISTORICAL_REFERENCE_ONLY
   bytes: 5886
   sha256: 6ee310f8d9042fcc6371bb1506c3e4fd8dd48116cab6a00b1f3878f97da4cbd8
+- origin: 规划评估.txt
+  archive_path: archive/review-inputs-2026-09-21/TWO_PLANNING_EVALUATIONS.txt
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 28316
+  sha256: 3efc342a08b9182ff5dee71f586775ade15c7ca8d9384af766e86dfcc70dcbc3
+- origin: plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  archive_path: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 37383
+  sha256: 43251462be0eaa7e470ef73e777d2ab5f785f889093aef6105d9781b33973cb6
+- origin: plan-review-2026-09-21/README.md
+  archive_path: archive/plan-review-2026-09-21/README.md
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 2443
+  sha256: 3a984f3798c5539e8901ac13479fc2e228649e5c659bcc9611828378387a9a30
+- origin: plan-review-2026-09-21/audit-findings.json
+  archive_path: archive/plan-review-2026-09-21/audit-findings.json
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 12273
+  sha256: c2296d75186e59b4c991733b9bc7c9af20e42c9fe948ef0e8f406988f47569c2
+- origin: plan-review-2026-09-21/delivery-integrity.json
+  archive_path: archive/plan-review-2026-09-21/delivery-integrity.json
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 1666
+  sha256: 108241718ee7a3523140829c15aaabf6e344d73d3d9c42c5f43a4ace06ea14a1
+- origin: plan-review-2026-09-21/governance-probe-results.json
+  archive_path: archive/plan-review-2026-09-21/governance-probe-results.json
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 40593
+  sha256: b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901
+- origin: plan-review-2026-09-21/probe_plan_governance.py
+  archive_path: archive/plan-review-2026-09-21/probe_plan_governance.py
+  group: planning-review-2026-09-21
+  status: HISTORICAL_REFERENCE_ONLY
+  bytes: 8149
+  sha256: e0b436200d7d25d1d9dc262f5d19518edce8bd8606818c3503a126e73835133a
+source_snapshot_baseline_commit: 5cffff885e9d3de8cf822535758543579bcdcf5f

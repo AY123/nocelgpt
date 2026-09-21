@@ -1,4 +1,4 @@
-version: 1.0.0
+version: 1.2.0
 status: PLANNED_NOT_CI_EXECUTED
 gates:
 - id: STATIC
@@ -10,6 +10,7 @@ gates:
   - lint
   - typecheck
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: UNIT
   activation_phase: P0
   mode: every_change
@@ -17,6 +18,7 @@ gates:
   checks:
   - unit
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: SCHEMA_CONTRACT
   activation_phase: P0
   mode: every_change
@@ -25,6 +27,7 @@ gates:
   - plan validation
   - active schemas and contracts
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: ARCH_FITNESS
   activation_phase: P0
   mode: every_change
@@ -32,6 +35,7 @@ gates:
   checks:
   - positive and negative boundary fixtures
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: SECRET_DEPENDENCY
   activation_phase: P0
   mode: every_change
@@ -40,6 +44,7 @@ gates:
   - secret scan
   - locked dependency scan
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: POSTGRES_ENV
   activation_phase: P0
   mode: every_change
@@ -47,6 +52,7 @@ gates:
   checks:
   - real database connect and clean fixture
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: CANON_CAS_IDEMPOTENCY
   activation_phase: P2
   mode: every_change
@@ -57,6 +63,7 @@ gates:
   - same/different payload dedupe
   - rebuild
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: DETERMINISTIC_E2E
   activation_phase: P7
   mode: every_change
@@ -64,6 +71,7 @@ gates:
   checks:
   - real Q0-Q3 permit commit integration
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: GENRE_SMOKE
   activation_phase: P8
   mode: every_change
@@ -71,6 +79,7 @@ gates:
   checks:
   - dual-anchor smoke and negative controls
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 - id: LIVE_PROVIDER
   activation_phase: P5
   mode: scheduled_protected_manual_release
@@ -79,6 +88,7 @@ gates:
   - actual provider schema and error contract
   - budget and UNKNOWN
   status: NOT_IMPLEMENTED
+  evidence_refs: []
 live_required_at:
 - first model seam verification
 - P8/P9 certification with applicable actual model

@@ -1,4 +1,4 @@
-version: 1.1.0
+version: 1.2.0
 meaning: 验收场景是计划；目标测试路径尚未实现
 suites:
 - id: AT-V2-001
@@ -13,6 +13,8 @@ suites:
     required_assertion: 隔离 PostgreSQL 启动连接清理成功
   - id: AT-V2-001-03
     required_assertion: 缺配置明确失败且无真实凭证
+  - id: AT-V2-001-04
+    required_assertion: 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，运行环境与负责人分配在开工记录中可查
   execution_evidence: []
 - id: AT-V2-002
   task_id: V2-002
@@ -28,6 +30,14 @@ suites:
     required_assertion: 旧档案不会被当作当前规范自动加载
   - id: AT-V2-002-04
     required_assertion: 外部来源/采纳项/任务/场景双向可定位；悬空来源、错误场景归属和无证据 VERIFIED 被拒绝
+  - id: AT-V2-002-05
+    required_assertion: CI 必需集合与最晚启用阶段、里程碑最低义务不可静默删减，已验证阶段聚合真实适用证据
+  - id: AT-V2-002-06
+    required_assertion: 不存在文件、目录、README 或未接受 ADR 模板冒充类型化证据均被拒绝；证据的类型归属版本与 hash 一致
+  - id: AT-V2-002-07
+    required_assertion: readiness、P0 entry 和 ADR/finding 双向关系受校验；任务 CLOSED 必须逐项处置关联 finding
+  - id: AT-V2-002-08
+    required_assertion: 治理回归包含合格完成链正例及单点负例；深层失败不能被更早的无效夹具掩盖
   execution_evidence: []
 - id: AT-V2-003
   task_id: V2-003
@@ -54,6 +64,8 @@ suites:
     required_assertion: 无害 Secret 与违规依赖夹具被阻断
   - id: AT-V2-004-03
     required_assertion: PostgreSQL job 实际连接且当前提交 CI 证据可查
+  - id: AT-V2-004-04
+    required_assertion: 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
   execution_evidence: []
 - id: AT-V2-005
   task_id: V2-005
@@ -121,6 +133,8 @@ suites:
     required_assertion: 跨项目关系写入被拒绝
   - id: AT-V2-009-03
     required_assertion: 根提交并发唯一并且测试初始化无旁路
+  - id: AT-V2-009-04
+    required_assertion: 取消与提交的原子次序、执行权限版本及早期数据恢复边界在持久化接口前明确
   execution_evidence: []
 - id: AT-V2-010
   task_id: V2-010
@@ -136,6 +150,8 @@ suites:
     required_assertion: 已接受提交长期证据可定位且不是只有无法解析的 hash
   - id: AT-V2-010-04
     required_assertion: 没有正式更正流程时对已接受正文的就地替换被拒绝且历史正文/提交证据保持可重建
+  - id: AT-V2-010-05
+    required_assertion: 取消先成功时旧执行许可不得产生新提交；提交先成功时取消不伪装回滚且可恢复原收据
   execution_evidence: []
 - id: AT-V2-011
   task_id: V2-011
@@ -237,6 +253,10 @@ suites:
     required_assertion: 接续合约绑定前章正文 hash/实际结束证据及本章起点；前章修订使旧接续失效，第一章显式无前章
   - id: AT-V2-017-06
     required_assertion: 场景可消费角色目标/知识与预期代价；安静或认知推进章节无需强制升级战斗字段
+  - id: AT-V2-017-07
+    required_assertion: 规划输入有版本与 supersession，冻结区和可调整未来计划分离；失效输入不得静默编译
+  - id: AT-V2-017-08
+    required_assertion: Canon/Pack/计划修订触发有范围的失效和重规划提议，批准新计划后重新编译且不改写 Canon
   execution_evidence: []
 - id: AT-V2-018
   task_id: V2-018
@@ -269,6 +289,8 @@ suites:
     required_assertion: 请求 attempt 模型指纹和待核费用可查
   - id: AT-V2-019-04
     required_assertion: 无总预算不启动真实调用
+  - id: AT-V2-019-05
+    required_assertion: 额度不足、UNKNOWN 待核和 inflight 预留参与预算准入；重启重试及 fallback 不重置预算
   execution_evidence: []
 - id: AT-V2-020
   task_id: V2-020
@@ -299,6 +321,8 @@ suites:
     required_assertion: 误信传闻和已发生事实不混淆
   - id: AT-V2-021-03
     required_assertion: 故意遗漏正文后半段违规能够进入覆盖诊断
+  - id: AT-V2-021-04
+    required_assertion: 语义抽取证据缺失冲突或正文位置错误不能凭模型置信度获得硬门禁 PASS
   execution_evidence: []
 - id: AT-V2-022
   task_id: V2-022
@@ -312,6 +336,8 @@ suites:
     required_assertion: 空 Findings 不视为已执行
   - id: AT-V2-022-03
     required_assertion: 检查 ERROR UNKNOWN 和无授权 SKIP 阻断
+  - id: AT-V2-022-04
+    required_assertion: ADR-011 定义逐检查 PASS/FAIL/UNKNOWN/ERROR 与证据可接受性；授权人工裁决有范围且不绕过硬失败
   execution_evidence: []
 - id: AT-V2-023
   task_id: V2-023
@@ -372,6 +398,8 @@ suites:
     required_assertion: 完整必跑检查后才能经唯一服务接受正文
   - id: AT-V2-026-04
     required_assertion: 人工点击同意但缺必跑检查或绑定旧候选的请求不能获得有效 Permit
+  - id: AT-V2-026-05
+    required_assertion: 许可签发后取消或控制版本变化，提交端原子核验执行权限；过期执行不能复活
   execution_evidence: []
 - id: AT-V2-027
   task_id: V2-027
@@ -387,6 +415,8 @@ suites:
     required_assertion: 重复投递及 UNKNOWN 不伪报成功或零费用
   - id: AT-V2-027-04
     required_assertion: 人工改稿或 Contract/Pack/parent 改变后，旧检查点不得跳过重验继续提交
+  - id: AT-V2-027-05
+    required_assertion: 取消与提交并发覆盖双方先赢、已发许可、重启旧执行和已提交收据恢复
   execution_evidence: []
 - id: AT-V2-028
   task_id: V2-028
@@ -402,6 +432,8 @@ suites:
     required_assertion: 投影落后可重建且无第二权威路径
   - id: AT-V2-028-04
     required_assertion: 两种入口适配器重复投递同一逻辑请求并在提交响应丢失后恢复，只产生一个权威提交
+  - id: AT-V2-028-05
+    required_assertion: 首次有价值持久运行的最小备份可隔离恢复；HEAD 正文 Delta 收据许可与政策证据闭包一致
   execution_evidence: []
 - id: AT-V2-029
   task_id: V2-029
@@ -443,6 +475,8 @@ suites:
     required_assertion: 新文本新 hash 使旧 Permit 失效
   - id: AT-V2-031-04
     required_assertion: 相同硬缺陷持续存在或缺陷在候选间往返时停止并保留升级诊断，不因正文 hash 改变或评分上升重置计数
+  - id: AT-V2-031-05
+    required_assertion: 修复共享 Gateway 总预算及待核责任；到达额度或停滞边界停止，不重启计数
   execution_evidence: []
 - id: AT-V2-032
   task_id: V2-032
@@ -473,6 +507,8 @@ suites:
     required_assertion: 适用硬门禁全执行且无测试旁路
   - id: AT-V2-033-04
     required_assertion: 三章样本核对实际正文接续，包含高潮后有收尾动作而下一章不重复执行的案例
+  - id: AT-V2-033-05
+    required_assertion: 认证协议先冻结版本、中文篇幅计量、人工介入等级、全部分母、读稿和停止条件
   execution_evidence: []
 - id: AT-V2-034
   task_id: V2-034
@@ -488,6 +524,8 @@ suites:
     required_assertion: 真人最小读稿和基线对照有原始记录且不冒称市场成功
   - id: AT-V2-034-04
     required_assertion: 都市对照预先冻结输入/篇幅/模型/预算政策并记录实际成本；基线不绕过硬门禁进入 Canon
+  - id: AT-V2-034-05
+    required_assertion: 报告实际篇幅与自动程度，区分人工裁决和改稿，不用人工重写冒充自动成功
   execution_evidence: []
 - id: AT-V2-035
   task_id: V2-035
@@ -503,6 +541,8 @@ suites:
     required_assertion: 真人阅读成本人工贡献与全部失败尝试可查
   - id: AT-V2-035-04
     required_assertion: 玄幻对照保留盲评顺序与人工介入记录，报告允许无改善和证据不足而不修改评估分母
+  - id: AT-V2-035-05
+    required_assertion: 报告实际篇幅与自动程度，区分人工裁决和改稿，不用人工重写冒充自动成功
   execution_evidence: []
 - id: AT-V2-036
   task_id: V2-036
@@ -574,6 +614,8 @@ suites:
     required_assertion: 独立样本与版本绑定明确且失败成本全部记录
   - id: AT-V2-040-04
     required_assertion: 三十章报告区分工程/阅读/成本结论，比较持续收益并披露模型预算和人工差异，不将复杂管线默认判优
+  - id: AT-V2-040-05
+    required_assertion: 工程阅读人工和成本结论独立；不优或证据不足时形成有责任人和预算的继续投入决定
   execution_evidence: []
 - id: AT-V2-041
   task_id: V2-041
@@ -587,6 +629,8 @@ suites:
     required_assertion: 候选与初始事实分离
   - id: AT-V2-041-03
     required_assertion: 继续使用既有生产入口不新建 Writer 分支
+  - id: AT-V2-041-04
+    required_assertion: 开始高级智能前消费 V2-040 继续投入决定；暂停或补证结果不能自动解锁完整投入
   execution_evidence: []
 - id: AT-V2-042
   task_id: V2-042
@@ -808,6 +852,8 @@ suites:
     required_assertion: dump 失败和截断备份明确失败
   - id: AT-V2-058-03
     required_assertion: 旧 Schema 及事件可按版本重建
+  - id: AT-V2-058-04
+    required_assertion: 正式恢复承接早期恢复包与实际演练，验证不可重建 Artifact 保留及版本兼容
   execution_evidence: []
 - id: AT-V2-059
   task_id: V2-059

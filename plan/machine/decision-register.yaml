@@ -1,4 +1,4 @@
-version: 1.0.0
+version: 1.2.0
 scope: 本包 ADR 编号；旧 ADR 编号仅在 archive 中保留，按语义映射而非同号继承
 decisions:
 - id: ADR-001
@@ -67,6 +67,8 @@ decisions:
   timing: before_interface_implementation
   decision_record: null
   verification_refs: []
+  required_refinements:
+  - 补充取消/提交次序、执行权限撤销与最小恢复证据闭包
 - id: ADR-007
   title: Genre 扩展命名空间与状态转移
   status: REQUIRED
@@ -91,6 +93,8 @@ decisions:
   timing: before_interface_implementation
   decision_record: null
   verification_refs: []
+  required_refinements:
+  - 补充规划版本、冻结边界、supersession、失效与受控重规划；按 V2-017 packet 分职责
 - id: ADR-009
   title: Context 必需项溢出与选择解释
   status: REQUIRED
@@ -112,21 +116,26 @@ decisions:
   timing: before_live_call
   decision_record: null
   verification_refs: []
+  required_refinements:
+  - 补充调用前预算预留、UNKNOWN 待核、重启/fallback/修复共享上限
 - id: ADR-011
   title: 必跑检查集与 Permit 授权
   status: REQUIRED
   owner_role: quality-maintainer
   related_tasks:
+  - V2-021
   - V2-022
   - V2-023
   - V2-024
   - V2-025
   - V2-026
   - V2-029
-  decision_due_task: V2-022
+  decision_due_task: V2-021
   timing: before_interface_implementation
   decision_record: null
   verification_refs: []
+  required_refinements:
+  - 补充逐检查语义证据判定表、授权裁决与提交端执行权限核验
 - id: ADR-012
   title: 有限修复 升级与回归范围
   status: REQUIRED
@@ -153,6 +162,8 @@ decisions:
   timing: before_certification_run
   decision_record: null
   verification_refs: []
+  required_refinements:
+  - 补充中文篇幅口径、自动程度、全部分母和阅读/成本后的继续投入决定
 - id: ADR-014
   title: 参考来源 原创与 Genesis 接口
   status: REQUIRED

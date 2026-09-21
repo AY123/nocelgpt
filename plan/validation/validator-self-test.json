@@ -1,7 +1,7 @@
 {
   "scope": "planning validator self-test only",
-  "generated_at_utc": "2026-09-20T15:36:32.765959+00:00",
-  "manifest_sha256": "4340e256fc32e329c8cf291af9ae59b80dd93360e0db4e77bce642d06b5114bd",
+  "generated_at_utc": "2026-09-21T05:24:42.054971+00:00",
+  "manifest_sha256": "67a962a9ec99680a4a6206005dc768fda6a613898a8e554e42a26b81086c8191",
   "status": "PASS",
   "cases": [
     {
@@ -169,8 +169,8 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_FINDING V2-012: invalid SUP-08",
-        "TASK_FINDING V2-013: invalid SUP-08"
+        "TASK_FINDING V2-017: invalid PR-01",
+        "FINDING_COVERAGE: missing/extra audit mappings"
       ]
     },
     {

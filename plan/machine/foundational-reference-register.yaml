@@ -1,0 +1,128 @@
+version: 1.2.0
+scope: 历史研究索引迁入现行追踪，不是本轮外部来源核验；名称/论文归属/性能仍须实际使用前核实
+references:
+- id: FND-001
+  name: DOME
+  kind: FOUNDATIONAL_RESEARCH
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 分层计划与未来计划可修订；本地必要性来自规划/Canon 分离
+  normative_refs:
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-017
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-002
+  name: ConWriter
+  kind: FOUNDATIONAL_RESEARCH
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 状态转移约束与局部修复；不依赖原论文性能宣称
+  normative_refs:
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-025
+  - V2-030
+  - V2-031
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-003
+  name: MAGNET / ATLAS
+  kind: FOUNDATIONAL_RESEARCH
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 人物知识与关系一致性；不采纳每角色常驻 Agent 或图数据库要求
+  normative_refs:
+  - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  related_tasks:
+  - V2-006
+  - V2-023
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-004
+  name: ConStory-Bench
+  kind: FOUNDATIONAL_RESEARCH
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 一致性缺陷分类与证据定位；原数据集规模及页面归属未重新核实
+  normative_refs:
+  - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  related_tasks:
+  - V2-033
+  - V2-053
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-005
+  name: Temporal
+  kind: INFRASTRUCTURE_PATTERN
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 持久工作流/幂等恢复的设计参考；不要求部署该引擎
+  normative_refs:
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-020
+  - V2-027
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-006
+  name: LangGraph
+  kind: INFRASTRUCTURE_PATTERN
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 工作流状态与叙事权威分离；不授予框架 Canon 写权
+  normative_refs:
+  - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  related_tasks:
+  - V2-020
+  - V2-027
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-007
+  name: OPA
+  kind: INFRASTRUCTURE_PATTERN
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 政策判断与执行权限分离；不要求引入 Rego
+  normative_refs:
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-026
+  - V2-029
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-008
+  name: OpenLineage
+  kind: INFRASTRUCTURE_PATTERN
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 运行/输入/输出血缘概念；保留本地最小实现
+  normative_refs:
+  - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  related_tasks:
+  - V2-039
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
+- id: FND-009
+  name: OpenTelemetry
+  kind: INFRASTRUCTURE_PATTERN
+  source_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/source-registry.yaml
+  study_ref: archive/gptdoc/ANovel_V2_Reference_Architecture_Study_v1.0/REFERENCE_ARCHITECTURE_STUDY.md
+  verification_status: HISTORICAL_UNVERIFIED
+  runtime_verification: NOT_PERFORMED
+  mechanism_scope: 调用与诊断关联；不新增观测平台建设门槛
+  normative_refs:
+  - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  related_tasks:
+  - V2-019
+  - V2-039
+  adoption_boundary: 仅追踪本地规范已有设计理由；不证明原来源结论、不引入软件依赖或新的早期任务
