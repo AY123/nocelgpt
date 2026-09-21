@@ -1,0 +1,36 @@
+ANES v2 — Phase 3 execution loop proofs
+  PASS  execution loop closes (package -> draft)
+  PASS  draft written under registry/derived/ (not facts)
+  PASS  draft registered in provenance index
+  PASS  draft carries package_hash provenance
+  PASS  draft pins same source versions as package
+  PASS  draft is byte-reproducible (same package => same hash)
+  PASS  capability declares its output schema
+  PASS  draft validates against capability's declared output contract
+  PASS  staleness check flags an out-of-date source pin
+  PASS  draft QA gate flags an empty body
+  PASS  word-floor gate blocks a too-short draft
+  PASS  execution does not mutate the package
+  PASS  draft file on disk is a Runtime envelope
+  PASS  envelope carries prompt_provenance
+  PASS  envelope prompt_provenance pins the rendered/template/binding hashes
+  PASS  envelope inner draft == returned contract artifact (unmodified)
+  PASS  inner draft still validates against the frozen output contract
+  PASS  envelope did NOT alter the inner draft content_hash
+  PASS  execution result carries an evaluative QA review
+  PASS  QA review is on the evaluative axis and non-gating (ADR-003)
+  PASS  QA review rides in the envelope, not the contract artifact
+  PASS  evaluative 'error' findings do NOT gate the loop (ADR-003)
+  PASS  custom reviewer's findings are recorded in the result
+  PASS  evaluative review does NOT perturb the inner draft content_hash
+  PASS  execution result carries a publish-readiness verdict
+  PASS  publish readiness is human-authority (ADR-009) and NEVER gates build
+  PASS  publish-readiness verdict validates against its contract
+  PASS  publish readiness rides the envelope, not the contract artifact
+  PASS  clean draft (no red-line) is not blocked by red-line
+  PASS  a HARD red-line hit GATES the build (build blocked, ADR-003)
+  PASS  gated red-line result records the hit
+  PASS  a SOFT red-line hit does NOT gate the build
+  PASS  soft hit survives to publish readiness (redline passed, hit recorded)
+
+33 passed, 0 failed

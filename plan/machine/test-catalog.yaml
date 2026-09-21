@@ -1,4 +1,4 @@
-version: 1.2.1
+version: 1.2.2
 meaning: 验收场景是计划；目标测试路径尚未实现
 suites:
 - id: AT-V2-001
@@ -14,9 +14,9 @@ suites:
   - id: AT-V2-001-03
     required_assertion: 缺配置明确失败且无真实凭证
   - id: AT-V2-001-04
-    required_assertion: 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，运行环境与负责人分配在开工记录中可查
+    required_assertion: 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，开工记录区分计划版本/审核编号并记录 checkout、工作区/manifest、实际环境与负责人
   - id: AT-V2-001-05
-    required_assertion: 形成历史目录与分发包处置清单，核对归档覆盖/hash/引用与独有资料；迁移不得丢失唯一版本或让 archive 进入业务构建
+    required_assertion: 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive 进入业务构建
   execution_evidence: []
 - id: AT-V2-002
   task_id: V2-002
@@ -29,7 +29,7 @@ suites:
   - id: AT-V2-002-02
     required_assertion: 无证据 CLOSED 与未满足 Gate 的任务启动被拒绝
   - id: AT-V2-002-03
-    required_assertion: 旧档案不会被当作当前规范自动加载
+    required_assertion: 旧档案不会被当作当前规范自动加载；显式核对工具上下文入口和实际配置引用，不能仅凭目录名称推断自动加载
   - id: AT-V2-002-04
     required_assertion: 外部来源/采纳项/任务/场景双向可定位；悬空来源、错误场景归属和无证据 VERIFIED 被拒绝
   - id: AT-V2-002-05
@@ -315,7 +315,7 @@ suites:
   - id: AT-V2-020-02
     required_assertion: 章内 overlay 可供后续场景消费但失败后不入 Canon
   - id: AT-V2-020-03
-    required_assertion: Draft accepted published 状态独立且测试 Gate 不被当生产 Gate
+    required_assertion: Draft accepted published 状态独立且测试 Gate 不被当生产 Gate；若开展 P6 开发样章读稿或简单基线诊断，记录条件/成本/人工反馈，未评阅不得宣称阅读证据且意见不授予提交权限
   - id: AT-V2-020-04
     required_assertion: CLI 与任务入口适配同一 Workflow 应用服务，模型返回已完成但无持久化产物/收据时不能转 accepted
   - id: AT-V2-020-05

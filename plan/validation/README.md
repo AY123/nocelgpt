@@ -29,3 +29,7 @@ python3 -B plan/scripts/test_governance.py --output-dir dist/validation/plan
 ```
 
 目录位置不是可信来源证明。正式 CI 的项目、commit、pipeline/job、状态和产物由 V2-004 核验；已提交的 JSON 不能认证包含它的下一次提交。PASS-only 关闭见证不能替代失败、错误、未知、阻断等原始运行历史。
+
+## v1.2.2 复核范围
+
+本轮只细化规划与执行包，没有新增验证器修复或测试方法。236 个计划场景、32 项自测、39 项治理回归和 13 项旧探针/对照的口径保持；不得把旧失败探针当作当前实际结果。最新报告引用的版本与时点区别见[第三轮采纳记录](../changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)，两份原有工作区验证文件已先保存在 `archive/review-inputs-2026-09-21-round3/`。

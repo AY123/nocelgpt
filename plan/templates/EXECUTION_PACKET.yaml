@@ -1,6 +1,15 @@
 record_type: execution_packet_template
 status: TEMPLATE_NOT_EVIDENCE
 task_id: null
+plan_version: null
+repository_revision: null
+worktree_dirty: null
+plan_manifest_sha256: null
+environment:
+  fingerprint: null
+  runtime_versions: {}
+  database_image: null
+  ci_context: null
 implementer: null
 verifier: null
 owner_role: null

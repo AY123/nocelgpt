@@ -1,0 +1,373 @@
+........................................................................ [  3%]
+........................................................................ [  6%]
+........................................................................ [ 10%]
+.......................................................................F [ 13%]
+FF...................................................................... [ 16%]
+........................................................................ [ 20%]
+............................................................F........... [ 23%]
+........................................................................ [ 26%]
+..............................F......................................... [ 30%]
+........................................................................ [ 33%]
+........................................................................ [ 37%]
+........................................................................ [ 40%]
+........................................................................ [ 43%]
+........................................................................ [ 47%]
+.............................................................FFFF....... [ 50%]
+........................................................................ [ 53%]
+...................s.................................................... [ 57%]
+........................................................................ [ 60%]
+........................................................................ [ 63%]
+........................................................................ [ 67%]
+........................................................................ [ 70%]
+........................................................................ [ 74%]
+........................................................................ [ 77%]
+............F.........................FFFF.............................. [ 80%]
+........................................................................ [ 84%]
+........................................................................ [ 87%]
+..................................................................F..... [ 90%]
+.............................s......s................................... [ 94%]
+........................................................................ [ 97%]
+....................................................                     [100%]
+=================================== FAILURES ===================================
+________ test_live_runner_executes_isolated_mint_recompute_and_two_arms ________
+tests/test_consumption_ab_runner.py:31: in test_live_runner_executes_isolated_mint_recompute_and_two_arms
+    package = json.loads(PACKAGE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-92code-5ch/TASK-00005.package.json'
+_______________ test_live_runner_requires_explicit_confirmation ________________
+tests/test_consumption_ab_runner.py:62: in test_live_runner_requires_explicit_confirmation
+    package = json.loads(PACKAGE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-92code-5ch/TASK-00005.package.json'
+__________________ test_live_runner_checkpoints_model_failure __________________
+tests/test_consumption_ab_runner.py:80: in test_live_runner_checkpoints_model_failure
+    package = json.loads(PACKAGE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/build-assistant-92code-5ch/TASK-00005.package.json'
+__________________________ test_architecture_fitness ___________________________
+tests/test_fitness.py:698: in test_architecture_fitness
+    assert main() == 0, "architecture fitness guards failed (see output above)"
+E   AssertionError: architecture fitness guards failed (see output above)
+E   assert 1 == 0
+E    +  where 1 = main()
+----------------------------- Captured stdout call -----------------------------
+ANES v2 — Architecture Fitness
+  PASS  no hardcoded type map constants (TYPE_DIR/TYPE_TO_ENTITY/TYPE_ORDER)
+  PASS  runtime never imports Standard-internal modules
+  PASS  build pipeline does not depend on execution subdomain
+  PASS  all registered gate checks are deterministic (ADR-003)
+  PASS  no hardcoded facts-dir literals in resource modules
+  PASS  execution does not hardcode an output-contract filename
+  PASS  outline bootstrap does not write registry facts directly
+  PASS  market intelligence does not write registry facts directly
+  PASS  novel brain does not write registry facts directly
+  PASS  serial production does not write registry facts directly
+  PASS  serialization schedule does not write registry facts directly
+  PASS  novel dashboard does not write registry facts directly
+  PASS  market positioning does not write registry facts directly
+  PASS  publishing OS does not write registry facts directly
+  PASS  fact candidate pipeline does not write registry facts directly
+  PASS  mint is the only fact-writer (only loader + mint/ name the facts path)
+  PASS  recompute engine does not depend on a model (stages generative work, never regenerates it)
+  PASS  id mint ledger writes no facts and imports no model (pure allocation)
+  PASS  id allocation (mint_id) is called only from the authorized fact-writer (mint/)
+  PASS  reader signal store writes no facts and imports no model (comparison-only, never calibrates)
+  PASS  narrative director writes no facts and imports no model (read-side planner, not a rewrite engine)
+  PASS  character speech profiles write no facts and import no model (authored source, never generated)
+  PASS  genesis writes no facts directly (lands only via mint, human-confirmed)
+  PASS  reference quality anchor writes no facts and imports no model (deterministic arm is pure; judge reviewer is injected, not imported)
+  PASS  every prompt template declares the variables its body references (undeclared => KeyError for any caller that omits them)
+  FAIL  no NEW unreachable runtime module (built != live ratchet): a module with no path from the CLI/scripts is dead on arrival — wire it or don't add it  new orphans: ['contract/chapter_contract.py', 'contract/production_state.py', 'contract/story_state.py', 'publishing/contract_validator.py', 'serialize/contract_integration.py', 'serialize/production_hook.py', 'serialize/serial_hook_adapter.py', 'serialize/serial_with_contracts.py']
+  PASS  KNOWN_UNREACHABLE contains no module that is now wired (delete the entry when you wire one, so it can never silently regress)
+
+26 passed, 1 failed
+_________________________ test_urban_rebirth_detection _________________________
+tests/test_genre_detection.py:18: in test_urban_rebirth_detection
+    assert source_result.ok, "Failed to load reference sources"
+E   AssertionError: Failed to load reference sources
+E   assert False
+E    +  where False = SourceCheckResult(ok=False, sources=[], errors=['missing reference source directory: /Users/angyang/Documents/AI/ANovelOS/ainovel/novel-dushi/sources/reference-novels']).ok
+____________________ test_outline_bootstrap_writes_archives ____________________
+tests/test_outline_workflow_tournament.py:88: in test_outline_bootstrap_writes_archives
+    assert (run_root / "tournament.json").exists()
+E   AssertionError: assert False
+E    +  where False = <bound method Path.exists of PosixPath('/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-17/test_outline_bootstrap_writes_1/workspace/outline-bootstrap/runs/outline-20260918T042605Z/tournament.json')>()
+E    +    where <bound method Path.exists of PosixPath('/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-17/test_outline_bootstrap_writes_1/workspace/outline-bootstrap/runs/outline-20260918T042605Z/tournament.json')> = (PosixPath('/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-17/test_outline_bootstrap_writes_1/workspace/outline-bootstrap/runs/outline-20260918T042605Z') / 'tournament.json').exists
+________ test_same_complete_candidate_snapshot_is_reused_by_two_judges _________
+tests/test_outline_workflow_tournament.py:122: in test_same_complete_candidate_snapshot_is_reused_by_two_judges
+    assert len(candidates) == 3
+E   AssertionError: assert 1 == 3
+E    +  where 1 = len([{'characters': [{'arc': '从天赋平庸，被家族轻视走向成为至强者，守护亲人', 'motivation': '成为至强者，守护亲人', 'name': '未命名主角', 'role': 'protagonist'...'design_focus': ['fast-opening-hook', 'progression', 'REF-00001:chunk-1: reward_score=12'], 'direction': '玄幻升级流', ...}])
+__________ test_outline_model_review_is_archived_as_advisory_sibling ___________
+tests/test_outline_workflow_tournament.py:161: in test_outline_model_review_is_archived_as_advisory_sibling
+    tournament = json.loads((run_root / "tournament.json").read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-17/test_outline_model_review_is_a0/workspace/outline-bootstrap/runs/outline-qa-live-path/tournament.json'
+____________ test_outline_model_failure_is_degraded_and_never_gates ____________
+tests/test_outline_workflow_tournament.py:182: in test_outline_model_failure_is_degraded_and_never_gates
+    (project / result.run_dir / "tournament.json").read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-17/test_outline_model_failure_is_0/workspace/outline-bootstrap/runs/outline-qa-degraded/tournament.json'
+________________________ test_w9_summary_markdown_write ________________________
+tests/test_reviewer_calibration_report.py:16: in test_w9_summary_markdown_write
+    path = write_w9_summary_markdown("/Users/angyang/Documents/xiaoshuo/AINovel")
+runtime/serialize/reviewer_calibration_report.py:53: in write_w9_summary_markdown
+    out.write_text(render_w9_summary_markdown(project_root), encoding="utf-8")
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1275: in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   PermissionError: [Errno 1] Operation not permitted: '/Users/angyang/Documents/xiaoshuo/AINovel/AI-Novel-Runtime/quality-golden-set/metadata/w9-calibration-summary.md'
+___________________ test_build_rolling_plan_is_deterministic ___________________
+tests/test_rolling_plan.py:31: in test_build_rolling_plan_is_deterministic
+    la = build_long_arc_plan(_outline()).to_dict()
+tests/test_rolling_plan.py:24: in _outline
+    return json.loads(_FIXTURE_OUTLINE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/registry/derived/outline/OUTLINE-00001.json'
+______________________ test_rolling_plan_is_forward_only _______________________
+tests/test_rolling_plan.py:39: in test_rolling_plan_is_forward_only
+    la = build_long_arc_plan(_outline()).to_dict()
+tests/test_rolling_plan.py:24: in _outline
+    return json.loads(_FIXTURE_OUTLINE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/registry/derived/outline/OUTLINE-00001.json'
+_____________ test_producer_writes_rolling_plan_at_each_checkpoint _____________
+tests/test_rolling_plan.py:91: in test_producer_writes_rolling_plan_at_each_checkpoint
+    _run_30_with_outline(tmp_path, monkeypatch)
+tests/test_rolling_plan.py:86: in _run_30_with_outline
+    prompt_version="1.0.0", max_chapters=30, outline=_outline(),
+tests/test_rolling_plan.py:24: in _outline
+    return json.loads(_FIXTURE_OUTLINE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/registry/derived/outline/OUTLINE-00001.json'
+_____________________ test_reader_reads_rolling_plans_back _____________________
+tests/test_rolling_plan.py:98: in test_reader_reads_rolling_plans_back
+    _run_30_with_outline(tmp_path, monkeypatch)
+tests/test_rolling_plan.py:86: in _run_30_with_outline
+    prompt_version="1.0.0", max_chapters=30, outline=_outline(),
+tests/test_rolling_plan.py:24: in _outline
+    return json.loads(_FIXTURE_OUTLINE.read_text(encoding="utf-8"))
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1256: in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1242: in open
+    return io.open(self, mode, buffering, encoding, errors, newline,
+/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/pathlib.py:1110: in _opener
+    return self._accessor.open(self, flags, mode)
+E   FileNotFoundError: [Errno 2] No such file or directory: '/Users/angyang/Documents/AI/ANovelOS/ainovel/AI-Novel-Runtime/tests/fixtures/live-baseline-5ch/registry/derived/outline/OUTLINE-00001.json'
+__________ test_run_serial_function_signature_includes_stage_a_params __________
+tests/test_stage_a_cli_integration.py:64: in test_run_serial_function_signature_includes_stage_a_params
+    assert params["final_reader_threshold"].default == "commercial-revised", \
+E   AssertionError: final_reader_threshold default should be 'commercial-revised'
+E   assert 'always' == 'commercial-revised'
+E     - commercial-revised
+E     + always
+=============================== warnings summary ===============================
+tests/test_downstream_progression.py::test_positioning_uses_progression
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_downstream_progression.py::test_positioning_uses_progression returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_downstream_progression.py::test_long_arc_uses_progression
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_downstream_progression.py::test_long_arc_uses_progression returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_downstream_progression.py::test_qa_accepts_both_formats
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_downstream_progression.py::test_qa_accepts_both_formats returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_downstream_progression.py::test_arc_projection_uses_progression
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_downstream_progression.py::test_arc_projection_uses_progression returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_downstream_progression.py::test_backward_compatibility
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_downstream_progression.py::test_backward_compatibility returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_downstream_progression.py::test_summary
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_downstream_progression.py::test_summary returned 0, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_end_to_end_genre.py::test_dushi_end_to_end_consistency
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_end_to_end_genre.py::test_dushi_end_to_end_consistency returned False, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_end_to_end_genre.py::test_genre_profile_presence
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_end_to_end_genre.py::test_genre_profile_presence returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_end_to_end_genre.py::test_llm_mixed_genre_output
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_end_to_end_genre.py::test_llm_mixed_genre_output returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_end_to_end_genre.py::test_summary
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_end_to_end_genre.py::test_summary returned 1, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_urban_contract_forbids_xuanhuan
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_urban_contract_forbids_xuanhuan returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_urban_contract_allows_urban
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_urban_contract_allows_urban returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_xuanhuan_contract_forbids_modern
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_xuanhuan_contract_forbids_modern returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_xuanhuan_contract_allows_cultivation
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_xuanhuan_contract_allows_cultivation returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_outline_validation
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_outline_validation returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_chapter_validation
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_chapter_validation returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_urban_rebirth_subgenre
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_urban_rebirth_subgenre returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_contract.py::test_summary
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_contract.py::test_summary returned 0, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_genre_detection.py::test_genre_conflict_filtering
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_genre_detection.py::test_genre_conflict_filtering returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_p0_fixes.py::test_p0_1_template_parameter_fix
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_p0_fixes.py::test_p0_1_template_parameter_fix returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_p0_fixes.py::test_p0_2_genre_specific_fallback
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_p0_fixes.py::test_p0_2_genre_specific_fallback returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_p0_fixes.py::test_p0_3_no_fantasy_world_rules
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_p0_fixes.py::test_p0_3_no_fantasy_world_rules returned False, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_p0_fixes.py::test_p0_4_urban_genre_detection
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_p0_fixes.py::test_p0_4_urban_genre_detection returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_p0_fixes.py::test_summary
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_p0_fixes.py::test_summary returned 1, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_power_system
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_power_system returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_wealth_system
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_wealth_system returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_infer_progression_type
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_infer_progression_type returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_create_default_progression
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_create_default_progression returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_normalize_old_format
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_normalize_old_format returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_polymorphic_deserialization
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_polymorphic_deserialization returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_backward_compatibility
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_backward_compatibility returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_progression.py::test_summary
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_progression.py::test_summary returned 0, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_xuanhuan_regression.py::test_xuanhuan_genre_detection
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_xuanhuan_regression.py::test_xuanhuan_genre_detection returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_xuanhuan_regression.py::test_xuanhuan_fallback
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_xuanhuan_regression.py::test_xuanhuan_fallback returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_xuanhuan_regression.py::test_fantasy_fallback_preserved
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_xuanhuan_regression.py::test_fantasy_fallback_preserved returned True, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_xuanhuan_regression.py::test_power_system_in_xuanhuan
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_xuanhuan_regression.py::test_power_system_in_xuanhuan returned False, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+tests/test_xuanhuan_regression.py::test_summary
+  /Users/angyang/Library/Python/3.9/lib/python/site-packages/_pytest/python.py:198: PytestReturnNotNoneWarning: Expected None, but tests/test_xuanhuan_regression.py::test_summary returned 1, which will be an error in a future version of pytest.  Did you mean to use `assert` instead of `return`?
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/test_consumption_ab_runner.py::test_live_runner_executes_isolated_mint_recompute_and_two_arms
+FAILED tests/test_consumption_ab_runner.py::test_live_runner_requires_explicit_confirmation
+FAILED tests/test_consumption_ab_runner.py::test_live_runner_checkpoints_model_failure
+FAILED tests/test_fitness.py::test_architecture_fitness - AssertionError: arc...
+FAILED tests/test_genre_detection.py::test_urban_rebirth_detection - Assertio...
+FAILED tests/test_outline_workflow_tournament.py::test_outline_bootstrap_writes_archives
+FAILED tests/test_outline_workflow_tournament.py::test_same_complete_candidate_snapshot_is_reused_by_two_judges
+FAILED tests/test_outline_workflow_tournament.py::test_outline_model_review_is_archived_as_advisory_sibling
+FAILED tests/test_outline_workflow_tournament.py::test_outline_model_failure_is_degraded_and_never_gates
+FAILED tests/test_reviewer_calibration_report.py::test_w9_summary_markdown_write
+FAILED tests/test_rolling_plan.py::test_build_rolling_plan_is_deterministic
+FAILED tests/test_rolling_plan.py::test_rolling_plan_is_forward_only - FileNo...
+FAILED tests/test_rolling_plan.py::test_producer_writes_rolling_plan_at_each_checkpoint
+FAILED tests/test_rolling_plan.py::test_reader_reads_rolling_plans_back - Fil...
+FAILED tests/test_stage_a_cli_integration.py::test_run_serial_function_signature_includes_stage_a_params
+15 failed, 2122 passed, 3 skipped, 37 warnings in 84.88s (0:01:24)

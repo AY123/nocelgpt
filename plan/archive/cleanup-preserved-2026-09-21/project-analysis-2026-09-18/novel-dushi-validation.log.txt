@@ -1,0 +1,61 @@
+[error] schema @ EVT-90001: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90001: locations/0: '恒远投资公司' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90002: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90002: locations/0: '云顶会所' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90003: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90003: locations/0: '恒泰地产办公室' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90004: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90004: locations/0: '恒泰地产 + 江城商业区' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90005: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90005: locations/0: '江城证券交易所 + 咖啡厅' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90006: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90006: locations/0: '周子铭的私人会所' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90007: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90007: locations/0: '江城金融监管局 + 恒泰地产' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90008: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90008: locations/0: '江城 + 陈默的安全屋' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90009: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90009: locations/0: '江城检察院 + 恒泰地产' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90010: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90010: locations/0: '江城 + 新办公室' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90011: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90011: locations/0: '周江的办公室' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90012: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90012: locations/0: '科技园区 + 目标公司' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90013: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90013: locations/0: '江城 + 云图科技' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90014: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90014: locations/0: '江城金融圈' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90015: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90015: locations/0: '江城 + 云图科技' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90016: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90016: locations/0: '远见资本 + 江城金融圈' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90017: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90017: locations/0: '江城 + 陈默的住所' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90018: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90018: locations/0: '江城 + 执法部门' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90019: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90019: locations/0: '江城机场 + 执法部门' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90020: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90020: locations/0: '远见资本 + 上海' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90021: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90021: locations/0: '上海外滩 + 高端会所' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90022: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90022: locations/0: '上海 + 硅谷（视频会议）' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90023: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90023: locations/0: '北京 + 创业公司' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90024: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90024: locations/0: '上海 + 远见资本' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90025: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90025: locations/0: '上海 + 许文博的办公室' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90026: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90026: locations/0: '上海 + 深圳' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90027: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90027: locations/0: '深圳 + 香港' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90028: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90028: locations/0: '上海 + 深圳' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90029: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90029: locations/0: '上海 + 监管部门' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+[error] schema @ EVT-90030: (root): Additional properties are not allowed ('date', 'location' were unexpected)
+[error] schema @ EVT-90030: locations/0: '上海 + 远见资本' does not match '^(?:[a-z0-9-]{1,32}:)?(?:LOC)-\\d{5,}(?:#[A-Za-z0-9_.\\[\\]-]+)?(?:@(?:v\\d+|latest))?$'
+FAIL (60 error(s), 0 warning(s))

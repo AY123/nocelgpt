@@ -16,7 +16,7 @@
 
 验收：干净环境锁定安装成功；最小包/测试启动；隔离 PostgreSQL 可启动、连接和清理；缺配置有明确失败；不得包含真实凭证。运行环境决定写 ADR-001。
 
-产物目标：`pyproject.toml`、`uv.lock`、`.python-version`、`src/anovel/__init__.py`、`compose.yaml`、`README.md`、`tests/integration/test_postgres_environment.py`。
+产物目标：`pyproject.toml`、`uv.lock`、`.python-version`、`src/anovel/__init__.py`、`compose.yaml`、`README.md`、`tests/integration/test_postgres_environment.py`、`docs/repository-layout-migration.md`。
 
 ## 3. V2-002 Normative documentation index
 
@@ -65,3 +65,11 @@ V2-002 验收包含 `python3 -B plan/scripts/test_governance.py` 与旧审核探
 V2-001 先做历史资料处置清单，验证归档覆盖和引用，不为整洁直接删除根资料；业务目录按本期实际消费者建立，不用空 `migrations/` 冒充 Canon 持久化。V2-002 区分 PASS 放行见证与全量失败历史，并验证 `plan/` 外的独立生成目录不改变被测源。V2-004 使用提交后真实 CI 产物完成来源和版本核对，不能把已提交 validation JSON 当当前提交自证。
 
 DA-01～05 的现有反例通过不等于其所有工程责任已关闭。DA-07/ADR-011 仍在 V2-021 首次接口实现前决定，不能按评估报告中的笼统“P7 前”后移。既有任务身份、依赖和最终 G-P0/M0 证据要求不变。
+
+## v1.2.2 执行记录与隐藏历史资料
+
+复用[执行包模板](templates/EXECUTION_PACKET.yaml)记录计划版本、checkout、工作区/manifest 和实际环境。历史 `.claude/convergence/` 显式进入 V2-001 迁移清单，核对归档内容与实际入口引用，保留工具配置；本次规划修订不删除历史目录。报告一的旧反例结果不能当作当前仍被接受，报告二的“立即工程实施”也不代替用户本次修改规划的任务范围。P0 不提前承担真实模型试写、商业产品建设或 P6 读稿诊断。
+
+## 后续授权：开工前资料清理
+
+用户随后明确要求删除过时无用文件。已完成根目录历史副本核对与清理，并将未覆盖的独有资料补入 archive，实际清单为项目根下 `docs/repository-layout-migration.md` / `.json`。这更新了上节“未删除”的当时状态，不改变历史审核记录。P0 实施时复核清单后继续骨架、锁文件、架构测试、PostgreSQL 和真实 CI；不得把资料清理记为 V2-001 或 G-P0 完成。

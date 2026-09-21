@@ -1,0 +1,22 @@
+ANES v2 — boundary conformance proofs
+  PASS  catalog maps every fixture type code
+  PASS  catalog maps TEC and MAG to same entity (WorldRule)
+  PASS  catalog-aware loader rejects a misfiled record
+  PASS  catalog supplies an emit order for every type code
+  PASS  catalog emit order matches frozen ranks (TML<EVT<CHR<REL<MAG<ITM)
+  PASS  Standard declares ChapterDraft capability
+  PASS  ChapterDraft is generative + evaluative (never gates build)
+  PASS  unknown capability is rejected
+  PASS  validator exposes a check registry
+  PASS  every registered check declares a known QA axis
+  PASS  all current checks are deterministic (gate axis)
+  PASS  build refuses unknown capability
+  PASS  build refuses disallowed seed type
+  PASS  build refuses too few seeds
+  PASS  valid build passes envelope contract
+  PASS  built package validates against Standard envelope
+  PASS  template init succeeds
+  PASS  template creates all catalog facts dirs
+  PASS  empty template project passes the gate
+
+19 passed, 0 failed

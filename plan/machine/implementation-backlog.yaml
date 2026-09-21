@@ -1,5 +1,5 @@
 document_id: ANOVELOS-PLAN-BACKLOG
-version: 1.2.1
+version: 1.2.2
 status: ACTIVE_PLANNING_BASELINE
 supersedes: archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml
 note: 保留首批 60 任务身份、阶段与原任务依赖；新增阶段门禁和具体执行要求；不是工程完成证据
@@ -19,8 +19,8 @@ tasks:
   - 干净环境锁定安装并导入最小包
   - 隔离 PostgreSQL 启动连接清理成功
   - 缺配置明确失败且无真实凭证
-  - 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，运行环境与负责人分配在开工记录中可查
-  - 形成历史目录与分发包处置清单，核对归档覆盖/hash/引用与独有资料；迁移不得丢失唯一版本或让 archive 进入业务构建
+  - 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，开工记录区分计划版本/审核编号并记录 checkout、工作区/manifest、实际环境与负责人
+  - 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive 进入业务构建
   tests:
   - AT-V2-001
   artifacts:
@@ -56,6 +56,7 @@ tasks:
   - RR-04
   - RR-09
   design_references:
+  - changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
   - changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
@@ -74,7 +75,7 @@ tasks:
   acceptance_criteria:
   - 任务阶段与生成视图一致且失效引用失败
   - 无证据 CLOSED 与未满足 Gate 的任务启动被拒绝
-  - 旧档案不会被当作当前规范自动加载
+  - 旧档案不会被当作当前规范自动加载；显式核对工具上下文入口和实际配置引用，不能仅凭目录名称推断自动加载
   - 外部来源/采纳项/任务/场景双向可定位；悬空来源、错误场景归属和无证据 VERIFIED 被拒绝
   - CI 必需集合与最晚启用阶段、里程碑最低义务不可静默删减，已验证阶段聚合真实适用证据
   - 不存在文件、目录、README 或未接受 ADR 模板冒充类型化证据均被拒绝；证据的类型归属版本与 hash 一致
@@ -132,6 +133,7 @@ tasks:
   - DA-04
   - DA-05
   design_references:
+  - changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md
   - archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/IMPLEMENTATION_PLAN.md
   - archive/gptdoc/ANovel_V2_Platform_Observability_Security_Spec_v1.0/PLATFORM_OBSERVABILITY_SECURITY_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
@@ -957,6 +959,7 @@ tasks:
   priority: P0
   goal: 缺前置产物不继续到提交
   normative_specs:
+  - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 02_ARCHITECTURE_BASELINE.md
@@ -966,7 +969,7 @@ tasks:
   acceptance_criteria:
   - 缺前置产物不继续到提交
   - 章内 overlay 可供后续场景消费但失败后不入 Canon
-  - Draft accepted published 状态独立且测试 Gate 不被当生产 Gate
+  - Draft accepted published 状态独立且测试 Gate 不被当生产 Gate；若开展 P6 开发样章读稿或简单基线诊断，记录条件/成本/人工反馈，未评阅不得宣称阅读证据且意见不授予提交权限
   - CLI 与任务入口适配同一 Workflow 应用服务，模型返回已完成但无持久化产物/收据时不能转 accepted
   - 操作者改稿产生新候选并使旧抽取/检查/确认失效；检测到外部文件 hash 改变时停止旧流程
   tests:
@@ -999,6 +1002,7 @@ tasks:
   - RR-12
   - SUP-06
   design_references:
+  - changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md
   - archive/gptdoc/ANovel_V2_Production_Workflow_Spec_v1.0/PRODUCTION_WORKFLOW_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
   external_practices:

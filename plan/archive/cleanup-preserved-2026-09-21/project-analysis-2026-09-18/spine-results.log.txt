@@ -1,0 +1,14 @@
+ANES v2 — Phase 2 spine proofs
+  PASS  clean fixture passes gate
+  PASS  build succeeds
+  PASS  build emits package + manifest
+  PASS  rebuild is byte-reproducible
+  PASS  provenance pins all 7 resolved entities at @version
+  PASS  dangling reference blocks gate
+  PASS  tombstoned reference blocks gate
+  PASS  entity id not mistaken for outbound ref (no self-tombstone)
+  PASS  causal cycle blocks gate
+  PASS  failed gate blocks the build
+  PASS  blocked build emits no artifact
+
+11 passed, 0 failed
