@@ -1,0 +1,1595 @@
+审核报告一
+我已按最新 main@6ff54a8a、当前 Plan v1.2.2 重新做了一轮只针对“项目规划”的深度全面审核。这个版本已经完成大规模资料迁移：根目录现在基本只剩 README.md / AGENTS.md / docs/ / plan/，旧 gptdoc/ccdoc/.claude convergence/审核资料 已统一降权归档，规划入口比前几版干净很多。
+
+总体结论
+
+当前规划已经达到高质量、可实施级别，可以作为 ANovel V2 正式建设基线。
+
+不需要重新设计总体架构，不需要再扩一轮竞品研究，也不需要再生成“Final Architecture vN”。
+
+P0 可以直接开始。
+
+如果分开评价：
+
+维度	结论
+产品目标与范围	很强
+V1 优点继承/失败吸收	很强
+外部优秀项目借鉴	很强
+Narrative Domain	很强
+Canon Architecture	当前规划最强部分之一
+Genre Intelligence	很强、差异化明显
+Planning / Contract	很强
+Context Engineering	很强
+Model Gateway / Cost / UNKNOWN	很强
+Durable Workflow	很强
+Quality / Repair	当前规划最强部分之一
+长篇认证设计	很强
+真人/商业验证	路线正确
+AI 工程治理	很强
+Task / Phase / ADR 控制面	很强
+P0–P12 完整度	很高
+P13/P14 完整度	有意延迟，尚不完整
+是否足够开工	是
+
+当前真正应该做的是：
+
+Plan v1.2.2
+     ↓
+P0 / V2-001~004
+     ↓
+真实代码 / CI / PostgreSQL / Architecture Fitness
+
+而不是继续总体规划。
+
+一、产品战略：方向已经相当清晰
+
+01_PRODUCT_SCOPE_AND_SUCCESS.md 对项目定位已经比较成熟：
+
+面向中文长篇网文的自动生产系统，目标是提高真实阅读竞争力，但工程成功不等于爆款成功。
+
+这句话非常重要。
+
+规划已经把三种成功拆开：
+
+Engineering Truth
+≠
+Human Reading Quality
+≠
+Market Success
+
+所以不会出现 V1/很多 AI 项目常见的问题：
+
+测试全绿
+→ 小说很好看
+→ 一定高订
+
+这是正确的。
+
+而且首期明确：
+
+P0-P9
+内部单操作者
+CLI / Task Interface
+
+暂缓：
+
+SaaS
+支付
+复杂编辑器
+实时趋势系统
+微服务
+Kafka
+Kubernetes
+Agent Swarm
+30+ GenrePack
+
+这说明当前 Scope Control 做得很好。
+
+二、Architecture Baseline：结构已经稳定
+
+现在核心生产链很清楚：
+
+Story Fixture / Genesis
+        ↓
+Planning
+        ↓
+Contract
+        ↓
+Context Compiler
+        ↓
+Model Gateway / Writer
+        ↓
+Candidate
+        ↓
+NarrativeDelta
+        ↓
+Q0-Q3
+        ↓
+Repair
+        ↓
+CommitPermit
+        ↓
+CanonCommitService
+        ↓
+Canonical State
+
+另外：
+
+Durable Workflow
+
+只负责：
+
+orchestration
+retry
+resume
+checkpoint
+
+而不拥有小说事实。
+
+这个分离非常关键。
+
+当前已经明确：
+
+Workflow State != Canon
+Plan != Canon
+Draft != Canon
+Reference != Canon
+Market Signal != Canon
+AI Judge != Canon
+
+这基本击中了 V1 架构失败的根部。
+
+三、Canon 设计：是当前规划最成熟的部分之一
+
+03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md 已经具备生产级系统思维。
+
+核心链：
+
+Text
+→ NarrativeDelta
+→ ChangeSet
+→ Check
+→ Permit
+→ CanonCommitService
+→ Event / Commit
+→ HEAD
+
+不是：
+
+模型说“应该更新记忆”
+→ update database
+
+而且已经考虑：
+
+CAS
+idempotency
+parent
+receipt
+short transaction
+projection rebuild
+root commit
+fencing
+cancel vs commit
+response lost
+
+尤其：
+
+模型调用、抽取、长时间质量判断全部在 DB transaction 外。
+
+这个决定非常正确。
+
+四、章内 Candidate Overlay 也解决了一个很难的问题
+
+规划没有简单选择：
+
+每个 Scene 都进入 Canon
+
+而是：
+
+Frozen Canon
++
+Validated Candidate Overlay
+
+让：
+
+Scene 2
+
+可以看到：
+
+Scene 1 candidate
+
+但 Scene 1 尚未获得正式 Canon 权限。
+
+最终仍然：
+
+Chapter candidate
+→ final validation
+→ Canon commit
+
+这是比较成熟的长篇生成设计。
+
+五、Narrative Domain 没有再次被 Genre 污染
+
+这点比 V1 强非常多。
+
+Core 只保留类似：
+
+Character
+Relationship
+Knowledge
+Belief
+Goal
+Event
+Timeline
+Location
+Object
+Promise
+
+没有把：
+
+cultivation_level
+company_equity
+magic_power
+
+塞进核心 Character。
+
+题材能力通过：
+
+Genre Extension
+
+扩展。
+
+这使：
+
+Urban
+Fantasy
+Xianxia
+Era
+
+以后可以共享同一个 Narrative Kernel。
+
+六、Genre Architecture：已经形成真正差异化
+
+现在：
+
+Genre != 分类标签
+Genre != keyword
+Genre != prompt option
+
+而是：
+
+Reality Model
+World Rules
+Progression
+Mechanics
+Reader Promise
+Domain Extension
+Fusion Policy
+
+首期两个 Anchor：
+
+urban.business.realistic
+fantasy.eastern.progression
+
+选择也非常好。
+
+因为这两个世界模型差异很大。
+
+如果同一个：
+
+Narrative
+Canon
+Contract
+Context
+Workflow
+
+能够稳定服务两者，
+
+那么架构泛化能力才有意义。
+
+七、Genre 测试设计也已经避免“关键词法”
+
+例如现在明确：
+
+玄幻有商会、财富、交易
+≠
+被都市商业污染
+
+以及：
+
+都市人物说“我要突破自己”
+≠
+存在超自然突破
+
+真正判断的是：
+
+世界里实际发生了什么。
+
+而不是：
+
+出现了什么词。
+
+这直接吸取了 V1 的 Genre 错误。
+
+八、Planning / Contract：方向正确
+
+现在规划是：
+
+SeriesVision
+→ ArcPlan
+→ ChapterPlan
+→ Scene / Chapter Contract
+
+并且：
+
+Plan = intention
+Canon = history
+
+未来允许：
+
+PlanVersion
+PlanDiff
+Supersession
+ReplanProposal
+Freeze Horizon
+
+Canon 变化可以使未来计划失效，
+
+但：
+
+Plan
+
+不能倒过来修改历史。
+
+九、V2-017 虽然是一个 Task，但 God Task 风险已经大幅降低
+
+P4 当前只有：
+
+V2-017 Contract Compiler
+
+看起来很大。
+
+但现在已经有专门的：
+
+plan/task-packets/
+V2-017_PLANNING_CONTRACT_PACKET.md
+
+内部拆成：
+
+planning/models.py
+planning/versions.py
+planning/replanning.py
+
+contracts/models.py
+contracts/compiler.py
+
+所以我不建议再改变 60 Task 编号体系。
+
+目前这种做法比重新增加：
+
+V2-017A
+017B
+017C
+...
+
+更稳。
+
+十、Context Architecture：已经很优秀
+
+Context 现在不是：
+
+Story Bible + 最近3章
+→ 拼 Prompt
+
+而是正式：
+
+ContextArtifact
+
+记录：
+
+来源
+hash
+project / branch
+authority
+role visibility
+mandatory / optional
+token count
+include reason
+omit reason
+contract hash
+pack hash
+canon parent
+
+并且：
+
+mandatory > budget
+
+时：
+
+BLOCK / diagnostic
+
+而不是：
+
+偷偷 truncate
+
+这一点非常重要。
+
+十一、Character Knowledge Boundary 也设计正确
+
+Planning / Context 已经区分：
+
+World Fact
+Character Knowledge
+Character Belief
+Reader Knowledge
+Author Future Plan
+
+因此系统可以正确表达：
+
+世界事实：凶手是 A
+角色认为：凶手是 B
+读者知道：凶手是 A
+另一个角色不知道
+
+而不会像普通 Story Bible 那样全部压成：
+
+Fact
+
+。
+
+这对长篇叙事非常关键。
+
+十二、Model Gateway 设计已经超过普通 AI 写作项目
+
+它区分：
+
+logical_request
+attempt
+provider_request_id
+response
+
+并明确：
+
+SUCCESS
+KNOWN_FAILURE
+UNKNOWN
+
+尤其：
+
+timeout != provider没有执行
+
+因此不会做：
+
+timeout
+→ retry
+→ 两次收费
+→ 系统仍显示只调用一次
+
+这种错误。
+
+十三、预算模型也考虑得比较深
+
+现在：
+
+confirmed cost
++
+inflight reserved cost
++
+UNKNOWN liability
+
+共同参与预算。
+
+并且：
+
+retry
+fallback
+repair
+
+共享总预算。
+
+这对真实多模型系统非常重要。
+
+十四、Workflow Architecture 很强
+
+现在恢复的单位不是：
+
+“从第 8 章重新开始”
+
+而是：
+
+logical request
++
+stage
++
+attempt
++
+checkpoint
++
+semantic input identity
+
+并考虑：
+
+process kill
+late response
+duplicate delivery
+manual edit
+changed Contract
+changed Pack
+changed Canon parent
+
+恢复后都必须重新判断旧结果是否仍然适用。
+
+这直接针对 V1 Resume/Retry 的真实失败。
+
+十五、Quality 架构非常成熟
+
+首期：
+
+Q0 Deterministic
+Q1 Canon
+Q2 Genre
+Q3 Transition
+
+属于正式 production gates。
+
+而：
+
+Q4 prose
+Q5 character
+Q6 commercial proxy
+Q7 originality
+Q8 human/market
+
+分阶段补充。
+
+这比一个：
+
+AI Judge Score = 9.3
+
+成熟得多。
+
+十六、非常重要：NOT_RUN / UNKNOWN 不再等于 PASS
+
+现在明确：
+
+PASS
+FAIL
+UNKNOWN
+ERROR
+NOT_RUN
+
+具有不同语义。
+
+所以：
+
+没有发现问题
+
+和：
+
+根本没有执行检查
+
+不会混为一谈。
+
+这是此前 Schema Audit 最重要的改进之一。
+
+十七、Repair Architecture 同样正确
+
+不是：
+
+检查失败
+→ 整章重写
+
+而是：
+
+Finding
+→ Diagnosis
+→ RepairPlan
+→ bounded patch
+→ new candidate
+→ re-extract
+→ revalidate
+
+而且：
+
+事实问题
+规划问题
+不可满足 Contract
+表达问题
+
+可以升级到不同层处理。
+
+这是非常好的设计。
+
+十八、Repair 还考虑了“修不动”的状态
+
+现在：
+
+同一硬缺陷反复出现
+缺陷来回震荡
+新硬缺陷不断产生
+预算耗尽
+
+都可以触发：
+
+STOP
+
+而不是无限：
+
+repair
+repair
+repair
+
+。
+
+这是很成熟的生产设计。
+
+十九、认证体系也已经非常完整
+
+不是：
+
+能生成一章
+→ 支持百万字
+
+而是：
+
+3
+↓
+10 × 2 genres
+↓
+30 × 2 genres
+↓
+100
+↓
+300+
+
+逐级验证。
+
+并且每级记录：
+
+所有尝试
+失败
+repair
+人工介入
+成本
+上下文增长
+Canon drift
+Genre contamination
+Promise debt
+Reader evaluation
+
+这个设计我高度认可。
+
+二十、真人阅读也没有放到项目最后才发现问题
+
+以前最大的风险是：
+
+P0-P7 全做工程
+P8 才第一次看小说是否好读
+
+现在 v1.2.2 已允许：
+
+P6
+
+在已有 Candidate 上进行：
+
+预算内
+开发样本
+少量人工诊断
+
+但不：
+
+授予 Canon 权限
+不消费 holdout
+不替代 P8 certification
+
+这是非常合理的修正。
+
+二十一、P8 还要求一个简单 Baseline
+
+这是规划里非常优秀的一点。
+
+不是只测试：
+
+ANovel V2
+
+而是比较：
+
+Same Story Input
+Same Model
+Comparable Budget
+
+Simple Generation
+vs
+Full ANovel Pipeline
+
+然后看：
+
+完整系统到底有没有真正改善小说
+
+。
+
+如果没有：
+
+系统复杂度
+
+本身不能被视为成功。
+
+二十二、V2-040 的 continuation decision 非常有价值
+
+P9 完成 30 章以后不是机械进入 P10。
+
+必须输出：
+
+Engineering
+Reading
+Human Effort
+Cost
+
+四项结论。
+
+然后决定：
+
+CONTINUE
+FIX
+LIMITED_EXTRA_EVIDENCE
+PAUSE
+
+P10 必须消费这个决定。
+
+这可以避免：
+
+小说没变好，但系统继续建设越来越复杂的 AI 模块。
+
+二十三、V1 的优秀经验与失败教训已经吸收得非常充分
+
+当前不是：
+
+V1 = 垃圾
+
+也不是：
+
+V1 代码量大 → 继续重构
+
+而是：
+
+V1 Runtime
+→ 放弃
+
+V1 good concepts
+→ reimplement
+
+V1 evidence/data
+→ selectively preserve
+
+V1 failures
+→ regression requirements
+
+目前已有：
+
+AR
+CA
+RR
+SUP
+DA
+PR
+
+共 76 项整改义务进入机器登记。
+
+这是非常强的工程遗产迁移方式。
+
+二十四、外部优秀项目也已经不是“研究过就算吸收”
+
+现在已经有：
+
+external-practice-register
+foundational-reference-register
+
+把：
+
+DOME
+ConWriter
+MAGNET
+ATLAS
+ConStory-Bench
+Temporal
+LangGraph
+OPA
+OpenLineage
+OpenTelemetry
+以及各类小说项目
+
+映射到：
+
+mechanism
+→ local adaptation
+→ task
+→ test
+
+这个处理已经相当成熟。
+
+二十五、AI 工程治理也很强
+
+现在 Agent 不能只说：
+
+“任务完成。”
+
+而是需要：
+
+Code Evidence
+Test Evidence
+CI Evidence
+Acceptance Evidence
+Finding Disposition
+
+Task：
+
+OPEN
+→ IN_PROGRESS
+→ IMPLEMENTED
+→ VERIFIED
+→ CLOSED
+
+而：
+
+IMPLEMENTED != CLOSED
+
+。
+
+对全 AI 开发项目来说，这一点特别重要。
+
+二十六、39 个 Governance Regression + Mutation Probe 很有价值
+
+现在验证器不仅检查：
+
+YAML 是否能 parse
+
+而且故意尝试：
+
+删 CI Gate
+删 ADR
+伪造 Evidence
+缩小 Milestone
+绕过 P0 Entry
+用 README 冒充测试结果
+template 冒充 ADR
+revision 错配
+
+然后要求：
+
+REJECT
+
+。
+
+这个控制面已经达到比较高的成熟度。
+
+二十七、最新仓库整理也是正确的
+
+最新 6ff54a8a 已经把根目录收敛成：
+
+README.md
+AGENTS.md
+docs/
+plan/
+.gitignore
+
+历史资料统一进入：
+
+plan/archive/
+
+。
+
+这比上一轮好了很多。
+
+AI 不再面对：
+
+根 gptdoc
+根 ccdoc
+根 convergence
+根 audit
+plan archive
+
+五六套知识入口。
+
+这是一个实质改善。
+
+二十八、但这轮审核我发现一个真正值得修的规划问题
+
+这个不是旧问题，而是当前 P13/P14 Gate 的语义位置问题。
+
+当前 phase-gates.yaml：
+
+P13
+entry_gate: G-P12
+tasks: []
+
+exit_criteria:
+  - 进入前补充任务并完成阶段细化
+
+P14 同样如此。
+
+问题是：
+
+“进入前完成”的条件，却被写进了 exit_criteria。
+
+逻辑上：
+
+G-P12 VERIFIED
+→ P13 可以进入
+
+之后才在退出时检查：
+
+“进入前应该补任务”
+
+语义不严谨。
+
+二十九、M11 / M12 也存在同样的未来占位风险
+
+当前：
+
+M11 Reader/Market Feedback
+required_tasks: []
+
+M12 300+ Chapter Reliability
+required_tasks: []
+
+这是现在有意延迟设计，我认同。
+
+但是 governance-baseline.yaml 的 minimum 也是：
+
+required_tasks: []
+
+所以到了未来，如果没有先更新 baseline：
+
+空任务 milestone
+
+不会触发“任务被缩水”检测。
+
+三十、这个问题不阻塞 P0，但建议增加一个正式规则
+
+我建议以后增加：
+
+phase_refinement_gate
+
+或类似 machine 语义：
+
+P13/P14:
+
+task_refinement:
+  DEFERRED_UNPLANNED
+
+may_enter:
+  false
+
+直到：
+
+tasks non-empty
+acceptance defined
+ADRs mapped
+milestone baseline updated
+tests mapped
+
+才变成：
+
+READY_FOR_ENTRY
+
+。
+
+至少 validator 应强制：
+
+DEFERRED_UNPLANNED
+→ phase cannot become IN_PROGRESS/VERIFIED
+
+。
+
+这个是本轮我认为最值得登记的新 Planning Finding。
+
+但：
+
+不应阻塞 P0。
+三十一、第二个值得完善的点：Certification 的正式产物定义还不够显式
+
+例如：
+
+V2-034
+Urban 10-chapter certification
+
+Artifacts 目前主要是：
+
+tests/certification/urban_10ch.py
+tests/certification/test_v2_034.py
+
+V2-040 也是：
+
+tests/certification/thirty_chapter.py
+tests/certification/test_v2_040.py
+
+。
+
+这描述的是：
+
+认证程序。
+
+但没有在 Task artifact 中明确列：
+
+认证运行结果本身。
+
+三十二、建议正式区分 Certification Code 与 Certification Evidence
+
+未来应存在类似：
+
+CertificationProtocol
+CertificationRun
+CertificationReport
+RunManifest
+CostLedger
+HumanEvaluationBundle
+
+。
+
+例如：
+
+artifacts/certification/<run_id>/
+    protocol.yaml
+    run-manifest.json
+    result.json
+    cost-ledger.json
+    human-evaluation.json
+
+具体路径以后定即可。
+
+重要的是：
+
+测试代码
+≠
+认证结果
+
+。
+
+规划里其实已经有：
+
+CHAPTER_CERTIFICATION_RECORD.yaml
+
+概念。
+
+只需要在 V2-033～040 正式执行前把它提升为明确的 Task Output。
+
+这也不阻塞 P0。
+
+三十三、第三个风险：V2-040 仍然过大
+
+P9 只有一个：
+
+V2-040
+
+但它实际上承担：
+
+Urban 30 chapters
+Fantasy 30 chapters
+Recovery
+Long arc
+Promise debt
+Repetition
+Human reading
+Cost
+Human intervention
+Baseline comparison
+Continuation decision
+
+总共可能是：
+
+60 章真实运行 + 多类分析。
+
+作为一个 Task ID 没问题。
+
+但执行时非常容易形成：
+
+跑了很久
+最后统一验收
+中间失败不知道属于哪里
+
+。
+
+三十四、建议复制 V2-017 的做法
+
+不要修改 Task 编号。
+
+在 P9 到来前建立：
+
+V2-040_THIRTY_CHAPTER_CERTIFICATION_PACKET.md
+
+内部拆成：
+
+Run A: urban
+Run B: fantasy
+Recovery checks
+Narrative debt analysis
+Human evaluation
+Cost analysis
+Baseline comparison
+Continuation decision
+Final aggregation
+
+仍然：
+
+V2-040
+
+一个任务。
+
+这样比重新增加几十个 Task 更好。
+
+三十五、第四个风险：76 项 Finding 对单个 AI Task 的上下文可能过重
+
+现在治理上没有问题。
+
+但某些 Task 会关联：
+
+十几个 Finding
+多个 ADR
+多个 design reference
+多个 external practice
+多个 test scenario
+
+对于 AI Coding Agent 来说：
+
+上下文长度与注意力反而可能成为新的工程风险。
+
+建议以后自动生成：
+
+generated/task-packets/V2-XXX-context.md
+
+只包含：
+
+本 Task 当前规范
+依赖
+ADR
+Finding
+AC
+Tests
+Out of Scope
+
+而不是让 AI 自己递归读整个 /plan。
+
+注意：
+
+这只是 generated view。
+
+不要创造新的 SSOT。
+
+三十六、第五个风险：P13/P14 的业务设计现在仍是愿景
+
+这是故意的，而且目前是正确的。
+
+P13：
+
+Reader / Market Feedback
+
+P14：
+
+300+ chapters / million-word evolution
+
+现在不应该提前细化。
+
+因为：
+
+如果 P9/P12 证明前面的系统没有阅读收益，后面的设计会完全不同。
+
+所以：
+
+P13/P14 空白
+
+本身不是缺陷。
+
+真正需要修的是：
+
+空白阶段不能被机器错误地提前进入。
+
+这一点和第 28 节是同一个问题。
+
+三十七、我没有发现需要新增大模块的缺口
+
+这是本轮最重要的结论之一。
+
+我没有发现需要现在增加：
+
+Graph DB
+Vector DB subsystem
+Agent orchestration framework
+Separate Planning Service
+Separate Memory Service
+Kafka
+Microservices
+Kubernetes
+Evaluation Platform
+Market Prediction Service
+
+。
+
+现有：
+
+Modular Monolith
+PostgreSQL
+typed relationships
+Context compiler
+Provider adapters
+
+完全够首期。
+
+这是很好的克制。
+
+三十八、我也不建议现在扩更多 Genre
+
+两 Anchor：
+
+Urban realistic business
+Eastern fantasy progression
+
+已经足够作为结构压力测试。
+
+在这两个都无法：
+
+30 chapters stable
+
+之前加入：
+
+仙侠
+历史
+科幻
+悬疑
+游戏
+末世
+
+只会制造更多变量。
+
+当前规划处理正确。
+
+三十九、产品验证时点也已经基本合理
+
+完整顺序现在是：
+
+P0-P5
+先证明内核
+
+P6
+第一次真实 Candidate + 可选阅读诊断
+
+P7
+单章正式闭环
+
+P8
+10章 + 真人 + baseline
+
+P9
+30章 + continuation decision
+
+P10+
+高级智能
+
+P13
+真实市场
+
+比最初：
+
+做到很后面才看小说好不好
+
+已经合理很多。
+
+四十、对项目规划成熟度的最终判断
+
+如果只评价：
+
+“是否是一套足以让 AI 按阶段建设 ANovel V2 的工程规划？”
+
+答案是：
+
+是。
+
+而且已经不是普通 README Roadmap。
+
+它同时具备：
+
+Product Scope
+Architecture
+Authority
+Machine SSOT
+Task DAG
+Phase Gate
+Milestone
+ADR
+Remediation
+Regression
+Evidence
+Certification
+AI Execution Rules
+
+。
+
+这已经是一套真正的：
+
+AI Engineering Control Plane
+四十一、我建议保留的核心不变量
+
+后续不要轻易改变这些：
+
+不变量	判断
+Greenfield V2	保留
+Modular Monolith	保留
+Genre foundational	保留
+Draft ≠ Canon	保留
+one Canon commit path	保留
+Plan ≠ Canon	保留
+Workflow ≠ Canon	保留
+compiled Context	保留
+Provider-independent Gateway	保留
+Q0-Q3 hard gates	保留
+Patch before Rewrite	保留
+Reader/Market ≠ AI score	保留
+2 Anchor first	保留
+3→10→30→100→300 certification	保留
+Advanced Intelligence after kernel proof	一定保留
+四十二、本轮正式审核发现可以压缩成 4 项
+ID	问题	严重度	处理时点
+PA-01	P13/P14 “进入前细化”写成 exit criterion，且 M11/M12 minimum task 为空	Medium	P12 前；现在可低成本修治理规则
+PA-02	Certification Task 明确了 runner/test，但运行结果 Artifact 类型还不够显式	Medium	V2-033 前
+PA-03	V2-040 范围很大，需要像 V2-017 一样内部 Execution Packet	Medium	G-P8 前
+PA-04	单 Task 关联大量 ADR/Finding/Reference，对 AI Context 有膨胀风险	Low/Medium	P0 起生成 task-scoped view
+
+没有：
+
+Critical
+Block P0
+Require Re-architecture
+
+级问题。
+
+四十三、因此当前状态应该正式定义为
+ANovel V2
+Plan Version: 1.2.2
+Baseline: main@6ff54a8a
+
+Overall Planning:
+APPROVED
+
+Architecture:
+APPROVED
+
+Governance:
+APPROVED
+
+V1 Lessons:
+SUFFICIENT
+
+External Practice Adoption:
+SUFFICIENT
+
+P0 Entry:
+READY
+
+P0 Engineering:
+NOT STARTED
+
+G-P0:
+NOT VERIFIED
+
+M0:
+NOT VERIFIED
+
+P1:
+BLOCKED
+
+P13/P14:
+DEFERRED / MUST REFINE BEFORE ENTRY
+最终审核结论
+
+当前规划已经足够全面，而且整体质量很高。
+
+继续研究和继续总体规划已经不是主要收益来源。
+
+现在真正能够验证规划好坏的，只剩：
+
+写代码
+↓
+跑测试
+↓
+跑 PostgreSQL
+↓
+制造并发/崩溃/Resume 故障
+↓
+真实 Provider
+↓
+真实章节
+↓
+真人阅读
+
+所以我的建议不是再做“Plan v1.3 总体升级”。
+
+只需要把 PA-01～PA-04 作为局部后续增强，其中只有 PA-01 是一个值得现在顺手补的机器 Gate 语义问题。
+
+除此之外：
+
+冻结总体规划。
+直接开始 P0。
+
+下一次真正有价值的全面审核，应该发生在 V2-001～004 已经产生真实 pyproject.toml / uv.lock / src/ / tests/ / .gitlab-ci.yml / PostgreSQL 之后，而不是再审一轮文档。
+
+
+审核报告二
+
+ANovelOS 项目终极评估报告 - 核心摘要
+  
+  🎯 最终决策建议
+
+  有条件启动 P0
+
+  但必须清醒认识：这是一个极其雄心勃勃的项目，试图解决AI长篇创作领域最困难的问题
+  ，但尚未有任何可工作的代码证明核心假设成立。
+
+  📊 核心数字
+
+  - 任务数: 60个（全部OPEN）
+  - 估算工期: 18-28个月（单人全职）
+  - 达到M7概率: ~35%
+  - 商业成功概率: ~9%
+  - 每本书成本: $500-1000（粗略估算）
+  - 已投入: 8,746行规划文档
+  - 未投入: 0行生产代码
+
+  ✅ 项目优势
+
+  1. 规划工作极其详尽 - 8,746行文档，覆盖架构、治理、测试
+  2. 架构设计合理 - Canon一致性、模块化单体、Genre扩展
+  3. 风险识别全面 - 76个整改项全部追踪
+  4. 治理能力强 - 从2.5提升到4.0
+  5. 有退出机制 - 阶段门禁和决策点
+
+  ❌ 项目劣势
+
+  1. 零行生产代码 - 全部是规划，无任何验证
+  2. 核心假设未验证 - LLM长篇一致性能力、质量检测有效性
+  3. 商业模式不清晰 - 目标用户、差异化、盈利路径模糊
+  4. 单人开发风险 - 18-28个月，需要多领域专业知识
+  5. 成本收益比不明 - 生成成本可能$500-3000/本，是否可盈利？
+
+  🔍 发现的评估盲点
+
+  1. 技术可行性的假设未被质疑
+
+  - Canon性能假设: PostgreSQL能否高效处理100章、1000角色、10000事件？
+  - LLM能力假设: 当前模型能否真正实现30章以上的一致性？
+  - 质量检测假设: 用LLM检测自己生成的文本问题有效吗？
+
+  2. 经济可行性未被深入分析
+
+  - 成本结构: 每章如果需要10次调用+5次修复+3次检查，单章成本$5-10
+  - 300章小说: 总成本$1500-3000
+  - 人工介入: 如果30%章节需要人工，300章需要90小时人工
+  - 这还是"自动化"吗？能盈利吗？
+
+  3. 市场假设未被验证
+
+  - 读者接受度: 中文网文读者是否接受AI生成内容？
+  - 平台政策: 起点等平台对AI作品的政策？如果禁止怎么办？
+  - 恐怖谷效应: AI文接近但达不到人类水平反而更令人反感？
+
+  🚨 新识别的关键风险
+
+  RISK-NEW-01: 质量检测的不可能三角
+
+  - 矛盾: 用LLM检测LLM生成的问题
+  - 风险: 可能大量误报或漏报，人工介入远超预期
+  - 影响: 可能破坏自动化假设
+
+  RISK-NEW-02: Canon写入瓶颈
+
+  - 风险: 随着规模增长（100章、1000事件），查询性能下降
+  - 影响: Context编译延迟可能超过20-30秒
+  - 概率: 中等（40-50%）
+
+  RISK-NEW-03: 商业模式缺失
+
+  - 风险: 技术成功但商业失败
+  - 原因: 目标客户不明、定价策略缺失、竞争优势不清
+  - 影响: 投资无法回收
+
+  RISK-NEW-04: 单人开发的规模失控
+
+  - 风险: 项目复杂度远超单人能力
+  - 证据: 60任务、7模块、15阶段、涉及领域建模+分布式+AI+产品
+  - 概率: 高（60-70%）
+
+  📋 启动条件（必须满足）
+
+  组织条件
+
+  - [ ] 明确执行者（至少1-2人全职）
+  - [ ] 角色分配清晰
+  - [ ] 时间承诺（P0: 2-4周，P0-P9: 8-12个月）
+
+  技术条件
+
+  - [ ] 开发环境就绪（Python 3.12、PostgreSQL、uv）
+  - [ ] 远程CI配置
+  - [ ] 依赖访问
+
+  心理条件
+
+  - [ ] 接受长期投入（18-28个月）
+  - [ ] 接受不确定性（16个ADR边做边定）
+  - [ ] 接受失败可能（工程成功≠产品成功）
+  - [ ] 最重要: 明确动机（学习探索 vs 商业盈利）
+
+  🎯 第一个月行动计划
+
+  Week 1: 环境搭建
+
+  - Day 1-3: Python 3.12 + PostgreSQL + uv安装
+  - Day 4-5: 创建项目骨架（pyproject.toml、src/anovel/）
+  - Day 6-7: 数据库schema + SQLAlchemy模型
+
+  Week 2: 架构边界测试
+
+  - Day 8-11: 实现依赖检查器
+  - Day 12-13: 写权限控制测试
+  - Day 14: 运行和调试
+
+  Week 3: CI和安全门禁
+
+  - Day 15-18: GitLab CI配置 + Secret扫描
+  - Day 19-20: 依赖漏洞检查
+  - Day 21: 验证CI实际运行
+
+  Week 4: 治理验证和P0关闭
+
+  - Day 22-25: 运行所有验证器 + 记录证据
+  - Day 26-27: P0退出验证
+  - Day 28: P0-P1决策（继续 vs 暂停 vs 调整）
+
+  💡 最重要的洞察
+
+  洞察1: 规划≠实施
+  
+  项目有优秀的规划，但规划不能证明可行性。必须通过真实实施来验证核心假设。
+
+  洞察2: 质量检测是最大的技术挑战
+
+  不是生成文本（LLM可以做），而是检测生成文本的问题。这可能是项目成败的关键。
+
+  洞察3: 商业成功不等于技术成功
+
+  即使技术实现，商业可行性仍不确定。需要市场接受、平台允许、成本可控。
+
+  洞察4: 个人价值可能超过商业价值
+
+  即使项目失败，技能提升和作品集价值是真实的。这可能是最大的ROI。
+
+  洞察5: 及时止损比坚持到底更重要
+
+  设置明确的决策点（P7、P9），基于真实数据决策，不陷入沉没成本谬误。
+
+  🚀 最终建议
+
+  如果主要动机是赚钱
+
+  ⚠️  不推荐 - 商业成功概率~9%，风险太高
+
+  如果主要动机是学习探索
+
+  ✅ 推荐 - 技术价值高，即使失败也有收获
+
+  如果主要动机是证明AI能写小说
+
+  ✅ 推荐 - 有科研价值，但准备接受"证明不能"的结果
+
+  🎬 最终的最终
+
+  启动P0。验证假设。保持理性。准备pivot。享受过程。
+
+  启动它，因为：
+  - 规划充分，第一步风险低
+  - 有明确的技术和学习价值
+  - 探索AI长篇创作的边界有意义
+
+  但同时：
+  - 不要期望快速商业回报
+  - 准备在P7或P9停止（如果证据不支持）
+  - 保持理性，不要陷入沉没成本谬误
+  - 寻找合作者，不要孤军奋战

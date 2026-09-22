@@ -1,0 +1,65 @@
+{
+  "scope": "PA-01 isolated planning governance observations only; synthetic fixture is not runtime or CI evidence",
+  "cases": [
+    {
+      "case": "positive_synthetic_p0_chain_and_deferred_future_phases",
+      "errors": []
+    },
+    {
+      "case": "P13_IN_PROGRESS_empty_tasks",
+      "errors": [
+        "PHASE_STATUS P13: unsupported status"
+      ]
+    },
+    {
+      "case": "P13_VERIFIED_empty_tasks",
+      "errors": [
+        "PHASE_VERIFIED P13: unrefined future phase",
+        "PHASE_VERIFIED P13: missing evidence",
+        "PHASE_VERIFIED P13: previous phase unverified",
+        "PHASE_CI P13: CANON_CAS_IDEMPOTENCY unverified",
+        "PHASE_CI P13: DETERMINISTIC_E2E unverified",
+        "PHASE_CI P13: GENRE_SMOKE unverified"
+      ]
+    },
+    {
+      "case": "P14_IN_PROGRESS_empty_tasks",
+      "errors": [
+        "PHASE_STATUS P14: unsupported status"
+      ]
+    },
+    {
+      "case": "P14_VERIFIED_empty_tasks",
+      "errors": [
+        "PHASE_VERIFIED P14: unrefined future phase",
+        "PHASE_VERIFIED P14: missing evidence",
+        "PHASE_VERIFIED P14: previous phase unverified",
+        "PHASE_CI P14: CANON_CAS_IDEMPOTENCY unverified",
+        "PHASE_CI P14: DETERMINISTIC_E2E unverified",
+        "PHASE_CI P14: GENRE_SMOKE unverified"
+      ]
+    },
+    {
+      "case": "M11_VERIFIED_empty_required_tasks",
+      "errors": [
+        "MILESTONE_VERIFIED M11: missing scope/evidence",
+        "MILESTONE_PHASE M11: phase not verified"
+      ]
+    },
+    {
+      "case": "M12_VERIFIED_empty_required_tasks",
+      "errors": [
+        "MILESTONE_VERIFIED M12: missing scope/evidence",
+        "MILESTONE_PHASE M12: phase not verified"
+      ]
+    },
+    {
+      "case": "P13_refinement_READY_but_still_NOT_VERIFIED_and_empty",
+      "errors": []
+    },
+    {
+      "case": "positive_P0_chain_refinement_field_DEFERRED",
+      "errors": []
+    }
+  ]
+}
