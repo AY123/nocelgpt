@@ -1,5 +1,5 @@
 document_id: ANOVELOS-PLAN-BACKLOG
-version: 1.2.2
+version: 1.3.0
 status: ACTIVE_PLANNING_BASELINE
 supersedes: archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml
 note: 保留首批 60 任务身份、阶段与原任务依赖；新增阶段门禁和具体执行要求；不是工程完成证据
@@ -14,6 +14,7 @@ tasks:
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
   - 09_TASK_EXECUTION_GUIDE.md
   - PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 干净环境锁定安装并导入最小包
@@ -37,6 +38,7 @@ tasks:
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
   status: OPEN
+  execution_packet_ref: null
   owner_role: repository-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY
@@ -71,6 +73,7 @@ tasks:
   - 09_TASK_EXECUTION_GUIDE.md
   - 10_DECISIONS_AND_REMEDIATION.md
   - PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 任务阶段与生成视图一致且失效引用失败
@@ -85,6 +88,10 @@ tasks:
   - 校验产物可输出到 plan 外的独立目录（如项目内 dist/validation）；该模式不回写被测计划，已提交 JSON 不视为当前提交认证
   - 模板 Artifact 按解析后路径判定；相对路径别名与符号链接不能冒充执行结果，合法产物不被误拒绝
   - 里程碑与其阶段决定及阶段适用 CI 绑定同一被核验 revision，同时允许保留适用的历史任务证据
+  - 任务从 OPEN 进入执行须引用具体 task_execution_packet；缺失、模板、错误任务/规范/输入 hash 或过期上下文被拒绝，合格执行包按 PREPARE/IMPLEMENT/LIVE_CALL/CERTIFY 动作通过对应检查；本地资料通过不代替 runner 开工拦截
+  - 动作前核对所需 ADR 与授权：PREPARE 可调查未决项但不执行受其约束的实现，IMPLEMENT/LIVE_CALL/CERTIFY 到达决定点时未接受 ADR 被拒绝，已接受且适用的决定允许继续；必要付费上限缺失时不得调用
+  - 执行判断显式区分 FACT/ASSUMPTION/UNKNOWN 与独立 ADR 决定 并绑定依据；阻断当前动作的未知项或无依据事实不得被猜测成已解决，已核实事项和不影响当前动作的明确假设可按范围继续
+  - 恢复执行须核对交接记录、仓库与工作区、规范/输入快照、实际测试产物和未决事项；缺失交接或失效证据不得继承完成结论，合格恢复可继续原任务，不因摘要或模型更换静默重开或越过 Gate
   tests:
   - AT-V2-002
   artifacts:
@@ -97,11 +104,19 @@ tasks:
   - plan/schemas/evidence-record.schema.json
   - plan/scripts/governance_checks.py
   - plan/scripts/test_governance.py
+  - plan/AI_EXECUTION_PROTOCOL.md
+  - plan/machine/ai-execution-policy.yaml
+  - plan/schemas/execution-packet.schema.json
+  - plan/templates/EXECUTION_PACKET.yaml
+  - plan/templates/AI_HANDOFF_RECORD.yaml
+  - plan/scripts/execution_checks.py
+  - plan/scripts/test_ai_execution.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
   status: OPEN
+  execution_packet_ref: null
   owner_role: governance-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY
@@ -151,11 +166,15 @@ tasks:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
   - PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 合法依赖图通过且领域导入 Provider 的负例失败
   - 非授权模块访问 Canon 写入口的夹具失败
   - 新增模块纳入扫描而非空扫描报成功
+  - 以任务执行包核对实际 diff 的新增/修改/删除/重命名及未跟踪文件、路径解析、依赖和跨阶段范围；越界或空扫描冒充覆盖被拒绝，合法任务改动通过，路径匹配不冒充业务语义正确性证明
+  - 比较可信基线与本次改动，联动识别验收和场景同步降标、测试删除/skip、阈值放宽、扫描排除扩大和门禁删改；任务与场景仍一致不能使未处置的降标通过，差异报告保留理由与影响
+  - 范围与防降标检查同时覆盖合法新增测试、等效重构及有适用授权和影响记录的规则修订正例，以及跨任务越界和无依据削弱负例；不能只按文件名拒绝合法改动，也不能由实施 AI 自写理由自动批准例外
   tests:
   - AT-V2-003
   artifacts:
@@ -167,6 +186,7 @@ tasks:
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
   status: OPEN
+  execution_packet_ref: null
   owner_role: architecture-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY
@@ -196,6 +216,7 @@ tasks:
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
   - 09_TASK_EXECUTION_GUIDE.md
   - PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 适用硬门禁失败使 CI 失败
@@ -203,6 +224,9 @@ tasks:
   - PostgreSQL job 实际连接且当前提交 CI 证据可查
   - 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
   - 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实 CI 放行证据
+  - 可信 CI 按实际受保护 runner 核对项目、被测 revision、运行命令、job 与原始 artifact；本地伪造 JSON、他项目/旧提交/未受信运行记录被拒绝，真实当前运行可通过，来源无法核验记未验证
+  - 普通实施凭证采用最小权限，不同时具备修改保护规则、绕过合并门禁和批准自身例外的能力；用安全测试验证越权操作确被拒绝且授权范围内操作可用，不具备核验权限时不得自称权限隔离生效
+  - 在真实 CI/仓库保护环境验证治理校验器、基线、测试及流水线变更不能由同次改动移除必需检查后自行放行；无害失败夹具与未授权保护变更被阻断，有适用授权的规则修订经可信重新验证后可进入，不增加固定团队人数要求
   tests:
   - AT-V2-004
   artifacts:
@@ -214,6 +238,7 @@ tasks:
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
   status: OPEN
+  execution_packet_ref: null
   owner_role: delivery-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY
@@ -244,6 +269,7 @@ tasks:
   goal: 同名不同项目实体不混淆
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-001
   acceptance_criteria:
@@ -261,6 +287,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   status: OPEN
+  execution_packet_ref: null
   owner_role: domain-maintainer
   readiness: PLANNED
   start_gate: G-P0
@@ -283,6 +310,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-005
   acceptance_criteria:
@@ -302,6 +330,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   status: OPEN
+  execution_packet_ref: null
   owner_role: domain-maintainer
   readiness: PLANNED
   start_gate: G-P0
@@ -333,6 +362,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 04_GENRE_AND_STORY_FIXTURES.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-005
   acceptance_criteria:
@@ -350,6 +380,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   status: OPEN
+  execution_packet_ref: null
   owner_role: domain-maintainer
   readiness: PLANNED
   start_gate: G-P0
@@ -373,6 +404,7 @@ tasks:
   goal: SET_FACT 缺必要路径值证据被拒绝
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-006
   - V2-007
@@ -391,6 +423,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   status: OPEN
+  execution_packet_ref: null
   owner_role: domain-maintainer
   readiness: PLANNED
   start_gate: G-P0
@@ -414,6 +447,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-008
   acceptance_criteria:
@@ -432,6 +466,7 @@ tasks:
   - 不在数据库事务内调用模型
   - 不建设完整 Genesis 或另开初始化写路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: canon-maintainer
   readiness: PLANNED
   start_gate: G-P1
@@ -465,6 +500,7 @@ tasks:
   goal: 无授权或无有效 Permit 不可提交
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-009
   acceptance_criteria:
@@ -484,6 +520,7 @@ tasks:
   - 不在数据库事务内调用模型
   - 不建设完整 Genesis 或另开初始化写路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: canon-maintainer
   readiness: PLANNED
   start_gate: G-P1
@@ -522,6 +559,7 @@ tasks:
   goal: 同键同载荷返回原收据
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-010
   acceptance_criteria:
@@ -538,6 +576,7 @@ tasks:
   - 不在数据库事务内调用模型
   - 不建设完整 Genesis 或另开初始化写路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: canon-maintainer
   readiness: PLANNED
   start_gate: G-P1
@@ -563,6 +602,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-010
   acceptance_criteria:
@@ -579,6 +619,7 @@ tasks:
   - 不在数据库事务内调用模型
   - 不建设完整 Genesis 或另开初始化写路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: canon-maintainer
   readiness: PLANNED
   start_gate: G-P1
@@ -606,6 +647,7 @@ tasks:
   goal: ID 版本 hash 均被绑定并核验
   normative_specs:
   - 04_GENRE_AND_STORY_FIXTURES.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-005
   acceptance_criteria:
@@ -624,6 +666,7 @@ tasks:
   - 只实现两个冻结 Anchor，不扩展 30 个题材包
   - 不把关键词计数当事实硬裁判
   status: OPEN
+  execution_packet_ref: null
   owner_role: genre-maintainer
   readiness: PLANNED
   start_gate: G-P2
@@ -654,6 +697,7 @@ tasks:
   normative_specs:
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-013
   acceptance_criteria:
@@ -671,6 +715,7 @@ tasks:
   - 只实现两个冻结 Anchor，不扩展 30 个题材包
   - 不把关键词计数当事实硬裁判
   status: OPEN
+  execution_packet_ref: null
   owner_role: genre-maintainer
   readiness: PLANNED
   start_gate: G-P2
@@ -697,6 +742,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 04_GENRE_AND_STORY_FIXTURES.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-014
   - V2-010
@@ -715,6 +761,7 @@ tasks:
   - 只实现两个冻结 Anchor，不扩展 30 个题材包
   - 不把关键词计数当事实硬裁判
   status: OPEN
+  execution_packet_ref: null
   owner_role: genre-maintainer
   readiness: PLANNED
   start_gate: G-P2
@@ -740,6 +787,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 04_GENRE_AND_STORY_FIXTURES.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-014
   - V2-010
@@ -758,6 +806,7 @@ tasks:
   - 只实现两个冻结 Anchor，不扩展 30 个题材包
   - 不把关键词计数当事实硬裁判
   status: OPEN
+  execution_packet_ref: null
   owner_role: genre-maintainer
   readiness: PLANNED
   start_gate: G-P2
@@ -785,6 +834,7 @@ tasks:
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - task-packets/V2-017_PLANNING_CONTRACT_PACKET.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-012
   - V2-014
@@ -812,6 +862,7 @@ tasks:
   - 不实现完整多入口 Genesis 或作者富文本工作台
   - 不把固定套路升级为所有小说的硬规则
   status: OPEN
+  execution_packet_ref: null
   owner_role: planning-maintainer
   readiness: PLANNED
   start_gate: G-P3
@@ -854,6 +905,7 @@ tasks:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 02_ARCHITECTURE_BASELINE.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-017
   acceptance_criteria:
@@ -872,6 +924,7 @@ tasks:
   - 不实现模型训练、Agent Swarm 或自动发布
   - 不靠省略强制上下文项降低成本
   status: OPEN
+  execution_packet_ref: null
   owner_role: context-maintainer
   readiness: PLANNED
   start_gate: G-P4
@@ -905,6 +958,7 @@ tasks:
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-018
   acceptance_criteria:
@@ -924,6 +978,7 @@ tasks:
   - 不实现模型训练、Agent Swarm 或自动发布
   - 不靠省略强制上下文项降低成本
   status: OPEN
+  execution_packet_ref: null
   owner_role: gateway-maintainer
   readiness: PLANNED
   start_gate: G-P4
@@ -963,6 +1018,7 @@ tasks:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 02_ARCHITECTURE_BASELINE.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-019
   - V2-011
@@ -982,6 +1038,7 @@ tasks:
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
   status: OPEN
+  execution_packet_ref: null
   owner_role: workflow-maintainer
   readiness: PLANNED
   start_gate: G-P5
@@ -1019,6 +1076,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-020
   acceptance_criteria:
@@ -1036,6 +1094,7 @@ tasks:
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P5
@@ -1060,6 +1119,7 @@ tasks:
   goal: 缺必要 Artifact 或错 hash 拒绝
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-021
   acceptance_criteria:
@@ -1077,6 +1137,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1104,6 +1165,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-021
   - V2-012
@@ -1121,6 +1183,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1148,6 +1211,7 @@ tasks:
   normative_specs:
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-021
   - V2-014
@@ -1166,6 +1230,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1195,6 +1260,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-021
   - V2-017
@@ -1214,6 +1280,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1246,6 +1313,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-022
   - V2-023
@@ -1268,6 +1336,7 @@ tasks:
   - 不强制把未实现的 Q4–Q8 标为 PASS
   - 不允许模型通过 JSON 字段自行签发许可
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1302,6 +1371,7 @@ tasks:
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 02_ARCHITECTURE_BASELINE.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-020
   acceptance_criteria:
@@ -1320,6 +1390,7 @@ tasks:
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
   status: OPEN
+  execution_packet_ref: null
   owner_role: workflow-maintainer
   readiness: PLANNED
   start_gate: G-P5
@@ -1359,6 +1430,7 @@ tasks:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
   - 02_ARCHITECTURE_BASELINE.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-027
   acceptance_criteria:
@@ -1377,6 +1449,7 @@ tasks:
   - 十章报告不宣称三十章或全题材支持
   - 不建设复杂 WYSIWYG 或真实市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: reliability-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1405,6 +1478,7 @@ tasks:
   goal: 高软分不能覆盖硬失败
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-022
   - V2-023
@@ -1424,6 +1498,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1451,6 +1526,7 @@ tasks:
   goal: 诊断包含正文位置与受影响依赖
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-029
   acceptance_criteria:
@@ -1467,6 +1543,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1490,6 +1567,7 @@ tasks:
   goal: 补丁只改计划授权范围且保留保护区域
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-030
   acceptance_criteria:
@@ -1508,6 +1586,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1540,6 +1619,7 @@ tasks:
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-031
   acceptance_criteria:
@@ -1557,6 +1637,7 @@ tasks:
   - 不提前建设 P11 学习平台
   - 不强制把未实现的 Q4–Q8 标为 PASS
   status: OPEN
+  execution_packet_ref: null
   owner_role: quality-maintainer
   readiness: PLANNED
   start_gate: G-P6
@@ -1583,6 +1664,7 @@ tasks:
   normative_specs:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-026
   - V2-027
@@ -1603,6 +1685,7 @@ tasks:
   - 十章报告不宣称三十章或全题材支持
   - 不建设复杂 WYSIWYG 或真实市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: certification-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1634,6 +1717,7 @@ tasks:
   normative_specs:
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-033
   - V2-015
@@ -1653,6 +1737,7 @@ tasks:
   - 十章报告不宣称三十章或全题材支持
   - 不建设复杂 WYSIWYG 或真实市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: certification-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1695,6 +1780,7 @@ tasks:
   normative_specs:
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-033
   - V2-016
@@ -1714,6 +1800,7 @@ tasks:
   - 十章报告不宣称三十章或全题材支持
   - 不建设复杂 WYSIWYG 或真实市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: certification-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1755,6 +1842,7 @@ tasks:
   goal: 两类十章运行覆盖故障与恢复矩阵
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-034
   - V2-035
@@ -1772,6 +1860,7 @@ tasks:
   - 十章报告不宣称三十章或全题材支持
   - 不建设复杂 WYSIWYG 或真实市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: reliability-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1799,6 +1888,7 @@ tasks:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
   - 02_ARCHITECTURE_BASELINE.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 可查看上下文必需项及省略理由
@@ -1816,6 +1906,7 @@ tasks:
   - 不建设复杂 WYSIWYG 或真实市场预测
   - 优先 CLI/报告，不建设复杂可视化前端
   status: OPEN
+  execution_packet_ref: null
   owner_role: tooling-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1840,6 +1931,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 可追踪 HEAD parent 事件和变化
@@ -1857,6 +1949,7 @@ tasks:
   - 不建设复杂 WYSIWYG 或真实市场预测
   - 检查器只读，不提供直接 SQL 改写入口
   status: OPEN
+  execution_packet_ref: null
   owner_role: tooling-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1881,6 +1974,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies: []
   acceptance_criteria:
   - 正文合约检查许可提交链可查询
@@ -1897,6 +1991,7 @@ tasks:
   - 不建设复杂 WYSIWYG 或真实市场预测
   - 不复制产生新的权威正文或 Canon 库
   status: OPEN
+  execution_packet_ref: null
   owner_role: tooling-maintainer
   readiness: PLANNED
   start_gate: G-P7
@@ -1921,6 +2016,7 @@ tasks:
   normative_specs:
   - 04_GENRE_AND_STORY_FIXTURES.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-036
   acceptance_criteria:
@@ -1939,6 +2035,7 @@ tasks:
   - 三十章认证不外推百章、百万字或爆款保证
   - 不新增更多 Genre 代替双 Anchor 深度验证
   status: OPEN
+  execution_packet_ref: null
   owner_role: certification-maintainer
   readiness: PLANNED
   start_gate: G-P8
@@ -1979,6 +2076,7 @@ tasks:
   normative_specs:
   - 01_PRODUCT_SCOPE_AND_SUCCESS.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-040
   acceptance_criteria:
@@ -1996,6 +2094,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2018,6 +2117,7 @@ tasks:
   normative_specs:
   - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-040
   acceptance_criteria:
@@ -2034,6 +2134,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2056,6 +2157,7 @@ tasks:
   goal: 抽象叙事结构与具体专有桥段分开
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-042
   acceptance_criteria:
@@ -2072,6 +2174,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2092,6 +2195,7 @@ tasks:
   normative_specs:
   - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-043
   acceptance_criteria:
@@ -2108,6 +2212,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2129,6 +2234,7 @@ tasks:
   goal: 换名复写负例不能因没有原文输入而通过
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-044
   acceptance_criteria:
@@ -2145,6 +2251,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2167,6 +2274,7 @@ tasks:
   normative_specs:
   - 01_PRODUCT_SCOPE_AND_SUCCESS.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-041
   - V2-044
@@ -2185,6 +2293,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2206,6 +2315,7 @@ tasks:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-046
   acceptance_criteria:
@@ -2222,6 +2332,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: intelligence-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2243,6 +2354,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-047
   - V2-010
@@ -2260,6 +2372,7 @@ tasks:
   - 不将参考原文直接注入 Writer
   - 不新建与现有内核并行的生产/Canon 路径
   status: OPEN
+  execution_packet_ref: null
   owner_role: canon-maintainer
   readiness: PLANNED
   start_gate: G-P9
@@ -2281,6 +2394,7 @@ tasks:
   goal: 语料来源用途和版本登记完整
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-040
   acceptance_criteria:
@@ -2297,6 +2411,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2319,6 +2434,7 @@ tasks:
   normative_specs:
   - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-049
   acceptance_criteria:
@@ -2335,6 +2451,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2354,6 +2471,7 @@ tasks:
   goal: V1 失败模式绑定稳定输入与期望
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-049
   acceptance_criteria:
@@ -2370,6 +2488,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2389,6 +2508,7 @@ tasks:
   goal: 实验先定义假设样本分母预算和停止条件
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-049
   acceptance_criteria:
@@ -2405,6 +2525,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2425,6 +2546,7 @@ tasks:
   goal: 基线与实验条件可说明且保留全部运行
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-052
   acceptance_criteria:
@@ -2441,6 +2563,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2464,6 +2587,7 @@ tasks:
   goal: 隐藏生成方法并处理呈现顺序
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-053
   acceptance_criteria:
@@ -2480,6 +2604,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2500,6 +2625,7 @@ tasks:
   normative_specs:
   - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-054
   acceptance_criteria:
@@ -2516,6 +2642,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2537,6 +2664,7 @@ tasks:
   goal: 评价器与人工 Gold 的差异可测
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-055
   acceptance_criteria:
@@ -2553,6 +2681,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2575,6 +2704,7 @@ tasks:
   normative_specs:
   - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-056
   acceptance_criteria:
@@ -2591,6 +2721,7 @@ tasks:
   - 不把模拟读者当人工 Gold 或真实市场
   - 不以自评高分自动晋级存在硬失败的策略
   status: OPEN
+  execution_packet_ref: null
   owner_role: learning-maintainer
   readiness: PLANNED
   start_gate: G-P10
@@ -2613,6 +2744,7 @@ tasks:
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-012
   acceptance_criteria:
@@ -2630,6 +2762,7 @@ tasks:
   - 百章不外推三百章或百万字通过
   - 不提前实现实时市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: reliability-maintainer
   readiness: PLANNED
   start_gate: G-P11
@@ -2656,6 +2789,7 @@ tasks:
   normative_specs:
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-004
   - V2-058
@@ -2673,6 +2807,7 @@ tasks:
   - 百章不外推三百章或百万字通过
   - 不提前实现实时市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: delivery-maintainer
   readiness: PLANNED
   start_gate: G-P11
@@ -2698,6 +2833,7 @@ tasks:
   - 01_PRODUCT_SCOPE_AND_SUCCESS.md
   - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
   - 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-040
   - V2-057
@@ -2716,6 +2852,7 @@ tasks:
   - 百章不外推三百章或百万字通过
   - 不提前实现实时市场预测
   status: OPEN
+  execution_packet_ref: null
   owner_role: certification-maintainer
   readiness: PLANNED
   start_gate: G-P11

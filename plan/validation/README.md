@@ -33,3 +33,9 @@ python3 -B plan/scripts/test_governance.py --output-dir dist/validation/plan
 ## v1.2.2 复核范围
 
 本轮只细化规划与执行包，没有新增验证器修复或测试方法。236 个计划场景、32 项自测、39 项治理回归和 13 项旧探针/对照的口径保持；不得把旧失败探针当作当前实际结果。最新报告引用的版本与时点区别见[第三轮采纳记录](../changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)，两份原有工作区验证文件已先保存在 `archive/review-inputs-2026-09-21-round3/`。
+
+## v1.3.0 AI 执行声明校验
+
+本轮结果单独保存在 `ai-governance-1.3.0/`，不覆盖上述历史 JSON。新增专项命令 `python3 -B plan/scripts/test_ai_execution.py --output-dir dist/validation/ai-governance-1.3.0`，检查执行包、来源绑定、动作 ADR、范围声明、交接与异常结果表达；治理回归继续覆盖合格完成链。
+
+本地检查不能认证实际执行、用户授权、语义真实性或远端 CI；真实差异审查和受保护的动作入口仍属 P0。任务执行记录存于本目录时不参与 manifest 自身循环，但仍须被引用并通过内容与类型检查。

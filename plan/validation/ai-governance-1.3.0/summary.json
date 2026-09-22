@@ -1,0 +1,53 @@
+{
+  "scope": "AI execution planning and local declared-context checks only",
+  "generated_at_utc": "2026-09-22T14:08:52.535620+00:00",
+  "plan_version": "1.3.0",
+  "checkout_revision": "02373faedda94fd6e586c8f1a12b42f3f7ee1631",
+  "validation_input_kind": "WORKTREE_SNAPSHOT",
+  "manifest_sha256": "52d1eaf943872534366d8c6bc7ec8a65e003139a345e84428dd48eca0d2d95c2",
+  "status": "PASS",
+  "counts": {
+    "validator_cases": 32,
+    "governance_tests": 39,
+    "ai_execution_tests": 36,
+    "legacy_probe_cases": 13,
+    "planned_scenarios": 246,
+    "tasks_open": 60
+  },
+  "preserved": [
+    "task identities/phases/dependencies/statuses",
+    "all previous acceptance scenarios",
+    "minimum governance baseline",
+    "previous validation JSON snapshots"
+  ],
+  "not_certified": [
+    "actual action interception",
+    "actual diff and weakening detection",
+    "remote CI authenticity",
+    "permission isolation",
+    "P0 completion",
+    "runtime or reader/market outcomes"
+  ],
+  "reports": {
+    "plan-validation.json": {
+      "sha256": "4a2e7eb3e5166b48adae05ebb79545cb307f692c3eb61a1d26dd5fc33bfbea2f",
+      "status": "PASS"
+    },
+    "validator-self-test.json": {
+      "sha256": "97612b8c9c03d47422e38ef883d7617aac0343ea4e3b12922c60818a2a4a8e45",
+      "status": "PASS"
+    },
+    "governance-regression.json": {
+      "sha256": "d3fc5525526caac5d0de7f6d1b0355ca3f92d118a3465ae30889e48553cd8442",
+      "status": "PASS"
+    },
+    "ai-execution-regression.json": {
+      "sha256": "3d43598bbf00045cdb6c210e537b0b4fb9d803bc026b47a8eda2f7c5533044a3",
+      "status": "PASS"
+    },
+    "legacy-governance-probes.json": {
+      "sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+      "status": "PASS"
+    }
+  }
+}

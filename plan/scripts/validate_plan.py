@@ -25,11 +25,13 @@ from jsonschema import Draft202012Validator
 PLAN = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from governance_checks import object_checks, evidence_checks
+from execution_checks import execution_checks
 
 APPROVED_GOVERNANCE_BASELINE = "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
 NAMES = ['implementation-backlog', 'phase-gates', 'milestones', 'test-catalog',
          'decision-register', 'remediation-register', 'authority-policy', 'ci-gates', 'source-register',
-         'external-practice-register', 'governance-baseline', 'foundational-reference-register']
+         'external-practice-register', 'governance-baseline', 'foundational-reference-register',
+         'ai-execution-policy']
 EVIDENCE = {'E0': 'deterministic_check', 'E1': 'structured_extraction',
             'E2': 'model_evaluation_including_simulated_reader', 'E3': 'human_gold_blind_review',
             'E4': 'real_reader_market_observation'}
@@ -261,6 +263,25 @@ def validate_objects(data):
         check(gate['allow_failure'] is False, f'CI_HARD_GATE {gate["id"]}: allow_failure must be false when applicable')
         check(gate['activation_phase'] in phase_by, f'CI_PHASE {gate["id"]}: unknown phase')
     errors += object_checks(data)
+    controls = data['ai-execution-policy']['controls']
+    check(len(controls) == 6 and {c['id'] for c in controls} == {f'AI-EXEC-{i:02d}' for i in range(1, 7)},
+          'AI_EXEC_POLICY: six execution controls required')
+    for control in controls:
+        owners = control['owner_tasks']
+        cases = control['acceptance_scenarios']
+        check(bool(owners) and all(t in by for t in owners), f'AI_EXEC_OWNER {control["id"]}: missing task')
+        check(bool(cases) and all(c in scenario_by for c in cases), f'AI_EXEC_SCENARIO {control["id"]}: missing scenario')
+        check({scenario_by[c]['task_id'] for c in cases if c in scenario_by} == set(owners),
+              f'AI_EXEC_OWNER {control["id"]}: scenario owners differ')
+        check(control['local_status'] in {'PLANNED', 'IMPLEMENTED_LOCAL'},
+              f'AI_EXEC_STATUS {control["id"]}: unsupported local claim')
+        status = control['p0_enforcement_status']
+        check(status in {'NOT_IMPLEMENTED', 'IMPLEMENTED', 'VERIFIED'},
+              f'AI_EXEC_STATUS {control["id"]}: unsupported engineering state')
+        if status != 'NOT_IMPLEMENTED':
+            eligible = {'VERIFIED', 'CLOSED'} if status == 'VERIFIED' else {'IMPLEMENTED', 'VERIFIED', 'CLOSED'}
+            check(bool(owners) and all(by.get(t, {}).get('status') in eligible for t in owners),
+                  f'AI_EXEC_STATUS {control["id"]}: owners have not reached the claimed state')
     return errors
 
 
@@ -309,6 +330,8 @@ def check_files(data, views):
     if not baseline.is_file() or sha(baseline) != APPROVED_GOVERNANCE_BASELINE:
         errors.append('GOVERNANCE_BASELINE: change needs explicit baseline revision')
     errors += evidence_checks(data, PLAN)
+    errors += execution_checks(data, PLAN)
+    paths.append(data['ai-execution-policy']['source_normative'])
     for task in data['implementation-backlog']['tasks']:
         paths += task['normative_specs']
         paths += task['design_references']

@@ -1,8 +1,10 @@
 # ANovelOS 正式架构建设实施资料
 
-Plan Version：1.2.2；更新日期：2026-09-21；历史资料来源基线：`5cffff8`。本目录是正式实施入口。审核报告的版本不替代本计划版本。
+Plan Version：1.3.0；更新日期：2026-09-22；历史资料来源基线：`5cffff8`。本目录是正式实施入口。审核报告的版本不替代本计划版本。
 
-本轮逐项处理两份版本描述不一致的报告，补充隐藏历史资料的迁移核对、执行包版本/环境记录和 P6 可选读稿诊断。见 [v1.2.2 核实与采纳记录](changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)。保留 [v1.2.1 修订](changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)、[v1.2 修订](changes/2026-09-21_REVIEW_ADOPTION.md)和 [v1.1 外部经验采纳](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)；P0—P14、双 Anchor、60 个任务身份/阶段/依赖不变。当前 236 个验收场景均为计划，局部资料回归不是业务运行认证。
+本轮将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTOCOL.md)、执行包 Schema、交接模板、本地检查及 P0 验收要求。见 [v1.3.0 变更与验证说明](changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。P0—P14、双 Anchor、60 个任务身份/阶段/依赖不变；新增 10 个 P0 场景，当前 246 个验收场景仍均为计划。本地回归不是业务运行或可信 CI 认证。
+
+保留 [v1.2.2](changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)、[v1.2.1](changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)、[v1.2](changes/2026-09-21_REVIEW_ADOPTION.md)和 [v1.1](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)的历史变更记录；旧版本数字与结论只适用于其声明时点。
 
 **当前状态：资料基线已整理，可启动 P0；V2 工程、P0 退出、业务内核及题材认证尚未完成。** 文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
 
@@ -14,7 +16,7 @@ Plan Version：1.2.2；更新日期：2026-09-21；历史资料来源基线：`5
 2. [目标、首期范围与成功口径](01_PRODUCT_SCOPE_AND_SUCCESS.md)、[架构基线](02_ARCHITECTURE_BASELINE.md)：掌握产品边界及模块职责。
 3. [路线与门禁](08_ROADMAP_AND_GATES.md)、[阶段任务表](generated/PHASE_TASK_REGISTRY.md)：按被冻结的 P0—P14 路线工作。
 4. [P0 执行方案](PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)：现在只实施 V2-001～004。
-5. 开始具体业务任务前，阅读相应规范、[任务执行规则](09_TASK_EXECUTION_GUIDE.md)与[决策和整改说明](10_DECISIONS_AND_REMEDIATION.md)。
+5. 开始具体任务前，阅读[AI 执行协议](AI_EXECUTION_PROTOCOL.md)、相应规范、[任务执行规则](09_TASK_EXECUTION_GUIDE.md)与[决策和整改说明](10_DECISIONS_AND_REMEDIATION.md)。准备与实施动作分开，正式执行包必须在 `validation/` 下留存，不能用模板作开工凭证。
 
 ## 现行规范
 
@@ -31,10 +33,12 @@ Plan Version：1.2.2；更新日期：2026-09-21；历史资料来源基线：`5
 | [08](08_ROADMAP_AND_GATES.md) | 阶段准入/退出与里程碑完成条件 |
 | [09](09_TASK_EXECUTION_GUIDE.md) | OPEN→CLOSED、执行/证据规则与复现命令 |
 | [10](10_DECISIONS_AND_REMEDIATION.md) | 已采纳决定、未决 ADR、审核整改归属 |
+| [AI 执行协议](AI_EXECUTION_PROTOCOL.md) | 全程 AI 开发的任务边界、动作前提、证据与交接；不新增业务架构 |
 
 ## 机器资料
 
 - [最低治理义务](machine/governance-baseline.yaml)、[类型化执行证据](schemas/evidence-record.schema.json)、[基础来源历史索引](machine/foundational-reference-register.yaml)。
+- [AI 执行约束登记](machine/ai-execution-policy.yaml)：六项措施的责任、场景与实际实现边界；[执行包 Schema](schemas/execution-packet.schema.json)、[执行包模板](templates/EXECUTION_PACKET.yaml)、[交接模板](templates/AI_HANDOFF_RECORD.yaml)。
 - [任务清单](machine/implementation-backlog.yaml)：60 个任务的唯一身份、阶段、依赖和验收映射。
 - [阶段门禁](machine/phase-gates.yaml)、[里程碑](machine/milestones.yaml)、[CI 门禁](machine/ci-gates.yaml)。
 - [验收场景目录](machine/test-catalog.yaml)：当前均为计划场景，不冒充已实现测试。
@@ -51,4 +55,4 @@ Plan Version：1.2.2；更新日期：2026-09-21；历史资料来源基线：`5
 
 60 个任务状态仍全部为 OPEN。本次完成的是实施资料整理，不因此关闭 V2-001～004，不创建生产服务，不调用真实模型，也不发布作品。未来任务关闭的证据须写入任务记录并通过检查。
 
-规划验证还需运行 `python3 -B plan/scripts/test_governance.py`。最低义务基线不可由 `--write-views` 自动放宽；原始审核和新复测结果分开保留。V2-017 的[执行包](task-packets/V2-017_PLANNING_CONTRACT_PACKET.md)在 P4 消费。
+规划验证还需运行 `python3 -B plan/scripts/test_governance.py` 与 `python3 -B plan/scripts/test_ai_execution.py`。最低义务基线不可由 `--write-views` 自动放宽；原始审核和新复测结果分开保留。当前本地可检查已声明执行包；真实动作拦截、实际 diff/验收弱化识别、可信 CI 和权限保护仍须 V2-002～004 实施。V2-017 的[设计执行包](task-packets/V2-017_PLANNING_CONTRACT_PACKET.md)在 P4 消费，不替代任务开工时的正式记录。

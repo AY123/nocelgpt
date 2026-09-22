@@ -2,18 +2,18 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **规划 v1.2.2 / P0 待实施**。60 个任务仍为 OPEN，尚未取得 P0 工程、真实 CI、数据库或章节认证证据。
+当前为 **规划 v1.3.0 / P0 待实施**。60 个任务仍为 OPEN，尚未取得 P0 工程、真实 CI、数据库或章节认证证据。
 
 ## 从这里开始
 
 1. [正式规划入口](plan/README.md)与[短执行协议](AGENTS.md)。
 2. [P0 执行方案](plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)：V2-001～004。
 3. [任务清单](plan/machine/implementation-backlog.yaml)、[阶段门禁](plan/machine/phase-gates.yaml)、[整改义务](plan/machine/remediation-register.yaml)。
-4. [最新两份评估报告的核实与采纳](plan/changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)及[上一轮采纳记录](plan/changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)。
+4. [AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)、[六项执行约束](plan/machine/ai-execution-policy.yaml)及[本轮落地记录](plan/changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。
 
 `plan/machine/` 是现行机器资料，`plan/generated/` 是生成视图。原 `gptdoc/`、`ccdoc/`、历史审核与矩阵已统一保留在 `plan/archive/`，根目录重复副本已清除；历史内容不是平行执行规范。
 
-仓库清理已完成，逐文件去向、hash 和恢复依据见[资料迁移清单](docs/repository-layout-migration.md)。独有原始文档和日志已补充归档，工具配置保留。`dist/planning/` 只保留当前规划分发产物。此次仅完成开工前资料整理，V2-001 的骨架、依赖锁定和数据库环境仍待实施。
+仓库清理已完成，逐文件去向、hash 和恢复依据见[资料迁移清单](docs/repository-layout-migration.md)。独有原始文档和日志已补充归档，工具配置保留。`dist/planning/` 是可再生成的分发目录，旧版本包不覆盖当前 `plan/`。此次增加了 AI 执行治理文件与本地校验，V2-001 的骨架、依赖锁定和数据库环境仍待实施。
 
 ## 校验规划
 
@@ -23,6 +23,7 @@
 python3 -B plan/scripts/validate_plan.py --check
 python3 -B plan/scripts/validate_plan.py --self-test
 python3 -B plan/scripts/test_governance.py
+python3 -B plan/scripts/test_ai_execution.py
 ```
 
 明确修改机器源后，用 `python3 -B plan/scripts/validate_plan.py --write-views` 更新生成视图与内容清单，再检查。规则基线不会被此命令自动重建。

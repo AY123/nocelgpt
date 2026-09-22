@@ -15,6 +15,7 @@ import unittest
 import yaml
 import validate_plan as validator
 from governance_checks import evidence_checks
+from execution_checks import execution_checks, CONTROL_INPUTS
 
 REVISION = 'a' * 40
 
@@ -65,6 +66,7 @@ class GovernanceTests(unittest.TestCase):
             for a in self.data['decision-register']['decisions']:
                 if a['id'] in t['required_decisions']:
                     a.update(status='ACCEPTED',decision_record=self.record('ADR_DECISION',a['id']))
+            self.make_packet(t)
         gates = [g for g in self.data['ci-gates']['gates'] if g['activation_phase']=='P0']
         ci = self.record('CI_RUN','P0',check_ids=[g['id'] for g in gates])
         for g in gates:
@@ -75,7 +77,41 @@ class GovernanceTests(unittest.TestCase):
         self.data['milestones']['milestones'][0].update(status='VERIFIED',evidence_refs=[self.record('MILESTONE_DECISION','M0',input_evidence_refs=accepts+[phase])])
 
     def errors(self):
-        return validator.validate_objects(self.data)+evidence_checks(self.data,self.plan)
+        return (validator.validate_objects(self.data)+evidence_checks(self.data,self.plan)
+                +execution_checks(self.data,self.plan))
+
+    def make_packet(self, task, action='IMPLEMENT'):
+        """Synthetic inputs in the disposable test tree; never real task evidence."""
+        inputs = []
+        for index, ref in enumerate(dict.fromkeys(task['normative_specs'] + list(CONTROL_INPUTS))):
+            original = self.plan/ref
+            snapshot = self.records/f'{task["task_id"]}-input-{index}.txt'
+            snapshot.write_bytes(original.read_bytes())
+            inputs.append({'source_ref':ref, 'ref':str(snapshot.relative_to(self.plan)),
+                           'sha256':hashlib.sha256(snapshot.read_bytes()).hexdigest()})
+        packet = {
+            'record_type':'task_execution_packet', 'schema_version':'1.0',
+            'task_id':task['task_id'], 'plan_version':self.data['implementation-backlog']['version'],
+            'repository_revision':REVISION, 'worktree_dirty':False,
+            'plan_manifest_sha256':validator.sha(self.plan/'FILE_MANIFEST.json'),
+            'environment':{'fingerprint':'synthetic-only','runtime_versions':{'test':'synthetic'},
+                           'database_image':None,'ci_context':None},
+            'implementer':'synthetic implementer', 'verifier':'synthetic verifier',
+            'owner_role':task['owner_role'], 'scope':'isolated positive test fixture',
+            'action':action, 'inputs':inputs, 'expected_outputs':task['artifacts'][:],
+            'allowed_paths':task['artifacts'][:], 'required_decisions':task['required_decisions'][:],
+            'claims':[], 'estimate':{'range':None,'unit':None,'assumptions':[],'confidence':'NOT_ESTIMATED'},
+            'budget':{'paid_calls_allowed':False,'model_cost_cap':None,'infrastructure_cap':None,
+                      'maximum_attempts':1,'maximum_runtime':60},
+            'stop_conditions':['synthetic-only; no real actions'], 'review_notes':[],
+            'handoff':{'current_step':'isolated fixture','completed_steps':[],'pending_items':[],
+                       'next_action':action,'last_check':{'status':'NOT_RUN','artifacts':[],
+                                                        'missing_artifact_reason':None}},
+        }
+        ref = f'validation/fixture/PACKET-{task["task_id"]}.json'
+        (self.plan/ref).write_text(json.dumps(packet,ensure_ascii=False)+'\n')
+        task['execution_packet_ref'] = ref
+        return packet
 
     def reject(self, prefix):
         errors = self.errors()
@@ -93,7 +129,9 @@ class GovernanceTests(unittest.TestCase):
         self.assertEqual(self.errors(), [])
 
     def test_valid_future_task_start(self):
-        self.data['implementation-backlog']['tasks'][4].update(status='IN_PROGRESS',readiness='READY_AFTER_GATES')
+        task = self.data['implementation-backlog']['tasks'][4]
+        task.update(status='IN_PROGRESS',readiness='READY_AFTER_GATES')
+        self.make_packet(task, 'PREPARE')
         self.assertEqual(self.errors(), [])
 
     def test_valid_multiple_suites_for_one_task(self):
