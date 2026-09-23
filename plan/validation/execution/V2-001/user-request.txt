@@ -1,0 +1,575 @@
+你现在作为 **ANovelOS V2 的主实施 AI（Implementer）**，正式开始项目 P0。
+
+本次不是规划讨论、架构重写或审核报告生成，而是进入真实工程实施。
+
+## 一、项目与当前任务
+
+当前正式规划版本：
+
+`Plan v1.3.0`
+
+当前阶段：
+
+`P0 — Repository / Governance / Architecture / CI Foundation`
+
+本次只执行：
+
+`V2-001 — Repository bootstrap`
+
+不要同时开始 V2-002、V2-003、V2-004，也不得进入任何 P1+ 业务任务。
+
+---
+
+# 二、执行前必须先读取的权威资料
+
+开始任何 IMPLEMENT 动作前，依次读取并理解：
+
+1. `AGENTS.md`
+2. `plan/README.md`
+3. `plan/AI_EXECUTION_PROTOCOL.md`
+4. `plan/00_GOVERNANCE_AND_SOURCE_AUTHORITY.md`
+5. `plan/02_ARCHITECTURE_BASELINE.md`
+6. `plan/07_PLATFORM_SECURITY_AND_DELIVERY.md`
+7. `plan/08_ROADMAP_AND_GATES.md`
+8. `plan/09_TASK_EXECUTION_GUIDE.md`
+9. `plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md`
+10. `plan/machine/implementation-backlog.yaml`
+11. `plan/machine/phase-gates.yaml`
+12. `plan/machine/governance-baseline.yaml`
+13. `plan/machine/decision-register.yaml`
+14. `plan/machine/test-catalog.yaml`
+15. `plan/machine/ai-execution-policy.yaml`
+16. `plan/templates/EXECUTION_PACKET.yaml`
+17. `plan/schemas/execution-packet.schema.json`
+
+历史 `plan/archive/` 只能作为明确引用的设计参考，不具有现行规范权威。
+
+`generated/` 是只读派生视图，不得手工修改。
+
+---
+
+# 三、首先确认真实仓库状态
+
+不要依赖聊天摘要、旧报告或模型记忆。
+
+首先实际检查：
+
+* 当前 Git branch
+* 当前 HEAD SHA
+* Git worktree 是否 dirty
+* 已跟踪修改
+* 未跟踪文件
+* 当前根目录结构
+* 当前 Plan Version
+* 当前 `plan/FILE_MANIFEST.json`
+* V2-001 当前 status / readiness / start_gate
+* P0_ENTRY_READY 当前状态
+* ADR-001 当前状态
+* 当前已有的工程文件，禁止覆盖用户已有有效修改
+
+如果当前仓库实际状态与规划或本提示词不一致，以真实仓库 + 当前现行 Plan 为依据，并明确报告差异。
+
+不得猜测。
+
+---
+
+# 四、严格执行 AI Execution Protocol
+
+首先创建 V2-001 的正式 Execution Packet。
+
+不要修改模板原件。
+
+基于：
+
+`plan/templates/EXECUTION_PACKET.yaml`
+
+创建任务专属记录，放到规划允许的非模板执行记录路径，例如：
+
+`plan/validation/execution/V2-001/execution-packet.yaml`
+
+并让：
+
+`plan/machine/implementation-backlog.yaml`
+
+中的 V2-001 `execution_packet_ref` 正确引用它。
+
+Execution Packet 首先使用：
+
+`action: PREPARE`
+
+必须真实填写：
+
+* task_id
+* plan_version
+* repository_revision
+* worktree_dirty
+* plan_manifest_sha256
+* environment
+* implementer
+* verifier
+* owner_role
+* scope
+* inputs + SHA256
+* expected_outputs
+* allowed_paths
+* required_decisions
+* FACT / ASSUMPTION / UNKNOWN
+* estimate
+* budget
+* stop_conditions
+* handoff
+
+不要伪造任何未知信息。
+
+未知项使用 `UNKNOWN`，不得用模型猜测变成 FACT。
+
+---
+
+# 五、首先解决 ADR-001
+
+V2-001 要求：
+
+`ADR-001 — 精确运行环境与锁定工具`
+
+所以在进入 IMPLEMENT 之前，必须完成 ADR-001。
+
+根据当前项目规范和实际环境，对以下内容做最小必要决策：
+
+* Python 精确版本策略
+* uv 版本/锁定策略
+* PostgreSQL 镜像与版本策略
+* dependency lock policy
+* 本地开发环境和 CI 环境一致性原则
+* 是否以及如何使用 `.python-version`
+* PostgreSQL 测试隔离方式
+
+原则：
+
+1. 不追求“永远最新”。
+2. 必须可重复。
+3. 必须适合 GitLab CI。
+4. 必须支持未来 PostgreSQL transaction / CAS / fencing / concurrency 测试。
+5. 不允许用 SQLite 替代 PostgreSQL 的关键语义测试。
+6. 不引入当前没有消费者的复杂基础设施。
+
+ADR-001 必须形成正式 ACCEPTED decision record，并符合现有 ADR / Evidence 治理要求。
+
+如果 ADR-001 尚未满足进入 IMPLEMENT 的条件，则停在 PREPARE，不得偷偷开始实现。
+
+---
+
+# 六、V2-001 的实施目标
+
+ADR-001 ACCEPTED 后，将 Execution Packet 的 action 正确切换为：
+
+`IMPLEMENT`
+
+然后只实施 V2-001。
+
+目标是建立 ANovelOS 的最小可靠工程骨架。
+
+至少按当前 backlog 要求实现：
+
+* `pyproject.toml`
+* `uv.lock`
+* `.python-version`
+* `compose.yaml`
+* `src/anovel/__init__.py`
+* `tests/integration/test_repository_bootstrap.py`
+* `tests/integration/test_postgres_environment.py`
+* `docs/repository-layout-migration.md`
+
+如果规范明确要求其他 V2-001 必要辅助文件，可以增加，但必须属于当前 Task 范围并说明原因。
+
+---
+
+# 七、项目目录原则
+
+可以建立未来模块的 package boundary，但本任务不得实现业务逻辑。
+
+推荐目标结构遵循现行架构规范，例如：
+
+```text
+src/anovel/
+├── domain/
+├── canon/
+├── genre/
+├── planning/
+├── contracts/
+├── context/
+├── gateway/
+├── workflow/
+├── quality/
+├── repair/
+├── intelligence/
+├── learning/
+└── platform/
+```
+
+但如果当前 P0 规范并不要求一次建立全部空目录，不得为了“看起来完整”制造大量无消费者空模块。
+
+遵循：
+
+**最小可用骨架 > 空壳目录数量。**
+
+---
+
+# 八、本任务绝对禁止提前实现
+
+V2-001 不得实现：
+
+* Character domain
+* Relationship domain
+* Knowledge/Belief
+* Event/Timeline/Promise
+* NarrativeDelta
+* Canon persistence
+* CanonCommitService
+* GenreProfile
+* GenrePolicy
+* Urban/Fantasy extension
+* Contract Compiler
+* Context Compiler
+* Model Gateway
+* Chapter Workflow
+* Quality Q0-Q8
+* Repair
+* Genesis
+* Corpus/Learning
+* Agent Swarm
+* 自动写小说功能
+* 真实模型 Provider 调用
+* 自动发布
+
+如果发现这些能力未来需要，只能记录为未来任务依据。
+
+不要提前实现。
+
+---
+
+# 九、技术要求
+
+P0 工程基础必须优先支持：
+
+* Python 3.12 系列或 ADR-001 最终接受版本
+* uv
+* Pydantic v2
+* PostgreSQL
+* SQLAlchemy 2.x
+* Alembic
+* pytest
+* JSON Schema Draft 2020-12
+
+具体依赖必须以当前任务真实需要为准。
+
+不要为了未来可能使用而一次安装大量框架。
+
+尤其不要现在引入：
+
+* FastAPI，除非当前明确有消费者
+* Celery
+* Kafka
+* Redis
+* Temporal runtime
+* LangGraph runtime
+* Neo4j
+* Elasticsearch
+* Kubernetes
+* Agent framework
+
+---
+
+# 十、PostgreSQL 要求
+
+本任务必须使用真实 PostgreSQL 环境。
+
+建立可重复、隔离的 PostgreSQL 本地测试能力。
+
+至少验证：
+
+1. PostgreSQL 可以启动。
+2. 测试代码能够连接。
+3. 测试结束后能够清理。
+4. 缺失必要配置时明确失败。
+5. 不使用真实生产凭证。
+6. 不把 SQLite 当 PostgreSQL 替代品。
+
+现在只建立数据库工程能力。
+
+不要提前创建 Character、Canon、Chapter 等业务表。
+
+---
+
+# 十一、测试要求
+
+必须真实运行本任务所有适用测试。
+
+至少包括：
+
+* package import
+* uv 环境安装
+* pytest discovery
+* repository bootstrap test
+* PostgreSQL environment integration test
+* Plan validation
+* AI execution governance validation
+
+运行现有规划要求的命令，包括但不限于：
+
+```bash
+python3 -B plan/scripts/validate_plan.py --check
+python3 -B plan/scripts/validate_plan.py --self-test
+python3 -B plan/scripts/test_governance.py
+python3 -B plan/scripts/test_ai_execution.py
+```
+
+如果命令因当前 P0 环境尚未建立而失败：
+
+* 保存真实失败结果
+* 修复当前任务责任范围内的问题
+* 不得删除测试
+* 不得降低验收
+* 不得修改 validator 只为了得到 PASS
+
+---
+
+# 十二、禁止测试作弊
+
+发现测试失败时，禁止：
+
+* 删除测试
+* skip 测试
+* 修改 expected result 迁就错误实现
+* 放宽 threshold
+* 扩大 exclude
+* 修改 hard gate 为 allow_failure
+* 删除 acceptance criteria
+* 修改 test catalog 让错误行为变合法
+* 通过 Mock 冒充真实 PostgreSQL
+* 伪造 PASS JSON
+* 用 README 或模板冒充 Evidence
+
+如果现有测试/规范本身确实错误：
+
+先报告：
+
+1. 原要求是什么
+2. 为什么错误
+3. 证据是什么
+4. 影响哪些任务/场景
+5. 建议如何修订
+
+不得自行静默削弱。
+
+---
+
+# 十三、实际 Diff 必须保持在任务范围
+
+实施过程中持续检查：
+
+```bash
+git status
+git diff
+```
+
+明确区分：
+
+* AI 本轮修改
+* 用户已有修改
+* 未跟踪文件
+* rename
+* delete
+
+不得删除用户已有修改来得到“干净工作区”。
+
+任何超出 V2-001 `allowed_paths` 的改动必须说明：
+
+* 为什么当前任务必须修改
+* 是否属于合法支持性变更
+* 是否影响其他 Task
+* 是否需要停止等待新的授权/ADR
+
+---
+
+# 十四、状态管理
+
+任务状态必须遵循：
+
+```text
+OPEN
+→ IN_PROGRESS
+→ IMPLEMENTED
+→ VERIFIED
+→ CLOSED
+```
+
+禁止直接：
+
+```text
+OPEN → CLOSED
+```
+
+含义：
+
+* `IN_PROGRESS`：正式实施开始
+* `IMPLEMENTED`：代码/配置存在
+* `VERIFIED`：真实适用测试与 CI 证据成立
+* `CLOSED`：验收记录、Finding disposition 等全部满足
+
+特别注意：
+
+当前 P0 尚未建立完整可信远端 CI。
+
+因此：
+
+> 如果 V2-001 的 CLOSED 条件要求尚未建立的 V2-004 真实 CI Evidence，则不要假装 CLOSED。
+
+允许：
+
+```text
+IMPLEMENTED
+```
+
+或规范允许的中间状态，
+
+然后等待 V2-004 建立真实 CI 后完成最终 closure。
+
+状态必须严格依据当前 machine policy。
+
+---
+
+# 十五、Evidence 要求
+
+不要用你的自然语言总结作为完成证据。
+
+为实际执行保留可核验的：
+
+* CODE evidence
+* TEST_RESULT
+* CI_RUN（只有真实 CI 后）
+* ACCEPTANCE_RECORD
+* ADR decision evidence
+* 原始命令输出
+* artifact hash
+
+全部绑定正确 revision。
+
+本地测试通过不得冒充远端 GitLab CI。
+
+---
+
+# 十六、交接恢复
+
+整个执行过程中持续维护 Execution Packet 的 handoff 状态。
+
+至少记录：
+
+* current_step
+* completed_steps
+* pending_items
+* next_action
+* last_check
+
+如果发生：
+
+* 会话中断
+* 模型切换
+* checkout 变化
+* worktree 变化
+* Plan 输入变化
+
+恢复时必须重新核对真实仓库和输入 hash。
+
+不得因为旧聊天摘要说“已完成”就直接继续。
+
+---
+
+# 十七、完成后不要自动进入 V2-002
+
+V2-001 达到当前能够达到的最高真实状态后停止。
+
+输出一份简洁但完整的实施报告，包括：
+
+## A. Repository State
+
+* branch
+* HEAD
+* worktree 状态
+
+## B. V2-001 Status
+
+* OPEN / IN_PROGRESS / IMPLEMENTED / VERIFIED / CLOSED
+* 为什么是这个状态
+
+## C. ADR-001
+
+* 最终决定
+* decision record
+
+## D. Files Changed
+
+逐项列出实际文件。
+
+## E. Commands Executed
+
+列出真实命令和 exit code。
+
+## F. Test Results
+
+* PASS
+* FAIL
+* UNKNOWN
+* NOT_RUN
+
+不得只写“全部通过”。
+
+## G. PostgreSQL Evidence
+
+实际 PostgreSQL 环境与测试结果。
+
+## H. Plan / Governance Results
+
+规划校验和 AI Execution 校验结果。
+
+## I. Remaining Blockers
+
+特别指出哪些需要 V2-002/003/004 才能完成。
+
+## J. Scope Check
+
+明确确认是否实现了任何 P1+ 功能。
+
+如果有，视为 Scope Violation 并报告。
+
+## K. Next Recommended Task
+
+只说明下一步应进入哪个 P0 Task。
+
+不要自行开始。
+
+---
+
+# 十八、成功标准
+
+本次工作的目标不是“写很多代码”。
+
+成功意味着：
+
+1. ANovelOS 第一次拥有真实、可重复的 Python 工程环境。
+2. PostgreSQL 基础测试环境成立。
+3. 依赖被锁定。
+4. 工程骨架符合现行架构。
+5. Plan v1.3.0 的 AI Execution Protocol 第一次被真实任务消费。
+6. 没有提前实现 P1+。
+7. 所有状态和证据都诚实。
+8. 后续 AI 可以仅凭 Git 仓库和 Execution Packet 恢复工作。
+
+如果出现规范冲突、未知事实或权限不足：
+
+**Fail closed。**
+
+记录具体阻断、保留已经完成的合法工作，不通过猜测或削弱规则继续推进。
+
+现在开始执行：
+
+**P0 / V2-001 Repository Bootstrap。**

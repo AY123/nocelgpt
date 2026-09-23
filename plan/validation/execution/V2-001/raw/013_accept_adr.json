@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "plan/validation/execution/V2-001/tools/accept_adr.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:49:22.736403+00:00",
+  "finished_at": "2026-09-22T15:49:22.915044+00:00",
+  "exit_code": 0,
+  "stdout": "4b60312c487ad090adddca94e08e74982404e065\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

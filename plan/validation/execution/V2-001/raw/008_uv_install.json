@@ -1,0 +1,22 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "pip",
+    "install",
+    "--disable-pip-version-check",
+    "--no-warn-script-location",
+    "--target",
+    "dist/tools/uv-bootstrap",
+    "--index-url",
+    "https://pypi.org/simple",
+    "uv==0.12.17"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:45:15.156768+00:00",
+  "finished_at": "2026-09-22T15:45:23.183885+00:00",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "WARNING: The directory '/Users/angyang/Library/Caches/pip' or its parent directory is not owned or is not writable by the current user. The cache has been disabled. Check the permissions and owner of that directory. If executing pip with sudo, you should use sudo's -H flag.\nWARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x102ec70a0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/uv/\nWARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x102ec74f0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/uv/\nWARNING: Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x102ec7130>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/uv/\nWARNING: Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x102ec7ca0>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/uv/\nWARNING: Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<pip._vendor.urllib3.connection.HTTPSConnection object at 0x102ec7e50>: Failed to establish a new connection: [Errno 8] nodename nor servname provided, or not known')': /simple/uv/\nERROR: Could not find a version that satisfies the requirement uv==0.12.17 (from versions: none)\nERROR: No matching distribution found for uv==0.12.17\n",
+  "scope": "local V2-001 execution, not remote CI"
+}

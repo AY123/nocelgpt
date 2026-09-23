@@ -3,13 +3,13 @@ scope: 本包 ADR 编号；旧 ADR 编号仅在 archive 中保留，按语义映
 decisions:
 - id: ADR-001
   title: 精确运行环境与锁定工具
-  status: REQUIRED
+  status: ACCEPTED
   owner_role: repository-maintainer
   related_tasks:
   - V2-001
   decision_due_task: V2-001
   timing: before_interface_implementation
-  decision_record: null
+  decision_record: validation/execution/V2-001/adr-001-decision.yaml
   verification_refs: []
 - id: ADR-002
   title: Character 基础/派生 Schema 与代码类型一致策略

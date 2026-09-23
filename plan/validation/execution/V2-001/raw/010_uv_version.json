@@ -1,0 +1,13 @@
+{
+  "command": [
+    "dist/tools/uv-bootstrap/bin/uv",
+    "--version"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:46:22.911841+00:00",
+  "finished_at": "2026-09-22T15:46:22.921816+00:00",
+  "exit_code": 0,
+  "stdout": "uv 0.12.17 (635500036 2026-09-18 aarch64-apple-darwin)\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

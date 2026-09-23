@@ -1,0 +1,23 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "pip",
+    "install",
+    "--disable-pip-version-check",
+    "--no-cache-dir",
+    "--no-warn-script-location",
+    "--target",
+    "dist/tools/uv-bootstrap",
+    "--index-url",
+    "https://pypi.org/simple",
+    "uv==0.12.17"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:45:50.572937+00:00",
+  "finished_at": "2026-09-22T15:46:08.436611+00:00",
+  "exit_code": 0,
+  "stdout": "Collecting uv==0.12.17\n  Downloading uv-0.12.17-py3-none-macosx_11_0_arm64.whl (17.0 MB)\nInstalling collected packages: uv\nSuccessfully installed uv-0.12.17\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

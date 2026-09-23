@@ -1,0 +1,15 @@
+{
+  "command": [
+    "docker",
+    "version",
+    "--format",
+    "{{json .}}"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:35:18.736921+00:00",
+  "finished_at": "2026-09-22T15:35:18.772534+00:00",
+  "exit_code": 0,
+  "stdout": "{\"Client\":{\"Version\":\"29.4.0\",\"ApiVersion\":\"1.54\",\"DefaultAPIVersion\":\"1.54\",\"GitCommit\":\"9d7ad9f\",\"GoVersion\":\"go1.26.1\",\"Os\":\"darwin\",\"Arch\":\"arm64\",\"BuildTime\":\"Tue Apr  7 08:34:32 2026\",\"Context\":\"desktop-linux\"},\"Server\":{\"Platform\":{\"Name\":\"Docker Desktop 4.70.0 (224270)\"},\"Version\":\"29.4.0\",\"ApiVersion\":\"1.54\",\"MinAPIVersion\":\"1.40\",\"Os\":\"linux\",\"Arch\":\"arm64\",\"Components\":[{\"Name\":\"Engine\",\"Version\":\"29.4.0\",\"Details\":{\"ApiVersion\":\"1.54\",\"Arch\":\"arm64\",\"BuildTime\":\"Tue Apr  7 08:36:25 2026\",\"Experimental\":\"false\",\"GitCommit\":\"daa0cb7\",\"GoVersion\":\"go1.26.1\",\"KernelVersion\":\"6.12.76-linuxkit\",\"MinAPIVersion\":\"1.40\",\"Module\":\"github.com/moby/moby/v2\",\"ModuleVersion\":\"v2.0.0+unknown\",\"Os\":\"linux\"}},{\"Name\":\"containerd\",\"Version\":\"v2.2.1\",\"Details\":{\"GitCommit\":\"dea7da592f5d1d2b7755e3a161be07f43fad8f75\"}},{\"Name\":\"runc\",\"Version\":\"1.3.4\",\"Details\":{\"GitCommit\":\"v1.3.4-0-gd6d73eb8\"}},{\"Name\":\"docker-init\",\"Version\":\"0.19.0\",\"Details\":{\"GitCommit\":\"de40ad0\"}}],\"GitCommit\":\"daa0cb7\",\"GoVersion\":\"go1.26.1\",\"KernelVersion\":\"6.12.76-linuxkit\",\"BuildTime\":\"2026-04-07T08:36:25.000000000+00:00\"}}\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

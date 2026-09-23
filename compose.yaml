@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+    environment:
+      POSTGRES_DB: ${ANOVELOS_TEST_DB:?Set an isolated test database name}
+      POSTGRES_USER: ${ANOVELOS_TEST_USER:?Set a test-only user}
+      POSTGRES_PASSWORD: ${ANOVELOS_TEST_PASSWORD:?Set a disposable test password}
+    ports:
+      - target: 5432
+        host_ip: 127.0.0.1
+        protocol: tcp
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 1s
+      timeout: 3s
+      retries: 30
+    stop_grace_period: 10s

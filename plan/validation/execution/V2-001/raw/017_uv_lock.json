@@ -1,0 +1,16 @@
+{
+  "command": [
+    "env",
+    "UV_PYTHON_INSTALL_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/tools/python",
+    "UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv",
+    "dist/tools/uv-bootstrap/bin/uv",
+    "lock"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:52:01.666080+00:00",
+  "finished_at": "2026-09-22T15:52:08.542303+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Using CPython 3.12.14\nResolved 19 packages in 6.68s\n",
+  "scope": "local V2-001 execution, not remote CI"
+}

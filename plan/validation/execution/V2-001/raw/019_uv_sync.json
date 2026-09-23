@@ -1,0 +1,17 @@
+{
+  "command": [
+    "env",
+    "UV_PYTHON_INSTALL_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/tools/python",
+    "UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv",
+    "dist/tools/uv-bootstrap/bin/uv",
+    "sync",
+    "--locked"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T00:57:10.848363+00:00",
+  "finished_at": "2026-09-23T00:57:22.687341+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Using CPython 3.12.14\nCreating virtual environment at: .venv\nResolved 19 packages in 15ms\n   Building anovelos @ file:///Users/angyang/Documents/AI/ANovelOS\n      Built anovelos @ file:///Users/angyang/Documents/AI/ANovelOS\nDownloading pygments (1.2MiB)\nDownloading psycopg-binary (4.5MiB)\nDownloading sqlalchemy (2.1MiB)\n Downloaded pygments\n Downloaded sqlalchemy\n Downloaded psycopg-binary\nPrepared 16 packages in 11.68s\nInstalled 16 packages in 24ms\n + anovelos==0.1.0 (from file:///Users/angyang/Documents/AI/ANovelOS)\n + attrs==26.1.0\n + iniconfig==2.3.0\n + jsonschema==4.26.0\n + jsonschema-specifications==2025.9.1\n + packaging==26.3\n + pluggy==1.6.0\n + psycopg==3.3.6\n + psycopg-binary==3.3.6\n + pygments==2.21.0\n + pytest==9.1.1\n + pyyaml==6.0.3\n + referencing==0.37.0\n + rpds-py==2026.6.3\n + sqlalchemy==2.0.54\n + typing-extensions==4.16.0\n",
+  "scope": "local V2-001 execution, not remote CI"
+}

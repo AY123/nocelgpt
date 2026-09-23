@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-s",
+    "tests/integration/test_postgres_environment.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T01:25:45.384140+00:00",
+  "finished_at": "2026-09-23T01:26:00.628043+00:00",
+  "exit_code": 0,
+  "stdout": "POSTGRES_PROJECT anovel-v2001-8c66f5af9a034270\nPOSTGRES_CONNECTED anovel-v2001-8c66f5af9a034270 {\"database\": \"bootstrap_test\", \"server_version_num\": 170011, \"driver\": \"postgresql+psycopg\"}\nPOSTGRES_CLEANUP anovel-v2001-8c66f5af9a034270 containers=0 networks=0 volumes=0\n.POSTGRES_PROJECT anovel-v2001-0d06252890dc4a8e\nPOSTGRES_CLEANUP anovel-v2001-0d06252890dc4a8e containers=0 networks=0 volumes=0\n.........\n10 passed in 14.97s\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

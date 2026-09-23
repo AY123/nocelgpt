@@ -1,0 +1,32 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-001-20260922-local
+evidence_type: ADR_DECISION
+subject_id: ADR-001
+revision: 4b60312c487ad090adddca94e08e74982404e065
+status: PASS
+producer: Codex Implementer under explicit V2-001 authorization
+executed_at: '2026-09-22T15:49:22.822322+00:00'
+environment_fingerprint: macOS15.1.1-arm64; Python3.12.14; uv0.12.17; Docker29.4.0;
+  Compose5.1.2
+artifacts:
+- ref: decisions/ADR-001_RUNTIME_AND_LOCKING.md
+  sha256: 234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc
+- ref: validation/execution/V2-001/raw/005_docker_running_authorized.json
+  sha256: c736f3c150102a8c288f6c29dad8d14bdc1a04a30fba33f85b50ee79c6d38346
+- ref: validation/execution/V2-001/raw/006_postgres_pull.json
+  sha256: 1e062fcce8e64d06507f7c42db77f1909a84d9dbdcf7842ebdd65234c4b88709
+- ref: validation/execution/V2-001/raw/007_postgres_inspect.json
+  sha256: e1bf8989997f9735ff391acdc00db0e96ad3d6df894ae60f876d7f4536d9dc07
+- ref: validation/execution/V2-001/raw/009_uv_install_authorized.json
+  sha256: be231d0738f7bb7f1d555f11f3532dbb9005c5376e4cea9115e09b64fcf515c4
+- ref: validation/execution/V2-001/raw/010_uv_version.json
+  sha256: 96aaf35071a561fe0c724c212ab027721472af1d2121d0de16649d778a9f7e6c
+- ref: validation/execution/V2-001/raw/011_python_install.json
+  sha256: 2ff12ac9ee3edfb0662ac293eaa192c91b4b8fff7e72eb9af21ffece2b5389b9
+- ref: validation/execution/V2-001/raw/012_python_version.json
+  sha256: d4db38c4a6ff9ea3101a1d0b9f8b14799ce69f1a548e58cafed1c65e9d2d542b
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Committed ADR-001 makes an explicit minimal choice, with real local installation/image
+  evidence. This accepts a decision, not remote CI or task closure.

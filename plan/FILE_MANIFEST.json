@@ -66,8 +66,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 6429,
-    "sha256": "f075641e19f3adcf327b7fff20a975d1b8b02ee13c232d9aefda0fa7ff44daed"
+    "bytes": 6770,
+    "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
   },
   {
     "path": "archive/README.md",
@@ -1325,6 +1325,11 @@
     "sha256": "4305f6a46d4d76d3ca642b51c49d040b6de2ae51b1cdd444370d6b4f0e5f57ba"
   },
   {
+    "path": "decisions/ADR-001_RUNTIME_AND_LOCKING.md",
+    "bytes": 5676,
+    "sha256": "234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc"
+  },
+  {
     "path": "generated/EXTERNAL_PRACTICE_MAP.md",
     "bytes": 3286,
     "sha256": "1a4bf3f578631a8795ba023d06bc2cf2e07482e37446da9e1e1d9bd6a275000d"
@@ -1336,8 +1341,8 @@
   },
   {
     "path": "generated/PHASE_TASK_REGISTRY.md",
-    "bytes": 6112,
-    "sha256": "64f14a2541c36c89dc799a6e10ee1fbd609ccd75239b61dac73a38e95c0971ce"
+    "bytes": 6137,
+    "sha256": "aa5686dfdf9e23cd669f5053b379d069432290f38bdf5c9d735143faf19f9378"
   },
   {
     "path": "machine/ai-execution-policy.yaml",
@@ -1356,8 +1361,8 @@
   },
   {
     "path": "machine/decision-register.yaml",
-    "bytes": 5230,
-    "sha256": "20065c84e24a3366fd9b2e1ab862ef1a90ef066222de1a454508628f5888a5b8"
+    "bytes": 5275,
+    "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
   },
   {
     "path": "machine/external-practice-register.yaml",
@@ -1376,8 +1381,8 @@
   },
   {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 83952,
-    "sha256": "e0301be19a1d60cdd22edc36764a3d9fd3d5465359f6e66154489b4476ec425a"
+    "bytes": 84004,
+    "sha256": "2b15bec510c618b2f3e3b8b9de9a0cf69ba173a9afe32d0cedcd8679e787f16c"
   },
   {
     "path": "machine/milestones.yaml",
@@ -1401,8 +1406,8 @@
   },
   {
     "path": "machine/test-catalog.yaml",
-    "bytes": 37531,
-    "sha256": "2ba3390d9539423ccf47e8e5cb114e8da801322272fc9b6ecf7b5dd3cd70a0c3"
+    "bytes": 37535,
+    "sha256": "181b4fd1a4b65227902876f21a020614c3a39a579ddf7dd9495eead7a7ffb11a"
   },
   {
     "path": "schemas/evidence-record.schema.json",
@@ -1436,8 +1441,8 @@
   },
   {
     "path": "scripts/test_ai_execution.py",
-    "bytes": 13296,
-    "sha256": "0df445891852adb6eaad89f46b29eff73e0c0920d83c8c1960cb38cfa552e68a"
+    "bytes": 13633,
+    "sha256": "a93e26b08677b6c30ce7167b33d3894ec797dd3ca41df4d0bc32b308e486e347"
   },
   {
     "path": "scripts/test_governance.py",

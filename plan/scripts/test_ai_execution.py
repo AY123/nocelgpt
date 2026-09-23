@@ -23,6 +23,10 @@ class AIExecutionTests(unittest.TestCase):
         self.records.mkdir(parents=True)
         self.data = deepcopy(validator.load())
         self.task = self.data['implementation-backlog']['tasks'][0]
+        # Establish the negative fixture's premise independently of live progress.
+        # Positive cases explicitly accept this isolated decision below.
+        adr = next(a for a in self.data['decision-register']['decisions'] if a['id'] == 'ADR-001')
+        adr.update(status='REQUIRED', decision_record=None, verification_refs=[])
         for ref in self.task['normative_specs'] + list(CONTROL_INPUTS) + ['schemas/execution-packet.schema.json', 'FILE_MANIFEST.json']:
             dest = self.plan/ref
             dest.parent.mkdir(parents=True, exist_ok=True)

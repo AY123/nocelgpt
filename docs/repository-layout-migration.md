@@ -30,6 +30,18 @@
 
 此清单仅证明资料整理完成。V2-001 仍缺实际仓库骨架、依赖锁定、干净环境安装和 PostgreSQL 测试；V2-002～004 仍需真实工程接入和 CI。后续代码出现后，还须在架构检查中验证 archive 不被构建/导入，不能由本次目录整理推定已通过。
 
+以上是 2026-09-21 清理时点的状态；后续实施更新见下节，不改写历史清理证据。
+
 ## 清理后验证
 
 256 个原路径已确认移除；247 份登记快照的大小与 SHA-256 全部匹配，新归档文件不会被 Git ignore 漏掉。资料校验、32 项自测、39 项治理回归和 13 项旧探针/对照全部通过。工具配置仍保留，任务状态未改变。
+
+## V2-001 工程复核（2026-09-23）
+
+新增 `src/anovel`、pyproject / uv.lock / .python-version、Compose、测试与只读数据库探针。未新增空业务目录、migrations、Provider 或 CI 文件；没有删除/重命名原资料。目录职责新增：`src/` 是唯一可安装包入口，`tests/` 是当前真实验收，`scripts/check_postgres.py` 是无迁移探针；`dist/tools`、`dist/cache` 与 `.venv` 为忽略的本地环境产物。
+
+`test_historical_materials_preserved` 实际核对清单中的 245 份保留文件及来源登记全部 247 份快照的 bytes/hash，包含隐藏 `.claude/convergence` 历史与独有原件。原 `.claude/settings.local.json` 保持原地，本轮没有编辑或分发其内容；现场存在性/hash 记在 V2-001 `raw/resume-state.json`，不会要求其他干净 checkout 带上个人配置。根 README / AGENTS 指向现行 plan。
+
+真实构建的 wheel 与 sdist 已检查清单：只包含声明的 `anovel` 包及必要元数据，不包含 plan/archive、工具配置、测试或运行证据。wheel 在独立虚拟环境和源码目录之外成功导入。完整架构适应性扫描仍属于 V2-003，不能以包清单检查替代。
+
+初次工程结果见 [仓库测试原始输出](../plan/validation/execution/V2-001/raw/020_bootstrap_pytest.json) 和 [数据库测试原始输出](../plan/validation/execution/V2-001/raw/021_postgres_pytest.json)。最终 revision 与后续运行从 [正式执行包](../plan/validation/execution/V2-001/execution-packet.yaml) 追踪。V2-001 只能处于 IMPLEMENTED；本地结果不关闭 P0。

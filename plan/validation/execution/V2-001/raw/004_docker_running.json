@@ -1,0 +1,15 @@
+{
+  "command": [
+    "docker",
+    "version",
+    "--format",
+    "{{json .}}"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:31:03.318547+00:00",
+  "finished_at": "2026-09-22T15:31:03.436389+00:00",
+  "exit_code": 1,
+  "stdout": "{\"Client\":{\"Version\":\"29.4.0\",\"ApiVersion\":\"1.54\",\"DefaultAPIVersion\":\"1.54\",\"GitCommit\":\"9d7ad9f\",\"GoVersion\":\"go1.26.1\",\"Os\":\"darwin\",\"Arch\":\"arm64\",\"BuildTime\":\"Tue Apr  7 08:34:32 2026\",\"Context\":\"desktop-linux\"},\"Server\":null}\n",
+  "stderr": "permission denied while trying to connect to the docker API at unix:///Users/angyang/.docker/run/docker.sock\n",
+  "scope": "local V2-001 execution, not remote CI"
+}

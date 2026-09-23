@@ -2,13 +2,13 @@
 
 Plan Version：1.3.0；更新日期：2026-09-22；历史资料来源基线：`5cffff8`。本目录是正式实施入口。审核报告的版本不替代本计划版本。
 
-本轮将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTOCOL.md)、执行包 Schema、交接模板、本地检查及 P0 验收要求。见 [v1.3.0 变更与验证说明](changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。P0—P14、双 Anchor、60 个任务身份/阶段/依赖不变；新增 10 个 P0 场景，当前 246 个验收场景仍均为计划。本地回归不是业务运行或可信 CI 认证。
+v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTOCOL.md)、执行包 Schema、交接模板、本地检查及 P0 验收要求。见 [v1.3.0 变更与验证说明](changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。P0—P14、双 Anchor、60 个任务身份/阶段/依赖不变；246 个验收场景按机器源分别记录实施和验证状态。本地回归不是业务运行或可信 CI 认证。
 
 保留 [v1.2.2](changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)、[v1.2.1](changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)、[v1.2](changes/2026-09-21_REVIEW_ADOPTION.md)和 [v1.1](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)的历史变更记录；旧版本数字与结论只适用于其声明时点。
 
 **当前状态：资料基线已整理，可启动 P0；V2 工程、P0 退出、业务内核及题材认证尚未完成。** 文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
 
-开工前清理已按用户授权完成：根目录旧资料的重复副本已删除，独有文件补充归档；旧根 ZIP 的 Git 恢复依据和逐文件去向保存在项目根下 `docs/repository-layout-migration.md` / `.json`。来源登记中的 `origin` 是历史位置，不要求根副本继续存在。V2-001 只完成资料整理子项，任务仍 OPEN。
+开工前清理已按用户授权完成：根目录旧资料的重复副本已删除，独有文件补充归档；旧根 ZIP 的 Git 恢复依据和逐文件去向保存在项目根下 `docs/repository-layout-migration.md` / `.json`。来源登记中的 `origin` 是历史位置，不要求根副本继续存在。2026-09-23 V2-001 已 IMPLEMENTED：具备最小 Python 骨架、锁定安装和本地真实 PostgreSQL 测试；远端 CI 和最终验收仍缺失。见[执行包](validation/execution/V2-001/execution-packet.yaml)及 [ADR-001](decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
 
 ## 阅读与执行顺序
 
@@ -41,18 +41,18 @@ Plan Version：1.3.0；更新日期：2026-09-22；历史资料来源基线：`5
 - [AI 执行约束登记](machine/ai-execution-policy.yaml)：六项措施的责任、场景与实际实现边界；[执行包 Schema](schemas/execution-packet.schema.json)、[执行包模板](templates/EXECUTION_PACKET.yaml)、[交接模板](templates/AI_HANDOFF_RECORD.yaml)。
 - [任务清单](machine/implementation-backlog.yaml)：60 个任务的唯一身份、阶段、依赖和验收映射。
 - [阶段门禁](machine/phase-gates.yaml)、[里程碑](machine/milestones.yaml)、[CI 门禁](machine/ci-gates.yaml)。
-- [验收场景目录](machine/test-catalog.yaml)：当前均为计划场景，不冒充已实现测试。
+- [验收场景目录](machine/test-catalog.yaml)：逐套件记录状态与实际执行证据，未实施场景仍为计划。
 - [决策登记](machine/decision-register.yaml)、[整改登记](machine/remediation-register.yaml)。
 - [权限与证据政策](machine/authority-policy.yaml)、[来源登记](machine/source-register.yaml)。
 - [外部经验采纳登记](machine/external-practice-register.yaml)：公开来源、证据局限、本地改造、关联任务/验收场景及暂缓范围。
 - [机器结构约束](schemas/implementation-task.schema.json)、[校验程序](scripts/validate_plan.py)、[校验结果](validation/plan-validation.json)。
 
-`machine/` 保存事实，`generated/` 是其只读视图。运行 `python3 plan/scripts/validate_plan.py --write-views` 更新视图；运行 `python3 plan/scripts/validate_plan.py --check` 检查一致性。需要 PyYAML、jsonschema；P0 时纳入正式依赖锁定。
+`machine/` 保存事实，`generated/` 是其只读视图。运行 `python3 plan/scripts/validate_plan.py --write-views` 更新视图；运行 `python3 plan/scripts/validate_plan.py --check` 检查一致性。PyYAML、jsonschema 已随 V2-001 纳入根 `uv.lock`；使用锁定环境。活动执行包必须在计划变动后核对来源并更新快照/hash。
 
 ## 历史资料与实施状态
 
 [archive/](archive/) 保留来源快照；内部的 NORMATIVE、FINAL、READY、PASS 等标签都是历史内容，不构成当前授权。旧 Schema 不进入生产验证器的自动扫描路径，需经任务修正、正反例测试后进入未来的 `specs/`。
 
-60 个任务状态仍全部为 OPEN。本次完成的是实施资料整理，不因此关闭 V2-001～004，不创建生产服务，不调用真实模型，也不发布作品。未来任务关闭的证据须写入任务记录并通过检查。
+当前 V2-001 为 IMPLEMENTED，其余 59 个任务仍 OPEN。没有开始 V2-002～004、生产服务、真实模型或作品发布。任务关闭的证据须写入任务记录并通过检查；V2-001 的本地证据不替代缺失的真实 CI 与验收。
 
 规划验证还需运行 `python3 -B plan/scripts/test_governance.py` 与 `python3 -B plan/scripts/test_ai_execution.py`。最低义务基线不可由 `--write-views` 自动放宽；原始审核和新复测结果分开保留。当前本地可检查已声明执行包；真实动作拦截、实际 diff/验收弱化识别、可信 CI 和权限保护仍须 V2-002～004 实施。V2-017 的[设计执行包](task-packets/V2-017_PLANNING_CONTRACT_PACKET.md)在 P4 消费，不替代任务开工时的正式记录。

@@ -1,0 +1,13 @@
+{
+  "command": [
+    "dist/tools/python/cpython-3.12.14-macos-aarch64-none/bin/python3.12",
+    "--version"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:48:12.128235+00:00",
+  "finished_at": "2026-09-22T15:48:12.983607+00:00",
+  "exit_code": 0,
+  "stdout": "Python 3.12.14\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

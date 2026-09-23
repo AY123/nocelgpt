@@ -1,0 +1,14 @@
+{
+  "command": [
+    "python3",
+    "-B",
+    "plan/validation/execution/V2-001/tools/prepare_packet.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:25:10.106504+00:00",
+  "finished_at": "2026-09-22T15:25:11.449882+00:00",
+  "exit_code": 0,
+  "stdout": "{\n  \"task_status\": \"OPEN\",\n  \"action\": \"PREPARE\",\n  \"manifest\": \"c908bb1599c426b389fae874be9ce1eea1ff0fecf63db2babdeb1c709caf332b\"\n}\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

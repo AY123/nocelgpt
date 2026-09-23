@@ -1,0 +1,9 @@
+{
+  "original_requirement": "Unaccepted ADR must reject IMPLEMENT; accepted ADR must permit it.",
+  "defect": "Negative fixture inherits live accepted ADR and does not establish REQUIRED premise.",
+  "evidence": "raw/016_ai_regression_before_fixture_fix.json: 36 cases, one failure EXEC_ADR absent.",
+  "impact": "Only isolated test_interface_requires_decision setup affected when real ADR-001 progresses; production validator correct.",
+  "proposal": "Initialize ADR-001 as REQUIRED in isolated setUp, clear synthetic decision pointers, preserve all original assertions and positive helper.",
+  "scope": "Narrow V2-001 support change; not implementing V2-002 controls.",
+  "reported_before_edit": true
+}

@@ -4,7 +4,7 @@ suites:
 - id: AT-V2-001
   task_id: V2-001
   phase: P0
-  status: PLANNED
+  status: IMPLEMENTED
   target_path: tests/integration/test_repository_bootstrap.py
   scenarios:
   - id: AT-V2-001-01

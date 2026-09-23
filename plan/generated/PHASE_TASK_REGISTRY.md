@@ -2,7 +2,7 @@
 
 唯一源：`machine/implementation-backlog.yaml` 与 `machine/phase-gates.yaml`。不要手工修改。
 
-共 60 个任务。当前任务状态：{"OPEN": 60}
+共 60 个任务。当前任务状态：{"IMPLEMENTED": 1, "OPEN": 59}
 
 ## P0 — Repository & Governance
 
@@ -10,7 +10,7 @@
 
 | ID | 名称 | 依赖 | 状态 |
 |---|---|---|---|
-| V2-001 | Repository bootstrap | 无任务依赖，仍须阶段门禁 | OPEN |
+| V2-001 | Repository bootstrap | 无任务依赖，仍须阶段门禁 | IMPLEMENTED |
 | V2-002 | Normative documentation index | 无任务依赖，仍须阶段门禁 | OPEN |
 | V2-003 | Architecture fitness harness | 无任务依赖，仍须阶段门禁 | OPEN |
 | V2-004 | Secret and dependency CI gates | 无任务依赖，仍须阶段门禁 | OPEN |

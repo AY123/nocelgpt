@@ -1,0 +1,20 @@
+{
+  "command": [
+    "dist/tools/uv-bootstrap/bin/uv",
+    "python",
+    "install",
+    "3.12.14",
+    "--install-dir",
+    "dist/tools/python",
+    "--no-bin",
+    "--cache-dir",
+    "dist/cache/uv"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-22T15:46:39.395208+00:00",
+  "finished_at": "2026-09-22T15:46:55.162824+00:00",
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "Downloading cpython-3.12.14-macos-aarch64-none (download) (23.8MiB)\n Downloaded cpython-3.12.14-macos-aarch64-none (download)\nInstalled Python 3.12.14 in 15.71s\n + cpython-3.12.14-macos-aarch64-none\n",
+  "scope": "local V2-001 execution, not remote CI"
+}

@@ -1,0 +1,20 @@
+{
+  "command": [
+    "env",
+    "PATH=/Users/angyang/Documents/AI/ANovelOS/dist/tools/uv-bootstrap/bin:/usr/local/bin:/usr/bin:/bin",
+    "UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv",
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-s",
+    "tests/integration/test_repository_bootstrap.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T01:22:56.247545+00:00",
+  "finished_at": "2026-09-23T01:23:00.279441+00:00",
+  "exit_code": 0,
+  "stdout": "CLEAN_INSTALL Python=3.12.14 non-editable site-packages import; lock unchanged; pytest discovery succeeded\n..DISTRIBUTIONS wheel+sdist inspected; archive/tooling absent; wheel import succeeded\n.MIGRATION 245 retained files and 247 registered snapshots match; hidden history covered\n..\n5 passed in 3.31s\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

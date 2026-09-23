@@ -1,0 +1,19 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "plan/scripts/validate_plan.py",
+    "--self-test",
+    "--output-dir",
+    "plan/validation/execution/V2-001/checks/precommit-self-test"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T01:30:25.389940+00:00",
+  "repository_revision": "4b60312c487ad090adddca94e08e74982404e065",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-23T01:30:26.698386+00:00",
+  "exit_code": 0,
+  "stdout": "{\"scope\": \"planning validator self-test only\", \"status\": \"PASS\", \"cases\": 32}\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

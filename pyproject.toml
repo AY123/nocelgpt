@@ -1,0 +1,36 @@
+[project]
+name = "anovelos"
+version = "0.1.0"
+description = "ANovelOS V2 repository bootstrap"
+readme = "README.md"
+requires-python = "==3.12.14"
+dependencies = []
+
+[build-system]
+requires = ["uv_build==0.12.17"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8,<10",
+    "PyYAML>=6,<7",
+    "jsonschema>=4,<5",
+    "SQLAlchemy>=2,<3",
+    "psycopg[binary]>=3,<4",
+]
+
+[tool.uv]
+required-version = "==0.12.17"
+default-groups = ["dev"]
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+
+[tool.uv.build-backend]
+module-name = "anovel"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-config --strict-markers -ra"
