@@ -262,3 +262,47 @@ def test_reports_cannot_overwrite_plan_or_previous_result(repo):
     previous = checkpoint.read_bytes()
     result, _, _ = entry(repo, output=checkpoint)
     assert result.returncode != 0 and checkpoint.read_bytes() == previous
+
+
+def test_detached_head_allows_check_run_and_resume(repo):
+    head = call(repo, 'git', 'rev-parse', 'HEAD').stdout.strip()
+    assert call(repo, 'git', 'checkout', '--detach', head).returncode == 0
+    result, report, _ = entry(repo)
+    assert result.returncode == 0 and report['status'] == 'PASS'
+    assert report['after']['branch'] is None and report['after']['head'] == head
+    result, report, checkpoint = entry(repo, 'run', command=SENTINEL)
+    assert result.returncode == 0 and (repo / 'sentinel').read_text() == 'executed'
+    result, report, _ = entry(repo, 'resume', checkpoint=checkpoint)
+    assert result.returncode == 0 and report['status'] == 'PASS'
+
+
+@pytest.mark.parametrize('transition', ['detach', 'attach', 'detached_head_change'])
+def test_resume_rejects_detached_context_changes(repo, transition):
+    if transition != 'detach':
+        assert call(repo, 'git', 'checkout', '--detach').returncode == 0
+    _, _, checkpoint = entry(repo)
+    if transition == 'detach':
+        changed = call(repo, 'git', 'checkout', '--detach')
+    elif transition == 'attach':
+        changed = call(repo, 'git', 'checkout', 'main')
+    else:
+        changed = call(repo, 'git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                       'commit', '--allow-empty', '-qm', 'different detached checkout')
+    assert changed.returncode == 0
+    result, report, _ = entry(repo, 'resume', checkpoint=checkpoint, command=SENTINEL)
+    assert result.returncode != 0 and report['status'] == 'BLOCKED'
+    assert any('ENTRY_RESUME' in error for error in report['errors'])
+    assert not (repo / 'sentinel').exists()
+
+
+@pytest.mark.parametrize('contents', ['[]', 'null', '"text"', '1', 'true', '{}', '{"status":"PASS"}', '{'])
+def test_malformed_checkpoint_writes_blocked_result_without_running_child(repo, contents):
+    checkpoint = repo / 'dist/checkpoint.json'
+    checkpoint.write_text(contents)
+    result, report, output = entry(repo, 'resume', checkpoint=checkpoint, command=SENTINEL)
+    assert result.returncode == 2 and report['status'] == 'BLOCKED'
+    assert any('ENTRY_RESUME' in error for error in report['errors'])
+    assert json.loads(output.read_text()) == report
+    assert report['command_result'] is None and report['finished_at']
+    assert 'Traceback' not in result.stderr
+    assert not (repo / 'sentinel').exists()

@@ -50,7 +50,14 @@ def observe(root):
         inventory.append({'path': name, 'kind': kind, 'sha256': digest(value),
                           'executable': bool(path.lstat().st_mode & 0o111) if path.exists() else False})
     status = git(root, 'status', '--porcelain=v1', '-z', '--untracked-files=all')
-    return {'root': str(root), 'branch': os.fsdecode(git(root, 'symbolic-ref', '--quiet', '--short', 'HEAD')).strip(),
+    branch_result = subprocess.run(
+        ['git', '-C', str(root), 'symbolic-ref', '--quiet', '--short', 'HEAD'], capture_output=True)
+    if branch_result.returncode not in (0, 1):
+        branch_result.check_returncode()
+    # Git returns 1 for a valid detached HEAD. Bind it explicitly to null while
+    # still resolving the commit below; other Git failures must remain errors.
+    branch = os.fsdecode(branch_result.stdout).strip() if branch_result.returncode == 0 else None
+    return {'root': str(root), 'branch': branch,
             'head': git(root, 'rev-parse', 'HEAD').decode().strip(),
             'dirty': bool(status), 'status_sha256': digest(status),
             'index_sha256': digest(git(root, 'ls-files', '--stage', '-z')),
@@ -152,8 +159,14 @@ def main(argv=None):
         if before != after_validation:
             errors.append('ENTRY_RACE: repository changed during validation; reconcile and retry')
         if args.mode == 'resume':
-            previous = json.loads(args.checkpoint.read_text())
-            report['checkpoint'] = {'path': str(args.checkpoint.resolve()), 'sha256': digest(args.checkpoint.read_bytes())}
+            checkpoint_bytes = args.checkpoint.read_bytes()
+            report['checkpoint'] = {'path': str(args.checkpoint.resolve()), 'sha256': digest(checkpoint_bytes)}
+            try:
+                previous = json.loads(checkpoint_bytes)
+            except (ValueError, UnicodeDecodeError) as exc:
+                raise ValueError('ENTRY_RESUME: checkpoint must contain valid JSON') from exc
+            if not isinstance(previous, dict):
+                raise ValueError('ENTRY_RESUME: checkpoint must be a JSON object')
             if (previous.get('record_type') != 'local_task_execution' or previous.get('schema_version') != '1.0'
                     or previous.get('status') != 'PASS' or previous.get('task_id') != args.task
                     or previous.get('action') != args.action or previous.get('after') != before):

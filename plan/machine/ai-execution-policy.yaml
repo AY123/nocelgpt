@@ -17,9 +17,9 @@ controls:
   - AT-V2-002-13
   local_status: IMPLEMENTED_LOCAL
   local_scope: 校验非 OPEN 任务的执行包引用、结构、身份、规范映射和输入快照；按动作核对必要条件；V2-002 本地 check/run/resume 命令已接入现行检查及真实 Git/输入/交接产物核对，可信 CI/权限仍待 V2-004
-  p0_enforcement_status: IMPLEMENTED
+  p0_enforcement_status: NOT_IMPLEMENTED
   p0_required: 将校验接入实际任务启动入口与 CI，使缺失或过期执行包不能开始受限动作；合法执行包正例可继续
-  limitation: 本地 YAML 通过不能证明实际工具调用已被拦截，也不能验证操作者填写的每项事实；入口只约束经其执行的本地命令，不能阻止直接工具旁路或认证任意子命令语义
+  limitation: 本地入口已经实现；本项 p0_required 同时要求 CI，可信 CI 尚待 V2-004，因此整体义务仍为 NOT_IMPLEMENTED。不能验证操作者填写的每项事实；入口只约束经其执行的本地命令，不能阻止直接工具旁路或认证任意子命令语义
 - id: AI-EXEC-02
   title: 实际改动与任务范围
   owner_tasks:
