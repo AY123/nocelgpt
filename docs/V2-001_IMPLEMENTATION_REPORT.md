@@ -4,7 +4,7 @@
 
 ## A. Repository State
 
-- Branch：`main`；本报告生成时 HEAD：`390aa0f4f28068fdd146fca3eb98df1a5ec1a334`。
+- Branch：`main`；本报告生成时 HEAD：`28a6e421fc30de912bb781e11a3accf810680b10`。
 - 开工基线：`0089eecc496b0c0b4039fb2b26c186fc437c032e`，初始已跟踪修改和未跟踪文件均为空；实施原文提交：`390aa0f4f28068fdd146fca3eb98df1a5ec1a334`。
 - 正式测试开始前实现源码已提交；运行中新增加的是结果文件，源码无修改。当前归档阶段 dirty 来自证据指针、快照及本报告；最终证据归档提交与被测实现提交区分。交付时 HEAD/工作区由最终 Git 检查给出。
 - `.venv`、`dist/tools`、`dist/cache` 是忽略的本地环境，不是源码；原工具配置未编辑，没有覆盖用户已有修改，没有远端 push。
@@ -68,6 +68,7 @@
 | [033_bind_results.json](../plan/validation/execution/V2-001/raw/033_bind_results.json) | `.venv/bin/python -B plan/validation/execution/V2-001/tools/bind_results.py` | 0 |
 | [034_evidence_validation.json](../plan/validation/execution/V2-001/raw/034_evidence_validation.json) | `.venv/bin/python -B plan/scripts/validate_plan.py --check --output-dir plan/validation/execution/V2-001/checks/evidence-bound` | 0 |
 | [035_delivery_check.json](../plan/validation/execution/V2-001/raw/035_delivery_check.json) | `.venv/bin/python -B plan/scripts/validate_plan.py --check --output-dir plan/validation/execution/V2-001/checks/delivery` | 0 |
+| [036_artifact_tracking_before_fix.json](../plan/validation/execution/V2-001/raw/036_artifact_tracking_before_fix.json) | `git ls-files --error-unmatch -- plan/validation/execution/V2-001/artifacts/code/.env.example.txt` | 1 |
 
 ## F. Test Results
 
@@ -80,6 +81,7 @@
 | PASS | governance regression | 39 项 |
 | PASS | AI execution regression | 36 项 |
 | FAIL（历史已修复） | 002 / 004 / 008 / 016 | 快照 Markdown 相对引用、Docker 沙箱权限、PyPI 网络沙箱、继承 live ADR 的负例夹具。失败原始结果未删除 |
+| FAIL（归档补齐） | 036 | `.env.example.txt` 快照被原有 ignore 规则忽略；只将这个无真实凭证的样例快照显式纳入 Git，不扩大 ignore 例外或改变门禁 |
 | UNKNOWN | 远端 runner、保护配置、其他平台 | 本任务未核验，不能由 macOS arm64 推定 Linux amd64 成功 |
 | NOT_RUN | GitLab CI、安全/依赖流水线、完整架构 harness | 属于 V2-003 / V2-004，未开始 |
 | NOT_RUN | P1+、Provider、章节/读者/市场认证 | 超出任务，未调用或实现 |
@@ -145,6 +147,7 @@ A 为新增，M 为修改；多数新增文件是按执行协议保存的输入�
 - `M` `plan/scripts/test_ai_execution.py`
 - `A` `plan/validation/execution/V2-001/adr-001-decision.yaml`
 - `A` `plan/validation/execution/V2-001/artifacts/code-index.json`
+- `A` `plan/validation/execution/V2-001/artifacts/code/.env.example.txt`
 - `A` `plan/validation/execution/V2-001/artifacts/code/.python-version.txt`
 - `A` `plan/validation/execution/V2-001/artifacts/code/README.md.txt`
 - `A` `plan/validation/execution/V2-001/artifacts/code/compose.yaml.txt`
@@ -211,6 +214,7 @@ A 为新增，M 为修改；多数新增文件是按执行协议保存的输入�
 - `A` `plan/validation/execution/V2-001/raw/033_bind_results.json`
 - `A` `plan/validation/execution/V2-001/raw/034_evidence_validation.json`
 - `A` `plan/validation/execution/V2-001/raw/035_delivery_check.json`
+- `A` `plan/validation/execution/V2-001/raw/036_artifact_tracking_before_fix.json`
 - `A` `plan/validation/execution/V2-001/raw/code-review.json`
 - `A` `plan/validation/execution/V2-001/raw/final-scope-review.json`
 - `A` `plan/validation/execution/V2-001/raw/fixture-correction-rationale.json`

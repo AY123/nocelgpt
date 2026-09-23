@@ -2,7 +2,7 @@
   "status": "PASS",
   "baseline": "0089eecc496b0c0b4039fb2b26c186fc437c032e",
   "implementation_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
-  "reviewed_at": "2026-09-23T01:43:54.058021+00:00",
+  "reviewed_at": "2026-09-23T01:49:46.516407+00:00",
   "outside_allowed_paths": [],
   "initial_user_changes": [],
   "other_59_tasks_unchanged": true,
@@ -72,6 +72,10 @@
     },
     {
       "path": "plan/validation/execution/V2-001/artifacts/code-index.json",
+      "status": "A"
+    },
+    {
+      "path": "plan/validation/execution/V2-001/artifacts/code/.env.example.txt",
       "status": "A"
     },
     {
@@ -336,6 +340,10 @@
     },
     {
       "path": "plan/validation/execution/V2-001/raw/035_delivery_check.json",
+      "status": "A"
+    },
+    {
+      "path": "plan/validation/execution/V2-001/raw/036_artifact_tracking_before_fix.json",
       "status": "A"
     },
     {
