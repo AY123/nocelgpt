@@ -1,0 +1,43 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-002-test-9c2fd253326e
+evidence_type: TEST_RESULT
+subject_id: V2-002
+revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+status: PASS
+producer: Codex implementer and local verifier; same operator, not independent review or remote CI
+executed_at: '2026-09-23T08:22:39.381133+00:00'
+environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; uv 0.12.17; offline cache; local same-operator verification
+artifacts:
+- ref: validation/execution/V2-002/raw/015_postcommit_contract.json
+  sha256: 7697ad31d1138999fbd8c1080a3c7e239422072a70a371af3490315b4a8ba243
+- ref: validation/execution/V2-002/raw/017_postcommit_bootstrap.json
+  sha256: f787fbca8a36ab59cda45b58e5f45a62690aab974147fa83d50cb13992119264
+- ref: validation/execution/V2-002/followup/postcommit/postcommit-entry.json
+  sha256: 20215e5df7c51429ad06875d3d8d6d3d6e7bdb7b5ea7e426e352cf8cc26724d0
+- ref: validation/execution/V2-002/followup/postcommit/postcommit-contract.xml
+  sha256: 72347e9aaa1e067977da30082719097be9eb77751e6249b70caf6b758c730f85
+- ref: validation/execution/V2-002/followup/postcommit/postcommit-bootstrap.xml
+  sha256: a2862d3f505479e46b1c5b814b27dfaa09912eb9b804dbf8e5aa86205fbeefb3
+input_evidence_refs:
+- validation/execution/V2-002/code-evidence.yaml
+- validation/execution/V2-002/governance-result.yaml
+check_ids:
+- AT-V2-002-01
+- AT-V2-002-02
+- AT-V2-002-03
+- AT-V2-002-04
+- AT-V2-002-05
+- AT-V2-002-06
+- AT-V2-002-07
+- AT-V2-002-08
+- AT-V2-002-09
+- AT-V2-002-10
+- AT-V2-002-11
+- AT-V2-002-12
+- AT-V2-002-13
+- AT-V2-002-14
+- AT-V2-002-15
+- AT-V2-002-16
+command: .venv/bin/python -B scripts/task_execution.py run --task V2-002 --action IMPLEMENT --output dist/validation/v2-002-followup/postcommit-entry.json -- .venv/bin/python -B -m pytest -q tests/contract --junitxml=dist/validation/v2-002-followup/postcommit-contract.xml ; env PATH=/Users/angyang/Documents/AI/ANovelOS/dist/tools/uv-bootstrap/bin:/usr/local/bin:/usr/bin:/bin UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv UV_OFFLINE=true .venv/bin/python -B -m pytest -q tests/integration/test_repository_bootstrap.py --junitxml=dist/validation/v2-002-followup/postcommit-bootstrap.xml ; governance aggregate in input_evidence_refs
+exit_code: 0

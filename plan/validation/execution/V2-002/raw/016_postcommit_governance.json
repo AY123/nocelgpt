@@ -1,0 +1,18 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "scripts/check_governance.py",
+    "--output-dir",
+    "dist/validation/v2-002-followup/postcommit-governance"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T08:20:04.913124+00:00",
+  "repository_revision": "9c2fd253326e87e9e6c43920f29a95dc68680a64",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-23T08:21:33.242160+00:00",
+  "exit_code": 0,
+  "stdout": "plan/scripts/validate_plan.py --check: exit=0\nplan/scripts/validate_plan.py --self-test: exit=0\nplan/scripts/test_governance.py --output-dir: exit=0\nplan/scripts/test_ai_execution.py --output-dir: exit=0\nplan/scripts/probe_governance_legacy.py --output: exit=0\n{\"status\": \"PASS\", \"errors\": [], \"report\": \"/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2-002-followup/postcommit-governance/governance-summary.json\"}\n",
+  "stderr": "",
+  "scope": "local V2-002 execution, not remote CI"
+}

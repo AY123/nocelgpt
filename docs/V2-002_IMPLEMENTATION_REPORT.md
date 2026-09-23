@@ -8,7 +8,7 @@
 
 V2-001 为 IMPLEMENTED、ADR-001 ACCEPTED、CI/验收为空；V2-002 为 OPEN，dependencies 和 required_decisions 均为空，P0_ENTRY_READY。按现行 P0 并行规则，V2-001 未关闭不阻断本任务。先绑定专属 PREPARE 包并取得 PASS，再转 IN_PROGRESS / IMPLEMENT 并取得开工 PASS。原始记录见[基线](../plan/validation/execution/V2-002/raw/preflight.json)、[PREPARE](../plan/validation/execution/V2-002/checks/prepare/plan-validation.json)、[IMPLEMENT](../plan/validation/execution/V2-002/checks/implementation-start/plan-validation.json)。
 
-本次保留未提交工作区交付，HEAD 仍是开工基线；不能将它冒称为新增代码的被测提交。代码快照、原始命令和 SHA-256 保存于专属执行目录。任务的类型化 code/tests/ci/acceptance 引用保持空值，等待真实源码提交及后续受信验收绑定；本地 PASS 仅通过执行包 handoff 和原始结果定位。
+首次交付保留为未提交工作区记录，随后实现已提交为 `a3ea77304f0c68967f21532adf3852bec3ea0a4d`。审核后续修复提交为 `9c2fd253326e87e9e6c43920f29a95dc68680a64`；新的提交后 CODE / TEST_RESULT 已绑定该实际被测 revision，任务和套件均已引用。旧工作区日志与开工 `repository_revision` 原样保留；ci/acceptance 仍为空。后续证据和交接提交仅补充元数据，不冒充已测源码提交。用户审核报告原有修改未改动、未提交。
 
 ## 实际实现
 
@@ -22,7 +22,7 @@ V2-001 为 IMPLEMENTED、ADR-001 ACCEPTED、CI/验收为空；V2-002 为 OPEN，
 
 ## 验证结果与场景映射
 
-实际运行结果：契约测试最终 **39 passed / 0 skipped**；现有安装/打包回归 **5 passed**（离线缓存安装、wheel/sdist、归档保留与入口检查）；验证器自测 **32**、治理回归 **39**、执行包回归 **36**、旧探针 **13** 均通过；资料检查和显式 write-views 通过。见[最终本地结果及代码快照索引](../plan/validation/execution/V2-002/local-results.json)、[治理汇总与全部原始输出](../plan/validation/execution/V2-002/checks/final-governance/governance-summary.json)、[契约 JUnit](../plan/validation/execution/V2-002/checks/final/contract.xml)。本轮没有重复运行未修改的 PostgreSQL 测试，沿用 V2-001 的历史证据，不声称重新认证数据库。
+首次工作区运行结果：契约测试 **39 passed / 0 skipped**；现有安装/打包回归 **5 passed**（离线缓存安装、wheel/sdist、归档保留与入口检查）；验证器自测 **32**、治理回归 **39**、执行包回归 **36**、旧探针 **13** 均通过；资料检查和显式 write-views 通过。见[最终本地结果及代码快照索引](../plan/validation/execution/V2-002/local-results.json)、[治理汇总与全部原始输出](../plan/validation/execution/V2-002/checks/final-governance/governance-summary.json)、[契约 JUnit](../plan/validation/execution/V2-002/checks/final/contract.xml)。本轮没有重复运行未修改的 PostgreSQL 测试，沿用 V2-001 的历史证据，不声称重新认证数据库。
 
 | AT-V2-002 场景 | 本地验证与范围 |
 |---|---|
@@ -44,6 +44,16 @@ V2-002 激活后，旧 AI 测试复制全任务状态但只准备 V2-001 文件�
 与可信开工提交比较：全部 246 条验收断言、60 个任务身份/阶段/依赖、最低基线、阶段/CI/ADR 规则、证据 Schema、原 39+36 个测试函数体保持不变。新增路径解析规则加强现行约束。一次性范围核对全部修改在 packet.allowed_paths 内，见[范围复核](../plan/validation/execution/V2-002/raw/scope-review.json)；它不是提前实现 V2-003 的自动审查 harness。
 
 V2-001 仍为活动 IMPLEMENTED 包，共享规范/backlog/manifest 变化会使其上下文过期；本次仅刷新其输入快照/hash，并在 V2-002 目录保留每次旧 packet。原始实现、ADR、CODE/TEST_RESULT 和缺 CI 状态均未改写，也未声称重新验收 V2-001。
+
+## 审核后修复与提交绑定
+
+两份报告复核后，用户要求继续。以 `a3ea7730` 为本次比较基线，实际通过 IMPLEMENT 入口后完成两项 P2 修复：合法 detached HEAD 记录 branch=null 和完整 HEAD；无效 JSON、数组、null、标量及缺字段 checkpoint 保存 BLOCKED 结果且不执行子命令。新增 12 个正反例，原有测试函数与验收断言均保留。
+
+AI-EXEC-01 保留 IMPLEMENTED_LOCAL、原 owner/scenario 映射和全部 p0_required；由于该整体义务还包含尚未接入的可信 CI，p0_enforcement_status 校正为 NOT_IMPLEMENTED。AI-EXEC-04/06 不变，未新增 PARTIAL 枚举或放宽检查器。依据见[变更说明](../plan/validation/execution/V2-002/followup/rationale.md)与[基线比较](../plan/validation/execution/V2-002/followup/precommit-scope.json)。
+
+在修复提交 `9c2fd253326e87e9e6c43920f29a95dc68680a64` 上重新运行：契约 **51 passed / 0 skipped**、安装打包 **5 passed**、验证器自测 **32**、治理 **39**、执行包 **36**、旧探针 **13** 全部 PASS。契约测试经真实 task_execution run 入口执行。原始命令、stdout/stderr/exit、JUnit、规范索引与上下文清单均已保存；19 个源码路径逐一比对该提交的 Git blob，相同快照复用，变更快照另存。详见[代码证据](../plan/validation/execution/V2-002/code-evidence.yaml)、[测试证据](../plan/validation/execution/V2-002/test-result.yaml)、[治理证据](../plan/validation/execution/V2-002/governance-result.yaml)和[绑定汇总](../plan/validation/execution/V2-002/followup/postcommit/binding-summary.json)。这些是本地同操作者结果，不是可信远端 CI；未重新执行 PostgreSQL，也不声称测试覆盖率 100%。
+
+V2-001 仅刷新共享输入；其状态、源码与历史证据不重新认证。V2-002 仍缺 CI_RUN、最终 ACCEPTANCE_RECORD 和 finding 正式处置，保持 IMPLEMENTED。
 
 ## 责任与剩余事项
 

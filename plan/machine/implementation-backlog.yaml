@@ -135,8 +135,17 @@ tasks:
   start_gate: P0_ENTRY_READY
   required_decisions: []
   evidence:
-    code: []
-    tests: []
+    code:
+    - ref: validation/execution/V2-002/code-evidence.yaml
+      revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-002/test-result.yaml
+      revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+      status: PASS
+    - ref: validation/execution/V2-002/governance-result.yaml
+      revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+      status: PASS
     ci: []
     acceptance: []
   related_findings:

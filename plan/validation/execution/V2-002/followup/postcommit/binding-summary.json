@@ -1,0 +1,26 @@
+{
+  "source_commit": "9c2fd253326e87e9e6c43920f29a95dc68680a64",
+  "local_results": {
+    "contract": 51,
+    "bootstrap": 5,
+    "self_test": 32,
+    "governance": 39,
+    "ai_execution": 36,
+    "legacy_probes": 13
+  },
+  "evidence_records": [
+    "validation/execution/V2-002/code-evidence.yaml",
+    "validation/execution/V2-002/test-result.yaml",
+    "validation/execution/V2-002/governance-result.yaml"
+  ],
+  "same_operator": true,
+  "ci": "MISSING",
+  "acceptance": "MISSING",
+  "task_status": "IMPLEMENTED",
+  "user_report_sha256": "215754d0f0024fcc7fdff9b44959671fd4afd0de2a1b34ff65c213ac16b044f1",
+  "source_identity": {
+    "ref": "validation/execution/V2-002/followup/postcommit/code-index.json",
+    "sha256": "32097dc87393c9520bb99962587bd0d142eac03638fc51fcf8dee1a056c4930e"
+  },
+  "no_postgres_rerun": true
+}

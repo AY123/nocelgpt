@@ -1,0 +1,39 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-002-governance-9c2fd253326e
+evidence_type: TEST_RESULT
+subject_id: V2-002
+revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+status: PASS
+producer: Codex implementer and local verifier; same operator, not independent review or remote CI
+executed_at: '2026-09-23T08:21:33.147847+00:00'
+environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; uv 0.12.17; offline cache; local same-operator verification
+artifacts:
+- ref: validation/execution/V2-002/raw/016_postcommit_governance.json
+  sha256: 27661017db958a11a4cf7b38ad96f475cd670d6f7a060d7dab659273ffbfb170
+- ref: validation/execution/V2-002/followup/postcommit/governance/ai/ai-execution-regression.json
+  sha256: 133668e29f3faabfb3d270225d7871b7098468b430f010727b95af6d0cabe4e3
+- ref: validation/execution/V2-002/followup/postcommit/governance/context-inventory.json
+  sha256: 12ebb7ab5a7811cc0a485b786c62f0c425c8a1c0fae775db839b5572588e31f7
+- ref: validation/execution/V2-002/followup/postcommit/governance/governance/governance-regression.json
+  sha256: 8275399f4dd5a0bf545e3a47dbc022bed3428da06132037c2b6aec666873aff3
+- ref: validation/execution/V2-002/followup/postcommit/governance/governance-summary.json
+  sha256: 7cf02fbff8e31abbfdf272b0739c77e5910dbe87b27ced35ce639dae65332fde
+- ref: validation/execution/V2-002/followup/postcommit/governance/legacy.json
+  sha256: b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708
+- ref: validation/execution/V2-002/followup/postcommit/governance/normative-index.json
+  sha256: 17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3
+- ref: validation/execution/V2-002/followup/postcommit/governance/plan/plan-validation.json
+  sha256: 8731b318056a66dd08c0cebdd652a529bdcf692d148c2697dd9f16d759fa394b
+- ref: validation/execution/V2-002/followup/postcommit/governance/self-test/validator-self-test.json
+  sha256: cd347ee50e4d5fa1f6e98059384972d0e625aea638d1a714dd61dc5641aa7339
+input_evidence_refs:
+- validation/execution/V2-002/code-evidence.yaml
+check_ids:
+- LOCAL_PLAN_CHECK
+- LOCAL_VALIDATOR_SELF_TEST_32
+- LOCAL_GOVERNANCE_39
+- LOCAL_AI_EXECUTION_36
+- LOCAL_LEGACY_PROBES_13
+command: .venv/bin/python -B scripts/check_governance.py --output-dir dist/validation/v2-002-followup/postcommit-governance
+exit_code: 0
