@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-09-23T14:54:56.216752+00:00",
+  "branch": "main",
+  "head": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+  "staged_changes": [],
+  "pre_existing": [
+    {
+      "path": "审核报告.txt",
+      "kind": "file",
+      "sha256": "215754d0f0024fcc7fdff9b44959671fd4afd0de2a1b34ff65c213ac16b044f1",
+      "index_state": "tracked HEAD unchanged in index",
+      "user_owned": true,
+      "task_edit_authorized": false
+    },
+    {
+      "path": "V2-003任务prompt.txt",
+      "kind": "file",
+      "sha256": "a24b45f72563ffb48edf6591a521783de57fe288f04e5bb0b64dd9d72de8e916",
+      "index_state": "untracked",
+      "user_owned": true,
+      "task_edit_authorized": true
+    }
+  ],
+  "remote_query": {
+    "command": "git ls-remote origin refs/heads/main",
+    "sandbox_attempt": "DNS failure, exit 128",
+    "actual_exit_code": 0,
+    "actual_main": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+    "local_ahead_commits": [
+      "9c2fd253326e87e9e6c43920f29a95dc68680a64",
+      "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf"
+    ]
+  },
+  "plan_version": "1.3.0",
+  "manifest_sha256": "02aae2bdc3e245e41f989cd7e3a482c0e3de004fae8098dcf28663590b92dc1e",
+  "V2-001": "IMPLEMENTED",
+  "V2-002": "IMPLEMENTED",
+  "V2-003": "OPEN",
+  "G-P0": "NOT_VERIFIED",
+  "local_entry_check": "V2-002 IMPLEMENT PASS",
+  "source_kind": "actual Git/plan/artifact inspection; not remote CI",
+  "environment": "macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14"
+}

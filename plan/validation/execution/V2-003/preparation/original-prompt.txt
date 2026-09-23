@@ -1,0 +1,1815 @@
+你现在作为 **ANovelOS V2 主实施 AI（Implementer）**，正式执行：
+
+**P0 / V2-003 — Architecture Fitness Harness**
+
+本次是实际工程实施任务。
+
+不是重新设计总体架构，不是继续扩展治理文档，也不是开始业务内核。
+
+当前正式规划：
+
+`Plan v1.3.0`
+
+当前目标任务：
+
+`V2-003`
+
+不得自动开始：
+
+* V2-004
+* V2-005
+* P1+
+* Provider
+* Canon
+* Narrative Domain
+* Genre
+* Planning
+* Context
+* Workflow
+* Quality / Repair
+
+---
+
+# 一、第一原则：以真实仓库为准
+
+开始前不要相信：
+
+* 本提示词中的旧 SHA
+* 聊天摘要
+* 上一个 AI 的自然语言总结
+* 本地未核验报告
+* 模型记忆
+
+首先实际执行现场核对：
+
+* current branch
+* HEAD SHA
+* upstream / remote 状态
+* `git status`
+* staged changes
+* tracked modifications
+* untracked files
+* rename/delete
+* 当前 Plan Version
+* `plan/FILE_MANIFEST.json`
+* V2-001 状态
+* V2-002 状态
+* V2-003 status/readiness/start_gate
+* G-P0
+* 当前 execution evidence
+
+特别注意：
+
+如果存在用户已有未提交修改：
+
+**保留，不删除，不重置，不归因于 V2-003。**
+
+必须记录为 pre-existing change。
+
+---
+
+# 二、先验证 V2-002 的真实交接状态
+
+V2-003 开工前检查：
+
+```text
+V2-002 = IMPLEMENTED
+```
+
+并确认：
+
+* Execution Packet 存在
+* CODE / TEST_RESULT 如果已绑定，则 revision 有效
+* `ci=[]` 仍允许，因为 V2-004 尚未完成
+* V2-002 没有被错误标记 CLOSED
+* 当前 local task entry 可以运行
+* V2-002 的 handoff 没有阻断 V2-003
+
+如果本地存在尚未推送、尚未提交或与远端不一致的 V2-002 closure commit：
+
+先明确记录真实情况。
+
+不要猜测它已经存在于远端。
+
+但不要把“远端 CI 尚不存在”错误解释成 V2-003 不能开始，因为 P0 四任务按照现行规划允许并行推进其实现责任。
+
+---
+
+# 三、必须读取的权威资料
+
+进入 IMPLEMENT 前至少阅读：
+
+1. `AGENTS.md`
+2. `README.md`
+3. `plan/README.md`
+4. `plan/AI_EXECUTION_PROTOCOL.md`
+5. `plan/02_ARCHITECTURE_BASELINE.md`
+6. `plan/03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md`
+7. `plan/07_PLATFORM_SECURITY_AND_DELIVERY.md`
+8. `plan/09_TASK_EXECUTION_GUIDE.md`
+9. `plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md`
+10. `plan/machine/implementation-backlog.yaml`
+11. `plan/machine/test-catalog.yaml`
+12. `plan/machine/ai-execution-policy.yaml`
+13. `plan/machine/governance-baseline.yaml`
+14. `plan/machine/phase-gates.yaml`
+15. `plan/machine/decision-register.yaml`
+16. `plan/machine/remediation-register.yaml`
+17. `plan/machine/authority-policy.yaml`
+18. `plan/machine/ci-gates.yaml`
+19. V2-001 execution/evidence
+20. V2-002 execution/evidence
+21. 当前 `scripts/task_execution.py`
+22. 当前 `plan/scripts/task_entry.py`
+
+历史 `plan/archive/` 只作为明确设计参考。
+
+不得把 archive 重新提升为现行规范。
+
+---
+
+# 四、创建 V2-003 专属 Execution Packet
+
+不得复用 V2-001 或 V2-002 packet。
+
+基于：
+
+`plan/templates/EXECUTION_PACKET.yaml`
+
+创建：
+
+`plan/validation/execution/V2-003/execution-packet.yaml`
+
+首先：
+
+```text
+action: PREPARE
+```
+
+必须真实填写：
+
+* task_id
+* plan_version
+* repository_revision
+* worktree_dirty
+* manifest SHA
+* environment
+* implementer
+* verifier
+* owner_role = architecture-maintainer
+* inputs + hashes
+* expected_outputs
+* allowed_paths
+* required_decisions
+* FACT / ASSUMPTION / UNKNOWN
+* budget
+* stop_conditions
+* handoff
+
+V2-003 当前：
+
+```text
+required_decisions: []
+```
+
+所以不要为了形式新增 ADR。
+
+如果实施中发现确实需要改变冻结架构，则停止相关动作并说明是否需要 ADR，而不是自行发明决策。
+
+---
+
+# 五、V2-003 的真正目标
+
+V2-003 不是简单写几个 import test。
+
+它有三个核心目标：
+
+## A. Architecture Fitness
+
+机器验证模块边界，确保未来 AI 写代码时不能偷偷破坏架构。
+
+## B. Actual Diff Scope Enforcement
+
+真实读取 Git 变化，并和当前 Task Execution Packet 的 `allowed_paths`、任务阶段和范围比较。
+
+## C. Anti-Weakening Protection
+
+防止 AI 为了让自己通过：
+
+* 删除测试
+* skip 测试
+* 降低 threshold
+* 扩大 exclude
+* 删除 Gate
+* 同时修改 AC + Test 让弱实现变“合法”
+
+---
+
+# 六、V2-003 Acceptance Criteria 必须全部实现
+
+当前 V2-003 有 6 个正式场景。
+
+不得删减或合并掉其中任何一个。
+
+---
+
+## AT-V2-003-01
+
+必须证明：
+
+```text
+合法依赖图
+→ PASS
+```
+
+同时：
+
+```text
+domain import Provider
+→ FAIL
+```
+
+这是实际架构负例。
+
+不要只检查：
+
+```text
+文件名
+字符串里有没有 openai
+```
+
+应检查真实 Python import/dependency relationship。
+
+---
+
+# 七、当前必须建立最小 Architecture Boundary
+
+依据现行 Architecture Baseline，至少保护以下原则：
+
+```text
+domain
+```
+
+不得依赖：
+
+* Provider SDK
+* gateway
+* workflow framework
+* web/API framework
+* ORM/SQLAlchemy persistence implementation
+* infrastructure-specific implementation
+
+特别强调：
+
+> domain 是领域语义层，不得因为“方便”直接依赖基础设施。
+
+---
+
+## Canon Authority
+
+未来只有被授权的 Canon 写入边界可以改变 Canon。
+
+当前 P0 尚未实现 CanonCommitService 业务逻辑，因此不要为了测试创建假业务系统。
+
+Architecture Harness 应能够表达：
+
+```text
+unauthorized module
+→ cannot own/use Canon write boundary
+```
+
+但不要提前实现完整 Canon。
+
+---
+
+# 八、AT-V2-003-02：Canon 写入口负例
+
+必须建立一个最小、明确、不会提前实现 P2 的 architecture fixture。
+
+目标是：
+
+```text
+unauthorized module accesses Canon write authority
+→ architecture check FAIL
+```
+
+注意：
+
+这不是要求现在实现：
+
+```text
+CanonCommitService
+Canon database
+CAS
+Event Store
+```
+
+V2-003 只建立**边界规则与负例测试**。
+
+可以使用专门 fixture / synthetic package。
+
+不要为了测试 Architecture Fitness 提前造真实 Canon 业务类。
+
+---
+
+# 九、AT-V2-003-03：禁止“空扫描 PASS”
+
+Architecture scanner 必须能证明自己扫描到了真实目标。
+
+以下情况必须 FAIL：
+
+```text
+configured package does not exist
+```
+
+或：
+
+```text
+scanner discovers 0 modules
+```
+
+却声称：
+
+```text
+PASS
+```
+
+。
+
+同时新增合法模块以后：
+
+```text
+scanner
+→ 自动纳入
+```
+
+不能要求以后每加一个 `.py` 手工更新白名单才能扫描。
+
+---
+
+# 十、实际 Diff Enforcement 是本任务重点
+
+V2-003 必须真正比较：
+
+```text
+trusted opening revision
+vs
+actual current worktree / commit
+```
+
+至少识别：
+
+* Added
+* Modified
+* Deleted
+* Renamed
+* Untracked
+* staged
+* unstaged
+
+不能只执行：
+
+```bash
+git diff
+```
+
+因为那会漏掉 untracked。
+
+也不能只：
+
+```bash
+git status --short
+```
+
+然后完全依赖文本解析而不核对内容。
+
+---
+
+# 十一、Diff 必须绑定 Execution Packet
+
+每一项实际改动必须映射到：
+
+```text
+allowed_paths
+```
+
+或者明确的已授权例外。
+
+必须检测：
+
+```text
+exact file
+directory scope ending in /
+resolved path
+symlink
+rename source
+rename target
+delete path
+```
+
+。
+
+防止：
+
+```text
+allowed: src/anovel/domain/
+actual: src/anovel/domain/../../gateway/x.py
+```
+
+这类路径绕过。
+
+---
+
+# 十二、但路径 PASS 不代表业务语义 PASS
+
+这一点必须明确保留。
+
+例如：
+
+```text
+allowed_paths:
+  tests/
+```
+
+AI 在 tests 里删除 80% 断言：
+
+```text
+path scope = legal
+semantic governance = illegal
+```
+
+所以 Diff Scope 和 Anti-Weakening 是两个独立检查。
+
+不得：
+
+```text
+路径在 allowed_paths
+→ automatically approve
+```
+
+。
+
+---
+
+# 十三、必须区分 pre-existing user changes
+
+如果任务开工前已经存在：
+
+```text
+审核报告.txt modified
+```
+
+或其他用户改动：
+
+必须记录 opening snapshot。
+
+后续 Diff Review 中：
+
+```text
+pre-existing change
+!=
+V2-003 produced change
+```
+
+AI 不得：
+
+* reset
+* checkout
+* revert
+* delete
+* silently stage
+* include in V2-003 evidence
+
+来制造干净工作区。
+
+---
+
+# 十四、AT-V2-003-04：实际范围负例
+
+至少必须有这些测试：
+
+### 合法新增
+
+```text
+allowed path
++ new file
+→ PASS
+```
+
+### 合法修改
+
+```text
+allowed existing file
+→ PASS
+```
+
+### 合法删除
+
+仅当该 Task 明确允许此删除：
+
+```text
+→ PASS
+```
+
+否则：
+
+```text
+→ FAIL
+```
+
+### 合法 rename
+
+如果 source + destination 均符合授权：
+
+```text
+→ PASS
+```
+
+### 越界新增
+
+```text
+new src/anovel/future_feature.py
+not allowed
+→ FAIL
+```
+
+### 越界修改
+
+```text
+other task file changed
+→ FAIL
+```
+
+### 越界删除
+
+```text
+delete unrelated test
+→ FAIL
+```
+
+### Untracked
+
+未跟踪文件同样必须纳入范围。
+
+不能：
+
+```text
+untracked
+→ ignored
+```
+
+### Empty scan
+
+如果 scanner 因 bug 没看到实际 diff：
+
+```text
+→ FAIL
+```
+
+不能把：
+
+```text
+0 changes checked
+```
+
+冒充完整覆盖。
+
+---
+
+# 十五、AT-V2-003-05：Anti-Weakening
+
+必须把**可信开工基线**和本次变化比较。
+
+至少识别这些类别：
+
+```text
+acceptance criteria deletion
+scenario deletion
+scenario assertion weakening
+test file deletion
+test function deletion
+skip
+xfail
+threshold decrease
+scan exclusion increase
+allow_failure introduction
+required check removal
+Gate removal
+minimum baseline reduction
+validator weakening
+```
+
+。
+
+不要只搜索几个固定关键词。
+
+应该尽可能结构化比较。
+
+---
+
+# 十六、重点防“同步降标”
+
+这是本任务最关键的攻击模型之一。
+
+例如 AI 同时修改：
+
+```text
+implementation-backlog.yaml
+test-catalog.yaml
+test file
+```
+
+使三者重新一致。
+
+普通一致性 validator 可能 PASS。
+
+但 V2-003 必须检测：
+
+```text
+旧基线要求：6 个场景
+新基线要求：5 个场景
+
+机器源一致
+测试也一致
+
+但 requirement 被削弱
+```
+
+结果必须：
+
+```text
+BLOCK / REQUIRE EXPLICIT AUTHORIZATION
+```
+
+而不是：
+
+```text
+everything consistent
+→ PASS
+```
+
+。
+
+---
+
+# 十七、测试 skip 必须特别处理
+
+识别至少：
+
+```python
+@pytest.mark.skip
+@pytest.mark.skipif
+pytest.skip(...)
+unittest.skip
+```
+
+以及项目实际测试框架中等价行为。
+
+新增 skip 不一定永远非法。
+
+但必须要求：
+
+```text
+reason
+authorization
+impact
+replacement validation
+```
+
+否则不能自动通过。
+
+---
+
+# 十八、Threshold / Exclusion 变化
+
+如果未来出现例如：
+
+```text
+coverage minimum: 90 → 70
+```
+
+或：
+
+```text
+scanner exclude:
+  before: generated/
+  after: generated/, src/anovel/domain/
+```
+
+必须被识别为：
+
+```text
+potential weakening
+```
+
+。
+
+不能因为文件仍合法 parse 就 PASS。
+
+---
+
+# 十九、合法规则修订也必须能通过
+
+Anti-Weakening 不能退化成：
+
+```text
+任何测试/规范变化都 FAIL
+```
+
+必须有正例。
+
+例如：
+
+### 新增测试
+
+```text
+5 scenarios → 6 scenarios
+→ PASS
+```
+
+### 等效重构
+
+改变测试代码组织：
+
+```text
+requirement unchanged
+coverage unchanged
+→ PASS
+```
+
+### 合法规则修订
+
+如果确有：
+
+```text
+explicit authorization
+change reason
+impact analysis
+replacement verification
+```
+
+则允许。
+
+但关键原则：
+
+> 实施 AI 自己写一句“这是合理修改”不能成为批准依据。
+
+---
+
+# 二十、异常批准不能由实现 AI 自签
+
+如果发现疑似削弱：
+
+必须要求一个**结构化 exception record / change record**，绑定已有授权依据。
+
+它至少应该说明：
+
+```text
+what changed
+old requirement
+new requirement
+why old requirement was wrong/outdated
+authorization source
+impact
+replacement validation
+affected tasks/scenarios/gates
+```
+
+。
+
+如果缺少真正授权来源：
+
+```text
+BLOCK
+```
+
+。
+
+不要自动制造：
+
+```text
+approved_by: current_agent
+```
+
+然后继续。
+
+---
+
+# 二十一、不要为 V2-003 建立新的大型治理体系
+
+优先扩展/复用现有：
+
+```text
+scripts/task_execution.py
+plan/scripts/task_entry.py
+scripts/check_governance.py
+plan/scripts/*
+```
+
+。
+
+可以新增专门 Architecture / Diff checker，但必须保持职责清晰。
+
+例如：
+
+```text
+scripts/check_architecture.py
+```
+
+或者：
+
+```text
+plan/scripts/architecture_checks.py
+```
+
+可以。
+
+但不要创建：
+
+```text
+Agent Platform
+Policy Server
+OPA deployment
+custom daemon
+background service
+```
+
+。
+
+P0 仍应保持简单。
+
+---
+
+# 二十二、推荐 Architecture Test 结构
+
+目标路径：
+
+```text
+tests/architecture/
+```
+
+至少：
+
+```text
+tests/architecture/test_dependency_boundaries.py
+```
+
+可以辅以 fixtures，例如：
+
+```text
+tests/architecture/fixtures/
+```
+
+。
+
+Architecture fixtures 必须是测试材料。
+
+不能被：
+
+```text
+src/anovel/
+```
+
+正常业务 package import。
+
+---
+
+# 二十三、不要提前建空业务架构树
+
+V2-003 artifact 包括：
+
+```text
+src/anovel
+tests/architecture
+```
+
+但不要因为它写着 `src/anovel` 就自动创建：
+
+```text
+domain/
+canon/
+genre/
+planning/
+context/
+gateway/
+workflow/
+quality/
+repair/
+learning/
+```
+
+全部空目录。
+
+只创建当前 Architecture Harness 真正需要的最小 package/fixture。
+
+原则仍然是：
+
+```text
+no consumer
+→ no production module
+```
+
+。
+
+---
+
+# 二十四、依赖分析应优先静态、确定性
+
+Architecture Fitness 最好是：
+
+```text
+AST/import graph
+```
+
+或其他确定性静态分析。
+
+不要依赖 LLM 判断：
+
+> “这两个模块看起来耦合太高。”
+
+LLM 可以审查，但硬 Gate 必须由确定性检查器产生。
+
+---
+
+# 二十五、至少保护的未来模块原则
+
+在不提前实现模块的前提下，Architecture Policy 应能表达这些核心约束：
+
+```text
+domain
+  不依赖 provider/infrastructure/workflow/web/ORM
+
+gateway
+  不能成为 Canon owner
+
+workflow
+  不能拥有 narrative truth
+
+learning
+  不能直接写 Canon
+
+reference/intelligence
+  不能成为第二 Canon
+
+unauthorized modules
+  不能调用 Canon write authority
+```
+
+。
+
+如果当前还没有这些包：
+
+通过 synthetic fixtures 验证规则能力。
+
+不要创建假生产代码。
+
+---
+
+# 二十六、V2-003 不负责业务语义完整性
+
+Architecture Fitness 不应声称：
+
+```text
+代码放在 domain/
+→ 业务语义正确
+```
+
+或者：
+
+```text
+没有非法 import
+→ 架构一定正确
+```
+
+报告必须保留 limitation：
+
+> Architecture Fitness 只证明可机器观察的边界属性，不证明业务设计、算法或小说质量正确。
+
+---
+
+# 二十七、V2-003 不得做 V2-004
+
+本任务禁止：
+
+* 新建正式 `.gitlab-ci.yml`
+* 配置 GitLab protected pipeline
+* 配置 branch permission
+* 配置 secret scanner remote gate
+* 配置 dependency scanning remote gate
+* 声称 remote CI trusted
+* 声称 permissions isolated
+* 创建 CI_RUN evidence
+
+可以让 V2-003 checker：
+
+```text
+CI-ready
+```
+
+但不能声称：
+
+```text
+CI enforced
+```
+
+。
+
+---
+
+# 二十八、V2-003 不得进入 P1
+
+不得实现：
+
+* EntityId
+* Alias Resolver
+* Character
+* Relationship
+* Event
+* Timeline
+* Promise
+* NarrativeDelta
+* Canon Repository
+* CanonCommitService
+* Genre
+* Writer
+
+Architecture fixtures 不算业务实现，但要明确放在 test scope。
+
+---
+
+# 二十九、必须复用 V2-002 Task Entry
+
+V2-003 开工和实施命令应尽可能通过：
+
+```bash
+python3 -B scripts/task_execution.py ...
+```
+
+进入。
+
+至少：
+
+```text
+PREPARE
+IMPLEMENT
+```
+
+必须使用现有 Action Gate。
+
+如果 V2-003 实施过程中发现：
+
+```text
+task_execution.py
+```
+
+缺少支撑 Diff Enforcement 的合理扩展点，
+
+可以在 V2-003 范围内最小扩展。
+
+但不得破坏 V2-002 已通过行为。
+
+---
+
+# 三十、V2-003 的 Diff Baseline
+
+必须保存：
+
+```text
+opening revision
+opening worktree snapshot
+pre-existing user changes
+```
+
+。
+
+然后区分：
+
+```text
+baseline repository state
++
+pre-existing user changes
++
+V2-003 changes
+```
+
+。
+
+不能只比较：
+
+```text
+current HEAD → current worktree
+```
+
+而误把用户已有改动算进 AI Task。
+
+---
+
+# 三十一、rename 检测要谨慎
+
+Git rename 本质上是相似度推断。
+
+因此记录至少应保存：
+
+```text
+old path
+new path
+status
+```
+
+如果 Git 认为是 delete + add：
+
+仍然必须分别做范围检查。
+
+不要把 rename detection 作为安全前提。
+
+---
+
+# 三十二、Symlink / path resolution
+
+实际范围扫描必须防：
+
+```text
+allowed/symlink
+→ outside allowed scope
+```
+
+。
+
+对于 symlink：
+
+* 不应跟随到仓库外然后修改
+* 应记录 link identity
+* resolved target 如果涉及范围判断，应明确规则
+* 禁止路径 traversal
+
+---
+
+# 三十三、Architecture Scanner 不能自己排除关键目录
+
+扫描 exclude 必须显式、最小且可审计。
+
+例如合理排除：
+
+```text
+.venv
+dist
+build
+plan/archive
+generated artifacts
+```
+
+但不允许：
+
+```text
+src/anovel/domain
+```
+
+被悄悄加入 exclude。
+
+任何 exclusion 扩大都进入 Anti-Weakening 检查。
+
+---
+
+# 三十四、必须建立攻击型负例
+
+至少包含：
+
+```text
+domain imports provider
+→ FAIL
+
+unauthorized Canon writer
+→ FAIL
+
+new module outside scan
+→ FAIL
+
+untracked out-of-scope file
+→ FAIL
+
+rename into forbidden path
+→ FAIL
+
+delete existing required test
+→ FAIL
+
+add pytest.skip
+→ BLOCK
+
+remove acceptance scenario + matching test
+→ BLOCK
+
+weaken threshold
+→ BLOCK
+
+expand exclusion
+→ BLOCK
+
+remove hard gate
+→ BLOCK
+
+empty diff scanner result while repo changed
+→ FAIL
+```
+
+。
+
+---
+
+# 三十五、同时必须有正例
+
+至少：
+
+```text
+legal dependency graph
+→ PASS
+
+new allowed test
+→ PASS
+
+legal allowed-path file
+→ PASS
+
+equivalent test refactor
+→ PASS
+
+additional stricter assertion
+→ PASS
+
+authorized rule revision with valid evidence
+→ PASS
+```
+
+。
+
+不能实现成“任何变化都拒绝”。
+
+---
+
+# 三十六、关于“可信基线”
+
+当前真正的远端受保护 trusted baseline 属于 V2-004。
+
+所以 V2-003 本地阶段只能使用：
+
+```text
+recorded opening Git revision
+```
+
+作为比较基线。
+
+必须明确：
+
+```text
+local baseline comparison
+!=
+cryptographically/procedurally trusted remote baseline
+```
+
+。
+
+因此 V2-003 即使全部本地通过：
+
+```text
+status max = IMPLEMENTED
+```
+
+不能 VERIFIED/CLOSED。
+
+---
+
+# 三十七、Evidence 体积要开始克制
+
+V2-001/V2-002 已经产生大量 snapshot/raw evidence。
+
+V2-003 不要继续无差别复制整个计划树多次。
+
+优先：
+
+```text
+content hash
+specific relevant artifact
+structured diff report
+command output
+JUnit
+```
+
+。
+
+如果同一输入已经有不可变 snapshot：
+
+优先引用，而不是复制第 N 份。
+
+不要为优化证据存储而建设新平台，但尽量避免重复 tens-of-thousands lines snapshot。
+
+---
+
+# 三十八、V2-003 Evidence
+
+实施完成并产生真实源码 commit 后，重新在该 commit 上运行全部本任务测试。
+
+然后产生：
+
+```text
+CODE
+TEST_RESULT
+ARCHITECTURE TEST_RESULT / applicable TEST_RESULT
+```
+
+全部绑定：
+
+```text
+actual implementation commit SHA
+```
+
+。
+
+不要把：
+
+```text
+pre-commit worktree PASS
+```
+
+冒充 commit evidence。
+
+如果先完成 worktree 后才 commit：
+
+必须 commit 后重新执行适用测试。
+
+---
+
+# 三十九、不要创建 CI_RUN
+
+V2-004 之前：
+
+```text
+evidence.ci = []
+```
+
+保持空。
+
+不要：
+
+```text
+local architecture run
+→ CI_RUN
+```
+
+。
+
+---
+
+# 四十、Finding 责任
+
+V2-003 当前关联：
+
+```text
+AR-06
+AR-17
+CA-17
+RR-03
+RR-04
+RR-09
+RR-10
+```
+
+。
+
+实施完成后逐项分析本 Task 的责任程度：
+
+```text
+FULL
+PARTIAL
+NONE
+```
+
+但在：
+
+```text
+CI
+final acceptance
+```
+
+还不存在时，不要提前 CLOSED finding。
+
+保留：
+
+```text
+OPEN_TRACKED
+```
+
+或适用中间状态。
+
+---
+
+# 四十一、推荐测试顺序
+
+完成实现后至少执行：
+
+```bash
+uv sync --locked
+```
+
+然后：
+
+```bash
+python3 -B scripts/check_governance.py --output-dir <new-dir>
+```
+
+运行 contract：
+
+```bash
+python3 -m pytest -q tests/contract
+```
+
+运行 architecture：
+
+```bash
+python3 -m pytest -q tests/architecture
+```
+
+运行全部适用测试：
+
+```bash
+python3 -m pytest -q
+```
+
+另外执行：
+
+```bash
+python3 -B plan/scripts/validate_plan.py --check --output-dir <new-dir>
+python3 -B plan/scripts/validate_plan.py --self-test --output-dir <new-dir>
+python3 -B plan/scripts/test_governance.py --output-dir <new-dir>
+python3 -B plan/scripts/test_ai_execution.py --output-dir <new-dir>
+```
+
+如果已有新的 Architecture checker CLI：
+
+也要直接运行其真实 CLI。
+
+---
+
+# 四十二、PostgreSQL
+
+如果 V2-003 没修改：
+
+* PostgreSQL bootstrap
+* DB dependency
+* compose
+* DB tests
+
+则可以保留 V2-001 历史 DB Evidence，不需要为了数字漂亮重复拉数据库。
+
+但运行完整测试套件时如果它自然包含 DB test，应正常执行。
+
+不能为了省时间新增 skip。
+
+---
+
+# 四十三、修改 V2-002 代码时的规则
+
+因为 V2-003 很可能需要扩展：
+
+```text
+task_execution.py
+task_entry.py
+```
+
+这是允许的支持性修改。
+
+但必须：
+
+1. 保持 V2-002 既有 contract 全部 PASS。
+2. 不改变 V2-002 已接受语义。
+3. 如果行为必须改变，明确说明兼容性影响。
+4. 新增测试证明旧行为没有被削弱。
+
+---
+
+# 四十四、禁止通过修改 Execution Packet 扩大范围逃避失败
+
+如果 scanner 发现：
+
+```text
+actual change outside allowed_paths
+```
+
+禁止第一反应：
+
+```text
+直接把该路径追加到 allowed_paths
+```
+
+。
+
+必须先判断：
+
+```text
+为什么需要这个文件？
+属于 V2-003 吗？
+是 support change 吗？
+会不会是 V2-004/P1？
+```
+
+。
+
+只有有依据时才修改 packet，并保留旧 packet/scope 变化理由。
+
+不能：
+
+```text
+checker says illegal
+→ expand whitelist
+→ checker green
+```
+
+。
+
+---
+
+# 四十五、禁止通过修改基线逃避 Anti-Weakening
+
+例如：
+
+```text
+baseline says scenario count=6
+current=5
+```
+
+不能：
+
+```text
+update baseline to 5
+→ PASS
+```
+
+。
+
+任何 baseline 降低必须成为显式受控变更。
+
+---
+
+# 四十六、任务状态
+
+严格：
+
+```text
+OPEN
+→ IN_PROGRESS
+→ IMPLEMENTED
+```
+
+当前 V2-003 本地实现成功后最多：
+
+```text
+IMPLEMENTED
+```
+
+不要：
+
+```text
+VERIFIED
+CLOSED
+```
+
+。
+
+原因：
+
+```text
+trusted CI / permissions = V2-004
+```
+
+尚未完成。
+
+---
+
+# 四十七、完成报告必须包含
+
+## A. Repository State
+
+* branch
+* opening revision
+* implementation revision
+* evidence revision
+* worktree
+
+## B. V2-003 Status
+
+为什么只能到该状态。
+
+## C. Execution Packet
+
+* scope
+* allowed paths
+* opening state
+* pre-existing changes
+* blocking unknowns
+
+## D. Architecture Rules
+
+列出机器实际执行的架构约束。
+
+## E. Architecture Positive Tests
+
+合法结构如何证明 PASS。
+
+## F. Architecture Negative Tests
+
+至少逐项：
+
+* domain → provider
+* unauthorized Canon writer
+* zero scan/new module issue
+
+## G. Diff Scanner
+
+实际支持：
+
+* add
+* modify
+* delete
+* rename
+* untracked
+* staged
+* unstaged
+* symlink/path resolution
+
+## H. Scope Enforcement
+
+列出合法和非法案例。
+
+## I. Anti-Weakening
+
+实际能检测：
+
+* AC deletion
+* scenario deletion
+* test deletion
+* skip
+* threshold reduction
+* exclude expansion
+* Gate weakening
+* validator/baseline weakening
+
+## J. Legitimate Change Controls
+
+证明 checker 不是 reject-all。
+
+## K. Commands Executed
+
+真实 command + exit code。
+
+## L. Test Results
+
+分别：
+
+```text
+PASS
+FAIL
+UNKNOWN
+NOT_RUN
+```
+
+。
+
+## M. Evidence
+
+* CODE
+* TEST_RESULT
+* architecture/diff results
+* revision binding
+
+## N. Findings
+
+逐项责任和剩余事项。
+
+## O. Scope Review
+
+明确是否：
+
+```text
+V2-004 = NOT STARTED
+P1+ = NOT STARTED
+```
+
+。
+
+## P. Limitations
+
+必须明确：
+
+```text
+local diff baseline is not trusted remote enforcement
+path legality does not prove semantic correctness
+same-writer local tooling is not adversarial security
+CI/permissions remain V2-004
+```
+
+。
+
+## Q. Next Recommended Task
+
+只推荐：
+
+```text
+V2-004
+```
+
+不要自动开始。
+
+---
+
+# 四十八、成功标准
+
+V2-003 真正成功的标准不是：
+
+> “architecture tests passed。”
+
+而是以下攻击不能静默通过：
+
+```text
+AI 在 domain 偷偷 import provider
+AI 创建未被 scanner 覆盖的新模块
+AI 改了 Task 范围外文件
+AI 删除 unrelated test
+AI 添加 skip
+AI 同时删除 AC + scenario + test
+AI 降低 threshold
+AI 扩大 exclude
+AI 删除 Gate
+AI 通过修改白名单让自己的越界合法化
+```
+
+同时合法行为仍然可以通过：
+
+```text
+正常新增当前任务文件
+增加测试
+加强规则
+等效重构
+有正式授权的规则修订
+```
+
+。
+
+如果实现只是：
+
+```text
+if changed_path not in allowed_paths:
+    fail
+```
+
+那么 V2-003 **没有完成**。
+
+如果实现只是：
+
+```text
+scan imports
+```
+
+而没有 actual diff / anti-weakening，
+
+同样**没有完成**。
+
+---
+
+# 四十九、Fail Closed 条件
+
+遇到以下情况停止相关动作：
+
+* 无法确定可信 opening baseline
+* 用户已有改动无法安全区分
+* V2-003 需要真实修改 V2-004 protected CI 才能继续
+* 为通过测试必须削弱基线
+* Architecture rule 与现行规范直接冲突
+* 需要提前创建业务模块
+* Checker 无法证明自己扫描了实际目标
+* Diff scanner 无法覆盖 untracked/delete
+* 发现规则变更但没有有效授权依据
+
+保留已完成合法成果。
+
+不要通过扩大范围、删除测试、修改基线或假设 UNKNOWN 解决。
+
+---
+
+# 五十、最终停止要求
+
+完成 V2-003 到当前能诚实达到的最高状态后：
+
+**停止。**
+
+不得自动创建 V2-004 Execution Packet。
+
+不得自动修改 `.gitlab-ci.yml`。
+
+不得自动进入 P1。
+
+等待独立审核。
+
+---
+
+现在正式开始执行：
+
+# **P0 / V2-003 — Architecture Fitness Harness**

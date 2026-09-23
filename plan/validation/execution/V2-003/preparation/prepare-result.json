@@ -1,0 +1,18 @@
+{
+  "record_type": "local_task_execution",
+  "schema_version": "1.0",
+  "task_id": "V2-003",
+  "action": "PREPARE",
+  "mode": "check",
+  "started_at": "2026-09-23T14:54:56.954476+00:00",
+  "finished_at": "2026-09-23T14:54:58.099841+00:00",
+  "status": "PASS",
+  "errors": [],
+  "command": [],
+  "command_result": null,
+  "limitations": [
+    "local observations; not CI or completion evidence",
+    "direct tools/shared writers are not protected by this entry",
+    "command semantics and actual diff scope belong to caller/V2-003"
+  ]
+}
