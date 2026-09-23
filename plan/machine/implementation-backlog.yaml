@@ -120,12 +120,16 @@ tasks:
   - plan/templates/AI_HANDOFF_RECORD.yaml
   - plan/scripts/execution_checks.py
   - plan/scripts/test_ai_execution.py
+  - scripts/task_execution.py
+  - scripts/check_governance.py
+  - plan/scripts/task_entry.py
+  - tests/contract/test_task_execution.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: OPEN
-  execution_packet_ref: null
+  status: IMPLEMENTED
+  execution_packet_ref: validation/execution/V2-002/execution-packet.yaml
   owner_role: governance-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY

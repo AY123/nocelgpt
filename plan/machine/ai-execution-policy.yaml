@@ -4,10 +4,10 @@ status: ACTIVE_PLANNING_BASELINE
 source_normative: AI_EXECUTION_PROTOCOL.md
 meaning: 六项 AI 执行约束的责任与验收映射；本地资料检查不等于 runner、真实 CI、权限保护或业务能力已验证
 constraints:
-  - 沿用首批 60 个任务及冻结路线；不新增 Agent 平台、业务内核或自动发布范围
-  - 本轮所有任务保持 OPEN，所有验收套件保持 PLANNED；执行包本身不是完成证据
-  - 普通实施、复核角色可由同一操作者承担，必须如实记录，不能据此声称独立审核
-  - 事实核验和范围检查只能降低风险，不能保证消除语义幻觉或保证商业成功
+- 沿用首批 60 个任务及冻结路线；不新增 Agent 平台、业务内核或自动发布范围
+- 任务和验收套件状态以实际代码/测试/CI/验收证据为准；执行包本身不是完成证据
+- 普通实施、复核角色可由同一操作者承担，必须如实记录，不能据此声称独立审核
+- 事实核验和范围检查只能降低风险，不能保证消除语义幻觉或保证商业成功
 controls:
 - id: AI-EXEC-01
   title: 执行包与动作准入
@@ -16,10 +16,10 @@ controls:
   acceptance_scenarios:
   - AT-V2-002-13
   local_status: IMPLEMENTED_LOCAL
-  local_scope: 校验非 OPEN 任务的执行包引用、结构、身份、规范映射和输入快照；按动作核对必要条件
-  p0_enforcement_status: NOT_IMPLEMENTED
+  local_scope: 校验非 OPEN 任务的执行包引用、结构、身份、规范映射和输入快照；按动作核对必要条件；V2-002 本地 check/run/resume 命令已接入现行检查及真实 Git/输入/交接产物核对，可信 CI/权限仍待 V2-004
+  p0_enforcement_status: IMPLEMENTED
   p0_required: 将校验接入实际任务启动入口与 CI，使缺失或过期执行包不能开始受限动作；合法执行包正例可继续
-  limitation: 本地 YAML 通过不能证明实际工具调用已被拦截，也不能验证操作者填写的每项事实
+  limitation: 本地 YAML 通过不能证明实际工具调用已被拦截，也不能验证操作者填写的每项事实；入口只约束经其执行的本地命令，不能阻止直接工具旁路或认证任意子命令语义
 - id: AI-EXEC-02
   title: 实际改动与任务范围
   owner_tasks:
@@ -54,10 +54,10 @@ controls:
   - AT-V2-002-14
   - AT-V2-002-15
   local_status: IMPLEMENTED_LOCAL
-  local_scope: 校验动作关联 ADR、FACT/ASSUMPTION/UNKNOWN 依据和阻断项、付费预算声明；不认证声明背后的授权真实性
-  p0_enforcement_status: NOT_IMPLEMENTED
+  local_scope: 校验动作关联 ADR、FACT/ASSUMPTION/UNKNOWN 依据和阻断项、付费预算声明；不认证声明背后的授权真实性；V2-002 本地 check/run/resume 命令已接入现行检查及真实 Git/输入/交接产物核对，可信 CI/权限仍待 V2-004
+  p0_enforcement_status: IMPLEMENTED
   p0_required: 真实动作开始前消费已验证决定和输入；允许受限调查未知项，拒绝越过决定点或把关键未知猜成已解决
-  limitation: 依据引用和声明一致不能证明事实内容本身正确；重要外部事实仍需来源核验或实际实验
+  limitation: 依据引用和声明一致不能证明事实内容本身正确；重要外部事实仍需来源核验或实际实验；入口只约束经其执行的本地命令，不能阻止直接工具旁路或认证任意子命令语义
 - id: AI-EXEC-05
   title: 可信 CI 与最小权限
   owner_tasks:
@@ -78,7 +78,7 @@ controls:
   acceptance_scenarios:
   - AT-V2-002-16
   local_status: IMPLEMENTED_LOCAL
-  local_scope: 定义交接记录并校验恢复声明和必要引用结构；不把聊天摘要或旧 PASS 直接作为当前完成证据
-  p0_enforcement_status: NOT_IMPLEMENTED
+  local_scope: 定义交接记录并校验恢复声明和必要引用结构；不把聊天摘要或旧 PASS 直接作为当前完成证据；V2-002 本地 check/run/resume 命令已接入现行检查及真实 Git/输入/交接产物核对，可信 CI/权限仍待 V2-004
+  p0_enforcement_status: IMPLEMENTED
   p0_required: 实际恢复入口核对当前仓库、工作区、输入与产物状态，失效时重验，保留原任务和未决事项并测试恢复正反例
-  limitation: 结构检查不能独立观察未申报的会话恢复、外部工具状态或全部未提交改动，须由实际执行入口采集并核对
+  limitation: 结构检查不能独立观察未申报的会话恢复、外部工具状态或全部未提交改动，须由实际执行入口采集并核对；入口只约束经其执行的本地命令，不能阻止直接工具旁路或认证任意子命令语义

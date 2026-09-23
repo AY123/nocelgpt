@@ -1,0 +1,17 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "plan/validation/execution/V2-002/tools/scope_review.py",
+    "final-scope-review.json"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T07:29:00.174341+00:00",
+  "repository_revision": "21849ed8919086982dd94d0a4c852db40eca5d40",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-23T07:29:01.041953+00:00",
+  "exit_code": 0,
+  "stdout": "{\"status\": \"PASS\", \"outside_scope\": [], \"preserved_existing_test_bodies\": {\"plan/scripts/test_governance.py\": 39, \"plan/scripts/test_ai_execution.py\": 36}, \"acceptance_scenarios_unchanged\": 246}\n",
+  "stderr": "",
+  "scope": "local V2-002 execution, not remote CI"
+}

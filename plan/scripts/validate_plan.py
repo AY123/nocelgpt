@@ -319,8 +319,30 @@ def build_manifest():
     return [{'path':str(p.relative_to(PLAN)), 'bytes':p.stat().st_size, 'sha256':sha(p)} for p in manifest_files()]
 
 
+def normative_registry(data, plan):
+    """Use task normative_specs as the registry; history remains reference-only.
+
+    Resolve aliases and symlinks before judging authority. design_references are
+    deliberately not normative and may continue to point into archive/.
+    """
+    plan = Path(plan).resolve()
+    archive = (plan / 'archive').resolve()
+    registry, errors = {}, []
+    for task in data['implementation-backlog']['tasks']:
+        for ref in task['normative_specs']:
+            path = (plan / ref).resolve()
+            if plan not in path.parents or not path.is_file():
+                errors.append(f'TASK_NORMATIVE {task["task_id"]}: missing/outside plan {ref}')
+            elif path == archive or archive in path.parents:
+                errors.append(f'TASK_NORMATIVE {task["task_id"]}: resolved archive cannot be normative: {ref}')
+            else:
+                registry.setdefault(str(path.relative_to(plan)), []).append(task['task_id'])
+    return {ref: sorted(set(owners)) for ref, owners in sorted(registry.items())}, errors
+
+
 def check_files(data, views):
     errors = []
+    errors += normative_registry(data, PLAN)[1]
     for name, expected in views.items():
         p = PLAN/name
         if not p.exists() or p.read_text() != expected:

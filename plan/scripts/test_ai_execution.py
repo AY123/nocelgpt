@@ -22,6 +22,13 @@ class AIExecutionTests(unittest.TestCase):
         self.records = self.plan/'validation/fixture'
         self.records.mkdir(parents=True)
         self.data = deepcopy(validator.load())
+        # This suite tests one packet at a time in a deliberately minimal plan.
+        # Live progress in another task must not introduce a missing, unrelated
+        # packet before a single-mutation test reaches its intended assertion.
+        for task in self.data['implementation-backlog']['tasks'][1:]:
+            task.update(status='OPEN', execution_packet_ref=None)
+        for control in self.data['ai-execution-policy']['controls']:
+            control['p0_enforcement_status'] = 'NOT_IMPLEMENTED'
         self.task = self.data['implementation-backlog']['tasks'][0]
         # Establish the negative fixture's premise independently of live progress.
         # Positive cases explicitly accept this isolated decision below.

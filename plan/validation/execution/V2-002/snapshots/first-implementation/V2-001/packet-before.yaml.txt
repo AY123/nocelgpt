@@ -1,0 +1,211 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-001
+plan_version: 1.3.0
+repository_revision: 0089eecc496b0c0b4039fb2b26c186fc437c032e
+worktree_dirty: true
+plan_manifest_sha256: 38fa5c45753115c4238b07f9ad7b455e411090369b72fe1b1e037bdc2ae6142b
+environment:
+  fingerprint: macOS15.1.1-arm64; Python3.12.14; uv0.12.17; Docker29.4.0; Compose5.1.2
+  runtime_versions:
+    bootstrap_python: 3.9.6
+    python: 3.12.14
+    uv: 0.12.17
+    docker_client: 29.4.0
+    docker_compose: 5.1.2
+  database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+  ci_context: null
+implementer: Codex main implementer / local operator
+verifier: Codex local tests plus bounded AI review; not independent human or remote
+  CI
+owner_role: repository-maintainer
+scope: Only P0/V2-001 bootstrap, ADR-001, package and isolated PostgreSQL tests. No
+  V2-002/003/004 or P1+ implementation; no Provider or publication.
+action: IMPLEMENT
+inputs:
+- source_ref: 02_ARCHITECTURE_BASELINE.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt
+  sha256: 7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt
+  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+- source_ref: 09_TASK_EXECUTION_GUIDE.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt
+  sha256: cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a
+- source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt
+  sha256: 7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt
+  sha256: 2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d
+- source_ref: README.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/05-README.md.txt
+  sha256: 1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2
+- source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
+  sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
+- source_ref: 08_ROADMAP_AND_GATES.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/07-08_ROADMAP_AND_GATES.md.txt
+  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/08-implementation-backlog.yaml.txt
+  sha256: 0b90e4a7b39d989b3fba7cc0be2164f5df4732e95bb1909b2640de4b42825592
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/09-phase-gates.yaml.txt
+  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+- source_ref: machine/governance-baseline.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/10-governance-baseline.yaml.txt
+  sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/11-decision-register.yaml.txt
+  sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/12-test-catalog.yaml.txt
+  sha256: 8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/13-ai-execution-policy.yaml.txt
+  sha256: c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7
+- source_ref: templates/EXECUTION_PACKET.yaml
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/14-EXECUTION_PACKET.yaml.txt
+  sha256: 97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702
+- source_ref: schemas/execution-packet.schema.json
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/15-execution-packet.schema.json.txt
+  sha256: 1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06
+- source_ref: decisions/ADR-001_RUNTIME_AND_LOCKING.md
+  ref: validation/execution/V2-002/snapshots/implementation-start/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt
+  sha256: 234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc
+expected_outputs:
+- pyproject.toml
+- uv.lock
+- .python-version
+- compose.yaml
+- src/anovel/__init__.py
+- tests/integration/test_repository_bootstrap.py
+- tests/integration/test_postgres_environment.py
+- docs/repository-layout-migration.md
+allowed_paths:
+- pyproject.toml
+- uv.lock
+- .python-version
+- compose.yaml
+- src/anovel/__init__.py
+- tests/integration/test_repository_bootstrap.py
+- tests/integration/test_postgres_environment.py
+- docs/repository-layout-migration.md
+- README.md
+- .env.example
+- .gitignore
+- tests/conftest.py
+- scripts/check_postgres.py
+- scripts/test_postgres.py
+- scripts/check_repository.py
+- plan/machine/implementation-backlog.yaml
+- plan/machine/decision-register.yaml
+- plan/machine/test-catalog.yaml
+- plan/FILE_MANIFEST.json
+- plan/generated/
+- plan/validation/execution/V2-001/
+- plan/decisions/ADR-001_RUNTIME_AND_LOCKING.md
+- docs/V2-001_IMPLEMENTATION_REPORT.md
+- plan/scripts/test_ai_execution.py
+- plan/README.md
+required_decisions:
+- ADR-001
+claims:
+- id: OBSERVED_ENVIRONMENT
+  kind: FACT
+  statement: Initial macOS arm64 environment has Python 3.9.6, no uv on PATH, Docker
+    client installed but daemon unavailable.
+  sources:
+  - ref: validation/execution/V2-001/raw/preflight.json
+    sha256: 6e87f6d89cdd7c3b3221c67a30bb06d12ecd40228389147285c5f7df12698e9f
+  blocks_actions: []
+  verification_plan: Recheck actual binaries, daemon and image before accepting ADR-001.
+- id: ADR001_ACCEPTED
+  kind: FACT
+  statement: ADR-001 is accepted and bound to the real committed decision; toolchain
+    installed and image inspected.
+  sources:
+  - ref: validation/execution/V2-001/adr-001-decision.yaml
+    sha256: fe35bc22258f42d7a4aa8e93b022c8ccb9934982ca305f55f5542d4c61159ffe
+  blocks_actions: []
+  verification_plan: Implementation and PostgreSQL tests still pending.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Download and daemon availability not yet established
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 3
+  maximum_runtime: 10800
+stop_conditions:
+- ADR-001 must be ACCEPTED before IMPLEMENT
+- No paid provider/infrastructure; budget currency USD
+- Only local isolated PostgreSQL; no production credentials or SQLite substitution
+- Stop at highest honest V2-001 state; no next task
+- Record concrete permission/failure blockers, do not weaken tests
+review_notes:
+- Support changes are task registration, ADR, generated views, evidence and operating
+  documentation.
+- No user source changes existed at initial inventory; preserve archive and local
+  tool configuration.
+- An initial inline preparation script failed Python source decoding before execution;
+  the following plan check covered the prior planning baseline only.
+- Raw snapshots retain exact input bytes in .txt containers; current normative Markdown
+  remains checked. Initial .md snapshots caused relative-link validation failures;
+  no validator/exclusion change was made.
+- 'Support-only fixture correction: raw/016 reproduces one failure after real ADR
+  acceptance. Reset ADR-001 to REQUIRED only inside isolated AIExecutionTests.setUp.
+  Original requirement remains: unresolved ADR rejects IMPLEMENT; accepted ADR permits
+  it. No validator, assertions, acceptance, exclusions or thresholds changed; no V2-002
+  implementation.'
+- 2026-09-23 user explicitly requested continuation after idle interruption; renewed
+  local execution window. No paid budget or scope increase. Agent failed due usage
+  limit without file edits; primary implementer resumed responsibility.
+- Support change plan/README.md updates stale all-OPEN statements after V2-001 implementation
+  only; no architecture or task/gate changes.
+- Final read-only AI code review found no actionable issue; same AI trust boundary,
+  no independent human/platform/remote CI validation. repository_revision remains
+  original opening baseline; evidence revision is the committed implementation. Stop
+  instruction is preserved; IMPLEMENT identifies the performed action, not authorization
+  to start V2-002.
+- 'Full A-K implementation report: docs/V2-001_IMPLEMENTATION_REPORT.md. Artifacts
+  written after code revision are evidence/metadata only; tests bind the actual source
+  revision, not the subsequent delivery commit.'
+- 'V2-002 prepare: reconciled live inputs/manifest; previous packet preserved under
+  V2-002 snapshots. No V2-001 work or evidence recertification.'
+- 'V2-002 implementation-start: reconciled live inputs/manifest; previous packet preserved
+  under V2-002 snapshots. No V2-001 work or evidence recertification.'
+handoff:
+  current_step: 'STOPPED AS REQUESTED: V2-001 IMPLEMENTED; local results bound to
+    390aa0f4f28068fdd146fca3eb98df1a5ec1a334; no next task started'
+  completed_steps:
+  - Checked initial clean main and HEAD
+  - Read mandated inputs and task/scenario requirements
+  - Installed fixed toolchain; Docker running; image digest verified
+  - Accepted committed ADR-001
+  - 'Initial package tests: 5 PASS, clean noneditable install and distributions'
+  - 'Initial PostgreSQL tests: 10 PASS, real connect/cleanup/negative cases'
+  - 'AI fixture corrected without changing rejection assertions: 36 PASS'
+  - Committed actual implementation
+  - 'Formal local tests on implementation revision: pytest15, self32, governance39,
+    AI36, plan check PASS'
+  - Bound CODE and TEST_RESULT artifacts to implementation revision
+  - Evidence-bound current Plan validation PASS; A-K report and final scoped diff
+    inventory written
+  pending_items:
+  - 'V2-001 remains IMPLEMENTED: real CI_RUN and final ACCEPTANCE_RECORD absent'
+  - Recommend V2-002 only; requires a separately authorized task scope
+  - V2-003 architecture and V2-004 trusted CI/permissions remain OPEN; P1 forbidden
+    until G-P0
+  next_action: IMPLEMENT
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-001/raw/034_evidence_validation.json
+      sha256: d35f84c153ba58494b9e26dff62d9c367360fa8ddc9c2d7a1a3247115e779f0c
+    missing_artifact_reason: null

@@ -1,0 +1,47 @@
+# 开发 AI 交接模板：用于恢复上下文，不是已执行证明、任务关闭证据或准入许可。
+# 当前仅是 P0 待接入的交接格式，没有独立的交接 schema / 自动真实性校验。
+# 后续 runner 须实际读取仓库、输入和产物核对，不能仅凭 status=RECONCILED 继续。
+# 不在模板原文登记正式工作；任务副本应存入 plan 内可追踪的非模板路径。
+record_type: ai_handoff_record_template
+status: TEMPLATE_NOT_EVIDENCE
+schema_version: '1.0'
+task_id: null
+execution_packet_ref: null
+plan_version: null
+repository_revision: null
+worktree_dirty: null
+plan_manifest_sha256: null
+recorded_at: null
+producer: null
+resume_operator: null
+# 未提交改动逐项保存真实路径、变更类型及可恢复快照 ref/hash。
+# 仅列文件名不能恢复改动，也不证明改动属于当前任务。
+worktree_changes: []
+# source_ref 为原始资料，ref 为可恢复输入快照或原文，sha256 绑定实际字节。
+input_snapshots: []
+current_step: null
+# 记录已完成的动作及产物引用；不得从先前摘要的“完成”继承结论。
+completed_steps: []
+pending_items: []
+required_decisions: []
+# 仅记录实际取得的检查产物；FAIL / UNKNOWN 无产物时记录 missing_artifact_reason，
+# 例如执行器丢失或超时，不能补造日志或继承 PASS。
+last_checks: []
+# 每项记录原引用、失效原因、影响动作及重做条件；失效产物不删除，避免丢失失败历史。
+invalidated_evidence: []
+reconciliation:
+  status: NOT_RUN
+  checked_at: null
+  actual_repository_revision: null
+  actual_worktree_dirty: null
+  actual_plan_manifest_sha256: null
+  # 应覆盖版本/工作区、实际输入、ADR/未决事项、测试输出及预算剩余额度。
+  checked_artifacts: []
+  discrepancies: []
+  blocking_items: []
+  # 记录真实复核命令/结果产物及 hash；字段声明不能替代读取和执行。
+  verification_artifacts: []
+next_action: null
+resume_conditions: []
+stop_conditions: []
+review_notes: []

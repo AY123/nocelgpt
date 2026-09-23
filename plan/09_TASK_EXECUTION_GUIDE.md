@@ -40,6 +40,12 @@ python3 plan/scripts/validate_plan.py --self-test
 
 本脚本只验证实施资料，不替代后续 pytest、PostgreSQL、CI 或真实 Provider 测试。源版本变化后重新检查；包内结果不适用于未记录的新版本。
 
+V2-002 将既有检查接入项目根 `scripts/check_governance.py --output-dir <plan 外的新目录>`，同时导出现行规范到任务的索引与仓库上下文配置清单。规范注册沿用 backlog 的 `normative_specs`，按解析后真实路径排除 archive；历史设计引用继续允许。工程契约测试位于 `tests/contract/test_plan_governance.py` 和 `test_task_execution.py`。
+
+本地动作入口为项目根 `scripts/task_execution.py check|run|resume --task <id> --action <action> --output <新 JSON>`；`run` 在完整现行校验通过后执行 `--` 后的命令，`resume` 还需 `--checkpoint <旧 PASS JSON>`。入口采集真实 Git/context 与文件内容，重读交接和实际产物；不自动改变任务状态。输出不能覆盖计划或旧记录，仓库内使用 Git 忽略目录。工作区变化后先核对差异并重新 check，不能修改旧 checkpoint 来继承 PASS。命令失败/超时及运行后观察失败分别保留 FAIL/UNKNOWN。
+
+该入口只约束经它发起的本地命令；任意命令的语义、实际差异归属、防降标与可信远端权限仍按 V2-003/004 落地。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
+
 ## 5. 工作纪律
 
 优先完成当前关键链及必要防线，不新增没有消费者的模块或 Schema。不从 archive 直接抄入已知缺陷实现。不把外部研究结论当本系统收益证明。用户新决策进入机器源/正文及影响登记，避免依靠聊天隐式维护版本。

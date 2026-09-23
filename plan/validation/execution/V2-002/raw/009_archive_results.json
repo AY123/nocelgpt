@@ -1,0 +1,16 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "plan/validation/execution/V2-002/tools/archive_results.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T07:28:03.760196+00:00",
+  "repository_revision": "21849ed8919086982dd94d0a4c852db40eca5d40",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-23T07:28:03.973759+00:00",
+  "exit_code": 0,
+  "stdout": "{\"task\": \"V2-002\", \"state\": \"IMPLEMENTED\", \"tested_source_commit\": null, \"counts\": {\"contract_pytest\": 39, \"bootstrap_pytest\": 5, \"validator_self_test\": 32, \"governance_regression\": 39, \"ai_execution_regression\": 36, \"legacy_probes\": 13}}\n",
+  "stderr": "",
+  "scope": "local V2-002 execution, not remote CI"
+}

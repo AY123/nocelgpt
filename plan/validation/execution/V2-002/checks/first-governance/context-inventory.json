@@ -1,0 +1,58 @@
+{
+  "scope": "Repository entry files/configuration only; host-global and plugin auto-context not attested",
+  "files": [
+    {
+      "path": "README.md",
+      "exists": true,
+      "sha256": "5ce4048766df9b68caf7a8327803b9f83a10807efff40ccf3c5553d15775d4bf",
+      "context_imports": []
+    },
+    {
+      "path": "AGENTS.md",
+      "exists": true,
+      "sha256": "d22c7520187920c3920e3c4280e5b09c48a9cc91f97ccf2b463751b053bd62c3",
+      "context_imports": []
+    },
+    {
+      "path": "CLAUDE.md",
+      "exists": false
+    },
+    {
+      "path": ".claude/CLAUDE.md",
+      "exists": false
+    },
+    {
+      "path": ".claude/settings.json",
+      "exists": false
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "exists": true,
+      "sha256": "ed7273edb9d77a3c68663938e3633dec1a3622c9acb16348361fb4b8745d3ec8",
+      "top_level_keys": [
+        "permissions"
+      ],
+      "automatic_context_configuration": {}
+    },
+    {
+      "path": ".codex/config.toml",
+      "exists": false
+    },
+    {
+      "path": ".agents",
+      "exists": false,
+      "files": []
+    },
+    {
+      "path": ".codex",
+      "exists": false,
+      "files": []
+    },
+    {
+      "path": ".claude/rules",
+      "exists": false,
+      "files": []
+    }
+  ],
+  "errors": []
+}

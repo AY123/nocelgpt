@@ -1,0 +1,330 @@
+version: 1.2.0
+change_policy: 最低义务的变更必须在 changes 中说明理由/影响并修订验证器中的批准摘要；--write-views 不会重建本文件。文件哈希不是防恶意仓库写权限的安全边界。
+required_ci:
+  STATIC:
+    latest_activation_phase: P0
+    required_checks:
+    - format
+    - lint
+    - typecheck
+    mode: every_change
+  UNIT:
+    latest_activation_phase: P0
+    required_checks:
+    - unit
+    mode: every_change
+  SCHEMA_CONTRACT:
+    latest_activation_phase: P0
+    required_checks:
+    - plan validation
+    - active schemas and contracts
+    mode: every_change
+  ARCH_FITNESS:
+    latest_activation_phase: P0
+    required_checks:
+    - positive and negative boundary fixtures
+    mode: every_change
+  SECRET_DEPENDENCY:
+    latest_activation_phase: P0
+    required_checks:
+    - secret scan
+    - locked dependency scan
+    mode: every_change
+  POSTGRES_ENV:
+    latest_activation_phase: P0
+    required_checks:
+    - real database connect and clean fixture
+    mode: every_change
+  CANON_CAS_IDEMPOTENCY:
+    latest_activation_phase: P2
+    required_checks:
+    - atomic commit
+    - CAS
+    - same/different payload dedupe
+    - rebuild
+    mode: every_change
+  DETERMINISTIC_E2E:
+    latest_activation_phase: P7
+    required_checks:
+    - real Q0-Q3 permit commit integration
+    mode: every_change
+  GENRE_SMOKE:
+    latest_activation_phase: P8
+    required_checks:
+    - dual-anchor smoke and negative controls
+    mode: every_change
+  LIVE_PROVIDER:
+    latest_activation_phase: P5
+    required_checks:
+    - actual provider schema and error contract
+    - budget and UNKNOWN
+    mode: scheduled_protected_manual_release
+milestones:
+  M0:
+    name: Repository & Governance
+    introduced_phase: P0
+    earliest_close_phase: P0
+    required_tasks:
+    - V2-001
+    - V2-002
+    - V2-003
+    - V2-004
+  M1:
+    name: Narrative Kernel
+    introduced_phase: P1
+    earliest_close_phase: P1
+    required_tasks:
+    - V2-005
+    - V2-006
+    - V2-007
+    - V2-008
+  M2:
+    name: Canon Kernel
+    introduced_phase: P2
+    earliest_close_phase: P2
+    required_tasks:
+    - V2-009
+    - V2-010
+    - V2-011
+    - V2-012
+  M3:
+    name: Dual Genre Kernel
+    introduced_phase: P3
+    earliest_close_phase: P3
+    required_tasks:
+    - V2-013
+    - V2-014
+    - V2-015
+    - V2-016
+  M4:
+    name: Single Chapter E2E
+    introduced_phase: P6
+    earliest_close_phase: P7
+    required_tasks:
+    - V2-017
+    - V2-018
+    - V2-019
+    - V2-020
+    - V2-021
+    - V2-022
+    - V2-023
+    - V2-024
+    - V2-025
+    - V2-026
+    - V2-027
+    - V2-029
+  M5:
+    name: Patch Repair
+    introduced_phase: P7
+    earliest_close_phase: P7
+    required_tasks:
+    - V2-029
+    - V2-030
+    - V2-031
+    - V2-032
+  M6:
+    name: 10-Chapter Certification
+    introduced_phase: P8
+    earliest_close_phase: P8
+    required_tasks:
+    - V2-028
+    - V2-033
+    - V2-034
+    - V2-035
+    - V2-036
+    - V2-037
+    - V2-038
+    - V2-039
+  M7:
+    name: 30-Chapter Certification
+    introduced_phase: P9
+    earliest_close_phase: P9
+    required_tasks:
+    - V2-040
+  M8:
+    name: Multi-source Genesis
+    introduced_phase: P10
+    earliest_close_phase: P10
+    required_tasks:
+    - V2-041
+    - V2-042
+    - V2-043
+    - V2-044
+    - V2-045
+    - V2-046
+    - V2-047
+    - V2-048
+  M9:
+    name: Human Calibration
+    introduced_phase: P11
+    earliest_close_phase: P11
+    required_tasks:
+    - V2-049
+    - V2-050
+    - V2-051
+    - V2-052
+    - V2-053
+    - V2-054
+    - V2-055
+    - V2-056
+    - V2-057
+  M10:
+    name: 100-Chapter Reliability
+    introduced_phase: P12
+    earliest_close_phase: P12
+    required_tasks:
+    - V2-058
+    - V2-059
+    - V2-060
+  M11:
+    name: Reader/Market Feedback
+    introduced_phase: P13
+    earliest_close_phase: P13
+    required_tasks: []
+  M12:
+    name: 300+ Chapter Reliability
+    introduced_phase: P14
+    earliest_close_phase: P14
+    required_tasks: []
+phase_criteria:
+  P0:
+  - 四任务关闭证据完整
+  - 当前提交 CI 绿色且负例能阻断
+  - 锁定安装和 PostgreSQL 环境真实可运行
+  - 现行资料与阶段 Gate 无歧义
+  - 类型化证据、治理正反回归及 DA-01～05 本阶段责任处置完成
+  P1:
+  - 实体及作用域正反例通过
+  - 知识时序与操作类型一致
+  - 未决基础 Schema 决策已落实
+  P2:
+  - 短事务原子性 CAS 幂等 PostgreSQL 证据
+  - 唯一根提交与完整收据
+  - 快照重建和跨项目隔离
+  P3:
+  - 双 Anchor 版本化扩展和规则
+  - 污染与合法语境对照
+  - 无静默默认题材
+  P4:
+  - 双 Story Fixture 审定
+  - 类型化 Contract 与 Canon/Genre 绑定
+  - 章内候选协议和可读性自由边界
+  P5:
+  - Context 必需集合与预算失败正确
+  - 真实 Provider 接缝证据与预算
+  - UNKNOWN 和费用模型可追踪
+  P6:
+  - 编排抽取重试检查点产物完成
+  - 测试 fixture 与生产权限隔离
+  - Draft/accepted 分离；完整生产放行仍待 P7
+  P7:
+  - Q0–Q3 及聚合器和正式 Permit 集成
+  - M4 单章真实完整闭环
+  - 有限 Patch 与完整重验；M5 证据
+  P8:
+  - 双 Genre 十章运行
+  - 故障恢复与检查器可查
+  - 最小真人评阅与全成本
+  - 最终证据聚合后完成 M6
+  P9:
+  - 双 Genre 三十章
+  - 弧线承诺疲劳与 durable recovery
+  - 独立样本/版本/全部尝试记录
+  - 工程/阅读/人工/成本独立结论和继续投入决定已记录
+  P10:
+  - 多入口 Genesis 归一
+  - Reference 与原创边界
+  - 同一 Canon 写路径
+  P11:
+  - Corpus Gold Regression 分区
+  - 真实盲评校准
+  - 策略晋级有证据与回退
+  P12:
+  - 百章连续运行
+  - 实际备份恢复与 release manifest
+  - 长期债务和成本/人工贡献可查
+  P13:
+  - 进入前补充任务并完成阶段细化
+  - 真实 Reader/Market 证据
+  - 信号归因与政策晋级单独验证
+  P14:
+  - 进入前补充任务并完成阶段细化
+  - 三百章及百万字演进实证
+  - 长期恢复与叙事更新可验证
+required_findings:
+- AR-01
+- AR-02
+- AR-03
+- AR-04
+- AR-05
+- AR-06
+- AR-07
+- AR-08
+- AR-09
+- AR-10
+- AR-11
+- AR-12
+- AR-13
+- AR-14
+- AR-15
+- AR-16
+- AR-17
+- AR-18
+- AR-19
+- AR-20
+- CA-01
+- CA-02
+- CA-03
+- CA-04
+- CA-05
+- CA-06
+- CA-07
+- CA-08
+- CA-09
+- CA-10
+- CA-11
+- CA-12
+- CA-13
+- CA-14
+- CA-15
+- CA-16
+- CA-17
+- CA-18
+- CA-19
+- CA-20
+- CA-21
+- CA-22
+- CA-23
+- CA-24
+- RR-01
+- RR-02
+- RR-03
+- RR-04
+- RR-05
+- RR-06
+- RR-07
+- RR-08
+- RR-09
+- RR-10
+- RR-11
+- RR-12
+- SUP-01
+- SUP-02
+- SUP-03
+- SUP-04
+- SUP-05
+- SUP-06
+- SUP-07
+- SUP-08
+- DA-01
+- DA-02
+- DA-03
+- DA-04
+- DA-05
+- DA-06
+- DA-07
+- DA-08
+- DA-09
+- DA-10
+- DA-11
+- PR-01

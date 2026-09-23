@@ -86,6 +86,30 @@ def change_entry_status(data):
     task(data, 1)['status'] = 'IN_PROGRESS'
 
 
+def reconcile_fixture_inputs(data, plan):
+    """Refresh only incidental bytes changed by fixture YAML serialization.
+
+    The copied task/action/ADR/evidence declarations remain untouched, including
+    every injected defect. This is not available to real execution as a bypass.
+    """
+    for item in data['implementation-backlog']['tasks']:
+        ref = item.get('execution_packet_ref')
+        if item['status'] not in {'OPEN', 'IN_PROGRESS', 'IMPLEMENTED'} or not ref:
+            continue
+        path = plan / ref
+        if not path.is_file():
+            continue
+        packet = yaml.safe_load(path.read_text())
+        packet['plan_manifest_sha256'] = hashlib.sha256((plan / 'FILE_MANIFEST.json').read_bytes()).hexdigest()
+        for source in packet['inputs']:
+            live = plan / source['source_ref']
+            snapshot = plan / source['ref']
+            if live.is_file() and snapshot.is_file():
+                snapshot.write_bytes(live.read_bytes())
+                source['sha256'] = hashlib.sha256(live.read_bytes()).hexdigest()
+        path.write_text(yaml.safe_dump(packet, allow_unicode=True, sort_keys=False))
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--plan', type=Path, default=Path(__file__).resolve().parents[1])
@@ -132,6 +156,7 @@ def main():
             # Regenerating hashes is not a bypass: semantic checks should still reject invalid states.
             regen = subprocess.run([sys.executable, '-B', str(sandbox/'scripts/validate_plan.py'), '--write-views'],
                                    cwd=tmp, capture_output=True, text=True)
+            reconcile_fixture_inputs(data, sandbox)
             check = subprocess.run([sys.executable, '-B', str(sandbox/'scripts/validate_plan.py'), '--check'],
                                    cwd=tmp, capture_output=True, text=True)
             try:

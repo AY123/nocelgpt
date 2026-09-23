@@ -1,0 +1,1096 @@
+{
+  "scope": "One-off V2-002 review against opening Git commit; no automatic V2-003 harness or independent review claim",
+  "baseline_revision": "21849ed8919086982dd94d0a4c852db40eca5d40",
+  "status": "PASS",
+  "outside_scope": [],
+  "paths": [
+    "AGENTS.md",
+    "README.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/AI_EXECUTION_PROTOCOL.md",
+    "plan/FILE_MANIFEST.json",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/README.md",
+    "plan/generated/PHASE_TASK_REGISTRY.md",
+    "plan/machine/ai-execution-policy.yaml",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/scripts/probe_governance_legacy.py",
+    "plan/scripts/task_entry.py",
+    "plan/scripts/test_ai_execution.py",
+    "plan/scripts/validate_plan.py",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/checks/final/contract.xml",
+    "plan/validation/execution/V2-002/checks/first-governance/ai/ai-execution-regression.json",
+    "plan/validation/execution/V2-002/checks/first-governance/context-inventory.json",
+    "plan/validation/execution/V2-002/checks/first-governance/governance-summary.json",
+    "plan/validation/execution/V2-002/checks/first-governance/governance/governance-regression.json",
+    "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+    "plan/validation/execution/V2-002/checks/first-governance/normative-index.json",
+    "plan/validation/execution/V2-002/checks/first-governance/plan/plan-validation.json",
+    "plan/validation/execution/V2-002/checks/first-governance/self-test/validator-self-test.json",
+    "plan/validation/execution/V2-002/checks/first/contract.xml",
+    "plan/validation/execution/V2-002/checks/implementation-start/plan-validation.json",
+    "plan/validation/execution/V2-002/checks/prepare/plan-validation.json",
+    "plan/validation/execution/V2-002/checks/write-views/plan-validation.json",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "plan/validation/execution/V2-002/raw/001_contract_tests.json",
+    "plan/validation/execution/V2-002/raw/002_engineering_governance.json",
+    "plan/validation/execution/V2-002/raw/003_baseline_fixture_reproduction.json",
+    "plan/validation/execution/V2-002/raw/004_write_views.json",
+    "plan/validation/execution/V2-002/raw/005_final_contract.json",
+    "plan/validation/execution/V2-002/raw/baseline-plan-validation.json",
+    "plan/validation/execution/V2-002/raw/first-entry.json",
+    "plan/validation/execution/V2-002/raw/fixture-baseline-reproduction.json",
+    "plan/validation/execution/V2-002/raw/preflight.json",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/05-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/08-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/09-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/10-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/11-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/12-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/13-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/14-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/15-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/06-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/07-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/08-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/09-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/10-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/11-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/12-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/13-ci-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/14-authority-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/15-external-practice-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/16-source-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/17-remediation-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/18-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/19-evidence-record.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/20-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/05-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/08-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/09-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/10-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/11-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/12-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/13-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/14-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/15-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/06-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/07-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/08-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/09-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/10-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/11-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/12-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/13-ci-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/14-authority-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/15-external-practice-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/16-source-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/17-remediation-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/18-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/19-evidence-record.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/20-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/05-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/08-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/09-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/10-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/11-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/12-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/13-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/14-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/15-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/06-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/07-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/08-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/09-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/10-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/11-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/12-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/13-ci-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/14-authority-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/15-external-practice-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/16-source-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/17-remediation-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/18-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/19-evidence-record.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/20-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/05-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/08-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/09-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/10-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/11-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/12-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/13-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/14-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/15-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-001/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/06-README.md.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/07-implementation-backlog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/08-test-catalog.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/09-decision-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/10-ai-execution-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/11-phase-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/12-governance-baseline.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/13-ci-gates.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/14-authority-policy.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/15-external-practice-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/16-source-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/17-remediation-register.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/18-execution-packet.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/19-evidence-record.schema.json.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/20-EXECUTION_PACKET.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/V2-002/packet-before.yaml.txt",
+    "plan/validation/execution/V2-002/snapshots/prepare/packet-passed.yaml.txt",
+    "plan/validation/execution/V2-002/tools/context.py",
+    "plan/validation/execution/V2-002/tools/record_command.py",
+    "plan/validation/execution/V2-002/tools/reproduce_fixture_failures.py",
+    "plan/validation/execution/V2-002/tools/scope_review.py",
+    "plan/validation/execution/V2-002/user-request.txt",
+    "scripts/check_governance.py",
+    "scripts/task_execution.py",
+    "tests/contract/test_plan_governance.py",
+    "tests/contract/test_task_execution.py"
+  ],
+  "unchanged_protection_files": [
+    "plan/machine/governance-baseline.yaml",
+    "plan/machine/phase-gates.yaml",
+    "plan/machine/ci-gates.yaml",
+    "plan/machine/decision-register.yaml",
+    "plan/schemas/evidence-record.schema.json",
+    "plan/schemas/execution-packet.schema.json",
+    "plan/scripts/execution_checks.py",
+    "plan/scripts/governance_checks.py"
+  ],
+  "preserved_existing_test_bodies": {
+    "plan/scripts/test_governance.py": 39,
+    "plan/scripts/test_ai_execution.py": 36
+  },
+  "acceptance_scenarios_unchanged": 246,
+  "authorized_support_changes": [
+    "actual command integration and resolved normative path enforcement",
+    "minimal synthetic fixture isolation/rebinding, all old assertions unchanged",
+    "V2-001 context-only refresh preserving prior packets and implementation evidence",
+    "documentation/metadata synchronization without reducing acceptance"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "94ddff7165daa02eee4fa4745ae64607dcd83b8f3e31784d0fa9363256b33b23"
+    },
+    {
+      "path": "README.md",
+      "sha256": "4462c7ada1549d6138307f04e98630c2351f2dc541a3fdc9072351ae9ff3c8aa"
+    },
+    {
+      "path": "plan/09_TASK_EXECUTION_GUIDE.md",
+      "sha256": "81029572dd0d8587b5b8e15186e6e139d0ad86a3892cc25a5a43d54f4e05f291"
+    },
+    {
+      "path": "plan/AI_EXECUTION_PROTOCOL.md",
+      "sha256": "9f991a61fc2937134c2455ee9259dfaa1405a2f08a85d6fc26c0d92bbe6b8b6e"
+    },
+    {
+      "path": "plan/FILE_MANIFEST.json",
+      "sha256": "dffee28e3a76d269931b0a5dbbb65e987704e5917dd8190d34c286584f3dce48"
+    },
+    {
+      "path": "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+      "sha256": "8ddf9f28dbd76d38e7429f6a73089d138978207f270d6842444345a037222930"
+    },
+    {
+      "path": "plan/README.md",
+      "sha256": "fb8e03647d75e7a37b88ec66802c14f37b9ab5903a08e24f2c494dca7eac6c66"
+    },
+    {
+      "path": "plan/generated/PHASE_TASK_REGISTRY.md",
+      "sha256": "ab7c32ab65002dacb1ec7337812b8a899e362308a88b446d4f0bcb644d321fd0"
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "sha256": "67935e0b8ac8b9a7da57a42b2674684a1be98dd9f7daa750b4a56850157482cc"
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "sha256": "7b8f15a95d922beed5e31f3c74a464aef73cfa9484e375bb2cda2278b2cc84e9"
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "sha256": "b21e91075ac430542363ee16ab608072e443fd8a192b8e504288de237968424d"
+    },
+    {
+      "path": "plan/scripts/probe_governance_legacy.py",
+      "sha256": "5125c8e43e9a16ccb2d2f218699674e7706aa12d4539532dca52cd88b809ad27"
+    },
+    {
+      "path": "plan/scripts/task_entry.py",
+      "sha256": "2da52103003d31b840e3106bfa28d168edf271ab32d804b4fa36957acb9e206d"
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "sha256": "69c2ab97e1555bcb03d2b84f4d9ecf64b81f808ffe1d985dfbb60e1db00d1024"
+    },
+    {
+      "path": "plan/scripts/validate_plan.py",
+      "sha256": "fceb58f3d58cb07158b1a3dc357c422a0d3cec2543d6f7d51bce4d501a370bfd"
+    },
+    {
+      "path": "plan/validation/execution/V2-001/execution-packet.yaml",
+      "sha256": "c7a27040bffd8991118660378ff98e4ee3abea4c5b7a358d55d329b9ea04bd5d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/final/contract.xml",
+      "sha256": "938f340d1ba7c5ad3518fdd1e75db6b1fdb1f9e6e66a0687d86599f7e6ade02b"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/ai/ai-execution-regression.json",
+      "sha256": "606d249844ffc5ab2e6b45cc848cddc961471e7a83fb8328ee73888d4006999d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/context-inventory.json",
+      "sha256": "38d3637f404ae1b190eb64314b0164455ab1aee4008e0676f3a2741d564468c9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/governance-summary.json",
+      "sha256": "922c06c162e5c59b90ee55f1a0aa55cf55b926108c7139d51ea3b4f974ae4b7a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/governance/governance-regression.json",
+      "sha256": "849baea7bf5b9df9dd7da12e47aa0f83c8514a3dbbcb0c04281dc17873ed4f99"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+      "sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/normative-index.json",
+      "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/plan/plan-validation.json",
+      "sha256": "e62021a7e4298d48455f27265e5a519625c50b0733aed66b1b76cf9e68b7ec88"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/self-test/validator-self-test.json",
+      "sha256": "198992bf55de51ba5f0285ea32b496651ffbe2d54488e0aabcbc56b2b1c3f5d7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first/contract.xml",
+      "sha256": "f2040bf91995d471f62c34737c54346185bb48075987d3178eba16ea0c00dd99"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/implementation-start/plan-validation.json",
+      "sha256": "f3a3bee5b35e75f8651da8741db519fbdc0e186b30a8407e2ed9393c7e7bcddc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/prepare/plan-validation.json",
+      "sha256": "185e7e89966848640f85f5afc2a62a8fb3ecc8fd5569d27d11034264e1c1ba86"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/write-views/plan-validation.json",
+      "sha256": "957203ae4e92b8b6e63f11c8e56825c4601582eaf08f7b4ad051d28f612aaad3"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/execution-packet.yaml",
+      "sha256": "dadf38c99743c31e78b406a70837471177361a14d398c3b29850eaf4bd830ec6"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/001_contract_tests.json",
+      "sha256": "605015ddb8421be3a317a88b453716a856bdab23e3fe144d7c8de5f5905dea30"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/002_engineering_governance.json",
+      "sha256": "7438dcec72a4c75e9cf02620e3ab12f5f1747ccf9c689bc874e34e37278c674d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/003_baseline_fixture_reproduction.json",
+      "sha256": "2d572d0124680dcc669e7d235752bc4ad82a064297dd21f250f27e6e361c5a18"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/004_write_views.json",
+      "sha256": "46ee9e262d13751c122f51997aed159878aa12b66bf98aed8d58755e5a781f9b"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/005_final_contract.json",
+      "sha256": "fea322dac8fad4a1a4e426fed1fc5a48ece5e03bc88ba7754fc10bef417f27d8"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/baseline-plan-validation.json",
+      "sha256": "36598545de8d5cf2dbd51a08fcc19d7b9fac7daa6a66096da1dbef867f1a5a8a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/first-entry.json",
+      "sha256": "4c990ae4a7126346af2a3d580520f35dec705c4fb45346ce81a906fc9809a456"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/fixture-baseline-reproduction.json",
+      "sha256": "371f8296c566d49c39d618c5a11de3081df025f96b3387d3aebb4d74358bc7ea"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/raw/preflight.json",
+      "sha256": "888d0b8085ae2b6bc2093cfc6261b197262e0e071b6baf27f1d4b2908c19c22c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+      "sha256": "7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+      "sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/05-README.md.txt",
+      "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/08-implementation-backlog.yaml.txt",
+      "sha256": "11ccd0d34dbc77a8c8ebdc25c06073000ac1accbe4a3148c838d22c7ae16ea7e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/09-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/10-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/11-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/12-test-catalog.yaml.txt",
+      "sha256": "8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/13-ai-execution-policy.yaml.txt",
+      "sha256": "c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/14-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/15-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+      "sha256": "234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-001/packet-before.yaml.txt",
+      "sha256": "c74b2888689c212689d3973c278069edf45d0b8adc15f46d07b348ee17eb3c65"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+      "sha256": "f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/06-README.md.txt",
+      "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/07-implementation-backlog.yaml.txt",
+      "sha256": "11ccd0d34dbc77a8c8ebdc25c06073000ac1accbe4a3148c838d22c7ae16ea7e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/08-test-catalog.yaml.txt",
+      "sha256": "8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/09-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/10-ai-execution-policy.yaml.txt",
+      "sha256": "c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/11-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/12-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/13-ci-gates.yaml.txt",
+      "sha256": "5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/14-authority-policy.yaml.txt",
+      "sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/15-external-practice-register.yaml.txt",
+      "sha256": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/16-source-register.yaml.txt",
+      "sha256": "7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/17-remediation-register.yaml.txt",
+      "sha256": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/18-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/19-evidence-record.schema.json.txt",
+      "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/20-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+      "sha256": "63ee7754f508c99598b350728fe905aa14d7673cba82e98e979944d782f3dcc9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/first-implementation/V2-002/packet-before.yaml.txt",
+      "sha256": "7d9ed02f9aa466739900402ace30b36f7d541121516ab2fa28acc09dcbe6168e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+      "sha256": "7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+      "sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/05-README.md.txt",
+      "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/08-implementation-backlog.yaml.txt",
+      "sha256": "0b90e4a7b39d989b3fba7cc0be2164f5df4732e95bb1909b2640de4b42825592"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/09-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/10-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/11-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/12-test-catalog.yaml.txt",
+      "sha256": "8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/13-ai-execution-policy.yaml.txt",
+      "sha256": "c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/14-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/15-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+      "sha256": "234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-001/packet-before.yaml.txt",
+      "sha256": "83b8c7aef51c272c3bac1c311b8a8d745a014df7014e8786f04f74af44a1cb21"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+      "sha256": "f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/06-README.md.txt",
+      "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/07-implementation-backlog.yaml.txt",
+      "sha256": "0b90e4a7b39d989b3fba7cc0be2164f5df4732e95bb1909b2640de4b42825592"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/08-test-catalog.yaml.txt",
+      "sha256": "8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/09-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/10-ai-execution-policy.yaml.txt",
+      "sha256": "c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/11-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/12-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/13-ci-gates.yaml.txt",
+      "sha256": "5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/14-authority-policy.yaml.txt",
+      "sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/15-external-practice-register.yaml.txt",
+      "sha256": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/16-source-register.yaml.txt",
+      "sha256": "7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/17-remediation-register.yaml.txt",
+      "sha256": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/18-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/19-evidence-record.schema.json.txt",
+      "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/20-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+      "sha256": "63ee7754f508c99598b350728fe905aa14d7673cba82e98e979944d782f3dcc9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implementation-start/V2-002/packet-before.yaml.txt",
+      "sha256": "45110bc6a5f6e7c0b6d1c98da4b600ea296569acea40cd0569d9f916d1716600"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+      "sha256": "7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+      "sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "81029572dd0d8587b5b8e15186e6e139d0ad86a3892cc25a5a43d54f4e05f291"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "8ddf9f28dbd76d38e7429f6a73089d138978207f270d6842444345a037222930"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "9f991a61fc2937134c2455ee9259dfaa1405a2f08a85d6fc26c0d92bbe6b8b6e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/05-README.md.txt",
+      "sha256": "fb8e03647d75e7a37b88ec66802c14f37b9ab5903a08e24f2c494dca7eac6c66"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/08-implementation-backlog.yaml.txt",
+      "sha256": "7b8f15a95d922beed5e31f3c74a464aef73cfa9484e375bb2cda2278b2cc84e9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/09-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/10-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/11-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/12-test-catalog.yaml.txt",
+      "sha256": "b21e91075ac430542363ee16ab608072e443fd8a192b8e504288de237968424d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/13-ai-execution-policy.yaml.txt",
+      "sha256": "67935e0b8ac8b9a7da57a42b2674684a1be98dd9f7daa750b4a56850157482cc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/14-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/15-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+      "sha256": "234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-001/packet-before.yaml.txt",
+      "sha256": "84352e6d62ab8588a3b003415418b85169a390fb523cadf652a7d16d00f0d8a0"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "81029572dd0d8587b5b8e15186e6e139d0ad86a3892cc25a5a43d54f4e05f291"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+      "sha256": "f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "8ddf9f28dbd76d38e7429f6a73089d138978207f270d6842444345a037222930"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "9f991a61fc2937134c2455ee9259dfaa1405a2f08a85d6fc26c0d92bbe6b8b6e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/06-README.md.txt",
+      "sha256": "fb8e03647d75e7a37b88ec66802c14f37b9ab5903a08e24f2c494dca7eac6c66"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/07-implementation-backlog.yaml.txt",
+      "sha256": "7b8f15a95d922beed5e31f3c74a464aef73cfa9484e375bb2cda2278b2cc84e9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/08-test-catalog.yaml.txt",
+      "sha256": "b21e91075ac430542363ee16ab608072e443fd8a192b8e504288de237968424d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/09-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/10-ai-execution-policy.yaml.txt",
+      "sha256": "67935e0b8ac8b9a7da57a42b2674684a1be98dd9f7daa750b4a56850157482cc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/11-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/12-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/13-ci-gates.yaml.txt",
+      "sha256": "5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/14-authority-policy.yaml.txt",
+      "sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/15-external-practice-register.yaml.txt",
+      "sha256": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/16-source-register.yaml.txt",
+      "sha256": "7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/17-remediation-register.yaml.txt",
+      "sha256": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/18-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/19-evidence-record.schema.json.txt",
+      "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/20-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+      "sha256": "63ee7754f508c99598b350728fe905aa14d7673cba82e98e979944d782f3dcc9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/implemented-local/V2-002/packet-before.yaml.txt",
+      "sha256": "ad4dc1564370ddf841d1f3a864f7e30c64aeaf7bf8cf7f6bde9740d807ed0f7a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt",
+      "sha256": "7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt",
+      "sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/03-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/04-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/05-README.md.txt",
+      "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/06-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/07-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/08-implementation-backlog.yaml.txt",
+      "sha256": "b2ec9e6d79e0e2ce40e9eb3c901be25eacfd7b3a73d5e97f496aecd50cd33ac4"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/09-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/10-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/11-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/12-test-catalog.yaml.txt",
+      "sha256": "8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/13-ai-execution-policy.yaml.txt",
+      "sha256": "c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/14-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/15-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/16-ADR-001_RUNTIME_AND_LOCKING.md.txt",
+      "sha256": "234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-001/packet-before.yaml.txt",
+      "sha256": "5b30f94c73c851bba9684d1e6f101063b484d2ec84e2e0a4111c7fa34d7229d8"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt",
+      "sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/01-08_ROADMAP_AND_GATES.md.txt",
+      "sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/02-09_TASK_EXECUTION_GUIDE.md.txt",
+      "sha256": "cf974e520d5792a07d97320c4dfe0e91d21beefc932d6ca516ba11ad7870c34a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt",
+      "sha256": "f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/04-PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md.txt",
+      "sha256": "7d19117fce9eebae2a09893acff318d85ace1cadc3a8e3067aa7802eeb821bf2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/05-AI_EXECUTION_PROTOCOL.md.txt",
+      "sha256": "2c92e9eb33c982317532d3ca9abf8a1cbccda8eec0bb6906fe29304e5b5f0e0d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/06-README.md.txt",
+      "sha256": "1f093b53b8292175d62ef1608b043d5f58d1e29d6c128de8f6641e5931ae35f2"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/07-implementation-backlog.yaml.txt",
+      "sha256": "b2ec9e6d79e0e2ce40e9eb3c901be25eacfd7b3a73d5e97f496aecd50cd33ac4"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/08-test-catalog.yaml.txt",
+      "sha256": "8d45a7d0327f0cbed0fa6c22dba102e0b9a345f3025e81a9ff16425f93ac519d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/09-decision-register.yaml.txt",
+      "sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/10-ai-execution-policy.yaml.txt",
+      "sha256": "c35c684c9ce3c318f38089be77cd798311cfd944b2c0b027fcea3c065b7b3bc7"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/11-phase-gates.yaml.txt",
+      "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/12-governance-baseline.yaml.txt",
+      "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/13-ci-gates.yaml.txt",
+      "sha256": "5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/14-authority-policy.yaml.txt",
+      "sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/15-external-practice-register.yaml.txt",
+      "sha256": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/16-source-register.yaml.txt",
+      "sha256": "7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/17-remediation-register.yaml.txt",
+      "sha256": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/18-execution-packet.schema.json.txt",
+      "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/19-evidence-record.schema.json.txt",
+      "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/20-EXECUTION_PACKET.yaml.txt",
+      "sha256": "97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/21-AI_HANDOFF_RECORD.yaml.txt",
+      "sha256": "63ee7754f508c99598b350728fe905aa14d7673cba82e98e979944d782f3dcc9"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/V2-002/packet-before.yaml.txt",
+      "sha256": "e359303a746a0db7887e0c374b7e56770a981d7bcd5c94b8e8a80ad54cfef85a"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/snapshots/prepare/packet-passed.yaml.txt",
+      "sha256": "a8d300083f4a9b6949f809edca2fbc92ed2a751e8a451ea560a3c3fadeb0c65e"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/tools/context.py",
+      "sha256": "5a0e4eca980d048793037adebdf24122b30e051dcb5e38e7067e62047e181e0f"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/tools/record_command.py",
+      "sha256": "e5e2c60a014619c3dfa3999f877d993662f0c37d04d87f13fda096db45696ea3"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/tools/reproduce_fixture_failures.py",
+      "sha256": "ea09077e79f825c6f6c31b27ec7fccdf92a36d761b05ba1af9465dce846e5f9d"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/tools/scope_review.py",
+      "sha256": "cc1eac144f0ba9c000cb02d4c845d0fdc4b72b11282dd520604c6c59567bd03b"
+    },
+    {
+      "path": "plan/validation/execution/V2-002/user-request.txt",
+      "sha256": "9f4872664a3eeec0ff537a1bf59bb08347bd5d4853cb43f38b75002eb2aa0468"
+    },
+    {
+      "path": "scripts/check_governance.py",
+      "sha256": "132906fb58eaa56e0e241ea5d2d6fe840ec7cd2c45fbd248cc4a6fea232c3964"
+    },
+    {
+      "path": "scripts/task_execution.py",
+      "sha256": "e3c6cefe0be85536fccd9c0e3d72ef1d69541cbca75627baa6a3c787c8992c74"
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "sha256": "45985734cfd13f408f639908510c4145151e29d0b6c94957c793a5d5fdc7c76f"
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "sha256": "ca578da5f49065db2119f58c981c402cde9aac6b9b7acea6ed12b1a7f58b7649"
+    }
+  ]
+}

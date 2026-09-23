@@ -2,7 +2,7 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001 IMPLEMENTED**。最小 Python 包、锁定安装与真实 PostgreSQL 基础测试已实现；其余 59 个任务仍 OPEN。远端 CI、P0 退出和章节生产未验证，因此 V2-001 未 VERIFIED/CLOSED。
+当前为 **Plan v1.3.0 / V2-001 IMPLEMENTED / V2-002 IMPLEMENTED**。最小 Python 包、锁定安装与真实 PostgreSQL 基础测试已实现；本轮接入资料治理工程命令。其余 58 个任务仍 OPEN。远端 CI、P0 退出和章节生产未验证。
 
 ## 从这里开始
 
@@ -60,6 +60,27 @@ python3 -B plan/scripts/test_ai_execution.py --output-dir dist/validation/local
 
 ## 当前实施边界
 
-本次仅实施 V2-001；没有自动开始 V2-002～004。后续资料治理接入、架构检查、Secret/依赖 CI 仍按各自任务推进。正式任务关闭需要代码、测试、真实 CI 和验收记录。本地 PASS 与 CI PASS 分别记录。
+本次仅实施 V2-002，复用 V2-001 的锁定环境。架构检查、实际差异归属与防验收弱化属于 V2-003；Secret/依赖 CI、远端来源与保护权限属于 V2-004，均未开始。正式任务关闭需要代码、测试、真实 CI 和验收记录。本地 PASS 与 CI PASS 分别记录。
 
 G-P0 未验证前不开始 Narrative Kernel。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
+
+## 资料治理与本地任务入口
+
+现行规范索引直接来自任务表的 `normative_specs`，检查器解析真实路径后拒绝 archive 别名与符号链接。`design_references` 继续作为历史参考。以下工程命令复用全部既有校验器和回归，输出规范—任务索引、实际仓库上下文配置清单及原始结果；输出目录每次使用新名称，不覆盖旧记录：
+
+```bash
+python3 -B scripts/check_governance.py --output-dir dist/validation/governance-run-1
+python3 -B -m pytest -q tests/contract
+```
+
+正式动作前使用已绑定的任务专属执行包。`check` 实际读取仓库和输入；`run` 在检查通过后才启动 `--` 后的命令，保留子命令退出码；`resume` 重新核对上一份 PASS 的实际结束状态和当前输入。下面仅展示 V2-002 的本地命令，不创建或推进其他任务：
+
+```bash
+python3 -B scripts/task_execution.py check --task V2-002 --action IMPLEMENT --output dist/validation/start-1.json
+python3 -B scripts/task_execution.py run --task V2-002 --action IMPLEMENT --output dist/validation/run-1.json -- python3 -B scripts/check_governance.py --output-dir dist/validation/governance-run-2
+python3 -B scripts/task_execution.py resume --task V2-002 --action IMPLEMENT --checkpoint dist/validation/run-1.json --output dist/validation/resume-1.json
+```
+
+报告须输出至 plan 外：仓库内使用 Git 已忽略且未跟踪的目录（如 `dist/`），也可使用仓库外独立目录。恢复检查绑定根目录、branch、HEAD、暂存区、已跟踪/未跟踪文件内容、执行包及交接产物；即使两个时点都 dirty，内容变化也会拒绝恢复。归档结果或提交本身会改变上下文，此时保留旧记录、核对变化后重新 `check`，不能修改旧 checkpoint 使其通过。FAIL/UNKNOWN 不继承为成功，也不自动重放有副作用的命令。
+
+这是本地命令入口：不能拦截操作者绕过入口直接使用其他工具，不能判断任意子命令的业务语义，不能证明远端来源或最小权限。PREPARE 仅用于授权的调查命令。LIVE_CALL/CERTIFY 的资料条件仍由既有校验器检查；实际付费/认证 dispatch 在受保护授权接入前保持拒绝。

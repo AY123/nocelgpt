@@ -1,5 +1,5 @@
 version: 1.3.0
-meaning: 验收场景是计划；目标测试路径尚未实现
+meaning: 逐套件记录计划、实现和验证状态；本地结果不代替真实 CI 与正式验收
 suites:
 - id: AT-V2-001
   task_id: V2-001
@@ -22,7 +22,7 @@ suites:
 - id: AT-V2-002
   task_id: V2-002
   phase: P0
-  status: PLANNED
+  status: IMPLEMENTED
   target_path: tests/contract/test_plan_governance.py
   scenarios:
   - id: AT-V2-002-01

@@ -1,0 +1,32 @@
+version: EVIDENCE-1
+source: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+evidence_levels:
+  E0: deterministic_check
+  E1: structured_extraction
+  E2: model_evaluation_including_simulated_reader
+  E3: human_gold_blind_review
+  E4: real_reader_market_observation
+required_dimensions:
+- source_kind
+- verification_status
+- authority_scope
+- calibration_ref
+sole_writers:
+  canon_head: CanonCommitService
+  production_state: WorkflowStateService
+  commit_permit: ProtectedPermitIssuer
+never_direct_canon_writers:
+- Writer
+- Reviewer
+- Reference
+- Market
+- HumanSQL
+- Inspector
+accepted_evidence_retention: keep replayable accepted evidence closure; revoke execution authority without deleting
+  historical authorization
+idempotency_identity: stable logical request; attempt identity excluded
+initial_deployment: internal_single_operator
+automatic_publication: false
+anchor_genres:
+- urban.business.realistic
+- fantasy.eastern.progression

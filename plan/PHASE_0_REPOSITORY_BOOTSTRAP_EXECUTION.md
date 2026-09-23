@@ -1,6 +1,6 @@
 # P0 Repository Bootstrap 执行方案
 
-范围：仅 V2-001～004。状态：READY_TO_START，尚未实施/验收。现行规范入口：[README](README.md)。
+范围：仅 V2-001～004。V2-001 已 IMPLEMENTED；V2-002 已 IMPLEMENTED 本地工程命令；V2-003/004 未开始，P0 尚未验收。具体状态与证据以机器源为准。现行规范入口：[README](README.md)。
 
 ## 1. 目标与排除项
 
@@ -23,6 +23,8 @@
 输入：本包及来源登记。工作：接入资料验证器、确定现行 specs 注册机制、补充实际负责人、把任务关闭/阶段 Gate 检查接入工程命令；根 README 明确指向 plan。
 
 按 [AI 开发执行协议](AI_EXECUTION_PROTOCOL.md)接入任务执行包及交接校验，绑定任务、规范/输入 hash、范围、验收、动作和待决项。允许 PREPARE 调查未决方案，正式 IMPLEMENT/LIVE_CALL/CERTIFY 按各自最晚决策点检查；无效包、模板冒充、版本失效和错误交接不能放行，合格包与合法准备可以通过。此处接入的是开发执行治理，不创建小说生产 Workflow。
+
+本地实现沿用 backlog 的 `normative_specs` 注册，新增项目根 `scripts/check_governance.py` 与 `scripts/task_execution.py`，通过 `tests/contract/` 的真实子进程与临时 Git fixture 验证。原有校验、最低义务和治理正反例继续保留；本地命令接入不代替 V2-004 的真实 CI/权限核验。
 
 验收：任务/阶段/里程碑唯一；archive 不作为自动实现输入；再生成视图无差异；错阶段/缺引用/无证据 CLOSED 被拒绝；P0 未验证时 P1 无法被正式放行。仅本包的存在不自动关闭该任务。
 

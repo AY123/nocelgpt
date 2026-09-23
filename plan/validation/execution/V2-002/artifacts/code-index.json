@@ -1,0 +1,97 @@
+[
+  {
+    "source_path": "AGENTS.md",
+    "ref": "validation/execution/V2-002/artifacts/code/AGENTS.md.txt",
+    "sha256": "94ddff7165daa02eee4fa4745ae64607dcd83b8f3e31784d0fa9363256b33b23"
+  },
+  {
+    "source_path": "README.md",
+    "ref": "validation/execution/V2-002/artifacts/code/README.md.txt",
+    "sha256": "4462c7ada1549d6138307f04e98630c2351f2dc541a3fdc9072351ae9ff3c8aa"
+  },
+  {
+    "source_path": "scripts/task_execution.py",
+    "ref": "validation/execution/V2-002/artifacts/code/scripts/task_execution.py.txt",
+    "sha256": "e3c6cefe0be85536fccd9c0e3d72ef1d69541cbca75627baa6a3c787c8992c74"
+  },
+  {
+    "source_path": "scripts/check_governance.py",
+    "ref": "validation/execution/V2-002/artifacts/code/scripts/check_governance.py.txt",
+    "sha256": "132906fb58eaa56e0e241ea5d2d6fe840ec7cd2c45fbd248cc4a6fea232c3964"
+  },
+  {
+    "source_path": "tests/contract/test_plan_governance.py",
+    "ref": "validation/execution/V2-002/artifacts/code/tests/contract/test_plan_governance.py.txt",
+    "sha256": "45985734cfd13f408f639908510c4145151e29d0b6c94957c793a5d5fdc7c76f"
+  },
+  {
+    "source_path": "tests/contract/test_task_execution.py",
+    "ref": "validation/execution/V2-002/artifacts/code/tests/contract/test_task_execution.py.txt",
+    "sha256": "ca578da5f49065db2119f58c981c402cde9aac6b9b7acea6ed12b1a7f58b7649"
+  },
+  {
+    "source_path": "plan/scripts/task_entry.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/task_entry.py.txt",
+    "sha256": "2da52103003d31b840e3106bfa28d168edf271ab32d804b4fa36957acb9e206d"
+  },
+  {
+    "source_path": "plan/scripts/validate_plan.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/validate_plan.py.txt",
+    "sha256": "fceb58f3d58cb07158b1a3dc357c422a0d3cec2543d6f7d51bce4d501a370bfd"
+  },
+  {
+    "source_path": "plan/scripts/governance_checks.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/governance_checks.py.txt",
+    "sha256": "24641296bad37a281aed21b758427a97c205ad3d156998a789cf58d2293fcae9"
+  },
+  {
+    "source_path": "plan/scripts/execution_checks.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/execution_checks.py.txt",
+    "sha256": "fc2e83d075c5362832e4145b8b690ff9f4fa2ebc6731b7bde71fa0290226ec24"
+  },
+  {
+    "source_path": "plan/scripts/test_ai_execution.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/test_ai_execution.py.txt",
+    "sha256": "69c2ab97e1555bcb03d2b84f4d9ecf64b81f808ffe1d985dfbb60e1db00d1024"
+  },
+  {
+    "source_path": "plan/scripts/test_governance.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/test_governance.py.txt",
+    "sha256": "577c74a240a3d504da4cfd3e4d981b3a91922ac968a7bb2b9ca6b9c8bac1c2a8"
+  },
+  {
+    "source_path": "plan/scripts/probe_governance_legacy.py",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/scripts/probe_governance_legacy.py.txt",
+    "sha256": "5125c8e43e9a16ccb2d2f218699674e7706aa12d4539532dca52cd88b809ad27"
+  },
+  {
+    "source_path": "plan/machine/implementation-backlog.yaml",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/machine/implementation-backlog.yaml.txt",
+    "sha256": "7b8f15a95d922beed5e31f3c74a464aef73cfa9484e375bb2cda2278b2cc84e9"
+  },
+  {
+    "source_path": "plan/machine/test-catalog.yaml",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/machine/test-catalog.yaml.txt",
+    "sha256": "b21e91075ac430542363ee16ab608072e443fd8a192b8e504288de237968424d"
+  },
+  {
+    "source_path": "plan/machine/ai-execution-policy.yaml",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/machine/ai-execution-policy.yaml.txt",
+    "sha256": "67935e0b8ac8b9a7da57a42b2674684a1be98dd9f7daa750b4a56850157482cc"
+  },
+  {
+    "source_path": "plan/machine/governance-baseline.yaml",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/machine/governance-baseline.yaml.txt",
+    "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+  },
+  {
+    "source_path": "plan/schemas/execution-packet.schema.json",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/schemas/execution-packet.schema.json.txt",
+    "sha256": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06"
+  },
+  {
+    "source_path": "plan/schemas/evidence-record.schema.json",
+    "ref": "validation/execution/V2-002/artifacts/code/plan/schemas/evidence-record.schema.json.txt",
+    "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+  }
+]
