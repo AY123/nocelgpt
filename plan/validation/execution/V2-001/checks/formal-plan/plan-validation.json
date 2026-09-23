@@ -1,0 +1,53 @@
+{
+  "generated_at_utc": "2026-09-23T01:38:31.775444+00:00",
+  "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
+  "status": "PASS",
+  "not_certified": [
+    "P0 engineering exit",
+    "runtime",
+    "PostgreSQL",
+    "remote CI",
+    "live provider",
+    "reader/market result"
+  ],
+  "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
+  "validated_repository_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+  "validated_worktree_dirty": true,
+  "validation_input_kind": "WORKTREE_SNAPSHOT",
+  "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
+  "manifest_sha256": "cb3a211f2021bea11dfe1618da12a5774cfa72b51b7bacd37cfe0f260db21029",
+  "counts": {
+    "tasks": 60,
+    "phase_distribution": {
+      "P0": 4,
+      "P1": 4,
+      "P2": 4,
+      "P3": 4,
+      "P4": 1,
+      "P5": 2,
+      "P6": 3,
+      "P7": 9,
+      "P8": 8,
+      "P9": 1,
+      "P10": 8,
+      "P11": 9,
+      "P12": 3
+    },
+    "statuses": {
+      "IMPLEMENTED": 1,
+      "OPEN": 59
+    },
+    "suites": 60,
+    "scenarios": 246,
+    "decisions": 16,
+    "findings": 76,
+    "source_snapshots": 247,
+    "external_sources": 14,
+    "external_practices": {
+      "PLANNED": 9,
+      "DEFERRED": 2,
+      "REJECTED": 1
+    }
+  },
+  "errors": []
+}

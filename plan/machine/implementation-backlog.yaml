@@ -45,8 +45,17 @@ tasks:
   required_decisions:
   - ADR-001
   evidence:
-    code: []
-    tests: []
+    code:
+    - ref: validation/execution/V2-001/code-evidence.yaml
+      revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-001/test-result.yaml
+      revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+      status: PASS
+    - ref: validation/execution/V2-001/governance-result.yaml
+      revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+      status: PASS
     ci: []
     acceptance: []
   related_findings:

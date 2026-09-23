@@ -1,0 +1,38 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-001-governance-result-390aa0f4f280
+evidence_type: TEST_RESULT
+subject_id: V2-001
+revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+status: PASS
+producer: Codex main implementer / local verifier; not independent human or remote
+  CI
+executed_at: '2026-09-23T01:40:56.841586+00:00'
+environment_fingerprint: macOS15.1.1-arm64; CPython3.12.14; uv0.12.17; Docker29.4.0;
+  Compose5.1.2; PostgreSQL170011
+artifacts:
+- ref: validation/execution/V2-001/raw/029_formal_plan_check.json
+  sha256: c917d27b246e7601d22c91b5070f0244aeabfe0f042f313b15cef31b43bb9068
+- ref: validation/execution/V2-001/raw/030_formal_self_test.json
+  sha256: 647a7b0f712407a6f03288177f1fbe9c07a75275ac03d869cf495642b4289ce7
+- ref: validation/execution/V2-001/raw/031_formal_governance.json
+  sha256: 162789601030d2d7cbd06f073f4252d2dd3ed5bab921dfc94cfdc96a64a33c76
+- ref: validation/execution/V2-001/raw/032_formal_ai_execution.json
+  sha256: 7613c4d3e76c9e6a9d46d2cf4477bc6dde6ef5d8457831ada7fb250fe369c653
+- ref: validation/execution/V2-001/checks/formal-plan/plan-validation.json
+  sha256: 1740bc09d02d14dcfbf48574184e0e9175f182dd87b9b46decf2e386be6e8f72
+- ref: validation/execution/V2-001/checks/formal-self/validator-self-test.json
+  sha256: d30ef091e213c6920ada1f8500ac99c8f624ec212578608148245eb1a0affa86
+- ref: validation/execution/V2-001/checks/formal-governance/governance-regression.json
+  sha256: 955ddf0315be3373b1cd203303094e370d5443df9496eda42cc10a7a6a66af06
+- ref: validation/execution/V2-001/checks/formal-ai/ai-execution-regression.json
+  sha256: d890a6f15b8fe1b0b47997816fecd832cd8b195e21c1f52a7089d2e195b1da1f
+input_evidence_refs:
+- validation/execution/V2-001/code-evidence.yaml
+check_ids:
+- LOCAL_PLAN_CHECK
+- LOCAL_VALIDATOR_SELF_TEST_32
+- LOCAL_GOVERNANCE_39
+- LOCAL_AI_EXECUTION_36
+command: .venv/bin/python3 -B plan/scripts/validate_plan.py --check --output-dir plan/validation/execution/V2-001/checks/formal-plan
+exit_code: 0

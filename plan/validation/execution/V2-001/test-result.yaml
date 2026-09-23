@@ -1,0 +1,35 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-001-test-result-390aa0f4f280
+evidence_type: TEST_RESULT
+subject_id: V2-001
+revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+status: PASS
+producer: Codex main implementer / local verifier; not independent human or remote
+  CI
+executed_at: '2026-09-23T01:40:56.839954+00:00'
+environment_fingerprint: macOS15.1.1-arm64; CPython3.12.14; uv0.12.17; Docker29.4.0;
+  Compose5.1.2; PostgreSQL170011
+artifacts:
+- ref: validation/execution/V2-001/raw/025_formal_locked_sync.json
+  sha256: 7174e3bfdb45537eb3f8abd896b1e6c036db0eceface9ec79bc3ecbcbeaccf55
+- ref: validation/execution/V2-001/raw/026_formal_package_import.json
+  sha256: 074455a33226ce9588a8f3d5a5eda16fa56ea94f67ad37e54d27912e004ad327
+- ref: validation/execution/V2-001/raw/027_formal_discovery.json
+  sha256: f5bbced65a280034a35669538985d7deb0aef95cea72dfda12c54d12fdcd53e8
+- ref: validation/execution/V2-001/raw/028_formal_pytest.json
+  sha256: b4681cbdd44ac435a18122e2fc51087c6d9a254db95695f7cce128a27b434f17
+- ref: validation/execution/V2-001/checks/formal/pytest.xml
+  sha256: 598adbd8a3cf8140fc4701e4716fb64edd09d4c6c73b71ceff38b220087f773b
+input_evidence_refs:
+- validation/execution/V2-001/code-evidence.yaml
+check_ids:
+- AT-V2-001-01
+- AT-V2-001-02
+- AT-V2-001-03
+- AT-V2-001-04
+- AT-V2-001-05
+command: env PATH=/Users/angyang/Documents/AI/ANovelOS/dist/tools/uv-bootstrap/bin:/usr/local/bin:/usr/bin:/bin
+  UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv .venv/bin/python
+  -m pytest -q -s --junitxml=plan/validation/execution/V2-001/checks/formal/pytest.xml
+exit_code: 0

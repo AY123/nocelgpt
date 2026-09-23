@@ -1,0 +1,74 @@
+[
+  {
+    "source_path": "pyproject.toml",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/pyproject.toml.txt",
+    "sha256": "36c4b0d9e7787996b044e880ffa917cb5e0f26f499c74a4688abe15cd8bd9579"
+  },
+  {
+    "source_path": "uv.lock",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/uv.lock.txt",
+    "sha256": "65cea837858f9b2d57dab2c46a4c7b2a99aac1806c6d786bf327b8fa5bd036ed"
+  },
+  {
+    "source_path": ".python-version",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/.python-version.txt",
+    "sha256": "f50159fad3f4319868eb38717b91d55843c41e9803014c8de05e116a6d0bcfdc"
+  },
+  {
+    "source_path": "compose.yaml",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/compose.yaml.txt",
+    "sha256": "de6a0b448e862dab7d9b2681ac0f97909bd65ad51279cb65912c56c25d15dabf"
+  },
+  {
+    "source_path": "src/anovel/__init__.py",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/src/anovel/__init__.py.txt",
+    "sha256": "e519341f3ee46ba145ea994a5ddab86dbdc0d7bc74d11b5b2bf797a85a59f724"
+  },
+  {
+    "source_path": "scripts/check_postgres.py",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/scripts/check_postgres.py.txt",
+    "sha256": "6c9f6ecea7833722edb8d93f38e4e6af5570476ec94213242d2b338b3368801a"
+  },
+  {
+    "source_path": "tests/integration/test_repository_bootstrap.py",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/tests/integration/test_repository_bootstrap.py.txt",
+    "sha256": "ad243de1a1afae6e378e6c24137ce23cdee1552ec3affc9dc032be749ecba38e"
+  },
+  {
+    "source_path": "tests/integration/test_postgres_environment.py",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/tests/integration/test_postgres_environment.py.txt",
+    "sha256": "011f0b0511af082d3e8b3d7a3e8a02f7c17561b8a67619785dfee70890c93edc"
+  },
+  {
+    "source_path": "README.md",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/README.md.txt",
+    "sha256": "5ce4048766df9b68caf7a8327803b9f83a10807efff40ccf3c5553d15775d4bf"
+  },
+  {
+    "source_path": ".env.example",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/.env.example.txt",
+    "sha256": "fcb295156393c830601f36736b2422096ec3720cb72c7f6c91c55f21bb4c2f5a"
+  },
+  {
+    "source_path": "docs/repository-layout-migration.md",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/docs/repository-layout-migration.md.txt",
+    "sha256": "d093a3c07ef69dc0b743ae1c674ae573a05903101dfd3ad4e54fef1bed83a4a5"
+  },
+  {
+    "source_path": "plan/scripts/test_ai_execution.py",
+    "source_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+    "ref": "validation/execution/V2-001/artifacts/code/plan/scripts/test_ai_execution.py.txt",
+    "sha256": "a93e26b08677b6c30ce7167b33d3894ec797dd3ca41df4d0bc32b308e486e347"
+  }
+]

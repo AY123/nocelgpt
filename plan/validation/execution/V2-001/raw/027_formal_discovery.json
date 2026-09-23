@@ -1,0 +1,18 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "--collect-only",
+    "-q"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T01:38:07.088820+00:00",
+  "repository_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-23T01:38:07.496312+00:00",
+  "exit_code": 0,
+  "stdout": "tests/integration/test_postgres_environment.py::test_postgres_start_connect_and_cleanup\ntests/integration/test_postgres_environment.py::test_postgres_cleanup_after_interrupted_test\ntests/integration/test_postgres_environment.py::test_missing_or_invalid_configuration_fails[None]\ntests/integration/test_postgres_environment.py::test_missing_or_invalid_configuration_fails[]\ntests/integration/test_postgres_environment.py::test_missing_or_invalid_configuration_fails[sqlite:///:memory:]\ntests/integration/test_postgres_environment.py::test_missing_or_invalid_configuration_fails[postgresql://user:password@127.0.0.1:1234/db]\ntests/integration/test_postgres_environment.py::test_missing_or_invalid_configuration_fails[postgresql+psycopg://user@localhost/db]\ntests/integration/test_postgres_environment.py::test_missing_or_invalid_configuration_fails[not-a-url]\ntests/integration/test_postgres_environment.py::test_unreachable_database_fails_without_disclosing_password\ntests/integration/test_postgres_environment.py::test_compose_requires_explicit_configuration\ntests/integration/test_repository_bootstrap.py::test_clean_locked_install_and_import\ntests/integration/test_repository_bootstrap.py::test_locked_install_rejects_manifest_drift\ntests/integration/test_repository_bootstrap.py::test_builds_exclude_archive_and_tools\ntests/integration/test_repository_bootstrap.py::test_historical_materials_preserved\ntests/integration/test_repository_bootstrap.py::test_current_entrypoints_and_runtime_decision\n\n15 tests collected in 0.17s\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

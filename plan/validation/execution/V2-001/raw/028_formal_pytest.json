@@ -1,0 +1,22 @@
+{
+  "command": [
+    "env",
+    "PATH=/Users/angyang/Documents/AI/ANovelOS/dist/tools/uv-bootstrap/bin:/usr/local/bin:/usr/bin:/bin",
+    "UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv",
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "-s",
+    "--junitxml=plan/validation/execution/V2-001/checks/formal/pytest.xml"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-23T01:38:11.855624+00:00",
+  "repository_revision": "390aa0f4f28068fdd146fca3eb98df1a5ec1a334",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-23T01:38:26.016847+00:00",
+  "exit_code": 0,
+  "stdout": "POSTGRES_PROJECT anovel-v2001-413b612124824f0c\nPOSTGRES_CONNECTED anovel-v2001-413b612124824f0c {\"database\": \"bootstrap_test\", \"server_version_num\": 170011, \"driver\": \"postgresql+psycopg\"}\nPOSTGRES_CLEANUP anovel-v2001-413b612124824f0c containers=0 networks=0 volumes=0\n.POSTGRES_PROJECT anovel-v2001-22964ddefea04592\nPOSTGRES_CLEANUP anovel-v2001-22964ddefea04592 containers=0 networks=0 volumes=0\n.........CLEAN_INSTALL Python=3.12.14 non-editable site-packages import; lock unchanged; pytest discovery succeeded\n..DISTRIBUTIONS wheel+sdist inspected; archive/tooling absent; wheel import succeeded\n.MIGRATION 245 retained files and 247 registered snapshots match; hidden history covered\n..\n15 passed in 13.93s\n",
+  "stderr": "",
+  "scope": "local V2-001 execution, not remote CI"
+}

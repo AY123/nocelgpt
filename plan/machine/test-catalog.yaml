@@ -17,7 +17,8 @@ suites:
     required_assertion: 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，开工记录区分计划版本/审核编号并记录 checkout、工作区/manifest、实际环境与负责人
   - id: AT-V2-001-05
     required_assertion: 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive 进入业务构建
-  execution_evidence: []
+  execution_evidence:
+  - validation/execution/V2-001/test-result.yaml
 - id: AT-V2-002
   task_id: V2-002
   phase: P0
