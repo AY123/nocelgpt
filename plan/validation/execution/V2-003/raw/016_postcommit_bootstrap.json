@@ -1,0 +1,24 @@
+{
+  "command": [
+    "env",
+    "PATH=/Users/angyang/Documents/AI/ANovelOS/dist/tools/uv-bootstrap/bin:/usr/local/bin:/usr/bin:/bin",
+    "UV_CACHE_DIR=/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv",
+    "UV_OFFLINE=true",
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/integration/test_repository_bootstrap.py",
+    "--junitxml=dist/validation/v2-003-postcommit/bootstrap.xml"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:25:16.912820+00:00",
+  "repository_revision": "adc537d88d2228ef2690d4e7bc04d2def8e1b1af",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:25:21.839147+00:00",
+  "exit_code": 0,
+  "stdout": ".....                                                                    [100%]\n5 passed in 4.65s\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

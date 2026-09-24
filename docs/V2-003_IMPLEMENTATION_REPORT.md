@@ -1,6 +1,6 @@
 # V2-003 实施与交接
 
-当前为 IN_PROGRESS：本地代码已实现，正在最终验证和绑定真实提交证据。任务仍缺可信 CI 和最终验收，不能 VERIFIED/CLOSED；V2-004 及 P1+ 未启动。最终结果以本报告后续更新及 `plan/validation/execution/V2-003/` 的实际记录为准。
+当前为 **IMPLEMENTED**。本地代码和测试证据已绑定真实实现提交 `adc537d88d2228ef2690d4e7bc04d2def8e1b1af`。任务仍缺可信 CI 和最终验收，不能 VERIFIED/CLOSED；V2-004 及 P1+ 未启动。最终机器记录与原始运行结果位于 `plan/validation/execution/V2-003/`，交接元数据提交不冒充另一次代码/CI验证。
 
 ## 提示词评估与开工
 
@@ -36,3 +36,19 @@
 AR-06、RR-04 的本任务范围/测试/实际差异义务已本地落实，整体 Closure 与 P0 放行仍缺可信 CI/验收。AR-17、CA-17、RR-09 的架构违规阻断已本地落实，远端运行/安全/依赖及权限保护仍属 V2-004；真实 Provider 证据仍在适用后续阶段。RR-03 提供实际提交/hash/源计数及失败记录；RR-10 提供可运行边界夹具，不把历史目录数当测试数；其它 Canon/Repair 回归仍属 V2-010/020。七项保持 OPEN_TRACKED，不代全项目关闭。
 
 本地 Git pin 只能固定比较输入，不能证明操作者授权真实或抵抗同写者绕过/修改校验器。AST 检查不证明任意 Python 语义等价，也不实现数据库唯一写路径、真实 Provider 或远端保护。下一阶段必须由明确授权后单独启动，不能把本任务 PASS 当自动准入。
+
+## 实际提交后验证与恢复
+
+所有以下成功运行的 checkout 均为 `adc537d88d2228ef2690d4e7bc04d2def8e1b1af`；CODE 快照逐文件与该 Git 内容相等。用户原报告脏文件、新增运行记录和任务辅助证据整理不冒充已提交产品源码。
+
+- raw/014：`pytest -q tests/architecture tests/contract`，**236 passed**（185 架构/差异/弱化 + 51 契约），退出0，0 skip。
+- raw/015：治理聚合 PASS：现行资料 check、自测32、治理39、AI执行36、历史探针13，均退出0。
+- raw/016：锁定环境离线安装/打包回归 **5 passed**，退出0。没有把它称为当前 PostgreSQL 或 CI 运行。
+- raw/017：实际开工 Git 保留比较17项全部PASS，任务/依赖/验收/基线未弱化；未新增业务源码。
+- raw/019：固定 scope v3 + 实现提交中的12条精确技术处置，任务入口命令前/后差异检查及真实架构子命令全部PASS。真实生产树仍为1文件、1模块、bootstrap_only=true。
+
+失败、竞态阻断、错误pin和修复说明在 `review/execution-attempts.md`；原始结果不覆盖。成功类型化证据见 `code-evidence.yaml`、`test-result.yaml`；压缩 entry 原始JSON可用 gzip 解码，内容与原始运行对应。所有 `ci`、`acceptance` 仍为空，G-P0/M0 未 VERIFIED，七项整改仍 OPEN_TRACKED。
+
+恢复时先读 `handoff.json` 与执行包，实际核对 branch/HEAD、用户报告 hash、输入manifest及Code证据适用性。用 `preparation/pinned-baseline.json` 取得最新 scope pin；用 handoff 中已实际固定的 review pin/ref，输出到新的 dist 目录。若代码或被审字段变更导致处置不匹配，重新审查受影响部分，不能复用旧PASS或自动开始 V2-004/P1。
+
+更新 IMPLEMENTED/类型化证据/活动输入后，raw/020 的全套治理聚合再次PASS；现行源记录为3项IMPLEMENTED、57项OPEN。代码、测试和锁文件相对实现提交没有再变。最终技术处置与当前交接检查保存在 `final/` 和 `handoff.json`。

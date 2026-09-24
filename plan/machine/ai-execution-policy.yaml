@@ -29,7 +29,7 @@ controls:
   - AT-V2-003-06
   local_status: IMPLEMENTED_LOCAL
   local_scope: V2-003 从固定 Git opening/scope 比较 index 与工作树，覆盖增删改名、新文件、符号链接和原有用户改动；静态依赖扫描与生产变更阶段复核；显式 scope pin 的任务入口执行前后检查实际差异
-  p0_enforcement_status: NOT_IMPLEMENTED
+  p0_enforcement_status: IMPLEMENTED
   p0_required: 对真实改动扫描增删改名、未跟踪文件、路径解析、依赖与跨阶段范围，保留差异报告及合法变更和越界负例
   limitation: 只约束显式提供固定 scope/review pin 的本地入口；路径白名单不证明业务语义，无法抵抗共享写者或直接工具旁路。新业务代码仍需语义复核，远端保护待 V2-004
 - id: AI-EXEC-03

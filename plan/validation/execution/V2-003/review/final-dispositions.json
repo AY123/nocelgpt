@@ -1,0 +1,551 @@
+{
+  "task_id": "V2-003",
+  "baseline_pin": {
+    "revision": "b1013cc17b76a237db64503062daf24340efb5c7",
+    "ref": "plan/validation/execution/V2-003/preparation/scope-baseline-v3.json",
+    "sha256": "14cb28026432770a9cabd728e46f833f4d553ae40ed51c8dea6905b9ebc6c3c9"
+  },
+  "dispositions": [
+    {
+      "path": "AGENTS.md",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "94ddff7165daa02eee4fa4745ae64607dcd83b8f3e31784d0fa9363256b33b23",
+      "new_sha": "f2aeb2c3e23bcb0462441ba7ab5f855accaab2063c1d98a01f59480a5a01ddc3",
+      "finding_id": "04a4bac2391c6a8bcb5c8761724c36d30de8c11ae3e7c1d270ba75b0ea1faecb",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "One existing local-tool description is updated to disclose explicit V2-003 pins and before/after checks. No rule, approval, acceptance or stopping condition removed.",
+      "impact": "Execution guidance now matches tested command options; V2-004 boundary retained.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "94ddff7165daa02eee4fa4745ae64607dcd83b8f3e31784d0fa9363256b33b23",
+      "new_sha": "f2aeb2c3e23bcb0462441ba7ab5f855accaab2063c1d98a01f59480a5a01ddc3",
+      "finding_id": "676c41f0be5164ab657aed2d7aa75277648b6cbb51de40223b9421790a76ac13",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "One existing local-tool description is updated to disclose explicit V2-003 pins and before/after checks. No rule, approval, acceptance or stopping condition removed.",
+      "impact": "Execution guidance now matches tested command options; V2-004 boundary retained.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "e215c2f8186093778dee1c4475a778171e61c1ec5fef18ef6d9ca03008a1fdd2",
+      "new_sha": "b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058",
+      "finding_id": "094408e516b994f44864d0de65e7bb47b87a627688b4fdae1ed9aaabe47bdf5a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only AI-EXEC-02/03 local capability/status/limitations reflect implemented checks. Owner tasks, acceptance mappings and p0_required are identical to opening. AI-EXEC-03 stays NOT_IMPLEMENTED overall pending V2-004.",
+      "impact": "No minimum obligation is relaxed; AI-EXEC-02 status follows actual task evidence at final binding.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "e215c2f8186093778dee1c4475a778171e61c1ec5fef18ef6d9ca03008a1fdd2",
+      "new_sha": "b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058",
+      "finding_id": "220128138573f18bb65cdd86bff808f39347806190c82eb2c3368cd951afb0a2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only AI-EXEC-02/03 local capability/status/limitations reflect implemented checks. Owner tasks, acceptance mappings and p0_required are identical to opening. AI-EXEC-03 stays NOT_IMPLEMENTED overall pending V2-004.",
+      "impact": "No minimum obligation is relaxed; AI-EXEC-02 status follows actual task evidence at final binding.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "index",
+      "code": "MACHINE_POLICY_CHANGED",
+      "old_sha": "7b6d11a2286e1e21ba20ceca0c0880a7302ad39419dc6b0a6fe6a17681577f1a",
+      "new_sha": "aa65e7e1bbef273bd1419753a9d5bdd3bdaece1c94288e35aaa5e3604e8527e7",
+      "finding_id": "9d3ff76f64021cb2c6a923e608e890599d7ff63c503ddac33486223dead0a438",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-003 concrete checker artifacts added under the prepared task scope; identity, dependencies, all acceptance criteria and other tasks are unchanged. Status/evidence are separately validated metadata.",
+      "impact": "Names existing implemented deliverables; no future feature or new task dependency.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "worktree",
+      "code": "MACHINE_POLICY_CHANGED",
+      "old_sha": "7b6d11a2286e1e21ba20ceca0c0880a7302ad39419dc6b0a6fe6a17681577f1a",
+      "new_sha": "aa65e7e1bbef273bd1419753a9d5bdd3bdaece1c94288e35aaa5e3604e8527e7",
+      "finding_id": "16277f3bcba334c9e156c34dd37f1fbde7ad2bbe942c09500653afacf75e6432",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-003 concrete checker artifacts added under the prepared task scope; identity, dependencies, all acceptance criteria and other tasks are unchanged. Status/evidence are separately validated metadata.",
+      "impact": "Names existing implemented deliverables; no future feature or new task dependency.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/task_entry.py",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "e8bb9234dd226aad83646b5a2b1d10d9e1aa6c494c9b28347c765d4a0d006a85",
+      "new_sha": "73d811b5a14f51cc85d4eeb36348da6ed0c4fb27a9d405757158610e05615245",
+      "finding_id": "004b450b53789fb5890eac730df9e63dd2b1cd3a24c443bfcce201ba426a3403",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds paired explicit pin flags, before/after actual diff review and pre-dispatch race detection. Existing packet/ADR/budget/resume and direct-call restrictions remain. Legacy no-pin behavior is explicitly disclosed.",
+      "impact": "Strengthens scoped invocation; preserves prior local entry behavior and cannot claim remote enforcement.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/task_entry.py",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "e8bb9234dd226aad83646b5a2b1d10d9e1aa6c494c9b28347c765d4a0d006a85",
+      "new_sha": "73d811b5a14f51cc85d4eeb36348da6ed0c4fb27a9d405757158610e05615245",
+      "finding_id": "1a389395f7ae87186a95a7c92302f7d45e3610461a7300d5b35c09480d4e1a0f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds paired explicit pin flags, before/after actual diff review and pre-dispatch race detection. Existing packet/ADR/budget/resume and direct-call restrictions remain. Legacy no-pin behavior is explicitly disclosed.",
+      "impact": "Strengthens scoped invocation; preserves prior local entry behavior and cannot claim remote enforcement.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "layer": "index",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "45985734cfd13f408f639908510c4145151e29d0b6c94957c793a5d5fdc7c76f",
+      "new_sha": "f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906",
+      "finding_id": "331b125409e58a2b913c6520e1026915607c3406b39f7fac0f34929d127bc8b6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original diagnostic TASK_EVIDENCE means mixed/zero revisions, but V2-002 now has same-revision local evidence. The closure negative still requires rejection and now specifically asserts missing ci AND acceptance TASK_SCHEMA errors. Validator and minimum closure requirement unchanged.",
+      "impact": "Fixes a demonstrated stale expectation, adds specific refusal assertions; prior 235-pass/1-fail run and 14-pass correction retained, no deleted or skipped test.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "layer": "worktree",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "45985734cfd13f408f639908510c4145151e29d0b6c94957c793a5d5fdc7c76f",
+      "new_sha": "f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906",
+      "finding_id": "81f37114b5b0dc3e905314b269e48a1843436c3ea05c83ae68f678f16fffe7ce",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original diagnostic TASK_EVIDENCE means mixed/zero revisions, but V2-002 now has same-revision local evidence. The closure negative still requires rejection and now specifically asserts missing ci AND acceptance TASK_SCHEMA errors. Validator and minimum closure requirement unchanged.",
+      "impact": "Fixes a demonstrated stale expectation, adds specific refusal assertions; prior 235-pass/1-fail run and 14-pass correction retained, no deleted or skipped test.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "index",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "5d8d6ca4729d6090ec219fade05223305b3ff6ac06b6042f6c52467671a423a0",
+      "new_sha": "5844ea31c382bf012f1ead8b9636c86491facadeaa668505ffa27b3baa17e8d2",
+      "finding_id": "298a5c5c0d8c6b5712c5a691ebffa1c0069f2683de367fb480c6805ac32029c6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only seed fixture restores the OPEN later-task premise when copying a progressed production plan. Every existing test function/assertion remains AST-identical to opening; original missing-packet negative and legal entry pass after correction.",
+      "impact": "Production progress no longer substitutes an action mismatch for the intended missing-packet rejection; no production status or acceptance changed.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "worktree",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "5d8d6ca4729d6090ec219fade05223305b3ff6ac06b6042f6c52467671a423a0",
+      "new_sha": "5844ea31c382bf012f1ead8b9636c86491facadeaa668505ffa27b3baa17e8d2",
+      "finding_id": "b9263d872f5b55557af075c42e089f73bb3aa42e4741efe084406e16c5183f7f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only seed fixture restores the OPEN later-task premise when copying a progressed production plan. Every existing test function/assertion remains AST-identical to opening; original missing-packet negative and legal entry pass after correction.",
+      "impact": "Production progress no longer substitutes an action mismatch for the intended missing-packet rejection; no production status or acceptance changed.",
+      "reviewer": "Codex primary implementer and verifier with bounded peer review; same permissions, not independent authority",
+      "replacement_validation": "Exact opening comparison plus actual positive/negative tests; raw failed attempts remain separately visible. Verification artifacts listed below; no authority to weaken granted.",
+      "authorization_source": {
+        "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+        "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+        "kind": "existing_user_task_authorization",
+        "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/raw/014_postcommit_tests.json",
+          "sha256": "5b9afcd49110dca2424e8565e69439bcf4d7d4af40c17e5abaaaddc5d9f27d37"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/015_postcommit_governance.json",
+          "sha256": "567be3f2a1a4fc9541d01f2f9539b0f199616eaa9dc21517e6b631b5a17dd8f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/016_postcommit_bootstrap.json",
+          "sha256": "72ea6f4b4aff002a4bfac799e6cfc3dfd03b4b2a29814068804eb86cf73bed6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/017_postcommit_preservation.json",
+          "sha256": "711946914fb28dfed431f05bd33858a4de6e5318bf3382bb0ddf9a625fbe7d16"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/019_postcommit_entry.json",
+          "sha256": "dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/raw/020_final_metadata_governance.json",
+          "sha256": "63d174aed112d0c0ff223c4507d3acd3b0738f70567b7d9a72f46998d89565ae"
+        }
+      ]
+    }
+  ],
+  "limitation": "Local same-operator technical review only; not remote trust or an exception authorization"
+}

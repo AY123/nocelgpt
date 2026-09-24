@@ -4,7 +4,7 @@ task_id: V2-003
 plan_version: 1.3.0
 repository_revision: c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf
 worktree_dirty: true
-plan_manifest_sha256: cb13d8b9facf5b81d4f6412fa457d8163308afdb4cf758dfdad4b5368a6db467
+plan_manifest_sha256: e4a7cdde0ceb7f9f929376026f574980f14ebcf24b1ae79cfbd23185022ad0a1
 environment:
   fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14
   runtime_versions:
@@ -28,11 +28,11 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt
   sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-003/inputs/f276b87c69931a6b854f55ae725cfad15e1bfa8184ab5b867effc6fc2a10c509.txt
-  sha256: f276b87c69931a6b854f55ae725cfad15e1bfa8184ab5b867effc6fc2a10c509
+  ref: validation/execution/V2-003/inputs/1bd58a9c0db46b421b6e99dd70618b1f55bcb5879a24953a9fc8c4854a444379.txt
+  sha256: 1bd58a9c0db46b421b6e99dd70618b1f55bcb5879a24953a9fc8c4854a444379
 - source_ref: AI_EXECUTION_PROTOCOL.md
-  ref: validation/execution/V2-003/inputs/641c455931f8ef22d22fbaa0daf70b47e29b980a98556dc7aa92089319a1fa14.txt
-  sha256: 641c455931f8ef22d22fbaa0daf70b47e29b980a98556dc7aa92089319a1fa14
+  ref: validation/execution/V2-003/inputs/eb945994d412c0e8b12cf5bea0cac12a6527d3b7814b113e2d97cfb96617b268.txt
+  sha256: eb945994d412c0e8b12cf5bea0cac12a6527d3b7814b113e2d97cfb96617b268
 - source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
   sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
@@ -40,23 +40,23 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/01-08_ROADMAP_AND_GATES.md.txt
   sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
 - source_ref: 09_TASK_EXECUTION_GUIDE.md
-  ref: validation/execution/V2-003/inputs/c558c24c023cdc90341ee63e79029e2b4b346a215fc56b671cac3a8b0bf52e2e.txt
-  sha256: c558c24c023cdc90341ee63e79029e2b4b346a215fc56b671cac3a8b0bf52e2e
+  ref: validation/execution/V2-003/inputs/9508c0e3b389b7fd1b4ba1bd42e0428b0fad90afb85fe7e96b005290b9be54b4.txt
+  sha256: 9508c0e3b389b7fd1b4ba1bd42e0428b0fad90afb85fe7e96b005290b9be54b4
 - source_ref: README.md
-  ref: validation/execution/V2-003/inputs/61130018a5ac5c55d73e4356fd6eb9842a49f9db4e27bc49481bd7785e8ff7e7.txt
-  sha256: 61130018a5ac5c55d73e4356fd6eb9842a49f9db4e27bc49481bd7785e8ff7e7
+  ref: validation/execution/V2-003/inputs/469cb50041f186d0c06a7682b1cd2bf1fc7fb74e4cf19cabe98148dd6b5079a0.txt
+  sha256: 469cb50041f186d0c06a7682b1cd2bf1fc7fb74e4cf19cabe98148dd6b5079a0
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-003/inputs/65f0d1d28d2a0b9c147f30de988f7fef308b14d2412c1c3f1fe51541a8ba7a40.txt
-  sha256: 65f0d1d28d2a0b9c147f30de988f7fef308b14d2412c1c3f1fe51541a8ba7a40
+  ref: validation/execution/V2-003/inputs/aa65e7e1bbef273bd1419753a9d5bdd3bdaece1c94288e35aaa5e3604e8527e7.txt
+  sha256: aa65e7e1bbef273bd1419753a9d5bdd3bdaece1c94288e35aaa5e3604e8527e7
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-002/followup/binding-inputs/machine--test-catalog.yaml.txt
-  sha256: d04b405e1f020b0f7b2590e2f48b1cdbc27457670c23cadd4129ab9758dcf058
+  ref: validation/execution/V2-003/inputs/f4de4bcc56ffe0dcfb1cc07afc4511dafb1e453a2955ba0a58d3c12bac257e64.txt
+  sha256: f4de4bcc56ffe0dcfb1cc07afc4511dafb1e453a2955ba0a58d3c12bac257e64
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
 - source_ref: machine/ai-execution-policy.yaml
-  ref: validation/execution/V2-003/inputs/606cafff51b905c06e57058ae53e5838b37e18e2c5fb9c10282eda62079915b8.txt
-  sha256: 606cafff51b905c06e57058ae53e5838b37e18e2c5fb9c10282eda62079915b8
+  ref: validation/execution/V2-003/inputs/b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058.txt
+  sha256: b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058
 - source_ref: machine/governance-baseline.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/12-governance-baseline.yaml.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
@@ -158,22 +158,22 @@ review_notes:
 - 'V2-003 precommit-validation: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
 - Omitted globally ignored existing local config current identity captured and pinned in 1e9327792b622420ae1414bc8c10e9a57e4babdb at preparation/scope-baseline-v2.json. Original pin preserved; no allowed paths, protection or edit grants widened.
 - 'Required integration scope correction: tests/contract/test_plan_governance.py old diagnostic contradicted genuine missing-CI/acceptance rejection after V2-002 evidence binding. Fixed v3 scope before edit; strengthen explicit missing CI/acceptance assertions, no test or requirement deletion.'
+- 'V2-003 evidence-binding: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
 handoff:
-  current_step: Local implementation and precommit governance passed; full contract run pending, then commit and postcommit evidence binding
+  current_step: IMPLEMENTED; actual source commit postcommit checks PASS, CI/acceptance missing; final metadata review pending
   completed_steps:
-  - Prompt corrected with original retained; actual preflight, PREPARE and IMPLEMENT entry passed
-  - Original scope committed before implementation; omitted globally ignored config identity separately pinned without scope expansion
-  - Architecture, actual Git diff, weakening checks and optional before/after entry implemented with positive/negative fixtures
-  - First 181 architecture tests and latest 66 weakening tests passed; full final run pending
-  - Precommit governance aggregate and 5 offline bootstrap tests passed
+  - Reviewed/corrected prompt; PREPARE and IMPLEMENT entry passed with frozen Git scope
+  - Local architecture, actual Git/index/worktree diff and anti-weakening implemented; scoped before/after entry verified
+  - 236 architecture/contract tests, 5 locked bootstrap tests and governance 32/39/36/13 passed at adc537d88d2228ef2690d4e7bc04d2def8e1b1af
+  - CODE/TEST_RESULT bound to that actual source commit; task/suite IMPLEMENTED; user report unchanged
   pending_items:
-  - Finish full tests, commit implementation and run real postcommit verification
-  - Bind CODE/TEST_RESULT, refresh input hashes and final exact technical dispositions
-  - Trusted CI and final acceptance missing; no V2-004 or P1+ started
+  - Complete final metadata check and fixed technical review handoff
+  - Trusted remote CI and final acceptance missing; requires separately authorized V2-004 work
+  - No V2-004/P1+ or paid calls started; G-P0/M0 remain NOT_VERIFIED
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-003/preparation/prepare-result.json
-      sha256: 2af2e7a8cb1f7aa3eebbfc1a599ce139153b30e5710052fd20244cbafe86b701
+    - ref: validation/execution/V2-003/raw/019_postcommit_entry.json
+      sha256: dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25
     missing_artifact_reason: null

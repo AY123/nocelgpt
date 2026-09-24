@@ -212,15 +212,21 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: IN_PROGRESS
+  status: IMPLEMENTED
   execution_packet_ref: validation/execution/V2-003/execution-packet.yaml
   owner_role: architecture-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY
   required_decisions: []
   evidence:
-    code: []
-    tests: []
+    code:
+    - ref: validation/execution/V2-003/code-evidence.yaml
+      revision: adc537d88d2228ef2690d4e7bc04d2def8e1b1af
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-003/test-result.yaml
+      revision: adc537d88d2228ef2690d4e7bc04d2def8e1b1af
+      status: PASS
     ci: []
     acceptance: []
   related_findings:

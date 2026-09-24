@@ -1,0 +1,77 @@
+{
+  "record_type": "local_preservation_check",
+  "baseline_revision": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+  "head": "adc537d88d2228ef2690d4e7bc04d2def8e1b1af",
+  "executed_at": "2026-09-24T05:30:28.259052+00:00",
+  "checks": [
+    {
+      "check": "byte-identical plan/machine/ci-gates.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/governance-baseline.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/phase-gates.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/milestones.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/authority-policy.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/schemas/execution-packet.schema.json",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/schemas/evidence-record.schema.json",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical pyproject.toml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical uv.lock",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical .gitignore",
+      "status": "PASS"
+    },
+    {
+      "check": "V2-004 pipeline remains absent, not falsely certified",
+      "status": "PASS"
+    },
+    {
+      "check": "all task identity/dependency/AC and all scenario assertions unchanged plan/machine/implementation-backlog.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "all task identity/dependency/AC and all scenario assertions unchanged plan/machine/test-catalog.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "AI obligations, owners, scenarios unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "every existing task-entry test definition/assertion unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "user review file exact protected hash",
+      "status": "PASS"
+    },
+    {
+      "check": "no production business source change",
+      "status": "PASS"
+    }
+  ],
+  "status": "PASS"
+}

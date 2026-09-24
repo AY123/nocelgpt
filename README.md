@@ -2,7 +2,7 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001、V2-002 IMPLEMENTED / V2-003 IN_PROGRESS**。最小 Python 包、锁定安装、真实 PostgreSQL 基础测试与资料治理命令已实现；V2-003 的本地架构、实际差异和防降标检查已实现，正在验证。其余 57 个任务仍 OPEN。远端 CI、P0 退出和章节生产未验证。
+当前为 **Plan v1.3.0 / V2-001～V2-003 IMPLEMENTED**。最小 Python 包、锁定安装、真实 PostgreSQL 基础测试与资料治理命令已实现；V2-003 的本地架构、实际差异和防降标检查已完成本地验证，证据绑定实际代码提交。其余 57 个任务仍 OPEN。远端 CI、P0 退出和章节生产未验证。
 
 ## 从这里开始
 
@@ -60,7 +60,7 @@ python3 -B plan/scripts/test_ai_execution.py --output-dir dist/validation/local
 
 ## 当前实施边界
 
-当前实施 V2-003，复用 V2-001 的锁定环境和 V2-002 的动作入口。`scripts/check_architecture.py` 扫描完整 `src/anovel` Python 源码，检查导入边界和当前 P0 硬门禁政策；`scripts/check_changes.py` 比较固定 Git 基线与实际 index/worktree，审查任务范围和可识别的验收弱化。代码存在与验证完成分别记录。Secret/依赖 CI、远端来源与保护权限属于尚未开始的 V2-004。正式任务关闭需要代码、测试、真实 CI 和验收记录，本地 PASS 与 CI PASS 分别记录。
+V2-003 已完成本地实施与验证，复用 V2-001 的锁定环境和 V2-002 的动作入口。`scripts/check_architecture.py` 扫描完整 `src/anovel` Python 源码，检查导入边界和当前 P0 硬门禁政策；`scripts/check_changes.py` 比较固定 Git 基线与实际 index/worktree，审查任务范围和可识别的验收弱化。代码存在与验证完成分别记录。Secret/依赖 CI、远端来源与保护权限属于尚未开始的 V2-004。正式任务关闭需要代码、测试、真实 CI 和验收记录，本地 PASS 与 CI PASS 分别记录。
 
 G-P0 未验证前不开始 Narrative Kernel。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
 

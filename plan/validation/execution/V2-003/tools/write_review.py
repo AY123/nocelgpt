@@ -14,7 +14,7 @@ reasons={
  'tests/contract/test_task_execution.py':('Only seed fixture restores the OPEN later-task premise when copying a progressed production plan. Every existing test function/assertion remains AST-identical to opening; original missing-packet negative and legal entry pass after correction.','Production progress no longer substitutes an action mismatch for the intended missing-packet rejection; no production status or acceptance changed.'),
  'tests/contract/test_plan_governance.py':('Original diagnostic TASK_EVIDENCE means mixed/zero revisions, but V2-002 now has same-revision local evidence. The closure negative still requires rejection and now specifically asserts missing ci AND acceptance TASK_SCHEMA errors. Validator and minimum closure requirement unchanged.','Fixes a demonstrated stale expectation, adds specific refusal assertions; prior 235-pass/1-fail run and 14-pass correction retained, no deleted or skipped test.')}
 paths=['raw/010_precommit_governance.json','raw/003_architecture_regression.json','raw/precommit_weakening_final.json','raw/013_legacy_diagnostic_fix.json','raw/012_precommit_bootstrap.json','review/preservation.json']
-if a.final:paths=['raw/014_postcommit_tests.json','raw/015_postcommit_governance.json','raw/016_postcommit_bootstrap.json','raw/017_postcommit_preservation.json','raw/018_postcommit_entry.json']
+if a.final:paths=['raw/014_postcommit_tests.json','raw/015_postcommit_governance.json','raw/016_postcommit_bootstrap.json','raw/017_postcommit_preservation.json','raw/019_postcommit_entry.json','raw/020_final_metadata_governance.json']
 artifacts=[]
 for name in paths:
  f=B/name;data=f.read_bytes();artifacts.append({'ref':str(f.relative_to(R)),'sha256':hashlib.sha256(data).hexdigest()})

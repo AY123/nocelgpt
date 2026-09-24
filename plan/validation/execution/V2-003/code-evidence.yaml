@@ -1,0 +1,40 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-003
+revision: adc537d88d2228ef2690d4e7bc04d2def8e1b1af
+status: PASS
+producer: Codex implementer and local verifier, shared-permission peer review; not independent certification or remote CI
+executed_at: '2026-09-24T05:28:46.339778+00:00'
+environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; local locked environment; uv 0.12.17; offline bootstrap
+evidence_id: V2-003-code-adc537d88d22
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-003/postcommit/code/plan/scripts/architecture_checks.py.txt
+  sha256: 8d58f25c207f7e09873a567c90cd2e7d392cb475ece2727dda52bfb3ec9d3960
+- ref: validation/execution/V2-003/postcommit/code/plan/scripts/change_review.py.txt
+  sha256: 4bd68a3d5345222ffd9377c727c88766e1ea9cf0c2e70e828fe1ff5438584b80
+- ref: validation/execution/V2-003/postcommit/code/plan/scripts/weakening_checks.py.txt
+  sha256: 83690a30b64f36db0ef0d51a1d63d337f174f02cbf52ac5a21467c922875fa84
+- ref: validation/execution/V2-003/postcommit/code/plan/scripts/task_entry.py.txt
+  sha256: 73d811b5a14f51cc85d4eeb36348da6ed0c4fb27a9d405757158610e05615245
+- ref: validation/execution/V2-003/postcommit/code/scripts/check_architecture.py.txt
+  sha256: c4cb7cfbc1f108244f5cf33a0dcf0ca806a70d5edda1e150a77bb4a47b5aaffb
+- ref: validation/execution/V2-003/postcommit/code/scripts/check_changes.py.txt
+  sha256: 2bc9eada04aaf44b392947966f831922fe7027697f6f88b8ba4c25936479b34d
+- ref: validation/execution/V2-003/postcommit/code/tests/architecture/test_dependency_boundaries.py.txt
+  sha256: 80803970e90601cc64db3259014a0f22761b0450d196468518dca9de87cc84e0
+- ref: validation/execution/V2-003/postcommit/code/tests/architecture/test_change_review.py.txt
+  sha256: 3e400dacfcec845f976a4901862988ef99587d7780c4db629f56878d52ef4786
+- ref: validation/execution/V2-003/postcommit/code/tests/architecture/test_weakening_checks.py.txt
+  sha256: 9f3461daecfcb5f7bee1504e6ca9f9256f85f89f2f68c3b6fe69573337a3b9f9
+- ref: validation/execution/V2-003/postcommit/code/tests/contract/test_task_execution.py.txt
+  sha256: 5844ea31c382bf012f1ead8b9636c86491facadeaa668505ffa27b3baa17e8d2
+- ref: validation/execution/V2-003/postcommit/code/tests/contract/test_plan_governance.py.txt
+  sha256: f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906
+- ref: validation/execution/V2-003/postcommit/code/plan/machine/ai-execution-policy.yaml.txt
+  sha256: 606cafff51b905c06e57058ae53e5838b37e18e2c5fb9c10282eda62079915b8
+- ref: validation/execution/V2-003/postcommit/code/plan/machine/implementation-backlog.yaml.txt
+  sha256: 65f0d1d28d2a0b9c147f30de988f7fef308b14d2412c1c3f1fe51541a8ba7a40
+- ref: validation/execution/V2-003/postcommit/code-index.json
+  sha256: 7e427af10b34ab37c286ac63ad1c512b84d4f8eea75a822ce63876b842a7f9e8
+input_evidence_refs: []
