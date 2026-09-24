@@ -52,3 +52,5 @@ AR-06、RR-04 的本任务范围/测试/实际差异义务已本地落实，整�
 恢复时先读 `handoff.json` 与执行包，实际核对 branch/HEAD、用户报告 hash、输入manifest及Code证据适用性。用 `preparation/pinned-baseline.json` 取得最新 scope pin；用 handoff 中已实际固定的 review pin/ref，输出到新的 dist 目录。若代码或被审字段变更导致处置不匹配，重新审查受影响部分，不能复用旧PASS或自动开始 V2-004/P1。
 
 更新 IMPLEMENTED/类型化证据/活动输入后，raw/020 的全套治理聚合再次PASS；现行源记录为3项IMPLEMENTED、57项OPEN。代码、测试和锁文件相对实现提交没有再变。最终技术处置与当前交接检查保存在 `final/` 和 `handoff.json`。
+
+最终 metadata/review pin 为 `f599dd821b61c2b7e347efc6834d63d54e7f0028`，raw/021 的真实当前上下文入口检查PASS；压缩完整报告见 `final/metadata-entry.json.gz`。封存提交只记录以上结果，不把源码证据改绑到封存HEAD。

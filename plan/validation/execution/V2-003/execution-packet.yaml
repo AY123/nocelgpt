@@ -159,21 +159,23 @@ review_notes:
 - Omitted globally ignored existing local config current identity captured and pinned in 1e9327792b622420ae1414bc8c10e9a57e4babdb at preparation/scope-baseline-v2.json. Original pin preserved; no allowed paths, protection or edit grants widened.
 - 'Required integration scope correction: tests/contract/test_plan_governance.py old diagnostic contradicted genuine missing-CI/acceptance rejection after V2-002 evidence binding. Fixed v3 scope before edit; strengthen explicit missing CI/acceptance assertions, no test or requirement deletion.'
 - 'V2-003 evidence-binding: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+- Final evidence and metadata checks passed; delivery-seal files record prior actual results. Source/test evidence remains bound to adc537d88d2228ef2690d4e7bc04d2def8e1b1af, not retagged to metadata commits.
 handoff:
-  current_step: IMPLEMENTED; actual source commit postcommit checks PASS, CI/acceptance missing; final metadata review pending
+  current_step: IMPLEMENTED at adc537d88d2228ef2690d4e7bc04d2def8e1b1af; evidence/metadata committed at f599dd821b61c2b7e347efc6834d63d54e7f0028 and exact current-context entry PASS; delivery seal records this result
   completed_steps:
   - Reviewed/corrected prompt; PREPARE and IMPLEMENT entry passed with frozen Git scope
   - Local architecture, actual Git/index/worktree diff and anti-weakening implemented; scoped before/after entry verified
   - 236 architecture/contract tests, 5 locked bootstrap tests and governance 32/39/36/13 passed at adc537d88d2228ef2690d4e7bc04d2def8e1b1af
   - CODE/TEST_RESULT bound to that actual source commit; task/suite IMPLEMENTED; user report unchanged
+  - Final IMPLEMENTED metadata governance aggregate PASS; exact final technical review pinned at f599dd821b61c2b7e347efc6834d63d54e7f0028; actual metadata entry PASS
   pending_items:
-  - Complete final metadata check and fixed technical review handoff
-  - Trusted remote CI and final acceptance missing; requires separately authorized V2-004 work
-  - No V2-004/P1+ or paid calls started; G-P0/M0 remain NOT_VERIFIED
+  - Trusted CI and final acceptance remain absent; V2-003 cannot VERIFIED/CLOSED and G-P0/M0 remain NOT_VERIFIED
+  - V2-004 and P1+ remain unstarted; require separately authorized task context
+  - If resuming V2-003, recheck actual checkout/input hashes and current diff using recorded pins; do not inherit an old checkpoint after metadata changes
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-003/raw/019_postcommit_entry.json
-      sha256: dd8aa0a41ea5edf77eb446c931c51a5ff7c16c1ee150f57faa4ca369e3ae8e25
+    - ref: validation/execution/V2-003/raw/021_metadata_entry.json
+      sha256: 8b86a1a34d4adb0afc8ed60bb9683839f7ffa4ebff7885f59c3a9073f666d301
     missing_artifact_reason: null
