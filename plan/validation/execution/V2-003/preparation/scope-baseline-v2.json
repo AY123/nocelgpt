@@ -1,0 +1,97 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-003",
+  "opening_revision": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+  "packet_ref": "plan/validation/execution/V2-003/execution-packet.yaml",
+  "allowed_paths": [
+    "tests/architecture",
+    "tests/architecture/",
+    "src/anovel",
+    "src/anovel/",
+    "scripts/check_architecture.py",
+    "scripts/check_changes.py",
+    "scripts/task_execution.py",
+    "scripts/check_governance.py",
+    "plan/scripts/architecture_checks.py",
+    "plan/scripts/change_review.py",
+    "plan/scripts/weakening_checks.py",
+    "plan/scripts/task_entry.py",
+    "tests/contract/test_task_execution.py",
+    "plan/scripts/test_ai_execution.py",
+    "README.md",
+    "AGENTS.md",
+    "plan/README.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/AI_EXECUTION_PROTOCOL.md",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/machine/ai-execution-policy.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/generated/",
+    "plan/validation/execution/V2-003/",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "docs/V2-003_IMPLEMENTATION_REPORT.md",
+    "V2-003任务prompt.txt"
+  ],
+  "pre_existing": {
+    "审核报告.txt": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "215754d0f0024fcc7fdff9b44959671fd4afd0de2a1b34ff65c213ac16b044f1"
+      },
+      "index": {
+        "mode": "100644",
+        "oid": "f2d40d29c2a5d8e09202def8dc3721a0c852ef6c"
+      },
+      "task_edit_authorized": false
+    },
+    "V2-003任务prompt.txt": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "a24b45f72563ffb48edf6591a521783de57fe288f04e5bb0b64dd9d72de8e916"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".claude/settings.local.json": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "a5fde34ea32e0a77e1f8a07170706afcada6ed06a23398780e5c5afc7b0fc43f"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    }
+  },
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/check_architecture.py",
+    "scripts/check_changes.py",
+    "scripts/check_governance.py",
+    "scripts/task_execution.py",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "ref": "plan/validation/execution/V2-003/preparation/prompt-review.md",
+    "sha256": "22dc220559f6c8357274dd372e9d402ae420b07d0025db06411e13fc2f391ac2",
+    "kind": "existing_user_task_authorization",
+    "scope": "Current V2-003 implementation and supportive integration only; no weakening of minimum requirements, remote CI or business implementation."
+  },
+  "limitations": [
+    "Local Git pin is not remote protected trust.",
+    "Same operator may implement and review; exact dispositions require reason/impact/replacement verification and preserve findings.",
+    "Pre-existing attribution is byte/mode/index bound; subsequent change must be reviewed.",
+    "Preparation v2 supplements a globally ignored local config omitted from opening inventory. Its bytes are observed at correction time, not proven retroactively at opening; original baseline/failure preserved. No scope or edit authority expanded."
+  ]
+}
