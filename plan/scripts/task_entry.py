@@ -1,7 +1,7 @@
 """Local action entry using existing plan rules. Not a protected CI runner.
 
-Git/content observations support resumption. Explicit fixed scope/review pins
-enable V2-003 local diff checks before and after dispatch; they do not establish
+Git/content observations support resumption. Packet-bound scope/review pins
+require local diff checks for restricted actions before and after dispatch; they do not establish
 remote provenance or credential enforcement (V2-004).
 """
 from datetime import datetime, timezone
@@ -117,6 +117,25 @@ def safe_output(root, output):
     return output
 
 
+def bind_change_review(packet, action, args):
+    """CLI flags may assert the packet binding, never select another scope."""
+    binding = packet.get('change_review') if isinstance(packet, dict) else None
+    requested = any(getattr(args, key) for key in
+                    ('scope_revision', 'scope_ref', 'review_revision', 'review_ref'))
+    if action == 'PREPARE' and not requested:
+        return
+    if not isinstance(binding, dict) or not binding.get('scope_revision') or not binding.get('scope_ref'):
+        raise ValueError('ENTRY_DIFF_BINDING: restricted action requires a packet-bound scope pin')
+    for key in ('scope_revision', 'scope_ref', 'review_revision', 'review_ref'):
+        declared = binding.get(key)
+        explicit = getattr(args, key)
+        if explicit is not None and explicit != declared:
+            raise ValueError('ENTRY_DIFF_BINDING: CLI cannot override packet ' + key)
+        setattr(args, key, declared)
+    if bool(args.review_revision) != bool(args.review_ref):
+        raise ValueError('ENTRY_DIFF_BINDING: packet review revision and ref must be paired')
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('mode', choices=['check', 'run', 'resume'])
@@ -143,7 +162,7 @@ def main(argv=None):
               'errors': [], 'command': command, 'command_result': None,
               'limitations': ['local observations; not CI or completion evidence',
                              'direct tools/shared writers are not protected by this entry',
-                             'diff checks require explicit scope pins; arbitrary command semantics are not certified']}
+                             'restricted actions require packet-bound scope pins; arbitrary command semantics are not certified']}
     output = None
     code = 2
     command_started = False
@@ -184,6 +203,10 @@ def main(argv=None):
                 errors.append('ENTRY_HANDOFF: resume cannot inherit missing, failed or unknown last check')
         if command and args.action in {'LIVE_CALL', 'CERTIFY'}:
             errors.append('ENTRY_AUTHORIZATION: paid/certification dispatch requires the future protected authorization adapter; this local entry checks declarations only')
+        try:
+            bind_change_review(packet, args.action, args)
+        except ValueError as exc:
+            errors.append(str(exc))
         if args.scope_revision and not errors:
             from change_review import review_changes
             review = review_changes(root, task_id=args.task, scope_revision=args.scope_revision,

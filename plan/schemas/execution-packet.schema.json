@@ -14,6 +14,46 @@
     "stop_conditions", "review_notes", "handoff"
   ],
   "properties": {
+    "change_review": {
+      "description": "Runtime binding for local restricted actions. Historical packets may omit it; a new IMPLEMENT/LIVE_CALL/CERTIFY action fails without it. Repository-relative refs are checked against fixed Git objects by the entry.",
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope_revision",
+            "scope_ref"
+          ],
+          "properties": {
+            "scope_revision": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+            },
+            "scope_ref": {
+              "$ref": "#/$defs/nonEmptyString"
+            },
+            "review_revision": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+            },
+            "review_ref": {
+              "$ref": "#/$defs/nonEmptyString"
+            }
+          },
+          "dependentRequired": {
+            "review_revision": [
+              "review_ref"
+            ],
+            "review_ref": [
+              "review_revision"
+            ]
+          }
+        }
+      ]
+    },
     "record_type": {"const": "task_execution_packet"},
     "schema_version": {"const": "1.0"},
     "task_id": {"type": "string", "pattern": "^V2-[0-9]{3}$"},

@@ -270,3 +270,33 @@ def test_cli_failed_hard_gate_returns_nonzero(tmp_path):
     result = subprocess.run([sys.executable, '-B', str(ROOT / 'scripts/check_architecture.py'), '--disable-gate', 'ARCH_FITNESS', '--output', str(output)], cwd=ROOT, capture_output=True, text=True)
     assert result.returncode == 1
     assert 'ARCH_GATE_DISABLED' in codes(json.loads(output.read_text()))
+
+
+@pytest.mark.parametrize('source', [
+    '__builtins__["__import__"]("openai")',
+    'import builtins\nvars(builtins)["__import__"]("openai")',
+    'import builtins as b\nload=b.__dict__["__import__"]\nload("openai")',
+    'import importlib as loader\nvars(loader)["import_module"]("openai")',
+])
+def test_reflective_subscript_loaders_obey_domain_boundaries(synthetic, source):
+    write(synthetic, 'src/anovel/domain/model.py', source)
+    result = architecture.check_architecture(synthetic)
+    assert result['status'] == 'FAIL'
+    assert any(f['code'] == 'ARCH_DOMAIN_DEPENDENCY' for f in result['findings'])
+
+
+@pytest.mark.parametrize('source', [
+    '__builtins__[choose_loader()]("openai")',
+    'import builtins\nvars(builtins)[choose_loader()]("openai")',
+    '__builtins__["exec"]("print(1)")',
+])
+def test_unresolved_subscript_loader_or_code_execution_fails(synthetic, source):
+    write(synthetic, 'src/anovel/domain/model.py', source)
+    result = architecture.check_architecture(synthetic)
+    assert result['status'] == 'FAIL'
+    assert any(f['code'] == 'ARCH_DYNAMIC_UNKNOWN' for f in result['findings'])
+
+
+def test_reflective_literal_standard_library_import_is_legal(synthetic):
+    write(synthetic, 'src/anovel/domain/model.py', '__builtins__["__import__"]("json")\n')
+    assert architecture.check_architecture(synthetic)['status'] == 'PASS'

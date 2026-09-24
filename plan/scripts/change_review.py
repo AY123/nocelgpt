@@ -115,7 +115,9 @@ def load_baseline(root, task_id, revision, ref):
         raise ReviewError('DIFF_AUTHORITY: baseline authorization input changed or unsupported')
     for grant in value.get('exception_authorizations', []):
         source = grant.get('authorization_source', {})
-        if source.get('kind') != 'explicit_rule_revision_authorization' or digest(pinned_file(root, revision, source.get('ref',''))) != source.get('sha256'):
+        required_kind = ('explicit_scope_change_authorization' if grant.get('code') == 'PRODUCTION_SCOPE_REVIEW'
+                         else 'explicit_rule_revision_authorization')
+        if source.get('kind') != required_kind or digest(pinned_file(root, revision, source.get('ref',''))) != source.get('sha256'):
             raise ReviewError('DIFF_AUTHORITY: exception grant has no fixed authorization source')
         identities = [grant.get(k) for k in ('old_sha', 'new_sha')]
         valid_sha = lambda v: v is None or (isinstance(v, str) and len(v) == 64 and all(c in '0123456789abcdef' for c in v))
@@ -123,6 +125,14 @@ def load_baseline(root, task_id, revision, ref):
                 or not all(k in grant for k in ('old_sha','new_sha'))
                 or not all(valid_sha(v) for v in identities) or identities == [None, None]):
             raise ReviewError('DIFF_AUTHORITY: exception grant lacks exact task/change identity')
+        if not bounded_path(grant['path']) or grant['path'].endswith('/'):
+            raise ReviewError('DIFF_AUTHORITY: grant needs an exact file path')
+        prior = tree(root, revision).get(grant['path'])
+        if prior and prior['mode'] not in {'100644', '100755'}:
+            raise ReviewError('DIFF_AUTHORITY: grant baseline must be a regular file')
+        pinned_old = digest(git(root, 'cat-file', 'blob', prior['oid'])) if prior else None
+        if pinned_old != grant['old_sha']:
+            raise ReviewError('DIFF_AUTHORITY: grant must be pinned with the pre-change file identity')
     current = candidate_file(root, ref)
     if not current.is_file() or current.read_bytes() != raw:
         raise ReviewError('DIFF_BASELINE: candidate modified/deleted the frozen baseline')
@@ -376,7 +386,7 @@ def review_changes(root, *, task_id, scope_revision, scope_ref, review_revision=
             for change in changes:
                 if change['path'].startswith('src/anovel/'):
                     row={k:change[k] for k in ('path','layer')}
-                    row.update(code='PRODUCTION_SCOPE_REVIEW',severity_kind='REVIEW',pointer='V2-003/P0',old_sha=digest(change['old_bytes']),new_sha=digest(change['new_bytes']),reason='Production changes require explicit P0 task/architecture review, even inside allowed_paths')
+                    row.update(code='PRODUCTION_SCOPE_REVIEW',severity_kind='AUTHORIZATION_REQUIRED',pointer='V2-003/P0',old_sha=digest(change['old_bytes']),new_sha=digest(change['new_bytes']),reason='Production changes require a prior exact scope authorization grant; generic task/technical review cannot grant cross-phase scope')
                     row['id']=digest(json.dumps(row,sort_keys=True).encode());findings.append(row)
         findings, reviews = apply_dispositions(root,findings,baseline,review_revision,review_ref)
         report['findings']=findings; report['reviews']=reviews

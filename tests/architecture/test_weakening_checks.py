@@ -348,3 +348,37 @@ def test_unknown_reflective_test_control_requires_review():
     result=scan('tests/test_new.py',None,source)
     assert 'TEST_DYNAMIC_CONTROL' in codes(result)
     assert next(f for f in result if f['code']=='TEST_DYNAMIC_CONTROL')['severity_kind']=='REVIEW'
+
+
+@pytest.mark.parametrize('source', [
+    'def pytest_collection_modifyitems(config, items):\n    items[:] = [x for x in items if "negative" not in x.name]\n',
+    'def pytest_ignore_collect(collection_path, config):\n    return True\n',
+    'collect_ignore=["test_negative.py"]\n',
+    'collect_ignore_glob=["test_*.py"]\n',
+    'pytest_plugins=["collection_filter"]\n',
+    'def pytest_sessionstart(session):\n    session.config.option.keyword="positive"\n',
+])
+def test_new_conftest_collection_controls_are_reviewed(source):
+    findings=scan('tests/conftest.py',None,source)
+    assert {'TEST_CONFTEST_CHANGED','TEST_COLLECTION_CONTROL'} <= codes(findings)
+
+
+def test_new_harmless_conftest_is_reviewable_not_assumed_weakening():
+    source='import pytest\n@pytest.fixture\ndef answer():\n    return 42\n'
+    findings=scan('tests/conftest.py',None,source)
+    assert codes(findings)=={'TEST_CONFTEST_CHANGED'}
+    assert all(f['severity_kind']=='REVIEW' for f in findings)
+    assert scan('tests/conftest.py',source,source)==[]
+
+
+@pytest.mark.parametrize('path,section',[('pytest.ini','pytest'),('.pytest.ini','pytest'),('setup.cfg','tool:pytest'),('tox.ini','pytest')])
+def test_ini_test_selection_and_targets_cannot_change_silently(path,section):
+    old='['+section+']\ntestpaths = tests\naddopts = --strict-config\n'
+    new='['+section+']\ntestpaths = tests/unit\naddopts = -k positive\n'
+    assert {'TEST_CONFIG_CHANGED','TEST_SELECTION_CHANGED','SCAN_TARGETS_CHANGED'} <= codes(scan(path,old,new))
+    assert 'TEST_CONFIG_CHANGED' in codes(scan(path,None,new))
+    assert scan(path,old,old)==[]
+
+
+def test_malformed_pytest_ini_is_not_a_passing_scan():
+    assert 'WEAKENING_PARSE_ERROR' in codes(scan('pytest.ini',None,'[pytest\nbroken'))

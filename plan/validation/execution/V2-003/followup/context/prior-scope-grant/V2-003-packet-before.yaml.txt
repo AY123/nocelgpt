@@ -1,0 +1,170 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-003
+plan_version: 1.3.0
+repository_revision: a11693ee5ac08fd3aa102e03de0125bd8b800dd9
+worktree_dirty: true
+plan_manifest_sha256: 5f70d373efd6fda467122a0298a630b67b96639ccf834eb840ab8561b4f7b0d1
+environment:
+  fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex primary operator
+verifier: Same operator, actual isolated reproductions and regression; no independent review
+owner_role: architecture-maintainer
+scope: 'User-authorized V2-003 review correction only: mandatory pinned action entry, exact production scope grants, test collection controls and builtin reflective loader coverage. Preserve historical results and current user files. No V2-004/P1+ or production implementation.'
+action: IMPLEMENT
+inputs:
+- source_ref: 02_ARCHITECTURE_BASELINE.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt
+  sha256: 7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-003/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt
+  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+- source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  ref: validation/execution/V2-003/inputs/1bd58a9c0db46b421b6e99dd70618b1f55bcb5879a24953a9fc8c4854a444379.txt
+  sha256: 1bd58a9c0db46b421b6e99dd70618b1f55bcb5879a24953a9fc8c4854a444379
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-003/inputs/eb945994d412c0e8b12cf5bea0cac12a6527d3b7814b113e2d97cfb96617b268.txt
+  sha256: eb945994d412c0e8b12cf5bea0cac12a6527d3b7814b113e2d97cfb96617b268
+- source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
+  sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
+- source_ref: 08_ROADMAP_AND_GATES.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/01-08_ROADMAP_AND_GATES.md.txt
+  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+- source_ref: 09_TASK_EXECUTION_GUIDE.md
+  ref: validation/execution/V2-003/inputs/9508c0e3b389b7fd1b4ba1bd42e0428b0fad90afb85fe7e96b005290b9be54b4.txt
+  sha256: 9508c0e3b389b7fd1b4ba1bd42e0428b0fad90afb85fe7e96b005290b9be54b4
+- source_ref: README.md
+  ref: validation/execution/V2-003/inputs/469cb50041f186d0c06a7682b1cd2bf1fc7fb74e4cf19cabe98148dd6b5079a0.txt
+  sha256: 469cb50041f186d0c06a7682b1cd2bf1fc7fb74e4cf19cabe98148dd6b5079a0
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-003/followup/inputs/152eb017259f3d49857775ad234aa0527c29e5b3a5e295ecef442d45895aa15d.txt
+  sha256: 152eb017259f3d49857775ad234aa0527c29e5b3a5e295ecef442d45895aa15d
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-003/inputs/f4de4bcc56ffe0dcfb1cc07afc4511dafb1e453a2955ba0a58d3c12bac257e64.txt
+  sha256: f4de4bcc56ffe0dcfb1cc07afc4511dafb1e453a2955ba0a58d3c12bac257e64
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
+  sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-003/followup/inputs/606cafff51b905c06e57058ae53e5838b37e18e2c5fb9c10282eda62079915b8.txt
+  sha256: 606cafff51b905c06e57058ae53e5838b37e18e2c5fb9c10282eda62079915b8
+- source_ref: machine/governance-baseline.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/12-governance-baseline.yaml.txt
+  sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/11-phase-gates.yaml.txt
+  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+- source_ref: machine/authority-policy.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/14-authority-policy.yaml.txt
+  sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
+- source_ref: machine/ci-gates.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/13-ci-gates.yaml.txt
+  sha256: 5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210
+- source_ref: machine/remediation-register.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/17-remediation-register.yaml.txt
+  sha256: 1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e
+- source_ref: schemas/execution-packet.schema.json
+  ref: validation/execution/V2-003/followup/inputs/4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404.txt
+  sha256: 4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404
+- source_ref: schemas/evidence-record.schema.json
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/19-evidence-record.schema.json.txt
+  sha256: eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925
+expected_outputs:
+- tests/architecture
+- src/anovel
+- tests/architecture/test_dependency_boundaries.py
+- scripts/check_architecture.py
+- scripts/check_changes.py
+- plan/scripts/architecture_checks.py
+- plan/scripts/change_review.py
+- plan/scripts/weakening_checks.py
+- docs/V2-003_IMPLEMENTATION_REPORT.md
+allowed_paths:
+- plan/scripts/task_entry.py
+- plan/scripts/change_review.py
+- plan/scripts/weakening_checks.py
+- plan/scripts/architecture_checks.py
+- tests/architecture/
+- tests/contract/test_task_execution.py
+- plan/schemas/execution-packet.schema.json
+- plan/templates/EXECUTION_PACKET.yaml
+- AGENTS.md
+- README.md
+- plan/README.md
+- plan/09_TASK_EXECUTION_GUIDE.md
+- plan/AI_EXECUTION_PROTOCOL.md
+- plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/ai-execution-policy.yaml
+- plan/FILE_MANIFEST.json
+- plan/generated/
+- plan/validation/execution/V2-001/execution-packet.yaml
+- plan/validation/execution/V2-002/execution-packet.yaml
+- plan/validation/execution/V2-003/followup/
+- docs/V2-003_IMPLEMENTATION_REPORT.md
+- tests/architecture
+- src/anovel
+- scripts/check_architecture.py
+- scripts/check_changes.py
+required_decisions: []
+claims:
+- id: REVIEW_REPRODUCTION
+  kind: FACT
+  statement: Four reported local gaps reproduced on actual a11693ee checkout; results retained. Remote CI/permissions not independently rechecked.
+  sources:
+  - ref: validation/execution/V2-003/followup/assessment/reproductions-before.json
+    sha256: 667368764d4424dbf0d1b3be632d6e0c7030fa5763d650ebdbaff97f4270ff82
+  blocks_actions: []
+  verification_plan: Fix only reproduced gaps, exercise real Git and subprocess positive/negative controls, bind actual new source commit evidence.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse current Python locked environment and governance checks
+  - Static properties only; isolated fixtures for absent business modules
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Stop at IMPLEMENTED absent trusted CI and final acceptance
+- Do not weaken acceptance/tests/protection or self-authorize scope expansion
+- Preserve user report and immutable historical records; unresolved required authority blocks only affected changes
+review_notes:
+- New user request authorizes correcting confirmed issues; previous delivery remains an immutable historical result.
+- Source scope excludes production directory edits; src/anovel exact directory entry is retained only as a declared task output, not a recursive allowlist.
+- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 implementation: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 schema-format: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+handoff:
+  current_step: PREPARE passed; fixed scope commit fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6; checking IMPLEMENT prerequisites before patch
+  completed_steps:
+  - Actual checkout and current plan check PASS
+  - Four review findings reproduced without production changes
+  pending_items:
+  - Freeze scope and pass IMPLEMENT entry before changes
+  - Run regression and rebind local source evidence
+  - Trusted CI/acceptance remain absent; do not start V2-004
+  next_action: IMPLEMENT
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-003/followup/assessment/prepare-entry.json.gz
+      sha256: 9f355e5d26aac3942149e2ae80387c837066f36d64805d398e8d72d872a5b5fb
+    missing_artifact_reason: null
+change_review:
+  scope_revision: fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6
+  scope_ref: plan/validation/execution/V2-003/followup/scope-baseline.json

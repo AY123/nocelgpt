@@ -1,0 +1,24 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "scripts/check_changes.py",
+    "--task",
+    "V2-003",
+    "--scope-revision",
+    "fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6",
+    "--scope-ref",
+    "plan/validation/execution/V2-003/followup/scope-baseline.json",
+    "--output",
+    "dist/validation/v2-003-followup/unreviewed-diff.json"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T13:57:02.101090+00:00",
+  "repository_revision": "fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T13:57:05.228571+00:00",
+  "exit_code": 2,
+  "stdout": "{\"status\": \"FAIL\", \"changes\": 83, \"findings\": 12, \"errors\": []}\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

@@ -44,7 +44,7 @@ V2-002 将既有检查接入项目根 `scripts/check_governance.py --output-dir 
 
 本地动作入口为项目根 `scripts/task_execution.py check|run|resume --task <id> --action <action> --output <新 JSON>`；`run` 在完整现行校验通过后执行 `--` 后的命令，`resume` 还需 `--checkpoint <旧 PASS JSON>`。入口采集真实 Git/context 与文件内容，重读交接和实际产物；不自动改变任务状态。输出不能覆盖计划或旧记录，仓库内使用 Git 忽略目录。工作区变化后先核对差异并重新 check，不能修改旧 checkpoint 来继承 PASS。命令失败/超时及运行后观察失败分别保留 FAIL/UNKNOWN。
 
-V2-003 已实现本地架构、差异归属和防降标工具并完成本地验证；用法见第 10 节。任务入口可显式启用命令前后差异检查，省略 scope 参数时仍只执行原有动作/恢复契约。该入口只约束经它发起的本地命令，不能判断任意命令的业务语义或抵抗同写权限者绕过；可信远端来源与有效权限保护仍由 V2-004 实施。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
+V2-003 已实现本地架构、差异归属和防降标工具并完成本地验证；用法见第 10 节。受限动作必须具备执行包 change_review 绑定；省略 CLI 参数时自动消费绑定，缺失绑定则阻断。PREPARE 可在未冻结 scope 时调查。该入口只约束经它发起的本地命令，不能判断任意命令的业务语义或抵抗同写权限者绕过；可信远端来源与有效权限保护仍由 V2-004 实施。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
 
 ## 5. 工作纪律
 
@@ -107,15 +107,15 @@ V2-003 当前为 IMPLEMENTED，本地实现已验证，可信 CI 与最终验收
 
 ```bash
 .venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-1.json
-V2003_SCOPE_REVISION=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_revision"])')
-V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_ref"])')
+V2003_SCOPE_REVISION=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/followup/pinned-baseline.json"))["scope_revision"])')
+V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/followup/pinned-baseline.json"))["scope_ref"])')
 .venv/bin/python -B scripts/check_changes.py --task V2-003 \
   --scope-revision "$V2003_SCOPE_REVISION" --scope-ref "$V2003_SCOPE_REF" \
   --output dist/validation/changes-run-1.json
 .venv/bin/python -B -m pytest -q tests/architecture tests/contract
 ```
 
-运行前将 [pinned-baseline.json](validation/execution/V2-003/preparation/pinned-baseline.json) 的最新 `scope_revision` / `scope_ref` 与当前有效交接核对；旧 pin 保留在 `original_pin`。该文件提供定位信息，scope 与授权内容从指定的完整 Git commit 读取，固定开工 revision、允许范围、pre-existing 的 index/worktree 身份和授权来源。开工清单曾遗漏全局忽略的本地工具配置，补正保留真实失败和旧基线，仅登记该文件当前身份并禁止任务编辑，不扩大 allowed_paths；mtime 不证明开工时的历史字节，依据见[清单补正记录](validation/execution/V2-003/preparation/opening-inventory-correction.md)。
+当前 scope 定位记录见 [pinned-baseline.json](validation/execution/V2-003/followup/pinned-baseline.json)，正式入口从 backlog 绑定的当前执行包读取同一 pin。原交付的 v1/v2/v3 基线保留为历史；本轮报告核实、范围和授权记录见 [followup](validation/execution/V2-003/followup/assessment/authorization.md)。定位文件与 Git pin 均不是远端权限证明。
 
 检查比较开工 Git 内容与当前已提交改动、index、worktree 和未跟踪文件，保留删除/新增两端及 rename 提示。既有用户改动仅在身份未变化时单独归属，不能为得到干净差异而恢复或删除。候选 packet/白名单不能扩张固定范围；新增 ignore 不能隐藏被审源码。路径通过仍不证明任务业务语义正确。
 
@@ -137,8 +137,10 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
   .venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-2.json
 ```
 
-scope/review 的 revision 和 ref 均须成对传入；没有需处置 finding 时可省略 review 一对参数。`check`、`run`、`resume` 都可接收 scope 参数；`run` 或带子命令的 `resume` 在命令前检查差异，结束后再次检查命令影响，即使子命令退出 0，事后越界也不能记录为 PASS。架构检查仅在明确调用时执行。检查期间观察到的输入变化须重新核对，这些观察不建立文件锁或操作系统权限边界。
+执行包 `change_review` 必须包含 scope_revision/scope_ref；存在处置时再绑定 review_revision/review_ref。CLI 对应参数可全部省略；提供时必须成对且与包内相同。`check`、`run`、`resume` 的受限动作均要求包内绑定；`run` 或带子命令的 `resume` 在命令前检查差异，结束后再次检查命令影响，即使子命令退出 0，事后越界也不能记录为 PASS。架构检查仅在明确调用时执行。检查期间观察到的输入变化须重新核对，这些观察不建立文件锁或操作系统权限边界。
 
 独立差异 CLI 是范围/弱化审查，不替代执行包、动作 ADR、预算或恢复检查；正式动作继续经过任务入口。多个 Agent 共享写权限也不构成独立审核。V2-004 仍须接通实际 CI、远端来源与保护权限，未具备这些证据时不据本地 PASS 关闭任务或进入 P1。
 
 在 `PREPARE` 中允许调查未决 ADR；转 `IMPLEMENT`、`LIVE_CALL`、`CERTIFY` 时，按 ADR 最晚时点核对正式决定。任务写成 IN_PROGRESS 不表示所有后续动作都获准。交接记录保存真实结果与下一动作；恢复先与工作区和输入 hash 核对，版本变化后重验受影响证据。详细规则及 V2-002～004 分工见 [AI 开发执行协议](AI_EXECUTION_PROTOCOL.md)，不以本轮文件新增关闭这些工程任务。
+
+生产范围 finding 为 AUTHORIZATION_REQUIRED，普通 REVIEWED_NO_WEAKENING 和通用任务授权不能解除。只能消费 scope pin 中的事先精确 explicit_scope_change_authorization（task/path/code/old_sha/new_sha）；固定提交中的文件必须仍是授权前身份。合法技术等价复核与实际范围授权分开，仍不替代 V2-004 的外部可信授权核验。新增/变更 conftest、collection/session hooks、pytest_plugins、collect_ignore 及 pytest.ini/setup.cfg/tox.ini 都进入复核；常见 builtin-loader 下标形式按同一导入边界检查，未知键拒绝。

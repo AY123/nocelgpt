@@ -69,6 +69,6 @@ V2-004 将“代码提交 → 可信 CI 执行 → 原始产物 → 来源核对
 
 本地执行包检查集成在 `python3 -B plan/scripts/validate_plan.py --check`，专项回归为 `python3 -B plan/scripts/test_ai_execution.py`；它们不调用模型。V2-002 已新增项目根 `scripts/task_execution.py` 的本地 check/run/resume 入口，复用这些规则检查后才执行指定子命令，并核对真实 checkout、暂存区、工作区内容和恢复产物。`scripts/check_governance.py` 聚合原有检查并导出规范索引与仓库配置清单。
 
-V2-003 的 `scripts/check_architecture.py` 扫描完整生产包，静态检查领域依赖、Canon 公共提交服务与内部写能力边界及适用 P0 硬门禁。`task_execution.py` 可选接收 `--scope-revision` / `--scope-ref` 与 `--review-revision` / `--review-ref`；显式启用 scope 检查时，在子命令前审查实际差异，结束后再检查命令影响，未传 scope 参数不构成差异放行。架构检查仍须明确运行，不由 scope 参数隐式代跑。用法、当前固定 pin 与输出边界见 [任务执行指南](09_TASK_EXECUTION_GUIDE.md)。本地工具不能抵抗共享写权限者修改或绕过检查器，远端来源和有效权限保护仍由 V2-004 落地，实际状态以任务与证据为准。后续任务按相同协议消费，不另建绕开 backlog 的自主 Agent 工作流。
+V2-003 的 `scripts/check_architecture.py` 扫描完整生产包，静态检查领域依赖、Canon 公共提交服务与内部写能力边界及适用 P0 硬门禁。`task_execution.py` 对 IMPLEMENT/LIVE_CALL/CERTIFY 强制读取执行包 `change_review` 的 `scope_revision` / `scope_ref` 与必要时的 `review_revision` / `review_ref`。缺 scope 绑定即拒绝；CLI 对应参数只能重述同值，不能覆盖。省略 CLI 参数仍在命令前后审查实际差异。PREPARE 没有冻结 scope 时可调查，但不能借其执行受限实施动作。架构检查仍须明确运行，不由 scope 参数隐式代跑。用法、当前固定 pin 与输出边界见 [任务执行指南](09_TASK_EXECUTION_GUIDE.md)。本地工具不能抵抗共享写权限者修改或绕过检查器，远端来源和有效权限保护仍由 V2-004 落地，实际状态以任务与证据为准。后续任务按相同协议消费，不另建绕开 backlog 的自主 Agent 工作流。
 
 AI 可以承担全部软件开发工作，但真人 Gold/读稿与真实市场证据仍保持 E3/E4 来源要求。模拟读者属于 E2，不能借“全 AI 开发”替代真实阅读竞争力验证。工程不崩、题材不串、阅读质量和市场结果分别判断，不互相代替。

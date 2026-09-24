@@ -1,5 +1,22 @@
 # V2-003 实施与交接
 
+## 2026-09-24 外部深审整改（当前）
+
+用户要求“评估报告，如果确实存在问题修正”。本轮实际开工为 main / `a11693ee5ac08fd3aa102e03de0125bd8b800dd9`、Plan v1.3.0；没有把报告自述的 GitLab 审核当成本次已核验的远端结果。四项问题均在本地旧代码真实复现，见 `plan/validation/execution/V2-003/followup/assessment/`。新 PREPARE 已通过，以 `fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6` 固定专属范围后实施。修正期间 V2-003 重新置为 IN_PROGRESS，最终状态待本轮证据绑定。
+
+| 报告问题 | 核实结果与修正 |
+|---|---|
+| 不传 scope 可跳过差异门禁 | 属实。IMPLEMENT/LIVE_CALL/CERTIFY 的 check/run/resume 必须有执行包 change_review；入口自动读取固定 scope/review，CLI 只能重述同值。省略参数仍检查命令前后差异。PREPARE 可调查未冻结范围；直接工具和同写权限者仍不受操作系统级约束。 |
+| 通用技术复核可放行生产功能 | 属实。PRODUCTION_SCOPE_REVIEW 改为 AUTHORIZATION_REQUIRED；需要固定 scope 中事先精确的 task/path/code/old_sha/new_sha 范围授权，且固定提交仍含授权前字节。普通 REVIEWED_NO_WEAKENING 不能解除；本轮没有生产授权或生产改动。 |
+| 新增 conftest 可改变收集而漏报 | 属实。新增/变更 conftest、pytest hooks、collect_ignore、pytest_plugins 与 pytest.ini/setup.cfg/tox.ini 进入复核；合法 fixture 有精确技术复核通过例。 |
+| 常见 builtin-loader 下标漏报 | 属实。覆盖 __builtins__ 下标、builtins.__dict__、vars(builtins/importlib) 及别名；字面量目标适用原依赖规则，未知键产生 ARCH_DYNAMIC_UNKNOWN；合法 json 导入通过。 |
+
+没有重建治理体系，也没有执行 V2-004/P1+、CI、付费 Provider 或业务功能。执行包 schema 仅增加字段，旧约束保持；历史 V2-001/002 包仍可作为历史记录读取，新受限动作必须先准备并绑定适用范围。六条 AC、60 个任务身份/依赖、246 个场景和最低门禁均保留。用户两份审核材料与本地配置按开工 hash 保留。
+
+同一操作者实施和复核，不能称为独立审核。当前结果与恢复入口以 `followup/execution-packet.yaml`、`followup/handoff.json` 为准；下面原交付内容仅描述对应历史提交。
+
+## 原交付记录（历史，adc537d8 至 d1d25494）
+
 当前为 **IMPLEMENTED**。本地代码和测试证据已绑定真实实现提交 `adc537d88d2228ef2690d4e7bc04d2def8e1b1af`。任务仍缺可信 CI 和最终验收，不能 VERIFIED/CLOSED；V2-004 及 P1+ 未启动。最终机器记录与原始运行结果位于 `plan/validation/execution/V2-003/`，交接元数据提交不冒充另一次代码/CI验证。
 
 ## 提示词评估与开工

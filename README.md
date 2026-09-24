@@ -73,12 +73,12 @@ python3 -B scripts/check_governance.py --output-dir dist/validation/governance-r
 python3 -B -m pytest -q tests/contract
 ```
 
-正式动作前使用已绑定的任务专属执行包。`check` 实际读取仓库和输入；`run` 在检查通过后才启动 `--` 后的命令，保留子命令退出码；`resume` 重新核对上一份 PASS 的实际结束状态和当前输入。下面仅展示 V2-002 的本地命令，不创建或推进其他任务：
+正式动作前使用已绑定的任务专属执行包。`check` 实际读取仓库和输入；`run` 在检查通过后才启动 `--` 后的命令，保留子命令退出码；`resume` 重新核对上一份 PASS 的实际结束状态和当前输入。下面展示已绑定当前执行包的 V2-003 命令，不创建或推进其他任务；旧 V2-001/002 历史包若缺 change_review，仅保留其历史证据，新受限动作必须重新准备绑定：
 
 ```bash
-python3 -B scripts/task_execution.py check --task V2-002 --action IMPLEMENT --output dist/validation/start-1.json
-python3 -B scripts/task_execution.py run --task V2-002 --action IMPLEMENT --output dist/validation/run-1.json -- python3 -B scripts/check_governance.py --output-dir dist/validation/governance-run-2
-python3 -B scripts/task_execution.py resume --task V2-002 --action IMPLEMENT --checkpoint dist/validation/run-1.json --output dist/validation/resume-1.json
+python3 -B scripts/task_execution.py check --task V2-003 --action IMPLEMENT --output dist/validation/start-1.json
+python3 -B scripts/task_execution.py run --task V2-003 --action IMPLEMENT --output dist/validation/run-1.json -- python3 -B scripts/check_governance.py --output-dir dist/validation/governance-run-2
+python3 -B scripts/task_execution.py resume --task V2-003 --action IMPLEMENT --checkpoint dist/validation/run-1.json --output dist/validation/resume-1.json
 ```
 
 报告须输出至 plan 外：仓库内使用 Git 已忽略且未跟踪的目录（如 `dist/`），也可使用仓库外独立目录。恢复检查绑定根目录、branch、HEAD、暂存区、已跟踪/未跟踪文件内容、执行包及交接产物；即使两个时点都 dirty，内容变化也会拒绝恢复。归档结果或提交本身会改变上下文，此时保留旧记录、核对变化后重新 `check`，不能修改旧 checkpoint 使其通过。FAIL/UNKNOWN 不继承为成功，也不自动重放有副作用的命令。
@@ -91,8 +91,8 @@ python3 -B scripts/task_execution.py resume --task V2-002 --action IMPLEMENT --c
 
 ```bash
 .venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-1.json
-V2003_SCOPE_REVISION=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_revision"])')
-V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_ref"])')
+V2003_SCOPE_REVISION=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/followup/pinned-baseline.json"))["scope_revision"])')
+V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/followup/pinned-baseline.json"))["scope_ref"])')
 .venv/bin/python -B scripts/check_changes.py --task V2-003 \
   --scope-revision "$V2003_SCOPE_REVISION" --scope-ref "$V2003_SCOPE_REF" \
   --output dist/validation/changes-run-1.json
@@ -103,4 +103,4 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 
 差异检查中的 scope commit 固定开工范围、用户既有改动身份和授权来源。运行前将 `pinned-baseline.json` 中的最新 pin 与当前有效交接核对；该文件提供定位信息，授权内容从明确的 Git commit 读取。开工清单的补正原因和原 pin 保留在准备记录中。尚未处置的 finding 返回失败并保留报告；有依据的技术处置需再提供 `--review-revision` 与 `--review-ref`，二者从当前有效交接取值，绑定准确内容和验证产物。改变被审内容后须重新核对，不能把旧 review 用于新改动。命令和处置方法见[任务执行指南](plan/09_TASK_EXECUTION_GUIDE.md)。
 
-`task_execution.py` 可选接收相同的 scope/review 参数：启用后在子命令执行前核对差异，并在命令结束后检查其影响；架构检查作为明确的子命令执行。省略这些参数只运行原有动作/恢复检查，不代表差异审查通过。所有本地工具均不能抵抗同一写入者修改或绕过检查器；受保护 CI、远端来源和有效权限核验仍由 V2-004 交付。
+`task_execution.py` 对 IMPLEMENT/LIVE_CALL/CERTIFY 自动读取执行包 `change_review` 的 scope/review pin，在命令前后强制核对差异；缺少绑定会阻断，CLI 只能重述同值、不能覆盖绑定。PREPARE 允许先调查再冻结范围；付费/认证 dispatch 仍被拒绝。架构检查作为明确的子命令执行。所有本地工具均不能抵抗同一写入者修改或绕过检查器；受保护 CI、远端来源和有效权限核验仍由 V2-004 交付。

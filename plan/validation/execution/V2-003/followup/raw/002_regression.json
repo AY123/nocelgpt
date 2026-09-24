@@ -1,0 +1,21 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/architecture",
+    "tests/contract",
+    "--junitxml=dist/validation/v2-003-followup/regression.xml"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T13:55:14.920214+00:00",
+  "repository_revision": "fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T14:01:28.717122+00:00",
+  "exit_code": 0,
+  "stdout": "........................................................................ [ 27%]\n........................................................................ [ 54%]\n........................................................................ [ 81%]\n.................................................                        [100%]\n265 passed in 373.54s (0:06:13)\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

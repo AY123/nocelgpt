@@ -1,0 +1,68 @@
+# 模板不是开工许可或完成证据。正式副本须遵循 schemas/execution-packet.schema.json，
+# 将 record_type 改为 task_execution_packet、删除 status，并以真实记录替换必填 null。
+# 此文件不可原地填成正式记录；将任务专属正式副本存至 plan/validation/ 内，
+# 由 backlog.execution_packet_ref 引用。范围、输入 hash、ADR 和动作由执行校验器再核对。
+record_type: execution_packet_template
+status: TEMPLATE_NOT_EVIDENCE
+schema_version: '1.0'
+task_id: null
+plan_version: null
+repository_revision: null
+worktree_dirty: null
+# 开工 base 的 SHA 形状与规范清单快照不是认证；恢复时核对当前规范/实际输入。
+plan_manifest_sha256: null
+environment:
+  fingerprint: null
+  runtime_versions: {}
+  database_image: null
+  ci_context: null
+implementer: null
+verifier: null
+owner_role: null
+scope: null
+# PREPARE / IMPLEMENT / LIVE_CALL / CERTIFY；PREPARE 不授权受未决 ADR 约束的实现。
+action: null
+# source_ref 指向 plan 内原始资料；ref 指向 plan 内原文或可恢复快照。
+# 每项结构为 {source_ref: <path>, ref: <path>, sha256: <64 hex>}。
+inputs: []
+expected_outputs: []
+# 相对仓库根目录的具体文件或受限目录；不能用仓库根或通配符表示无限范围。
+allowed_paths: []
+required_decisions: []
+# 判断结构：id/kind/statement/sources/blocks_actions/verification_plan。
+# kind 为 FACT / ASSUMPTION / UNKNOWN；正式决定通过 required_decisions 关联 ADR。
+# FACT 必须有非空 sources，项为 {ref: <plan-relative path>, sha256: <64 hex>}。
+# 所有判断都须有 verification_plan；阻断当前动作的未核实项不得以猜测消除。
+# 哈希只绑定文件字节，不证明来源可信或判断正确。
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: null
+  infrastructure_cap: null
+  maximum_attempts: null
+  maximum_runtime: null
+# maximum_runtime 以秒计；金额采用本轮明确约定的记账货币，币种及假设写入 scope/review_notes。
+# 未批准额度不靠填写正数变成已授权额度；实际动作/权限仍须由 runner/CI 核验。
+stop_conditions: []
+review_notes: []
+handoff:
+  current_step: null
+  completed_steps: []
+  pending_items: []
+  next_action: null
+  last_check:
+    status: NOT_RUN
+    # 保留实际取得的产物；项为 {ref: <plan-relative path>, sha256: <64 hex>}，PASS 必须有产物。
+    # 填写 PASS 不构成真实性认证，必须读取产物并核对范围及适用版本。
+    artifacts: []
+    # FAIL / UNKNOWN 因 runner 丢失、超时等没有产物时，必须如实记录非空原因，不能伪造日志。
+    missing_artifact_reason: null
+
+# PREPARE may leave this null. Restricted actions require fixed scope pins;
+# optional review pins bind dispositions. Refs are repository-relative.
+change_review: null

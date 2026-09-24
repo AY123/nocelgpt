@@ -3,6 +3,7 @@
 Each mutation starts after a valid baseline. Sentinels prove child interception.
 """
 import importlib.util
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -83,6 +84,35 @@ def seed(tmp_path_factory):
         result = call(repo, *command)
         assert result.returncode == 0, result.stderr
     reconcile(repo)
+    # Restricted actions now need packet-bound scope even in isolated legacy
+    # action/resume tests. Freeze real Git baselines; do not mock the diff gate.
+    scope_dir = repo / 'plan/validation/fixture-gates'
+    scope_dir.mkdir(exist_ok=True)
+    authority = scope_dir / 'authorization.txt'
+    authority.write_text('Synthetic fixture authorization, not production or remote approval.\n')
+    opening = call(repo, 'git', 'rev-parse', 'HEAD').stdout.strip()
+    for task_id in ('V2-001', 'V2-002'):
+        path = repo / f'plan/validation/execution/{task_id}/execution-packet.yaml'
+        packet = load(path)
+        packet.pop('change_review', None)
+        packet['allowed_paths'] = list(dict.fromkeys(packet['allowed_paths'] + ['plan/', 'scripts/', 'sentinel', 'already-dirty']))
+        save(path, packet)
+        baseline = {'record_type':'local_change_baseline','schema_version':'1.0','task_id':task_id,
+                    'opening_revision':opening,'packet_ref':str(path.relative_to(repo)),
+                    'allowed_paths':packet['allowed_paths'],'pre_existing':{},'protected_paths':[],
+                    'authorization_source':{'kind':'existing_user_task_authorization',
+                      'ref':str(authority.relative_to(repo)),
+                      'sha256':hashlib.sha256(authority.read_bytes()).hexdigest()}}
+        (scope_dir / (task_id+'.json')).write_text(json.dumps(baseline))
+    assert call(repo, 'git', 'add', '.').returncode == 0
+    assert call(repo, 'git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                'commit', '-qm', 'freeze real local scope for legacy action fixtures').returncode == 0
+    pin = call(repo, 'git', 'rev-parse', 'HEAD').stdout.strip()
+    for task_id in ('V2-001', 'V2-002'):
+        path = repo / f'plan/validation/execution/{task_id}/execution-packet.yaml'
+        packet = load(path)
+        packet['change_review'] = {'scope_revision':pin, 'scope_ref':f'plan/validation/fixture-gates/{task_id}.json'}
+        save(path, packet)
     return repo
 
 
@@ -145,6 +175,8 @@ def test_valid_command_runs_and_resume_rechecks_actual_state(repo):
     result, report, checkpoint = entry(repo, 'run', command=SENTINEL)
     assert result.returncode == 0 and report['status'] == 'PASS'
     assert (repo / 'sentinel').read_text() == 'executed'
+    assert report['change_review_requested'] is True
+    assert report['change_review']['status'] == report['change_review_after']['status'] == 'PASS'
     resumed, record, _ = entry(repo, 'resume', checkpoint=checkpoint)
     assert resumed.returncode == 0 and record['status'] == 'PASS'
 
@@ -167,6 +199,19 @@ def test_invalid_packet_blocks_child(repo, mutation, prefix):
 def test_missing_packet_blocks_child(repo):
     packet_path(repo).unlink()
     rejected(repo, 'EXEC_PACKET')
+
+
+def test_missing_packet_scope_blocks_child_without_cli_flags(repo):
+    mutate_packet(repo, lambda packet: packet.pop('change_review'))
+    rejected(repo, 'ENTRY_DIFF_BINDING')
+
+
+def test_child_without_cli_flags_cannot_escape_packet_scope(repo):
+    child = [sys.executable, '-c', "from pathlib import Path; Path('outside-task').write_text('unauthorized')"]
+    result, report, _ = entry(repo, 'run', command=child)
+    assert report['command_result']['exit_code'] == 0
+    assert result.returncode != 0 and report['status'] == 'FAIL'
+    assert any('ENTRY_DIFF_AFTER' in error for error in report['errors'])
 
 
 def test_wrong_requested_action_blocks_child(repo):

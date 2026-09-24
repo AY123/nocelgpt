@@ -40,7 +40,7 @@
 
 本地实现分为 `scripts/check_architecture.py` 与 `scripts/check_changes.py`。前者静态扫描完整 `src/anovel`，区分 Workflow 可请求的 Canon 公共提交服务与内部 repository 写能力，拒绝空扫描、不能确定的加载行为及禁用适用硬门禁；使用 synthetic fixture 验证未来模块边界，不创建业务模块。后者从固定 Git scope pin 读取范围和授权来源，比较开工版本、实际 index/worktree 与未跟踪文件，保留用户既有改动身份和 finding 处置。review 记录另绑定完整 Git commit、精确改动和替代验证，候选自签例外不能授予削弱权限。
 
-`task_execution.py` 可选接收 scope/review 参数，显式启用后在命令前后执行差异检查；原有动作与恢复检查继续保留，架构检查须明确调用。命令及当前固定 scope pin 见[任务执行指南](09_TASK_EXECUTION_GUIDE.md)。目前处于本地验证阶段，尚无 V2-003 的真实 CI/最终验收；这些工具不能抵抗共享写权限者修改或绕过，不能代替 V2-004 远端保护或 P2 Canon 运行权限。
+`task_execution.py` 对受限动作自动读取执行包的 scope/review 绑定并强制进行命令前后差异检查；缺绑定拒绝，CLI 只能重述同值；原有动作与恢复检查继续保留，架构检查须明确调用。命令及当前固定 scope pin 见[任务执行指南](09_TASK_EXECUTION_GUIDE.md)。目前处于本地验证阶段，尚无 V2-003 的真实 CI/最终验收；这些工具不能抵抗共享写权限者修改或绕过，不能代替 V2-004 远端保护或 P2 Canon 运行权限。
 
 ## 5. V2-004 Secret/dependency CI
 

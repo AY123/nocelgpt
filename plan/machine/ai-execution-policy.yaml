@@ -28,10 +28,10 @@ controls:
   - AT-V2-003-04
   - AT-V2-003-06
   local_status: IMPLEMENTED_LOCAL
-  local_scope: V2-003 从固定 Git opening/scope 比较 index 与工作树，覆盖增删改名、新文件、符号链接和原有用户改动；静态依赖扫描与生产变更阶段复核；显式 scope pin 的任务入口执行前后检查实际差异
+  local_scope: V2-003 从固定 Git opening/scope 比较实际 index/worktree、未跟踪、路径及原用户改动；IMPLEMENT/LIVE_CALL/CERTIFY 强制消费执行包 change_review，缺绑定或 CLI 覆盖拒绝，命令前后差异检查；生产范围需事先精确 scope 授权
   p0_enforcement_status: NOT_IMPLEMENTED
   p0_required: 对真实改动扫描增删改名、未跟踪文件、路径解析、依赖与跨阶段范围，保留差异报告及合法变更和越界负例
-  limitation: 只约束显式提供固定 scope/review pin 的本地入口；路径白名单不证明业务语义，无法抵抗共享写者或直接工具旁路。新业务代码仍需语义复核，远端保护待 V2-004
+  limitation: 约束经本地入口的动作；PREPARE 允许未冻结 scope 的调查。路径不证明业务语义，任意命令语义、共享写者旁路及远端授权/保护仍待 V2-004；通用技术复核不能授予生产范围
 - id: AI-EXEC-03
   title: 防止同步削弱验收与门禁
   owner_tasks:
@@ -42,7 +42,7 @@ controls:
   - AT-V2-003-06
   - AT-V2-004-08
   local_status: IMPLEMENTED_LOCAL
-  local_scope: V2-003 比较固定旧版与候选验收、场景、测试 AST、阈值、扫描排除、门禁和保护代码；保留未处置 finding 并阻断，技术处置绑定 Git、内容、理由、影响及验证产物；真实降标必须匹配事先固定的明确规则修订授权
+  local_scope: V2-003 比较固定旧版与候选验收、场景、测试 AST、阈值、扫描排除、门禁和保护代码；保留未处置 finding 并阻断，技术处置绑定 Git、内容、理由、影响及验证产物；真实降标必须匹配事先固定的明确规则修订授权；新增 conftest、collection/session hook、pytest_plugins 与 INI 测试发现配置也需复核
   p0_enforcement_status: NOT_IMPLEMENTED
   p0_required: 与可信基线比较验收、测试、阈值、排除和流水线；未处置的削弱须阻断，有适用授权和影响记录的合法修订经可信复验后允许
   limitation: 本地可发现已建模弱化及需复核变更，不能证明任意语义等价或远端授权真实。整体义务含受保护执行链，仍 NOT_IMPLEMENTED；共享写权及可信重新验证由 V2-004 落实

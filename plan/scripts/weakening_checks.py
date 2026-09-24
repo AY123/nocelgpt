@@ -5,6 +5,7 @@ review inputs, not proof of program equivalence or authenticated authorization.
 No candidate code is imported and no candidate authorization file is consulted.
 """
 import ast
+import configparser
 from collections import Counter
 import copy
 import hashlib
@@ -183,6 +184,19 @@ def _python_tests(old, new, emit):
         return
     before = _canonical(ast.parse(old)) if old is not None else ast.Module(body=[], type_ignores=[])
     after = _canonical(ast.parse(new))
+    def collection_controls(tree):
+        controls = Counter()
+        for node in ast.walk(tree):
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)) and node.name.startswith('pytest_'):
+                controls[_dump(node)] += 1
+            elif isinstance(node, (ast.Assign, ast.AnnAssign)):
+                targets = node.targets if isinstance(node, ast.Assign) else [node.target]
+                if any(isinstance(target, ast.Name) and target.id in
+                       {'collect_ignore', 'collect_ignore_glob', 'pytest_plugins'} for target in targets):
+                    controls[_dump(node)] += 1
+        return controls
+    if collection_controls(before) != collection_controls(after):
+        emit('TEST_COLLECTION_CONTROL', '/collection', 'Pytest collection/session hooks, ignore rules or plugin loading changed; review their actual collection effects.')
     if _skip_controls(after) - _skip_controls(before):
         emit('TEST_SKIP_CHANGED', '/skip', 'A skip, conditional skip, xfail or expected-failure control was added or changed.')
     if _unknown_test_reflection(after) - _unknown_test_reflection(before):
@@ -438,6 +452,10 @@ def _parse(path, value):
         return json.loads(value)
     if suffix == '.py':
         return _dump(_canonical(ast.parse(value)))
+    if PurePosixPath(path).name in {'pytest.ini', '.pytest.ini', 'setup.cfg', 'tox.ini'}:
+        parser = configparser.ConfigParser(interpolation=None, strict=True)
+        parser.read_string(value.decode('utf-8'))
+        return {section: dict(parser[section]) for section in parser.sections()}
     return value
 
 
@@ -489,6 +507,10 @@ def scan_weakening(changes, *, task_id, baseline):
 
         try:
             before, after = _parse(old_path, old), _parse(path, new)
+            if before != after and any(PurePosixPath(name).name == 'conftest.py' for name in (path, old_path)):
+                emit('TEST_CONFTEST_CHANGED', '/', 'An automatically loaded conftest was added, removed or changed; fixture and collection effects require review.')
+            if before != after and any(PurePosixPath(name).name in {'pytest.ini', '.pytest.ini', 'setup.cfg', 'tox.ini'} for name in (path, old_path)):
+                emit('TEST_CONFIG_CHANGED', '/', 'A test discovery/configuration entry changed; review collection targets, selectors and plugin options.')
             is_machine = PurePosixPath(path).name in _MACHINE or PurePosixPath(old_path).name in _MACHINE
             is_test = any(PurePosixPath(name).suffix == '.py' and (
                 name.startswith('tests/') or PurePosixPath(name).name.startswith('test_')
@@ -497,7 +519,7 @@ def scan_weakening(changes, *, task_id, baseline):
                 _python_tests(old, new, emit)
             if is_machine:
                 _machine(old_path if PurePosixPath(old_path).name in _MACHINE else path, before, after, emit)
-            if PurePosixPath(path).suffix in {'.toml', '.yaml', '.yml', '.json'}:
+            if PurePosixPath(path).suffix in {'.toml', '.yaml', '.yml', '.json'} or PurePosixPath(path).name in {'pytest.ini', '.pytest.ini', 'setup.cfg', 'tox.ini'}:
                 _policy(before or {}, after or {}, emit)
             if old is not None and before != after and (
                     _protected(path, baseline.get('protected_paths', []))
@@ -507,6 +529,6 @@ def scan_weakening(changes, *, task_id, baseline):
                 # and unmodelled policy changes always remain reviewable.
                 if not is_machine:
                     emit('PROTECTION_CHANGED', '/', 'An existing protected checker or policy changed semantically; review against the fixed baseline is required.')
-        except (ValueError, TypeError, SyntaxError, AttributeError, KeyError, yaml.YAMLError, RecursionError) as error:
+        except (ValueError, TypeError, SyntaxError, AttributeError, KeyError, yaml.YAMLError, configparser.Error, RecursionError) as error:
             emit('WEAKENING_PARSE_ERROR', '/', 'Cannot safely compare required content: ' + type(error).__name__ + ': ' + str(error))
     return sorted(findings.values(), key=lambda item: (item['path'], item['layer'], item['pointer'], item['code'], item['id']))

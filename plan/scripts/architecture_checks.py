@@ -123,6 +123,13 @@ def _imports(tree, module, is_package, known, path, add):
             return bindings.get(node.id, {node.id})
         if isinstance(node, ast.Attribute):
             return {name + '.' + node.attr for name in names(node.value)}
+        if isinstance(node, ast.Call) and names(node.func) & {'vars', 'builtins.vars', '__builtins__.vars'} and len(node.args) == 1:
+            return {name + '.__dict__' for name in names(node.args[0])
+                    if name in {'builtins', '__builtins__', 'importlib'}}
+        if isinstance(node, ast.Subscript) and isinstance(node.slice, ast.Constant) and isinstance(node.slice.value, str):
+            return {name.removesuffix('.__dict__') + '.' + node.slice.value
+                    for name in names(node.value)
+                    if name.removesuffix('.__dict__') in {'builtins', '__builtins__', 'importlib'}}
         if isinstance(node, ast.Call) and isinstance(node.func, ast.Name) and node.func.id == 'getattr' and len(node.args) >= 2:
             if isinstance(node.args[1], ast.Constant) and isinstance(node.args[1].value, str):
                 return {name + '.' + node.args[1].value for name in names(node.args[0])}
@@ -148,6 +155,10 @@ def _imports(tree, module, is_package, known, path, add):
     loaders = {'importlib.import_module', '__import__', 'builtins.__import__', '__builtins__.__import__'}
     importer_state = ('sys.path', 'sys.meta_path', 'sys.path_hooks', 'sys.modules')
     for node in nodes:
+        if isinstance(node, ast.Subscript) and any(
+                name.removesuffix('.__dict__') in {'builtins', '__builtins__', 'importlib'}
+                for name in names(node.value)) and not names(node):
+            add('ARCH_DYNAMIC_UNKNOWN', 'Computed reflective namespace key requires explicit review', path=path, line=node.lineno)
         if isinstance(node, (ast.Assign, ast.AnnAssign, ast.AugAssign, ast.Delete)):
             targets = node.targets if isinstance(node, (ast.Assign, ast.Delete)) else [node.target]
             for target in targets:

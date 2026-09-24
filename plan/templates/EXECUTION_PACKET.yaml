@@ -62,3 +62,7 @@ handoff:
     artifacts: []
     # FAIL / UNKNOWN 因 runner 丢失、超时等没有产物时，必须如实记录非空原因，不能伪造日志。
     missing_artifact_reason: null
+
+# PREPARE may leave this null. Restricted actions require fixed scope pins;
+# optional review pins bind dispositions. Refs are repository-relative.
+change_review: null

@@ -37,7 +37,7 @@ def commit(repo,message):
     return run(repo,'git','rev-parse','HEAD')
 
 
-def make_repo(path, *, grants=None):
+def make_repo(path, *, grants=None, grant_kind="explicit_rule_revision_authorization"):
     path.mkdir();repo=path.resolve()
     run(repo,'git','init','-b','main')
     for name,data in {'.gitignore':'dist/\n__pycache__/\n','allowed/existing.py':'value = 1\n','outside.py':'original\n','user.txt':'original user\n','tests/test_sample.py':BEFORE,'authority.txt':'Synthetic fixture: authorized local task integration, not remote trust.\n','scripts/checker.py':'def check():\n    return True\n'}.items():write(repo,name,data)
@@ -50,7 +50,7 @@ def make_repo(path, *, grants=None):
     base={'record_type':'local_change_baseline','schema_version':'1.0','task_id':TASK,'opening_revision':opening,'packet_ref':'meta/packet.yaml','allowed_paths':scopes,'pre_existing':{'user.txt':{'worktree':{'kind':'file','mode':'100644','sha256':cr.digest((repo/'user.txt').read_bytes())},'index':info,'task_edit_authorized':False}},'protected_paths':['scripts/checker.py','.gitignore'],'authorization_source':{'kind':'existing_user_task_authorization','ref':'authority.txt','sha256':cr.digest((repo/'authority.txt').read_bytes())}}
     if grants:
         write(repo,'meta/rule-grant.txt','Synthetic prior explicit rule-revision grant; only listed content.\n')
-        source={'kind':'explicit_rule_revision_authorization','ref':'meta/rule-grant.txt','sha256':cr.digest((repo/'meta/rule-grant.txt').read_bytes())}
+        source={'kind':grant_kind,'ref':'meta/rule-grant.txt','sha256':cr.digest((repo/'meta/rule-grant.txt').read_bytes())}
         base['exception_authorizations']=[dict(g,authorization_source=source,task_id=TASK) for g in grants]
     write(repo,SCOPE,json.dumps(base))
     # Keep the user-owned dirty content out of both preparation commits.
@@ -276,7 +276,7 @@ def test_task_entry_blocks_bad_diff_before_child_and_checks_effects_after_child(
     # Only existing declaration validation is isolated; real Git diff and child
     # subprocess execution remain active. Full-context legacy entry tests run too.
     monkeypatch.setattr(task_entry,'__file__',str(repo/'plan/scripts/task_entry.py'))
-    monkeypatch.setattr(task_entry,'validate_context',lambda *args:([],{'budget':{'maximum_runtime':30}}))
+    monkeypatch.setattr(task_entry,'validate_context',lambda *args:([],{'budget':{'maximum_runtime':30},'change_review':{'scope_revision':pin,'scope_ref':SCOPE}}))
     (repo/'dist').mkdir(exist_ok=True)
     command=[sys.executable,'-c',"from pathlib import Path; Path('dist/child-ran').write_text('yes')"]
     def entry(output,child):
@@ -354,7 +354,7 @@ def test_task_entry_rejects_race_between_validation_and_scope_review(context,mon
     import task_entry
     repo,pin,_=context;(repo/'dist').mkdir()
     monkeypatch.setattr(task_entry,'__file__',str(repo/'plan/scripts/task_entry.py'))
-    monkeypatch.setattr(task_entry,'validate_context',lambda *args:([],{'budget':{'maximum_runtime':30}}))
+    monkeypatch.setattr(task_entry,'validate_context',lambda *args:([],{'budget':{'maximum_runtime':30},'change_review':{'scope_revision':pin,'scope_ref':SCOPE}}))
     original=cr.review_changes
     def raced(*args,**kwargs):
         write(repo,'allowed/existing.py','value=999\n')
@@ -385,3 +385,64 @@ def test_prior_exact_deletion_grant_accepts_null_new_identity(tmp_path):
     blocked=review(context);assert blocked['status']=='FAIL' and blocked['findings']
     revision=pin_review(context,blocked['findings'],disposition='AUTHORIZED_EXCEPTION',source=base['exception_authorizations'][0]['authorization_source'])
     assert_pass(review(context,review_revision=revision,review_ref='meta/review.json'))
+
+
+def test_generic_technical_review_cannot_approve_production_scope(context):
+    repo,_,_=context
+    write(repo,'src/anovel/future_feature.py','class FutureBusiness:\n    pass\n');run(repo,'git','add','src')
+    initial=review(context)
+    assert initial['status']=='FAIL'
+    assert all(f['severity_kind']=='AUTHORIZATION_REQUIRED' for f in initial['findings'])
+    revision=pin_review(context,initial['findings'])
+    final=review(context,review_revision=revision,review_ref='meta/review.json')
+    assert final['status']=='FAIL' and any('authorization' in e for e in final['errors'])
+
+
+def test_prior_exact_scope_grant_allows_only_the_pinned_production_bytes(tmp_path):
+    content=b'class AuthorizedFixture:\n    pass\n'
+    grants=[{'code':'PRODUCTION_SCOPE_REVIEW','path':'src/anovel/future_feature.py','old_sha':None,'new_sha':cr.digest(content)}]
+    context=make_repo(tmp_path/'exact-scope',grants=grants,grant_kind='explicit_scope_change_authorization')
+    repo,_,base=context
+    write(repo,'src/anovel/future_feature.py',content);run(repo,'git','add','src')
+    initial=review(context)
+    revision=pin_review(context,initial['findings'],disposition='AUTHORIZED_EXCEPTION',source=base['exception_authorizations'][0]['authorization_source'])
+    assert_pass(review(context,review_revision=revision,review_ref='meta/review.json'))
+    write(repo,'src/anovel/future_feature.py',content+b'other=1\n')
+    assert review(context,review_revision=revision,review_ref='meta/review.json')['status']=='FAIL'
+
+
+@pytest.mark.parametrize('binding,explicit',[('missing',False),('missing',True),('different',True)])
+def test_restricted_entry_cannot_omit_or_override_packet_binding(context,monkeypatch,binding,explicit):
+    import task_entry
+    repo,pin,_=context;(repo/'dist').mkdir()
+    packet={'budget':{'maximum_runtime':30}}
+    if binding=='different':packet['change_review']={'scope_revision':'f'*40,'scope_ref':SCOPE}
+    monkeypatch.setattr(task_entry,'__file__',str(repo/'plan/scripts/task_entry.py'))
+    monkeypatch.setattr(task_entry,'validate_context',lambda *args:([],packet))
+    argv=['run','--task',TASK,'--action','IMPLEMENT','--output',str(repo/'dist/entry.json')]
+    if explicit:argv+=['--scope-revision',pin,'--scope-ref',SCOPE]
+    argv+=['--',sys.executable,'-c',"from pathlib import Path; Path('dist/ran').write_text('bad')"]
+    assert task_entry.main(argv)==2
+    report=json.loads((repo/'dist/entry.json').read_text())
+    assert report['status']=='BLOCKED' and not (repo/'dist/ran').exists()
+    assert any('ENTRY_DIFF_BINDING' in e for e in report['errors'])
+
+
+def test_new_conftest_requires_exact_technical_review_but_legal_fixture_can_pass(context):
+    repo,_,_=context
+    write(repo,'tests/conftest.py','import pytest\n@pytest.fixture\ndef sample():\n    return 1\n');run(repo,'git','add','tests/conftest.py')
+    initial=review(context)
+    assert initial['status']=='FAIL' and any(f['code']=='TEST_CONFTEST_CHANGED' for f in initial['findings'])
+    revision=pin_review(context,initial['findings'])
+    assert_pass(review(context,review_revision=revision,review_ref='meta/review.json'))
+
+
+def test_scope_grant_committed_with_candidate_production_bytes_is_not_prior(tmp_path):
+    content=b'class FutureBusiness:\n    pass\n'
+    grants=[{'code':'PRODUCTION_SCOPE_REVIEW','path':'src/anovel/future_feature.py','old_sha':None,'new_sha':cr.digest(content)}]
+    repo,_,base=make_repo(tmp_path/'late-scope',grants=grants,grant_kind='explicit_scope_change_authorization')
+    write(repo,'src/anovel/future_feature.py',content);run(repo,'git','add','src')
+    run(repo,'git','-c','user.name=Fixture','-c','user.email=fixture@example.invalid','commit','-qm','candidate bundled with claimed prior scope')
+    context=(repo,run(repo,'git','rev-parse','HEAD'),base)
+    result=review(context)
+    assert result['status']=='FAIL' and any('pre-change' in error for error in result['errors'])
