@@ -1,0 +1,18 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "scripts/check_governance.py",
+    "--output-dir",
+    "dist/validation/v2-003-precommit/governance"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:13:43.195430+00:00",
+  "repository_revision": "1e9327792b622420ae1414bc8c10e9a57e4babdb",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:15:04.212812+00:00",
+  "exit_code": 0,
+  "stdout": "plan/scripts/validate_plan.py --check: exit=0\nplan/scripts/validate_plan.py --self-test: exit=0\nplan/scripts/test_governance.py --output-dir: exit=0\nplan/scripts/test_ai_execution.py --output-dir: exit=0\nplan/scripts/probe_governance_legacy.py --output: exit=0\n{\"status\": \"PASS\", \"errors\": [], \"report\": \"/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2-003-precommit/governance/governance-summary.json\"}\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

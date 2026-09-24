@@ -203,11 +203,16 @@ tasks:
   - tests/architecture
   - src/anovel
   - tests/architecture/test_dependency_boundaries.py
+  - scripts/check_architecture.py
+  - scripts/check_changes.py
+  - plan/scripts/architecture_checks.py
+  - plan/scripts/change_review.py
+  - plan/scripts/weakening_checks.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: OPEN
+  status: IN_PROGRESS
   execution_packet_ref: validation/execution/V2-003/execution-packet.yaml
   owner_role: architecture-maintainer
   readiness: READY_TO_START

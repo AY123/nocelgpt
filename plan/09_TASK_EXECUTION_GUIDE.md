@@ -22,7 +22,7 @@ IMPLEMENTED 表示代码/配置已存在；VERIFIED 需对应测试与 CI；CLOS
 
 ## 3. 计划测试与已执行测试
 
-[test-catalog.yaml](machine/test-catalog.yaml) 记录每个任务的计划场景、断言和未来测试路径。当前状态 PLANNED，所有未来代码路径都明确是 expected outputs，不要求本资料包中已经存在。
+[test-catalog.yaml](machine/test-catalog.yaml) 记录每个任务的场景、断言、测试路径和实际状态。仍为 PLANNED 的测试路径是 expected outputs，不要求本资料包中已经存在；已实现或已运行的项目按机器记录及真实证据核对。
 
 文件存在校验只应用于现行规范、来源与已提交证据；不能为了路径校验通过创建空测试文件。业务实现完成后，需把测试状态和运行证据更新为真实结果。
 
@@ -44,7 +44,7 @@ V2-002 将既有检查接入项目根 `scripts/check_governance.py --output-dir 
 
 本地动作入口为项目根 `scripts/task_execution.py check|run|resume --task <id> --action <action> --output <新 JSON>`；`run` 在完整现行校验通过后执行 `--` 后的命令，`resume` 还需 `--checkpoint <旧 PASS JSON>`。入口采集真实 Git/context 与文件内容，重读交接和实际产物；不自动改变任务状态。输出不能覆盖计划或旧记录，仓库内使用 Git 忽略目录。工作区变化后先核对差异并重新 check，不能修改旧 checkpoint 来继承 PASS。命令失败/超时及运行后观察失败分别保留 FAIL/UNKNOWN。
 
-该入口只约束经它发起的本地命令；任意命令的语义、实际差异归属、防降标与可信远端权限仍按 V2-003/004 落地。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
+V2-003 已实现本地架构、差异归属和防降标工具，正在验证；用法见第 10 节。任务入口可显式启用命令前后差异检查，省略 scope 参数时仍只执行原有动作/恢复契约。该入口只约束经它发起的本地命令，不能判断任意命令的业务语义或抵抗同写权限者绕过；可信远端来源与有效权限保护仍由 V2-004 实施。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
 
 ## 5. 工作纪律
 
@@ -100,5 +100,45 @@ V2-002 将既有检查接入项目根 `scripts/check_governance.py --output-dir 
 ## 10. AI 推进中的差异与恢复
 
 P0 将任务范围与实际代码差异关联，并对验收删减、测试 skip、阈值下降、排除扩大和门禁修改做基线比较。正文、任务验收和测试同时修改仍需评估要求是否被放宽，不能仅凭三者一致放行。受信任比较基线及有效权限由真实交付环境提供，本地结构检查不能自证可信。
+
+V2-003 当前为 IN_PROGRESS，本地实现正在验证。`scripts/check_architecture.py` 固定扫描整个 `src/anovel` 的 Python 源码，记录文件、导入边和启用阶段；不能通过缩小目录、空扫描或关闭适用 P0 硬门禁得到成功。检查器静态解析绝对/相对导入、别名及可解析加载关系，对不能确定的加载行为返回 finding，不执行候选源码。Workflow 可以请求 `anovel.canon.commit_service` 公共提交服务；`anovel.canon.repository` 内部写能力限制在 repository/commit service 内。尚未存在的业务模块由无副作用测试夹具覆盖，静态检查不证明 P2 运行时权限。
+
+在项目根目录执行，输出文件每次换新名称：
+
+```bash
+.venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-1.json
+V2003_SCOPE_REVISION=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_revision"])')
+V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_ref"])')
+.venv/bin/python -B scripts/check_changes.py --task V2-003 \
+  --scope-revision "$V2003_SCOPE_REVISION" --scope-ref "$V2003_SCOPE_REF" \
+  --output dist/validation/changes-run-1.json
+.venv/bin/python -B -m pytest -q tests/architecture tests/contract
+```
+
+运行前将 [pinned-baseline.json](validation/execution/V2-003/preparation/pinned-baseline.json) 的最新 `scope_revision` / `scope_ref` 与当前有效交接核对；旧 pin 保留在 `original_pin`。该文件提供定位信息，scope 与授权内容从指定的完整 Git commit 读取，固定开工 revision、允许范围、pre-existing 的 index/worktree 身份和授权来源。开工清单曾遗漏全局忽略的本地工具配置，补正保留真实失败和旧基线，仅登记该文件当前身份并禁止任务编辑，不扩大 allowed_paths；mtime 不证明开工时的历史字节，依据见[清单补正记录](validation/execution/V2-003/preparation/opening-inventory-correction.md)。
+
+检查比较开工 Git 内容与当前已提交改动、index、worktree 和未跟踪文件，保留删除/新增两端及 rename 提示。既有用户改动仅在身份未变化时单独归属，不能为得到干净差异而恢复或删除。候选 packet/白名单不能扩张固定范围；新增 ignore 不能隐藏被审源码。路径通过仍不证明任务业务语义正确。
+
+未处置的 finding 使差异命令失败。技术处置记录绑定 task、finding、path、layer、旧/新内容 hash、原因、影响和替代验证产物。`REVIEWED_NO_WEAKENING` 仅处理有依据的技术审查；真实削弱需要固定输入中已有的适用显式授权，候选新增的自签说明不产生例外。处置从另一明确 Git pin 读取，原 finding 保留在报告中。改动内容或范围后重新审查，旧处置不能套用；本地 Git pin 本身不认证操作者或远端可信来源。
+
+存在有效处置时，从当前真实交接中核对并设置 `V2003_REVIEW_REVISION`（完整 commit ID）和 `V2003_REVIEW_REF`（仓库相对记录路径）。不得用候选 HEAD 或占位 SHA 自动充当 review pin。以下命令要求这两个值已提供，并沿用上面的 scope 变量：
+
+```bash
+: "${V2003_REVIEW_REVISION:?请先从当前有效交接填写完整 review commit}"
+: "${V2003_REVIEW_REF:?请先从当前有效交接填写 review 记录路径}"
+.venv/bin/python -B scripts/check_changes.py --task V2-003 \
+  --scope-revision "$V2003_SCOPE_REVISION" --scope-ref "$V2003_SCOPE_REF" \
+  --review-revision "$V2003_REVIEW_REVISION" --review-ref "$V2003_REVIEW_REF" \
+  --output dist/validation/changes-reviewed-1.json
+.venv/bin/python -B scripts/task_execution.py run --task V2-003 --action IMPLEMENT \
+  --scope-revision "$V2003_SCOPE_REVISION" --scope-ref "$V2003_SCOPE_REF" \
+  --review-revision "$V2003_REVIEW_REVISION" --review-ref "$V2003_REVIEW_REF" \
+  --output dist/validation/task-reviewed-1.json -- \
+  .venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-2.json
+```
+
+scope/review 的 revision 和 ref 均须成对传入；没有需处置 finding 时可省略 review 一对参数。`check`、`run`、`resume` 都可接收 scope 参数；`run` 或带子命令的 `resume` 在命令前检查差异，结束后再次检查命令影响，即使子命令退出 0，事后越界也不能记录为 PASS。架构检查仅在明确调用时执行。检查期间观察到的输入变化须重新核对，这些观察不建立文件锁或操作系统权限边界。
+
+独立差异 CLI 是范围/弱化审查，不替代执行包、动作 ADR、预算或恢复检查；正式动作继续经过任务入口。多个 Agent 共享写权限也不构成独立审核。V2-004 仍须接通实际 CI、远端来源与保护权限，未具备这些证据时不据本地 PASS 关闭任务或进入 P1。
 
 在 `PREPARE` 中允许调查未决 ADR；转 `IMPLEMENT`、`LIVE_CALL`、`CERTIFY` 时，按 ADR 最晚时点核对正式决定。任务写成 IN_PROGRESS 不表示所有后续动作都获准。交接记录保存真实结果与下一动作；恢复先与工作区和输入 hash 核对，版本变化后重验受影响证据。详细规则及 V2-002～004 分工见 [AI 开发执行协议](AI_EXECUTION_PROTOCOL.md)，不以本轮文件新增关闭这些工程任务。

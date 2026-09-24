@@ -1,0 +1,19 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/architecture/test_weakening_checks.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:23:14.674907+00:00",
+  "repository_revision": "b1013cc17b76a237db64503062daf24340efb5c7",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:23:22.695026+00:00",
+  "exit_code": 0,
+  "stdout": "..................................................................       [100%]\n66 passed in 7.78s\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

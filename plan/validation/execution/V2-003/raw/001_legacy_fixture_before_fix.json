@@ -1,0 +1,19 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/contract/test_task_execution.py::test_open_task_requires_specific_packet_even_for_prepare"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T00:07:09.230471+00:00",
+  "repository_revision": "518c8a6646acbd236a38436388d05da06ac19abd",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T00:07:14.514788+00:00",
+  "exit_code": 1,
+  "stdout": "F                                                                        [100%]\n=================================== FAILURES ===================================\n___________ test_open_task_requires_specific_packet_even_for_prepare ___________\n\nrepo = PosixPath('/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-43/test_open_task_requires_specif0/repo')\n\n    def test_open_task_requires_specific_packet_even_for_prepare(repo):\n>       rejected(repo, 'ENTRY_PACKET', task='V2-003', action='PREPARE')\n\ntests/contract/test_task_execution.py:189: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ \n\nrepo = PosixPath('/private/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/pytest-of-angyang/pytest-43/test_open_task_requires_specif0/repo')\nprefix = 'ENTRY_PACKET', kwargs = {'task': 'V2-003', 'action': 'PREPARE'}\n\n    def rejected(repo, prefix, **kwargs):\n        result, report, _ = entry(repo, 'run', command=SENTINEL, **kwargs)\n        assert result.returncode != 0\n        assert report['status'] == 'BLOCKED'\n>       assert any(prefix in error for error in report['errors']), report['errors']\nE       AssertionError: ['ENTRY_ACTION: requested task/action does not match the bound packet']\nE       assert False\nE        +  where False = any(<generator object rejected.<locals>.<genexpr> at 0x105326400>)\n\ntests/contract/test_task_execution.py:120: AssertionError\n=========================== short test summary info ============================\nFAILED tests/contract/test_task_execution.py::test_open_task_requires_specific_packet_even_for_prepare\n1 failed in 5.06s\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

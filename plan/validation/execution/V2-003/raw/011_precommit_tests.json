@@ -1,0 +1,21 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/architecture",
+    "tests/contract",
+    "--junitxml=dist/validation/v2-003-precommit/tests.xml"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:13:44.356772+00:00",
+  "repository_revision": "1e9327792b622420ae1414bc8c10e9a57e4babdb",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:16:50.134378+00:00",
+  "exit_code": 1,
+  "stdout": "........................................................................ [ 30%]\n........................................................................ [ 61%]\n...................................................F.................... [ 91%]\n....................                                                     [100%]\n=================================== FAILURES ===================================\n_____ test_existing_rules_reject_single_mutations[<lambda>-TASK_EVIDENCE] ______\n\nmutate = <function <lambda> at 0x106c3fe20>, prefix = 'TASK_EVIDENCE'\n\n    @pytest.mark.parametrize('mutate,prefix', [\n        (lambda d: d['implementation-backlog']['tasks'][1].update(phase='P1'), 'TASK_PHASE'),\n        (lambda d: d['implementation-backlog']['tasks'][1].update(status='CLOSED'), 'TASK_EVIDENCE'),\n        (lambda d: d['implementation-backlog']['tasks'][4].update(status='IN_PROGRESS'), 'TASK_START'),\n        (lambda d: d['external-practice-register']['practices'][0].update(source_refs=['MISSING']), 'EXTERNAL_SOURCE'),\n    ])\n    def test_existing_rules_reject_single_mutations(mutate, prefix):\n        data = deepcopy(validator.load())\n        assert validator.validate_objects(data) == []\n        mutate(data)\n        errors = validator.validate_objects(data)\n>       assert any(error.startswith(prefix) for error in errors), errors\nE       AssertionError: [\"TASK_SCHEMA V2-002 ['evidence', 'ci']: [] should be non-empty\", \"TASK_SCHEMA V2-002 ['evidence', 'acceptance']: [] should be non-empty\", 'TASK_TEST V2-002: planned suite cannot close task']\nE       assert False\nE        +  where False = any(<generator object test_existing_rules_reject_single_mutations.<locals>.<genexpr> at 0x10630ea40>)\n\ntests/contract/test_plan_governance.py:89: AssertionError\n=========================== short test summary info ============================\nFAILED tests/contract/test_plan_governance.py::test_existing_rules_reject_single_mutations[<lambda>-TASK_EVIDENCE]\n1 failed, 235 passed in 185.58s (0:03:05)\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

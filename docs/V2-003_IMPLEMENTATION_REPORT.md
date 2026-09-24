@@ -1,0 +1,38 @@
+# V2-003 实施与交接
+
+当前为 IN_PROGRESS：本地代码已实现，正在最终验证和绑定真实提交证据。任务仍缺可信 CI 和最终验收，不能 VERIFIED/CLOSED；V2-004 及 P1+ 未启动。最终结果以本报告后续更新及 `plan/validation/execution/V2-003/` 的实际记录为准。
+
+## 提示词评估与开工
+
+用户已授权评估、直接修正 `V2-003任务prompt.txt` 后启动。原提示词保存在 `preparation/original-prompt.txt`；修正依据在 `preparation/prompt-review.md`，保留六条 AC，不把报告当新命令、不添加任务依赖、不凭空要求逐文件批准。实际开工 main / `c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf`、Plan v1.3.0；V2-001/002 IMPLEMENTED，P0 尚未 VERIFIED。专属 PREPARE 已通过并先提交冻结范围，再通过 IMPLEMENT。
+
+原 scope pin 为 `518c8a6646acbd236a38436388d05da06ac19abd`。真实扫描发现全局忽略的既有 `.claude/settings.local.json` 漏入初始清单；保留原失败和基线，通过 `1e9327792b622420ae1414bc8c10e9a57e4babdb` 固定 v2 清单。仅增补该文件当前精确保护身份，不扩大 allowed_paths、protected_paths 或编辑授权，不伪称开工时已经核验其字节。见 `preparation/opening-inventory-correction.md`。完整回归另发现旧治理测试把缺 CI/验收误期待为版本混用诊断；已先用 `b1013cc17b76a237db64503062daf24340efb5c7` 固定 v3，仅增加该测试文件修正路径，再保留原拒绝要求并增加分别检查 CI 与验收缺失的断言。原失败与理由见 `preparation/legacy-contract-correction.md`；当前 scope pin 以 `preparation/pinned-baseline.json` 为准。
+
+## 实现及六场景映射
+
+| 场景 | 实现和真实回归 |
+|---|---|
+| AT-V2-003-01 | `architecture_checks.py` 静态 AST 依赖图：绝对/相对导入、别名、包初始化、重导出、传递依赖及字面量动态加载；合法领域接口通过，领域到 Provider/DB/Web/Workflow 和未知第三方依赖被拒绝/要求复核。对应 `test_dependency_boundaries.py`。 |
+| AT-V2-003-02 | Canon 内部 repository 限 Canon 内部；Workflow 可调用公开 commit_service，但不能经别名、重导出或动态 fromlist 访问内部写能力。Gateway/Quality/Repair/Context/Intelligence 违规夹具失败。这是静态包职责检查，不实现 Canon 运行权限。 |
+| AT-V2-003-03 | 递归发现整个 `src/anovel`，新增嵌套模块参与扫描；零文件、语法错、源链接、动态加载未知、缩窄扫描根、禁用/后移 P0 门禁失败。真实源树目前仅 1 个引导模块，报告明确 bootstrap_only；隔离夹具不是生产业务实现。 |
+| AT-V2-003-04 | `change_review.py` 从固定 Git opening/scope 对比 index 与工作树，检查增删改名、未跟踪、路径/链接、原有用户改动、漏扫和扫描期间变化；不消费候选 ignore 来隐去文件。真实 Git 正反例在 `test_change_review.py`。 |
+| AT-V2-003-05 | `weakening_checks.py` 对固定旧版联动比较验收/场景、测试 AST、skip、阈值、排除、硬失败、门禁和保护代码。同步修改正文/机器/测试也保留 finding，未处置即失败。对应 `test_weakening_checks.py`。 |
+| AT-V2-003-06 | 合法增改删重命名、测试增加、语法等价、固定技术复核和明确事先授权的真实规则修订均有通过例；自写理由、过期内容、缺授权、跨任务或降低验收被拒绝。授权修订仅在合成隔离仓库演示，本任务没有降标授权或实际删测。 |
+
+`scripts/check_architecture.py` 输出真实发现数与硬门禁适用性；`scripts/check_changes.py` 保留原 finding、精确 hash、层和处置。`scripts/task_execution.py` 显式提供 scope/review pin 时，在子命令前和结束后检查差异。没提供 pin 的旧调用维持 V2-002 行为，不冒称所有工具动作都已经受保护。
+
+## 保护变化与复核
+
+现有入口增加前后差异检查、参数成对约束和输入竞态阻断；原 ADR、执行包、预算、恢复检查均保留。机器任务仅记录当前实现产物、状态和证据，AI-EXEC-02 记录本地实现，AI-EXEC-03 因整体含可信受保护复验仍 NOT_IMPLEMENTED。
+
+旧契约测试 seed 原本从生产当前任务表复制 OPEN 的 V2-003。项目启动 V2-003 后，原负例会先遇到 action 不匹配而非缺包。只将隔离 fixture 的后续任务恢复为原测试前提，现有 test 函数和断言逐 AST 保持一致；修复前真实失败与修复后正负例保存在 raw/001、002。不是修改生产状态来通过测试。另修正 `test_plan_governance.py` 关闭负例的过时诊断前缀，并增加 CI、acceptance 两项具体拒绝断言；没有减少负例或断言，也未改 validator 为错误诊断让步。
+
+分工复核发现并修复：用户脏文件恢复为旧 Git 内容漏报；index 篡改/删除 scope 或 packet；测试移出发现路径；保护文件重命名；缓存目录隐藏 Python 源；父路径符号链接；验证到子命令之间竞态；新增嵌套 ignore；明确删除授权 null 身份；新增测试注解副作用和反射 skip。所有对应回归均保留。多 Agent 共享写权限，属于协作复核，不是独立权限审核。
+
+`tools/check_preservation.py` 真实比较开工 Git，检查60任务身份/依赖/验收、246场景断言、最低基线/门禁/权限/锁文件、原有契约测试定义、用户报告 hash 和生产源未变。初版辅助脚本错误假设 `.gitlab-ci.yml` 已存在，raw/006 真实失败保留；修正后明确验证该 V2-004 文件仍不存在，不伪造 CI。
+
+## 整改责任和未决项
+
+AR-06、RR-04 的本任务范围/测试/实际差异义务已本地落实，整体 Closure 与 P0 放行仍缺可信 CI/验收。AR-17、CA-17、RR-09 的架构违规阻断已本地落实，远端运行/安全/依赖及权限保护仍属 V2-004；真实 Provider 证据仍在适用后续阶段。RR-03 提供实际提交/hash/源计数及失败记录；RR-10 提供可运行边界夹具，不把历史目录数当测试数；其它 Canon/Repair 回归仍属 V2-010/020。七项保持 OPEN_TRACKED，不代全项目关闭。
+
+本地 Git pin 只能固定比较输入，不能证明操作者授权真实或抵抗同写者绕过/修改校验器。AST 检查不证明任意 Python 语义等价，也不实现数据库唯一写路径、真实 Provider 或远端保护。下一阶段必须由明确授权后单独启动，不能把本任务 PASS 当自动准入。

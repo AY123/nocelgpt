@@ -1,0 +1,19 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "plan/scripts/validate_plan.py",
+    "--write-views",
+    "--output-dir",
+    "dist/validation/v2-003-precommit/write-views"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:13:42.273422+00:00",
+  "repository_revision": "1e9327792b622420ae1414bc8c10e9a57e4babdb",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:13:43.125035+00:00",
+  "exit_code": 0,
+  "stdout": "{\n  \"generated_at_utc\": \"2026-09-24T05:13:43.074349+00:00\",\n  \"scope\": \"planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views\",\n  \"status\": \"PASS\",\n  \"not_certified\": [\n    \"P0 engineering exit\",\n    \"runtime\",\n    \"PostgreSQL\",\n    \"remote CI\",\n    \"live provider\",\n    \"reader/market result\"\n  ],\n  \"source_snapshot_baseline_commit\": \"5cffff885e9d3de8cf822535758543579bcdcf5f\",\n  \"validated_repository_revision\": \"1e9327792b622420ae1414bc8c10e9a57e4babdb\",\n  \"validated_worktree_dirty\": true,\n  \"validation_input_kind\": \"WORKTREE_SNAPSHOT\",\n  \"input_identity_note\": \"manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed\",\n  \"manifest_sha256\": \"cb13d8b9facf5b81d4f6412fa457d8163308afdb4cf758dfdad4b5368a6db467\",\n  \"counts\": {\n    \"tasks\": 60,\n    \"phase_distribution\": {\n      \"P0\": 4,\n      \"P1\": 4,\n      \"P2\": 4,\n      \"P3\": 4,\n      \"P4\": 1,\n      \"P5\": 2,\n      \"P6\": 3,\n      \"P7\": 9,\n      \"P8\": 8,\n      \"P9\": 1,\n      \"P10\": 8,\n      \"P11\": 9,\n      \"P12\": 3\n    },\n    \"statuses\": {\n      \"IMPLEMENTED\": 2,\n      \"IN_PROGRESS\": 1,\n      \"OPEN\": 57\n    },\n    \"suites\": 60,\n    \"scenarios\": 246,\n    \"decisions\": 16,\n    \"findings\": 76,\n    \"source_snapshots\": 247,\n    \"external_sources\": 14,\n    \"external_practices\": {\n      \"PLANNED\": 9,\n      \"DEFERRED\": 2,\n      \"REJECTED\": 1\n    }\n  },\n  \"errors\": []\n}\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

@@ -1,7 +1,8 @@
 """Local action entry using existing plan rules. Not a protected CI runner.
 
-Git/content observations support resumption, not semantic diff authorization
-(V2-003) or remote provenance/credential enforcement (V2-004).
+Git/content observations support resumption. Explicit fixed scope/review pins
+enable V2-003 local diff checks before and after dispatch; they do not establish
+remote provenance or credential enforcement (V2-004).
 """
 from datetime import datetime, timezone
 from pathlib import Path
@@ -123,6 +124,10 @@ def main(argv=None):
     parser.add_argument('--action', required=True, choices=['PREPARE', 'IMPLEMENT', 'LIVE_CALL', 'CERTIFY'])
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--checkpoint', type=Path)
+    parser.add_argument('--scope-revision', help='Full immutable local Git commit containing the change baseline')
+    parser.add_argument('--scope-ref', help='Repository-relative baseline JSON at scope-revision')
+    parser.add_argument('--review-revision', help='Optional separately pinned technical review commit')
+    parser.add_argument('--review-ref', help='Repository-relative review record at review-revision')
     # argparse REMAINDER after a positional consumes options too; separate the
     # explicit command delimiter so normal options can occur after mode.
     raw = list(sys.argv[1:] if argv is None else argv)
@@ -138,7 +143,7 @@ def main(argv=None):
               'errors': [], 'command': command, 'command_result': None,
               'limitations': ['local observations; not CI or completion evidence',
                              'direct tools/shared writers are not protected by this entry',
-                             'command semantics and actual diff scope belong to caller/V2-003']}
+                             'diff checks require explicit scope pins; arbitrary command semantics are not certified']}
     output = None
     code = 2
     command_started = False
@@ -152,6 +157,10 @@ def main(argv=None):
             raise ValueError('ENTRY_RESUME: checkpoint required')
         if args.mode != 'resume' and args.checkpoint:
             raise ValueError('ENTRY_RESUME: checkpoint only applies to resume')
+        if bool(args.scope_revision) != bool(args.scope_ref) or bool(args.review_revision) != bool(args.review_ref):
+            raise ValueError('ENTRY_DIFF: revision and ref must be supplied together')
+        if args.review_revision and not args.scope_revision:
+            raise ValueError('ENTRY_DIFF: review requires a pinned scope baseline')
         before = observe(root)
         report['before'] = before
         errors, packet = validate_context(root, args.task, args.action)
@@ -175,6 +184,17 @@ def main(argv=None):
                 errors.append('ENTRY_HANDOFF: resume cannot inherit missing, failed or unknown last check')
         if command and args.action in {'LIVE_CALL', 'CERTIFY'}:
             errors.append('ENTRY_AUTHORIZATION: paid/certification dispatch requires the future protected authorization adapter; this local entry checks declarations only')
+        if args.scope_revision and not errors:
+            from change_review import review_changes
+            review = review_changes(root, task_id=args.task, scope_revision=args.scope_revision,
+                                    scope_ref=args.scope_ref, review_revision=args.review_revision,
+                                    review_ref=args.review_ref)
+            report['change_review'] = review
+            if review['status'] != 'PASS':
+                errors.append('ENTRY_DIFF: actual changes failed frozen scope or weakening review')
+            if observe(root) != after_validation:
+                errors.append('ENTRY_RACE: validated inputs changed before command dispatch; reconcile and retry')
+        report['change_review_requested'] = bool(args.scope_revision)
         report['errors'] = errors
         if not errors:
             code = 0
@@ -185,6 +205,15 @@ def main(argv=None):
                 report['command_result'] = {'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr}
                 code = result.returncode if result.returncode >= 0 else 128 - result.returncode
             report['status'] = 'PASS' if code == 0 else 'FAIL'
+            if command and args.scope_revision:
+                after_review = review_changes(root, task_id=args.task, scope_revision=args.scope_revision,
+                                              scope_ref=args.scope_ref, review_revision=args.review_revision,
+                                              review_ref=args.review_ref)
+                report['change_review_after'] = after_review
+                if after_review['status'] != 'PASS':
+                    report['errors'].append('ENTRY_DIFF_AFTER: command effects failed frozen scope or weakening review')
+                    report['status'] = 'FAIL'
+                    code = code or 2
         report['after'] = observe(root)
     except subprocess.TimeoutExpired as exc:
         report['status'] = 'UNKNOWN'

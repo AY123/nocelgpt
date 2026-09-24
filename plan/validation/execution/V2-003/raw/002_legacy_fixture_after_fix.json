@@ -1,0 +1,20 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/contract/test_task_execution.py::test_open_task_requires_specific_packet_even_for_prepare",
+    "tests/architecture/test_change_review.py::test_task_entry_blocks_bad_diff_before_child_and_checks_effects_after_child"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T00:07:54.003846+00:00",
+  "repository_revision": "518c8a6646acbd236a38436388d05da06ac19abd",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T00:08:04.396754+00:00",
+  "exit_code": 0,
+  "stdout": "..                                                                       [100%]\n2 passed in 9.90s\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

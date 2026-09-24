@@ -1,0 +1,226 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-002
+plan_version: 1.3.0
+repository_revision: 21849ed8919086982dd94d0a4c852db40eca5d40
+worktree_dirty: true
+plan_manifest_sha256: 8b8835bba45c2587f88d93ce4681ed3827e5e54b9aeaae62a350a5674c287806
+environment:
+  fingerprint: macOS-15.1.1-arm64-arm-64bit; local CPython 3.12.14
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex primary implementer / local operator
+verifier: Codex local tests and bounded AI review; shared trust boundary, not independent certification
+owner_role: governance-maintainer
+scope: 'Only P0 V2-002: reuse normative validation, engineering command integration and local action/resume checks. No V2-003/004 or P1+, paid Provider, deployment or remote changes. Currency USD; zero spend.'
+action: IMPLEMENT
+inputs:
+- source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
+  sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
+- source_ref: 08_ROADMAP_AND_GATES.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/01-08_ROADMAP_AND_GATES.md.txt
+  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+- source_ref: 09_TASK_EXECUTION_GUIDE.md
+  ref: validation/execution/V2-003/inputs/c558c24c023cdc90341ee63e79029e2b4b346a215fc56b671cac3a8b0bf52e2e.txt
+  sha256: c558c24c023cdc90341ee63e79029e2b4b346a215fc56b671cac3a8b0bf52e2e
+- source_ref: 10_DECISIONS_AND_REMEDIATION.md
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt
+  sha256: f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e
+- source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  ref: validation/execution/V2-003/inputs/f276b87c69931a6b854f55ae725cfad15e1bfa8184ab5b867effc6fc2a10c509.txt
+  sha256: f276b87c69931a6b854f55ae725cfad15e1bfa8184ab5b867effc6fc2a10c509
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-003/inputs/641c455931f8ef22d22fbaa0daf70b47e29b980a98556dc7aa92089319a1fa14.txt
+  sha256: 641c455931f8ef22d22fbaa0daf70b47e29b980a98556dc7aa92089319a1fa14
+- source_ref: README.md
+  ref: validation/execution/V2-003/inputs/61130018a5ac5c55d73e4356fd6eb9842a49f9db4e27bc49481bd7785e8ff7e7.txt
+  sha256: 61130018a5ac5c55d73e4356fd6eb9842a49f9db4e27bc49481bd7785e8ff7e7
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-003/inputs/65f0d1d28d2a0b9c147f30de988f7fef308b14d2412c1c3f1fe51541a8ba7a40.txt
+  sha256: 65f0d1d28d2a0b9c147f30de988f7fef308b14d2412c1c3f1fe51541a8ba7a40
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-002/followup/binding-inputs/machine--test-catalog.yaml.txt
+  sha256: d04b405e1f020b0f7b2590e2f48b1cdbc27457670c23cadd4129ab9758dcf058
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
+  sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-003/inputs/b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058.txt
+  sha256: b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/11-phase-gates.yaml.txt
+  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+- source_ref: machine/governance-baseline.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/12-governance-baseline.yaml.txt
+  sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
+- source_ref: machine/ci-gates.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/13-ci-gates.yaml.txt
+  sha256: 5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210
+- source_ref: machine/authority-policy.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/14-authority-policy.yaml.txt
+  sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
+- source_ref: machine/external-practice-register.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/15-external-practice-register.yaml.txt
+  sha256: 6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42
+- source_ref: machine/source-register.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/16-source-register.yaml.txt
+  sha256: 7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac
+- source_ref: machine/remediation-register.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/17-remediation-register.yaml.txt
+  sha256: 1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e
+- source_ref: schemas/execution-packet.schema.json
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/18-execution-packet.schema.json.txt
+  sha256: 1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06
+- source_ref: schemas/evidence-record.schema.json
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/19-evidence-record.schema.json.txt
+  sha256: eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925
+- source_ref: templates/EXECUTION_PACKET.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/20-EXECUTION_PACKET.yaml.txt
+  sha256: 97660e2e9672047f3708f10e8ab0cd7146f17312a28bf73a5f40dee93e667702
+- source_ref: templates/AI_HANDOFF_RECORD.yaml
+  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/21-AI_HANDOFF_RECORD.yaml.txt
+  sha256: 63ee7754f508c99598b350728fe905aa14d7673cba82e98e979944d782f3dcc9
+expected_outputs:
+- plan/machine/implementation-backlog.yaml
+- plan/scripts/validate_plan.py
+- README.md
+- tests/contract/test_plan_governance.py
+- AGENTS.md
+- plan/machine/governance-baseline.yaml
+- plan/schemas/evidence-record.schema.json
+- plan/scripts/governance_checks.py
+- plan/scripts/test_governance.py
+- plan/AI_EXECUTION_PROTOCOL.md
+- plan/machine/ai-execution-policy.yaml
+- plan/schemas/execution-packet.schema.json
+- plan/templates/EXECUTION_PACKET.yaml
+- plan/templates/AI_HANDOFF_RECORD.yaml
+- plan/scripts/execution_checks.py
+- plan/scripts/test_ai_execution.py
+- scripts/task_execution.py
+- scripts/check_governance.py
+- plan/scripts/task_entry.py
+- tests/contract/test_task_execution.py
+allowed_paths:
+- plan/machine/implementation-backlog.yaml
+- plan/scripts/validate_plan.py
+- README.md
+- tests/contract/test_plan_governance.py
+- AGENTS.md
+- plan/machine/governance-baseline.yaml
+- plan/schemas/evidence-record.schema.json
+- plan/scripts/governance_checks.py
+- plan/scripts/test_governance.py
+- plan/AI_EXECUTION_PROTOCOL.md
+- plan/machine/ai-execution-policy.yaml
+- plan/schemas/execution-packet.schema.json
+- plan/templates/EXECUTION_PACKET.yaml
+- plan/templates/AI_HANDOFF_RECORD.yaml
+- plan/scripts/execution_checks.py
+- plan/scripts/test_ai_execution.py
+- scripts/task_execution.py
+- scripts/check_governance.py
+- plan/scripts/task_entry.py
+- tests/contract/
+- plan/scripts/probe_governance_legacy.py
+- plan/README.md
+- plan/09_TASK_EXECUTION_GUIDE.md
+- plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+- plan/machine/test-catalog.yaml
+- plan/FILE_MANIFEST.json
+- plan/generated/
+- plan/validation/execution/V2-002/
+- plan/validation/execution/V2-001/execution-packet.yaml
+- docs/V2-002_IMPLEMENTATION_REPORT.md
+required_decisions: []
+claims:
+- id: BASELINE
+  kind: FACT
+  statement: Clean initial main at 21849ed8919086982dd94d0a4c852db40eca5d40; Plan 1.3.0 PASS; V2-002 OPEN with no dependencies/required ADR; P0 entry ready. V2-001 IMPLEMENTED, CI/acceptance absent.
+  sources:
+  - ref: validation/execution/V2-002/raw/preflight.json
+    sha256: 888d0b8085ae2b6bc2093cfc6261b197262e0e071b6baf27f1d4b2908c19c22c
+  blocks_actions: []
+  verification_plan: Full plan checks before IMPLEMENT; preserve missing remote CI status.
+- id: FOLLOWUP_BASELINE
+  kind: FACT
+  statement: Follow-up starts from committed V2-002 at a3ea77304f0c68967f21532adf3852bec3ea0a4d on main; only existing user report was dirty before recording. Actual IMPLEMENT entry passed.
+  sources:
+  - ref: validation/execution/V2-002/followup/preflight.json
+    sha256: fab6753def504f6a84841e6c8d23c04dffb352dd6c0a4f3db41363fbf2bdf7bd
+  blocks_actions: []
+  verification_plan: Verify original test assertions remain; run regression on committed fix; keep CI/acceptance absent.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse installed locked environment and existing governance logic
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 5
+  maximum_runtime: 14400
+stop_conditions:
+- Stop at highest legal V2-002 state; absent remote CI prevents VERIFIED/CLOSED.
+- No other task implementation, paid calls or gate weakening.
+- Preserve actual failures, user changes and prior evidence.
+review_notes:
+- User explicitly authorized V2-002 and normal task steps. Existing V2-001 active packet must track shared input changes; only its context is reconciled.
+- Normative registry remains backlog normative_specs plus existing source/authority registers; no parallel governance system.
+- Any fixture isolation correction retains positive controls and all rejection assertions. Minimum baseline/acceptance remains unchanged.
+- 'V2-002 prepare: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001 work or evidence recertification.'
+- 'V2-002 implementation-start: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001 work or evidence recertification.'
+- 'V2-002 first-implementation: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001 work or evidence recertification.'
+- V2-002 implementation adds engineering commands and resolved normative path checks; no acceptance/threshold/baseline weakening. Fixture failures are retrospectively reproduced against opening revision. Worktree delivery is not a tested source commit; no typed closure evidence or CI is fabricated.
+- 'V2-002 implemented-local: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001 work or evidence recertification.'
+- 'V2-002 final-docs: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001 work or evidence recertification.'
+- User subsequently said 继续; continued the same V2-002 scope and local execution window. No paid budget, task or phase expansion.
+- Final source bytes are worktree snapshots checked against the real entry observation. No source commit was made; do not label opening HEAD as the implementation revision.
+- Subagents hit account usage limits; primary completed implementation/testing. No independent review or successful subagent final audit is claimed.
+- User continued after review of two reports. Follow-up limited to detached HEAD handling, malformed checkpoint rejection, AI-EXEC-01 full-obligation status correction, post-commit local evidence and handoff. Existing user report is excluded from edits/commits. Original opening revision and historical results remain unchanged.
+- 'V2-002 review-fixes: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001 work or evidence recertification.'
+- 'Review follow-up binding: CODE/TEST_RESULT at actual fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64; shared active inputs reconciled, unchanged snapshots reused. V2-001 status/evidence not recertified. Old packet retained under followup/binding-inputs.'
+- 'Follow-up binding-correction: shared inputs reconciled; prior packet preserved, unchanged snapshots reused; no V2-001 recertification.'
+- Final metadata handoff does not retag post-commit tests to a later evidence commit. Resume must inspect checkout, user report and typed evidence; no next task or trusted CI is authorized by this packet.
+- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 implementation-start: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 final-implementation: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+handoff:
+  current_step: 'STOPPED: V2-002 IMPLEMENTED; bounded fixes committed and post-commit local CODE/TEST_RESULT bound; CI and final acceptance absent'
+  completed_steps:
+  - Observed clean opening main/HEAD, Plan version and manifest; baseline PASS
+  - Created and validated dedicated PREPARE packet, then passed IMPLEMENT start gate
+  - Reused governance system; integrated normative index, real local action/resume entry and contract tests
+  - Preserved and retrospectively reproduced old fixture failures; all original test assertions retained
+  - Contract tests 39, bootstrap regression 5, self-test 32, governance 39, AI 36, legacy probes 13 PASS
+  - Compared acceptance/scope/protection to opening Git revision; no weakening or other task implementation
+  - Archived exact code bytes, commands, real outputs and worktree context
+  - 'Follow-up: detached HEAD/checkpoint fixes; 51 contract tests and all governance commands PASS; original assertions/acceptance/gates unchanged against a3ea7730'
+  - 'Fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64: post-commit contract 51, bootstrap 5, self-test 32, governance 39, AI 36, legacy 13 PASS; 19 source paths equal Git blobs; typed evidence bound in backlog/suite'
+  - Evidence/backlog/suite/README and handoff reconciled; final bound governance aggregate PASS; initial missing-pointer-status failure retained and corrected without schema changes
+  pending_items:
+  - Real trusted CI_RUN for applicable revision (V2-004 responsibility; not started here)
+  - Final acceptance and finding dispositions
+  - G-P0/M0 remain NOT_VERIFIED
+  - V2-003/004 remain OPEN; P1+ forbidden until verified G-P0
+  next_action: IMPLEMENT
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-002/test-result.yaml
+      sha256: 7fbc9f35e6b005ad5dde8de3e69c2c1108a3d05b214b16174b001f6b97aae1a8
+    - ref: validation/execution/V2-002/governance-result.yaml
+      sha256: 1982d4479b511d959c0b826e9688d395ef46adaac15bc066d8b849eb604fc149
+    - ref: validation/execution/V2-002/followup/postcommit/binding-summary.json
+      sha256: 88a5ab6bdfff5c8aa7011d848b2fb94841e5afb77b44605473b7c5139bb58eca
+    - ref: validation/execution/V2-002/followup/bound-governance/governance-summary.json
+      sha256: c2f488e14b4a1932d3281990838c6b8bcb597f71a46bb11612d9cd353338f6f1
+    - ref: validation/execution/V2-002/followup/final-scope.json
+      sha256: 80b7e0fbed6090bb3f4fa0ec823ad3309ecfde84a110d958e2325661c52f3dc1
+    missing_artifact_reason: null

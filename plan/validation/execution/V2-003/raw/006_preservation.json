@@ -1,0 +1,18 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "plan/validation/execution/V2-003/tools/check_preservation.py",
+    "--output",
+    "dist/validation/v2-003-start/preservation.json"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:10:46.983763+00:00",
+  "repository_revision": "1e9327792b622420ae1414bc8c10e9a57e4babdb",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:10:47.316032+00:00",
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "fatal: path '.gitlab-ci.yml' does not exist in 'c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf'\nTraceback (most recent call last):\n  File \"/Users/angyang/Documents/AI/ANovelOS/plan/validation/execution/V2-003/tools/check_preservation.py\", line 15, in <module>\n    check('byte-identical '+name,old(name)==current(name))\n                                 ^^^^^^^^^\n  File \"/Users/angyang/Documents/AI/ANovelOS/plan/validation/execution/V2-003/tools/check_preservation.py\", line 10, in old\n    def old(name):return subprocess.check_output(['git','show',BASE+':'+name],cwd=R)\n                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/angyang/Documents/AI/ANovelOS/dist/tools/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/subprocess.py\", line 466, in check_output\n    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/angyang/Documents/AI/ANovelOS/dist/tools/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/subprocess.py\", line 571, in run\n    raise CalledProcessError(retcode, process.args,\nsubprocess.CalledProcessError: Command '['git', 'show', 'c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf:.gitlab-ci.yml']' returned non-zero exit status 128.\n",
+  "scope": "local V2-003 execution, not remote CI"
+}

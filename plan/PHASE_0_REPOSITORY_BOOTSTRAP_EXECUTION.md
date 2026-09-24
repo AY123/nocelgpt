@@ -1,6 +1,6 @@
 # P0 Repository Bootstrap 执行方案
 
-范围：仅 V2-001～004。V2-001 已 IMPLEMENTED；V2-002 已 IMPLEMENTED 本地工程命令；V2-003/004 未开始，P0 尚未验收。具体状态与证据以机器源为准。现行规范入口：[README](README.md)。
+范围：仅 V2-001～004。V2-001、V2-002 已 IMPLEMENTED；V2-003 为 IN_PROGRESS，本地架构、差异与防降标工具已实现、正在验证；V2-004 未开始，P0 尚未验收。具体状态与证据以机器源为准。现行规范入口：[README](README.md)。
 
 ## 1. 目标与排除项
 
@@ -38,6 +38,10 @@
 
 同步建立实际变更到任务范围的检查，覆盖修改、删除、重命名和新增未跟踪文件，并保留用户原有改动归属。验收场景/测试删除、skip、阈值下降、扫描排除扩大和门禁修改必须与可信基线比较；双方一起改弱不能因为引用一致就通过。正例包括正常范围内开发和有依据的合法规则修订；语义审查不能由路径命中替代。
 
+本地实现分为 `scripts/check_architecture.py` 与 `scripts/check_changes.py`。前者静态扫描完整 `src/anovel`，区分 Workflow 可请求的 Canon 公共提交服务与内部 repository 写能力，拒绝空扫描、不能确定的加载行为及禁用适用硬门禁；使用 synthetic fixture 验证未来模块边界，不创建业务模块。后者从固定 Git scope pin 读取范围和授权来源，比较开工版本、实际 index/worktree 与未跟踪文件，保留用户既有改动身份和 finding 处置。review 记录另绑定完整 Git commit、精确改动和替代验证，候选自签例外不能授予削弱权限。
+
+`task_execution.py` 可选接收 scope/review 参数，显式启用后在命令前后执行差异检查；原有动作与恢复检查继续保留，架构检查须明确调用。命令及当前固定 scope pin 见[任务执行指南](09_TASK_EXECUTION_GUIDE.md)。目前处于本地验证阶段，尚无 V2-003 的真实 CI/最终验收；这些工具不能抵抗共享写权限者修改或绕过，不能代替 V2-004 远端保护或 P2 Canon 运行权限。
+
 ## 5. V2-004 Secret/dependency CI
 
 工作：编写实际 `.gitlab-ci.yml`；接入静态、单元、资料/结构、架构、安全、依赖及 PostgreSQL 基础检查。锁文件/扫描配置进入版本管理；依赖漏洞例外遵守具体、限时、可追踪规则。
@@ -59,7 +63,7 @@
 - 执行包/动作/ADR/交接检查、实际差异与验收弱化检查已接入真实命令和 CI；来源与有效权限边界有可核验结果。
 - G-P0 和 M0 证据绑定当前提交；只有此后才允许 V2-005。
 
-验收记录使用 [模板](templates/TASK_ACCEPTANCE_RECORD.yaml)。本资料整理阶段没有运行这些工程任务，所有勾选项保持未完成。
+验收记录使用 [模板](templates/TASK_ACCEPTANCE_RECORD.yaml)。原资料整理阶段未执行工程任务；后续本地实施状态见本页开头及机器证据，上述 P0 退出清单仍未完成。
 
 ## v1.2 治理加固与执行顺序
 

@@ -1,0 +1,17 @@
+{
+  "scope_revision": "b1013cc17b76a237db64503062daf24340efb5c7",
+  "scope_ref": "plan/validation/execution/V2-003/preparation/scope-baseline-v3.json",
+  "opening_revision": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+  "meaning": "read scope/authorization/baseline from this Git commit, never candidate working file",
+  "original_pin": {
+    "scope_revision": "518c8a6646acbd236a38436388d05da06ac19abd",
+    "scope_ref": "plan/validation/execution/V2-003/preparation/scope-baseline.json",
+    "opening_revision": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+    "meaning": "read scope/authorization/baseline from this Git commit, never candidate working file"
+  },
+  "reason": "V3 adds only demonstrated stale legacy diagnostic test correction; V2 preserved omitted config identity. Both corrections frozen before dependent work.",
+  "inventory_pin": {
+    "scope_revision": "1e9327792b622420ae1414bc8c10e9a57e4babdb",
+    "scope_ref": "plan/validation/execution/V2-003/preparation/scope-baseline-v2.json"
+  }
+}

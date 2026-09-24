@@ -2,7 +2,7 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001 IMPLEMENTED / V2-002 IMPLEMENTED**。最小 Python 包、锁定安装与真实 PostgreSQL 基础测试已实现；本轮接入资料治理工程命令。其余 58 个任务仍 OPEN。远端 CI、P0 退出和章节生产未验证。
+当前为 **Plan v1.3.0 / V2-001、V2-002 IMPLEMENTED / V2-003 IN_PROGRESS**。最小 Python 包、锁定安装、真实 PostgreSQL 基础测试与资料治理命令已实现；V2-003 的本地架构、实际差异和防降标检查已实现，正在验证。其余 57 个任务仍 OPEN。远端 CI、P0 退出和章节生产未验证。
 
 ## 从这里开始
 
@@ -60,7 +60,7 @@ python3 -B plan/scripts/test_ai_execution.py --output-dir dist/validation/local
 
 ## 当前实施边界
 
-本次仅实施 V2-002，复用 V2-001 的锁定环境。架构检查、实际差异归属与防验收弱化属于 V2-003；Secret/依赖 CI、远端来源与保护权限属于 V2-004，均未开始。正式任务关闭需要代码、测试、真实 CI 和验收记录。本地 PASS 与 CI PASS 分别记录。
+当前实施 V2-003，复用 V2-001 的锁定环境和 V2-002 的动作入口。`scripts/check_architecture.py` 扫描完整 `src/anovel` Python 源码，检查导入边界和当前 P0 硬门禁政策；`scripts/check_changes.py` 比较固定 Git 基线与实际 index/worktree，审查任务范围和可识别的验收弱化。代码存在与验证完成分别记录。Secret/依赖 CI、远端来源与保护权限属于尚未开始的 V2-004。正式任务关闭需要代码、测试、真实 CI 和验收记录，本地 PASS 与 CI PASS 分别记录。
 
 G-P0 未验证前不开始 Narrative Kernel。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
 
@@ -84,3 +84,23 @@ python3 -B scripts/task_execution.py resume --task V2-002 --action IMPLEMENT --c
 报告须输出至 plan 外：仓库内使用 Git 已忽略且未跟踪的目录（如 `dist/`），也可使用仓库外独立目录。恢复检查绑定根目录、branch、HEAD、暂存区、已跟踪/未跟踪文件内容、执行包及交接产物；即使两个时点都 dirty，内容变化也会拒绝恢复。归档结果或提交本身会改变上下文，此时保留旧记录、核对变化后重新 `check`，不能修改旧 checkpoint 使其通过。FAIL/UNKNOWN 不继承为成功，也不自动重放有副作用的命令。
 
 这是本地命令入口：不能拦截操作者绕过入口直接使用其他工具，不能判断任意子命令的业务语义，不能证明远端来源或最小权限。PREPARE 仅用于授权的调查命令。LIVE_CALL/CERTIFY 的资料条件仍由既有校验器检查；实际付费/认证 dispatch 在受保护授权接入前保持拒绝。
+
+## V2-003 本地架构与差异检查
+
+在仓库根目录使用锁定环境，每次选择新的报告文件：
+
+```bash
+.venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-1.json
+V2003_SCOPE_REVISION=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_revision"])')
+V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("plan/validation/execution/V2-003/preparation/pinned-baseline.json"))["scope_ref"])')
+.venv/bin/python -B scripts/check_changes.py --task V2-003 \
+  --scope-revision "$V2003_SCOPE_REVISION" --scope-ref "$V2003_SCOPE_REF" \
+  --output dist/validation/changes-run-1.json
+.venv/bin/python -B -m pytest -q tests/architecture tests/contract
+```
+
+架构检查静态读取源码，不运行候选模块。它区分 Workflow 可请求的 `anovel.canon.commit_service` 公共提交服务与 `anovel.canon.repository` 内部写能力；这些规则通过测试夹具验证，未创建 Canon 业务实现，也不证明 P2 运行时写权限。空扫描、不能解析的加载行为和关闭适用硬门禁的请求会失败。
+
+差异检查中的 scope commit 固定开工范围、用户既有改动身份和授权来源。运行前将 `pinned-baseline.json` 中的最新 pin 与当前有效交接核对；该文件提供定位信息，授权内容从明确的 Git commit 读取。开工清单的补正原因和原 pin 保留在准备记录中。尚未处置的 finding 返回失败并保留报告；有依据的技术处置需再提供 `--review-revision` 与 `--review-ref`，二者从当前有效交接取值，绑定准确内容和验证产物。改变被审内容后须重新核对，不能把旧 review 用于新改动。命令和处置方法见[任务执行指南](plan/09_TASK_EXECUTION_GUIDE.md)。
+
+`task_execution.py` 可选接收相同的 scope/review 参数：启用后在子命令执行前核对差异，并在命令结束后检查其影响；架构检查作为明确的子命令执行。省略这些参数只运行原有动作/恢复检查，不代表差异审查通过。所有本地工具均不能抵抗同一写入者修改或绕过检查器；受保护 CI、远端来源和有效权限核验仍由 V2-004 交付。

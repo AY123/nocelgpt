@@ -1,0 +1,19 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/contract/test_plan_governance.py"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T05:21:20.986415+00:00",
+  "repository_revision": "b1013cc17b76a237db64503062daf24340efb5c7",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T05:21:23.184768+00:00",
+  "exit_code": 0,
+  "stdout": "..............                                                           [100%]\n14 passed in 1.97s\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

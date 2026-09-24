@@ -27,11 +27,11 @@ controls:
   acceptance_scenarios:
   - AT-V2-003-04
   - AT-V2-003-06
-  local_status: PLANNED
-  local_scope: 执行包声明允许改动范围及预期产物；本轮不实现 Git diff、未跟踪文件和工具执行监控
+  local_status: IMPLEMENTED_LOCAL
+  local_scope: V2-003 从固定 Git opening/scope 比较 index 与工作树，覆盖增删改名、新文件、符号链接和原有用户改动；静态依赖扫描与生产变更阶段复核；显式 scope pin 的任务入口执行前后检查实际差异
   p0_enforcement_status: NOT_IMPLEMENTED
   p0_required: 对真实改动扫描增删改名、未跟踪文件、路径解析、依赖与跨阶段范围，保留差异报告及合法变更和越界负例
-  limitation: 路径白名单只能发现部分越界；业务语义和合理的跨模块变更仍须有依据的复核
+  limitation: 只约束显式提供固定 scope/review pin 的本地入口；路径白名单不证明业务语义，无法抵抗共享写者或直接工具旁路。新业务代码仍需语义复核，远端保护待 V2-004
 - id: AI-EXEC-03
   title: 防止同步削弱验收与门禁
   owner_tasks:
@@ -41,11 +41,11 @@ controls:
   - AT-V2-003-05
   - AT-V2-003-06
   - AT-V2-004-08
-  local_status: PLANNED
-  local_scope: 保留现有最低治理基线和任务与场景一致性校验；本轮不声称能自动识别任意语义降标
+  local_status: IMPLEMENTED_LOCAL
+  local_scope: V2-003 比较固定旧版与候选验收、场景、测试 AST、阈值、扫描排除、门禁和保护代码；保留未处置 finding 并阻断，技术处置绑定 Git、内容、理由、影响及验证产物；真实降标必须匹配事先固定的明确规则修订授权
   p0_enforcement_status: NOT_IMPLEMENTED
   p0_required: 与可信基线比较验收、测试、阈值、排除和流水线；未处置的削弱须阻断，有适用授权和影响记录的合法修订经可信复验后允许
-  limitation: 同一 AI 同时修改检查器和测试时，本地自检不足以提供独立保障，须结合受保护的真实执行链
+  limitation: 本地可发现已建模弱化及需复核变更，不能证明任意语义等价或远端授权真实。整体义务含受保护执行链，仍 NOT_IMPLEMENTED；共享写权及可信重新验证由 V2-004 落实
 - id: AI-EXEC-04
   title: 决策时点与事实假设未知
   owner_tasks:

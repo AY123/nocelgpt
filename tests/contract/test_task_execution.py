@@ -57,6 +57,26 @@ def seed(tmp_path_factory):
     repo = tmp_path_factory.mktemp('task-entry-seed')
     for directory in ('plan', 'scripts'):
         shutil.copytree(ROOT / directory, repo / directory, ignore=shutil.ignore_patterns('__pycache__', '.DS_Store'))
+    # These legacy scenarios deliberately exercise V2-001/002 and an OPEN third
+    # task. Production progress must not replace that fixture premise or mask the
+    # intended missing-packet rejection with a different action mismatch.
+    backlog_path = repo / 'plan/machine/implementation-backlog.yaml'
+    backlog = load(backlog_path)
+    for task in backlog['tasks'][2:]:
+        task.update(status='OPEN', execution_packet_ref=None)
+        task['evidence'] = {kind: [] for kind in task['evidence']}
+    save(backlog_path, backlog)
+    catalog_path = repo / 'plan/machine/test-catalog.yaml'
+    catalog = load(catalog_path)
+    for suite in catalog['suites'][2:]:
+        suite.update(status='PLANNED', execution_evidence=[])
+    save(catalog_path, catalog)
+    policy_path = repo / 'plan/machine/ai-execution-policy.yaml'
+    policy = load(policy_path)
+    for control in policy['controls']:
+        if set(control['owner_tasks']) - {'V2-001', 'V2-002'}:
+            control['p0_enforcement_status'] = 'NOT_IMPLEMENTED'
+    save(policy_path, policy)
     (repo / '.gitignore').write_text('dist/\n__pycache__/\n')
     for command in (('git', 'init', '-b', 'main'), ('git', 'add', '.'),
                     ('git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'synthetic gate fixture')):
