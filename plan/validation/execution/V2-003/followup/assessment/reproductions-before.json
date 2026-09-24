@@ -1,0 +1,47 @@
+{
+  "source_revision": "a11693ee5ac08fd3aa102e03de0125bd8b800dd9",
+  "cases": [
+    {
+      "case": "production_generic_technical_disposition",
+      "initial": "FAIL",
+      "after": "PASS",
+      "findings": [
+        [
+          "PRODUCTION_SCOPE_REVIEW",
+          "REVIEW"
+        ],
+        [
+          "PRODUCTION_SCOPE_REVIEW",
+          "REVIEW"
+        ]
+      ]
+    },
+    {
+      "case": "new_conftest",
+      "source": "def pytest_collection_modifyitems(config, items):\n    items[:] = [x for x in items if \"negative\" not in x.name]\n",
+      "findings": []
+    },
+    {
+      "case": "new_conftest",
+      "source": "collect_ignore = [\"test_negative.py\"]\n",
+      "findings": []
+    },
+    {
+      "case": "new_conftest",
+      "source": "pytest_plugins = [\"filtering_plugin\"]\n",
+      "findings": []
+    },
+    {
+      "case": "subscript_loader",
+      "source": "__builtins__[\"__import__\"](\"openai\")\n",
+      "status": "PASS",
+      "findings": []
+    },
+    {
+      "case": "subscript_loader",
+      "source": "import builtins\nvars(builtins)[\"__import__\"](\"openai\")\n",
+      "status": "PASS",
+      "findings": []
+    }
+  ]
+}

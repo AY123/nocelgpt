@@ -1,0 +1,79 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-003",
+  "opening_revision": "a11693ee5ac08fd3aa102e03de0125bd8b800dd9",
+  "packet_ref": "plan/validation/execution/V2-003/followup/execution-packet.yaml",
+  "allowed_paths": [
+    "plan/scripts/task_entry.py",
+    "plan/scripts/change_review.py",
+    "plan/scripts/weakening_checks.py",
+    "plan/scripts/architecture_checks.py",
+    "tests/architecture/",
+    "tests/contract/test_task_execution.py",
+    "plan/schemas/execution-packet.schema.json",
+    "plan/templates/EXECUTION_PACKET.yaml",
+    "AGENTS.md",
+    "README.md",
+    "plan/README.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/AI_EXECUTION_PROTOCOL.md",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/machine/ai-execution-policy.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/generated/",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "plan/validation/execution/V2-003/followup/",
+    "docs/V2-003_IMPLEMENTATION_REPORT.md",
+    "tests/architecture",
+    "src/anovel",
+    "scripts/check_architecture.py",
+    "scripts/check_changes.py"
+  ],
+  "pre_existing": {
+    "V2-003_深度审核报告.md": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "8d8f76fb0dc01049195ede16687e3df520a8c8c84bf478dc72867424f729e47e"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".claude/settings.local.json": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "7ee7703ac2fc9ee9ed1e5498514f53f9e766da6d48f56fc4702c50f9eabbd039"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    }
+  },
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/check_architecture.py",
+    "scripts/check_changes.py",
+    "scripts/check_governance.py",
+    "scripts/task_execution.py",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+    "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+  },
+  "limitations": [
+    "Local fixed comparison only; remote trust/permissions remain V2-004.",
+    "User-owned pre-existing files and local configuration are not task outputs."
+  ]
+}

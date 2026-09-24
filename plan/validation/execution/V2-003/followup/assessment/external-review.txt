@@ -1,0 +1,626 @@
+我这次已经基于 GitLab 当前真实代码完成了一轮完整深审。现在 V2-003 的提交链已经可见：
+
+c6f26c61  V2-002 收口
+   ↓
+518c8a66  V2-003 preparation/scope freeze
+   ↓
+1e932779  opening inventory correction
+   ↓
+b1013cc1  legacy contract diagnostic correction
+   ↓
+adc537d8  V2-003 核心实现
+   ↓
+f599dd82  post-commit evidence / IMPLEMENTED
+   ↓
+d1d25494  handoff seal
+   ↓
+a11693ee  仅更新 审核报告.txt
+审核结论
+
+V2-003 的主体架构是成功的，核心代码质量明显高于普通 P0 Harness。
+
+但我发现 2 个 P0 级治理漏洞 + 2 个次级覆盖缺口。因此我给出的结论是：
+
+PASS WITH REQUIRED CLOSURE FIXES
+
+暂时不建议直接进入 V2-004。不需要重做 V2-003，只需要做一次针对性的 closure patch。
+
+审核面	结论
+AST Architecture Fitness	PASS
+Domain → Provider/DB/Web/Workflow	PASS
+Canon Repository / Commit boundary	PASS，静态级
+传递依赖 / package initializer	PASS
+literal dynamic import	PASS
+zero-scan / syntax failure	PASS
+add/modify/delete/untracked/index/worktree	PASS
+pre-existing user changes	PASS
+candidate scope self-expansion	PASS
+symlink/path escape	PASS
+empty scan / race	PASS
+AC/scenario 同步降标	PASS
+test deletion/assert deletion	PASS
+skip/xfail aliases	PASS
+threshold/exclude/hard-gate weakening	PASS
+positive controls	PASS
+CODE/TEST evidence revision binding	PASS
+V2-004/P1 偷跑	未发现
+Trusted CI	正确保持未实现
+V2-003 状态	IMPLEMENTED 正确
+整体	需要小范围收口后进入 V2-004
+做得最好的几个部分
+
+architecture_checks.py@adc537d8 已经不是简单关键字扫描。它实际解析 Python AST，并处理普通/相对导入、alias、package initializer、transitive dependency、literal importlib.import_module() / __import__()，对于不能安全确定的 loader/reflection 会产生 ARCH_DYNAMIC_UNKNOWN。
+
+Domain 的规则也很保守：
+
+anovel.domain
+→ Provider        BLOCK
+→ Database        BLOCK
+→ Web framework   BLOCK
+→ Workflow SDK    BLOCK
+→ 非 domain anovel module BLOCK
+→ 未审核第三方依赖 BLOCK
+
+Canon 边界设计也合理：
+
+canon.repository
+仅 repository / commit_service 内部可以依赖
+
+canon.commit_service
+仅 canon / workflow 可作为合法 caller
+
+而且它没有为了测试提前实现 Canon DB / CanonCommitService 业务系统，而是通过 synthetic fixtures 验证边界。这符合 P0 范围。
+
+change_review.py@adc537d8 也是这次最有价值的实现之一。它不是只跑 git diff，而是独立比较：
+
+opening Git tree
+index
+worktree
+untracked
+pre-existing dirty state
+
+并检查 candidate packet 不能修改自己的：
+
+allowed_paths
+repository_revision
+scope baseline
+
+还覆盖 staged weakening 被 worktree 恢复掩盖、候选 .gitignore 隐藏文件、symlink escape、scope scan race、zero-collection 等攻击。
+
+weakening_checks.py 的设计也总体成立。尤其这类攻击已经真正覆盖：
+
+AC A+B+C      → A+B
+Scenario A+B+C → A+B
+Test A+B+C    → A+B
+
+即使三套新文件彼此仍然“一致”，旧要求的删除仍然会留下 finding。
+
+存储的本地结果也和报告吻合：raw/014_postcommit_tests.json 明确记录：
+
+236 passed
+0 skipped
+exit=0
+
+即 185 architecture/diff/weakening + 51 contract；另有 5 项锁定安装/打包测试以及 32/39/36/13 治理回归。这里我是在审核已保存的原始结果，并没有把它冒充成我重新运行的 CI。
+
+P0-1：官方 Task Entry 的 Diff Enforcement 仍可通过“不传参数”绕过
+
+这是本轮最重要的发现。
+
+当前 plan/scripts/task_entry.py@adc537d8 定义：
+
+--scope-revision
+--scope-ref
+
+都是 optional。
+
+代码逻辑是：
+
+if args.scope_revision:
+    review_changes(...)
+
+也就是说：
+
+task_execution.py run
+--task V2-003
+--action IMPLEMENT
+--scope-revision ...
+→ 做 actual diff review
+
+但是：
+
+task_execution.py run
+--task V2-003
+--action IMPLEMENT
+--output ...
+-- <command>
+
+不提供 scope pin，也可以继续执行。
+
+代码自己甚至明确记录：
+
+diff checks require explicit scope pins
+
+现行 AI_EXECUTION_PROTOCOL.md 也写：
+
+task_execution.py 可选接收 --scope-revision / --scope-ref
+
+而同一份规范第 4 节又明确要求：
+
+P0 的执行入口和 CI
+要比较受信任基线与实际工作树/提交的变更
+
+这两者存在实际执行语义冲突。
+
+最重要的是：现有 contract tests 仍然保留大量无 scope pin 的合法 run 路径，并没有测试：
+
+V2-003 已实施之后
+IMPLEMENT without scope pin
+→ BLOCK
+
+因此目前：
+
+Diff checker exists     = YES
+Diff checker strong     = YES
+Diff checker mandatory  = NO
+
+而 AI-EXEC-02 当前却是：
+
+p0_enforcement_status: IMPLEMENTED
+
+我认为这里偏乐观。
+
+应该怎么修
+
+不要让调用 AI 自己决定要不要传 scope。
+
+更好的结构是：
+
+Execution Packet / machine task state
+        ↓
+scope_revision
+scope_ref
+        ↓
+task_execution.py 自动读取
+
+对于：
+
+IMPLEMENT
+CERTIFY
+
+一旦任务进入需要 V2-003 enforcement 的阶段：
+
+scope pin missing
+→ BLOCK
+
+PREPARE 可以例外，因为调查阶段可能还没冻结实际实施范围。
+
+至少增加一个攻击测试：
+
+V2-003 IMPLEMENT
+without scope-revision/scope-ref
+→ child command MUST NOT execute
+
+在这个问题修掉前，我不会认为 AI-EXEC-02 已经形成“强制入口”。
+
+P0-2：PRODUCTION_SCOPE_REVIEW 可以被同权限实施 AI 自己技术处置掉
+
+这是第二个更隐蔽的问题。
+
+V2-003 已经考虑到：
+
+path 在 src/anovel/ 内，不代表语义上属于 V2-003。
+
+因此 change_review.py 对生产代码变化会生成：
+
+code='PRODUCTION_SCOPE_REVIEW'
+severity_kind='REVIEW'
+
+很好。
+
+现有测试也验证：
+
+src/anovel/future_feature.py
+→ 初始 FAIL
+
+问题出现在后面的 apply_dispositions()。
+
+目前所有：
+
+severity_kind == REVIEW
+
+都可以通过：
+
+REVIEWED_NO_WEAKENING
++
+baseline.authorization_source
++
+reason / impact / replacement validation
+
+进行技术处置。
+
+而本次 authorization_source 是通用的：
+
+existing_user_task_authorization
+Current V2-003 implementation and supportive integration only
+
+实施报告也诚实写明：
+
+reviewer =
+Codex primary implementer and verifier
+same permissions
+
+于是理论上可以发生：
+
+AI 添加：
+src/anovel/future_feature.py
+
+checker:
+PRODUCTION_SCOPE_REVIEW
+→ BLOCK
+
+同一个 AI 再写 review：
+“这是支持性改动，不是业务功能”
+
+REVIEWED_NO_WEAKENING
+
+→ PASS
+
+虽然它实际上可能已经是 P1/P2 业务代码。
+
+这正好碰到 V2-003 AC-06 的核心要求：
+
+不能由实施 AI 自写理由自动批准例外。
+
+当前测试只验证“生产文件最初会被拦截”，没有验证同一实施 AI 不能随后把这个 finding 技术处置掉。
+
+应该怎么修
+
+PRODUCTION_SCOPE_REVIEW 不应该属于普通：
+
+REVIEW
+
+建议新增类似：
+
+AUTHORIZATION_REQUIRED
+
+或：
+
+SCOPE_VIOLATION
+
+语义。
+
+规则变成：
+
+普通 semantic-equivalence review
+→ REVIEWED_NO_WEAKENING 可以处理
+
+cross-phase production scope
+→ 必须有 prior exact authorization grant
+
+general task authorization
+→ 不足以通过
+
+也就是说，要像真实 weakening 一样绑定：
+
+task
+path
+old_sha
+new_sha
+authorization source
+
+且授权必须在变化之前存在。
+
+必须增加这个负例：
+
+add src/anovel/future_feature.py
+
+same implementer writes
+REVIEWED_NO_WEAKENING
+using generic V2-003 authorization
+
+→ STILL FAIL
+
+只有预先存在的精确 scope exception 才能允许。
+
+这个问题我认为是必须在 V2-004 之前修掉的。
+
+P1：新建 conftest.py 可以绕开当前 test weakening 检测的一部分
+
+weakening_checks.py 对已有：
+
+tests/conftest.py
+
+修改会产生 TEST_LOGIC_CHANGED，这很好。
+
+但对于全新 conftest.py：
+
+def pytest_collection_modifyitems(config, items):
+    items[:] = [
+        x for x in items
+        if "important_negative_test" not in x.name
+    ]
+
+当前逻辑存在缺口。
+
+原因是 _python_tests()：
+
+if old is not None and not _monotonic_ast(...):
+    emit(TEST_LOGIC_CHANGED)
+
+新文件：
+
+old = None
+
+因此普通的 pytest collection hook 不会进入 generic logic-change finding。
+
+现有 _skip_controls() 又主要识别：
+
+pytest.skip
+pytest.xfail
+pytest.mark.skip*
+unittest.skip*
+
+但没有覆盖：
+
+pytest_collection_modifyitems
+pytest_ignore_collect
+collect_ignore
+pytest_plugins
+
+所以理论上可以新增一个自动加载的 conftest.py，在不使用 skip API 的情况下减少测试收集。
+
+当前 V2-003 自己不会被这个漏洞直接利用，因为它的 allowed path 没有开放根 tests/conftest.py；但 V2-003 的目标是成为后续所有任务的防降标基础，所以这个缺口值得现在补。
+
+建议至少：
+
+new/changed conftest.py
+→ REVIEW by default
+
+pytest collection/session hooks
+→ explicit TEST_COLLECTION_CONTROL finding
+
+并增加：
+
+new conftest deselects one negative test
+→ FAIL
+
+。
+
+同时可以顺手考虑：
+
+pytest.ini
+setup.cfg
+tox.ini
+
+中的 testpaths/addopts/selectors。
+
+P2：Architecture Dynamic Loader 仍有简单反射边界漏口
+
+当前已经捕获：
+
+__import__("openai")
+
+from builtins import __import__ as load
+
+getattr(importlib, "import_module")("openai")
+
+这是很不错的。
+
+但例如：
+
+__builtins__["__import__"]("openai")
+
+这种 ast.Subscript 形式当前 names() 不解析，因此可能逃过：
+
+ARCH_DYNAMIC_UNKNOWN
+
+。
+
+更复杂的：
+
+vars(builtins)["__import__"]
+
+也属于类似问题。
+
+代码已经明确声明：
+
+arbitrary Python reflection is not proven safe
+
+所以这不是“隐藏的虚假声明”，而是一个真实已知静态分析边界。
+
+我把它定为次级问题，不阻塞整个 V2-003，但考虑到这个 Harness 以后会成为硬 Gate，建议至少对几个低成本、明确的 builtin-loader 形式补 fail-closed。
+
+证据链审核：通过
+
+这一部分质量比较高。
+
+V2-003 的真正实现 commit 是：
+
+adc537d88d2228ef2690d4e7bc04d2def8e1b1af
+
+CODE 和 TEST_RESULT 都绑定这个 SHA，而没有错误绑定：
+
+f599dd82
+d1d25494
+
+这些后续 metadata/evidence 提交。
+
+这是正确做法。
+
+当前 Machine SSOT：
+
+V2-003:
+  status: IMPLEMENTED
+
+  evidence:
+    code: adc537d8 PASS
+    tests: adc537d8 PASS
+    ci: []
+    acceptance: []
+
+也是正确的。
+
+AT-V2-003：
+
+status: IMPLEMENTED
+execution_evidence:
+  V2-003/test-result.yaml
+
+合理。
+
+AI-EXEC-03 也没有被错误提升：
+
+local_status: IMPLEMENTED_LOCAL
+p0_enforcement_status: NOT_IMPLEMENTED
+
+因为它还依赖 V2-004 的 protected revalidation。
+
+这一点处理得很严谨。
+
+测试作弊审核：未发现
+
+我特别核对了两个旧测试修改。
+
+test_plan_governance.py 原来期待：
+
+TASK_EVIDENCE
+
+现在 V2-002 已经有同 revision CODE/TEST_RESULT，因此真实剩余问题其实是：
+
+missing CI
+missing acceptance
+
+修改后不仅仍要求失败，还新增两条具体断言验证：
+
+evidence.ci missing
+evidence.acceptance missing
+
+这属于加强诊断，不是降标。
+
+test_task_execution.py 的修改只是把复制出来的隔离 fixture 中后续任务恢复成 OPEN/PLANNED，以防真实项目已经推进到 V2-003 后，旧负例提前被 action mismatch 截断。
+
+同样没有删原断言。
+
+所以：
+
+Test weakening:
+NOT FOUND
+
+。
+
+Scope Drift 审核：通过
+
+V2-003 没有实现：
+
+Character
+NarrativeDelta
+Canon DB
+CanonCommitService
+Genre
+Model Gateway
+Writer
+
+真实生产树运行结果仍是：
+
+file_count   = 1
+module_count = 1
+bootstrap_only = true
+
+即：
+
+src/anovel/__init__.py
+
+没有偷偷建设 P1/P2。
+
+也没有创建：
+
+.gitlab-ci.yml
+
+，没有 Trusted CI、Secret/Dependency remote gates、Provider 调用。
+
+所以：
+
+V2-004 scope leakage = NOT FOUND
+P1+ scope leakage    = NOT FOUND
+
+。
+
+当前 GitLab 状态也符合“未完成 P0”
+
+截至当前 HEAD：
+
+a11693ee
+
+它在 V2-003 seal 后只修改了：
+
+审核报告.txt
+
+没有修改 V2-003 源码。
+
+所以 adc537d8 的源码证据仍然适用。
+
+同时 GitLab 对：
+
+adc537d8
+f599dd82
+d1d25494
+a11693ee
+
+都没有 CI commit status。
+
+当前：
+
+Trusted CI = NONE
+
+因此：
+
+V2-003 VERIFIED = NO
+V2-003 CLOSED   = NO
+G-P0 VERIFIED   = NO
+M0 VERIFIED     = NO
+
+完全正确。
+
+最终评级
+
+我对 V2-003 的结论是：
+
+Architecture design                PASS
+Architecture implementation        PASS
+Static dependency coverage         STRONG
+Canon static authority boundary    PASS
+Actual Git diff scanner            STRONG
+Pre-existing change protection     PASS
+Anti-weakening core                STRONG
+Positive/negative controls         PASS
+Evidence binding                   PASS
+Scope discipline                   PASS
+Failure history preservation       PASS
+
+Mandatory local diff entry         NEEDS FIX
+Cross-phase semantic authorization NEEDS FIX
+Pytest collection-control coverage SHOULD FIX
+Dynamic loader edge coverage       SHOULD IMPROVE
+
+Remote CI                          NOT IMPLEMENTED
+Permission isolation               NOT VERIFIED
+
+因此正式 Verdict：
+
+V2-003 = PASS WITH REQUIRED CLOSURE FIXES
+
+不是 REWORK。
+
+核心设计和大部分实现都应该保留。
+
+现在建议只做一次很小的 V2-003.1 Closure Hardening：
+
+IMPLEMENT 不能通过省略 scope pin 绕过 actual-diff review；最好由 Execution Packet/机器记录自动解析 pin，而不是调用者自己选择。
+PRODUCTION_SCOPE_REVIEW 不能由同一实施 AI 用普通 REVIEWED_NO_WEAKENING + 通用 task authorization 解除，必须要求预先存在的精确跨阶段授权。
+新增 conftest.py / pytest collection hook 降标攻击负例。
+顺手补低成本 dynamic-loader subscript 负例。
+
+这四项完成后重新绑定本地 TEST_RESULT 即可，不需要推翻 adc537d8 的整个 V2-003 设计。
+
+完成这次针对性 hardening 后，我认为就可以正式开始 V2-004 — Trusted CI / Secret / Dependency / Permission Gates。
