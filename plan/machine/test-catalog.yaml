@@ -83,7 +83,7 @@ suites:
 - id: AT-V2-004
   task_id: V2-004
   phase: P0
-  status: PLANNED
+  status: IMPLEMENTED
   target_path: tests/contract/test_delivery_gates.py
   scenarios:
   - id: AT-V2-004-01

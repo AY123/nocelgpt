@@ -280,7 +280,7 @@ tasks:
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
   status: OPEN
-  execution_packet_ref: null
+  execution_packet_ref: validation/execution/V2-004/execution-packet.yaml
   owner_role: delivery-maintainer
   readiness: READY_TO_START
   start_gate: P0_ENTRY_READY
