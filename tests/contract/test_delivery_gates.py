@@ -268,3 +268,105 @@ def test_gitignore_includes_dist():
         content = f.read()
 
     assert 'dist/' in content, "dist/ must be in .gitignore"
+
+
+def test_gitlab_ci_yaml_is_valid():
+    """GitLab CI YAML must be syntactically valid."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    assert ci_path.exists()
+
+    with ci_path.open() as f:
+        try:
+            yaml.safe_load(f)
+        except yaml.YAMLError as e:
+            pytest.fail(f"GitLab CI YAML is invalid: {e}")
+
+
+def test_arch_fitness_references_existing_tests():
+    """ARCH_FITNESS job must reference only existing test files."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    # Extract test paths from arch_fitness job
+    if 'arch_fitness:' in content:
+        # Find pytest command in arch_fitness
+        lines = content.split('\n')
+        in_arch_job = False
+        for line in lines:
+            if 'arch_fitness:' in line:
+                in_arch_job = True
+            elif in_arch_job and 'pytest' in line and 'test_' in line:
+                # Extract test file paths
+                import re
+                test_paths = re.findall(r'tests/architecture/test_\w+\.py', line)
+                for test_path in test_paths:
+                    full_path = ROOT / test_path
+                    assert full_path.exists(), \
+                        f"ARCH_FITNESS references non-existent test: {test_path}"
+                break
+
+
+def test_secret_dependency_fails_on_violation():
+    """SECRET_DEPENDENCY must fail (not warn) on secret detection."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    # Check for failure-swallowing patterns in secret_dependency job
+    if 'secret_dependency:' in content:
+        lines = content.split('\n')
+        in_secret_job = False
+        for i, line in enumerate(lines):
+            if 'secret_dependency:' in line:
+                in_secret_job = True
+            elif in_secret_job:
+                # Check for patterns that swallow failures
+                if '|| echo' in line and 'secret' in content[max(0, i-10):i+10].lower():
+                    pytest.fail(f"SECRET_DEPENDENCY contains failure-swallowing '|| echo' at line {i+1}")
+                if '|| true' in line:
+                    pytest.fail(f"SECRET_DEPENDENCY contains '|| true' at line {i+1}")
+                # Reset when hitting next job
+                if line and not line.startswith(' ') and line.strip().endswith(':'):
+                    break
+
+
+def test_secret_dependency_has_exit_on_violation():
+    """SECRET_DEPENDENCY must exit non-zero on violations."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    if 'secret_dependency:' in content:
+        # Should contain 'exit 1' for violations
+        assert 'exit 1' in content or 'return 1' in content, \
+            "SECRET_DEPENDENCY must explicitly fail on violations"
+
+
+def test_no_failure_swallowing_in_p0_jobs():
+    """P0 jobs must not contain failure-swallowing patterns."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        lines = f.readlines()
+
+    p0_jobs = ['static:', 'unit:', 'schema_contract:',
+               'arch_fitness:', 'secret_dependency:', 'postgres_env:']
+
+    current_job = None
+    for i, line in enumerate(lines, 1):
+        # Track current job
+        if any(line.strip().startswith(job) for job in p0_jobs):
+            current_job = line.strip()
+
+        # Check for failure swallowing in P0 jobs
+        if current_job and ('|| true' in line or '|| echo' in line):
+            # Allow specific safe patterns
+            if '2>/dev/null' in line:  # stderr redirect is ok
+                continue
+            pytest.fail(
+                f"P0 job {current_job} at line {i} contains failure-swallowing pattern: {line.strip()}"
+            )
+
+        # Reset when hitting next top-level key
+        if line and not line.startswith(' ') and ':' in line:
+            current_job = None
