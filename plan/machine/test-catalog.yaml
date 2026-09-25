@@ -79,7 +79,7 @@ suites:
   - id: AT-V2-003-06
     required_assertion: 范围与防降标检查同时覆盖合法新增测试、等效重构及有适用授权和影响记录的规则修订正例，以及跨任务越界和无依据削弱负例；不能只按文件名拒绝合法改动，也不能由实施 AI 自写理由自动批准例外
   execution_evidence:
-  - validation/execution/V2-003/test-result.yaml
+  - validation/execution/V2-003/followup/test-result.yaml
 - id: AT-V2-004
   task_id: V2-004
   phase: P0

@@ -1,0 +1,108 @@
+{
+  "record_type": "local_preservation_check",
+  "baseline_revision": "a11693ee5ac08fd3aa102e03de0125bd8b800dd9",
+  "head": "284f5f793dc8470df72ecbbd727b3b991085c2ad",
+  "executed_at": "2026-09-25T00:30:14.153898+00:00",
+  "checks": [
+    {
+      "check": "byte-identical plan/machine/ci-gates.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/governance-baseline.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/phase-gates.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/milestones.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/machine/authority-policy.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical plan/schemas/evidence-record.schema.json",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical pyproject.toml",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical uv.lock",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical .gitignore",
+      "status": "PASS"
+    },
+    {
+      "check": "byte-identical tests/contract/test_plan_governance.py",
+      "status": "PASS"
+    },
+    {
+      "check": "V2-004 pipeline remains absent",
+      "status": "PASS"
+    },
+    {
+      "check": "all task identity/dependency/AC and scenario assertions unchanged plan/machine/implementation-backlog.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "all task identity/dependency/AC and scenario assertions unchanged plan/machine/test-catalog.yaml",
+      "status": "PASS"
+    },
+    {
+      "check": "AI obligations, owners, scenarios unchanged",
+      "status": "PASS"
+    },
+    {
+      "check": "schema adds only optional typed change_review; existing constraints identical",
+      "status": "PASS"
+    },
+    {
+      "check": "existing tests/assertions/decorators retained tests/architecture/test_change_review.py",
+      "status": "PASS"
+    },
+    {
+      "check": "existing tests/assertions/decorators retained tests/architecture/test_dependency_boundaries.py",
+      "status": "PASS"
+    },
+    {
+      "check": "existing tests/assertions/decorators retained tests/architecture/test_weakening_checks.py",
+      "status": "PASS"
+    },
+    {
+      "check": "existing tests/assertions/decorators retained tests/contract/test_task_execution.py",
+      "status": "PASS"
+    },
+    {
+      "check": "user input exact protected hash 审核报告.txt",
+      "status": "PASS"
+    },
+    {
+      "check": "user input exact protected hash V2-003_深度审核报告.md",
+      "status": "PASS"
+    },
+    {
+      "check": "user input exact protected hash .claude/settings.local.json",
+      "status": "PASS"
+    },
+    {
+      "check": "production source unchanged including ignored additions; only generated pyc cache allowed",
+      "status": "PASS"
+    },
+    {
+      "check": "historical V2-003 evidence retained unchanged",
+      "status": "PASS"
+    }
+  ],
+  "generated_bytecode_files": [
+    "src/anovel/__pycache__/__init__.cpython-312.pyc"
+  ],
+  "status": "PASS"
+}

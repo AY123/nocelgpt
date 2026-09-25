@@ -1,0 +1,114 @@
+{
+  "record_type": "local_architecture_check",
+  "status": "PASS",
+  "root": "/Users/angyang/Documents/AI/ANovelOS",
+  "phase": "P0",
+  "package": "src/anovel",
+  "scope": "Static production-source discovery and import policy; synthetic fixtures are separate test evidence",
+  "coverage": {
+    "file_count": 1,
+    "module_count": 1,
+    "bootstrap_only": true
+  },
+  "files": [
+    {
+      "path": "src/anovel/__init__.py",
+      "module": "anovel",
+      "sha256": "e519341f3ee46ba145ea994a5ddab86dbdc0d7bc74d11b5b2bf797a85a59f724"
+    }
+  ],
+  "modules": [
+    "anovel"
+  ],
+  "edges": [],
+  "gates": [
+    {
+      "id": "STATIC",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "UNIT",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "SCHEMA_CONTRACT",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "ARCH_FITNESS",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "SECRET_DEPENDENCY",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "POSTGRES_ENV",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "CANON_CAS_IDEMPOTENCY",
+      "activation_phase": "P2",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    },
+    {
+      "id": "DETERMINISTIC_E2E",
+      "activation_phase": "P7",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    },
+    {
+      "id": "GENRE_SMOKE",
+      "activation_phase": "P8",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    },
+    {
+      "id": "LIVE_PROVIDER",
+      "activation_phase": "P5",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "No candidate module is imported or executed.",
+    "Static imports, package re-exports and recognized literal loaders are inspected; arbitrary reflection is not proven safe.",
+    "Aliases are conservatively combined across scopes; unresolved loader forms fail for review.",
+    "P0 Canon caller policy is provisional static enforcement, not a P2 runtime/DB capability proof.",
+    "Shared repository write access, remote CI provenance and protected permissions are not attested."
+  ]
+}

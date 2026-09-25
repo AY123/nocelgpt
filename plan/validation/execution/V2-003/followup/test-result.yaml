@@ -1,0 +1,58 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-003
+revision: 284f5f793dc8470df72ecbbd727b3b991085c2ad
+status: PASS
+producer: Codex primary implementer and local verifier; same operator, no independent review or remote CI
+executed_at: '2026-09-24T14:30:05.188469+00:00'
+environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; local locked environment; uv 0.12.17; offline bootstrap
+evidence_id: V2-003-followup-tests-284f5f793dc8
+evidence_type: TEST_RESULT
+artifacts:
+- ref: validation/execution/V2-003/followup/postcommit/checks/architecture.json
+  sha256: ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931
+- ref: validation/execution/V2-003/followup/postcommit/checks/bootstrap.xml
+  sha256: f4772f5b385f048fb129779c325164352f926d0491c950f1788320de52698ce5
+- ref: validation/execution/V2-003/followup/postcommit/checks/entry.json.gz
+  sha256: c8e3626024cd01ebf934429d5d2818b602b005f8924e6020f36eb5b1b2d85945
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/ai/ai-execution-regression.json
+  sha256: 1fc3c79d0bb05a1e74d112bfcd1e2fb1b67c7aa486afa8b80515f8b53f851c3e
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/context-inventory.json
+  sha256: fbacdd58d79bcfe50aa9b413a481af5fc548f231f0c0fee49f59ba634edd4982
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/governance/governance-regression.json
+  sha256: 9b9104f4c34784a8ee30a2fe0c995f74e8d05a6ae202d88ef957afcb861b90df
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/governance-summary.json
+  sha256: 270abb9d4b08305a0da7edc0c66f2cafd4f50ac124ac0368f3a3903042647a52
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json
+  sha256: 88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/normative-index.json
+  sha256: 17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/plan/plan-validation.json
+  sha256: e267547a8a392499c164a726281529dfad736434cd59f8f1de80b373295e011f
+- ref: validation/execution/V2-003/followup/postcommit/checks/governance/self-test/validator-self-test.json
+  sha256: 7bb41cc4a837c21167a3481524a9dc3e069e4cb8c1b04c2768f5c9ac377bf566
+- ref: validation/execution/V2-003/followup/postcommit/checks/preservation.json
+  sha256: 48792557ef0ee9e9ba2ba1069e2ef6dda0a7f5bc6637e0d4a1a49bbfea332f57
+- ref: validation/execution/V2-003/followup/postcommit/checks/tests.xml
+  sha256: 8516a537ee21142499c3e1b0f432aa74842dcd75b8fe11796105d5d7ed877b70
+- ref: validation/execution/V2-003/followup/raw/009_postcommit_tests.json
+  sha256: f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420
+- ref: validation/execution/V2-003/followup/raw/010_postcommit_governance.json
+  sha256: f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4
+- ref: validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json
+  sha256: c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43
+- ref: validation/execution/V2-003/followup/raw/012_postcommit_preservation.json
+  sha256: 8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e
+- ref: validation/execution/V2-003/followup/raw/013_postcommit_entry.json
+  sha256: c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2
+input_evidence_refs:
+- validation/execution/V2-003/followup/code-evidence.yaml
+check_ids:
+- AT-V2-003-01
+- AT-V2-003-02
+- AT-V2-003-03
+- AT-V2-003-04
+- AT-V2-003-05
+- AT-V2-003-06
+command: 'Actual argv/stdout/stderr/exit in raw/009..013: architecture+contract pytest, check_governance aggregate, locked offline repository bootstrap, preservation comparison, task_execution run without CLI scope/review flags, automatically consuming packet-bound pins dispatching production architecture CLI'
+exit_code: 0

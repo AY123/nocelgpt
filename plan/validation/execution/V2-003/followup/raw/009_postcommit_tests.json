@@ -1,0 +1,21 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/architecture",
+    "tests/contract",
+    "--junitxml=dist/validation/v2-003-followup-postcommit/tests.xml"
+  ],
+  "cwd": "/Users/angyang/Documents/AI/ANovelOS",
+  "started_at": "2026-09-24T14:22:59.648630+00:00",
+  "repository_revision": "284f5f793dc8470df72ecbbd727b3b991085c2ad",
+  "worktree_dirty": true,
+  "finished_at": "2026-09-24T14:29:17.359596+00:00",
+  "exit_code": 0,
+  "stdout": "........................................................................ [ 27%]\n........................................................................ [ 54%]\n........................................................................ [ 81%]\n.................................................                        [100%]\n265 passed in 377.33s (0:06:17)\n",
+  "stderr": "",
+  "scope": "local V2-003 execution, not remote CI"
+}

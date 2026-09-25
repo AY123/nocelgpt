@@ -29,7 +29,7 @@ controls:
   - AT-V2-003-06
   local_status: IMPLEMENTED_LOCAL
   local_scope: V2-003 从固定 Git opening/scope 比较实际 index/worktree、未跟踪、路径及原用户改动；IMPLEMENT/LIVE_CALL/CERTIFY 强制消费执行包 change_review，缺绑定或 CLI 覆盖拒绝，命令前后差异检查；生产范围需事先精确 scope 授权
-  p0_enforcement_status: NOT_IMPLEMENTED
+  p0_enforcement_status: IMPLEMENTED
   p0_required: 对真实改动扫描增删改名、未跟踪文件、路径解析、依赖与跨阶段范围，保留差异报告及合法变更和越界负例
   limitation: 约束经本地入口的动作；PREPARE 允许未冻结 scope 的调查。路径不证明业务语义，任意命令语义、共享写者旁路及远端授权/保护仍待 V2-004；通用技术复核不能授予生产范围
 - id: AI-EXEC-03

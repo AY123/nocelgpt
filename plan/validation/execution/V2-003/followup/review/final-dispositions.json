@@ -1,0 +1,979 @@
+{
+  "task_id": "V2-003",
+  "baseline_pin": {
+    "revision": "fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6",
+    "ref": "plan/validation/execution/V2-003/followup/scope-baseline.json",
+    "sha256": "43b3805cb202e140730e00c03d11d40493e0e8489a29c9904edb871d452a4846"
+  },
+  "dispositions": [
+    {
+      "path": "AGENTS.md",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "f2aeb2c3e23bcb0462441ba7ab5f855accaab2063c1d98a01f59480a5a01ddc3",
+      "new_sha": "cc48c2491ae1ce621c6223155bf2c8edb4e2afb4c7601cd2803b339cda5a438f",
+      "finding_id": "d451aa9d3fd873227f9ef6158071f9d2a3da017af7cef9de3dbfe1201c14c8f9",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Replaces the optional CLI-pin description with mandatory packet-bound checks for restricted actions, before and after dispatch; retains same-permission and remote CI limitations.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "f2aeb2c3e23bcb0462441ba7ab5f855accaab2063c1d98a01f59480a5a01ddc3",
+      "new_sha": "cc48c2491ae1ce621c6223155bf2c8edb4e2afb4c7601cd2803b339cda5a438f",
+      "finding_id": "a9c2fd537d530ba4c815df8774d7ef971a38f9fb17ae8d14ec53f3e54dffe0eb",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Replaces the optional CLI-pin description with mandatory packet-bound checks for restricted actions, before and after dispatch; retains same-permission and remote CI limitations.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058",
+      "new_sha": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "finding_id": "a95ed5af4ea13055ad118418b3c538aaf7324b4e5b6c98bed87386295bffcacd",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "AI-EXEC-02/03 capability descriptions match reproduced corrections. AI-EXEC-02 is temporarily reopened and restored only with local evidence. Existing obligations, owners, scenarios and minimum requirements are identical to opening; AI-EXEC-03 overall remains pending V2-004.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "b33b35a1acb61c0ebabe9664773e2c18a065cf8de6b326087ce3d57afe98b058",
+      "new_sha": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "finding_id": "7ccf01bc8c6c9d202fe1c49b24c56a7c024d485521e89cce645dc3e78174a4ad",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "AI-EXEC-02/03 capability descriptions match reproduced corrections. AI-EXEC-02 is temporarily reopened and restored only with local evidence. Existing obligations, owners, scenarios and minimum requirements are identical to opening; AI-EXEC-03 overall remains pending V2-004.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/schemas/execution-packet.schema.json",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06",
+      "new_sha": "4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404",
+      "finding_id": "b7375cddb607ab6efbbed30eace295472a573f38cf81752844cc12688ec68cf1",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only adds typed optional change_review with complete scope pair and dependent review pair. All prior schema constraints remain byte-for-byte semantically equal; optionality preserves historical packets, while restricted entry requires the binding unconditionally.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/schemas/execution-packet.schema.json",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "1e5b8ef5d16efc34bead0546ad17e6403eca5f54667a7f5e962421131bfeae06",
+      "new_sha": "4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404",
+      "finding_id": "1b5bc95f1ba5ee826dd6efc1c8143b59a35ce4f5fc389dd68eab817864130cb5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only adds typed optional change_review with complete scope pair and dependent review pair. All prior schema constraints remain byte-for-byte semantically equal; optionality preserves historical packets, while restricted entry requires the binding unconditionally.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/architecture_checks.py",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "8d58f25c207f7e09873a567c90cd2e7d392cb475ece2727dda52bfb3ec9d3960",
+      "new_sha": "91b151524ceaaf1636fe24aee6f494028dbb1ced12c81cea27e35a209a9c1cd5",
+      "finding_id": "b8fd0a813414319aefad190fc4157cc6bceaeeb435bc5c30459a24697a19759b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds name resolution for literal reflective namespace subscripts and vars aliases; unknown keys emit ARCH_DYNAMIC_UNKNOWN. Existing import, transitive and Canon rules are retained. Disallowed builtin loaders fail and legal literal standard-library imports pass.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/architecture_checks.py",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "8d58f25c207f7e09873a567c90cd2e7d392cb475ece2727dda52bfb3ec9d3960",
+      "new_sha": "91b151524ceaaf1636fe24aee6f494028dbb1ced12c81cea27e35a209a9c1cd5",
+      "finding_id": "63807b74c12c96351a6c9d32f23762a5fb899a9f5874d1e59963019f5470ed8c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds name resolution for literal reflective namespace subscripts and vars aliases; unknown keys emit ARCH_DYNAMIC_UNKNOWN. Existing import, transitive and Canon rules are retained. Disallowed builtin loaders fail and legal literal standard-library imports pass.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/change_review.py",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "4bd68a3d5345222ffd9377c727c88766e1ea9cf0c2e70e828fe1ff5438584b80",
+      "new_sha": "6fa2902d8e409f0b0ec7815142a26e59e573a6cce393b473c30cddb4f35a09bf",
+      "finding_id": "68e6c0a9bfc4ea26869f07af8abfb621e2991a199cc5c41102d55522324ea805",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Production findings now require a prior exact explicit_scope_change_authorization, never generic technical review. All exception grants must match a regular pre-change file identity at the pinned scope commit. Positive exact authorization, stale bytes and bundled-after-the-fact grants are tested without a real production grant.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/change_review.py",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "4bd68a3d5345222ffd9377c727c88766e1ea9cf0c2e70e828fe1ff5438584b80",
+      "new_sha": "6fa2902d8e409f0b0ec7815142a26e59e573a6cce393b473c30cddb4f35a09bf",
+      "finding_id": "2cbe10b5adb6c13bd9eb0ce0c25f4ce2b45428c3cba01e7bb418031b15feb626",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Production findings now require a prior exact explicit_scope_change_authorization, never generic technical review. All exception grants must match a regular pre-change file identity at the pinned scope commit. Positive exact authorization, stale bytes and bundled-after-the-fact grants are tested without a real production grant.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/task_entry.py",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "73d811b5a14f51cc85d4eeb36348da6ed0c4fb27a9d405757158610e05615245",
+      "new_sha": "652013d6265336dd05e2c2d4f1f87fe98260662b2cca8a97651cf7b09e6f5981",
+      "finding_id": "069c1c7ba41577a1107694e5df2305594146280e2779f429966038d5da515cb7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Restricted check/run/resume unconditionally load scope/review from the task packet. Missing binding or CLI overrides fail before dispatch. Existing packet/ADR/budget/action/resume/race checks remain. No-flag legal dispatch passes both diff checks and no-flag escaping child fails after dispatch.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/task_entry.py",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "73d811b5a14f51cc85d4eeb36348da6ed0c4fb27a9d405757158610e05615245",
+      "new_sha": "652013d6265336dd05e2c2d4f1f87fe98260662b2cca8a97651cf7b09e6f5981",
+      "finding_id": "bdef1e785b7210190ead67009299004a880d2ca526e37851abea14e734f4d4f7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Restricted check/run/resume unconditionally load scope/review from the task packet. Missing binding or CLI overrides fail before dispatch. Existing packet/ADR/budget/action/resume/race checks remain. No-flag legal dispatch passes both diff checks and no-flag escaping child fails after dispatch.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/weakening_checks.py",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "83690a30b64f36db0ef0d51a1d63d337f174f02cbf52ac5a21467c922875fa84",
+      "new_sha": "ab0004f273fa56c2fa19c4203166193145a915e57b3e1a17e4d0e27daab43412",
+      "finding_id": "bc273c02a2c60c17d77e9b59158af130518af1415dce6d52cdb2d080a2b95bd3",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds conservative review for new or changed conftest, collection hooks/plugins/ignores and known INI test-discovery settings. Parse errors fail; legal fixtures can pass exact technical review. No existing weakening rule, selection threshold or protected path was removed.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/weakening_checks.py",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "83690a30b64f36db0ef0d51a1d63d337f174f02cbf52ac5a21467c922875fa84",
+      "new_sha": "ab0004f273fa56c2fa19c4203166193145a915e57b3e1a17e4d0e27daab43412",
+      "finding_id": "a5b81bc8fab7e7681dd7446c0f7b0d51ed0420935b19f0c9cfc618cd6cda107b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds conservative review for new or changed conftest, collection hooks/plugins/ignores and known INI test-discovery settings. Parse errors fail; legal fixtures can pass exact technical review. No existing weakening rule, selection threshold or protected path was removed.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_change_review.py",
+      "layer": "index",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "3e400dacfcec845f976a4901862988ef99587d7780c4db629f56878d52ef4786",
+      "new_sha": "8ba6a733e1b54ad278c466a7eb108f8069f33b2a16fa919740fc1cb121081c89",
+      "finding_id": "1ab5be13ecd05e8dbb21d9a9394a25846fe97e1039925355e802a2cf0992acc7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds actual Git positive and negative cases for mandatory binding, exact prior production grants and conftest review. Existing two entry mocks now supply the newly required packet binding, preserving actual Git/diff execution. Existing test functions, decorators and every assertion are retained.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_change_review.py",
+      "layer": "worktree",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "3e400dacfcec845f976a4901862988ef99587d7780c4db629f56878d52ef4786",
+      "new_sha": "8ba6a733e1b54ad278c466a7eb108f8069f33b2a16fa919740fc1cb121081c89",
+      "finding_id": "d399fb8eacd08dc52564b00871c26021f511d67914fceec34737a7aecd027edf",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds actual Git positive and negative cases for mandatory binding, exact prior production grants and conftest review. Existing two entry mocks now supply the newly required packet binding, preserving actual Git/diff execution. Existing test functions, decorators and every assertion are retained.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_dependency_boundaries.py",
+      "layer": "index",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "80803970e90601cc64db3259014a0f22761b0450d196468518dca9de87cc84e0",
+      "new_sha": "f5f5441691cb94c9c19bf79fd2bfe906fd8953f5723ca19c556fc87a36333e45",
+      "finding_id": "9f74e499b676dfd26ba0cb51a628a81ae47f958e7eb0621e657304b15e5bf3c3",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends eight builtin/reflection cases, including a legal standard-library positive control. Existing test functions, decorators and assertions are retained; the initial fixture misuse and corrected complete rerun are preserved as separate raw records.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_dependency_boundaries.py",
+      "layer": "worktree",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "80803970e90601cc64db3259014a0f22761b0450d196468518dca9de87cc84e0",
+      "new_sha": "f5f5441691cb94c9c19bf79fd2bfe906fd8953f5723ca19c556fc87a36333e45",
+      "finding_id": "6d2c3b5f1ba0bd6affd5019c6bfd222c96814eb836a77b3edb8f13ff00d2544e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends eight builtin/reflection cases, including a legal standard-library positive control. Existing test functions, decorators and assertions are retained; the initial fixture misuse and corrected complete rerun are preserved as separate raw records.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_weakening_checks.py",
+      "layer": "index",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "9f3461daecfcb5f7bee1504e6ca9f9256f85f89f2f68c3b6fe69573337a3b9f9",
+      "new_sha": "46fec51de7972849c3ffeee7cc4935c84be11083374d6ac99a3b6aab549672ef",
+      "finding_id": "2a0da8d23fbe4a99f0281fb8b5cacb82b589b4ac18eab3808585c05f8cdc2e1a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends twelve collection/configuration coverage cases, with unchanged-config positive controls. Existing test functions, decorators and assertions remain.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_weakening_checks.py",
+      "layer": "worktree",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "9f3461daecfcb5f7bee1504e6ca9f9256f85f89f2f68c3b6fe69573337a3b9f9",
+      "new_sha": "46fec51de7972849c3ffeee7cc4935c84be11083374d6ac99a3b6aab549672ef",
+      "finding_id": "064b5224f194c76bea99eb301abec5d6727c07512cda81adce393628edb7e713",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends twelve collection/configuration coverage cases, with unchanged-config positive controls. Existing test functions, decorators and assertions remain.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "index",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "5844ea31c382bf012f1ead8b9636c86491facadeaa668505ffa27b3baa17e8d2",
+      "new_sha": "3d8b9d3e7099bd959b8b55873aef4522f6c1066fa4bd0dda982fbe6ac6bc0815",
+      "finding_id": "0905d2d583830d89c8071f0a7603ee4db7481f18eb6b4ec967a2df64e5649f53",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Legacy isolated seed now freezes real scope commits and binds packets instead of bypassing the actual diff check. Existing assertions/decorators remain, legal execution adds before/after PASS assertions, and two no-CLI cases prove missing-binding interception and escaping-child failure. Broad paths and empty protected_paths exist only in synthetic fixtures; production scope remains frozen and unchanged.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "worktree",
+      "code": "TEST_LOGIC_CHANGED",
+      "old_sha": "5844ea31c382bf012f1ead8b9636c86491facadeaa668505ffa27b3baa17e8d2",
+      "new_sha": "3d8b9d3e7099bd959b8b55873aef4522f6c1066fa4bd0dda982fbe6ac6bc0815",
+      "finding_id": "99264cc4fad7c499b387e6e9d09b836e7a64e1f558926bd3b8c812bc7d57434f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Legacy isolated seed now freezes real scope commits and binds packets instead of bypassing the actual diff check. Existing assertions/decorators remain, legal execution adds before/after PASS assertions, and two no-CLI cases prove missing-binding interception and escaping-child failure. Broad paths and empty protected_paths exist only in synthetic fixtures; production scope remains frozen and unchanged.",
+      "impact": "Confirms only these exact strengthening changes against the fixed opening baseline; no test/acceptance deletion or production scope expansion.",
+      "reviewer": "Codex primary implementer and verifier; same operator, no independent review",
+      "replacement_validation": "Actual positive/negative regression, governance and opening preservation artifacts listed below. Retained assertions alone are not a semantic proof; the substantive file-specific review above applies.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-003/followup/assessment/authorization.md",
+        "sha256": "c7f026a844495634be5a80f0b05f32335e08fe6fbaf23bbae7c4eda025919923"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/009_postcommit_tests.json",
+          "sha256": "f76afcca2a7b7ecf17da07a4b8d27fdd90cd6800d6da74a35bf5ebbbd2015420"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/010_postcommit_governance.json",
+          "sha256": "f60355d6b5dfae335e52b53490dc104643e2511aae35570ceeeac1f759e0d7b4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/011_postcommit_bootstrap.json",
+          "sha256": "c6c0c8476cd9afdd463adbda0d5a2cc3a9cb2f0493d12ceb19b9cd6aec0adc43"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/012_postcommit_preservation.json",
+          "sha256": "8cbe825643493f7113f1cf3fb4ca5d60bf504dc84bcb0911a9ca7dda4e079c8e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/013_postcommit_entry.json",
+          "sha256": "c3c58b542693e10a74c8b3aaab247c7e0aedda9b46f12df274e9c2fcc3d9f3f2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-003/followup/raw/014_final_governance.json",
+          "sha256": "b8630a2948ebdb1a1107c0a509116941c93fd6ad8aa9f45fcaee268ee35de566"
+        }
+      ]
+    }
+  ],
+  "limitation": "Local same-operator technical review only; no exception grants or remote authority"
+}
