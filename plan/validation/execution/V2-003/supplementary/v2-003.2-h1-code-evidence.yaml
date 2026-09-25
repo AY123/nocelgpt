@@ -1,0 +1,18 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-003
+revision: 406977f89c839bbc9c09b76955724456c5a81f3c
+status: PASS
+producer: Claude Opus 5.5; V2-003.2-H1 content identity hardening; local only, no independent review or remote CI
+executed_at: '2026-09-25T05:33:00+08:00'
+environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; local locked environment
+evidence_id: V2-003.2-h1-code-406977f8
+evidence_type: CODE
+artifacts:
+- ref: docs/V2-003.2-H1_HOTFIX_REPORT.md
+  sha256: ec87cad2dbc06c8cc1fccbf836d9a004c9cb45779cd17400a8e9823e705c785f
+input_evidence_refs:
+- validation/execution/V2-003/supplementary/v2-003.2-code-evidence.yaml
+check_ids:
+- architecture-baseline
+- weakening-checks

@@ -223,22 +223,19 @@ tasks:
     - ref: validation/execution/V2-003/followup/code-evidence.yaml
       revision: 284f5f793dc8470df72ecbbd727b3b991085c2ad
       status: PASS
-    - ref: docs/V2-003.2_IMPLEMENTATION_REPORT.md
+    - ref: validation/execution/V2-003/supplementary/v2-003.2-code-evidence.yaml
       revision: af63cb74bde0a3ac9e1e5f5eaacb855f271af049
-      status: SUPPLEMENTARY
-      note: V2-003.2 base implementation (Review Triage + F-001 + F-002)
-    - ref: docs/V2-003.2-H1_HOTFIX_REPORT.md
+      status: PASS
+    - ref: validation/execution/V2-003/supplementary/v2-003.2-h1-code-evidence.yaml
       revision: 406977f89c839bbc9c09b76955724456c5a81f3c
-      status: SUPPLEMENTARY
-      note: V2-003.2-H1 content identity hardening
+      status: PASS
     tests:
     - ref: validation/execution/V2-003/followup/test-result.yaml
       revision: 284f5f793dc8470df72ecbbd727b3b991085c2ad
       status: PASS
-    - ref: docs/V2-003.2-H2_VERIFICATION_CLOSURE.md
+    - ref: validation/execution/V2-003/supplementary/v2-003.2-h2-test-result.yaml
       revision: efab339bdacb19ef576f7671738a702e865f6684
-      status: SUPPLEMENTARY
-      note: V2-003.2-H2 unit/logic validation (293/293 local tests PASS)
+      status: PASS
     ci: []
     acceptance: []
   related_findings:

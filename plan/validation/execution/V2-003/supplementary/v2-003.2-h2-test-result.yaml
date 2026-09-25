@@ -1,0 +1,21 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-003
+revision: efab339bdacb19ef576f7671738a702e865f6684
+status: PASS
+producer: Claude Opus 5.5; V2-003.2-H2 unit/logic validation; local test execution only, no independent review or remote CI
+executed_at: '2026-09-25T06:00:00+08:00'
+environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; pytest 9.1.1; local locked environment
+evidence_id: V2-003.2-h2-test-efab339b
+evidence_type: TEST_RESULT
+artifacts:
+- ref: docs/V2-003.2-H2_VERIFICATION_CLOSURE.md
+  sha256: 7082efa19483d9eadd6bc7594cde003f94959aa38f594bda5a29de8b5e82db1a
+input_evidence_refs:
+- validation/execution/V2-003/followup/test-result.yaml
+- validation/execution/V2-003/supplementary/v2-003.2-h1-code-evidence.yaml
+check_ids:
+- test-architecture
+- test-contract
+command: .venv/bin/python -m pytest tests/architecture/ tests/contract/ -q --tb=no
+exit_code: 0
