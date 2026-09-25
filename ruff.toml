@@ -13,6 +13,10 @@ select = [
 
 ignore = [
     "E501",  # line too long (handled by formatter)
+    "E731",  # lambda assignment (functional code style)
+    "B023",  # loop variable binding (acceptable in generators)
+    "E402",  # module import position (some legacy scripts)
+    "B905",  # zip strict parameter (Python 3.10+)
 ]
 
 [format]

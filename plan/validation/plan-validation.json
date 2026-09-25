@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-25T14:12:04.839341+00:00",
+  "generated_at_utc": "2026-09-25T14:27:34.007762+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "PASS",
+  "status": "FAIL",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "77abb40c3b21aa5c618b18782eff710334525dcf",
+  "validated_repository_revision": "e1ecd92c6b968a7833459b21f806fafb64928efa",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -50,5 +50,7 @@
       "REJECTED": 1
     }
   },
-  "errors": []
+  "errors": [
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+  ]
 }
