@@ -1,0 +1,84 @@
+record_type: external_review_triage_report
+schema_version: '1.0'
+report_date: 'YYYY-MM-DD'
+
+# Reference to the audit report being triaged
+audit_report_ref:
+  path: 'path/to/audit-report.txt'
+  baseline: 'commit-sha-or-version'
+  sha256: 'optional-file-hash'
+
+# Current repository state at triage time
+repository_baseline:
+  branch: 'main'
+  head: 'abc123...'
+  worktree_clean: true
+  plan_version: '1.3.0'
+  current_task: 'V2-XXX'
+  task_status: 'IMPLEMENTED'
+
+# True findings (defects, risks, gaps)
+findings:
+  - id: F-001
+    claim: 'Brief description of the claimed issue'
+
+    # Baseline status
+    baseline_status: STILL_PRESENT  # or ALREADY_FIXED, CHANGED, CANNOT_VERIFY
+
+    # Five-dimensional triage
+    verification: CONFIRMED
+    evidence_level: E2
+    severity: P0
+    recommendation_validity: PARTIAL
+    decision: ADOPT_WITH_MODIFICATION
+    owner: V2-XXX
+
+    # Root cause analysis
+    root_cause: 'Explanation of underlying cause'
+
+    # For P0/BLOCKER: required fields
+    target_invariant: 'System SHALL NOT ...'
+
+    adversarial_validation:
+      required: true
+      cases:
+        - id: AC-001
+          description: 'Legal alternative path attempt'
+          attack_path: 'Step-by-step attack scenario'
+          result: BLOCKED  # or SUCCESSFUL_BYPASS, NOT_APPLICABLE
+
+    # For adopted findings
+    candidate_remediation:
+      status: APPROVED
+      description: 'How the issue will be fixed'
+      files_modified:
+        - path/to/file.py
+
+    # Evidence references
+    evidence_refs:
+      - type: static_analysis
+        ref: 'plan/scripts/checker.py:123'
+      - type: test_execution
+        ref: 'test_output.log'
+        sha256: 'abc123...'
+
+    # Rationale
+    reason: 'Why this decision was made'
+
+# Observations (not defects)
+observations:
+  - id: O-001
+    type: expected_future_work
+    description: 'CI not yet implemented'
+    priority: N/A
+    owner: V2-004
+
+# Summary statistics
+summary:
+  total_findings: 1
+  confirmed: 1
+  adopted: 1
+  deferred: 0
+  rejected: 0
+  p0_count: 1
+  blocker_count: 0

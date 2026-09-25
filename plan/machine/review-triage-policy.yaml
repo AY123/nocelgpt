@@ -1,0 +1,112 @@
+version: '1.0'
+status: ACTIVE
+change_policy: Changes to this policy require formal review and must not weaken enforcement rules.
+
+verification_values:
+  - CONFIRMED
+  - PARTIALLY_CONFIRMED
+  - ALREADY_FIXED
+  - FALSE_POSITIVE
+  - THEORETICAL_ONLY
+  - NEEDS_MORE_EVIDENCE
+  - CANNOT_VERIFY
+
+severity_values:
+  - BLOCKER
+  - P0
+  - P1
+  - P2
+  - P3
+  - N/A
+
+recommendation_validity_values:
+  - VALID
+  - PARTIAL
+  - OVERENGINEERED
+  - WRONG_SOLUTION
+  - NOT_NEEDED
+
+decision_values:
+  - ADOPT_NOW
+  - ADOPT_WITH_MODIFICATION
+  - DEFER
+  - TRACK_ONLY
+  - REJECT
+
+evidence_levels:
+  E0:
+    name: report_only
+    description: Only audit report claims; no independent verification
+  E1:
+    name: path_exists
+    description: Relevant code/config exists but issue not reproduced
+  E2:
+    name: deterministic_proof
+    description: Static analysis, reproduction, fixture, or deterministic proof
+  E3:
+    name: execution_evidence
+    description: Actual test execution, runtime log, or trusted CI output
+  E4:
+    name: real_world
+    description: Production data, user reports, or market evidence
+
+constraints:
+  logical_consistency:
+    false_positive_cannot_adopt: true
+    already_fixed_cannot_adopt: true
+    cannot_verify_cannot_adopt: true
+    needs_more_evidence_cannot_adopt: true
+
+  p0_blocker_requirements:
+    p0_requires_target_invariant: true
+    blocker_requires_target_invariant: true
+    p0_requires_adversarial_validation: true
+    blocker_requires_adversarial_validation: true
+
+  evidence_discipline:
+    e3_requires_execution_proof: true
+    e4_requires_real_world_proof: true
+
+  classification:
+    observations_not_counted_as_findings: true
+    observations_excluded_from_metrics: true
+
+  authorization:
+    implementation_requires_explicit_authorization: true
+    triage_only_by_default: true
+
+  anti_weakening:
+    no_test_deletion: true
+    no_skip_xfail_addition: true
+    no_threshold_lowering: true
+    no_exclude_expansion: true
+    no_ac_weakening: true
+    no_gate_removal: true
+
+prohibited_combinations:
+  - verification: FALSE_POSITIVE
+    decision: ADOPT_NOW
+    reason: Cannot adopt a non-existent problem
+
+  - verification: ALREADY_FIXED
+    decision: ADOPT_NOW
+    reason: Cannot adopt what is already fixed
+
+  - verification: CANNOT_VERIFY
+    decision: ADOPT_NOW
+    reason: Cannot adopt without verification
+
+  - verification: NEEDS_MORE_EVIDENCE
+    decision: ADOPT_NOW
+    reason: Cannot adopt without sufficient evidence
+
+scope_gate:
+  current_task_scope_binding: true
+  cross_task_requires_decision: true
+  cross_phase_requires_decision: true
+  architecture_change_requires_adr: true
+
+validation:
+  validator_script: plan/scripts/review_triage_checks.py
+  schema_ref: plan/schemas/review-triage-report.schema.json
+  contract_tests: tests/contract/test_review_triage_policy.py
