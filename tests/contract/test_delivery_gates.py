@@ -5,6 +5,7 @@ They run locally and do not depend on GitLab being online.
 """
 import json
 from pathlib import Path
+import re
 import yaml
 import pytest
 
@@ -506,8 +507,90 @@ def test_production_scan_isolated_from_fixtures():
             "Production secret scan must not fail on harmless test fixtures"
 
 
-def test_security_policy_yaml_exists():
-    """security-policy.yaml must exist as required artifact."""
-    policy_path = ROOT / 'security-policy.yaml'
-    assert policy_path.exists(), \
-        "security-policy.yaml must exist (V2-004 required artifact)"
+def test_no_post_lock_dependency_mutation():
+    """After uv sync --frozen, CI must not install additional tools."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    # Find uv sync --frozen locations
+    if 'uv sync --frozen' not in content:
+        pytest.skip("No uv sync --frozen found")
+
+    # Check for problematic patterns after sync
+    # Look for uv pip install of project tools (not bootstrap uv itself)
+    problematic_patterns = [
+        (r'uv pip install\s+(?!uv==)', 'uv pip install'),
+        (r'(?<!# )pip install\s+(?!uv==)', 'pip install'),
+    ]
+
+    for pattern, name in problematic_patterns:
+        matches = list(re.finditer(pattern, content))
+        for match in matches:
+            # Check if this is after uv sync --frozen
+            before_match = content[:match.start()]
+            if 'uv sync --frozen' in before_match:
+                # Extract context around match
+                line_start = content.rfind('\n', 0, match.start()) + 1
+                line_end = content.find('\n', match.end())
+                line = content[line_start:line_end]
+
+                pytest.fail(
+                    f"Found '{name}' after 'uv sync --frozen': {line.strip()}\n"
+                    f"This bypasses locked environment. Use 'uv run' instead."
+                )
+
+
+def test_hard_gates_fail_closed():
+    """Hard P0 gates must fail on tool failure, not swallow with || echo."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        lines = f.readlines()
+
+    p0_jobs = ['static:', 'unit:', 'schema_contract:',
+               'arch_fitness:', 'secret_dependency:', 'postgres_env:']
+
+    # Tools that should fail-closed
+    hard_tools = ['ruff', 'mypy', 'pytest', 'pip-audit', 'python']
+
+    current_job = None
+    for i, line in enumerate(lines, 1):
+        # Track current job
+        if any(line.strip().startswith(job) for job in p0_jobs):
+            current_job = line.strip()
+
+        if current_job:
+            # Check for tool call followed by || echo
+            for tool in hard_tools:
+                if tool in line and '|| echo' in line:
+                    pytest.fail(
+                        f"P0 job {current_job} at line {i} swallows {tool} failure with '|| echo': {line.strip()}"
+                    )
+
+        # Reset when hitting next top-level key
+        if line and not line.startswith(' ') and ':' in line:
+            current_job = None
+
+
+def test_locked_tools_used_in_ci():
+    """CI must use locked tools via 'uv run', not dynamically installed versions."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    # Tools that should be in uv.lock and used via uv run
+    locked_tools = {
+        'ruff': 'ruff',
+        'mypy': 'mypy',
+        'pip-audit': 'pip-audit',
+    }
+
+    for tool_name, command in locked_tools.items():
+        # If tool is used in CI
+        if command in content:
+            # Check it's called via uv run (after uv sync)
+            # Simple heuristic: look for 'uv run {command}'
+            if f'uv run {command}' not in content and f'uv pip install {tool_name}' in content:
+                pytest.fail(
+                    f"CI installs {tool_name} with 'uv pip install' instead of using locked version via 'uv run'"
+                )

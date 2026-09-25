@@ -45,14 +45,13 @@ static:
   allow_failure: false
   script:
     - echo "=== STATIC Gate ==="
-    - echo "Installing ruff and mypy..."
-    - uv pip install ruff mypy
+    - echo "Using locked tools from uv.lock..."
     - echo "Format check..."
-    - ruff format --check plan/ src/ scripts/ tests/ || exit 1
+    - uv run ruff format --check plan/ src/ scripts/ tests/
     - echo "Lint check..."
-    - ruff check plan/ src/ scripts/ tests/ || exit 1
+    - uv run ruff check plan/ src/ scripts/ tests/
     - echo "Type check..."
-    - mypy plan/ src/ scripts/ tests/ --ignore-missing-imports --no-strict-optional || echo "Type checking optional for P0"
+    - uv run mypy plan/ src/ scripts/ tests/ --ignore-missing-imports --no-strict-optional
     - echo "STATIC gate PASS"
   artifacts:
     when: always
@@ -133,9 +132,8 @@ secret_dependency:
     - echo "Dependency integrity check..."
     - uv pip check
     - echo "Dependency vulnerability scan..."
-    - uv pip install pip-audit
-    - pip-audit --requirement <(uv pip freeze) --desc || echo "WARN: Vulnerabilities found but continuing for P0"
-    - echo "SECRET_DEPENDENCY gate completed"
+    - uv run pip-audit --strict
+    - echo "SECRET_DEPENDENCY gate PASS"
   artifacts:
     when: always
     paths:
