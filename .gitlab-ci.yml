@@ -156,7 +156,7 @@ postgres_env:
     - echo "Waiting for PostgreSQL to be ready..."
     - sleep 5
     - python scripts/check_postgres.py
-    - pytest tests/integration/test_postgres_environment.py::test_postgres_start_connect_and_cleanup -v --tb=short
+    - pytest tests/integration/test_postgres_ci_service.py -v --tb=short
   artifacts:
     when: always
     paths:
