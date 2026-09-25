@@ -4,7 +4,7 @@ task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 73e029b353034727540047a8c08bf120cd2e80f1
 worktree_dirty: false
-plan_manifest_sha256: f25b588c3dae152a375dda3bf0b78451f0fd28d3fc33d05e89e7f8775826b2a1
+plan_manifest_sha256: f3ddbd48de0de987727d21bf7350cb3ea5f4e9d00d0ffe321b45b890729a8c72
 
 environment:
   fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; uv 0.12.17; pytest 9.1.1

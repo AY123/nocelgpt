@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-25T14:27:34.007762+00:00",
+  "generated_at_utc": "2026-09-25T14:34:02.768127+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "FAIL",
+  "status": "PASS",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "e1ecd92c6b968a7833459b21f806fafb64928efa",
+  "validated_repository_revision": "fcec71205b24c64ad5b06c1ef6a7fa0b5b241784",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "f25b588c3dae152a375dda3bf0b78451f0fd28d3fc33d05e89e7f8775826b2a1",
+  "manifest_sha256": "f3ddbd48de0de987727d21bf7350cb3ea5f4e9d00d0ffe321b45b890729a8c72",
   "counts": {
     "tasks": 60,
     "phase_distribution": {
@@ -50,7 +50,5 @@
       "REJECTED": 1
     }
   },
-  "errors": [
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
-  ]
+  "errors": []
 }
