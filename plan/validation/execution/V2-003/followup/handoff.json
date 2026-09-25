@@ -1,0 +1,77 @@
+{
+  "record_type": "local_task_handoff",
+  "task_id": "V2-003",
+  "recorded_at": "2026-09-25T00:34:14.936671+00:00",
+  "branch": "main",
+  "opening_revision": "a11693ee5ac08fd3aa102e03de0125bd8b800dd9",
+  "source_revision": "284f5f793dc8470df72ecbbd727b3b991085c2ad",
+  "metadata_review_revision": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+  "checked_checkout_revision": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+  "status": "IMPLEMENTED",
+  "plan_version": "1.3.0",
+  "plan_manifest_sha256": "6e7bdbe280102b008fb0012b95f0d1277c4ee8f095bc41912886bbd1c365d1d0",
+  "scope_revision": "fb87e60b6c2f9f7d62ad1ed039f0082403cd21c6",
+  "scope_ref": "plan/validation/execution/V2-003/followup/scope-baseline.json",
+  "review_revision": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+  "review_ref": "plan/validation/execution/V2-003/followup/review/final-dispositions.json",
+  "execution_packet_ref": "validation/execution/V2-003/followup/execution-packet.yaml",
+  "implementer": "Codex primary operator",
+  "verifier": "Same operator; no independent review",
+  "confirmed_and_corrected": [
+    "No-flag restricted entry bypass: packet binding is mandatory and CLI cannot override it",
+    "Generic technical review could approve production scope: exact prior scope grant is now required",
+    "New conftest/collection/plugin/INI controls now enter review",
+    "Common builtin-loader subscript and vars forms now follow import rules; unknown keys fail"
+  ],
+  "actual_validation": {
+    "architecture_and_contract": {
+      "passed": 265,
+      "skipped": 0,
+      "raw_ref": "validation/execution/V2-003/followup/raw/009_postcommit_tests.json"
+    },
+    "bootstrap_passed": 5,
+    "governance_case_counts": [
+      32,
+      39,
+      36,
+      13
+    ],
+    "preservation_checks": 24,
+    "no_cli_scope_entry": "PASS before and after real architecture child at source revision",
+    "metadata_entry": "PASS at metadata_review_revision",
+    "production_files": 1,
+    "bootstrap_only": true
+  },
+  "evidence": {
+    "code": {
+      "ref": "validation/execution/V2-003/followup/code-evidence.yaml",
+      "sha256": "e1ffee4c57d9fbee933f6ecc1fb4ae844469b7d43eea3223a1cab7f14887519b"
+    },
+    "tests": {
+      "ref": "validation/execution/V2-003/followup/test-result.yaml",
+      "sha256": "f0b9eb44506e7c42e1edc83d6772d5b34989448308a1d01be81be213735713d7"
+    },
+    "current_check": {
+      "ref": "validation/execution/V2-003/followup/final/entry-metadata.json.gz",
+      "sha256": "00ef4d527075c44968e948e9ad54ba4ae3526fbedb26fc36b4ce8639525aa6ea"
+    }
+  },
+  "pending": [
+    "Trusted CI evidence",
+    "Final acceptance",
+    "P0 verification; no V2-004/P1+ work started"
+  ],
+  "preserved_user_files": {
+    "审核报告.txt": "215754d0f0024fcc7fdff9b44959671fd4afd0de2a1b34ff65c213ac16b044f1",
+    "V2-003_深度审核报告.md": "8d8f76fb0dc01049195ede16687e3df520a8c8c84bf478dc72867424f729e47e",
+    ".claude/settings.local.json": "7ee7703ac2fc9ee9ed1e5498514f53f9e766da6d48f56fc4702c50f9eabbd039"
+  },
+  "failures_retained": "validation/execution/V2-003/followup/assessment/execution-attempts.md",
+  "resume": [
+    "Read AGENTS.md, current plan/protocol, active packet and this handoff; inspect actual branch/HEAD/index/worktree and user-file hashes",
+    "Verify pinned scope/review contents and current manifest/input hashes; keep source evidence at source_revision",
+    "For newly authorized work run task_execution check into a new dist output; commits or archived records change checkpoints, so do not inherit a prior resume PASS blindly",
+    "Hold at IMPLEMENTED without real CI and acceptance; do not start later tasks automatically"
+  ],
+  "seal_note": "The commit containing this handoff seals metadata only; its hash is resolved from Git after creation and is not substituted for tested source_revision. Source/checker/test code unchanged after source revision. Local pins do not authenticate remote permissions."
+}

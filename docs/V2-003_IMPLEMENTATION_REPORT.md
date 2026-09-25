@@ -22,6 +22,8 @@
 
 新证据、源码快照及完整原始报告位于 `followup/code-evidence.yaml`、`followup/test-result.yaml` 和 `followup/postcommit/`；初轮夹具错误、辅助检查误报和未处置差异的失败记录单独保留于 `followup/assessment/execution-attempts.md`。本轮没有删除测试、降低阈值或扩大生产白名单。元数据/交接提交不冒充新的代码验证或 CI。
 
+2026-09-25 续作重新核对 HEAD、源码与24项保留条件均通过。最终 metadata/review 提交为 `416dfd5275d8767ebfa2dc88ae060107a29be48e`；raw/014 最终治理聚合和 raw/017 当前执行包入口均 PASS，完整报告见 `followup/final/entry-metadata.json.gz`。后续封存只保存交接，不改绑已验证代码版本。
+
 同一操作者实施和复核，不能称为独立审核。当前结果与恢复入口以 `followup/execution-packet.yaml`、`followup/handoff.json` 为准；下面原交付内容仅描述对应历史提交。
 
 ## 原交付记录（历史，adc537d8 至 d1d25494）
