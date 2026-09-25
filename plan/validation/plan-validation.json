@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-21T15:27:26.434421+00:00",
+  "generated_at_utc": "2026-09-25T07:36:33.442943+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "PASS",
+  "status": "FAIL",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "6733a4947d5babb309a239778d303e1ef1547655",
+  "validated_repository_revision": "40c96fe90760aad86e379a64e5cbc924a82b1255",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "362175c12e1a7b4eeed493fac6d807fdef3f5fae20fda00f9f8bc55afbd6e91d",
+  "manifest_sha256": "6e7bdbe280102b008fb0012b95f0d1277c4ee8f095bc41912886bbd1c365d1d0",
   "counts": {
     "tasks": 60,
     "phase_distribution": {
@@ -34,10 +34,12 @@
       "P12": 3
     },
     "statuses": {
-      "OPEN": 60
+      "IMPLEMENTED": 3,
+      "IN_PROGRESS": 1,
+      "OPEN": 56
     },
     "suites": 60,
-    "scenarios": 236,
+    "scenarios": 246,
     "decisions": 16,
     "findings": 76,
     "source_snapshots": 247,
@@ -48,5 +50,19 @@
       "REJECTED": 1
     }
   },
-  "errors": []
+  "errors": [
+    "GENERATED_VIEW: stale or missing generated/PHASE_TASK_REGISTRY.md",
+    "EVIDENCE_ARTIFACT validation/execution/V2-003/supplementary/v2-003.2-code-evidence.yaml: missing/changed docs/V2-003.2_IMPLEMENTATION_REPORT.md",
+    "EVIDENCE_ARTIFACT validation/execution/V2-003/supplementary/v2-003.2-h1-code-evidence.yaml: missing/changed docs/V2-003.2-H1_HOTFIX_REPORT.md",
+    "EVIDENCE_ARTIFACT validation/execution/V2-003/supplementary/v2-003.2-h2-test-result.yaml: missing/changed docs/V2-003.2-H2_VERIFICATION_CLOSURE.md",
+    "EXEC_INPUT V2-001: live source changed/missing: machine/implementation-backlog.yaml",
+    "EXEC_INPUT V2-001: live source changed/missing: machine/test-catalog.yaml",
+    "EXEC_INPUT V2-002: live source changed/missing: machine/implementation-backlog.yaml",
+    "EXEC_INPUT V2-002: live source changed/missing: machine/test-catalog.yaml",
+    "EXEC_INPUT V2-002: live source changed/missing: machine/ci-gates.yaml",
+    "EXEC_INPUT V2-003: live source changed/missing: machine/implementation-backlog.yaml",
+    "EXEC_INPUT V2-003: live source changed/missing: machine/test-catalog.yaml",
+    "EXEC_INPUT V2-003: live source changed/missing: machine/ci-gates.yaml",
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+  ]
 }

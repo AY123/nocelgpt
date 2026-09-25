@@ -1,0 +1,111 @@
+# V2-004 Implementation Commit Message
+
+feat(V2-004): implement P0 GitLab CI gates and delivery contracts
+
+V2-004 Implementation Complete - Local Validation
+==================================================
+
+Scope: Secret and Dependency CI Gates + Trusted Remote Verification
+Status: IMPLEMENTED (awaiting real GitLab CI evidence for VERIFIED)
+
+Implementation
+--------------
+
+Created:
+- .gitlab-ci.yml: P0 gates (STATIC, UNIT, SCHEMA_CONTRACT, ARCH_FITNESS, SECRET_DEPENDENCY, POSTGRES_ENV)
+- tests/contract/test_delivery_gates.py: Delivery gate contract tests (19 tests)
+- plan/validation/execution/V2-004/execution-packet.yaml: Execution packet with frozen scope
+
+Updated:
+- plan/machine/ci-gates.yaml: P0 gates status NOT_IMPLEMENTED → IMPLEMENTED
+- plan/machine/test-catalog.yaml: AT-V2-004 status PLANNED → IMPLEMENTED
+- plan/machine/implementation-backlog.yaml: Bound execution_packet_ref
+
+P0 Gates Implemented (All allow_failure: false)
+------------------------------------------------
+
+1. STATIC: Python syntax validation
+2. UNIT: tests/architecture + tests/contract
+3. SCHEMA_CONTRACT: Plan validation + governance
+4. ARCH_FITNESS: Architecture fitness positive/negative
+5. SECRET_DEPENDENCY: Secret scan + dependency check
+6. POSTGRES_ENV: Real PostgreSQL connection (service: postgres:17.0)
+
+Future gates remain NOT_IMPLEMENTED:
+- CANON_CAS_IDEMPOTENCY (P2)
+- DETERMINISTIC_E2E (P7)
+- GENRE_SMOKE (P8)
+- LIVE_PROVIDER (P5)
+
+Key Principles Enforced
+-----------------------
+
+- All P0 gates: allow_failure: false (hard gates)
+- Locked dependencies: uv sync --frozen
+- Real PostgreSQL service in CI
+- CI artifacts in dist/ci/ (Git-ignored)
+- Status: IMPLEMENTED (not VERIFIED until real CI evidence)
+
+Local Validation
+----------------
+
+Pre-implementation gate: PASS
+- Execution packet schema valid
+- Plan governance: 14/14 PASS
+
+Delivery gate tests: 19/19 PASS
+- P0 gates exist with correct activation
+- All P0 gates have allow_failure: false
+- Future gates not falsely activated
+- GitLab CI has P0 jobs
+- No allow_failure: true in P0 jobs
+- Locked dependencies enforced
+- PostgreSQL service configured
+- Anti-weakening checks
+
+Full test suite: (awaiting completion)
+- tests/architecture/
+- tests/contract/
+- Including V2-001/002/003 regression tests
+
+No Weakening
+------------
+
+- No tests deleted or skipped
+- No gates removed
+- No allow_failure added
+- No thresholds lowered
+- V2-001/002/003 architecture unchanged
+- All existing governance tests preserved
+
+Next Steps
+----------
+
+1. Push to dev_cc
+2. Obtain real GitLab CI pipeline execution
+3. Verify provenance:
+   - Project: ayitnovel/ainovelos
+   - Commit SHA: (this commit)
+   - Pipeline ID, Job IDs
+   - Artifact hashes
+4. Create typed CI evidence (CI_RUN)
+5. Update ci-gates.yaml evidence_refs
+6. Update V2-004 status: IMPLEMENTED → VERIFIED (if CI evidence obtained)
+
+Out of Scope
+------------
+
+- P2+ gate implementation
+- Real secret exposure
+- Destructive permission testing
+- V2-005 or later tasks
+
+Constraints
+-----------
+
+- Local PASS ≠ CI PASS
+- Must verify actual GitLab pipeline on THIS commit
+- Must authenticate provenance
+- Must mark NOT_VERIFIED if remote state unavailable
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>

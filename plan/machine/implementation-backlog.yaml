@@ -273,13 +273,12 @@ tasks:
   - AT-V2-004
   artifacts:
   - .gitlab-ci.yml
-  - security-policy.yaml
   - tests/contract/test_delivery_gates.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: OPEN
+  status: IN_PROGRESS
   execution_packet_ref: validation/execution/V2-004/execution-packet.yaml
   owner_role: delivery-maintainer
   readiness: READY_TO_START

@@ -1,0 +1,9 @@
+ .gitlab-ci.yml                                     | 167 +++++++++
+ docs/V2-004_BASELINE_PREPARE.md                    | 327 ++++++++++++++++++
+ docs/V2-004_PREPARE_COMPLETE.md                    | 331 ++++++++++++++++++
+ plan/machine/ci-gates.yaml                         |  14 +-
+ plan/machine/implementation-backlog.yaml           |   2 +-
+ plan/machine/test-catalog.yaml                     |   2 +-
+ .../execution/V2-004/execution-packet.yaml         | 164 +++++++++
+ tests/contract/test_delivery_gates.py              | 372 +++++++++++++++++++++
+ 8 files changed, 1370 insertions(+), 9 deletions(-)
