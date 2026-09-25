@@ -9,7 +9,7 @@ variables:
   POSTGRES_DB: bootstrap_test
   POSTGRES_USER: postgres
   POSTGRES_PASSWORD: ci_test_password_not_real
-  ANOVELOS_TEST_DSN: postgresql://postgres:ci_test_password_not_real@postgres:5432/bootstrap_test
+  ANOVELOS_TEST_DSN: postgresql+psycopg://postgres:ci_test_password_not_real@postgres:5432/bootstrap_test
 
 stages:
   - validate
