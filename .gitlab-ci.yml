@@ -51,7 +51,7 @@ static:
     - echo "Lint check..."
     - uv run --directory . ruff check plan/scripts/ src/
     - echo "Type check..."
-    - uv run --directory . mypy plan/scripts/ src/ --ignore-missing-imports --no-strict-optional || echo "WARN: Type checking found issues but continuing for P0"
+    - 'uv run --directory . mypy plan/scripts/ src/ --ignore-missing-imports --no-strict-optional || echo "WARN: Type checking found issues but continuing for P0"'
     - echo "STATIC gate PASS"
   artifacts:
     when: always
