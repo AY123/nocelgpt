@@ -4,7 +4,7 @@ task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 73e029b353034727540047a8c08bf120cd2e80f1
 worktree_dirty: false
-plan_manifest_sha256: 6e7bdbe280102b008fb0012b95f0d1277c4ee8f095bc41912886bbd1c365d1d0
+plan_manifest_sha256: f25b588c3dae152a375dda3bf0b78451f0fd28d3fc33d05e89e7f8775826b2a1
 
 environment:
   fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; uv 0.12.17; pytest 9.1.1
@@ -35,8 +35,8 @@ change_review:
 
 inputs:
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-004/inputs/9263c00841f8747dbb3e9bdfc4b9afa2480f4e3b88328e020c16700764b39a93.txt
-  sha256: 9263c00841f8747dbb3e9bdfc4b9afa2480f4e3b88328e020c16700764b39a93
+  ref: validation/execution/V2-004/inputs/0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a.txt
+  sha256: 0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a
 - source_ref: machine/ci-gates.yaml
   ref: validation/execution/V2-004/inputs/01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a.txt
   sha256: 01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a
@@ -70,6 +70,7 @@ inputs:
 
 expected_outputs:
 - .gitlab-ci.yml
+- security-policy.yaml
 - tests/contract/test_delivery_gates.py
 - plan/validation/execution/V2-004/code-evidence.yaml
 - plan/validation/execution/V2-004/test-result.yaml
@@ -77,6 +78,7 @@ expected_outputs:
 
 allowed_paths:
 - .gitlab-ci.yml
+- security-policy.yaml
 - tests/contract/test_delivery_gates.py
 - plan/machine/ci-gates.yaml
 - plan/machine/test-catalog.yaml
@@ -86,6 +88,8 @@ allowed_paths:
 - docs/V2-004_PREPARE_COMPLETE.md
 - docs/V2-004_CONTEXT_RECONCILIATION_STATUS.md
 - docs/V2-004_COMMIT_MESSAGE.txt
+- pyproject.toml
+- uv.lock
 
 required_decisions: []
 

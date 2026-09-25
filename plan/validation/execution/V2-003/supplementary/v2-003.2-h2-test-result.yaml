@@ -9,7 +9,7 @@ environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; pytest 9
 evidence_id: V2-003.2-h2-test-efab339b
 evidence_type: TEST_RESULT
 artifacts:
-- ref: docs/V2-003.2-H2_VERIFICATION_CLOSURE.md
+- ref: validation/execution/V2-003/supplementary/artifacts/efab339-v2-003.2-h2-verification-closure.md
   sha256: 7082efa19483d9eadd6bc7594cde003f94959aa38f594bda5a29de8b5e82db1a
 input_evidence_refs:
 - validation/execution/V2-003/followup/test-result.yaml

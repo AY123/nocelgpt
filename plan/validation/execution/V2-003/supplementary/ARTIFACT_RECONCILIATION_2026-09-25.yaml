@@ -1,0 +1,51 @@
+record_type: artifact_reconciliation_provenance
+schema_version: '1.0'
+reconciliation_date: '2026-09-25'
+purpose: HISTORICAL_ARTIFACT_MATERIALIZATION
+performed_by: Claude Opus 5.5
+context: V2-004 governance closure - schema_contract gate blocking resolution
+
+records:
+- evidence_id: V2-003.2-base-code-af63cb74
+  subject_revision: af63cb74bde0a3ac9e1e5f5eaacb855f271af049
+  report_commit: 3ad4fefb87df3ec82e29c9db5b4ec1ceeea84cdc
+  historical_path: docs/V2-003.2_IMPLEMENTATION_REPORT.md
+  content_sha256: 2c0150ed918ac35fd7701b48b28d96ce14c1c4ca399029acd8a774e3f6c5e8a7
+  immutable_artifact_path: validation/execution/V2-003/supplementary/artifacts/af63cb7-v2-003.2-implementation-report.md
+  action: exact historical blob copied to immutable evidence artifact
+  verification: SHA256 match confirmed
+
+- evidence_id: V2-003.2-h1-code-406977f8
+  subject_revision: 406977f89c839bbc9c09b76955724456c5a81f3c
+  report_commit: 109eb0db29ac72bbf0c0ce7f5dc0ef80fda4ae61
+  historical_path: docs/V2-003.2-H1_HOTFIX_REPORT.md
+  content_sha256: ec87cad2dbc06c8cc1fccbf836d9a004c9cb45779cd17400a8e9823e705c785f
+  immutable_artifact_path: validation/execution/V2-003/supplementary/artifacts/406977f-v2-003.2-h1-hotfix-report.md
+  action: exact historical blob copied to immutable evidence artifact
+  verification: SHA256 match confirmed
+
+- evidence_id: V2-003.2-h2-test-efab339b
+  subject_revision: efab339bdacb19ef576f7671738a702e865f6684
+  report_commit: ebd5bb63a24ff7707ba2aafedf508686c454b478
+  historical_path: docs/V2-003.2-H2_VERIFICATION_CLOSURE.md
+  content_sha256: 7082efa19483d9eadd6bc7594cde003f94959aa38f594bda5a29de8b5e82db1a
+  immutable_artifact_path: validation/execution/V2-003/supplementary/artifacts/efab339-v2-003.2-h2-verification-closure.md
+  action: exact corrected historical blob copied to immutable evidence artifact
+  verification: SHA256 match confirmed
+  note: Report initially committed at 7cbd9ae with SHA 722ba62e, corrected at ebd5bb6 to SHA 7082efa1; evidence record correctly binds to corrected version
+
+rationale: |
+  Evidence records originally referenced artifacts in docs/ which are mutable and
+  editable. To ensure immutability and historical integrity, exact historical Git
+  blobs were extracted and preserved in immutable evidence artifact storage.
+
+  No SHA256 values were modified. All artifact content bytes are identical to
+  historical Git state at specified report commits.
+
+  This preserves evidence integrity while enabling schema_contract validation to
+  pass without weakening validator rules or adding exception paths.
+
+key_principle: |
+  subject_revision (code/tests being evidenced) != report_commit (evidence artifact creation)
+  This is correct and expected. Evidence artifacts may be created after subject execution,
+  as long as artifact bytes, hashes, and lineage are authentically traceable.

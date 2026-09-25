@@ -9,7 +9,7 @@ environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; local lo
 evidence_id: V2-003.2-base-code-af63cb74
 evidence_type: CODE
 artifacts:
-- ref: docs/V2-003.2_IMPLEMENTATION_REPORT.md
+- ref: validation/execution/V2-003/supplementary/artifacts/af63cb7-v2-003.2-implementation-report.md
   sha256: 2c0150ed918ac35fd7701b48b28d96ce14c1c4ca399029acd8a774e3f6c5e8a7
 input_evidence_refs:
 - validation/execution/V2-003/followup/code-evidence.yaml

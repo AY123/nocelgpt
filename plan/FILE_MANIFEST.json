@@ -1341,8 +1341,8 @@
   },
   {
     "path": "generated/PHASE_TASK_REGISTRY.md",
-    "bytes": 6151,
-    "sha256": "ef11ed226bba1472fdc5456d75deedc42c66ed728e0a60cfbee388371ed3a7eb"
+    "bytes": 6176,
+    "sha256": "4749c05b38a70545347888c23e2cdf3651f34b5db379b9e45fa3826cb7c5f190"
   },
   {
     "path": "machine/ai-execution-policy.yaml",
@@ -1356,8 +1356,8 @@
   },
   {
     "path": "machine/ci-gates.yaml",
-    "bytes": 2199,
-    "sha256": "5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210"
+    "bytes": 2172,
+    "sha256": "01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a"
   },
   {
     "path": "machine/decision-register.yaml",
@@ -1381,8 +1381,8 @@
   },
   {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 85500,
-    "sha256": "458d1fb168295bfa26870b073bb2a34c1d4c366c8c70b438211fc85723eb79e4"
+    "bytes": 86027,
+    "sha256": "0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a"
   },
   {
     "path": "machine/milestones.yaml",
@@ -1400,14 +1400,24 @@
     "sha256": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e"
   },
   {
+    "path": "machine/review-triage-policy.yaml",
+    "bytes": 2815,
+    "sha256": "03ebcb854531a89e1f01bcc5b3308b19d96cf816e4e6eb0ceeb0693dc9e0e90a"
+  },
+  {
     "path": "machine/source-register.yaml",
     "bytes": 80100,
     "sha256": "7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac"
   },
   {
     "path": "machine/test-catalog.yaml",
-    "bytes": 37785,
-    "sha256": "9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e"
+    "bytes": 37789,
+    "sha256": "3254c48433185c979cf0333d574950925f47cd6d0794d9c8e20fdeeb916d27ac"
+  },
+  {
+    "path": "review/00_REVIEW_TRIAGE_POLICY.md",
+    "bytes": 7306,
+    "sha256": "ca7add01937e1da5b7e01a6bc006999e850e21c7732170b287bdfa16467804de"
   },
   {
     "path": "schemas/evidence-record.schema.json",
@@ -1423,6 +1433,11 @@
     "path": "schemas/implementation-task.schema.json",
     "bytes": 7032,
     "sha256": "9b654ca905ff43cbedc60cc19eaaed9f2874ef8790ed9290b5ae6a07022d9b4b"
+  },
+  {
+    "path": "schemas/review-triage-report.schema.json",
+    "bytes": 7016,
+    "sha256": "0cd3c69599a0c56c95e73bf1540b840a52c25e8c188b5844bb21c03d4afdce9d"
   },
   {
     "path": "scripts/architecture_checks.py",
@@ -1450,9 +1465,14 @@
     "sha256": "5125c8e43e9a16ccb2d2f218699674e7706aa12d4539532dca52cd88b809ad27"
   },
   {
+    "path": "scripts/review_triage_checks.py",
+    "bytes": 8633,
+    "sha256": "edfd21e5dc9fdf5ceece0ec82ccc9a515744c39eb5e2c178c21d7d68faef77e7"
+  },
+  {
     "path": "scripts/task_entry.py",
-    "bytes": 14905,
-    "sha256": "652013d6265336dd05e2c2d4f1f87fe98260662b2cca8a97651cf7b09e6f5981"
+    "bytes": 16074,
+    "sha256": "d600f6994bbfed62718e11e402053aed45d85e86a57456df7dd473a4d3afa4e9"
   },
   {
     "path": "scripts/test_ai_execution.py",
@@ -1471,8 +1491,8 @@
   },
   {
     "path": "scripts/weakening_checks.py",
-    "bytes": 29270,
-    "sha256": "ab0004f273fa56c2fa19c4203166193145a915e57b3e1a17e4d0e27daab43412"
+    "bytes": 29695,
+    "sha256": "7c807577c2d448640b135b4c3c0920b6306c9c03e2e34839b18bef8ab1f2c2fd"
   },
   {
     "path": "task-packets/V2-017_PLANNING_CONTRACT_PACKET.md",
@@ -1503,6 +1523,11 @@
     "path": "templates/EXECUTION_PACKET.yaml",
     "bytes": 2955,
     "sha256": "e3415dfb6d22ab59e37718ed1a3a549df164f2c6763a11e0557079a605bdf54f"
+  },
+  {
+    "path": "templates/REVIEW_TRIAGE_REPORT.yaml",
+    "bytes": 2038,
+    "sha256": "3c1fe776cd7daa4b6ebcadd06dfec5ac12208e0c9f8664804d3139ac016ff477"
   },
   {
     "path": "templates/STORY_FIXTURE.yaml",

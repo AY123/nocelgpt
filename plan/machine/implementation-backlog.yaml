@@ -273,6 +273,7 @@ tasks:
   - AT-V2-004
   artifacts:
   - .gitlab-ci.yml
+  - security-policy.yaml
   - tests/contract/test_delivery_gates.py
   out_of_scope:
   - 不绕过前置阶段门禁

@@ -9,7 +9,7 @@ environment_fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; local lo
 evidence_id: V2-003.2-h1-code-406977f8
 evidence_type: CODE
 artifacts:
-- ref: docs/V2-003.2-H1_HOTFIX_REPORT.md
+- ref: validation/execution/V2-003/supplementary/artifacts/406977f-v2-003.2-h1-hotfix-report.md
   sha256: ec87cad2dbc06c8cc1fccbf836d9a004c9cb45779cd17400a8e9823e705c785f
 input_evidence_refs:
 - validation/execution/V2-003/supplementary/v2-003.2-code-evidence.yaml

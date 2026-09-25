@@ -4,7 +4,7 @@ task_id: V2-002
 plan_version: 1.3.0
 repository_revision: 21849ed8919086982dd94d0a4c852db40eca5d40
 worktree_dirty: true
-plan_manifest_sha256: 6e7bdbe280102b008fb0012b95f0d1277c4ee8f095bc41912886bbd1c365d1d0
+plan_manifest_sha256: f25b588c3dae152a375dda3bf0b78451f0fd28d3fc33d05e89e7f8775826b2a1
 environment:
   fingerprint: macOS-15.1.1-arm64-arm-64bit; local CPython 3.12.14
   runtime_versions:
@@ -40,11 +40,11 @@ inputs:
   ref: validation/execution/V2-003/followup/inputs/c2b3464fbae8d950cde6533bf74e0dc028de90e66074cc9f53d80cda828ad631.txt
   sha256: c2b3464fbae8d950cde6533bf74e0dc028de90e66074cc9f53d80cda828ad631
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-003/followup/inputs/458d1fb168295bfa26870b073bb2a34c1d4c366c8c70b438211fc85723eb79e4.txt
-  sha256: 458d1fb168295bfa26870b073bb2a34c1d4c366c8c70b438211fc85723eb79e4
+  ref: validation/execution/V2-002/inputs/0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a.txt
+  sha256: 0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-003/followup/inputs/9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e.txt
-  sha256: 9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e
+  ref: validation/execution/V2-002/inputs/3254c48433185c979cf0333d574950925f47cd6d0794d9c8e20fdeeb916d27ac.txt
+  sha256: 3254c48433185c979cf0333d574950925f47cd6d0794d9c8e20fdeeb916d27ac
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
@@ -58,8 +58,8 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/12-governance-baseline.yaml.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
 - source_ref: machine/ci-gates.yaml
-  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/13-ci-gates.yaml.txt
-  sha256: 5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210
+  ref: validation/execution/V2-002/inputs/01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a.txt
+  sha256: 01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a
 - source_ref: machine/authority-policy.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/14-authority-policy.yaml.txt
   sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
@@ -232,3 +232,8 @@ handoff:
     - ref: validation/execution/V2-002/followup/final-scope.json
       sha256: 80b7e0fbed6090bb3f4fa0ec823ad3309ecfde84a110d958e2325661c52f3dc1
     missing_artifact_reason: null
+
+review_notes:
+- Shared governance/control inputs reconciled for continued active-context validation (2026-09-25)
+- Historical implementation/test evidence and original execution claims are not re-certified or rewritten
+- Original packet preserved as execution-packet-historical.yaml

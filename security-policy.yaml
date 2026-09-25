@@ -1,0 +1,84 @@
+# ANovelOS Security Policy
+# Version: 1.0.0
+# Applies to: P0 CI gates and repository content
+
+version: 1.0.0
+status: ACTIVE
+
+secret_scanning:
+  enabled: true
+  scanner: gitleaks
+  scope:
+    - plan/
+    - src/
+    - scripts/
+    - tests/
+    - .gitlab-ci.yml
+
+  exclusions:
+    # Test fixtures with obviously fake secrets
+    - tests/fixtures/secrets/harmless-fake-secrets.txt
+
+  patterns:
+    - name: Generic API Key
+      pattern: '(?i)api[_-]?key\s*=\s*["\']?[a-zA-Z0-9]{32,}["\']?'
+      severity: HIGH
+
+    - name: Generic Secret
+      pattern: '(?i)secret\s*=\s*["\']?[a-zA-Z0-9]{16,}["\']?'
+      severity: HIGH
+
+    - name: Private Key
+      pattern: '-----BEGIN (RSA|DSA|EC|OPENSSH) PRIVATE KEY-----'
+      severity: CRITICAL
+
+  policy:
+    action_on_violation: FAIL
+    allow_exceptions: false
+
+dependency_scanning:
+  enabled: true
+  scanner: pip-audit
+  scope:
+    - uv.lock
+    - pyproject.toml
+
+  policy:
+    action_on_critical: FAIL
+    action_on_high: FAIL
+    action_on_medium: WARN
+    action_on_low: WARN
+    allow_exceptions: true
+
+  exceptions:
+    # Format: package@version: reason, owner, expiry
+    # Example:
+    # - package: example-lib
+    #   version: "1.2.3"
+    #   cve: CVE-2024-12345
+    #   reason: No fix available, mitigated by usage pattern
+    #   owner: security-maintainer
+    #   expiry: "2024-12-31"
+
+locked_dependencies:
+  enforcement: STRICT
+  policy:
+    require_frozen: true
+    allow_dynamic_versions: false
+    check_integrity: true
+
+  lock_file: uv.lock
+
+integrity:
+  file_modifications:
+    plan/machine/: PROTECTED
+    plan/schemas/: PROTECTED
+    tests/contract/: TRACKED
+
+  required_checks:
+    - uv sync --frozen
+    - pip-audit on resolved dependencies
+    - gitleaks on repository content
+
+owner: delivery-maintainer
+last_updated: "2026-09-25"

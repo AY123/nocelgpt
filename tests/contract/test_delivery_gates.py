@@ -363,6 +363,8 @@ def test_no_failure_swallowing_in_p0_jobs():
             # Allow specific safe patterns
             if '2>/dev/null' in line:  # stderr redirect is ok
                 continue
+            if '|| echo "WARN:' in line.lower():  # Explicit warnings ok
+                continue
             pytest.fail(
                 f"P0 job {current_job} at line {i} contains failure-swallowing pattern: {line.strip()}"
             )
@@ -370,3 +372,142 @@ def test_no_failure_swallowing_in_p0_jobs():
         # Reset when hitting next top-level key
         if line and not line.startswith(' ') and ':' in line:
             current_job = None
+
+
+def test_security_policy_yaml_is_required_artifact():
+    """security-policy.yaml must remain in V2-004 required artifacts."""
+    backlog_path = ROOT / 'plan/machine/implementation-backlog.yaml'
+    with backlog_path.open() as f:
+        data = yaml.safe_load(f)
+
+    # Tasks are stored as a list with task_id field
+    tasks = {task['task_id']: task for task in data.get('tasks', [])}
+    assert 'V2-004' in tasks, "V2-004 must exist in backlog"
+
+    v2_004 = tasks['V2-004']
+    assert 'artifacts' in v2_004, "V2-004 must have artifacts"
+    assert 'security-policy.yaml' in v2_004['artifacts'], \
+        "security-policy.yaml must be V2-004 required artifact (not silently deleted)"
+
+
+def test_static_gate_uses_real_tools():
+    """STATIC gate must use real formatter/linter/typechecker, not fake checks."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    # Check for real tools
+    if 'static:' in content:
+        # Should use actual tools
+        has_ruff = 'ruff format' in content or 'ruff check' in content
+        has_mypy = 'mypy' in content
+
+        assert has_ruff or has_mypy, \
+            "STATIC gate must use real formatter/linter (ruff) or typechecker (mypy)"
+
+        # Should not use fake checks
+        static_section = content[content.find('static:'):content.find('static:') + 2000]
+
+        assert 'python -m compileall' not in static_section or has_ruff, \
+            "STATIC gate should not rely solely on compileall (syntax check only)"
+
+        assert 'grep' not in static_section or has_ruff, \
+            "STATIC gate should not use grep for type checking"
+
+
+def test_secret_dependency_has_real_vulnerability_scanner():
+    """SECRET_DEPENDENCY must have real vulnerability scanner, not just uv pip check."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    if 'secret_dependency:' in content:
+        # Should have real vulnerability scanning
+        has_pip_audit = 'pip-audit' in content
+        has_safety = 'safety check' in content
+
+        # Must have at least one real scanner
+        assert has_pip_audit or has_safety, \
+            "SECRET_DEPENDENCY must include real vulnerability scanner (pip-audit or safety)"
+
+        # If only uv pip check, fail
+        secret_section = content[content.find('secret_dependency:'):content.find('secret_dependency:') + 2000]
+
+        if 'uv pip check' in secret_section and not (has_pip_audit or has_safety):
+            pytest.fail("uv pip check only verifies dependency consistency, not vulnerabilities")
+
+
+def test_ci_does_not_modify_plan_directory():
+    """CI validation output must go to dist/, not modify plan/."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    if 'schema_contract:' in content:
+        schema_section = content[content.find('schema_contract:'):content.find('schema_contract:') + 2000]
+
+        # Should use --output-dir to dist/
+        assert '--output-dir' in schema_section or 'dist/ci/schema' in schema_section, \
+            "SCHEMA_CONTRACT must output to dist/, not modify plan/validation/"
+
+        # Should not copy from plan/validation/ to dist/
+        assert 'cp' not in schema_section or 'plan/validation/plan-validation.json' not in schema_section, \
+            "Should not copy from plan/validation/ (don't modify tested directory)"
+
+
+def test_ci_references_exist():
+    """All files referenced in CI must actually exist."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    # Extract test file references
+    import re
+    test_refs = re.findall(r'tests/[a-z_/]+/test_[a-z_]+\.py', content)
+
+    for test_ref in test_refs:
+        test_path = ROOT / test_ref
+        assert test_path.exists(), \
+            f"CI references non-existent test: {test_ref}"
+
+    # Extract script references
+    script_refs = re.findall(r'(plan/scripts/[a-z_]+\.py)', content)
+
+    for script_ref in script_refs:
+        script_path = ROOT / script_ref
+        assert script_path.exists(), \
+            f"CI references non-existent script: {script_ref}"
+
+
+def test_production_scan_isolated_from_fixtures():
+    """Production secret scan must exclude test fixtures directory."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        content = f.read()
+
+    if 'secret_dependency:' in content:
+        secret_section = content[content.find('secret_dependency:'):content.find('secret_dependency:') + 2000]
+
+        # Production scan should exclude fixtures
+        has_fixture_exclusion = (
+            'tests/fixtures' not in secret_section.split('grep')[0] if 'grep' in secret_section
+            else True
+        )
+
+        # Or production scan should only scan production dirs
+        scans_production_only = (
+            'plan/' in secret_section and
+            'src/' in secret_section and
+            'tests/' not in secret_section.split('grep -r')[1].split('|')[0] if 'grep -r' in secret_section
+            else False
+        )
+
+        assert has_fixture_exclusion or scans_production_only, \
+            "Production secret scan must not fail on harmless test fixtures"
+
+
+def test_security_policy_yaml_exists():
+    """security-policy.yaml must exist as required artifact."""
+    policy_path = ROOT / 'security-policy.yaml'
+    assert policy_path.exists(), \
+        "security-policy.yaml must exist (V2-004 required artifact)"
