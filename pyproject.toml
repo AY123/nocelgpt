@@ -36,3 +36,9 @@ module-name = "anovel"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "--strict-config --strict-markers -ra"
+
+[tool.mypy]
+exclude = [
+    "\\.yaml$",
+    "\\.yml$",
+]

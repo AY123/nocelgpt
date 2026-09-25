@@ -47,11 +47,11 @@ static:
     - echo "=== STATIC Gate ==="
     - echo "Using locked tools from uv.lock..."
     - echo "Format check..."
-    - uv run --directory . ruff format --check plan/ src/ scripts/ tests/
+    - uv run --directory . ruff format --check plan/scripts/ src/ scripts/ tests/
     - echo "Lint check..."
-    - uv run --directory . ruff check plan/ src/ scripts/ tests/
+    - uv run --directory . ruff check plan/scripts/ src/ scripts/ tests/
     - echo "Type check..."
-    - uv run --directory . mypy plan/ src/ scripts/ tests/ --ignore-missing-imports --no-strict-optional
+    - uv run --directory . mypy plan/scripts/ src/ tests/ --ignore-missing-imports --no-strict-optional
     - echo "STATIC gate PASS"
   artifacts:
     when: always
