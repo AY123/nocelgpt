@@ -385,13 +385,13 @@ def test_prepare_immutability_check_exists():
 
     # Verify the PREPARE gate code exists
     assert 'ENTRY_PREPARE_IMMUTABLE' in content
-    assert "args.action == 'PREPARE'" in content
+    assert 'args.action == "PREPARE"' in content
     assert 'before_command = observe(root)' in content
     assert 'after_command = observe(root)' in content
 
     # Verify it checks Git-visible state
-    assert "before_command['head']" in content or 'head' in content
-    assert "before_command['index_sha256']" in content or 'index' in content
+    assert 'before_command["head"]' in content or 'head' in content
+    assert 'before_command["index_sha256"]' in content or 'index' in content
 
 
 def test_implement_action_unaffected_by_prepare_gate(repo):
@@ -512,10 +512,10 @@ def test_prepare_gate_would_block_legal_change_under_prepare_action():
     task_entry_source = (ROOT / 'plan/scripts/task_entry.py').read_text()
 
     # Gate must check action
-    assert "args.action == 'PREPARE'" in task_entry_source
+    assert 'args.action == "PREPARE"' in task_entry_source
 
     # Gate must compare files
-    assert "before_command['files'] != after_command['files']" in task_entry_source
+    assert 'before_command["files"] != after_command["files"]' in task_entry_source
 
     # Gate must fail on change
     assert 'ENTRY_PREPARE_IMMUTABLE' in task_entry_source
@@ -534,5 +534,5 @@ def test_prepare_gate_compares_files_not_just_status():
     content = task_entry_path.read_text()
 
     # Verify the fix is present: must compare files field
-    assert "before_command['files'] != after_command['files']" in content, \
+    assert 'before_command["files"] != after_command["files"]' in content, \
         "PREPARE gate must compare files field for content identity (V2-003.2-H1 fix)"
