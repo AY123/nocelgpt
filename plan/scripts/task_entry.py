@@ -236,13 +236,12 @@ def main(argv=None):
                 # PREPARE semantic gate: verify no persistent implementation changes
                 if args.action == 'PREPARE' and before_command is not None:
                     after_command = observe(root)
-                    # Check Git-visible repository-controlled state
+                    # Check Git-visible repository-controlled state including file content identity
                     if (before_command['head'] != after_command['head'] or
                         before_command['branch'] != after_command['branch'] or
                         before_command['index_sha256'] != after_command['index_sha256'] or
-                        before_command['dirty'] != after_command['dirty'] or
-                        before_command['status_sha256'] != after_command['status_sha256']):
-                        errors.append('ENTRY_PREPARE_IMMUTABLE: PREPARE cannot leave Git-visible persistent implementation changes (HEAD/branch/index/tracked worktree modified)')
+                        before_command['files'] != after_command['files']):
+                        errors.append('ENTRY_PREPARE_IMMUTABLE: PREPARE cannot leave Git-visible persistent implementation changes (HEAD/branch/index/tracked worktree/untracked content modified)')
                         report['status'] = 'FAIL'
                         code = code or 2
 
