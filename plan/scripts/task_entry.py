@@ -222,12 +222,32 @@ def main(argv=None):
         if not errors:
             code = 0
             if command:
+                # PREPARE semantic gate: capture repository state before command
+                before_command = None
+                if args.action == 'PREPARE':
+                    before_command = observe(root)
+
                 command_started = True
                 result = subprocess.run(command, cwd=root, capture_output=True, text=True,
                                         timeout=packet['budget']['maximum_runtime'])
                 report['command_result'] = {'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr}
                 code = result.returncode if result.returncode >= 0 else 128 - result.returncode
-            report['status'] = 'PASS' if code == 0 else 'FAIL'
+
+                # PREPARE semantic gate: verify no persistent implementation changes
+                if args.action == 'PREPARE' and before_command is not None:
+                    after_command = observe(root)
+                    # Check Git-visible repository-controlled state
+                    if (before_command['head'] != after_command['head'] or
+                        before_command['branch'] != after_command['branch'] or
+                        before_command['index_sha256'] != after_command['index_sha256'] or
+                        before_command['dirty'] != after_command['dirty'] or
+                        before_command['status_sha256'] != after_command['status_sha256']):
+                        errors.append('ENTRY_PREPARE_IMMUTABLE: PREPARE cannot leave Git-visible persistent implementation changes (HEAD/branch/index/tracked worktree modified)')
+                        report['status'] = 'FAIL'
+                        code = code or 2
+
+            if not errors:
+                report['status'] = 'PASS' if code == 0 else 'FAIL'
             if command and args.scope_revision:
                 after_review = review_changes(root, task_id=args.task, scope_revision=args.scope_revision,
                                               scope_ref=args.scope_ref, review_revision=args.review_revision,

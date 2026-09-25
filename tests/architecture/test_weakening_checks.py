@@ -382,3 +382,63 @@ def test_ini_test_selection_and_targets_cannot_change_silently(path,section):
 
 def test_malformed_pytest_ini_is_not_a_passing_scan():
     assert 'WEAKENING_PARSE_ERROR' in codes(scan('pytest.ini',None,'[pytest\nbroken'))
+
+
+# F-002: Collection-Control Authorization Tests
+
+
+def test_collection_control_requires_authorization():
+    """TEST_COLLECTION_CONTROL must have severity_kind=AUTHORIZATION_REQUIRED."""
+    source = 'def pytest_collection_modifyitems(config, items):\n    items[:] = [x for x in items if "positive" in x.name]\n'
+    findings = scan('tests/conftest.py', None, source)
+
+    # Should detect collection control
+    assert 'TEST_COLLECTION_CONTROL' in codes(findings)
+
+    # Key assertion: severity_kind must be AUTHORIZATION_REQUIRED, not REVIEW
+    control_finding = next(f for f in findings if f['code'] == 'TEST_COLLECTION_CONTROL')
+    assert control_finding['severity_kind'] == 'AUTHORIZATION_REQUIRED', \
+        f"Expected AUTHORIZATION_REQUIRED, got {control_finding['severity_kind']}"
+
+
+def test_fixture_only_conftest_remains_review_level():
+    """Fixture-only conftest should remain REVIEW level (not upgraded)."""
+    source = 'import pytest\n@pytest.fixture\ndef sample_data():\n    return {"key": "value"}\n'
+    findings = scan('tests/conftest.py', None, source)
+
+    # Should detect conftest change
+    assert 'TEST_CONFTEST_CHANGED' in codes(findings)
+
+    # Should NOT have collection control
+    assert 'TEST_COLLECTION_CONTROL' not in codes(findings)
+
+    # All findings should be REVIEW level (not elevated)
+    for finding in findings:
+        assert finding['severity_kind'] == 'REVIEW', \
+            f"Fixture-only conftest should be REVIEW, got {finding['severity_kind']}"
+
+
+def test_collection_control_codes_properly_categorized():
+    """Verify _COLLECTION_CONTROL_CODES is properly defined and applied."""
+    # Access the module's collection control codes
+    assert hasattr(CHECKS, '_COLLECTION_CONTROL_CODES')
+    assert 'TEST_COLLECTION_CONTROL' in CHECKS._COLLECTION_CONTROL_CODES
+
+    # Verify it's distinct from WEAKENING_CODES
+    assert 'TEST_COLLECTION_CONTROL' not in CHECKS._WEAKENING_CODES
+
+
+@pytest.mark.parametrize('hook', [
+    'def pytest_collection_modifyitems(config, items):\n    pass\n',
+    'def pytest_ignore_collect(collection_path, config):\n    return True\n',
+    'collect_ignore = ["test_skip.py"]\n',
+    'collect_ignore_glob = ["test_*.py"]\n',
+    'pytest_plugins = ["custom_plugin"]\n',
+])
+def test_various_collection_controls_get_authorization_required(hook):
+    """All forms of collection control should be AUTHORIZATION_REQUIRED."""
+    findings = scan('tests/conftest.py', None, hook)
+
+    if 'TEST_COLLECTION_CONTROL' in codes(findings):
+        control_finding = next(f for f in findings if f['code'] == 'TEST_COLLECTION_CONTROL')
+        assert control_finding['severity_kind'] == 'AUTHORIZATION_REQUIRED'

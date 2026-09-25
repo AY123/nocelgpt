@@ -475,6 +475,11 @@ _WEAKENING_CODES = {
     'GATE_ACTIVATION_RELAXED', 'MILESTONE_CLOSE_RELAXED',
 }
 
+# Collection-control codes require explicit authorization (not same-AI self-review)
+_COLLECTION_CONTROL_CODES = {
+    'TEST_COLLECTION_CONTROL',
+}
+
 
 def scan_weakening(changes, *, task_id, baseline):
     """Return stable review findings; the caller validates baseline and authority.
@@ -495,7 +500,13 @@ def scan_weakening(changes, *, task_id, baseline):
             identifier = hashlib.sha256(json.dumps(identity, ensure_ascii=False).encode()).hexdigest()
             findings[identifier] = {'id': identifier, 'code': code, 'path': path, 'layer': layer,
                                     'pointer': pointer, 'old_sha': _sha(old), 'new_sha': _sha(new), 'reason': reason}
-            findings[identifier]['severity_kind'] = 'WEAKENING' if code in _WEAKENING_CODES else 'REVIEW'
+            # Assign severity_kind based on code category
+            if code in _WEAKENING_CODES:
+                findings[identifier]['severity_kind'] = 'WEAKENING'
+            elif code in _COLLECTION_CONTROL_CODES:
+                findings[identifier]['severity_kind'] = 'AUTHORIZATION_REQUIRED'
+            else:
+                findings[identifier]['severity_kind'] = 'REVIEW'
 
         if old_path != path and (_protected(path, baseline.get('protected_paths', []))
                                  or _protected(old_path, baseline.get('protected_paths', []))):
