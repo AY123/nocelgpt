@@ -27,7 +27,7 @@ from jsonschema import Draft202012Validator
 try:
     from datetime import UTC
 except ImportError:
-    UTC = timezone.utc
+    UTC = timezone.utc  # noqa: UP017
 
 PLAN = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))

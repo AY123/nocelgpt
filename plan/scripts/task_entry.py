@@ -22,7 +22,7 @@ import yaml
 try:
     from datetime import UTC
 except ImportError:
-    UTC = timezone.utc
+    UTC = timezone.utc  # noqa: UP017
 
 
 def digest(data):
