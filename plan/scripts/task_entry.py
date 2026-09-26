@@ -338,6 +338,39 @@ def main(argv=None):
             )
             report["change_review"] = review
             if review["status"] != "PASS":
+                # V2-002-R0: Diagnostic logging for fixture failure investigation
+                print("\n" + "=" * 80, file=sys.stderr)
+                print("DIAGNOSTIC: review_changes() returned FAIL", file=sys.stderr)
+                print("=" * 80, file=sys.stderr)
+                print(f"Task: {args.task}", file=sys.stderr)
+                print(f"Status: {review['status']}", file=sys.stderr)
+                print(f"\nErrors ({len(review.get('errors', []))}):", file=sys.stderr)
+                for err in review.get("errors", []):
+                    print(f"  - {err}", file=sys.stderr)
+                print(
+                    f"\nScope Findings ({len(review.get('scope_findings', []))}):",
+                    file=sys.stderr,
+                )
+                for finding in review.get("scope_findings", [])[:20]:
+                    print(
+                        f"  - {json.dumps(finding, ensure_ascii=False)}",
+                        file=sys.stderr,
+                    )
+                print(
+                    f"\nFindings ({len(review.get('findings', []))}):", file=sys.stderr
+                )
+                for finding in review.get("findings", [])[:20]:
+                    print(
+                        f"  - code={finding.get('code')}, path={finding.get('path')}",
+                        file=sys.stderr,
+                    )
+                print(f"\nChanges ({len(review.get('changes', []))}):", file=sys.stderr)
+                for change in review.get("changes", [])[:20]:
+                    print(
+                        f"  - {change.get('status')} {change.get('path')}",
+                        file=sys.stderr,
+                    )
+                print("=" * 80 + "\n", file=sys.stderr)
                 errors.append(
                     "ENTRY_DIFF: actual changes failed frozen scope or weakening review"
                 )
