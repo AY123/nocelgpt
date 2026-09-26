@@ -159,7 +159,7 @@ secret_dependency:
     - echo "Dependency integrity check..."
     - uv pip check
     - echo "Dependency vulnerability scan..."
-    - uv run --directory . pip-audit --strict
+    - uv run --directory . pip-audit --strict --skip-editable
     - echo "SECRET_DEPENDENCY gate PASS"
   artifacts:
     when: always
