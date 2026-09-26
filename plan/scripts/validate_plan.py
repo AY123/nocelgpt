@@ -16,12 +16,18 @@ import subprocess
 import sys
 from collections import Counter
 from copy import deepcopy
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 import yaml
 from jsonschema import Draft202012Validator
+
+# Python 3.9 compatibility
+try:
+    from datetime import UTC
+except ImportError:
+    UTC = timezone.utc
 
 PLAN = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(Path(__file__).resolve().parent))

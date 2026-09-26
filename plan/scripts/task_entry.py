@@ -12,11 +12,17 @@ import os
 import platform
 import subprocess
 import sys
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import validate_plan as validator
 import yaml
+
+# Python 3.9 compatibility
+try:
+    from datetime import UTC
+except ImportError:
+    UTC = timezone.utc
 
 
 def digest(data):
