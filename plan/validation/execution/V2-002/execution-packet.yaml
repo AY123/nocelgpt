@@ -199,6 +199,9 @@ review_notes:
 - 'V2-003 prior-scope-grant: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
 - 'V2-003 regression-ready: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
 - 'V2-003 final-evidence: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
+- Shared governance/control inputs reconciled for continued active-context validation (2026-09-25)
+- Historical implementation/test evidence and original execution claims are not re-certified or rewritten
+- Original packet preserved as execution-packet-historical.yaml
 handoff:
   current_step: 'STOPPED: V2-002 IMPLEMENTED; bounded fixes committed and post-commit local CODE/TEST_RESULT bound; CI and final acceptance absent'
   completed_steps:
@@ -232,8 +235,3 @@ handoff:
     - ref: validation/execution/V2-002/followup/final-scope.json
       sha256: 80b7e0fbed6090bb3f4fa0ec823ad3309ecfde84a110d958e2325661c52f3dc1
     missing_artifact_reason: null
-
-review_notes:
-- Shared governance/control inputs reconciled for continued active-context validation (2026-09-25)
-- Historical implementation/test evidence and original execution claims are not re-certified or rewritten
-- Original packet preserved as execution-packet-historical.yaml
