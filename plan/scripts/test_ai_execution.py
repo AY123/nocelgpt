@@ -386,7 +386,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     args.output_dir.mkdir(parents=True, exist_ok=True)
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(AIExecutionTests)
-    result = unittest.TextTestRunner(verbosity=2, resultclass=RecordedResult).run(suite)
+    result: RecordedResult = unittest.TextTestRunner(
+        verbosity=2, resultclass=RecordedResult
+    ).run(suite)  # type: ignore[assignment]
     report = {
         "scope": "Local declared execution packet checks only; no actual action interception, diff review or remote CI",
         "generated_at_utc": datetime.now(UTC).isoformat(),

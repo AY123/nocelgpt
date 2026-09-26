@@ -572,7 +572,7 @@ def check_architecture(
     for edge in complete_edges:
         adjacency[edge["source"]].append(edge)
     for source_module in sorted(modules):
-        queue = deque([(source_module, [])])
+        queue: deque[tuple[str, list[dict[str, str]]]] = deque([(source_module, [])])
         visited = set()
         while queue:
             current, chain = queue.popleft()
