@@ -364,6 +364,8 @@ def main(argv=None):
                         f"  - code={finding.get('code')}, path={finding.get('path')}",
                         file=sys.stderr,
                     )
+                    if finding.get("reason"):
+                        print(f"    reason: {finding.get('reason')}", file=sys.stderr)
                 print(f"\nChanges ({len(review.get('changes', []))}):", file=sys.stderr)
                 for change in review.get("changes", [])[:20]:
                     print(
