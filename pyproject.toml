@@ -20,6 +20,7 @@ dev = [
     "ruff>=0.8,<1",
     "mypy>=1.11,<2",
     "types-PyYAML>=6,<7",
+    "pip-audit>=2.6,<3",
 ]
 
 [tool.uv]

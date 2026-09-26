@@ -111,32 +111,19 @@ def test_gitlab_ci_no_allow_failure_for_p0():
     """GitLab CI P0 jobs must not have allow_failure: true."""
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
-        content = f.read()
+        ci_config = yaml.safe_load(f)
 
-    # This is a basic check - full YAML parsing would be better
-    # but sufficient for detecting obvious allow_failure additions
-    lines = content.split('\n')
+    p0_jobs = ['static', 'unit', 'schema_contract',
+               'arch_fitness', 'secret_dependency', 'postgres_env']
 
-    in_p0_job = False
-    job_name = None
+    for job_name in p0_jobs:
+        assert job_name in ci_config, f"P0 job {job_name} must exist in .gitlab-ci.yml"
+        job = ci_config[job_name]
 
-    p0_job_patterns = ['static:', 'unit:', 'schema_contract:',
-                       'arch_fitness:', 'secret_dependency:', 'postgres_env:']
-
-    for i, line in enumerate(lines):
-        # Check if we're entering a P0 job
-        if any(line.strip().startswith(pattern) for pattern in p0_job_patterns):
-            in_p0_job = True
-            job_name = line.strip()
-
-        # Check for allow_failure in P0 job context
-        if in_p0_job and 'allow_failure' in line and 'true' in line:
-            pytest.fail(f"P0 job {job_name} at line {i+1} has allow_failure: true")
-
-        # Reset when we hit next top-level job
-        if line and not line.startswith(' ') and line.strip().endswith(':'):
-            in_p0_job = False
-
+        # Check allow_failure is not true (can be false or absent)
+        allow_failure = job.get('allow_failure', False)
+        assert allow_failure is False, \
+            f"P0 job {job_name} must not have allow_failure: true (found: {allow_failure})"
 
 def test_gitlab_ci_uses_locked_dependencies():
     """CI must use locked dependencies (uv sync --frozen)."""
@@ -545,32 +532,34 @@ def test_hard_gates_fail_closed():
     """Hard P0 gates must fail on tool failure, not swallow with || echo."""
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
-        lines = f.readlines()
+        ci_config = yaml.safe_load(f)
 
-    p0_jobs = ['static:', 'unit:', 'schema_contract:',
-               'arch_fitness:', 'secret_dependency:', 'postgres_env:']
+    p0_jobs = ['static', 'unit', 'schema_contract',
+               'arch_fitness', 'secret_dependency', 'postgres_env']
 
     # Tools that should fail-closed
     hard_tools = ['ruff', 'mypy', 'pytest', 'pip-audit', 'python']
 
-    current_job = None
-    for i, line in enumerate(lines, 1):
-        # Track current job
-        if any(line.strip().startswith(job) for job in p0_jobs):
-            current_job = line.strip()
+    for job_name in p0_jobs:
+        if job_name not in ci_config:
+            continue
 
-        if current_job:
-            # Check for tool call followed by || echo
-            for tool in hard_tools:
-                if tool in line and '|| echo' in line:
-                    pytest.fail(
-                        f"P0 job {current_job} at line {i} swallows {tool} failure with '|| echo': {line.strip()}"
-                    )
+        job = ci_config[job_name]
+        script = job.get('script', [])
 
-        # Reset when hitting next top-level key
-        if line and not line.startswith(' ') and ':' in line:
-            current_job = None
+        # Flatten script into single string for pattern matching
+        script_content = '\n'.join(str(cmd) for cmd in script)
 
+        # Check for tool call followed by || echo
+        for tool in hard_tools:
+            if tool in script_content and '|| echo' in script_content:
+                # More precise check: tool and || echo on same line
+                for line in script:
+                    line_str = str(line)
+                    if tool in line_str and '|| echo' in line_str:
+                        pytest.fail(
+                            f"P0 job {job_name} swallows {tool} failure with '|| echo': {line_str.strip()}"
+                        )
 
 def test_locked_tools_used_in_ci():
     """CI must use locked tools via 'uv run', not dynamically installed versions."""
@@ -594,3 +583,69 @@ def test_locked_tools_used_in_ci():
                 pytest.fail(
                     f"CI installs {tool_name} with 'uv pip install' instead of using locked version via 'uv run'"
                 )
+
+
+def test_pip_audit_is_locked_dependency():
+    """pip-audit must be in pyproject.toml dev dependencies, not installed at runtime."""
+    pyproject_path = ROOT / 'pyproject.toml'
+
+    with pyproject_path.open() as f:
+        content = f.read()
+
+    # pip-audit must be in dependencies
+    assert 'pip-audit' in content, \
+        "pip-audit must be declared in pyproject.toml dev dependencies"
+
+    # Check it's in the [dependency-groups] dev section
+    in_dev_section = False
+    has_pip_audit_in_dev = False
+
+    for line in content.split('\n'):
+        if '[dependency-groups]' in line:
+            in_dev_section = True
+        elif line.startswith('[') and in_dev_section:
+            # Exited dev section
+            break
+        elif in_dev_section and 'dev' in line and '=' in line:
+            # Found dev = [...] start
+            in_dev_section = True
+        elif in_dev_section and 'pip-audit' in line:
+            has_pip_audit_in_dev = True
+            break
+
+    assert has_pip_audit_in_dev, \
+        "pip-audit must be in [dependency-groups] dev"
+
+
+def test_schema_contract_regression_prevention():
+    """Regression test: ensure schema_contract cannot be softened to allow_failure: true."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        ci_config = yaml.safe_load(f)
+    
+    # This is a specific regression check for V2-002-R0 temporary bypass
+    job = ci_config.get('schema_contract', {})
+    allow_failure = job.get('allow_failure', False)
+    
+    assert allow_failure is False, \
+        "schema_contract was temporarily set to allow_failure: true for diagnostics. " \
+        "This bypass must not persist - P0 gates must be hard."
+
+
+def test_mypy_regression_prevention():
+    """Regression test: ensure mypy failures are not swallowed with || echo."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        ci_config = yaml.safe_load(f)
+    
+    static_job = ci_config.get('static', {})
+    script = static_job.get('script', [])
+    
+    # Check for mypy with failure swallowing
+    for line in script:
+        line_str = str(line)
+        if 'mypy' in line_str and '|| echo' in line_str:
+            pytest.fail(
+                f"STATIC gate swallows mypy failure: {line_str.strip()}. "
+                f"This was fixed in Pipeline #5 but regressed. mypy must fail-closed."
+            )
