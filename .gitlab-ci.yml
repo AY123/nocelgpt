@@ -12,7 +12,6 @@ variables:
   ANOVELOS_TEST_DSN: postgresql+psycopg://postgres:ci_test_password_not_real@postgres:5432/bootstrap_test
 
 stages:
-  - bootstrap
   - validate
   - test
   - security
@@ -37,32 +36,6 @@ stages:
     - uv --version
     - uv sync --frozen
     - source .venv/bin/activate
-  <<: *cache_template
-
-# TEMP: Bootstrap job to update uv.lock and manifest
-# This job will be removed after successful run
-bootstrap_update:
-  image: python:3.12-bookworm
-  stage: bootstrap
-  allow_failure: false
-  script:
-    - python --version
-    - pip install uv==0.12.17
-    - uv --version
-    # Don't use --frozen, we're updating the lock
-    - uv sync
-    - source .venv/bin/activate
-    - echo "=== Updating manifest and views ==="
-    - python plan/scripts/validate_plan.py --write-views
-    - echo "=== Verifying update ==="
-    - python plan/scripts/validate_plan.py --check
-  artifacts:
-    when: always
-    paths:
-      - uv.lock
-      - plan/FILE_MANIFEST.json
-      - plan/generated/
-    expire_in: 1 hour
   <<: *cache_template
 
 # STATIC Gate - Format, Lint, Typecheck
