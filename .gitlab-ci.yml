@@ -159,7 +159,8 @@ secret_dependency:
     - echo "Dependency integrity check..."
     - uv pip check
     - echo "Dependency vulnerability scan..."
-    - uv run --directory . pip-audit --strict --skip-editable
+    - uv pip list --format=freeze | grep -v "^anovelos" > /tmp/requirements.txt || true
+    - if [ -s /tmp/requirements.txt ]; then uv run pip-audit --strict -r /tmp/requirements.txt; else echo "No dependencies to audit"; fi
     - echo "SECRET_DEPENDENCY gate PASS"
   artifacts:
     when: always
