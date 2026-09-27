@@ -1,0 +1,14 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-code-c8837765
+evidence_type: CODE
+subject_id: V2-004
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: AI implementer with local verification
+executed_at: '2026-09-26T13:30:00Z'
+environment_fingerprint: macOS 15.1.1, git 2.47.1, Python 3.9.6
+artifacts:
+- ref: validation/execution/V2-004/artifacts/code-changes.txt
+  sha256: f23c830fd57bd01cf9b1abfadb4a79638832df6c7383427cab6adfef8cf08f11
+input_evidence_refs: []

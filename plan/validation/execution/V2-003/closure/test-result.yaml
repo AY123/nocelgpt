@@ -1,0 +1,25 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-003-test-revalidation-c8837765
+evidence_type: TEST_RESULT
+subject_id: V2-003
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: pytest current baseline execution
+executed_at: '2026-09-27T14:19:02Z'
+environment_fingerprint: Python 3.9.6, pytest 7.4.3, current baseline
+artifacts:
+- ref: validation/execution/V2-003/closure/test-result.txt
+  sha256: 604cac347e8cfd06a6b3d88a7cf97c79b7652145669172129e36e487f675a47b
+input_evidence_refs:
+- validation/execution/V2-003/closure/code-revalidation.yaml
+- validation/execution/V2-003/test-result.yaml
+check_ids:
+- AT-V2-003-01
+- AT-V2-003-02
+- AT-V2-003-03
+- AT-V2-003-04
+- AT-V2-003-05
+- AT-V2-003-06
+command: pytest tests/contract/test_v2_003.py -v
+exit_code: 0

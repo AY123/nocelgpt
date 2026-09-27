@@ -1,0 +1,15 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-001-code-revalidation-c8837765
+evidence_type: CODE
+subject_id: V2-001
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: Current baseline revalidation
+executed_at: '2026-09-27T14:19:02Z'
+environment_fingerprint: macOS 15.1.1, git 2.47.1, Python 3.9.6
+artifacts:
+- ref: validation/execution/V2-001/closure/code-revalidation.txt
+  sha256: 0d3d50f5a677d99491298193cee097c7f133cc29813d4b10ca4319debf263343
+input_evidence_refs:
+- validation/execution/V2-001/code-evidence.yaml

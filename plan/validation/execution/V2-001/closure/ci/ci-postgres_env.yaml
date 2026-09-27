@@ -1,0 +1,23 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-001-ci-postgres_env-c8837765
+evidence_type: CI_RUN
+subject_id: V2-001
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: GitLab SaaS CI
+executed_at: '2026-09-26T13:46:37.454Z'
+environment_fingerprint: GitLab SaaS runner, ubuntu-latest, Python 3.9
+artifacts:
+- ref: validation/execution/V2-001/closure/ci/postgres_env-log.txt
+  sha256: b275cea7c8fd907dac55ea533df819d65836557cf15dd2db2f2747e255e95ccc
+input_evidence_refs:
+- validation/execution/V2-001/closure/code-revalidation.yaml
+- validation/execution/V2-001/closure/test-result.yaml
+check_ids:
+- POSTGRES_ENV
+command: scripts/ci_gates.sh POSTGRES_ENV
+exit_code: 0
+pipeline_id: '2885351752'
+job_id: '16754370341'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2885351752

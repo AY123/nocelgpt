@@ -1,0 +1,21 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-ci-schema_contract-c8837765
+evidence_type: CI_RUN
+subject_id: V2-004
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: GitLab SaaS CI
+executed_at: '2026-09-26T13:45:44.466Z'
+environment_fingerprint: GitLab SaaS runner, ubuntu-latest, Python 3.9
+artifacts:
+- ref: validation/execution/V2-004/ci/artifacts/schema_contract-log.txt
+  sha256: 66946140b9850bfc4a76f4719d400abf4911fd53c7df307a8f6be4cd775ab3be
+input_evidence_refs: []
+check_ids:
+- SCHEMA_CONTRACT
+command: scripts/ci_gates.sh SCHEMA_CONTRACT
+exit_code: 0
+pipeline_id: '2885351752'
+job_id: '16754370338'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2885351752

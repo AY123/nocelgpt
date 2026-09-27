@@ -1,0 +1,26 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-test-c8837765
+evidence_type: TEST_RESULT
+subject_id: V2-004
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: pytest local and CI execution
+executed_at: '2026-09-26T13:30:00Z'
+environment_fingerprint: Python 3.9.6, pytest 7.4.3, PostgreSQL 17 in Docker
+artifacts:
+- ref: validation/execution/V2-004/artifacts/test-output.txt
+  sha256: 6588c6d3f48aa7e174f9ea3276b82abc29bd57299ee1e74bff5a2fd77010b15d
+input_evidence_refs:
+- validation/execution/V2-004/code-evidence.yaml
+check_ids:
+- AT-V2-004-01
+- AT-V2-004-02
+- AT-V2-004-03
+- AT-V2-004-04
+- AT-V2-004-05
+- AT-V2-004-06
+- AT-V2-004-07
+- AT-V2-004-08
+command: pytest tests/contract/test_delivery_gates.py -v
+exit_code: 0

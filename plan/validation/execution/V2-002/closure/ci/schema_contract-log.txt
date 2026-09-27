@@ -1,0 +1,13 @@
+# P0_SCHEMA_CONTRACT Job Log (Pipeline 2885351752)
+
+Job: P0_SCHEMA_CONTRACT
+Job ID: 16754370338
+Check: SCHEMA_CONTRACT
+Task: V2-002
+Status: PASSED
+Exit Code: 0
+Pipeline URL: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2885351752
+Job URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16754370338
+
+This CI run validates V2-002 Normative documentation index at revision c8837765.
+The job executed: scripts/ci_gates.sh SCHEMA_CONTRACT

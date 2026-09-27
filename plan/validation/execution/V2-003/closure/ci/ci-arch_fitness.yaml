@@ -1,0 +1,23 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-003-ci-arch_fitness-c8837765
+evidence_type: CI_RUN
+subject_id: V2-003
+revision: c88377657818799ecf93918f4b98fe622a4a6037
+status: PASS
+producer: GitLab SaaS CI
+executed_at: '2026-09-26T13:46:29.897Z'
+environment_fingerprint: GitLab SaaS runner, ubuntu-latest, Python 3.9
+artifacts:
+- ref: validation/execution/V2-003/closure/ci/arch_fitness-log.txt
+  sha256: 3c028790c49df6fc202d0c8ee0dbbd4dbdf374052b3a608b48e616f5b5a46ce6
+input_evidence_refs:
+- validation/execution/V2-003/closure/code-revalidation.yaml
+- validation/execution/V2-003/closure/test-result.yaml
+check_ids:
+- ARCH_FITNESS
+command: scripts/ci_gates.sh ARCH_FITNESS
+exit_code: 0
+pipeline_id: '2885351752'
+job_id: '16754370340'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2885351752
