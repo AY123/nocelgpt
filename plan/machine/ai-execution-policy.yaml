@@ -40,7 +40,7 @@ controls:
   acceptance_scenarios:
   - AT-V2-003-05
   - AT-V2-003-06
-  - AT-V2-004-08
+  - AT-V2-004.1-02
   local_status: IMPLEMENTED_LOCAL
   local_scope: V2-003 比较固定旧版与候选验收、场景、测试 AST、阈值、扫描排除、门禁和保护代码；保留未处置 finding 并阻断，技术处置绑定 Git、内容、理由、影响及验证产物；真实降标必须匹配事先固定的明确规则修订授权；新增 conftest、collection/session hook、pytest_plugins 与 INI 测试发现配置也需复核
   p0_enforcement_status: NOT_IMPLEMENTED
@@ -64,8 +64,8 @@ controls:
   - V2-004
   acceptance_scenarios:
   - AT-V2-004-06
-  - AT-V2-004-07
-  - AT-V2-004-08
+  - AT-V2-004.1-01
+  - AT-V2-004.1-02
   local_status: PLANNED
   local_scope: 延续类型化证据绑定，新增真实运行来源、保护策略和权限的验收责任；本轮未配置远端 CI 或凭证
   p0_enforcement_status: NOT_IMPLEMENTED

@@ -20,7 +20,5 @@ check_ids:
 - AT-V2-004-04
 - AT-V2-004-05
 - AT-V2-004-06
-- AT-V2-004-07
-- AT-V2-004-08
 command: pytest tests/contract/test_delivery_gates.py -v
 exit_code: 0

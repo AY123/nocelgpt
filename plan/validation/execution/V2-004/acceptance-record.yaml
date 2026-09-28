@@ -76,9 +76,7 @@ check_ids:
 - AT-V2-004-04
 - AT-V2-004-05
 - AT-V2-004-06
-- AT-V2-004-07
-- AT-V2-004-08
 decision: ACCEPTED
-rationale: V2-004 acceptance criteria met. All P0 CI gates operational on GitLab SaaS
-  pipeline 2885351752. Evidence binding complete via 6 CI_RUN records. All related
-  findings resolved.
+rationale: V2-004 CI governance convergence validated for structural and anti-weakening
+  checks. AT-07/08 (credential segregation and remote protection enforcement) require
+  additional GitLab permission evidence not yet established.
