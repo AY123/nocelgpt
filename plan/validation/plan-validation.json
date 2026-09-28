@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-28T02:59:35.278333+00:00",
+  "generated_at_utc": "2026-09-28T03:21:34.745171+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "d9c53604b8facf881b765da74e8f1a64391775d7",
+  "validated_repository_revision": "751f3a73884ca1e1613b20ee3402d0af4b57793d",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -50,6 +50,14 @@
     }
   },
   "errors": [
+    "EVIDENCE_REVISION validation/execution/V2-004/code-evidence.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/test-result.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/ci/ci-static.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/ci/ci-schema-contract.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/ci/ci-unit.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/ci/ci-arch-fitness.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/ci/ci-postgres-env.yaml: mismatch",
+    "EVIDENCE_REVISION validation/execution/V2-004/ci/ci-secret-dependency.yaml: mismatch",
     "EVIDENCE_COVERAGE V2-004: missing checks",
     "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
   ]
