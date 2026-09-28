@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-28T03:53:29.950149+00:00",
+  "generated_at_utc": "2026-09-28T04:24:20.668298+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "FAIL",
+  "status": "PASS",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "491812f0d74761c0defbe3670db00666340d9681",
+  "validated_repository_revision": "cc75bb76db223f0d2094cce507b74498522c0a99",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -50,10 +50,5 @@
       "REJECTED": 1
     }
   },
-  "errors": [
-    "EXEC_VERSION V2-004: manifest changed; reconcile context before continuation",
-    "EXEC_INPUT V2-004: live source changed/missing: machine/implementation-backlog.yaml",
-    "EXEC_INPUT V2-004: live source changed/missing: machine/test-catalog.yaml",
-    "EXEC_INPUT V2-004: live source changed/missing: machine/ai-execution-policy.yaml"
-  ]
+  "errors": []
 }

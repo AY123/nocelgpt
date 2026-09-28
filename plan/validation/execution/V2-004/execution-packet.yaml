@@ -4,7 +4,7 @@ task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 73e029b353034727540047a8c08bf120cd2e80f1
 worktree_dirty: false
-plan_manifest_sha256: 22d6eb224e093b36e95f806e0e115d632eed830702726220cc154cea0358af94
+plan_manifest_sha256: 3ce828619f1195e073bf1231bc9ec476e66cafc9c60009435765259c6ed230d6
 
 environment:
   fingerprint: macOS-15.1.1-arm64-arm-64bit; CPython 3.12.14; uv 0.12.17; pytest 9.1.1
@@ -35,20 +35,20 @@ change_review:
 
 inputs:
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-004/inputs/0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a.txt
-  sha256: 0e265d772db2d4404cbd80d5c48eb97cad29ae564880d741bd56d11007fb6a0a
+  ref: validation/execution/V2-004/inputs/a5f5d8c74bb43fb5340b0c94b1b5e0af1b928c37f84ba63f772ce9a9b34c0bf8.txt
+  sha256: a5f5d8c74bb43fb5340b0c94b1b5e0af1b928c37f84ba63f772ce9a9b34c0bf8
 - source_ref: machine/ci-gates.yaml
   ref: validation/execution/V2-004/inputs/01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a.txt
   sha256: 01d62525fd3b4268fe1ad04f4d6721e10c1d1a038a1eb227e3fadd3ad2c15d0a
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-004/inputs/3254c48433185c979cf0333d574950925f47cd6d0794d9c8e20fdeeb916d27ac.txt
-  sha256: 3254c48433185c979cf0333d574950925f47cd6d0794d9c8e20fdeeb916d27ac
+  ref: validation/execution/V2-004/inputs/f34f10c83a03325fddfb6caa3254b9bb4efe75850120866f3346d3bcd586e357.txt
+  sha256: f34f10c83a03325fddfb6caa3254b9bb4efe75850120866f3346d3bcd586e357
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
 - source_ref: machine/ai-execution-policy.yaml
-  ref: validation/execution/V2-004/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
-  sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
+  ref: validation/execution/V2-004/inputs/feeeaed2bea5436f93509a617459744e30f31c6640d11f309b0f2afa939f1171.txt
+  sha256: feeeaed2bea5436f93509a617459744e30f31c6640d11f309b0f2afa939f1171
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
   ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
   sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
