@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-28T04:24:20.668298+00:00",
+  "generated_at_utc": "2026-09-28T10:19:28.011052+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "PASS",
+  "status": "FAIL",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "cc75bb76db223f0d2094cce507b74498522c0a99",
+  "validated_repository_revision": "3ddd1d4bb279de6d63743d14e92ec8ec62cafd96",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -34,8 +34,7 @@
       "P12": 3
     },
     "statuses": {
-      "CLOSED": 3,
-      "IMPLEMENTED": 1,
+      "CLOSED": 4,
       "OPEN": 56
     },
     "suites": 60,
@@ -50,5 +49,34 @@
       "REJECTED": 1
     }
   },
-  "errors": []
+  "errors": [
+    "TASK_SCHEMA V2-004 ['evidence', 'acceptance', 1]: Additional properties are not allowed ('test_id' was unexpected)",
+    "TASK_SCHEMA V2-004 ['evidence', 'acceptance', 2]: Additional properties are not allowed ('test_id' was unexpected)",
+    "GENERATED_VIEW: stale or missing generated/PHASE_TASK_REGISTRY.md",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/code-revalidation.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/test-result.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/ci/ci-static.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/ci/ci-schema-contract.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/ci/ci-unit.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/ci/ci-arch-fitness.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/ci/ci-postgres-env.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/ci/ci-secret-dependency.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/closure/acceptance.yaml: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD validation/execution/V2-004/remote-security/AT-V2-004-07_TEST_RESULT.md: expected a single document in the stream\n  in \"<unicode string>\", line 2, column 1:\n    type: TEST_RESULT\n    ^\nbut found another document\n  in \"<unicode string>\", line 7, column 1:\n    ---\n    ^",
+    "EVIDENCE_RECORD validation/execution/V2-004/remote-security/AT-V2-004-08_TEST_RESULT.md: expected a single document in the stream\n  in \"<unicode string>\", line 2, column 1:\n    type: TEST_RESULT\n    ^\nbut found another document\n  in \"<unicode string>\", line 7, column 1:\n    ---\n    ^",
+    "EVIDENCE_COVERAGE V2-004: missing checks",
+    "EVIDENCE_COVERAGE V2-004 acceptance: missing checks",
+    "TASK_SUITE_EVIDENCE V2-004: results not linked to suite",
+    "EVIDENCE_COVERAGE AT-V2-004: missing checks",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/code-revalidation.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/test-result.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/ci/ci-static.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/ci/ci-schema-contract.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/ci/ci-unit.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/ci/ci-arch-fitness.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/ci/ci-postgres-env.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/ci/ci-secret-dependency.yaml",
+    "LOCAL_REF: absent/outside package validation/execution/V2-004/closure/acceptance.yaml",
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+  ]
 }

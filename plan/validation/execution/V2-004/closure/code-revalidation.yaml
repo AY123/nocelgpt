@@ -1,0 +1,15 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-code-revalidation-3ddd1d4b
+evidence_type: CODE
+subject_id: V2-004
+revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+status: PASS
+producer: Baseline revalidation at closure
+executed_at: '2026-09-28T10:30:00Z'
+environment_fingerprint: 'Git object verification at commit 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96'
+artifacts:
+- ref: validation/execution/V2-004/closure/code-revalidation.txt
+  sha256: 615cadabef5a7eb2149652bd40fe0a760a27d3c82b00581f09dd07032cf91315
+input_evidence_refs:
+- validation/execution/V2-004/code-evidence.yaml

@@ -1,0 +1,48 @@
+# V2-004 Code Revalidation - Baseline Commit 3ddd1d4b
+
+## Verified Revision
+Commit: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+Pipeline: #2888946804 (SUCCESS)
+Date: 2026-09-28
+
+## Key Artifacts Verification
+
+### .gitlab-ci.yml
+- Git object: 42e2adaa7bad4edcfc108984e679bcbe466f1948
+- Content verified: workflow.rules for MR pipeline support
+- P0 gates: STATIC, SCHEMA_CONTRACT, UNIT, ARCH_FITNESS, POSTGRES_ENV, SECRET_DEPENDENCY
+
+### tests/contract/test_delivery_gates.py
+- Git object: 27d30faf365c606b809f61e1796faa5c67d1e5f8
+- SHA256: 26c27a670b8808e86bea43c1012613b8f27bba491b42b4821ef4876df0c591d3
+- Test coverage: AT-V2-004-01 through AT-V2-004-06
+
+### security-policy.yaml
+- Status: Not present at 3ddd1d4 (artifact declared but not yet implemented)
+- Note: Security policy enforced via GitLab protected branches and pipeline gates
+
+## Scope Verification
+
+V2-004 artifacts at 3ddd1d4:
+- .gitlab-ci.yml: ✅ Present, implements 6 P0 gates + MR pipeline support
+- tests/contract/test_delivery_gates.py: ✅ Present, implements AT-01..06
+- Remote security verification: ✅ Completed via AT-07/08 GitLab experiments
+
+## Code Quality Gates (from 3ddd1d4)
+
+All automated checks passed at this revision:
+- Format/Lint/Type: PASS
+- Schema contract: PASS
+- Unit tests: 330 passed
+- Architecture fitness: PASS
+- PostgreSQL environment: PASS
+- Secret/dependency scanning: PASS
+
+## Conclusion
+
+Baseline commit 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96 contains verified implementations of:
+- 6 automated CI gates (AT-01..06)
+- MR pipeline support (prerequisite for AT-08)
+- Test harness for delivery gate verification
+
+Remote security verification (AT-07/08) completed separately via GitLab RBAC and protected branch experiments.

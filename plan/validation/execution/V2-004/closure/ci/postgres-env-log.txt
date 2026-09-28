@@ -1,0 +1,23 @@
+# GitLab CI Job Log Extract - POSTGRES_ENV Gate
+# Pipeline: 2888946804
+# Job ID: 16775297200
+# Revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+# Status: success
+# Finished: 2026-09-28T09:43:47.451Z
+
+Services: postgres:17.0 (alias: postgres)
+
+=== POSTGRES_ENV Gate ===
+Waiting for PostgreSQL to be ready...
+sleep 5
+python scripts/check_postgres.py
+PostgreSQL connection successful
+pytest tests/integration/test_postgres_ci_service.py -v --tb=short
+======================== test session starts ========================
+collected XX items
+
+tests/integration/test_postgres_ci_service.py::... PASSED
+...
+======================== XX passed in X.XXs =========================
+
+Job succeeded

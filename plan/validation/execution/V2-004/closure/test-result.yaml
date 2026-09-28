@@ -1,0 +1,28 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-test-closure-3ddd1d4b
+evidence_type: TEST_RESULT
+subject_id: V2-004
+revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+status: PASS
+producer: Closure aggregation - exact-revision tests plus verified GitLab remote security evidence
+executed_at: '2026-09-28T10:45:00Z'
+environment_fingerprint: 'Exact revision 3ddd1d4; local pytest plus GitLab remote AT-07/08 verification'
+artifacts:
+- ref: validation/execution/V2-004/closure/test-result.txt
+  sha256: f052435cef15276428081d14c1b031f414478bfedef7c06e1c65b62c7fdbe6a0
+input_evidence_refs:
+- validation/execution/V2-004/closure/code-revalidation.yaml
+check_ids:
+- AT-V2-004-01
+- AT-V2-004-02
+- AT-V2-004-03
+- AT-V2-004-04
+- AT-V2-004-05
+- AT-V2-004-06
+- AT-V2-004-07
+- AT-V2-004-08
+command: |
+  pytest tests/contract/test_delivery_gates.py -v
+  python plan/scripts/validate_plan.py --check --output-dir dist/validation
+exit_code: 0

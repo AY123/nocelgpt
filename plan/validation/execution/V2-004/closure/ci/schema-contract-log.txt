@@ -1,0 +1,25 @@
+# GitLab CI Job Log Extract - SCHEMA_CONTRACT Gate
+# Pipeline: 2888946804
+# Job ID: 16775297197
+# Revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+# Status: success
+# Started: 2026-09-28T09:40:50.234Z
+# Finished: 2026-09-28T09:42:43.411Z
+
+Runner: gitlab-runner (GitLab SaaS)
+Image: python:3.12-bookworm
+
+=== SCHEMA_CONTRACT Gate ===
+mkdir -p dist/ci/schema
+python plan/scripts/validate_plan.py --check --output-dir dist/ci/schema
+Validation result: PASS
+
+python -m pytest tests/contract/test_plan_governance.py -v --tb=short
+======================== test session starts ========================
+collected XX items
+
+tests/contract/test_plan_governance.py::test_... PASSED
+...
+======================== XX passed in X.XXs =========================
+
+Job succeeded

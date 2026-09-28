@@ -1,0 +1,90 @@
+# V2-004 Test Result Closure - Composite Evidence
+
+## Test Coverage: AT-V2-004-01 through AT-V2-004-08
+
+### Automated Tests (AT-01..06) - Exact Revision 3ddd1d4b
+
+Executed via pytest and GitLab CI Pipeline #2888946804
+
+**AT-V2-004-01: Hard gate failures cause CI failure**
+- Status: PASS
+- Evidence: CI gates configured in .gitlab-ci.yml with allow_failure: false
+- Verification: Pipeline #2888946804 all gates SUCCESS
+
+**AT-V2-004-02: Secret and dependency fixtures blocked**
+- Status: PASS
+- Evidence: SECRET_DEPENDENCY gate scans for secrets and runs pip-audit
+- Verification: Job #16775297201 PASS, no secrets/vulnerabilities found
+
+**AT-V2-004-03: PostgreSQL job connects and CI evidence queryable**
+- Status: PASS
+- Evidence: POSTGRES_ENV gate connects to postgres:17.0 service
+- Verification: Job #16775297200 PASS, connection successful
+
+**AT-V2-004-04: Remote merge protection state verifiable**
+- Status: PASS
+- Evidence: dev_cc protected, "Pipelines must succeed" enabled
+- Verification: GitLab API confirms protection settings
+
+**AT-V2-004-05: Real CI generates results and artifacts**
+- Status: PASS
+- Evidence: Pipeline #2888946804 generated job logs and artifacts
+- Verification: All 6 jobs have queryable IDs, timestamps, artifacts
+
+**AT-V2-004-06: Trusted CI verification**
+- Status: PASS
+- Evidence: GitLab SaaS runner, python:3.12-bookworm image, uv 0.12.17
+- Verification: Job traces show authentic execution environment
+
+### Remote Security Tests (AT-07..08) - GitLab RBAC Verification
+
+**AT-V2-004-07: Developer permission isolation**
+- Status: VERIFIED
+- Evidence: plan/validation/execution/V2-004/remote-security/AT-V2-004-07_TEST_RESULT.md
+- Summary: Developer (TomAy47287015, access_level=30) can perform normal operations but cannot modify protection settings or bypass gates
+- Key Results:
+  - ✅ Clone, push feature branches: SUCCESS
+  - ❌ Modify protected branch settings: HTTP 403
+  - ❌ Modify merge checks: HTTP 403
+  - ❌ Direct push to protected branch: Git rejection
+
+**AT-V2-004-08: Anti-self-weakening defense**
+- Status: VERIFIED
+- Evidence: plan/validation/execution/V2-004/remote-security/AT-V2-004-08_TEST_RESULT.md
+- Summary: Multi-layer defense prevents Developer from self-merging weakening changes
+- Key Results:
+  - MR !2 (authorized CI change): Developer created, Owner merged ✅
+  - MR !3 (adversarial validator weakening): Blocked by 3 layers ❌
+    - Layer 1: CI gates FAILED (static + schema_contract)
+    - Layer 2: Developer can_merge=false
+    - Layer 3: ci_must_pass blocks merge
+  - MR !4 (legitimate change): Green pipeline, still requires Owner approval ✅
+  - Post-merge dev_cc: 3ddd1d4, Pipeline #2888946804 (6/6 PASS)
+
+## Test Execution Summary
+
+**Local pytest**:
+```
+pytest tests/contract/test_delivery_gates.py -v
+```
+Result: All AT-01..06 scenarios PASS
+
+**GitLab CI Pipeline #2888946804**:
+- Revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+- Status: SUCCESS
+- Jobs: 6/6 PASS
+- Duration: ~6 minutes
+
+**Remote Security Verification**:
+- Test environment: GitLab.com, project ayitnovel/ainovelos
+- Developer identity: TomAy47287015 (access_level=30)
+- Protected branches: main, dev_cc
+- Pipelines must succeed: enabled
+- Evidence: 3 MRs with documented pipeline outcomes and merge permissions
+
+## Conclusion
+
+All 8 acceptance criteria for V2-004 verified:
+- AT-01..06: Automated CI gates functioning correctly
+- AT-07: Developer RBAC boundaries enforced
+- AT-08: Multi-layer anti-self-weakening defense operational

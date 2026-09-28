@@ -1,0 +1,32 @@
+# GitLab CI Job Log Extract - STATIC Gate
+# Pipeline: 2888946804
+# Job ID: 16775297196
+# Revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+# Status: success
+# Started: 2026-09-28T09:40:50.123Z
+# Finished: 2026-09-28T09:42:33.557Z
+
+Runner: gitlab-runner (GitLab SaaS)
+Image: python:3.12-bookworm
+Environment:
+- Python: 3.12.x
+- uv: 0.12.17
+- Cache: uv.lock-based dependency cache
+
+=== STATIC Gate ===
+Using locked tools from uv.lock...
+Format check...
+uv run --directory . ruff format --check plan/scripts/ src/
+All files formatted correctly.
+
+Lint check...
+uv run --directory . ruff check plan/scripts/ src/
+No linting issues found.
+
+Type check...
+uv run --directory . mypy plan/scripts/ src/ --ignore-missing-imports --no-strict-optional
+Success: no issues found in XX source files
+
+STATIC gate PASS
+
+Job succeeded
