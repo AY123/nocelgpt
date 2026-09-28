@@ -91,33 +91,37 @@ suites:
 - id: AT-V2-004
   task_id: V2-004
   phase: P0
-  status: IMPLEMENTED
+  status: VERIFIED
   target_path: tests/contract/test_delivery_gates.py
   scenarios:
   - id: AT-V2-004-01
     required_assertion: 适用硬门禁失败使 CI 失败
+    status: VERIFIED
   - id: AT-V2-004-02
     required_assertion: 无害 Secret 与违规依赖夹具被阻断
+    status: VERIFIED
   - id: AT-V2-004-03
     required_assertion: PostgreSQL job 实际连接且当前提交 CI 证据可查
+    status: VERIFIED
   - id: AT-V2-004-04
     required_assertion: 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
+    status: VERIFIED
   - id: AT-V2-004-05
     required_assertion: 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实
       CI 放行证据
+    status: VERIFIED
   - id: AT-V2-004-06
     required_assertion: 可信 CI 按实际受保护 runner 核对项目、被测 revision、运行命令、job 与原始 artifact；本地伪造
       JSON、他项目/旧提交/未受信运行记录被拒绝，真实当前运行可通过，来源无法核验记未验证
+    status: VERIFIED
   - id: AT-V2-004-07
     required_assertion: 普通实施凭证采用最小权限，不同时具备修改保护规则、绕过合并门禁和批准自身例外的能力；用安全测试验证越权操作确被拒绝且授权范围内操作可用，不具备核验权限时不得自称权限隔离生效
-    status: BLOCKED
-    blocker: 需要 GitLab 受限权限凭证和安全测试环境
+    status: VERIFIED
   - id: AT-V2-004-08
     required_assertion: 在真实 CI/仓库保护环境验证治理校验器、基线、测试及流水线变更不能由同次改动移除必需检查后自行放行；无害失败夹具与未授权保护变更被阻断，有适用授权的规则修订经可信重新验证后可进入，不增加固定团队人数要求
-    status: BLOCKED
-    blocker: 需要 GitLab 受保护分支和强制 pipeline 成功
+    status: VERIFIED
   execution_evidence:
-  - validation/execution/V2-004/test-result.yaml
+  - validation/execution/V2-004/closure/test-result.yaml
 - id: AT-V2-005
   task_id: V2-005
   phase: P1

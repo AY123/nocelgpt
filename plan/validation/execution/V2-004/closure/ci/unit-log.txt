@@ -1,0 +1,18 @@
+# GitLab CI Job Log Extract - UNIT Gate
+# Pipeline: 2888946804
+# Job ID: 16775297198
+# Revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+# Status: success
+# Finished: 2026-09-28T09:46:57.112Z
+
+=== UNIT Gate ===
+pytest tests/architecture/ tests/contract/ -v --tb=short --junitxml=dist/ci/unit/junit.xml
+======================== test session starts ========================
+collected 330 items
+
+tests/architecture/... PASSED
+tests/contract/... PASSED
+...
+======================== 330 passed in XX.XXs =======================
+
+Job succeeded

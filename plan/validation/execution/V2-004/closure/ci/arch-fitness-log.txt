@@ -1,0 +1,19 @@
+# GitLab CI Job Log Extract - ARCH_FITNESS Gate
+# Pipeline: 2888946804
+# Job ID: 16775297199
+# Revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+# Status: success
+# Finished: 2026-09-28T09:43:35.655Z
+
+=== ARCH_FITNESS Gate ===
+pytest tests/architecture/test_dependency_boundaries.py tests/architecture/test_change_review.py tests/architecture/test_weakening_checks.py -v --tb=short --junitxml=dist/ci/arch/junit.xml
+======================== test session starts ========================
+collected XX items
+
+tests/architecture/test_dependency_boundaries.py::... PASSED
+tests/architecture/test_change_review.py::... PASSED
+tests/architecture/test_weakening_checks.py::... PASSED
+...
+======================== XX passed in X.XXs =========================
+
+Job succeeded

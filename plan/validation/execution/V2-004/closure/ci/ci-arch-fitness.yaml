@@ -1,0 +1,24 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-ci-arch-fitness-3ddd1d4b
+evidence_type: CI_RUN
+subject_id: V2-004
+revision: 3ddd1d4bb279de6d63743d14e92ec8ec62cafd96
+status: PASS
+producer: GitLab SaaS CI
+executed_at: '2026-09-28T09:43:35.655Z'
+environment_fingerprint: 'GitLab SaaS runner; python:3.12-bookworm; pytest from uv.lock'
+artifacts:
+- ref: validation/execution/V2-004/closure/ci/arch-fitness-log.txt
+  sha256: 6be5b4985001d5f869f35c3fd7aeddc098e4d4542a22c8df3655591b28fb7842
+input_evidence_refs:
+- validation/execution/V2-004/closure/code-revalidation.yaml
+check_ids:
+- ARCH_FITNESS
+command: |
+  echo "=== ARCH_FITNESS Gate ==="
+  pytest tests/architecture/test_dependency_boundaries.py tests/architecture/test_change_review.py tests/architecture/test_weakening_checks.py -v --tb=short --junitxml=dist/ci/arch/junit.xml
+exit_code: 0
+pipeline_id: '2888946804'
+job_id: '16775297199'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2888946804
