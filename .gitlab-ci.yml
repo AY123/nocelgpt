@@ -3,6 +3,22 @@
 # Version: 1.0.0
 # Locked dependencies: uv.lock (uv sync --frozen)
 
+workflow:
+  rules:
+    # MR pipeline takes precedence when MR exists
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+
+    # Suppress duplicate branch pipeline when MR is open
+    # Only suppress push events to avoid blocking scheduled/triggered pipelines
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"'
+      when: never
+
+    # Allow tag pipelines
+    - if: '$CI_COMMIT_TAG'
+
+    # Allow branch pipelines when no MR exists
+    - if: '$CI_COMMIT_BRANCH'
+
 variables:
   PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   UV_CACHE_DIR: "$CI_PROJECT_DIR/.cache/uv"
