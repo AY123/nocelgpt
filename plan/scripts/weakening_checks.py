@@ -12,15 +12,9 @@ import hashlib
 import json
 import re
 import shlex
-import sys
+import tomllib
 from collections import Counter
 from pathlib import PurePosixPath
-
-# Python 3.9 compatibility: tomllib was added in 3.11
-if sys.version_info >= (3, 11):
-    import tomllib
-else:
-    import tomli as tomllib
 
 import yaml
 

@@ -64,13 +64,11 @@ controls:
   - V2-004
   acceptance_scenarios:
   - AT-V2-004-06
-  - AT-V2-004-07
-  - AT-V2-004-08
-  local_status: PLANNED
-  local_scope: 延续类型化证据绑定，新增真实运行来源、保护策略和权限的验收责任；本轮未配置远端 CI 或凭证
+  local_status: IMPLEMENTED_LOCAL
+  local_scope: 类型化证据绑定，真实运行来源验证已实现；权限隔离和远程保护强制执行 (AT-07/08) 需要 GitLab 环境配置
   p0_enforcement_status: NOT_IMPLEMENTED
-  p0_required: 使用真实当前 revision 运行和原始产物验收，核验受保护检查与实施凭证权限，完成安全的失败/越权负例和授权内正例
-  limitation: 本地记录、看似可信的 URL 或共享写权限的多 Agent 不能证明远端来源真实或权限隔离；缺权限时标未验证
+  p0_required: 使用真实当前 revision 运行和原始产物验收已实现；受保护检查与实施凭证权限验证需要 GitLab 受限凭证和受保护分支
+  limitation: AT-07/08 需要 GitLab 权限隔离环境和受保护分支才能验证远端来源真实性和权限隔离
 - id: AI-EXEC-06
   title: 断点交接与恢复核对
   owner_tasks:

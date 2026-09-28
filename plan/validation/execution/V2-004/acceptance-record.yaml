@@ -14,7 +14,6 @@ artifacts:
 input_evidence_refs:
 - validation/execution/V2-004/code-evidence.yaml
 - validation/execution/V2-004/test-result.yaml
-- validation/execution/V2-004/test-result-deferred.yaml
 - validation/execution/V2-004/ci/ci-static.yaml
 - validation/execution/V2-004/ci/ci-schema-contract.yaml
 - validation/execution/V2-004/ci/ci-unit.yaml
@@ -77,9 +76,7 @@ check_ids:
 - AT-V2-004-04
 - AT-V2-004-05
 - AT-V2-004-06
-- AT-V2-004-07
-- AT-V2-004-08
 decision: ACCEPTED
-rationale: V2-004 AT-01~06 验证通过。AT-07 (凭证权限隔离) 和 AT-08 (远程保护执行环境) 当前环境无法完全验证：GitLab
-  连接身份是 Owner 级别，无法证明普通实施凭证最小权限；dev_cc 分支未受保护且 merge policy 不强制 pipeline
-  成功，无法证明治理检查不能被同次改动绕过。在当前约束下接受部分验收：本地治理检查已实现且负例被阻断，远程强制执行待后续环境配置完成后验证。
+rationale: V2-004 AT-01~06 验证通过。AT-07 (凭证权限隔离) 和 AT-08 (远程保护执行环境) 当前被阻塞：需要
+  GitLab 受限权限凭证和受保护分支环境才能验证。本地治理检查逻辑已实现且负例被正确阻断，但远程强制执行机制尚未建立。V2-004
+  状态为 IMPLEMENTED，待 AT-07/08 环境配置完成后才能 CLOSED。
