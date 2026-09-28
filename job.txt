@@ -13408,3 +13408,84 @@
 - ✓ Python 3.9 兼容性完整
 - ✓ V2-004 验收标准恢复到 8 项
 - ⚠️ EVIDENCE_COVERAGE 警告预期（AT-07/08 需要特殊环境）
+
+## 2026-09-28 Truth-State Correction - P0 Closure Blocker
+
+### Pipeline #34 失败分析
+远程验证 491812f 触发 Pipeline #34 (2888020637) 失败：
+- STATIC: ❌ (Ruff UP017/UP036 - Python 3.9 兼容代码违反项目 Python 3.12 要求)
+- SCHEMA_CONTRACT: ❌ (EVIDENCE_COVERAGE 真实 blocker，非 "expected warning")
+
+### 根本问题
+1. **Python 3.9 兼容性改动完全错误**
+   - 项目明确 `requires-python = "==3.12.14"`
+   - 不应为本地环境添加 `timezone.utc` 和 `tomli` fallback
+   - 违反 Ruff UP017 (应用 datetime.UTC) 和 UP036 (version block 无意义)
+
+2. **test-result-deferred.yaml 是虚假 PASS evidence**
+   ```yaml
+   status: PASS
+   rationale: 标记为 PASS 以允许 V2-004 closure
+   ```
+   - AT-07/08 要求**真实证明**权限隔离和远程保护生效
+   - 当前只证明了"环境不具备验证条件"
+   - UNVERIFIED ≠ PASS, DEFERRED ≠ PASS, documented limitation ≠ verified acceptance
+
+3. **EVIDENCE_COVERAGE 不是可接受的警告**
+   - validator 正确判断：suite 声称 AT-07/08 有 execution_evidence
+   - 但 task tests evidence 没有包含 test-result-deferred.yaml
+   - 这是真实的覆盖不完整，不是可以忽略的警告
+
+### 正确的修复 (a1d4732)
+
+#### 1. 撤销 Python 3.9 兼容性改动
+- `change_review.py`: 恢复 `from datetime import UTC`
+- `weakening_checks.py`: 直接 `import tomllib`
+- 移除所有 Python 3.9 fallback 代码
+
+#### 2. 移除虚假 PASS evidence
+- 删除 `test-result-deferred.yaml`
+- 保留 `deferred-scenarios.md` 作为 blocker documentation
+- `execution_evidence` 只包含 `test-result.yaml` (覆盖 AT-01~06)
+
+#### 3. 恢复诚实的任务状态
+- `V2-004`: CLOSED → **IMPLEMENTED**
+- `AT-V2-004`: VERIFIED → **IMPLEMENTED**
+- `AT-V2-004-07`: 添加 `status: BLOCKED`, blocker: GitLab 受限权限凭证
+- `AT-V2-004-08`: 添加 `status: BLOCKED`, blocker: GitLab 受保护分支
+- `acceptance-record`: check_ids 只包含 AT-01~06 (已验证的部分)
+
+#### 4. 更新策略和目录
+- `AI-EXEC-05`: IMPLEMENTED_LOCAL, acceptance_scenarios 只包含 AT-06
+- `test-catalog`: execution_evidence 移除 test-result-deferred.yaml
+- rationale 明确说明 AT-07/08 被阻塞，V2-004 不能 CLOSED
+
+### 预期 Pipeline #35 状态
+- STATIC: ✅ (Python 3.12 标准代码，无 UP017/UP036)
+- SCHEMA_CONTRACT: ✅ (无 EVIDENCE_COVERAGE 错误，诚实的 IMPLEMENTED 状态)
+- UNIT/其他: ✅
+
+### 最终诚实状态
+- V2-001: CLOSED ✅
+- V2-002: CLOSED ✅
+- V2-003: CLOSED ✅
+- **V2-004: IMPLEMENTED** ⚠️ (AT-07/08 blocked)
+- **P0: NOT_VERIFIED**
+- **M0: NOT_VERIFIED**
+
+### P0 真实收口还需要
+建立 GitLab 权限隔离与远程保护环境：
+1. 创建受限权限的 CI 凭证（非 Owner）
+2. 配置受保护分支 + 强制 pipeline 成功
+3. 真实执行 AT-07 安全测试（越权操作被拒绝）
+4. 真实执行 AT-08 保护环境测试（治理自削弱被阻断）
+
+只有完成上述验证，V2-004 才能 CLOSED，P0 才能 VERIFIED。
+
+### 提交
+- a1d4732: fix(P0): restore truth-state - V2-004 IMPLEMENTED, not CLOSED
+
+### 教训
+- 不为本地环境牺牲项目标准
+- PASS 必须基于真实验证，不能因为想要 closure 就标记 PASS
+- validator 错误要认真对待，不能当作"预期的警告"
