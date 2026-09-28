@@ -63,6 +63,16 @@ def seed(tmp_path_factory):
     # intended missing-packet rejection with a different action mismatch.
     backlog_path = repo / 'plan/machine/implementation-backlog.yaml'
     backlog = load(backlog_path)
+    # V2-001/002: Reset from CLOSED to IMPLEMENTED for legacy action tests.
+    # Keep execution_packet_ref; clear only closure evidence (ci/acceptance).
+    for task in backlog['tasks'][:2]:
+        if task['task_id'] in ('V2-001', 'V2-002'):
+            task['status'] = 'IMPLEMENTED'
+            # Clear only closure evidence, preserve code/tests if present
+            if 'evidence' in task:
+                task['evidence']['ci'] = []
+                task['evidence']['acceptance'] = []
+    # Third task and beyond: reset to OPEN without packets
     for task in backlog['tasks'][2:]:
         task.update(status='OPEN', execution_packet_ref=None)
         task['evidence'] = {kind: [] for kind in task['evidence']}
@@ -120,6 +130,7 @@ def entry(repo, mode='check', *, action='IMPLEMENT', task='V2-002', command=None
     directory = repo / 'dist/entry'
     number = len(list(directory.glob('*.json'))) if directory.exists() else 0
     output = output or directory / f'{number}.json'
+    output.parent.mkdir(parents=True, exist_ok=True)
     argv = [sys.executable, '-B', str(repo / 'scripts/task_execution.py'), mode,
             '--task', task, '--action', action, '--output', str(output)]
     if checkpoint:
@@ -129,6 +140,9 @@ def entry(repo, mode='check', *, action='IMPLEMENT', task='V2-002', command=None
     result = call(repo, *argv)
     # Rejected output paths may point to preexisting YAML or a prior JSON report;
     # stdout carries this attempt's failure without altering either file.
+    if result.returncode != 0 and not result.stdout and result.stderr:
+        # If stdout is empty but stderr has content, command likely crashed
+        raise RuntimeError(f"task_execution.py crashed:\n{result.stderr}")
     report = json.loads(output.read_text()) if result.returncode == 0 and output.exists() else json.loads(result.stdout)
     if output.exists() and result.returncode != 0:
         try:

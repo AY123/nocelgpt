@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-09-27T15:20:45.593419+00:00",
+  "generated_at_utc": "2026-09-28T02:59:35.278333+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "PASS",
+  "status": "FAIL",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "6bb457b078708d9d8f25db1868b8712859245dbc",
+  "validated_repository_revision": "d9c53604b8facf881b765da74e8f1a64391775d7",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -37,7 +37,7 @@
       "CLOSED": 4,
       "OPEN": 56
     },
-    "suites": 61,
+    "suites": 60,
     "scenarios": 246,
     "decisions": 16,
     "findings": 76,
@@ -49,5 +49,8 @@
       "REJECTED": 1
     }
   },
-  "errors": []
+  "errors": [
+    "EVIDENCE_COVERAGE V2-004: missing checks",
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+  ]
 }
