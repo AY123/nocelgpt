@@ -1,0 +1,29 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-test-result-c7f684b9
+evidence_type: TEST_RESULT
+subject_id: V2-004
+revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+status: PASS
+producer: Local test execution in locked Python 3.12.14 environment
+executed_at: '2026-09-29T10:15:00Z'
+environment_fingerprint: 'Python 3.12.14, pytest 9.1.1, uv.lock enforced, macOS local environment'
+artifacts:
+- ref: validation/execution/V2-004/revalidation-c7f684b9/artifacts/test-delivery-gates-output.txt
+  sha256: 4ca37ddd1577279511246c0b684618bb5cfb6997c9ecfc19fc72bf373d17cc3a
+input_evidence_refs:
+- validation/execution/V2-004/revalidation-c7f684b9/code-revalidation.yaml
+check_ids:
+- AT-V2-004-01
+- AT-V2-004-02
+- AT-V2-004-03
+- AT-V2-004-04
+- AT-V2-004-05
+- AT-V2-004-06
+- AT-V2-004-07
+- AT-V2-004-08
+command: |
+  pytest tests/contract/test_delivery_gates.py -v
+  pytest tests/contract/test_plan_governance.py -v
+  python3 -B plan/scripts/validate_plan.py --check --output-dir dist/validation
+exit_code: 0

@@ -9,16 +9,18 @@ gates:
   - format
   - lint
   - typecheck
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-static.yaml
 - id: UNIT
   activation_phase: P0
   mode: every_change
   allow_failure: false
   checks:
   - unit
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-unit.yaml
 - id: SCHEMA_CONTRACT
   activation_phase: P0
   mode: every_change
@@ -26,16 +28,18 @@ gates:
   checks:
   - plan validation
   - active schemas and contracts
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-schema-contract.yaml
 - id: ARCH_FITNESS
   activation_phase: P0
   mode: every_change
   allow_failure: false
   checks:
   - positive and negative boundary fixtures
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-arch-fitness.yaml
 - id: SECRET_DEPENDENCY
   activation_phase: P0
   mode: every_change
@@ -43,16 +47,18 @@ gates:
   checks:
   - secret scan
   - locked dependency scan
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-secret-dependency.yaml
 - id: POSTGRES_ENV
   activation_phase: P0
   mode: every_change
   allow_failure: false
   checks:
   - real database connect and clean fixture
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-postgres-env.yaml
 - id: CANON_CAS_IDEMPOTENCY
   activation_phase: P2
   mode: every_change

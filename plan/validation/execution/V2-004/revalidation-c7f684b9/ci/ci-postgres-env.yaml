@@ -1,0 +1,25 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-ci-postgres-env-c7f684b9
+evidence_type: CI_RUN
+subject_id: V2-004
+revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+status: PASS
+producer: GitLab CI Pipeline 2892152784 Job 16798948957
+executed_at: '2026-09-29T06:53:25.464Z'
+environment_fingerprint: 'Python 3.12.14, uv 0.12.17, pytest 9.1.1, PostgreSQL server_version_num=170000, Linux x86_64 GitLab SaaS runner'
+artifacts:
+- ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948957-job.log
+  sha256: df0d3a82aefd8bb0622540c445a2433c004813cd451f6842e6d35dcfdeeda127
+- ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948957-artifacts.zip
+  sha256: 0dcb543ee3fb60edbd65b4240a8149107a9379760d00da6cdd4edcc25db1b9f8
+input_evidence_refs: []
+check_ids:
+- POSTGRES_ENV
+command: |
+  python scripts/check_postgres.py
+  pytest tests/integration/test_postgres_ci_service.py -v --tb=short
+exit_code: 0
+pipeline_id: '2892152784'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2892152784
+job_id: '16798948957'

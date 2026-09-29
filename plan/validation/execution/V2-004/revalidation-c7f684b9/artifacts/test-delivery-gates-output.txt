@@ -1,0 +1,49 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /Users/angyang/Documents/AI/ANovelOS/.venv/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/angyang/Documents/AI/ANovelOS
+configfile: pyproject.toml
+collecting ... collected 40 items
+
+tests/contract/test_delivery_gates.py::test_ci_gates_yaml_structure PASSED [  2%]
+tests/contract/test_delivery_gates.py::test_p0_gates_exist_with_correct_activation PASSED [  5%]
+tests/contract/test_delivery_gates.py::test_p0_gates_cannot_allow_failure PASSED [  7%]
+tests/contract/test_delivery_gates.py::test_future_gates_not_falsely_activated PASSED [ 10%]
+tests/contract/test_delivery_gates.py::test_gitlab_ci_exists PASSED      [ 12%]
+tests/contract/test_delivery_gates.py::test_gitlab_ci_has_p0_jobs PASSED [ 15%]
+tests/contract/test_delivery_gates.py::test_gitlab_ci_no_allow_failure_for_p0 PASSED [ 17%]
+tests/contract/test_delivery_gates.py::test_gitlab_ci_uses_locked_dependencies PASSED [ 20%]
+tests/contract/test_delivery_gates.py::test_gitlab_ci_uses_postgres_service PASSED [ 22%]
+tests/contract/test_delivery_gates.py::test_delivery_gates_test_suite_registered PASSED [ 25%]
+tests/contract/test_delivery_gates.py::test_no_test_deletions_in_catalog PASSED [ 27%]
+tests/contract/test_delivery_gates.py::test_execution_packet_exists_for_v2_004 PASSED [ 30%]
+tests/contract/test_delivery_gates.py::test_execution_packet_action_is_implement PASSED [ 32%]
+tests/contract/test_delivery_gates.py::test_no_weakening_in_governance_tests PASSED [ 35%]
+tests/contract/test_delivery_gates.py::test_ci_would_detect_secret_fixture PASSED [ 37%]
+tests/contract/test_delivery_gates.py::test_ci_would_detect_dependency_issues PASSED [ 40%]
+tests/contract/test_delivery_gates.py::test_ci_gates_not_reduced_from_baseline PASSED [ 42%]
+tests/contract/test_delivery_gates.py::test_locked_dependencies_file_exists PASSED [ 45%]
+tests/contract/test_delivery_gates.py::test_gitignore_includes_dist PASSED [ 47%]
+tests/contract/test_delivery_gates.py::test_gitlab_ci_yaml_is_valid PASSED [ 50%]
+tests/contract/test_delivery_gates.py::test_arch_fitness_references_existing_tests PASSED [ 52%]
+tests/contract/test_delivery_gates.py::test_secret_dependency_fails_on_violation PASSED [ 55%]
+tests/contract/test_delivery_gates.py::test_security_policy_scanner_implementation PASSED [ 57%]
+tests/contract/test_delivery_gates.py::test_security_policy_scanner_negative PASSED [ 60%]
+tests/contract/test_delivery_gates.py::test_secret_dependency_no_exit_on_error_suppression PASSED [ 62%]
+tests/contract/test_delivery_gates.py::test_security_policy_exclusions_match_gitleaks_allowlist PASSED [ 65%]
+tests/contract/test_delivery_gates.py::test_secret_dependency_has_exit_on_violation PASSED [ 67%]
+tests/contract/test_delivery_gates.py::test_no_failure_swallowing_in_p0_jobs PASSED [ 70%]
+tests/contract/test_delivery_gates.py::test_security_policy_yaml_is_required_artifact PASSED [ 72%]
+tests/contract/test_delivery_gates.py::test_static_gate_uses_real_tools PASSED [ 75%]
+tests/contract/test_delivery_gates.py::test_secret_dependency_has_real_vulnerability_scanner PASSED [ 77%]
+tests/contract/test_delivery_gates.py::test_ci_does_not_modify_plan_directory PASSED [ 80%]
+tests/contract/test_delivery_gates.py::test_ci_references_exist PASSED   [ 82%]
+tests/contract/test_delivery_gates.py::test_production_scan_isolated_from_fixtures PASSED [ 85%]
+tests/contract/test_delivery_gates.py::test_no_post_lock_dependency_mutation PASSED [ 87%]
+tests/contract/test_delivery_gates.py::test_hard_gates_fail_closed PASSED [ 90%]
+tests/contract/test_delivery_gates.py::test_locked_tools_used_in_ci PASSED [ 92%]
+tests/contract/test_delivery_gates.py::test_pip_audit_is_locked_dependency PASSED [ 95%]
+tests/contract/test_delivery_gates.py::test_schema_contract_regression_prevention PASSED [ 97%]
+tests/contract/test_delivery_gates.py::test_mypy_regression_prevention PASSED [100%]
+
+============================== 40 passed in 0.32s ==============================

@@ -1,0 +1,17 @@
+GitLab CI Job Metadata - ARCH_FITNESS
+Pipeline: 2892152784
+Job: 16798948956
+Revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+Status: success
+Exit code: 0
+
+Commands executed:
+pytest tests/architecture/test_dependency_boundaries.py tests/architecture/test_change_review.py tests/architecture/test_weakening_checks.py -v --tb=short --junitxml=dist/ci/arch/junit.xml
+
+Environment:
+Python 3.12.14
+uv 0.12.17
+pytest 9.1.1
+Linux x86_64 GitLab SaaS runner
+
+Result: PASS

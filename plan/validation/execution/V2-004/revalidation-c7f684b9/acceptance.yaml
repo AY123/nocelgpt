@@ -1,0 +1,90 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-acceptance-c7f684b9
+evidence_type: ACCEPTANCE_RECORD
+subject_id: V2-004
+revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+status: PASS
+producer: V2-004 revalidation acceptance review
+executed_at: '2026-09-29T10:30:00Z'
+environment_fingerprint: 'V2-004 revalidation evidence review at trusted dev_cc baseline c7f684b9'
+artifacts:
+- ref: validation/execution/V2-004/revalidation-c7f684b9/artifacts/acceptance-rationale.txt
+  sha256: fd6cd899f885b6791235b39df77a9cb1ee0a82bc6b668f13fcb2bbc1949c4557
+input_evidence_refs:
+- validation/execution/V2-004/revalidation-c7f684b9/code-revalidation.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/test-result.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/ci/ci-static.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/ci/ci-schema-contract.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/ci/ci-unit.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/ci/ci-arch-fitness.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/ci/ci-postgres-env.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/ci/ci-secret-dependency.yaml
+check_ids:
+- AT-V2-004-01
+- AT-V2-004-02
+- AT-V2-004-03
+- AT-V2-004-04
+- AT-V2-004-05
+- AT-V2-004-06
+- AT-V2-004-07
+- AT-V2-004-08
+decision: ACCEPTED
+rationale: V2-004 implementation verified at revision c7f684b998246a1005826c0d1c5a82819ee8c569 with complete evidence chain (CODE + TEST_RESULT + 6 CI_RUN from real GitLab Pipeline 2892152784). All acceptance tests passed, CI gates operational, policy/implementation aligned.
+finding_dispositions:
+- finding_id: AR-06
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/code-revalidation.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-static.yaml
+  reason: CI gates formalized in ci-gates.yaml and enforced through GitLab CI
+- finding_id: AR-17
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-static.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-secret-dependency.yaml
+  reason: Locked installation enforced via uv.lock and uv sync --frozen in CI
+- finding_id: AR-18
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-postgres-env.yaml
+  reason: PostgreSQL service integration verified in CI POSTGRES_ENV gate
+- finding_id: CA-17
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/test-result.yaml
+  reason: Contract tests prevent gate weakening, verified in test_delivery_gates.py
+- finding_id: RR-04
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-schema-contract.yaml
+  reason: Evidence schema enforced by validator in SCHEMA_CONTRACT gate
+- finding_id: RR-09
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/test-result.yaml
+  reason: Test catalog established with AT-V2-004 entries, verified in test execution
+- finding_id: RR-10
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-static.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-secret-dependency.yaml
+  reason: Pipeline artifact preservation verified through CI execution and artifact refs
+- finding_id: DA-01
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-static.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-schema-contract.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-unit.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-arch-fitness.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-postgres-env.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/ci/ci-secret-dependency.yaml
+  reason: V2-004 current revalidation verifies the required P0 CI set and anti-weakening enforcement at revision c7f684b998246a1005826c0d1c5a82819ee8c569. CI gates operational with real GitLab Pipeline 2892152784 execution verified.

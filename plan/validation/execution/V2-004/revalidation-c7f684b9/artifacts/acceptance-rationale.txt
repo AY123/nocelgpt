@@ -1,0 +1,63 @@
+V2-004 Acceptance Rationale
+Revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+Date: 2026-09-29
+
+ACCEPTANCE DECISION: PASS
+
+Summary:
+V2-004 (CI delivery gates formalization and enforcement) revalidated at new trusted
+dev_cc baseline after MR !6 merge. All evidence types present and bound to single
+revision. Real GitLab CI execution verified through Pipeline 2892152784.
+
+Evidence Review:
+
+1. CODE Evidence:
+   - Revision identity verified: c7f684b998246a1005826c0d1c5a82819ee8c569
+   - MR !6 changes documented and verified
+   - 4 files changed: .gitlab-ci.yml, .gitleaks.toml (new), security-policy.yaml, test_delivery_gates.py
+
+2. TEST_RESULT Evidence:
+   - Local tests: 40/40 delivery gates PASS, 15/15 governance PASS
+   - Validator: PASS, errors: []
+   - Environment: Python 3.12.14 (locked)
+   - New contract tests verify policy/CI alignment
+
+3. CI_RUN Evidence (6 gates):
+   - Pipeline: 2892152784 (post-merge push to dev_cc)
+   - All jobs: PASS
+   - STATIC (16798948953): ruff + mypy PASS
+   - SCHEMA_CONTRACT (16798948954): validator + governance tests PASS
+   - UNIT (16798948955): architecture + contract tests PASS
+   - ARCH_FITNESS (16798948956): architecture tests PASS
+   - POSTGRES_ENV (16798948957): PostgreSQL integration PASS
+   - SECRET_DEPENDENCY (16798948958): Gitleaks 8.21.2 + pip-audit PASS
+
+4. Key Verification - SECRET_DEPENDENCY:
+   - Gitleaks 8.21.2 SHA256 verified: 5bc41815076e...e3ba
+   - .gitleaks.toml loaded
+   - Scan result: no leaks found
+   - This is first CI execution with real gitleaks scanner (not grep-only)
+   - Aligns with security-policy.yaml v1.1.0
+
+Related Findings Disposition:
+
+AR-06, AR-17, AR-18, CA-17, RR-04, RR-09, RR-10:
+All resolved by V2-004 implementation. CI gates formalized, locked dependencies
+enforced, PostgreSQL verified, contract tests prevent weakening, evidence schema
+enforced, test catalog established, artifact preservation verified.
+
+DA-01 (CI gate protection):
+V2-004 responsibility satisfied. CI enforcement mechanism exists and is verifiable
+through multiple evidence layers (CI_RUN + contract tests + validator).
+DA-01 overall closure requires V2-002 + V2-004 combined evidence, handled in
+separate FINDING_CLOSURE phase.
+
+Acceptance Criteria Met:
+✓ All 8 acceptance tests (AT-V2-004-01 through AT-V2-004-08) verified
+✓ CODE + TEST_RESULT + 6 CI_RUN + ACCEPTANCE_RECORD all present
+✓ Single revision binding across all evidence
+✓ Real GitLab CI execution verified (not simulated)
+✓ Validator PASS
+✓ Related findings disposition documented
+
+Decision: ACCEPTED for V2-004 current evidence at revision c7f684b998246a1005826c0d1c5a82819ee8c569.
