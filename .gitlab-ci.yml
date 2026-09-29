@@ -131,20 +131,41 @@ secret_dependency:
   extends: .base_job
   stage: security
   allow_failure: false
+  before_script:
+    - python --version
+    - pip install uv==0.12.17
+    - uv --version
+    - uv sync --frozen
+    - source .venv/bin/activate
+    # Install gitleaks for secret scanning
+    - echo "Installing gitleaks..."
+    - |
+      GITLEAKS_VERSION="8.21.2"
+      GITLEAKS_SHA256="5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba"
+      wget -q "https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz" -O /tmp/gitleaks.tar.gz
+      echo "${GITLEAKS_SHA256}  /tmp/gitleaks.tar.gz" | sha256sum -c -
+      tar -xzf /tmp/gitleaks.tar.gz -C /tmp
+      chmod +x /tmp/gitleaks
+      /tmp/gitleaks version
   script:
     - echo "=== SECRET_DEPENDENCY Gate ==="
-    - echo "Production secret scan..."
+    - echo "Preparing output directory..."
+    - mkdir -p dist/ci/security
+    - echo "Secret scanning with gitleaks (policy scanner)..."
+    - /tmp/gitleaks detect --config .gitleaks.toml --no-git --verbose --source . --report-format json --report-path dist/ci/security/gitleaks-report.json
+    - echo "Gitleaks scan PASS"
+    - echo "Supplementary grep-based checks..."
     - |
-      # Scan production code (fail if secrets found)
+      # Supplementary scan for production code patterns (not primary scanner)
       if grep -r "ANOVELOS_.*SECRET" plan/ src/ scripts/ --include="*.py" --include="*.yaml" 2>/dev/null | grep -v "^#" | grep -v "tests/fixtures"; then
-        echo "ERROR: Secrets found in production code"
+        echo "WARNING: Supplementary check found potential secrets in production code"
         exit 1
       fi
       if grep -r "api[_-]key.*=" plan/ src/ scripts/ --include="*.py" --include="*.yaml" 2>/dev/null | grep -v "^#" | grep -v "example"; then
-        echo "ERROR: Potential API keys found"
+        echo "WARNING: Supplementary check found potential API keys"
         exit 1
       fi
-    - echo "Production secret scan PASS"
+    - echo "Supplementary checks PASS"
     - echo "Dependency integrity check..."
     - uv pip check
     - echo "Dependency vulnerability scan..."
@@ -159,7 +180,7 @@ secret_dependency:
     expire_in: 7 days
   after_script:
     - mkdir -p dist/ci/security
-    - echo '{ "gate":"SECRET_DEPENDENCY", "status":"completed" }' > dist/ci/security/result.json
+    - echo '{ "gate":"SECRET_DEPENDENCY", "status":"completed", "scanner":"gitleaks", "version":"8.21.2" }' > dist/ci/security/result.json
 
 # POSTGRES_ENV Gate - Real PostgreSQL Connection
 postgres_env:

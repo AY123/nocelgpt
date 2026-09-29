@@ -299,6 +299,270 @@ def test_secret_dependency_fails_on_violation():
     """SECRET_DEPENDENCY must fail (not warn) on secret detection."""
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
+        ci_config = yaml.safe_load(f)
+
+    assert 'secret_dependency' in ci_config
+    job = ci_config['secret_dependency']
+
+    # Must not have allow_failure: true
+    assert job.get('allow_failure', False) is False, \
+        "SECRET_DEPENDENCY must fail hard (not allow_failure)"
+
+
+def test_security_policy_scanner_implementation():
+    """Verify CI actually implements the scanner declared in security-policy.
+
+    This test prevents policy/implementation mismatch where policy declares
+    'gitleaks' but CI only runs grep-based checks.
+    """
+    # Read security policy
+    policy_path = ROOT / 'security-policy.yaml'
+    assert policy_path.exists(), "security-policy.yaml must exist"
+
+    with policy_path.open() as f:
+        policy = yaml.safe_load(f)
+
+    # Read CI configuration
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        ci_config = yaml.safe_load(f)
+
+    # Use shared validation logic
+    _check_policy_scanner_implemented(policy, ci_config)
+
+
+def _check_policy_scanner_implemented(policy, ci_config):
+    """Helper function to check if policy-declared scanner is actually implemented in CI.
+
+    Used by both positive and negative tests to ensure consistent validation logic.
+    Raises AssertionError if scanner is not properly implemented.
+    """
+    scanner = policy.get('secret_scanning', {}).get('scanner')
+    if not scanner:
+        raise AssertionError("security-policy must declare secret_scanning.scanner")
+
+    if 'secret_dependency' not in ci_config:
+        raise AssertionError("SECRET_DEPENDENCY job must exist in CI")
+
+    job = ci_config['secret_dependency']
+
+    # Combine all executable commands
+    job_commands = []
+    for key in ['before_script', 'script']:
+        if key in job:
+            if isinstance(job[key], list):
+                job_commands.extend(job[key])
+            else:
+                job_commands.append(job[key])
+
+    full_script = '\n'.join(str(cmd) for cmd in job_commands)
+
+    # Check for actual scanner execution (not just download/mention)
+    scanner_execute_patterns = [
+        rf'\/{scanner}\s+detect',
+        rf'\/{scanner}\s+protect',
+    ]
+
+    found_execution = any(re.search(pat, full_script) for pat in scanner_execute_patterns)
+
+    if not found_execution:
+        raise AssertionError(
+            f"CI must execute '{scanner}' scan command (e.g., '/tmp/{scanner} detect'), "
+            f"not just download or mention it"
+        )
+
+    # Check no error suppression on scanner execution
+    for line in full_script.split('\n'):
+        if re.search(rf'\/{scanner}\s+(detect|protect)', line.strip()):
+            if any(suppress in line for suppress in ['|| true', '|| exit 0', '|| :']):
+                raise AssertionError(f"Scanner execution must not have error suppression: {line.strip()}")
+
+    # Check job is fail-closed
+    if job.get('allow_failure', False) is not False:
+        raise AssertionError("SECRET_DEPENDENCY must be fail-closed (allow_failure=false)")
+
+
+def test_security_policy_scanner_negative():
+    """Negative test: if scanner execution is removed from CI, test must fail.
+
+    This verifies the test actually catches policy/CI mismatch.
+    """
+    policy_path = ROOT / 'security-policy.yaml'
+    with policy_path.open() as f:
+        policy = yaml.safe_load(f)
+
+    scanner = policy.get('secret_scanning', {}).get('scanner')
+    assert scanner, "Test prerequisite: policy must declare scanner"
+
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        ci_config = yaml.safe_load(f)
+
+    # Verify positive case works first
+    try:
+        _check_policy_scanner_implemented(policy, ci_config)
+    except AssertionError:
+        pytest.fail("Test prerequisite failed: positive case should pass before testing negative")
+
+    # Now mutate CI to remove scanner execution
+    # Find and remove the scanner detect/protect command
+    job = ci_config['secret_dependency']
+    if 'script' in job and isinstance(job['script'], list):
+        # Remove lines that execute scanner
+        job['script'] = [
+            cmd for cmd in job['script']
+            if not re.search(rf'\/{scanner}\s+(detect|protect)', str(cmd))
+        ]
+
+    # Now the negative check should fail
+    try:
+        _check_policy_scanner_implemented(policy, ci_config)
+        # If we get here, the check didn't catch the removal - test fails
+        pytest.fail(
+            f"Negative test failed: check should detect when scanner execution is removed, "
+            f"but it passed even after removing '{scanner} detect/protect' commands"
+        )
+    except AssertionError as e:
+        # This is expected - the check should fail when scanner is removed
+        assert "execute" in str(e).lower() or "scan" in str(e).lower(), \
+            f"Check failed but with unexpected error: {e}"
+
+
+def test_secret_dependency_no_exit_on_error_suppression():
+    """SECRET_DEPENDENCY must not have set +e or similar error suppression."""
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
+        ci_config = yaml.safe_load(f)
+
+    job = ci_config.get('secret_dependency', {})
+
+    # Get all script lines
+    all_lines = []
+    for key in ['before_script', 'script']:
+        if key in job:
+            if isinstance(job[key], list):
+                all_lines.extend(job[key])
+            else:
+                all_lines.append(job[key])
+
+    full_script = '\n'.join(str(line) for line in all_lines)
+
+    # Must not have error suppression
+    assert 'set +e' not in full_script, \
+        "SECRET_DEPENDENCY must not use 'set +e' (error suppression)"
+    assert 'set -e' in full_script or 'set -' not in full_script, \
+        "If using set, SECRET_DEPENDENCY must use 'set -e' (fail on error)"
+
+
+def test_security_policy_exclusions_match_gitleaks_allowlist():
+    """Verify security-policy exclusions are bidirectionally aligned with gitleaks allowlist.
+
+    This prevents drift where gitleaks config silently excludes more paths
+    than policy declares, or policy declares exclusions not implemented in gitleaks.
+    """
+    # Read security policy
+    policy_path = ROOT / 'security-policy.yaml'
+    assert policy_path.exists(), "security-policy.yaml must exist"
+
+    with policy_path.open() as f:
+        policy = yaml.safe_load(f)
+
+    # Read gitleaks config - parse as TOML
+    gitleaks_config_path = ROOT / '.gitleaks.toml'
+    assert gitleaks_config_path.exists(), ".gitleaks.toml must exist"
+
+    try:
+        import tomllib
+    except ImportError:
+        import tomli as tomllib
+
+    with gitleaks_config_path.open('rb') as f:
+        gitleaks_config = tomllib.load(f)
+
+    # Get policy exclusions
+    policy_exclusions = policy.get('secret_scanning', {}).get('exclusions', [])
+    assert policy_exclusions, "security-policy should declare exclusions"
+
+    # Normalize policy exclusions
+    policy_files = set()
+    for exclusion in policy_exclusions:
+        if isinstance(exclusion, str):
+            policy_files.add(exclusion)
+        elif isinstance(exclusion, dict):
+            policy_files.add(exclusion.get('path', ''))
+
+    # Get gitleaks allowlist paths
+    gitleaks_paths = gitleaks_config.get('allowlist', {}).get('paths', [])
+    assert gitleaks_paths, ".gitleaks.toml should have allowlist.paths"
+
+    # Operational exclusions: CI cache/venv (outside policy scope)
+    # These are allowed to be in gitleaks but not in policy
+    operational_exclusions = {
+        r'(^|/)\.cache/',
+        r'(^|/)\.venv/',
+    }
+
+    # Forward check: policy → gitleaks
+    # Every policy exclusion must appear in gitleaks allowlist
+    missing_in_gitleaks = []
+    for policy_file in policy_files:
+        if not policy_file:
+            continue
+
+        # Check if this path appears in gitleaks allowlist
+        # Gitleaks uses regex patterns with escaped dots and anchors
+        found = False
+        for gitleaks_pattern in gitleaks_paths:
+            # Check if policy file matches this pattern
+            # Handle both plain path and regex-escaped path
+            if (policy_file in gitleaks_pattern or
+                policy_file.replace('.', r'\.') in gitleaks_pattern or
+                policy_file.replace('.', r'\.').replace('/', r'/') in gitleaks_pattern):
+                found = True
+                break
+
+        if not found:
+            missing_in_gitleaks.append(policy_file)
+
+    assert not missing_in_gitleaks, \
+        f"security-policy exclusions not found in .gitleaks.toml: {missing_in_gitleaks}"
+
+    # Reverse check: gitleaks → policy
+    # Every gitleaks exclusion (except operational) must be in policy
+    unexpected_in_gitleaks = []
+    for gitleaks_pattern in gitleaks_paths:
+        # Skip operational exclusions
+        if gitleaks_pattern in operational_exclusions:
+            continue
+
+        # This gitleaks pattern should correspond to a policy exclusion
+        # Check if any policy file matches this pattern
+        found = False
+        for policy_file in policy_files:
+            if (policy_file in gitleaks_pattern or
+                policy_file.replace('.', r'\.') in gitleaks_pattern):
+                found = True
+                break
+
+        if not found:
+            unexpected_in_gitleaks.append(gitleaks_pattern)
+
+    assert not unexpected_in_gitleaks, \
+        f".gitleaks.toml has exclusions not declared in security-policy: {unexpected_in_gitleaks}"
+
+    # Verify no broad directory wildcards
+    broad_patterns = [
+        r'plan/archive/\*\*',
+        r'plan/validation/\*\*',
+        r'plan/\*\*',
+    ]
+
+    for pattern in broad_patterns:
+        for gitleaks_pattern in gitleaks_paths:
+            assert pattern not in gitleaks_pattern, \
+                f"Broad exclusion pattern '{pattern}' found - exclusions should be specific files"
+    ci_path = ROOT / '.gitlab-ci.yml'
+    with ci_path.open() as f:
         content = f.read()
 
     # Check for failure-swallowing patterns in secret_dependency job
