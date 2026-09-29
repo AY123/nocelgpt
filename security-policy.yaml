@@ -21,11 +21,11 @@ secret_scanning:
 
   patterns:
     - name: Generic API Key
-      pattern: '(?i)api[_-]?key\s*=\s*["\']?[a-zA-Z0-9]{32,}["\']?'
+      pattern: '(?i)api[_-]?key\s*=\s*["\''"]?[a-zA-Z0-9]{32,}["\''"]?'
       severity: HIGH
 
     - name: Generic Secret
-      pattern: '(?i)secret\s*=\s*["\']?[a-zA-Z0-9]{16,}["\']?'
+      pattern: '(?i)secret\s*=\s*["\''"]?[a-zA-Z0-9]{16,}["\''"]?'
       severity: HIGH
 
     - name: Private Key
