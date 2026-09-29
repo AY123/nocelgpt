@@ -6,8 +6,8 @@ subject_id: V2-004
 revision: c7f684b998246a1005826c0d1c5a82819ee8c569
 status: PASS
 producer: GitLab CI Pipeline 2892152784 Job 16798948957
-executed_at: '2026-09-29T02:16:30Z'
-environment_fingerprint: 'Python 3.12.14, uv 0.12.17, pytest 9.1.1, PostgreSQL 17.0 service, Linux x86_64 GitLab SaaS runner'
+executed_at: '2026-09-29T06:53:25.464Z'
+environment_fingerprint: 'Python 3.12.14, uv 0.12.17, pytest 9.1.1, PostgreSQL server_version_num=170000, Linux x86_64 GitLab SaaS runner'
 artifacts:
 - ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948957-job.log
   sha256: df0d3a82aefd8bb0622540c445a2433c004813cd451f6842e6d35dcfdeeda127
