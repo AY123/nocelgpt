@@ -455,10 +455,10 @@ def test_secret_dependency_no_exit_on_error_suppression():
 
 
 def test_security_policy_exclusions_match_gitleaks_allowlist():
-    """Verify security-policy exclusions are reflected in gitleaks allowlist.
+    """Verify security-policy exclusions are bidirectionally aligned with gitleaks allowlist.
 
-    This prevents drift where policy declares one set of exclusions but
-    gitleaks config silently excludes more paths.
+    This prevents drift where gitleaks config silently excludes more paths
+    than policy declares, or policy declares exclusions not implemented in gitleaks.
     """
     # Read security policy
     policy_path = ROOT / 'security-policy.yaml'
@@ -467,18 +467,23 @@ def test_security_policy_exclusions_match_gitleaks_allowlist():
     with policy_path.open() as f:
         policy = yaml.safe_load(f)
 
-    # Read gitleaks config
+    # Read gitleaks config - parse as TOML
     gitleaks_config_path = ROOT / '.gitleaks.toml'
     assert gitleaks_config_path.exists(), ".gitleaks.toml must exist"
 
-    with gitleaks_config_path.open() as f:
-        gitleaks_content = f.read()
+    try:
+        import tomllib
+    except ImportError:
+        import tomli as tomllib
+
+    with gitleaks_config_path.open('rb') as f:
+        gitleaks_config = tomllib.load(f)
 
     # Get policy exclusions
     policy_exclusions = policy.get('secret_scanning', {}).get('exclusions', [])
     assert policy_exclusions, "security-policy should declare exclusions"
 
-    # Normalize policy exclusions to comparable form
+    # Normalize policy exclusions
     policy_files = set()
     for exclusion in policy_exclusions:
         if isinstance(exclusion, str):
@@ -486,36 +491,66 @@ def test_security_policy_exclusions_match_gitleaks_allowlist():
         elif isinstance(exclusion, dict):
             policy_files.add(exclusion.get('path', ''))
 
-    # Check that each policy exclusion appears in gitleaks config
-    # Gitleaks uses regex patterns, so check for path components
+    # Get gitleaks allowlist paths
+    gitleaks_paths = gitleaks_config.get('allowlist', {}).get('paths', [])
+    assert gitleaks_paths, ".gitleaks.toml should have allowlist.paths"
+
+    # Operational exclusions: CI cache/venv (outside policy scope)
+    # These are allowed to be in gitleaks but not in policy
+    operational_exclusions = {
+        r'(^|/)\.cache/',
+        r'(^|/)\.venv/',
+    }
+
+    # Forward check: policy → gitleaks
+    # Every policy exclusion must appear in gitleaks allowlist
     missing_in_gitleaks = []
     for policy_file in policy_files:
         if not policy_file:
             continue
 
-        # For gitleaks regex matching, the path components should be present
-        # even if escaped. Check for the essential path without regex anchors.
-        # Remove ^ and $ anchors, and check if path appears
-        path_for_search = policy_file.replace('/', r'\/')  # Regex escaped slashes
-
-        # Also check original path (in case no escaping used)
-        found = (policy_file in gitleaks_content or
-                 path_for_search in gitleaks_content or
-                 policy_file.replace('/', r'/') in gitleaks_content)
-
-        # For paths with special regex chars like dots, also check escaped version
-        if '.' in policy_file:
-            escaped_path = policy_file.replace('.', r'\.')
-            found = found or escaped_path in gitleaks_content
+        # Check if this path appears in gitleaks allowlist
+        # Gitleaks uses regex patterns with escaped dots and anchors
+        found = False
+        for gitleaks_pattern in gitleaks_paths:
+            # Check if policy file matches this pattern
+            # Handle both plain path and regex-escaped path
+            if (policy_file in gitleaks_pattern or
+                policy_file.replace('.', r'\.') in gitleaks_pattern or
+                policy_file.replace('.', r'\.').replace('/', r'/') in gitleaks_pattern):
+                found = True
+                break
 
         if not found:
             missing_in_gitleaks.append(policy_file)
 
     assert not missing_in_gitleaks, \
-        f"security-policy exclusions not found in .gitleaks.toml allowlist: {missing_in_gitleaks}"
+        f"security-policy exclusions not found in .gitleaks.toml: {missing_in_gitleaks}"
 
-    # Also verify gitleaks allowlist doesn't have unexplained broad exclusions
-    # This is a heuristic check - look for patterns that exclude entire directories
+    # Reverse check: gitleaks → policy
+    # Every gitleaks exclusion (except operational) must be in policy
+    unexpected_in_gitleaks = []
+    for gitleaks_pattern in gitleaks_paths:
+        # Skip operational exclusions
+        if gitleaks_pattern in operational_exclusions:
+            continue
+
+        # This gitleaks pattern should correspond to a policy exclusion
+        # Check if any policy file matches this pattern
+        found = False
+        for policy_file in policy_files:
+            if (policy_file in gitleaks_pattern or
+                policy_file.replace('.', r'\.') in gitleaks_pattern):
+                found = True
+                break
+
+        if not found:
+            unexpected_in_gitleaks.append(gitleaks_pattern)
+
+    assert not unexpected_in_gitleaks, \
+        f".gitleaks.toml has exclusions not declared in security-policy: {unexpected_in_gitleaks}"
+
+    # Verify no broad directory wildcards
     broad_patterns = [
         r'plan/archive/\*\*',
         r'plan/validation/\*\*',
@@ -523,8 +558,9 @@ def test_security_policy_exclusions_match_gitleaks_allowlist():
     ]
 
     for pattern in broad_patterns:
-        assert pattern not in gitleaks_content, \
-            f"Broad exclusion pattern '{pattern}' found - exclusions should be specific files, not entire directories"
+        for gitleaks_pattern in gitleaks_paths:
+            assert pattern not in gitleaks_pattern, \
+                f"Broad exclusion pattern '{pattern}' found - exclusions should be specific files"
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
         content = f.read()

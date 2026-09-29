@@ -1,8 +1,8 @@
 # ANovelOS Security Policy
-# Version: 1.0.0
+# Version: 1.1.0
 # Applies to: P0 CI gates and repository content
 
-version: 1.0.0
+version: 1.1.0
 status: ACTIVE
 
 secret_scanning:
@@ -98,4 +98,4 @@ integrity:
     - gitleaks on repository content
 
 owner: delivery-maintainer
-last_updated: "2026-09-25"
+last_updated: "2026-09-29"
