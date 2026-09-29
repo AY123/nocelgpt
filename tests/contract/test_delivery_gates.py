@@ -355,44 +355,93 @@ def test_security_policy_scanner_implementation():
 
     full_script = '\n'.join(str(cmd) for cmd in job_commands)
 
-    # Verify scanner command exists in executable context
-    # Must find the scanner name in a command position (not comment, not echo string)
-    scanner_pattern = rf'\b{re.escape(scanner)}\b'
+    # Verify scanner is actually executed (not just downloaded or echoed)
+    # Look for scanner invocation pattern: /path/to/gitleaks <subcommand>
+    # Must find both the binary name AND a scan command (detect/protect)
+    scanner_execute_patterns = [
+        rf'\/{scanner}\s+detect',  # /tmp/gitleaks detect
+        rf'\/{scanner}\s+protect', # /tmp/gitleaks protect
+    ]
 
-    # Check if scanner appears as executable command
-    found_scanner = False
-    for line in full_script.split('\n'):
-        line_stripped = line.strip()
-        # Skip comments
-        if line_stripped.startswith('#'):
-            continue
-        # Skip echo statements (not actual execution)
-        if line_stripped.startswith('echo '):
-            continue
-        # Check if scanner name appears as command
-        if re.search(scanner_pattern, line_stripped):
-            found_scanner = True
+    found_execution = False
+    for pattern in scanner_execute_patterns:
+        if re.search(pattern, full_script):
+            found_execution = True
             break
 
-    assert found_scanner, \
-        f"CI SECRET_DEPENDENCY job must execute '{scanner}' (policy-declared scanner), not just mention it in comments/echo"
+    assert found_execution, \
+        f"CI SECRET_DEPENDENCY must execute '{scanner}' scan command (e.g., '/tmp/{scanner} detect'), not just download or mention it"
 
-    # Verify no error suppression for the scanner
-    # Must not have: || true, || exit 0, or similar after scanner command
-    scanner_lines = [line for line in full_script.split('\n')
-                     if scanner in line and not line.strip().startswith('#')]
+    # Verify no error suppression for the scanner execution
+    scanner_exec_lines = []
+    for line in full_script.split('\n'):
+        line_stripped = line.strip()
+        # Find lines that actually execute the scanner
+        if re.search(rf'\/{scanner}\s+(detect|protect)', line_stripped):
+            scanner_exec_lines.append(line_stripped)
 
-    for line in scanner_lines:
-        assert '|| true' not in line and '|| exit 0' not in line, \
-            f"Scanner '{scanner}' must not have error suppression (found: {line.strip()})"
+    for line in scanner_exec_lines:
+        assert '|| true' not in line and '|| exit 0' not in line and '|| :' not in line, \
+            f"Scanner execution must not have error suppression (found: {line})"
 
     # Verify job is fail-closed
     assert job.get('allow_failure', False) is False, \
         f"SECRET_DEPENDENCY job must be fail-closed (allow_failure must be false)"
 
 
+def _check_policy_scanner_implemented(policy, ci_config):
+    """Helper function to check if policy-declared scanner is actually implemented in CI.
+
+    Used by both positive and negative tests to ensure consistent validation logic.
+    Raises AssertionError if scanner is not properly implemented.
+    """
+    scanner = policy.get('secret_scanning', {}).get('scanner')
+    if not scanner:
+        raise AssertionError("security-policy must declare secret_scanning.scanner")
+
+    if 'secret_dependency' not in ci_config:
+        raise AssertionError("SECRET_DEPENDENCY job must exist in CI")
+
+    job = ci_config['secret_dependency']
+
+    # Combine all executable commands
+    job_commands = []
+    for key in ['before_script', 'script']:
+        if key in job:
+            if isinstance(job[key], list):
+                job_commands.extend(job[key])
+            else:
+                job_commands.append(job[key])
+
+    full_script = '\n'.join(str(cmd) for cmd in job_commands)
+
+    # Check for actual scanner execution (not just download/mention)
+    scanner_execute_patterns = [
+        rf'\/{scanner}\s+detect',
+        rf'\/{scanner}\s+protect',
+    ]
+
+    found_execution = any(re.search(pat, full_script) for pat in scanner_execute_patterns)
+
+    if not found_execution:
+        raise AssertionError(
+            f"CI must execute '{scanner}' scan command (e.g., '/tmp/{scanner} detect'), "
+            f"not just download or mention it"
+        )
+
+    # Check no error suppression on scanner execution
+    for line in full_script.split('\n'):
+        if re.search(rf'\/{scanner}\s+(detect|protect)', line.strip()):
+            if any(suppress in line for suppress in ['|| true', '|| exit 0', '|| :']):
+                raise AssertionError(f"Scanner execution must not have error suppression: {line.strip()}")
+
+    # Check job is fail-closed
+    if job.get('allow_failure', False) is not False:
+        raise AssertionError("SECRET_DEPENDENCY must be fail-closed (allow_failure=false)")
+
+
 def test_security_policy_scanner_negative():
-    """Negative test: if scanner is removed from CI, test must fail.
+    """Negative test: if scanner execution is removed from CI, test must fail.
 
     This verifies the test actually catches policy/CI mismatch.
     """
@@ -401,27 +450,40 @@ def test_security_policy_scanner_negative():
         policy = yaml.safe_load(f)
 
     scanner = policy.get('secret_scanning', {}).get('scanner')
-
-    # This is a structural test - we verify that if we were to modify CI
-    # to not include the scanner, the above test would catch it.
-    # We do this by checking the test logic is sound.
+    assert scanner, "Test prerequisite: policy must declare scanner"
 
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
-        ci_content = f.read()
+        ci_config = yaml.safe_load(f)
 
-    # Simulate removing the scanner
-    ci_without_scanner = ci_content.replace(scanner, 'SCANNER_REMOVED_TEST')
+    # Verify positive case works first
+    try:
+        _check_policy_scanner_implemented(policy, ci_config)
+    except AssertionError:
+        pytest.fail("Test prerequisite failed: positive case should pass before testing negative")
 
-    # Verify the scanner is actually in the original CI
-    # (This confirms the positive case)
-    assert scanner in ci_content, \
-        f"Scanner '{scanner}' must be present in CI for negative test to be valid"
+    # Now mutate CI to remove scanner execution
+    # Find and remove the scanner detect/protect command
+    job = ci_config['secret_dependency']
+    if 'script' in job and isinstance(job['script'], list):
+        # Remove lines that execute scanner
+        job['script'] = [
+            cmd for cmd in job['script']
+            if not re.search(rf'\/{scanner}\s+(detect|protect)', str(cmd))
+        ]
 
-    # Verify removing it would make it not present
-    # (This confirms the negative case would be caught)
-    assert scanner not in ci_without_scanner, \
-        "Negative test simulation failed: scanner removal didn't work"
+    # Now the negative check should fail
+    try:
+        _check_policy_scanner_implemented(policy, ci_config)
+        # If we get here, the check didn't catch the removal - test fails
+        pytest.fail(
+            f"Negative test failed: check should detect when scanner execution is removed, "
+            f"but it passed even after removing '{scanner} detect/protect' commands"
+        )
+    except AssertionError as e:
+        # This is expected - the check should fail when scanner is removed
+        assert "execute" in str(e).lower() or "scan" in str(e).lower(), \
+            f"Check failed but with unexpected error: {e}"
 
 
 def test_secret_dependency_no_exit_on_error_suppression():

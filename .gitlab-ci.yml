@@ -149,8 +149,10 @@ secret_dependency:
       /tmp/gitleaks version
   script:
     - echo "=== SECRET_DEPENDENCY Gate ==="
+    - echo "Preparing output directory..."
+    - mkdir -p dist/ci/security
     - echo "Secret scanning with gitleaks (policy scanner)..."
-    - /tmp/gitleaks detect --no-git --verbose --source . --report-format json --report-path dist/ci/security/gitleaks-report.json
+    - /tmp/gitleaks detect --config .gitleaks.toml --no-git --verbose --source . --report-format json --report-path dist/ci/security/gitleaks-report.json
     - echo "Gitleaks scan PASS"
     - echo "Supplementary grep-based checks..."
     - |

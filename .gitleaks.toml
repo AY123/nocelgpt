@@ -1,0 +1,34 @@
+# ANovelOS Gitleaks Configuration
+# Version: 1.0.0
+# Policy: Scan production source only (not CI cache, archives, or validation history)
+
+title = "ANovelOS Secret Scanning Policy"
+
+[extend]
+useDefault = true
+
+# Allowlist: Explicitly justified exclusions only
+[allowlist]
+description = "Exclude non-production paths from secret scanning"
+
+# CI-generated cache (not repository content)
+paths = [
+  '''\.cache/''',
+  '''\.venv/''',
+]
+
+# Historical design archives (reviewed at time of creation, not active source)
+regexes = [
+  '''plan/archive/''',
+]
+
+# Validation evidence and execution history (contains external review samples)
+regexTargets = [
+  '''plan/validation/''',
+]
+
+# Test fixtures with intentionally fake secrets for negative testing
+[allowlist.files]
+  [[allowlist.files.file]]
+  file = "tests/fixtures/secrets/harmless-fake-secrets.txt"
+  description = "Test fixture with obviously fake secrets for negative validation"
