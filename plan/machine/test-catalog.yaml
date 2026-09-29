@@ -121,7 +121,7 @@ suites:
     required_assertion: 在真实 CI/仓库保护环境验证治理校验器、基线、测试及流水线变更不能由同次改动移除必需检查后自行放行；无害失败夹具与未授权保护变更被阻断，有适用授权的规则修订经可信重新验证后可进入，不增加固定团队人数要求
     status: VERIFIED
   execution_evidence:
-  - validation/execution/V2-004/closure/test-result.yaml
+  - validation/execution/V2-004/revalidation-c7f684b9/test-result.yaml
 - id: AT-V2-005
   task_id: V2-005
   phase: P1

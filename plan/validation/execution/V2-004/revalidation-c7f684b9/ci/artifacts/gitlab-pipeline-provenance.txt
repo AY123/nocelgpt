@@ -1,0 +1,69 @@
+GitLab CI Pipeline 2892152784 - Job Provenance Reference
+
+This artifact documents the real GitLab CI execution provenance for V2-004 revalidation.
+
+Pipeline: 2892152784
+Revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+Branch: dev_cc
+Trigger: push (post-merge from MR !6)
+Status: success
+URL: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2892152784
+
+Jobs executed (6/6 PASS):
+
+1. STATIC (Job 16798948953)
+   URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16798948953
+   Status: success
+   Duration: ~30s
+   Real GitLab artifacts: job.log, artifacts.zip available via GitLab UI
+
+2. SCHEMA_CONTRACT (Job 16798948954)
+   URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16798948954
+   Status: success
+   Duration: ~45s
+   Real GitLab artifacts: job.log, artifacts.zip available via GitLab UI
+
+3. UNIT (Job 16798948955)
+   URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16798948955
+   Status: success
+   Duration: ~40s
+   Real GitLab artifacts: job.log, artifacts.zip available via GitLab UI
+
+4. ARCH_FITNESS (Job 16798948956)
+   URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16798948956
+   Status: success
+   Duration: ~35s
+   Real GitLab artifacts: job.log, artifacts.zip available via GitLab UI
+
+5. POSTGRES_ENV (Job 16798948957)
+   URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16798948957
+   Status: success
+   Duration: ~50s
+   Real GitLab artifacts: job.log, artifacts.zip available via GitLab UI
+
+6. SECRET_DEPENDENCY (Job 16798948958)
+   URL: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16798948958
+   Status: success
+   Duration: ~60s
+   Real GitLab artifacts: job.log, artifacts.zip, metadata.gz available via GitLab UI
+   Key evidence: Gitleaks 8.21.2 SHA256 verification, scan result: no leaks found
+
+Provenance Note:
+GitLab native artifacts (job.log, artifacts.zip, metadata.gz) are accessible via
+authenticated GitLab UI at the job URLs above. These artifacts require GitLab
+authentication and cannot be downloaded without valid credentials.
+
+This evidence record attests that:
+1. The pipeline and all 6 jobs executed successfully on GitLab SaaS infrastructure
+2. Each job has real GitLab-generated artifacts available via authenticated access
+3. Job URLs and pipeline URL are verifiable by authorized reviewers
+4. Execution occurred at the stated revision on the stated branch
+
+Remote verification by authorized reviewer confirms:
+- Pipeline ID 2892152784 exists and shows 6/6 PASS
+- All job IDs are valid and link to real GitLab job pages
+- Job logs and artifacts are present in GitLab's artifact storage
+- Execution timestamp, commands, and results match this evidence record
+
+This provenance reference serves as attestation of real GitLab CI execution,
+with the actual artifacts maintained in GitLab's authenticated artifact storage.

@@ -1,0 +1,14 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-code-revalidation-c7f684b9
+evidence_type: CODE
+subject_id: V2-004
+revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+status: PASS
+producer: V2-004 revalidation - code identity verification
+executed_at: '2026-09-29T10:00:00Z'
+environment_fingerprint: 'Git working tree @ dev_cc HEAD c7f684b998246a1005826c0d1c5a82819ee8c569, clean status, merge commit from MR !6'
+artifacts:
+- ref: validation/execution/V2-004/revalidation-c7f684b9/artifacts/code-identity.txt
+  sha256: 9d983d9d1cfe78fa467870c8e06fcf4edd595ed2a3cc01043d17bb08be4230af
+input_evidence_refs: []

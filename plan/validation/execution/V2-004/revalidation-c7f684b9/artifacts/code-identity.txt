@@ -1,0 +1,47 @@
+V2-004 Code Identity Verification
+Revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+Branch: dev_cc
+Date: 2026-09-29
+
+Merge commit from MR !6:
+- Title: fix(G-P0-H1): align secret scanning policy with real CI enforcement
+- Source: work/g-p0-h1-security-alignment @ f1bcbcb7ce4709d36fc73a5a9bfd1d38789487ad
+- Target: dev_cc @ b4e50236210b7a761927ed2e88be08bbb62905e6
+- Merged by: Owner
+
+Files changed (4):
+1. .gitlab-ci.yml
+   - Added Gitleaks 8.21.2 installation with SHA256 verification
+   - Added gitleaks detect execution in SECRET_DEPENDENCY job
+   - Added mkdir -p dist/ci/security before scan
+
+2. .gitleaks.toml (NEW)
+   - Gitleaks 8.21.2 allowlist configuration
+   - 13 reviewed historical file exclusions
+   - Operational exclusions: .cache/, .venv/
+
+3. security-policy.yaml
+   - Version: 1.0.0 → 1.1.0
+   - last_updated: 2026-09-25 → 2026-09-29
+   - Added 13 exclusions matching gitleaks allowlist
+
+4. tests/contract/test_delivery_gates.py
+   - Added test_security_policy_scanner_implementation()
+   - Added test_security_policy_scanner_negative()
+   - Added test_security_policy_exclusions_match_gitleaks_allowlist()
+   - Added test_secret_dependency_no_exit_on_error_suppression()
+
+Git verification:
+$ git rev-parse HEAD
+c7f684b998246a1005826c0d1c5a82819ee8c569
+
+$ git status --short
+(clean)
+
+$ git show --stat --oneline HEAD
+c7f684b Merge branch 'work/g-p0-h1-security-alignment' into 'dev_cc'
+ .gitlab-ci.yml                        |  33 ++++-
+ .gitleaks.toml                        |  39 +++++
+ security-policy.yaml                  |  27 +++-
+ tests/contract/test_delivery_gates.py | 264 ++++++++++++++++++++++++++++++++++
+ 4 files changed, 352 insertions(+), 11 deletions(-)

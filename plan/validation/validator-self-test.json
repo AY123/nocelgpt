@@ -1,8 +1,8 @@
 {
   "scope": "planning validator self-test only",
-  "generated_at_utc": "2026-09-21T15:27:27.487769+00:00",
-  "manifest_sha256": "362175c12e1a7b4eeed493fac6d807fdef3f5fae20fda00f9f8bc55afbd6e91d",
-  "status": "PASS",
+  "generated_at_utc": "2026-09-29T09:05:57.706573+00:00",
+  "manifest_sha256": "c3f18f2bd4db362b9d6e9ffd6dbc18fbeac5ad072c530a2689efc1d581054830",
+  "status": "FAIL",
   "cases": [
     {
       "case": "valid current package objects",
@@ -29,18 +29,15 @@
     {
       "case": "empty CLOSED evidence",
       "expected": "REJECT",
-      "actual": "REJECT",
-      "evidence": [
-        "TASK_SCHEMA V2-001 ['evidence', 'code']: [] should be non-empty",
-        "TASK_SCHEMA V2-001 ['evidence', 'tests']: [] should be non-empty"
-      ]
+      "actual": "ACCEPT",
+      "evidence": []
     },
     {
       "case": "premature P1 start",
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_START V2-005: dependency V2-001 not verified",
+        "TASK_SCHEMA V2-005 ['execution_packet_ref']: None is not of type 'string'",
         "TASK_START V2-005: phase entry not verified"
       ]
     },
@@ -50,7 +47,7 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_DEP_BASELINE V2-001: dependency change needs explicit baseline revision",
-        "TASK_CYCLE: V2-001"
+        "TASK_START V2-001: dependency V2-005 not verified"
       ]
     },
     {
@@ -119,8 +116,7 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "PHASE_VERIFIED P0: missing evidence",
-        "PHASE_VERIFIED P0: tasks must be CLOSED"
+        "PHASE_VERIFIED P0: missing evidence"
       ]
     },
     {

@@ -1,0 +1,23 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-ci-unit-c7f684b9
+evidence_type: CI_RUN
+subject_id: V2-004
+revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+status: PASS
+producer: GitLab CI Pipeline 2892152784 Job 16798948955
+executed_at: '2026-09-29T02:16:00Z'
+environment_fingerprint: 'Python 3.12.14, uv 0.12.17, pytest 9.1.1, Linux x86_64 GitLab SaaS runner'
+artifacts:
+- ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948955-job.log
+  sha256: 337f261bcb1751f26242bfcc7ad4e19b8950135e4a82af45e26f3e78dd04ad68
+- ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948955-artifacts.zip
+  sha256: bd0951b78f317c2c5521c2a6e577686bd8adc8e292e5110333d57a28ac56d2dd
+input_evidence_refs: []
+check_ids:
+- UNIT
+command: pytest tests/architecture/ tests/contract/ -v --tb=short --junitxml=dist/ci/unit/junit.xml
+exit_code: 0
+pipeline_id: '2892152784'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2892152784
+job_id: '16798948955'

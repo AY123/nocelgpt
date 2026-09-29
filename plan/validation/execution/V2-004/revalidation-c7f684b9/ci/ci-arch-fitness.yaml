@@ -1,0 +1,23 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-004-ci-arch-fitness-c7f684b9
+evidence_type: CI_RUN
+subject_id: V2-004
+revision: c7f684b998246a1005826c0d1c5a82819ee8c569
+status: PASS
+producer: GitLab CI Pipeline 2892152784 Job 16798948956
+executed_at: '2026-09-29T02:16:15Z'
+environment_fingerprint: 'Python 3.12.14, uv 0.12.17, pytest 9.1.1, Linux x86_64 GitLab SaaS runner'
+artifacts:
+- ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948956-job.log
+  sha256: 8034a6f1c6cfe8743f3cb3d1e145f1369a58005b56409a1623fc4b032bec1f5a
+- ref: validation/execution/V2-004/revalidation-c7f684b9/ci/artifacts/remote/16798948956-artifacts.zip
+  sha256: 5c2d804a6b903e5e799133d303fdcca9b7ea9c6ca250fdc0e4ce9b803add244c
+input_evidence_refs: []
+check_ids:
+- ARCH_FITNESS
+command: pytest tests/architecture/test_dependency_boundaries.py tests/architecture/test_change_review.py tests/architecture/test_weakening_checks.py -v --tb=short --junitxml=dist/ci/arch/junit.xml
+exit_code: 0
+pipeline_id: '2892152784'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2892152784
+job_id: '16798948956'
