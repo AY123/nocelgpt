@@ -325,68 +325,10 @@ def test_security_policy_scanner_implementation():
     # Read CI configuration
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
-        ci_content = f.read()
-        ci_config = yaml.safe_load(ci_content)
+        ci_config = yaml.safe_load(f)
 
-    # Get policy-declared scanner
-    scanner = policy.get('secret_scanning', {}).get('scanner')
-    assert scanner, "security-policy must declare secret_scanning.scanner"
-
-    # Verify CI implements the declared scanner
-    assert 'secret_dependency' in ci_config, "SECRET_DEPENDENCY job must exist"
-
-    # Extract secret_dependency job script
-    job = ci_config['secret_dependency']
-    assert 'script' in job or 'before_script' in job, \
-        "SECRET_DEPENDENCY must have executable script"
-
-    # Combine before_script and script
-    job_commands = []
-    if 'before_script' in job:
-        if isinstance(job['before_script'], list):
-            job_commands.extend(job['before_script'])
-        else:
-            job_commands.append(job['before_script'])
-    if 'script' in job:
-        if isinstance(job['script'], list):
-            job_commands.extend(job['script'])
-        else:
-            job_commands.append(job['script'])
-
-    full_script = '\n'.join(str(cmd) for cmd in job_commands)
-
-    # Verify scanner is actually executed (not just downloaded or echoed)
-    # Look for scanner invocation pattern: /path/to/gitleaks <subcommand>
-    # Must find both the binary name AND a scan command (detect/protect)
-    scanner_execute_patterns = [
-        rf'\/{scanner}\s+detect',  # /tmp/gitleaks detect
-        rf'\/{scanner}\s+protect', # /tmp/gitleaks protect
-    ]
-
-    found_execution = False
-    for pattern in scanner_execute_patterns:
-        if re.search(pattern, full_script):
-            found_execution = True
-            break
-
-    assert found_execution, \
-        f"CI SECRET_DEPENDENCY must execute '{scanner}' scan command (e.g., '/tmp/{scanner} detect'), not just download or mention it"
-
-    # Verify no error suppression for the scanner execution
-    scanner_exec_lines = []
-    for line in full_script.split('\n'):
-        line_stripped = line.strip()
-        # Find lines that actually execute the scanner
-        if re.search(rf'\/{scanner}\s+(detect|protect)', line_stripped):
-            scanner_exec_lines.append(line_stripped)
-
-    for line in scanner_exec_lines:
-        assert '|| true' not in line and '|| exit 0' not in line and '|| :' not in line, \
-            f"Scanner execution must not have error suppression (found: {line})"
-
-    # Verify job is fail-closed
-    assert job.get('allow_failure', False) is False, \
-        f"SECRET_DEPENDENCY job must be fail-closed (allow_failure must be false)"
+    # Use shared validation logic
+    _check_policy_scanner_implemented(policy, ci_config)
 
 
 def _check_policy_scanner_implemented(policy, ci_config):
@@ -510,6 +452,79 @@ def test_secret_dependency_no_exit_on_error_suppression():
         "SECRET_DEPENDENCY must not use 'set +e' (error suppression)"
     assert 'set -e' in full_script or 'set -' not in full_script, \
         "If using set, SECRET_DEPENDENCY must use 'set -e' (fail on error)"
+
+
+def test_security_policy_exclusions_match_gitleaks_allowlist():
+    """Verify security-policy exclusions are reflected in gitleaks allowlist.
+
+    This prevents drift where policy declares one set of exclusions but
+    gitleaks config silently excludes more paths.
+    """
+    # Read security policy
+    policy_path = ROOT / 'security-policy.yaml'
+    assert policy_path.exists(), "security-policy.yaml must exist"
+
+    with policy_path.open() as f:
+        policy = yaml.safe_load(f)
+
+    # Read gitleaks config
+    gitleaks_config_path = ROOT / '.gitleaks.toml'
+    assert gitleaks_config_path.exists(), ".gitleaks.toml must exist"
+
+    with gitleaks_config_path.open() as f:
+        gitleaks_content = f.read()
+
+    # Get policy exclusions
+    policy_exclusions = policy.get('secret_scanning', {}).get('exclusions', [])
+    assert policy_exclusions, "security-policy should declare exclusions"
+
+    # Normalize policy exclusions to comparable form
+    policy_files = set()
+    for exclusion in policy_exclusions:
+        if isinstance(exclusion, str):
+            policy_files.add(exclusion)
+        elif isinstance(exclusion, dict):
+            policy_files.add(exclusion.get('path', ''))
+
+    # Check that each policy exclusion appears in gitleaks config
+    # Gitleaks uses regex patterns, so check for path components
+    missing_in_gitleaks = []
+    for policy_file in policy_files:
+        if not policy_file:
+            continue
+
+        # For gitleaks regex matching, the path components should be present
+        # even if escaped. Check for the essential path without regex anchors.
+        # Remove ^ and $ anchors, and check if path appears
+        path_for_search = policy_file.replace('/', r'\/')  # Regex escaped slashes
+
+        # Also check original path (in case no escaping used)
+        found = (policy_file in gitleaks_content or
+                 path_for_search in gitleaks_content or
+                 policy_file.replace('/', r'/') in gitleaks_content)
+
+        # For paths with special regex chars like dots, also check escaped version
+        if '.' in policy_file:
+            escaped_path = policy_file.replace('.', r'\.')
+            found = found or escaped_path in gitleaks_content
+
+        if not found:
+            missing_in_gitleaks.append(policy_file)
+
+    assert not missing_in_gitleaks, \
+        f"security-policy exclusions not found in .gitleaks.toml allowlist: {missing_in_gitleaks}"
+
+    # Also verify gitleaks allowlist doesn't have unexplained broad exclusions
+    # This is a heuristic check - look for patterns that exclude entire directories
+    broad_patterns = [
+        r'plan/archive/\*\*',
+        r'plan/validation/\*\*',
+        r'plan/\*\*',
+    ]
+
+    for pattern in broad_patterns:
+        assert pattern not in gitleaks_content, \
+            f"Broad exclusion pattern '{pattern}' found - exclusions should be specific files, not entire directories"
     ci_path = ROOT / '.gitlab-ci.yml'
     with ci_path.open() as f:
         content = f.read()

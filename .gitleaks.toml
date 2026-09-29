@@ -1,34 +1,39 @@
 # ANovelOS Gitleaks Configuration
-# Version: 1.0.0
-# Policy: Scan production source only (not CI cache, archives, or validation history)
+# Version: 1.0.0 (for Gitleaks 8.21.2)
+# Policy: Scan production source only, with explicit reviewed historical exceptions
 
 title = "ANovelOS Secret Scanning Policy"
 
 [extend]
 useDefault = true
 
-# Allowlist: Explicitly justified exclusions only
 [allowlist]
-description = "Exclude non-production paths from secret scanning"
+description = "Reviewed non-production cache and historical false-positive inputs"
 
-# CI-generated cache (not repository content)
 paths = [
-  '''\.cache/''',
-  '''\.venv/''',
-]
+  # CI/local dependency material; outside security-policy source scope
+  '''(^|/)\.cache/''',
+  '''(^|/)\.venv/''',
 
-# Historical design archives (reviewed at time of creation, not active source)
-regexes = [
-  '''plan/archive/''',
-]
+  # Reviewed historical design archive with synthetic API token examples
+  # These are immutable historical inputs, not active source
+  '''^plan/archive/ccdoc/19_API_SPECIFICATION\.md$''',
+  '''^plan/archive/plan-review-2026-09-21/governance-probe-results\.json$''',
+  '''^plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER\.md$''',
 
-# Validation evidence and execution history (contains external review samples)
-regexTargets = [
-  '''plan/validation/''',
-]
+  # Governance probe historical outputs with intentional mock credential patterns
+  # These are test/validation artifacts from governance checks, not production secrets
+  '''^plan/validation/ai-governance-1\.3\.0/legacy-governance-probes\.json$''',
+  '''^plan/validation/execution/V2-002/checks/final-governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-002/checks/first-governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-002/followup/bound-governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-002/followup/postcommit/governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-003/final/governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-003/followup/final/governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy\.json$''',
+  '''^plan/validation/execution/V2-003/postcommit/checks/governance/legacy\.json$''',
+  '''^plan/validation/governance-probe-v1\.2\.json$''',
 
-# Test fixtures with intentionally fake secrets for negative testing
-[allowlist.files]
-  [[allowlist.files.file]]
-  file = "tests/fixtures/secrets/harmless-fake-secrets.txt"
-  description = "Test fixture with obviously fake secrets for negative validation"
+  # Explicit policy test fixture with obviously fake secrets
+  '''^tests/fixtures/secrets/harmless-fake-secrets\.txt$''',
+]
