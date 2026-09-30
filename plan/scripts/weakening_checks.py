@@ -12,16 +12,11 @@ import hashlib
 import json
 import re
 import shlex
+import tomllib
 from collections import Counter
 from pathlib import PurePosixPath
 
 import yaml
-
-# Python 3.9 compatibility
-try:
-    import tomllib
-except ImportError:
-    import tomli as tomllib
 
 
 class _UniqueLoader(yaml.SafeLoader):
