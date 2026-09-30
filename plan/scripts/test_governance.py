@@ -10,13 +10,19 @@ import sys
 import tempfile
 import unittest
 from copy import deepcopy
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import validate_plan as validator
 import yaml
 from execution_checks import CONTROL_INPUTS, execution_checks
 from governance_checks import evidence_checks
+
+# Python 3.9 compatibility
+try:
+    from datetime import UTC
+except ImportError:
+    UTC = timezone.utc
 
 REVISION = "a" * 40
 

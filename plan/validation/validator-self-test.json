@@ -1,8 +1,8 @@
 {
   "scope": "planning validator self-test only",
-  "generated_at_utc": "2026-09-29T15:05:07.063251+00:00",
+  "generated_at_utc": "2026-09-30T01:49:04.786103+00:00",
   "manifest_sha256": "379ee7b53c59018fa8833fb1210e626b594249beec3afd7c7e77c64a3405236a",
-  "status": "FAIL",
+  "status": "PASS",
   "cases": [
     {
       "case": "valid current package objects",
@@ -15,7 +15,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_PHASE V2-005: mismatch with frozen phase",
-        "TASK_ENTRY V2-005: phase gate mismatch"
+        "TASK_ENTRY V2-005: phase gate mismatch",
+        "PHASE_MEMBERSHIP P1: tasks/count mismatch",
+        "PHASE_MEMBERSHIP P3: tasks/count mismatch"
       ]
     },
     {
@@ -29,8 +31,13 @@
     {
       "case": "empty CLOSED evidence",
       "expected": "REJECT",
-      "actual": "ACCEPT",
-      "evidence": []
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_SCHEMA V2-001 ['evidence', 'code']: [] should be non-empty",
+        "TASK_SCHEMA V2-001 ['evidence', 'tests']: [] should be non-empty",
+        "TASK_SCHEMA V2-001 ['evidence', 'ci']: [] should be non-empty",
+        "TASK_SCHEMA V2-001 ['evidence', 'acceptance']: [] should be non-empty"
+      ]
     },
     {
       "case": "premature P1 start",
@@ -38,7 +45,8 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_SCHEMA V2-005 ['execution_packet_ref']: None is not of type 'string'",
-        "TASK_START V2-005: phase entry not verified"
+        "TASK_START V2-005: phase entry not verified",
+        "TASK_READINESS V2-005: still PLANNED"
       ]
     },
     {
@@ -47,7 +55,8 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_DEP_BASELINE V2-001: dependency change needs explicit baseline revision",
-        "TASK_START V2-001: dependency V2-005 not verified"
+        "TASK_START V2-001: dependency V2-005 not verified",
+        "TASK_CYCLE: V2-001"
       ]
     },
     {
@@ -83,7 +92,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_ADR V2-001: ownership mismatch",
-        "ADR_DUE ADR-001: no responsible task"
+        "ADR_DUE ADR-001: no responsible task",
+        "ADR_OWNER ADR-001: unknown task",
+        "ADR_BACKLINK V2-001: incomplete bidirectional mapping"
       ]
     },
     {
@@ -107,6 +118,8 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
+        "MILESTONE_CLOSE M4: closes before required task",
+        "MILESTONE_CLOSE M4: closes before required task",
         "MILESTONE_CLOSE M4: closes before required task",
         "MILESTONE_CLOSE M4: closes before required task"
       ]
@@ -166,7 +179,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_FINDING V2-017: invalid PR-01",
-        "FINDING_COVERAGE: missing/extra audit mappings"
+        "FINDING_COVERAGE: missing/extra audit mappings",
+        "FINDING_BASELINE: required audit findings absent",
+        "FINDING_BACKLINK V2-017: incomplete bidirectional mapping"
       ]
     },
     {
@@ -233,7 +248,8 @@
       "actual": "REJECT",
       "evidence": [
         "EXTERNAL_VERIFIED EXT-001: absent evidence",
-        "EXTERNAL_VERIFIED EXT-001: unfinished tasks"
+        "EXTERNAL_VERIFIED EXT-001: unfinished tasks",
+        "EXTERNAL_VERIFIED EXT-001: unverified suites"
       ]
     },
     {

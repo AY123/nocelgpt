@@ -807,7 +807,18 @@ def self_test(data):
     mutations = [
         ("wrong phase", lambda d: task(d, 4).update(phase="P3")),
         ("wrong title", lambda d: task(d).update(title="Unregistered identity")),
-        ("empty CLOSED evidence", lambda d: task(d).update(status="CLOSED")),
+        (
+            "empty CLOSED evidence",
+            lambda d: task(d).update(
+                status="CLOSED",
+                evidence={
+                    "code": [],
+                    "tests": [],
+                    "ci": [],
+                    "acceptance": [],
+                },
+            ),
+        ),
         ("premature P1 start", lambda d: task(d, 4).update(status="IN_PROGRESS")),
         ("task dependency cycle", lambda d: task(d).update(dependencies=["V2-005"])),
         ("unknown dependency", lambda d: task(d).update(dependencies=["V2-999"])),
@@ -948,7 +959,7 @@ def self_test(data):
                 "case": name,
                 "expected": "REJECT",
                 "actual": "REJECT" if errors else "ACCEPT",
-                "evidence": errors[:2],
+                "evidence": errors[:4],
             }
         )
     return results
