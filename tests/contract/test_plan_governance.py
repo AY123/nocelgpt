@@ -93,3 +93,43 @@ def test_existing_rules_reject_single_mutations(mutate, prefix):
 def test_generated_views_match_current_source():
     for name, content in validator.expected_views(validator.load()).items():
         assert (ROOT / 'plan' / name).read_text() == content
+
+
+@pytest.mark.parametrize('status', ['VERIFIED', 'CLOSED'])
+@pytest.mark.parametrize('kind', ['code', 'tests', 'ci', 'acceptance'])
+def test_completed_task_requires_nonempty_evidence(status, kind):
+    """Regression: VERIFIED/CLOSED tasks must have non-empty evidence for all categories."""
+    data = deepcopy(validator.load())
+
+    current = data['implementation-backlog']['tasks'][0]
+    current['status'] = status
+    current['evidence'][kind] = []
+
+    errors = validator.validate_objects(data)
+
+    assert any(
+        error.startswith(f"TASK_SCHEMA V2-001 ['evidence', '{kind}']:") or
+        f"['evidence', '{kind}']" in error
+        for error in errors
+    ), f"Expected rejection for {status} task with empty {kind} evidence, got: {errors}"
+
+
+def test_empty_closed_evidence_self_test_probe_rejects():
+    """Regression: self-test 'empty CLOSED evidence' probe must actually produce rejection."""
+    data = deepcopy(validator.load())
+    cases = {
+        row['case']: row
+        for row in validator.self_test(data)
+    }
+
+    result = cases['empty CLOSED evidence']
+
+    assert result['expected'] == 'REJECT', "Self-test probe should expect REJECT"
+    assert result['actual'] == 'REJECT', f"Self-test probe should produce REJECT, got: {result['actual']}"
+    assert result['evidence'], "Self-test probe should include diagnostic evidence"
+
+    # Verify all four evidence categories are checked
+    evidence_text = ' '.join(result['evidence'])
+    for kind in ['code', 'tests', 'ci', 'acceptance']:
+        assert f"'{kind}'" in evidence_text or f'["{kind}"]' in evidence_text or kind in evidence_text, \
+            f"Self-test evidence should mention {kind} category"
