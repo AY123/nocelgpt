@@ -11,4 +11,4 @@ environment_fingerprint: Docker python:3.12.14-slim, git 2.39.5
 input_evidence_refs: []
 artifacts:
 - ref: validation/execution/V2-002/revalidation-fd7667ec/code-inventory.json
-  sha256: 976a27b75d24e75a52c6aabfa4aa93858cd0fda381386b0d9a424e786487ed9e
+  sha256: a65ccf556526578efe53afd9026ab5cca873dbf2cd127307d382400e5d773174

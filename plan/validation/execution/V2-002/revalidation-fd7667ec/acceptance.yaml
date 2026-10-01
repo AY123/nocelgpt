@@ -47,137 +47,136 @@ finding_dispositions:
 - finding_id: AR-01
   responsibility: FULL
   disposition: RESOLVED
-  reason: Phase-readiness linkage validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  reason: 唯一里程碑映射与正文/YAML invariant对账在phase-gates.yaml和milestones.yaml中实现；test_plan_governance.py验证一致性；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: AR-02
   responsibility: FULL
   disposition: RESOLVED
-  reason: Gate/CI enforcement validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  reason: E1/E3/E4唯一定义建立在evidence-record.schema.json中；模拟评价与人工Gold分离通过evidence_type字段实现；test_governance.py回归验证；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: AR-06
   responsibility: FULL
   disposition: RESOLVED
-  reason: Evidence type validation enforced; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  reason: 具体规范与测试映射建立在implementation-task.schema.json和test-catalog.yaml；Closure验证CI/产物/验收证据通过validate_plan.py的evidence chain检查；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: AR-07
   responsibility: FULL
   disposition: RESOLVED
-  reason: Finding disposition requirements enforced; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  reason: M0未验证不能启动P1的门禁通过phase-gates.yaml与test_plan_governance.py的test_p1_cannot_start_before_gate实现；恢复测试为认证必要证据通过task_execution.py的resume检查；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: AR-19
   responsibility: FULL
   disposition: RESOLVED
-  reason: External practice traceability validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  reason: 准确版本与来源通过external_practice_results字段记录；claim-source绑定在evidence schema中强制；市场观察不自动成为硬规则通过acceptance_evidence区分；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: CA-01
   responsibility: FULL
   disposition: RESOLVED
-  reason: Validation output directory isolation verified; revalidated at fd7667ec via TEST_RESULT
+  reason: 所有首批任务只有一个现行阶段、一个规范来源链通过governance-baseline.yaml统一实现；旧部署/推送命令不成为默认行动通过AI_EXECUTION_PROTOCOL.md明确；验证输出目录隔离；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: CA-20
   responsibility: FULL
   disposition: RESOLVED
-  reason: Execution packet requirements enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  reason: 收益声明必须对应本项目实验条件和原始结果通过external_practice_results的source_version_note和limitations记录；不把不可比百分比相加或用于收益承诺；来源局限保留在归档；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
 - finding_id: CA-21
   responsibility: FULL
   disposition: RESOLVED
-  reason: ADR authorization checks enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  reason: 每项早期新增工作映射回关键链问题、产物和测试通过implementation-backlog.yaml的related_findings；超范围功能明确DEFER；工期标明人员、依赖、未知项及证据在ADR中记录；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
 - finding_id: CA-22
   responsibility: FULL
   disposition: RESOLVED
-  reason: FACT/ASSUMPTION/UNKNOWN distinction enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  reason: 可执行示例编译与对应负向测试通过contract tests验证；所有变量、字段和状态一致性通过test_ai_execution.py验证；后稿不再引用已停用示例通过FACT/ASSUMPTION/UNKNOWN区分；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
 - finding_id: RR-01
   responsibility: FULL
   disposition: RESOLVED
-  reason: Governance regression framework established; revalidated at fd7667ec via TEST_RESULT (39/39 PASS)
+  reason: 所有现行规范阶段/任务引用匹配唯一注册表通过governance-baseline.yaml实现；宪章与实施计划旧M编号有明确替代关系在milestones.yaml记录；test_governance.py 39/39回归验证；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: RR-02
   responsibility: FULL
   disposition: RESOLVED
-  reason: Handoff record validation enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  reason: E编码版本唯一通过evidence-record.schema.json实现；模拟读者不能冒充人工Gold通过producer字段区分；质量来源不隐式获得提交权限通过ai-execution-policy.yaml约束；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
 - finding_id: RR-03
   responsibility: FULL
   disposition: RESOLVED
-  reason: Template artifact path resolution validated; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  reason: 验证记录绑定提交和源哈希通过revision字段强制；计数由源生成且相符通过validate_plan.py检查；已移除文件有明确替代证据在FILE_MANIFEST.json记录；全量规范检查能够捕获残留旧引用；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: RR-04
   responsibility: FULL
   disposition: RESOLVED
-  reason: Milestone-phase-CI binding validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  reason: 前四任务有具体规范/产物/测试/范围在implementation-backlog.yaml定义；CLOSED缺证据被拒绝通过test_plan_governance.py的test_completed_task_requires_nonempty_evidence验证；P0未验证时P1不能被放行通过phase-gates.yaml约束；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: RR-05
   responsibility: FULL
   disposition: RESOLVED
-  reason: Archive directory isolation enforced; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  reason: ADR指向真实任务与负责角色在各ADR文档的context中明确；基础类型决定先于对应持久接口实现通过task dependency在implementation-backlog.yaml强制；AI_HANDOFF_RECORD.yaml模板确保决定时点记录；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: RR-06
   responsibility: FULL
   disposition: RESOLVED
-  reason: CLOSED task evidence requirements enforced; revalidated at fd7667ec via TEST_RESULT (self-test 32/32 empty CLOSED evidence = REJECT)
+  reason: 正反例映射到结构/领域/权限/数据库负责层通过test-catalog.yaml的regression cases；不以Schema通过代替业务放行通过test_plan_governance.py强制；历史探针中适用项取得修复后证据通过probe_governance_legacy.py验证；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: DA-01
   responsibility: FULL
   disposition: RESOLVED
-  reason: Empty evidence validation defect fixed by G-P0-H2; revalidated at fd7667ec via TEST_RESULT (self-test probe REJECT) + SCHEMA_CONTRACT CI
+  reason: 删除、重复、推迟必需CI gate及错误allow_failure通过ci-gates.yaml约束并由test_governance.py的test_all_ci_removed/test_ci_checks_removed/test_ci_duplicate/test_ci_postponed验证拒绝；合法未来项与真实完整证据可通过；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: DA-02
   responsibility: FULL
   disposition: RESOLVED
-  reason: Evidence capture completeness improved by G-P0-H2; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  reason: 缺失evidence、目录/README/模板冒充evidence、错subject/revision/type、失败evidence通过test_governance.py的test_bad_artifact_hash/test_directory_not_record/test_readme_not_test_record/test_wrong_evidence_type/test_wrong_revision/test_wrong_subject验证拒绝；合格真实记录可关闭；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: DA-03
   responsibility: FULL
   disposition: RESOLVED
-  reason: Regression coverage expanded by G-P0-H2; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI (24 plan_governance tests)
+  reason: milestone required content不能被缩减、phase/milestone completion aggregation必须受约束通过test_governance.py的test_milestone_requires_phase/test_milestone_revision_matches_phase_decision/test_milestone_shrink验证；M6/M7不可通过缩减必要任务或缺失认证报告而VERIFIED；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: DA-04
   responsibility: FULL
   disposition: RESOLVED
-  reason: Self-test artifact integrity restored by G-P0-H2; revalidated at fd7667ec via TEST_RESULT (32/32 PASS)
+  reason: readiness、ADR backlink、P0 admission三类反例通过test_governance.py的test_planned_readiness_cannot_start/test_adr_backlink_removed/test_p0_blocked验证拒绝；未来未到期ADR和合法task reopen通过test_valid_future_task_start仍可表达；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - finding_id: DA-05
   responsibility: FULL
   disposition: RESOLVED
-  reason: Python 3.12 baseline established by G-P0-H2; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI + UNIT CI
+  reason: related finding缺disposition时task CLOSED通过test_governance.py的test_missing_finding_disposition/test_finding_backlink_removed验证拒绝；跨阶段finding的已验证局部disposition通过test_valid_partial_finding_disposition可以支持task closure；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
-  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml

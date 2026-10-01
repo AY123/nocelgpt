@@ -1,5 +1,57 @@
 [
   {
+    "path": "README.md",
+    "sha256": "ac7a4ec712bc0e169d9979804069142934c06995f09dd56e9f631ccfeafe6986"
+  },
+  {
+    "path": "AGENTS.md",
+    "sha256": "cc48c2491ae1ce621c6223155bf2c8edb4e2afb4c7601cd2803b339cda5a438f"
+  },
+  {
+    "path": "plan/machine/governance-baseline.yaml",
+    "sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+  },
+  {
+    "path": "plan/scripts/governance_checks.py",
+    "sha256": "7ae824f60b39b41b5cd07520333ae5e80cfe4ebba3e889918d6b4dc9f7c3c61e"
+  },
+  {
+    "path": "plan/AI_EXECUTION_PROTOCOL.md",
+    "sha256": "6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac"
+  },
+  {
+    "path": "plan/machine/ai-execution-policy.yaml",
+    "sha256": "feeeaed2bea5436f93509a617459744e30f31c6640d11f309b0f2afa939f1171"
+  },
+  {
+    "path": "plan/schemas/execution-packet.schema.json",
+    "sha256": "4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404"
+  },
+  {
+    "path": "plan/templates/EXECUTION_PACKET.yaml",
+    "sha256": "e3415dfb6d22ab59e37718ed1a3a549df164f2c6763a11e0557079a605bdf54f"
+  },
+  {
+    "path": "plan/templates/AI_HANDOFF_RECORD.yaml",
+    "sha256": "63ee7754f508c99598b350728fe905aa14d7673cba82e98e979944d782f3dcc9"
+  },
+  {
+    "path": "plan/scripts/execution_checks.py",
+    "sha256": "b9bd2b7f02a2037e9c9046df97303aa575f2c1ffa869380be28b28835d832dbd"
+  },
+  {
+    "path": "scripts/task_execution.py",
+    "sha256": "e3c6cefe0be85536fccd9c0e3d72ef1d69541cbca75627baa6a3c787c8992c74"
+  },
+  {
+    "path": "scripts/check_governance.py",
+    "sha256": "132906fb58eaa56e0e241ea5d2d6fe840ec7cd2c45fbd248cc4a6fea232c3964"
+  },
+  {
+    "path": "plan/scripts/task_entry.py",
+    "sha256": "cc4fe316ff705ba041b6d15b38403d1104613031349eeb31e10bcb4926a74171"
+  },
+  {
     "path": "plan/scripts/validate_plan.py",
     "sha256": "c5d88d80d37840817b6389a68f11cae6a21092c04c902b4779e4d568ee37eade"
   },
@@ -26,6 +78,10 @@
   {
     "path": "tests/contract/test_task_execution.py",
     "sha256": "cb8f1948327fa65290a19e31d53ba0634effdb70fc9909b28fc6d0cd88d9e38c"
+  },
+  {
+    "path": "plan/schemas/implementation-task.schema.json",
+    "sha256": "9b654ca905ff43cbedc60cc19eaaed9f2874ef8790ed9290b5ae6a07022d9b4b"
   },
   {
     "path": "plan/schemas/evidence-record.schema.json",

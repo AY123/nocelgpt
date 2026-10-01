@@ -8,7 +8,7 @@ status: PASS
 producer: governance-maintainer
 executed_at: "2026-10-01T08:44:00Z"
 environment_fingerprint: Docker python:3.12.14-slim, pytest 9.1.1, git 2.39.5
-command: python3 plan/scripts/validate_plan.py --self-test && python3 plan/scripts/test_governance.py && python3 plan/scripts/test_ai_execution.py && pytest tests/contract/
+command: python3 plan/scripts/validate_plan.py --check --output plan/validation/execution/V2-002/revalidation-fd7667ec/local/governance-summary.json && python3 plan/scripts/validate_plan.py --self-test --output plan/validation/validator-self-test.json && python3 plan/scripts/test_governance.py --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/governance && python3 plan/scripts/test_ai_execution.py --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/ai && python3 plan/scripts/probe_governance_legacy.py --output plan/validation/execution/V2-002/revalidation-fd7667ec/local/legacy-governance.json && pytest tests/contract/test_plan_governance.py tests/contract/test_task_execution.py -v --tb=short --junitxml=plan/validation/execution/V2-002/revalidation-fd7667ec/local/contract-junit.xml
 exit_code: 0
 artifacts:
 - ref: validation/execution/V2-002/revalidation-fd7667ec/local/governance-summary.json
