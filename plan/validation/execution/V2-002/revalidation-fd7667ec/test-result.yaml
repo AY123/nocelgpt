@@ -8,7 +8,7 @@ status: PASS
 producer: governance-maintainer
 executed_at: "2026-10-01T08:44:00Z"
 environment_fingerprint: Docker python:3.12.14-slim, pytest 9.1.1, git 2.39.5
-command: python3 plan/scripts/validate_plan.py --check --output plan/validation/execution/V2-002/revalidation-fd7667ec/local/governance-summary.json && python3 plan/scripts/validate_plan.py --self-test --output plan/validation/validator-self-test.json && python3 plan/scripts/test_governance.py --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/governance && python3 plan/scripts/test_ai_execution.py --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/ai && python3 plan/scripts/probe_governance_legacy.py --output plan/validation/execution/V2-002/revalidation-fd7667ec/local/legacy-governance.json && pytest tests/contract/test_plan_governance.py tests/contract/test_task_execution.py -v --tb=short --junitxml=plan/validation/execution/V2-002/revalidation-fd7667ec/local/contract-junit.xml
+command: python3 plan/scripts/validate_plan.py --check --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/check && python3 plan/scripts/validate_plan.py --self-test --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local && python3 plan/scripts/test_governance.py --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/governance && python3 plan/scripts/test_ai_execution.py --output-dir plan/validation/execution/V2-002/revalidation-fd7667ec/local/ai && python3 plan/scripts/probe_governance_legacy.py --output dist/validation/v2-002-revalidation/legacy-governance.json && pytest tests/contract/test_plan_governance.py tests/contract/test_task_execution.py -v --tb=short --junitxml=plan/validation/execution/V2-002/revalidation-fd7667ec/local/contract-junit.xml
 exit_code: 0
 artifacts:
 - ref: validation/execution/V2-002/revalidation-fd7667ec/local/governance-summary.json
@@ -19,8 +19,6 @@ artifacts:
   sha256: 3a92c5ff5548e11710c88262b70e487fa8fe2c63ac64d185be366e208df1f220
 - ref: validation/execution/V2-002/revalidation-fd7667ec/local/ai/ai-execution-regression.json
   sha256: 2867ba198d0b51655ed7853cf22492c618553ce177402b96ca97eb73ae6681bb
-- ref: validation/execution/V2-002/revalidation-fd7667ec/local/legacy-governance.json
-  sha256: 3e62a2a7ce76f84bdf124a7e97ef0f26f73de247e73f000c1205557003eb7c7d
 - ref: validation/execution/V2-002/revalidation-fd7667ec/local/contract-junit.xml
   sha256: 8122fffd4ef48cd7014cc24124aca8dbbbed712402199556027280e871e51746
 input_evidence_refs:

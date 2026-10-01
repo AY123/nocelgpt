@@ -68,7 +68,7 @@ finding_dispositions:
 - finding_id: AR-07
   responsibility: FULL
   disposition: RESOLVED
-  reason: M0未验证不能启动P1的门禁通过phase-gates.yaml与test_plan_governance.py的test_p1_cannot_start_before_gate实现；恢复测试为认证必要证据通过task_execution.py的resume检查；revalidated at fd7667ec
+  reason: M0未验证不能启动P1通过phase-gates.yaml+test_p1_cannot_start_before_gate实现；M4只有真实门禁集成后关闭由ci-gates.yaml约束；resume/recovery测试为认证必要证据通过test_task_execution.py的test_valid_command_runs_and_resume_rechecks_actual_state等验证；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
@@ -82,9 +82,10 @@ finding_dispositions:
 - finding_id: CA-01
   responsibility: FULL
   disposition: RESOLVED
-  reason: 所有首批任务只有一个现行阶段、一个规范来源链通过governance-baseline.yaml统一实现；旧部署/推送命令不成为默认行动通过AI_EXECUTION_PROTOCOL.md明确；验证输出目录隔离；revalidated at fd7667ec
+  reason: 唯一现行phase通过phase-gates.yaml实现；唯一规范source chain通过governance-baseline.yaml统一；旧部署/推送命令不是默认入口通过AI_EXECUTION_PROTOCOL.md明确；V2-005必须依赖V2-001—004/G-P0 evidence通过implementation-backlog.yaml的depends_on和phase-gates.yaml的P0→P1门禁强制；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
 - finding_id: CA-20
   responsibility: FULL
   disposition: RESOLVED
@@ -95,14 +96,14 @@ finding_dispositions:
 - finding_id: CA-21
   responsibility: FULL
   disposition: RESOLVED
-  reason: 每项早期新增工作映射回关键链问题、产物和测试通过implementation-backlog.yaml的related_findings；超范围功能明确DEFER；工期标明人员、依赖、未知项及证据在ADR中记录；revalidated at fd7667ec
+  reason: 新增范围映射critical chain通过implementation-backlog.yaml的related_findings和rationale；out-of-scope功能明确DEFER在backlog的future_phase记录；schedule assumptions包含owner/dependencies/unknown/evidence在各任务的depends_on、readiness、acceptance_test记录；不得为工期降低hard quality gates通过ci-gates.yaml的allow_failure=false和phase-gates.yaml的required checks强制；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
 - finding_id: CA-22
   responsibility: FULL
   disposition: RESOLVED
-  reason: 可执行示例编译与对应负向测试通过contract tests验证；所有变量、字段和状态一致性通过test_ai_execution.py验证；后稿不再引用已停用示例通过FACT/ASSUMPTION/UNKNOWN区分；revalidated at fd7667ec
+  reason: 可执行example/template有正负测试通过test_task_execution.py的test_invalid_packet_blocks_child等验证；variables/fields/states一致性通过test_ai_execution.py的36/36 regression验证；superseded example不再作为current implementation entry通过test_governance.py的test_adr_template_not_decision、test_template_artifact_cannot_support_decision、test_normalized_template_aliases_are_rejected验证；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
