@@ -848,7 +848,9 @@ def self_test(data):
         ),
         (
             "false verified phase",
-            lambda d: d["phase-gates"]["phases"][0].update(status="VERIFIED"),
+            lambda d: next(
+                p for p in d["phase-gates"]["phases"] if p["status"] == "NOT_VERIFIED"
+            ).update(status="VERIFIED"),
         ),
         (
             "wrong phase task count",

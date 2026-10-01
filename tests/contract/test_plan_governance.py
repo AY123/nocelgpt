@@ -79,7 +79,7 @@ def test_context_import_alias_resolves_to_history(tmp_path):
     (lambda d: d['implementation-backlog']['tasks'][1].update(phase='P1'), 'TASK_PHASE'),
     (lambda d: d['implementation-backlog']['tasks'][1]['evidence'].pop('ci'), 'TASK_SCHEMA'),
     (lambda d: d['implementation-backlog']['tasks'][1]['evidence'].pop('acceptance'), 'TASK_SCHEMA'),
-    (lambda d: d['implementation-backlog']['tasks'][4].update(status='IN_PROGRESS'), 'TASK_START'),
+    (lambda d: d['implementation-backlog']['tasks'][8].update(status='IN_PROGRESS'), 'TASK_START'),
     (lambda d: d['external-practice-register']['practices'][0].update(source_refs=['MISSING']), 'EXTERNAL_SOURCE'),
 ])
 def test_existing_rules_reject_single_mutations(mutate, prefix):
