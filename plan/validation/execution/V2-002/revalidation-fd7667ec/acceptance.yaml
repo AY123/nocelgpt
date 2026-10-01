@@ -96,7 +96,7 @@ finding_dispositions:
 - finding_id: CA-21
   responsibility: FULL
   disposition: RESOLVED
-  reason: 新增范围映射critical chain通过implementation-backlog.yaml的related_findings和rationale；out-of-scope功能明确DEFER在backlog的future_phase记录；schedule assumptions包含owner/dependencies/unknown/evidence在各任务的depends_on、readiness、acceptance_test记录；不得为工期降低hard quality gates通过ci-gates.yaml的allow_failure=false和phase-gates.yaml的required checks强制；revalidated at fd7667ec
+  reason: 早期新增工作通过phase-gates.yaml critical_path、implementation-backlog.yaml的task/artifacts/tests/related_findings映射回关键链；超范围能力通过任务out_of_scope、external-practice-register.yaml的DEFER/DEFERRED及phase-gates.yaml的DEFERRED_UNPLANNED阶段细化明确后置；工期/执行假设由execution-packet.schema.json强制记录owner_role、estimate range/unit/assumptions/confidence，dependencies由backlog dependencies/start_gate记录，FACT/ASSUMPTION/UNKNOWN、sources与verification_plan记录未知和证据；ci-gates.yaml的allow_failure=false及phase exit criteria防止以降低hard gate补偿工期；revalidated at fd7667ec
   evidence_refs:
   - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
   - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
