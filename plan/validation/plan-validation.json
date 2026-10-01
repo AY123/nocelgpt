@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-01T10:34:43.810891+00:00",
+  "generated_at_utc": "2026-10-01T12:44:46.087369+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "PASS",
   "not_certified": [
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "c49b8a23e4610f238d2f3030bc6e655ef35725d0",
+  "validated_repository_revision": "4aa22e5f1edc159c9c016a61654334c5832f248d",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "4e2afc4f23e7697e989b82fe797fdac41067e51379ca7612ec9f416f49366fd5",
+  "manifest_sha256": "c237b43c7825c6e8390d2383645195c4728394576c8477f6c2f932d4b7696f63",
   "counts": {
     "tasks": 60,
     "phase_distribution": {

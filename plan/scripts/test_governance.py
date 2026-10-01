@@ -630,6 +630,44 @@ class GovernanceTests(unittest.TestCase):
             )
         )
 
+    def test_phase_decision_revision_identifies_verified_candidate(self):
+        """Phase decision revision identifies the candidate that was verified by CI,
+        even when the decision record is written in a later commit."""
+        # The phase decision revision points to the verified candidate
+        phase_record_path = next(
+            (self.plan / "validation/fixture").glob("*PHASE_DECISION*P0*.json")
+        )
+        phase_record = json.loads(phase_record_path.read_text())
+
+        # Verify the phase decision revision matches the CI_RUN revision
+        ci_ref = phase_record["ci_evidence_refs"][0]
+        ci_path = self.plan / ci_ref
+        ci_record = json.loads(ci_path.read_text())
+
+        # Both should identify the same candidate revision that was verified
+        self.assertEqual(
+            phase_record["revision"],
+            ci_record["revision"],
+            "PHASE_DECISION.revision must match CI_RUN.revision (the verified candidate)",
+        )
+
+        # Milestone decision should also use the same verified candidate revision
+        milestone_record_path = next(
+            (self.plan / "validation/fixture").glob("*MILESTONE_DECISION*M0*.json")
+        )
+        milestone_record = json.loads(milestone_record_path.read_text())
+
+        self.assertEqual(
+            milestone_record["revision"],
+            phase_record["revision"],
+            "MILESTONE_DECISION.revision must match PHASE_DECISION.revision",
+        )
+
+        # All point to the same verified candidate
+        self.assertEqual(phase_record["revision"], REVISION)
+        self.assertEqual(ci_record["revision"], REVISION)
+        self.assertEqual(milestone_record["revision"], REVISION)
+
 
 class RecordedResult(unittest.TextTestResult):
     def __init__(self, *args, **kwargs):

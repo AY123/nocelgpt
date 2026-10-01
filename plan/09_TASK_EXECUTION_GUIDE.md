@@ -79,6 +79,90 @@ V2-003 已实现本地架构、差异归属和防降标工具并完成本地验�
 
 另运行 `python3 -B plan/scripts/test_governance.py`，验证合格完成链与单点反例。旧审核探针保留在 archive 和原审核包，新运行结果不得覆盖旧证据。
 
+### 7.1 阶段关闭的两阶段模型与 revision 语义
+
+**Stage A — Candidate Verification（候选验证）**
+
+假设候选 revision 为 `C`，要求：
+
+- 所有 phase tasks 已满足
+- applicable CI on C 全部 PASS
+- acceptance evidence 完整
+- finding responsibility 满足
+
+则 C 成为 verified candidate（已验证候选）。
+
+**Stage B — Closure Recording（关闭记录）**
+
+从 C 创建 closure-only commit `D`，可新增或更新：
+
+- PHASE_DECISION
+- MILESTONE_DECISION
+- FINDING_CLOSURE
+- phase/milestone status
+- closure refs
+- generated governance views
+
+但 decision 中的 `revision` 字段仍为 `C`，而不是 `D`。
+
+**revision 字段的统一语义**
+
+`plan_execution_evidence.revision` 定义为：
+
+> 该 evidence record 所验证、接受、决定或关闭的 subject/candidate revision。
+
+它**不是**：
+
+- evidence 文件被创建时的工作区 HEAD
+- evidence 文件首次进入 Git 的 commit
+- 包含该 YAML/JSON 文件的 commit
+- 决定记录自身的 Git identity
+
+对各类型 evidence：
+
+- **CI_RUN**: CI 实际执行的 repository revision
+- **PHASE_DECISION**: 本 phase 被验证的 candidate revision（即使 decision record 在后续 commit 中记录）
+- **MILESTONE_DECISION**: milestone 所汇总的已验证 phase candidate revision
+- **Task evidence** (CODE, TEST_RESULT, ACCEPTANCE_RECORD): 任务工作完成时的 revision
+
+**具体例子**
+
+```text
+C = abc123...      # implementation candidate
+CI(C) = PASS       # CI verifies candidate C
+
+D = def456...      # adds PHASE_DECISION and closure metadata
+
+PHASE_DECISION:
+    revision: abc123...      # identifies the verified candidate
+
+CI(D) = PASS       # verifies closure metadata integrity
+```
+
+解释：
+
+- `abc123` = 经过 phase verification 的候选
+- `def456` = 记录关闭决定的 commit
+- `def456` 不写进 PHASE_DECISION 的 self-referential field
+- Git history + pipeline 负责证明 D 包含该记录且 CI(D) 通过
+
+**Closure-only Delta 约束**
+
+在 candidate C 与 closure-record commit D 之间，不允许混入：
+
+- 业务源码变化
+- 生产行为变化
+- 降低验收标准
+- 删除测试
+- 降低 hard gate
+- 改变 task scope
+- 改变 phase requirements
+- 改变 Canon/Genre/Context/Workflow 设计
+
+如果 D 包含上述实质性变化，则 C 不再是有效 phase candidate，必须重新形成新的 candidate revision 并重新跑 applicable CI。
+
+Closure metadata change（如更新 decision record、generated views）可保留 C 作为 verified candidate；substantive implementation/requirement change 必须产生新 candidate。
+
 ## 8. 开工记录与变更记录
 
 实施时使用[执行包模板](templates/EXECUTION_PACKET.yaml)明确本任务操作者、验证者、输入输出、估算区间及假设、付费上限与停止条件。一个人可以承担多个角色，但不能称其为独立审核。没有实测吞吐时允许估算未定，不把报告中的固定团队人数或日历工期设为准入条件；付费调用没有批准的上限则不能开始。

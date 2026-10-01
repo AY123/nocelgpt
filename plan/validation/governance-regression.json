@@ -1,9 +1,9 @@
 {
   "scope": "Planning governance regressions in disposable copies; synthetic records are not runtime evidence",
-  "generated_at_utc": "2026-09-30T09:16:45.836958+00:00",
-  "manifest_sha256": "6f94fa7e4cbd57420f20b9776d9753c55e9240af1d5f8223192bf710b00da9d6",
+  "generated_at_utc": "2026-10-01T12:35:35.087522+00:00",
+  "manifest_sha256": "55fd7b0a2ffe275467cee5428596978e7c60224d88bda62974ca9dd4b8c54f7f",
   "status": "PASS",
-  "test_count": 39,
+  "test_count": 40,
   "cases": [
     {
       "case": "__main__.GovernanceTests.test_adr_backlink_removed",
@@ -87,6 +87,10 @@
     },
     {
       "case": "__main__.GovernanceTests.test_partial_finding_requires_next_owner",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_phase_decision_revision_identifies_verified_candidate",
       "status": "PASS"
     },
     {
