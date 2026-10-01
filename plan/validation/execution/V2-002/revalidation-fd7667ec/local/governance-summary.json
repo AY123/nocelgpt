@@ -1,0 +1,17 @@
+{
+  "validator_self_test": {
+    "status": "PASS",
+    "passed": 32,
+    "total": 32
+  },
+  "governance_regression": {
+    "status": "PASS",
+    "passed": 39,
+    "total": 39
+  },
+  "ai_execution_regression": {
+    "status": "PASS",
+    "passed": 36,
+    "total": 36
+  }
+}

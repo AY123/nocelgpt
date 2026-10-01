@@ -146,23 +146,23 @@ tasks:
   required_decisions: []
   evidence:
     code:
-    - ref: validation/execution/V2-002/closure/code-revalidation.yaml
-      revision: c88377657818799ecf93918f4b98fe622a4a6037
+    - ref: validation/execution/V2-002/revalidation-fd7667ec/code-revalidation.yaml
+      revision: fd7667ec746088ab0f7820f2dceca78907f0635d
       status: PASS
     tests:
-    - ref: validation/execution/V2-002/closure/test-result.yaml
-      revision: c88377657818799ecf93918f4b98fe622a4a6037
+    - ref: validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+      revision: fd7667ec746088ab0f7820f2dceca78907f0635d
       status: PASS
     ci:
-    - ref: validation/execution/V2-002/closure/ci/ci-schema_contract.yaml
-      revision: c88377657818799ecf93918f4b98fe622a4a6037
+    - ref: validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+      revision: fd7667ec746088ab0f7820f2dceca78907f0635d
       status: PASS
-    - ref: validation/execution/V2-002/closure/ci/ci-unit.yaml
-      revision: c88377657818799ecf93918f4b98fe622a4a6037
+    - ref: validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+      revision: fd7667ec746088ab0f7820f2dceca78907f0635d
       status: PASS
     acceptance:
-    - ref: validation/execution/V2-002/closure/acceptance.yaml
-      revision: c88377657818799ecf93918f4b98fe622a4a6037
+    - ref: validation/execution/V2-002/revalidation-fd7667ec/acceptance.yaml
+      revision: fd7667ec746088ab0f7820f2dceca78907f0635d
       status: PASS
   related_findings:
   - AR-01

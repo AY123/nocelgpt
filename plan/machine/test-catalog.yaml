@@ -66,7 +66,7 @@ suites:
     required_assertion: 恢复执行须核对交接记录、仓库与工作区、规范/输入快照、实际测试产物和未决事项；缺失交接或失效证据不得继承完成结论，合格恢复可继续原任务，不因摘要或模型更换静默重开或越过
       Gate
   execution_evidence:
-  - validation/execution/V2-002/closure/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
 - id: AT-V2-003
   task_id: V2-003
   phase: P0

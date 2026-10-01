@@ -1,0 +1,62 @@
+[
+  {
+    "path": "plan/scripts/validate_plan.py",
+    "sha256": "c5d88d80d37840817b6389a68f11cae6a21092c04c902b4779e4d568ee37eade"
+  },
+  {
+    "path": "plan/scripts/test_governance.py",
+    "sha256": "099d892c6faddbe29194b62957652729173806e5c41701f1414adb7fe33564bc"
+  },
+  {
+    "path": "plan/scripts/test_ai_execution.py",
+    "sha256": "2f30e7164d5286701c7cdaa2b0597052da7691a34cea79718adac9615b3a81a2"
+  },
+  {
+    "path": "plan/scripts/probe_governance_legacy.py",
+    "sha256": "2b3d36fa72a44e765c22e4fe720c80b7cc23c7bb6372e1169468cf4c2d9fb10f"
+  },
+  {
+    "path": "plan/validation/validator-self-test.json",
+    "sha256": "fe517935195f6c98f55fa60095cde76ec21fe2359ff2ad675a7b702fe765cd52"
+  },
+  {
+    "path": "tests/contract/test_plan_governance.py",
+    "sha256": "fc8b8f6f0d08cb1b5ee63c8d3926853a5f14c3a406df36787d0ab9e3b99fbf9d"
+  },
+  {
+    "path": "tests/contract/test_task_execution.py",
+    "sha256": "cb8f1948327fa65290a19e31d53ba0634effdb70fc9909b28fc6d0cd88d9e38c"
+  },
+  {
+    "path": "plan/schemas/evidence-record.schema.json",
+    "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+  },
+  {
+    "path": "plan/machine/implementation-backlog.yaml",
+    "sha256": "80a3c70b89096ad656e3e314c25717f10b5594aaa692b471e37c5ce5d0f148ba"
+  },
+  {
+    "path": "plan/machine/test-catalog.yaml",
+    "sha256": "e2db1cb7eaa950130b747c48cea80d76fed8e1fce41765941871a272ee128dfd"
+  },
+  {
+    "path": "plan/machine/phase-gates.yaml",
+    "sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9"
+  },
+  {
+    "path": "plan/machine/milestones.yaml",
+    "sha256": "bb6f97a37f96af986b4f7392ab1203d40c9827f82398b79d83d5e643cf4845cc"
+  },
+  {
+    "path": "plan/machine/ci-gates.yaml",
+    "sha256": "1ed4416efa93ec78a31dd52a577271b2e3e2dc30658784bbe15e466f0f5b7cca"
+  },
+  {
+    "path": "plan/FILE_MANIFEST.json",
+    "sha256": "6f94fa7e4cbd57420f20b9776d9753c55e9240af1d5f8223192bf710b00da9d6"
+  },
+  {
+    "path": "plan/validation/plan-validation.json",
+    "sha256": "50d4838c276a92be2805080f44692c318e62e8cb69e6091c6aabb8180ca4f71f"
+  }
+]

@@ -1,0 +1,25 @@
+record_type: plan_execution_evidence
+schema_version: "1.0"
+evidence_type: CI_RUN
+evidence_id: V2-002-revalidation-fd7667ec-schema-contract
+subject_id: V2-002
+revision: fd7667ec746088ab0f7820f2dceca78907f0635d
+status: PASS
+producer: GitLab CI
+executed_at: "2026-09-30T13:50:58.910Z"
+environment_fingerprint: "GitLab SaaS Linux x86_64 runner; Python 3.12.14; uv 0.12.17; pytest 9.1.1"
+command: python plan/scripts/validate_plan.py --check --output-dir dist/ci/schema && python -m pytest tests/contract/test_plan_governance.py -v --tb=short
+exit_code: 0
+pipeline_id: "2897526078"
+job_id: "16838949865"
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2897526078
+artifacts:
+- ref: validation/execution/V2-002/revalidation-fd7667ec/ci/artifacts/remote/16838949865-job.log
+  sha256: 7e39f7fa88519df8a8470697d4853eb8368c77b93ba998874ce40361dcfde9a8
+- ref: validation/execution/V2-002/revalidation-fd7667ec/ci/artifacts/remote/16838949865-artifacts.zip
+  sha256: 8733b8be1ca72f2772bfd33ccd7b7c5b8f10d2bd262e4b0e9a0ae3eb7bad7b40
+input_evidence_refs:
+- validation/execution/V2-002/revalidation-fd7667ec/code-revalidation.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+check_ids:
+- SCHEMA_CONTRACT

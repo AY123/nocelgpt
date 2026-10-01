@@ -1,0 +1,183 @@
+record_type: plan_execution_evidence
+schema_version: "1.0"
+evidence_type: ACCEPTANCE_RECORD
+evidence_id: V2-002-revalidation-fd7667ec-acceptance
+subject_id: V2-002
+revision: fd7667ec746088ab0f7820f2dceca78907f0635d
+status: PASS
+producer: governance-maintainer
+executed_at: "2026-10-01T08:44:00Z"
+environment_fingerprint: Review with fd7667ec baseline CI validation
+decision: ACCEPTED
+rationale: All 16 acceptance criteria verified at fd7667ec baseline through local governance checks (32/32 self-test, 39/39 regression, 36/36 AI execution), contract tests (69/69 PASS), and remote CI validation (SCHEMA_CONTRACT + UNIT gates). All 20 related findings dispositioned with V2-002 task responsibility revalidated.
+external_practice_results:
+- practice_id: EXT-009
+  adoption_mode: PLANNED
+  source_version_note: Git version control with explicit revision binding as specified in 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  verification_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  conclusion: Git-based version control with explicit revision binding implemented and validated
+  limitations: Automation of evidence capture still requires manual CI artifact download
+artifacts:
+- ref: validation/execution/V2-002/revalidation-fd7667ec/local/governance-summary.json
+  sha256: 27685c7f9eb0647d07b30e13accdd38da64366478d61e558ce54e9626c843fe7
+input_evidence_refs:
+- validation/execution/V2-002/revalidation-fd7667ec/code-revalidation.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+check_ids:
+- AT-V2-002-01
+- AT-V2-002-02
+- AT-V2-002-03
+- AT-V2-002-04
+- AT-V2-002-05
+- AT-V2-002-06
+- AT-V2-002-07
+- AT-V2-002-08
+- AT-V2-002-09
+- AT-V2-002-10
+- AT-V2-002-11
+- AT-V2-002-12
+- AT-V2-002-13
+- AT-V2-002-14
+- AT-V2-002-15
+- AT-V2-002-16
+finding_dispositions:
+- finding_id: AR-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Phase-readiness linkage validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: AR-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Gate/CI enforcement validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: AR-06
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Evidence type validation enforced; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: AR-07
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Finding disposition requirements enforced; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: AR-19
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: External practice traceability validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: CA-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Validation output directory isolation verified; revalidated at fd7667ec via TEST_RESULT
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: CA-20
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Execution packet requirements enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: CA-21
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: ADR authorization checks enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: CA-22
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: FACT/ASSUMPTION/UNKNOWN distinction enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: RR-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Governance regression framework established; revalidated at fd7667ec via TEST_RESULT (39/39 PASS)
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: RR-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Handoff record validation enforced; revalidated at fd7667ec via TEST_RESULT + UNIT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: RR-03
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Template artifact path resolution validated; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: RR-04
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Milestone-phase-CI binding validated; revalidated at fd7667ec via SCHEMA_CONTRACT CI + TEST_RESULT
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: RR-05
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Archive directory isolation enforced; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: RR-06
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: CLOSED task evidence requirements enforced; revalidated at fd7667ec via TEST_RESULT (self-test 32/32 empty CLOSED evidence = REJECT)
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: DA-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Empty evidence validation defect fixed by G-P0-H2; revalidated at fd7667ec via TEST_RESULT (self-test probe REJECT) + SCHEMA_CONTRACT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: DA-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Evidence capture completeness improved by G-P0-H2; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: DA-03
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Regression coverage expanded by G-P0-H2; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI (24 plan_governance tests)
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: DA-04
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Self-test artifact integrity restored by G-P0-H2; revalidated at fd7667ec via TEST_RESULT (32/32 PASS)
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: DA-05
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Python 3.12 baseline established by G-P0-H2; revalidated at fd7667ec via TEST_RESULT + SCHEMA_CONTRACT CI + UNIT CI
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
