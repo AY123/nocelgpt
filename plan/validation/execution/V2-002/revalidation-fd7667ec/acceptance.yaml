@@ -1,0 +1,183 @@
+record_type: plan_execution_evidence
+schema_version: "1.0"
+evidence_type: ACCEPTANCE_RECORD
+evidence_id: V2-002-revalidation-fd7667ec-acceptance
+subject_id: V2-002
+revision: fd7667ec746088ab0f7820f2dceca78907f0635d
+status: PASS
+producer: governance-maintainer
+executed_at: "2026-10-01T08:44:00Z"
+environment_fingerprint: Review with fd7667ec baseline CI validation
+decision: ACCEPTED
+rationale: All 16 acceptance criteria verified at fd7667ec baseline through local governance checks (32/32 self-test, 39/39 regression, 36/36 AI execution), contract tests (69/69 PASS), and remote CI validation (SCHEMA_CONTRACT + UNIT gates). All 20 related findings dispositioned with V2-002 task responsibility revalidated.
+external_practice_results:
+- practice_id: EXT-009
+  adoption_mode: PLANNED
+  source_version_note: Git version control with explicit revision binding as specified in 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  verification_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  conclusion: Git-based version control with explicit revision binding implemented and validated
+  limitations: Automation of evidence capture still requires manual CI artifact download
+artifacts:
+- ref: validation/execution/V2-002/revalidation-fd7667ec/local/governance-summary.json
+  sha256: 27685c7f9eb0647d07b30e13accdd38da64366478d61e558ce54e9626c843fe7
+input_evidence_refs:
+- validation/execution/V2-002/revalidation-fd7667ec/code-revalidation.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+check_ids:
+- AT-V2-002-01
+- AT-V2-002-02
+- AT-V2-002-03
+- AT-V2-002-04
+- AT-V2-002-05
+- AT-V2-002-06
+- AT-V2-002-07
+- AT-V2-002-08
+- AT-V2-002-09
+- AT-V2-002-10
+- AT-V2-002-11
+- AT-V2-002-12
+- AT-V2-002-13
+- AT-V2-002-14
+- AT-V2-002-15
+- AT-V2-002-16
+finding_dispositions:
+- finding_id: AR-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 唯一里程碑映射与正文/YAML invariant对账在phase-gates.yaml和milestones.yaml中实现；test_plan_governance.py验证一致性；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: AR-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: E1/E3/E4唯一定义建立在evidence-record.schema.json中；模拟评价与人工Gold分离通过evidence_type字段实现；test_governance.py回归验证；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: AR-06
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 具体规范与测试映射建立在implementation-task.schema.json和test-catalog.yaml；Closure验证CI/产物/验收证据通过validate_plan.py的evidence chain检查；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: AR-07
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: M0未验证不能启动P1通过phase-gates.yaml+test_p1_cannot_start_before_gate实现；M4只有真实门禁集成后关闭由ci-gates.yaml约束；resume/recovery测试为认证必要证据通过test_task_execution.py的test_valid_command_runs_and_resume_rechecks_actual_state等验证；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: AR-19
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 准确版本与来源通过external_practice_results字段记录；claim-source绑定在evidence schema中强制；市场观察不自动成为硬规则通过acceptance_evidence区分；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: CA-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 唯一现行phase通过phase-gates.yaml实现；唯一规范source chain通过governance-baseline.yaml统一；旧部署/推送命令不是默认入口通过AI_EXECUTION_PROTOCOL.md明确；V2-005必须依赖V2-001—004/G-P0 evidence通过implementation-backlog.yaml的depends_on和phase-gates.yaml的P0→P1门禁强制；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: CA-20
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 收益声明必须对应本项目实验条件和原始结果通过external_practice_results的source_version_note和limitations记录；不把不可比百分比相加或用于收益承诺；来源局限保留在归档；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: CA-21
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 早期新增工作通过phase-gates.yaml critical_path、implementation-backlog.yaml的task/artifacts/tests/related_findings映射回关键链；超范围能力通过任务out_of_scope、external-practice-register.yaml的DEFER/DEFERRED及phase-gates.yaml的DEFERRED_UNPLANNED阶段细化明确后置；工期/执行假设由execution-packet.schema.json强制记录owner_role、estimate range/unit/assumptions/confidence，dependencies由backlog dependencies/start_gate记录，FACT/ASSUMPTION/UNKNOWN、sources与verification_plan记录未知和证据；ci-gates.yaml的allow_failure=false及phase exit criteria防止以降低hard gate补偿工期；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: CA-22
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 可执行example/template有正负测试通过test_task_execution.py的test_invalid_packet_blocks_child等验证；variables/fields/states一致性通过test_ai_execution.py的36/36 regression验证；superseded example不再作为current implementation entry通过test_governance.py的test_adr_template_not_decision、test_template_artifact_cannot_support_decision、test_normalized_template_aliases_are_rejected验证；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: RR-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 所有现行规范阶段/任务引用匹配唯一注册表通过governance-baseline.yaml实现；宪章与实施计划旧M编号有明确替代关系在milestones.yaml记录；test_governance.py 39/39回归验证；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: RR-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: E编码版本唯一通过evidence-record.schema.json实现；模拟读者不能冒充人工Gold通过producer字段区分；质量来源不隐式获得提交权限通过ai-execution-policy.yaml约束；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-unit.yaml
+- finding_id: RR-03
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 验证记录绑定提交和源哈希通过revision字段强制；计数由源生成且相符通过validate_plan.py检查；已移除文件有明确替代证据在FILE_MANIFEST.json记录；全量规范检查能够捕获残留旧引用；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: RR-04
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 前四任务有具体规范/产物/测试/范围在implementation-backlog.yaml定义；CLOSED缺证据被拒绝通过test_plan_governance.py的test_completed_task_requires_nonempty_evidence验证；P0未验证时P1不能被放行通过phase-gates.yaml约束；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: RR-05
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: ADR指向真实任务与负责角色在各ADR文档的context中明确；基础类型决定先于对应持久接口实现通过task dependency在implementation-backlog.yaml强制；AI_HANDOFF_RECORD.yaml模板确保决定时点记录；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: RR-06
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 正反例映射到结构/领域/权限/数据库负责层通过test-catalog.yaml的regression cases；不以Schema通过代替业务放行通过test_plan_governance.py强制；历史探针中适用项取得修复后证据通过probe_governance_legacy.py验证；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: DA-01
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 删除、重复、推迟必需CI gate及错误allow_failure通过ci-gates.yaml约束并由test_governance.py的test_all_ci_removed/test_ci_checks_removed/test_ci_duplicate/test_ci_postponed验证拒绝；合法未来项与真实完整证据可通过；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: DA-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 缺失evidence、目录/README/模板冒充evidence、错subject/revision/type、失败evidence通过test_governance.py的test_bad_artifact_hash/test_directory_not_record/test_readme_not_test_record/test_wrong_evidence_type/test_wrong_revision/test_wrong_subject验证拒绝；合格真实记录可关闭；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: DA-03
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: milestone required content不能被缩减、phase/milestone completion aggregation必须受约束通过test_governance.py的test_milestone_requires_phase/test_milestone_revision_matches_phase_decision/test_milestone_shrink验证；M6/M7不可通过缩减必要任务或缺失认证报告而VERIFIED；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml
+- finding_id: DA-04
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: readiness、ADR backlink、P0 admission三类反例通过test_governance.py的test_planned_readiness_cannot_start/test_adr_backlink_removed/test_p0_blocked验证拒绝；未来未到期ADR和合法task reopen通过test_valid_future_task_start仍可表达；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+- finding_id: DA-05
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: related finding缺disposition时task CLOSED通过test_governance.py的test_missing_finding_disposition/test_finding_backlink_removed验证拒绝；跨阶段finding的已验证局部disposition通过test_valid_partial_finding_disposition可以支持task closure；revalidated at fd7667ec
+  evidence_refs:
+  - validation/execution/V2-002/revalidation-fd7667ec/test-result.yaml
+  - validation/execution/V2-002/revalidation-fd7667ec/ci/ci-schema-contract.yaml

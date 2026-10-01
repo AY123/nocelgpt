@@ -1,0 +1,461 @@
+2026-09-30T13:51:01.195756Z 00O [0KRunning with gitlab-runner 19.5.0~pre.2159.ga8432a3e (a8432a3e)[0;m
+2026-09-30T13:51:01.195768Z 00O [0K  on k8s.saas-linux-small-amd64.runners-manager.gitlab.com/default nezyxEJex, system ID: r_9jnvUS23v1UU[0;m
+2026-09-30T13:51:01.195771Z 00O [0K  UUID: 019fd6c6-56c4-78a2-8961-bbb53e204387[0;m
+2026-09-30T13:51:01.195778Z 00O [0K  feature flags: FF_USE_GIT_PROACTIVE_AUTH:true, FF_HASH_CACHE_KEYS:true, FF_USE_JOB_ROUTER:true, FF_MACHINE_OPTIONS_EXPAND_ENV:true, FF_DOCKER_MACHINE_JSON_OUTPUT:true[0;m
+2026-09-30T13:51:01.195803Z 00O section_start:1790776261:prepare_executor[0K
+2026-09-30T13:51:01.195806Z 00O+[0K[36;1mPreparing the "docker+machine" executor[0;m[0;m
+2026-09-30T13:51:01.344759Z 00O [0KUsing Docker executor with image python:3.12-bookworm ...[0;m
+2026-09-30T13:51:01.344795Z 00O [0KUsing helper image:  registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e  (overridden, default would be  registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-v19.5.0 )[0;m
+2026-09-30T13:51:01.344802Z 00O [0KUsing effective pull policy of [always] for container registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e[0;m
+2026-09-30T13:51:01.345394Z 00O [0KAuthenticating with credentials from job payload (GitLab Registry)[0;m
+2026-09-30T13:51:01.345400Z 00O [0KPulling docker image registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e ...[0;m
+2026-09-30T13:51:03.156174Z 00O [0KUsing docker image sha256:6bb853b7a2cda0cf31469babeb7e0edbdf202c63c5221070cfcf756214613e31 for registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e with digest registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper@sha256:2a3ccd2182c1ebedd2fa8efd30198b39b62861240c9bd07f1ffe0fe67871588a ...[0;m
+2026-09-30T13:51:04.911855Z 00O [0KUsing helper image:  registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e  (overridden, default would be  registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-v19.5.0 )[0;m
+2026-09-30T13:51:04.911868Z 00O [0KUsing effective pull policy of [always] for container registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e[0;m
+2026-09-30T13:51:04.912685Z 00O [0KUsing docker image sha256:6bb853b7a2cda0cf31469babeb7e0edbdf202c63c5221070cfcf756214613e31 for registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e with digest registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper@sha256:2a3ccd2182c1ebedd2fa8efd30198b39b62861240c9bd07f1ffe0fe67871588a ...[0;m
+2026-09-30T13:51:04.912692Z 00O [0KUsing effective pull policy of [always] for container python:3.12-bookworm[0;m
+2026-09-30T13:51:04.913134Z 00O [0KPulling docker image python:3.12-bookworm ...[0;m
+2026-09-30T13:51:19.253731Z 00O [0KUsing docker image sha256:bb31e660647633ecd0a394013306057121b4fd091e2bf214010558249c5e1eb9 for python:3.12-bookworm with digest python@sha256:dbbe4ceb97851e2e5fa83798b239811f871cb743b259ba3563737349f6bcfaa0 ...[0;m
+2026-09-30T13:51:19.253787Z 00O section_end:1790776279:prepare_executor[0K
+2026-09-30T13:51:19.253851Z 00O+section_start:1790776279:prepare_script[0K
+2026-09-30T13:51:19.253855Z 00O+[0K[36;1mPreparing environment[0;m[0;m
+2026-09-30T13:51:19.253876Z 00O [0KUsing helper image:  registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e  (overridden, default would be  registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-v19.5.0 )[0;m
+2026-09-30T13:51:19.253883Z 00O [0KUsing effective pull policy of [always] for container registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e[0;m
+2026-09-30T13:51:19.254567Z 00O [0KUsing docker image sha256:6bb853b7a2cda0cf31469babeb7e0edbdf202c63c5221070cfcf756214613e31 for registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper:x86_64-a8432a3e with digest registry.gitlab.com/gitlab-org/gitlab-runner/gitlab-runner-helper@sha256:2a3ccd2182c1ebedd2fa8efd30198b39b62861240c9bd07f1ffe0fe67871588a ...[0;m
+2026-09-30T13:51:19.254576Z 00O [0KUsing effective pull policy of [always] for container sha256:6bb853b7a2cda0cf31469babeb7e0edbdf202c63c5221070cfcf756214613e31[0;m
+2026-09-30T13:51:23.184842Z 01O Running on runner-nezyxejex-project-86656946-concurrent-0 via runner-nezyxejex-s-l-s-amd64-1790776199-10013557...
+2026-09-30T13:51:23.336941Z 00O section_end:1790776283:prepare_script[0K
+2026-09-30T13:51:23.337545Z 00O+section_start:1790776283:get_sources[0K
+2026-09-30T13:51:23.337550Z 00O+[0K[36;1mGetting source from Git repository[0;m[0;m
+2026-09-30T13:51:23.689756Z 01O [32;1mGitaly correlation ID: fad804ff718846ffbf32ae2931951ba0[0;m
+2026-09-30T13:51:23.695261Z 01O [32;1mFetching changes with git depth set to 20...[0;m
+2026-09-30T13:51:23.698211Z 01O Initialized empty Git repository in /builds/ayitnovel/ainovelos/.git/
+2026-09-30T13:51:23.700077Z 01O [32;1mCreated fresh repository.[0;m
+2026-09-30T13:51:24.861958Z 01O [32;1mChecking out fd7667ec as detached HEAD (ref is dev_cc)...[0;m
+2026-09-30T13:51:25.022520Z 01O 
+2026-09-30T13:51:25.022523Z 01O [32;1mSkipping Git submodules setup[0;m
+2026-09-30T13:51:25.022589Z 01O [32;1m$ git remote set-url origin "${CI_REPOSITORY_URL}" || echo 'Not a git repository; skipping'[0;m
+2026-09-30T13:51:25.212467Z 00O section_end:1790776285:get_sources[0K
+2026-09-30T13:51:25.296613Z 00O+section_start:1790776285:restore_cache[0K
+2026-09-30T13:51:25.296622Z 00O+[0K[36;1mRestoring cache[0;m[0;m
+2026-09-30T13:51:25.700648Z 01O [32;1mChecking cache for 0_uv-365a00cba8e1d7a34214a0f39ce45f1a74dd2bfd-protected...[0;m
+2026-09-30T13:51:25.755012Z 01E Using presigned URL for cache download            [0;m 
+2026-09-30T13:51:25.806848Z 01E Selecting primary cache URL                       [0;m  alternate_modified[0;m=0001-01-01 00:00:00 +0000 UTC alternate_url[0;m=https://storage.googleapis.com/gitlab-com-runners-cache/project/86656946/0_uv-365a00cba8e1d7a34214a0f39ce45f1a74dd2bfd-protected primary_modified[0;m=2026-09-30 13:50:56 +0000 UTC primary_url[0;m=https://storage.googleapis.com/gitlab-com-runners-cache/project/86656946/3c/3c5d2d3c46b167405f4103a554311db694e00616064a9c2c3acddfce8b1eadae
+2026-09-30T13:51:25.837675Z 01E Downloading cache from https://storage.googleapis.com/gitlab-com-runners-cache/project/86656946/3c/3c5d2d3c46b167405f4103a554311db694e00616064a9c2c3acddfce8b1eadae[0;m  etag[0;m="8d59fc516d68cb5334b3bd9993e082d8"
+2026-09-30T13:51:27.756048Z 01O [32;1mSuccessfully extracted cache[0;m
+2026-09-30T13:51:31.104557Z 00O section_end:1790776291:restore_cache[0K
+2026-09-30T13:51:31.104854Z 00O+section_start:1790776291:download_artifacts[0K
+2026-09-30T13:51:31.104858Z 00O+[0K[36;1mDownloading artifacts[0;m[0;m
+2026-09-30T13:51:31.509333Z 01O [32;1mDownloading artifacts for static (16838949864)...[0;m
+2026-09-30T13:51:31.747541Z 01E Direct download from storage.googleapis.com       [0;m  correlation_id[0;m=dfac23759fd14b99bc4ea499717c31f7 id[0;m=16838949864 status[0;m=302 token[0;m=eyJraWQiO
+2026-09-30T13:51:31.956514Z 01E Downloading artifacts from coordinator... ok      [0;m  correlation_id[0;m=dfac23759fd14b99bc4ea499717c31f7 id[0;m=16838949864 status[0;m=302 token[0;m=eyJraWQiO
+2026-09-30T13:51:31.959174Z 01O [32;1mDownloading artifacts for schema_contract (16838949865)...[0;m
+2026-09-30T13:51:32.189989Z 01E Direct download from storage.googleapis.com       [0;m  correlation_id[0;m=b696731216b54dda80d96dedcf9c46f3 id[0;m=16838949865 status[0;m=302 token[0;m=eyJraWQiO
+2026-09-30T13:51:32.415530Z 01E Downloading artifacts from coordinator... ok      [0;m  correlation_id[0;m=b696731216b54dda80d96dedcf9c46f3 id[0;m=16838949865 status[0;m=302 token[0;m=eyJraWQiO
+2026-09-30T13:51:32.578825Z 00O section_end:1790776292:download_artifacts[0K
+2026-09-30T13:51:32.579167Z 00O+section_start:1790776292:step_script[0K
+2026-09-30T13:51:32.579173Z 00O+[0K[36;1mExecuting "step_script" stage of the job script[0;m[0;m
+2026-09-30T13:51:32.579183Z 00O [0KUsing effective pull policy of [always] for container python:3.12-bookworm[0;m
+2026-09-30T13:51:32.580111Z 00O [0KUsing docker image sha256:bb31e660647633ecd0a394013306057121b4fd091e2bf214010558249c5e1eb9 for python:3.12-bookworm with digest python@sha256:dbbe4ceb97851e2e5fa83798b239811f871cb743b259ba3563737349f6bcfaa0 ...[0;m
+2026-09-30T13:51:32.922587Z 01O [32;1m$ python --version[0;m
+2026-09-30T13:51:32.924448Z 01O Python 3.12.14
+2026-09-30T13:51:32.924814Z 01O [32;1m$ pip install uv==0.12.17[0;m
+2026-09-30T13:51:34.575693Z 01O Collecting uv==0.12.17
+2026-09-30T13:51:34.577223Z 01O   Using cached uv-0.12.17-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (11 kB)
+2026-09-30T13:51:34.581128Z 01O Using cached uv-0.12.17-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (20.4 MB)
+2026-09-30T13:51:34.626609Z 01O Installing collected packages: uv
+2026-09-30T13:51:34.930908Z 01O Successfully installed uv-0.12.17
+2026-09-30T13:51:34.931112Z 01E WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+2026-09-30T13:51:34.963656Z 01E 
+2026-09-30T13:51:34.963659Z 01E [notice] A new release of pip is available: 25.0.1 -> 26.2.1
+2026-09-30T13:51:34.963659Z 01E [notice] To update, run: pip install --upgrade pip
+2026-09-30T13:51:35.034666Z 01O [32;1m$ uv --version[0;m
+2026-09-30T13:51:35.039576Z 01O uv 0.12.17 (x86_64-unknown-linux-gnu)
+2026-09-30T13:51:35.040074Z 01O [32;1m$ uv sync --frozen[0;m
+2026-09-30T13:51:35.092870Z 01E    Building anovelos @ file:///builds/ayitnovel/ainovelos
+2026-09-30T13:51:35.094315Z 01E       Built anovelos @ file:///builds/ayitnovel/ainovelos
+2026-09-30T13:51:35.096186Z 01E Prepared 1 package in 3ms
+2026-09-30T13:51:35.096616Z 01E Uninstalled 1 package in 0.39ms
+2026-09-30T13:51:35.097186Z 01E Installed 1 package in 0.52ms
+2026-09-30T13:51:35.097188Z 01E  ~ anovelos==0.1.0 (from file:///builds/ayitnovel/ainovelos)
+2026-09-30T13:51:35.098964Z 01O [32;1m$ source .venv/bin/activate[0;m
+2026-09-30T13:51:35.099909Z 01O [32;1m$ echo "=== UNIT Gate ==="[0;m
+2026-09-30T13:51:35.099911Z 01O === UNIT Gate ===
+2026-09-30T13:51:35.099912Z 01O [32;1m$ pytest tests/architecture/ tests/contract/ -v --tb=short --junitxml=dist/ci/unit/junit.xml[0;m
+2026-09-30T13:51:35.322018Z 01O ============================= test session starts ==============================
+2026-09-30T13:51:35.322022Z 01O platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /builds/ayitnovel/ainovelos/.venv/bin/python
+2026-09-30T13:51:35.322023Z 01O cachedir: .pytest_cache
+2026-09-30T13:51:35.322024Z 01O rootdir: /builds/ayitnovel/ainovelos
+2026-09-30T13:51:35.322025Z 01O configfile: pyproject.toml
+2026-09-30T13:51:35.322026Z 01O collecting ... collected 343 items
+2026-09-30T13:51:35.692063Z 01O 
+2026-09-30T13:51:35.692064Z 01O tests/architecture/test_change_review.py::test_real_baseline_and_unchanged_user_edit_pass PASSED [  0%]
+2026-09-30T13:51:35.768106Z 01O tests/architecture/test_change_review.py::test_ordinary_in_scope_changes_pass[added] PASSED [  0%]
+2026-09-30T13:51:35.881913Z 01O tests/architecture/test_change_review.py::test_ordinary_in_scope_changes_pass[modified] PASSED [  0%]
+2026-09-30T13:51:35.996599Z 01O tests/architecture/test_change_review.py::test_ordinary_in_scope_changes_pass[deleted] PASSED [  1%]
+2026-09-30T13:51:36.110419Z 01O tests/architecture/test_change_review.py::test_ordinary_in_scope_changes_pass[renamed] PASSED [  1%]
+2026-09-30T13:51:36.223870Z 01O tests/architecture/test_change_review.py::test_ordinary_in_scope_changes_pass[staged] PASSED [  1%]
+2026-09-30T13:51:36.339816Z 01O tests/architecture/test_change_review.py::test_ordinary_in_scope_changes_pass[committed] PASSED [  2%]
+2026-09-30T13:51:36.460411Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[untracked] PASSED [  2%]
+2026-09-30T13:51:36.573596Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[modified] PASSED [  2%]
+2026-09-30T13:51:36.686436Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[deleted] PASSED [  2%]
+2026-09-30T13:51:36.800774Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[rename_out] PASSED [  3%]
+2026-09-30T13:51:36.916340Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[rename_in] PASSED [  3%]
+2026-09-30T13:51:37.030103Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[changed_user] PASSED [  3%]
+2026-09-30T13:51:37.141848Z 01O tests/architecture/test_change_review.py::test_out_of_scope_changes_cannot_hide[staged_user] PASSED [  4%]
+2026-09-30T13:51:37.256993Z 01O tests/architecture/test_change_review.py::test_new_candidate_ignore_cannot_conceal_untracked_change PASSED [  4%]
+2026-09-30T13:51:37.326573Z 01O tests/architecture/test_change_review.py::test_symlink_scope_escape_fails_without_reading_target[../../outside-repository] PASSED [  4%]
+2026-09-30T13:51:37.393447Z 01O tests/architecture/test_change_review.py::test_symlink_scope_escape_fails_without_reading_target[../outside.py] PASSED [  4%]
+2026-09-30T13:51:37.460041Z 01O tests/architecture/test_change_review.py::test_symlink_scope_escape_fails_without_reading_target[/tmp/external-file] PASSED [  5%]
+2026-09-30T13:51:37.526955Z 01O tests/architecture/test_change_review.py::test_internal_allowed_symlink_is_observed_by_link_text PASSED [  5%]
+2026-09-30T13:51:37.593967Z 01O tests/architecture/test_change_review.py::test_parent_symlink_escape_cannot_read_external_contents PASSED [  5%]
+2026-09-30T13:51:37.659680Z 01O tests/architecture/test_change_review.py::test_candidate_cannot_redefine_its_own_scope[scope_file] PASSED [  6%]
+2026-09-30T13:51:37.694636Z 01O tests/architecture/test_change_review.py::test_candidate_cannot_redefine_its_own_scope[packet_scope] PASSED [  6%]
+2026-09-30T13:51:37.733509Z 01O tests/architecture/test_change_review.py::test_candidate_cannot_redefine_its_own_scope[packet_revision] PASSED [  6%]
+2026-09-30T13:51:37.773194Z 01O tests/architecture/test_change_review.py::test_candidate_cannot_redefine_its_own_scope[wrong_pin] PASSED [  6%]
+2026-09-30T13:51:37.797603Z 01O tests/architecture/test_change_review.py::test_index_weakening_is_seen_even_when_worktree_restores_original PASSED [  7%]
+2026-09-30T13:51:37.870097Z 01O tests/architecture/test_change_review.py::test_coverage_rejects_injected_empty_change_collection PASSED [  7%]
+2026-09-30T13:51:37.921590Z 01O tests/architecture/test_change_review.py::test_race_is_not_a_success PASSED [  7%]
+2026-09-30T13:51:37.987988Z 01O tests/architecture/test_change_review.py::test_real_detached_checkout_supported PASSED [  8%]
+2026-09-30T13:51:38.060799Z 01O tests/architecture/test_change_review.py::test_test_file_rename_keeps_requirements_but_scope_checks_both_ends PASSED [  8%]
+2026-09-30T13:51:38.304661Z 01O tests/architecture/test_change_review.py::test_test_moved_out_of_discovery_is_not_lossless PASSED [  8%]
+2026-09-30T13:51:38.372721Z 01O tests/architecture/test_change_review.py::test_exact_pinned_technical_review_can_resolve_uncertain_protection_change PASSED [  9%]
+2026-09-30T13:51:38.582097Z 01O tests/architecture/test_change_review.py::test_self_signed_disposition_cannot_approve_real_test_deletion PASSED [  9%]
+2026-09-30T13:51:38.729760Z 01O tests/architecture/test_change_review.py::test_new_production_module_requires_phase_review_even_inside_allowed_paths PASSED [  9%]
+2026-09-30T13:51:38.797661Z 01O tests/architecture/test_change_review.py::test_real_cli_saves_failure_and_refuses_overwrite PASSED [  9%]
+2026-09-30T13:51:39.559813Z 01O tests/architecture/test_change_review.py::test_prior_exact_rule_authorization_allows_real_revision_fixture PASSED [ 10%]
+2026-09-30T13:51:39.787659Z 01O tests/architecture/test_change_review.py::test_changed_user_file_mode_is_not_preexisting_exemption PASSED [ 10%]
+2026-09-30T13:51:39.856435Z 01O tests/architecture/test_change_review.py::test_task_entry_blocks_bad_diff_before_child_and_checks_effects_after_child PASSED [ 10%]
+2026-09-30T13:51:40.267064Z 01O tests/architecture/test_change_review.py::test_restoring_user_dirty_file_to_old_git_blob_is_still_detected PASSED [ 11%]
+2026-09-30T13:51:40.379675Z 01O tests/architecture/test_change_review.py::test_staged_scope_change_cannot_hide_behind_restored_worktree[meta/scope.json-allowed_paths] PASSED [ 11%]
+2026-09-30T13:51:40.422707Z 01O tests/architecture/test_change_review.py::test_staged_scope_change_cannot_hide_behind_restored_worktree[meta/packet.yaml-allowed_paths] PASSED [ 11%]
+2026-09-30T13:51:40.465757Z 01O tests/architecture/test_change_review.py::test_test_rename_to_text_does_not_preserve_discovery PASSED [ 11%]
+2026-09-30T13:51:40.533921Z 01O tests/architecture/test_change_review.py::test_protected_checker_move_requires_review PASSED [ 12%]
+2026-09-30T13:51:40.602579Z 01O tests/architecture/test_change_review.py::test_source_in_ignored_bytecode_directory_is_still_reviewed PASSED [ 12%]
+2026-09-30T13:51:40.669834Z 01O tests/architecture/test_change_review.py::test_test_move_into_hidden_directory_does_not_preserve_discovery PASSED [ 12%]
+2026-09-30T13:51:40.738894Z 01O tests/architecture/test_change_review.py::test_symlink_parent_is_rejected_before_reading_baseline_content PASSED [ 13%]
+2026-09-30T13:51:40.773697Z 01O tests/architecture/test_change_review.py::test_task_entry_rejects_race_between_validation_and_scope_review PASSED [ 13%]
+2026-09-30T13:51:40.879015Z 01O tests/architecture/test_change_review.py::test_index_packet_deletion_cannot_hide_behind_present_worktree PASSED [ 13%]
+2026-09-30T13:51:40.919263Z 01O tests/architecture/test_change_review.py::test_prior_exact_deletion_grant_accepts_null_new_identity PASSED [ 13%]
+2026-09-30T13:51:41.093908Z 01O tests/architecture/test_change_review.py::test_generic_technical_review_cannot_approve_production_scope PASSED [ 14%]
+2026-09-30T13:51:41.236576Z 01O tests/architecture/test_change_review.py::test_prior_exact_scope_grant_allows_only_the_pinned_production_bytes PASSED [ 14%]
+2026-09-30T13:51:41.464522Z 01O tests/architecture/test_change_review.py::test_restricted_entry_cannot_omit_or_override_packet_binding[missing-False] PASSED [ 14%]
+2026-09-30T13:51:41.514581Z 01O tests/architecture/test_change_review.py::test_restricted_entry_cannot_omit_or_override_packet_binding[missing-True] PASSED [ 15%]
+2026-09-30T13:51:41.564735Z 01O tests/architecture/test_change_review.py::test_restricted_entry_cannot_omit_or_override_packet_binding[different-True] PASSED [ 15%]
+2026-09-30T13:51:41.613954Z 01O tests/architecture/test_change_review.py::test_new_conftest_requires_exact_technical_review_but_legal_fixture_can_pass PASSED [ 15%]
+2026-09-30T13:51:41.772205Z 01O tests/architecture/test_change_review.py::test_scope_grant_committed_with_candidate_production_bytes_is_not_prior PASSED [ 16%]
+2026-09-30T13:51:41.820242Z 01O tests/architecture/test_dependency_boundaries.py::test_real_production_tree_is_discovered_separately_from_synthetic_fixtures PASSED [ 16%]
+2026-09-30T13:51:41.827475Z 01O tests/architecture/test_dependency_boundaries.py::test_legal_domain_ports_and_workflow_public_service PASSED [ 16%]
+2026-09-30T13:51:41.842037Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[import openai as provider] PASSED [ 16%]
+2026-09-30T13:51:41.855663Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[from anthropic import Client as Provider] PASSED [ 17%]
+2026-09-30T13:51:41.869064Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[from sqlalchemy.orm import Session] PASSED [ 17%]
+2026-09-30T13:51:41.883187Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[import psycopg] PASSED [ 17%]
+2026-09-30T13:51:41.895758Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[import fastapi] PASSED [ 18%]
+2026-09-30T13:51:41.909204Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[import temporalio] PASSED [ 18%]
+2026-09-30T13:51:41.922761Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[import sqlite3] PASSED [ 18%]
+2026-09-30T13:51:41.936024Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[if False:\n    import openai] PASSED [ 18%]
+2026-09-30T13:51:41.949279Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[from typing import TYPE_CHECKING\nif TYPE_CHECKING:\n    import openai] PASSED [ 19%]
+2026-09-30T13:51:41.962596Z 01O tests/architecture/test_dependency_boundaries.py::test_domain_implementation_dependencies_fail[def helper():\n    from sqlalchemy import create_engine] PASSED [ 19%]
+2026-09-30T13:51:41.975771Z 01O tests/architecture/test_dependency_boundaries.py::test_unknown_domain_third_party_needs_review PASSED [ 19%]
+2026-09-30T13:51:41.989375Z 01O tests/architecture/test_dependency_boundaries.py::test_indirect_provider_and_internal_workflow_dependency_fail PASSED [ 20%]
+2026-09-30T13:51:42.003316Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[repository-gateway/writer] PASSED [ 20%]
+2026-09-30T13:51:42.016730Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[repository-quality/reviewer] PASSED [ 20%]
+2026-09-30T13:51:42.030318Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[repository-repair/patcher] PASSED [ 20%]
+2026-09-30T13:51:42.043700Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[repository-context/compiler] PASSED [ 21%]
+2026-09-30T13:51:42.057111Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[repository-intelligence/reference] PASSED [ 21%]
+2026-09-30T13:51:42.070603Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[commit_service-gateway/writer] PASSED [ 21%]
+2026-09-30T13:51:42.084158Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[commit_service-quality/reviewer] PASSED [ 22%]
+2026-09-30T13:51:42.097604Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[commit_service-repair/patcher] PASSED [ 22%]
+2026-09-30T13:51:42.111202Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[commit_service-context/compiler] PASSED [ 22%]
+2026-09-30T13:51:42.135444Z 01O tests/architecture/test_dependency_boundaries.py::test_unauthorized_canon_imports_fail[commit_service-intelligence/reference] PASSED [ 23%]
+2026-09-30T13:51:42.149097Z 01O tests/architecture/test_dependency_boundaries.py::test_workflow_may_not_access_internal_repository PASSED [ 23%]
+2026-09-30T13:51:42.162208Z 01O tests/architecture/test_dependency_boundaries.py::test_package_reexport_and_intermediate_alias_do_not_hide_canon PASSED [ 23%]
+2026-09-30T13:51:42.176261Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[import importlib\nimportlib.import_module("openai")] PASSED [ 23%]
+2026-09-30T13:51:42.189459Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[import importlib as il\nil.import_module("openai")] PASSED [ 24%]
+2026-09-30T13:51:42.202743Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[from importlib import import_module as load\nload("openai")] PASSED [ 24%]
+2026-09-30T13:51:42.216089Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[from importlib import import_module\nload = import_module\nload("openai")] PASSED [ 24%]
+2026-09-30T13:51:42.229647Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[__import__("openai")] PASSED [ 25%]
+2026-09-30T13:51:42.242897Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[from builtins import __import__ as load\nload("openai")] PASSED [ 25%]
+2026-09-30T13:51:42.257992Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_import_and_aliases_follow_same_policy[import importlib\ngetattr(importlib, "import_module")("openai")] PASSED [ 25%]
+2026-09-30T13:51:42.270605Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_relative_dynamic_import_is_resolved PASSED [ 25%]
+2026-09-30T13:51:42.283044Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_fromlist_cannot_hide_canon_repository[__import__("anovel.canon", fromlist=["repository"])] PASSED [ 26%]
+2026-09-30T13:51:42.296738Z 01O tests/architecture/test_dependency_boundaries.py::test_literal_dynamic_fromlist_cannot_hide_canon_repository[__import__("anovel.canon", None, None, ("repository",))] PASSED [ 26%]
+2026-09-30T13:51:42.310165Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import importlib\nimportlib.import_module(name)] PASSED [ 26%]
+2026-09-30T13:51:42.323307Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[from importlib import import_module as load\nload(prefix + ".module")] PASSED [ 27%]
+2026-09-30T13:51:42.336450Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[__import__(name)] PASSED [ 27%]
+2026-09-30T13:51:42.349622Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[from anovel.domain import *] PASSED [ 27%]
+2026-09-30T13:51:42.363275Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import importlib.util as util\nutil.spec_from_file_location("history", path)] PASSED [ 27%]
+2026-09-30T13:51:42.376436Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[from importlib.machinery import SourceFileLoader as Loader\nLoader("history", path)] PASSED [ 28%]
+2026-09-30T13:51:42.389757Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import importlib.util\nimportlib.util.find_spec("plan.archive.old")] PASSED [ 28%]
+2026-09-30T13:51:42.403078Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[__import__("anovel.canon", fromlist=names)] PASSED [ 28%]
+2026-09-30T13:51:42.416355Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[__import__("anovel.canon", fromlist=["*"])] PASSED [ 29%]
+2026-09-30T13:51:42.434599Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import sys\nsys.path.append("plan/archive")] PASSED [ 29%]
+2026-09-30T13:51:42.448119Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import sys as system\nsystem.path = []] PASSED [ 29%]
+2026-09-30T13:51:42.461491Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import sys\nsys.modules["x"] = other] PASSED [ 30%]
+2026-09-30T13:51:42.474843Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[exec(source)] PASSED [ 30%]
+2026-09-30T13:51:42.488325Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[eval(source)] PASSED [ 30%]
+2026-09-30T13:51:42.501639Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import runpy\nrunpy.run_path(path)] PASSED [ 30%]
+2026-09-30T13:51:42.515045Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_dynamic_loading_fails_explicitly[import importlib\ngetattr(importlib, function_name)("openai")] PASSED [ 31%]
+2026-09-30T13:51:42.528431Z 01O tests/architecture/test_dependency_boundaries.py::test_historical_and_nonproduction_imports_fail[import plan.archive.old] PASSED [ 31%]
+2026-09-30T13:51:42.541681Z 01O tests/architecture/test_dependency_boundaries.py::test_historical_and_nonproduction_imports_fail[from archive import old] PASSED [ 31%]
+2026-09-30T13:51:42.555044Z 01O tests/architecture/test_dependency_boundaries.py::test_historical_and_nonproduction_imports_fail[import tests.fixture] PASSED [ 32%]
+2026-09-30T13:51:42.568381Z 01O tests/architecture/test_dependency_boundaries.py::test_historical_and_nonproduction_imports_fail[from scripts import helper] PASSED [ 32%]
+2026-09-30T13:51:42.581891Z 01O tests/architecture/test_dependency_boundaries.py::test_new_nested_namespace_module_is_always_scanned PASSED [ 32%]
+2026-09-30T13:51:42.601585Z 01O tests/architecture/test_dependency_boundaries.py::test_synthetic_source_is_parsed_without_execution PASSED [ 32%]
+2026-09-30T13:51:42.615666Z 01O tests/architecture/test_dependency_boundaries.py::test_package_initializers_are_edges_even_for_dotted_import PASSED [ 33%]
+2026-09-30T13:51:42.628875Z 01O tests/architecture/test_dependency_boundaries.py::test_syntax_and_relative_root_escape_fail[def broken(-ARCH_SOURCE] PASSED [ 33%]
+2026-09-30T13:51:42.642381Z 01O tests/architecture/test_dependency_boundaries.py::test_syntax_and_relative_root_escape_fail[from ... import escape-ARCH_RELATIVE] PASSED [ 33%]
+2026-09-30T13:51:42.656028Z 01O tests/architecture/test_dependency_boundaries.py::test_symlink_sources_and_directories_fail PASSED [ 34%]
+2026-09-30T13:51:42.669529Z 01O tests/architecture/test_dependency_boundaries.py::test_empty_discovery_and_scan_narrowing_fail PASSED [ 34%]
+2026-09-30T13:51:42.687399Z 01O tests/architecture/test_dependency_boundaries.py::test_ambiguous_module_file_and_package_fail PASSED [ 34%]
+2026-09-30T13:51:42.701350Z 01O tests/architecture/test_dependency_boundaries.py::test_required_p0_gates_cannot_be_disabled_or_deferred PASSED [ 34%]
+2026-09-30T13:51:42.733032Z 01O tests/architecture/test_dependency_boundaries.py::test_weakened_or_malformed_gate_policy_fails[<lambda>-ARCH_GATE_DISABLED] PASSED [ 35%]
+2026-09-30T13:51:42.753886Z 01O tests/architecture/test_dependency_boundaries.py::test_weakened_or_malformed_gate_policy_fails[<lambda>-ARCH_GATE_MISSING] PASSED [ 35%]
+2026-09-30T13:51:42.773944Z 01O tests/architecture/test_dependency_boundaries.py::test_weakened_or_malformed_gate_policy_fails[<lambda>-ARCH_GATES] PASSED [ 35%]
+2026-09-30T13:51:42.795088Z 01O tests/architecture/test_dependency_boundaries.py::test_future_gates_are_reported_as_not_applicable PASSED [ 36%]
+2026-09-30T13:51:42.813257Z 01O tests/architecture/test_dependency_boundaries.py::test_cli_real_report_preserves_sources_and_previous_results PASSED [ 36%]
+2026-09-30T13:51:43.194760Z 01O tests/architecture/test_dependency_boundaries.py::test_cli_failed_hard_gate_returns_nonzero PASSED [ 36%]
+2026-09-30T13:51:43.325197Z 01O tests/architecture/test_dependency_boundaries.py::test_reflective_subscript_loaders_obey_domain_boundaries[__builtins__["__import__"]("openai")] PASSED [ 37%]
+2026-09-30T13:51:43.338970Z 01O tests/architecture/test_dependency_boundaries.py::test_reflective_subscript_loaders_obey_domain_boundaries[import builtins\nvars(builtins)["__import__"]("openai")] PASSED [ 37%]
+2026-09-30T13:51:43.352525Z 01O tests/architecture/test_dependency_boundaries.py::test_reflective_subscript_loaders_obey_domain_boundaries[import builtins as b\nload=b.__dict__["__import__"]\nload("openai")] PASSED [ 37%]
+2026-09-30T13:51:43.366043Z 01O tests/architecture/test_dependency_boundaries.py::test_reflective_subscript_loaders_obey_domain_boundaries[import importlib as loader\nvars(loader)["import_module"]("openai")] PASSED [ 37%]
+2026-09-30T13:51:43.379735Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_subscript_loader_or_code_execution_fails[__builtins__[choose_loader()]("openai")] PASSED [ 38%]
+2026-09-30T13:51:43.393138Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_subscript_loader_or_code_execution_fails[import builtins\nvars(builtins)[choose_loader()]("openai")] PASSED [ 38%]
+2026-09-30T13:51:43.406439Z 01O tests/architecture/test_dependency_boundaries.py::test_unresolved_subscript_loader_or_code_execution_fails[__builtins__["exec"]("print(1)")] PASSED [ 38%]
+2026-09-30T13:51:43.420390Z 01O tests/architecture/test_dependency_boundaries.py::test_reflective_literal_standard_library_import_is_legal PASSED [ 39%]
+2026-09-30T13:51:43.433644Z 01O tests/architecture/test_weakening_checks.py::test_formatting_and_monotonic_test_additions_pass[# formatted\n\ndef test_valid():\n    assert (1 == 1)\n] PASSED [ 39%]
+2026-09-30T13:51:43.435505Z 01O tests/architecture/test_weakening_checks.py::test_formatting_and_monotonic_test_additions_pass[def test_valid():\n    """Explain the same check."""\n    assert 1 == 1\n] PASSED [ 39%]
+2026-09-30T13:51:43.437831Z 01O tests/architecture/test_weakening_checks.py::test_formatting_and_monotonic_test_additions_pass[def test_valid():\n    assert 1 == 1\n    assert 2 == 2\n] PASSED [ 39%]
+2026-09-30T13:51:43.439345Z 01O tests/architecture/test_weakening_checks.py::test_formatting_and_monotonic_test_additions_pass[def test_valid():\n    assert 1 == 1\n\ndef test_more():\n    assert 3 == 3\n] PASSED [ 40%]
+2026-09-30T13:51:43.441349Z 01O tests/architecture/test_weakening_checks.py::test_new_test_and_new_checker_do_not_require_an_exception PASSED [ 40%]
+2026-09-30T13:51:43.442855Z 01O tests/architecture/test_weakening_checks.py::test_test_file_and_function_deletion_are_explicit_weakening PASSED [ 40%]
+2026-09-30T13:51:43.444851Z 01O tests/architecture/test_weakening_checks.py::test_plain_assertion_deletion_is_weakening_but_replacement_requires_review PASSED [ 41%]
+2026-09-30T13:51:43.447523Z 01O tests/architecture/test_weakening_checks.py::test_preserving_assert_text_does_not_hide_control_flow_or_redefinition[def test_valid():\n    if False:\n        assert 1 == 1\n] PASSED [ 41%]
+2026-09-30T13:51:43.449492Z 01O tests/architecture/test_weakening_checks.py::test_preserving_assert_text_does_not_hide_control_flow_or_redefinition[def test_valid():\n    return\n    assert 1 == 1\n] PASSED [ 41%]
+2026-09-30T13:51:43.451420Z 01O tests/architecture/test_weakening_checks.py::test_preserving_assert_text_does_not_hide_control_flow_or_redefinition[def test_valid():\n    assert 1 == 1\n\ndef test_valid():\n    pass\n] PASSED [ 41%]
+2026-09-30T13:51:43.453406Z 01O tests/architecture/test_weakening_checks.py::test_fixture_and_helper_changes_require_review PASSED [ 42%]
+2026-09-30T13:51:43.455584Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[import pytest as p\n@p.mark.skip\ndef test_x():\n    assert 1\n] PASSED [ 42%]
+2026-09-30T13:51:43.457273Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[from pytest import skip as abandon\ndef test_x():\n    abandon("reason")\n] PASSED [ 42%]
+2026-09-30T13:51:43.458951Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[from pytest.mark import skipif as conditional\n@conditional(True, reason="x")\ndef test_x():\n    assert 1\n] PASSED [ 43%]
+2026-09-30T13:51:43.460838Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[import pytest as p\n@p.mark.xfail\ndef test_x():\n    assert 1\n] PASSED [ 43%]
+2026-09-30T13:51:43.462450Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[from pytest import xfail as expected\ndef test_x():\n    expected("x")\n] PASSED [ 43%]
+2026-09-30T13:51:43.464112Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[import unittest as u\n@u.skip("x")\ndef test_x():\n    assert 1\n] PASSED [ 44%]
+2026-09-30T13:51:43.465731Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[from unittest import expectedFailure as expected\n@expected\ndef test_x():\n    assert 1\n] PASSED [ 44%]
+2026-09-30T13:51:43.467328Z 01O tests/architecture/test_weakening_checks.py::test_skip_and_xfail_aliases_in_new_files_are_weakening[def test_x(self):\n    self.skipTest("x")\n] PASSED [ 44%]
+2026-09-30T13:51:43.468891Z 01O tests/architecture/test_weakening_checks.py::test_changing_skipif_condition_is_not_hidden_by_equal_skip_count PASSED [ 44%]
+2026-09-30T13:51:43.472362Z 01O tests/architecture/test_weakening_checks.py::test_unittest_assertions_support_additions_and_detect_removal PASSED [ 45%]
+2026-09-30T13:51:43.476293Z 01O tests/architecture/test_weakening_checks.py::test_synchronized_ac_scenario_and_test_deletion_remain_visible PASSED [ 45%]
+2026-09-30T13:51:43.481672Z 01O tests/architecture/test_weakening_checks.py::test_machine_additions_and_evidence_status_updates_pass PASSED [ 45%]
+2026-09-30T13:51:43.487486Z 01O tests/architecture/test_weakening_checks.py::test_same_scenario_count_with_changed_assertion_requires_review PASSED [ 46%]
+2026-09-30T13:51:43.490627Z 01O tests/architecture/test_weakening_checks.py::test_gate_weakening[<lambda>-GATE_REMOVED] PASSED [ 46%]
+2026-09-30T13:51:43.492891Z 01O tests/architecture/test_weakening_checks.py::test_gate_weakening[<lambda>-GATE_CHECK_REMOVED] PASSED [ 46%]
+2026-09-30T13:51:43.495614Z 01O tests/architecture/test_weakening_checks.py::test_gate_weakening[<lambda>-HARD_FAILURE_DISABLED] PASSED [ 46%]
+2026-09-30T13:51:43.498422Z 01O tests/architecture/test_weakening_checks.py::test_gate_weakening[<lambda>-GATE_ACTIVATION_RELAXED] PASSED [ 47%]
+2026-09-30T13:51:43.501257Z 01O tests/architecture/test_weakening_checks.py::test_gate_weakening[<lambda>-GATE_TRIGGER_CHANGED] PASSED [ 47%]
+2026-09-30T13:51:43.504039Z 01O tests/architecture/test_weakening_checks.py::test_gate_extra_check_and_earlier_activation_are_legal PASSED [ 47%]
+2026-09-30T13:51:43.506660Z 01O tests/architecture/test_weakening_checks.py::test_lowering_minimum_baseline_is_not_a_new_comparison_baseline[<lambda>-BASELINE_GATE_REMOVED] PASSED [ 48%]
+2026-09-30T13:51:43.510027Z 01O tests/architecture/test_weakening_checks.py::test_lowering_minimum_baseline_is_not_a_new_comparison_baseline[<lambda>-BASELINE_REQUIREMENT_REMOVED0] PASSED [ 48%]
+2026-09-30T13:51:43.513651Z 01O tests/architecture/test_weakening_checks.py::test_lowering_minimum_baseline_is_not_a_new_comparison_baseline[<lambda>-BASELINE_REQUIREMENT_REMOVED1] PASSED [ 48%]
+2026-09-30T13:51:43.517251Z 01O tests/architecture/test_weakening_checks.py::test_lowering_minimum_baseline_is_not_a_new_comparison_baseline[<lambda>-MILESTONE_REQUIREMENT_REMOVED] PASSED [ 48%]
+2026-09-30T13:51:43.520831Z 01O tests/architecture/test_weakening_checks.py::test_baseline_enhancement_passes_and_unmodelled_policy_change_is_reviewed PASSED [ 49%]
+2026-09-30T13:51:43.526966Z 01O tests/architecture/test_weakening_checks.py::test_configuration_weakening_uses_structured_values[pyproject.toml-[tool.coverage.report]\nfail_under = 90\n-[tool.coverage.report]\nfail_under = 70\n-THRESHOLD_RELAXED] PASSED [ 49%]
+2026-09-30T13:51:43.528305Z 01O tests/architecture/test_weakening_checks.py::test_configuration_weakening_uses_structured_values[policy.yaml-quality:\n  max_error_rate: 0.1\n-quality:\n  max_error_rate: 0.8\n-THRESHOLD_RELAXED] PASSED [ 49%]
+2026-09-30T13:51:43.529963Z 01O tests/architecture/test_weakening_checks.py::test_configuration_weakening_uses_structured_values[policy.yaml-scan:\n  exclude: [generated/]\n-scan:\n  exclude: [generated/, src/anovel/domain/]\n-SCAN_EXCLUSION_EXPANDED] PASSED [ 50%]
+2026-09-30T13:51:43.531619Z 01O tests/architecture/test_weakening_checks.py::test_configuration_weakening_uses_structured_values[pyproject.toml-[tool.pytest.ini_options]\ntestpaths = ["tests", "extra"]\n-[tool.pytest.ini_options]\ntestpaths = ["tests"]\n-SCAN_TARGETS_CHANGED] PASSED [ 50%]
+2026-09-30T13:51:43.532921Z 01O tests/architecture/test_weakening_checks.py::test_configuration_weakening_uses_structured_values[policy.yaml-gates:\n- id: check\n  allow_failure: false\n-gates:\n- id: check\n  allow_failure: true\n-HARD_FAILURE_DISABLED] PASSED [ 50%]
+2026-09-30T13:51:43.534642Z 01O tests/architecture/test_weakening_checks.py::test_configuration_weakening_uses_structured_values[pyproject.toml-[tool.pytest.ini_options]\naddopts="-ra"\n-[tool.pytest.ini_options]\naddopts="-ra --deselect=tests/test_real.py"\n-TEST_SELECTION_CHANGED] PASSED [ 51%]
+2026-09-30T13:51:43.536091Z 01O tests/architecture/test_weakening_checks.py::test_configuration_enhancement_formatting_and_unrelated_numbers_pass[coverage: {minimum: 70}\n-coverage:\n  minimum: 90\n] PASSED [ 51%]
+2026-09-30T13:51:43.537614Z 01O tests/architecture/test_weakening_checks.py::test_configuration_enhancement_formatting_and_unrelated_numbers_pass[scan: {exclude: [a, b]}\n-scan: {exclude: [a]}\n] PASSED [ 51%]
+2026-09-30T13:51:43.539199Z 01O tests/architecture/test_weakening_checks.py::test_configuration_enhancement_formatting_and_unrelated_numbers_pass[scan: {testpaths: [tests]}\n-scan: {testpaths: [tests, more]}\n] PASSED [ 51%]
+2026-09-30T13:51:43.540730Z 01O tests/architecture/test_weakening_checks.py::test_configuration_enhancement_formatting_and_unrelated_numbers_pass[minimum: 90\n-# same\nminimum: 90\n] PASSED [ 52%]
+2026-09-30T13:51:43.542089Z 01O tests/architecture/test_weakening_checks.py::test_configuration_enhancement_formatting_and_unrelated_numbers_pass[unrelated_price: 90\n-unrelated_price: 70\n] PASSED [ 52%]
+2026-09-30T13:51:43.543405Z 01O tests/architecture/test_weakening_checks.py::test_checker_changes_are_review_and_formatting_is_legal PASSED [ 52%]
+2026-09-30T13:51:43.544984Z 01O tests/architecture/test_weakening_checks.py::test_protected_rename_is_review_while_normal_test_rename_passes PASSED [ 53%]
+2026-09-30T13:51:43.545681Z 01O tests/architecture/test_weakening_checks.py::test_ignore_changes_at_any_depth_require_review[.gitignore-dist/\n-dist/\ntests/\n] PASSED [ 53%]
+2026-09-30T13:51:43.546880Z 01O tests/architecture/test_weakening_checks.py::test_ignore_changes_at_any_depth_require_review[tests/.gitignore-None-test_new.py\n] PASSED [ 53%]
+2026-09-30T13:51:43.548006Z 01O tests/architecture/test_weakening_checks.py::test_ignore_changes_at_any_depth_require_review[src/anovel/.gitignore-None-*.py\n] PASSED [ 53%]
+2026-09-30T13:51:43.549164Z 01O tests/architecture/test_weakening_checks.py::test_ignore_changes_at_any_depth_require_review[tests/.gitignore-test_old.py\n-test_new.py\n] PASSED [ 54%]
+2026-09-30T13:51:43.550260Z 01O tests/architecture/test_weakening_checks.py::test_ignore_changes_at_any_depth_require_review[tests/.gitignore-test_old.py\n-None] PASSED [ 54%]
+2026-09-30T13:51:43.551342Z 01O tests/architecture/test_weakening_checks.py::test_new_nested_ignore_cannot_silently_hide_a_new_test PASSED [ 54%]
+2026-09-30T13:51:43.552728Z 01O tests/architecture/test_weakening_checks.py::test_checker_and_tests_cannot_silently_weaken_together PASSED [ 55%]
+2026-09-30T13:51:43.554090Z 01O tests/architecture/test_weakening_checks.py::test_parse_and_machine_shape_failures_do_not_silently_pass[tests/test_bad.py-def broken(\n] PASSED [ 55%]
+2026-09-30T13:51:43.555258Z 01O tests/architecture/test_weakening_checks.py::test_parse_and_machine_shape_failures_do_not_silently_pass[policy.yaml-a: [\n] PASSED [ 55%]
+2026-09-30T13:51:43.556451Z 01O tests/architecture/test_weakening_checks.py::test_parse_and_machine_shape_failures_do_not_silently_pass[policy.yaml-minimum: 90\nminimum: 0\n] PASSED [ 55%]
+2026-09-30T13:51:43.557715Z 01O tests/architecture/test_weakening_checks.py::test_parse_and_machine_shape_failures_do_not_silently_pass[pyproject.toml-[invalid\n] PASSED [ 56%]
+2026-09-30T13:51:43.558819Z 01O tests/architecture/test_weakening_checks.py::test_parse_and_machine_shape_failures_do_not_silently_pass[plan/machine/implementation-backlog.yaml-tasks: null\n] PASSED [ 56%]
+2026-09-30T13:51:43.560254Z 01O tests/architecture/test_weakening_checks.py::test_findings_bind_layer_content_and_task_without_reading_authorization PASSED [ 56%]
+2026-09-30T13:51:43.566360Z 01O tests/architecture/test_weakening_checks.py::test_staged_weakening_is_not_cancelled_by_worktree_restoration PASSED [ 57%]
+2026-09-30T13:51:43.567378Z 01O tests/architecture/test_weakening_checks.py::test_added_test_annotations_cannot_silently_replace_existing_checks[return] PASSED [ 57%]
+2026-09-30T13:51:43.569744Z 01O tests/architecture/test_weakening_checks.py::test_added_test_annotations_cannot_silently_replace_existing_checks[parameter] PASSED [ 57%]
+2026-09-30T13:51:43.571873Z 01O tests/architecture/test_weakening_checks.py::test_literal_reflective_skip_in_new_file_is_detected PASSED [ 58%]
+2026-09-30T13:51:43.573524Z 01O tests/architecture/test_weakening_checks.py::test_unknown_reflective_test_control_requires_review PASSED [ 58%]
+2026-09-30T13:51:43.575240Z 01O tests/architecture/test_weakening_checks.py::test_new_conftest_collection_controls_are_reviewed[def pytest_collection_modifyitems(config, items):\n    items[:] = [x for x in items if "negative" not in x.name]\n] PASSED [ 58%]
+2026-09-30T13:51:43.577246Z 01O tests/architecture/test_weakening_checks.py::test_new_conftest_collection_controls_are_reviewed[def pytest_ignore_collect(collection_path, config):\n    return True\n] PASSED [ 58%]
+2026-09-30T13:51:43.578744Z 01O tests/architecture/test_weakening_checks.py::test_new_conftest_collection_controls_are_reviewed[collect_ignore=["test_negative.py"]\n] PASSED [ 59%]
+2026-09-30T13:51:43.580204Z 01O tests/architecture/test_weakening_checks.py::test_new_conftest_collection_controls_are_reviewed[collect_ignore_glob=["test_*.py"]\n] PASSED [ 59%]
+2026-09-30T13:51:43.581620Z 01O tests/architecture/test_weakening_checks.py::test_new_conftest_collection_controls_are_reviewed[pytest_plugins=["collection_filter"]\n] PASSED [ 59%]
+2026-09-30T13:51:43.583081Z 01O tests/architecture/test_weakening_checks.py::test_new_conftest_collection_controls_are_reviewed[def pytest_sessionstart(session):\n    session.config.option.keyword="positive"\n] PASSED [ 60%]
+2026-09-30T13:51:43.584739Z 01O tests/architecture/test_weakening_checks.py::test_new_harmless_conftest_is_reviewable_not_assumed_weakening PASSED [ 60%]
+2026-09-30T13:51:43.586215Z 01O tests/architecture/test_weakening_checks.py::test_ini_test_selection_and_targets_cannot_change_silently[pytest.ini-pytest] PASSED [ 60%]
+2026-09-30T13:51:43.587995Z 01O tests/architecture/test_weakening_checks.py::test_ini_test_selection_and_targets_cannot_change_silently[.pytest.ini-pytest] PASSED [ 60%]
+2026-09-30T13:51:43.589735Z 01O tests/architecture/test_weakening_checks.py::test_ini_test_selection_and_targets_cannot_change_silently[setup.cfg-tool:pytest] PASSED [ 61%]
+2026-09-30T13:51:43.591411Z 01O tests/architecture/test_weakening_checks.py::test_ini_test_selection_and_targets_cannot_change_silently[tox.ini-pytest] PASSED [ 61%]
+2026-09-30T13:51:43.593117Z 01O tests/architecture/test_weakening_checks.py::test_malformed_pytest_ini_is_not_a_passing_scan PASSED [ 61%]
+2026-09-30T13:51:43.594074Z 01O tests/architecture/test_weakening_checks.py::test_collection_control_requires_authorization PASSED [ 62%]
+2026-09-30T13:51:43.595986Z 01O tests/architecture/test_weakening_checks.py::test_fixture_only_conftest_remains_review_level PASSED [ 62%]
+2026-09-30T13:51:43.597428Z 01O tests/architecture/test_weakening_checks.py::test_collection_control_codes_properly_categorized PASSED [ 62%]
+2026-09-30T13:51:43.598231Z 01O tests/architecture/test_weakening_checks.py::test_various_collection_controls_get_authorization_required[def pytest_collection_modifyitems(config, items):\n    pass\n] PASSED [ 62%]
+2026-09-30T13:51:43.599652Z 01O tests/architecture/test_weakening_checks.py::test_various_collection_controls_get_authorization_required[def pytest_ignore_collect(collection_path, config):\n    return True\n] PASSED [ 63%]
+2026-09-30T13:51:43.601224Z 01O tests/architecture/test_weakening_checks.py::test_various_collection_controls_get_authorization_required[collect_ignore = ["test_skip.py"]\n] PASSED [ 63%]
+2026-09-30T13:51:43.602636Z 01O tests/architecture/test_weakening_checks.py::test_various_collection_controls_get_authorization_required[collect_ignore_glob = ["test_*.py"]\n] PASSED [ 63%]
+2026-09-30T13:51:43.604106Z 01O tests/architecture/test_weakening_checks.py::test_various_collection_controls_get_authorization_required[pytest_plugins = ["custom_plugin"]\n] PASSED [ 64%]
+2026-09-30T13:51:43.605502Z 01O tests/architecture/test_weakening_checks.py::test_authorization_required_blocks_same_ai_self_review PASSED [ 64%]
+2026-09-30T13:51:43.606460Z 01O tests/architecture/test_weakening_checks.py::test_authorization_required_structure_for_exact_grants PASSED [ 64%]
+2026-09-30T13:51:43.607388Z 01O tests/contract/test_delivery_gates.py::test_ci_gates_yaml_structure PASSED [ 65%]
+2026-09-30T13:51:43.613666Z 01O tests/contract/test_delivery_gates.py::test_p0_gates_exist_with_correct_activation PASSED [ 65%]
+2026-09-30T13:51:43.620535Z 01O tests/contract/test_delivery_gates.py::test_p0_gates_cannot_allow_failure PASSED [ 65%]
+2026-09-30T13:51:43.626169Z 01O tests/contract/test_delivery_gates.py::test_future_gates_not_falsely_activated PASSED [ 65%]
+2026-09-30T13:51:43.632155Z 01O tests/contract/test_delivery_gates.py::test_gitlab_ci_exists PASSED      [ 66%]
+2026-09-30T13:51:43.633622Z 01O tests/contract/test_delivery_gates.py::test_gitlab_ci_has_p0_jobs PASSED [ 66%]
+2026-09-30T13:51:43.633876Z 01O tests/contract/test_delivery_gates.py::test_gitlab_ci_no_allow_failure_for_p0 PASSED [ 66%]
+2026-09-30T13:51:43.643452Z 01O tests/contract/test_delivery_gates.py::test_gitlab_ci_uses_locked_dependencies PASSED [ 67%]
+2026-09-30T13:51:43.644277Z 01O tests/contract/test_delivery_gates.py::test_gitlab_ci_uses_postgres_service PASSED [ 67%]
+2026-09-30T13:51:43.645101Z 01O tests/contract/test_delivery_gates.py::test_delivery_gates_test_suite_registered PASSED [ 67%]
+2026-09-30T13:51:43.701471Z 01O tests/contract/test_delivery_gates.py::test_no_test_deletions_in_catalog PASSED [ 67%]
+2026-09-30T13:51:43.760112Z 01O tests/contract/test_delivery_gates.py::test_execution_packet_exists_for_v2_004 PASSED [ 68%]
+2026-09-30T13:51:43.760963Z 01O tests/contract/test_delivery_gates.py::test_execution_packet_action_is_implement PASSED [ 68%]
+2026-09-30T13:51:43.770279Z 01O tests/contract/test_delivery_gates.py::test_no_weakening_in_governance_tests PASSED [ 68%]
+2026-09-30T13:51:43.771172Z 01O tests/contract/test_delivery_gates.py::test_ci_would_detect_secret_fixture PASSED [ 69%]
+2026-09-30T13:51:43.772012Z 01O tests/contract/test_delivery_gates.py::test_ci_would_detect_dependency_issues PASSED [ 69%]
+2026-09-30T13:51:43.772848Z 01O tests/contract/test_delivery_gates.py::test_ci_gates_not_reduced_from_baseline PASSED [ 69%]
+2026-09-30T13:51:43.778724Z 01O tests/contract/test_delivery_gates.py::test_locked_dependencies_file_exists PASSED [ 69%]
+2026-09-30T13:51:43.779527Z 01O tests/contract/test_delivery_gates.py::test_gitignore_includes_dist PASSED [ 70%]
+2026-09-30T13:51:43.780314Z 01O tests/contract/test_delivery_gates.py::test_gitlab_ci_yaml_is_valid PASSED [ 70%]
+2026-09-30T13:51:43.789791Z 01O tests/contract/test_delivery_gates.py::test_arch_fitness_references_existing_tests PASSED [ 70%]
+2026-09-30T13:51:43.790912Z 01O tests/contract/test_delivery_gates.py::test_secret_dependency_fails_on_violation PASSED [ 71%]
+2026-09-30T13:51:43.800522Z 01O tests/contract/test_delivery_gates.py::test_security_policy_scanner_implementation PASSED [ 71%]
+2026-09-30T13:51:43.813829Z 01O tests/contract/test_delivery_gates.py::test_security_policy_scanner_negative PASSED [ 71%]
+2026-09-30T13:51:43.827226Z 01O tests/contract/test_delivery_gates.py::test_secret_dependency_no_exit_on_error_suppression PASSED [ 72%]
+2026-09-30T13:51:43.836601Z 01O tests/contract/test_delivery_gates.py::test_security_policy_exclusions_match_gitleaks_allowlist PASSED [ 72%]
+2026-09-30T13:51:43.841714Z 01O tests/contract/test_delivery_gates.py::test_secret_dependency_has_exit_on_violation PASSED [ 72%]
+2026-09-30T13:51:43.842570Z 01O tests/contract/test_delivery_gates.py::test_no_failure_swallowing_in_p0_jobs PASSED [ 72%]
+2026-09-30T13:51:43.843814Z 01O tests/contract/test_delivery_gates.py::test_security_policy_yaml_is_required_artifact PASSED [ 73%]
+2026-09-30T13:51:43.967832Z 01O tests/contract/test_delivery_gates.py::test_static_gate_uses_real_tools PASSED [ 73%]
+2026-09-30T13:51:43.968736Z 01O tests/contract/test_delivery_gates.py::test_secret_dependency_has_real_vulnerability_scanner PASSED [ 73%]
+2026-09-30T13:51:43.969643Z 01O tests/contract/test_delivery_gates.py::test_ci_does_not_modify_plan_directory PASSED [ 74%]
+2026-09-30T13:51:43.970486Z 01O tests/contract/test_delivery_gates.py::test_ci_references_exist PASSED   [ 74%]
+2026-09-30T13:51:43.971723Z 01O tests/contract/test_delivery_gates.py::test_production_scan_isolated_from_fixtures PASSED [ 74%]
+2026-09-30T13:51:43.972633Z 01O tests/contract/test_delivery_gates.py::test_no_post_lock_dependency_mutation PASSED [ 74%]
+2026-09-30T13:51:43.973793Z 01O tests/contract/test_delivery_gates.py::test_hard_gates_fail_closed PASSED [ 75%]
+2026-09-30T13:51:43.983364Z 01O tests/contract/test_delivery_gates.py::test_locked_tools_used_in_ci PASSED [ 75%]
+2026-09-30T13:51:43.984271Z 01O tests/contract/test_delivery_gates.py::test_pip_audit_is_locked_dependency PASSED [ 75%]
+2026-09-30T13:51:43.985156Z 01O tests/contract/test_delivery_gates.py::test_schema_contract_regression_prevention PASSED [ 76%]
+2026-09-30T13:51:43.994531Z 01O tests/contract/test_delivery_gates.py::test_mypy_regression_prevention PASSED [ 76%]
+2026-09-30T13:51:44.004104Z 01O tests/contract/test_plan_governance.py::test_current_normative_registry_and_owner_mapping PASSED [ 76%]
+2026-09-30T13:51:44.472133Z 01O tests/contract/test_plan_governance.py::test_resolved_history_cannot_be_normative[archive/history.md] PASSED [ 76%]
+2026-09-30T13:51:44.474877Z 01O tests/contract/test_plan_governance.py::test_resolved_history_cannot_be_normative[./archive/history.md] PASSED [ 77%]
+2026-09-30T13:51:44.477168Z 01O tests/contract/test_plan_governance.py::test_resolved_history_cannot_be_normative[current/../archive/history.md] PASSED [ 77%]
+2026-09-30T13:51:44.479492Z 01O tests/contract/test_plan_governance.py::test_resolved_history_cannot_be_normative[alias.md] PASSED [ 77%]
+2026-09-30T13:51:44.481661Z 01O tests/contract/test_plan_governance.py::test_missing_normative_reference_rejected PASSED [ 78%]
+2026-09-30T13:51:44.483158Z 01O tests/contract/test_plan_governance.py::test_actual_repository_context_entries_and_configuration PASSED [ 78%]
+2026-09-30T13:51:44.484412Z 01O tests/contract/test_plan_governance.py::test_context_permissions_are_distinct_from_automatic_load PASSED [ 78%]
+2026-09-30T13:51:44.486638Z 01O tests/contract/test_plan_governance.py::test_context_import_alias_resolves_to_history PASSED [ 79%]
+2026-09-30T13:51:44.488797Z 01O tests/contract/test_plan_governance.py::test_existing_rules_reject_single_mutations[<lambda>-TASK_PHASE] PASSED [ 79%]
+2026-09-30T13:51:45.058058Z 01O tests/contract/test_plan_governance.py::test_existing_rules_reject_single_mutations[<lambda>-TASK_SCHEMA0] PASSED [ 79%]
+2026-09-30T13:51:45.611878Z 01O tests/contract/test_plan_governance.py::test_existing_rules_reject_single_mutations[<lambda>-TASK_SCHEMA1] PASSED [ 79%]
+2026-09-30T13:51:46.179267Z 01O tests/contract/test_plan_governance.py::test_existing_rules_reject_single_mutations[<lambda>-TASK_START] PASSED [ 80%]
+2026-09-30T13:51:46.731652Z 01O tests/contract/test_plan_governance.py::test_existing_rules_reject_single_mutations[<lambda>-EXTERNAL_SOURCE] PASSED [ 80%]
+2026-09-30T13:51:47.296423Z 01O tests/contract/test_plan_governance.py::test_generated_views_match_current_source PASSED [ 80%]
+2026-09-30T13:51:47.760248Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[code-VERIFIED] PASSED [ 81%]
+2026-09-30T13:51:48.264828Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[code-CLOSED] PASSED [ 81%]
+2026-09-30T13:51:48.781153Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[tests-VERIFIED] PASSED [ 81%]
+2026-09-30T13:51:49.289559Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[tests-CLOSED] PASSED [ 81%]
+2026-09-30T13:51:49.801314Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[ci-VERIFIED] PASSED [ 82%]
+2026-09-30T13:51:50.323302Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[ci-CLOSED] PASSED [ 82%]
+2026-09-30T13:51:50.833625Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[acceptance-VERIFIED] PASSED [ 82%]
+2026-09-30T13:51:51.346563Z 01O tests/contract/test_plan_governance.py::test_completed_task_requires_nonempty_evidence[acceptance-CLOSED] PASSED [ 83%]
+2026-09-30T13:51:51.846881Z 01O tests/contract/test_plan_governance.py::test_empty_closed_evidence_self_test_probe_rejects PASSED [ 83%]
+2026-09-30T13:51:53.994157Z 01O tests/contract/test_review_triage_policy.py::test_valid_report_passes PASSED [ 83%]
+2026-09-30T13:51:54.001094Z 01O tests/contract/test_review_triage_policy.py::test_false_positive_cannot_adopt PASSED [ 83%]
+2026-09-30T13:51:54.007538Z 01O tests/contract/test_review_triage_policy.py::test_already_fixed_cannot_adopt PASSED [ 84%]
+2026-09-30T13:51:54.013983Z 01O tests/contract/test_review_triage_policy.py::test_cannot_verify_cannot_adopt PASSED [ 84%]
+2026-09-30T13:51:54.020090Z 01O tests/contract/test_review_triage_policy.py::test_needs_more_evidence_cannot_adopt PASSED [ 84%]
+2026-09-30T13:51:54.027961Z 01O tests/contract/test_review_triage_policy.py::test_p0_requires_target_invariant PASSED [ 85%]
+2026-09-30T13:51:54.032811Z 01O tests/contract/test_review_triage_policy.py::test_p0_requires_adversarial_validation PASSED [ 85%]
+2026-09-30T13:51:54.039118Z 01O tests/contract/test_review_triage_policy.py::test_p0_with_all_requirements_passes PASSED [ 85%]
+2026-09-30T13:51:54.045341Z 01O tests/contract/test_review_triage_policy.py::test_adopt_requires_candidate_remediation PASSED [ 86%]
+2026-09-30T13:51:54.051604Z 01O tests/contract/test_review_triage_policy.py::test_duplicate_finding_ids_rejected PASSED [ 86%]
+2026-09-30T13:51:54.057850Z 01O tests/contract/test_review_triage_policy.py::test_summary_count_mismatch_rejected PASSED [ 86%]
+2026-09-30T13:51:54.064230Z 01O tests/contract/test_review_triage_policy.py::test_invalid_enum_values_rejected PASSED [ 86%]
+2026-09-30T13:51:54.070635Z 01O tests/contract/test_task_execution.py::test_valid_command_runs_and_resume_rechecks_actual_state PASSED [ 87%]
+2026-09-30T13:52:03.117444Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_SUBJECT] PASSED [ 87%]
+2026-09-30T13:52:06.851473Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_VERSION] PASSED [ 87%]
+2026-09-30T13:52:10.556803Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_INPUT] PASSED [ 88%]
+2026-09-30T13:52:14.301368Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_SCHEMA0] PASSED [ 88%]
+2026-09-30T13:52:18.009867Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_SCHEMA1] PASSED [ 88%]
+2026-09-30T13:52:21.704616Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-ENTRY_BASE] PASSED [ 88%]
+2026-09-30T13:52:25.453093Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_CLAIM] PASSED [ 89%]
+2026-09-30T13:52:29.120094Z 01O tests/contract/test_task_execution.py::test_invalid_packet_blocks_child[<lambda>-EXEC_SCHEMA2] PASSED [ 89%]
+2026-09-30T13:52:32.905672Z 01O tests/contract/test_task_execution.py::test_missing_packet_blocks_child PASSED [ 89%]
+2026-09-30T13:52:36.590666Z 01O tests/contract/test_task_execution.py::test_missing_packet_scope_blocks_child_without_cli_flags PASSED [ 90%]
+2026-09-30T13:52:40.234518Z 01O tests/contract/test_task_execution.py::test_child_without_cli_flags_cannot_escape_packet_scope PASSED [ 90%]
+2026-09-30T13:52:45.672889Z 01O tests/contract/test_task_execution.py::test_wrong_requested_action_blocks_child PASSED [ 90%]
+2026-09-30T13:52:49.377493Z 01O tests/contract/test_task_execution.py::test_accepted_adr_allows_actual_implementation_command PASSED [ 90%]
+2026-09-30T13:52:54.786627Z 01O tests/contract/test_task_execution.py::test_open_prepare_allows_unresolved_adr_and_implement_blocks PASSED [ 91%]
+2026-09-30T13:53:01.508740Z 01O tests/contract/test_task_execution.py::test_open_task_requires_specific_packet_even_for_prepare PASSED [ 91%]
+2026-09-30T13:53:05.213588Z 01O tests/contract/test_task_execution.py::test_p1_cannot_start_before_gate PASSED [ 91%]
+2026-09-30T13:53:09.097168Z 01O tests/contract/test_task_execution.py::test_resume_detects_real_changes_even_when_both_states_dirty[tracked] PASSED [ 92%]
+2026-09-30T13:53:15.026323Z 01O tests/contract/test_task_execution.py::test_resume_detects_real_changes_even_when_both_states_dirty[untracked] PASSED [ 92%]
+2026-09-30T13:53:20.976780Z 01O tests/contract/test_task_execution.py::test_resume_detects_real_changes_even_when_both_states_dirty[head] PASSED [ 92%]
+2026-09-30T13:53:26.892890Z 01O tests/contract/test_task_execution.py::test_resume_detects_real_changes_even_when_both_states_dirty[branch] PASSED [ 93%]
+2026-09-30T13:53:32.805423Z 01O tests/contract/test_task_execution.py::test_resume_detects_real_changes_even_when_both_states_dirty[artifact] PASSED [ 93%]
+2026-09-30T13:53:38.740567Z 01O tests/contract/test_task_execution.py::test_child_failure_preserved_and_cannot_resume_as_success PASSED [ 93%]
+2026-09-30T13:53:45.459396Z 01O tests/contract/test_task_execution.py::test_unknown_handoff_not_inherited PASSED [ 93%]
+2026-09-30T13:53:51.342237Z 01O tests/contract/test_task_execution.py::test_timeout_is_unknown_and_cannot_be_resumed_as_pass PASSED [ 94%]
+2026-09-30T13:53:57.280238Z 01O tests/contract/test_task_execution.py::test_failed_post_command_observation_cannot_report_success PASSED [ 94%]
+2026-09-30T13:54:01.788781Z 01O tests/contract/test_task_execution.py::test_reports_cannot_overwrite_plan_or_previous_result PASSED [ 94%]
+2026-09-30T13:54:06.734794Z 01O tests/contract/test_task_execution.py::test_detached_head_allows_check_run_and_resume PASSED [ 95%]
+2026-09-30T13:54:16.571307Z 01O tests/contract/test_task_execution.py::test_resume_rejects_detached_context_changes[detach] PASSED [ 95%]
+2026-09-30T13:54:22.485075Z 01O tests/contract/test_task_execution.py::test_resume_rejects_detached_context_changes[attach] PASSED [ 95%]
+2026-09-30T13:54:28.433263Z 01O tests/contract/test_task_execution.py::test_resume_rejects_detached_context_changes[detached_head_change] PASSED [ 95%]
+2026-09-30T13:54:34.488318Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[[]] PASSED [ 96%]
+2026-09-30T13:54:38.126886Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[null] PASSED [ 96%]
+2026-09-30T13:54:41.736087Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child["text"] PASSED [ 96%]
+2026-09-30T13:54:45.395201Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[1] PASSED [ 97%]
+2026-09-30T13:54:49.027364Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[true] PASSED [ 97%]
+2026-09-30T13:54:52.704442Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[{}] PASSED [ 97%]
+2026-09-30T13:54:56.438458Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[{"status":"PASS"}] PASSED [ 97%]
+2026-09-30T13:55:00.152627Z 01O tests/contract/test_task_execution.py::test_malformed_checkpoint_writes_blocked_result_without_running_child[{] PASSED [ 98%]
+2026-09-30T13:55:03.794604Z 01O tests/contract/test_task_execution.py::test_prepare_immutability_check_exists PASSED [ 98%]
+2026-09-30T13:55:03.795643Z 01O tests/contract/test_task_execution.py::test_implement_action_unaffected_by_prepare_gate PASSED [ 98%]
+2026-09-30T13:55:09.223419Z 01O tests/contract/test_task_execution.py::test_observe_detects_dirty_file_content_change PASSED [ 99%]
+2026-09-30T13:55:11.850614Z 01O tests/contract/test_task_execution.py::test_observe_detects_untracked_file_content_change PASSED [ 99%]
+2026-09-30T13:55:14.429894Z 01O tests/contract/test_task_execution.py::test_prepare_gate_would_block_legal_change_under_prepare_action PASSED [ 99%]
+2026-09-30T13:55:14.430862Z 01O tests/contract/test_task_execution.py::test_prepare_gate_compares_files_not_just_status PASSED [100%]
+2026-09-30T13:55:14.460925Z 01O 
+2026-09-30T13:55:14.460942Z 01O ---- generated xml file: /builds/ayitnovel/ainovelos/dist/ci/unit/junit.xml ----
+2026-09-30T13:55:14.460943Z 01O ======================= 343 passed in 219.12s (0:03:39) ========================
+2026-09-30T13:55:16.957883Z 00O section_end:1790776516:step_script[0K
+2026-09-30T13:55:17.017393Z 00O+section_start:1790776517:archive_cache[0K
+2026-09-30T13:55:17.017400Z 00O+[0K[36;1mSaving cache for successful job[0;m[0;m
+2026-09-30T13:55:17.399968Z 01O [32;1mCreating cache 0_uv-365a00cba8e1d7a34214a0f39ce45f1a74dd2bfd-protected...[0;m
+2026-09-30T13:55:17.460173Z 01E .cache/pip: found 662 matching artifact files and directories[0;m 
+2026-09-30T13:55:17.500764Z 01E .cache/uv: found 6117 matching artifact files and directories[0;m 
+2026-09-30T13:55:17.523915Z 01E .venv: found 3430 matching artifact files and directories[0;m 
+2026-09-30T13:55:21.141765Z 01E Using presigned URL for cache upload              [0;m 
+2026-09-30T13:55:21.141770Z 01E Uploading cache.zip to https://storage.googleapis.com/gitlab-com-runners-cache/project/86656946/3c/3c5d2d3c46b167405f4103a554311db694e00616064a9c2c3acddfce8b1eadae[0;m 
+2026-09-30T13:55:22.341589Z 01O [32;1mCreated cache[0;m
+2026-09-30T13:55:22.499178Z 00O section_end:1790776522:archive_cache[0K
+2026-09-30T13:55:22.499603Z 00O+section_start:1790776522:upload_artifacts_on_success[0K
+2026-09-30T13:55:22.499608Z 00O+[0K[36;1mUploading artifacts for successful job[0;m[0;m
+2026-09-30T13:55:22.887783Z 01O [32;1mUploading artifacts...[0;m
+2026-09-30T13:55:22.936319Z 01E dist/ci/unit/: found 2 matching artifact files and directories[0;m 
+2026-09-30T13:55:23.778798Z 01E Uploading artifacts as "archive" to coordinator... 201 Created[0;m  correlation_id[0;m=357091baeca144489c4c2701b7a15c29 id[0;m=16838949866 status[0;m=201 token[0;m=eyJraWQiO
+2026-09-30T13:55:23.835781Z 01O [32;1mUploading artifacts...[0;m
+2026-09-30T13:55:23.888515Z 01E dist/ci/unit/junit.xml: found 1 matching artifact files and directories[0;m 
+2026-09-30T13:55:24.413606Z 01E Uploading artifacts as "junit" to coordinator... 201 Created[0;m  correlation_id[0;m=1c5d64f30ad841c597ce144d44102734 id[0;m=16838949866 status[0;m=201 token[0;m=eyJraWQiO
+2026-09-30T13:55:24.563955Z 00O section_end:1790776524:upload_artifacts_on_success[0K
+2026-09-30T13:55:24.564279Z 00O+section_start:1790776524:cleanup_file_variables[0K
+2026-09-30T13:55:24.564285Z 00O+[0K[36;1mCleaning up project directory and file based variables[0;m[0;m
+2026-09-30T13:55:25.074206Z 00O section_end:1790776525:cleanup_file_variables[0K
+2026-09-30T13:55:28.062676Z 00O [32;1mJob succeeded[0;m
