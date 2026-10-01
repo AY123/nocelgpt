@@ -46,7 +46,8 @@
     },
     "revision": {
       "type": "string",
-      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$",
+      "description": "The revision identifies the subject/candidate revision being attested, tested, accepted or decided. It is not required to equal the Git commit that first contains this evidence record. For CI_RUN it is the revision where CI actually executed. For PHASE_DECISION it is the phase candidate revision that was verified. For MILESTONE_DECISION it is the verified phase candidate revision. For task evidence (CODE, TEST_RESULT, ACCEPTANCE_RECORD) it is the revision where the task work was completed."
     },
     "status": {
       "const": "PASS",
