@@ -1,0 +1,17 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: DA-04-closure-38b0c57
+evidence_type: FINDING_CLOSURE
+subject_id: DA-04
+revision: 38b0c5749e9ccf58aa1ddf911d8c245a328e3ead
+status: PASS
+producer: G-P0 closure process
+executed_at: '2026-10-02T10:00:00+00:00'
+environment_fingerprint: P0-closure-C3
+artifacts:
+- ref: machine/remediation-register.yaml
+  sha256: 7c552a7103bef8e06c8603b7be8bc6656ed408d858f3396b1624c024c76165e9
+input_evidence_refs:
+- validation/execution/V2-002/revalidation-fd7667ec/acceptance.yaml
+decision: CLOSED
+rationale: Finding DA-04 resolved through V2 implementation and pipeline 2906152868 verification at C3.

@@ -1,7 +1,7 @@
 {
   "scope": "planning validator self-test only",
-  "generated_at_utc": "2026-09-30T09:12:19.027704+00:00",
-  "manifest_sha256": "6f94fa7e4cbd57420f20b9776d9753c55e9240af1d5f8223192bf710b00da9d6",
+  "generated_at_utc": "2026-10-02T15:10:46.340726+00:00",
+  "manifest_sha256": "ea6fec3a52d11d2801ac2b36f74f409f626bdd58c37b5ac8f4b5f4da864967f9",
   "status": "PASS",
   "cases": [
     {
@@ -45,7 +45,6 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_SCHEMA V2-005 ['execution_packet_ref']: None is not of type 'string'",
-        "TASK_START V2-005: phase entry not verified",
         "TASK_READINESS V2-005: still PLANNED"
       ]
     },
@@ -129,7 +128,8 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "PHASE_VERIFIED P0: missing evidence"
+        "PHASE_VERIFIED P1: missing evidence",
+        "PHASE_VERIFIED P1: tasks must be CLOSED"
       ]
     },
     {
