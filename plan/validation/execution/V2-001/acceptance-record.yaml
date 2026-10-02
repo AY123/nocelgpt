@@ -1,0 +1,24 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-001-acceptance-390aa0f4
+evidence_type: ACCEPTANCE_RECORD
+subject_id: V2-001
+revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+status: PASS
+producer: Task owner review
+executed_at: '2026-10-02T09:30:00+00:00'
+environment_fingerprint: Review with local validation
+artifacts:
+- ref: validation/execution/V2-001/artifacts/acceptance-review.md
+  sha256: a7ef60b80cda89a9ee2b90d1122a861a951547106321e0a32e38d0ff907026c2
+input_evidence_refs:
+- validation/execution/V2-001/code-evidence.yaml
+- validation/execution/V2-001/test-result.yaml
+check_ids:
+- bootstrap-env
+- adr-001
+- postgres-tests
+decision: ACCEPTED
+rationale: Planning infrastructure bootstrap with ADR-001 and PostgreSQL tests - All
+  acceptance criteria met at revision 390aa0f4
+finding_dispositions: []

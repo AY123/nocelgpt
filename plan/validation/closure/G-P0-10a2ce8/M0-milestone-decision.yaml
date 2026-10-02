@@ -6,13 +6,17 @@ subject_id: M0
 revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
 status: PASS
 producer: 昂扬
-executed_at: '2026-10-01T15:50:00+00:00'
-environment_fingerprint: P0-closure-baseline-C2-pipeline-2902026614
+executed_at: '2026-10-02T09:30:00+00:00'
+environment_fingerprint: P0-closure-C2-pipeline-2902026614
 artifacts:
 - ref: validation/closure/G-P0-10a2ce8/P0-phase-decision.yaml
-  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
-input_evidence_refs: []
+  sha256: bb271a11aecc86bcebd2fa2157482728378588c6307aa6b292d811f5cb92301b
+input_evidence_refs:
+- validation/closure/G-P0-10a2ce8/P0-phase-decision.yaml
+- validation/execution/V2-001/acceptance-record.yaml
+- validation/execution/V2-002/acceptance-record.yaml
+- validation/execution/V2-003/acceptance-record.yaml
+- validation/execution/V2-004/acceptance-record.yaml
 decision: VERIFIED
-rationale: 'Milestone M0 (Planning Infrastructure) completed at candidate C2 with
-  P0 phase verified. Pipeline 2902026614: 6/6 gates PASS. V2-001~004: Complete. DA-01~05:
-  All CLOSED.'
+rationale: 'Milestone M0 completed at C2 with P0 verified. Pipeline 2902026614: 6/6
+  gates PASS. V2-001~004: Complete. Planning infrastructure baseline established.'

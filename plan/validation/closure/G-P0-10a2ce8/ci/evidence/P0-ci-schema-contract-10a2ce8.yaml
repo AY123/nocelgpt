@@ -7,11 +7,15 @@ revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
 status: PASS
 producer: GitLab CI Pipeline 2902026614
 executed_at: '2026-10-01T15:45:36+00:00'
-environment_fingerprint: GitLab-CI-Python3.12.14-uv0.12.17-ruff>=0.8
+environment_fingerprint: GitLab-CI-Python3.12-uv0.12-ruff0.8
 artifacts:
-- ref: https://gitlab.com/ayitnovel/ainovelos/-/jobs/16872235182
-  sha256: not_applicable_remote_ci_log
+- ref: validation/closure/G-P0-10a2ce8/ci/artifacts/remote/16872235182-job.log
+  sha256: 2c4448703004befccb7ed966ad655b5be677d8affb3e06a552528b9a3d29f9f9
 input_evidence_refs: []
-gate: SCHEMA_CONTRACT
-pipeline_id: 2902026614
-job_id: 16872235182
+check_ids:
+- schema-validation
+command: gitlab-ci-job-16872235182
+exit_code: 0
+pipeline_id: '2902026614'
+job_id: '16872235182'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2902026614

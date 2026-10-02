@@ -6,14 +6,14 @@ subject_id: DA-01
 revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
 status: PASS
 producer: G-P0 closure process
-executed_at: '2026-10-01T15:50:00+00:00'
-environment_fingerprint: P0-closure-baseline-C2
+executed_at: '2026-10-02T09:30:00+00:00'
+environment_fingerprint: P0-closure-C2
 artifacts:
 - ref: machine/remediation-register.yaml
   sha256: a86e987e6012f6a985fc9e21070685a6c0a4d5047832a018272981fd3ade3703
 input_evidence_refs:
-- validation/execution/V2-002/code-evidence.yaml
-- validation/execution/V2-004/code-evidence.yaml
+- validation/execution/V2-002/acceptance-record.yaml
+- validation/execution/V2-004/acceptance-record.yaml
 decision: CLOSED
 rationale: Finding DA-01 resolved through V2-001~004 implementation and pipeline 2902026614
-  verification.
+  verification at C2.
