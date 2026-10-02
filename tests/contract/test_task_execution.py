@@ -88,6 +88,50 @@ def seed(tmp_path_factory):
         if set(control['owner_tasks']) - {'V2-001', 'V2-002'}:
             control['p0_enforcement_status'] = 'NOT_IMPLEMENTED'
     save(policy_path, policy)
+    
+    # Reconcile governance state with reset task states
+    # When tasks are reset to pre-completion states, dependent governance must also reset
+    reset_task_ids = {task['task_id'] for task in backlog['tasks'] if task['status'] in ('IMPLEMENTED', 'OPEN')}
+    
+    # Reset phases whose tasks intersect reset tasks
+    phase_gates_path = repo / 'plan/machine/phase-gates.yaml'
+    phase_gates = load(phase_gates_path)
+    if 'phases' in phase_gates:
+        for phase in phase_gates['phases']:
+            if phase.get('status') == 'VERIFIED':
+                phase_tasks = set(phase.get('tasks', []))
+                if phase_tasks & reset_task_ids:
+                    phase['status'] = 'NOT_VERIFIED'
+                    phase['evidence_refs'] = []
+        save(phase_gates_path, phase_gates)
+    
+    # Reset milestones whose tasks intersect reset tasks
+    milestones_path = repo / 'plan/machine/milestones.yaml'
+    if milestones_path.exists():
+        milestones_doc = load(milestones_path)
+        milestones_list = milestones_doc.get('milestones', []) if isinstance(milestones_doc, dict) else []
+        
+        for milestone in milestones_list:
+            if milestone.get('status') == 'VERIFIED':
+                milestone_tasks = set(milestone.get('required_tasks', []))
+                if milestone_tasks & reset_task_ids:
+                    milestone['status'] = 'NOT_VERIFIED'
+                    milestone['evidence_refs'] = []
+        save(milestones_path, milestones_doc)
+    
+    # Reset findings whose related_tasks intersect reset tasks
+    remediation_path = repo / 'plan/machine/remediation-register.yaml'
+    if remediation_path.exists():
+        remediation = load(remediation_path)
+        findings_list = remediation.get('findings', []) if isinstance(remediation, dict) else []
+        
+        for finding in findings_list:
+            if finding.get('status') in ('CLOSED', 'VERIFIED'):
+                finding_tasks = set(finding.get('related_tasks', []))
+                if finding_tasks & reset_task_ids:
+                    finding['status'] = 'OPEN_TRACKED'
+                    finding['closure_refs'] = []
+        save(remediation_path, remediation)
     (repo / '.gitignore').write_text('dist/\n__pycache__/\n')
     for command in (('git', 'init', '-b', 'main'), ('git', 'add', '.'),
                     ('git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'synthetic gate fixture')):
