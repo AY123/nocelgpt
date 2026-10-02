@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-10-02T02:27:58.818545+00:00",
+  "generated_at_utc": "2026-10-02T02:39:24.659456+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "FAIL",
+  "status": "PASS",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "e143fb668312ff0f6dd2035d21bf3df6c66aa3f6",
+  "validated_repository_revision": "cb2a90825ec31915b688c011d19aa3f16328d206",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "d1f9f22616bda56c23c244a5aed4d0f39eaa976389825549fbfcefa0a1967db5",
+  "manifest_sha256": "28c5c1ca52f72269b41f031891a25eb3b29cc1c1f5f204e10e9a31b5df3f839d",
   "counts": {
     "tasks": 60,
     "phase_distribution": {
@@ -49,17 +49,5 @@
       "REJECTED": 1
     }
   },
-  "errors": [
-    "GENERATED_VIEW: stale or missing generated/MILESTONE_MAP.md",
-    "PHASE_INPUTS P0: missing task acceptance",
-    "PHASE_CI P0: unbound run",
-    "EVIDENCE_COVERAGE P0 CI: missing checks",
-    "MILESTONE_INPUTS M0: missing phase/task evidence",
-    "FINDING_CLOSURE DA-01: missing task acceptance",
-    "FINDING_CLOSURE DA-02: missing task acceptance",
-    "FINDING_CLOSURE DA-03: missing task acceptance",
-    "FINDING_CLOSURE DA-04: missing task acceptance",
-    "FINDING_CLOSURE DA-05: missing task acceptance",
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
-  ]
+  "errors": []
 }

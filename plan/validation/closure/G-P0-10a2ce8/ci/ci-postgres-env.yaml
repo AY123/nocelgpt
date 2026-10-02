@@ -1,6 +1,6 @@
 record_type: plan_execution_evidence
 schema_version: '1.0'
-evidence_id: P0-ci-secret-dependency-10a2ce8
+evidence_id: P0-ci-postgres-env-10a2ce8
 evidence_type: CI_RUN
 subject_id: G-P0
 revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
@@ -9,13 +9,13 @@ producer: GitLab CI Pipeline 2902026614
 executed_at: '2026-10-01T15:45:36+00:00'
 environment_fingerprint: GitLab-CI-Python3.12-uv0.12-ruff0.8
 artifacts:
-- ref: validation/closure/G-P0-10a2ce8/ci/artifacts/remote/16872235186-job.log
-  sha256: b07bc7570201b799045f1ad5166296f83a2a5d8ee70f9792f6746e55056e2cd8
+- ref: validation/closure/G-P0-10a2ce8/ci/artifacts/remote/16872235185-job.log
+  sha256: 19517c01c2342c2f5075d3c811970e4409748a0c51b206fc9bf8a7adecf337e9
 input_evidence_refs: []
 check_ids:
-- secret-audit
-command: gitlab-ci-job-16872235186
+- POSTGRES_ENV
+command: gitlab-ci-job-16872235185
 exit_code: 0
 pipeline_id: '2902026614'
-job_id: '16872235186'
+job_id: '16872235185'
 pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2902026614

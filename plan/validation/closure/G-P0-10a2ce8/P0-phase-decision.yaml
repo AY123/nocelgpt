@@ -6,23 +6,34 @@ subject_id: P0
 revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
 status: PASS
 producer: 昂扬
-executed_at: '2026-10-02T09:30:00+00:00'
+executed_at: '2026-10-02T10:00:00+00:00'
 environment_fingerprint: P0-closure-C2-pipeline-2902026614
 artifacts:
 - ref: validation/closure/G-P0-10a2ce8/ci/artifacts/pipeline-2902026614-summary.txt
   sha256: 90f455863d7dfebe3ac006ce6f44bb76c5b592bc933610288dd433af51034f62
 input_evidence_refs:
-- validation/execution/V2-001/acceptance-record.yaml
-- validation/execution/V2-002/acceptance-record.yaml
-- validation/execution/V2-003/acceptance-record.yaml
-- validation/execution/V2-004/acceptance-record.yaml
+- validation/execution/V2-001/closure/acceptance.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/acceptance.yaml
+- validation/execution/V2-003/closure/acceptance.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/acceptance.yaml
+- validation/closure/G-P0-10a2ce8/findings/DA-01.yaml
+- validation/closure/G-P0-10a2ce8/findings/DA-02.yaml
+- validation/closure/G-P0-10a2ce8/findings/DA-03.yaml
+- validation/closure/G-P0-10a2ce8/findings/DA-04.yaml
+- validation/closure/G-P0-10a2ce8/findings/DA-05.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-static.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-schema-contract.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-unit.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-arch-fitness.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-postgres-env.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-secret-dependency.yaml
 decision: VERIFIED
 rationale: 'Phase P0 completed at C2. Pipeline 2902026614: 6/6 gates PASS. V2-001~004:
-  Complete. DA-01~05: Resolved.'
+  Accepted. DA-01~05: Closed.'
 ci_evidence_refs:
-- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-static-10a2ce8.yaml
-- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-schema-contract-10a2ce8.yaml
-- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-unit-10a2ce8.yaml
-- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-arch-fitness-10a2ce8.yaml
-- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-postgres-env-10a2ce8.yaml
-- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-secret-dependency-10a2ce8.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-static.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-schema-contract.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-unit.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-arch-fitness.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-postgres-env.yaml
+- validation/closure/G-P0-10a2ce8/ci/ci-secret-dependency.yaml

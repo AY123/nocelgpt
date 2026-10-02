@@ -952,7 +952,7 @@ findings:
   - 删除、重复、推迟必需门禁及错误豁免应被拒绝；合法未来项与真实完整证据可通过。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
   closure_refs:
-  - validation/closure/G-P0-10a2ce8/remediation/DA-01-closure.yaml
+  - validation/closure/G-P0-10a2ce8/findings/DA-01.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
 - id: DA-02
@@ -966,7 +966,7 @@ findings:
   - 缺失、目录、README、未接受 ADR 模板、错任务/版本/失败证据不可关闭；合格真实记录可关闭。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
   closure_refs:
-  - validation/closure/G-P0-10a2ce8/remediation/DA-02-closure.yaml
+  - validation/closure/G-P0-10a2ce8/findings/DA-02.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
   supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
@@ -981,7 +981,7 @@ findings:
   - M6/M7 不可通过缩减必要任务或缺失认证报告而 VERIFIED。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
   closure_refs:
-  - validation/closure/G-P0-10a2ce8/remediation/DA-03-closure.yaml
+  - validation/closure/G-P0-10a2ce8/findings/DA-03.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
   supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
@@ -996,7 +996,7 @@ findings:
   - 三个复现反例分别拒绝；未来未到期 ADR 和合法任务重开仍可表达。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
   closure_refs:
-  - validation/closure/G-P0-10a2ce8/remediation/DA-04-closure.yaml
+  - validation/closure/G-P0-10a2ce8/findings/DA-04.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
 - id: DA-05
@@ -1010,7 +1010,7 @@ findings:
   - 没有处置不可关闭；跨阶段 finding 的已验证局部处置可以关闭本任务。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
   closure_refs:
-  - validation/closure/G-P0-10a2ce8/remediation/DA-05-closure.yaml
+  - validation/closure/G-P0-10a2ce8/findings/DA-05.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
 - id: DA-06
