@@ -5,16 +5,21 @@ evidence_type: CI_RUN
 subject_id: G-P0
 revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
 status: PASS
-producer: GitLab CI Pipeline 2902026614
-executed_at: '2026-10-01T15:45:36+00:00'
-environment_fingerprint: GitLab-CI-Python3.12-uv0.12-ruff0.8
+producer: GitLab CI Pipeline 2902026614 Job 16872235181
+executed_at: '2026-10-01T15:45:38.478Z'
+environment_fingerprint: GitLab SaaS Linux runner; Python 3.12.14; uv 0.12.17; Ruff
+  0.16.9
 artifacts:
 - ref: validation/closure/G-P0-10a2ce8/ci/artifacts/remote/16872235181-job.log
   sha256: 083a0b5b5359334606d4c82005047c9c24c99fc6afdafe4db677880aa147b707
 input_evidence_refs: []
 check_ids:
 - STATIC
-command: gitlab-ci-job-16872235181
+command: 'uv run --directory . ruff format --check plan/scripts/ src/
+
+  uv run --directory . ruff check plan/scripts/ src/
+
+  uv run --directory . mypy plan/scripts/ src/ --ignore-missing-imports --no-strict-optional'
 exit_code: 0
 pipeline_id: '2902026614'
 job_id: '16872235181'
