@@ -1,0 +1,38 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: P0-phase-decision-38b0c57
+evidence_type: PHASE_DECISION
+subject_id: P0
+revision: 38b0c5749e9ccf58aa1ddf911d8c245a328e3ead
+status: PASS
+producer: G-P0 closure process
+executed_at: '2026-10-02T10:00:00+00:00'
+environment_fingerprint: P0-closure-C3
+artifacts:
+- ref: machine/phase-gates.yaml
+  sha256: 2dae46ac9b682be8cb3c273e78907a559645527c49f7e29c5dcdb05572f099e9
+input_evidence_refs:
+- validation/execution/V2-001/closure/acceptance.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/acceptance.yaml
+- validation/execution/V2-003/closure/acceptance.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/acceptance.yaml
+- validation/closure/G-P0-38b0c57/findings/DA-01.yaml
+- validation/closure/G-P0-38b0c57/findings/DA-02.yaml
+- validation/closure/G-P0-38b0c57/findings/DA-03.yaml
+- validation/closure/G-P0-38b0c57/findings/DA-04.yaml
+- validation/closure/G-P0-38b0c57/findings/DA-05.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-static.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-schema-contract.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-unit.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-arch-fitness.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-postgres-env.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-secret-dependency.yaml
+ci_evidence_refs:
+- validation/closure/G-P0-38b0c57/ci/ci-static.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-schema-contract.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-unit.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-arch-fitness.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-postgres-env.yaml
+- validation/closure/G-P0-38b0c57/ci/ci-secret-dependency.yaml
+decision: VERIFIED
+rationale: P0 tasks V2-001~004 completed with canonical acceptance, all DA findings closed, pipeline 2906152868 6/6 PASS at C3.

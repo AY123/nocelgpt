@@ -30,7 +30,7 @@ phases:
   name: Repository & Governance
   entry_gate: P0_ENTRY_READY
   exit_gate: G-P0
-  status: NOT_VERIFIED
+  status: VERIFIED
   tasks:
   - V2-001
   - V2-002
@@ -42,7 +42,8 @@ phases:
   - 锁定安装和 PostgreSQL 环境真实可运行
   - 现行资料与阶段 Gate 无歧义
   - 类型化证据、治理正反回归及 DA-01～05 本阶段责任处置完成
-  evidence_refs: []
+  evidence_refs:
+  - validation/closure/G-P0-38b0c57/P0-phase-decision.yaml
   task_refinement: READY
 - id: P1
   name: Narrative Kernel

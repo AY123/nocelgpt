@@ -1,0 +1,21 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: M0-milestone-decision-38b0c57
+evidence_type: MILESTONE_DECISION
+subject_id: M0
+revision: 38b0c5749e9ccf58aa1ddf911d8c245a328e3ead
+status: PASS
+producer: G-P0 closure process
+executed_at: '2026-10-02T10:00:00+00:00'
+environment_fingerprint: M0-closure-C3
+artifacts:
+- ref: machine/milestones.yaml
+  sha256: f4f0bcd42ed08b9b0fe40fc8c08b91103105e5b86997d25c482fea2f0fff3a96
+input_evidence_refs:
+- validation/closure/G-P0-38b0c57/P0-phase-decision.yaml
+- validation/execution/V2-001/closure/acceptance.yaml
+- validation/execution/V2-002/revalidation-fd7667ec/acceptance.yaml
+- validation/execution/V2-003/closure/acceptance.yaml
+- validation/execution/V2-004/revalidation-c7f684b9/acceptance.yaml
+decision: VERIFIED
+rationale: 'M0 requirements met: P0 VERIFIED, V2-001~004 all completed with canonical acceptance at C3.'

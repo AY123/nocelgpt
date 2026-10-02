@@ -1,0 +1,23 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: P0-ci-schema-contract-38b0c57
+evidence_type: CI_RUN
+subject_id: G-P0
+revision: 38b0c5749e9ccf58aa1ddf911d8c245a328e3ead
+status: PASS
+producer: GitLab CI Pipeline 2906152868 Job 16891911513
+executed_at: '2026-10-02T09:40:12.567Z'
+environment_fingerprint: GitLab SaaS Linux runner; Python 3.12.14; uv 0.12.17
+artifacts:
+- ref: validation/closure/G-P0-38b0c57/ci/artifacts/remote/16891911513-job.log
+  sha256: 9f062eef66c7dfcb4e2de93e90223a95a97724947831b2b57a7f983b656daadc
+input_evidence_refs: []
+check_ids:
+- SCHEMA_CONTRACT
+command: 'python plan/scripts/validate_plan.py --check --output-dir dist/ci/schema
+
+  python -m pytest tests/contract/test_plan_governance.py -v --tb=short'
+exit_code: 0
+pipeline_id: '2906152868'
+job_id: '16891911513'
+pipeline_url: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2906152868
