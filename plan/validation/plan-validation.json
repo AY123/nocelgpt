@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-10-01T15:20:17.353768+00:00",
+  "generated_at_utc": "2026-10-02T02:03:20.233933+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "PASS",
+  "status": "FAIL",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "b2ec9e6db790738fcc717238edc927625ba8046c",
+  "validated_repository_revision": "10a2ce8c350ac40de5593e4c60dbc923fcdabec4",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -49,5 +49,25 @@
       "REJECTED": 1
     }
   },
-  "errors": []
+  "errors": [
+    "GENERATED_VIEW: stale or missing generated/MILESTONE_MAP.md",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-10a2ce8/P0-phase-decision.yaml: missing/changed https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2902026614",
+    "PHASE_INPUTS P0: missing task acceptance",
+    "EVIDENCE_RECORD validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-static-10a2ce8.yaml: 'not_applicable_remote_ci_log' does not match '^[0-9a-f]{64}$'; 2902026614 is not of type 'string'; 16872235181 is not of type 'string'",
+    "EVIDENCE_RECORD validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-schema-contract-10a2ce8.yaml: 'not_applicable_remote_ci_log' does not match '^[0-9a-f]{64}$'; 2902026614 is not of type 'string'; 16872235182 is not of type 'string'",
+    "EVIDENCE_RECORD validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-unit-10a2ce8.yaml: 'not_applicable_remote_ci_log' does not match '^[0-9a-f]{64}$'; 2902026614 is not of type 'string'; 16872235183 is not of type 'string'",
+    "EVIDENCE_RECORD validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-arch-fitness-10a2ce8.yaml: 'not_applicable_remote_ci_log' does not match '^[0-9a-f]{64}$'; 2902026614 is not of type 'string'; 16872235184 is not of type 'string'",
+    "EVIDENCE_RECORD validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-postgres-env-10a2ce8.yaml: 'not_applicable_remote_ci_log' does not match '^[0-9a-f]{64}$'; 2902026614 is not of type 'string'; 16872235185 is not of type 'string'",
+    "EVIDENCE_RECORD validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-secret-dependency-10a2ce8.yaml: 'not_applicable_remote_ci_log' does not match '^[0-9a-f]{64}$'; 2902026614 is not of type 'string'; 16872235186 is not of type 'string'",
+    "PHASE_CI P0: unbound run",
+    "EVIDENCE_COVERAGE P0 CI: missing checks",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-10a2ce8/M0-milestone-decision.yaml: missing/changed validation/closure/G-P0-10a2ce8/P0-phase-decision.yaml",
+    "MILESTONE_INPUTS M0: missing phase/task evidence",
+    "FINDING_CLOSURE DA-01: missing task acceptance",
+    "FINDING_CLOSURE DA-02: missing task acceptance",
+    "FINDING_CLOSURE DA-03: missing task acceptance",
+    "FINDING_CLOSURE DA-04: missing task acceptance",
+    "FINDING_CLOSURE DA-05: missing task acceptance",
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+  ]
 }

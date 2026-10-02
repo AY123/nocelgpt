@@ -1,0 +1,25 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: P0-phase-decision-10a2ce8
+evidence_type: PHASE_DECISION
+subject_id: P0
+revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
+status: PASS
+producer: 昂扬
+executed_at: '2026-10-01T15:50:00+00:00'
+environment_fingerprint: P0-closure-baseline-C2-pipeline-2902026614
+artifacts:
+- ref: https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2902026614
+  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+input_evidence_refs: []
+decision: VERIFIED
+rationale: 'Phase P0 (Governance Foundations) completed at candidate C2. Pipeline
+  2902026614: 6/6 gates PASS. DA-01~05: All CLOSED. V2-001~004: Complete with phase-state-aware
+  harness.'
+ci_evidence_refs:
+- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-static-10a2ce8.yaml
+- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-schema-contract-10a2ce8.yaml
+- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-unit-10a2ce8.yaml
+- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-arch-fitness-10a2ce8.yaml
+- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-postgres-env-10a2ce8.yaml
+- validation/closure/G-P0-10a2ce8/ci/evidence/P0-ci-secret-dependency-10a2ce8.yaml

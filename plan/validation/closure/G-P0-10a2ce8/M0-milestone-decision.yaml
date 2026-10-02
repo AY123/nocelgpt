@@ -1,0 +1,18 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: M0-milestone-decision-10a2ce8
+evidence_type: MILESTONE_DECISION
+subject_id: M0
+revision: 10a2ce8c350ac40de5593e4c60dbc923fcdabec4
+status: PASS
+producer: 昂扬
+executed_at: '2026-10-01T15:50:00+00:00'
+environment_fingerprint: P0-closure-baseline-C2-pipeline-2902026614
+artifacts:
+- ref: validation/closure/G-P0-10a2ce8/P0-phase-decision.yaml
+  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+input_evidence_refs: []
+decision: VERIFIED
+rationale: 'Milestone M0 (Planning Infrastructure) completed at candidate C2 with
+  P0 phase verified. Pipeline 2902026614: 6/6 gates PASS. V2-001~004: Complete. DA-01~05:
+  All CLOSED.'
