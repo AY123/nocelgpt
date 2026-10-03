@@ -1,0 +1,107 @@
+{
+  "record_type": "workingtree_local_controls",
+  "checkout_revision": "4f813a219254f24be851419a172bc60d74f255a1",
+  "input_kind": "WORKTREE_SNAPSHOT",
+  "local_controls_status": "PASS",
+  "security_status": "FAIL",
+  "remote_status": "UNVERIFIED",
+  "source_sha256": {
+    ".gitlab-ci.yml": "5b240d209d4a2d6cc24e8ec542a9aae44c495947583a46bed41173f3da7dcb1e",
+    "pyproject.toml": "daa9fba92dbb4217f27d88800dd4c234e4b5d427e45fb39acd127c06371c43e7",
+    "scripts/ci/bootstrap_scanners.py": "5c7a176c0189460c5c9003ecc81f01a77c9e8003a056d61e5482ce341b0843b1",
+    "scripts/ci/check_configuration.py": "9fa91525e757de7886a0b30ecee076bab08957fa4368fe6729942fd743d74b69",
+    "scripts/ci/check_security.py": "dc940a3c35655e564a1d55bea26dce41fad070f110156eaacc8d4c1a9b83a224",
+    "scripts/ci/check_syntax.py": "30c918e80bb3c61ef30a2b85651acdf45c09dc410e4bdd0f691c1e6e2d8e2636",
+    "scripts/ci/run_gate.py": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+    "scripts/ci/verify_remote.py": "bf0c1b87ace91a003bf17179eb035798d7ad691d21fed917bd460517c27a041a",
+    "security-policy.yaml": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+    "tests/contract/test_delivery_gates.py": "ff38d2bd1f9d759d6ea4f103029daa6124dbd5a28631e302745a745bbf044ef1",
+    "tests/integration/test_postgres_ci_service.py": "935627c68472ad660976d0dd3ed667c4562b979b7a67c490def581fb3de44952",
+    "uv.lock": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e"
+  },
+  "artifacts": [
+    {
+      "source": "dist/validation/v2004-delivery-verified.xml",
+      "ref": "plan/validation/execution/V2-004/precommit/delivery.xml",
+      "sha256": "6081f2ec4075ae46fd2dba50fba68e92edcb8a4a21cf93959bac14816fcd85b3",
+      "counts": {
+        "tests": 79,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "source": "dist/validation/v2004-bootstrap-verified/junit.xml",
+      "ref": "plan/validation/execution/V2-004/precommit/bootstrap.xml",
+      "sha256": "743ba5c667d50c8607c117736e0c5b629b81c554293d33c12396aa72019d592a",
+      "counts": {
+        "tests": 5,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "source": "dist/validation/v2004-architecture-final.xml",
+      "ref": "plan/validation/execution/V2-004/precommit/architecture.xml",
+      "sha256": "cf5dc56d5c5c8c6f0200d352b2e19c09e4904e9c6bae625e94f5ffab179b7356",
+      "counts": {
+        "tests": 212,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "source": "/tmp/anovel-v2004-postgres.xml",
+      "ref": "plan/validation/execution/V2-004/precommit/postgres.xml",
+      "sha256": "4790af4f519af5252adfc0bf053ae4297a6688504b4ab0f7a616f42aab6fac6a",
+      "counts": {
+        "tests": 11,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "source": "dist/validation/v2004-static-complete/receipt.json",
+      "ref": "plan/validation/execution/V2-004/precommit/static-receipt.json",
+      "sha256": "e0837211f04dfde76aa3c46321390d020e2978c548270428a4fd79ea52f8e628"
+    },
+    {
+      "source": "dist/validation/v2004-governance-verified/governance-summary.json",
+      "ref": "plan/validation/execution/V2-004/precommit/governance-summary.json",
+      "sha256": "6faec643fffc50de12f5691bad15a57f298f2913979b149434611ca67e7bf6e5"
+    },
+    {
+      "source": "/tmp/anovel-vulnerable-dependency-control-online.json",
+      "ref": "plan/validation/execution/V2-004/precommit/vulnerable-dependency-negative.json",
+      "sha256": "053f9420771fa05b71965e22b6b90031855996100a90df53b9638b65374ff663"
+    },
+    {
+      "source": "dist/validation/v2004-security-online/security-summary.json",
+      "ref": "plan/validation/execution/V2-004/precommit/security-summary.json",
+      "sha256": "c7fc5062071cb515bf700583c59a87ed2f1d53476983e2031e65786c01429dd7"
+    }
+  ],
+  "failures_retained": [
+    {
+      "source": "dist/validation/v2004-unit-final",
+      "reason": "Missing uv on PATH; 115 pass, 3 setup errors"
+    },
+    {
+      "source": "dist/validation/v2004-unit-verified",
+      "reason": "Plan external link broke isolated fixture and sandbox DNS; 87 pass, 39 errors, 1 fail"
+    },
+    {
+      "source": "dist/validation/v2004-bootstrap-candidate",
+      "reason": "New test import depended on repository cwd; 4 pass, 1 fail"
+    }
+  ],
+  "limitations": [
+    "Controls execute local workingtree bytes; not postcommit or remote CI",
+    "Security FAIL is not converted to a typed PASS closure witness",
+    "User report and ignored configuration preserved, no weakening authorization"
+  ]
+}

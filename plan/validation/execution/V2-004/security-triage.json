@@ -1,0 +1,754 @@
+{
+  "record_type": "redacted_secret_triage",
+  "scanner": "gitleaks",
+  "version": "8.21.2",
+  "source_report_sha256": "f70acd5ba31ee928ce99649319ae20252a7716575b3ddab4be7ec4b21b4080d2",
+  "findings": [
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "line": 164,
+      "commit": "",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "line": 165,
+      "commit": "",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "line": 192,
+      "commit": "",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+      "line": 48,
+      "commit": "",
+      "source_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+      "line": 54,
+      "commit": "",
+      "source_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "short credential-like string explicitly identified as a mock regression asset",
+          "value_sha256": "64c17739982a5c0955e9162058260ef3aa56c5a03ed0be56477766dab20c97a3",
+          "value_length": 12
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "b1504f25babcf7f08ad0d81cd732d6f2d899a0e73e73349b0ba561df6227272f",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "a3816350ef8ca6e4ed1b30f891b388b8a4ff6c92c9c18ce932d277be1d91bd52",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "4c9772e5b4ebe321a989a4f63ca606b8b1edeedb157cce7d595f8d136c692367",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "2dd657e328282ce44e71dc7e864518f5960230b27db884f628a8d46acae9414b",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_sha256": "de8be9a4e81dd575abbfbf6ea14d25ac5fbdc626be196052133c01775d601568",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/governance-probe-v1.2.json",
+      "line": 48,
+      "commit": "",
+      "source_sha256": "bf71c79ff45ab67cd1bf1835034448142c62a82b787bdca7c2f98cbcc3373812",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/revalidation-fd7667ec/local/legacy-governance.json",
+      "line": 49,
+      "commit": "6aa7c8ace2ac167757f79d53bc4aa8bf4bfc94b3",
+      "source_sha256": "3e62a2a7ce76f84bdf124a7e97ef0f26f73de247e73f000c1205557003eb7c7d",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+      "line": 49,
+      "commit": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+      "source_sha256": "2dd657e328282ce44e71dc7e864518f5960230b27db884f628a8d46acae9414b",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+      "line": 49,
+      "commit": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+      "source_sha256": "88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+      "line": 49,
+      "commit": "f599dd821b61c2b7e347efc6834d63d54e7f0028",
+      "source_sha256": "4c9772e5b4ebe321a989a4f63ca606b8b1edeedb157cce7d595f8d136c692367",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+      "line": 49,
+      "commit": "f599dd821b61c2b7e347efc6834d63d54e7f0028",
+      "source_sha256": "de8be9a4e81dd575abbfbf6ea14d25ac5fbdc626be196052133c01775d601568",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+      "line": 49,
+      "commit": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+      "source_sha256": "a3816350ef8ca6e4ed1b30f891b388b8a4ff6c92c9c18ce932d277be1d91bd52",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+      "line": 49,
+      "commit": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+      "source_sha256": "b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+      "line": 49,
+      "commit": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+      "source_sha256": "b1504f25babcf7f08ad0d81cd732d6f2d899a0e73e73349b0ba561df6227272f",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+      "line": 49,
+      "commit": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+      "source_sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+      "line": 49,
+      "commit": "0089eecc496b0c0b4039fb2b26c186fc437c032e",
+      "source_sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+      "line": 48,
+      "commit": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d",
+      "source_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan-review-2026-09-21/governance-probe-results.json",
+      "line": 48,
+      "commit": "b835d69821a6cad640b0db39fe76a15c2601a857",
+      "source_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/governance-probe-v1.2.json",
+      "line": 48,
+      "commit": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d",
+      "source_sha256": "a53888ea109d251076297bb952048d20d36c20cc3aa5160df4cb8f38ada5d4ee",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "source_inventory value independently equals the referenced file SHA-256",
+          "value_sha256": "3e8af91295d562cec2edc2729327d30b3300f68b11fff60a52675e4ded3ae8bb",
+          "value_length": 64
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "line": 164,
+      "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "line": 165,
+      "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "line": 192,
+      "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+      "line": 54,
+      "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+      "source_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "short credential-like string explicitly identified as a mock regression asset",
+          "value_sha256": "64c17739982a5c0955e9162058260ef3aa56c5a03ed0be56477766dab20c97a3",
+          "value_length": 12
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "V1_REGRESSION_ASSET_REGISTER.md",
+      "line": 54,
+      "commit": "5b3814f63550dcb3db4b30a8580481d0eeb1d820",
+      "source_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "short credential-like string explicitly identified as a mock regression asset",
+          "value_sha256": "64c17739982a5c0955e9162058260ef3aa56c5a03ed0be56477766dab20c97a3",
+          "value_length": 12
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/AI-Novel-Runtime/PHASE1-INTEGRATION-SESSION-SUMMARY.md",
+      "line": 188,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "b0332c157d41dc33b25e0cc1f19d44e963f59747d17297858abc0de7c698fd23",
+      "category": "POSSIBLE_EXPOSURE",
+      "matches": [
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "99cdde4b78aa2a936b6b2cb2abd6e65f8a618a4b30eb1adf843b39b11f283544",
+          "value_length": 35
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/AI-Novel-Runtime/PHASE1-INTEGRATION-SESSION-SUMMARY.md",
+      "line": 189,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "b0332c157d41dc33b25e0cc1f19d44e963f59747d17297858abc0de7c698fd23",
+      "category": "POSSIBLE_EXPOSURE",
+      "matches": [
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "99cdde4b78aa2a936b6b2cb2abd6e65f8a618a4b30eb1adf843b39b11f283544",
+          "value_length": 35
+        },
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "99cdde4b78aa2a936b6b2cb2abd6e65f8a618a4b30eb1adf843b39b11f283544",
+          "value_length": 35
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/docs/archive/2026-08-history/BALANCE_ISSUE_REPORT.md",
+      "line": 17,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "8e651005d23a5bd6c1feb1b311260f212a672f5cf4e2e734befd059e4c7a4f94",
+      "category": "POSSIBLE_EXPOSURE",
+      "matches": [
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "778925a20b2f083bbf434580e16d9308bd0b0f2a46f500ba0eda578e10b83f8d",
+          "value_length": 67
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/docs/archive/2026-08-history/CC_VIBE_SUCCESS.md",
+      "line": 9,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "3ae8ca08a07c2ed1ab40ade7d60f7070ebbedaedf7995be1776974fb47969071",
+      "category": "TRUNCATED_CREDENTIAL_REFERENCE",
+      "matches": [
+        {
+          "category": "TRUNCATED_CREDENTIAL_REFERENCE",
+          "reason": "document contains only a truncated credential-shaped reference; full validity not tested",
+          "value_sha256": "8523411a19722133ead34270bb0c90d7f26cc693a3d55faf20b85932032a9100",
+          "value_length": 33
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/docs/archive/2026-08-history/RETRY_CC_VIBE.md",
+      "line": 9,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "35bbff4fefcff04e3f872a13532a57f2dd4a5f5e98427fcf423b519e598a8f65",
+      "category": "POSSIBLE_EXPOSURE",
+      "matches": [
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "778925a20b2f083bbf434580e16d9308bd0b0f2a46f500ba0eda578e10b83f8d",
+          "value_length": 67
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/docs/archive/2026-08-history/SWITCH_TO_CC_VIBE.md",
+      "line": 12,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "c7c48e6489d979dbab44aa36a5086e0312e00b17b96f2a8a231bab588277bd0b",
+      "category": "POSSIBLE_EXPOSURE",
+      "matches": [
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "778925a20b2f083bbf434580e16d9308bd0b0f2a46f500ba0eda578e10b83f8d",
+          "value_length": 67
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ainovel/docs/archive/2026-09-genre-work/P0关键问题最终修复报告.md",
+      "line": 118,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "822926f3242a0cc2aa5b2ebd181b87506b81b5b9794574d629c1479ff57481bd",
+      "category": "POSSIBLE_EXPOSURE",
+      "matches": [
+        {
+          "category": "POSSIBLE_EXPOSURE",
+          "reason": "service credential prefix and key-shaped value; validity not tested",
+          "value_sha256": "7666414caeed77ebf35803413c20b40130b9acc4d4bd655acf90a42c68fb1650",
+          "value_length": 67
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ccdoc/19_API_SPECIFICATION.md",
+      "line": 164,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ccdoc/19_API_SPECIFICATION.md",
+      "line": 165,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    },
+    {
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "ccdoc/19_API_SPECIFICATION.md",
+      "line": 192,
+      "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+      "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "category": "FALSE_POSITIVE",
+      "matches": [
+        {
+          "category": "FALSE_POSITIVE",
+          "reason": "explicitly truncated API token example ending in ellipsis",
+          "value_sha256": "532b9fc88b662aa827fd7072f2e7606de53d684e149022e6b9df0b4d194496c7",
+          "value_length": 23
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "FALSE_POSITIVE": 36,
+    "POSSIBLE_EXPOSURE": 6,
+    "TRUNCATED_CREDENTIAL_REFERENCE": 1
+  },
+  "limitations": [
+    "Read-only static classification; no credential validity/network test or revocation",
+    "Original scanner FAIL remains; classification does not suppress findings"
+  ]
+}

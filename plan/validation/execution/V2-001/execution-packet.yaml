@@ -4,7 +4,7 @@ task_id: V2-001
 plan_version: 1.3.0
 repository_revision: 0089eecc496b0c0b4039fb2b26c186fc437c032e
 worktree_dirty: true
-plan_manifest_sha256: 63d8ffbd02b7c8f36ad089057c0355a990831a9ea66406ba5eb8aecc1ee362f5
+plan_manifest_sha256: 4e3c2562529e7c1e2d31f646b0ffbfb0c7ad387241ff76ace9da45f055d8706e
 environment:
   fingerprint: macOS15.1.1-arm64; Python3.12.14; uv0.12.17; Docker29.4.0; Compose5.1.2
   runtime_versions:
@@ -33,14 +33,14 @@ inputs:
   ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
   sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-003/followup/inputs/36b71a09a64f4c8bc93f732609e58c71341dcbb5b1a3c57b5b26956caa539c4d.txt
-  sha256: 36b71a09a64f4c8bc93f732609e58c71341dcbb5b1a3c57b5b26956caa539c4d
+  ref: validation/execution/V2-004/inputs/c08150e6ee10308256227a892128ad9792b8006bbf0b1a5dc947b88833b2f40d.txt
+  sha256: c08150e6ee10308256227a892128ad9792b8006bbf0b1a5dc947b88833b2f40d
 - source_ref: AI_EXECUTION_PROTOCOL.md
   ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
   sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
 - source_ref: README.md
-  ref: validation/execution/V2-003/followup/inputs/c2b3464fbae8d950cde6533bf74e0dc028de90e66074cc9f53d80cda828ad631.txt
-  sha256: c2b3464fbae8d950cde6533bf74e0dc028de90e66074cc9f53d80cda828ad631
+  ref: validation/execution/V2-004/inputs/de422b6ea6dfbe409fb8318c82ac9973a605f26ac46e1780567981ecdf39f158.txt
+  sha256: de422b6ea6dfbe409fb8318c82ac9973a605f26ac46e1780567981ecdf39f158
 - source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
   sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2

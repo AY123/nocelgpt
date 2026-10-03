@@ -1,0 +1,93 @@
+# Candidate implementation. Enrollment of a protected configuration and runner
+# is separately required before V2-004 can be VERIFIED.
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: '$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS && $CI_PIPELINE_SOURCE == "push"'
+      when: never
+    - if: '$CI_COMMIT_TAG'
+    - if: '$CI_COMMIT_BRANCH'
+
+stages: [validate, test, security]
+
+variables:
+  GIT_DEPTH: '0'
+  UV_CACHE_DIR: '$CI_PROJECT_DIR/dist/cache/uv'
+  MYPY_CACHE_DIR: '$CI_PROJECT_DIR/dist/cache/mypy'
+  RUFF_CACHE_DIR: '$CI_PROJECT_DIR/dist/cache/ruff'
+  PYTHONDONTWRITEBYTECODE: '1'
+
+default:
+  image: python:3.12.14-bookworm
+  interruptible: true
+  timeout: 20 minutes
+  before_script:
+    - python -m pip install --index-url https://pypi.org/simple uv==0.12.17
+    - uv --version
+    - uv sync --locked
+  artifacts:
+    when: always
+    paths: [dist/ci/]
+    expire_in: 30 days
+
+static:
+  stage: validate
+  allow_failure: false
+  script:
+    - uv run --locked python -B scripts/ci/run_gate.py static
+
+schema_contract:
+  stage: validate
+  allow_failure: false
+  script:
+    - uv run --locked python -B scripts/ci/run_gate.py schema_contract
+
+unit:
+  stage: test
+  allow_failure: false
+  script:
+    - uv run --locked python -B scripts/ci/run_gate.py unit
+  artifacts:
+    when: always
+    paths: [dist/ci/unit/]
+    reports:
+      junit: dist/ci/unit/junit.xml
+    expire_in: 30 days
+
+arch_fitness:
+  stage: test
+  allow_failure: false
+  script:
+    - uv run --locked python -B scripts/ci/run_gate.py arch_fitness
+  artifacts:
+    when: always
+    paths: [dist/ci/arch_fitness/]
+    reports:
+      junit: dist/ci/arch_fitness/junit.xml
+    expire_in: 30 days
+
+secret_dependency:
+  stage: security
+  allow_failure: false
+  script:
+    - uv run --locked python -B scripts/ci/run_gate.py secret_dependency
+
+postgres_env:
+  stage: test
+  allow_failure: false
+  services:
+    - name: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+      alias: postgres
+  variables:
+    POSTGRES_DB: bootstrap_test
+    POSTGRES_USER: bootstrap_test
+    POSTGRES_PASSWORD: ci_ephemeral_database_only_invalid_for_production
+    ANOVELOS_TEST_DSN: postgresql+psycopg://bootstrap_test:ci_ephemeral_database_only_invalid_for_production@postgres:5432/bootstrap_test
+  script:
+    - uv run --locked python -B scripts/ci/run_gate.py postgres_env
+  artifacts:
+    when: always
+    paths: [dist/ci/postgres_env/]
+    reports:
+      junit: dist/ci/postgres_env/junit.xml
+    expire_in: 30 days

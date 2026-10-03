@@ -1,0 +1,18 @@
+{
+  "record_type": "dependency_change_review",
+  "opening_revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+  "old_manifest_sha256": "36c4b0d9e7787996b044e880ffa917cb5e0f26f499c74a4688abe15cd8bd9579",
+  "new_manifest_sha256": "daa9fba92dbb4217f27d88800dd4c234e4b5d427e45fb39acd127c06371c43e7",
+  "facts": [
+    "Runtime dependencies remain empty; Python 3.12.14 and uv/uv_build 0.12.17 pins unchanged",
+    "Four development checks added: ruff, mypy, types-PyYAML, pip-audit",
+    "32 registry packages added; no existing lock package version changed",
+    "No tests removed/skipped, thresholds lowered, global allow-failure or dependency exception introduced"
+  ],
+  "scope": "V2-004 checking dependencies only; not runtime business architecture",
+  "assessment": "REVIEWED_NO_WEAKENING",
+  "reviewer": "Same Codex operator; supporting shared-trust agent review, no independent personnel acceptance",
+  "limitations": [
+    "Does not establish protected remote rule ownership or source authenticity"
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "4f813a219254f24be851419a172bc60d74f255a1",
+    "ref": "plan/validation/execution/V2-004/scope-baseline-local-final.json",
+    "sha256": "cc4de83297b579d962b0ef134d9efe15544ce6295397559ce619189ce3577749"
+  },
+  "dispositions": [
+    {
+      "path": "pyproject.toml",
+      "old_sha": "36c4b0d9e7787996b044e880ffa917cb5e0f26f499c74a4688abe15cd8bd9579",
+      "new_sha": "daa9fba92dbb4217f27d88800dd4c234e4b5d427e45fb39acd127c06371c43e7",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "ae8cc36ea7950fac035a17770117232776cd7c448523e8c703797cb9f3005d42",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds locked P0 development checking tools only; existing runtime/pins/test requirements unchanged; 32 added lock packages, no existing version drift.",
+      "impact": "Expanded dev installation and audit set; no runtime implementation, exception, scan exclusion or weakening permission.",
+      "reviewer": "Same Codex implementer/verifier; shared-trust supporting review, no independent acceptance",
+      "replacement_validation": "Real locked clean install/build/discovery 5 pass, delivery controls 79 pass, static checks pass; security FAIL and remote UNVERIFIED preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/preparation/authorization.md",
+        "sha256": "47ef656cf8de78b0776e4fc999fd1da804ce14392cea3a55a9bf1d63d7b3df24"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/precommit-controls.json",
+          "sha256": "7832c363a60a9d7d36685d127373c27fe4d80f694777cfb05d1396e5de762882"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/dependency-change-review.json",
+          "sha256": "e2fa397e2ad39a8b05aefdcd8324f7b10f78afe7b6343a94748ea59db85d9cff"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/bootstrap.xml",
+          "sha256": "743ba5c667d50c8607c117736e0c5b629b81c554293d33c12396aa72019d592a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/delivery.xml",
+          "sha256": "6081f2ec4075ae46fd2dba50fba68e92edcb8a4a21cf93959bac14816fcd85b3"
+        }
+      ]
+    },
+    {
+      "path": "pyproject.toml",
+      "old_sha": "36c4b0d9e7787996b044e880ffa917cb5e0f26f499c74a4688abe15cd8bd9579",
+      "new_sha": "daa9fba92dbb4217f27d88800dd4c234e4b5d427e45fb39acd127c06371c43e7",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "3ea5ae9485d0d92860a939d994ce377727c03a25d9317d244c8a1c4fb0c3044c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds locked P0 development checking tools only; existing runtime/pins/test requirements unchanged; 32 added lock packages, no existing version drift.",
+      "impact": "Expanded dev installation and audit set; no runtime implementation, exception, scan exclusion or weakening permission.",
+      "reviewer": "Same Codex implementer/verifier; shared-trust supporting review, no independent acceptance",
+      "replacement_validation": "Real locked clean install/build/discovery 5 pass, delivery controls 79 pass, static checks pass; security FAIL and remote UNVERIFIED preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/preparation/authorization.md",
+        "sha256": "47ef656cf8de78b0776e4fc999fd1da804ce14392cea3a55a9bf1d63d7b3df24"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/precommit-controls.json",
+          "sha256": "7832c363a60a9d7d36685d127373c27fe4d80f694777cfb05d1396e5de762882"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/dependency-change-review.json",
+          "sha256": "e2fa397e2ad39a8b05aefdcd8324f7b10f78afe7b6343a94748ea59db85d9cff"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/bootstrap.xml",
+          "sha256": "743ba5c667d50c8607c117736e0c5b629b81c554293d33c12396aa72019d592a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/delivery.xml",
+          "sha256": "6081f2ec4075ae46fd2dba50fba68e92edcb8a4a21cf93959bac14816fcd85b3"
+        }
+      ]
+    },
+    {
+      "path": "uv.lock",
+      "old_sha": "65cea837858f9b2d57dab2c46a4c7b2a99aac1806c6d786bf327b8fa5bd036ed",
+      "new_sha": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "25bb61e1debd4ee9ae587a21a25455f63fcd28615cf802df6f4321c5d57e8548",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds locked P0 development checking tools only; existing runtime/pins/test requirements unchanged; 32 added lock packages, no existing version drift.",
+      "impact": "Expanded dev installation and audit set; no runtime implementation, exception, scan exclusion or weakening permission.",
+      "reviewer": "Same Codex implementer/verifier; shared-trust supporting review, no independent acceptance",
+      "replacement_validation": "Real locked clean install/build/discovery 5 pass, delivery controls 79 pass, static checks pass; security FAIL and remote UNVERIFIED preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/preparation/authorization.md",
+        "sha256": "47ef656cf8de78b0776e4fc999fd1da804ce14392cea3a55a9bf1d63d7b3df24"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/precommit-controls.json",
+          "sha256": "7832c363a60a9d7d36685d127373c27fe4d80f694777cfb05d1396e5de762882"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/dependency-change-review.json",
+          "sha256": "e2fa397e2ad39a8b05aefdcd8324f7b10f78afe7b6343a94748ea59db85d9cff"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/bootstrap.xml",
+          "sha256": "743ba5c667d50c8607c117736e0c5b629b81c554293d33c12396aa72019d592a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/delivery.xml",
+          "sha256": "6081f2ec4075ae46fd2dba50fba68e92edcb8a4a21cf93959bac14816fcd85b3"
+        }
+      ]
+    },
+    {
+      "path": "uv.lock",
+      "old_sha": "65cea837858f9b2d57dab2c46a4c7b2a99aac1806c6d786bf327b8fa5bd036ed",
+      "new_sha": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "3c4a0a264f155242027a15de4a4710481a5744063af688b7a045e5f9a21cb286",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds locked P0 development checking tools only; existing runtime/pins/test requirements unchanged; 32 added lock packages, no existing version drift.",
+      "impact": "Expanded dev installation and audit set; no runtime implementation, exception, scan exclusion or weakening permission.",
+      "reviewer": "Same Codex implementer/verifier; shared-trust supporting review, no independent acceptance",
+      "replacement_validation": "Real locked clean install/build/discovery 5 pass, delivery controls 79 pass, static checks pass; security FAIL and remote UNVERIFIED preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/preparation/authorization.md",
+        "sha256": "47ef656cf8de78b0776e4fc999fd1da804ce14392cea3a55a9bf1d63d7b3df24"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/precommit-controls.json",
+          "sha256": "7832c363a60a9d7d36685d127373c27fe4d80f694777cfb05d1396e5de762882"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/dependency-change-review.json",
+          "sha256": "e2fa397e2ad39a8b05aefdcd8324f7b10f78afe7b6343a94748ea59db85d9cff"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/bootstrap.xml",
+          "sha256": "743ba5c667d50c8607c117736e0c5b629b81c554293d33c12396aa72019d592a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/precommit/delivery.xml",
+          "sha256": "6081f2ec4075ae46fd2dba50fba68e92edcb8a4a21cf93959bac14816fcd85b3"
+        }
+      ]
+    }
+  ]
+}
