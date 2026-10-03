@@ -1,0 +1,12 @@
+{
+  "record_type": "local_prepare_check",
+  "task_id": "V2-004",
+  "branch": "dev_gpt",
+  "opening_revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+  "command": [".venv/bin/python", "-B", "scripts/task_execution.py", "check", "--task", "V2-004", "--action", "PREPARE", "--output", "/tmp/anovel-v2004-prepare-entry.json"],
+  "exit_code": 0,
+  "status": "PASS",
+  "not_certified": ["implementation", "remote CI", "permissions", "P0 exit"],
+  "raw_output_location": "/tmp/anovel-v2004-prepare-entry.json",
+  "retention_note": "Compact command result retained; full source inventories are transient diagnostics and are not CI evidence."
+}

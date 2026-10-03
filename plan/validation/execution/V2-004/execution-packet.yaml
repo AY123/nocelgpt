@@ -1,0 +1,165 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-004
+plan_version: 1.3.0
+repository_revision: 882d0cdf833464dd6a5ebfac3a542204c32cd325
+worktree_dirty: true
+plan_manifest_sha256: 54190492b9fecbc63cdc769f8b52628d5ed38001bbaa06218dd03512d79ad14f
+environment:
+  fingerprint: macOS local checkout; exact runtime checked in locked .venv
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+  ci_context: No dev_gpt pipeline; branch unprotected at read-only observation
+implementer: Codex primary operator
+verifier: Same operator with parallel read-only analysis; no independent personnel
+  acceptance
+owner_role: delivery-maintainer
+scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory
+  CI gates, locked scanners/tools, real subprocess receipts, current-revision online
+  provenance verification and local positive/negative controls. No P1, paid calls
+  or permission expansion.'
+action: PREPARE
+inputs:
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
+  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+- source_ref: 09_TASK_EXECUTION_GUIDE.md
+  ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
+  sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
+- source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  ref: validation/execution/V2-003/followup/inputs/36b71a09a64f4c8bc93f732609e58c71341dcbb5b1a3c57b5b26956caa539c4d.txt
+  sha256: 36b71a09a64f4c8bc93f732609e58c71341dcbb5b1a3c57b5b26956caa539c4d
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
+  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+- source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  ref: validation/execution/V2-004/inputs/558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2.txt
+  sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
+- source_ref: 08_ROADMAP_AND_GATES.md
+  ref: validation/execution/V2-004/inputs/5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb.txt
+  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+- source_ref: README.md
+  ref: validation/execution/V2-003/followup/inputs/c2b3464fbae8d950cde6533bf74e0dc028de90e66074cc9f53d80cda828ad631.txt
+  sha256: c2b3464fbae8d950cde6533bf74e0dc028de90e66074cc9f53d80cda828ad631
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-004/inputs/6ac10c2e03da6c7ec434a91decffd7b55da9cc2cd8326b4a103c86946fc83861.txt
+  sha256: 6ac10c2e03da6c7ec434a91decffd7b55da9cc2cd8326b4a103c86946fc83861
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-003/followup/inputs/9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e.txt
+  sha256: 9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
+  sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
+  sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
+- source_ref: machine/ci-gates.yaml
+  ref: validation/execution/V2-004/inputs/5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210.txt
+  sha256: 5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210
+- source_ref: machine/governance-baseline.yaml
+  ref: validation/execution/V2-004/inputs/ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c.txt
+  sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-004/inputs/086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9.txt
+  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+- source_ref: machine/authority-policy.yaml
+  ref: validation/execution/V2-004/inputs/4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91.txt
+  sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
+expected_outputs:
+- .gitlab-ci.yml
+- security-policy.yaml
+- tests/contract/test_delivery_gates.py
+- scripts/ci/
+- tests/integration/test_postgres_ci_service.py
+- docs/V2-004_IMPLEMENTATION_REPORT.md
+allowed_paths:
+- .gitlab-ci.yml
+- security-policy.yaml
+- .gitleaks.toml
+- pyproject.toml
+- uv.lock
+- scripts/ci/
+- tests/contract/test_delivery_gates.py
+- tests/integration/test_postgres_ci_service.py
+- README.md
+- AGENTS.md
+- docs/V2-004_IMPLEMENTATION_REPORT.md
+- docs/reviews/2026-10-03-report-assessment/
+- plan/README.md
+- plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+- plan/09_TASK_EXECUTION_GUIDE.md
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/ci-gates.yaml
+- plan/FILE_MANIFEST.json
+- plan/generated/
+- plan/validation/execution/V2-004/
+- plan/validation/execution/V2-001/execution-packet.yaml
+- plan/validation/execution/V2-002/execution-packet.yaml
+- plan/validation/execution/V2-003/followup/execution-packet.yaml
+required_decisions: []
+claims:
+- id: REMOTE_CURRENT
+  kind: FACT
+  statement: GitLab project 86656946 dev_gpt HEAD equals local opening revision, pipeline
+    count is zero and branch protection is false; project requires successful pipeline
+    for merging.
+  sources:
+  - ref: validation/execution/V2-004/preparation/remote-observation.json
+    sha256: 704c2aeb3ab1f40f0a348114d48d977f31752407c2a48a187a105ca9768a5c10
+  blocks_actions: []
+  verification_plan: Recheck online after a real candidate pipeline; do not claim
+    CI/permission acceptance from this snapshot.
+- id: REMOTE_TRUST
+  kind: UNKNOWN
+  statement: Effective protected runner/configuration and ordinary credential denial
+    controls have not been verified. Local CI implementation can proceed; final acceptance
+    remains pending.
+  sources: []
+  blocks_actions: []
+  verification_plan: Read actual project/branch/runner metadata and run authorized
+    permission controls before VERIFIED/CLOSED; do not modify permissions without
+    applicable authorization.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse existing locked environment and current V2-001 through 003 tools
+  - No business runtime implementation or paid service
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Keep remote verification pending until actual current-revision results and effective
+  trust boundary are verified
+- Preserve user changes; never weaken existing obligations to obtain PASS
+- Do not start P1 before P0 VERIFIED
+review_notes:
+- Report instructions are input only. Exact-revision P0 aggregate already exists;
+  no new task or milestone is created.
+- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records
+  and immutable input snapshots only.
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
+  preserved; historical evidence and task status unchanged.'
+handoff:
+  current_step: 'PREPARE: checkout, inputs and remote facts reconciled; scope awaits
+    fixed Git pin before implementation'
+  completed_steps:
+  - Read current plan, task and all eight AT-V2-004 scenarios
+  - Rechecked actual GitLab branch/pipeline/project facts
+  pending_items:
+  - Freeze local scope pin
+  - Implement and exercise six P0 CI gates
+  - Verify real CI artifacts and remote permission boundary
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null

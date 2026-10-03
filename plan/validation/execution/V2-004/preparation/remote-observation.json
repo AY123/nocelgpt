@@ -1,0 +1,60 @@
+{
+  "record_type": "remote_read_observation",
+  "observed_at": "2026-10-03",
+  "project_id": 86656946,
+  "project_path": "ayitnovel/ainovelos",
+  "branch": {
+    "name": "dev_gpt",
+    "commit": {
+      "id": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+      "short_id": "882d0cdf",
+      "created_at": "2026-09-25T08:37:48.000+08:00",
+      "parent_ids": [
+        "416dfd5275d8767ebfa2dc88ae060107a29be48e"
+      ],
+      "title": "docs(V2-003): seal confirmed review corrections and handoff",
+      "message": "docs(V2-003): seal confirmed review corrections and handoff\n",
+      "author_name": "昂扬",
+      "author_email": "angyang@chinaums.com",
+      "authored_date": "2026-09-25T08:37:48.000+08:00",
+      "committer_name": "昂扬",
+      "committer_email": "angyang@chinaums.com",
+      "committed_date": "2026-09-25T08:37:48.000+08:00",
+      "trailers": {},
+      "extended_trailers": {},
+      "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/commit/882d0cdf833464dd6a5ebfac3a542204c32cd325"
+    },
+    "merged": false,
+    "protected": false,
+    "developers_can_push": false,
+    "developers_can_merge": false,
+    "can_push": true,
+    "default": false,
+    "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/tree/dev_gpt"
+  },
+  "pipelines": {
+    "data": [],
+    "pagination": {
+      "next_page": null,
+      "page": "1",
+      "per_page": "5",
+      "prev_page": null,
+      "total": "0",
+      "total_pages": "1",
+      "link": "<https://gitlab.com/api/v4/projects/86656946/pipelines?id=86656946&order_by=id&page=1&per_page=5&ref=dev_gpt&sort=desc>; rel=\"first\", <https://gitlab.com/api/v4/projects/86656946/pipelines?id=86656946&order_by=id&page=1&per_page=5&ref=dev_gpt&sort=desc>; rel=\"last\""
+    }
+  },
+  "project": {
+    "only_allow_merge_if_pipeline_succeeds": true,
+    "ci_config_path": "",
+    "implementation_group_access_level": 30,
+    "administrative_group_access_level": 50
+  },
+  "scope": "Read-only GitLab connector calls; observed settings are not permission isolation certification.",
+  "not_verified": [
+    "protected runner",
+    "protected configuration ownership",
+    "denial of unauthorized protection changes",
+    "current-revision CI"
+  ]
+}

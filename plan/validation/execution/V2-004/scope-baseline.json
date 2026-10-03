@@ -1,0 +1,80 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-004",
+  "opening_revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+  "packet_ref": "plan/validation/execution/V2-004/execution-packet.yaml",
+  "allowed_paths": [
+    ".gitlab-ci.yml",
+    "security-policy.yaml",
+    ".gitleaks.toml",
+    "pyproject.toml",
+    "uv.lock",
+    "scripts/ci/",
+    "tests/contract/test_delivery_gates.py",
+    "tests/integration/test_postgres_ci_service.py",
+    "README.md",
+    "AGENTS.md",
+    "docs/V2-004_IMPLEMENTATION_REPORT.md",
+    "docs/reviews/2026-10-03-report-assessment/",
+    "plan/README.md",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/machine/ci-gates.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/generated/",
+    "plan/validation/execution/V2-004/",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "plan/validation/execution/V2-003/followup/execution-packet.yaml"
+  ],
+  "pre_existing": {
+    "审核报告.txt": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "355ebb4a3fa311f8a66e8b214c7af6b65a6a692d",
+        "sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+        "kind": "file"
+      },
+      "index": {
+        "mode": "100644",
+        "oid": "2bb8fdecc2a44cac115ec1d0de225e802cba5353"
+      },
+      "task_edit_authorized": false
+    },
+    ".claude/settings.local.json": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "27673d29a4486046038fa5b74888968537064a4a",
+        "sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    }
+  },
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    ".gitleaks.toml",
+    "security-policy.yaml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-004/preparation/authorization.md",
+    "sha256": "47ef656cf8de78b0776e4fc999fd1da804ce14392cea3a55a9bf1d63d7b3df24"
+  },
+  "limitations": [
+    "Local Git pin does not authenticate remote authority",
+    "No existing tests/requirements will be weakened; only task metadata and current tool integration may change with recorded review"
+  ]
+}
