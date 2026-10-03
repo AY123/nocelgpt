@@ -42,4 +42,8 @@ V2-005 → 008 → 009 → 010 → 013 → 017 → 018 → 019 → 020 → 021 �
 
 ## 5. 当前状态
 
-P0_ENTRY_READY；G-P0～G-P14 和 M0～M12 初始均 NOT_VERIFIED。P13/P14 具体任务未排入首批 60 项。机器资料通过只证明文件一致性，不能把这些状态改成 PASS。
+**Initial baseline:** P0_ENTRY_READY；G-P0～G-P14 和 M0～M12 初始均 NOT_VERIFIED。
+
+**Current authoritative phase/gate state:** 见 [phase-gates.yaml](machine/phase-gates.yaml)。
+
+P13/P14 具体任务未排入首批 60 项。机器资料通过只证明文件一致性，不能把这些状态改成 PASS。
