@@ -369,3 +369,56 @@ Per H3 Protocol Section 17:
 **Report Status:** COMPLETE
 **H3 Validation:** LOCALLY VALIDATED (primary validation passed)
 **Awaiting:** User decision on test harness failures and commit authorization
+
+---
+
+## Addendum: Baseline Differential Validation
+
+**Date:** 2026-10-03
+**Purpose:** Confirm H3 did not introduce test regressions
+
+### Trusted Baseline
+
+**Commit:** b553b1b1de050e9b2a9073ad5a6fad7cb415779c
+**Pipeline:** 2908733744
+**Result:** 6/6 PASS
+
+### Differential Test Results
+
+| Validation | Baseline (b553b1b1) | H3 Worktree | Match? |
+|------------|---------------------|-------------|---------|
+| validate_plan --check | EXIT=0, PASS ✅ | EXIT=0, PASS ✅ | ✅ IDENTICAL |
+| validate_plan --self-test | EXIT=0, PASS ✅ | EXIT=0, PASS ✅ | ✅ IDENTICAL |
+| test_governance.py | EXIT=1, 40 failures | EXIT=1, 40 failures | ✅ IDENTICAL |
+| test_ai_execution.py | EXIT=1, 36 failures | EXIT=1, 36 failures | ✅ IDENTICAL |
+
+### Findings
+
+**Same exit codes:** ✅ Both return 1 for diagnostic scripts
+**Same failure counts:** ✅ 40 and 36 respectively
+**Same failure signatures:** ✅ DA-01~05 missing task acceptance, P0 verification
+**Same runtime:** ✅ Python 3.12.14, uv 0.12.17
+
+### Conclusion
+
+✅ **H3_REGRESSION = NONE_DETECTED**
+
+The test_governance.py and test_ai_execution.py failures are **PRE-EXISTING** in the trusted baseline. These standalone scripts are **development diagnostic tools**, not the six GitLab CI gates.
+
+**CI gates** (actual required validation):
+1. STATIC - ruff, mypy
+2. UNIT - pytest tests/
+3. SCHEMA_CONTRACT - validate_plan.py --check + pytest contract
+4. ARCH_FITNESS - pytest architecture
+5. SECRET_DEPENDENCY - gitleaks, pip-audit
+6. POSTGRES_ENV - pytest integration
+
+**Standalone diagnostics classification:**
+- Status: PRE-EXISTING FAIL
+- Nature: Development tools with fixture setup issues
+- CI status: NOT INCLUDED in required gates
+- H3 impact: NONE
+
+**Remote acceptance:** MR !15 pipeline 6/6 + post-merge 6/6 required
+
+Full differential report: `dist/P0_H3_BASELINE_DIFFERENTIAL_VALIDATION.md`
