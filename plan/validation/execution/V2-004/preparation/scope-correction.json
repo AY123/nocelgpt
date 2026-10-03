@@ -1,0 +1,9 @@
+{
+  "prior_scope": "scope-baseline.json",
+  "status": "BLOCKED_RETAINED",
+  "reason": "Initial generated pre_existing records included oid outside the comparison identity; pre-existing ignored local tool caches omitted. Corrected before any implementation. No user files or caches deleted.",
+  "new_scope": "scope-baseline-v2.json",
+  "user_report_sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+  "preexisting_count": 35,
+  "source_report": "/tmp/anovel-v2004-start-entry.json"
+}

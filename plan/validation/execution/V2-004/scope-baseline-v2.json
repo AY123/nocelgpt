@@ -1,0 +1,375 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-004",
+  "opening_revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+  "packet_ref": "plan/validation/execution/V2-004/execution-packet.yaml",
+  "allowed_paths": [
+    ".gitlab-ci.yml",
+    "security-policy.yaml",
+    ".gitleaks.toml",
+    "pyproject.toml",
+    "uv.lock",
+    "scripts/ci/",
+    "tests/contract/test_delivery_gates.py",
+    "tests/integration/test_postgres_ci_service.py",
+    "README.md",
+    "AGENTS.md",
+    "docs/V2-004_IMPLEMENTATION_REPORT.md",
+    "docs/reviews/2026-10-03-report-assessment/",
+    "plan/README.md",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/machine/ci-gates.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/generated/",
+    "plan/validation/execution/V2-004/",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "plan/validation/execution/V2-003/followup/execution-packet.yaml"
+  ],
+  "pre_existing": {
+    ".ruff_cache/0.16.9/9021910096072807015": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1b4914fff854f3c5f606a34e3915106221853e778d43fd399e9194165f2031a3"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".claude/settings.local.json": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/CACHEDIR.TAG": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/2081484057962727863": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6cdfaf7ae8abdd73b4284564f42ea99e3cff902f9630f038f054c8bc3038a511"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/11886257862359367215": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cd0f7bab2ed74b3a1a581ad1e71534c2a5bf9a696db6279636a1aa90b7444251"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".mypy_cache/CACHEDIR.TAG": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f1c13afc555358c9033b0f1f30aaa177fe88bda40f4b8a24598400d547876adc"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".mypy_cache/3.12/cache.db": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "68f2d3e24e81399f39e543111b93bf90aaede62f441d924cbc7331fc47d0a848"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.3.5/7893816796303948972": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ea9d03ed0b9547e5049d456f0f868e85dccb351a8d2d36f60db210f9d8d40ca8"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".mypy_cache/.gitignore": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6a69da670d11530d37f0f0cfdc7bed30b78ea6434e24f7a73208b982e29d322c"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/11108012421718830363": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "8b749b5331ec49085c741eea148813c860b0b73f4c68991117b995e9d7eeb2c5"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/13848888526301811239": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "bd1364879ac5d2a637bf5b0afb88ffc74018ba7add9bd2b9bc2a2a236c6d9eac"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/10417621801813473352": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "145998b16e50a3f32fc415069f295a1985ada8542096820a12aef04e436484eb"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/13148325495301770339": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "b24d7cd572cfb06601904c8433a4f49b1265c877ec07558b3b23d9ad0f54c2f8"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/12282497893086595631": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4d3aa484e7391decda0bc0b8bf6852c762678495228a79106652dafecf0b63da"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/15865860232782635180": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "47a6d2e7bc207f88f54e7af958b8debc39cbd4e2f263d30615acdf10c0d10a60"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/17684940595358575834": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6f0f957d663a7d3d592d1de517516272c898a4b783cd61c8d0a479a6c5d6515b"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/13877278328354463655": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "714361d1da455d4bbfa09b9877bb234f1682134b81b6cb6292dc992e1baf45a0"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/14057343153781895557": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "02d37845aaa49d3ced5e7622091a31d94d7669566a4f34fc76fa31b94b65f597"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/10741484265304906432": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cd452b09e0089b4f137d3062aa40c881bc25de16e025ed83d5ff75ee26b2f18f"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/603533849042220900": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "758a16646217a076588436a9fab890617f2244856f342c82af08bc35cbcbf625"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/13056714302951847452": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "16dd049c520c99ba54a709455543955aca30216df26f05908f436bd00dd006dd"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/13302307240886945296": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f9a50dbbe4dc4a45cd0d47600fbdbd3af117ada977599822f2f2bdcd4780c701"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/1289053319362791746": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6eedd845479e3fd4c4e4fc64e60b010cb140b89f76162bb59639f88351b0abd0"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/967308886628406001": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6eed7631a13842a057c43c48f4b2732839b7bd3b1de350a019ecace9c3821472"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/.gitignore": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/12808479074502042827": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6f93d7b7cc8bccad934d57cf2f71168f199caac8eb056d76882f88df99d6b352"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/3480378986590756246": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "38a5616f94e28a2428b0d7d34406a29e78371f3ab4729241626b034e4bdd385c"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.3.5/10903926339352573898": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1731b1571106e03cf9f0723c39737750bf8cf125de816d6f54bfe9a2cc925d32"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/2862835371097959004": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "7a034e0a3178fffabb74a6562c530b14903002420668fa987976b80ab93b1a78"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/17846823409441908587": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cbdf54ed8361e081b3ae6911d690ca882045410fb121b6821c9879880ed8be84"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".mypy_cache/missing_stubs": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "d7bf4dbb33ac2ea3c951295a7bd89f41423d672befc99c3ad7398b27c99172bf"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/959113868420226254": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "239dfaf269d2554a248189dfe5517545055a7ed855df269f5ca78e1b69e24b42"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/6798283675010981388": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4182d690829f7e1a875ddbffebf4ea33d2decb56aeb037d3908d405e4997a8f6"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    "审核报告.txt": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b"
+      },
+      "index": {
+        "mode": "100644",
+        "oid": "2bb8fdecc2a44cac115ec1d0de225e802cba5353"
+      },
+      "task_edit_authorized": false
+    },
+    ".ruff_cache/0.16.9/15916300167252620757": {
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "d108bd6e28da3541ba2ddbce6ec9534ff32875b33f6be081f9be27085203897c"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    }
+  },
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    ".gitleaks.toml",
+    "security-policy.yaml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-004/preparation/authorization.md",
+    "sha256": "47ef656cf8de78b0776e4fc999fd1da804ce14392cea3a55a9bf1d63d7b3df24"
+  },
+  "limitations": [
+    "Local Git pin does not authenticate remote authority",
+    "No existing tests/requirements will be weakened; only task metadata and current tool integration may change with recorded review"
+  ]
+}
