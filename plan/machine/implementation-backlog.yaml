@@ -283,8 +283,14 @@ tasks:
   start_gate: P0_ENTRY_READY
   required_decisions: []
   evidence:
-    code: []
-    tests: []
+    code:
+    - ref: validation/execution/V2-004/code-evidence.yaml
+      revision: 04295459fcf3c93ff3f74a79948f0ac77d47dd87
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-004/test-result.yaml
+      revision: 04295459fcf3c93ff3f74a79948f0ac77d47dd87
+      status: PASS
     ci: []
     acceptance: []
   related_findings:

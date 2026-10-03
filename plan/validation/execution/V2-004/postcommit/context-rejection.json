@@ -1,0 +1,25 @@
+{
+  "record_type": "execution_context_negative_control",
+  "status": "EXPECTED_BLOCK",
+  "actual_status": "BLOCKED",
+  "scope_findings": [
+    {
+      "code": "SCOPE_OUTSIDE",
+      "path": ".claude/settings.local.json",
+      "layer": "worktree",
+      "reason": "Change is outside frozen task scope"
+    },
+    {
+      "code": "SCOPE_OUTSIDE",
+      "path": "审核报告.txt",
+      "layer": "worktree",
+      "reason": "Change is outside frozen task scope"
+    }
+  ],
+  "errors": [
+    "ENTRY_DIFF: actual changes failed frozen scope or weakening review"
+  ],
+  "raw_sha256": "8c69268c92403dc436630441eff5863bdd17498fca49d549981193e42f960c2e",
+  "raw_ref": "dist/validation/v2004-clean-scope-primary-negative.json",
+  "result": "CI clean scope cannot consume primary user report/config changes; preserve them and rebind local context for subsequent IMPLEMENT"
+}

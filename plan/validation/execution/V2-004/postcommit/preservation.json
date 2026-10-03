@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "items": [
+    {
+      "path": "审核报告.txt",
+      "sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+      "unchanged": true
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
+      "unchanged": true
+    }
+  ],
+  "user_changes_deleted": false,
+  "user_report_staged": false,
+  "cache_changes": "Reversible tool outputs attributed explicitly, not deleted or reset"
+}

@@ -4,21 +4,24 @@ task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 882d0cdf833464dd6a5ebfac3a542204c32cd325
 worktree_dirty: false
-plan_manifest_sha256: 4e3c2562529e7c1e2d31f646b0ffbfb0c7ad387241ff76ace9da45f055d8706e
+plan_manifest_sha256: 267f7c74009337acdcc8dfe82d00cb7cb883427f5b40a718f212ce6f256238f6
 environment:
-  fingerprint: Clean committed checkout replay; local macOS or CI Linux exact Python/uv checked
-    by driver
+  fingerprint: Clean committed checkout replay; local macOS or CI Linux exact Python/uv
+    checked by driver
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: Candidate clean-checkout context; GitLab source and permission remain unverified
+  ci_context: Candidate clean-checkout context; GitLab source and permission remain
+    unverified
 implementer: Codex primary operator
-verifier: Same operator with parallel read-only analysis; no independent personnel acceptance
+verifier: Same operator with parallel read-only analysis; no independent personnel
+  acceptance
 owner_role: delivery-maintainer
-scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory CI gates,
-  locked scanners/tools, real subprocess receipts, current-revision online provenance verification
-  and local positive/negative controls. No P1, paid calls or permission expansion.'
+scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory
+  CI gates, locked scanners/tools, real subprocess receipts, current-revision online
+  provenance verification and local positive/negative controls. No P1, paid calls
+  or permission expansion.'
 action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
@@ -43,11 +46,11 @@ inputs:
   ref: validation/execution/V2-004/inputs/de422b6ea6dfbe409fb8318c82ac9973a605f26ac46e1780567981ecdf39f158.txt
   sha256: de422b6ea6dfbe409fb8318c82ac9973a605f26ac46e1780567981ecdf39f158
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-004/inputs/ce956af29ac1590a5b146dac2767b6a0f09b2396a1d6c3c55904bb02e0118cf1.txt
-  sha256: ce956af29ac1590a5b146dac2767b6a0f09b2396a1d6c3c55904bb02e0118cf1
+  ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
+  sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-003/followup/inputs/9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e.txt
-  sha256: 9818e0753566d3f5cb0c390bd6fe0f62394605d30e27d3a5fadbbd503258179e
+  ref: validation/execution/V2-004/inputs/c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18.txt
+  sha256: c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
@@ -55,8 +58,8 @@ inputs:
   ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
   sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
 - source_ref: machine/ci-gates.yaml
-  ref: validation/execution/V2-004/inputs/5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210.txt
-  sha256: 5a51a70c8f1a746cbbd14a925f92ebc15c24089455552a292a0e057688378210
+  ref: validation/execution/V2-004/inputs/7d25f0dcf3297990dfa7e55953d3f045066a6e00f46f23f74de6161e32a71f63.txt
+  sha256: 7d25f0dcf3297990dfa7e55953d3f045066a6e00f46f23f74de6161e32a71f63
 - source_ref: machine/governance-baseline.yaml
   ref: validation/execution/V2-004/inputs/ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
@@ -104,34 +107,37 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: GitLab project 86656946 dev_gpt HEAD equals local opening revision, pipeline count
-    is zero and branch protection is false; project requires successful pipeline for merging.
+  statement: '2026-10-03T15:43:09Z fresh read using Owner and Developer accounts agrees:
+    remote dev_gpt remains opening SHA 882d0cdf, zero pipelines, unprotected, successful-pipeline
+    merge setting true, ci_config_path empty. Local candidate has not run remotely.'
   sources:
-  - ref: validation/execution/V2-004/preparation/remote-observation.json
-    sha256: 704c2aeb3ab1f40f0a348114d48d977f31752407c2a48a187a105ca9768a5c10
+  - ref: validation/execution/V2-004/remote-final-observation.json
+    sha256: 7ad30028a1c482628e0493fc8106d284d635651123c8f67c5988f74a2e614bcb
   blocks_actions: []
-  verification_plan: Recheck online after a real candidate pipeline; do not claim CI/permission
-    acceptance from this snapshot.
+  verification_plan: Recheck online after a real candidate pipeline; do not claim
+    CI/permission acceptance from this snapshot.
 - id: REMOTE_TRUST
   kind: UNKNOWN
-  statement: Effective protected runner/configuration and ordinary credential denial controls
-    have not been verified. Local CI implementation can proceed; final acceptance remains pending.
+  statement: Effective protected runner/configuration and ordinary credential denial
+    controls have not been verified. Local CI implementation can proceed; final acceptance
+    remains pending.
   sources: []
   blocks_actions: []
-  verification_plan: Read actual project/branch/runner metadata and run authorized permission
-    controls before VERIFIED/CLOSED; do not modify permissions without applicable authorization.
+  verification_plan: Read actual project/branch/runner metadata and run authorized
+    permission controls before VERIFIED/CLOSED; do not modify permissions without
+    applicable authorization.
 - id: HISTORICAL_CREDENTIALS
   kind: UNKNOWN
-  statement: Static history scan found three distinct full credential-shaped values in six findings
-    and one truncated reference. Validity and revocation are unknown; security gate remains
-    FAIL.
+  statement: Static history scan found three distinct full credential-shaped values
+    in six findings and one truncated reference. Validity and revocation are unknown;
+    security gate remains FAIL.
   sources:
   - ref: validation/execution/V2-004/security-triage.json
     sha256: f4c9ed0e7b8d8f20d58286df5f83f3680a9ef6d82a6b271e713f4c5059108df9
   blocks_actions:
   - CERTIFY
-  verification_plan: Credential owner supplies redacted revocation/rotation records. Do not
-    use values online, suppress findings or equate text deletion with revocation.
+  verification_plan: Credential owner supplies redacted revocation/rotation records.
+    Do not use values online, suppress findings or equate text deletion with revocation.
 estimate:
   range: null
   unit: null
@@ -146,36 +152,45 @@ budget:
   maximum_attempts: 10
   maximum_runtime: 14400
 stop_conditions:
-- Keep remote verification pending until actual current-revision results and effective trust
-  boundary are verified
+- Keep remote verification pending until actual current-revision results and effective
+  trust boundary are verified
 - Preserve user changes; never weaken existing obligations to obtain PASS
 - Do not start P1 before P0 VERIFIED
 review_notes:
-- Report instructions are input only. Exact-revision P0 aggregate already exists; no new task
-  or milestone is created.
-- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records and immutable
-  input snapshots only.
-- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved;
-  historical evidence and task status unchanged.'
+- Report instructions are input only. Exact-revision P0 aggregate already exists;
+  no new task or milestone is created.
+- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records
+  and immutable input snapshots only.
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
+  preserved; historical evidence and task status unchanged.'
 handoff:
-  current_step: Implementation committed; clean checkout replay next; security and remote acceptance
-    pending
+  current_step: 'Candidate local clean replay complete: five gates PASS, SECRET_DEPENDENCY
+    FAIL; remote source/permissions NOT_VERIFIED; V2-004 IN_PROGRESS, no P1'
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
   - Six actual gate commands and locked scanners implemented
-  - 79 delivery controls, five clean installation checks and 212 architecture controls passed
-    locally
-  - Pinned dependency review and actual local IMPLEMENT dispatch passed; prior failures retained
+  - 79 delivery controls, five clean installation checks and 212 architecture controls
+    passed locally
+  - Pinned dependency review and actual local IMPLEMENT dispatch passed; prior failures
+    retained
+  - 'Candidate 04295459 clean locked replay: 360 pytest controls no skip, static/governance
+    pass; exact receipts/artifact hashes retained'
   pending_items:
-  - Replay candidate clean checkout and bind local evidence
-  - Obtain historical credential revocation/rotation and approved narrow classification records
-  - Run real candidate GitLab pipeline and verify protected config/runner and permission controls
-    before P0 exit
+  - 'Historical three credential-shaped values: revocation/rotation record still UNKNOWN;
+    secret gate remains FAIL'
+  - Trusted remote CI and permission positive/negative controls not performed; zero
+    pipeline budget/spend assumed
+  - Before local IMPLEMENT restore local scope/review while retaining current hashes;
+    use clean scope only in truly committed checkout
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: FAIL
+    artifacts:
+    - ref: validation/execution/V2-004/postcommit/summary.json
+      sha256: ae4a0d9db455fb5e80591ff093407b3cdade15d6f928b8ecafdfea9a1fa914ce
+    - ref: validation/execution/V2-004/remote-final-observation.json
+      sha256: 7ad30028a1c482628e0493fc8106d284d635651123c8f67c5988f74a2e614bcb
     missing_artifact_reason: null
 change_review:
   scope_revision: 4f813a219254f24be851419a172bc60d74f255a1

@@ -1,0 +1,76 @@
+{
+  "record_type": "remote_delivery_observation",
+  "schema_version": "1.0",
+  "queried_at": "2026-10-03T15:43:09Z",
+  "query_started_at": "2026-10-03T15:43:06Z",
+  "source": "LIVE_GITLAB_CONNECTOR",
+  "read_only": true,
+  "project": {
+    "id": 86656946,
+    "path_with_namespace": "ayitnovel/ainovelos",
+    "only_allow_merge_if_pipeline_succeeds": true,
+    "ci_config_path": ""
+  },
+  "branch": {
+    "name": "dev_gpt",
+    "sha": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+    "protected": false
+  },
+  "pipelines": {
+    "ref": "dev_gpt",
+    "total": 0,
+    "returned": 0,
+    "pagination_complete": true,
+    "latest": null
+  },
+  "account_observations": [
+    {
+      "account_role": "Owner",
+      "link_id": "link_6ab68273792081919f712c6ddd9da0d4",
+      "project_access": null,
+      "group_access_level": 50,
+      "branch": {
+        "name": "dev_gpt",
+        "sha": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+        "protected": false,
+        "can_push": true,
+        "developers_can_push": false,
+        "developers_can_merge": false
+      },
+      "pipeline_total": 0
+    },
+    {
+      "account_role": "Developer",
+      "link_id": "link_6ab7c42c2aec8191967fa6e3e692824a",
+      "project_access": null,
+      "group_access_level": 30,
+      "branch": {
+        "name": "dev_gpt",
+        "sha": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+        "protected": false,
+        "can_push": true,
+        "developers_can_push": false,
+        "developers_can_merge": false
+      },
+      "pipeline_total": 0
+    }
+  ],
+  "account_results_consistent": true,
+  "local_candidate_revision": "04295459fcf3c93ff3f74a79948f0ac77d47dd87",
+  "remote_matches_local_candidate": false,
+  "source_status": "NOT_VERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false,
+  "limitations": [
+    "This is a new live read observation, not inherited preparation evidence.",
+    "No pipeline exists in the complete dev_gpt listing at the query time.",
+    "Branch can_push is API metadata; no actual permission or anti-deletion control was attempted.",
+    "No pipeline creation, repository push/fetch, protected-branch change or permission change was performed.",
+    "No job trace, receipt or artifact was verified because no branch pipeline was present."
+  ],
+  "requests_per_account": [
+    "GET project 86656946",
+    "GET branch dev_gpt",
+    "LIST pipelines ref=dev_gpt page=1 per_page=100 order_by=id sort=desc"
+  ]
+}

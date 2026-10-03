@@ -1,5 +1,5 @@
 version: 1.2.0
-status: PLANNED_NOT_CI_EXECUTED
+status: CANDIDATE_IMPLEMENTED_NOT_CI_EXECUTED
 gates:
 - id: STATIC
   activation_phase: P0
@@ -9,7 +9,7 @@ gates:
   - format
   - lint
   - typecheck
-  status: NOT_IMPLEMENTED
+  status: IMPLEMENTED
   evidence_refs: []
 - id: UNIT
   activation_phase: P0
@@ -17,7 +17,7 @@ gates:
   allow_failure: false
   checks:
   - unit
-  status: NOT_IMPLEMENTED
+  status: IMPLEMENTED
   evidence_refs: []
 - id: SCHEMA_CONTRACT
   activation_phase: P0
@@ -26,7 +26,7 @@ gates:
   checks:
   - plan validation
   - active schemas and contracts
-  status: NOT_IMPLEMENTED
+  status: IMPLEMENTED
   evidence_refs: []
 - id: ARCH_FITNESS
   activation_phase: P0
@@ -34,7 +34,7 @@ gates:
   allow_failure: false
   checks:
   - positive and negative boundary fixtures
-  status: NOT_IMPLEMENTED
+  status: IMPLEMENTED
   evidence_refs: []
 - id: SECRET_DEPENDENCY
   activation_phase: P0
@@ -43,7 +43,7 @@ gates:
   checks:
   - secret scan
   - locked dependency scan
-  status: NOT_IMPLEMENTED
+  status: IMPLEMENTED
   evidence_refs: []
 - id: POSTGRES_ENV
   activation_phase: P0
@@ -51,7 +51,7 @@ gates:
   allow_failure: false
   checks:
   - real database connect and clean fixture
-  status: NOT_IMPLEMENTED
+  status: IMPLEMENTED
   evidence_refs: []
 - id: CANON_CAS_IDEMPOTENCY
   activation_phase: P2

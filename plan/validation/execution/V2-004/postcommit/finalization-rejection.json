@@ -1,0 +1,10 @@
+{
+  "record_type": "retained_failed_finalization",
+  "status": "FAIL",
+  "errors": [
+    "EXEC_HANDOFF V2-004: next action differs from current checked action"
+  ],
+  "original_ref": "dist/validation/v2004-final-governance/plan/plan-validation.json",
+  "original_sha256": "467a7bb9392e0ea99d8896e9921058a58670d1e0a9fe942ee2b2de68350ce126",
+  "correction": "Handoff next_action restored to the packet checked IMPLEMENT action; no validator/rule changed. Subsequent preparation still required for remote/credential work."
+}

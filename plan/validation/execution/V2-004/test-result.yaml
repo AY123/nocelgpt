@@ -1,0 +1,37 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-004
+revision: 04295459fcf3c93ff3f74a79948f0ac77d47dd87
+status: PASS
+producer: Same Codex implementer/verifier; shared-trust supporting review, no independent
+  personnel or remote acceptance
+executed_at: '2026-10-03T15:45:40.399032+00:00'
+environment_fingerprint: Local clean macOS checkout; exact Python 3.12.14, uv/uv_build
+  0.12.17; real PostgreSQL 17.11 Docker; no remote CI
+input_evidence_refs:
+- validation/execution/V2-004/code-evidence.yaml
+evidence_id: V2-004-local-tests-04295459fcf3
+evidence_type: TEST_RESULT
+artifacts:
+- ref: validation/execution/V2-004/postcommit/summary.json
+  sha256: ae4a0d9db455fb5e80591ff093407b3cdade15d6f928b8ecafdfea9a1fa914ce
+- ref: validation/execution/V2-004/postcommit/unit.xml
+  sha256: 68aaaa6b73c96fce4763000fe454770c3a98926886ccaa966c75e675382973c4
+- ref: validation/execution/V2-004/postcommit/architecture.xml
+  sha256: cd263b9b2abf7da434f63f65a3f8f9df8bae83fc67f7b2ea1e5a58048b0e7d47
+- ref: validation/execution/V2-004/postcommit/postgres_service.xml
+  sha256: 4047ab7bb782b1ef2dbb55a9b349e1e6e2dbc62f3613ac8ffbc188e9b9c03997
+- ref: validation/execution/V2-004/postcommit/postgres_original.xml
+  sha256: b0098776affdbbbd8ff2dc369944ae48e1f04bd8b56ce8bc3a62e48d3bf6ab77
+- ref: validation/execution/V2-004/postcommit/local-run-artifacts.tar.gz
+  sha256: 25d4366c263304dbf461241c1bb02d3bd7ba1d560d4b4b140317ac4ceae8cb68
+check_ids:
+- LOCAL-V2-004-DELIVERY
+- LOCAL-P0-ARCHITECTURE
+- LOCAL-P0-POSTGRES
+- LOCAL-P0-LOCKED-INSTALL
+- LOCAL-P0-GOVERNANCE
+command: Actual clean-checkout commands/receipts/logs in archived dist/ci and dist/validation/clean-replay;
+  360 pytest controls passed plus static/governance. SECRET_DEPENDENCY is FAIL and
+  is not certified by this local TEST_RESULT.
+exit_code: 0

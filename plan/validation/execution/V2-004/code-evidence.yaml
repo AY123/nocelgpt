@@ -1,0 +1,16 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-004
+revision: 04295459fcf3c93ff3f74a79948f0ac77d47dd87
+status: PASS
+producer: Same Codex implementer/verifier; shared-trust supporting review, no independent
+  personnel or remote acceptance
+executed_at: '2026-10-03T15:45:40.399032+00:00'
+environment_fingerprint: Local clean macOS checkout; exact Python 3.12.14, uv/uv_build
+  0.12.17; real PostgreSQL 17.11 Docker; no remote CI
+input_evidence_refs: []
+evidence_id: V2-004-local-code-04295459fcf3
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-004/code-index.json
+  sha256: d285ecbe0465a212c8b33d29c70f1a938741b8c457730dfed42daf3cde3ad335

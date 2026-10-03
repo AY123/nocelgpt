@@ -8,5 +8,7 @@
   "local_dispatch_sha256": "f9ba327ea546bf76021b5340dc6620d81cad722a09f225561011872c4a0b827f",
   "local_user_report_sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
   "local_config_sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
-  "recovery": "Primary checkout retains user dirty report/config. Before another local IMPLEMENT action, retain current inputs/hash and rebind scope/review from local-execution-packet, then check. Do not overwrite current packet wholesale or delete user files. CI clean scope must never be used to manufacture a clean primary checkout."
+  "recovery": "Before local IMPLEMENT, retain active packet current inputs/hash and rebind only worktree_dirty and scope/review from local-execution-packet. Then reconcile hashes and check. Do not replace current packet wholesale or delete user report/config. Clean scope only consumes committed clean checkout.",
+  "last_clean_replay_revision": "04295459fcf3c93ff3f74a79948f0ac77d47dd87",
+  "last_result": "Five local gates PASS; SECRET_DEPENDENCY FAIL; source/permission NOT_VERIFIED"
 }

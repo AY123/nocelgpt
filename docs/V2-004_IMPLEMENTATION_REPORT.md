@@ -48,10 +48,10 @@ Secret 扫描使用真实固定 Gitleaks，对 Git 跟踪文件的实际工作�
 | 远端来源核验控制 | **33 passed**；`/tmp/anovel-source-unit-3.xml`。使用合成 API 和临时本地 Git checkout，覆盖来源逻辑及固定 pin，未调用真实远端流水线。 |
 | Scanner 来源修复控制 | **7 passed**；`/tmp/anovel-scanner-final-review.xml`。合成 pin 不替代真实官方 archive 或远端权限证据。 |
 | 子进程环境控制 | **10 passed**；`/tmp/anovel-delivery-environment-final.xml`。真实子进程检查密钥及代理变量拒绝、实际 uv 可执行、CI 元数据/临时 PostgreSQL DSN 传递、本地 Docker 元数据保留及危险 endpoint 拒绝；严格 mypy/ruff 通过。仅检查 DSN 传递的控制不声称连接了 PostgreSQL，真实数据库仍由上面的 service/lifecycle 测试证明。 |
-| UNIT 命令入口首次运行 | **115 passed，3 errors，退出 1 / receipt FAIL**。三个 bootstrap 测试因本地 PATH 缺 uv 未完成；原始失败在 `dist/validation/v2004-unit-final/`，receipt 绑定当次 `f4838f0f2ec7b20d016fce9fb28632321a8c022e`。补齐 PATH 后重跑待主操作者更新，不把错误解释为跳过或 PASS。 |
+| UNIT 命令入口首次运行 | **115 passed，3 errors，退出 1 / receipt FAIL**。三个 bootstrap 测试因本地 PATH 缺 uv 未完成；原始失败在 `dist/validation/v2004-unit-final/`，receipt 绑定当次 `f4838f0f2ec7b20d016fce9fb28632321a8c022e`。后续修复并在干净提交复测，见下文；原错误记录不改为 PASS。 |
 | 项目 Secret/依赖实际扫描 | 依赖 51 包通过；Secret 存在未处置发现，**整体仍 FAIL**。报告中的安全失败不被成功测试覆盖。 |
 
-当前静态分类为 **36 项 FALSE_POSITIVE、6 项 POSSIBLE_EXPOSURE、1 项 TRUNCATED_CREDENTIAL_REFERENCE**。六处可能暴露对应三个不同完整形态值，另有一个截断引用；有效性、撤销/轮换和仍可使用情况均未知。本次没有试用凭证、撤销凭证、改写 Git 历史或加入忽略规则，原 Secret FAIL 保留。脱敏分类原始记录在 `/tmp/anovel-secret-triage.json`，分类只帮助后续处置，不自动解除门禁。疑似暴露需按现行事故规则核实及记录；删除文本本身不证明已撤销。
+当前静态分类为 **36 项 FALSE_POSITIVE、6 项 POSSIBLE_EXPOSURE、1 项 TRUNCATED_CREDENTIAL_REFERENCE**。六处可能暴露对应三个不同完整形态值，另有一个截断引用；有效性、撤销/轮换和仍可使用情况均未知。本次没有试用凭证、撤销凭证、改写 Git 历史或加入忽略规则，原 Secret FAIL 保留。脱敏分类保存在 `plan/validation/execution/V2-004/security-triage.json`，分类只帮助后续处置，不自动解除门禁。疑似暴露需按现行事故规则核实及记录；删除文本本身不证明已撤销。
 
 ## 真实来源与权限验收边界
 
@@ -67,7 +67,7 @@ Secret 扫描使用真实固定 Gitleaks，对 Git 跟踪文件的实际工作�
 
 固定 scope 提交为 `4f813a219254f24be851419a172bc60d74f255a1`，分别保存 `scope-baseline-local-final.json` 与 `scope-baseline-ci-final.json`。local scope 保留用户已有 `审核报告.txt`、本地工具配置和缓存归属；报告未被删除或归为 AI 完成。缓存漂移的原因在 `preparation/tool-cache-attribution.json`，后续工具使用 `dist/cache` 或 `--no-cache`，没有删用户文件制造干净工作区。
 
-CI scope 专供已提交的干净 checkout，`pre_existing` 为空；它不要求远端伪造本地用户脏文件，也不能用于删除或恢复本地文件。计划切换到单独的 clean active packet 时，须先保留 local packet 和恢复上下文，再绑定固定 CI scope 与相应精确 review pin；写本文时该切换仍待主操作者完成。两个固定 scope 均不构成远端受信来源。
+CI scope 专供已提交的干净 checkout，`pre_existing` 为空；它不要求远端伪造本地用户脏文件，也不能用于删除或恢复本地文件。计划切换到单独的 clean active packet 时，须先保留 local packet 和恢复上下文，再绑定固定 CI scope 与相应精确 review pin；已在 `04295459fcf3c93ff3f74a79948f0ac77d47dd87` 完成该切换，干净 checkout 的正式动作入口已通过；主工作区保留用户脏文件，后续本地实施须恢复 local scope/review 绑定并重核输入，而非删除文件。两个固定 scope 均不构成远端受信来源。
 
 从仓库根执行；输出路径必须是新目录，下面示例目录不可覆盖旧运行：
 
@@ -97,3 +97,16 @@ uv run --locked python -B scripts/ci/verify_remote.py \
 ```
 
 恢复顺序：核对 checkout、用户文件身份、输入 hash、local/CI packet 消费条件和精确 scope/review；补齐 uv PATH 并记录 UNIT 真正重跑；保留并处置 Secret 发现；在干净提交运行真实 CI并读取当次原始产物；最后核验保护配置及 AT-07/08 的真实权限和反删除正反例。当前缺少真实 CI、已生效受信执行和最终验收，不能转 VERIFIED/CLOSED，不能据本文开启 P1。
+
+
+## 最终提交后重放与交接
+
+实现代码提交 `615efb0e40709d46220b83d36462d06a2c3c0b4c`；重放候选提交 `04295459fcf3c93ff3f74a79948f0ac77d47dd87`。独立干净 checkout 执行真实锁定安装，UNIT **137**、ARCH **212**、PostgreSQL 原测试 **10** 和 service **1** 全部通过，共 **360 个 pytest 检查，0 skip**；STATIC、SCHEMA_CONTRACT 也通过。五项本地门禁 PASS，SECRET_DEPENDENCY FAIL：51 个依赖无已知漏洞，密钥 15 个当前文件发现与 28 个历史发现仍未处置。所有回执绑定候选 SHA，artifact hash 已重新核对，结束 Git 工作树干净，source_kind 全部为 LOCAL。
+
+本次修复了三个实际接入缺陷：缓存可由伪 binary/sidecar 自签的旁路；CI include/extends 可改变必需 job 的漏检；CI 子进程任意继承认证环境的日志风险。另修复了新增测试依赖仓库 cwd 导致干净安装后的测试发现失败，以及规划入口外部链接破坏旧隔离 fixture 的问题。保留原测试和所有门禁，原失败记录在 `precommit-controls.json`，最终通过证明来自重新执行。
+
+[提交后摘要](../plan/validation/execution/V2-004/postcommit/summary.json)和[原始本地归档](../plan/validation/execution/V2-004/postcommit/local-run-artifacts.tar.gz)保留命令、退出码、日志、回执、JUnit 与治理/安全结果；[CODE](../plan/validation/execution/V2-004/code-evidence.yaml)与[TEST_RESULT](../plan/validation/execution/V2-004/test-result.yaml)只证明声明的本地检查，后者明确不认证失败的项目密钥门禁。每一项 AT-V2-004 的本地进展和远端缺口见[场景进度](../plan/validation/execution/V2-004/scenario-progress.json)。原始归档不包含扫描命中原值。
+
+2026-10-03 15:43:09 UTC 再次读取两个 GitLab 账户，结果一致：dev_gpt 仍在 `882d0cdf...`、未受保护、流水线数 0；项目要求成功流水线才能合并，ci_config_path 为空。此次未推送或触发远端 CI，未修改保护规则。六项候选 gate 在机器源为 IMPLEMENTED，未登记 CI_RUN；任务继续 IN_PROGRESS，完整 AT 套件 PLANNED，P0 NOT_VERIFIED。
+
+下一动作是凭证权限持有人提供脱敏撤销/轮换记录，明确远端 CI 与权限配置的可用预算及执行身份，再部署并核验受保护配置、runner 与真实权限正反例。当前预算为零付费调用/基础设施上限，未知运行成本不能写成零。保留旧任务的历史证据，最终 G-P0/M0 仍须核验同一候选 revision；不自动进入 P1。

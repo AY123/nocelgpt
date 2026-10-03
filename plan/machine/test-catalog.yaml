@@ -102,7 +102,8 @@ suites:
     required_assertion: 普通实施凭证采用最小权限，不同时具备修改保护规则、绕过合并门禁和批准自身例外的能力；用安全测试验证越权操作确被拒绝且授权范围内操作可用，不具备核验权限时不得自称权限隔离生效
   - id: AT-V2-004-08
     required_assertion: 在真实 CI/仓库保护环境验证治理校验器、基线、测试及流水线变更不能由同次改动移除必需检查后自行放行；无害失败夹具与未授权保护变更被阻断，有适用授权的规则修订经可信重新验证后可进入，不增加固定团队人数要求
-  execution_evidence: []
+  execution_evidence:
+  - validation/execution/V2-004/test-result.yaml
 - id: AT-V2-005
   task_id: V2-005
   phase: P1

@@ -1,0 +1,57 @@
+{
+  "record_type": "partial_acceptance_progress",
+  "task_id": "V2-004",
+  "status": "IN_PROGRESS",
+  "suite_status": "PLANNED",
+  "acceptance_eligible": false,
+  "scenarios": [
+    {
+      "scenario": "AT-V2-004-01",
+      "local": "Real exit/startup/timeout controls and fixed six commands",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Actual GitLab job and mandatory-gate failure"
+    },
+    {
+      "scenario": "AT-V2-004-02",
+      "local": "Real Gitleaks positive/deleted-history controls; actual vulnerable dependency audit rejects eight findings",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Historical credential incident and any narrow approved classification"
+    },
+    {
+      "scenario": "AT-V2-004-03",
+      "local": "Actual local fixed PostgreSQL connection/service and lifecycle",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Same candidate GitLab PostgreSQL job and source artifacts"
+    },
+    {
+      "scenario": "AT-V2-004-04",
+      "local": "Current live branch/project metadata; pipeline/config mutation rejection",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Effective merge/required-check protection and remote failure controls"
+    },
+    {
+      "scenario": "AT-V2-004-05",
+      "local": "Synthetic source/API controls, strict commit/job/artifact/hash logic",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Actual candidate pipeline, traces and artifacts"
+    },
+    {
+      "scenario": "AT-V2-004-06",
+      "local": "Pinned-policy source verifier and explicit UNVERIFIED limits",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Trusted configuration/runner enrollment and genuine source positive"
+    },
+    {
+      "scenario": "AT-V2-004-07",
+      "local": "Owner/Developer read metadata only; permission UNKNOWN",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Real denied unauthorized operations and allowed authorized operations"
+    },
+    {
+      "scenario": "AT-V2-004-08",
+      "local": "Local candidate mutation/scanner forgery/environment controls",
+      "remote": "NOT_VERIFIED",
+      "remaining": "Real protected CI anti-deletion and authorized-rule-revision controls"
+    }
+  ]
+}

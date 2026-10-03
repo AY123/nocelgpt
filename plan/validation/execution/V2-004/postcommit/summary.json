@@ -1,0 +1,99 @@
+{
+  "record_type": "local_clean_checkout_replay",
+  "revision": "04295459fcf3c93ff3f74a79948f0ac77d47dd87",
+  "source_kind": "LOCAL_CLEAN_CHECKOUT",
+  "locked_install_exit": 0,
+  "test_controls_status": "PASS",
+  "pytest_tests": 360,
+  "counts": {
+    "unit": {
+      "tests": 137,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "architecture": {
+      "tests": 212,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "postgres_service": {
+      "tests": 1,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "postgres_original": {
+      "tests": 10,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    }
+  },
+  "receipts": [
+    {
+      "job": "static",
+      "status": "PASS",
+      "exit_code": 0,
+      "receipt_sha256": "2615910d36a2f963915e155f1a4f6b2a376cd9122a4eebe2670d4c90dfd0ad11",
+      "command_count": 5
+    },
+    {
+      "job": "unit",
+      "status": "PASS",
+      "exit_code": 0,
+      "receipt_sha256": "bddd4a8869b61caf46614427b9fbe4e3c8bdec98ec9d53d6d5ca8b7f6093ef16",
+      "command_count": 2
+    },
+    {
+      "job": "schema_contract",
+      "status": "PASS",
+      "exit_code": 0,
+      "receipt_sha256": "3e725d88dae10f889ee9ada4239bcc37e6beecf678eed21443caefc522f008e3",
+      "command_count": 1
+    },
+    {
+      "job": "arch_fitness",
+      "status": "PASS",
+      "exit_code": 0,
+      "receipt_sha256": "3bc43e84d04491a7e96a8a5b34a4605242156b2cdc2f91bac892aab983d1c1d2",
+      "command_count": 3
+    },
+    {
+      "job": "secret_dependency",
+      "status": "FAIL",
+      "exit_code": 1,
+      "receipt_sha256": "816885cdec406597c2fcb1233d12eab30ee62e7d4578afd20251cc70edeab2cf",
+      "command_count": 2
+    },
+    {
+      "job": "postgres_env",
+      "status": "PASS",
+      "exit_code": 0,
+      "receipt_sha256": "099bad5305015fb167e82105f3c8626a6f32b4ca463c5aed8c6d5e06e2180a8d",
+      "command_count": 1
+    }
+  ],
+  "security_status": "FAIL",
+  "security_summary_sha256": "4938ecaa4342f5ef7c0ca1542a80c313b7dffd48979965fe01a89d39b5daf8f6",
+  "secret_triage_recheck": "All 43 finding locations and source hashes match saved triage; no added/removed findings; revocation remains UNKNOWN",
+  "dependency_packages": 51,
+  "dependency_vulnerabilities": 0,
+  "ending_tracked_status": "",
+  "archive": {
+    "ref": "validation/execution/V2-004/postcommit/local-run-artifacts.tar.gz",
+    "sha256": "25d4366c263304dbf461241c1bb02d3bd7ba1d560d4b4b140317ac4ceae8cb68",
+    "files": 69,
+    "bytes": 153350
+  },
+  "not_certified": [
+    "remote GitLab execution",
+    "protected configuration/runner",
+    "permission controls",
+    "P0 exit"
+  ],
+  "permission_status": "UNKNOWN",
+  "remote_pipeline_count": 0,
+  "test_suite_status": "PLANNED; full remote acceptance unimplemented"
+}

@@ -1,6 +1,6 @@
 # dev_gpt 审核报告事实复核与当前推进评估
 
-复核日期：2026-10-03。用户审核报告的对象为 `dev_gpt / 882d0cdf833464dd6a5ebfac3a542204c32cd325`；本文读取时本地 HEAD 为 `4f813a219254f24be851419a172bc60d74f255a1`，工作区包含正在实施的 V2-004 文件。以下结果均注明观察范围和时点，后续最终提交与复测结果由主操作者补充。
+复核日期：2026-10-03。开工基线为 `dev_gpt / 882d0cdf833464dd6a5ebfac3a542204c32cd325`。实现提交为 `615efb0e40709d46220b83d36462d06a2c3c0b4c`；干净重放绑定 `04295459fcf3c93ff3f74a79948f0ac77d47dd87`。最终记录区分本地控制、项目安全扫描和远端验收，不拼接为当前提交可信 CI。
 
 报告关于“V2-001～003 已实现、P0 尚未验证、应推进 V2-004”的主要判断成立。现有实现和本地正反例支持继续复用三项能力，本次未发现要求推翻重做的重大架构缺口。当前已进入 V2-004 实施，仍缺当前候选提交的真实远端 CI、有效保护与权限验证，而且真实历史秘密扫描尚未通过，因此不能关闭 P0 或开始 V2-005。
 
@@ -19,7 +19,7 @@
 | 未来应出现 identity.py、canon/repository.py 等文件 | 修正 | 这些是说明性示例；应由对应任务及现行契约决定实际实现，不能把示例文件名升级为新增规范。 |
 | 必须新增 Exact Revision Closure 才有聚合闭环 | 修正为落实既有要求 | 现行阶段决定绑定同 revision 的适用 CI，里程碑绑定同 revision 的阶段决定；无须新增任务或里程碑。历史任务证据可以保留，最终 P0 回归与门禁须核验当前候选 revision。 |
 | dev_gpt 没有 pipeline、不是 protected branch | 接受其观察时点 | 2026-10-03 的只读远端快照显示 pipeline 总数 0、protected=false；这是开工 revision 的观察，不是未来或候选提交的永久状态。 |
-| dev_gpt 不存在 .gitlab-ci.yml、V2-004 OPEN | 当时成立，现状已变化 | 当前候选工作区已有六个 CI job、真实扫描与来源核验实现，任务为 IN_PROGRESS；这些文件尚未证明远端执行成功。 |
+| dev_gpt 不存在 .gitlab-ci.yml、V2-004 OPEN | 当时成立，现状已变化 | 当前提交已有六个 CI job、真实扫描与来源核验实现，任务为 IN_PROGRESS；本地重放不能证明远端执行成功。 |
 
 当前机器源记录为 V2-001～003 `IMPLEMENTED`、V2-004 `IN_PROGRESS`、P0 `NOT_VERIFIED`。此次推进新增的可审查实现包括[六个 CI job](../../../.gitlab-ci.yml)、[执行与回执入口](../../../scripts/ci/run_gate.py)、[配置检查](../../../scripts/ci/check_configuration.py)、[真实安全扫描](../../../scripts/ci/check_security.py)、[固定扫描器下载](../../../scripts/ci/bootstrap_scanners.py)、[远端来源核验器](../../../scripts/ci/verify_remote.py)及新增交付／PostgreSQL 测试。所有 job 声明 `allow_failure: false`，全历史扫描要求非 shallow checkout，依赖审计消费锁文件并纳入精确构建后端。
 
@@ -55,3 +55,10 @@
 对当前推进而言，应复用 V2-001～003 的已验证本地能力，完成 V2-004 的当前消费者和八项验收场景。下一步是修正并复测实际环境错误、保留安全失败及凭证处置缺口，再取得当前候选 revision 的真实六门禁 CI、原始产物与来源核验，以及有效保护／权限的正反例。只有任务验收、P0 阶段决定和 M0 聚合满足现行同 revision 要求后，才可关闭 P0 并进入 V2-005；本报告不新增该授权或提前宣布完成。
 
 现行同 revision 规则可直接复查 [governance_checks.py](../../../plan/scripts/governance_checks.py) 的 PHASE_DECISION／MILESTONE_DECISION 检查，以及 [test_governance.py](../../../plan/scripts/test_governance.py) 的 `test_milestone_revision_matches_phase_decision`、`test_valid_historical_task_revision_in_current_phase`。保留历史任务证据与核验当前最终聚合并不冲突。
+
+
+最终干净 checkout 在锁定安装后完成 **360 项 pytest 检查，0 failure、0 error、0 skip**：UNIT 137（含新增交付控制 79 和 bootstrap 5）、ARCH 212、PostgreSQL 原生命周期 10 和 service 1。静态与治理聚合检查通过，正式 IMPLEMENT 入口和生产树架构扫描实际执行。五项门禁 PASS，SECRET_DEPENDENCY 仍 FAIL；扫描的 43 个位置及源内容 hash 与分诊完全一致，51 包审计 0 已知漏洞。原来的 PATH、外部链接、网络与新测试导入失败已保留，没有修改原测试或降低断言来取得通过。
+
+详见[提交后本地证据](../../../plan/validation/execution/V2-004/postcommit/summary.json)、[逐场景未完成项](../../../plan/validation/execution/V2-004/scenario-progress.json)和[实施说明](../../V2-004_IMPLEMENTATION_REPORT.md)。原始命令、退出码、日志和六份回执保存在压缩归档，CODE/TEST_RESULT 已绑定真实候选 Git revision。机器源将六项 P0 门禁记为候选 IMPLEMENTED，CI evidence 仍为空；V2-004 为 IN_PROGRESS，完整验收套件仍 PLANNED，P0 为 NOT_VERIFIED。
+
+2026-10-03 15:43:09 UTC 的[再次在线观察](../../../plan/validation/execution/V2-004/remote-final-observation.json)由 Owner 与 Developer 两个账户分别读取，结果一致：远端 dev_gpt 仍为开工 SHA，流水线 0，protected=false，候选根配置未成为受保护外部配置。API can_push 元数据不证明越权实测。此次没有推送、触发远端流水线或改保护权限；这些结果仍缺失，凭证撤销记录也未获得，后续验收只阻断相关动作。
