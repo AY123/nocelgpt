@@ -1,0 +1,12 @@
+{
+  "record_type": "execution_context_selection",
+  "source_revision": "615efb0e40709d46220b83d36462d06a2c3c0b4c",
+  "scope_revision": "4f813a219254f24be851419a172bc60d74f255a1",
+  "active_context": "CLEAN_COMMITTED_CHECKOUT",
+  "local_packet_ref": "plan/validation/execution/V2-004/local-execution-packet.yaml",
+  "local_dispatch_ref": "plan/validation/execution/V2-004/precommit/local-dispatch.json.gz",
+  "local_dispatch_sha256": "f9ba327ea546bf76021b5340dc6620d81cad722a09f225561011872c4a0b827f",
+  "local_user_report_sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+  "local_config_sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
+  "recovery": "Primary checkout retains user dirty report/config. Before another local IMPLEMENT action, retain current inputs/hash and rebind scope/review from local-execution-packet, then check. Do not overwrite current packet wholesale or delete user files. CI clean scope must never be used to manufacture a clean primary checkout."
+}

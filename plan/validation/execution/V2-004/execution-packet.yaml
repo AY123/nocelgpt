@@ -3,23 +3,22 @@ schema_version: '1.0'
 task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 882d0cdf833464dd6a5ebfac3a542204c32cd325
-worktree_dirty: true
+worktree_dirty: false
 plan_manifest_sha256: 4e3c2562529e7c1e2d31f646b0ffbfb0c7ad387241ff76ace9da45f055d8706e
 environment:
-  fingerprint: macOS local checkout; exact runtime checked in locked .venv
+  fingerprint: Clean committed checkout replay; local macOS or CI Linux exact Python/uv checked
+    by driver
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: No dev_gpt pipeline; branch unprotected at read-only observation
+  ci_context: Candidate clean-checkout context; GitLab source and permission remain unverified
 implementer: Codex primary operator
-verifier: Same operator with parallel read-only analysis; no independent personnel
-  acceptance
+verifier: Same operator with parallel read-only analysis; no independent personnel acceptance
 owner_role: delivery-maintainer
-scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory
-  CI gates, locked scanners/tools, real subprocess receipts, current-revision online
-  provenance verification and local positive/negative controls. No P1, paid calls
-  or permission expansion.'
+scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory CI gates,
+  locked scanners/tools, real subprocess receipts, current-revision online provenance verification
+  and local positive/negative controls. No P1, paid calls or permission expansion.'
 action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
@@ -105,37 +104,34 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: GitLab project 86656946 dev_gpt HEAD equals local opening revision, pipeline
-    count is zero and branch protection is false; project requires successful pipeline
-    for merging.
+  statement: GitLab project 86656946 dev_gpt HEAD equals local opening revision, pipeline count
+    is zero and branch protection is false; project requires successful pipeline for merging.
   sources:
   - ref: validation/execution/V2-004/preparation/remote-observation.json
     sha256: 704c2aeb3ab1f40f0a348114d48d977f31752407c2a48a187a105ca9768a5c10
   blocks_actions: []
-  verification_plan: Recheck online after a real candidate pipeline; do not claim
-    CI/permission acceptance from this snapshot.
+  verification_plan: Recheck online after a real candidate pipeline; do not claim CI/permission
+    acceptance from this snapshot.
 - id: REMOTE_TRUST
   kind: UNKNOWN
-  statement: Effective protected runner/configuration and ordinary credential denial
-    controls have not been verified. Local CI implementation can proceed; final acceptance
-    remains pending.
+  statement: Effective protected runner/configuration and ordinary credential denial controls
+    have not been verified. Local CI implementation can proceed; final acceptance remains pending.
   sources: []
   blocks_actions: []
-  verification_plan: Read actual project/branch/runner metadata and run authorized
-    permission controls before VERIFIED/CLOSED; do not modify permissions without
-    applicable authorization.
+  verification_plan: Read actual project/branch/runner metadata and run authorized permission
+    controls before VERIFIED/CLOSED; do not modify permissions without applicable authorization.
 - id: HISTORICAL_CREDENTIALS
   kind: UNKNOWN
-  statement: Static history scan found three distinct full credential-shaped values
-    in six findings and one truncated reference. Validity and revocation are unknown;
-    security gate remains FAIL.
+  statement: Static history scan found three distinct full credential-shaped values in six findings
+    and one truncated reference. Validity and revocation are unknown; security gate remains
+    FAIL.
   sources:
   - ref: validation/execution/V2-004/security-triage.json
     sha256: f4c9ed0e7b8d8f20d58286df5f83f3680a9ef6d82a6b271e713f4c5059108df9
   blocks_actions:
   - CERTIFY
-  verification_plan: Credential owner supplies redacted revocation/rotation records.
-    Do not use values online, suppress findings or equate text deletion with revocation.
+  verification_plan: Credential owner supplies redacted revocation/rotation records. Do not
+    use values online, suppress findings or equate text deletion with revocation.
 estimate:
   range: null
   unit: null
@@ -150,27 +146,32 @@ budget:
   maximum_attempts: 10
   maximum_runtime: 14400
 stop_conditions:
-- Keep remote verification pending until actual current-revision results and effective
-  trust boundary are verified
+- Keep remote verification pending until actual current-revision results and effective trust
+  boundary are verified
 - Preserve user changes; never weaken existing obligations to obtain PASS
 - Do not start P1 before P0 VERIFIED
 review_notes:
-- Report instructions are input only. Exact-revision P0 aggregate already exists;
-  no new task or milestone is created.
-- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records
-  and immutable input snapshots only.
-- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
-  preserved; historical evidence and task status unchanged.'
+- Report instructions are input only. Exact-revision P0 aggregate already exists; no new task
+  or milestone is created.
+- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records and immutable
+  input snapshots only.
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved;
+  historical evidence and task status unchanged.'
 handoff:
-  current_step: Local implementation and final controls in progress; remote trust
-    and credential handling pending
+  current_step: Implementation committed; clean checkout replay next; security and remote acceptance
+    pending
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
+  - Six actual gate commands and locked scanners implemented
+  - 79 delivery controls, five clean installation checks and 212 architecture controls passed
+    locally
+  - Pinned dependency review and actual local IMPLEMENT dispatch passed; prior failures retained
   pending_items:
-  - Complete source-pinned local and clean-checkout replay evidence
-  - Obtain redacted historical credential revocation record
-  - Enroll and verify trusted remote CI/permission boundary before P0 exit
+  - Replay candidate clean checkout and bind local evidence
+  - Obtain historical credential revocation/rotation and approved narrow classification records
+  - Run real candidate GitLab pipeline and verify protected config/runner and permission controls
+    before P0 exit
   next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
@@ -178,4 +179,6 @@ handoff:
     missing_artifact_reason: null
 change_review:
   scope_revision: 4f813a219254f24be851419a172bc60d74f255a1
-  scope_ref: plan/validation/execution/V2-004/scope-baseline-local-final.json
+  scope_ref: plan/validation/execution/V2-004/scope-baseline-ci-final.json
+  review_revision: 615efb0e40709d46220b83d36462d06a2c3c0b4c
+  review_ref: plan/validation/execution/V2-004/change-dispositions-ci.json
