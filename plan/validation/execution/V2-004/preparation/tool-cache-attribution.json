@@ -1,0 +1,10 @@
+{
+  "reason": "V2-004 type/format checking used default caches during parallel implementation. Existing cache identity drift is attributed to these reversible tool outputs; user report/config identities remain protected. Subsequent checks use dist cache directories or --no-cache. No cache or user file deleted by cleanup.",
+  "affected_scope": [
+    ".mypy_cache/",
+    ".ruff_cache/"
+  ],
+  "source_runtime_changes": false,
+  "minimum_rules_changed": false,
+  "prior_scope_retained": "scope-baseline-v2.json"
+}

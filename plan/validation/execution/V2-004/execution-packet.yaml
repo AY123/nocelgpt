@@ -20,7 +20,7 @@ scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six manda
   CI gates, locked scanners/tools, real subprocess receipts, current-revision online
   provenance verification and local positive/negative controls. No P1, paid calls
   or permission expansion.'
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
   ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
@@ -99,6 +99,8 @@ allowed_paths:
 - plan/validation/execution/V2-001/execution-packet.yaml
 - plan/validation/execution/V2-002/execution-packet.yaml
 - plan/validation/execution/V2-003/followup/execution-packet.yaml
+- .mypy_cache/
+- .ruff_cache/
 required_decisions: []
 claims:
 - id: REMOTE_CURRENT
@@ -148,7 +150,7 @@ review_notes:
 - '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
   preserved; historical evidence and task status unchanged.'
 handoff:
-  current_step: Fixed local scope committed; implementing existing V2-004 requirements
+  current_step: Corrected fixed scope ready; V2-004 implementation in progress
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -156,9 +158,11 @@ handoff:
   - Freeze local scope pin
   - Implement and exercise six P0 CI gates
   - Verify real CI artifacts and remote permission boundary
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 8b1d106a0555f3bcc859ab02fccd4c0d559228d9
+  scope_ref: plan/validation/execution/V2-004/scope-baseline-v2.json
