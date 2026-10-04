@@ -58,8 +58,10 @@ Computed at query time only (never persisted).
 |-------|---------------|------------|
 | `"  张三  "` | `"张三"` | `"张三"` |
 | `"Zhang  San"` | `"Zhang  San"` | `"zhang san"` |
-| `"李　明"` | `"李　明"` | `"李明"` |
-| `"  John　Doe  "` | `"John　Doe"` | `"johndoe"` |
+| `"李　明"` | `"李明"` | `"李明"` |
+| `"  John　Doe  "` | `"John Doe"` | `"johndoe"` |
+
+**Note**: U+3000 (full-width space) is classified as whitespace by Python, so `str.strip()` removes it from edges.
 
 ---
 
@@ -74,7 +76,8 @@ stored canonical_name: "John"
 ### add_alias
 ```python
 input: "  老张　  "
-stored in aliases: "老张　"
+stored in aliases: "老张"
+# Note: .strip() removes both ASCII space and U+3000 (which is whitespace)
 ```
 
 ### resolve_alias

@@ -137,9 +137,8 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - ✅ Normalization: Minimal (whitespace + ASCII case)
 
 **Risks Mitigated**:
-- ✅ ULID unavailable → UUID fallback
+- ✅ ID format: UUID v4 standard choice (RFC 4122)
 - ✅ Ambiguity UX → Not V2-005 concern (downstream)
-- ✅ ID format debate → Simple ULID choice
 - ✅ ProjectId authority → V2-005 defines it
 - ✅ EntityType scope → Optional field (flexible)
 
@@ -237,9 +236,9 @@ All recommendations from refinement § 15 have been adopted:
 
 ### Medium Risks: MITIGATED
 
-**R-1: ULID Library Unavailable**
-- **Mitigation**: UUID v4 fallback implemented
-- **Status**: ✅ Mitigated
+**R-1: ID Format Decision**
+- **Mitigation**: UUID v4 standard choice (RFC 4122, standard library)
+- **Status**: ✅ Resolved
 
 **R-2: Normalization Complexity Creep**
 - **Mitigation**: Strict scope limit (§ 8.2 refinement)
@@ -251,9 +250,9 @@ All recommendations from refinement § 15 have been adopted:
 
 ### Low Risks: MONITORED
 
-**R-4: ID Format Bikeshedding**
-- **Mitigation**: Simple boring choice (ULID)
-- **Status**: ✅ Decision made
+**R-4: ID Format Implementation**
+- **Mitigation**: Standard library uuid.uuid4()
+- **Status**: ✅ Resolved
 
 ---
 
@@ -428,7 +427,7 @@ critical_path:
 - v1.1.0 (Revision): Addressed 10 contract deficiencies
 
 **Changes in v1.1.0**:
-1. EntityId format frozen to UUID v4 (no fallback)
+1. EntityId format frozen to UUID v4 (standard library, no fallback)
 2. Determinism boundaries clarified (generation vs resolution)
 3. ProjectId runtime validation added
 4. Resolution priority explicit (unified candidate set)
@@ -480,34 +479,38 @@ critical_path:
 
 ## Approval Checklist
 
-Before authorizing V2-005 implementation, verify:
+**Status**: REVISED / INDEPENDENT_REVIEW_PENDING
 
-- [x] Current State Audit reviewed and approved
-- [x] Task Refinement reviewed and approved
-- [x] Implementation Contract reviewed and approved
-- [x] Test Contract Matrix reviewed and approved
-- [x] Implementation Plan reviewed and approved
-- [x] Decision Gates document reviewed (this document)
-- [x] All open questions resolved
-- [x] All design recommendations adopted or rejected with rationale
-- [x] All risks assessed and mitigated
-- [x] Authority compliance verified
-- [x] Downstream impact assessed
-- [x] Critical path impact understood
+Before authorizing V2-005 implementation, the following must be verified through independent review:
+
+- [ ] Current State Audit reviewed and approved
+- [ ] Task Refinement reviewed and approved
+- [ ] Implementation Contract reviewed and approved
+- [ ] Test Contract Matrix reviewed and approved
+- [ ] Implementation Plan reviewed and approved
+- [ ] Decision Gates document reviewed (this document)
+- [ ] All open questions resolved
+- [ ] All design recommendations adopted or rejected with rationale
+- [ ] All risks assessed and mitigated
+- [ ] Authority compliance verified
+- [ ] Downstream impact assessed
+- [ ] Critical path impact understood
+
+**Note**: Checklist items marked incomplete pending final independent contract review.
 
 ---
 
 ## Authorization
 
-**V2-005 Refinement Status**: ✅ **COMPLETE**
+**V2-005 Refinement Work**: COMPLETE
 
-**Implementation Authorization**: ✅ **READY**
+**Contract Status**: REVISED / INDEPENDENT_REVIEW_PENDING
 
-**Recommended Action**: **AUTHORIZE IMPLEMENTATION**
+**Implementation Authorization**: BLOCKED_ON_INDEPENDENT_REVIEW
 
 **Next Steps**:
-1. User approves refinement
-2. Implementation begins with Step 1 (Module Structure)
+1. Independent contract review and approval
+2. Upon approval, implementation may begin with Step 1 (Module Structure)
 3. Follow 8-step implementation plan
 4. All tests must pass before claiming completion
 5. Close V2-005 task with evidence
@@ -527,7 +530,7 @@ The following documents have been created and are ready for consumption:
 
 **Location**: `/Users/angyang/Documents/AI/ANovelOS_CC/ANovelOS/docs/`
 
-**Status**: All documents complete and frozen.
+**Status**: Contract documentation complete, pending independent review and approval.
 
 ---
 
@@ -537,7 +540,7 @@ The following documents have been created and are ready for consumption:
 
 ✅ **Authority**: Clear and unambiguous  
 ✅ **Scope**: Frozen (in/out explicit)  
-✅ **Contract**: Complete and binding  
+✅ **Contract**: Documentation complete, binding upon approval  
 ✅ **Documentation**: Complete (contract documented, test matrix specified)  
 ⏳ **Review**: Pending (independent review in progress)  
 ⏳ **Implementation**: Blocked (awaiting review approval)  

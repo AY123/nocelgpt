@@ -908,7 +908,7 @@ assert identity == restored  # Value equality
 
 ### 9.4 Storage Representation
 
-**Design Decision**: Store original (raw) form only.
+**Design Decision**: Store display values (trimmed of outer whitespace).
 
 **JSON Representation**:
 ```json
@@ -919,6 +919,11 @@ assert identity == restored  # Value equality
 }
 ```
 
+**Storage Semantics**:
+- Input values are trimmed via `str.strip()` before storage
+- Stored values are display-ready (outer whitespace removed)
+- Lookup normalization computed on-demand (not persisted)
+
 **Lookup Process**: Normalize at query time (deterministic, no storage duplication).
 
 **Rationale**:
@@ -926,7 +931,7 @@ assert identity == restored  # Value equality
 - No field duplication
 - Normalized keys computed on-demand
 
-**V2-005 Scope**: Raw storage. Optimization (e.g., indexed normalized keys) deferred to V2-009.
+**V2-005 Scope**: Trimmed display values stored. Optimization (e.g., indexed normalized keys) deferred to V2-009.
 
 ---
 
