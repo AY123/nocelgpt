@@ -1,0 +1,515 @@
+{
+  "record_type": "remote_delivery_observation",
+  "schema_version": "1.0",
+  "query_started_at": "2026-10-04T00:15:53Z",
+  "queried_at": "2026-10-04T00:20:02Z",
+  "source": "LIVE_GITLAB_CONNECTOR",
+  "read_only": true,
+  "project": {
+    "status": "OBSERVED",
+    "id": 86656946,
+    "path_with_namespace": "ayitnovel/ainovelos",
+    "default_branch": "main",
+    "ci_config_path": "",
+    "only_allow_merge_if_pipeline_succeeds": true,
+    "allow_merge_on_skipped_pipeline": null,
+    "shared_runners_enabled": true,
+    "group_runners_enabled": true,
+    "public_jobs": true,
+    "ci_default_git_depth": 20,
+    "protect_merge_request_pipelines": true
+  },
+  "branch": {
+    "status": "OBSERVED",
+    "name": "dev_gpt",
+    "sha": "6ed09939bdc7715fd582338675cd0443777aac50",
+    "protected": false,
+    "local_candidate_revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+    "matches_local_candidate": true
+  },
+  "account_metadata": [
+    {
+      "role": "Owner",
+      "link_id": "link_6ab68273792081919f712c6ddd9da0d4",
+      "group_access_level": 50,
+      "dev_gpt_can_push": true,
+      "main_can_push": true
+    },
+    {
+      "role": "Developer",
+      "link_id": "link_6ab7c42c2aec8191967fa6e3e692824a",
+      "group_access_level": 30,
+      "dev_gpt_can_push": true,
+      "main_can_push": false
+    }
+  ],
+  "account_results_consistent": true,
+  "pipelines": {
+    "status": "OBSERVED",
+    "ref": "dev_gpt",
+    "total": 1,
+    "pagination_complete": true,
+    "list": [
+      {
+        "id": 2909931436,
+        "sha": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "ref": "dev_gpt",
+        "status": "failed",
+        "source": "push",
+        "created_at": "2026-10-03T23:44:37.995Z",
+        "updated_at": "2026-10-03T23:50:10.715Z",
+        "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2909931436"
+      }
+    ]
+  },
+  "latest_pipeline": {
+    "status": "OBSERVED",
+    "id": 2909931436,
+    "iid": 104,
+    "project_id": 86656946,
+    "sha": "6ed09939bdc7715fd582338675cd0443777aac50",
+    "ref": "dev_gpt",
+    "pipeline_status": "failed",
+    "source": "push",
+    "yaml_errors_present": false,
+    "started_at": "2026-10-03T23:44:39.226Z",
+    "finished_at": "2026-10-03T23:50:10.705Z",
+    "duration_seconds": 328,
+    "queued_seconds": 1,
+    "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2909931436"
+  },
+  "jobs": {
+    "status": "OBSERVED",
+    "include_retried": true,
+    "total": 6,
+    "pagination_complete": true,
+    "list": [
+      {
+        "id": 16916847415,
+        "name": "secret_dependency",
+        "status": "skipped",
+        "stage": "security",
+        "allow_failure": false,
+        "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "pipeline_id": 2909931436,
+        "failure_reason": null,
+        "runner_id": null,
+        "started_at": null,
+        "finished_at": null,
+        "erased_at": null,
+        "artifact_metadata": [],
+        "artifact_bytes_status": "NOT_FETCHED",
+        "trace": {
+          "status": "NOT_RUN",
+          "raw_trace_saved": false,
+          "raw_trace_output": false
+        }
+      },
+      {
+        "id": 16916847414,
+        "name": "postgres_env",
+        "status": "success",
+        "stage": "test",
+        "allow_failure": false,
+        "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "pipeline_id": 2909931436,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "started_at": "2026-10-03T23:46:57.298Z",
+        "finished_at": "2026-10-03T23:47:44.310Z",
+        "erased_at": null,
+        "artifact_metadata": [
+          {
+            "file_type": "archive",
+            "size": 2273,
+            "filename": "artifacts.zip"
+          },
+          {
+            "file_type": "metadata",
+            "size": 288,
+            "filename": "metadata.gz"
+          },
+          {
+            "file_type": "trace",
+            "size": 16449,
+            "filename": "job.log"
+          },
+          {
+            "file_type": "junit",
+            "size": 320,
+            "filename": "junit.xml.gz"
+          }
+        ],
+        "artifact_bytes_status": "NOT_FETCHED",
+        "trace": {
+          "status": "READABLE",
+          "bytes": 16449,
+          "listed_trace_bytes": 16449,
+          "requested_byte_limit": 50000,
+          "complete_byte_count_matches_listing": true,
+          "gate_start": [
+            {
+              "job_name": "postgres_env",
+              "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4"
+            }
+          ],
+          "command_exits": [
+            {
+              "command": 1,
+              "exit_code": 0
+            }
+          ],
+          "gate_end": [
+            {
+              "job_name": "postgres_env",
+              "status": "PASS"
+            }
+          ],
+          "driver_matches_fixed_commit": true,
+          "raw_trace_saved": false,
+          "raw_trace_output": false
+        }
+      },
+      {
+        "id": 16916847413,
+        "name": "arch_fitness",
+        "status": "success",
+        "stage": "test",
+        "allow_failure": false,
+        "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "pipeline_id": 2909931436,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "started_at": "2026-10-03T23:46:57.302Z",
+        "finished_at": "2026-10-03T23:47:36.076Z",
+        "erased_at": null,
+        "artifact_metadata": [
+          {
+            "file_type": "archive",
+            "size": 116338,
+            "filename": "artifacts.zip"
+          },
+          {
+            "file_type": "metadata",
+            "size": 426,
+            "filename": "metadata.gz"
+          },
+          {
+            "file_type": "trace",
+            "size": 14617,
+            "filename": "job.log"
+          },
+          {
+            "file_type": "junit",
+            "size": 5234,
+            "filename": "junit.xml.gz"
+          }
+        ],
+        "artifact_bytes_status": "NOT_FETCHED",
+        "trace": {
+          "status": "READABLE",
+          "bytes": 14617,
+          "listed_trace_bytes": 14617,
+          "requested_byte_limit": 50000,
+          "complete_byte_count_matches_listing": true,
+          "gate_start": [
+            {
+              "job_name": "arch_fitness",
+              "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4"
+            }
+          ],
+          "command_exits": [
+            {
+              "command": 1,
+              "exit_code": 0
+            },
+            {
+              "command": 2,
+              "exit_code": 0
+            },
+            {
+              "command": 3,
+              "exit_code": 0
+            }
+          ],
+          "gate_end": [
+            {
+              "job_name": "arch_fitness",
+              "status": "PASS"
+            }
+          ],
+          "driver_matches_fixed_commit": true,
+          "raw_trace_saved": false,
+          "raw_trace_output": false
+        }
+      },
+      {
+        "id": 16916847412,
+        "name": "unit",
+        "status": "failed",
+        "stage": "test",
+        "allow_failure": false,
+        "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "pipeline_id": 2909931436,
+        "failure_reason": "script_failure",
+        "runner_id": 54907241,
+        "started_at": "2026-10-03T23:46:57.214Z",
+        "finished_at": "2026-10-03T23:50:09.174Z",
+        "erased_at": null,
+        "artifact_metadata": [
+          {
+            "file_type": "archive",
+            "size": 7351,
+            "filename": "artifacts.zip"
+          },
+          {
+            "file_type": "metadata",
+            "size": 317,
+            "filename": "metadata.gz"
+          },
+          {
+            "file_type": "trace",
+            "size": 14540,
+            "filename": "job.log"
+          },
+          {
+            "file_type": "junit",
+            "size": 4008,
+            "filename": "junit.xml.gz"
+          }
+        ],
+        "artifact_bytes_status": "NOT_FETCHED",
+        "trace": {
+          "status": "READABLE",
+          "bytes": 14540,
+          "listed_trace_bytes": 14540,
+          "requested_byte_limit": 50000,
+          "complete_byte_count_matches_listing": true,
+          "gate_start": [
+            {
+              "job_name": "unit",
+              "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4"
+            }
+          ],
+          "command_exits": [
+            {
+              "command": 1,
+              "exit_code": 0
+            },
+            {
+              "command": 2,
+              "exit_code": 1
+            }
+          ],
+          "gate_end": [
+            {
+              "job_name": "unit",
+              "status": "FAIL"
+            }
+          ],
+          "driver_matches_fixed_commit": true,
+          "raw_trace_saved": false,
+          "raw_trace_output": false
+        }
+      },
+      {
+        "id": 16916847411,
+        "name": "schema_contract",
+        "status": "success",
+        "stage": "validate",
+        "allow_failure": false,
+        "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "pipeline_id": 2909931436,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "started_at": "2026-10-03T23:44:38.914Z",
+        "finished_at": "2026-10-03T23:46:55.516Z",
+        "erased_at": null,
+        "artifact_metadata": [
+          {
+            "file_type": "archive",
+            "size": 32227,
+            "filename": "artifacts.zip"
+          },
+          {
+            "file_type": "metadata",
+            "size": 599,
+            "filename": "metadata.gz"
+          },
+          {
+            "file_type": "trace",
+            "size": 12894,
+            "filename": "job.log"
+          }
+        ],
+        "artifact_bytes_status": "NOT_FETCHED",
+        "trace": {
+          "status": "READABLE",
+          "bytes": 12894,
+          "listed_trace_bytes": 12894,
+          "requested_byte_limit": 50000,
+          "complete_byte_count_matches_listing": true,
+          "gate_start": [
+            {
+              "job_name": "schema_contract",
+              "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4"
+            }
+          ],
+          "command_exits": [
+            {
+              "command": 1,
+              "exit_code": 0
+            }
+          ],
+          "gate_end": [
+            {
+              "job_name": "schema_contract",
+              "status": "PASS"
+            }
+          ],
+          "driver_matches_fixed_commit": true,
+          "raw_trace_saved": false,
+          "raw_trace_output": false
+        }
+      },
+      {
+        "id": 16916847410,
+        "name": "static",
+        "status": "success",
+        "stage": "validate",
+        "allow_failure": false,
+        "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+        "pipeline_id": 2909931436,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "started_at": "2026-10-03T23:44:38.867Z",
+        "finished_at": "2026-10-03T23:45:07.272Z",
+        "erased_at": null,
+        "artifact_metadata": [
+          {
+            "file_type": "archive",
+            "size": 3864,
+            "filename": "artifacts.zip"
+          },
+          {
+            "file_type": "metadata",
+            "size": 324,
+            "filename": "metadata.gz"
+          },
+          {
+            "file_type": "trace",
+            "size": 13038,
+            "filename": "job.log"
+          }
+        ],
+        "artifact_bytes_status": "NOT_FETCHED",
+        "trace": {
+          "status": "READABLE",
+          "bytes": 13038,
+          "listed_trace_bytes": 13038,
+          "requested_byte_limit": 50000,
+          "complete_byte_count_matches_listing": true,
+          "gate_start": [
+            {
+              "job_name": "static",
+              "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4"
+            }
+          ],
+          "command_exits": [
+            {
+              "command": 1,
+              "exit_code": 0
+            },
+            {
+              "command": 2,
+              "exit_code": 0
+            },
+            {
+              "command": 3,
+              "exit_code": 0
+            },
+            {
+              "command": 4,
+              "exit_code": 0
+            },
+            {
+              "command": 5,
+              "exit_code": 0
+            }
+          ],
+          "gate_end": [
+            {
+              "job_name": "static",
+              "status": "PASS"
+            }
+          ],
+          "driver_matches_fixed_commit": true,
+          "raw_trace_saved": false,
+          "raw_trace_output": false
+        }
+      }
+    ]
+  },
+  "protected_branches": {
+    "status": "PARTIAL_METADATA",
+    "observed": [
+      {
+        "name": "main",
+        "protected": true
+      },
+      {
+        "name": "dev_gpt",
+        "protected": false
+      }
+    ],
+    "complete_rule_list": "UNKNOWN",
+    "push_merge_access_levels": "UNKNOWN",
+    "allow_force_push": "UNKNOWN",
+    "reason": "Available connector tools have no protected-branches/rules endpoint; no dev_cc source or branch content was read."
+  },
+  "runners": {
+    "status": "PARTIAL_METADATA",
+    "source": "latest executed job details",
+    "observed": [
+      {
+        "id": 54907241,
+        "runner_type": "instance_type",
+        "is_shared": true,
+        "active": true,
+        "paused": false,
+        "manager_platform": "linux",
+        "manager_architecture": "amd64"
+      }
+    ],
+    "complete_registry": "UNKNOWN",
+    "access_level": "UNKNOWN",
+    "protected_runner": "UNKNOWN",
+    "reason": "Job responses do not expose access_level; available connector tools have no runner-details/registry endpoint."
+  },
+  "trace_access": {
+    "owner_executed_jobs": "READABLE",
+    "developer_unit_job": "READABLE",
+    "owner_developer_unit_trace_identical": true,
+    "unit_failed_command": 2,
+    "unit_failed_command_exit_code": 1,
+    "unit_exact_test_failure": "UNKNOWN_UNTIL_JOB_ARTIFACT_LOG_IS_READ"
+  },
+  "snapshot_recheck": {
+    "status": "UNCHANGED",
+    "branch_sha_unchanged": true,
+    "pipeline_list_unchanged": true,
+    "job_ids_statuses_unchanged": true
+  },
+  "verification_status": "NOT_CERTIFIED",
+  "source_status": "PARTIALLY_OBSERVED_REMOTE_FAILURE",
+  "trust_status": "NOT_VERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false,
+  "limitations": [
+    "Pipeline failed and SECRET_DEPENDENCY was skipped; six gates have not passed.",
+    "Job artifact contents/receipts/log hashes were not downloaded or validated.",
+    "Branch protection metadata and can_push fields do not prove AT-07/08 permission controls.",
+    "Original traces stayed in tool memory; only allowlisted gate markers and numeric exit metadata were extracted.",
+    "No pipeline creation, retry, push, fetch, permission change or secret invocation occurred."
+  ]
+}

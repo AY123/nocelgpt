@@ -1,0 +1,450 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-004",
+  "opening_revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+  "packet_ref": "plan/validation/execution/V2-004/execution-packet.yaml",
+  "allowed_paths": [
+    ".gitlab-ci.yml",
+    "security-policy.yaml",
+    ".gitleaks.toml",
+    "pyproject.toml",
+    "uv.lock",
+    "scripts/ci/",
+    "tests/contract/test_delivery_gates.py",
+    "tests/integration/test_postgres_ci_service.py",
+    "README.md",
+    "AGENTS.md",
+    "docs/V2-004_IMPLEMENTATION_REPORT.md",
+    "docs/reviews/2026-10-03-report-assessment/",
+    "plan/README.md",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/machine/ci-gates.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/generated/",
+    "plan/validation/execution/V2-004/",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "plan/validation/execution/V2-003/followup/execution-packet.yaml",
+    ".mypy_cache/",
+    ".ruff_cache/"
+  ],
+  "pre_existing": {
+    "审核报告.txt": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "355ebb4a3fa311f8a66e8b214c7af6b65a6a692d",
+        "sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+        "kind": "file"
+      },
+      "index": {
+        "mode": "100644",
+        "oid": "2bb8fdecc2a44cac115ec1d0de225e802cba5353"
+      },
+      "task_edit_authorized": false
+    },
+    "V2-003任务prompt.txt": {
+      "worktree": null,
+      "index": {
+        "mode": "100644",
+        "oid": "72a56964483203c8bd8a59aae772375dd1a06e97"
+      },
+      "task_edit_authorized": false
+    },
+    "V2-004任务prompt.txt": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "90e5954491c44ac49fcbffe165ea6ef3ffb25402",
+        "sha256": "dc95bccfa2cb6f75b98470c2a582bba3879b2a26a5245c1cfb573d2a2c0a4a38",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".claude/settings.local.json": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "27673d29a4486046038fa5b74888968537064a4a",
+        "sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": false
+    },
+    ".mypy_cache/.gitignore": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "f7208da358e6ca5f313f75fa765c7a677bf9d8da",
+        "sha256": "6a69da670d11530d37f0f0cfdc7bed30b78ea6434e24f7a73208b982e29d322c",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".mypy_cache/3.12/cache.db": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "8c06a7d9998a2248b49cce3c1179a2bcff5587a1",
+        "sha256": "6ff3e6829f280d9bbe83a8bedf1f14800bfaa2cfd666b6ab8b439c396a3098af",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".mypy_cache/CACHEDIR.TAG": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "a001cd238467894c46ce678ea349f0df86f4d27e",
+        "sha256": "f1c13afc555358c9033b0f1f30aaa177fe88bda40f4b8a24598400d547876adc",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/.gitignore": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "b100327770759f0efb7859fe78aca4801d69ed61",
+        "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/10417621801813473352": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "4d6eaddbf267b4d16a3da759c41abed06280fa30",
+        "sha256": "145998b16e50a3f32fc415069f295a1985ada8542096820a12aef04e436484eb",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/10741484265304906432": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "d0d79c6744f5a82eb60cdd4537647a92f5af7dc3",
+        "sha256": "cd452b09e0089b4f137d3062aa40c881bc25de16e025ed83d5ff75ee26b2f18f",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/11108012421718830363": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "cba6e038ee19e4b6a9d94dd313643a8d66b9fc6e",
+        "sha256": "8b749b5331ec49085c741eea148813c860b0b73f4c68991117b995e9d7eeb2c5",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/11886257862359367215": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "4a2f29d70bd9337e354ed8dac6506517098e4ba8",
+        "sha256": "cd0f7bab2ed74b3a1a581ad1e71534c2a5bf9a696db6279636a1aa90b7444251",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/12282497893086595631": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "8270062c64437fa4a91f6bf7564a0529e767638c",
+        "sha256": "4d3aa484e7391decda0bc0b8bf6852c762678495228a79106652dafecf0b63da",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/12808479074502042827": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "634a3abd8bd25aa753303033444a5f3b84e0878a",
+        "sha256": "6f93d7b7cc8bccad934d57cf2f71168f199caac8eb056d76882f88df99d6b352",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/1289053319362791746": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "d1dd5decb6a88bfe83e6b6a847b8e5de5aef5bf5",
+        "sha256": "6eedd845479e3fd4c4e4fc64e60b010cb140b89f76162bb59639f88351b0abd0",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/13056714302951847452": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "39748452f4ae908f477463363095ca76ea9b695a",
+        "sha256": "16dd049c520c99ba54a709455543955aca30216df26f05908f436bd00dd006dd",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/13148325495301770339": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "47ada63a980ff7e6b3e9fc79f81b8158772e5f7c",
+        "sha256": "b24d7cd572cfb06601904c8433a4f49b1265c877ec07558b3b23d9ad0f54c2f8",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/13302307240886945296": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "5ac28a52fc1cda8fb58ed4d47fe11591a46331d4",
+        "sha256": "f9a50dbbe4dc4a45cd0d47600fbdbd3af117ada977599822f2f2bdcd4780c701",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/13848888526301811239": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "8d5982016f3895f5ed7a7bc0d3a954f21ead86bc",
+        "sha256": "bd1364879ac5d2a637bf5b0afb88ffc74018ba7add9bd2b9bc2a2a236c6d9eac",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/13877278328354463655": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "b31ee5fe75393cf0ec845b71221838ef4f396677",
+        "sha256": "714361d1da455d4bbfa09b9877bb234f1682134b81b6cb6292dc992e1baf45a0",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/14057343153781895557": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "1433628607bc45639486f0f299d32126c6272e64",
+        "sha256": "02d37845aaa49d3ced5e7622091a31d94d7669566a4f34fc76fa31b94b65f597",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/15865860232782635180": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "5013c136c176987ca389721c1ecf1f39eee65a49",
+        "sha256": "47a6d2e7bc207f88f54e7af958b8debc39cbd4e2f263d30615acdf10c0d10a60",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/15916300167252620757": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "b724ae80350c871f3960ac60810667a2387bf5db",
+        "sha256": "d108bd6e28da3541ba2ddbce6ec9534ff32875b33f6be081f9be27085203897c",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/17684940595358575834": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "f773a0b0ee5edab7087d25b06cf628e0b406db0f",
+        "sha256": "6f0f957d663a7d3d592d1de517516272c898a4b783cd61c8d0a479a6c5d6515b",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/17846823409441908587": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "63ed59021b9207a4b815a2b9e58d5ac2101ef1d8",
+        "sha256": "cbdf54ed8361e081b3ae6911d690ca882045410fb121b6821c9879880ed8be84",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/2081484057962727863": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "5624c622c61ec256d094232a221dd2fc9805d654",
+        "sha256": "6cdfaf7ae8abdd73b4284564f42ea99e3cff902f9630f038f054c8bc3038a511",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/2810076663079653525": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "1443f1b0fe96e9f51abbbb4306452b0803a44128",
+        "sha256": "d8dc702301611ef5f9284c2a92d6809170574361fa13d2fe15858dfe8beb9888",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/2862835371097959004": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "760a8dc6632d996b3459c4546073933f9b74064d",
+        "sha256": "7a034e0a3178fffabb74a6562c530b14903002420668fa987976b80ab93b1a78",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/3480378986590756246": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "615b04aea22ffaa91d66198968d46a752f8f3248",
+        "sha256": "38a5616f94e28a2428b0d7d34406a29e78371f3ab4729241626b034e4bdd385c",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/603533849042220900": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "89ec89fa4031cf5868f90cf9002c0728e9270280",
+        "sha256": "758a16646217a076588436a9fab890617f2244856f342c82af08bc35cbcbf625",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/6798283675010981388": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "e0f3b9fc4fb7aabb76a863a0b025bc28555cf8d7",
+        "sha256": "4182d690829f7e1a875ddbffebf4ea33d2decb56aeb037d3908d405e4997a8f6",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/8608686967974812163": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "ac862687d266f17b8308b522ad5e38ab4c2d4480",
+        "sha256": "ea5a95bcba20f4183beea27a91afdf76ac1d6765e7a23667a01d9245ca756f10",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/8983490051935027635": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "e57f723a96cf21657faa81e147bb10528b26ae70",
+        "sha256": "7840d4b754c7f380f608d0d832d817555bd55e7d7b37a514baa137a68648387b",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/9021910096072807015": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "bef22549314d8ca0aaed5e5a19d0c762bbcbbc53",
+        "sha256": "1b4914fff854f3c5f606a34e3915106221853e778d43fd399e9194165f2031a3",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/959113868420226254": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "12a57befacf4ff3f5603257f292efc6db5d49912",
+        "sha256": "239dfaf269d2554a248189dfe5517545055a7ed855df269f5ca78e1b69e24b42",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.16.9/967308886628406001": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "51a661518020ebd9e2673fccd8cb1488912d2e11",
+        "sha256": "6eed7631a13842a057c43c48f4b2732839b7bd3b1de350a019ecace9c3821472",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.3.5/10903926339352573898": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "8198b439d7951ecc5efe5c013c383ecd6b03d832",
+        "sha256": "1731b1571106e03cf9f0723c39737750bf8cf125de816d6f54bfe9a2cc925d32",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/0.3.5/7893816796303948972": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "5a850fe401cb0ff82ec84a07cde1ef97f4bd94de",
+        "sha256": "ea9d03ed0b9547e5049d456f0f868e85dccb351a8d2d36f60db210f9d8d40ca8",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    },
+    ".ruff_cache/CACHEDIR.TAG": {
+      "worktree": {
+        "mode": "100644",
+        "oid": "bc1ecb967a482524e7736038de0df6e08f9ee452",
+        "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae",
+        "kind": "file"
+      },
+      "index": null,
+      "task_edit_authorized": true
+    }
+  },
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    ".gitleaks.toml",
+    "security-policy.yaml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-004/followup-20261004/authorization.md",
+    "sha256": "54682d1a7cca17d7b79c508c244d4dfc7b22ee9758921c7fef43a4431a587d41"
+  },
+  "limitations": [
+    "Local Git pin does not authenticate remote authority",
+    "No existing tests/requirements will be weakened; only task metadata and current tool integration may change with recorded review"
+  ]
+}

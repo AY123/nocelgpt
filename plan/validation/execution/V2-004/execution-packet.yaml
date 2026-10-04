@@ -2,18 +2,18 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-004
 plan_version: 1.3.0
-repository_revision: 882d0cdf833464dd6a5ebfac3a542204c32cd325
-worktree_dirty: false
+repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
+worktree_dirty: true
 plan_manifest_sha256: 267f7c74009337acdcc8dfe82d00cb7cb883427f5b40a718f212ce6f256238f6
 environment:
-  fingerprint: Clean committed checkout replay; local macOS or CI Linux exact Python/uv
-    checked by driver
+  fingerprint: Resumed macOS primary checkout; preserved user modifications; CI Linux
+    evidence examined separately
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: Candidate clean-checkout context; GitLab source and permission remain
-    unverified
+  ci_context: 'Actual pipeline 2909931436 at 6ed09939: four success, UNIT failed,
+    SECRET_DEPENDENCY skipped; not accepted'
 implementer: Codex primary operator
 verifier: Same operator with parallel read-only analysis; no independent personnel
   acceptance
@@ -22,7 +22,7 @@ scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six manda
   CI gates, locked scanners/tools, real subprocess receipts, current-revision online
   provenance verification and local positive/negative controls. No P1, paid calls
   or permission expansion.'
-action: IMPLEMENT
+action: PREPARE
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
   ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
@@ -107,12 +107,13 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: '2026-10-03T15:43:09Z fresh read using Owner and Developer accounts agrees:
-    remote dev_gpt remains opening SHA 882d0cdf, zero pipelines, unprotected, successful-pipeline
-    merge setting true, ci_config_path empty. Local candidate has not run remotely.'
+  statement: 2026-10-04 fresh Owner and Developer reads agree dev_gpt equals 6ed09939;
+    pipeline 2909931436 has four successful jobs, unit failure and security skipped.
+    dev_gpt remains unprotected; main protection metadata alone is not a permission
+    test.
   sources:
-  - ref: validation/execution/V2-004/remote-final-observation.json
-    sha256: 7ad30028a1c482628e0493fc8106d284d635651123c8f67c5988f74a2e614bcb
+  - ref: validation/execution/V2-004/followup-20261004/remote-observation.json
+    sha256: 8498c6003a35e7e4fff3149cbfa5331c322f535e6f606a859bdcdf311b0e6ef7
   blocks_actions: []
   verification_plan: Recheck online after a real candidate pipeline; do not claim
     CI/permission acceptance from this snapshot.
@@ -163,9 +164,12 @@ review_notes:
   and immutable input snapshots only.
 - '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
   preserved; historical evidence and task status unchanged.'
+- '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason
+  in fixed authorization; previous packet/context retained. Criteria and task scope
+  unchanged.'
 handoff:
-  current_step: 'Candidate local clean replay complete: five gates PASS, SECRET_DEPENDENCY
-    FAIL; remote source/permissions NOT_VERIFIED; V2-004 IN_PROGRESS, no P1'
+  current_step: 'PREPARE: current input hashes PASS; actual failed pipeline identified;
+    fresh preserved user inventory before corrective implementation'
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -177,23 +181,13 @@ handoff:
   - 'Candidate 04295459 clean locked replay: 360 pytest controls no skip, static/governance
     pass; exact receipts/artifact hashes retained'
   pending_items:
-  - 'Historical three credential-shaped values: revocation/rotation record still UNKNOWN;
-    secret gate remains FAIL'
-  - Trusted remote CI and permission positive/negative controls not performed; zero
-    pipeline budget/spend assumed
-  - Before local IMPLEMENT restore local scope/review while retaining current hashes;
-    use clean scope only in truly committed checkout
-  next_action: IMPLEMENT
+  - Freeze resumed local/clean CI scope
+  - Read actual UNIT artifact and repair confirmed Linux failure
+  - Strengthen exact command/artifact comparison and job timeouts
+  - Historical credential disposition and actual permission controls remain unresolved
+  next_action: PREPARE
   last_check:
-    status: FAIL
-    artifacts:
-    - ref: validation/execution/V2-004/postcommit/summary.json
-      sha256: ae4a0d9db455fb5e80591ff093407b3cdade15d6f928b8ecafdfea9a1fa914ce
-    - ref: validation/execution/V2-004/remote-final-observation.json
-      sha256: 7ad30028a1c482628e0493fc8106d284d635651123c8f67c5988f74a2e614bcb
+    status: NOT_RUN
+    artifacts: []
     missing_artifact_reason: null
-change_review:
-  scope_revision: 4f813a219254f24be851419a172bc60d74f255a1
-  scope_ref: plan/validation/execution/V2-004/scope-baseline-ci-final.json
-  review_revision: 615efb0e40709d46220b83d36462d06a2c3c0b4c
-  review_ref: plan/validation/execution/V2-004/change-dispositions-ci.json
+change_review: null
