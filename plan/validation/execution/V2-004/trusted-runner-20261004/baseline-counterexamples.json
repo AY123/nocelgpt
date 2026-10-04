@@ -1,0 +1,48 @@
+{
+  "record_type": "local_synthetic_baseline_comparison",
+  "baseline_revision": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
+  "status": "PASS",
+  "remote_permission_evidence": false,
+  "cases": [
+    {
+      "case": "instance_runner",
+      "baseline_trust": "METADATA_MATCHED",
+      "current_trust": "UNVERIFIED",
+      "source_preserved": true,
+      "actual_permissions_still_unknown": true,
+      "acceptance_eligible": false
+    },
+    {
+      "case": "wrong_project",
+      "baseline_trust": "METADATA_MATCHED",
+      "current_trust": "UNVERIFIED",
+      "source_preserved": true,
+      "actual_permissions_still_unknown": true,
+      "acceptance_eligible": false
+    },
+    {
+      "case": "not_locked",
+      "baseline_trust": "METADATA_MATCHED",
+      "current_trust": "UNVERIFIED",
+      "source_preserved": true,
+      "actual_permissions_still_unknown": true,
+      "acceptance_eligible": false
+    },
+    {
+      "case": "untagged_enabled",
+      "baseline_trust": "METADATA_MATCHED",
+      "current_trust": "UNVERIFIED",
+      "source_preserved": true,
+      "actual_permissions_still_unknown": true,
+      "acceptance_eligible": false
+    },
+    {
+      "case": "missing_runner_tag",
+      "baseline_trust": "METADATA_MATCHED",
+      "current_trust": "UNVERIFIED",
+      "source_preserved": true,
+      "actual_permissions_still_unknown": true,
+      "acceptance_eligible": false
+    }
+  ]
+}
