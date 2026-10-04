@@ -108,7 +108,7 @@ V2-005 task refinement work is complete and under final review. Design decisions
 **Purpose**: Complete test specification
 
 **Key Content**:
-- **38 Test Cases** (TC-005-001 through TC-005-038)
+- **51 Test Cases** (TC-005-001 through TC-005-051; original 38 + revision 13)
 - **10 Test Groups**: Input validation, identity stability, rename, alias management, resolution logic, project isolation, normalization, determinism, serialization, anti-patterns
 - **Acceptance Criteria Mapping**: All 10 AC scenarios covered
 - **Negative Scenario Mapping**: All 6 NS scenarios covered

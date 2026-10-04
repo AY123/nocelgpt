@@ -203,7 +203,7 @@
 **Verify**: 
 - `from anovel.domain.identity import EntityId` works
 - Type hints pass mypy --strict
-- All 38 test cases pass
+- All 51 test cases pass
 
 ---
 
@@ -327,7 +327,7 @@ def assert_immutable(obj):
 - No side effects
 
 ### Performance
-- All 38 tests should complete in <1 second
+- All 51 tests should complete in <1 second
 - No slow tests (this is pure domain logic)
 
 ---

@@ -1,3 +1,11 @@
+HISTORICAL — SUPERSEDED — NON-NORMATIVE
+
+**Applicable baseline**: Historical V2-005 remediation phase  
+**Superseded by**: H2/H3/H3.1 convergence evidence  
+**Warning**: This document must not be used as current implementation, contract approval, authorization, or task status.
+
+---
+
 # V2-005 Contract Remediation - Implementation Record
 
 **Date**: 2026-10-03  
