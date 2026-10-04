@@ -166,8 +166,11 @@ def normalize_for_lookup(s: str) -> str:
     """
     Normalize string for alias lookup.
     
-    Strips whitespace, collapses spaces, and lowercases ASCII strings.
-    Chinese and other non-ASCII strings preserve case.
+    Steps:
+    1. Strip outer whitespace (ASCII and full-width U+3000)
+    2. Delete all internal full-width spaces: s.replace('　', '')
+    3. Collapse internal ASCII spaces: ' '.join(s.split())
+    4. Lowercase ASCII only: s.lower() if s.isascii() else s
     
     Args:
         s: Input string to normalize
@@ -178,12 +181,14 @@ def normalize_for_lookup(s: str) -> str:
     Example:
         >>> normalize_for_lookup("  John  ")
         'john'
-        >>> normalize_for_lookup("张　三")
-        '张三'
+        >>> normalize_for_lookup("李　明")
+        '李明'
     """
-    # Strip ASCII and full-width spaces
+    # Strip outer whitespace (ASCII and full-width)
     s = s.strip().strip('　')
-    # Collapse internal spaces
+    # Delete all internal full-width spaces
+    s = s.replace('　', '')
+    # Collapse internal ASCII spaces
     s = ' '.join(s.split())
     # ASCII lowercase only
     return s.lower() if s.isascii() else s
@@ -193,7 +198,7 @@ def normalize_for_lookup(s: str) -> str:
 - `_generate_entity_id()` returns unique IDs
 - `normalize_for_lookup()` handles all contract cases
 - Tests verify normalization (TC-005-023 through TC-005-026)
-- No external dependency failures (ULID optional, UUID fallback works)
+- No prohibited imports (standard library uuid acceptable)
 
 **Tests**: 
 - `test_normalize_whitespace`
@@ -674,11 +679,11 @@ After each step, verify:
 
 ## Risk Mitigation
 
-### R1: ULID Library Unavailable
+### R1: No External Dependencies Required
 
-**Mitigation**: UUID fallback implemented in Step 3.
+**Mitigation**: UUID v4 from standard library only.
 
-**Verification**: Test both paths (mock ImportError for ULID).
+**Verification**: No external ID generation libraries needed.
 
 ### R2: Test Failures Due to Non-Determinism
 

@@ -136,7 +136,7 @@ V2-005 task refinement work is complete and under final review. Design decisions
   8. Create schema and complete tests
 - **Dependencies**: Clear step dependencies
 - **Exit Criteria**: Per-step verification checklist
-- **Risk Mitigation**: ULID fallback, determinism verification, architecture boundary enforcement
+- **Risk Mitigation**: Standard library usage, determinism verification, architecture boundary enforcement
 - **Rollback Strategy**: Defined failure handling
 
 **Conclusion**: Clear execution plan with atomic, verifiable steps.
@@ -150,13 +150,12 @@ V2-005 task refinement work is complete and under final review. Design decisions
 **Key Assessments**:
 - ✅ **V2_005_AUTHORITY_CLEAR**: YES
 - ✅ **V2_005_SCOPE_CLEAR**: YES
-- ✅ **V2_005_CONTRACT_FROZEN**: YES
 - ✅ **V2_005_REFINEMENT_WORK**: COMPLETE
 - ⏳ **V2_005_CONTRACT_APPROVAL**: PENDING_REVIEW
 - ⏳ **V2_005_IMPLEMENTATION_READY**: BLOCKED_ON_APPROVAL
 - ❌ **V2_005_ADR_REQUIRED**: NO (local design, reversible, standard patterns)
 
-**Conclusion**: All gates passed. Zero blockers. Ready for immediate implementation.
+**Conclusion**: All gates evaluated. Contract documentation complete, pending final review approval.
 
 ---
 
@@ -177,10 +176,10 @@ V2-005 task refinement work is complete and under final review. Design decisions
 **Rationale**: Consistent semantics; prevents hidden ordering  
 **Trade-off**: None
 
-### D-4: ULID for EntityId ✅ ADOPTED
-**Decision**: Use ULID (or UUID v4 fallback) for entity_id format  
-**Rationale**: Opaque, sortable, collision-resistant  
-**Trade-off**: None (UUID fallback if ULID unavailable)
+### D-4: UUID v4 for EntityId ✅ ADOPTED
+**Decision**: Use UUID v4 (RFC 4122) for entity_id format  
+**Rationale**: Standard library support, format stability, no external dependencies  
+**Trade-off**: None
 
 ### D-5: ProjectId Defined in V2-005 ✅ ADOPTED
 **Decision**: V2-005 defines `ProjectId = NewType('ProjectId', str)`  
@@ -215,10 +214,10 @@ V2-005 task refinement work is complete and under final review. Design decisions
 
 | Risk | Mitigation | Status |
 |------|------------|--------|
-| R-1: ULID unavailable | UUID fallback | ✅ Mitigated |
+| R-1: ID format decision | UUID v4 standard choice | ✅ Resolved |
 | R-2: Normalization creep | Strict scope limit | ✅ Mitigated |
 | R-3: Ambiguity UX | Not V2-005 responsibility | ✅ Clarified |
-| R-4: ID format debate | Simple boring choice (ULID) | ✅ Resolved |
+| R-4: ID format implementation | Standard library uuid.uuid4() | ✅ Resolved |
 
 ---
 
@@ -410,7 +409,7 @@ Files:
 6. `V2-005_DECISION_GATES.md`
 7. `V2-005_REFINEMENT_SUMMARY.md` (this document)
 
-**Status**: All documents complete and frozen.
+**Status**: Contract documentation complete, pending approval.
 
 ---
 
