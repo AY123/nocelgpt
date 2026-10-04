@@ -478,6 +478,7 @@ def verify_job(
         "gate": REQUIRED_JOBS[name],
         "job_id": job_id,
         "runner_id": runner_id,
+        "tag_list": job.get("tag_list"),
         "status": "success",
         "trace": {"storage_ref": trace_ref, "sha256": digest(trace)},
         "receipt": {"storage_ref": stored_receipt, "sha256": digest(receipt_bytes)},
@@ -499,9 +500,13 @@ def verify_trust_metadata(
     trust = mapping(policy.get("trusted_execution", {}), "trusted_execution")
     runners = items(trust.get("runner_ids", []), "trusted runner IDs")
     if not runners or any(
-        not isinstance(value, int) or isinstance(value, bool) for value in runners
+        not isinstance(value, int) or isinstance(value, bool) or value < 1
+        for value in runners
     ):
         problems.append("Trusted runner IDs are not configured")
+    configured_tag = trust.get("runner_tag")
+    if not isinstance(configured_tag, str) or not configured_tag.strip():
+        problems.append("Dedicated trusted runner tag is not configured")
     if trust.get("protected_ref") != ref:
         problems.append("Trusted protected ref is not configured for the tested ref")
     configured_path = trust.get("ci_config_path")
@@ -521,6 +526,17 @@ def verify_trust_metadata(
     if problems:
         return problems
     try:
+        for job in verified_jobs:
+            tags = [
+                string(value, "job tag")
+                for value in items(job.get("tag_list"), "verified job tags")
+            ]
+            if any(not tag.strip() for tag in tags):
+                raise SourceError("Verified job tags contain a blank tag")
+            if configured_tag not in tags:
+                problems.append(
+                    "A gate does not require the dedicated trusted runner tag"
+                )
         protection = mapping(
             parse_json(
                 fetch(
@@ -558,6 +574,42 @@ def verify_trust_metadata(
             exact(runner, "id", runner_id, "runner metadata")
             if runner.get("access_level") != "ref_protected":
                 problems.append("Gate runner is not limited to protected refs")
+            if (
+                runner.get("runner_type") != "project_type"
+                or runner.get("is_shared") is not False
+            ):
+                problems.append("Gate runner is not a dedicated project runner")
+            if runner.get("locked") is not True:
+                problems.append("Gate runner is not locked to its project")
+            if runner.get("run_untagged") is not False:
+                problems.append(
+                    "Gate runner accepts untagged jobs or has unknown tag policy"
+                )
+            projects = [
+                integer(mapping(value, "runner project").get("id"), "runner project ID")
+                for value in items(runner.get("projects"), "runner projects")
+            ]
+            if projects != [PROJECT_ID]:
+                problems.append(
+                    "Gate runner is not bound exclusively to the expected project"
+                )
+            tags = [
+                string(value, "runner tag")
+                for value in items(runner.get("tag_list"), "runner tags")
+            ]
+            if any(not tag.strip() for tag in tags):
+                raise SourceError("Runner tags contain a blank tag")
+            if configured_tag not in tags:
+                problems.append(
+                    "Gate runner does not carry the dedicated trusted runner tag"
+                )
+            for job in verified_jobs:
+                if job.get("runner_id") == runner_id and not set(
+                    items(job.get("tag_list"), "verified job tags")
+                ).issubset(tags):
+                    problems.append(
+                        "Gate runner does not satisfy all tags required by its job"
+                    )
     except (SourceError, SourceUnavailable) as error:
         problems.append(str(error))
     return problems

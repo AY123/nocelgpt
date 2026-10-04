@@ -1,37 +1,29 @@
 {
   "record_type": "execution_context_selection",
-  "source_revision": "938300f7f4b968dfa81669385707e1219f3bc894",
-  "active_context": "CLEAN_COMMITTED_CHECKOUT",
+  "source_revision": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
+  "active_context": "CLEAN_COMMITTED_LOCAL_EXACT_PIN",
   "scope_revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
-  "local_packet_ref": "plan/validation/execution/V2-004/security-delta-20261004/local-execution-packet.yaml",
-  "local_entry_ref": "plan/validation/execution/V2-004/security-delta-20261004/local-entry.json.gz",
-  "local_entry_sha256": "1134330255b33f7b32b07699e236c16ced15c296f285e22f30a21b154bbfc2da",
-  "review_revision": "938300f7f4b968dfa81669385707e1219f3bc894",
-  "recovery": "Retain current normative input hashes, opening revision and allowed paths; rebind only worktree_dirty/environment and scope/review from followup local packet before primary local IMPLEMENT. Recheck actual user identity and entry. Never replace current packet wholesale or delete user files. Clean scope only consumes truly committed checkout.",
-  "last_result": "Observed e927 pipeline2910441607 five gates/415 tests PASS, mandatory security45 FAIL. All45 current scan identities reconciled; original43 disposition objects preserved; added2 public-identifier requests, total38 unapproved/unapplied,7 owner-required,45 OPEN. Local IMPLEMENT entry PASS, no task/phase acceptance.",
-  "closure_handoff": {
-    "ref": "plan/validation/execution/V2-004/security-closure-20261004/handoff.json",
-    "sha256": "f2f485495741806be0ed34ede952813c8c822eee70f37aff811af58b18265fad"
-  },
-  "local_entry_encoding": "gzip",
-  "local_entry_uncompressed_sha256": "0cf7252af2a097292d7e7e0b54296fa7a1023a642485a05edcf08ee345b27ce0",
-  "authority_controls": {
-    "ref": "plan/validation/execution/V2-004/authority-controls-20261004/README.md",
-    "repository_write_record_sha256": "872b3435f0b0088a146cdb36083553b823b5e3309ca54249e88d67e192b09699",
-    "pipeline_variable_record_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
-    "acceptance_eligible": false
-  },
-  "local_packet_sha256": "239cbbbc901a8d0e438fab05a11305eacc5aaa526ca026ffcf3491836f5e9f16",
-  "security_delta": {
-    "ref": "plan/validation/execution/V2-004/security-delta-20261004/README.md",
-    "observed_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
-    "pipeline_id": 2910441607,
-    "job_id": 16919376075,
+  "scope_ref": "plan/validation/execution/V2-004/followup-20261004/scope-ci-v3.json",
+  "review_revision": "b998576759cf530708fd914e805448d6871ad1ef",
+  "review_ref": "plan/validation/execution/V2-004/runner-exact-20261004/change-dispositions-ci.json",
+  "implementation_status": "IMPLEMENTED_PENDING_EXACT_REVISION_VALIDATION",
+  "last_result": "Fresh isolated focused72 PASS; full pre-pin and post-pin clean checks pending, no old dirty-worktree results consumed as PASS.",
+  "recovery": "Check actual clean checkout ancestry, fixed scope/review and all normative input hashes. Install an independent locked environment and generate all artifacts outside plan. Do not replace the primary local packet or user files with this clean-context packet. No remote mutation or task/security acceptance is authorized here.",
+  "security_baseline": {
+    "revision": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
+    "findings": 45,
+    "open": 45,
+    "pending_exception_requests": 38,
+    "owner_required": 7,
+    "approved": 0,
+    "applied": 0,
+    "closed": 0,
     "canonical_ref": "plan/validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json",
-    "canonical_sha256": "28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749",
-    "value_extraction_proof_ref": "plan/validation/execution/V2-004/security-delta-20261004/value-extraction-proof.json",
-    "value_extraction_proof_sha256": "07bcb30b29298b0b99f87d1c648385a9ba26cb434e330140d3364a7bc59fb3fb",
-    "prior_closure_handoff_is_historical": true,
-    "acceptance_eligible": false
-  }
+    "canonical_sha256": "28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749"
+  },
+  "remote_ci_for_patch": "NOT_RUN",
+  "real_protected_runner_execution": "NOT_VERIFIED",
+  "v2004_status": "IN_PROGRESS",
+  "p0_status": "NOT_VERIFIED",
+  "acceptance_eligible": false
 }

@@ -221,6 +221,7 @@ SOURCE_REVISION = "a" * 40
 SOURCE_DRIVER_HASH = "b" * 64
 SOURCE_LOCK_HASH = "d" * 64
 SOURCE_PIPELINE_ID = 91
+SOURCE_RUNNER_TAG = "anovel-protected-acceptance"
 SOURCE_PYTHON = "/builds/ayitnovel/ainovelos/.venv/bin/python"
 SOURCE_RESULT_PATHS = {
     "static": [],
@@ -673,11 +674,12 @@ def test_remote_client_rejects_arbitrary_origin_and_redirect_before_forwarding_c
         )
 
 
-def test_configured_protection_metadata_cannot_self_certify_permission_boundary():
+def trusted_source_fixture():
     policy, responses, _ = source_fixture()
     project = remote.PROJECT_ID
     policy["trusted_execution"] = {
         "runner_ids": [88],
+        "runner_tag": SOURCE_RUNNER_TAG,
         "ci_config_path": ".gitlab-ci.yml",
         "protected_ref": "dev_gpt",
     }
@@ -694,14 +696,291 @@ def test_configured_protection_metadata_cannot_self_certify_permission_boundary(
         }
     )
     responses["/runners/88"] = source_response(
-        {"id": 88, "access_level": "ref_protected"}
+        {
+            "id": 88,
+            "runner_type": "project_type",
+            "is_shared": False,
+            "locked": True,
+            "run_untagged": False,
+            "access_level": "ref_protected",
+            "projects": [{"id": project}],
+            "tag_list": [SOURCE_RUNNER_TAG],
+        }
     )
+    for job_id in range(101, 107):
+        source_mutate(
+            responses,
+            f"/projects/{project}/jobs/{job_id}",
+            lambda job: job.update(tag_list=[SOURCE_RUNNER_TAG]),
+        )
+    return policy, responses
+
+
+def test_configured_protection_metadata_cannot_self_certify_permission_boundary():
+    policy, responses = trusted_source_fixture()
     result = source_verify(policy, responses)[0]
     assert result["source_status"] == "PASS"
     assert result["trust_status"] == "METADATA_MATCHED"
     assert result["status"] == "UNVERIFIED"
     assert result["permission_status"] == "UNKNOWN"
     assert result["acceptance_eligible"] is False
+    assert all(job["tag_list"] == [SOURCE_RUNNER_TAG] for job in result["jobs"])
+
+
+def assert_trust_metadata_rejected(policy, responses):
+    result = source_verify(policy, responses)[0]
+    assert result["source_status"] == "PASS"
+    assert result["trust_status"] == "UNVERIFIED"
+    assert result["trust_issues"]
+    assert result["status"] == "UNVERIFIED"
+    assert result["permission_status"] == "UNKNOWN"
+    assert result["acceptance_eligible"] is False
+
+
+@pytest.mark.parametrize(
+    "field,value",
+    [
+        ("runner_type", "instance_type"),
+        ("runner_type", "group_type"),
+        ("runner_type", None),
+        ("is_shared", True),
+        ("is_shared", None),
+        ("is_shared", 0),
+        ("locked", False),
+        ("locked", None),
+        ("locked", 1),
+        ("run_untagged", True),
+        ("run_untagged", None),
+        ("run_untagged", 0),
+        ("access_level", "not_protected"),
+        ("access_level", None),
+        ("projects", []),
+        ("projects", None),
+        ("projects", {"id": remote.PROJECT_ID}),
+        ("projects", [{"id": remote.PROJECT_ID + 1}]),
+        ("projects", [{"id": remote.PROJECT_ID}, {"id": remote.PROJECT_ID + 1}]),
+        ("projects", [{"id": remote.PROJECT_ID}, {"id": remote.PROJECT_ID}]),
+        ("projects", [{"id": True}]),
+        ("projects", [{"id": str(remote.PROJECT_ID)}]),
+        ("projects", [{"id": float(remote.PROJECT_ID)}]),
+        ("projects", [{"id": 0}]),
+        ("projects", [{"id": -1}]),
+        ("projects", [{}]),
+        ("tag_list", []),
+        ("tag_list", None),
+        ("tag_list", SOURCE_RUNNER_TAG),
+        ("tag_list", ["unrelated-runner-tag"]),
+        ("tag_list", [SOURCE_RUNNER_TAG, ""]),
+        ("tag_list", [SOURCE_RUNNER_TAG, " "]),
+        ("tag_list", [SOURCE_RUNNER_TAG, 7]),
+    ],
+)
+def test_trusted_project_runner_rejects_wrong_or_malformed_metadata(field, value):
+    policy, responses = trusted_source_fixture()
+    source_mutate(
+        responses, "/runners/88", lambda record: record.update({field: value})
+    )
+    assert_trust_metadata_rejected(policy, responses)
+
+
+@pytest.mark.parametrize(
+    "field",
+    [
+        "runner_type",
+        "is_shared",
+        "locked",
+        "run_untagged",
+        "access_level",
+        "projects",
+        "tag_list",
+    ],
+)
+def test_trusted_project_runner_rejects_missing_metadata(field):
+    policy, responses = trusted_source_fixture()
+    source_mutate(responses, "/runners/88", lambda record: record.pop(field))
+    assert_trust_metadata_rejected(policy, responses)
+
+
+@pytest.mark.parametrize("value", [None, "", " ", [], True, 7])
+def test_trusted_project_runner_requires_fixed_policy_tag(value):
+    policy, responses = trusted_source_fixture()
+    policy["trusted_execution"]["runner_tag"] = value
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_trusted_project_runner_rejects_missing_policy_tag():
+    policy, responses = trusted_source_fixture()
+    del policy["trusted_execution"]["runner_tag"]
+    assert_trust_metadata_rejected(policy, responses)
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        None,
+        [],
+        SOURCE_RUNNER_TAG,
+        ["unrelated-job-tag"],
+        [SOURCE_RUNNER_TAG, ""],
+        [SOURCE_RUNNER_TAG, " "],
+        [SOURCE_RUNNER_TAG, True],
+    ],
+)
+def test_trusted_project_runner_rejects_job_without_valid_dedicated_tag(value):
+    policy, responses = trusted_source_fixture()
+    source_mutate(
+        responses,
+        f"/projects/{remote.PROJECT_ID}/jobs/101",
+        lambda job: job.update(tag_list=value),
+    )
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_trusted_project_runner_rejects_missing_job_tag():
+    policy, responses = trusted_source_fixture()
+    source_mutate(
+        responses,
+        f"/projects/{remote.PROJECT_ID}/jobs/101",
+        lambda job: job.pop("tag_list"),
+    )
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_trusted_project_runner_rejects_unreadable_runner_metadata():
+    policy, responses = trusted_source_fixture()
+    del responses["/runners/88"]
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_remote_source_keeps_missing_job_tags_unknown_without_source_failure():
+    policy, responses, _ = source_fixture()
+    result = source_verify(policy, responses)[0]
+    assert result["source_status"] == "PASS"
+    assert all(job["tag_list"] is None for job in result["jobs"])
+    assert result["trust_status"] == "UNVERIFIED"
+    assert result["permission_status"] == "UNKNOWN"
+    assert result["acceptance_eligible"] is False
+
+
+def test_trusted_project_runner_retains_additional_nonempty_job_and_runner_tags():
+    policy, responses = trusted_source_fixture()
+    tags = [SOURCE_RUNNER_TAG, "linux-arm64"]
+    source_mutate(responses, "/runners/88", lambda record: record.update(tag_list=tags))
+    source_mutate(
+        responses,
+        f"/projects/{remote.PROJECT_ID}/jobs/101",
+        lambda job: job.update(tag_list=tags),
+    )
+    result = source_verify(policy, responses)[0]
+    assert result["source_status"] == "PASS"
+    assert result["trust_status"] == "METADATA_MATCHED"
+    assert result["jobs"][0]["tag_list"] == tags
+    assert result["permission_status"] == "UNKNOWN"
+    assert result["acceptance_eligible"] is False
+
+
+@pytest.mark.parametrize("job_id", [101, 106])
+def test_trusted_project_runner_requires_all_job_tags_on_actual_runner(job_id):
+    policy, responses = trusted_source_fixture()
+    source_mutate(
+        responses,
+        f"/projects/{remote.PROJECT_ID}/jobs/{job_id}",
+        lambda job: job.update(tag_list=[SOURCE_RUNNER_TAG, "linux-arm64"]),
+    )
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_trusted_project_runner_accepts_tag_superset_and_different_order():
+    policy, responses = trusted_source_fixture()
+    source_mutate(
+        responses,
+        "/runners/88",
+        lambda record: record.update(
+            tag_list=["linux-arm64", SOURCE_RUNNER_TAG, "additional-runner-tag"]
+        ),
+    )
+    for job_id, tags in (
+        (101, [SOURCE_RUNNER_TAG, "linux-arm64"]),
+        (106, ["linux-arm64", SOURCE_RUNNER_TAG]),
+    ):
+        source_mutate(
+            responses,
+            f"/projects/{remote.PROJECT_ID}/jobs/{job_id}",
+            lambda job, tags=tags: job.update(tag_list=tags),
+        )
+    result = source_verify(policy, responses)[0]
+    assert result["source_status"] == "PASS"
+    assert result["trust_status"] == "METADATA_MATCHED"
+    assert result["status"] == "UNVERIFIED"
+    assert result["permission_status"] == "UNKNOWN"
+    assert result["acceptance_eligible"] is False
+    assert result["jobs"][0]["tag_list"] == [SOURCE_RUNNER_TAG, "linux-arm64"]
+    assert result["jobs"][-1]["tag_list"] == ["linux-arm64", SOURCE_RUNNER_TAG]
+
+
+def set_source_job_runner(responses, job_id, runner_id):
+    source_mutate(
+        responses,
+        f"/projects/{remote.PROJECT_ID}/jobs/{job_id}",
+        lambda job: job.update(runner={"id": runner_id}),
+    )
+    jobs_path = (
+        f"/projects/{remote.PROJECT_ID}/pipelines/{SOURCE_PIPELINE_ID}/jobs"
+        "?include_retried=true&per_page=100&page=1"
+    )
+    jobs = json.loads(responses[jobs_path].body)
+    for job in jobs:
+        if job["id"] == job_id:
+            job["runner"] = {"id": runner_id}
+    responses[jobs_path] = source_response(jobs)
+
+
+def test_trusted_project_runner_cannot_combine_tags_from_different_runners():
+    policy, responses = trusted_source_fixture()
+    policy["trusted_execution"]["runner_ids"] = [88, 89]
+    second_runner = json.loads(responses["/runners/88"].body)
+    second_runner.update(id=89, tag_list=[SOURCE_RUNNER_TAG, "linux-arm64"])
+    responses["/runners/89"] = source_response(second_runner)
+    set_source_job_runner(responses, 106, 89)
+    for job_id in (101, 106):
+        source_mutate(
+            responses,
+            f"/projects/{remote.PROJECT_ID}/jobs/{job_id}",
+            lambda job: job.update(tag_list=[SOURCE_RUNNER_TAG, "linux-arm64"]),
+        )
+    # Runner 89 covers its job's tags; runner 88 does not cover job 101.
+    # A union of both runners' tags would incorrectly accept this input.
+    assert_trust_metadata_rejected(policy, responses)
+
+
+@pytest.mark.parametrize(
+    "body",
+    [b'{"id":', b"\xff", b"[]", b"null", b'"runner metadata"'],
+    ids=["invalid-json", "invalid-utf8", "list", "null", "string"],
+)
+def test_trusted_project_runner_rejects_malformed_response(body):
+    policy, responses = trusted_source_fixture()
+    responses["/runners/88"] = remote.ApiResponse(body, {})
+    assert_trust_metadata_rejected(policy, responses)
+
+
+@pytest.mark.parametrize("runner_id", [89, True])
+def test_trusted_project_runner_rejects_wrong_response_identity(runner_id):
+    policy, responses = trusted_source_fixture()
+    source_mutate(responses, "/runners/88", lambda record: record.update(id=runner_id))
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_trusted_project_runner_rejects_missing_response_identity():
+    policy, responses = trusted_source_fixture()
+    source_mutate(responses, "/runners/88", lambda record: record.pop("id"))
+    assert_trust_metadata_rejected(policy, responses)
+
+
+def test_trusted_project_runner_rejects_actual_runner_outside_fixed_ids():
+    policy, responses = trusted_source_fixture()
+    set_source_job_runner(responses, 106, 89)
+    assert_trust_metadata_rejected(policy, responses)
 
 
 def test_cancelled_source_preserves_actual_pipeline_and_jobs_state():

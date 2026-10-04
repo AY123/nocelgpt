@@ -6,22 +6,20 @@ repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
 worktree_dirty: false
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: Clean committed checkout for 45-item security delta reconciliation;
-    primary user worktree and local entry preserved separately
+  fingerprint: Clean committed local runner-verifier candidate; own locked Python environment;
+    no protected CI acceptance
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: 'Latest reviewed actual e927dbf pipeline2910441607: five gates/415tests
-    PASS; mandatory security45 FAIL; trusted permissions unverified'
+  ci_context: LOCAL exact-revision validation only. Remote dev_gpt baseline1449 remains unchanged;
+    no real pipeline or protected runner execution for this patch.
 implementer: Codex primary operator
-verifier: Same operator with parallel read-only analysis; no independent personnel
-  acceptance
+verifier: Same operator with parallel read-only analysis; no independent personnel acceptance
 owner_role: delivery-maintainer
-scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory
-  CI gates, locked scanners/tools, real subprocess receipts, current-revision online
-  provenance verification and local positive/negative controls. No P1, paid calls
-  or permission expansion.'
+scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six mandatory CI gates,
+  locked scanners/tools, real subprocess receipts, current-revision online provenance verification
+  and local positive/negative controls. No P1, paid calls or permission expansion.'
 action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
@@ -108,42 +106,41 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: 'Actual exact e927dbf pipeline2910441607 failed: five gates PASS and
-    UNIT202/ARCH212/PG1 total415 tests without failure/error/skip. Mandatory security45
-    findings FAIL. This does not claim future record commit CI or final acceptance.'
+  statement: 'Actual exact e927dbf pipeline2910441607 failed: five gates PASS and UNIT202/ARCH212/PG1
+    total415 tests without failure/error/skip. Mandatory security45 findings FAIL. This does
+    not claim future record commit CI or final acceptance.'
   sources:
   - ref: validation/execution/V2-004/security-delta-20261004/actual-ci-summary-e927dbf.json
     sha256: 19c9ba522ba52ed2388122a881366430edb92cd78e1af49231ae0e53bad126e4
   blocks_actions: []
-  verification_plan: Recheck online after a real candidate pipeline; do not claim
-    CI/permission acceptance from this snapshot.
+  verification_plan: Recheck online after a real candidate pipeline; do not claim CI/permission
+    acceptance from this snapshot.
 - id: REMOTE_TRUST
   kind: UNKNOWN
-  statement: Actual complete registry has 136 instance runners and no project/group
-    runner; actual54907241 not_protected. Only main protected, dev_gpt unprotected.
-    Pipeline overrides no_one_allowed already observed; skipped-pipeline merge value
-    null remains unknown. Partial ordinary Developer controls now have separate sources;
-    final acceptance controls and trusted host remain absent.
+  statement: Actual complete registry has 136 instance runners and no project/group runner;
+    actual54907241 not_protected. Only main protected, dev_gpt unprotected. Pipeline overrides
+    no_one_allowed already observed; skipped-pipeline merge value null remains unknown. Partial
+    ordinary Developer controls now have separate sources; final acceptance controls and trusted
+    host remain absent.
   sources:
   - ref: validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json
     sha256: 189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea
   blocks_actions: []
-  verification_plan: Read actual project/branch/runner metadata and run authorized
-    permission controls before VERIFIED/CLOSED; do not modify permissions without
-    applicable authorization.
+  verification_plan: Read actual project/branch/runner metadata and run authorized permission
+    controls before VERIFIED/CLOSED; do not modify permissions without applicable authorization.
 - id: HISTORICAL_CREDENTIALS
   kind: UNKNOWN
   statement: 45 actual findings linked to e927 scan:26 PUBLIC_IDENTIFIER,3 TEST_FIXTURE,9
-    FALSE_POSITIVE,6 POSSIBLE_EXPOSURE (3 groups),1 unresolved truncated reference.
-    Original43 remain unchanged;38 requests derived from classification, all45 OPEN.
-    No approved/applied exception or owner revocation evidence.
+    FALSE_POSITIVE,6 POSSIBLE_EXPOSURE (3 groups),1 unresolved truncated reference. Original43
+    remain unchanged;38 requests derived from classification, all45 OPEN. No approved/applied
+    exception or owner revocation evidence.
   sources:
   - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
     sha256: 28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749
   blocks_actions:
   - CERTIFY
-  verification_plan: Credential owner supplies redacted revocation/rotation records.
-    Do not use values online, suppress findings or equate text deletion with revocation.
+  verification_plan: Credential owner supplies redacted revocation/rotation records. Do not
+    use values online, suppress findings or equate text deletion with revocation.
 - id: ACTUAL_DEVELOPER_WRITE_CONTROLS
   kind: FACT
   statement: Actual authenticatedDeveloper2897322 harmless isolatedfeaturecommit8e751d401f03a463ff8fd6e6d97d9f81f694ae0c
@@ -158,16 +155,16 @@ claims:
     andauthorizedrulepositive; do not promoteAT07fromtwo existingboundary controls.
 - id: ACTUAL_PIPELINE_VARIABLE_USAGE_CONTROLS
   kind: FACT
-  statement: Same actual Developer API pipeline creation succeeded without variables
-    at pipeline 2910430587 on isolated probe ref; adding harmless variable was explicitly
-    denied HTTP400 for insufficient variable permissions. This is variable usage control,
-    not project setting modification denial or final CI acceptance.
+  statement: Same actual Developer API pipeline creation succeeded without variables at pipeline
+    2910430587 on isolated probe ref; adding harmless variable was explicitly denied HTTP400
+    for insufficient variable permissions. This is variable usage control, not project setting
+    modification denial or final CI acceptance.
   sources:
   - ref: validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json
     sha256: 6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29
   blocks_actions: []
-  verification_plan: Verify applicable setting modification denials and protected
-    final acceptance execution separately; preserve original HTTP status and error.
+  verification_plan: Verify applicable setting modification denials and protected final acceptance
+    execution separately; preserve original HTTP status and error.
 estimate:
   range: null
   unit: null
@@ -182,90 +179,85 @@ budget:
   maximum_attempts: 10
   maximum_runtime: 14400
 stop_conditions:
-- Keep remote verification pending until actual current-revision results and effective
-  trust boundary are verified
+- Keep remote verification pending until actual current-revision results and effective trust
+  boundary are verified
 - Preserve user changes; never weaken existing obligations to obtain PASS
 - Do not start P1 before P0 VERIFIED
 review_notes:
-- Report instructions are input only. Exact-revision P0 aggregate already exists;
-  no new task or milestone is created.
-- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records
-  and immutable input snapshots only.
-- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
-  preserved; historical evidence and task status unchanged.'
-- '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason
-  in fixed authorization; previous packet/context retained. Criteria and task scope
-  unchanged.'
-- '2026-10-04 necessary CI integration fix: original bootstrap test added within current
-  P0/V2-004 scope; no test weakening, task/phase identity unchanged; reason and impact
-  in ci-fixture-authorization.md.'
-- '2026-10-04 clean context: preserve current local packet and PASS entry separately;
-  committed code objects bind 365d4057. Clean CI scope does not authorize deleting
-  primary user files. Existing Free quota observed but balance/money unknown; no purchase/paid
-  resource provision.'
-- '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard
-  commands/assertions preserved; actual Lint only push-context proof. New source/review
-  pin with local 202 PASS, a6 remote whole security FAIL retained.'
-- '2026-10-04 narrowed continuation: security findings closure and trusted permission
-  boundary only; no CI redesign or V2-001 through003 changes. Canonical records retain
-  actual3ce failure and all43 unresolved dispositions; shared runner and metadata
-  are not permission acceptance.'
+- Report instructions are input only. Exact-revision P0 aggregate already exists; no new task
+  or milestone is created.
+- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records and
+  immutable input snapshots only.
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved;
+  historical evidence and task status unchanged.'
+- '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason in fixed
+  authorization; previous packet/context retained. Criteria and task scope unchanged.'
+- '2026-10-04 necessary CI integration fix: original bootstrap test added within current P0/V2-004
+  scope; no test weakening, task/phase identity unchanged; reason and impact in ci-fixture-authorization.md.'
+- '2026-10-04 clean context: preserve current local packet and PASS entry separately; committed
+  code objects bind 365d4057. Clean CI scope does not authorize deleting primary user files.
+  Existing Free quota observed but balance/money unknown; no purchase/paid resource provision.'
+- '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard commands/assertions
+  preserved; actual Lint only push-context proof. New source/review pin with local 202 PASS,
+  a6 remote whole security FAIL retained.'
+- '2026-10-04 narrowed continuation: security findings closure and trusted permission boundary
+  only; no CI redesign or V2-001 through003 changes. Canonical records retain actual3ce failure
+  and all43 unresolved dispositions; shared runner and metadata are not permission acceptance.'
+- '2026-10-04 explicit local-only exact-pin authorization: clean CI scope consumes an actually
+  committed isolated checkout; primary user changes excluded/preserved. Technical disposition
+  uses a separate ancestor pin and preserves mandatory gates, tests, scope and security baseline.'
 handoff:
-  current_step: 'Reconcile exact e927 scan45 with canonical: original43 retained;
-    newSF044/045 PUBLIC_IDENTIFIER,38 unapproved requests and7 owner-required. SecurityFAIL,
-    no task/phase promotion.'
+  current_step: Candidate dedicated runner verifier is prepared for fresh clean exact-revision
+    local validation, then independent human review. No push/MR, secret findings/approvals/consumer,
+    real runner enrollment or acceptance is in this batch.
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
   - Six actual gate commands and locked scanners implemented
-  - 79 delivery controls, five clean installation checks and 212 architecture controls
-    passed locally
-  - Pinned dependency review and actual local IMPLEMENT dispatch passed; prior failures
-    retained
+  - 79 delivery controls, five clean installation checks and 212 architecture controls passed
+    locally
+  - Pinned dependency review and actual local IMPLEMENT dispatch passed; prior failures retained
   - 'Candidate 04295459 clean locked replay: 360 pytest controls no skip, static/governance
     pass; exact receipts/artifact hashes retained'
-  - Read exact real failed UNIT archive and metadata, cause matches local cold-cache
-    failure
-  - Strengthened fixed source command/log/result and lock/runtime controls; 72 source
-    controls pass
-  - Six job timeouts effective and security always hard-fails; 14 configuration controls
+  - Read exact real failed UNIT archive and metadata, cause matches local cold-cache failure
+  - Strengthened fixed source command/log/result and lock/runtime controls; 72 source controls
     pass
-  - Corrected original bootstrap fixture without removing any original assertion;
-    real uv positive/negative controls pass
-  - Current static, production architecture and five governance checks pass; active
-    normative inputs reconciled
-  - Normal seven-commit dev_gpt push a6d66af completed; real pipeline2910062335 five
-    gates and UNIT178/ARCH212/PG1 pass, security43 findings FAIL
-  - Exact five successful actual job source contracts verified with fixed commands,
-    runtime, driver/lock and hashes; whole pipeline source remains FAIL
-  - 'MR default-exclusion correction: exact all-job rules and 24 new refusal controls;
-    full local UNIT202 PASS after preserving sandbox202/2fail, static and five governance
-    checks PASS'
-  - Actual GitLab CI Lint old/new static and branch simulations HTTP200 valid, six
-    hard jobs; not a real MR acceptance
-  - 'Actual final3ce pipeline2910092880 receipts/artifacts/JUnit verified: five gates
-    and415 tests PASS, mandatory secret_dependency43 FAIL'
-  - Canonical43 finding case records and exact source/artifact hash bindings exported;
-    no exception approved or applied
-  - Actual complete protected-branch/runner metadata queried; original network failure
-    and successful bounded retry retained
+  - Six job timeouts effective and security always hard-fails; 14 configuration controls pass
+  - Corrected original bootstrap fixture without removing any original assertion; real uv
+    positive/negative controls pass
+  - Current static, production architecture and five governance checks pass; active normative
+    inputs reconciled
+  - Normal seven-commit dev_gpt push a6d66af completed; real pipeline2910062335 five gates
+    and UNIT178/ARCH212/PG1 pass, security43 findings FAIL
+  - Exact five successful actual job source contracts verified with fixed commands, runtime,
+    driver/lock and hashes; whole pipeline source remains FAIL
+  - 'MR default-exclusion correction: exact all-job rules and 24 new refusal controls; full
+    local UNIT202 PASS after preserving sandbox202/2fail, static and five governance checks
+    PASS'
+  - Actual GitLab CI Lint old/new static and branch simulations HTTP200 valid, six hard jobs;
+    not a real MR acceptance
+  - 'Actual final3ce pipeline2910092880 receipts/artifacts/JUnit verified: five gates and415
+    tests PASS, mandatory secret_dependency43 FAIL'
+  - Canonical43 finding case records and exact source/artifact hash bindings exported; no
+    exception approved or applied
+  - Actual complete protected-branch/runner metadata queried; original network failure and
+    successful bounded retry retained
   - Real Developer role30 authenticated; isolatedfeaturewrite/readbackPASS andsamepayloadprotectedmainwriteHTTP403;
     protectedmainanddev_gptunchanged
-  - Same Developer API pipeline creation without variables succeeded at2910430587;
-    harmless variable request explicitly deniedHTTP400 for insufficient permissions,
-    not counted as project setting modification refusal or gate acceptance
-  - Bound all45 actual e927 identities and current fingerprints, preserved original43
-    disposition bytes; addedSF044/045 exact requests without approval or closure.
-  - Fixed default Gitleaks8.21.2 confirmed added public-name value bytes/hash in memory;
-    raw Secret/Match never stored or printed.
+  - Same Developer API pipeline creation without variables succeeded at2910430587; harmless
+    variable request explicitly deniedHTTP400 for insufficient permissions, not counted as
+    project setting modification refusal or gate acceptance
+  - Bound all45 actual e927 identities and current fingerprints, preserved original43 disposition
+    bytes; addedSF044/045 exact requests without approval or closure.
+  - Fixed default Gitleaks8.21.2 confirmed added public-name value bytes/hash in memory; raw
+    Secret/Match never stored or printed.
   pending_items:
   - Credential owner redacted disposition for CRED-001/002/003 and SF-037 reference
-  - Authorized approval of38 exact exception requests with reason, scope, expiry and
-    actual scanner rerun
-  - Identified authorized persistent runner host/secure access and effective trusted
-    configuration
-  - Real ordinary Developer positive/negative, mandatory-gate deletion/reordering
-    and self-exception controls
+  - Authorized approval of38 exact exception requests with reason, scope, expiry and actual
+    scanner rerun
+  - Identified authorized persistent runner host/secure access and effective trusted configuration
+  - Real ordinary Developer positive/negative, mandatory-gate deletion/reordering and self-exception
+    controls
   - All six mandatory gates at the same final candidate SHA, then V2-004/P0 acceptance
   next_action: IMPLEMENT
   last_check:
@@ -289,5 +281,5 @@ handoff:
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6
   scope_ref: plan/validation/execution/V2-004/followup-20261004/scope-ci-v3.json
-  review_revision: 938300f7f4b968dfa81669385707e1219f3bc894
-  review_ref: plan/validation/execution/V2-004/followup-20261004/change-dispositions-mr-ci.json
+  review_revision: b998576759cf530708fd914e805448d6871ad1ef
+  review_ref: plan/validation/execution/V2-004/runner-exact-20261004/change-dispositions-ci.json
