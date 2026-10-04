@@ -108,13 +108,13 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: 2026-10-04 fresh Owner and Developer reads agree dev_gpt equals 6ed09939;
-    pipeline 2909931436 has four successful jobs, unit failure and security skipped.
-    dev_gpt remains unprotected; main protection metadata alone is not a permission
-    test.
+  statement: '2026-10-04 actual push candidate a6d66af690bac55ab14fd5336896414374a4e28a
+    pipeline2910062335 failed: five gates and 391 pytest checks passed, security43
+    findings hard-failed. Five success-job online source contracts matched; trust/permissions
+    and MR acceptance remain unverified.'
   sources:
-  - ref: validation/execution/V2-004/followup-20261004/remote-observation.json
-    sha256: 8498c6003a35e7e4fff3149cbfa5331c322f535e6f606a859bdcdf311b0e6ef7
+  - ref: validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json
+    sha256: e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1
   blocks_actions: []
   verification_plan: Recheck online after a real candidate pipeline; do not claim
     CI/permission acceptance from this snapshot.
@@ -171,9 +171,17 @@ review_notes:
 - '2026-10-04 necessary CI integration fix: original bootstrap test added within current
   P0/V2-004 scope; no test weakening, task/phase identity unchanged; reason and impact
   in ci-fixture-authorization.md.'
+- '2026-10-04 clean context: preserve current local packet and PASS entry separately;
+  committed code objects bind 365d4057. Clean CI scope does not authorize deleting
+  primary user files. Existing Free quota observed but balance/money unknown; no purchase/paid
+  resource provision.'
+- '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard
+  commands/assertions preserved; actual Lint only push-context proof. New source/review
+  pin with local 202 PASS, a6 remote whole security FAIL retained.'
 handoff:
-  current_step: Final code committed and exact local review bound; preserve user files
-    before clean CI context dispatch
+  current_step: MR inclusion correction committed 938300f7f4b968dfa81669385707e1219f3bc894;
+    202 local tests, static/governance and real GitLab Lint pass. Preserve a6 real
+    overall security FAIL; final clean candidate CI pending push.
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -194,21 +202,34 @@ handoff:
     real uv positive/negative controls pass
   - Current static, production architecture and five governance checks pass; active
     normative inputs reconciled
+  - Normal seven-commit dev_gpt push a6d66af completed; real pipeline2910062335 five
+    gates and UNIT178/ARCH212/PG1 pass, security43 findings FAIL
+  - Exact five successful actual job source contracts verified with fixed commands,
+    runtime, driver/lock and hashes; whole pipeline source remains FAIL
+  - 'MR default-exclusion correction: exact all-job rules and 24 new refusal controls;
+    full local UNIT202 PASS after preserving sandbox202/2fail, static and five governance
+    checks PASS'
+  - Actual GitLab CI Lint old/new static and branch simulations HTTP200 valid, six
+    hard jobs; not a real MR acceptance
   pending_items:
-  - Bind final review Git pin and committed clean CI context, then push dev_gpt
-  - Read new candidate pipeline and all actual job artifacts
-  - Historical credential owner revocation/rotation remains UNKNOWN
-  - Protected runner/config and permission/anti-deletion experiments remain pending;
-    no P1
+  - Push final clean candidate to origin/dev_gpt using existing included CI; no purchase
+    or new paid infrastructure
+  - Read exact current pipeline/all six jobs, actual artifacts and source checks including
+    failures
+  - Obtain credential-owner redacted disposition; do not suppress or test real keys
+  - Enroll actually protected runner/config with applicable authorization, then real
+    permission/anti-deletion controls; P0 NOT_VERIFIED
   next_action: IMPLEMENT
   last_check:
     status: FAIL
     artifacts:
-    - ref: validation/execution/V2-004/followup-20261004/local-controls.json
-      sha256: 3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2
+    - ref: validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json
+      sha256: e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1
+    - ref: validation/execution/V2-004/followup-20261004/mr-local-controls.json
+      sha256: 8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9
     missing_artifact_reason: null
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6
   scope_ref: plan/validation/execution/V2-004/followup-20261004/scope-local-v3.json
-  review_revision: 365d4057c77e75d09dfdb55fb9c6178525c2da19
-  review_ref: plan/validation/execution/V2-004/followup-20261004/change-dispositions-final-local.json
+  review_revision: 938300f7f4b968dfa81669385707e1219f3bc894
+  review_ref: plan/validation/execution/V2-004/followup-20261004/change-dispositions-mr-local.json

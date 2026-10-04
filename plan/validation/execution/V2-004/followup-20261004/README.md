@@ -20,3 +20,11 @@
 正常代码修复、测试和提交推送在用户已授权任务范围内继续；新增付费、平台权限扩张以及验收关闭不由参考提示词授权。未知项只阻断相关步骤。任务继续 IN_PROGRESS，P0 NOT_VERIFIED，不能进入 P1。
 
 本轮准备记录包含原 packet/context、实际用户文件身份和固定授权来源。开工检查曾拒绝 `review_revision: null` 的结构错误以及 worktree 身份多出的 oid；纠正格式后 `dist/v2004-20261004-implement-entry-v3.json` PASS。保留原失败记录，未放宽检查器或修改用户文件。
+
+## 最终 MR 接入修正与已核验远端结果
+
+a6d66af 的真实 pipeline2910062335 已终态失败：五门禁成功，UNIT178、ARCH212、PG1 无失败/错误/skip；安全扫描15当前发现与28历史发现硬失败，51依赖0漏洞。六个job原始产物/hash匹配，五个成功job完整在线源合同PASS，整体来源FAIL、权限UNKNOWN、验收false。对应remote-a6-*记录保留，不移用至新候选。
+
+发现无rules job默认排除MR后，补齐六job精确无条件rules（普通on_success、安全always）；24新增拒绝控制保留全部原测试。完整本地UNIT202 PASS、STATIC和五治理PASS；沙箱202/2fail的原运行与正常权限重放均保留。GitLab实际Lint静态/push模拟均valid且六hardjobs，不宣称真实MR认证。
+
+主工作区local入口PASS与源码/review由mr-code-index、final-mr-local-entry及local-execution-packet绑定；活动包切回干净CI作用域，用户文件身份核对未变，不清理用户工作区。最后候选待正常push并读取精确真实CI。trusted-ci-proposal.md给出可审阅的平台/runner与权限正反例方案，未修改平台或增加资源。

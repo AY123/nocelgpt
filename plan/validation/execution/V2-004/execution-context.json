@@ -1,12 +1,12 @@
 {
   "record_type": "execution_context_selection",
-  "source_revision": "365d4057c77e75d09dfdb55fb9c6178525c2da19",
+  "source_revision": "938300f7f4b968dfa81669385707e1219f3bc894",
   "active_context": "CLEAN_COMMITTED_CHECKOUT",
   "scope_revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
   "local_packet_ref": "plan/validation/execution/V2-004/followup-20261004/local-execution-packet.yaml",
-  "local_entry_ref": "plan/validation/execution/V2-004/followup-20261004/final-local-entry.json",
-  "local_entry_sha256": "e76acac272e3a58af30b59ca424364a4f84c081578734dc32f4aaba2056f4bec",
-  "review_revision": "365d4057c77e75d09dfdb55fb9c6178525c2da19",
+  "local_entry_ref": "plan/validation/execution/V2-004/followup-20261004/final-mr-local-entry.json",
+  "local_entry_sha256": "cbcae9ec8ba9e4f6f3a2998fea8933242ac376215eab097c4ec79ef0feaf2b01",
+  "review_revision": "938300f7f4b968dfa81669385707e1219f3bc894",
   "recovery": "Retain current normative input hashes, opening revision and allowed paths; rebind only worktree_dirty/environment and scope/review from followup local packet before primary local IMPLEMENT. Recheck actual user identity and entry. Never replace current packet wholesale or delete user files. Clean scope only consumes truly committed checkout.",
-  "last_result": "Local corrected fixture/static/governance/source controls PASS; initial full UNIT failure preserved. New candidate CI pending; credential/runner/permissions unresolved."
+  "last_result": "MR correction UNIT202, static, five governance checks, actual CI Lint and primary local entry PASS. Earlier a6 real CI five gates PASS/security FAIL; final candidate CI pending, credential/runner/permissions unresolved."
 }

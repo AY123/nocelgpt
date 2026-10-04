@@ -1,0 +1,73 @@
+{
+  "record_type": "committed_source_identity",
+  "revision": "938300f7f4b968dfa81669385707e1219f3bc894",
+  "objects": [
+    {
+      "path": ".gitlab-ci.yml",
+      "sha256": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+      "git_blob": "033e2fd9e900434cbb3891efdf2972c2bb5d8256"
+    },
+    {
+      "path": "security-policy.yaml",
+      "sha256": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+      "git_blob": "7294ac4531c5c5adfe6461571e8a9c859432cfe7"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "daa9fba92dbb4217f27d88800dd4c234e4b5d427e45fb39acd127c06371c43e7",
+      "git_blob": "905e66eaa6939e9842edd97b4f64fe237fdfd4e4"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+      "git_blob": "df3d2afff75d1b1e52b655a6b0f994977fd4e175"
+    },
+    {
+      "path": "scripts/ci/bootstrap_scanners.py",
+      "sha256": "5c7a176c0189460c5c9003ecc81f01a77c9e8003a056d61e5482ce341b0843b1",
+      "git_blob": "63015af6c4e51785c8cd6a1373fae026b4378900"
+    },
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "sha256": "bf2cf0d70b6d164d49a6cc36f92db16a87f9147d0869bb604d00c661b75e9287",
+      "git_blob": "758d1616aea18f181c043641acaf5b94be0a79c6"
+    },
+    {
+      "path": "scripts/ci/check_security.py",
+      "sha256": "dc940a3c35655e564a1d55bea26dce41fad070f110156eaacc8d4c1a9b83a224",
+      "git_blob": "0996c84d836cac5158635911c09abf13e1579a87"
+    },
+    {
+      "path": "scripts/ci/check_syntax.py",
+      "sha256": "30c918e80bb3c61ef30a2b85651acdf45c09dc410e4bdd0f691c1e6e2d8e2636",
+      "git_blob": "26e33ca2694e913f3c2f690fef8e884babb1b5e2"
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+      "git_blob": "60dbb4bc338a288ed45ad821cca1d99ccca42b2d"
+    },
+    {
+      "path": "scripts/ci/verify_remote.py",
+      "sha256": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+      "git_blob": "b18b6748fb521c1de6820e316ab59b2423e7113f"
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "sha256": "b7d889f7c14945eff47d3b0fecf73315e6271530bb1e0d83811551af7cdaf710",
+      "git_blob": "9489f7d9cfe401888410cc0b5170281c67d7ca83"
+    },
+    {
+      "path": "tests/integration/test_postgres_ci_service.py",
+      "sha256": "935627c68472ad660976d0dd3ed667c4562b979b7a67c490def581fb3de44952",
+      "git_blob": "22b5ba0fc3f831eacae4acd75775abbf5facbf7f"
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "sha256": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "git_blob": "db11e390368c1efd8aa6c69b14bf91af81db60c4"
+    }
+  ],
+  "local_test_binding": "mr-local-controls.json",
+  "remote_ci_verified": false
+}
