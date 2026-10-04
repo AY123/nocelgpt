@@ -63,7 +63,17 @@ def validate_configuration(source: str) -> list[str]:
             "uv run --locked python -B scripts/ci/run_gate.py " + name
         ]:
             errors.append("Mandatory command was replaced: " + name)
-        permitted = {"stage", "timeout", "allow_failure", "script", "artifacts"}
+        permitted = {
+            "stage",
+            "timeout",
+            "allow_failure",
+            "script",
+            "artifacts",
+            "rules",
+        }
+        schedule = "always" if name == "secret_dependency" else "on_success"
+        if job.get("rules") != [{"when": schedule}]:
+            errors.append("Exact workflow-wide job inclusion required: " + name)
         if name == "secret_dependency":
             permitted.add("when")
             if job.get("when") != "always":
@@ -72,7 +82,7 @@ def validate_configuration(source: str) -> list[str]:
             permitted |= {"services", "variables"}
         if set(job) - permitted:
             errors.append("Unreviewed job inheritance or override: " + name)
-        if any(key in job for key in ("rules", "only", "except", "after_script")):
+        if any(key in job for key in ("only", "except", "after_script")):
             errors.append("Job trigger/result override requires review: " + name)
         if name != "secret_dependency" and "when" in job:
             errors.append("Job trigger/result override requires review: " + name)

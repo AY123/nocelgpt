@@ -32,6 +32,8 @@ default:
 static:
   stage: validate
   timeout: 20 minutes
+  rules:
+    - when: on_success
   allow_failure: false
   script:
     - uv run --locked python -B scripts/ci/run_gate.py static
@@ -39,6 +41,8 @@ static:
 schema_contract:
   stage: validate
   timeout: 20 minutes
+  rules:
+    - when: on_success
   allow_failure: false
   script:
     - uv run --locked python -B scripts/ci/run_gate.py schema_contract
@@ -46,6 +50,8 @@ schema_contract:
 unit:
   stage: test
   timeout: 20 minutes
+  rules:
+    - when: on_success
   allow_failure: false
   script:
     - uv run --locked python -B scripts/ci/run_gate.py unit
@@ -59,6 +65,8 @@ unit:
 arch_fitness:
   stage: test
   timeout: 20 minutes
+  rules:
+    - when: on_success
   allow_failure: false
   script:
     - uv run --locked python -B scripts/ci/run_gate.py arch_fitness
@@ -72,6 +80,8 @@ arch_fitness:
 secret_dependency:
   stage: security
   timeout: 20 minutes
+  rules:
+    - when: always
   when: always
   allow_failure: false
   script:
@@ -80,6 +90,8 @@ secret_dependency:
 postgres_env:
   stage: test
   timeout: 20 minutes
+  rules:
+    - when: on_success
   allow_failure: false
   services:
     - name: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652

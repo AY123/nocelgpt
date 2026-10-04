@@ -1,0 +1,382 @@
+{
+  "record_type": "candidate_real_ci_final_safe_summary",
+  "schema_version": "1.0",
+  "revision": "a6d66af690bac55ab14fd5336896414374a4e28a",
+  "pipeline_id": 2910062335,
+  "actual_pipeline_status": "failed",
+  "query_started_at": "2026-10-04T01:39:05.345993+00:00",
+  "collector_queried_at": "2026-10-04T01:39:53.384382+00:00",
+  "source_contract_queried_at": "2026-10-04T01:41:05.019171+00:00",
+  "collector_integrity_status": "ALL_REQUIRED_EVIDENCE_OBSERVED",
+  "collector_exit0_is_not_ci_PASS": true,
+  "all_actual_gates_pass": false,
+  "whole_source_status": "FAIL",
+  "whole_status": "FAIL",
+  "trust_status": "UNVERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false,
+  "independent_approval_or_review_claimed": false,
+  "branch_snapshot": {
+    "http_status": 200,
+    "response_sha256": "97a41d310fafd275e5a71e1581ad6ea1c88e82e78909acc2baa26a5d2996609d",
+    "sha": "a6d66af690bac55ab14fd5336896414374a4e28a",
+    "protected": false,
+    "can_push": true,
+    "matches_requested_revision": true
+  },
+  "pins": {
+    "revision": "a6d66af690bac55ab14fd5336896414374a4e28a",
+    "policy_revision": "365d4057c77e75d09dfdb55fb9c6178525c2da19",
+    "verifier_sha256": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+    "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+    "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+    "policy_sha256": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+    "helper_sha256": "2992adb1c32b7fd526bf23d9cdf198b4bf1d1ebb07882bf532f3e5bb3b28acef"
+  },
+  "jobs": [
+    {
+      "job_name": "static",
+      "job_id": 16917511391,
+      "actual_status": "success",
+      "receipt_status": "PASS",
+      "observation_integrity": "MATCHED",
+      "archive_sha256": "5e682dc0ee09b22d76cfe34f2ecd459ae065334a98ff63be95cb03c891a61848",
+      "receipt_sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+      "trace_sha256": "a5225619cd60bda8426095c5aa0ea15b71180d89e13e2380aca0537314da1d1e",
+      "results": [
+        {
+          "ref": "dist/ci/static/receipt.json",
+          "bytes": 5270,
+          "sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "job_name": "unit",
+      "job_id": 16917511393,
+      "actual_status": "success",
+      "receipt_status": "PASS",
+      "observation_integrity": "MATCHED",
+      "archive_sha256": "6adbe7e7faca460d1d65613a00470225275fb525bad9ab1d561197578a30916b",
+      "receipt_sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+      "trace_sha256": "6c357e54f80707c59525a0d1701b890b26ecc02b7393eb1db43b9d82e03e72ed",
+      "results": [
+        {
+          "ref": "dist/ci/unit/junit.xml",
+          "bytes": 26553,
+          "sha256": "08728c77e01468f2f403c8708ad7bce6e63bcfaf421c3be17663c9626190f032",
+          "junit": {
+            "suites": [
+              {
+                "tests": "178",
+                "failures": "0",
+                "errors": "0",
+                "skipped": "0",
+                "time": "199.395"
+              }
+            ],
+            "failed_tests": [],
+            "raw_failure_text_printed": false
+          }
+        },
+        {
+          "ref": "dist/ci/unit/receipt.json",
+          "bytes": 2777,
+          "sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "job_name": "schema_contract",
+      "job_id": 16917511392,
+      "actual_status": "success",
+      "receipt_status": "PASS",
+      "observation_integrity": "MATCHED",
+      "archive_sha256": "c52acb99de78bc1ba71a3d6253d405b4f1692c4a75058b3f0d5e9e9c8c98b9f9",
+      "receipt_sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+      "trace_sha256": "c2823b7b8dd25a845dd4b8ac85f79894c63740e2eeb228898d65932f481753d2",
+      "results": [
+        {
+          "ref": "dist/ci/schema_contract/governance/context-inventory.json",
+          "bytes": 1089,
+          "sha256": "2fc6ef0260a1f6483bc990cb39be6e153eaae5c293311fcdebcfb009fe476e2a",
+          "reported_status": "UNREGISTERED_OR_ABSENT"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance-summary.json",
+          "bytes": 13489,
+          "sha256": "e12ecbb4097982fcd2008a61b750daaa3f5e0c2b5505c9cf3eb4dfabe753a7dc",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/ai/ai-execution-regression.json",
+          "bytes": 4563,
+          "sha256": "3374db3ebc50ef3ae8a2d2df634bc9727c007d31f74b3fffb0035364a2edd583",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance/governance-regression.json",
+          "bytes": 4621,
+          "sha256": "b77fc645efc938540a40f063e196d92a8e17d1a8aed956e8ec646e373a2093be",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/normative-index.json",
+          "bytes": 3166,
+          "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3",
+          "reported_status": "UNREGISTERED_OR_ABSENT"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/plan/plan-validation.json",
+          "bytes": 1449,
+          "sha256": "bc0db40209c26b5b3c05c983ca76f157bddb306fa490ddae9063d036eba34168",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/self-test/validator-self-test.json",
+          "bytes": 7390,
+          "sha256": "3df7148c3da1aa7d7b4cd34fb5de72396240401fe143f15072704d42d441e06a",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/receipt.json",
+          "bytes": 3101,
+          "sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+          "reported_status": "PASS",
+          "exit_code": 0
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/legacy.json",
+          "bytes": 58818,
+          "sha256": "a9dbd38c672db121d260bc412b1c7fd700162eb631d0700ba4e4de2771c11fbc",
+          "reported_status": "PASS"
+        }
+      ]
+    },
+    {
+      "job_name": "arch_fitness",
+      "job_id": 16917511394,
+      "actual_status": "success",
+      "receipt_status": "PASS",
+      "observation_integrity": "MATCHED",
+      "archive_sha256": "af2c222266b77600e2cc1c4a6265f53f8424bcda09465169d18673fe3dd8773e",
+      "receipt_sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+      "trace_sha256": "5eb2f6776cab1579b4bd7431e091389fb45c50bdc78435ac1196fbd8a0379cb8",
+      "results": [
+        {
+          "ref": "dist/ci/arch_fitness/architecture.json",
+          "bytes": 3281,
+          "sha256": "0fdd0a7aa24f46e2b8f61f6d58d07ab8950906277fed8a7c6860a2a335322632",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/junit.xml",
+          "bytes": 36348,
+          "sha256": "473fc6be57a9e9e4beca368ab935c94fe5895e6caa7cee374ef630fa07f332d0",
+          "junit": {
+            "suites": [
+              {
+                "tests": "212",
+                "failures": "0",
+                "errors": "0",
+                "skipped": "0",
+                "time": "6.081"
+              }
+            ],
+            "failed_tests": [],
+            "raw_failure_text_printed": false
+          }
+        },
+        {
+          "ref": "dist/ci/arch_fitness/action-entry.json",
+          "bytes": 696423,
+          "sha256": "e24e05790a6db98f739c70d3b8cc9358a4aa6044a12ad39b654ef192cbc6f374",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/receipt.json",
+          "bytes": 4083,
+          "sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "job_name": "secret_dependency",
+      "job_id": 16917511396,
+      "actual_status": "failed",
+      "receipt_status": "FAIL",
+      "observation_integrity": "MATCHED",
+      "archive_sha256": "869370deee1c1aabc55e8a6de8934e14f99c04cca0371977599b2ccb30508670",
+      "receipt_sha256": "b89d5132f1a83979659a018ab61080df9d25831c338e001329bfd62434659979",
+      "trace_sha256": "e8b6210eac5b6bc2a0771731762b1cbef17fc907f22dada711a0aad0fccc3bf6",
+      "results": [
+        {
+          "ref": "dist/ci/secret_dependency/receipt.json",
+          "bytes": 3344,
+          "sha256": "b89d5132f1a83979659a018ab61080df9d25831c338e001329bfd62434659979",
+          "reported_status": "FAIL",
+          "exit_code": 1
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/dependency-audit.json",
+          "bytes": 2972,
+          "sha256": "cae9a51980d56fe30486694147d6590be6a530ca9c11ead81ebc01f028aaa48c",
+          "reported_status": "UNREGISTERED_OR_ABSENT"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/secret-scan.json",
+          "bytes": 13546,
+          "sha256": "bf2151f37eff889def33062bba274235f2f11f1173997f0c2ed4201f5897af7d",
+          "reported_status": "FAIL",
+          "history_commits": 140,
+          "tracked_files": 1264,
+          "deleted_worktree_files": 0,
+          "scans": [
+            {
+              "exit_code": 1,
+              "finding_count": 15,
+              "report_sha256": "033d82f44758dfb2e066c82cbcf1ae14d3d4e0754a59c782d44e1216206fdfe0",
+              "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stderr_sha256": "c5e5e82e26aadcae0dacc97c56d28d0449795146d89758e0a07383f9c8a94044",
+              "target": "tracked_worktree",
+              "status": "FAIL"
+            },
+            {
+              "exit_code": 1,
+              "finding_count": 28,
+              "report_sha256": "c33479424a8acafa06a193be51b9826b63c768a1989d61368ead004e6fb1d8c9",
+              "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stderr_sha256": "75ba1b54b3b4841b59a128d03640754febcde28b949766ed6ae56fef6e89e1c1",
+              "target": "git_history",
+              "status": "FAIL"
+            }
+          ]
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/security-summary.json",
+          "bytes": 15866,
+          "sha256": "426bb3d3705492fb567928531e9305a1f62ecc4cea9290f43b4382146432d2d2",
+          "reported_status": "FAIL",
+          "checks": {
+            "secret": {
+              "status": "FAIL",
+              "history_commits": 140
+            },
+            "dependency": {
+              "status": "PASS",
+              "audited_packages": 51,
+              "expected_packages": 51,
+              "vulnerability_count": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "job_name": "postgres_env",
+      "job_id": 16917511395,
+      "actual_status": "success",
+      "receipt_status": "PASS",
+      "observation_integrity": "MATCHED",
+      "archive_sha256": "3ccf5bf4ce962ed47127729e345804aefa0f1dd9ff61fed618614adc32b3b777",
+      "receipt_sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+      "trace_sha256": "d02f3a85cbfe2406a38b60bc14506d029c46df1ad04dd37e434c24bcbc18d41d",
+      "results": [
+        {
+          "ref": "dist/ci/postgres_env/junit.xml",
+          "bytes": 413,
+          "sha256": "c06066200109e6531b94409f389dfad3f10496938cb59ce8336bfe5e16e1119f",
+          "junit": {
+            "suites": [
+              {
+                "tests": "1",
+                "failures": "0",
+                "errors": "0",
+                "skipped": "0",
+                "time": "1.351"
+              }
+            ],
+            "failed_tests": [],
+            "raw_failure_text_printed": false
+          }
+        },
+        {
+          "ref": "dist/ci/postgres_env/receipt.json",
+          "bytes": 1942,
+          "sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ]
+    }
+  ],
+  "partial_job_source_verification": [
+    {
+      "job_name": "static",
+      "job_id": 16917511391,
+      "source_status": "PASS",
+      "command_count": 5,
+      "artifact_count": 10
+    },
+    {
+      "job_name": "unit",
+      "job_id": 16917511393,
+      "source_status": "PASS",
+      "command_count": 2,
+      "artifact_count": 5
+    },
+    {
+      "job_name": "schema_contract",
+      "job_id": 16917511392,
+      "source_status": "PASS",
+      "command_count": 1,
+      "artifact_count": 10
+    },
+    {
+      "job_name": "arch_fitness",
+      "job_id": 16917511394,
+      "source_status": "PASS",
+      "command_count": 3,
+      "artifact_count": 9
+    },
+    {
+      "job_name": "postgres_env",
+      "job_id": 16917511395,
+      "source_status": "PASS",
+      "command_count": 1,
+      "artifact_count": 3
+    }
+  ],
+  "excluded_actual_failed_jobs": [
+    {
+      "job_name": "secret_dependency",
+      "job_id": 16917511396,
+      "actual_status": "failed",
+      "reason": "Actual failed/non-success job must not be substituted as success"
+    }
+  ],
+  "evidence_indices": [
+    {
+      "path": "/tmp/anovel-v2004-candidate-a6d66af-remote/pipeline-index.json",
+      "sha256": "d8055480915e32d6f8a3a4bb9f94b07f191232f08ed3be3646a6f4ca61a3444c"
+    },
+    {
+      "path": "/tmp/anovel-v2004-candidate-a6d66af-source-contract/source-contract-index.json",
+      "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+    }
+  ],
+  "raw_tokens_or_scan_Secret_Match_printed": false,
+  "remaining_gaps": [
+    "Actual security finding adjudication and key revocation are incomplete; no finding ignored to obtain PASS",
+    "Whole six-gate source acceptance fails with the actually failed pipeline",
+    "dev_gpt is unprotected; candidate root CI configuration remains mutable",
+    "Trusted runner/configuration enrollment and AT-07/08 permission-denial tests remain unverified",
+    "a6 push evidence does not prove MR pipeline inclusion or subsequent candidates"
+  ]
+}

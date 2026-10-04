@@ -141,6 +141,23 @@ def test_duplicate_yaml_key_is_rejected():
         configuration.validate_configuration("static: {}\nstatic: {}\n")
 
 
+@pytest.mark.parametrize("name", sorted(configuration.JOBS))
+@pytest.mark.parametrize(
+    "mutation", ["missing", "condition", "manual", "allowed_failure"]
+)
+def test_workflow_gate_inclusion_cannot_be_excluded(name, mutation):
+    document = yaml.safe_load((ROOT / ".gitlab-ci.yml").read_text())
+    if mutation == "missing":
+        del document[name]["rules"]
+    elif mutation == "condition":
+        document[name]["rules"][0]["if"] = '$CI_PIPELINE_SOURCE == "push"'
+    elif mutation == "manual":
+        document[name]["rules"][0]["when"] = "manual"
+    else:
+        document[name]["rules"][0]["allow_failure"] = True
+    assert configuration.validate_configuration(yaml.safe_dump(document))
+
+
 def test_missing_real_postgres_dsn_is_failure():
     # Exercise the actual existing runtime probe; never use SQLite or skip.
     import os

@@ -126,3 +126,9 @@ uv run --locked python -B scripts/ci/verify_remote.py \
 归档接口先返回官方CDN签名重定向，下载仅在认证GitLab首跳后对精确官方CDN发不带认证的请求，最终原始字节核对通过。现行核验器使用的四个exact-job单文件接口实际均为HTTP200，无重定向，字节与归档相同；无需推测性扩大生产核验器的重定向权限。完整远端规则仅保护main，push/merge为Maintainer40；实际shared instance runner54907241为not_protected，不能宣称受保护执行已成立。现有Free额度月使用227分钟，默认400额度差173仅是推论，API实际余额和金额未知；本轮不购买资源或扩张权限。
 
 本轮固定范围及八个场景差距见 [恢复记录](../plan/validation/execution/V2-004/followup-20261004/README.md)。同操作者验证如实标注。真实当前 CI 全部成功、历史凭据处置、受保护 runner/配置及权限正反例完成前，任务和阶段不升级。
+
+## 2026-10-04 MR 触发补强
+
+本轮七个提交已正常推送至 dev_gpt，a6d66af690bac55ab14fd5336896414374a4e28a 的真实 push pipeline 2910062335 已执行五项成功，安全结果另按终态留存。并行复核发现六个 job 无 rules 默认排除 MR，与 workflow 的 MR 入口不一致，分支成功不能代替 MR 检查。现已为所有 job 增加精确无条件 rules，普通五项 on_success、安全 always，配置验证仅允许该固定形式，六项硬失败和原工作流保持。新增 24 个控制分别拒绝规则缺失、仅 push 条件、manual 和规则允许失败；原测试保留。
+
+[MR 接入说明](../plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md)记录官方依据、当前任务归属和影响。GitLab CI Lint 的 dry-run 是 branch/tag push 模拟，不能声称其证明真实 MR 来源或保护权限。修复候选将另绑定准确提交推送，a6d 流水线原始结果保留为历史。

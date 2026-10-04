@@ -1,0 +1,570 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
+    "ref": "plan/validation/execution/V2-004/followup-20261004/scope-ci-v3.json",
+    "sha256": "ffac90e697879629105d49827ba473055432dac9985530a088791069e6364f2a"
+  },
+  "dispositions": [
+    {
+      "path": ".gitlab-ci.yml",
+      "old_sha": "5b240d209d4a2d6cc24e8ec542a9aae44c495947583a46bed41173f3da7dcb1e",
+      "new_sha": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "735ff2a84e658566d4dbd44e1516152a8cb5ab8ef8919736f56c2806a51c8dfc",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserves six hard commands/timeouts; exact unconditional job rules include all workflow contexts, ordinary on_success and security always. Corrects GitLab default MR exclusion; no scan/test/acceptance reduction.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": ".gitlab-ci.yml",
+      "old_sha": "5b240d209d4a2d6cc24e8ec542a9aae44c495947583a46bed41173f3da7dcb1e",
+      "new_sha": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "06aa0cea2ef5ba24fe3aa4dad15fd4f93a8ba5c8e496c4054af536e9008d70af",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserves six hard commands/timeouts; exact unconditional job rules include all workflow contexts, ordinary on_success and security always. Corrects GitLab default MR exclusion; no scan/test/acceptance reduction.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "old_sha": "9fa91525e757de7886a0b30ecee076bab08957fa4368fe6729942fd743d74b69",
+      "new_sha": "bf2cf0d70b6d164d49a6cc36f92db16a87f9147d0869bb604d00c661b75e9287",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "13fc46dd474876f2105ded3b1d6f72658521ea76887acdfe6a512471346b2a9e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Requires exact per-job unconditional rules; rejects absent, conditional, manual or allow_failure rules, plus all previous overrides. Replaces blanket rules denial with one fixed strengthening form, not a broad exception.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "old_sha": "9fa91525e757de7886a0b30ecee076bab08957fa4368fe6729942fd743d74b69",
+      "new_sha": "bf2cf0d70b6d164d49a6cc36f92db16a87f9147d0869bb604d00c661b75e9287",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ad5c26e38155052a245a34793dc53c59e125e0386765cb36364e47696b3a41f8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Requires exact per-job unconditional rules; rejects absent, conditional, manual or allow_failure rules, plus all previous overrides. Replaces blanket rules denial with one fixed strengthening form, not a broad exception.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/verify_remote.py",
+      "old_sha": "bf0c1b87ace91a003bf17179eb035798d7ad691d21fed917bd460517c27a041a",
+      "new_sha": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "f597baa0db99aa59dbe75f1660631a1eda69ea85616e0065283a5e85c1716701",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds fixed complete command/log/result contracts and exact lock/runtime checks; candidate cannot substitute arbitrary command or remove required artifacts. Permission UNKNOWN remains noneligible.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/verify_remote.py",
+      "old_sha": "bf0c1b87ace91a003bf17179eb035798d7ad691d21fed917bd460517c27a041a",
+      "new_sha": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "b67d4252789e606bbae01acad111a2b87aa110d651875570235fde38a1979659",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds fixed complete command/log/result contracts and exact lock/runtime checks; candidate cannot substitute arbitrary command or remove required artifacts. Permission UNKNOWN remains noneligible.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "ff38d2bd1f9d759d6ea4f103029daa6124dbd5a28631e302745a745bbf044ef1",
+      "new_sha": "b7d889f7c14945eff47d3b0fecf73315e6271530bb1e0d83811551af7cdaf710",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "2940182d2b90035ee301143308a7a90967f9a35da77ffa0c889404aa76363b42",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "All original controls retained; adds 24 semantic trigger/allow_failure refusal cases across all six jobs. Source command/result/lock controls remain. No deletion or skip.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "ff38d2bd1f9d759d6ea4f103029daa6124dbd5a28631e302745a745bbf044ef1",
+      "new_sha": "b7d889f7c14945eff47d3b0fecf73315e6271530bb1e0d83811551af7cdaf710",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "1b7f584374751855166f1e88d2a50b9bec770a8182bac3eb0cfe0672203286ca",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "All original controls retained; adds 24 semantic trigger/allow_failure refusal cases across all six jobs. Source command/result/lock controls remain. No deletion or skip.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "ad243de1a1afae6e378e6c24137ce23cdee1552ec3affc9dc032be749ecba38e",
+      "new_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "dc5f97f70073e452a6be37b2336e243b20f95fb09adcd5dc3d188b04657f28f2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Corrects actual Linux cold-cache fixture prerequisite, using a valid dev dependency graph drift with unchanged project metadata; keeps all original assertions and real uv sync --locked --offline, adds valid graph positive and exact refusal. No removal/skip or weaker acceptance.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "ad243de1a1afae6e378e6c24137ce23cdee1552ec3affc9dc032be749ecba38e",
+      "new_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "a7bef08a97564004f639773a726a7cd18d514d7fde6308336932e05b1358a27f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Corrects actual Linux cold-cache fixture prerequisite, using a valid dev dependency graph drift with unchanged project metadata; keeps all original assertions and real uv sync --locked --offline, adds valid graph positive and exact refusal. No removal/skip or weaker acceptance.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "202 local unit tests PASS after preserving sandbox failures; static and five governance checks PASS; exact actual GitLab Lint branch check PASS. a6 five real source contracts PASS but security/overall FAIL; MR/new candidate/permission acceptance not claimed.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md",
+          "sha256": "4ba98baa91dc682018943c4bd5182f2afde783cca16712ae7a73bd5070b6a09a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-rules-controls.xml",
+          "sha256": "e06eae015493e549ee26cca908b0020936d9b608b58976e0359ce2fa491726e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-static-receipt.json",
+          "sha256": "118446ab68a3a78f47c1e47e8e43c8de52774d8254a020f567993c20468189d8"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-governance-summary.json",
+          "sha256": "fc24ce83b5fb35e9478c4ae571d81df46be08f0f876167f3feb95e8564f64834"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-unit-junit.xml",
+          "sha256": "29326f7d69c97ee3adddaf5d8f0783888183e4958aee447411bafd1978e09537"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-controls.json",
+          "sha256": "8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/mr-ci-lint.json",
+          "sha256": "a403d357c6e289fc70722f77c7968d19fb7664aca75bb0f0c8480c6b2bd0afc0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json",
+          "sha256": "e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/remote-a6-source-contract-index.json",
+          "sha256": "65f87df0a035681bb668d8907aed82bc6ca37a2a55d86c8b15dc5023d171898a"
+        }
+      ]
+    }
+  ]
+}

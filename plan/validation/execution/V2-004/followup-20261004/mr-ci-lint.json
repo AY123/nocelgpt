@@ -1,0 +1,295 @@
+{
+  "observed_at": "2026-10-04T01:39:52.337780+00:00",
+  "project_id": 86656946,
+  "candidate_revision": "a6d66af690bac55ab14fd5336896414374a4e28a",
+  "fixed_endpoint": "https://gitlab.com/api/v4/projects/86656946/ci/lint",
+  "credential_source": "glab fixed keyring service (captured and decoded in memory)",
+  "requests": [
+    {
+      "label": "candidate_committed_static",
+      "http_status": 200,
+      "content_sha256": "89b45752f933e93ba7257396d74fa5554770e9a70c4a65eabbce7943b0d421ab",
+      "request_payload_sha256": "47b23a379d58b2611189cba2fcfc6067b41dfded3a31936b96d7066dca5c03dd",
+      "response_sha256": "f52e6570eeecf73c916b3cead64b46c60f8cd19aa6dd661bc28fddcec2c5b30d",
+      "valid": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "error_sha256": [],
+      "warning_sha256": [],
+      "merged_yaml_sha256": "478c5701ca7d589bb7affd800ce89ccd15d69ff7ba71175a083a0fc30665f7dd",
+      "jobs": [
+        {
+          "name": "static",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "schema_contract",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "unit",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "arch_fitness",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "postgres_env",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "secret_dependency",
+          "stage": "security",
+          "when": "always",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        }
+      ],
+      "returned_job_count": 6,
+      "simulation_source_limitation": "Git push context; no documented MR source input. Not MR execution evidence."
+    },
+    {
+      "label": "candidate_committed_push_simulation",
+      "http_status": 200,
+      "content_sha256": "89b45752f933e93ba7257396d74fa5554770e9a70c4a65eabbce7943b0d421ab",
+      "request_payload_sha256": "8e7521f03d8d67cdbbf38669a27fcaf5f189af8a617eff1d5060ce7011506e2a",
+      "response_sha256": "0195833f1e60e0ffb233e81abaec0147d18b2b22c49950e32008f56b356679e8",
+      "valid": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "error_sha256": [],
+      "warning_sha256": [],
+      "merged_yaml_sha256": "478c5701ca7d589bb7affd800ce89ccd15d69ff7ba71175a083a0fc30665f7dd",
+      "jobs": [
+        {
+          "name": "static",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "schema_contract",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "unit",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "arch_fitness",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "postgres_env",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "secret_dependency",
+          "stage": "security",
+          "when": "always",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        }
+      ],
+      "returned_job_count": 6,
+      "simulation_source_limitation": "Git push context; no documented MR source input. Not MR execution evidence."
+    },
+    {
+      "label": "working_tree_fixed_static",
+      "http_status": 200,
+      "content_sha256": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+      "request_payload_sha256": "afd48053908ca9d8318960b3cad8e6dabe61444d47756331f04ce5bd41e44d7d",
+      "response_sha256": "9111b83380821c543a747188fb1bac26477959208ff2e41796f0d0aacbd23f79",
+      "valid": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "error_sha256": [],
+      "warning_sha256": [],
+      "merged_yaml_sha256": "1a950fa5af8ea01f5b2d459c3de66b0d0e5a45ae5c7d612ed82d4974fac5e75b",
+      "jobs": [
+        {
+          "name": "static",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "schema_contract",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "unit",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "arch_fitness",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "postgres_env",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "secret_dependency",
+          "stage": "security",
+          "when": "always",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        }
+      ],
+      "returned_job_count": 6,
+      "simulation_source_limitation": "Git push context; no documented MR source input. Not MR execution evidence."
+    },
+    {
+      "label": "working_tree_fixed_push_simulation",
+      "http_status": 200,
+      "content_sha256": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+      "request_payload_sha256": "bfb872f28c6e143f15467aa5e2df8e2578a00fd37a0b54a1172d68a60a8a417e",
+      "response_sha256": "e78af756ec8f1e1f9f7f039750ca2bffcc328da4c25450a01b368963d394a803",
+      "valid": true,
+      "error_count": 0,
+      "warning_count": 0,
+      "error_sha256": [],
+      "warning_sha256": [],
+      "merged_yaml_sha256": "1a950fa5af8ea01f5b2d459c3de66b0d0e5a45ae5c7d612ed82d4974fac5e75b",
+      "jobs": [
+        {
+          "name": "static",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "schema_contract",
+          "stage": "validate",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "unit",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "arch_fitness",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "postgres_env",
+          "stage": "test",
+          "when": "on_success",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        },
+        {
+          "name": "secret_dependency",
+          "stage": "security",
+          "when": "always",
+          "allow_failure": false,
+          "only": null,
+          "except": null,
+          "rules": null
+        }
+      ],
+      "returned_job_count": 6,
+      "simulation_source_limitation": "Git push context; no documented MR source input. Not MR execution evidence."
+    }
+  ],
+  "pipeline_created": false,
+  "platform_changed": false
+}

@@ -1,0 +1,2110 @@
+{
+  "record_type": "real_remote_pipeline_observation",
+  "schema_version": "1.0",
+  "query_started_at": "2026-10-04T01:39:05.345993+00:00",
+  "project_id": 86656946,
+  "ref": "dev_gpt",
+  "read_only_gets": true,
+  "required_jobs": {
+    "static": "STATIC",
+    "unit": "UNIT",
+    "schema_contract": "SCHEMA_CONTRACT",
+    "arch_fitness": "ARCH_FITNESS",
+    "secret_dependency": "SECRET_DEPENDENCY",
+    "postgres_env": "POSTGRES_ENV"
+  },
+  "collector_sha256": "ff1deebb8f80f92909eddb1c0ead51fbbb49dc8fcc68e0eaea9b4ae5e2465329",
+  "transport_helper_sha256": "2992adb1c32b7fd526bf23d9cdf198b4bf1d1ebb07882bf532f3e5bb3b28acef",
+  "permission_status": "UNKNOWN_NO_ADVERSARIAL_PERMISSION_TEST",
+  "trust_status": "NOT_CERTIFIED_BY_COLLECTOR",
+  "acceptance_eligible": false,
+  "official_sources": [
+    "https://docs.gitlab.com/api/pipelines/",
+    "https://docs.gitlab.com/api/jobs/",
+    "https://docs.gitlab.com/api/job_artifacts/",
+    "https://docs.gitlab.com/api/repository_files/",
+    "https://about.gitlab.com/blog/gitlab-com-artifacts-cdn-change/"
+  ],
+  "credential_source": "glab fixed keyring service (captured and decoded in memory)",
+  "authenticated_user": {
+    "http_status": 200,
+    "id": 2897271,
+    "response_sha256": "43c63fa810b2c6bf236ee523eb5b0b4e1cae33c6e4767fd3733783f3cd725fc1"
+  },
+  "revision": "a6d66af690bac55ab14fd5336896414374a4e28a",
+  "branch": {
+    "http_status": 200,
+    "response_sha256": "97a41d310fafd275e5a71e1581ad6ea1c88e82e78909acc2baa26a5d2996609d",
+    "sha": "a6d66af690bac55ab14fd5336896414374a4e28a",
+    "protected": false,
+    "can_push": true,
+    "matches_requested_revision": true
+  },
+  "project": {
+    "http_status": 200,
+    "response_sha256": "44f62ad1cce7425053d281af01ed053e0bb2d3a10474cec3b2efd86ac9f7c4db",
+    "id": 86656946,
+    "ci_config_path": "",
+    "only_allow_merge_if_pipeline_succeeds": true,
+    "shared_runners_enabled": true,
+    "group_runners_enabled": true
+  },
+  "pipeline_id": 2910062335,
+  "pipeline": {
+    "http_status": 200,
+    "response_sha256": "76308bb1965c6308d726de51ed502b5e65adc6bd5fca2c63a762eff17fc14fc0",
+    "id": 2910062335,
+    "sha": "a6d66af690bac55ab14fd5336896414374a4e28a",
+    "ref": "dev_gpt",
+    "source": "push",
+    "created_at": "2026-10-04T01:27:51.246Z",
+    "updated_at": "2026-10-04T01:34:38.665Z",
+    "started_at": "2026-10-04T01:27:52.030Z",
+    "finished_at": "2026-10-04T01:34:38.653Z",
+    "duration": 402,
+    "queued_duration": null,
+    "status": "failed",
+    "yaml_errors_present": false
+  },
+  "driver": {
+    "http_status": 200,
+    "sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+    "bytes": 10795,
+    "revision": "a6d66af690bac55ab14fd5336896414374a4e28a",
+    "candidate_code_executed": false,
+    "reviewed_trust_not_inferred_from_hash": true
+  },
+  "all_job_attempts": {
+    "pages": [
+      {
+        "page": 1,
+        "http_status": 200,
+        "response_sha256": "a0f1f7b9b425704bc88a8f9552d618c43f819e29c6c7e87e7b46c3938fb99f60"
+      }
+    ],
+    "complete": true,
+    "jobs": [
+      {
+        "id": 16917511396,
+        "name": "secret_dependency",
+        "status": "failed",
+        "allow_failure": false,
+        "failure_reason": "script_failure",
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:33:36.605Z",
+        "finished_at": "2026-10-04T01:34:37.133Z",
+        "duration": 60.527562,
+        "artifacts_declared_bytes": 174892
+      },
+      {
+        "id": 16917511395,
+        "name": "postgres_env",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.369Z",
+        "finished_at": "2026-10-04T01:30:17.406Z",
+        "duration": 39.03619,
+        "artifacts_declared_bytes": 2273
+      },
+      {
+        "id": 16917511394,
+        "name": "arch_fitness",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.242Z",
+        "finished_at": "2026-10-04T01:30:13.686Z",
+        "duration": 35.443967,
+        "artifacts_declared_bytes": 118902
+      },
+      {
+        "id": 16917511393,
+        "name": "unit",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.189Z",
+        "finished_at": "2026-10-04T01:33:35.049Z",
+        "duration": 236.86036,
+        "artifacts_declared_bytes": 6147
+      },
+      {
+        "id": 16917511392,
+        "name": "schema_contract",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:27:51.835Z",
+        "finished_at": "2026-10-04T01:29:36.737Z",
+        "duration": 104.9019,
+        "artifacts_declared_bytes": 32225
+      },
+      {
+        "id": 16917511391,
+        "name": "static",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:27:51.816Z",
+        "finished_at": "2026-10-04T01:28:21.959Z",
+        "duration": 30.143212,
+        "artifacts_declared_bytes": 3866
+      }
+    ]
+  },
+  "missing_required_jobs": [],
+  "jobs": {
+    "static": {
+      "metadata": {
+        "id": 16917511391,
+        "name": "static",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:27:51.816Z",
+        "finished_at": "2026-10-04T01:28:21.959Z",
+        "duration": 30.143212,
+        "artifacts_declared_bytes": 3866
+      },
+      "observation_integrity": "MATCHED",
+      "errors": [],
+      "recorded_at": "2026-10-04T01:39:10.589778+00:00",
+      "permission_status": "UNKNOWN",
+      "trust_status": "NOT_CERTIFIED",
+      "acceptance_eligible": false,
+      "job_detail_response": {
+        "http_status": 200,
+        "sha256": "03666b930ab893b05848bd8781eb7fb417be84dac6a7fd083a5fffbc11f7deea"
+      },
+      "trace": {
+        "http_status": 200,
+        "bytes": 13062,
+        "sha256": "a5225619cd60bda8426095c5aa0ea15b71180d89e13e2380aca0537314da1d1e",
+        "start_marker_count": 1,
+        "end_marker_count": 1,
+        "starts_match_fixed_driver": true,
+        "end_statuses": [
+          "PASS"
+        ],
+        "command_numbers": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "command_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "archive": {
+        "http_status": 200,
+        "declared_bytes": 3866,
+        "bytes": 3866,
+        "sha256": "5e682dc0ee09b22d76cfe34f2ecd459ae065334a98ff63be95cb03c891a61848",
+        "redirects": [
+          {
+            "http_status": 302,
+            "hostname": "cdn.artifacts.gitlab-static.net",
+            "registered_signature_parameter_names": [
+              "Expires",
+              "KeyName",
+              "Signature"
+            ],
+            "original_gitlab_token_present": false
+          }
+        ],
+        "credentials_forwarded_after_first_hop": false,
+        "scanner_secret_or_match_keys_present": false,
+        "raw_archive_saved": true,
+        "local_path": "/private/tmp/anovel-v2004-candidate-a6d66af-remote/job-16917511391-static/artifacts.zip"
+      },
+      "artifact_index": [
+        {
+          "ref": "dist/ci/static/command-01.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-02.stdout.log",
+          "bytes": 26,
+          "sha256": "2ce9758b9f8abd876ec3e76c589e099e8b05377b1e7ea2331e81ee80f07bdff8",
+          "zip_crc32": "8b415539"
+        },
+        {
+          "ref": "dist/ci/static/command-03.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-03.stdout.log",
+          "bytes": 19,
+          "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "zip_crc32": "9b863f92"
+        },
+        {
+          "ref": "dist/ci/static/command-04.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-04.stdout.log",
+          "bytes": 43,
+          "sha256": "050c52a2b0c61e8b681ef5c485e0bc03340b8d55148e0acef27d744c8be42033",
+          "zip_crc32": "79fb3513"
+        },
+        {
+          "ref": "dist/ci/static/command-05.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/receipt.json",
+          "bytes": 5270,
+          "sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+          "zip_crc32": "e2e62768"
+        },
+        {
+          "ref": "dist/ci/static/command-05.stdout.log",
+          "bytes": 39,
+          "sha256": "b7334eb0b0c4a8f581707e9083c99cd7a974ba53aeaaadc5e2137d8c17a0119d",
+          "zip_crc32": "af119f79"
+        }
+      ],
+      "receipt": {
+        "ref": "dist/ci/static/receipt.json",
+        "sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+        "status": "PASS",
+        "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+        "exit_code": 0,
+        "command_count": 5,
+        "expected_command_count": 5,
+        "all_commands_present": true,
+        "command_exit_codes": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "descriptor_count": 20,
+        "all_descriptor_hashes_match": true,
+        "required_results_missing": [],
+        "candidate_command_contract_not_certified": true
+      },
+      "single_file_evidence": [
+        {
+          "ref": "dist/ci/static/receipt.json",
+          "http_status": 200,
+          "bytes": 5270,
+          "sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-01.stdout.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-01.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-02.stdout.log",
+          "http_status": 200,
+          "bytes": 26,
+          "sha256": "2ce9758b9f8abd876ec3e76c589e099e8b05377b1e7ea2331e81ee80f07bdff8",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-02.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-03.stdout.log",
+          "http_status": 200,
+          "bytes": 19,
+          "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-03.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-04.stdout.log",
+          "http_status": 200,
+          "bytes": 43,
+          "sha256": "050c52a2b0c61e8b681ef5c485e0bc03340b8d55148e0acef27d744c8be42033",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-04.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-05.stdout.log",
+          "http_status": 200,
+          "bytes": 39,
+          "sha256": "b7334eb0b0c4a8f581707e9083c99cd7a974ba53aeaaadc5e2137d8c17a0119d",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/static/command-05.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        }
+      ],
+      "result_summaries": [
+        {
+          "ref": "dist/ci/static/receipt.json",
+          "bytes": 5270,
+          "sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ],
+      "job_receipt_status_consistent": true,
+      "finished_at": "2026-10-04T01:39:18.541678+00:00"
+    },
+    "unit": {
+      "metadata": {
+        "id": 16917511393,
+        "name": "unit",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.189Z",
+        "finished_at": "2026-10-04T01:33:35.049Z",
+        "duration": 236.86036,
+        "artifacts_declared_bytes": 6147
+      },
+      "observation_integrity": "MATCHED",
+      "errors": [],
+      "recorded_at": "2026-10-04T01:39:18.544912+00:00",
+      "permission_status": "UNKNOWN",
+      "trust_status": "NOT_CERTIFIED",
+      "acceptance_eligible": false,
+      "job_detail_response": {
+        "http_status": 200,
+        "sha256": "aa8fdd18310d33e7046c9a60cb0ee7266be34552ce904342c3d4a0f39b4c1c0d"
+      },
+      "trace": {
+        "http_status": 200,
+        "bytes": 14527,
+        "sha256": "6c357e54f80707c59525a0d1701b890b26ecc02b7393eb1db43b9d82e03e72ed",
+        "start_marker_count": 1,
+        "end_marker_count": 1,
+        "starts_match_fixed_driver": true,
+        "end_statuses": [
+          "PASS"
+        ],
+        "command_numbers": [
+          1,
+          2
+        ],
+        "command_exit_codes": [
+          0,
+          0
+        ]
+      },
+      "archive": {
+        "http_status": 200,
+        "declared_bytes": 6147,
+        "bytes": 6147,
+        "sha256": "6adbe7e7faca460d1d65613a00470225275fb525bad9ab1d561197578a30916b",
+        "redirects": [
+          {
+            "http_status": 302,
+            "hostname": "cdn.artifacts.gitlab-static.net",
+            "registered_signature_parameter_names": [
+              "Expires",
+              "KeyName",
+              "Signature"
+            ],
+            "original_gitlab_token_present": false
+          }
+        ],
+        "credentials_forwarded_after_first_hop": false,
+        "scanner_secret_or_match_keys_present": false,
+        "raw_archive_saved": true,
+        "local_path": "/private/tmp/anovel-v2004-candidate-a6d66af-remote/job-16917511393-unit/artifacts.zip"
+      },
+      "artifact_index": [
+        {
+          "ref": "dist/ci/unit/command-01.stdout.log",
+          "bytes": 121,
+          "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+          "zip_crc32": "10b6cee4"
+        },
+        {
+          "ref": "dist/ci/unit/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/unit/command-02.stdout.log",
+          "bytes": 272,
+          "sha256": "ca39652b67bf4ac89668f966f76b63d045c425f4acbc41ab66cdffd50bf65740",
+          "zip_crc32": "3ad40575"
+        },
+        {
+          "ref": "dist/ci/unit/junit.xml",
+          "bytes": 26553,
+          "sha256": "08728c77e01468f2f403c8708ad7bce6e63bcfaf421c3be17663c9626190f032",
+          "zip_crc32": "bf7c080e"
+        },
+        {
+          "ref": "dist/ci/unit/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/unit/receipt.json",
+          "bytes": 2777,
+          "sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+          "zip_crc32": "abfed32b"
+        }
+      ],
+      "receipt": {
+        "ref": "dist/ci/unit/receipt.json",
+        "sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+        "status": "PASS",
+        "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+        "exit_code": 0,
+        "command_count": 2,
+        "expected_command_count": 2,
+        "all_commands_present": true,
+        "command_exit_codes": [
+          0,
+          0
+        ],
+        "descriptor_count": 9,
+        "all_descriptor_hashes_match": true,
+        "required_results_missing": [],
+        "candidate_command_contract_not_certified": true
+      },
+      "single_file_evidence": [
+        {
+          "ref": "dist/ci/unit/receipt.json",
+          "http_status": 200,
+          "bytes": 2777,
+          "sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/unit/command-01.stdout.log",
+          "http_status": 200,
+          "bytes": 121,
+          "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/unit/command-01.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/unit/command-02.stdout.log",
+          "http_status": 200,
+          "bytes": 272,
+          "sha256": "ca39652b67bf4ac89668f966f76b63d045c425f4acbc41ab66cdffd50bf65740",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/unit/command-02.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/unit/junit.xml",
+          "http_status": 200,
+          "bytes": 26553,
+          "sha256": "08728c77e01468f2f403c8708ad7bce6e63bcfaf421c3be17663c9626190f032",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        }
+      ],
+      "result_summaries": [
+        {
+          "ref": "dist/ci/unit/junit.xml",
+          "bytes": 26553,
+          "sha256": "08728c77e01468f2f403c8708ad7bce6e63bcfaf421c3be17663c9626190f032",
+          "junit": {
+            "suites": [
+              {
+                "tests": "178",
+                "failures": "0",
+                "errors": "0",
+                "skipped": "0",
+                "time": "199.395"
+              }
+            ],
+            "failed_tests": [],
+            "raw_failure_text_printed": false
+          }
+        },
+        {
+          "ref": "dist/ci/unit/receipt.json",
+          "bytes": 2777,
+          "sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ],
+      "job_receipt_status_consistent": true,
+      "finished_at": "2026-10-04T01:39:23.922206+00:00"
+    },
+    "schema_contract": {
+      "metadata": {
+        "id": 16917511392,
+        "name": "schema_contract",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:27:51.835Z",
+        "finished_at": "2026-10-04T01:29:36.737Z",
+        "duration": 104.9019,
+        "artifacts_declared_bytes": 32225
+      },
+      "observation_integrity": "MATCHED",
+      "errors": [],
+      "recorded_at": "2026-10-04T01:39:23.925729+00:00",
+      "permission_status": "UNKNOWN",
+      "trust_status": "NOT_CERTIFIED",
+      "acceptance_eligible": false,
+      "job_detail_response": {
+        "http_status": 200,
+        "sha256": "d2de462ae48e5f8729a0f235eec41f33a7a8e98f88b11f46d5d9fec010464cbc"
+      },
+      "trace": {
+        "http_status": 200,
+        "bytes": 12870,
+        "sha256": "c2823b7b8dd25a845dd4b8ac85f79894c63740e2eeb228898d65932f481753d2",
+        "start_marker_count": 1,
+        "end_marker_count": 1,
+        "starts_match_fixed_driver": true,
+        "end_statuses": [
+          "PASS"
+        ],
+        "command_numbers": [
+          1
+        ],
+        "command_exit_codes": [
+          0
+        ]
+      },
+      "archive": {
+        "http_status": 200,
+        "declared_bytes": 32225,
+        "bytes": 32225,
+        "sha256": "c52acb99de78bc1ba71a3d6253d405b4f1692c4a75058b3f0d5e9e9c8c98b9f9",
+        "redirects": [
+          {
+            "http_status": 302,
+            "hostname": "cdn.artifacts.gitlab-static.net",
+            "registered_signature_parameter_names": [
+              "Expires",
+              "KeyName",
+              "Signature"
+            ],
+            "original_gitlab_token_present": false
+          }
+        ],
+        "credentials_forwarded_after_first_hop": false,
+        "scanner_secret_or_match_keys_present": false,
+        "raw_archive_saved": true,
+        "local_path": "/private/tmp/anovel-v2004-candidate-a6d66af-remote/job-16917511392-schema_contract/artifacts.zip"
+      },
+      "artifact_index": [
+        {
+          "ref": "dist/ci/schema_contract/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/schema_contract/command-01.stdout.log",
+          "bytes": 394,
+          "sha256": "163c653511d17b31fa0300adb2d9d12ef910a1dd54a2446193a1e7af0a218aff",
+          "zip_crc32": "143a8a8c"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/context-inventory.json",
+          "bytes": 1089,
+          "sha256": "2fc6ef0260a1f6483bc990cb39be6e153eaae5c293311fcdebcfb009fe476e2a",
+          "zip_crc32": "4bd0945d"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance-summary.json",
+          "bytes": 13489,
+          "sha256": "e12ecbb4097982fcd2008a61b750daaa3f5e0c2b5505c9cf3eb4dfabe753a7dc",
+          "zip_crc32": "8de9a640"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/ai/ai-execution-regression.json",
+          "bytes": 4563,
+          "sha256": "3374db3ebc50ef3ae8a2d2df634bc9727c007d31f74b3fffb0035364a2edd583",
+          "zip_crc32": "b4fab676"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance/governance-regression.json",
+          "bytes": 4621,
+          "sha256": "b77fc645efc938540a40f063e196d92a8e17d1a8aed956e8ec646e373a2093be",
+          "zip_crc32": "41cc4f69"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/normative-index.json",
+          "bytes": 3166,
+          "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3",
+          "zip_crc32": "f03e2f2c"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/plan/plan-validation.json",
+          "bytes": 1449,
+          "sha256": "bc0db40209c26b5b3c05c983ca76f157bddb306fa490ddae9063d036eba34168",
+          "zip_crc32": "4c389b60"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/self-test/validator-self-test.json",
+          "bytes": 7390,
+          "sha256": "3df7148c3da1aa7d7b4cd34fb5de72396240401fe143f15072704d42d441e06a",
+          "zip_crc32": "490c8214"
+        },
+        {
+          "ref": "dist/ci/schema_contract/receipt.json",
+          "bytes": 3101,
+          "sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+          "zip_crc32": "736019fb"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/legacy.json",
+          "bytes": 58818,
+          "sha256": "a9dbd38c672db121d260bc412b1c7fd700162eb631d0700ba4e4de2771c11fbc",
+          "zip_crc32": "98f7dbb5"
+        }
+      ],
+      "receipt": {
+        "ref": "dist/ci/schema_contract/receipt.json",
+        "sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+        "status": "PASS",
+        "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+        "exit_code": 0,
+        "command_count": 1,
+        "expected_command_count": 1,
+        "all_commands_present": true,
+        "command_exit_codes": [
+          0
+        ],
+        "descriptor_count": 12,
+        "all_descriptor_hashes_match": true,
+        "required_results_missing": [],
+        "candidate_command_contract_not_certified": true
+      },
+      "single_file_evidence": [
+        {
+          "ref": "dist/ci/schema_contract/receipt.json",
+          "http_status": 200,
+          "bytes": 3101,
+          "sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/command-01.stdout.log",
+          "http_status": 200,
+          "bytes": 394,
+          "sha256": "163c653511d17b31fa0300adb2d9d12ef910a1dd54a2446193a1e7af0a218aff",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/command-01.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/ai/ai-execution-regression.json",
+          "http_status": 200,
+          "bytes": 4563,
+          "sha256": "3374db3ebc50ef3ae8a2d2df634bc9727c007d31f74b3fffb0035364a2edd583",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/context-inventory.json",
+          "http_status": 200,
+          "bytes": 1089,
+          "sha256": "2fc6ef0260a1f6483bc990cb39be6e153eaae5c293311fcdebcfb009fe476e2a",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance/governance-regression.json",
+          "http_status": 200,
+          "bytes": 4621,
+          "sha256": "b77fc645efc938540a40f063e196d92a8e17d1a8aed956e8ec646e373a2093be",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance-summary.json",
+          "http_status": 200,
+          "bytes": 13489,
+          "sha256": "e12ecbb4097982fcd2008a61b750daaa3f5e0c2b5505c9cf3eb4dfabe753a7dc",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/legacy.json",
+          "http_status": 200,
+          "bytes": 58818,
+          "sha256": "a9dbd38c672db121d260bc412b1c7fd700162eb631d0700ba4e4de2771c11fbc",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/normative-index.json",
+          "http_status": 200,
+          "bytes": 3166,
+          "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/plan/plan-validation.json",
+          "http_status": 200,
+          "bytes": 1449,
+          "sha256": "bc0db40209c26b5b3c05c983ca76f157bddb306fa490ddae9063d036eba34168",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/self-test/validator-self-test.json",
+          "http_status": 200,
+          "bytes": 7390,
+          "sha256": "3df7148c3da1aa7d7b4cd34fb5de72396240401fe143f15072704d42d441e06a",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        }
+      ],
+      "result_summaries": [
+        {
+          "ref": "dist/ci/schema_contract/governance/context-inventory.json",
+          "bytes": 1089,
+          "sha256": "2fc6ef0260a1f6483bc990cb39be6e153eaae5c293311fcdebcfb009fe476e2a",
+          "reported_status": "UNREGISTERED_OR_ABSENT"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance-summary.json",
+          "bytes": 13489,
+          "sha256": "e12ecbb4097982fcd2008a61b750daaa3f5e0c2b5505c9cf3eb4dfabe753a7dc",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/ai/ai-execution-regression.json",
+          "bytes": 4563,
+          "sha256": "3374db3ebc50ef3ae8a2d2df634bc9727c007d31f74b3fffb0035364a2edd583",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance/governance-regression.json",
+          "bytes": 4621,
+          "sha256": "b77fc645efc938540a40f063e196d92a8e17d1a8aed956e8ec646e373a2093be",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/normative-index.json",
+          "bytes": 3166,
+          "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3",
+          "reported_status": "UNREGISTERED_OR_ABSENT"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/plan/plan-validation.json",
+          "bytes": 1449,
+          "sha256": "bc0db40209c26b5b3c05c983ca76f157bddb306fa490ddae9063d036eba34168",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/self-test/validator-self-test.json",
+          "bytes": 7390,
+          "sha256": "3df7148c3da1aa7d7b4cd34fb5de72396240401fe143f15072704d42d441e06a",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/schema_contract/receipt.json",
+          "bytes": 3101,
+          "sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+          "reported_status": "PASS",
+          "exit_code": 0
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/legacy.json",
+          "bytes": 58818,
+          "sha256": "a9dbd38c672db121d260bc412b1c7fd700162eb631d0700ba4e4de2771c11fbc",
+          "reported_status": "PASS"
+        }
+      ],
+      "job_receipt_status_consistent": true,
+      "finished_at": "2026-10-04T01:39:30.702185+00:00"
+    },
+    "arch_fitness": {
+      "metadata": {
+        "id": 16917511394,
+        "name": "arch_fitness",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.242Z",
+        "finished_at": "2026-10-04T01:30:13.686Z",
+        "duration": 35.443967,
+        "artifacts_declared_bytes": 118902
+      },
+      "observation_integrity": "MATCHED",
+      "errors": [],
+      "recorded_at": "2026-10-04T01:39:30.704132+00:00",
+      "permission_status": "UNKNOWN",
+      "trust_status": "NOT_CERTIFIED",
+      "acceptance_eligible": false,
+      "job_detail_response": {
+        "http_status": 200,
+        "sha256": "8d35a1d102d0d354667cfd12fffe6a6ce4b129353ba484a4935428f3d11b3380"
+      },
+      "trace": {
+        "http_status": 200,
+        "bytes": 14617,
+        "sha256": "5eb2f6776cab1579b4bd7431e091389fb45c50bdc78435ac1196fbd8a0379cb8",
+        "start_marker_count": 1,
+        "end_marker_count": 1,
+        "starts_match_fixed_driver": true,
+        "end_statuses": [
+          "PASS"
+        ],
+        "command_numbers": [
+          1,
+          2,
+          3
+        ],
+        "command_exit_codes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "archive": {
+        "http_status": 200,
+        "declared_bytes": 118902,
+        "bytes": 118902,
+        "sha256": "af2c222266b77600e2cc1c4a6265f53f8424bcda09465169d18673fe3dd8773e",
+        "redirects": [
+          {
+            "http_status": 302,
+            "hostname": "cdn.artifacts.gitlab-static.net",
+            "registered_signature_parameter_names": [
+              "Expires",
+              "KeyName",
+              "Signature"
+            ],
+            "original_gitlab_token_present": false
+          }
+        ],
+        "credentials_forwarded_after_first_hop": false,
+        "scanner_secret_or_match_keys_present": false,
+        "raw_archive_saved": true,
+        "local_path": "/private/tmp/anovel-v2004-candidate-a6d66af-remote/job-16917511394-arch_fitness/artifacts.zip"
+      },
+      "artifact_index": [
+        {
+          "ref": "dist/ci/arch_fitness/architecture.json",
+          "bytes": 3281,
+          "sha256": "0fdd0a7aa24f46e2b8f61f6d58d07ab8950906277fed8a7c6860a2a335322632",
+          "zip_crc32": "237c6bd7"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-01.stdout.log",
+          "bytes": 77,
+          "sha256": "3cbcb06b279cf1a0a5b350d3340d1087f865a808cf036eaa9d19cfdc33093a23",
+          "zip_crc32": "f67463df"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-02.stdout.log",
+          "bytes": 126,
+          "sha256": "7264adb6322e41361d4255348e9bbb88d32dd5c258df0a03f38f7f37b87cfa18",
+          "zip_crc32": "58c4505f"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-03.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-03.stdout.log",
+          "bytes": 260,
+          "sha256": "744b36986381e7e32c1953da488925d29487c9d4f2779e4fb4a19d6a890e4ef7",
+          "zip_crc32": "6421d637"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/junit.xml",
+          "bytes": 36348,
+          "sha256": "473fc6be57a9e9e4beca368ab935c94fe5895e6caa7cee374ef630fa07f332d0",
+          "zip_crc32": "56447400"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/action-entry.json",
+          "bytes": 696423,
+          "sha256": "e24e05790a6db98f739c70d3b8cc9358a4aa6044a12ad39b654ef192cbc6f374",
+          "zip_crc32": "101bc5fb"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/receipt.json",
+          "bytes": 4083,
+          "sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+          "zip_crc32": "da1ea7f6"
+        }
+      ],
+      "receipt": {
+        "ref": "dist/ci/arch_fitness/receipt.json",
+        "sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+        "status": "PASS",
+        "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+        "exit_code": 0,
+        "command_count": 3,
+        "expected_command_count": 3,
+        "all_commands_present": true,
+        "command_exit_codes": [
+          0,
+          0,
+          0
+        ],
+        "descriptor_count": 15,
+        "all_descriptor_hashes_match": true,
+        "required_results_missing": [],
+        "candidate_command_contract_not_certified": true
+      },
+      "single_file_evidence": [
+        {
+          "ref": "dist/ci/arch_fitness/receipt.json",
+          "http_status": 200,
+          "bytes": 4083,
+          "sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-01.stdout.log",
+          "http_status": 200,
+          "bytes": 77,
+          "sha256": "3cbcb06b279cf1a0a5b350d3340d1087f865a808cf036eaa9d19cfdc33093a23",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-01.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-02.stdout.log",
+          "http_status": 200,
+          "bytes": 126,
+          "sha256": "7264adb6322e41361d4255348e9bbb88d32dd5c258df0a03f38f7f37b87cfa18",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-02.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-03.stdout.log",
+          "http_status": 200,
+          "bytes": 260,
+          "sha256": "744b36986381e7e32c1953da488925d29487c9d4f2779e4fb4a19d6a890e4ef7",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-03.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/action-entry.json",
+          "http_status": 200,
+          "bytes": 696423,
+          "sha256": "e24e05790a6db98f739c70d3b8cc9358a4aa6044a12ad39b654ef192cbc6f374",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/architecture.json",
+          "http_status": 200,
+          "bytes": 3281,
+          "sha256": "0fdd0a7aa24f46e2b8f61f6d58d07ab8950906277fed8a7c6860a2a335322632",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/arch_fitness/junit.xml",
+          "http_status": 200,
+          "bytes": 36348,
+          "sha256": "473fc6be57a9e9e4beca368ab935c94fe5895e6caa7cee374ef630fa07f332d0",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        }
+      ],
+      "result_summaries": [
+        {
+          "ref": "dist/ci/arch_fitness/architecture.json",
+          "bytes": 3281,
+          "sha256": "0fdd0a7aa24f46e2b8f61f6d58d07ab8950906277fed8a7c6860a2a335322632",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/junit.xml",
+          "bytes": 36348,
+          "sha256": "473fc6be57a9e9e4beca368ab935c94fe5895e6caa7cee374ef630fa07f332d0",
+          "junit": {
+            "suites": [
+              {
+                "tests": "212",
+                "failures": "0",
+                "errors": "0",
+                "skipped": "0",
+                "time": "6.081"
+              }
+            ],
+            "failed_tests": [],
+            "raw_failure_text_printed": false
+          }
+        },
+        {
+          "ref": "dist/ci/arch_fitness/action-entry.json",
+          "bytes": 696423,
+          "sha256": "e24e05790a6db98f739c70d3b8cc9358a4aa6044a12ad39b654ef192cbc6f374",
+          "reported_status": "PASS"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/receipt.json",
+          "bytes": 4083,
+          "sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ],
+      "job_receipt_status_consistent": true,
+      "finished_at": "2026-10-04T01:39:38.809911+00:00"
+    },
+    "secret_dependency": {
+      "metadata": {
+        "id": 16917511396,
+        "name": "secret_dependency",
+        "status": "failed",
+        "allow_failure": false,
+        "failure_reason": "script_failure",
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:33:36.605Z",
+        "finished_at": "2026-10-04T01:34:37.133Z",
+        "duration": 60.527562,
+        "artifacts_declared_bytes": 174892
+      },
+      "observation_integrity": "MATCHED",
+      "errors": [],
+      "recorded_at": "2026-10-04T01:39:38.812249+00:00",
+      "permission_status": "UNKNOWN",
+      "trust_status": "NOT_CERTIFIED",
+      "acceptance_eligible": false,
+      "job_detail_response": {
+        "http_status": 200,
+        "sha256": "90dd3a3e49b1169fe6e4a7a04577b42aecdf318233765ea98fb7f09c28f3d402"
+      },
+      "trace": {
+        "http_status": 200,
+        "bytes": 15676,
+        "sha256": "e8b6210eac5b6bc2a0771731762b1cbef17fc907f22dada711a0aad0fccc3bf6",
+        "start_marker_count": 1,
+        "end_marker_count": 1,
+        "starts_match_fixed_driver": true,
+        "end_statuses": [
+          "FAIL"
+        ],
+        "command_numbers": [
+          1,
+          2
+        ],
+        "command_exit_codes": [
+          0,
+          1
+        ]
+      },
+      "archive": {
+        "http_status": 200,
+        "declared_bytes": 174892,
+        "bytes": 174892,
+        "sha256": "869370deee1c1aabc55e8a6de8934e14f99c04cca0371977599b2ccb30508670",
+        "redirects": [
+          {
+            "http_status": 302,
+            "hostname": "cdn.artifacts.gitlab-static.net",
+            "registered_signature_parameter_names": [
+              "Expires",
+              "KeyName",
+              "Signature"
+            ],
+            "original_gitlab_token_present": false
+          }
+        ],
+        "credentials_forwarded_after_first_hop": false,
+        "scanner_secret_or_match_keys_present": false,
+        "raw_archive_saved": true,
+        "local_path": "/private/tmp/anovel-v2004-candidate-a6d66af-remote/job-16917511396-secret_dependency/artifacts.zip"
+      },
+      "artifact_index": [
+        {
+          "ref": "dist/ci/arch_fitness/architecture.json",
+          "bytes": 3281,
+          "sha256": "0fdd0a7aa24f46e2b8f61f6d58d07ab8950906277fed8a7c6860a2a335322632",
+          "zip_crc32": "237c6bd7"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-01.stdout.log",
+          "bytes": 77,
+          "sha256": "3cbcb06b279cf1a0a5b350d3340d1087f865a808cf036eaa9d19cfdc33093a23",
+          "zip_crc32": "f67463df"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-02.stdout.log",
+          "bytes": 126,
+          "sha256": "7264adb6322e41361d4255348e9bbb88d32dd5c258df0a03f38f7f37b87cfa18",
+          "zip_crc32": "58c4505f"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-03.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/command-03.stdout.log",
+          "bytes": 260,
+          "sha256": "744b36986381e7e32c1953da488925d29487c9d4f2779e4fb4a19d6a890e4ef7",
+          "zip_crc32": "6421d637"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/junit.xml",
+          "bytes": 36348,
+          "sha256": "473fc6be57a9e9e4beca368ab935c94fe5895e6caa7cee374ef630fa07f332d0",
+          "zip_crc32": "56447400"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/action-entry.json",
+          "bytes": 696423,
+          "sha256": "e24e05790a6db98f739c70d3b8cc9358a4aa6044a12ad39b654ef192cbc6f374",
+          "zip_crc32": "101bc5fb"
+        },
+        {
+          "ref": "dist/ci/postgres_env/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/postgres_env/command-01.stdout.log",
+          "bytes": 129,
+          "sha256": "a9cb7bbd4bf6116b7e33f4a98776e0c5f5d572bcac8de230427125e4d2c8f2d4",
+          "zip_crc32": "7ccad2a6"
+        },
+        {
+          "ref": "dist/ci/arch_fitness/receipt.json",
+          "bytes": 4083,
+          "sha256": "8b53a89c9673e8268a780a53c0ca5e560a5c2b2cdc4d4bf6663f5ea68b18d984",
+          "zip_crc32": "da1ea7f6"
+        },
+        {
+          "ref": "dist/ci/postgres_env/junit.xml",
+          "bytes": 413,
+          "sha256": "c06066200109e6531b94409f389dfad3f10496938cb59ce8336bfe5e16e1119f",
+          "zip_crc32": "59ed3f75"
+        },
+        {
+          "ref": "dist/ci/schema_contract/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/postgres_env/receipt.json",
+          "bytes": 1942,
+          "sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+          "zip_crc32": "76b32946"
+        },
+        {
+          "ref": "dist/ci/schema_contract/command-01.stdout.log",
+          "bytes": 394,
+          "sha256": "163c653511d17b31fa0300adb2d9d12ef910a1dd54a2446193a1e7af0a218aff",
+          "zip_crc32": "143a8a8c"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/ai/ai-execution-regression.json",
+          "bytes": 4563,
+          "sha256": "3374db3ebc50ef3ae8a2d2df634bc9727c007d31f74b3fffb0035364a2edd583",
+          "zip_crc32": "b4fab676"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/context-inventory.json",
+          "bytes": 1089,
+          "sha256": "2fc6ef0260a1f6483bc990cb39be6e153eaae5c293311fcdebcfb009fe476e2a",
+          "zip_crc32": "4bd0945d"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance/governance-regression.json",
+          "bytes": 4621,
+          "sha256": "b77fc645efc938540a40f063e196d92a8e17d1a8aed956e8ec646e373a2093be",
+          "zip_crc32": "41cc4f69"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/governance-summary.json",
+          "bytes": 13489,
+          "sha256": "e12ecbb4097982fcd2008a61b750daaa3f5e0c2b5505c9cf3eb4dfabe753a7dc",
+          "zip_crc32": "8de9a640"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/normative-index.json",
+          "bytes": 3166,
+          "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3",
+          "zip_crc32": "f03e2f2c"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/plan/plan-validation.json",
+          "bytes": 1449,
+          "sha256": "bc0db40209c26b5b3c05c983ca76f157bddb306fa490ddae9063d036eba34168",
+          "zip_crc32": "4c389b60"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/self-test/validator-self-test.json",
+          "bytes": 7390,
+          "sha256": "3df7148c3da1aa7d7b4cd34fb5de72396240401fe143f15072704d42d441e06a",
+          "zip_crc32": "490c8214"
+        },
+        {
+          "ref": "dist/ci/schema_contract/receipt.json",
+          "bytes": 3101,
+          "sha256": "86ea25021a960c130b540cf2a265bc71aad0c23fc5a82e54205f9e4545268b81",
+          "zip_crc32": "736019fb"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-01.stdout.log",
+          "bytes": 121,
+          "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+          "zip_crc32": "10b6cee4"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-02.stdout.log",
+          "bytes": 71,
+          "sha256": "ff51c5f4518a2f814aec4d5cc7df1bfbb4833a8914da357d799d24f31d921292",
+          "zip_crc32": "37f5093b"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/receipt.json",
+          "bytes": 3344,
+          "sha256": "b89d5132f1a83979659a018ab61080df9d25831c338e001329bfd62434659979",
+          "zip_crc32": "3680c887"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/dependency-audit.json",
+          "bytes": 2972,
+          "sha256": "cae9a51980d56fe30486694147d6590be6a530ca9c11ead81ebc01f028aaa48c",
+          "zip_crc32": "2b85e555"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/locked-audit-requirements.txt",
+          "bytes": 951,
+          "sha256": "dc5c1a46407deaf549642d408c251faaae206bc20f70d028f817c8cf8e7a6014",
+          "zip_crc32": "f0c580d4"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/secret-scan.json",
+          "bytes": 13546,
+          "sha256": "bf2151f37eff889def33062bba274235f2f11f1173997f0c2ed4201f5897af7d",
+          "zip_crc32": "5a30b95e"
+        },
+        {
+          "ref": "dist/ci/schema_contract/governance/legacy.json",
+          "bytes": 58818,
+          "sha256": "a9dbd38c672db121d260bc412b1c7fd700162eb631d0700ba4e4de2771c11fbc",
+          "zip_crc32": "98f7dbb5"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/security-summary.json",
+          "bytes": 15866,
+          "sha256": "426bb3d3705492fb567928531e9305a1f62ecc4cea9290f43b4382146432d2d2",
+          "zip_crc32": "607ae51e"
+        },
+        {
+          "ref": "dist/ci/static/command-01.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-02.stdout.log",
+          "bytes": 26,
+          "sha256": "2ce9758b9f8abd876ec3e76c589e099e8b05377b1e7ea2331e81ee80f07bdff8",
+          "zip_crc32": "8b415539"
+        },
+        {
+          "ref": "dist/ci/static/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-03.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-04.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-04.stdout.log",
+          "bytes": 43,
+          "sha256": "050c52a2b0c61e8b681ef5c485e0bc03340b8d55148e0acef27d744c8be42033",
+          "zip_crc32": "79fb3513"
+        },
+        {
+          "ref": "dist/ci/static/command-05.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/command-03.stdout.log",
+          "bytes": 19,
+          "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "zip_crc32": "9b863f92"
+        },
+        {
+          "ref": "dist/ci/static/command-05.stdout.log",
+          "bytes": 39,
+          "sha256": "b7334eb0b0c4a8f581707e9083c99cd7a974ba53aeaaadc5e2137d8c17a0119d",
+          "zip_crc32": "af119f79"
+        },
+        {
+          "ref": "dist/ci/unit/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/unit/command-01.stdout.log",
+          "bytes": 121,
+          "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+          "zip_crc32": "10b6cee4"
+        },
+        {
+          "ref": "dist/ci/unit/command-02.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/static/receipt.json",
+          "bytes": 5270,
+          "sha256": "4ae5554164c2727926368256d2aa4f091f0a5a2f383ec1b3dbeec2053c841be0",
+          "zip_crc32": "e2e62768"
+        },
+        {
+          "ref": "dist/ci/unit/command-02.stdout.log",
+          "bytes": 272,
+          "sha256": "ca39652b67bf4ac89668f966f76b63d045c425f4acbc41ab66cdffd50bf65740",
+          "zip_crc32": "3ad40575"
+        },
+        {
+          "ref": "dist/ci/unit/receipt.json",
+          "bytes": 2777,
+          "sha256": "96470b62c6c7e9e4c2c03923c162d2b565e24a884de2d17c5b01fc4e902d0b14",
+          "zip_crc32": "abfed32b"
+        },
+        {
+          "ref": "dist/ci/unit/junit.xml",
+          "bytes": 26553,
+          "sha256": "08728c77e01468f2f403c8708ad7bce6e63bcfaf421c3be17663c9626190f032",
+          "zip_crc32": "bf7c080e"
+        }
+      ],
+      "receipt": {
+        "ref": "dist/ci/secret_dependency/receipt.json",
+        "sha256": "b89d5132f1a83979659a018ab61080df9d25831c338e001329bfd62434659979",
+        "status": "FAIL",
+        "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+        "exit_code": 1,
+        "command_count": 2,
+        "expected_command_count": 2,
+        "all_commands_present": true,
+        "command_exit_codes": [
+          0,
+          1
+        ],
+        "descriptor_count": 12,
+        "all_descriptor_hashes_match": true,
+        "required_results_missing": [],
+        "candidate_command_contract_not_certified": true
+      },
+      "single_file_evidence": [
+        {
+          "ref": "dist/ci/secret_dependency/receipt.json",
+          "http_status": 200,
+          "bytes": 3344,
+          "sha256": "b89d5132f1a83979659a018ab61080df9d25831c338e001329bfd62434659979",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-01.stdout.log",
+          "http_status": 200,
+          "bytes": 121,
+          "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-01.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-02.stdout.log",
+          "http_status": 200,
+          "bytes": 71,
+          "sha256": "ff51c5f4518a2f814aec4d5cc7df1bfbb4833a8914da357d799d24f31d921292",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/command-02.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/dependency-audit.json",
+          "http_status": 200,
+          "bytes": 2972,
+          "sha256": "cae9a51980d56fe30486694147d6590be6a530ca9c11ead81ebc01f028aaa48c",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/locked-audit-requirements.txt",
+          "http_status": 200,
+          "bytes": 951,
+          "sha256": "dc5c1a46407deaf549642d408c251faaae206bc20f70d028f817c8cf8e7a6014",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/secret-scan.json",
+          "http_status": 200,
+          "bytes": 13546,
+          "sha256": "bf2151f37eff889def33062bba274235f2f11f1173997f0c2ed4201f5897af7d",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/security-summary.json",
+          "http_status": 200,
+          "bytes": 15866,
+          "sha256": "426bb3d3705492fb567928531e9305a1f62ecc4cea9290f43b4382146432d2d2",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        }
+      ],
+      "result_summaries": [
+        {
+          "ref": "dist/ci/secret_dependency/receipt.json",
+          "bytes": 3344,
+          "sha256": "b89d5132f1a83979659a018ab61080df9d25831c338e001329bfd62434659979",
+          "reported_status": "FAIL",
+          "exit_code": 1
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/dependency-audit.json",
+          "bytes": 2972,
+          "sha256": "cae9a51980d56fe30486694147d6590be6a530ca9c11ead81ebc01f028aaa48c",
+          "reported_status": "UNREGISTERED_OR_ABSENT"
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/secret-scan.json",
+          "bytes": 13546,
+          "sha256": "bf2151f37eff889def33062bba274235f2f11f1173997f0c2ed4201f5897af7d",
+          "reported_status": "FAIL",
+          "history_commits": 140,
+          "tracked_files": 1264,
+          "deleted_worktree_files": 0,
+          "scans": [
+            {
+              "exit_code": 1,
+              "finding_count": 15,
+              "report_sha256": "033d82f44758dfb2e066c82cbcf1ae14d3d4e0754a59c782d44e1216206fdfe0",
+              "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stderr_sha256": "c5e5e82e26aadcae0dacc97c56d28d0449795146d89758e0a07383f9c8a94044",
+              "target": "tracked_worktree",
+              "status": "FAIL"
+            },
+            {
+              "exit_code": 1,
+              "finding_count": 28,
+              "report_sha256": "c33479424a8acafa06a193be51b9826b63c768a1989d61368ead004e6fb1d8c9",
+              "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "stderr_sha256": "75ba1b54b3b4841b59a128d03640754febcde28b949766ed6ae56fef6e89e1c1",
+              "target": "git_history",
+              "status": "FAIL"
+            }
+          ]
+        },
+        {
+          "ref": "dist/ci/secret_dependency/security/security-summary.json",
+          "bytes": 15866,
+          "sha256": "426bb3d3705492fb567928531e9305a1f62ecc4cea9290f43b4382146432d2d2",
+          "reported_status": "FAIL",
+          "checks": {
+            "secret": {
+              "status": "FAIL",
+              "history_commits": 140
+            },
+            "dependency": {
+              "status": "PASS",
+              "audited_packages": 51,
+              "expected_packages": 51,
+              "vulnerability_count": 0
+            }
+          }
+        }
+      ],
+      "job_receipt_status_consistent": true,
+      "finished_at": "2026-10-04T01:39:45.717452+00:00"
+    },
+    "postgres_env": {
+      "metadata": {
+        "id": 16917511395,
+        "name": "postgres_env",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.369Z",
+        "finished_at": "2026-10-04T01:30:17.406Z",
+        "duration": 39.03619,
+        "artifacts_declared_bytes": 2273
+      },
+      "observation_integrity": "MATCHED",
+      "errors": [],
+      "recorded_at": "2026-10-04T01:39:45.723313+00:00",
+      "permission_status": "UNKNOWN",
+      "trust_status": "NOT_CERTIFIED",
+      "acceptance_eligible": false,
+      "job_detail_response": {
+        "http_status": 200,
+        "sha256": "1dfeb5c2c4d6bb461d9432abc516d4525b0363d4b3a35ddc0a5982af9ca38778"
+      },
+      "trace": {
+        "http_status": 200,
+        "bytes": 16425,
+        "sha256": "d02f3a85cbfe2406a38b60bc14506d029c46df1ad04dd37e434c24bcbc18d41d",
+        "start_marker_count": 1,
+        "end_marker_count": 1,
+        "starts_match_fixed_driver": true,
+        "end_statuses": [
+          "PASS"
+        ],
+        "command_numbers": [
+          1
+        ],
+        "command_exit_codes": [
+          0
+        ]
+      },
+      "archive": {
+        "http_status": 200,
+        "declared_bytes": 2273,
+        "bytes": 2273,
+        "sha256": "3ccf5bf4ce962ed47127729e345804aefa0f1dd9ff61fed618614adc32b3b777",
+        "redirects": [
+          {
+            "http_status": 302,
+            "hostname": "cdn.artifacts.gitlab-static.net",
+            "registered_signature_parameter_names": [
+              "Expires",
+              "KeyName",
+              "Signature"
+            ],
+            "original_gitlab_token_present": false
+          }
+        ],
+        "credentials_forwarded_after_first_hop": false,
+        "scanner_secret_or_match_keys_present": false,
+        "raw_archive_saved": true,
+        "local_path": "/private/tmp/anovel-v2004-candidate-a6d66af-remote/job-16917511395-postgres_env/artifacts.zip"
+      },
+      "artifact_index": [
+        {
+          "ref": "dist/ci/postgres_env/command-01.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "zip_crc32": "00000000"
+        },
+        {
+          "ref": "dist/ci/postgres_env/junit.xml",
+          "bytes": 413,
+          "sha256": "c06066200109e6531b94409f389dfad3f10496938cb59ce8336bfe5e16e1119f",
+          "zip_crc32": "59ed3f75"
+        },
+        {
+          "ref": "dist/ci/postgres_env/receipt.json",
+          "bytes": 1942,
+          "sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+          "zip_crc32": "76b32946"
+        },
+        {
+          "ref": "dist/ci/postgres_env/command-01.stdout.log",
+          "bytes": 129,
+          "sha256": "a9cb7bbd4bf6116b7e33f4a98776e0c5f5d572bcac8de230427125e4d2c8f2d4",
+          "zip_crc32": "7ccad2a6"
+        }
+      ],
+      "receipt": {
+        "ref": "dist/ci/postgres_env/receipt.json",
+        "sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+        "status": "PASS",
+        "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+        "exit_code": 0,
+        "command_count": 1,
+        "expected_command_count": 1,
+        "all_commands_present": true,
+        "command_exit_codes": [
+          0
+        ],
+        "descriptor_count": 5,
+        "all_descriptor_hashes_match": true,
+        "required_results_missing": [],
+        "candidate_command_contract_not_certified": true
+      },
+      "single_file_evidence": [
+        {
+          "ref": "dist/ci/postgres_env/receipt.json",
+          "http_status": 200,
+          "bytes": 1942,
+          "sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/postgres_env/command-01.stdout.log",
+          "http_status": 200,
+          "bytes": 129,
+          "sha256": "a9cb7bbd4bf6116b7e33f4a98776e0c5f5d572bcac8de230427125e4d2c8f2d4",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/postgres_env/command-01.stderr.log",
+          "http_status": 200,
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        },
+        {
+          "ref": "dist/ci/postgres_env/junit.xml",
+          "http_status": 200,
+          "bytes": 413,
+          "sha256": "c06066200109e6531b94409f389dfad3f10496938cb59ce8336bfe5e16e1119f",
+          "matches_archive_and_receipt": true,
+          "redirects": [],
+          "credentials_forwarded_after_first_hop": false
+        }
+      ],
+      "result_summaries": [
+        {
+          "ref": "dist/ci/postgres_env/junit.xml",
+          "bytes": 413,
+          "sha256": "c06066200109e6531b94409f389dfad3f10496938cb59ce8336bfe5e16e1119f",
+          "junit": {
+            "suites": [
+              {
+                "tests": "1",
+                "failures": "0",
+                "errors": "0",
+                "skipped": "0",
+                "time": "1.351"
+              }
+            ],
+            "failed_tests": [],
+            "raw_failure_text_printed": false
+          }
+        },
+        {
+          "ref": "dist/ci/postgres_env/receipt.json",
+          "bytes": 1942,
+          "sha256": "0fcd928de292dbb468b2002fb11562aeffef5e5616f8b4d30987139cb93f3f75",
+          "reported_status": "PASS",
+          "exit_code": 0
+        }
+      ],
+      "job_receipt_status_consistent": true,
+      "finished_at": "2026-10-04T01:39:50.681030+00:00"
+    }
+  },
+  "final_pipeline_observation": {
+    "http_status": 200,
+    "response_sha256": "76308bb1965c6308d726de51ed502b5e65adc6bd5fca2c63a762eff17fc14fc0",
+    "status": "failed",
+    "identity_matches": true
+  },
+  "final_job_observation": {
+    "pages": [
+      {
+        "page": 1,
+        "http_status": 200,
+        "response_sha256": "b38def5dcc1f65bdb4cf86b1ad435e43422cfe0f810fc44deb9714e4ec5903f9"
+      }
+    ],
+    "complete": true,
+    "jobs": [
+      {
+        "id": 16917511396,
+        "name": "secret_dependency",
+        "status": "failed",
+        "allow_failure": false,
+        "failure_reason": "script_failure",
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:33:36.605Z",
+        "finished_at": "2026-10-04T01:34:37.133Z",
+        "duration": 60.527562,
+        "artifacts_declared_bytes": 174892
+      },
+      {
+        "id": 16917511395,
+        "name": "postgres_env",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.369Z",
+        "finished_at": "2026-10-04T01:30:17.406Z",
+        "duration": 39.03619,
+        "artifacts_declared_bytes": 2273
+      },
+      {
+        "id": 16917511394,
+        "name": "arch_fitness",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.242Z",
+        "finished_at": "2026-10-04T01:30:13.686Z",
+        "duration": 35.443967,
+        "artifacts_declared_bytes": 118902
+      },
+      {
+        "id": 16917511393,
+        "name": "unit",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:29:38.189Z",
+        "finished_at": "2026-10-04T01:33:35.049Z",
+        "duration": 236.86036,
+        "artifacts_declared_bytes": 6147
+      },
+      {
+        "id": 16917511392,
+        "name": "schema_contract",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:27:51.835Z",
+        "finished_at": "2026-10-04T01:29:36.737Z",
+        "duration": 104.9019,
+        "artifacts_declared_bytes": 32225
+      },
+      {
+        "id": 16917511391,
+        "name": "static",
+        "status": "success",
+        "allow_failure": false,
+        "failure_reason": null,
+        "runner_id": 54907241,
+        "runner_type": "instance_type",
+        "runner_manager_platform": "linux",
+        "runner_manager_architecture": "amd64",
+        "created_at": "2026-10-04T01:27:51.409Z",
+        "started_at": "2026-10-04T01:27:51.816Z",
+        "finished_at": "2026-10-04T01:28:21.959Z",
+        "duration": 30.143212,
+        "artifacts_declared_bytes": 3866
+      }
+    ],
+    "latest_job_selection_unchanged": true,
+    "statuses_match_collected": true
+  },
+  "collection_status": "ALL_REQUIRED_EVIDENCE_OBSERVED",
+  "all_actual_gates_pass": false,
+  "queried_at": "2026-10-04T01:39:53.384382+00:00",
+  "collector_exit_code": 0
+}

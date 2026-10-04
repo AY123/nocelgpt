@@ -1,0 +1,52 @@
+{
+  "record_type": "local_corrective_controls",
+  "status": "PASS",
+  "task_id": "V2-004",
+  "same_operator_review": true,
+  "independent_review_claimed": false,
+  "junit": [
+    {
+      "tests": 202,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "configuration_selection_tests": 45,
+  "static": "PASS",
+  "governance_checks": 5,
+  "preserved_sandbox_unit": {
+    "tests": 202,
+    "failures": 2,
+    "errors": 0,
+    "skipped": 0,
+    "reason": "actual Operation not permitted in two build/install tests; same full gate rerun outside sandbox PASS"
+  },
+  "source_revision_before_commit": "a6d66af690bac55ab14fd5336896414374a4e28a",
+  "tested_source_sha256": {
+    ".gitlab-ci.yml": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+    "scripts/ci/check_configuration.py": "bf2cf0d70b6d164d49a6cc36f92db16a87f9147d0869bb604d00c661b75e9287",
+    "tests/contract/test_delivery_gates.py": "b7d889f7c14945eff47d3b0fecf73315e6271530bb1e0d83811551af7cdaf710"
+  },
+  "raw_artifact_ref": "plan/validation/execution/V2-004/followup-20261004/mr-local-raw-artifacts.tar.gz",
+  "raw_artifact_sha256": "48e06ccd7218d293fe0a978a282e6c5fc8a0cf45772a909639e024190d8fd4fc",
+  "remote_acceptance_eligible": false,
+  "p0": "NOT_VERIFIED",
+  "user_files_preserved": {
+    "审核报告.txt": {
+      "sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+      "unchanged": true
+    },
+    "V2-004任务prompt.txt": {
+      "sha256": "dc95bccfa2cb6f75b98470c2a582bba3879b2a26a5245c1cfb573d2a2c0a4a38",
+      "unchanged": true
+    },
+    ".claude/settings.local.json": {
+      "sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
+      "unchanged": true
+    },
+    "V2-003任务prompt.txt": {
+      "still_deleted": true
+    }
+  }
+}
