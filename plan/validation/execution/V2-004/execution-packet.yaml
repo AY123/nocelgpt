@@ -22,7 +22,7 @@ scope: 'User-authorized dev_gpt analysis and P0 V2-004 implementation: six manda
   CI gates, locked scanners/tools, real subprocess receipts, current-revision online
   provenance verification and local positive/negative controls. No P1, paid calls
   or permission expansion.'
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
   ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
@@ -189,9 +189,11 @@ handoff:
   - Read actual UNIT artifact and repair confirmed Linux failure
   - Strengthen exact command/artifact comparison and job timeouts
   - Historical credential disposition and actual permission controls remain unresolved
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6
+  scope_ref: plan/validation/execution/V2-004/followup-20261004/scope-local-v3.json

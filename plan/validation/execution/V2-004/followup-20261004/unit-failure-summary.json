@@ -1,0 +1,175 @@
+{
+  "record_type": "remote_unit_failure_safe_summary",
+  "schema_version": "1.0",
+  "actual_observation": true,
+  "project_id": 86656946,
+  "pipeline_id": 2909931436,
+  "job_id": 16916847412,
+  "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+  "query_started_at": "2026-10-04T00:46:37.030713+00:00",
+  "queried_at": "2026-10-04T00:46:45.488248+00:00",
+  "archive": {
+    "bytes": 7351,
+    "sha256": "4ccb1a5445394561e8e43780dd064ac34ccba8c2c0767c9acc1da057a3d52271",
+    "redirects": 1,
+    "signed_external_download": true,
+    "credentials_forwarded_after_first_hop": false
+  },
+  "artifact_index": "/tmp/anovel-v2004-20261004-unit-artifacts-16916847412-cdn/artifact-index.json",
+  "raw_logs_printed": false,
+  "unit_failure_summary": {
+    "receipt_status": "FAIL",
+    "receipt_exit_code": 1,
+    "receipt_and_log_hashes": "MATCHED",
+    "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+    "command_exit_codes": [
+      0,
+      1
+    ],
+    "junit": [
+      {
+        "tests": "137",
+        "failures": "1",
+        "errors": "0",
+        "skipped": "0",
+        "time": "160.226"
+      }
+    ],
+    "failures": [
+      {
+        "test": "tests.integration.test_repository_bootstrap::test_locked_install_rejects_manifest_drift",
+        "problems": [
+          {
+            "error_types": [
+              "AssertionError"
+            ],
+            "reason_categories": [
+              "assertion_mismatch"
+            ],
+            "reason_sha256": "a0604bbba41dac4140e733c7778572e7ef864d2f573e02211ae283ebf528c32c",
+            "raw_failure_text_saved_in_junit_only": true
+          }
+        ]
+      }
+    ],
+    "raw_logs_output": false
+  },
+  "failure_cause": {
+    "status": "OBSERVED_ASSERTION_FAILURE",
+    "failed_assertion": "assert \"lock\" in result.stderr.lower()",
+    "uv_returncode": 1,
+    "uv_install_completed": false,
+    "lock_drift_specific_rejection": "UNKNOWN_EXPECTED_DIAGNOSTIC_NOT_REACHED",
+    "stderr_cache_only_diagnostic_present": true,
+    "stderr_network_disabled_wording_present": true,
+    "diagnostic_did_not_satisfy_lock_word_assertion": true,
+    "interpretation": "Offline registry/cache resolution stopped uv before the expected lock-drift diagnostic. The test relies on metadata previously cached by a different install.",
+    "not_an_install_success_or_gate_PASS": true,
+    "lock_unchanged_assertion_reached": false,
+    "raw_failure_sha256": "a0604bbba41dac4140e733c7778572e7ef864d2f573e02211ae283ebf528c32c"
+  },
+  "protected_branch_rules": {
+    "status": "OBSERVED",
+    "pages": [
+      {
+        "page": 1,
+        "http_status": 200,
+        "response_sha256": "90e5a687b355278b61840b937089c78e2379d4e66b39e06638a45048690279af"
+      }
+    ],
+    "complete": true,
+    "total": 1,
+    "rules": [
+      {
+        "id": 323848675,
+        "name": "main",
+        "allow_force_push": false,
+        "code_owner_approval_required": false,
+        "inherited": false,
+        "push_access_levels": [
+          {
+            "id": 383221237,
+            "access_level": 40,
+            "access_level_description": "Maintainers",
+            "deploy_key_id": null,
+            "user_id": null,
+            "group_id": null
+          }
+        ],
+        "merge_access_levels": [
+          {
+            "id": 351353964,
+            "access_level": 40,
+            "access_level_description": "Maintainers",
+            "user_id": null,
+            "group_id": null
+          }
+        ],
+        "unprotect_access_levels": []
+      }
+    ]
+  },
+  "project_runner_inventory": {
+    "status": "OBSERVED",
+    "complete": true,
+    "total": 136,
+    "pages": [
+      {
+        "page": 1,
+        "http_status": 200,
+        "response_sha256": "6409e329891a340e899d6ba73735d29645ae682da388d4993d9435a427d95d86"
+      },
+      {
+        "page": 2,
+        "http_status": 200,
+        "response_sha256": "9d4de8c29e544ff9c9ab22a3e8f4fcfd0375bcf444eaa2c17d1bdacd38bac996"
+      }
+    ]
+  },
+  "executing_runner": {
+    "http_status": 200,
+    "response_sha256": "56885838b78648a50f92144be5b07aa0f761f0b9f0d3f3dfd50df121f9d67325",
+    "metadata": {
+      "id": 54907241,
+      "runner_type": "instance_type",
+      "is_shared": true,
+      "active": true,
+      "paused": false,
+      "online": true,
+      "status": "online",
+      "access_level": "not_protected",
+      "locked": false,
+      "run_untagged": true,
+      "maximum_timeout": 10800,
+      "tag_list": [
+        "saas-linux-small-amd64",
+        "gitlab--duo"
+      ]
+    }
+  },
+  "namespace_budget_metadata": {
+    "http_status": 200,
+    "response_sha256": "d971c99ed2ee12aab9709893d017e49ac0c55e6332c641a9851321eb339d7f50",
+    "metadata": {
+      "id": 136826038,
+      "kind": "group",
+      "full_path": "ayitnovel",
+      "plan": "free",
+      "trial": false,
+      "trial_ends_on": null,
+      "end_date": null,
+      "ci_minutes_usage": {
+        "total_minutes_used": 227,
+        "monthly_minutes_used": 227,
+        "purchased_minutes_used": 0
+      }
+    },
+    "remaining_compute_minutes": "UNKNOWN",
+    "new_purchase_requested": false,
+    "new_runner_registered": false,
+    "monetary_charge": "UNKNOWN_NOT_ASSUMED_ZERO",
+    "official_docs": "https://docs.gitlab.com/api/namespaces/"
+  },
+  "permission_status": "UNKNOWN_NO_ADVERSARIAL_PERMISSION_TEST",
+  "acceptance_eligible": false
+}

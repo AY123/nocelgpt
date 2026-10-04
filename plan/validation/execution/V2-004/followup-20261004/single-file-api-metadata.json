@@ -1,0 +1,38 @@
+{
+  "record_type": "remote_exact_job_single_artifact_observation",
+  "project_id": 86656946,
+  "job_id": 16916847412,
+  "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+  "queried_at": "2026-10-04T00:51:07.418371+00:00",
+  "artifact_metadata": [
+    {
+      "ref": "dist/ci/unit/junit.xml",
+      "http_status": 200,
+      "bytes": 23935,
+      "sha256": "69ec1d77717a0e4ced19d49cb2354a63f60c0aab78e67ea27b163b3e50909290",
+      "matches_downloaded_archive": true
+    },
+    {
+      "ref": "dist/ci/unit/receipt.json",
+      "http_status": 200,
+      "bytes": 2777,
+      "sha256": "1e5eab9ba05059b3b8e94c00171944b69c178cd683812545750687ea53263d10",
+      "matches_downloaded_archive": true
+    },
+    {
+      "ref": "dist/ci/unit/command-02.stdout.log",
+      "http_status": 200,
+      "bytes": 4167,
+      "sha256": "5002485f663bf2d1231d2e8fecd788c283655351a06d09c50ce8bbd7e981648c",
+      "matches_downloaded_archive": true
+    },
+    {
+      "ref": "dist/ci/unit/command-02.stderr.log",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "matches_downloaded_archive": true
+    }
+  ],
+  "raw_content_printed": false
+}

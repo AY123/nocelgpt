@@ -1,0 +1,44 @@
+{
+  "record_type": "existing_gitlab_compute_budget_observation",
+  "actual_observation": true,
+  "queried_at": "2026-10-04T00:46:45.488248+00:00",
+  "project_id": 86656946,
+  "namespace_metadata": {
+    "http_status": 200,
+    "response_sha256": "d971c99ed2ee12aab9709893d017e49ac0c55e6332c641a9851321eb339d7f50",
+    "metadata": {
+      "id": 136826038,
+      "kind": "group",
+      "full_path": "ayitnovel",
+      "plan": "free",
+      "trial": false,
+      "trial_ends_on": null,
+      "end_date": null,
+      "ci_minutes_usage": {
+        "total_minutes_used": 227,
+        "monthly_minutes_used": 227,
+        "purchased_minutes_used": 0
+      }
+    },
+    "remaining_compute_minutes": "UNKNOWN",
+    "new_purchase_requested": false,
+    "new_runner_registered": false,
+    "monetary_charge": "UNKNOWN_NOT_ASSUMED_ZERO",
+    "official_docs": "https://docs.gitlab.com/api/namespaces/"
+  },
+  "official_free_monthly_base_compute_minutes": 400,
+  "default_base_minus_observed_monthly_used_inference": 173,
+  "inference_is_not_api_balance": true,
+  "actual_monthly_quota_limit": "UNKNOWN_NOT_RETURNED_TO_OWNER_API",
+  "actual_extra_minutes_balance": "UNKNOWN_NOT_RETURNED_TO_OWNER_API",
+  "existing_runner_id": 54907241,
+  "runner_type_tag": "saas-linux-small-amd64",
+  "official_default_runner_compute_factor": 1,
+  "factor_is_not_monetary_price": true,
+  "no_new_purchase": true,
+  "no_runner_registration": true,
+  "sources": [
+    "https://docs.gitlab.com/api/namespaces/",
+    "https://docs.gitlab.com/ci/pipelines/compute_minutes/"
+  ]
+}
