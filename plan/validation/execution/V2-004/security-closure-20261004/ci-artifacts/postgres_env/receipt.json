@@ -1,0 +1,63 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "postgres_env",
+  "gate": "POSTGRES_ENV",
+  "status": "PASS",
+  "revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "project_id": "86656946",
+  "pipeline_id": "2910092880",
+  "job_id": "16917661777",
+  "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+  "source_kind": "UNVERIFIED_GITLAB_ENVIRONMENT",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-04T02:00:03.406779+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-s",
+        "tests/integration/test_postgres_ci_service.py",
+        "--junitxml=dist/ci/postgres_env/junit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/ci/postgres_env/command-01.stdout.log",
+        "sha256": "e0a60726a0154c0dcb173ef48ac0492c283a8a9c2c19e9dc06f5908d5a4237c7"
+      },
+      "stderr": {
+        "ref": "dist/ci/postgres_env/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/ci/postgres_env/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/postgres_env/command-01.stdout.log",
+      "sha256": "e0a60726a0154c0dcb173ef48ac0492c283a8a9c2c19e9dc06f5908d5a4237c7"
+    },
+    {
+      "ref": "dist/ci/postgres_env/junit.xml",
+      "sha256": "3e1f1dd66ccb729115df63d294dcedd6e013f474cf2fef3828d008118357e72d"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-04T02:00:05.514944+00:00"
+}

@@ -1,0 +1,127 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "arch_fitness",
+  "gate": "ARCH_FITNESS",
+  "status": "PASS",
+  "revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "project_id": "86656946",
+  "pipeline_id": "2910092880",
+  "job_id": "16917661776",
+  "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+  "source_kind": "UNVERIFIED_GITLAB_ENVIRONMENT",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-04T01:59:58.610821+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "scripts/task_execution.py",
+        "check",
+        "--task",
+        "V2-004",
+        "--action",
+        "IMPLEMENT",
+        "--output",
+        "dist/ci/arch_fitness/action-entry.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/ci/arch_fitness/command-01.stdout.log",
+        "sha256": "3cbcb06b279cf1a0a5b350d3340d1087f865a808cf036eaa9d19cfdc33093a23"
+      },
+      "stderr": {
+        "ref": "dist/ci/arch_fitness/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "scripts/check_architecture.py",
+        "--output",
+        "dist/ci/arch_fitness/architecture.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/ci/arch_fitness/command-02.stdout.log",
+        "sha256": "7264adb6322e41361d4255348e9bbb88d32dd5c258df0a03f38f7f37b87cfa18"
+      },
+      "stderr": {
+        "ref": "dist/ci/arch_fitness/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/architecture",
+        "--junitxml=dist/ci/arch_fitness/junit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/ci/arch_fitness/command-03.stdout.log",
+        "sha256": "e440e671936222e632558524f41b069f6f642ffdfbbceb8b90f061c6b53ad18a"
+      },
+      "stderr": {
+        "ref": "dist/ci/arch_fitness/command-03.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/ci/arch_fitness/action-entry.json",
+      "sha256": "b3d922f92938541672ef639d98a918740132ba4894b5b20f00812f6ff8e1e2a3"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/architecture.json",
+      "sha256": "0fdd0a7aa24f46e2b8f61f6d58d07ab8950906277fed8a7c6860a2a335322632"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/command-01.stdout.log",
+      "sha256": "3cbcb06b279cf1a0a5b350d3340d1087f865a808cf036eaa9d19cfdc33093a23"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/command-02.stdout.log",
+      "sha256": "7264adb6322e41361d4255348e9bbb88d32dd5c258df0a03f38f7f37b87cfa18"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/command-03.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/command-03.stdout.log",
+      "sha256": "e440e671936222e632558524f41b069f6f642ffdfbbceb8b90f061c6b53ad18a"
+    },
+    {
+      "ref": "dist/ci/arch_fitness/junit.xml",
+      "sha256": "fd45cd1d7b5bdac70c06e699e30a733efcfe2e4e3f5fc7e3135ffaf7348b6d99"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-04T02:00:15.095800+00:00"
+}

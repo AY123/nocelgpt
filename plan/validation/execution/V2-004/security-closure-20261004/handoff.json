@@ -1,0 +1,46 @@
+{
+  "record_type": "V2-004_SECURITY_AND_PERMISSION_HANDOFF",
+  "recorded_at": "2026-10-04T05:23:27.448397+00:00",
+  "tested_revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "pipeline_id": 2910092880,
+  "pipeline_status": "failed",
+  "records": [
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json",
+      "sha256": "8ab242eb8428988ae011e65df81b08dcd8c991fef59372b0201b0a4ef0ab645a"
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-evidence-index.json",
+      "sha256": "54e1580e01ffd5a47122f4453c5e6ff31be05a62967cc9210eaa05e757e564d3"
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json",
+      "sha256": "189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea"
+    }
+  ],
+  "completed": [
+    "43 actual artifact findings exported and source blob/identity hashes checked one-to-one",
+    "24 file-hash identifiers, 3 explicit mock fixtures and 9 ellipsis examples classified with exact evidence",
+    "6 full credential-shaped findings grouped into 3 unique groups; 1 truncated reference kept unresolved",
+    "Six actual receipts and three JUnit reports copied byte-for-byte with artifact hash index",
+    "Actual protected branch rules and runner registry fully queried; original network failures retained"
+  ],
+  "failed": [
+    "Mandatory secret_dependency gate FAIL at 3ce6c32; overall pipeline FAILED"
+  ],
+  "unknown": [
+    "Credential ownership/validity and revocation/rotation for 7 historical findings",
+    "Authorized exception authority/reason/scope/expiry; 36 requests not approved or applied",
+    "Persistent trusted runner host/access and actual Developer positive/negative controls"
+  ],
+  "next_action": "Owner supplies redacted group dispositions and runner host; perform applicable authorized remediation/configuration and rerun all six gates at final SHA",
+  "resume_conditions": [
+    "Recheck checkout, preserved user file hashes, current execution packet and exact source records",
+    "No broad allowlist, credential online test, implicit history rewrite or mixed-revision acceptance",
+    "Records at 3ce6c32 are historical after the next commit; new full pipeline and protected permission evidence required"
+  ],
+  "v2_004": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED",
+  "acceptance_eligible": false,
+  "runtime_dist_handoff": "Local supplementary evidence only; repository/CI sources above carry current claims."
+}

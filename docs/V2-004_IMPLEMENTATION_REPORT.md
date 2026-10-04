@@ -132,3 +132,13 @@ uv run --locked python -B scripts/ci/verify_remote.py \
 本轮七个提交已正常推送至 dev_gpt，a6d66af690bac55ab14fd5336896414374a4e28a 的真实 push pipeline 2910062335 已执行五项成功，安全结果另按终态留存。并行复核发现六个 job 无 rules 默认排除 MR，与 workflow 的 MR 入口不一致，分支成功不能代替 MR 检查。现已为所有 job 增加精确无条件 rules，普通五项 on_success、安全 always，配置验证仅允许该固定形式，六项硬失败和原工作流保持。新增 24 个控制分别拒绝规则缺失、仅 push 条件、manual 和规则允许失败；原测试保留。
 
 [MR 接入说明](../plan/validation/execution/V2-004/followup-20261004/mr-trigger-correction.md)记录官方依据、当前任务归属和影响。GitLab CI Lint 的 dry-run 是 branch/tag push 模拟，不能声称其证明真实 MR 来源或保护权限。修复候选将另绑定准确提交推送，a6d 流水线原始结果保留为历史。
+
+## 2026-10-04 两项收口记录
+
+实际候选 `3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0` / Pipeline `2910092880`：STATIC、SCHEMA_CONTRACT、UNIT、ARCH_FITNESS、POSTGRES_ENV PASS，UNIT202/ARCH212/PG1 共415项无失败、错误或跳过；mandatory SECRET_DEPENDENCY FAIL，pipeline FAILED。这是正确的安全阻断，不能记为 V2-004 PASS。
+
+[仓库可核验收口记录](../plan/validation/execution/V2-004/security-closure-20261004/README.md)已绑定实际 artifact 字节、六项 receipt、JUnit 与具体43项发现。分类为公开文件hash24、mock3、省略号示例9、完整疑似凭据6（三组）、待归属截断引用1；36项精确例外申请尚未批准或应用，全部43项保持OPEN。
+
+实际全量查询136个可用runner均为instance，实际runner54907241为not_protected，无project/group runner；保护规则仅main，dev_gpt未保护。变量覆盖限制已是no_one_allowed；skipped-pipeline合并字段null保持未知。Owner/Developer角色信息不替代真实权限正反例。
+
+原dist交接仅为本地补充；本次canonical记录解决仓库核验缺口，不升级任务或P0状态。待owner提供脱敏凭据处置和可用runner主机后推进实际闭环；最终候选须同一SHA重新取得六门禁全PASS及受保护权限证据。当前V2-004 IN_PROGRESS，P0 NOT_VERIFIED。

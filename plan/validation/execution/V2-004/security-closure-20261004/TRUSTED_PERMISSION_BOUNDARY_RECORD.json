@@ -1,0 +1,127 @@
+{
+  "record_type": "TRUSTED_PERMISSION_BOUNDARY_RECORD",
+  "recorded_at": "2026-10-04T05:23:27.447158+00:00",
+  "project_id": 86656946,
+  "observed_revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "status": "NOT_VERIFIED",
+  "trusted_execution_status": "UNVERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false,
+  "platform_mutations": 0,
+  "sources": [
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/trust-boundary-first-attempt.json",
+      "sha256": "dbe557abc0f90967d5cd303a0447a17be810e3c5869c6936b1e55fdfc1082d09"
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/trust-boundary-metadata.json",
+      "sha256": "d1f59ca2ae02c27753bc15c2dd8c0e9e96aef13e0d1ba5b21d84d995bffead80"
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/connector-observations.json",
+      "sha256": "87dd277c206f32bb3d6568461c983dabfb27ad3b4c6ea83f601d8923498b9a01"
+    }
+  ],
+  "facts": {
+    "dev_gpt_protected": false,
+    "querying_owner_can_push": true,
+    "protected_branch_rules": [
+      "main"
+    ],
+    "main_push_minimum_access_level": 40,
+    "main_merge_minimum_access_level": 40,
+    "main_allow_force_push": false,
+    "available_runner_pages_complete": true,
+    "available_runner_total": 136,
+    "available_instance_runner_count": 136,
+    "available_project_runner_count": 0,
+    "available_group_runner_count": 0,
+    "actual_ci_runner_id": 54907241,
+    "actual_ci_runner_type": "instance_type",
+    "actual_ci_runner_access_level": "not_protected",
+    "actual_ci_runner_locked": false,
+    "actual_ci_runner_run_untagged": true,
+    "actual_ci_runner_online": true,
+    "only_allow_merge_if_pipeline_succeeds": true,
+    "ci_pipeline_variables_minimum_override_role": "no_one_allowed",
+    "ci_config_path": "",
+    "observed_owner_user_id": 2897271,
+    "observed_developer_user_id": 2897322
+  },
+  "unknowns": {
+    "allow_merge_on_skipped_pipeline": "API_NULL_NOT_FALSE",
+    "persistent_runner_host": "NOT_PROVIDED",
+    "secure_existing_access_method": "NOT_PROVIDED",
+    "trusted_config_write_isolation": "NOT_VERIFIED",
+    "developer_actual_denials": "NOT_RUN",
+    "developer_positive_control": "NOT_RUN",
+    "exception_approval_isolation": "NOT_VERIFIED"
+  },
+  "scenario_boundaries": [
+    {
+      "scenario_id": "AT-V2-004-04",
+      "status": "PARTIAL_METADATA_ONLY",
+      "pending": "Actual merge refusal and mandatory-gate deletion/reordering controls"
+    },
+    {
+      "scenario_id": "AT-V2-004-06",
+      "status": "NOT_VERIFIED",
+      "pending": "Actual protected project/group runner, trusted commands/configuration and current-revision artifacts"
+    },
+    {
+      "scenario_id": "AT-V2-004-07",
+      "status": "NOT_RUN",
+      "pending": "Effective ordinary Developer positive and negative permissions, self-exception refusal"
+    },
+    {
+      "scenario_id": "AT-V2-004-08",
+      "status": "NOT_RUN",
+      "pending": "Actual unauthorized gate/baseline/test removal is blocked; authorized revision positive control"
+    }
+  ],
+  "next_controls": [
+    {
+      "control": "Ordinary Developer can read and make a harmless change in permitted feature ref",
+      "expected": "SUCCESS",
+      "actual": "NOT_RUN"
+    },
+    {
+      "control": "Ordinary Developer direct push to frozen protected acceptance ref",
+      "expected": "DENIED",
+      "actual": "NOT_RUN"
+    },
+    {
+      "control": "Ordinary Developer changes branch protection, trusted configuration or pipeline override settings",
+      "expected": "DENIED",
+      "actual": "NOT_RUN"
+    },
+    {
+      "control": "Ordinary Developer approves its own security exception",
+      "expected": "DENIED",
+      "actual": "NOT_RUN"
+    },
+    {
+      "control": "Harmless failing gate, deletion/reordering, skip or allow_failure change in real trusted execution",
+      "expected": "FAIL_AND_MERGE_BLOCKED",
+      "actual": "NOT_RUN"
+    },
+    {
+      "control": "Authorized rule revision verified by protected trusted execution",
+      "expected": "SUCCESS_WITH_AUTHORITY_RECORD",
+      "actual": "NOT_RUN"
+    }
+  ],
+  "next_action": "Obtain identified Linux/Docker host and existing secure access; finish security owner dispositions before final candidate protection/permission acceptance",
+  "configuration_proposal_ref": "plan/validation/execution/V2-004/followup-20261004/trusted-ci-proposal.md",
+  "proposal_corrections": [
+    "ci_pipeline_variables_minimum_override_role is already no_one_allowed; do not describe as missing.",
+    "allow_merge_on_skipped_pipeline remains unknown because actual API value is null."
+  ],
+  "limitations": [
+    "Complete read-only metadata is not proof of rejected unauthorized writes.",
+    "Instance runner execution/source matching is not protected execution.",
+    "The same operator implemented and reviewed; no independent personnel review claimed.",
+    "First network failures remain evidence; bounded retry succeeded without overwriting them.",
+    "No host deployment, runner enrollment, protected branch freeze, new config project or platform mutation performed."
+  ]
+}

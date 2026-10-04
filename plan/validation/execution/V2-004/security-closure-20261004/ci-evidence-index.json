@@ -1,0 +1,461 @@
+{
+  "record_type": "exact_revision_actual_ci_evidence_index",
+  "project_id": 86656946,
+  "tested_revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "pipeline_id": 2910092880,
+  "pipeline_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2910092880",
+  "pipeline_status": "failed",
+  "gates": {
+    "static": {
+      "job_id": 16917661773,
+      "actual_status": "success",
+      "status": "PASS",
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type",
+      "receipt_ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/receipt.json",
+      "receipt_sha256": "2ee863b823349312281a98ff1112b31c4bd5e57e2da283ee968ccc18aa61ddac",
+      "artifact_integrity": "MATCHED"
+    },
+    "unit": {
+      "job_id": 16917661775,
+      "actual_status": "success",
+      "status": "PASS",
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type",
+      "receipt_ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/receipt.json",
+      "receipt_sha256": "e514d12fcd1019a157055559008e3a488e93681f52dde77b6a1ab38c32e53022",
+      "artifact_integrity": "MATCHED",
+      "junit": {
+        "tests": 202,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "schema_contract": {
+      "job_id": 16917661774,
+      "actual_status": "success",
+      "status": "PASS",
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type",
+      "receipt_ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/schema_contract/receipt.json",
+      "receipt_sha256": "e4751119a8d4b89a48a2df34e34c959e5a30ad012bb5f0dba523c85a5ecf8216",
+      "artifact_integrity": "MATCHED"
+    },
+    "arch_fitness": {
+      "job_id": 16917661776,
+      "actual_status": "success",
+      "status": "PASS",
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type",
+      "receipt_ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/receipt.json",
+      "receipt_sha256": "a42a9a5d141e7aa5ae5ad2db4c8a55f54f1fef42816a230391721a2a2bcb62ab",
+      "artifact_integrity": "MATCHED",
+      "junit": {
+        "tests": 212,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "secret_dependency": {
+      "job_id": 16917661778,
+      "actual_status": "failed",
+      "status": "FAIL",
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type",
+      "receipt_ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/receipt.json",
+      "receipt_sha256": "4ace12792c9320fd299800a5680a8e44d27235a8de6adc06643757128b514eea",
+      "artifact_integrity": "MATCHED"
+    },
+    "postgres_env": {
+      "job_id": 16917661777,
+      "actual_status": "success",
+      "status": "PASS",
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type",
+      "receipt_ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/postgres_env/receipt.json",
+      "receipt_sha256": "2de5a61b3da8406f114a36695ce6e38e29b8c7fe8d449b64c04f15495bd52fe0",
+      "artifact_integrity": "MATCHED",
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "junit_total": 415,
+  "collection_index": {
+    "source_ref": "dist/validation/v2004-final-3ce6c32/remote-evidence/pipeline-index.json",
+    "sha256": "9eda01e11e4eb5d7d2d32e05554c0766e2f5c82fa748640edf3d589b48b701f8",
+    "recorded_at": "2026-10-04T02:07:09.317967+00:00"
+  },
+  "archives": [
+    {
+      "job_id": 16917661773,
+      "name": "static",
+      "bytes": 3864,
+      "sha256": "7ca423d6b6f0655c38fdd4ae6d5677a30ff53c18f4be9aafb1589edd35a4786f",
+      "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16917661773/artifacts/download",
+      "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16917661773/artifacts",
+      "copied_selection_only": true
+    },
+    {
+      "job_id": 16917661775,
+      "name": "unit",
+      "bytes": 6246,
+      "sha256": "072a5a1e7cb8931b24c479eef7f0e7bc672784660441bf8358dc3a1ba4ed07e1",
+      "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16917661775/artifacts/download",
+      "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16917661775/artifacts",
+      "copied_selection_only": true
+    },
+    {
+      "job_id": 16917661774,
+      "name": "schema_contract",
+      "bytes": 32221,
+      "sha256": "4f50f2e098ec557345f7fe26c12ff96354e6748e9fbb2bff6a0b7ecb4485bfd2",
+      "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16917661774/artifacts/download",
+      "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16917661774/artifacts",
+      "copied_selection_only": true
+    },
+    {
+      "job_id": 16917661776,
+      "name": "arch_fitness",
+      "bytes": 121905,
+      "sha256": "4ae8177084c436ddccb639b328eecb31000cd3d40a03c43a46e5937560af301c",
+      "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16917661776/artifacts/download",
+      "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16917661776/artifacts",
+      "copied_selection_only": true
+    },
+    {
+      "job_id": 16917661778,
+      "name": "secret_dependency",
+      "bytes": 177944,
+      "sha256": "4c2c7e227d0051eceecabe4d0e01006027dcdd07ea71c60c420f3b02e7c3273d",
+      "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16917661778/artifacts/download",
+      "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16917661778/artifacts",
+      "copied_selection_only": true
+    },
+    {
+      "job_id": 16917661777,
+      "name": "postgres_env",
+      "bytes": 2268,
+      "sha256": "7e2e94ded89d21173f678a7a1424d6803e5da4317fb3093740c6332b4a811a4f",
+      "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16917661777/artifacts/download",
+      "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16917661777/artifacts",
+      "copied_selection_only": true
+    }
+  ],
+  "copied_artifacts": [
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/receipt.json",
+      "original_artifact_path": "dist/ci/static/receipt.json",
+      "job_id": 16917661773,
+      "sha256": "2ee863b823349312281a98ff1112b31c4bd5e57e2da283ee968ccc18aa61ddac",
+      "bytes": 5270
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-01.stderr.log",
+      "original_artifact_path": "dist/ci/static/command-01.stderr.log",
+      "job_id": 16917661773,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-01.stdout.log",
+      "original_artifact_path": "dist/ci/static/command-01.stdout.log",
+      "job_id": 16917661773,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-02.stderr.log",
+      "original_artifact_path": "dist/ci/static/command-02.stderr.log",
+      "job_id": 16917661773,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-02.stdout.log",
+      "original_artifact_path": "dist/ci/static/command-02.stdout.log",
+      "job_id": 16917661773,
+      "sha256": "2ce9758b9f8abd876ec3e76c589e099e8b05377b1e7ea2331e81ee80f07bdff8",
+      "bytes": 26
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-03.stderr.log",
+      "original_artifact_path": "dist/ci/static/command-03.stderr.log",
+      "job_id": 16917661773,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-03.stdout.log",
+      "original_artifact_path": "dist/ci/static/command-03.stdout.log",
+      "job_id": 16917661773,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "bytes": 19
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-04.stderr.log",
+      "original_artifact_path": "dist/ci/static/command-04.stderr.log",
+      "job_id": 16917661773,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-04.stdout.log",
+      "original_artifact_path": "dist/ci/static/command-04.stdout.log",
+      "job_id": 16917661773,
+      "sha256": "050c52a2b0c61e8b681ef5c485e0bc03340b8d55148e0acef27d744c8be42033",
+      "bytes": 43
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-05.stderr.log",
+      "original_artifact_path": "dist/ci/static/command-05.stderr.log",
+      "job_id": 16917661773,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/static/command-05.stdout.log",
+      "original_artifact_path": "dist/ci/static/command-05.stdout.log",
+      "job_id": 16917661773,
+      "sha256": "b7334eb0b0c4a8f581707e9083c99cd7a974ba53aeaaadc5e2137d8c17a0119d",
+      "bytes": 39
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/receipt.json",
+      "original_artifact_path": "dist/ci/unit/receipt.json",
+      "job_id": 16917661775,
+      "sha256": "e514d12fcd1019a157055559008e3a488e93681f52dde77b6a1ab38c32e53022",
+      "bytes": 2777
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/command-01.stderr.log",
+      "original_artifact_path": "dist/ci/unit/command-01.stderr.log",
+      "job_id": 16917661775,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/command-01.stdout.log",
+      "original_artifact_path": "dist/ci/unit/command-01.stdout.log",
+      "job_id": 16917661775,
+      "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+      "bytes": 121
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/command-02.stderr.log",
+      "original_artifact_path": "dist/ci/unit/command-02.stderr.log",
+      "job_id": 16917661775,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/command-02.stdout.log",
+      "original_artifact_path": "dist/ci/unit/command-02.stdout.log",
+      "job_id": 16917661775,
+      "sha256": "f414ee16faa1e443d414b55044a0e8eb319d14016038dccbb19e048a5b0db16f",
+      "bytes": 272
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/unit/junit.xml",
+      "original_artifact_path": "dist/ci/unit/junit.xml",
+      "job_id": 16917661775,
+      "sha256": "bcaed8e5845f84e91b15628d909d4df7d269a6040be61fea4fab14b562358ae0",
+      "bytes": 30159
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/schema_contract/receipt.json",
+      "original_artifact_path": "dist/ci/schema_contract/receipt.json",
+      "job_id": 16917661774,
+      "sha256": "e4751119a8d4b89a48a2df34e34c959e5a30ad012bb5f0dba523c85a5ecf8216",
+      "bytes": 3101
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/schema_contract/command-01.stderr.log",
+      "original_artifact_path": "dist/ci/schema_contract/command-01.stderr.log",
+      "job_id": 16917661774,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/schema_contract/command-01.stdout.log",
+      "original_artifact_path": "dist/ci/schema_contract/command-01.stdout.log",
+      "job_id": 16917661774,
+      "sha256": "163c653511d17b31fa0300adb2d9d12ef910a1dd54a2446193a1e7af0a218aff",
+      "bytes": 394
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/receipt.json",
+      "original_artifact_path": "dist/ci/arch_fitness/receipt.json",
+      "job_id": 16917661776,
+      "sha256": "a42a9a5d141e7aa5ae5ad2db4c8a55f54f1fef42816a230391721a2a2bcb62ab",
+      "bytes": 4083
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/command-01.stderr.log",
+      "original_artifact_path": "dist/ci/arch_fitness/command-01.stderr.log",
+      "job_id": 16917661776,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/command-01.stdout.log",
+      "original_artifact_path": "dist/ci/arch_fitness/command-01.stdout.log",
+      "job_id": 16917661776,
+      "sha256": "3cbcb06b279cf1a0a5b350d3340d1087f865a808cf036eaa9d19cfdc33093a23",
+      "bytes": 77
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/command-02.stderr.log",
+      "original_artifact_path": "dist/ci/arch_fitness/command-02.stderr.log",
+      "job_id": 16917661776,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/command-02.stdout.log",
+      "original_artifact_path": "dist/ci/arch_fitness/command-02.stdout.log",
+      "job_id": 16917661776,
+      "sha256": "7264adb6322e41361d4255348e9bbb88d32dd5c258df0a03f38f7f37b87cfa18",
+      "bytes": 126
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/command-03.stderr.log",
+      "original_artifact_path": "dist/ci/arch_fitness/command-03.stderr.log",
+      "job_id": 16917661776,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/command-03.stdout.log",
+      "original_artifact_path": "dist/ci/arch_fitness/command-03.stdout.log",
+      "job_id": 16917661776,
+      "sha256": "e440e671936222e632558524f41b069f6f642ffdfbbceb8b90f061c6b53ad18a",
+      "bytes": 261
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/arch_fitness/junit.xml",
+      "original_artifact_path": "dist/ci/arch_fitness/junit.xml",
+      "job_id": 16917661776,
+      "sha256": "fd45cd1d7b5bdac70c06e699e30a733efcfe2e4e3f5fc7e3135ffaf7348b6d99",
+      "bytes": 36349
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/receipt.json",
+      "original_artifact_path": "dist/ci/secret_dependency/receipt.json",
+      "job_id": 16917661778,
+      "sha256": "4ace12792c9320fd299800a5680a8e44d27235a8de6adc06643757128b514eea",
+      "bytes": 3344
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/command-01.stderr.log",
+      "original_artifact_path": "dist/ci/secret_dependency/command-01.stderr.log",
+      "job_id": 16917661778,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/command-01.stdout.log",
+      "original_artifact_path": "dist/ci/secret_dependency/command-01.stdout.log",
+      "job_id": 16917661778,
+      "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f",
+      "bytes": 121
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/command-02.stderr.log",
+      "original_artifact_path": "dist/ci/secret_dependency/command-02.stderr.log",
+      "job_id": 16917661778,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/command-02.stdout.log",
+      "original_artifact_path": "dist/ci/secret_dependency/command-02.stdout.log",
+      "job_id": 16917661778,
+      "sha256": "ff51c5f4518a2f814aec4d5cc7df1bfbb4833a8914da357d799d24f31d921292",
+      "bytes": 71
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/security/dependency-audit.json",
+      "original_artifact_path": "dist/ci/secret_dependency/security/dependency-audit.json",
+      "job_id": 16917661778,
+      "sha256": "cae9a51980d56fe30486694147d6590be6a530ca9c11ead81ebc01f028aaa48c",
+      "bytes": 2972
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/security/locked-audit-requirements.txt",
+      "original_artifact_path": "dist/ci/secret_dependency/security/locked-audit-requirements.txt",
+      "job_id": 16917661778,
+      "sha256": "dc5c1a46407deaf549642d408c251faaae206bc20f70d028f817c8cf8e7a6014",
+      "bytes": 951
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/security/secret-scan.json",
+      "original_artifact_path": "dist/ci/secret_dependency/security/secret-scan.json",
+      "job_id": 16917661778,
+      "sha256": "b252159ea701cbed641c3afd55ce1d2d548bf1ad9cfaa3bb8b3791f861ecc041",
+      "bytes": 13546
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/secret_dependency/security/security-summary.json",
+      "original_artifact_path": "dist/ci/secret_dependency/security/security-summary.json",
+      "job_id": 16917661778,
+      "sha256": "3e80be1d8fe1ee9e687532f1b74d0a212534e0c7c9d5dd450fceeb616308ee87",
+      "bytes": 15866
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/postgres_env/receipt.json",
+      "original_artifact_path": "dist/ci/postgres_env/receipt.json",
+      "job_id": 16917661777,
+      "sha256": "2de5a61b3da8406f114a36695ce6e38e29b8c7fe8d449b64c04f15495bd52fe0",
+      "bytes": 1942
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/postgres_env/command-01.stderr.log",
+      "original_artifact_path": "dist/ci/postgres_env/command-01.stderr.log",
+      "job_id": 16917661777,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/postgres_env/command-01.stdout.log",
+      "original_artifact_path": "dist/ci/postgres_env/command-01.stdout.log",
+      "job_id": 16917661777,
+      "sha256": "e0a60726a0154c0dcb173ef48ac0492c283a8a9c2c19e9dc06f5908d5a4237c7",
+      "bytes": 129
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/ci-artifacts/postgres_env/junit.xml",
+      "original_artifact_path": "dist/ci/postgres_env/junit.xml",
+      "job_id": 16917661777,
+      "sha256": "3e1f1dd66ccb729115df63d294dcedd6e013f474cf2fef3828d008118357e72d",
+      "bytes": 413
+    }
+  ],
+  "source_contract_status": "FAIL_WHOLE_PIPELINE",
+  "successful_job_source_contracts": [
+    "static",
+    "schema_contract",
+    "unit",
+    "arch_fitness",
+    "postgres_env"
+  ],
+  "trust_status": "UNVERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false,
+  "notes": [
+    "Copied artifact bytes are exact, not regenerated receipts. Original dist refs inside receipts describe CI paths.",
+    "This index maps original receipt refs to canonical repository copies by original_artifact_path and hash.",
+    "JUnit 415 PASS does not override hard security FAIL or establish V2-004/P0 acceptance."
+  ]
+}

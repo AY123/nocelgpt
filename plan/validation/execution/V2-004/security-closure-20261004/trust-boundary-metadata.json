@@ -1,0 +1,1192 @@
+{
+  "record_type": "existing_gitlab_trust_boundary_metadata_observation",
+  "project_id": 86656946,
+  "query_started_at": "2026-10-04T05:15:41.758999+00:00",
+  "read_only_gets": true,
+  "platform_mutations": 0,
+  "helper_sha256": "2992adb1c32b7fd526bf23d9cdf198b4bf1d1ebb07882bf532f3e5bb3b28acef",
+  "collector_sha256": "833e445c64dca0666dcfd23db939e79b4b114f60bc5ea686891395357a06e034",
+  "permission_status": "UNKNOWN_NO_WRITE_NEGATIVE_TESTS",
+  "acceptance_eligible": false,
+  "results": {
+    "project_runners": {
+      "status": "OBSERVED",
+      "pages": [
+        {
+          "page": 1,
+          "http_status": 200,
+          "response_sha256": "6409e329891a340e899d6ba73735d29645ae682da388d4993d9435a427d95d86"
+        },
+        {
+          "page": 2,
+          "http_status": 200,
+          "response_sha256": "77cb8139ccb439a255d8231c44d56b14464763322d52405b444ea0f860533a1b"
+        }
+      ],
+      "complete": true,
+      "total": 136,
+      "rows": [
+        {
+          "id": 1506020,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 1506021,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11573930,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11573990,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11574038,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11574045,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11574068,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11574076,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11574084,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11574096,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728715,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728725,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728729,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728733,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728737,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728740,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728747,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 11728750,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270807,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270831,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270835,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270837,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270840,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270845,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270848,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270852,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270857,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 12270859,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142246,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142247,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142248,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142249,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142250,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142251,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142252,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142253,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142254,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142255,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142257,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142258,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142259,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142260,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142261,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142262,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142263,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142264,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142265,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17142266,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529416,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529417,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529418,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529419,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529420,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529422,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529423,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529424,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529425,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 17529430,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 22075880,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 22075882,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 22075883,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": false
+        },
+        {
+          "id": 22075884,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": false
+        },
+        {
+          "id": 25141601,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141637,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141674,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141675,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141676,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141677,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141678,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141679,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141680,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25141681,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848330,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848331,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848333,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848334,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848335,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848336,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848339,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848340,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848342,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 25848343,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 31629601,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 31629607,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 32976645,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 32976687,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204787,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204811,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204851,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204852,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204874,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204885,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204890,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34204892,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425479,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425557,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425605,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425655,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425687,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425704,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425755,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425770,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425792,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425813,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425828,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 34425941,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 36390554,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": false
+        },
+        {
+          "id": 36390563,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": false
+        },
+        {
+          "id": 36390564,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 36390565,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 43780403,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 43780405,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 43780407,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 43780410,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 43780412,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 43780419,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 50141252,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 52823603,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 52823616,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 52823645,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "paused",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 52823665,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 52823678,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 52823682,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "stale",
+          "online": false,
+          "paused": true
+        },
+        {
+          "id": 54907241,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314121,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314154,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314171,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314183,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314190,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314209,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314225,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55314245,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55459754,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55459782,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55459829,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        },
+        {
+          "id": 55554958,
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "status": "online",
+          "online": true,
+          "paused": false
+        }
+      ]
+    },
+    "protected_branches": {
+      "status": "OBSERVED",
+      "pages": [
+        {
+          "page": 1,
+          "http_status": 200,
+          "response_sha256": "90e5a687b355278b61840b937089c78e2379d4e66b39e06638a45048690279af"
+        }
+      ],
+      "complete": true,
+      "total": 1,
+      "rows": [
+        {
+          "id": 323848675,
+          "name": "main",
+          "allow_force_push": false,
+          "code_owner_approval_required": false,
+          "inherited": false,
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "user_id": null,
+              "group_id": null
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "user_id": null,
+              "group_id": null
+            }
+          ],
+          "unprotect_access_levels": []
+        }
+      ]
+    },
+    "executed_instance_runner": {
+      "http_status": 200,
+      "response_sha256": "a6f3fe7e82229e39fa30879f1624c1d38f5d50d0298c3a2b670d15370072b3c2",
+      "status": "OBSERVED",
+      "fields": {
+        "id": 54907241,
+        "runner_type": "instance_type",
+        "is_shared": true,
+        "access_level": "not_protected",
+        "locked": false,
+        "run_untagged": true,
+        "tag_list": [
+          "saas-linux-small-amd64",
+          "gitlab--duo"
+        ],
+        "status": "online",
+        "online": true,
+        "paused": false,
+        "maximum_timeout": 10800,
+        "projects": []
+      }
+    }
+  },
+  "errors": [],
+  "authenticated_user": {
+    "http_status": 200,
+    "response_sha256": "43c63fa810b2c6bf236ee523eb5b0b4e1cae33c6e4767fd3733783f3cd725fc1",
+    "id": 2897271
+  },
+  "existing_non_instance_runner_details": [],
+  "project_runner_count": 0,
+  "group_runner_count": 0,
+  "existing_protected_non_instance_runners": [],
+  "collection_status": "OBSERVED",
+  "queried_at": "2026-10-04T05:15:46.904966+00:00"
+}

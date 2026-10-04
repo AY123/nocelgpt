@@ -1,0 +1,73 @@
+{
+  "record_type": "existing_gitlab_trust_boundary_metadata_observation",
+  "project_id": 86656946,
+  "query_started_at": "2026-10-04T05:13:08.956171+00:00",
+  "read_only_gets": true,
+  "platform_mutations": 0,
+  "helper_sha256": "2992adb1c32b7fd526bf23d9cdf198b4bf1d1ebb07882bf532f3e5bb3b28acef",
+  "collector_sha256": "833e445c64dca0666dcfd23db939e79b4b114f60bc5ea686891395357a06e034",
+  "permission_status": "UNKNOWN_NO_WRITE_NEGATIVE_TESTS",
+  "acceptance_eligible": false,
+  "results": {
+    "project_runners": {
+      "status": "UNAVAILABLE",
+      "safe_error_type": "URLError",
+      "raw_error_withheld": true
+    },
+    "protected_branches": {
+      "status": "OBSERVED",
+      "pages": [
+        {
+          "page": 1,
+          "http_status": 200,
+          "response_sha256": "90e5a687b355278b61840b937089c78e2379d4e66b39e06638a45048690279af"
+        }
+      ],
+      "complete": true,
+      "total": 1,
+      "rows": [
+        {
+          "id": 323848675,
+          "name": "main",
+          "allow_force_push": false,
+          "code_owner_approval_required": false,
+          "inherited": false,
+          "push_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "user_id": null,
+              "group_id": null
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "user_id": null,
+              "group_id": null
+            }
+          ],
+          "unprotect_access_levels": []
+        }
+      ]
+    },
+    "executed_instance_runner": {
+      "status": "UNAVAILABLE",
+      "safe_error_type": "URLError",
+      "raw_error_withheld": true
+    }
+  },
+  "errors": [],
+  "authenticated_user": {
+    "http_status": 200,
+    "response_sha256": "43c63fa810b2c6bf236ee523eb5b0b4e1cae33c6e4767fd3733783f3cd725fc1",
+    "id": 2897271
+  },
+  "existing_non_instance_runner_details": [],
+  "project_runner_count": null,
+  "group_runner_count": null,
+  "existing_protected_non_instance_runners": [],
+  "collection_status": "PARTIAL_UNAVAILABLE",
+  "queried_at": "2026-10-04T05:13:55.933395+00:00"
+}

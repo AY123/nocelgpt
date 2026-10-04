@@ -1,0 +1,105 @@
+{
+  "record_type": "gitlab_connector_metadata_observation",
+  "project_id": 86656946,
+  "export_timestamp_utc": "2026-10-04 05:18:16 UTC",
+  "query_timestamp_utc": null,
+  "query_timestamp_status": "UNKNOWN_NOT_RECORDED_AT_TOOL_INVOCATION",
+  "query_status": "ALREADY_QUERIED_OBSERVATIONS_EXPORTED_WITHOUT_NEW_API_CALL",
+  "source": "GitLab (Beta) purpose connector",
+  "authenticated_account": {
+    "link_id": "link_6ab68273792081919f712c6ddd9da0d4",
+    "role_context": "Owner",
+    "user_id": 2897271
+  },
+  "read_only": true,
+  "platform_mutations": 0,
+  "raw_http_response_sha256": null,
+  "raw_http_response_sha256_status": "UNAVAILABLE_PURPOSE_CONNECTOR_DID_NOT_EXPOSE_RAW_HTTP_BYTES",
+  "source_status": "OBSERVED_CONNECTOR_METADATA",
+  "trust_status": "UNVERIFIED",
+  "permission_status": "UNKNOWN_NO_WRITE_NEGATIVE_TESTS",
+  "acceptance_eligible": false,
+  "project": {
+    "tool": "mcp__codex_apps__gitlab_get_project",
+    "request": {
+      "project_id": 86656946
+    },
+    "observed": {
+      "id": 86656946,
+      "path_with_namespace": "ayitnovel/ainovelos",
+      "default_branch": "main",
+      "shared_runners_enabled": true,
+      "ci_pipeline_variables_minimum_override_role": "no_one_allowed",
+      "group_runners_enabled": true,
+      "ci_config_path": "",
+      "only_allow_merge_if_pipeline_succeeds": true,
+      "allow_merge_on_skipped_pipeline": null,
+      "permissions": {
+        "project_access": null,
+        "group_access": {
+          "access_level": 50,
+          "notification_level": 3
+        }
+      }
+    },
+    "limits": [
+      "allow_merge_on_skipped_pipeline=null is unknown; it is not evidence of false",
+      "Candidate-controlled ci_config_path=\"\" is not trusted external configuration",
+      "Owner access is not evidence of ordinary Developer permission isolation"
+    ]
+  },
+  "branch": {
+    "tool": "mcp__codex_apps__gitlab_get_branch",
+    "request": {
+      "project_id": 86656946,
+      "branch": "dev_gpt"
+    },
+    "observed": {
+      "name": "dev_gpt",
+      "commit_id": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+      "protected": false,
+      "can_push": true,
+      "developers_can_push": false,
+      "developers_can_merge": false
+    },
+    "limits": [
+      "can_push is the querying Owner account's metadata, not a Developer negative test",
+      "developers_can_push/developers_can_merge metadata alone does not prove actual rejected writes"
+    ]
+  },
+  "project_members": {
+    "tool": "mcp__codex_apps__gitlab_list_project_inherited_members",
+    "request": {
+      "project_id": "86656946",
+      "page": 1,
+      "per_page": 100
+    },
+    "observed": [
+      {
+        "id": 2897271,
+        "username": "angyang582821422",
+        "access_level": 50,
+        "state": "active",
+        "membership_state": "active"
+      },
+      {
+        "id": 2897322,
+        "username": "TomAy47287015",
+        "access_level": 30,
+        "state": "active",
+        "membership_state": "active"
+      }
+    ],
+    "pagination": {
+      "page": "1",
+      "per_page": "100",
+      "total": "2",
+      "total_pages": "1",
+      "next_page": null
+    },
+    "limits": [
+      "Role assignment is observed; no adversarial permission test was executed",
+      "Implementation and verification are performed by the same operator; this is not independent review"
+    ]
+  }
+}

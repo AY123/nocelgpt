@@ -1,0 +1,86 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "schema_contract",
+  "gate": "SCHEMA_CONTRACT",
+  "status": "PASS",
+  "revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "project_id": "86656946",
+  "pipeline_id": "2910092880",
+  "job_id": "16917661774",
+  "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+  "source_kind": "UNVERIFIED_GITLAB_ENVIRONMENT",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-04T01:58:04.268744+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "scripts/check_governance.py",
+        "--output-dir",
+        "dist/ci/schema_contract/governance"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/ci/schema_contract/command-01.stdout.log",
+        "sha256": "163c653511d17b31fa0300adb2d9d12ef910a1dd54a2446193a1e7af0a218aff"
+      },
+      "stderr": {
+        "ref": "dist/ci/schema_contract/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/ci/schema_contract/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/schema_contract/command-01.stdout.log",
+      "sha256": "163c653511d17b31fa0300adb2d9d12ef910a1dd54a2446193a1e7af0a218aff"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/ai/ai-execution-regression.json",
+      "sha256": "4072ccd0900e9f32cad9eb3d49c617f0854837961044ad4e9a93ed59b2e80d19"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/context-inventory.json",
+      "sha256": "2fc6ef0260a1f6483bc990cb39be6e153eaae5c293311fcdebcfb009fe476e2a"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/governance/governance-regression.json",
+      "sha256": "88e20d00c32a49a6f2da78ae966f9a046aa750164883e37c1616195519e1a8e0"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/governance-summary.json",
+      "sha256": "d30ea40db989aa188f5850129de2a5431ea66d7bccf0ac0ea79d874ca09ae869"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/legacy.json",
+      "sha256": "3cfc8fd3aba59d8e21be483d19d3f2b5e77aaeff33fee3dc91dcf726e8e8a791"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/normative-index.json",
+      "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/plan/plan-validation.json",
+      "sha256": "a3a709aa8c5f4414f6d23d6cfa4716b60bd8e352db3f3b0d3a9a92baafe0c07b"
+    },
+    {
+      "ref": "dist/ci/schema_contract/governance/self-test/validator-self-test.json",
+      "sha256": "43ec1ddb7110077c4903a23126a2adc17a421f3c3f74e352371df1d306b2cf3f"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-04T01:59:24.379642+00:00"
+}

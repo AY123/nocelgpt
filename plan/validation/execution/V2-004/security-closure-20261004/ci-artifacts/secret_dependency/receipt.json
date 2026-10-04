@@ -1,0 +1,97 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "secret_dependency",
+  "gate": "SECRET_DEPENDENCY",
+  "status": "FAIL",
+  "revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+  "project_id": "86656946",
+  "pipeline_id": "2910092880",
+  "job_id": "16917661778",
+  "driver_sha256": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+  "source_kind": "UNVERIFIED_GITLAB_ENVIRONMENT",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-04T02:02:50.118180+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "scripts/ci/bootstrap_scanners.py",
+        "--output-dir",
+        "dist/tools/gitleaks-8.21.2",
+        "--reuse-verified"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/ci/secret_dependency/command-01.stdout.log",
+        "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f"
+      },
+      "stderr": {
+        "ref": "dist/ci/secret_dependency/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/builds/ayitnovel/ainovelos/.venv/bin/python",
+        "-B",
+        "scripts/ci/check_security.py",
+        "--output-dir",
+        "dist/ci/secret_dependency/security"
+      ],
+      "exit_code": 1,
+      "stdout": {
+        "ref": "dist/ci/secret_dependency/command-02.stdout.log",
+        "sha256": "ff51c5f4518a2f814aec4d5cc7df1bfbb4833a8914da357d799d24f31d921292"
+      },
+      "stderr": {
+        "ref": "dist/ci/secret_dependency/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/ci/secret_dependency/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/command-01.stdout.log",
+      "sha256": "e035a6f142c372c53154bdd753e009823624de368accd2bde26ac7203f66485f"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/command-02.stdout.log",
+      "sha256": "ff51c5f4518a2f814aec4d5cc7df1bfbb4833a8914da357d799d24f31d921292"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/security/dependency-audit.json",
+      "sha256": "cae9a51980d56fe30486694147d6590be6a530ca9c11ead81ebc01f028aaa48c"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/security/locked-audit-requirements.txt",
+      "sha256": "dc5c1a46407deaf549642d408c251faaae206bc20f70d028f817c8cf8e7a6014"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/security/secret-scan.json",
+      "sha256": "b252159ea701cbed641c3afd55ce1d2d548bf1ad9cfaa3bb8b3791f861ecc041"
+    },
+    {
+      "ref": "dist/ci/secret_dependency/security/security-summary.json",
+      "sha256": "3e80be1d8fe1ee9e687532f1b74d0a212534e0c7c9d5dd450fceeb616308ee87"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 1,
+  "finished_at": "2026-10-04T02:03:11.638598+00:00"
+}

@@ -6,14 +6,14 @@ repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
 worktree_dirty: false
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: Clean committed GitLab checkout for final MR-corrected source; user
-    files preserved in separate primary-local context
+  fingerprint: Clean committed checkout for security/permission evidence records;
+    primary user worktree preserved separately
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: Final MR-corrected candidate pipeline pending; earlier actual a6 push
-    five gates PASS/security FAIL; protected runner/config still NOT_ENROLLED.
+  ci_context: 'Actual pipeline 2910092880 at 3ce6c32: five gates PASS, 415 tests PASS,
+    mandatory SECRET_DEPENDENCY FAIL; trusted permissions not verified'
 implementer: Codex primary operator
 verifier: Same operator with parallel read-only analysis; no independent personnel
   acceptance
@@ -108,34 +108,37 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: '2026-10-04 actual push candidate a6d66af690bac55ab14fd5336896414374a4e28a
-    pipeline2910062335 failed: five gates and 391 pytest checks passed, security43
-    findings hard-failed. Five success-job online source contracts matched; trust/permissions
-    and MR acceptance remain unverified.'
+  statement: 'Actual exact 3ce6c32 pipeline2910092880 failed: five gates PASS, UNIT202/ARCH212/PG1
+    PASS without failure/error/skip; secret_dependency43 findings hard-failed. Byte-exact
+    artifacts indexed in repository; no final acceptance.'
   sources:
-  - ref: validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json
-    sha256: e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1
+  - ref: validation/execution/V2-004/security-closure-20261004/ci-evidence-index.json
+    sha256: 54e1580e01ffd5a47122f4453c5e6ff31be05a62967cc9210eaa05e757e564d3
   blocks_actions: []
   verification_plan: Recheck online after a real candidate pipeline; do not claim
     CI/permission acceptance from this snapshot.
 - id: REMOTE_TRUST
   kind: UNKNOWN
-  statement: Effective protected runner/configuration and ordinary credential denial
-    controls have not been verified. Local CI implementation can proceed; final acceptance
-    remains pending.
-  sources: []
+  statement: Actual complete registry has 136 instance runners and no project/group
+    runner; actual54907241 not_protected. Only main protected, dev_gpt unprotected.
+    Pipeline overrides no_one_allowed already observed; skipped-pipeline merge value
+    null remains unknown. Actual ordinary Developer controls and host absent.
+  sources:
+  - ref: validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json
+    sha256: 189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea
   blocks_actions: []
   verification_plan: Read actual project/branch/runner metadata and run authorized
     permission controls before VERIFIED/CLOSED; do not modify permissions without
     applicable authorization.
 - id: HISTORICAL_CREDENTIALS
   kind: UNKNOWN
-  statement: Static history scan found three distinct full credential-shaped values
-    in six findings and one truncated reference. Validity and revocation are unknown;
-    security gate remains FAIL.
+  statement: '43 actual findings bound one-to-one: 24 PUBLIC_IDENTIFIER, 3 TEST_FIXTURE,
+    9 FALSE_POSITIVE, 6 POSSIBLE_EXPOSURE (3 unique groups) and 1 unresolved truncated
+    reference. All43 OPEN; no approved/applied exception or credential-owner revocation
+    evidence.'
   sources:
-  - ref: validation/execution/V2-004/security-triage.json
-    sha256: f4c9ed0e7b8d8f20d58286df5f83f3680a9ef6d82a6b271e713f4c5059108df9
+  - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
+    sha256: 8ab242eb8428988ae011e65df81b08dcd8c991fef59372b0201b0a4ef0ab645a
   blocks_actions:
   - CERTIFY
   verification_plan: Credential owner supplies redacted revocation/rotation records.
@@ -178,10 +181,14 @@ review_notes:
 - '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard
   commands/assertions preserved; actual Lint only push-context proof. New source/review
   pin with local 202 PASS, a6 remote whole security FAIL retained.'
+- '2026-10-04 narrowed continuation: security findings closure and trusted permission
+  boundary only; no CI redesign or V2-001 through003 changes. Canonical records retain
+  actual3ce failure and all43 unresolved dispositions; shared runner and metadata
+  are not permission acceptance.'
 handoff:
-  current_step: MR inclusion correction committed 938300f7f4b968dfa81669385707e1219f3bc894;
-    202 local tests, static/governance and real GitLab Lint pass. Preserve a6 real
-    overall security FAIL; final clean candidate CI pending push.
+  current_step: Security finding export and actual permission boundary observation
+    completed; owner credential dispositions and authorized persistent runner host
+    still absent. Current exact3ce CI security FAIL; no task/phase promotion.
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -211,22 +218,33 @@ handoff:
     checks PASS'
   - Actual GitLab CI Lint old/new static and branch simulations HTTP200 valid, six
     hard jobs; not a real MR acceptance
+  - 'Actual final3ce pipeline2910092880 receipts/artifacts/JUnit verified: five gates
+    and415 tests PASS, mandatory secret_dependency43 FAIL'
+  - Canonical43 finding case records and exact source/artifact hash bindings exported;
+    no exception approved or applied
+  - Actual complete protected-branch/runner metadata queried; original network failure
+    and successful bounded retry retained
   pending_items:
-  - Push final clean candidate to origin/dev_gpt using existing included CI; no purchase
-    or new paid infrastructure
-  - Read exact current pipeline/all six jobs, actual artifacts and source checks including
-    failures
-  - Obtain credential-owner redacted disposition; do not suppress or test real keys
-  - Enroll actually protected runner/config with applicable authorization, then real
-    permission/anti-deletion controls; P0 NOT_VERIFIED
+  - Credential owner redacted disposition for CRED-001/002/003 and SF-037 reference
+  - Authorized precise exception approval with reason, scope, expiry and actual scanner
+    rerun
+  - Identified authorized persistent runner host/secure access and effective trusted
+    configuration
+  - Real ordinary Developer positive/negative, mandatory-gate deletion/reordering
+    and self-exception controls
+  - All six mandatory gates at the same final candidate SHA, then V2-004/P0 acceptance
   next_action: IMPLEMENT
   last_check:
     status: FAIL
     artifacts:
-    - ref: validation/execution/V2-004/followup-20261004/remote-a6-safe-summary.json
-      sha256: e6addaa2829feaeb25ab45dff6838a2152e7e1e3f948a9ca37402eda774596d1
-    - ref: validation/execution/V2-004/followup-20261004/mr-local-controls.json
-      sha256: 8aefd6f7dad92990e970fefd73f958b92d2ae1362380bae1a656e6390ed9cde9
+    - ref: validation/execution/V2-004/security-closure-20261004/ci-evidence-index.json
+      sha256: 54e1580e01ffd5a47122f4453c5e6ff31be05a62967cc9210eaa05e757e564d3
+    - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
+      sha256: 8ab242eb8428988ae011e65df81b08dcd8c991fef59372b0201b0a4ef0ab645a
+    - ref: validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json
+      sha256: 189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea
+    - ref: validation/execution/V2-004/security-closure-20261004/local-verification.json
+      sha256: 7ad8789b3efecf006bffb0f2e8442b84242229a4319c09f3ae2f9c201b628c83
     missing_artifact_reason: null
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6

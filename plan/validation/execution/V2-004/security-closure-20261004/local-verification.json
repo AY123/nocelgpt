@@ -1,0 +1,99 @@
+{
+  "record_type": "LOCAL_RECORD_VERIFICATION",
+  "scope": "Record consistency, redaction and local governance only; not CI/trust acceptance",
+  "status": "PASS",
+  "independent_review_claimed": false,
+  "checks": {
+    "governance": {
+      "status": "PASS",
+      "errors": [],
+      "commands": [
+        {
+          "command": [
+            "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+            "-B",
+            "plan/scripts/validate_plan.py",
+            "--check",
+            "--output-dir",
+            "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-security-closure-20261004/governance/plan"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+            "-B",
+            "plan/scripts/validate_plan.py",
+            "--self-test",
+            "--output-dir",
+            "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-security-closure-20261004/governance/self-test"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+            "-B",
+            "plan/scripts/test_governance.py",
+            "--output-dir",
+            "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-security-closure-20261004/governance/governance"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+            "-B",
+            "plan/scripts/test_ai_execution.py",
+            "--output-dir",
+            "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-security-closure-20261004/governance/ai"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+            "-B",
+            "plan/scripts/probe_governance_legacy.py",
+            "--output",
+            "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-security-closure-20261004/governance/legacy.json"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "source": {
+        "ref": "dist/validation/v2004-security-closure-20261004/governance/governance-summary.json",
+        "sha256": "5f9597e344f17386126368d8c8cc53243ea462eb3dd9b68d6a9463fba2cee0c4"
+      }
+    },
+    "formal_implement_entry": {
+      "status": "PASS",
+      "source": {
+        "ref": "dist/validation/v2004-security-closure-20261004/post-record-entry.json",
+        "sha256": "1336f51780d11d8965886e07a796fce61e4561abcd70ce8e7713f607d55d709f"
+      }
+    },
+    "new_records_scan": {
+      "record_type": "new_redacted_records_secret_scan",
+      "scope": "Only new canonical records; not full repository gate or CI acceptance",
+      "exit_code": 0,
+      "scanner": "gitleaks",
+      "version": "8.21.2",
+      "default_rules": true,
+      "inline_allow_ignored": true,
+      "report_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "finding_count": 0,
+      "locations": [],
+      "status": "PASS",
+      "source": {
+        "ref": "dist/validation/v2004-security-closure-20261004/records-secret-scan.json",
+        "sha256": "bcd1a4df11fe9a101e145be16c45fddc0a4ef61678d1f195edabf81faec0966b"
+      }
+    },
+    "43_item_audit": {
+      "ref": "plan/validation/execution/V2-004/security-closure-20261004/disposition-readonly-audit.json",
+      "sha256": "1f95772aaa4c44e0e3060ed80dc70e08a8b488a3e7395e46c7637d167ceb5f4b"
+    }
+  },
+  "prior_local_preflight_failure": "First standalone scanner import failed before scanning (ModuleNotFoundError bootstrap_scanners); corrected import path, bounded actual scan PASS0. This is not a CI gate run."
+}

@@ -1,0 +1,6 @@
+plan/scripts/validate_plan.py --check: exit=0
+plan/scripts/validate_plan.py --self-test: exit=0
+plan/scripts/test_governance.py --output-dir: exit=0
+plan/scripts/test_ai_execution.py --output-dir: exit=0
+plan/scripts/probe_governance_legacy.py --output: exit=0
+{"status": "PASS", "errors": [], "report": "/builds/ayitnovel/ainovelos/dist/ci/schema_contract/governance/governance-summary.json"}
