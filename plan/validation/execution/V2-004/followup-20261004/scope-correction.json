@@ -1,0 +1,8 @@
+{
+  "reason": "Original resumed inventory included worktree oid but current checker requires kind/mode/sha256; actual user bytes and index unchanged; original failed entry retained.",
+  "failed_checks": [
+    "dist/v2004-20261004-implement-entry.json",
+    "dist/v2004-20261004-implement-entry-v2.json"
+  ],
+  "authorization_and_allowed_paths_unchanged": true
+}
