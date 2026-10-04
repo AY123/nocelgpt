@@ -57,20 +57,28 @@ def validate_configuration(source: str) -> list[str]:
             continue
         if job.get("allow_failure") is not False:
             errors.append("Job must hard fail: " + name)
+        if job.get("timeout") != "20 minutes":
+            errors.append("Explicit job timeout required: " + name)
         if job.get("script") != [
             "uv run --locked python -B scripts/ci/run_gate.py " + name
         ]:
             errors.append("Mandatory command was replaced: " + name)
-        permitted = {"stage", "allow_failure", "script", "artifacts"}
+        permitted = {"stage", "timeout", "allow_failure", "script", "artifacts"}
+        if name == "secret_dependency":
+            permitted.add("when")
+            if job.get("when") != "always":
+                errors.append("Security must run after upstream failures")
         if name == "postgres_env":
             permitted |= {"services", "variables"}
         if set(job) - permitted:
             errors.append("Unreviewed job inheritance or override: " + name)
-        if any(
-            key in job for key in ("rules", "only", "except", "when", "after_script")
-        ):
+        if any(key in job for key in ("rules", "only", "except", "after_script")):
+            errors.append("Job trigger/result override requires review: " + name)
+        if name != "secret_dependency" and "when" in job:
             errors.append("Job trigger/result override requires review: " + name)
     default = document.get("default", {})
+    if "timeout" in default:
+        errors.append("Timeout must be defined on each job")
     if default.get("image") != "python:3.12.14-bookworm":
         errors.append("Exact Python image required")
     if default.get("before_script") != [

@@ -1,0 +1,91 @@
+{
+  "record_type": "v2004_partial_local_controls",
+  "schema_version": "1.0",
+  "task_id": "V2-004",
+  "source_kind": "WORKTREE_SNAPSHOT_NOT_CI",
+  "acceptance_eligible": false,
+  "implementer_and_verifier": "Same Codex operator; shared-workspace analysis is not independent acceptance",
+  "source_controls": {
+    "passed": 72,
+    "artifact": "source-controls.xml"
+  },
+  "pipeline_configuration_controls": {
+    "passed": 14
+  },
+  "initial_complete_unit": {
+    "tests": 178,
+    "passed": 177,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0,
+    "cause": "Original offline registry-addition fixture failed on cold metadata before locked-drift diagnostic"
+  },
+  "corrected_lock_fixture": {
+    "tests": 1,
+    "passed": 1,
+    "controls": [
+      "valid original locked offline graph",
+      "valid changed graph without locked may update",
+      "real locked install refuses exact drift",
+      "unchanged real repository requirements/lock and fixture lock bytes"
+    ]
+  },
+  "static": "PASS",
+  "governance_aggregate": "PASS_FIVE_CHECKS",
+  "production_architecture": {
+    "status": "PASS",
+    "files": 1,
+    "business_runtime_not_implemented": true
+  },
+  "local_archive": {
+    "ref": "plan/validation/execution/V2-004/followup-20261004/local-control-artifacts.tar.gz",
+    "sha256": "941ce14d7e33daf2ea36a891fd53749ef37f2b7aa8f4a241bc1f5ac0de22a350"
+  },
+  "remote_baseline": {
+    "revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+    "pipeline_id": 2909931436,
+    "status": "failed",
+    "unit": {
+      "tests": 137,
+      "passed": 136,
+      "failures": 1
+    },
+    "secret_dependency": "skipped"
+  },
+  "current_candidate_ci": "NOT_RUN_BEFORE_PUSH",
+  "preserved_user_files": {
+    "审核报告.txt": {
+      "sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
+      "matches_opening": true,
+      "staged_by_task": false
+    },
+    "V2-003任务prompt.txt": {
+      "sha256": null,
+      "matches_opening": true,
+      "staged_by_task": false
+    },
+    "V2-004任务prompt.txt": {
+      "sha256": "dc95bccfa2cb6f75b98470c2a582bba3879b2a26a5245c1cfb573d2a2c0a4a38",
+      "matches_opening": true,
+      "staged_by_task": false
+    },
+    ".claude/settings.local.json": {
+      "sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
+      "matches_opening": true,
+      "staged_by_task": false
+    }
+  },
+  "remaining": [
+    "New candidate actual complete CI",
+    "Historical credential owner disposition",
+    "Actual protected runner/config enrollment",
+    "Authorized permission and anti-deletion controls"
+  ],
+  "source_objects": {
+    ".gitlab-ci.yml": "89b45752f933e93ba7257396d74fa5554770e9a70c4a65eabbce7943b0d421ab",
+    "scripts/ci/check_configuration.py": "a6ba15ea9ac145e3ed58f6a4c815585e6e036fea17491ddc4c9714bc13d23ec9",
+    "scripts/ci/verify_remote.py": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+    "tests/contract/test_delivery_gates.py": "56016404e347ef8b10762d27bc2b123abb09aa5e2507994ac809d341a2e54e17",
+    "tests/integration/test_repository_bootstrap.py": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29"
+  }
+}

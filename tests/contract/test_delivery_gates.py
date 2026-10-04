@@ -101,6 +101,10 @@ def test_current_pipeline_contract_and_each_required_command_present():
         "shallow",
         "include",
         "extends",
+        "timeout_missing",
+        "timeout_longer",
+        "timeout_default",
+        "security_skipped",
     ],
 )
 def test_bad_pipeline_configuration_cannot_pass(mutation):
@@ -119,6 +123,14 @@ def test_bad_pipeline_configuration_cannot_pass(mutation):
         document["include"] = "candidate-can-replace-gates.yml"
     elif mutation == "extends":
         document["static"]["extends"] = ".override"
+    elif mutation == "timeout_missing":
+        del document["unit"]["timeout"]
+    elif mutation == "timeout_longer":
+        document["unit"]["timeout"] = "40 minutes"
+    elif mutation == "timeout_default":
+        document["default"]["timeout"] = document["unit"].pop("timeout")
+    elif mutation == "security_skipped":
+        del document["secret_dependency"]["when"]
     else:
         document["variables"]["GIT_DEPTH"] = "1"
     assert configuration.validate_configuration(yaml.safe_dump(document))
@@ -190,7 +202,31 @@ remote = load_ci_module("verify_remote")
 
 SOURCE_REVISION = "a" * 40
 SOURCE_DRIVER_HASH = "b" * 64
+SOURCE_LOCK_HASH = "d" * 64
 SOURCE_PIPELINE_ID = 91
+SOURCE_PYTHON = "/builds/ayitnovel/ainovelos/.venv/bin/python"
+SOURCE_RESULT_PATHS = {
+    "static": [],
+    "unit": ["junit.xml"],
+    "schema_contract": [
+        "governance/governance-summary.json",
+        "governance/plan/plan-validation.json",
+        "governance/self-test/validator-self-test.json",
+        "governance/governance/governance-regression.json",
+        "governance/ai/ai-execution-regression.json",
+        "governance/legacy.json",
+        "governance/context-inventory.json",
+        "governance/normative-index.json",
+    ],
+    "arch_fitness": ["action-entry.json", "architecture.json", "junit.xml"],
+    "secret_dependency": [
+        "security/security-summary.json",
+        "security/secret-scan.json",
+        "security/dependency-audit.json",
+        "security/locked-audit-requirements.txt",
+    ],
+    "postgres_env": ["junit.xml"],
+}
 
 
 def source_response(value):
@@ -254,14 +290,37 @@ def source_fixture():
             f"ANOVELOS_GATE_END {name} PASS\n".encode(),
             {},
         )
-        stdout = {
-            "ref": f"dist/ci/{name}/command-01.stdout.log",
-            "sha256": remote.digest(b"passed\n"),
-        }
-        stderr = {
-            "ref": f"dist/ci/{name}/command-01.stderr.log",
-            "sha256": remote.digest(b""),
-        }
+        commands = []
+        artifacts = []
+
+        def retain(ref, content):
+            descriptor = {"ref": ref, "sha256": remote.digest(content)}
+            path = quote(ref, safe="")
+            responses[f"/projects/{project}/jobs/{job_id}/artifacts/{path}"] = (
+                remote.ApiResponse(content, {})
+            )
+            artifacts.append(descriptor)
+            return descriptor
+
+        for number, argv in enumerate(
+            runner.commands_for(name, ROOT / "dist/ci" / name), 1
+        ):
+            commands.append(
+                {
+                    "argv": [SOURCE_PYTHON, *argv[1:]],
+                    "exit_code": 0,
+                    "stdout": retain(
+                        f"dist/ci/{name}/command-{number:02d}.stdout.log", b"passed\n"
+                    ),
+                    "stderr": retain(
+                        f"dist/ci/{name}/command-{number:02d}.stderr.log", b""
+                    ),
+                }
+            )
+        for ref in SOURCE_RESULT_PATHS[name]:
+            # Safe synthetic bytes exercise required references/hash coverage;
+            # this fixture is not an actual test/scanner result or CI acceptance.
+            retain(f"dist/ci/{name}/{ref}", b"synthetic result bytes\n")
         receipt = {
             "record_type": "ci_gate_receipt",
             "schema_version": "1.0",
@@ -273,21 +332,14 @@ def source_fixture():
             "pipeline_id": str(SOURCE_PIPELINE_ID),
             "job_id": str(job_id),
             "driver_sha256": SOURCE_DRIVER_HASH,
-            "commands": [
-                {
-                    "argv": ["python", "gate-check.py"],
-                    "exit_code": 0,
-                    "stdout": stdout,
-                    "stderr": stderr,
-                }
-            ],
-            "artifacts": [],
+            "lock_sha256": SOURCE_LOCK_HASH,
+            "python": "3.12.14",
+            "source_kind": "UNVERIFIED_GITLAB_ENVIRONMENT",
+            "exit_code": 0,
+            "errors": [],
+            "commands": commands,
+            "artifacts": artifacts,
         }
-        for descriptor, content in ((stdout, b"passed\n"), (stderr, b"")):
-            path = quote(descriptor["ref"], safe="")
-            responses[f"/projects/{project}/jobs/{job_id}/artifacts/{path}"] = (
-                remote.ApiResponse(content, {})
-            )
         path = quote(f"dist/ci/{name}/receipt.json", safe="")
         responses[f"/projects/{project}/jobs/{job_id}/artifacts/{path}"] = (
             source_response(receipt)
@@ -313,6 +365,7 @@ def source_verify(policy, responses):
         ref="dev_gpt",
         policy=policy,
         driver_sha256=SOURCE_DRIVER_HASH,
+        lock_sha256=SOURCE_LOCK_HASH,
     )
 
 
@@ -359,6 +412,12 @@ def test_remote_source_rejects_wrong_or_incomplete_pipeline(field, value):
         ("driver_sha256", "c" * 64),
         ("gate", "UNIT"),
         ("status", "FAIL"),
+        ("lock_sha256", "e" * 64),
+        ("python", "3.13.14"),
+        ("source_kind", "LOCAL"),
+        ("exit_code", 1),
+        ("exit_code", False),
+        ("errors", ["controlled execution error"]),
     ],
 )
 def test_remote_source_rejects_receipt_identity_forgery(field, value):
@@ -378,6 +437,120 @@ def test_remote_source_rejects_empty_or_failed_command_receipt(field, value):
     source_mutate(
         responses, path, lambda record: record["commands"][0].update({field: value})
     )
+    assert source_verify(policy, responses)[0]["source_status"] == "FAIL"
+
+
+@pytest.mark.parametrize("name", remote.REQUIRED_JOBS)
+def test_remote_source_fixed_command_contract_matches_actual_driver(name):
+    actual = runner.commands_for(name, ROOT / "dist/ci" / name)
+    assert [argv[1:] for argv in actual] == remote.command_tails(name)
+
+
+@pytest.mark.parametrize(
+    "mutation", ["replace", "delete", "append", "reorder", "option", "output"]
+)
+def test_remote_source_rejects_command_plan_changes(mutation):
+    policy, responses, _ = source_fixture()
+    path = f"/projects/{remote.PROJECT_ID}/jobs/102/artifacts/{quote('dist/ci/unit/receipt.json', safe='')}"
+
+    def mutate(record):
+        commands = record["commands"]
+        if mutation == "replace":
+            commands[0]["argv"] = [SOURCE_PYTHON, "-B", "-c", "pass"]
+        elif mutation == "delete":
+            commands.pop()
+        elif mutation == "append":
+            commands.append(copy.deepcopy(commands[-1]))
+        elif mutation == "reorder":
+            commands.reverse()
+        elif mutation == "option":
+            commands[1]["argv"].remove("no:cacheprovider")
+        else:
+            commands[1]["argv"][-1] = "--junitxml=dist/ci/unit/other.xml"
+
+    source_mutate(responses, path, mutate)
+    result = source_verify(policy, responses)[0]
+    assert result["source_status"] == "FAIL"
+    assert result["acceptance_eligible"] is False
+
+
+@pytest.mark.parametrize(
+    "executable",
+    [
+        "python",
+        "/usr/bin/python",
+        "//builds/project/.venv/bin/python",
+        "/builds/../project/.venv/bin/python",
+        "/builds//project/.venv/bin/python",
+        "/builds/project/.venv/bin/./python",
+        "/builds/project\\.venv/bin/python",
+        "/builds/project/.venv/bin/python\0",
+    ],
+)
+def test_remote_source_rejects_unsafe_or_unexpected_interpreter(executable):
+    policy, responses, _ = source_fixture()
+    path = f"/projects/{remote.PROJECT_ID}/jobs/101/artifacts/{quote('dist/ci/static/receipt.json', safe='')}"
+    source_mutate(
+        responses,
+        path,
+        lambda record: record["commands"][0]["argv"].__setitem__(0, executable),
+    )
+    assert source_verify(policy, responses)[0]["source_status"] == "FAIL"
+
+
+def test_remote_source_accepts_normalized_runner_project_python_path():
+    policy, responses, _ = source_fixture()
+    path = f"/projects/{remote.PROJECT_ID}/jobs/101/artifacts/{quote('dist/ci/static/receipt.json', safe='')}"
+
+    def relocate(record):
+        for command in record["commands"]:
+            command["argv"][0] = "/builds/runner-slot/project/.venv/bin/python"
+
+    source_mutate(responses, path, relocate)
+    result = source_verify(policy, responses)[0]
+    assert result["source_status"] == "PASS"
+    assert result["permission_status"] == "UNKNOWN"
+    assert result["acceptance_eligible"] is False
+
+
+@pytest.mark.parametrize("name", remote.REQUIRED_JOBS)
+def test_remote_source_rejects_removed_mandatory_artifact_reference(name):
+    policy, responses, _ = source_fixture()
+    job_id = 101 + list(remote.REQUIRED_JOBS).index(name)
+    path = f"/projects/{remote.PROJECT_ID}/jobs/{job_id}/artifacts/{quote(f'dist/ci/{name}/receipt.json', safe='')}"
+    ref = f"dist/ci/{name}/" + (
+        SOURCE_RESULT_PATHS[name][0]
+        if SOURCE_RESULT_PATHS[name]
+        else "command-05.stdout.log"
+    )
+    source_mutate(
+        responses,
+        path,
+        lambda record: record.update(
+            artifacts=[item for item in record["artifacts"] if item["ref"] != ref]
+        ),
+    )
+    assert source_verify(policy, responses)[0]["source_status"] == "FAIL"
+
+
+@pytest.mark.parametrize("mutation", ["duplicate", "extra_field", "hash", "wrong_log"])
+def test_remote_source_rejects_invalid_or_inconsistent_artifact_descriptors(mutation):
+    policy, responses, _ = source_fixture()
+    path = f"/projects/{remote.PROJECT_ID}/jobs/101/artifacts/{quote('dist/ci/static/receipt.json', safe='')}"
+
+    def mutate(record):
+        if mutation == "duplicate":
+            record["artifacts"].append(copy.deepcopy(record["artifacts"][0]))
+        elif mutation == "extra_field":
+            record["artifacts"][0]["candidate_override"] = True
+        elif mutation == "hash":
+            record["artifacts"][0]["sha256"] = "e" * 64
+        else:
+            record["commands"][0]["stdout"]["ref"] = (
+                "dist/ci/static/command-02.stdout.log"
+            )
+
+    source_mutate(responses, path, mutate)
     assert source_verify(policy, responses)[0]["source_status"] == "FAIL"
 
 
@@ -546,6 +719,7 @@ def test_remote_source_rejects_job_retry_started_during_artifact_verification():
         ref="dev_gpt",
         policy=policy,
         driver_sha256=SOURCE_DRIVER_HASH,
+        lock_sha256=SOURCE_LOCK_HASH,
     )
     assert result["source_status"] == result["status"] == "UNVERIFIED"
     assert {"job_id": 999, "job_name": "static", "status": "running"} in result[
@@ -563,6 +737,7 @@ def test_remote_cli_reads_fixed_git_policy_and_missing_credentials_stay_unverifi
     cli = scripts / "verify_remote.py"
     cli.write_bytes(Path(remote.__file__).read_bytes())
     (scripts / "run_gate.py").write_text("# synthetic driver\n")
+    (checkout / "uv.lock").write_text("version = 1\n")
     policy = checkout / "security-policy.yaml"
     policy.write_text(
         "project:\n  id: 86656946\n  path: ayitnovel/ainovelos\n  api_base: https://gitlab.com/api/v4\n"

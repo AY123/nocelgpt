@@ -4,7 +4,7 @@ task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
 worktree_dirty: true
-plan_manifest_sha256: 267f7c74009337acdcc8dfe82d00cb7cb883427f5b40a718f212ce6f256238f6
+plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
   fingerprint: Resumed macOS primary checkout; preserved user modifications; CI Linux
     evidence examined separately
@@ -31,8 +31,8 @@ inputs:
   ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
   sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-004/inputs/c08150e6ee10308256227a892128ad9792b8006bbf0b1a5dc947b88833b2f40d.txt
-  sha256: c08150e6ee10308256227a892128ad9792b8006bbf0b1a5dc947b88833b2f40d
+  ref: validation/execution/V2-004/inputs/a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82.txt
+  sha256: a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82
 - source_ref: AI_EXECUTION_PROTOCOL.md
   ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
   sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
@@ -43,8 +43,8 @@ inputs:
   ref: validation/execution/V2-004/inputs/5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb.txt
   sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
 - source_ref: README.md
-  ref: validation/execution/V2-004/inputs/de422b6ea6dfbe409fb8318c82ac9973a605f26ac46e1780567981ecdf39f158.txt
-  sha256: de422b6ea6dfbe409fb8318c82ac9973a605f26ac46e1780567981ecdf39f158
+  ref: validation/execution/V2-004/inputs/1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2.txt
+  sha256: 1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2
 - source_ref: machine/implementation-backlog.yaml
   ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
   sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
@@ -58,8 +58,8 @@ inputs:
   ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
   sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
 - source_ref: machine/ci-gates.yaml
-  ref: validation/execution/V2-004/inputs/7d25f0dcf3297990dfa7e55953d3f045066a6e00f46f23f74de6161e32a71f63.txt
-  sha256: 7d25f0dcf3297990dfa7e55953d3f045066a6e00f46f23f74de6161e32a71f63
+  ref: validation/execution/V2-004/inputs/594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e.txt
+  sha256: 594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e
 - source_ref: machine/governance-baseline.yaml
   ref: validation/execution/V2-004/inputs/ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
@@ -172,8 +172,8 @@ review_notes:
   P0/V2-004 scope; no test weakening, task/phase identity unchanged; reason and impact
   in ci-fixture-authorization.md.'
 handoff:
-  current_step: 'PREPARE: real Linux UNIT artifact confirms original bootstrap negative-fixture
-    cache prerequisite defect; freeze exact existing CI test scope'
+  current_step: Local corrective implementation verified; initial UNIT failure retained;
+    exact final reviews prepared; candidate CI/permission pending actual push/read
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -184,16 +184,31 @@ handoff:
     retained
   - 'Candidate 04295459 clean locked replay: 360 pytest controls no skip, static/governance
     pass; exact receipts/artifact hashes retained'
+  - Read exact real failed UNIT archive and metadata, cause matches local cold-cache
+    failure
+  - Strengthened fixed source command/log/result and lock/runtime controls; 72 source
+    controls pass
+  - Six job timeouts effective and security always hard-fails; 14 configuration controls
+    pass
+  - Corrected original bootstrap fixture without removing any original assertion;
+    real uv positive/negative controls pass
+  - Current static, production architecture and five governance checks pass; active
+    normative inputs reconciled
   pending_items:
-  - Freeze resumed local/clean CI scope
-  - Read actual UNIT artifact and repair confirmed Linux failure
-  - Strengthen exact command/artifact comparison and job timeouts
-  - Historical credential disposition and actual permission controls remain unresolved
+  - Bind final review Git pin and committed clean CI context, then push dev_gpt
+  - Read new candidate pipeline and all actual job artifacts
+  - Historical credential owner revocation/rotation remains UNKNOWN
+  - Protected runner/config and permission/anti-deletion experiments remain pending;
+    no P1
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: FAIL
+    artifacts:
+    - ref: validation/execution/V2-004/followup-20261004/local-controls.json
+      sha256: 3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2
     missing_artifact_reason: null
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6
   scope_ref: plan/validation/execution/V2-004/followup-20261004/scope-local-v3.json
+  review_revision: 72ae28dbc63349cb6ec3fc42d9134ae588dc829c
+  review_ref: plan/validation/execution/V2-004/followup-20261004/change-dispositions-initial.json

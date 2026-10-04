@@ -1,6 +1,6 @@
 # V2-004 实施与恢复记录
 
-记录日期：2026-10-03（Asia/Shanghai）；分支：`dev_gpt`；Plan：1.3.0。**V2-004 仍为 IN_PROGRESS，P0 仍为 NOT_VERIFIED。** 本文记录当前实现、本地真实运行、失败及恢复条件，不作为任务验收或远端 CI 绿色证据。最终任务、阶段及证据状态以 `plan/machine/` 为准。
+首次记录：2026-10-03；恢复实施：2026-10-04（Asia/Shanghai）；分支：`dev_gpt`；Plan：1.3.0。**V2-004 仍为 IN_PROGRESS，P0 仍为 NOT_VERIFIED。** 本文记录当前实现、本地真实运行、失败及恢复条件，不作为任务验收或远端 CI 绿色证据。最终任务、阶段及证据状态以 `plan/machine/` 为准。
 
 实施和验证由同一操作者及共享工作区的协作 Agent 承担，未建立独立人员审核或独立权限保障。`dev_cc` 仅用于比较方案，其历史 PASS、保护配置和完成状态未继承到 `dev_gpt`。
 
@@ -109,4 +109,20 @@ uv run --locked python -B scripts/ci/verify_remote.py \
 
 2026-10-03 15:43:09 UTC 再次读取两个 GitLab 账户，结果一致：dev_gpt 仍在 `882d0cdf...`、未受保护、流水线数 0；项目要求成功流水线才能合并，ci_config_path 为空。此次未推送或触发远端 CI，未修改保护规则。六项候选 gate 在机器源为 IMPLEMENTED，未登记 CI_RUN；任务继续 IN_PROGRESS，完整 AT 套件 PLANNED，P0 NOT_VERIFIED。
 
-下一动作是凭证权限持有人提供脱敏撤销/轮换记录，明确远端 CI 与权限配置的可用预算及执行身份，再部署并核验受保护配置、runner 与真实权限正反例。当前预算为零付费调用/基础设施上限，未知运行成本不能写成零。保留旧任务的历史证据，最终 G-P0/M0 仍须核验同一候选 revision；不自动进入 P1。
+当时的下一动作是凭证权限持有人提供脱敏撤销/轮换记录，明确远端 CI 与权限配置的可用预算及执行身份，再部署并核验受保护配置、runner 与真实权限正反例。当前预算为零新增付费调用/基础设施上限，未知运行成本不能写成零。保留旧任务的历史证据，最终 G-P0/M0 仍须核验同一候选 revision；不自动进入 P1。
+
+## 2026-10-04 恢复：真实流水线与本轮修复
+
+用户明确开始 V2-004，`V2-004任务prompt.txt` 仅作为参考输入；未继承参考文件的额外审批人数或任务状态枚举。恢复时本地及远端 `dev_gpt` 同为 `6ed09939bdc7715fd582338675cd0443777aac50`，现行资料检查 PASS。保留用户的审核报告修改、旧提示词删除、新提示词未跟踪新增以及本地工具配置，均不暂存、不归入本轮产出。
+
+[真实 pipeline 2909931436](https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2909931436) 是该提交的 push 流水线：STATIC、SCHEMA_CONTRACT、ARCH_FITNESS、POSTGRES_ENV 成功；UNIT 失败，SECRET_DEPENDENCY 跳过，整体 failed。五个执行 job 的 trace 均实际可读，起止标记与固定 driver hash 相符；单测 trace 显示第二条 pytest 命令非零。原始 job 产物的具体结果以本轮核对记录为准，不能用前轮本地 360 PASS 代替此失败。
+
+已修正 GitLab job 超时配置：将 `default.timeout` 移至全部六个 job 的显式 `timeout: 20 minutes`。安全 job 使用受约束的 `when: always`，使上游失败后仍生成安全检查结果；配置检查只对该 job 接受精确 always，其余触发覆盖仍拒绝，六项 `allow_failure: false` 保留。配置正反例覆盖超时缺失、延长、退回 default 和安全检查跳过，14 项通过。
+
+来源核验原先只要求 argv 非空和命令退出零，合成一条任意命令、缺少结果产物仍可得到 source_status PASS；overall 和 permission 保持未验证。已补强固定命令的数量、顺序、参数、结果路径、stdout/stderr descriptor 与 artifact hash 一致性，并绑定候选锁文件和真实 Python/source_kind；相关72项控制通过。受信配置、实际权限和最终验收仍单独核对，不能由这些本地逻辑控制自签放行。
+
+真实 UNIT job16916847412 的归档7351字节、SHA256 `4ccb1a5445394561e8e43780dd064ac34ccba8c2c0767c9acc1da057a3d52271`，回执及日志全部与精确job匹配。137项仅锁文件漂移负例失败：offline解析先遇到未缓存元数据，未到锁文件拒绝；本地178项同一故障，其余177通过。夹具现使用独立空缓存，证明原清单可解析、合法dev依赖图变更在允许更新时可解析，再用原真实 `uv sync --locked --offline` 明确拒绝漂移并保持锁字节不变。原断言保留、特定诊断加强，不删除或skip测试，不改项目真实依赖。针对修复的真实uv测试已通过；完整新候选由实际CI重跑。
+
+归档接口先返回官方CDN签名重定向，下载仅在认证GitLab首跳后对精确官方CDN发不带认证的请求，最终原始字节核对通过。现行核验器使用的四个exact-job单文件接口实际均为HTTP200，无重定向，字节与归档相同；无需推测性扩大生产核验器的重定向权限。完整远端规则仅保护main，push/merge为Maintainer40；实际shared instance runner54907241为not_protected，不能宣称受保护执行已成立。现有Free额度月使用227分钟，默认400额度差173仅是推论，API实际余额和金额未知；本轮不购买资源或扩张权限。
+
+本轮固定范围及八个场景差距见 [恢复记录](../plan/validation/execution/V2-004/followup-20261004/README.md)。同操作者验证如实标注。真实当前 CI 全部成功、历史凭据处置、受保护 runner/配置及权限正反例完成前，任务和阶段不升级。

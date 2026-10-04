@@ -1,0 +1,450 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
+    "ref": "plan/validation/execution/V2-004/followup-20261004/scope-local-v3.json",
+    "sha256": "9782f5df6a0fe77d9a6541817c52ec7f472f7babba8ee416c20b9d7c76e6114f"
+  },
+  "dispositions": [
+    {
+      "path": ".gitlab-ci.yml",
+      "old_sha": "5b240d209d4a2d6cc24e8ec542a9aae44c495947583a46bed41173f3da7dcb1e",
+      "new_sha": "89b45752f933e93ba7257396d74fa5554770e9a70c4a65eabbce7943b0d421ab",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "a9ddd4a629421532481fa91b3cc1c17067b9cb3945ccfde537a4d3182e20a728",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Six jobs get effective explicit timeouts; security runs even after upstream failure. Existing six mandatory scripts/hard failures retained; no trigger exclusion or weaker result.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": ".gitlab-ci.yml",
+      "old_sha": "5b240d209d4a2d6cc24e8ec542a9aae44c495947583a46bed41173f3da7dcb1e",
+      "new_sha": "89b45752f933e93ba7257396d74fa5554770e9a70c4a65eabbce7943b0d421ab",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "5f62eab84996930b2682d7ce9fb348e8f99221329df241147d5ab6964369b3b3",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Six jobs get effective explicit timeouts; security runs even after upstream failure. Existing six mandatory scripts/hard failures retained; no trigger exclusion or weaker result.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "old_sha": "9fa91525e757de7886a0b30ecee076bab08957fa4368fe6729942fd743d74b69",
+      "new_sha": "a6ba15ea9ac145e3ed58f6a4c815585e6e036fea17491ddc4c9714bc13d23ec9",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "2ed293b4ea20ac156f7515a02097595edff63b17d0f839b6114875d137e7d9b3",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Enforces exact timeout and security always schedule; only exact security always is allowed, all other job overrides rejected. No broad exemption.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "old_sha": "9fa91525e757de7886a0b30ecee076bab08957fa4368fe6729942fd743d74b69",
+      "new_sha": "a6ba15ea9ac145e3ed58f6a4c815585e6e036fea17491ddc4c9714bc13d23ec9",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "e1f35f5eb6bee7f22b5a1249ada6eb186dd3d607ecb8dc854f3a961f3a72a992",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Enforces exact timeout and security always schedule; only exact security always is allowed, all other job overrides rejected. No broad exemption.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/verify_remote.py",
+      "old_sha": "bf0c1b87ace91a003bf17179eb035798d7ad691d21fed917bd460517c27a041a",
+      "new_sha": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "f597baa0db99aa59dbe75f1660631a1eda69ea85616e0065283a5e85c1716701",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds fixed complete command/log/result contracts and exact lock/runtime checks; candidate cannot substitute arbitrary command or remove required artifacts. Permission UNKNOWN remains noneligible.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/verify_remote.py",
+      "old_sha": "bf0c1b87ace91a003bf17179eb035798d7ad691d21fed917bd460517c27a041a",
+      "new_sha": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "b67d4252789e606bbae01acad111a2b87aa110d651875570235fde38a1979659",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Adds fixed complete command/log/result contracts and exact lock/runtime checks; candidate cannot substitute arbitrary command or remove required artifacts. Permission UNKNOWN remains noneligible.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "ff38d2bd1f9d759d6ea4f103029daa6124dbd5a28631e302745a745bbf044ef1",
+      "new_sha": "56016404e347ef8b10762d27bc2b123abb09aa5e2507994ac809d341a2e54e17",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "3a3500701fc8185360c8d792e18381dbe6d035f25c8c3a44c00a4102b69ee847",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Replaces incomplete synthetic source fixture with full real driver plans and independent required refs, adds adverse controls and retains all old negative cases; no deleted test or skip.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "ff38d2bd1f9d759d6ea4f103029daa6124dbd5a28631e302745a745bbf044ef1",
+      "new_sha": "56016404e347ef8b10762d27bc2b123abb09aa5e2507994ac809d341a2e54e17",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "af41a3386b364efab48cb4725931a7c89d5c8f6a7f8b34c915611cb360309d50",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Replaces incomplete synthetic source fixture with full real driver plans and independent required refs, adds adverse controls and retains all old negative cases; no deleted test or skip.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "ad243de1a1afae6e378e6c24137ce23cdee1552ec3affc9dc032be749ecba38e",
+      "new_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "dc5f97f70073e452a6be37b2336e243b20f95fb09adcd5dc3d188b04657f28f2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Corrects actual Linux cold-cache fixture prerequisite, using a valid dev dependency graph drift with unchanged project metadata; keeps all original assertions and real uv sync --locked --offline, adds valid graph positive and exact refusal. No removal/skip or weaker acceptance.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "ad243de1a1afae6e378e6c24137ce23cdee1552ec3affc9dc032be749ecba38e",
+      "new_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "a7bef08a97564004f639773a726a7cd18d514d7fde6308336932e05b1358a27f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Corrects actual Linux cold-cache fixture prerequisite, using a valid dev dependency graph drift with unchanged project metadata; keeps all original assertions and real uv sync --locked --offline, adds valid graph positive and exact refusal. No removal/skip or weaker acceptance.",
+      "impact": "Strengthens same P0/V2-004 CI and preserves all six gates and eight scenarios. No P1, paid or permission expansion; task/phase remain unverified.",
+      "reviewer": "Same Codex implementer/verifier; supporting shared-trust review, not independent acceptance",
+      "replacement_validation": "72 source controls, 14 pipeline controls, corrected real uv lock fixture, static and all five governance checks PASS. Initial full unit failure preserved; candidate complete CI pending real push.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+        "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/source-controls.xml",
+          "sha256": "c6aa889851b107f1b3595090ce67efa1873d06ef35878da1e3e2bd3ef85ca1f7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/lock-drift-fixed.xml",
+          "sha256": "e35d642dc19b1e007484fbbfbd174a7ab2b27b38eb27f929a47fd5d5971d029c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-static-receipt.json",
+          "sha256": "f0a3fd9408ed929e6b8cbede15623f4150cac07099889f16ca90480e25fb6b78"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-governance-summary.json",
+          "sha256": "ecd5430fad5bf16a26371fa3359e1f132fe61fa43edc19c6ee00162186382171"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/final-production-architecture.json",
+          "sha256": "ae0dff840f22b35e4d23bc9aa812a46ead7ac4452195245c195a6bb548e55931"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/followup-20261004/local-controls.json",
+          "sha256": "3b21926ee081045e4658a09e8d4f01cf01dfd4903f3d587d415e8a91c9cc53a2"
+        }
+      ]
+    }
+  ]
+}

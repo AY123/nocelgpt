@@ -59,10 +59,40 @@ def test_locked_install_rejects_manifest_drift(clean_project):
     uv, source, env = clean_project
     lock = (source / "uv.lock").read_bytes()
     manifest = source / "pyproject.toml"
-    manifest.write_text(manifest.read_text().replace('dependencies = []', 'dependencies = ["PyYAML>=6,<7"]', 1))
+    original = manifest.read_text()
+    # Prove a valid lock can be read offline with an independent empty cache.
+    # Adding a registry dependency here previously failed on uncached metadata
+    # before uv could reach the lock-drift check, especially in fresh Linux CI.
+    cache = source.parent / "cold-lock-cache"
+    assert not cache.exists()
+    env = dict(env, UV_CACHE_DIR=str(cache))
+    check = [uv, "sync", "--locked", "--offline", "--dry-run", "--no-install-project", "--no-default-groups"]
+    run(check, cwd=source, env=env)
+    assert (source / "uv.lock").read_bytes() == lock
+
+    # Removing fixture dev dependencies is a valid dependency-graph change,
+    # not a syntax error or a modification to the real project requirements.
+    before, dependency_tail = original.split("dev = [", 1)
+    _, after = dependency_tail.split("\n]", 1)
+    changed = before + "dev = []" + after
+    expected = tomllib.loads(original)
+    expected["dependency-groups"]["dev"] = []
+    assert tomllib.loads(changed) == expected
+    manifest.write_text(changed)
+    permitted = run([arg for arg in check if arg != "--locked"], cwd=source, env=env)
+    assert "Would update lockfile" in permitted.stderr
+    assert (source / "uv.lock").read_bytes() == lock
+
+    # Keep the real installation command and prove its specific locked refusal,
+    # rather than accepting any nonzero network or configuration error.
+    negative_cache = source.parent / "negative-lock-cache"
+    assert not negative_cache.exists()
+    env["UV_CACHE_DIR"] = str(negative_cache)
     result = run([uv, "sync", "--locked", "--offline"], cwd=source, env=env, check=False)
     assert result.returncode != 0
     assert "lock" in result.stderr.lower()
+    assert "The lockfile at `uv.lock` needs to be updated, but `--locked` was provided." in result.stderr
+    assert "network was disabled" not in result.stderr
     assert (source / "uv.lock").read_bytes() == lock
 
 

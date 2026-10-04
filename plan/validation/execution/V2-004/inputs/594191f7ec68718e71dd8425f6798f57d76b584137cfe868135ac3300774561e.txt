@@ -1,0 +1,96 @@
+version: 1.2.0
+status: CANDIDATE_IMPLEMENTED_NOT_VERIFIED
+gates:
+- id: STATIC
+  activation_phase: P0
+  mode: every_change
+  allow_failure: false
+  checks:
+  - format
+  - lint
+  - typecheck
+  status: IMPLEMENTED
+  evidence_refs: []
+- id: UNIT
+  activation_phase: P0
+  mode: every_change
+  allow_failure: false
+  checks:
+  - unit
+  status: IMPLEMENTED
+  evidence_refs: []
+- id: SCHEMA_CONTRACT
+  activation_phase: P0
+  mode: every_change
+  allow_failure: false
+  checks:
+  - plan validation
+  - active schemas and contracts
+  status: IMPLEMENTED
+  evidence_refs: []
+- id: ARCH_FITNESS
+  activation_phase: P0
+  mode: every_change
+  allow_failure: false
+  checks:
+  - positive and negative boundary fixtures
+  status: IMPLEMENTED
+  evidence_refs: []
+- id: SECRET_DEPENDENCY
+  activation_phase: P0
+  mode: every_change
+  allow_failure: false
+  checks:
+  - secret scan
+  - locked dependency scan
+  status: IMPLEMENTED
+  evidence_refs: []
+- id: POSTGRES_ENV
+  activation_phase: P0
+  mode: every_change
+  allow_failure: false
+  checks:
+  - real database connect and clean fixture
+  status: IMPLEMENTED
+  evidence_refs: []
+- id: CANON_CAS_IDEMPOTENCY
+  activation_phase: P2
+  mode: every_change
+  allow_failure: false
+  checks:
+  - atomic commit
+  - CAS
+  - same/different payload dedupe
+  - rebuild
+  status: NOT_IMPLEMENTED
+  evidence_refs: []
+- id: DETERMINISTIC_E2E
+  activation_phase: P7
+  mode: every_change
+  allow_failure: false
+  checks:
+  - real Q0-Q3 permit commit integration
+  status: NOT_IMPLEMENTED
+  evidence_refs: []
+- id: GENRE_SMOKE
+  activation_phase: P8
+  mode: every_change
+  allow_failure: false
+  checks:
+  - dual-anchor smoke and negative controls
+  status: NOT_IMPLEMENTED
+  evidence_refs: []
+- id: LIVE_PROVIDER
+  activation_phase: P5
+  mode: scheduled_protected_manual_release
+  allow_failure: false
+  checks:
+  - actual provider schema and error contract
+  - budget and UNKNOWN
+  status: NOT_IMPLEMENTED
+  evidence_refs: []
+live_required_at:
+- first model seam verification
+- P8/P9 certification with applicable actual model
+- model/provider affecting release
+not_applicable_policy: 显式列出未启用阶段和理由，不能标 PASS；无 live 凭证为 BLOCKED

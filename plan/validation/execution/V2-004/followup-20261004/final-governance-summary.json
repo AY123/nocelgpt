@@ -1,0 +1,80 @@
+{
+  "scope": "Local V2-002 engineering checks; not remote CI or final acceptance",
+  "status": "PASS",
+  "generated_at": "2026-10-04T01:06:01.370432+00:00",
+  "validated_repository_revision": "72ae28dbc63349cb6ec3fc42d9134ae588dc829c",
+  "validated_worktree_dirty": true,
+  "validation_input_kind": "WORKTREE_SNAPSHOT",
+  "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
+  "manifest_sha256": "cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e",
+  "errors": [],
+  "commands": [
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-B",
+        "plan/scripts/validate_plan.py",
+        "--check",
+        "--output-dir",
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-resume-governance-final/plan"
+      ],
+      "started_at": "2026-10-04T01:04:00.580474+00:00",
+      "exit_code": 0,
+      "stdout": "{\n  \"generated_at_utc\": \"2026-10-04T01:04:01.561296+00:00\",\n  \"scope\": \"planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views\",\n  \"status\": \"PASS\",\n  \"not_certified\": [\n    \"P0 engineering exit\",\n    \"runtime\",\n    \"PostgreSQL\",\n    \"remote CI\",\n    \"live provider\",\n    \"reader/market result\"\n  ],\n  \"source_snapshot_baseline_commit\": \"5cffff885e9d3de8cf822535758543579bcdcf5f\",\n  \"validated_repository_revision\": \"72ae28dbc63349cb6ec3fc42d9134ae588dc829c\",\n  \"validated_worktree_dirty\": true,\n  \"validation_input_kind\": \"WORKTREE_SNAPSHOT\",\n  \"input_identity_note\": \"manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed\",\n  \"manifest_sha256\": \"cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e\",\n  \"counts\": {\n    \"tasks\": 60,\n    \"phase_distribution\": {\n      \"P0\": 4,\n      \"P1\": 4,\n      \"P2\": 4,\n      \"P3\": 4,\n      \"P4\": 1,\n      \"P5\": 2,\n      \"P6\": 3,\n      \"P7\": 9,\n      \"P8\": 8,\n      \"P9\": 1,\n      \"P10\": 8,\n      \"P11\": 9,\n      \"P12\": 3\n    },\n    \"statuses\": {\n      \"IMPLEMENTED\": 3,\n      \"IN_PROGRESS\": 1,\n      \"OPEN\": 56\n    },\n    \"suites\": 60,\n    \"scenarios\": 246,\n    \"decisions\": 16,\n    \"findings\": 76,\n    \"source_snapshots\": 247,\n    \"external_sources\": 14,\n    \"external_practices\": {\n      \"PLANNED\": 9,\n      \"DEFERRED\": 2,\n      \"REJECTED\": 1\n    }\n  },\n  \"errors\": []\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-B",
+        "plan/scripts/validate_plan.py",
+        "--self-test",
+        "--output-dir",
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-resume-governance-final/self-test"
+      ],
+      "started_at": "2026-10-04T01:04:01.618141+00:00",
+      "exit_code": 0,
+      "stdout": "{\"scope\": \"planning validator self-test only\", \"status\": \"PASS\", \"cases\": 32}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-B",
+        "plan/scripts/test_governance.py",
+        "--output-dir",
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-resume-governance-final/governance"
+      ],
+      "started_at": "2026-10-04T01:04:03.429283+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_adr_backlink_removed (__main__.GovernanceTests) ... ok\ntest_adr_template_not_decision (__main__.GovernanceTests) ... ok\ntest_all_ci_removed (__main__.GovernanceTests) ... ok\ntest_bad_artifact_hash (__main__.GovernanceTests) ... ok\ntest_ci_checks_removed (__main__.GovernanceTests) ... ok\ntest_ci_duplicate (__main__.GovernanceTests) ... ok\ntest_ci_postponed (__main__.GovernanceTests) ... ok\ntest_cli_external_reports_do_not_change_plan (__main__.GovernanceTests) ... ok\ntest_directory_not_record (__main__.GovernanceTests) ... ok\ntest_evidence_cycle (__main__.GovernanceTests) ... ok\ntest_failed_run_rejected (__main__.GovernanceTests) ... ok\ntest_finding_backlink_removed (__main__.GovernanceTests) ... ok\ntest_milestone_requires_phase (__main__.GovernanceTests) ... ok\ntest_milestone_revision_matches_phase_decision (__main__.GovernanceTests) ... ok\ntest_milestone_shrink (__main__.GovernanceTests) ... ok\ntest_missing_finding_disposition (__main__.GovernanceTests) ... ok\ntest_missing_phase_file (__main__.GovernanceTests) ... ok\ntest_missing_suite_file (__main__.GovernanceTests) ... ok\ntest_normalized_template_aliases_are_rejected (__main__.GovernanceTests) ... ok\ntest_p0_blocked (__main__.GovernanceTests) ... ok\ntest_partial_finding_requires_next_owner (__main__.GovernanceTests) ... ok\ntest_phase_input_binding (__main__.GovernanceTests) ... ok\ntest_phase_requires_applicable_ci (__main__.GovernanceTests) ... ok\ntest_planned_readiness_cannot_start (__main__.GovernanceTests) ... ok\ntest_readme_not_test_record (__main__.GovernanceTests) ... ok\ntest_runtime_failure_states_are_not_closure_witnesses (__main__.GovernanceTests) ... ok\ntest_source_registry_does_not_claim_fresh_verification (__main__.GovernanceTests) ... ok\ntest_suite_coverage_not_just_nonempty (__main__.GovernanceTests) ... ok\ntest_template_artifact_cannot_support_decision (__main__.GovernanceTests) ... ok\ntest_valid_artifact_in_nested_templates_named_directory (__main__.GovernanceTests) ... ok\ntest_valid_exported_cli_and_single_negative (__main__.GovernanceTests) ... ok\ntest_valid_future_task_start (__main__.GovernanceTests) ... ok\ntest_valid_historical_task_revision_in_current_phase (__main__.GovernanceTests) ... ok\ntest_valid_multiple_suites_for_one_task (__main__.GovernanceTests) ... ok\ntest_valid_p0_completion_chain (__main__.GovernanceTests) ... ok\ntest_valid_partial_finding_disposition (__main__.GovernanceTests) ... ok\ntest_wrong_evidence_type (__main__.GovernanceTests) ... ok\ntest_wrong_revision (__main__.GovernanceTests) ... ok\ntest_wrong_subject (__main__.GovernanceTests) ... ok\n\n----------------------------------------------------------------------\nRan 39 tests in 56.476s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-B",
+        "plan/scripts/test_ai_execution.py",
+        "--output-dir",
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-resume-governance-final/ai"
+      ],
+      "started_at": "2026-10-04T01:05:00.017333+00:00",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_task_requires_packet (__main__.AIExecutionTests) ... ok\ntest_certification_positive_and_decision_negative (__main__.AIExecutionTests) ... ok\ntest_changed_live_input (__main__.AIExecutionTests) ... ok\ntest_changed_snapshot (__main__.AIExecutionTests) ... ok\ntest_completed_packet_keeps_recoverable_historical_inputs (__main__.AIExecutionTests) ... ok\ntest_declared_output_outside_scope (__main__.AIExecutionTests) ... ok\ntest_fabricated_pass_without_artifact_rejected (__main__.AIExecutionTests) ... ok\ntest_fact_needs_source (__main__.AIExecutionTests) ... ok\ntest_handoff_template_and_alias_are_not_run_results (__main__.AIExecutionTests) ... ok\ntest_historical_packet_not_rewritten_for_new_task_outputs (__main__.AIExecutionTests) ... ok\ntest_implementation_with_declared_decision (__main__.AIExecutionTests) ... ok\ntest_input_escape (__main__.AIExecutionTests) ... ok\ntest_interface_requires_decision (__main__.AIExecutionTests) ... ok\ntest_live_action_positive_and_decision_negative (__main__.AIExecutionTests) ... ok\ntest_live_budget_is_required_even_in_eligible_phase (__main__.AIExecutionTests) ... ok\ntest_live_call_early_phase_and_missing_budget_rejected (__main__.AIExecutionTests) ... ok\ntest_missing_failure_artifacts_can_be_reported_honestly (__main__.AIExecutionTests) ... ok\ntest_missing_handoff_rejected (__main__.AIExecutionTests) ... ok\ntest_missing_normative_input (__main__.AIExecutionTests) ... ok\ntest_missing_packet_file (__main__.AIExecutionTests) ... ok\ntest_next_action_mismatch (__main__.AIExecutionTests) ... ok\ntest_open_task_can_only_prepare (__main__.AIExecutionTests) ... ok\ntest_packet_cannot_create_manifest_hash_cycle (__main__.AIExecutionTests) ... ok\ntest_policy_cannot_claim_unimplemented_p0_is_verified (__main__.AIExecutionTests) ... ok\ntest_policy_rejects_unsupported_local_success_label (__main__.AIExecutionTests) ... ok\ntest_preparation_allows_required_decision (__main__.AIExecutionTests) ... ok\ntest_required_decision_not_silently_removed (__main__.AIExecutionTests) ... ok\ntest_root_and_wildcard_scopes_rejected (__main__.AIExecutionTests) ... ok\ntest_sourced_fact_declaration (__main__.AIExecutionTests) ... ok\ntest_stale_manifest_on_resume (__main__.AIExecutionTests) ... ok\ntest_stale_plan_version (__main__.AIExecutionTests) ... ok\ntest_task_output_not_silently_dropped (__main__.AIExecutionTests) ... ok\ntest_template_alias_cannot_be_packet (__main__.AIExecutionTests) ... ok\ntest_unknown_blocks_implementation_but_allows_preparation (__main__.AIExecutionTests) ... ok\ntest_unknown_decision_timing_rejected (__main__.AIExecutionTests) ... ok\ntest_wrong_task (__main__.AIExecutionTests) ... ok\n\n----------------------------------------------------------------------\nRan 36 tests in 23.314s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/Library/Developer/CommandLineTools/usr/bin/python3",
+        "-B",
+        "plan/scripts/probe_governance_legacy.py",
+        "--output",
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-resume-governance-final/legacy.json"
+      ],
+      "started_at": "2026-10-04T01:05:23.515290+00:00",
+      "exit_code": 0,
+      "stdout": "{\n  \"generated_at_utc\": \"2026-10-04T01:06:01.316036+00:00\",\n  \"scope\": \"Plan governance mutation probes only; no actual engineering task or phase was completed\",\n  \"source_plan_version\": \"1.3.0\",\n  \"source_manifest_sha256\": \"cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e\",\n  \"source_plan_unchanged\": true,\n  \"baseline_errors\": [],\n  \"existing_self_tests\": {\n    \"count\": 32,\n    \"all_pass\": true\n  },\n  \"case_count\": 13,\n  \"unexpected_acceptances\": 0,\n  \"status\": \"PASS\"\n}\nCONTROL-VALID: expected=ACCEPT actual=ACCEPT\nCONTROL-CI-FAIL: expected=REJECT actual=REJECT\nCONTROL-LOCAL-REF: expected=REJECT actual=REJECT\nPROBE-01: expected=REJECT actual=REJECT\nPROBE-02: expected=REJECT actual=REJECT\nPROBE-03: expected=REJECT actual=REJECT\nPROBE-04: expected=REJECT actual=REJECT\nPROBE-05: expected=REJECT actual=REJECT\nPROBE-06: expected=REJECT actual=REJECT\nPROBE-07: expected=REJECT actual=REJECT\nPROBE-08: expected=REJECT actual=REJECT\nPROBE-09: expected=REJECT actual=REJECT\nPROBE-10: expected=REJECT actual=REJECT\n",
+      "stderr": ""
+    }
+  ]
+}

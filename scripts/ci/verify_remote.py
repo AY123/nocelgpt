@@ -38,6 +38,141 @@ REQUIRED_JOBS = {
     "postgres_env": "POSTGRES_ENV",
 }
 JsonObject = dict[str, object]
+PYTHON_VERSION = "3.12.14"
+
+
+def command_tails(job_name: str) -> list[list[str]]:
+    """Fixed reviewed command contract; never execute candidate driver code."""
+    target = f"dist/ci/{job_name}"
+    paths = ["src/anovel", "scripts/ci"]
+    tests = [
+        "tests/contract/test_delivery_gates.py",
+        "tests/integration/test_postgres_ci_service.py",
+    ]
+    bootstrap = [
+        "scripts/ci/bootstrap_scanners.py",
+        "--output-dir",
+        "dist/tools/gitleaks-8.21.2",
+        "--reuse-verified",
+    ]
+    plans = {
+        "static": [
+            ["scripts/ci/check_configuration.py"],
+            ["-m", "ruff", "format", "--check", *paths, *tests],
+            ["-m", "ruff", "check", "--select", "F,E9,I", *paths, *tests],
+            ["-m", "mypy", "--strict", "--cache-dir", "dist/cache/mypy", *paths],
+            ["scripts/ci/check_syntax.py"],
+        ],
+        "unit": [
+            bootstrap,
+            [
+                "-m",
+                "pytest",
+                "-q",
+                "-p",
+                "no:cacheprovider",
+                "tests/contract",
+                "tests/integration/test_repository_bootstrap.py",
+                f"--junitxml={target}/junit.xml",
+            ],
+        ],
+        "schema_contract": [
+            ["scripts/check_governance.py", "--output-dir", f"{target}/governance"]
+        ],
+        "arch_fitness": [
+            [
+                "scripts/task_execution.py",
+                "check",
+                "--task",
+                "V2-004",
+                "--action",
+                "IMPLEMENT",
+                "--output",
+                f"{target}/action-entry.json",
+            ],
+            [
+                "scripts/check_architecture.py",
+                "--output",
+                f"{target}/architecture.json",
+            ],
+            [
+                "-m",
+                "pytest",
+                "-q",
+                "-p",
+                "no:cacheprovider",
+                "tests/architecture",
+                f"--junitxml={target}/junit.xml",
+            ],
+        ],
+        "secret_dependency": [
+            bootstrap,
+            ["scripts/ci/check_security.py", "--output-dir", f"{target}/security"],
+        ],
+        "postgres_env": [
+            [
+                "-m",
+                "pytest",
+                "-q",
+                "-p",
+                "no:cacheprovider",
+                "-s",
+                "tests/integration/test_postgres_ci_service.py",
+                f"--junitxml={target}/junit.xml",
+            ]
+        ],
+    }
+    if job_name not in plans:
+        raise SourceError("Unregistered command contract")
+    return [["-B", *command] for command in plans[job_name]]
+
+
+def required_artifact_refs(job_name: str) -> set[str]:
+    """Existing result files and every command log are mandatory evidence."""
+    results = {
+        "static": [],
+        "unit": ["junit.xml"],
+        "schema_contract": [
+            "governance/governance-summary.json",
+            "governance/plan/plan-validation.json",
+            "governance/self-test/validator-self-test.json",
+            "governance/governance/governance-regression.json",
+            "governance/ai/ai-execution-regression.json",
+            "governance/legacy.json",
+            "governance/context-inventory.json",
+            "governance/normative-index.json",
+        ],
+        "arch_fitness": ["action-entry.json", "architecture.json", "junit.xml"],
+        "secret_dependency": [
+            "security/security-summary.json",
+            "security/secret-scan.json",
+            "security/dependency-audit.json",
+            "security/locked-audit-requirements.txt",
+        ],
+        "postgres_env": ["junit.xml"],
+    }
+    target = f"dist/ci/{job_name}"
+    return {f"{target}/{ref}" for ref in results[job_name]} | {
+        f"{target}/command-{number:02d}.{stream}.log"
+        for number in range(1, len(command_tails(job_name)) + 1)
+        for stream in ("stdout", "stderr")
+    }
+
+
+def python_executable(value: object) -> str:
+    executable = string(value, "Python executable")
+    path = PurePosixPath(executable)
+    if (
+        not path.is_absolute()
+        or executable.startswith("//")
+        or ".." in path.parts
+        or "\\" in executable
+        or "\0" in executable
+        or path.as_posix() != executable
+        or not executable.endswith("/.venv/bin/python")
+    ):
+        raise SourceError("Expected a normalized absolute project Python executable")
+    return executable
 
 
 class SourceError(Exception):
@@ -180,6 +315,8 @@ def verified_artifact(
     descriptor: JsonObject,
     blobs: dict[str, bytes],
 ) -> JsonObject:
+    if set(descriptor) != {"ref", "sha256"}:
+        raise SourceError("Artifact descriptor must contain only ref and sha256")
     ref = artifact_ref(descriptor.get("ref"), job_name)
     expected_hash = string(descriptor.get("sha256"), "artifact hash")
     if not re.fullmatch(r"[a-f0-9]{64}", expected_hash):
@@ -227,6 +364,7 @@ def verify_job(
     pipeline_id: int,
     ref: str,
     driver_sha256: str,
+    lock_sha256: str,
     blobs: dict[str, bytes],
 ) -> JsonObject:
     job_id = integer(job.get("id"), "job ID")
@@ -263,7 +401,7 @@ def verify_job(
         f"/projects/{PROJECT_ID}/jobs/{job_id}/artifacts/{quote(receipt_ref, safe='')}"
     ).body
     receipt = mapping(parse_json(receipt_bytes, "receipt"), "receipt")
-    for field, expected in (
+    for receipt_field, receipt_value in (
         ("record_type", "ci_gate_receipt"),
         ("schema_version", "1.0"),
         ("gate", REQUIRED_JOBS[name]),
@@ -274,18 +412,38 @@ def verify_job(
         ("pipeline_id", str(pipeline_id)),
         ("job_id", str(job_id)),
         ("driver_sha256", driver_sha256),
+        ("lock_sha256", lock_sha256),
+        ("python", PYTHON_VERSION),
+        ("source_kind", "UNVERIFIED_GITLAB_ENVIRONMENT"),
+        ("exit_code", 0),
+        ("errors", []),
     ):
-        exact(receipt, field, expected, f"Job {job_id} receipt")
+        exact(receipt, receipt_field, receipt_value, f"Job {job_id} receipt")
     commands = items(receipt.get("commands"), "receipt commands")
-    if not commands:
-        raise SourceError("Empty command receipt cannot prove gate execution")
+    expected_commands = command_tails(name)
+    if len(commands) != len(expected_commands):
+        raise SourceError("Command receipt does not cover the complete fixed plan")
     checked_commands: list[JsonObject] = []
-    for value in commands:
+    interpreter: str | None = None
+    for number, (value, expected_tail) in enumerate(
+        zip(commands, expected_commands), 1
+    ):
         command = mapping(value, "command receipt")
         argv = items(command.get("argv"), "command argv")
         if not argv or any(not isinstance(arg, str) or not arg for arg in argv):
             raise SourceError("Command argv must contain nonempty string arguments")
+        executable = python_executable(argv[0])
+        if argv[1:] != expected_tail or (interpreter and interpreter != executable):
+            raise SourceError("Command receipt differs from the fixed gate plan")
+        interpreter = executable
         exact(command, "exit_code", 0, "command receipt")
+        for stream in ("stdout", "stderr"):
+            exact(
+                mapping(command.get(stream), stream),
+                "ref",
+                f"dist/ci/{name}/command-{number:02d}.{stream}.log",
+                "command log",
+            )
         stdout = verified_artifact(
             fetch, job_id, name, mapping(command.get("stdout"), "stdout"), blobs
         )
@@ -295,10 +453,24 @@ def verify_job(
         checked_commands.append(
             {"argv": argv, "exit_code": 0, "stdout": stdout, "stderr": stderr}
         )
-    artifacts = [
-        verified_artifact(fetch, job_id, name, mapping(value, "artifact"), blobs)
-        for value in items(receipt.get("artifacts"), "receipt artifacts")
-    ]
+    artifacts: list[JsonObject] = []
+    by_ref: dict[str, JsonObject] = {}
+    for value in items(receipt.get("artifacts"), "receipt artifacts"):
+        descriptor = mapping(value, "artifact")
+        ref_name = artifact_ref(descriptor.get("ref"), name)
+        if ref_name in by_ref:
+            raise SourceError("Receipt repeats an artifact reference")
+        artifact = verified_artifact(fetch, job_id, name, descriptor, blobs)
+        artifacts.append(artifact)
+        by_ref[ref_name] = artifact
+    if not required_artifact_refs(name).issubset(by_ref):
+        raise SourceError("Receipt omits mandatory command logs or result artifacts")
+    for command in checked_commands:
+        for stream in ("stdout", "stderr"):
+            log = mapping(command[stream], "verified log")
+            listed = by_ref[string(log["ref"], "log reference")]
+            if listed["sha256"] != log["sha256"]:
+                raise SourceError("Command and artifact descriptors disagree")
     stored_receipt = f"job-{job_id}/{receipt_ref}"
     blobs[stored_receipt] = receipt_bytes
     return {
@@ -399,6 +571,7 @@ def verify_pipeline(
     ref: str,
     policy: JsonObject,
     driver_sha256: str,
+    lock_sha256: str,
 ) -> tuple[JsonObject, dict[str, bytes]]:
     blobs: dict[str, bytes] = {}
     result: JsonObject = {
@@ -423,10 +596,13 @@ def verify_pipeline(
         ],
     }
     try:
-        if not re.fullmatch(r"[a-f0-9]{40}", revision) or not re.fullmatch(
-            r"[a-f0-9]{64}", driver_sha256
+        if not re.fullmatch(r"[a-f0-9]{40}", revision) or any(
+            not re.fullmatch(r"[a-f0-9]{64}", value)
+            for value in (driver_sha256, lock_sha256)
         ):
-            raise SourceError("Exact full revision and driver SHA256 are required")
+            raise SourceError(
+                "Exact full revision, driver and lock SHA256 are required"
+            )
         integer(pipeline_id, "pipeline ID")
         string(ref, "ref")
         project_policy = mapping(policy.get("project"), "fixed project policy")
@@ -525,6 +701,7 @@ def verify_pipeline(
                     pipeline_id=pipeline_id,
                     ref=ref,
                     driver_sha256=driver_sha256,
+                    lock_sha256=lock_sha256,
                     blobs=blobs,
                 )
             )
@@ -642,6 +819,7 @@ def main(argv: list[str] | None = None) -> int:
         policy_bytes = git_file(root, args.policy_revision, "security-policy.yaml")
         policy = mapping(yaml.safe_load(policy_bytes), "fixed policy")
         driver_bytes = git_file(root, args.revision, "scripts/ci/run_gate.py")
+        lock_bytes = git_file(root, args.revision, "uv.lock")
         client = GitLabClient(os.environ.get("ANOVELOS_GITLAB_TOKEN", ""))
         result, blobs = verify_pipeline(
             client.fetch,
@@ -650,9 +828,11 @@ def main(argv: list[str] | None = None) -> int:
             ref=args.ref,
             policy=policy,
             driver_sha256=digest(driver_bytes),
+            lock_sha256=digest(lock_bytes),
         )
         result["policy_revision"] = args.policy_revision
         result["policy_sha256"] = digest(policy_bytes)
+        result["lock_sha256"] = digest(lock_bytes)
     except (SourceError, SourceUnavailable, yaml.YAMLError) as error:
         # YAML parser errors may include untrusted content, so keep them generic.
         reason = (
