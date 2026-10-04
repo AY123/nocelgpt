@@ -142,3 +142,13 @@ uv run --locked python -B scripts/ci/verify_remote.py \
 实际全量查询136个可用runner均为instance，实际runner54907241为not_protected，无project/group runner；保护规则仅main，dev_gpt未保护。变量覆盖限制已是no_one_allowed；skipped-pipeline合并字段null保持未知。Owner/Developer角色信息不替代真实权限正反例。
 
 原dist交接仅为本地补充；本次canonical记录解决仓库核验缺口，不升级任务或P0状态。待owner提供脱敏凭据处置和可用runner主机后推进实际闭环；最终候选须同一SHA重新取得六门禁全PASS及受保护权限证据。当前V2-004 IN_PROGRESS，P0 NOT_VERIFIED。
+
+## 2026-10-04 实际 Developer 权限控制
+
+针对新审核报告，只读核对当前 `c0ba3a7` 与真实 pipeline `2910354538`：五门禁和 415 项测试 PASS，安全 43 项 FAIL。报告的批次 ACCEPTED 不提升任务状态，90 天期限和独立验收分支仍是待授权建议；没有新增 owner 撤销依据或例外批准。本轮没有重构 CI 或扩大安全发现清单。
+
+已实际执行同一 Developer（role 30）的两组正反例：隔离分支创建两行无害文件成功，提交 `8e751d4` 回读匹配；相同文件创建请求写入已有受保护 `main` 被明确 HTTP 403 拒绝，main 和 dev_gpt 前后 SHA 未变。在同一隔离分支，通过 API 创建不带变量的流水线 `2910430587` 成功；带无害测试变量的请求返回 HTTP 400，明确原因为无权设置流水线变量。后一结果只证明变量使用限制，不证明项目设置修改拒绝，也不表示该流水线门禁通过。
+
+[实际记录与回读复核](../plan/validation/execution/V2-004/authority-controls-20261004/README.md)保存 actor、有效 payload、原始错误文本、提交/文件 hash、流水线来源和局限。实施与复核仍由同一操作者承担，不称独立人员审核；未修改保护、runner、例外政策或审批。主机只读调查表明现有 Mac/Docker 可以作为待授权候选，部署及持续运行权限仍缺失。
+
+AT-V2-004-07 仅取得部分真实控制，整体仍 NOT_VERIFIED。剩余输入是三组凭据及 SF-037 的 owner 脱敏依据、36 项具体且有期限的批准、可信执行主机与配置授权。完整权限正反例、门禁防删除控制和同一最终 SHA 六门禁全部通过后再验收，V2-004 保持 IN_PROGRESS，P0 保持 NOT_VERIFIED。

@@ -1,0 +1,120 @@
+{
+  "record_type": "actual_developer_write_control_readback_audit",
+  "audited_at": "2026-10-04T06:42:31.441353+00:00",
+  "auditor_role": "same-operator read-only subagent; no independent personnel review",
+  "record_ref": "plan/validation/execution/V2-004/authority-controls-20261004/actual-developer-write-controls.json",
+  "record_sha256": "872b3435f0b0088a146cdb36083553b823b5e3309ca54249e88d67e192b09699",
+  "record_committed_at_audit": false,
+  "basis_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "actor_source_ref": "plan/validation/execution/V2-004/authority-controls-20261004/owner-developer-observations.json",
+  "actor_source_sha256": "072e5152b1606c8586a1ed229ff965453afbdd4ec5f011349daf8fa1fe8db88c",
+  "readback_ref": "dist/validation/v2004-authority-controls-20261004/write-control-readback-observations.json",
+  "readback_sha256": "f0d97973d92e09d936938136a0f93003662a5c93e4966c0852d4ffb63f940f83",
+  "audit_status": "PASS",
+  "checks": [
+    {
+      "name": "actor_source_hash_and_original_bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "actual_actor_identity_matches_developer_source",
+      "status": "PASS"
+    },
+    {
+      "name": "actor_effective_access_level_30",
+      "status": "PASS"
+    },
+    {
+      "name": "same_project_all_reads",
+      "status": "PASS"
+    },
+    {
+      "name": "all_eight_remote_reads_observed",
+      "status": "PASS"
+    },
+    {
+      "name": "bounded_valid_payload_action_path_content",
+      "status": "PASS"
+    },
+    {
+      "name": "payload_sha_correct",
+      "status": "PASS"
+    },
+    {
+      "name": "feature_branch_and_exact_commit",
+      "status": "PASS"
+    },
+    {
+      "name": "positive_exact_parent_and_start_revision",
+      "status": "PASS"
+    },
+    {
+      "name": "positive_real_commit_only_two_added_lines",
+      "status": "PASS"
+    },
+    {
+      "name": "positive_file_ref_path_and_size",
+      "status": "PASS"
+    },
+    {
+      "name": "remote_decoded_content_equals_exact_payload",
+      "status": "PASS"
+    },
+    {
+      "name": "remote_file_blob_recomputed_matches",
+      "status": "PASS"
+    },
+    {
+      "name": "positive_record_not_metadata_denial",
+      "status": "PASS"
+    },
+    {
+      "name": "main_exists_protected_actor_cannot_push_owner_can",
+      "status": "PASS"
+    },
+    {
+      "name": "main_pre_post_and_current_exact_sha_unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "owner_explicit_404_confirms_path_absence_not_DENIED",
+      "status": "PASS"
+    },
+    {
+      "name": "negative_record_preserves_explicit_write_403",
+      "status": "PASS"
+    },
+    {
+      "name": "dev_gpt_current_source_revision_unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "partial_scenario_scope_retained",
+      "status": "PASS"
+    },
+    {
+      "name": "same_operator_no_independent_review_claim",
+      "status": "PASS"
+    },
+    {
+      "name": "write_counts_and_no_authority_expansion",
+      "status": "PASS"
+    }
+  ],
+  "findings": [],
+  "negative_evidence_scope": "Original create_commit explicit HTTP403 error is retained in implementer normalized record. This read-only audit checked actor source, payload validity, current main/file absence and partial scope; it did not repeat the write or obtain unavailable raw HTTP body bytes. 404/metadata are not denial evidence.",
+  "positive_evidence_scope": "Fresh remote commit/feature branch/file readback confirms exact harmless payload and parent/hash/blob/stats. Authenticated issuing actor comes from original implementation record plus confirmed role source.",
+  "scenario_status": "PARTIAL_AT_V2_004_07_NOT_VERIFIED",
+  "permission_status": "PARTIAL_REAL_REPOSITORY_WRITE_CONTROLS_FINAL_BOUNDARY_UNKNOWN",
+  "trusted_execution_status": "UNVERIFIED",
+  "acceptance_eligible": false,
+  "platform_queries": 9,
+  "platform_mutations": 0,
+  "write_attempts": 0,
+  "limitations": [
+    "These checks validate this partial existing-main boundary only, not final protected acceptance ref, trusted configuration/runner, self-exception denial or overall permission isolation.",
+    "No write was repeated in this audit.",
+    "Purpose connector does not expose raw HTTP response bodies; no raw response hashes fabricated."
+  ],
+  "record_checkout_head_at_audit": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c"
+}

@@ -1,0 +1,88 @@
+{
+  "record_type": "ACTUAL_DEVELOPER_REPOSITORY_WRITE_CONTROLS",
+  "project_id": 86656946,
+  "source": "Real GitLab purpose connector API calls",
+  "same_operator": true,
+  "independent_review_claimed": false,
+  "authority_scope": "Existing V2-004 least-privilege scenario; harmless isolated write and denial on already-protected main, no protection-rule change.",
+  "basis_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "authenticated_actor": {
+    "user_id": 2897322,
+    "effective_access_level": 30,
+    "source_ref": "plan/validation/execution/V2-004/authority-controls-20261004/owner-developer-observations.json",
+    "source_sha256": "072e5152b1606c8586a1ed229ff965453afbdd4ec5f011349daf8fa1fe8db88c",
+    "original_source_ref": "dist/validation/v2004-authority-readonly-20261004-061225/owner-developer-observations.json"
+  },
+  "valid_payload": {
+    "action": "create",
+    "file_path": "plan/validation/execution/V2-004/permission-controls/DEVELOPER_PROBE.txt",
+    "content": "V2-004 harmless Developer repository write control.\nThis file is evidence of a bounded permission experiment, not security approval or P0 acceptance.\n",
+    "content_sha256": "bdea31ae2039f9c4f6a81f167f1b674cb584a24dbae0e27708fd2bc509907874",
+    "force": false
+  },
+  "positive": {
+    "tool": "mcp__codex_apps__gitlab_create_commit",
+    "branch": "codex/v2-004-permission-probe-c0ba3a7-20261004",
+    "start_sha": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+    "outcome": "WRITE_SUCCEEDED",
+    "commit_id": "8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+    "parent_ids": [
+      "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c"
+    ],
+    "stats": {
+      "additions": 2,
+      "deletions": 0,
+      "total": 2
+    },
+    "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/commit/8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+    "file_readback": {
+      "ref": "8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+      "file_path": "plan/validation/execution/V2-004/permission-controls/DEVELOPER_PROBE.txt",
+      "content_sha256": "bdea31ae2039f9c4f6a81f167f1b674cb584a24dbae0e27708fd2bc509907874",
+      "blob_id": "f9c9c4a99d59e3be4fdc63d9b519f2fa091522c3",
+      "size": 150
+    },
+    "readback_status": "MATCHED"
+  },
+  "negative": {
+    "tool": "mcp__codex_apps__gitlab_create_commit",
+    "branch": "main",
+    "payload_same_action_file_content": true,
+    "preflight": {
+      "exists": true,
+      "protected": true,
+      "actor_can_push": false,
+      "create_path_absent_http_404": true,
+      "revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325"
+    },
+    "outcome": "WRITE_DENIED_HTTP_403",
+    "http_status": 403,
+    "exact_error": "GitLabGoldenSchemaApiError: create_commit returned HTTP 403: 403 Forbidden - You are not allowed to push into this branch",
+    "post_revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+    "protected_ref_unchanged": true
+  },
+  "dev_gpt_post_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "attempted_writes": 2,
+  "successful_writes": 1,
+  "denied_writes": 1,
+  "protection_or_runner_mutations": 0,
+  "security_exception_approvals": 0,
+  "scenario_status": "PARTIAL_AT_V2_004_07_NOT_VERIFIED",
+  "untested": [
+    "Direct write to the final protected acceptance ref",
+    "Protection/trusted CI/override modification denials",
+    "Self-approval of security exception denial",
+    "Trusted protected runner and mandatory-gate removal/reordering controls"
+  ],
+  "limitations": [
+    "A 403 actual main write refusal is one genuine existing boundary, not completion of final acceptance permissions.",
+    "Read metadata alone was not counted as write-denial evidence.",
+    "The same operator can choose Owner or Developer accounts; this experiment does not claim independent personnel review or system-wide privilege isolation.",
+    "Purpose connector exposes structured API results and explicit HTTP errors; raw HTTP bodies are not available.",
+    "No old credential tested, exception applied, permission expanded or Git history rewritten."
+  ],
+  "acceptance_eligible": false,
+  "task_status": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED",
+  "normalized_record": true
+}

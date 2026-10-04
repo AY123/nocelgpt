@@ -6,7 +6,7 @@ repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
 worktree_dirty: false
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: Clean committed checkout for security/permission evidence records;
+  fingerprint: Clean committed checkout for actual Developer permission control records;
     primary user worktree preserved separately
   runtime_versions:
     python: 3.12.14
@@ -122,7 +122,8 @@ claims:
   statement: Actual complete registry has 136 instance runners and no project/group
     runner; actual54907241 not_protected. Only main protected, dev_gpt unprotected.
     Pipeline overrides no_one_allowed already observed; skipped-pipeline merge value
-    null remains unknown. Actual ordinary Developer controls and host absent.
+    null remains unknown. Partial ordinary Developer controls now have separate sources;
+    final acceptance controls and trusted host remain absent.
   sources:
   - ref: validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json
     sha256: 189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea
@@ -143,6 +144,30 @@ claims:
   - CERTIFY
   verification_plan: Credential owner supplies redacted revocation/rotation records.
     Do not use values online, suppress findings or equate text deletion with revocation.
+- id: ACTUAL_DEVELOPER_WRITE_CONTROLS
+  kind: FACT
+  statement: Actual authenticatedDeveloper2897322 harmless isolatedfeaturecommit8e751d401f03a463ff8fd6e6d97d9f81f694ae0c
+    succeeded and readbackmatched; samefilecreate to existingprotectedmain deniedHTTP403.
+    mainanddev_gptunchanged. This is partialpermissionevidence only; finalacceptance/ref/admin/selfapproval/trustedexecution
+    remain unverified.
+  sources:
+  - ref: validation/execution/V2-004/authority-controls-20261004/actual-developer-write-controls.json
+    sha256: 872b3435f0b0088a146cdb36083553b823b5e3309ca54249e88d67e192b09699
+  blocks_actions: []
+  verification_plan: Repeat applicablecontrols in finalprotectedacceptance path, includingconfig/override/selfapprovaldenials
+    andauthorizedrulepositive; do not promoteAT07fromtwo existingboundary controls.
+- id: ACTUAL_PIPELINE_VARIABLE_USAGE_CONTROLS
+  kind: FACT
+  statement: Same actual Developer API pipeline creation succeeded without variables
+    at pipeline 2910430587 on isolated probe ref; adding harmless variable was explicitly
+    denied HTTP400 for insufficient variable permissions. This is variable usage control,
+    not project setting modification denial or final CI acceptance.
+  sources:
+  - ref: validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json
+    sha256: 6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29
+  blocks_actions: []
+  verification_plan: Verify applicable setting modification denials and protected
+    final acceptance execution separately; preserve original HTTP status and error.
 estimate:
   range: null
   unit: null
@@ -186,9 +211,10 @@ review_notes:
   actual3ce failure and all43 unresolved dispositions; shared runner and metadata
   are not permission acceptance.'
 handoff:
-  current_step: Security finding export and actual permission boundary observation
-    completed; owner credential dispositions and authorized persistent runner host
-    still absent. Current exact3ce CI security FAIL; no task/phase promotion.
+  current_step: Actual Developer feature-write positive, protected-main HTTP403 negative
+    and pipeline variable usage positive/HTTP400 negative completed; owner credentials,
+    36 approvals and persistent host still needed. Currentdev_gptc0ba3a7 fullCI5PASS/415testPASS/security43FAIL;
+    noacceptance.
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -224,6 +250,11 @@ handoff:
     no exception approved or applied
   - Actual complete protected-branch/runner metadata queried; original network failure
     and successful bounded retry retained
+  - Real Developer role30 authenticated; isolatedfeaturewrite/readbackPASS andsamepayloadprotectedmainwriteHTTP403;
+    protectedmainanddev_gptunchanged
+  - Same Developer API pipeline creation without variables succeeded at2910430587;
+    harmless variable request explicitly deniedHTTP400 for insufficient permissions,
+    not counted as project setting modification refusal or gate acceptance
   pending_items:
   - Credential owner redacted disposition for CRED-001/002/003 and SF-037 reference
   - Authorized precise exception approval with reason, scope, expiry and actual scanner
@@ -245,6 +276,10 @@ handoff:
       sha256: 189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea
     - ref: validation/execution/V2-004/security-closure-20261004/local-verification.json
       sha256: 7ad8789b3efecf006bffb0f2e8442b84242229a4319c09f3ae2f9c201b628c83
+    - ref: validation/execution/V2-004/authority-controls-20261004/actual-developer-write-controls.json
+      sha256: 872b3435f0b0088a146cdb36083553b823b5e3309ca54249e88d67e192b09699
+    - ref: validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json
+      sha256: 6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29
     missing_artifact_reason: null
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6

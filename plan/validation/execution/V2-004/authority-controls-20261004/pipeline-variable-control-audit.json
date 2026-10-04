@@ -1,0 +1,90 @@
+{
+  "record_type": "actual_pipeline_variable_usage_control_readback_audit",
+  "audited_at": "2026-10-04T06:53:29.504986+00:00",
+  "record_ref": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+  "record_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
+  "actor_source_ref": "plan/validation/execution/V2-004/authority-controls-20261004/owner-developer-observations.json",
+  "actor_source_sha256": "072e5152b1606c8586a1ed229ff965453afbdd4ec5f011349daf8fa1fe8db88c",
+  "readback_ref": "dist/validation/v2004-authority-controls-20261004/pipeline-variable-readback-observation.json",
+  "readback_sha256": "46db44e4862125d0322361794f281e5786a31659f190d24c103f67e872e664d7",
+  "audit_status": "PASS",
+  "checks": [
+    {
+      "name": "actor_source_exact_sha",
+      "status": "PASS"
+    },
+    {
+      "name": "actual_actor_project_ref_sha_matches_remote",
+      "status": "PASS"
+    },
+    {
+      "name": "actor_read_source_developer_access_level30",
+      "status": "PASS"
+    },
+    {
+      "name": "real_positive_pipeline_id_source_created_at",
+      "status": "PASS"
+    },
+    {
+      "name": "negative_explicit_HTTP400_not_403",
+      "status": "PASS"
+    },
+    {
+      "name": "negative_permission_reason_not_status_only",
+      "status": "PASS"
+    },
+    {
+      "name": "negative_only_innocuous_variable",
+      "status": "PASS"
+    },
+    {
+      "name": "same_endpoint_ref_counterpart_without_variables",
+      "status": "PASS"
+    },
+    {
+      "name": "explicit_scope_not_setting_modify_denial",
+      "status": "PASS"
+    },
+    {
+      "name": "not_pipeline_green_or_gate_acceptance_claim",
+      "status": "PASS"
+    },
+    {
+      "name": "partial_AT07_task_and_p0_still_open",
+      "status": "PASS"
+    },
+    {
+      "name": "same_operator_no_independent_review",
+      "status": "PASS"
+    },
+    {
+      "name": "pipeline_creation_counts_no_config_or_approval_mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "new_audit_only_one_GET_no_creation_or_mutation",
+      "status": "PASS"
+    },
+    {
+      "name": "no_fabricated_raw_HTTP_hash",
+      "status": "PASS"
+    }
+  ],
+  "findings": [],
+  "actual_pipeline_status_at_audit": "running",
+  "official_documentation": {
+    "url": "https://docs.gitlab.com/ci/variables/#restrict-pipeline-variables",
+    "observed_support": "Official GitLab describes this explicit permission error when pipeline-variable use is restricted. This supports the permission reason, not a claim of setting-change refusal."
+  },
+  "negative_evidence_scope": "Original explicit create_pipeline HTTP400 permission error is retained as normalized implementation evidence. Audit does not repeat creation or obtain unavailable original raw HTTP bytes.",
+  "positive_evidence_scope": "Fresh pipeline GET matches project, actual actor, isolated ref, exact SHA and API source. Creation success is not CI gate success.",
+  "same_operator": true,
+  "independent_review_claimed": false,
+  "scenario_status": "PARTIAL_AT_V2_004_07_NOT_VERIFIED",
+  "trusted_execution_status": "UNVERIFIED",
+  "permission_boundary_status": "NOT_VERIFIED",
+  "acceptance_eligible": false,
+  "platform_queries": 1,
+  "new_pipeline_creations": 0,
+  "platform_mutations": 0
+}

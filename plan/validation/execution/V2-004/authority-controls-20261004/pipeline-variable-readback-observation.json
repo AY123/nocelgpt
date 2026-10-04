@@ -1,0 +1,31 @@
+{
+  "record_type": "actual_pipeline_variable_control_current_readback",
+  "query_started_at_utc": "2026-10-04 06:52:02 UTC",
+  "query_finished_at_utc": "2026-10-04 06:52:04 UTC",
+  "tool": "mcp__codex_apps__gitlab_get_pipeline",
+  "request": {
+    "link_id": "link_6ab7c42c2aec8191967fa6e3e692824a",
+    "project_id": 86656946,
+    "pipeline_id": 2910430587
+  },
+  "is_error": false,
+  "observed": {
+    "id": 2910430587,
+    "project_id": 86656946,
+    "sha": "8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+    "ref": "codex/v2-004-permission-probe-c0ba3a7-20261004",
+    "status": "running",
+    "source": "api",
+    "created_at": "2026-10-04T06:47:19.245Z",
+    "updated_at": "2026-10-04T06:47:19.957Z",
+    "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2910430587",
+    "actor_user_id": 2897322
+  },
+  "raw_http_response_sha256": null,
+  "raw_http_response_sha256_status": "NOT_EXPOSED_BY_PURPOSE_CONNECTOR",
+  "platform_queries": 1,
+  "platform_mutations": 0,
+  "new_pipeline_creations": 0,
+  "acceptance_eligible": false,
+  "scope": "Readback of previously created isolated probe pipeline only; no job/gate success conclusion"
+}

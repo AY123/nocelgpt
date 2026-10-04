@@ -1,0 +1,146 @@
+{
+  "record_type": "V2_004_HOST_FEASIBILITY_READONLY",
+  "observed_at_utc": "2026-10-04T06:32:02.083053+00:00",
+  "revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "inputs": [
+    {
+      "ref": "security-policy.yaml",
+      "sha256": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703"
+    },
+    {
+      "ref": "scripts/ci/verify_remote.py",
+      "sha256": "fd284d416115460e1c9d8ee5062caba16a688f24b2d6ba6632f9474d4c663944"
+    },
+    {
+      "ref": "scripts/ci/bootstrap_scanners.py",
+      "sha256": "5c7a176c0189460c5c9003ecc81f01a77c9e8003a056d61e5482ce341b0843b1"
+    },
+    {
+      "ref": "plan/machine/test-catalog.yaml",
+      "sha256": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18"
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/followup-20261004/trusted-ci-proposal.md",
+      "sha256": "9e3c18ee3234970dd31f3cc823bd9294a099439e507a341531e312a5c31b7f9e"
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/execution-packet.yaml",
+      "sha256": "0a53654c8433ba717467072e2bb700030dee5ee8a398e5e2c3feff5b0cee0200"
+    }
+  ],
+  "docker_observation": {
+    "server_version": "29.4.0",
+    "os_type": "linux",
+    "architecture": "aarch64",
+    "operating_system": "Docker Desktop",
+    "total_containers": 22,
+    "running_containers": 3,
+    "runner_image_container_count": 0,
+    "anovel_named_container_count": 0,
+    "info_exit_code": 0,
+    "ps_readback_exit_code": 0,
+    "initial_ps_read_failed": "SANDBOX_DOCKER_SOCKET_PERMISSION_DENIED",
+    "initial_awk_zero_totals_are_not_evidence": true,
+    "container_environment_read": false,
+    "container_config_read": false,
+    "cross_project_names_retained": false
+  },
+  "runner_host_observation": {
+    "executable_on_PATH": null,
+    "known_config_file_exists": [
+      {
+        "path": "~/.gitlab-runner/config.toml",
+        "exists": false
+      },
+      {
+        "path": "/etc/gitlab-runner/config.toml",
+        "exists": false
+      },
+      {
+        "path": "/opt/homebrew/etc/gitlab-runner/config.toml",
+        "exists": false
+      },
+      {
+        "path": "/usr/local/etc/gitlab-runner/config.toml",
+        "exists": false
+      }
+    ],
+    "config_file_content_read": false,
+    "process_query_exit_code": 3,
+    "process_state": "UNKNOWN_SANDBOX_QUERY_FAILED"
+  },
+  "budget": {
+    "paid_calls_allowed": false,
+    "model_cost_cap": 0,
+    "infrastructure_cap": 0,
+    "new_paid_infrastructure_allowed": false,
+    "hardware_electricity_or_existing_subscription_cost": "NOT_ESTIMATED"
+  },
+  "conclusions": {
+    "existing_Mac_Docker_compatibility": "SUPPORTED_CONFIGURATION_PER_OFFICIAL_DOCKER_EXECUTOR_DOCS_NOT_RUNNER_ENROLLED",
+    "linux_arm64_scanner_pin": "ALREADY_IMPLEMENTED_IN_bootstrap_scanners.py",
+    "new_physical_Linux_host_is_mandatory": false,
+    "existing_persistent_trusted_project_runner": "NOT_FOUND_IN_OBSERVED_PLATFORM_AND_LOCAL_METADATA",
+    "separate_protected_acceptance_branch_feasibility": "CONDITIONAL_NO_REQUIREMENT_TO_FREEZE_dev_gpt_IN_AT04_06_07_08",
+    "production_verifier_ref_support": "DYNAMIC_BRANCH_REF_WITH_EXACT_HEAD_AND_PIPELINE_REF_MATCH",
+    "production_verifier_tag_support": "NOT_IMPLEMENTED_BRANCHES_API",
+    "branch_protection_alone_satisfies_AT08": false,
+    "acceptance_status": "NOT_VERIFIED"
+  },
+  "required_unknowns": [
+    "Authorization to run persistent project-specific runner on identified existing host",
+    "Availability and approved resource bounds for host while CI executes",
+    "Runner authentication token provisioning and Owner-only storage without disclosure to job containers",
+    "Protected fixed configuration, trusted driver/scanner policies and baselines inaccessible to ordinary Developer writes",
+    "Runner binding to project86656946, access_level ref_protected, locked true, dedicated job tag and run_untagged false",
+    "Effective protection of candidate acceptance branch including all matching wildcard rules",
+    "Real Developer denial and allowed-operation controls; authorized rule revision positive control",
+    "Final same exact revision all six mandatory gates PASS"
+  ],
+  "API_checks_not_run": [
+    "GET /projects/86656946 current require-success, skipped-pipeline merge policy, CI configuration, protected MR resources flag",
+    "GET /projects/86656946/protected_branches all paginated rules including wildcard matches",
+    "GET /projects/86656946/runners all paginated project assignments plus GET /runners/:id and current job runner identity",
+    "Exact owner-approved CI configuration retrieval and actual CI lint resolution before changing ci_config_path"
+  ],
+  "official_sources": [
+    {
+      "url": "https://docs.gitlab.com/runner/executors/docker/",
+      "supports": "macOS Runner host with Docker executor and Linux containers is supported; default image and Docker Engine configuration required"
+    },
+    {
+      "url": "https://docs.gitlab.com/ci/runners/configure_runners/",
+      "supports": "Protected project runner and tagged-only controls; instance runner changes require instance administrator"
+    },
+    {
+      "url": "https://docs.gitlab.com/ci/pipelines/merge_request_pipelines/#control-access-to-protected-variables-and-runners",
+      "supports": "MR protected resources require protected same-project source and target plus triggerer push/merge permission on target"
+    },
+    {
+      "url": "https://docs.gitlab.com/ci/pipelines/settings/#specify-a-custom-cicd-configuration-file",
+      "supports": "Custom configuration location in separate project with granular write isolation supported"
+    },
+    {
+      "url": "https://docs.gitlab.com/api/users/#create-a-runner-linked-to-a-user",
+      "supports": "POST /user/runners new creation workflow; Owner and create_runner-scope token prerequisites; project_type and project_id required"
+    },
+    {
+      "url": "https://docs.gitlab.com/api/protected_branches/",
+      "supports": "Complete protection rules API, including wildcard records"
+    }
+  ],
+  "mutations": {
+    "platform": 0,
+    "runner_enrollment": 0,
+    "containers_created": 0,
+    "git_refs_created": 0,
+    "paid_resources_created": 0
+  },
+  "limitations": [
+    "Read-only feasibility is not acceptance evidence.",
+    "No independent operator audit; shared workspace agent investigation.",
+    "Container image/name absence does not rule out unidentified custom runner implementations.",
+    "Known configuration paths absence does not rule out custom external config paths.",
+    "No current-revision protected-runner pipeline was executed."
+  ]
+}

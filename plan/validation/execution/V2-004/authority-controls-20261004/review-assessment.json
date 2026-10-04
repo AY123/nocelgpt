@@ -1,0 +1,40 @@
+{
+  "record_type": "CURRENT_REVIEW_ASSESSMENT",
+  "review_input_sha256": "a650f01e49a98a1d1fff713fc2b41ec9c135ddd5c32c3b63976bb6647486c14e",
+  "review_input_is_authority": false,
+  "basis_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "task_status": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED",
+  "confirmed": [
+    "Security43 cases and exactCI evidence remain valid; actual mandatorysecurity gateFAIL is expected",
+    "Owner closures and all36 approvals/expiry are absent; no status promotion or case closure",
+    "Concrete authority/trusted execution is needed; no new parallel repair stage or inventory expansion"
+  ],
+  "qualified_recommendations": [
+    "ACCEPTED batch is a review opinion, not a new task status or independent permission acceptance",
+    "90day/nextbaseline expiry is proposed, not an approvedexception policy",
+    "Separate protected acceptance branch is feasible with current dynamic verifierref; name/configuration require applicable authority",
+    "Protected ref and runner do not by themselves protect candidate-controlled driver/baseline/policy",
+    "Unprotected dev_gpt to protected target MR is not automatically eligible for protected runner resources"
+  ],
+  "actual_progress": [
+    "Authenticated actualDeveloper30 andOwner50 using project-scoped connector GETs",
+    "Developer harmless isolatedfeature write succeeded at8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+    "Same validfilecreate request to existingprotectedmain rejectedHTTP403; mainanddev_gptunchanged",
+    "Same Developer API pipeline creation succeeded without variables; with harmless pipeline variable explicitly denied HTTP400 for insufficient variable permissions. This does not prove setting-modification denial or final gate acceptance."
+  ],
+  "remaining": [
+    "CRED001/002/003 andSF037 ownerredactedbasis",
+    "36 actualapprovals withauthority/scope/reason/boundedexpiry",
+    "Identifiedauthorizedpersistenthost andtrustedconfig/runner",
+    "Finalacceptanceref directwrite denial, ruleoverride andselfexceptiondenials, anti-gateremoval positive/negativecontrols",
+    "AllsixmandatorygatesatonefinalSHA"
+  ],
+  "not_certified": [
+    "Credentialrevocation",
+    "Securityexceptions",
+    "Protectedrunner",
+    "Completepermissionisolation",
+    "V2-004/P0 acceptance"
+  ]
+}

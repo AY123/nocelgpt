@@ -3,16 +3,22 @@
   "source_revision": "938300f7f4b968dfa81669385707e1219f3bc894",
   "active_context": "CLEAN_COMMITTED_CHECKOUT",
   "scope_revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
-  "local_packet_ref": "plan/validation/execution/V2-004/security-closure-20261004/local-execution-packet.yaml",
-  "local_entry_ref": "plan/validation/execution/V2-004/security-closure-20261004/final-local-entry.json.gz",
-  "local_entry_sha256": "b2ef6d3dd0a107015d5a0dd4d5973433798927c76c71ffebf5c3b0a05fc13ceb",
+  "local_packet_ref": "plan/validation/execution/V2-004/authority-controls-20261004/local-execution-packet.yaml",
+  "local_entry_ref": "plan/validation/execution/V2-004/authority-controls-20261004/local-entry.json.gz",
+  "local_entry_sha256": "59b4029e92e26cfb85bc3fae1d6afc4cc45dc355a960470574c1b6dae5d6687e",
   "review_revision": "938300f7f4b968dfa81669385707e1219f3bc894",
   "recovery": "Retain current normative input hashes, opening revision and allowed paths; rebind only worktree_dirty/environment and scope/review from followup local packet before primary local IMPLEMENT. Recheck actual user identity and entry. Never replace current packet wholesale or delete user files. Clean scope only consumes truly committed checkout.",
-  "last_result": "Actual3ce pipeline2910092880 five gates and415 tests PASS, security43 FAIL. Canonical records exported; exception/credential/host/permission closure still pending.",
+  "last_result": "Actual Developer allowed probe write succeeded; protected-main write denied HTTP403. Pipeline creation without variables succeeded; harmless variable usage denied HTTP400 with explicit permission reason. Partial AT07 only; final trust/approval/owner closure still absent. Historic c0 CI five gates and415 tests PASS, secret43 FAIL.",
   "closure_handoff": {
     "ref": "plan/validation/execution/V2-004/security-closure-20261004/handoff.json",
     "sha256": "f2f485495741806be0ed34ede952813c8c822eee70f37aff811af58b18265fad"
   },
   "local_entry_encoding": "gzip",
-  "local_entry_uncompressed_sha256": "56cd5a2c4eeb29c4b7d05c84f04669b27595e8147d1b8c61fbd8037f70a5076c"
+  "local_entry_uncompressed_sha256": "0bdfee7969694ba6d0dd6bb6f6e31d81bcd47241712730aab6e1fcbbeda282d5",
+  "authority_controls": {
+    "ref": "plan/validation/execution/V2-004/authority-controls-20261004/README.md",
+    "repository_write_record_sha256": "872b3435f0b0088a146cdb36083553b823b5e3309ca54249e88d67e192b09699",
+    "pipeline_variable_record_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
+    "acceptance_eligible": false
+  }
 }

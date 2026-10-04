@@ -1,0 +1,70 @@
+{
+  "record_type": "LOCAL_AUTHORITY_CONTROL_VERIFICATION",
+  "source_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "worktree_dirty": true,
+  "source_plan_manifest_sha256": "cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e",
+  "status": "PASS",
+  "commands": [
+    {
+      "command": "validate_plan.py --write-views / --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "source_ref": "dist/validation/v2004-authority-controls-20261004/direct-governance-reports/plan-validation.json",
+      "source_sha256": "815a2fabaebdc48c5675dff64b5213f1cbc591e3a71da2e5c4461547db198c3d"
+    },
+    {
+      "command": "validate_plan.py --self-test",
+      "exit_code": 0,
+      "status": "PASS",
+      "source_ref": "dist/validation/v2004-authority-controls-20261004/direct-governance-reports/validator-self-test.json",
+      "source_sha256": "4e91dc199885eef6e60d0b49a894f5b88735bb2c8651d0c89a6650c747fb56a3"
+    },
+    {
+      "command": "test_governance.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "source_ref": "dist/validation/v2004-authority-controls-20261004/direct-governance-reports/governance-regression.json",
+      "source_sha256": "279f1ade704ed446dc6cf1e487125e3603b41b8bd2f0a08d40d91ef929d26c9b"
+    },
+    {
+      "command": "test_ai_execution.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "source_ref": "dist/validation/v2004-authority-controls-20261004/direct-governance-reports/ai-execution-regression.json",
+      "source_sha256": "0a6e8c4a4a602a9998cad2f166e867ed65623f439b58b2fc92bcf9c8f7d1c22c"
+    },
+    {
+      "command": "probe_governance_legacy.py --output dist/.../legacy-final.json",
+      "exit_code": 0,
+      "status": "PASS",
+      "source_ref": "dist/validation/v2004-authority-controls-20261004/legacy-final.json",
+      "source_sha256": "278641277fa0a6d32ad1c0a3dad6b3dea9d9c25de56407baa691bba39b97209b"
+    }
+  ],
+  "local_entry": {
+    "status": "PASS",
+    "encoding": "gzip",
+    "ref": "plan/validation/execution/V2-004/authority-controls-20261004/local-entry.json.gz",
+    "sha256": "59b4029e92e26cfb85bc3fae1d6afc4cc45dc355a960470574c1b6dae5d6687e",
+    "uncompressed_sha256": "0bdfee7969694ba6d0dd6bb6f6e31d81bcd47241712730aab6e1fcbbeda282d5"
+  },
+  "earlier_unsuccessful_attempts": [
+    {
+      "operation": "final-local-entry.json",
+      "status": "BLOCKED",
+      "reason": "ENTRY_RACE: repository changed during validation; concurrently generated views/reports were subsequently retained outside plan, and fresh entry passed."
+    },
+    {
+      "operation": "plan/scripts/probe_legacy.py",
+      "exit_code": 2,
+      "reason": "Nonexistent filename; corrected existing probe_governance_legacy.py completed PASS."
+    }
+  ],
+  "limitations": [
+    "Local governance and scope checks do not certify GitLab CI or permission isolation.",
+    "No product, CI command, test assertion, security approval or permission setting changed."
+  ],
+  "acceptance_eligible": false,
+  "task_status": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED"
+}

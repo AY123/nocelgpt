@@ -1,0 +1,89 @@
+{
+  "record_type": "ACTUAL_DEVELOPER_PIPELINE_VARIABLE_USAGE_CONTROLS",
+  "project_id": 86656946,
+  "source": "Real GitLab purpose connector API calls",
+  "same_operator": true,
+  "independent_review_claimed": false,
+  "authority_scope": "Existing V2-004 least-privilege scenario: bounded pipeline API experiment on isolated probe branch. No project setting, CI configuration, security policy or runner changed.",
+  "basis_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "authenticated_actor": {
+    "user_id": 2897322,
+    "effective_access_level": 30,
+    "source_ref": "plan/validation/execution/V2-004/authority-controls-20261004/owner-developer-observations.json",
+    "source_sha256": "072e5152b1606c8586a1ed229ff965453afbdd4ec5f011349daf8fa1fe8db88c"
+  },
+  "common_request": {
+    "tool": "mcp__codex_apps__gitlab_create_pipeline",
+    "project_id": "86656946",
+    "ref": "codex/v2-004-permission-probe-c0ba3a7-20261004"
+  },
+  "negative": {
+    "variables": [
+      {
+        "key": "V2_004_PERMISSION_PROBE",
+        "value": "harmless"
+      }
+    ],
+    "http_status": 400,
+    "outcome": "VARIABLE_USAGE_DENIED_HTTP_400_PERMISSION_REASON",
+    "exact_error": "GitLabGoldenSchemaApiError: create_pipeline returned HTTP 400: {'message': {'base': ['Insufficient permissions to set pipeline variables']}}",
+    "error_response": {
+      "message": {
+        "base": [
+          "Insufficient permissions to set pipeline variables"
+        ]
+      }
+    },
+    "pipeline_id_returned": null
+  },
+  "positive": {
+    "variables_argument": "omitted",
+    "outcome": "PIPELINE_CREATION_SUCCEEDED",
+    "pipeline_id": 2910430587,
+    "sha": "8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+    "source": "api",
+    "created_at": "2026-10-04T06:47:19.245Z",
+    "actor_user_id": 2897322,
+    "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2910430587",
+    "returned_status": "created"
+  },
+  "readback": {
+    "tool": "mcp__codex_apps__gitlab_get_pipeline",
+    "pipeline_id": 2910430587,
+    "project_id": 86656946,
+    "sha": "8e751d401f03a463ff8fd6e6d97d9f81f694ae0c",
+    "ref": "codex/v2-004-permission-probe-c0ba3a7-20261004",
+    "source": "api",
+    "actor_user_id": 2897322,
+    "observed_status": "running",
+    "updated_at": "2026-10-04T06:47:19.957Z",
+    "matches_creation_response": true
+  },
+  "interpretation": {
+    "classification_basis": [
+      "Explicit API permission error, not HTTP status alone",
+      "Same actor, project, endpoint and existing ref successfully created pipeline without variables",
+      "Official GitLab documents this exact error for users below minimum pipeline-variable override role"
+    ],
+    "official_documentation": "https://docs.gitlab.com/ci/variables/#restrict-pipeline-variables",
+    "http_400_not_misrepresented_as_403": true,
+    "initial_http_only_classification": "UNKNOWN_API_ERROR; resolved after permission-specific response, successful no-variable counterpart and official documentation were compared."
+  },
+  "attempted_pipeline_creations": 2,
+  "successful_pipeline_creations": 1,
+  "permission_denials": 1,
+  "project_configuration_mutations": 0,
+  "security_exception_approvals": 0,
+  "limitations": [
+    "This proves restriction on use of pipeline variables, not denial of changing the project setting.",
+    "Pipeline creation/readback is the positive control; this record does not claim gate results or final dev_gpt acceptance.",
+    "Probe ref is not a protected final acceptance ref; protected execution and complete AT-07 controls remain unverified.",
+    "Purpose connector exposes structured API results and HTTP errors, not original raw HTTP response bytes.",
+    "No historical credential was validated online, exception applied, permission expanded or Git history rewritten."
+  ],
+  "scenario_status": "PARTIAL_AT_V2_004_07_NOT_VERIFIED",
+  "acceptance_eligible": false,
+  "task_status": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED",
+  "normalized_record": true
+}

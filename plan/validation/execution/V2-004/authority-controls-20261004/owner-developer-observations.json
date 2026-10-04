@@ -1,0 +1,260 @@
+{
+  "record_type": "gitlab_owner_developer_readonly_access_observation",
+  "project_id": 86656946,
+  "reference_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "query_started_at_utc": "2026-10-04 06:12:25 UTC",
+  "query_finished_at_utc": "2026-10-04 06:12:26 UTC",
+  "source": "GitLab (Beta) purpose connector; only get_current_user/get_project/get_branch",
+  "authorization_scope": "Human-requested V2-004 investigation; attachment is input only, not an action grant",
+  "reference_input": {
+    "path": "/Users/angyang/.codex/attachments/6cf12513-c2c9-4d99-8737-60dceccb48b7/已粘贴的文本.txt",
+    "sha256": "a650f01e49a98a1d1fff713fc2b41ec9c135ddd5c32c3b63976bb6647486c14e",
+    "authority": "REFERENCE_ONLY"
+  },
+  "authenticated_accounts": {
+    "developer": {
+      "link_id": "link_6ab7c42c2aec8191967fa6e3e692824a",
+      "confirmed_user_id": 2897322,
+      "expected_user_id": 2897322
+    },
+    "owner": {
+      "link_id": "link_6ab68273792081919f712c6ddd9da0d4",
+      "confirmed_user_id": 2897271,
+      "expected_user_id": 2897271
+    }
+  },
+  "observations": [
+    {
+      "kind": "current_user",
+      "role": "developer",
+      "tool": "mcp__codex_apps__gitlab_get_current_user",
+      "expected_user_id": 2897322,
+      "status": "OBSERVED",
+      "observed": {
+        "id": 2897322,
+        "username": "TomAy47287015",
+        "state": "active",
+        "locked": false
+      }
+    },
+    {
+      "kind": "project",
+      "role": "developer",
+      "tool": "mcp__codex_apps__gitlab_get_project",
+      "expected_user_id": 2897322,
+      "status": "OBSERVED",
+      "observed": {
+        "id": 86656946,
+        "path_with_namespace": "ayitnovel/ainovelos",
+        "default_branch": "main",
+        "ci_config_path": "",
+        "only_allow_merge_if_pipeline_succeeds": true,
+        "allow_merge_on_skipped_pipeline": null,
+        "permissions": {
+          "project_access": null,
+          "group_access": {
+            "access_level": 30,
+            "notification_level": 3
+          }
+        }
+      }
+    },
+    {
+      "kind": "branch",
+      "role": "developer",
+      "tool": "mcp__codex_apps__gitlab_get_branch",
+      "expected_user_id": 2897322,
+      "status": "OBSERVED",
+      "observed": {
+        "name": "dev_gpt",
+        "commit_id": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+        "protected": false,
+        "can_push": true,
+        "developers_can_push": false,
+        "developers_can_merge": false
+      }
+    },
+    {
+      "kind": "current_user",
+      "role": "owner",
+      "tool": "mcp__codex_apps__gitlab_get_current_user",
+      "expected_user_id": 2897271,
+      "status": "OBSERVED",
+      "observed": {
+        "id": 2897271,
+        "username": "angyang582821422",
+        "state": "active",
+        "locked": false
+      }
+    },
+    {
+      "kind": "project",
+      "role": "owner",
+      "tool": "mcp__codex_apps__gitlab_get_project",
+      "expected_user_id": 2897271,
+      "status": "OBSERVED",
+      "observed": {
+        "id": 86656946,
+        "path_with_namespace": "ayitnovel/ainovelos",
+        "default_branch": "main",
+        "ci_pipeline_variables_minimum_override_role": "no_one_allowed",
+        "ci_config_path": "",
+        "only_allow_merge_if_pipeline_succeeds": true,
+        "allow_merge_on_skipped_pipeline": null,
+        "permissions": {
+          "project_access": null,
+          "group_access": {
+            "access_level": 50,
+            "notification_level": 3
+          }
+        }
+      }
+    },
+    {
+      "kind": "branch",
+      "role": "owner",
+      "tool": "mcp__codex_apps__gitlab_get_branch",
+      "expected_user_id": 2897271,
+      "status": "OBSERVED",
+      "observed": {
+        "name": "dev_gpt",
+        "commit_id": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+        "protected": false,
+        "can_push": true,
+        "developers_can_push": false,
+        "developers_can_merge": false
+      }
+    }
+  ],
+  "raw_http_response_sha256": null,
+  "raw_http_response_sha256_status": "UNAVAILABLE_PURPOSE_CONNECTOR_DOES_NOT_EXPOSE_RAW_HTTP_BYTES",
+  "checks": [
+    {
+      "name": "developer_current_user_exact",
+      "passed": true
+    },
+    {
+      "name": "owner_current_user_exact",
+      "passed": true
+    },
+    {
+      "name": "all_six_scope_limited_read_queries_observed",
+      "passed": true
+    },
+    {
+      "name": "developer_project_role_30",
+      "passed": true
+    },
+    {
+      "name": "owner_project_role_50",
+      "passed": true
+    },
+    {
+      "name": "both_branches_exact_revision",
+      "passed": true
+    },
+    {
+      "name": "both_branch_metadata_can_push_true_unprotected",
+      "passed": true
+    }
+  ],
+  "read_access_observation_status": "PASS",
+  "scope_limits": [
+    "Only ANovelOS project 86656946 and its dev_gpt branch were read; current_user only confirmed selected account identities.",
+    "No writes, write attempts, protected branch changes, runner changes, or security exception approvals were performed.",
+    "Both roles have actual authenticated project/branch read access; can_push=true is capability metadata, not proof of a successful write.",
+    "developers_can_push=false does not establish DENIED when actual can_push metadata is true; no rejection was observed.",
+    "Developer project response omits ci_pipeline_variables_minimum_override_role; absence is not false or null. Owner response observes no_one_allowed.",
+    "allow_merge_on_skipped_pipeline is null in both actual responses and remains unknown.",
+    "One operator may use both account roles; these observations do not establish independent personnel review or adversarial isolation."
+  ],
+  "already_available_credentials_and_experiments": [
+    {
+      "experiment": "Developer identity and ANovelOS project/dev_gpt read",
+      "credential": "Developer connector account 2897322",
+      "state": "ACTUAL_READS_OBSERVED",
+      "write_permission_acceptance": false
+    },
+    {
+      "experiment": "Owner identity and ANovelOS project/dev_gpt read",
+      "credential": "Owner connector account 2897271",
+      "state": "ACTUAL_READS_OBSERVED",
+      "write_permission_acceptance": false
+    },
+    {
+      "experiment": "Developer harmless commit in permitted test/feature ref",
+      "credential": "Developer connector account is authenticated",
+      "state": "NOT_RUN",
+      "missing": "An identified permitted test/feature ref and applicable scope for a real controlled write; metadata alone is not the positive write control"
+    },
+    {
+      "experiment": "Developer direct write/merge to protected acceptance ref",
+      "credential": "Developer connector account is authenticated",
+      "state": "NOT_RUN",
+      "missing": "Identified frozen acceptance ref with effective protection, and authorization for controlled actual denial experiments"
+    },
+    {
+      "experiment": "Developer changes protected configuration/rules or self-approves security exception",
+      "credential": "Developer identity confirmed; purpose connector provides no general protected-branch/runner administration or security-exception permission snapshot",
+      "state": "NOT_RUN",
+      "missing": "Actual approved trusted configuration/exception authority path and permitted controlled negative experiment; API denial must be real"
+    },
+    {
+      "experiment": "Authorized rules revision with trusted protected execution",
+      "credential": "Owner connector account is authenticated",
+      "state": "NOT_RUN",
+      "missing": "Applicable recorded authority, isolated trusted configuration and protected runner/host"
+    }
+  ],
+  "purpose_tool_capability_findings": [
+    {
+      "tool": "gitlab_get_project",
+      "meaningful_read_information": "Effective project/group access level, merge-success requirement, visible CI configuration attributes",
+      "limit": "No real rejected administrative action; Owner-only attributes can be omitted for Developer"
+    },
+    {
+      "tool": "gitlab_get_branch",
+      "meaningful_read_information": "Exact commit, protection status and querying account's can_push metadata",
+      "limit": "No actual successful or denied Git write; developers_can_push alone cannot substitute the actor-specific actual write"
+    },
+    {
+      "tool": "gitlab_get_current_user",
+      "meaningful_read_information": "Actual authenticated user ID/state",
+      "limit": "Does not certify token scope for operations that were not attempted"
+    },
+    {
+      "tool": "gitlab_list_merge_request_note_permissions",
+      "available_but_not_called": true,
+      "reason": "Provides note editing/resolving permission snapshots; does not measure branch protection, trusted CI configuration or security exception approval. Avoid unrelated MR queries"
+    }
+  ],
+  "existing_trust_boundary_basis": {
+    "record_ref": "plan/validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json",
+    "revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+    "sha256": "189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea",
+    "query_freshness": "Previous fixed record, not a fresh runner or protection inventory query in this batch",
+    "known_at_that_observation": {
+      "project_runner_count": 0,
+      "group_runner_count": 0,
+      "actual_runner_id": 54907241,
+      "actual_runner_access_level": "not_protected"
+    },
+    "still_required": {
+      "persistent_linux_docker_runner_host": "NOT_PROVIDED",
+      "existing_secure_host_access": "NOT_PROVIDED",
+      "protected_acceptance_ref": "NOT_CREATED_OR_VERIFIED",
+      "trusted_config_write_isolation": "NOT_VERIFIED",
+      "credential_owner_closure": "REAL_OWNER_EVIDENCE_REQUIRED",
+      "security_exception_approval": "REAL_AUTHORITY_AND_BOUNDED_EXPIRY_REQUIRED"
+    }
+  },
+  "verification_scope": "Read-only authentication/metadata readiness only",
+  "AT_V2_004_07_status": "NOT_VERIFIED",
+  "trusted_execution_status": "UNVERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false,
+  "platform_queries": 6,
+  "platform_mutations": 0,
+  "write_attempts": 0,
+  "other_project_queries": 0
+}
