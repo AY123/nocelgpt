@@ -1,0 +1,59 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-004",
+  "opening_revision": "6ed09939bdc7715fd582338675cd0443777aac50",
+  "packet_ref": "plan/validation/execution/V2-004/execution-packet.yaml",
+  "allowed_paths": [
+    ".gitlab-ci.yml",
+    "security-policy.yaml",
+    ".gitleaks.toml",
+    "pyproject.toml",
+    "uv.lock",
+    "scripts/ci/",
+    "tests/contract/test_delivery_gates.py",
+    "tests/integration/test_postgres_ci_service.py",
+    "tests/integration/test_repository_bootstrap.py",
+    "README.md",
+    "AGENTS.md",
+    "docs/V2-004_IMPLEMENTATION_REPORT.md",
+    "docs/reviews/2026-10-03-report-assessment/",
+    "plan/README.md",
+    "plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+    "plan/09_TASK_EXECUTION_GUIDE.md",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/machine/ci-gates.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/generated/",
+    "plan/validation/execution/V2-004/",
+    "plan/validation/execution/V2-001/execution-packet.yaml",
+    "plan/validation/execution/V2-002/execution-packet.yaml",
+    "plan/validation/execution/V2-003/followup/execution-packet.yaml",
+    ".mypy_cache/",
+    ".ruff_cache/"
+  ],
+  "pre_existing": {},
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    ".gitleaks.toml",
+    "security-policy.yaml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-004/followup-20261004/ci-fixture-authorization.md",
+    "sha256": "ac03ec848cf6bdb2e09880c4b01471d924b164ad68de7e787aaa9e344564a824"
+  },
+  "limitations": [
+    "Local Git pin does not authenticate remote authority",
+    "No existing tests/requirements will be weakened; only task metadata and current tool integration may change with recorded review"
+  ]
+}

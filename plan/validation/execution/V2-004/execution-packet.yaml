@@ -85,6 +85,7 @@ allowed_paths:
 - scripts/ci/
 - tests/contract/test_delivery_gates.py
 - tests/integration/test_postgres_ci_service.py
+- tests/integration/test_repository_bootstrap.py
 - README.md
 - AGENTS.md
 - docs/V2-004_IMPLEMENTATION_REPORT.md
@@ -167,9 +168,12 @@ review_notes:
 - '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason
   in fixed authorization; previous packet/context retained. Criteria and task scope
   unchanged.'
+- '2026-10-04 necessary CI integration fix: original bootstrap test added within current
+  P0/V2-004 scope; no test weakening, task/phase identity unchanged; reason and impact
+  in ci-fixture-authorization.md.'
 handoff:
-  current_step: 'IMPLEMENT: resumed local scope fixed; repair genuine Linux CI failure
-    and source-verification contracts'
+  current_step: 'PREPARE: real Linux UNIT artifact confirms original bootstrap negative-fixture
+    cache prerequisite defect; freeze exact existing CI test scope'
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
