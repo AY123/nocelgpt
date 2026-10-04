@@ -1,0 +1,57 @@
+{
+  "record_type": "ACTUAL_SECURITY_ARTIFACT_BINDING",
+  "project_id": 86656946,
+  "tested_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+  "pipeline_id": 2910441607,
+  "job_id": 16919376075,
+  "pipeline_status": "failed",
+  "job_status": "failed",
+  "allow_failure": false,
+  "runner_id": 54907241,
+  "runner_type": "instance_type",
+  "receipt_status": "FAIL",
+  "command_exit_codes": [
+    0,
+    1
+  ],
+  "observation_integrity": "MATCHED",
+  "source_archive": {
+    "bytes": 187827,
+    "sha256": "9c69da82740522d3cf985706a2aa1dc201afd5f4e34327c0c644d36f22122455",
+    "download_url": "https://gitlab.com/ayitnovel/ainovelos/-/jobs/16919376075/artifacts/download",
+    "api_url": "https://gitlab.com/api/v4/projects/86656946/jobs/16919376075/artifacts",
+    "copied_selection_only": true
+  },
+  "canonical_members": [
+    {
+      "ref": "plan/validation/execution/V2-004/security-delta-20261004/ci-artifacts/receipt.json",
+      "sha256": "15d04707f93c65dafe34a662fd69419547220cb4e106839addec8c9079771637",
+      "bytes": 3344
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/security-delta-20261004/ci-artifacts/secret-scan.json",
+      "sha256": "13a6f8b7a7db0c771663599b0406d6137e321771475f87465e2505fd1d86d693",
+      "bytes": 14192
+    }
+  ],
+  "artifact_descriptor_hashes_match": true,
+  "receipt_complete": true,
+  "required_results_missing": [],
+  "predecessor_disposition": {
+    "ref": "plan/validation/execution/V2-004/security-delta-20261004/predecessor-disposition-3ce6c32.json.gz",
+    "encoding": "gzip",
+    "sha256": "68dd2ca91e46f74e9c6134001945ffbe9d9873ccb76ffede6988884c029b1b28",
+    "uncompressed_sha256": "8ab242eb8428988ae011e65df81b08dcd8c991fef59372b0201b0a4ef0ab645a",
+    "tested_revision": "3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0",
+    "recoverable_from_git_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+    "original_ref": "plan/validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json"
+  },
+  "collection_index_sha256": "e1c1ee439ae3603a0d2c04f072c2c75d6fe6230cf40a18af08a24ce28caf8e8f",
+  "source_contract_index_sha256": "f689897f6699f3c08f08fc9797b4dc2d933f22d80b34c203754da970e6bde745",
+  "source_scan_sha256": "13a6f8b7a7db0c771663599b0406d6137e321771475f87465e2505fd1d86d693",
+  "same_operator": true,
+  "independent_review_claimed": false,
+  "trust_status": "UNVERIFIED",
+  "permission_status": "UNKNOWN",
+  "acceptance_eligible": false
+}

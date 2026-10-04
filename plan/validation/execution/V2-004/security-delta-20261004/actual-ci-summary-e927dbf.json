@@ -1,0 +1,168 @@
+{
+  "record_type": "ACTUAL_EXACT_REVISION_CI_SUMMARY",
+  "project_id": 86656946,
+  "revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+  "ref": "dev_gpt",
+  "pipeline_id": 2910441607,
+  "pipeline_status": "failed",
+  "pipeline_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2910441607",
+  "source_observation_at": "2026-10-04T07:11:07.853606+00:00",
+  "gates": {
+    "static": {
+      "job_id": 16919376070,
+      "actual_status": "success",
+      "gate_status": "PASS",
+      "receipt_sha256": "2d00c5e77146b3f4615b61257d43015a43f25457718e698dfd3321ca436916f8",
+      "artifact_descriptor_hashes_match": true,
+      "command_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type"
+    },
+    "unit": {
+      "job_id": 16919376072,
+      "actual_status": "success",
+      "gate_status": "PASS",
+      "receipt_sha256": "05ed1908edf16af30d5fe4fbf361021622b70052cbf20cc4b4ab4337e8717c86",
+      "artifact_descriptor_hashes_match": true,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type"
+    },
+    "schema_contract": {
+      "job_id": 16919376071,
+      "actual_status": "success",
+      "gate_status": "PASS",
+      "receipt_sha256": "5634ae1fbbc3bcaaf912f8524be909d50ba7b09f389ef891b67047b7305a0047",
+      "artifact_descriptor_hashes_match": true,
+      "command_exit_codes": [
+        0
+      ],
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type"
+    },
+    "arch_fitness": {
+      "job_id": 16919376073,
+      "actual_status": "success",
+      "gate_status": "PASS",
+      "receipt_sha256": "2920b98fb3fb0756d989587656cbcfd5bbb403c52903d13754bc0a2c74dcc80b",
+      "artifact_descriptor_hashes_match": true,
+      "command_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type"
+    },
+    "secret_dependency": {
+      "job_id": 16919376075,
+      "actual_status": "failed",
+      "gate_status": "FAIL",
+      "receipt_sha256": "15d04707f93c65dafe34a662fd69419547220cb4e106839addec8c9079771637",
+      "artifact_descriptor_hashes_match": true,
+      "command_exit_codes": [
+        0,
+        1
+      ],
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type"
+    },
+    "postgres_env": {
+      "job_id": 16919376074,
+      "actual_status": "success",
+      "gate_status": "PASS",
+      "receipt_sha256": "d3478a94f67b5e4a0f162596fd81ee51263da4beb66569888e80693ca4469880",
+      "artifact_descriptor_hashes_match": true,
+      "command_exit_codes": [
+        0
+      ],
+      "allow_failure": false,
+      "runner_id": 54907241,
+      "runner_type": "instance_type"
+    }
+  },
+  "tests": {
+    "unit": {
+      "tests": 202,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "artifact_sha256": "cae6fccd618422945d9cb34ed7ee0193c6998b7dfc1db17442e41a914964eb6a"
+    },
+    "arch_fitness": {
+      "tests": 212,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "artifact_sha256": "2a476e44d7043cf00c52bf1ac76315db8c92000602c03ca004ec708d9763c1a0"
+    },
+    "postgres_env": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "artifact_sha256": "3d29176e7e93dc0b845d765f544947037d9a5187fd36cea17fbe176772594ab1"
+    }
+  },
+  "test_totals": {
+    "tests": 415,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "security": {
+    "status": "FAIL",
+    "secret_findings": 45,
+    "targets": {
+      "tracked_worktree": 16,
+      "git_history": 29
+    },
+    "scan_sha256": "13a6f8b7a7db0c771663599b0406d6137e321771475f87465e2505fd1d86d693",
+    "dependencies_audited": 51,
+    "dependency_vulnerabilities": 0,
+    "original_43_not_closed": true,
+    "new_findings": 2,
+    "new_findings_basis": "Both refer to the public name of the harmless variable in the actual pipeline-variable request, current file and e927 commit history. Pending exact exception review; not new credential evidence.",
+    "approved_exceptions": 0,
+    "applied_exceptions": 0,
+    "closed_findings": 0
+  },
+  "source": {
+    "successful_job_contracts": {
+      "static": "PASS",
+      "unit": "PASS",
+      "schema_contract": "PASS",
+      "arch_fitness": "PASS",
+      "postgres_env": "PASS"
+    },
+    "whole_pipeline_source_status": "FAIL",
+    "trust_status": "UNVERIFIED",
+    "permission_status": "UNKNOWN"
+  },
+  "evidence": {
+    "collection_index_ref": "dist/validation/v2004-authority-controls-e927dbf/ci-evidence/pipeline-index.json",
+    "collection_index_sha256": "e1c1ee439ae3603a0d2c04f072c2c75d6fe6230cf40a18af08a24ce28caf8e8f",
+    "source_index_ref": "dist/validation/v2004-authority-controls-e927dbf/source-verification/source-contract-index.json",
+    "source_index_sha256": "f689897f6699f3c08f08fc9797b4dc2d933f22d80b34c203754da970e6bde745",
+    "earlier_network_read_failures_retained": 2
+  },
+  "same_operator": true,
+  "independent_review_claimed": false,
+  "acceptance_eligible": false,
+  "task_status": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED"
+}

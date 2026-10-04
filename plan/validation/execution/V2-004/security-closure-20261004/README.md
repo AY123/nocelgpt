@@ -1,8 +1,12 @@
-# V2-004 两项收口的当前证据
+# V2-004 安全处置当前记录与历史证据
+
+当前 canonical [逐项处置记录](SECURITY_FINDING_DISPOSITION_RECORD.json)已对齐实际 `e927dbf` / Pipeline `2910441607` 的 45 项扫描：原 43 项保留，新增 SF-044/045 为公开测试变量名命中；按现有分类生成 38 项精确申请，批准、应用、关闭均为 0，owner-required 仍 7。当前扫描绑定与旧来源分开记录，说明见 [极小 Delta 对账](../security-delta-20261004/README.md)。旧处置原文已保存可恢复 gzip 快照。
+
+以下 CI 索引、权限观察、local packet 和 handoff 是 3ce6c32 时点的历史证据，不声明为本次当前输入或当前权限验收。
 
 本目录记录 2026-10-04 对实际 SHA `3ce6c32e5666ee8fc2381dcf40f71dd7f8802bc0`、Pipeline `2910092880` 的复核。五项门禁 PASS，`secret_dependency` 硬失败；202 + 212 + 1 = 415 项测试无失败/错误/跳过。V2-004 仍 IN_PROGRESS，P0 NOT_VERIFIED。
 
-- [逐项处置记录及完整列表](SECURITY_FINDING_DISPOSITION_RECORD.md)：43 项 OPEN；36 项静态非凭据分类形成精确例外申请，批准/应用/关闭均为 0；另外 7 项需 owner 依据。
+- [逐项处置记录及完整列表](SECURITY_FINDING_DISPOSITION_RECORD.md)：当前 45 项 OPEN / 38 项申请；原 43 项和 36 项申请保留在原文快照，另外 7 项仍需 owner 依据。
 - [实际 CI artifact 索引](ci-evidence-index.json)：项目、revision、pipeline、job、原始 ZIP hash、下载地址和仓库内 receipt/log/JUnit/安全报告选集。选集保持原始字节，原 CI 路径由索引映射；不把共享 runner 的产物称为受保护执行。
 - [可信权限边界](TRUSTED_PERMISSION_BOUNDARY_RECORD.json)：136 个可用 runner 都是 instance；实际 runner `54907241` 为 not_protected；保护规则仅覆盖 main，dev_gpt 未保护。变量覆盖限制已是 no_one_allowed，skip 合并字段为 null/未知。Owner 和 Developer 存在，真实权限正反例尚未执行。
 - [恢复交接](handoff.json)：已完成、失败/未知、下一动作和恢复条件。

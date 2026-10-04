@@ -6,14 +6,14 @@ repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
 worktree_dirty: false
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: Clean committed checkout for actual Developer permission control records;
-    primary user worktree preserved separately
+  fingerprint: Clean committed checkout for 45-item security delta reconciliation;
+    primary user worktree and local entry preserved separately
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: 'Actual pipeline 2910092880 at 3ce6c32: five gates PASS, 415 tests PASS,
-    mandatory SECRET_DEPENDENCY FAIL; trusted permissions not verified'
+  ci_context: 'Latest reviewed actual e927dbf pipeline2910441607: five gates/415tests
+    PASS; mandatory security45 FAIL; trusted permissions unverified'
 implementer: Codex primary operator
 verifier: Same operator with parallel read-only analysis; no independent personnel
   acceptance
@@ -108,12 +108,12 @@ required_decisions: []
 claims:
 - id: REMOTE_CURRENT
   kind: FACT
-  statement: 'Actual exact 3ce6c32 pipeline2910092880 failed: five gates PASS, UNIT202/ARCH212/PG1
-    PASS without failure/error/skip; secret_dependency43 findings hard-failed. Byte-exact
-    artifacts indexed in repository; no final acceptance.'
+  statement: 'Actual exact e927dbf pipeline2910441607 failed: five gates PASS and
+    UNIT202/ARCH212/PG1 total415 tests without failure/error/skip. Mandatory security45
+    findings FAIL. This does not claim future record commit CI or final acceptance.'
   sources:
-  - ref: validation/execution/V2-004/security-closure-20261004/ci-evidence-index.json
-    sha256: 54e1580e01ffd5a47122f4453c5e6ff31be05a62967cc9210eaa05e757e564d3
+  - ref: validation/execution/V2-004/security-delta-20261004/actual-ci-summary-e927dbf.json
+    sha256: 19c9ba522ba52ed2388122a881366430edb92cd78e1af49231ae0e53bad126e4
   blocks_actions: []
   verification_plan: Recheck online after a real candidate pipeline; do not claim
     CI/permission acceptance from this snapshot.
@@ -133,13 +133,13 @@ claims:
     applicable authorization.
 - id: HISTORICAL_CREDENTIALS
   kind: UNKNOWN
-  statement: '43 actual findings bound one-to-one: 24 PUBLIC_IDENTIFIER, 3 TEST_FIXTURE,
-    9 FALSE_POSITIVE, 6 POSSIBLE_EXPOSURE (3 unique groups) and 1 unresolved truncated
-    reference. All43 OPEN; no approved/applied exception or credential-owner revocation
-    evidence.'
+  statement: 45 actual findings linked to e927 scan:26 PUBLIC_IDENTIFIER,3 TEST_FIXTURE,9
+    FALSE_POSITIVE,6 POSSIBLE_EXPOSURE (3 groups),1 unresolved truncated reference.
+    Original43 remain unchanged;38 requests derived from classification, all45 OPEN.
+    No approved/applied exception or owner revocation evidence.
   sources:
   - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
-    sha256: 8ab242eb8428988ae011e65df81b08dcd8c991fef59372b0201b0a4ef0ab645a
+    sha256: 28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749
   blocks_actions:
   - CERTIFY
   verification_plan: Credential owner supplies redacted revocation/rotation records.
@@ -211,10 +211,9 @@ review_notes:
   actual3ce failure and all43 unresolved dispositions; shared runner and metadata
   are not permission acceptance.'
 handoff:
-  current_step: Actual Developer feature-write positive, protected-main HTTP403 negative
-    and pipeline variable usage positive/HTTP400 negative completed; owner credentials,
-    36 approvals and persistent host still needed. Currentdev_gptc0ba3a7 fullCI5PASS/415testPASS/security43FAIL;
-    noacceptance.
+  current_step: 'Reconcile exact e927 scan45 with canonical: original43 retained;
+    newSF044/045 PUBLIC_IDENTIFIER,38 unapproved requests and7 owner-required. SecurityFAIL,
+    no task/phase promotion.'
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -255,10 +254,14 @@ handoff:
   - Same Developer API pipeline creation without variables succeeded at2910430587;
     harmless variable request explicitly deniedHTTP400 for insufficient permissions,
     not counted as project setting modification refusal or gate acceptance
+  - Bound all45 actual e927 identities and current fingerprints, preserved original43
+    disposition bytes; addedSF044/045 exact requests without approval or closure.
+  - Fixed default Gitleaks8.21.2 confirmed added public-name value bytes/hash in memory;
+    raw Secret/Match never stored or printed.
   pending_items:
   - Credential owner redacted disposition for CRED-001/002/003 and SF-037 reference
-  - Authorized precise exception approval with reason, scope, expiry and actual scanner
-    rerun
+  - Authorized approval of38 exact exception requests with reason, scope, expiry and
+    actual scanner rerun
   - Identified authorized persistent runner host/secure access and effective trusted
     configuration
   - Real ordinary Developer positive/negative, mandatory-gate deletion/reordering
@@ -271,7 +274,7 @@ handoff:
     - ref: validation/execution/V2-004/security-closure-20261004/ci-evidence-index.json
       sha256: 54e1580e01ffd5a47122f4453c5e6ff31be05a62967cc9210eaa05e757e564d3
     - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
-      sha256: 8ab242eb8428988ae011e65df81b08dcd8c991fef59372b0201b0a4ef0ab645a
+      sha256: 28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749
     - ref: validation/execution/V2-004/security-closure-20261004/TRUSTED_PERMISSION_BOUNDARY_RECORD.json
       sha256: 189cba544ebe33a1d2d64786e98801d8692d191d00a4568bc7e37ba04e57ccea
     - ref: validation/execution/V2-004/security-closure-20261004/local-verification.json
@@ -280,6 +283,8 @@ handoff:
       sha256: 872b3435f0b0088a146cdb36083553b823b5e3309ca54249e88d67e192b09699
     - ref: validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json
       sha256: 6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29
+    - ref: validation/execution/V2-004/security-delta-20261004/actual-ci-summary-e927dbf.json
+      sha256: 19c9ba522ba52ed2388122a881366430edb92cd78e1af49231ae0e53bad126e4
     missing_artifact_reason: null
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6

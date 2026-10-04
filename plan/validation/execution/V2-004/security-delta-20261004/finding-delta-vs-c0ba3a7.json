@@ -1,0 +1,226 @@
+{
+  "record_type": "exact_pipeline_security_finding_delta",
+  "recorded_at": "2026-10-04T07:20:28.784811+00:00",
+  "project_id": 86656946,
+  "pipeline_id": 2910441607,
+  "security_job_id": 16919376075,
+  "revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+  "comparison_revision": "c0ba3a7d9864a31cb3a1dc8c1d5aa088eedb6d0c",
+  "comparison_pipeline_id": 2910354538,
+  "previous_finding_total": 43,
+  "current_finding_total": 45,
+  "current_target_counts": {
+    "tracked_worktree": 16,
+    "git_history": 29
+  },
+  "original_43_location_identities_preserved": true,
+  "added_findings": 2,
+  "removed_findings": 0,
+  "distinct_new_public_identifiers": 1,
+  "target_deltas": {
+    "tracked_worktree": {
+      "previous_count": 15,
+      "current_count": 16,
+      "added_locations": 1,
+      "removed_locations": 0,
+      "old_fingerprints_removed": 15,
+      "new_fingerprints_added": 16,
+      "original_location_identities_preserved": true
+    },
+    "git_history": {
+      "previous_count": 28,
+      "current_count": 29,
+      "added_locations": 1,
+      "removed_locations": 0,
+      "old_fingerprints_removed": 0,
+      "new_fingerprints_added": 1,
+      "original_location_identities_preserved": true
+    }
+  },
+  "new_findings": [
+    {
+      "delta_finding_id": "E927-ADDED-TRACKED_WORKTREE-001",
+      "target": "tracked_worktree",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+      "line": 23,
+      "historical_commit": null,
+      "tested_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+      "source_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+      "source_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
+      "source_git_blob_oid": "78ca86d8624fd3a62ead5c7006203825ae5d6758",
+      "source_line_sha256": "91d52b7a4d29da993dc0735ccaa977a5bc267191bba2d61ef018cbac56108ec2",
+      "source_line_bytes": 41,
+      "scan_ordinal": 15,
+      "scan_fingerprint_sha256": "68763469bfbfdc86479c57a16f12def71dcb13a312733baac88cbe1a881f7003",
+      "gitleaks_report_sha256": "bdd082228ac95c871d531b682090f4c48c987699d90fbfc6e11a8acae024fe3b",
+      "scan_sha256": "13a6f8b7a7db0c771663599b0406d6137e321771475f87465e2505fd1d86d693",
+      "classification": "PUBLIC_IDENTIFIER",
+      "classification_status": "SAME_OPERATOR_REVIEW_PENDING_AUTHORITY",
+      "classification_basis": {
+        "json_pointer": "/negative/variables/0/key",
+        "public_probe_variable_name_matches_declared_request": true,
+        "corresponding_value_matches_declared_harmless_constant": true,
+        "credential_value_found_or_used": false,
+        "source_values_not_printed": true
+      },
+      "reason": "The generic detector matched a key field whose value is the known public permission-probe variable name. The same source identifier appears in tracked and historical scan targets.",
+      "closure_status": "OPEN",
+      "exception_request_generated": false,
+      "exception_approved": false,
+      "exception_applied": false,
+      "authority_evidence": null,
+      "expires_at": null,
+      "same_operator": true,
+      "independent_review_claimed": false
+    },
+    {
+      "delta_finding_id": "E927-ADDED-GIT_HISTORY-001",
+      "target": "git_history",
+      "rule_id": "generic-api-key",
+      "path": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+      "line": 23,
+      "historical_commit": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+      "tested_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+      "source_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+      "source_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
+      "source_git_blob_oid": "78ca86d8624fd3a62ead5c7006203825ae5d6758",
+      "source_line_sha256": "91d52b7a4d29da993dc0735ccaa977a5bc267191bba2d61ef018cbac56108ec2",
+      "source_line_bytes": 41,
+      "scan_ordinal": 1,
+      "scan_fingerprint_sha256": "873d3bfd1cc433ca48da8faa1a774abfb96b19c6f69ee3fd1632c05b643868b9",
+      "gitleaks_report_sha256": "72360d45c4ef43a887221b36663a76eec7b2e583801e730de722288cd2b580c0",
+      "scan_sha256": "13a6f8b7a7db0c771663599b0406d6137e321771475f87465e2505fd1d86d693",
+      "classification": "PUBLIC_IDENTIFIER",
+      "classification_status": "SAME_OPERATOR_REVIEW_PENDING_AUTHORITY",
+      "classification_basis": {
+        "json_pointer": "/negative/variables/0/key",
+        "public_probe_variable_name_matches_declared_request": true,
+        "corresponding_value_matches_declared_harmless_constant": true,
+        "credential_value_found_or_used": false,
+        "source_values_not_printed": true
+      },
+      "reason": "The generic detector matched a key field whose value is the known public permission-probe variable name. The same source identifier appears in tracked and historical scan targets.",
+      "closure_status": "OPEN",
+      "exception_request_generated": false,
+      "exception_approved": false,
+      "exception_applied": false,
+      "authority_evidence": null,
+      "expires_at": null,
+      "same_operator": true,
+      "independent_review_claimed": false
+    }
+  ],
+  "unchanged_original_tracked_source_checks": [
+    {
+      "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+      "old_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "current_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+      "changed": false
+    },
+    {
+      "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+      "old_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+      "current_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+      "changed": false
+    },
+    {
+      "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+      "old_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+      "current_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+      "old_sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+      "current_sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+      "old_sha256": "b1504f25babcf7f08ad0d81cd732d6f2d899a0e73e73349b0ba561df6227272f",
+      "current_sha256": "b1504f25babcf7f08ad0d81cd732d6f2d899a0e73e73349b0ba561df6227272f",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+      "old_sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f",
+      "current_sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+      "old_sha256": "a3816350ef8ca6e4ed1b30f891b388b8a4ff6c92c9c18ce932d277be1d91bd52",
+      "current_sha256": "a3816350ef8ca6e4ed1b30f891b388b8a4ff6c92c9c18ce932d277be1d91bd52",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+      "old_sha256": "b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708",
+      "current_sha256": "b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+      "old_sha256": "4c9772e5b4ebe321a989a4f63ca606b8b1edeedb157cce7d595f8d136c692367",
+      "current_sha256": "4c9772e5b4ebe321a989a4f63ca606b8b1edeedb157cce7d595f8d136c692367",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+      "old_sha256": "2dd657e328282ce44e71dc7e864518f5960230b27db884f628a8d46acae9414b",
+      "current_sha256": "2dd657e328282ce44e71dc7e864518f5960230b27db884f628a8d46acae9414b",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+      "old_sha256": "88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896",
+      "current_sha256": "88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+      "old_sha256": "de8be9a4e81dd575abbfbf6ea14d25ac5fbdc626be196052133c01775d601568",
+      "current_sha256": "de8be9a4e81dd575abbfbf6ea14d25ac5fbdc626be196052133c01775d601568",
+      "changed": false
+    },
+    {
+      "path": "plan/validation/governance-probe-v1.2.json",
+      "old_sha256": "bf71c79ff45ab67cd1bf1835034448142c62a82b787bdca7c2f98cbcc3373812",
+      "current_sha256": "bf71c79ff45ab67cd1bf1835034448142c62a82b787bdca7c2f98cbcc3373812",
+      "changed": false
+    }
+  ],
+  "original_precise_exception_requests": 36,
+  "original_precise_requests_do_not_authorize_added_findings": true,
+  "new_exception_approvals": 0,
+  "new_exception_applications": 0,
+  "new_findings_closed": 0,
+  "current_secret_scan_ref": "/private/tmp/anovel-v2004-authority-e927dbf-ci-retry-2/job-16919376075-secret_dependency/extracted/dist/ci/secret_dependency/security/secret-scan.json",
+  "current_scan_sha256": "13a6f8b7a7db0c771663599b0406d6137e321771475f87465e2505fd1d86d693",
+  "comparison_secret_scan_ref": "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-security-closure-c0ba3a7/remote-evidence/job-16918937545-secret_dependency/extracted/dist/ci/secret_dependency/security/secret-scan.json",
+  "comparison_scan_sha256": "13631a8bd9c5348c5fc79e0faf0ab56804482e0d1666fdb15d23b88753beab9d",
+  "same_operator": true,
+  "independent_review_claimed": false,
+  "canonical_payload_or_history_changed": false,
+  "security_gate_status": "FAIL",
+  "task_status": "IN_PROGRESS",
+  "p0": "NOT_VERIFIED",
+  "acceptance_eligible": false,
+  "limitations": [
+    "Classification is evidence review only, not approval; both added findings remain OPEN and unsuppressed.",
+    "The original36 exception requests and7 owner-confirmation items are preserved; this delta does not approve them or widen their scope.",
+    "No payload edited, history rewritten, exception integrated, historical credential called or scanner policy weakened.",
+    "Exact current fingerprint/report/source bindings are retained; location preservation does not silently inherit old fingerprint bindings."
+  ],
+  "initial_offline_comparison_failures": [
+    {
+      "reason": "New source file absent at c0ba3a7",
+      "outcome": "No summary written; introduced source is now compared separately"
+    },
+    {
+      "reason": "Trailing JSON comma in individual source-line parsing",
+      "outcome": "No summary written; whole-object parse and safe single-line parse now agree"
+    }
+  ]
+}

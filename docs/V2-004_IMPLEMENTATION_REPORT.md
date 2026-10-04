@@ -152,3 +152,9 @@ uv run --locked python -B scripts/ci/verify_remote.py \
 [实际记录与回读复核](../plan/validation/execution/V2-004/authority-controls-20261004/README.md)保存 actor、有效 payload、原始错误文本、提交/文件 hash、流水线来源和局限。实施与复核仍由同一操作者承担，不称独立人员审核；未修改保护、runner、例外政策或审批。主机只读调查表明现有 Mac/Docker 可以作为待授权候选，部署及持续运行权限仍缺失。
 
 AT-V2-004-07 仅取得部分真实控制，整体仍 NOT_VERIFIED。剩余输入是三组凭据及 SF-037 的 owner 脱敏依据、36 项具体且有期限的批准、可信执行主机与配置授权。完整权限正反例、门禁防删除控制和同一最终 SHA 六门禁全部通过后再验收，V2-004 保持 IN_PROGRESS，P0 保持 NOT_VERIFIED。
+
+## 2026-10-04 45 项 canonical Delta 对账
+
+已将 canonical disposition 对齐 `e927dbf` / Pipeline `2910441607` / security job `16919376075` 的真实 45 项扫描。原 43 项身份、分类、处置及原始来源保留，另以 current_ci_binding 重新绑定当前产物；新增 SF-044/045 是当前文件与历史中各一次的公开测试变量名命中，沿用 PUBLIC_IDENTIFIER 分类，不新增 taxonomy。
+
+实际分类支持 38 项精确例外申请，批准/应用/关闭均为 0，owner-required 仍 7。旧 43 项记录保留 gzip 原文快照；新两项绑定 source/blob/line、实际 scan/report/fingerprint 与命中值 SHA256，值 hash 与整行 hash 分开。安全门禁、权限和任务状态不变；这些记录不自动消费为扫描例外。[Delta 证据入口](../plan/validation/execution/V2-004/security-delta-20261004/README.md)同时说明被测扫描 SHA 与后续记录提交 SHA 的区别。
