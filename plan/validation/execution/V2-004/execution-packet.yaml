@@ -3,17 +3,17 @@ schema_version: '1.0'
 task_id: V2-004
 plan_version: 1.3.0
 repository_revision: 6ed09939bdc7715fd582338675cd0443777aac50
-worktree_dirty: true
+worktree_dirty: false
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: Resumed macOS primary checkout; preserved user modifications; CI Linux
-    evidence examined separately
+  fingerprint: Clean committed GitLab checkout with exact locked Python/uv; primary
+    user changes preserved by local context
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: 'Actual pipeline 2909931436 at 6ed09939: four success, UNIT failed,
-    SECRET_DEPENDENCY skipped; not accepted'
+  ci_context: New clean candidate pipeline not yet observed; previous real pipeline
+    failed. Protected runner/config not enrolled.
 implementer: Codex primary operator
 verifier: Same operator with parallel read-only analysis; no independent personnel
   acceptance
@@ -171,9 +171,14 @@ review_notes:
 - '2026-10-04 necessary CI integration fix: original bootstrap test added within current
   P0/V2-004 scope; no test weakening, task/phase identity unchanged; reason and impact
   in ci-fixture-authorization.md.'
+- '2026-10-04 clean context: preserve current local packet and PASS entry separately;
+  committed code objects bind 365d4057. Clean CI scope does not authorize deleting
+  primary user files. Existing Free quota observed but balance/money unknown; no purchase/paid
+  resource provision.'
 handoff:
-  current_step: Local corrective implementation verified; initial UNIT failure retained;
-    exact final reviews prepared; candidate CI/permission pending actual push/read
+  current_step: Corrective code committed and local entry PASS; clean CI scope/review
+    bound for actual dev_gpt push. Historical credential and trust/permissions remain
+    unverified.
   completed_steps:
   - Read current plan, task and all eight AT-V2-004 scenarios
   - Rechecked actual GitLab branch/pipeline/project facts
@@ -195,11 +200,13 @@ handoff:
   - Current static, production architecture and five governance checks pass; active
     normative inputs reconciled
   pending_items:
-  - Bind final review Git pin and committed clean CI context, then push dev_gpt
-  - Read new candidate pipeline and all actual job artifacts
-  - Historical credential owner revocation/rotation remains UNKNOWN
-  - Protected runner/config and permission/anti-deletion experiments remain pending;
-    no P1
+  - Push final clean candidate to origin/dev_gpt using existing included CI; no purchase
+    or new paid infrastructure
+  - Read exact current pipeline/all six jobs, actual artifacts and source checks including
+    failures
+  - Obtain credential-owner redacted disposition; do not suppress or test real keys
+  - Enroll actually protected runner/config with applicable authorization, then real
+    permission/anti-deletion controls; P0 NOT_VERIFIED
   next_action: IMPLEMENT
   last_check:
     status: FAIL
@@ -209,6 +216,6 @@ handoff:
     missing_artifact_reason: null
 change_review:
   scope_revision: a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6
-  scope_ref: plan/validation/execution/V2-004/followup-20261004/scope-local-v3.json
-  review_revision: 72ae28dbc63349cb6ec3fc42d9134ae588dc829c
-  review_ref: plan/validation/execution/V2-004/followup-20261004/change-dispositions-initial.json
+  scope_ref: plan/validation/execution/V2-004/followup-20261004/scope-ci-v3.json
+  review_revision: 365d4057c77e75d09dfdb55fb9c6178525c2da19
+  review_ref: plan/validation/execution/V2-004/followup-20261004/change-dispositions-final-ci.json

@@ -1,14 +1,12 @@
 {
   "record_type": "execution_context_selection",
-  "source_revision": "615efb0e40709d46220b83d36462d06a2c3c0b4c",
-  "scope_revision": "4f813a219254f24be851419a172bc60d74f255a1",
+  "source_revision": "365d4057c77e75d09dfdb55fb9c6178525c2da19",
   "active_context": "CLEAN_COMMITTED_CHECKOUT",
-  "local_packet_ref": "plan/validation/execution/V2-004/local-execution-packet.yaml",
-  "local_dispatch_ref": "plan/validation/execution/V2-004/precommit/local-dispatch.json.gz",
-  "local_dispatch_sha256": "f9ba327ea546bf76021b5340dc6620d81cad722a09f225561011872c4a0b827f",
-  "local_user_report_sha256": "76ed69cb82f42ddd8f5328188d23644ee57940eeac74be186853ce2e1381433b",
-  "local_config_sha256": "ea55894f6a1fce35375fafcee85ba4fe02a46ee6722f22441ce6d8855adf0b31",
-  "recovery": "Before local IMPLEMENT, retain active packet current inputs/hash and rebind only worktree_dirty and scope/review from local-execution-packet. Then reconcile hashes and check. Do not replace current packet wholesale or delete user report/config. Clean scope only consumes committed clean checkout.",
-  "last_clean_replay_revision": "04295459fcf3c93ff3f74a79948f0ac77d47dd87",
-  "last_result": "Five local gates PASS; SECRET_DEPENDENCY FAIL; source/permission NOT_VERIFIED"
+  "scope_revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
+  "local_packet_ref": "plan/validation/execution/V2-004/followup-20261004/local-execution-packet.yaml",
+  "local_entry_ref": "plan/validation/execution/V2-004/followup-20261004/final-local-entry.json",
+  "local_entry_sha256": "0709f9ec3c0e8a6843052fafd2c4bfd091ca0c27e3d4e37082e6c84f910a4dec",
+  "review_revision": "365d4057c77e75d09dfdb55fb9c6178525c2da19",
+  "recovery": "Retain current normative input hashes, opening revision and allowed paths; rebind only worktree_dirty/environment and scope/review from followup local packet before primary local IMPLEMENT. Recheck actual user identity and entry. Never replace current packet wholesale or delete user files. Clean scope only consumes truly committed checkout.",
+  "last_result": "Local corrected fixture/static/governance/source controls PASS; initial full UNIT failure preserved. New candidate CI pending; credential/runner/permissions unresolved."
 }
