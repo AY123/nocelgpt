@@ -1,3 +1,4 @@
+HISTORICAL - Superseded by H2
 # V2-005 Contract Remediation - Final Report
 
 **Date**: 2026-10-03  
