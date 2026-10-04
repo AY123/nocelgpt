@@ -152,9 +152,10 @@ class EntityIdentity:
 **canonical_name**: Current primary name (MAY change via rename)
 
 **aliases**: Set of alternative names (MAY change via add/remove)
-- Does NOT include canonical_name (stored separately)
+- Initially empty (not including canonical_name)
 - Unordered set (no priority)
 - Each alias unique within aliases set
+- MAY include the current or previous canonical_name after rename
 
 **entity_type**: Optional entity type tag
 - Examples: "CHARACTER", "LOCATION", "FACTION"
@@ -166,7 +167,7 @@ class EntityIdentity:
 2. project_id never changes for same entity
 3. canonical_name always non-empty
 4. aliases never contains empty strings
-5. canonical_name MAY exist as alias (after rename)
+5. canonical_name MAY exist in aliases (after rename operations)
 
 **Immutability Guarantees**:
 1. `@dataclass(frozen=True)` prevents field reassignment
@@ -291,7 +292,7 @@ def create_identity(
 - `ValueError` if project_id is empty
 
 **Determinism**: 
-- entity_id generation is non-deterministic (ULID includes timestamp)
+- entity_id generation is non-deterministic (UUID v4 uses random)
 - Same input MAY produce different entity_id
 - This is acceptable; identity is entity_id, not input
 
@@ -535,9 +536,9 @@ def normalize_for_lookup(s: str) -> str:
 
 1. Strip leading/trailing whitespace:
    - ASCII space (U+0020)
-   - Full-width space (U+3000)
+   - Full-width space (U+3000) - delete, not fold to ASCII space
 
-2. Collapse internal consecutive spaces to single space
+2. Collapse internal consecutive ASCII spaces to single space
 
 3. ASCII lowercase:
    - If `s.isascii()`: return `s.lower()`
@@ -640,9 +641,18 @@ def add_entity(self, entity: EntityIdentity) -> None:
 
 **Rename workflow** (external to registry):
 1. Call `rename_identity(old_entity, new_name)` → `new_entity`
-2. Update registry (application logic):
-   - Option A (overwrite): `registry._entities[id] = new_entity`
-   - Option B (remove+add): Remove old, add new
+2. **Update registry state**: 
+   - For test fixture: Direct assignment `registry._entities[id] = new_entity`
+   - Ensures resolution uses updated entity
+   
+**Example**:
+```python
+entity = create_identity(proj, "老名")
+renamed = rename_identity(entity, "新名")
+registry._entities[renamed.entity_id] = renamed  # Update
+resolve_alias(proj, "老名", registry)  # RESOLVED (via aliases)
+resolve_alias(proj, "新名", registry)  # RESOLVED (via canonical_name)
+```
 
 **V2-005 Scope**:
 - Registry is test fixture, NOT production component
@@ -881,26 +891,27 @@ restored = deserialize_from_json(json_str)
 assert identity == restored  # Bitwise equality
 ```
 
-### 9.4 Normalization Storage
+### 9.4 Storage Representation
 
-**Design decision**: Store normalized form or raw?
+**Design Decision**: Store original (raw) form only.
 
-**Recommendation**: Store BOTH:
+**JSON Representation**:
 ```json
 {
   "entity_id": "...",
   "canonical_name": "Zhang San",
-  "canonical_name_normalized": "zhang san",
-  "aliases": [
-    {"raw": "  John  ", "normalized": "john"},
-    {"raw": "约翰", "normalized": "约翰"}
-  ]
+  "aliases": ["John", "约翰"]
 }
 ```
 
-**Alternative** (simpler): Store only normalized, lose raw form.
+**Lookup Process**: Normalize at query time (deterministic, no storage duplication).
 
-**Contract**: V2-005 implementation chooses; contract tests verify round-trip.
+**Rationale**:
+- Simpler schema (aligns with §13.1 closed schema)
+- No field duplication
+- Normalized keys computed on-demand
+
+**V2-005 Scope**: Raw storage. Optimization (e.g., indexed normalized keys) deferred to V2-009.
 
 ---
 
@@ -1215,7 +1226,7 @@ def create_identity(
     "entity_id": {
       "type": "string",
       "minLength": 1,
-      "description": "Stable unique identifier (ULID format)"
+      "description": "Stable unique identifier (UUID v4 format)"
     },
     "project_id": {
       "type": "string",
@@ -1280,6 +1291,18 @@ class EntityRegistry:
         self._by_project: dict[ProjectId, set[EntityId]] = {}
     
     def add_entity(self, entity: EntityIdentity) -> None:
+        """Add entity with uniqueness check per §4.1."""
+        if entity.entity_id in self._entities:
+            existing = self._entities[entity.entity_id]
+            if existing != entity:
+                raise ValueError(
+                    f"Entity ID {entity.entity_id} already registered "
+                    f"with different content"
+                )
+            # Same content → idempotent, no-op
+            return
+        
+        # Normal registration
         self._entities[entity.entity_id] = entity
         self._by_project.setdefault(entity.project_id, set()).add(entity.entity_id)
     
@@ -1547,12 +1570,6 @@ Implementation complete when:
 3. Architecture boundaries enforced
 4. Schema validated
 5. Ready for V2-006 consumption
-
----
-
-**CONTRACT FROZEN**
-
-This contract is binding once approved. Implementation must follow exactly.
 
 ---
 

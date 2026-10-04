@@ -146,9 +146,7 @@ class EntityIdentity:
 
 **Actions**:
 1. Implement `_generate_entity_id() -> EntityId` (private function)
-   - Try ULID first: `from ulid import ULID` (if available)
-   - Fallback to UUID: `import uuid`
-   - Return `EntityId(str(...))`
+   - Use UUID v4: `import uuid` then `EntityId(str(uuid.uuid4()))`
 2. Implement `normalize_for_lookup(s: str) -> str` (public function)
    - Strip whitespace (ASCII space + U+3000)
    - Collapse internal spaces
@@ -235,7 +233,18 @@ class EntityRegistry:
         self._by_project: dict[ProjectId, set[EntityId]] = {}
     
     def add_entity(self, entity: EntityIdentity) -> None:
-        """Add entity to registry."""
+        """Add entity with uniqueness check per §4.1."""
+        if entity.entity_id in self._entities:
+            existing = self._entities[entity.entity_id]
+            if existing != entity:
+                raise ValueError(
+                    f"Entity ID {entity.entity_id} already registered "
+                    f"with different content"
+                )
+            # Same content → idempotent, no-op
+            return
+        
+        # Normal registration
         self._entities[entity.entity_id] = entity
         self._by_project.setdefault(entity.project_id, set()).add(entity.entity_id)
     

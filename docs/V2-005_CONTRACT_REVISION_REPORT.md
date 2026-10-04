@@ -46,7 +46,7 @@
 
 **原文**:
 ```
-Format: ULID (or UUID v4 if ulid library unavailable)
+Format: UUID v4 (RFC 4122) - frozen, no environment fallback
 ```
 
 **修订后**:

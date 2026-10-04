@@ -725,12 +725,14 @@ add_alias(entity_a.entity_id, "绰号X")
 
 # Attempt
 entity_b = create_identity(project, "角色B")
-add_alias(entity_b.entity_id, "绰号X")  # Same alias!
+add_alias(entity_b.entity_id, "绰号X")  # Same alias - allowed
 
-# Must
-raise ConflictError("Alias '绰号X' already bound")
-# NOT silently overwrite
+# Result: Two entities with same alias
+resolve_alias(project, "绰号X", registry)
+# Returns: AMBIGUOUS({entity_a.entity_id, entity_b.entity_id})
 ```
+
+**Note**: add_alias does NOT check for cross-entity conflicts. Conflict detection happens at resolution time, returning AMBIGUOUS.
 
 ### NS-6: Name as Identity
 ```python
@@ -954,7 +956,7 @@ def test_identity_module_no_provider_imports():
 - No collision
 - Human-readable (ish)
 
-**Fallback**: Plain UUID v4 if ULID unavailable.
+**Decision**: UUID v4 only (standard library, no external dependency).
 
 **Anti-pattern**: `char_01H...` (requires entity type in ID)
 

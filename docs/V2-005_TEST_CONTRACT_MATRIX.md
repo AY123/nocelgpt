@@ -38,7 +38,7 @@
 | **TC-005-023** | Normalization whitespace | lookup="  张三  " matches canonical="张三" | RESOLVED(entity) | NOT_FOUND | Normalization |
 | **TC-005-024** | Normalization ASCII case | lookup="john" matches canonical="John" | RESOLVED(entity) | NOT_FOUND | Normalization |
 | **TC-005-025** | Normalization Chinese case | lookup="张三" does NOT match "張三" (variants) | NOT_FOUND | False match | Normalization |
-| **TC-005-026** | Normalization full-width space | lookup="李　明" (U+3000) matches "李明" | RESOLVED(entity) | NOT_FOUND | Normalization |
+| **TC-005-026** | Normalization full-width space | lookup="李　明" (U+3000) matches "李明" | RESOLVED(entity with canonical="李明") | NOT_FOUND | Normalization |
 | **TC-005-027** | Deterministic resolution - same input | Resolve "test" twice with identical state | result1 == result2 (bitwise) | Different results | Determinism |
 | **TC-005-028** | Ambiguous result unordered | AMBIGUOUS with candidates | isinstance(candidates, frozenset) | List with ordering | Determinism |
 | **TC-005-029** | No database order dependency | Mock registry with varying iteration order | Always AMBIGUOUS, never varies | Different entity on different calls | Determinism |
@@ -50,7 +50,7 @@
 | **TC-005-035** | Cross-project leakage attack | Create E1 in proj_a, attempt resolve in proj_b | NOT_FOUND | E1 returned | Security |
 | **TC-005-036** | Implicit selection prevention | Two entities match, resolve 100 times | All 100 times AMBIGUOUS | Varies between entities | Anti-Pattern |
 | **TC-005-037** | Name change not new entity | Rename entity E1 | E1 still exists with new name, not E2 created | Two entities after rename | Anti-Pattern |
-| **TC-005-038** | Alias silent overwrite prevention | E1 has alias "X", add same alias to E2 | Error or warning | E1 loses alias silently | Anti-Pattern |
+| **TC-005-038** | Cross-entity alias duplication | E1 has alias "X", E2 adds alias "X" | resolve("X") → AMBIGUOUS({E1, E2}) | Error raised or E1 loses alias | Resolution Logic |
 
 ---
 

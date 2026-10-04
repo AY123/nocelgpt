@@ -1,1038 +1,1770 @@
-我已经按 GitLab 当前最新 main@882d0cdf 重新做了一轮从代码、提交链、Machine SSOT、执行入口、攻击面、测试证据到 P0 边界的深度审核。
+# ANovelOS V2 P0 完成态
+## 最终愿景、架构与推进方向深度审计报告
 
-这次项目确实已经更新，而且不是只改报告。核心 hardening 已进入远端：
+**Audit Baseline**
 
-a11693ee  上一轮审核基线
-   ↓
-fb87e60b  冻结 V2-003 修复范围并复现问题
-   ↓
-284f5f79  真正修复 V2-003 四个问题
-   ↓
-416dfd52  绑定 post-commit CODE / TEST_RESULT
-   ↓
-882d0cdf  seal handoff
-总结结论
+```text
+PROJECT = ANovelOS V2
+BRANCH = dev_cc
+BASELINE =
+b553b1b1de050e9b2a9073ad5a6fad7cb415779c
 
-上一轮提出的 4 个问题，3.5 个已经实质解决。
+P0 = VERIFIED
+G-P0 = PASS
+POST-MERGE CI = 6/6 PASS
 
-V2-003 的整体实现现在已经相当扎实，但这次全局攻击审查又发现了 1 个新的 P0 阻断漏洞 + 1 个 anti-weakening 剩余绕过面。
+REPOSITORY_HYGIENE = COMPLETE
+CODE_HYGIENE = ACCEPTED
+WORK_BRANCHES = 0
+```
 
-因此我的最终结论仍然不是直接进入 V2-004，而是：
+---
 
-V2-003 = IMPLEMENTED，核心实现 PASS，但建议再做一次极小的 V2-003.2 closure hardening 后再启动 V2-004。
+# 一、最终审计结论
 
-不需要重构 V2-003。
+本次审核结论：
 
-1. 上一轮四个问题的修复结果
-上一轮发现	当前结果
-IMPLEMENT 可省略 scope pin	已修复
-Production scope 可被普通 review 自签	已修复
-新 conftest / collection hook 无检测	检测已修复，但授权语义仍有残余风险
-dynamic loader __builtins__[...] 等绕过	已修复
+```text
+VISION_ALIGNMENT = STRONG
 
-其中前两个修复质量很好。
+CORE_ARCHITECTURE_DIRECTION = SOUND
+MAJOR_STRATEGIC_DRIFT = NONE_DETECTED
 
-2. Mandatory scope enforcement：现在真的成立了
+P0_ENGINEERING_FOUNDATION = STRONG
+P0_GOVERNANCE_FOUNDATION = STRONG
 
-原来是：
+NARRATIVE_ARCHITECTURE = STRONG_BUT_UNIMPLEMENTED
+CANON_ARCHITECTURE = STRONG_BUT_UNIMPLEMENTED
+LONG_FORM_RELIABILITY = NOT_YET_PROVEN
+READING_COMPETITIVENESS = NOT_YET_PROVEN
+MARKET_COMPETITIVENESS = NOT_YET_PROVEN
 
-if args.scope_revision:
-    review_changes(...)
+FULL_REARCHITECTURE_REQUIRED = NO
 
-调用者不传 scope 就绕过。
+P1_DIRECTION = CORRECT
+P1_START = CONDITIONAL_GO
 
-现在新增了：
+PRE_P1_REQUIRED_CORRECTIONS =
+TARGETED_GOVERNANCE_RECONCILIATION
+```
 
-bind_change_review(packet, action, args)
+核心判断：
 
-对于：
+> **ANovelOS V2 没有走偏。现在真正的风险已经不是“架构方向错了”，而是未来开发过程中把一个正确、克制的架构重新扩张成过度治理、过度建模、过度 Agent 化的复杂系统。**
 
-IMPLEMENT
-LIVE_CALL
-CERTIFY
+P0 建立的方向应该保留。
 
-必须从 Execution Packet 自身拿：
+---
 
-change_review.scope_revision
-change_review.scope_ref
-review_revision
-review_ref
+# 二、P0 到底证明了什么
 
-而不是让调用 AI 自己决定是否传。
-
-更关键的是 CLI 现在只能：
-
-重复 packet 里的相同 pin
-
-不能：
-
---scope-revision another_sha
-
-覆盖 packet。
-
-这正是正确结构：
-
-Execution Packet
-      ↓
-frozen scope
-      ↓
-Task Entry
-      ↓
-actual diff review
-      ↓
-child command
-      ↓
-post-command diff review
-
-现在已经有负例：
-
-packet 无 change_review
-+ IMPLEMENT
-→ BLOCK
-→ child 不执行
-
-以及：
-
-CLI 试图覆盖 packet scope
-→ BLOCK
-
-和：
-
-CLI 完全不传 scope 参数
-→ 仍然自动读取 packet scope
-
-甚至实际 postcommit 记录：
-
-raw/013_postcommit_entry.json
-
-就是没有 CLI scope/review flags运行：
-
-task_execution.py run
---task V2-003
---action IMPLEMENT
-...
-
-仍成功自动消费 packet-bound pins。
-
-所以我认为：
-
-AI-EXEC-02
-local mandatory IMPLEMENT enforcement
-= PASS
+必须把这一点说清楚。
 
 当前：
 
-p0_enforcement_status: IMPLEMENTED
+```text
+src/anovel/
+└── __init__.py
+```
 
-现在终于和机器实际能力一致了。
+P0 并没有实现小说业务内核。
 
-3. Production scope 自签漏洞：已正确关闭
+这是**正确的**，因为 P0 本来的职责就是：
 
-这是这轮修改里我最认可的一处。
+```text
+Repository
+Runtime
+Dependency locking
+CI
+PostgreSQL environment
+Architecture fitness
+Governance
+Evidence
+Security boundary
+Execution protocol
+```
 
-原来：
+因此 P0 的完成不能解释为：
 
-PRODUCTION_SCOPE_REVIEW
-severity_kind = REVIEW
+> ANovelOS 的小说架构已经通过运行验证。
 
-意味着同一个实施 AI 可以理论上：
+正确解释应该是：
 
-新增 src/anovel/future_feature.py
-→ REVIEW finding
-→ 自己写 REVIEWED_NO_WEAKENING
-→ PASS
-
-现在已经改成：
-
-PRODUCTION_SCOPE_REVIEW
-severity_kind = AUTHORIZATION_REQUIRED
-
-并要求：
-
-explicit_scope_change_authorization
-
-而不是普通：
-
-existing_user_task_authorization
-
-。
-
-更重要的是 grant 已经精确绑定：
-
-task_id
-path
-old_sha
-new_sha
-authorization_source
-
-且：
-
-old_sha
-
-会和 scope revision 中修改前的真实文件身份核对。
-
-也就是说不能：
-
-代码写完
-+
-授权文件一起 commit
-→ 宣称这是 prior authorization
-
-。
-
-已有专门攻击测试：
-
-scope_grant_committed_with_candidate_production_bytes_is_not_prior
-
-证明这种“事后补许可证”的方式会失败。
-
-同时有：
-
-generic technical review
-→ 不能批准 production scope
-
-以及：
-
-prior exact scope grant
-→ 只能批准完全一致 new_sha
-→ 再改一个字节重新 FAIL
-
-。
-
-这基本满足了我上一轮要求。
+> **ANovelOS 已建立一个可以在不容易失控、不容易伪造验证、不容易跨越架构边界的环境里开始实现小说业务系统。**
 
 所以：
 
-Cross-phase production self-approval
-= CLOSED locally
+```text
+ENGINEERING FOUNDATION = VERIFIED
 
-。
+PRODUCT ARCHITECTURE =
+DESIGNED / NOT YET RUNTIME VERIFIED
+```
 
-4. Dynamic loader 缺口：已修
+这个区别必须一直保持到 P8/P9。
 
-现在 AST names() 已增加：
+---
 
-vars(...)
-ast.Subscript
-.__dict__[...]
+# 三、最终愿景有没有被正确承接
 
-处理。
+最终愿景本质上不是：
 
-对应攻击测试覆盖：
-
-__builtins__["__import__"]("openai")
-
-vars(builtins)["__import__"]("openai")
-
-b.__dict__["__import__"]("openai")
-
-vars(importlib)["import_module"]("openai")
-
-Domain 中都会失败。
-
-而这种不能静态确定的形式：
-
-__builtins__[choose_loader()]("openai")
-
-会产生：
-
-ARCH_DYNAMIC_UNKNOWN
-
-而不是静默通过。
-
-同时有正例：
-
-__builtins__["__import__"]("json")
-
-允许标准库合法通过。
-
-这一点设计很好，因为不是简单：
-
-看到 __builtins__ 就全部禁止
-
-。
-
-所以：
-
-Dynamic loader hardening = PASS
-
-。
-
-5. conftest / pytest collection-control 检测已经明显增强
-
-现在能识别：
-
-pytest_collection_modifyitems
-pytest_ignore_collect
-pytest_sessionstart
-collect_ignore
-collect_ignore_glob
-pytest_plugins
-
-。
-
-新增：
-
-TEST_COLLECTION_CONTROL
-TEST_CONFTEST_CHANGED
-TEST_CONFIG_CHANGED
-
-。
-
-同时：
-
-pytest.ini
-.pytest.ini
-setup.cfg
-tox.ini
-
-现在也会解析和比较。
-
-例如：
-
-testpaths = tests
-
-改成：
-
-testpaths = tests/unit
-
-或者：
-
--k positive
-
-都会产生：
-
-SCAN_TARGETS_CHANGED
-TEST_SELECTION_CHANGED
-TEST_CONFIG_CHANGED
-
-。
-
-非法 INI：
-
-→ WEAKENING_PARSE_ERROR
-
-而不是：
-
-parser 看不懂
-→ 当作没有 weakening
-
-。
-
-这一层已经比上一版强很多。
-
-6. 但是这里仍然留下了一个重要的 anti-weakening 语义漏洞
-
-这是我这轮发现的第二个主要问题。
-
-现在恶意：
-
-# tests/conftest.py
-
-def pytest_collection_modifyitems(config, items):
-    items[:] = [
-        x for x in items
-        if "negative" not in x.name
-    ]
-
-确实会产生：
-
-TEST_CONFTEST_CHANGED
-TEST_COLLECTION_CONTROL
-
-很好。
-
-但是这两个 finding 当前本质仍是：
-
-severity_kind = REVIEW
-
-。
-
-而 apply_dispositions() 对 REVIEW 允许：
-
-REVIEWED_NO_WEAKENING
-+
-baseline generic task authorization
-+
-verification_artifacts
-
-放行。
-
-也就是说仍然存在理论攻击链：
-
-AI 新增恶意 conftest
-        ↓
-checker 正确发现：
-TEST_COLLECTION_CONTROL
-        ↓
-同一个 AI 写 review：
-“我检查过了，没有降低测试”
-        ↓
-REVIEWED_NO_WEAKENING
-        ↓
-附一个自己生成的 verification artifact
-        ↓
-PASS
-
-由于：
-
-verification_artifact 现在只验证 bytes/hash 存在，并不会独立证明“没有减少测试收集”。
-
-所以：
-
-detect collection control     = YES
-prevent same-AI false review  = NOT FULLY
-
-。
-
-这也是为什么我说上一轮第四类问题实际是 3.5/4 完成。
-
-建议怎么修
-
-不需要把所有 conftest.py 都当危险。
-
-合理区分：
-
-harmless fixture-only conftest
-→ REVIEW
-→ 可以 REVIEWED_NO_WEAKENING
-
-collection/session/discovery control
-→ AUTHORIZATION_REQUIRED
-
-例如这些：
-
-pytest_collection_modifyitems
-pytest_ignore_collect
-collect_ignore
-collect_ignore_glob
-pytest_plugins
-sessionstart 修改 selection
-pytest.ini testpaths/deselect/k-expression
-
-更适合：
-
-severity_kind = AUTHORIZATION_REQUIRED
-
-或至少要求：
-
-deterministic before/after collection inventory
-
-证明：
-
-required test IDs before
-⊆
-required test IDs after
-
-而不是靠 reviewer 文字说明。
-
-这是一个真正值得在 V2-004 之前补的小洞。
-
-7. 新发现的最大问题：PREPARE 可以绕过整个 Diff Enforcement
-
-这是本轮最重要的发现。
-
-当前 bind_change_review()：
-
-if action == 'PREPARE' and not requested:
-    return
-
-这是有意设计：
-
-PREPARE 可以在 scope 尚未冻结时调查。
-
-这个原则本身没问题。
-
-问题在于：
-
-task_execution.py run
-
-在 PREPARE 下仍然允许执行任意 child command。
-
-例如理论上：
-
-task_execution.py run \
-  --task V2-004 \
-  --action PREPARE \
-  --output dist/prepare.json \
-  -- python malicious_write.py
-
-只要 child exit=0：
-
-PREPARE
-没有 change_review
-没有 pre/post diff review
-
-当前 task_entry.py 就可能：
-
-status = PASS
-
-。
-
-换句话说：
-
-IMPLEMENT
-→ 强制 Diff Gate
-
-但把同一条写代码命令改名：
-
-PREPARE
-→ 可以绕过 Diff Gate
-
-。
-
-而现行协议明确写：
-
-PREPARE 不能被用来给接口实现、付费调用或正式认证改名。
-
-所以这不是“规范没要求”，而是：
-
-Normative rule
-≠
-actual enforcement
-
-。
-
-8. 这个 PREPARE 漏洞为什么比普通旁路更严重
-
-你们已经明确承认：
-
-用户直接不用 task_execution.py
-→ 本地工具无法阻止
-
-这个属于：
-
-shared writer trust boundary
-
-留给 V2-004，合理。
-
-但 PREPARE 漏洞不同。
-
-它是：
-
-使用官方 task_execution.py
-+
-使用合法 packet
-+
-使用合法 PREPARE
-+
-命令成功
-
-→ 官方入口自己返回 PASS
-
-。
-
-也就是说这不是：
-
-绕过官方入口
+> 做一个“AI 写小说工具”。
 
 而是：
 
-官方入口内部动作语义绕过
+> 构建一个能够持续、稳定、可恢复、可验证地生产几十万到百万字中文商业长篇小说的 AI 原生生产系统。
 
-。
+从当前现行文件：
 
-因此我把它定为：
+- `01_PRODUCT_SCOPE_AND_SUCCESS.md`
+- `02_ARCHITECTURE_BASELINE.md`
+- `03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md`
+- `05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md`
+- `06_CERTIFICATION_AND_PRODUCT_EVALUATION.md`
+- `machine/phase-gates.yaml`
 
-P0 blocker
-9. PREPARE 最合适的修法不是做 shell 命令白名单
+来看，当前主干架构和这个目标是**高度一致的**。
 
-我不建议：
+最重要的是，它已经从 V1 常见的：
 
-只允许 cat
-只允许 grep
-只允许 git status
+```text
+Prompt
+→ Model
+→ Chapter
+→ Next Prompt
+```
 
-。
+升级成：
 
-因为以后准备工作可能合法需要：
+```text
+Canon
++ Genre
++ Planning
++ Contract
++ Context
+        ↓
+Candidate generation
+        ↓
+NarrativeDelta
+        ↓
+Quality / Evidence
+        ↓
+CommitPermit
+        ↓
+CanonCommitService
+        ↓
+Accepted Chapter
+```
 
-pytest --collect-only
-schema validation
-read-only probes
-生成 dist 报告
+这是根本性的架构升级。
 
-维护 allowlist 很容易失控。
+---
 
-更稳的做法：
+# 四、最优秀的几个设计
 
-PREPARE 可以无冻结 scope，但必须是 repository-read-only
+## 4.1 Canon 和 Context 被正确分开
 
-执行前：
+这是整个架构最重要的决策之一。
 
-before = observe(repository)
+当前规范明确：
 
-执行后：
+```text
+Canon ≠ Summary
+Canon ≠ RAG
+Canon ≠ Prompt Memory
+Canon ≠ Model Memory
+Canon ≠ Plan
+Canon ≠ Draft
+```
 
-after = observe(repository)
+只有：
 
-对于 Git-visible source/index/HEAD：
+```text
+CanonCommitService
+```
 
-after != before
-→ FAIL
+可以推进权威叙事状态。
 
-。
+这比很多 AI 写作系统常见的：
 
-允许变化的只有：
+```text
+memory.json
+summary.md
+vector db
+prompt state
+```
 
-dist/
+共同充当“事实来源”要安全得多。
 
-这类已经 Git ignored、不进入 observe() 的运行输出。
+Novelcrafter 的 Codex 等成熟产品也强调集中管理人物、地点、设定等故事知识；但 ANovelOS 进一步区分了**知识展示/检索层与权威提交层**。
 
-于是：
+这个方向应该坚决保留。
 
-PREPARE
-→ 可以调查
-→ 可以跑测试
-→ 可以写 dist 报告
-→ 不能改源码
-→ 不能 git add
-→ 不能 commit
-→ 不能改 packet
+---
 
-。
+# 五、事实、认知与叙事信息的分离非常正确
 
-这样正好吻合协议。
+当前模型不是简单：
 
-至少增加攻击测试：
+```text
+Fact
+```
 
-PREPARE + child modifies source
-→ child may run
-→ official result FAIL
-→ cannot resume as PASS
+而是区分：
 
-最好进一步在可行的 sandbox/worktree 中跑 PREPARE，使副作用可丢弃，但那可以留到 V2-004。
+```text
+World Fact
+Character Belief
+Character Knowledge
+Reader Revealed Information
+Author Plan
+```
 
-10. 测试和证据绑定审核通过
+这是非常关键的设计。
 
-hardening 真正的代码 revision：
+例如：
 
-284f5f793dc8470df72ecbbd727b3b991085c2ad
+```text
+甲认为乙已经死了
+```
 
-CODE evidence：
+不能等价于：
 
-revision = 284f5f79
+```text
+乙已经死了
+```
 
-TEST_RESULT：
+同样：
 
-revision = 284f5f79
+```text
+作者计划第 80 章让乙死亡
+```
 
-这是正确的。
+不能进入当前 Canon。
 
-不是错误绑定：
+这直接对应长篇 LLM 最容易出现的问题。
 
-416dfd52
-882d0cdf
-
-这种 metadata commit。
-
-保存的实际测试结果为：
-
-265 architecture + contract passed
-0 skipped
-
-5 bootstrap/package passed
-
-governance:
-32
-39
-36
-13
-
-24 preservation checks
-
-。
-
-并且真实测试了：
-
-没有 CLI scope flags
-→ packet 自动提供 pin
-→ Architecture child
-→ pre/post diff review PASS
-
-。
-
-这部分证据质量是可靠的本地证据。
-
-11. 后续两个 commit 没有偷偷改变 checker
-
-416dfd52 主要做：
-
-CODE / TEST_RESULT
-final governance
-postcommit snapshots
-metadata
-
-。
-
-882d0cdf 只做：
-
-implementation report
-execution packet
-handoff
-metadata entry
-
-。
-
-没有重新修改：
-
-architecture_checks.py
-change_review.py
-weakening_checks.py
-task_entry.py
-
-。
+2026 年 ConStory-Bench 对长篇生成做了专门研究，发现长篇模型错误尤其集中在**事实一致性与时间一致性**，并细分出 5 类、19 个子类型。
 
 因此：
 
-tested source = 284f5f79
+```text
+Character Knowledge
+Timeline
+Event
+Promise
+NarrativeDelta
+```
 
-仍然是正确的。
+不是为了“架构漂亮”。
 
-12. Machine SSOT 状态仍然诚实
+它们是直接对应真实长篇失败模式的基础设施。
+
+这是正确投入。
+
+---
+
+# 六、NarrativeDelta 是整个系统的关键设计之一
+
+当前设计不是：
+
+```text
+模型生成一章
+→ 用模型总结一下发生了什么
+→ 更新 Story Bible
+```
+
+而是要求：
+
+```text
+Candidate Text
+        ↓
+NarrativeDelta
+        ↓
+Typed operations
+        ↓
+Preconditions
+        ↓
+Evidence location
+        ↓
+Reducer
+        ↓
+Commit
+```
+
+这使：
+
+```text
+“小说文本”
+```
+
+和：
+
+```text
+“小说世界状态变化”
+```
+
+第一次真正分开。
+
+例如：
+
+```text
+SET_FACT
+CHANGE_RELATIONSHIP
+KNOWLEDGE_CHANGE
+EVENT_OCCURRED
+PROMISE_CREATED
+PROMISE_RESOLVED
+UNKNOWN
+NO_CHANGE
+```
+
+这对百万字级系统非常重要。
+
+我认为 **V2-008 是未来整个系统的一个真正架构支点**。
+
+必须避免把它实现成：
+
+```python
+dict[str, Any]
+```
+
+或者任意 JSON。
+
+否则整个设计会退化回：
+
+> 让 Prompt 自己负责语义正确性。
+
+---
+
+# 七、Genre 架构目前方向正确，而且吸取了 V1 最重要的教训
+
+当前设计有一个非常好的分离：
+
+```text
+Genre World Mechanics
+≠
+Narrative Strategy
+≠
+Chapter Constraint
+```
+
+例如：
+
+```text
+urban.business.realistic
+```
+
+意味着世界机制是现实世界。
+
+但不意味着：
+
+```text
+必须豪门
+必须打脸
+必须股票
+必须重生
+```
+
+同样：
+
+```text
+fantasy.eastern.progression
+```
+
+也不意味着：
+
+```text
+必须退婚
+必须宗门大会
+必须拍卖会
+```
+
+这正好避免 V1 的核心失败：
+
+> 都市被自动写成玄幻。
 
 当前：
 
-V2-001 = IMPLEMENTED
-V2-002 = IMPLEMENTED
-V2-003 = IMPLEMENTED
-V2-004 = OPEN
+```text
+Pack ID
+version
+hash
+```
 
-。
+被冻结，而策略检索失败时：
 
-V2-003：
+```text
+不得替换 Pack
+不得选择“最接近的 Genre”
+```
 
-code:
-  revision: 284f5f79
-tests:
-  revision: 284f5f79
-ci: []
-acceptance: []
+这是正确的。
 
-。
+---
 
-正确。
+# 八、Context Compiler 的设计方向也非常好
 
-Test Catalog：
+这里我认为 ANovelOS 已经修正了很多 RAG 系统最常见的误区。
 
-AT-V2-003 = IMPLEMENTED
+当前架构不是：
 
-而不是 VERIFIED。
+```text
+embedding
+→ top-k
+→ prompt
+```
 
-AI-EXEC-03：
+而是：
 
-local_status = IMPLEMENTED_LOCAL
-p0_enforcement_status = NOT_IMPLEMENTED
+```text
+Required Context
+        ↓
+Optional Context
+        ↓
+Retrieval
+        ↓
+Budget Allocation
+```
 
-也正确，因为仍缺 V2-004 的 protected execution chain。
+其中：
 
-没有发现状态漂移。
+```text
+低相似度但必须知道的事实
+```
 
-13. V2-004 确实没有偷偷开始
+不能因为 top-k 低而被裁掉。
 
-当前根目录仍然没有：
+如果 required context 本身超预算：
 
-.gitlab-ci.yml
+```text
+FAIL / explicit diagnosis
+```
 
-。
+而不是：
 
-V2-004：
+```text
+silent truncation
+```
 
-OPEN
-execution_packet_ref = null
-code = []
-tests = []
-ci = []
-acceptance = []
+这是非常重要的。
 
-。
+SCORE 的研究也支持动态状态追踪、分层摘要以及时间对齐的混合检索能够改善长篇一致性。
 
-当前 HEAD：
+但是 SCORE 报告的：
 
-882d0cdf
+```text
++23.6% coherence
+89.7% emotional consistency
+-41.8% hallucination
+```
 
-没有 GitLab commit status / pipeline。
+不能直接变成：
 
-因此：
+```text
+ANovelOS 使用 Temporal RAG
+= 质量提升 40%
+```
 
-Trusted CI              = NOT IMPLEMENTED
-SECRET_DEPENDENCY       = NOT IMPLEMENTED
-ARCH_FITNESS remote     = NOT IMPLEMENTED
-POSTGRES_ENV remote     = NOT IMPLEMENTED
-Permission isolation    = NOT VERIFIED
+而当前 ANovelOS 的正式规划已经明确禁止这种外推。
 
-。
+这是成熟的处理。
 
-这部分状态非常干净。
+---
 
-14. main 分支保护还不能算 V2-004 权限隔离
+# 九、当前架构没有掉进“多 Agent 崇拜”
 
-当前 main 是：
+这是一个非常好的决策。
 
-protected = true
-developers_can_push = false
-developers_can_merge = false
+历史资料中曾有：
 
-这是好事。
+```text
+Multi-Agent
+19 Checkers
+Draft A/B/C
+Temporal RAG
+Emotion checker
+PPL
+Agent debate
+```
 
-但是当前连接身份依然：
+同时进入路线的倾向。
 
-can_push = true
+现在已经明显收敛为：
 
-。
+```text
+能力
+→ Contract
+→ Service
+→ Evidence
+```
 
-说明当前操作者很可能仍拥有高于普通 developer 的权限。
+而不是：
 
-所以不能说：
+```text
+角色名字越多
+= 系统越高级
+```
 
-implementer credential
-cannot modify protected state
+这非常正确。
 
-已经成立。
+当前公共项目 InkOS 2.0 已经采用统一 agent harness，并让 Studio、TUI、CLI 共用同一个执行内核，而且明确强调“真正完成”依据工具结果和落盘结果，而不是模型口头宣布完成。
 
-V2-004 必须真实测试：
+这与 ANovelOS：
 
-普通实施身份
-→ 无权改保护
-→ 无权绕 gate
-→ 无权批准自己例外
+```text
+统一 Workflow
+模型不能自己声明 ACCEPTED
+```
 
-受保护身份
-→ 仅做授权范围动作
+的方向高度一致。
 
-。
+但 ANovelOS 更应该保持自己的优势：
 
-15. V2-001 / V2-002 历史 packet 兼容性：不是 bug，但要注意
+> Agent 只是执行者，不能成为权威状态所有者。
 
-新的 schema 把：
+---
 
-change_review
+# 十、长篇路线 3 → 10 → 30 → 100 → 300+ 是正确的
 
-定义成 optional。
+这是另外一个很好的架构决策。
 
-这是正确的，因为历史记录不能为了 schema 演进全部伪造重写。
+当前不是一上来就：
 
-因此 V2-001/V2-002 老 packet 可以合法存在而不带 change_review。
+```text
+“支持百万字”
+```
 
-但是：
+而是：
 
-以后如果重新对它们执行新的 IMPLEMENT 动作，Task Entry 会 fail closed。
+```text
+3 chapter
+↓
+10 chapter
+↓
+30 chapter
+↓
+100 chapter
+↓
+300+
+↓
+million-word
+```
 
-这也是正确行为：
+并且每一级重新验证：
 
-historical packet
-!=
-new authorization
+```text
+Canon
+Consistency
+Recovery
+Cost
+Human intervention
+Reading quality
+Narrative debt
+```
 
-。
+LongWriter 的研究也说明，超长生成本身需要分解和分阶段组织；“上下文窗口很大”不等于模型自然拥有可靠的超长输出能力。
 
-需要重做动作时先 reconcile 新 scope。
+NousResearch 当前 autonovel 已经公开生成约 7.9 万词作品，但其 2026 年公开 issue 在考虑百万字扩展时，同样遇到：
 
-所以这一点我不判缺陷。
+- context overflow
+- late defect detection
+- continuity accumulation
+- flat revision
 
-16. 根目录上下文污染问题仍在
+等问题。
 
-根目录依然存在：
+这恰好说明：
 
-审核报告.txt
-V2-003任务prompt.txt
+> ANovelOS 提前建立 Canon、章节状态、局部修复和分段认证是有必要的。
 
-。
+---
 
-特别是 审核报告.txt 里面包含多个历史时间点：
+# 十一、最大的产品架构优势：没有把“工程正确”冒充“小说好看”
 
-V2-002 未提交
-V2-003 未开始
-V2-003 有缺口
+这一点非常值得保留。
+
+当前明确分开：
+
+```text
+Engineering Evidence
+Human Reading Evidence
+Market Evidence
+```
+
+也就是：
+
+```text
+CI PASS
+≠
+小说好看
+
+小说好看
+≠
+用户付费
+
+模拟读者高分
+≠
+真实读者留存
+```
+
+这是非常正确的。
+
+当前 P8/P9 还要求：
+
+```text
+simple baseline
+vs
+full ANovelOS pipeline
+```
+
+在可比预算条件下做人类盲评。
+
+甚至允许最终结果：
+
+```text
+FULL PIPELINE NOT BETTER THAN BASELINE
+```
+
+这非常重要。
+
+如果结果不好，应该修改产品假设，而不是修改分母。
+
+---
+
+# 十二、现在发现的第一个真实问题：README 已经发生状态漂移
+
+这是目前我认为 **P1 前必须修复** 的问题。
+
+当前根：
+
+`README.md`
+
+仍然写：
+
+```text
+V2-001～V2-003 IMPLEMENTED
+V2-004 尚未开始
+远端 CI 未验证
+G-P0 未验证
+57 tasks OPEN
+```
+
+这些已经全部是旧事实。
+
+真实状态已经是：
+
+```text
+V2-001 CLOSED
+V2-002 CLOSED
+V2-003 CLOSED
+V2-004 CLOSED
+
+G-P0 VERIFIED
+
+P0 VERIFIED
+
+NEXT = P1 / V2-005
+```
+
+更关键的是：
+
+`00_GOVERNANCE_AND_SOURCE_AUTHORITY.md`
+
+明确规定：
+
+> machine/ 定义任务、阶段、门禁；正文与机器资料必须一致，发现冲突应失败。
+
+而：
+
+`phase-gates.yaml`
+
+已经写：
+
+```yaml
+P0:
+  status: VERIFIED
+```
+
+因此这不是简单的“README 没更新”。
+
+它实际上违反了：
+
+```text
+现行正文
+↔ machine SSOT
+```
+
+一致性原则。
+
+### 审核分类
+
+```text
+FINDING = P0-AUDIT-001
+SEVERITY = HIGH
+TYPE = GOVERNANCE_STATE_DRIFT
+
+CODE_DEFECT = NO
+ARCHITECTURE_DEFECT = NO
+DOCUMENT_AUTHORITY_DEFECT = YES
+```
+
+建议 P1 第一个生产代码 commit 之前完成。
+
+---
+
+# 十三、`08_ROADMAP_AND_GATES.md` 也存在同类问题
+
+其“当前状态”仍然描述：
+
+```text
+G-P0～G-P14 初始均 NOT_VERIFIED
+```
+
+从历史语境理解，它可能描述的是最初状态。
+
+但作为现行正文，非常容易让 AI 理解成：
+
+```text
+G-P0 当前仍未验证
+```
+
+因此建议改为类似：
+
+```text
+Initial baseline:
 ...
 
-和现在 Machine SSOT 已经不一致。
+Current authoritative runtime/gate state:
+see machine/phase-gates.yaml
+```
 
-AGENTS 虽然正确写：
+或者直接更新到当前状态。
 
-审核报告是输入，不是 authority。
+否则：
 
-但对长期全 AI 项目，根目录这种巨型多版本审计文本仍然容易污染上下文。
+```text
+human normative text
+```
 
-建议在 P0 收尾：
+和：
 
-docs/reviews/
+```text
+machine state
+```
 
-归档。
+继续存在歧义。
 
-不是当前 blocker。
+---
 
-17. Evidence 仓库膨胀问题更加明显
+# 十四、第二个真实治理问题：Remediation Register 与 Closure Evidence 有状态不一致
 
-这次新一轮又产生：
+这个问题比 README 更值得注意。
 
-fb87e60b +17k lines
-284f5f79 +5k lines
-416dfd52 +16k lines
+例如：
 
-绝大多数不是产品代码，而是：
+`AR-06`
 
-inputs
-snapshots
-raw
-context
-JUnit
-code copy
-review
+在多个正式 Closure 中已经明确出现：
 
-。
+```text
+AR-06 = RESOLVED
+```
 
-治理严谨是好事，但这个模式不能复制到 60 Tasks。
+包括：
 
-所以 V2-004 建 GitLab CI 时，我仍强烈建议顺手建立：
+- V2-001 closure
+- V2-004 revalidation final report
 
-Git
-→ durable evidence metadata
+但当前：
 
-GitLab CI artifacts
-→ raw stdout/JUnit/large runtime artifacts
+`plan/machine/remediation-register.yaml`
 
-。
+仍然写：
 
-否则 P5/P8/P9 后仓库会越来越重。
+```yaml
+AR-06:
+  status: OPEN_TRACKED
+  closure_refs: []
+```
 
-18. 本轮新的分级发现
-ID	严重度	问题	当前建议
-F-01	P0	PREPARE 可运行有写副作用子命令而无 diff gate	V2-004 前必须修
-F-02	P0/P1	Collection-control finding 可被普通 same-AI REVIEWED_NO_WEAKENING 放行	建议升级为授权级或 deterministic collection comparison
-F-03	P2	根目录历史审核报告污染 AI 上下文	P0 收尾归档
-F-04	P2	Git 内 raw evidence 持续膨胀	V2-004 建 CI artifact 边界
-F-05	Expected	无真实 CI / 权限隔离	正是 V2-004 职责
-19. 对 V2-003 的最终重新评级
+类似情况还存在于部分：
 
-这次和上一轮相比已经明显更成熟：
+```text
+RR-xx
+CA-xx
+AR-xx
+```
 
-Architecture Fitness                 PASS
-Static import graph                  PASS
-Canon static boundary               PASS
-Dynamic loader hardening            PASS
+条目。
 
-Actual diff collection              PASS
-Mandatory IMPLEMENT diff binding    PASS
-CLI scope override protection       PASS
-Pre-existing user changes           PASS
-Production scope exact grants       PASS
-Post-change fake grant              PASS
+这意味着：
 
-AC/scenario anti-weakening          PASS
-skip/xfail                           PASS
-threshold/exclude/gate              PASS
-conftest detection                  PASS
-pytest config detection             PASS
+```text
+Task closure evidence
+```
 
-CODE evidence                       PASS
-TEST_RESULT                          PASS
-Revision binding                    PASS
-Failure history                     PASS
-Scope discipline                    PASS
+和：
 
-PREPARE write protection            FAIL / NOT IMPLEMENTED
-Collection-control self-review      PARTIAL
+```text
+Central finding registry
+```
 
-Remote CI                           NOT IMPLEMENTED
-Permission isolation                NOT VERIFIED
+没有完全同步。
 
-所以正式 Verdict 是：
+这里不能简单把所有 OPEN 批量 CLOSED。
 
-V2-003 IMPLEMENTATION = PASS WITH TWO FINAL HARDENING ITEMS
+有些 finding 是：
 
-这已经不是需要重新做 V2-003。
+```text
+P0 只承担部分责任
+未来 P2/P7 仍有剩余责任
+```
 
-只差两个非常集中、非常小的安全语义收口。
+保持 OPEN 完全合理。
 
-20. 我建议现在只做一个 V2-003.2 micro-fix
+但如果一个 finding：
 
-范围不要扩大。
+```text
+related_tasks = only P0 tasks
+latest_gate_note = P0
+```
 
-第一项：
+而且所有相关任务正式 Closure 都说：
 
-PREPARE + run
+```text
+RESOLVED
+```
 
-必须验证 repository state 不发生写变化：
+那么中央登记仍然：
 
-tracked
-untracked
-index
-HEAD
-branch
+```text
+OPEN_TRACKED
+```
 
-变化：
+就需要解释。
 
-→ FAIL
+### 审核分类
 
-Git ignored 的 dist/ 报告可以保留。
+```text
+FINDING = P0-AUDIT-002
+SEVERITY = HIGH
+TYPE = EVIDENCE_REGISTRY_RECONCILIATION
+```
 
-第二项：
+需要做的是：
 
-TEST_COLLECTION_CONTROL
+```text
+Finding-by-finding reconciliation
+```
 
-这类能够改变测试发现/选择的控制，不允许普通 task-level technical self-review 直接放行。
+不是 mass-close。
 
-至少：
+---
 
-AUTHORIZATION_REQUIRED
+# 十五、因此我不会把当前状态写成“100% 完美 P0”
 
-或要求确定性：
+准确状态应该是：
 
-before required test collection
+```text
+P0_IMPLEMENTATION = VERIFIED
+P0_CI_EVIDENCE = VALID
+P0_SECURITY_BOUNDARY = VERIFIED
+P0_CODE_HEALTH = GOOD
+
+POST_CLOSURE_DOCUMENT_STATE =
+NEEDS_RECONCILIATION
+
+P0_REOPEN_REQUIRED = NO
+
+P0_FOLLOWUP_REQUIRED = YES
+```
+
+也就是说：
+
+> **不用推翻 P0，也不用重跑项目，但应该在进入正式 P1 生产代码之前做一次小型 P0 Authority Reconciliation。**
+
+---
+
+# 十六、架构层发现的最重要未来缺口：Durable Workflow 决策还没有正式冻结
+
+当前架构反复强调：
+
+```text
+Durable Workflow
+Checkpoint
+Retry
+Resume
+Idempotency
+Cancel
+Late response
+UNKNOWN
+```
+
+这是正确的。
+
+但当前 `decision-register.yaml` 中：
+
+```text
+ADR-001 ~ ADR-016
+```
+
+已经没有一项独立解决：
+
+```text
+Durable Workflow Runtime / Persistence Semantics
+```
+
+历史架构资料曾明确提出类似：
+
+```text
+Durable Workflow Port
+```
+
+并提出：
+
+> 使用成熟 durable execution 思路，而不是重新发明恢复语义。
+
+现在正式 backlog 中：
+
+```text
+V2-020 Single Chapter Workflow
+V2-027 Workflow retry and checkpoint
+```
+
+会实施这些能力。
+
+但在那之前必须明确：
+
+```text
+Workflow state 放哪里
+Checkpoint 是什么
+Replay 如何工作
+LLM side effect 如何隔离
+Retry identity 如何定义
+Cancellation 如何 fencing
+Code upgrade 如何处理旧 workflow
+Human wait 如何恢复
+```
+
+Temporal 之类的 durable execution 系统，本质就是通过持久 Event History 和 replay 恢复长时间运行流程；其官方文档还明确要求将 API/LLM/DB 等非确定性 I/O 放在 Workflow replay 路径之外。
+
+LangGraph 当前也明确区分：
+
+```text
+Checkpointer
 vs
-after required test collection
+Store
+```
 
-证明没有丢失 required tests。
+分别承担 workflow/thread 状态和长期数据。
 
-然后：
+ANovelOS **不一定要采用 Temporal 或 LangGraph**。
 
-新增 2～4 个负例
-重新跑 architecture + contract
-重新跑 governance
-post-commit evidence 绑定 fix SHA
-V2-003 仍保持 IMPLEMENTED
-ci=[]
-acceptance=[]
+甚至首期很可能：
 
-即可。
+```text
+PostgreSQL-backed explicit state machine
+```
 
-21. 是否可以开始 V2-004？
+就足够。
 
-我现在的建议是：
+关键不是选什么框架。
 
-先不要。
+关键是：
 
-把这两个 micro-fix 完成以后，就可以开始 V2-004，而且我认为那时不需要再对 V2-003 做第三次大规模重审，只需要针对这两个点做短复核即可。
+> **必须在 V2-020/V2-027 之前冻结 durable execution semantics。**
 
-因为现在 V2-004 要做的是把：
+### 分类
 
-V2-002 Action Gate
+```text
+FINDING = ARCH-FUTURE-001
+SEVERITY = HIGH
+BLOCKS_P1 = NO
+MUST_RESOLVE_BY = P6
+```
+
+---
+
+# 十七、长期 Memory/RAG 有一个“实现责任”空隙
+
+当前设计原则非常正确：
+
+```text
+Canon
+→ Context Compiler
+→ optional Retrieval
+```
+
+但目前任务表里明确存在：
+
+```text
+V2-018 Context Compiler
+```
+
+却没有非常明确的独立：
+
+```text
+Retrieval Index / Memory Adapter
+```
+
+实施责任。
+
+这不要求现在增加 Vector DB。
+
+事实上现在增加：
+
+```text
+Milvus
+Qdrant
+Neo4j
+GraphRAG
+```
+
+都太早。
+
+但至少应该在 V2-018 明确：
+
+```text
+RetrievalSource interface
+```
+
+以及：
+
+```text
+retrieved information has:
+source
+scope
+version
+temporal validity
+role visibility
+content hash
+```
+
+而且：
+
+```text
+RetrievalSource
+!= TruthSource
+```
+
+建议：
+
+```text
+V2-018:
+Context Compiler owns selection
+
+Optional Retrieval Adapter:
+pluggable source
+
+Canon remains authority
+```
+
+### 分类
+
+```text
+FINDING = ARCH-FUTURE-002
+SEVERITY = MEDIUM-HIGH
+BLOCKS_P1 = NO
+MUST_RESOLVE_BY = P5
+```
+
+---
+
+# 十八、Reference-learning 放在 P10 是总体正确，但存在一个晚期集成风险
+
+现在路线是：
+
+```text
+P1–P9
+先证明核心生产系统
+
+P10
+再加入 Genesis + Reference Intelligence
+```
+
+这个顺序总体上是正确的。
+
+因为否则很容易重新陷入：
+
+```text
+爬小说
+分析小说
+学风格
+做 embedding
+做 Agent
+```
+
+但基础生产链还不能稳定写一章。
+
+不过 Reference 模式是最终产品的核心模式之一。
+
+如果一直到 P10 才第一次验证它与：
+
+```text
+Context
+Planning
+Canon
+Workflow
+```
+
+之间的接缝，有可能太晚才发现接口不兼容。
+
+建议不是提前实现 P10。
+
+而是在 P5/P6 增加一个极小的：
+
+```text
+Reference Seam Contract Test
+```
+
+证明：
+
+```text
+Reference-derived abstract signal
+        ↓
+Typed Artifact
+        ↓
+Planning / Context
+
+NOT:
+raw reference text
+        ↓
+Writer
+```
+
+且绝不能拥有：
+
+```text
+Canon write authority
+```
+
+### 分类
+
+```text
+FINDING = ARCH-FUTURE-003
+SEVERITY = MEDIUM
+BLOCKS_P1 = NO
+```
+
+---
+
+# 十九、P13 / P14 延迟细化是合理的，但需要提前冻结几个不变量
+
+当前：
+
+```text
+P13 Reader / Market Feedback
+P14 300+ / Million-word
+```
+
+都没有具体任务。
+
+我认为这是合理的。
+
+因为现在假装知道：
+
+```text
+2027 年市场信号算法
+百万字具体阈值
+ReaderSignal 最终 Schema
+```
+
+没有意义。
+
+但应该现在冻结几个架构不变量：
+
+```text
+ReaderSignal != Canon Fact
+
+MarketSignal != Genre Hard Rule
+
+MarketSignal can propose policy change
+but cannot directly mutate story state
+
+Policy promotion must be versioned
+
+300+ chapter debt must remain observable
+
+Historical accepted Canon cannot be rewritten
+because market preference changed
+```
+
+这足够。
+
+不用现在设计 P13/P14 实现。
+
+---
+
+# 二十、当前最大的管理风险已经变成“过度治理”
+
+P0 的治理系统已经非常强。
+
+现在有：
+
+```text
+execution packets
+handoff
+evidence
+CI
+negative tests
+architecture fitness
+anti-weakening
+protected branch
+remediation register
+authority hierarchy
+```
+
+继续增加更多治理层的收益已经很低。
+
+P1 开始之后最危险的事情反而是：
+
+```text
+每一个业务任务
+↓
+再开发一套治理协议
+↓
+再审核治理协议
+↓
+再修治理工具
+↓
+业务迟迟不开始
+```
+
+因此我建议从 P1 开始采用一个原则：
+
+> **除非真实失败证明现有治理不足，否则不新增治理机制。**
+
+治理应该开始进入“稳定平台期”。
+
+接下来项目时间应该明显转向：
+
+```text
+Narrative
+Canon
+Genre
+Planning
+Context
+Real generation
+Reading
+```
+
+---
+
+# 二十一、P1 的最大技术风险反而是“过度建模”
+
+V2-005～008 很容易做成一个巨大的：
+
+```text
+Universal Story Ontology
+```
+
+这是不必要的。
+
+P1 应严格实现：
+
+```text
+minimum sufficient narrative model
+```
+
+只解决：
+
+```text
+Identity
+Alias
+Character
+Relationship
+Knowledge
+Belief
+Event
+Timeline
+Promise
+NarrativeDelta
+```
+
+不要现在加入：
+
+```text
+emotion graph
+social graph engine
+motivation ontology
+personality psychology system
+dramatic tension taxonomy
+30种角色属性
+100种事件类型
+```
+
+这些应等真实章节暴露缺口。
+
+正确原则：
+
+> **Domain model should be driven by invariants, not by imagination.**
+
+---
+
+# 二十二、P2 也要防止“Event Sourcing Everything”
+
+当前：
+
+```text
+Canon events
+projection
+receipt
+rebuild
+```
+
+方向正确。
+
+但必须保持边界。
+
+应该 Event Source 的是：
+
+```text
+accepted canonical state changes
+```
+
+不应该把所有东西都 event-source：
+
+```text
+retrieval hit
+token count
+temporary diagnosis
+UI click
+model thought
+cache entry
+```
+
+否则 P2 会迅速膨胀。
+
+建议坚持：
+
+```text
+Authoritative history → durable
+Derived observations → rebuildable
+Diagnostics → evidence store
+Cache → disposable
+```
+
+---
+
+# 二十三、架构当前最大的“能力不对称”是：非常擅长防错，但还没有证明“会写得好看”
+
+这是整个项目今后必须警惕的地方。
+
+当前系统非常善于避免：
+
+```text
+人物突然改名
+死人复活
+知识穿帮
+题材污染
+Timeline 冲突
+状态漂移
+重复提交
+```
+
+这解决的是：
+
+> **不要写错。**
+
+但商业小说还要求：
+
+```text
+人物欲望
+选择
+代价
+悬念
+兑现
+惊喜
+节奏
+声音
+情绪
+新鲜感
+继续阅读欲
+```
+
+也就是：
+
+> **为什么读者愿意继续看。**
+
+当前规划已经意识到这个问题，因此没有把 Q0–Q3 当文学质量分。
+
+这是正确的。
+
+但一定要执行现在已经写进计划的一件事：
+
+### P5/P6 一旦可以生成真实候选正文，就开始极小规模真人读稿
+
+不要等到 P8 才第一次有人读。
+
+可以是：
+
+```text
+2–3 chapters
+```
+
+不作为正式 Gate。
+
+只作为：
+
+```text
+PRODUCT LEARNING SIGNAL
+```
+
+目的不是证明成功。
+
+而是尽早发现：
+
+```text
+技术上完美
+但小说非常无聊
+```
+
+这种问题。
+
+---
+
+# 二十四、与当前外部优秀项目相比
+
+当前公开的 InkOS 已经进入统一 Harness、Studio/TUI/CLI 共用执行核心，并有：
+
+```text
+plan
+→ compose
+→ write
+→ review
+→ commit
+```
+
+以及状态投影和真实落盘结果作为完成依据。
+
+NousResearch autonovel 已经跑出了接近 8 万词作品，并实现 foundation、draft、review、revision、plateau detection 等生产链。
+
+所以如果比较：
+
+| 维度 | ANovelOS 当前状态 | 审核判断 |
+|---|---|---|
+| Canon 权威模型 | 设计非常强 | 优势 |
+| Fact / Knowledge / Belief 分离 | 很强 | 优势 |
+| Typed NarrativeDelta | 很强 | 优势 |
+| Genre 防污染 | 很强 | 优势 |
+| Commit/Permit 安全 | 很强 | 优势 |
+| Evidence / reproducibility | 很强 | 优势 |
+| Context 设计 | 很强 | 优势 |
+| Durable semantics | 方向强，决策待补 | 需补 |
+| 实际 Writer | 未实现 | 明显落后 |
+| 实际多章作品 | 未实现 | 明显落后 |
+| 人类阅读证据 | 未产生 | 未验证 |
+| Product Workbench | 延迟 | 有意落后 |
+| Reference-learning | P10 | 延迟验证 |
+| 真实市场数据 | P13 | 未验证 |
+
+因此目前不能说：
+
+> ANovelOS 已经是最强的 AI 小说系统。
+
+但可以说：
+
+> **从基础架构设计质量来看，它已经具备发展成非常强长篇生产系统的骨架；现在最大的差距已经不是架构想法，而是把这些设计变成真实小说生产结果。**
+
+---
+
+# 二十五、是否出现了项目方向偏移
+
+目前：
+
+```text
+MAJOR_DIRECTION_DRIFT = NO
+```
+
+特别值得肯定的是，项目已经主动避免了以下偏移：
+
+```text
+❌ Agent 越来越多
+❌ 模型越多越高级
+❌ RAG 代替 Canon
+❌ Vector DB 变成真相库
+❌ AI Judge 分数代替真人
+❌ 30 个 Genre Pack 提前铺开
+❌ 一开始就开发 SaaS
+❌ 一开始开发复杂 UI
+❌ 工程 PASS 冒充爆款概率
+❌ 自动重写直到分数变高
+```
+
+当前主线仍然是：
+
+```text
+Correctness
+→ Reliability
+→ Narrative continuity
+→ Reading quality
+→ Learning
+→ Market
+```
+
+这个顺序是对的。
+
+---
+
+# 二十六、真正需要防止的未来偏移
+
+现在最应该防的不是“功能不足”。
+
+而是：
+
+```text
+Governance inflation
+Ontology inflation
+Agent inflation
+Checker inflation
+RAG infrastructure inflation
+Genre-pack inflation
+Premature UI/productization
+```
+
+任何新增模块都应该回答：
+
+> 它解决了哪个已经观察到的长篇失败？
+
+如果回答只是：
+
+> 论文用了  
+> 其他项目用了  
+> 看起来高级  
+> 将来可能有用
+
+默认：
+
+```text
+DEFER
+```
+
+---
+
+# 二十七、P1 是否可以开始
+
+我的结论不是：
+
+```text
+STOP_AND_REDESIGN
+```
+
+而是：
+
+```text
+GO_WITH_SMALL_RECONCILIATION
+```
+
+正式建议：
+
+```text
+P0 ENGINEERING = ACCEPTED
+P0 ARCHITECTURE = ACCEPTED
+P0 VISION ALIGNMENT = ACCEPTED
+
+P0 AUTHORITY RECONCILIATION =
+REQUIRED BEFORE FIRST P1 PRODUCTION COMMIT
+
+P1 NARRATIVE KERNEL =
+APPROVED
+```
+
+---
+
+# 二十八、P1 前只做一次非常小的收口
+
+建议限定为以下 4 项，不扩张：
+
+1. **修正 README 当前状态**
+
+   更新为：
+
+   ```text
+   P0 VERIFIED
+   V2-001..004 CLOSED
+   G-P0 PASS
+   NEXT = P1 / V2-005
+   P0 baseline = b553b1b1...
+   ```
+
+2. **修正 `08_ROADMAP_AND_GATES.md` 当前状态说明**
+
+   让历史 initial state 与 current authoritative state 分开。
+
+3. **对 `remediation-register.yaml` 做一次 finding reconciliation**
+
+   只处理：
+   
+   ```text
+   P0-only
+   或
+   P0 responsibility already explicitly RESOLVED
+   ```
+   
+   的条目。
+
+   Cross-phase finding 不得因为 P0 完成而强制 CLOSED。
+
+4. **同步长期开发线**
+
+   当前：
+
+   ```text
+   dev_cc  = b553b1b1...
+   dev_gpt = 882d0cdf...
+   ```
+
+   如果 P1 要同时让 GPT / Claude 工作，则两条开发线必须共享明确的：
+
+   ```text
+   P1_BASELINE
+   ```
+
+   否则很快重新产生两个现实。
+
+---
+
+# 二十九、不要因此开启第二轮大型 P0 重构
+
+尤其不要再次做：
+
+```text
+Repository Hygiene 2
+Code Hygiene 2
+Governance Redesign
+Architecture Rewrite
+Plan v2.0 rewrite
+```
+
+没有证据支持这些动作。
+
+这次审核发现的主要问题都是：
+
+```text
+reconciliation
 +
-V2-003 Diff / Anti-Weakening
+future decision seams
+```
 
-变成：
+而不是基础架构失败。
 
-受保护远端硬门禁
+---
 
-。
+# 三十、最终判断
 
-如果 PREPARE 还能绕过动作模型，或者 collection-control 仍能通过同 AI 技术处置假绿，那么把当前规则直接接进 CI，会把漏洞一并固化进去。
+如果问：
 
-当前项目总体判断
+> “目前架构够不够优秀？”
 
-截至 main@882d0cdf：
+答案是：
 
-P0 engineering foundation       Strong
-V2-001                           IMPLEMENTED
-V2-002                           IMPLEMENTED
-V2-003                           IMPLEMENTED + 2 micro hardening items
-V2-004                           OPEN
+**作为尚未进入业务实现的长篇 AI 小说 OS 架构基线，已经足够优秀，可以继续实施，不需要推倒重来。**
 
-G-P0                             NOT_VERIFIED
-M0                               NOT_VERIFIED
-P1                               FORBIDDEN
+如果问：
 
-项目整体方向没有偏，架构边界没有失控，测试没有发现明显“为通过而降标”，V2-003 本轮四项整改也是真修，不是文档式修复。
+> “是否已经证明最终目标能实现？”
 
-现在距离可以正式开始 V2-004，已经只剩两个很小但值得修掉的治理漏洞。
+答案是：
+
+**没有。**
+
+真正的证明链还在后面：
+
+```text
+P1
+Narrative model correct
+
+P2
+Canon reliable
+
+P3
+Genre isolation works
+
+P4
+Planning/contracts useful
+
+P5
+Context/model actually work
+
+P6
+Can generate real chapter
+
+P7
+Can detect/repair failures
+
+P8
+10 chapters + human reading
+
+P9
+30 chapters + continuation decision
+
+P10
+Creative/reference genesis
+
+P11
+Real calibration
+
+P12
+100 chapters
+
+P13
+Market feedback
+
+P14
+300+ / million-word
+```
+
+---
+
+# Final Audit Verdict
+
+```text
+ANOVELOS_V2_P0_FINAL_ARCHITECTURE_REVIEW
+
+BASELINE =
+b553b1b1de050e9b2a9073ad5a6fad7cb415779c
+
+P0_ENGINEERING = VERIFIED
+P0_CI = PASS
+P0_CODEBASE_HEALTH = GOOD
+
+VISION_ALIGNMENT = STRONG
+ARCHITECTURE_DIRECTION = STRONG
+CORE_DOMAIN_DIRECTION = STRONG
+CANON_DIRECTION = STRONG
+GENRE_DIRECTION = STRONG
+CONTEXT_DIRECTION = STRONG
+QUALITY_DIRECTION = STRONG
+CERTIFICATION_DIRECTION = STRONG
+
+MAJOR_ARCHITECTURAL_DRIFT = NONE
+
+REARCHITECTURE_REQUIRED = NO
+P0_REOPEN_REQUIRED = NO
+
+IMMEDIATE_FINDINGS =
+P0-AUDIT-001 STATE_DOCUMENT_DRIFT
+P0-AUDIT-002 FINDING_REGISTRY_RECONCILIATION
+
+FUTURE_ARCHITECTURE_OBLIGATIONS =
+ARCH-FUTURE-001 DURABLE_WORKFLOW_SEMANTICS
+ARCH-FUTURE-002 RETRIEVAL_MEMORY_ADAPTER_BOUNDARY
+ARCH-FUTURE-003 REFERENCE_MODE_SEAM_TEST
+
+PRIMARY_EXECUTION_RISK =
+OVER_GOVERNANCE +
+OVER_MODELING +
+DELAYED_PRODUCT_LEARNING
+
+READY_FOR_P1 =
+YES_AFTER_TARGETED_AUTHORITY_RECONCILIATION
+
+NEXT_CORE_TASK =
+V2-005
+```
+
+## 最核心的一句话
+
+> **ANovelOS V2 现在没有架构性走偏。P0 最大成果不是代码量，而是把 V1 的“Prompt 驱动写小说”重新设计成了“Canon + Contract + Context + Workflow + Verification 驱动的长期小说生产系统”。这个方向值得继续。现在不要继续设计更多系统，而要尽快让这套架构开始接受真实小说正文的检验。**
