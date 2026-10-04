@@ -374,8 +374,8 @@ def add_alias(
 **Postconditions**:
 - Returns new EntityIdentity
 - entity_id, project_id, canonical_name UNCHANGED
-- `alias` added to aliases (after normalization)
-- If alias already in aliases, no change (idempotent)
+- `alias` (after outer whitespace trim) added to aliases set
+- If alias already in aliases (compared via lookup normalization), no change (idempotent)
 
 **Side Effects**: None
 
@@ -404,7 +404,7 @@ def remove_alias(
 **Postconditions**:
 - Returns new EntityIdentity
 - entity_id, project_id, canonical_name UNCHANGED
-- `alias` removed from aliases (after normalization)
+- `alias` (after trim, compared via lookup normalization) removed from aliases
 - If alias not in aliases, no change (idempotent)
 
 **Side Effects**: None

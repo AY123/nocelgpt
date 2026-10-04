@@ -66,7 +66,7 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - No ambiguous "maybe" items
 - Deferred items have clear downstream owners
 
-**Conclusion**: Scope is frozen and unambiguous.
+**Conclusion**: Scope is defined, stable, and unambiguous.
 
 ---
 
@@ -146,7 +146,7 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - Current State Audit complete (0 conflicts)
 - Task Refinement complete (all decisions made)
 - Implementation Plan ready (8 steps defined)
-- Test Matrix complete (38 test cases)
+- Test Matrix complete (51 test cases: TC-005-001 through TC-005-051)
 
 **Conclusion**: Contract documentation work complete. Awaiting final independent review approval.
 
@@ -226,7 +226,7 @@ All recommendations from refinement § 15 have been adopted:
 - ✅ **D-6**: Optional entity_type field (ADOPTED)
 - ✅ **D-7**: Minimal normalization (ADOPTED)
 
-**Status**: All design decisions frozen in implementation contract.
+**Status**: Design decisions documented and stable in implementation contract, pending independent approval.
 
 ---
 
@@ -288,7 +288,7 @@ All recommendations from refinement § 15 have been adopted:
 
 ### Test Coverage
 
-✅ **Minimum 38 test cases** defined in matrix  
+✅ **Current: 51 test cases** defined in matrix (expanded from original 38)  
 ✅ **All 10 acceptance criteria** mapped to tests  
 ✅ **All 6 negative scenarios** covered  
 ✅ **All 8 invariants** verified by tests  
@@ -344,7 +344,7 @@ All recommendations from refinement § 15 have been adopted:
 **Standards**:
 - ✅ Module docstring complete
 - ✅ Function docstrings with examples
-- ✅ Contract document frozen
+- ✅ Contract documentation complete
 - ✅ Implementation plan step-by-step
 
 ---
@@ -364,7 +364,7 @@ All recommendations from refinement § 15 have been adopted:
 - V2-006 uses identity types in Character schema
 - AR-03 closed when V2-006 demonstrates correct composition
 
-**Evidence**: TC-005-001 through TC-005-038 demonstrate identity fields work
+**Evidence**: TC-005-001 through TC-005-051 demonstrate identity fields work
 
 ---
 
@@ -414,7 +414,7 @@ critical_path:
 - Deferred items have owners
 - No "TBD" or "maybe" items
 
-**Certified**: Scope is frozen and unambiguous.
+**Certified**: Scope is defined, stable, and unambiguous.
 
 ---
 
@@ -427,7 +427,7 @@ critical_path:
 - v1.1.0 (Revision): Addressed 10 contract deficiencies
 
 **Changes in v1.1.0**:
-1. EntityId format frozen to UUID v4 (standard library, no fallback)
+1. EntityId format unified to UUID v4 (standard library, no fallback)
 2. Determinism boundaries clarified (generation vs resolution)
 3. ProjectId runtime validation added
 4. Resolution priority explicit (unified candidate set)
@@ -524,7 +524,7 @@ The following documents have been created and are ready for consumption:
 1. **V2-005_CURRENT_STATE_AUDIT.md** (Current state analysis)
 2. **V2-005_TASK_REFINEMENT.md** (Scope and requirements)
 3. **V2-005_IMPLEMENTATION_CONTRACT.md** (Binding implementation spec)
-4. **V2-005_TEST_CONTRACT_MATRIX.md** (38 test cases)
+4. **V2-005_TEST_CONTRACT_MATRIX.md** (51 test cases: TC-005-001 through TC-005-051)
 5. **V2-005_IMPLEMENTATION_PLAN.md** (8-step execution plan)
 6. **V2-005_DECISION_GATES.md** (This document - readiness certification)
 
@@ -539,13 +539,13 @@ The following documents have been created and are ready for consumption:
 **V2-005 (Core Entity IDs and Alias Resolution)** has completed comprehensive task refinement:
 
 ✅ **Authority**: Clear and unambiguous  
-✅ **Scope**: Frozen (in/out explicit)  
+✅ **Scope**: Defined and stable (in/out explicit)  
 ✅ **Contract**: Documentation complete, binding upon approval  
 ✅ **Documentation**: Complete (contract documented, test matrix specified)  
 ⏳ **Review**: Pending (independent review in progress)  
 ⏳ **Implementation**: Blocked (awaiting review approval)  
 ✅ **ADR**: Not required  
-✅ **Tests**: Specified (38+ tests)  
+✅ **Tests**: Specified (51 tests)  
 ✅ **Risks**: Mitigated  
 ✅ **Quality**: High bar established  
 

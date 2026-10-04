@@ -1,6 +1,8 @@
 # V2-005 Storage Model - Three-Layer Semantics
 
-**Frozen Specification** (H2-05)
+**Proposed Converged Specification** (H2-05)
+
+**Status**: REVISED / INDEPENDENT_REVIEW_PENDING
 
 ---
 
@@ -58,10 +60,14 @@ Computed at query time only (never persisted).
 |-------|---------------|------------|
 | `"  张三  "` | `"张三"` | `"张三"` |
 | `"Zhang  San"` | `"Zhang  San"` | `"zhang san"` |
-| `"李　明"` | `"李明"` | `"李明"` |
-| `"  John　Doe  "` | `"John Doe"` | `"johndoe"` |
+| `"李　明"` | `"李　明"` | `"李明"` |
+| `"  John　Doe  "` | `"John　Doe"` | `"johndoe"` |
+| `"  老张　  "` | `"老张　"` | `"老张"` |
 
-**Note**: U+3000 (full-width space) is classified as whitespace by Python, so `str.strip()` removes it from edges.
+**Note**: U+3000 (full-width space) is classified as whitespace by Python.
+- **Edge U+3000**: Removed by `str.strip()` (e.g., `"  老张　  "` → `"老张　"`)
+- **Internal U+3000**: Preserved in stored display (e.g., `"李　明"` → `"李　明"`)
+- **Lookup normalization**: All U+3000 deleted (e.g., `"李　明"` → `"李明"`)
 
 ---
 
@@ -76,8 +82,9 @@ stored canonical_name: "John"
 ### add_alias
 ```python
 input: "  老张　  "
-stored in aliases: "老张"
-# Note: .strip() removes both ASCII space and U+3000 (which is whitespace)
+stored in aliases: "老张　"
+# Note: strip() removes leading/trailing whitespace including U+3000
+# Internal U+3000 preserved in stored display value
 ```
 
 ### resolve_alias
@@ -102,4 +109,4 @@ match against: normalize_for_lookup(stored_canonical_name)
 
 ---
 
-**Status**: FROZEN for V2-005
+**Status**: Proposed converged semantics for V2-005, pending independent review approval

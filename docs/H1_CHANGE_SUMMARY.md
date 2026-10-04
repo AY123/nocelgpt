@@ -1,3 +1,10 @@
+HISTORICAL — SUPERSEDED — NON-NORMATIVE
+
+**Applicable baseline**: H1 phase
+**Superseded by**: H2/H3 remediation evidence
+
+---
+
 # H1 Focused Remediation - Change Summary
 
 **Branch**: work/h1-focused-remediation  

@@ -599,7 +599,7 @@ def resolve_alias(
 3. Verify schema is valid JSON Schema Draft 2020-12
 
 **8.2 Complete Contract Tests**:
-1. Ensure all 38 test cases implemented (TC-005-001 through TC-005-038)
+1. Ensure all 51 test cases implemented (TC-005-001 through TC-005-051)
 2. Add test fixtures (F1, F2, F3)
 3. Add assertion helpers (H1, H2)
 4. Verify all AC-005-01 through AC-005-10 covered
@@ -626,7 +626,7 @@ def resolve_alias(
 5. Verify no prohibited imports
 
 **Exit Criteria**:
-- All 38+ tests implemented and passing
+- All 51 tests implemented and passing
 - JSON Schema valid and tested
 - Architecture boundaries enforced
 - Type checking passes
@@ -727,7 +727,7 @@ If any step fails:
 V2-005 implementation complete when:
 
 ✅ **All 8 steps completed**  
-✅ **All tests pass (38+ test cases)**  
+✅ **All tests pass (51 test cases: TC-005-001 through TC-005-051)**  
 ✅ **Architecture tests pass**  
 ✅ **Type checking passes (mypy --strict)**  
 ✅ **JSON Schema validates**  

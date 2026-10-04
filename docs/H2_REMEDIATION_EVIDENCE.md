@@ -1,7 +1,31 @@
 # V2-005 H2 Remediation Evidence Report
 
+**CORRECTION AFTER INDEPENDENT DELTA REVIEW**
+
+The original H2 remediation evidence claimed changes that did not occur in commit 40cf433.
+
+**Claimed but NOT executed in 40cf433**:
+- §3.3 add_alias "after normalization" → "after trim" (NOT changed)
+- §3.4 remove_alias "after normalization" → "after trim" (NOT changed)
+
+**Actually executed in 40cf433**:
+- H2-R01: DECISION_GATES authorization cleanup (partial)
+- H2-R02: DECISION_GATES ULID cleanup (complete)
+- H2-R03: STORAGE_MODEL.md example corrections (partial)
+- H2-R04: Historical marking (partial)
+
+**H3 remediation (new SHA follows) completes**:
+- H2-R01: Remaining frozen/ready declarations
+- H2-R03: CONTRACT §3.3/§3.4 storage terminology
+- H2-R04: Historical headers, test count convergence
+
+---
+
+# Original H2 Evidence Report (40cf433)
+
 **Remediation Authorization**: Document-only fixes for H2-R01 through H2-R04  
 **Baseline**: e00b035c9789061983463a49b54e8fe87e26c011  
+**New SHA**: 40cf433ebedb5858070ae7a8e851375d0a22188d  
 **Date**: 2026-10-04
 
 ---
