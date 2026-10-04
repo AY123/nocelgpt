@@ -1,0 +1,45 @@
+{
+  "scope": "V2-004 dedicated project runner verifier only",
+  "prior_added_cases": 58,
+  "this_batch_added_cases": 13,
+  "total_added_vs_1449": 71,
+  "focused_cases_including_original_positive": 72,
+  "positive_controls": [
+    "configured_protection_metadata_cannot_self_certify_permission_boundary",
+    "trusted_project_runner_retains_additional_nonempty_job_and_runner_tags",
+    "trusted_project_runner_accepts_runner_tag_superset"
+  ],
+  "negative_categories": {
+    "each_property_and_contradictory_metadata": "runner_type/is_shared/locked/run_untagged/access_level strict fields",
+    "project_membership": "wrong/multiple/duplicate/missing/null/malformed IDs",
+    "missing_fields": "7 runner fields and dedicated policy/job tags",
+    "tags": "empty/mismatch/blank/type errors; entire tag set on first and last gate",
+    "per_actual_runner_binding": "runner A cannot borrow runner B tags",
+    "malformed_response": "invalid JSON/UTF8, null/string/list response",
+    "identity": "missing/wrong/bool runner ID and runner outside fixed policy"
+  },
+  "fail_closed_assertions": [
+    "source_status remains PASS for bad runner responses",
+    "trust_status=UNVERIFIED and nonempty issues",
+    "permission_status=UNKNOWN",
+    "acceptance_eligible=false",
+    "overall cannot become PASS"
+  ],
+  "a_k_review": {
+    "a": "exclusive intended project membership",
+    "b": "ref_protected",
+    "c": "locked=true and project_type",
+    "d": "run_untagged=false strict boolean",
+    "e": "fixed policy tag present on runner",
+    "f": "fixed tag required by every job",
+    "g": "every job tag covered by its actual runner; no union across runners",
+    "h": "instance/group/shared refused by current dedicated-project route",
+    "i": "missing/null trust fields refused",
+    "j": "malformed runner API responses refused",
+    "k": "all mismatches produce trust issues and never acceptance"
+  },
+  "limitations": [
+    "synthetic API controls are not real runner execution or human independent approval",
+    "malformed policy shapes remain fail closed; no source-fact semantic expansion in this batch"
+  ]
+}
