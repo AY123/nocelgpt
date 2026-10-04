@@ -948,13 +948,13 @@ def test_identity_module_no_provider_imports():
 
 **Risk**: Excessive debate on ID format.
 
-**Mitigation**: **Simple, boring choice**.
+**Mitigation**: **Simple, standard choice**.
 
-**Recommendation**: ULID (Universally Unique Lexicographically Sortable Identifier)
-- String format (no UUID bytes)
-- Sortable (timestamp prefix)
-- No collision
-- Human-readable (ish)
+**Recommendation**: UUID v4 (RFC 4122)
+- Standard library: `uuid.uuid4()`
+- Format stable: 36-character lowercase with hyphens
+- No collision risk
+- No external dependencies
 
 **Decision**: UUID v4 only (standard library, no external dependency).
 
@@ -1050,13 +1050,13 @@ Canonical name = one more alias; no special resolution priority.
 
 **Reason**: Consistent semantics; prevents hidden ordering.
 
-### D-4: ULID for EntityId
+### D-4: UUID v4 for EntityId
 
 **Recommendation**: ✅ **ADOPT**
 
-Use ULID (or UUID v4 fallback) for entity_id format.
+Use UUID v4 (RFC 4122) for entity_id format.
 
-**Reason**: Opaque, sortable, collision-resistant.
+**Reason**: Standard library support, format stability, no external dependencies.
 
 ### D-5: ProjectId Defined in V2-005
 
@@ -1108,7 +1108,7 @@ Whitespace trim + ASCII case folding only.
 ✅ **EntityType**: Optional field  
 ✅ **Rename policy**: Automatic alias  
 ✅ **Collision policy**: Allowed, AMBIGUOUS result  
-✅ **ID format**: ULID recommended  
+✅ **ID format**: UUID v4 standard  
 
 ---
 
@@ -1139,7 +1139,7 @@ Whitespace trim + ASCII case folding only.
 - Name change ≠ new entity → Rename preserves ID ✅
 
 **Deviations from historical**:
-- Historical suggested `char_01H...` format → V2-005 uses ULID (reason: simpler, no type prefix)
+- UUID v4 selected for stable format (reason: standard library, no dependencies)
 - Historical had `authority` field → V2-005 defers to Canon layer (V2-010)
 
 **Deviations justified**: Simpler V2-005 scope; Canon layer handles authority.

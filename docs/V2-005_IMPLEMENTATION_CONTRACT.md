@@ -54,8 +54,10 @@ ENTITY_ID_PATTERN = re.compile(
 )
 
 def is_valid_entity_id(s: str) -> bool:
-    return bool(ENTITY_ID_PATTERN.match(s))
+    return ENTITY_ID_PATTERN.fullmatch(s) is not None
 ```
+
+**Usage Note**: Use `fullmatch()` to reject trailing/leading whitespace or newlines.
 
 **Rationale for UUID v4**:
 - Standard library support (no external dependency)
@@ -283,7 +285,7 @@ def create_identity(
 - Returns new EntityIdentity with fresh entity_id
 - entity_id is unique (never previously issued)
 - aliases = frozenset() (empty)
-- canonical_name stored after normalization
+- canonical_name stored as provided (after outer whitespace trim)
 
 **Side Effects**: None (pure function, in-memory only)
 
@@ -515,7 +517,7 @@ else:  # len(candidates) >= 2
 - No iteration order dependency (uses set)
 - No database row order dependency (in-memory)
 - No random selection
-- Same input + state → same output (bitwise identical)
+- Same input + state → same output (value equality)
 
 **Side Effects**: None (read-only)
 
@@ -536,11 +538,14 @@ def normalize_for_lookup(s: str) -> str:
 
 1. Strip leading/trailing whitespace:
    - ASCII space (U+0020)
-   - Full-width space (U+3000) - delete, not fold to ASCII space
+   - Full-width space (U+3000) - delete entirely
 
-2. Collapse internal consecutive ASCII spaces to single space
+2. Delete all internal full-width spaces:
+   - Apply `s.replace("　", "")` to remove U+3000
 
-3. ASCII lowercase:
+3. Collapse internal consecutive ASCII spaces to single space
+
+4. ASCII lowercase:
    - If `s.isascii()`: return `s.lower()`
    - Else: return `s` unchanged (preserve Chinese case)
 
@@ -853,7 +858,7 @@ Value semantics throughout.
 **EntityIdentity**:
 ```json
 {
-  "entity_id": "01HQZQZQZQZQZQZQZQZQZQ",
+  "entity_id": "550e8400-e29b-41d4-a716-446655440000",
   "project_id": "proj_01",
   "canonical_name": "张三",
   "aliases": ["老张", "张总"],
@@ -874,12 +879,22 @@ Value semantics throughout.
 **Draft**: JSON Schema Draft 2020-12
 
 **Validation Requirements**:
-- entity_id: string, minLength 1
+- entity_id: string, must match UUID v4 pattern
 - project_id: string, minLength 1
 - canonical_name: string, minLength 1
 - aliases: array of strings, uniqueItems true
 - entity_type: string or null
 - additionalProperties: false (closed schema)
+
+**UUID v4 Pattern** (for entity_id):
+```json
+{
+  "entity_id": {
+    "type": "string",
+    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+  }
+}
+```
 
 ### 9.3 Round-Trip Guarantee
 
@@ -888,7 +903,7 @@ identity = create_identity(...)
 json_str = serialize_to_json(identity)
 restored = deserialize_from_json(json_str)
 
-assert identity == restored  # Bitwise equality
+assert identity == restored  # Value equality
 ```
 
 ### 9.4 Storage Representation

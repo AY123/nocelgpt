@@ -19,15 +19,22 @@ V2-005 task refinement has completed **contract revision (v1.1.0)**. The initial
 - **v1.0.0** (Initial): Prematurely declared REFINEMENT_COMPLETE / READY
 - **v1.1.0** (Revision): REVISED / INDEPENDENT_REVIEW_PENDING
 
-**Critical Finding**: Contract revision addresses foundational issues that would affect downstream tasks (V2-006, V2-007, V2-008, V2-009). Independent review required before freezing contract.
+**Status Change**:
+- **v1.0.0** (Initial): Prematurely declared REFINEMENT_COMPLETE / READY
+- **v1.1.0** (Revision): REVISED / INDEPENDENT_REVIEW_PENDING
+- **Current**: Awaiting final independent review approval
+
+**Note**: The refinement work is complete, but contract approval is pending final review.
 
 ---
 
 ## Executive Summary
 
-V2-005 task refinement is **COMPLETE**. All design decisions have been made, all contracts frozen, and implementation is ready to begin with zero blockers.
+V2-005 task refinement work is complete and under final review. Design decisions have been documented and are awaiting approval.
 
 **Critical Finding**: V2-005 establishes the foundational identity layer for ANovelOS V2. This is the **first domain primitive** - all subsequent narrative capabilities (Character, Event, Timeline, NarrativeDelta) depend on stable EntityId.
+
+**Current Status**: REVISED / INDEPENDENT_REVIEW_PENDING
 
 ---
 
@@ -73,7 +80,7 @@ V2-005 task refinement is **COMPLETE**. All design decisions have been made, all
 - **Negative Scenarios**: 6 anti-patterns (NS-1 through NS-6)
 - **Design Decisions**: 7 recommendations (all adopted)
 
-**Conclusion**: Scope frozen, requirements clear, design decisions made.
+**Conclusion**: Scope defined, requirements documented, design decisions recorded for review.
 
 ---
 
@@ -92,7 +99,7 @@ V2-005 task refinement is **COMPLETE**. All design decisions have been made, all
 - **Determinism**: No order dependency, no randomness
 - **Anti-Patterns**: 6 prohibited patterns documented
 
-**Conclusion**: Contract is complete, frozen, and ready for binding implementation.
+**Conclusion**: Contract documentation complete, awaiting final review and approval.
 
 ---
 
@@ -144,7 +151,9 @@ V2-005 task refinement is **COMPLETE**. All design decisions have been made, all
 - ✅ **V2_005_AUTHORITY_CLEAR**: YES
 - ✅ **V2_005_SCOPE_CLEAR**: YES
 - ✅ **V2_005_CONTRACT_FROZEN**: YES
-- ✅ **V2_005_IMPLEMENTATION_READY**: YES
+- ✅ **V2_005_REFINEMENT_WORK**: COMPLETE
+- ⏳ **V2_005_CONTRACT_APPROVAL**: PENDING_REVIEW
+- ⏳ **V2_005_IMPLEMENTATION_READY**: BLOCKED_ON_APPROVAL
 - ❌ **V2_005_ADR_REQUIRED**: NO (local design, reversible, standard patterns)
 
 **Conclusion**: All gates passed. Zero blockers. Ready for immediate implementation.
@@ -293,7 +302,7 @@ V2-005 task refinement is **COMPLETE**. All design decisions have been made, all
 ### Documentation Quality
 - Module docstring complete
 - Function docstrings with examples
-- Contract document frozen
+- Contract documents under review
 - Implementation plan step-by-step
 
 ---
@@ -368,9 +377,9 @@ V2-005 task refinement is **COMPLETE**. All design decisions have been made, all
 
 ## Final Recommendation
 
-**Status**: ✅ **REFINEMENT COMPLETE**
+**Status**: REVISED / INDEPENDENT_REVIEW_PENDING
 
-**Authorization**: ✅ **READY FOR IMPLEMENTATION**
+**Recommendation**: Proceed with final independent review
 
 **Next Steps**:
 1. **User reviews and approves** refinement artifacts
@@ -433,7 +442,7 @@ Per contract requirements (Task Refinement § 29):
 
 > "本轮完成后：STOP"
 
-**V2-005 refinement is COMPLETE.**
+**V2-005 refinement work is complete and under final review.**
 
 Awaiting user approval to proceed to implementation phase.
 
@@ -452,8 +461,9 @@ Awaiting user approval to proceed to implementation phase.
 
 **END OF V2-005 TASK REFINEMENT**
 
-**Status**: ✅ COMPLETE  
-**Recommendation**: ✅ READY FOR IMPLEMENTATION  
+**Status**: REVISED / INDEPENDENT_REVIEW_PENDING
+
+**Recommendation**: Awaiting final review approval  
 **Next Phase**: Implementation (upon approval)
 
 ---

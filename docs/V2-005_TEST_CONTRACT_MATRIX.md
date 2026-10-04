@@ -39,7 +39,7 @@
 | **TC-005-024** | Normalization ASCII case | lookup="john" matches canonical="John" | RESOLVED(entity) | NOT_FOUND | Normalization |
 | **TC-005-025** | Normalization Chinese case | lookup="张三" does NOT match "張三" (variants) | NOT_FOUND | False match | Normalization |
 | **TC-005-026** | Normalization full-width space | lookup="李　明" (U+3000) matches "李明" | RESOLVED(entity with canonical="李明") | NOT_FOUND | Normalization |
-| **TC-005-027** | Deterministic resolution - same input | Resolve "test" twice with identical state | result1 == result2 (bitwise) | Different results | Determinism |
+| **TC-005-027** | Deterministic resolution - same input | Resolve "test" twice with identical state | result1 == result2 (value equality) | Different results | Determinism |
 | **TC-005-028** | Ambiguous result unordered | AMBIGUOUS with candidates | isinstance(candidates, frozenset) | List with ordering | Determinism |
 | **TC-005-029** | No database order dependency | Mock registry with varying iteration order | Always AMBIGUOUS, never varies | Different entity on different calls | Determinism |
 | **TC-005-030** | Serialization round-trip | entity → JSON → entity' | entity == entity' | Data loss or corruption | Serialization |
@@ -169,7 +169,7 @@
 | INV-005-02 (Project isolation) | TC-005-019, TC-005-020, TC-005-035 | Assert no cross-project results |
 | INV-005-03 (Alias is not identity) | TC-005-013, TC-005-021 | Type system + resolution logic |
 | INV-005-04 (Explicit ambiguity) | TC-005-015, TC-005-021, TC-005-022, TC-005-036 | Assert AMBIGUOUS status, no arbitrary selection |
-| INV-005-05 (Determinism) | TC-005-027, TC-005-028, TC-005-029 | Multiple invocations, bitwise equality |
+| INV-005-05 (Determinism) | TC-005-027, TC-005-028, TC-005-029 | Multiple invocations, value equality |
 | INV-005-06 (Rename preservation) | TC-005-005 | Assert old name in aliases |
 | INV-005-07 (Canonical always valid) | TC-005-034 | Resolve entity's own canonical_name |
 | INV-005-08 (Immutability) | All operation tests | Assert operations return new objects |

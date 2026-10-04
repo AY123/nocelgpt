@@ -70,9 +70,9 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 
 ---
 
-### Gate 3: Contract Frozen
+### Gate 3: Contract Documentation Complete
 
-**Question**: Is the implementation contract complete and frozen?
+**Question**: Is the implementation contract documentation complete?
 
 **Status**: ✅ **YES**
 
@@ -85,31 +85,30 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - ✅ Error semantics defined
 - ✅ Serialization contract specified
 - ✅ Determinism contract specified
-- ✅ Test requirements specified (38+ tests)
+- ✅ Test requirements specified (51+ tests)
 - ✅ Anti-patterns documented
 
-**Frozen Items**:
-- Type signatures (cannot change)
-- Operation semantics (cannot change)
-- Invariants (must be preserved)
-- Test scenarios (must be covered)
+**Documented Items**:
+- Type signatures (documented)
+- Operation semantics (documented)
+- Invariants (documented)
+- Test scenarios (specified)
 
-**Flexible Items**:
+**Implementation Flexibility**:
 - Internal implementation (as long as contract satisfied)
-- ULID vs UUID choice (both acceptable)
 - Registry internal structure (interface fixed)
 
 **Evidence**: Implementation Contract document complete (§ 1-19)
 
-**Conclusion**: Contract is complete, frozen, and ready for binding implementation.
+**Conclusion**: Contract documentation complete, awaiting final review approval.
 
 ---
 
-### Gate 4: Implementation Ready
+### Gate 4: Implementation Authorization
 
-**Question**: Can implementation begin immediately without blockers?
+**Question**: Is implementation authorized?
 
-**Status**: ✅ **YES**
+**Status**: ⏳ **PENDING_REVIEW**
 
 **Prerequisites Satisfied**:
 - ✅ V2-001 closed (environment ready)
@@ -122,10 +121,15 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - ✅ Python 3.12.14 locked
 - ✅ Type checker available (mypy)
 - ✅ JSON Schema validator available
-- ✅ No external dependencies required (ULID optional, UUID fallback)
+
+**Resources Ready**:
+- ✅ Python 3.12.14 locked
+- ✅ Type checker available (mypy)
+- ✅ JSON Schema validator available
+- ✅ No external dependencies required (standard library uuid module)
 
 **Design Decisions Resolved**:
-- ✅ EntityId format: ULID (or UUID fallback)
+- ✅ EntityId format: UUID v4 (RFC 4122)
 - ✅ ProjectId: NewType, defined in V2-005
 - ✅ entity_type: Optional string field
 - ✅ Rename preservation: Automatic alias
@@ -145,7 +149,7 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - Implementation Plan ready (8 steps defined)
 - Test Matrix complete (38 test cases)
 
-**Conclusion**: Zero blockers. Implementation can start immediately.
+**Conclusion**: Contract documentation work complete. Awaiting final independent review approval.
 
 ---
 
@@ -169,7 +173,7 @@ V2-005 (Core Entity IDs and Alias Resolution) has completed contract revision (v
 - ✅ **No novel architectural choice** (identity primitives are conventional)
 
 **Key Decisions in V2-005**:
-1. **ULID for EntityId**: Standard choice, no trade-off (UUID fallback exists)
+1. **EntityId format**: UUID v4 only - standard choice, no trade-off
 2. **Automatic alias on rename**: Local domain decision, easily changed
 3. **Canonical collision allowed**: Conservative choice (explicit ambiguity)
 4. **Minimal normalization**: Defers complexity, not architectural
@@ -218,7 +222,7 @@ All recommendations from refinement § 15 have been adopted:
 - ✅ **D-1**: Automatic alias on rename (ADOPTED)
 - ✅ **D-2**: Canonical name collision allowed (ADOPTED)
 - ✅ **D-3**: No implicit priority for canonical name (ADOPTED)
-- ✅ **D-4**: ULID for EntityId (ADOPTED)
+- ✅ **D-4**: UUID v4 for EntityId (ADOPTED)
 - ✅ **D-5**: ProjectId defined in V2-005 (ADOPTED)
 - ✅ **D-6**: Optional entity_type field (ADOPTED)
 - ✅ **D-7**: Minimal normalization (ADOPTED)
@@ -534,7 +538,9 @@ The following documents have been created and are ready for consumption:
 ✅ **Authority**: Clear and unambiguous  
 ✅ **Scope**: Frozen (in/out explicit)  
 ✅ **Contract**: Complete and binding  
-✅ **Implementation**: Ready (zero blockers)  
+✅ **Documentation**: Complete (contract documented, test matrix specified)  
+⏳ **Review**: Pending (independent review in progress)  
+⏳ **Implementation**: Blocked (awaiting review approval)  
 ✅ **ADR**: Not required  
 ✅ **Tests**: Specified (38+ tests)  
 ✅ **Risks**: Mitigated  
