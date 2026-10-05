@@ -24,7 +24,7 @@ Baseline: 4248258339fa1c90df1c9e34572df24abe13330d
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import NewType
+from typing import Literal, NewType
 
 # --- Type Aliases (Step 2) ---
 
@@ -77,11 +77,11 @@ class ResolvedResult:
 
     Attributes:
         status: Always ResolutionStatus.RESOLVED
-        identity: The resolved entity identity
+        entity_id: The resolved entity identifier
     """
 
-    status: ResolutionStatus
-    identity: EntityIdentity
+    status: Literal[ResolutionStatus.RESOLVED]
+    entity_id: EntityId
 
 
 @dataclass(frozen=True)
@@ -91,11 +91,9 @@ class NotFoundResult:
 
     Attributes:
         status: Always ResolutionStatus.NOT_FOUND
-        alias: The alias that was not found
     """
 
-    status: ResolutionStatus
-    alias: str
+    status: Literal[ResolutionStatus.NOT_FOUND]
 
 
 @dataclass(frozen=True)
@@ -105,12 +103,10 @@ class AmbiguousResult:
 
     Attributes:
         status: Always ResolutionStatus.AMBIGUOUS
-        alias: The ambiguous alias
-        candidates: Entity IDs of all matching entities
+        candidates: Entity IDs of all matching entities (unordered, ≥2)
     """
 
-    status: ResolutionStatus
-    alias: str
+    status: Literal[ResolutionStatus.AMBIGUOUS]
     candidates: frozenset[EntityId]
 
 
@@ -124,7 +120,7 @@ class InvalidInputResult:
         reason: Human-readable explanation of why input is invalid
     """
 
-    status: ResolutionStatus
+    status: Literal[ResolutionStatus.INVALID_INPUT]
     reason: str
 
 
