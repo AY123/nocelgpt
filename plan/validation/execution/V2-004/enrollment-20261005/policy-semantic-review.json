@@ -1,0 +1,22 @@
+{
+  "record_type": "exact_enrollment_policy_semantic_review",
+  "phase": "BOOTSTRAP_METADATA_ONLY",
+  "base_revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "old_sha256": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+  "new_sha256": "701e74de3461a08c1f9546ada250e6fd27026d147fbfdd92aa99f741d4a0f3f0",
+  "only_trusted_execution_block_changed": true,
+  "scanner_runtime_exceptions_targets_and_all_other_bytes_preserved": true,
+  "actual_runner_and_ref_sources": [
+    "paused-runner.json",
+    "bootstrap-ref.json"
+  ],
+  "accepted_verifier_actual_unactivated_config_rejection": [
+    "Trusted CI configuration does not match actual project configuration"
+  ],
+  "scanner_or_secret_approvals": 0,
+  "closed_findings": 0,
+  "guard_review": "P1_REMEDIATION_REQUIRED_NOT_ACCEPTED",
+  "real_protected_execution": "NOT_RUN",
+  "status": "POLICY_METADATA_NO_WEAKENING",
+  "reviewer": "Same primary implementer; agent-assisted supporting review, not independent acceptance"
+}

@@ -1,0 +1,27 @@
+{
+  "id": 57044314,
+  "runner_type": "project_type",
+  "is_shared": false,
+  "paused": true,
+  "locked": true,
+  "run_untagged": false,
+  "access_level": "ref_protected",
+  "projects": [
+    86656946
+  ],
+  "tag_list": [
+    "trusted-acceptance"
+  ],
+  "status": "never_contacted",
+  "online": null,
+  "token_expires_at": null,
+  "custody": {
+    "path": "/private/tmp/anovel-v2004-runner-custody-20261005/runner-auth.json",
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "owner_uid": 501,
+    "raw_value_in_git_or_report": false
+  },
+  "host_started": false,
+  "enrollment_state": "REGISTERED_PAUSED_NOT_EXECUTED"
+}

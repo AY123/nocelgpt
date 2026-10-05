@@ -1,0 +1,18 @@
+{
+  "ref": "acceptance/v2-004",
+  "sha": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "protected": true,
+  "push_access_levels": [
+    40
+  ],
+  "merge_access_levels": [
+    40
+  ],
+  "allow_force_push": false,
+  "state": "BOOTSTRAP_OWNER_MAINTAINER_ONLY_NOT_SEALED",
+  "final_required_push_access_levels": [
+    0
+  ],
+  "trusted_execution": "NOT_VERIFIED",
+  "dev_gpt_changed": false
+}

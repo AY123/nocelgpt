@@ -1,0 +1,82 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "f71d7ede2421293cf97e598466c43f3cce0695e5",
+    "ref": "plan/validation/execution/V2-004/enrollment-20261005/scope-v2.json",
+    "sha256": "2fca7c2ad539de9fde8a126db0e9f70c06be425b9a0540596a2c1111105a66b1"
+  },
+  "dispositions": [
+    {
+      "finding_id": "709da73ff556b1e0daa7b1f3107264039d4160b896a0f45c4392fa77fb0dc8b4",
+      "path": "security-policy.yaml",
+      "old_sha": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+      "new_sha": "701e74de3461a08c1f9546ada250e6fd27026d147fbfdd92aa99f741d4a0f3f0",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit human enrollment authorization binds actual paused runner and protected bootstrap ref to a candidate trusted-source path. Only trusted_execution bytes change; all scanner/runtime/exception/target requirements stay identical. Candidate not activated and current actual CI config is rejected by accepted verifier.",
+      "impact": "P0/V2-004 metadata preparation only. Does not approve secret exceptions, activate new guard, certify runner/protection or change canonical/task status. New guard P1 remediation remains separately blocking activation.",
+      "reviewer": "Same primary implementer; agent-assisted supporting review, not independent acceptance",
+      "replacement_validation": "Exact non-trust semantic and byte equality, actual project runner/ref bootstrap sources, fixed candidate identities and accepted verifier rejection of current actual unactivated project configuration. Guard/remote CI/host verification explicitly pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/enrollment-20261005/authorization.md",
+        "sha256": "f3bf84f6a2a2a6a7c96f544098c3ffc53ccce2fca32698f7d0eedb7ef01eafd1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/policy-semantic-review.json",
+          "sha256": "f2bdfaa26f6b66b087f67f4963b212cf59857d88fce3c641944525ed81afece3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/paused-runner.json",
+          "sha256": "d1d5d8f3f7a5e0d0ee2209477b234c941172ac06643328b00fcc65027ffd00f5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/bootstrap-ref.json",
+          "sha256": "93873ae5dde2d8a7b10e8dd12ed8776692819ed6c9c0cd2cb9efed01242bea52"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/guard-review-remediation.md",
+          "sha256": "2b76ebce45fa255ee016be30cc3e1ccebc22681eef7335e28fd495261e3187b7"
+        }
+      ]
+    },
+    {
+      "finding_id": "171e96880f004f420279e784a2ad8bc68853707d635974e2bf2fefe17c2059a7",
+      "path": "security-policy.yaml",
+      "old_sha": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+      "new_sha": "701e74de3461a08c1f9546ada250e6fd27026d147fbfdd92aa99f741d4a0f3f0",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit human enrollment authorization binds actual paused runner and protected bootstrap ref to a candidate trusted-source path. Only trusted_execution bytes change; all scanner/runtime/exception/target requirements stay identical. Candidate not activated and current actual CI config is rejected by accepted verifier.",
+      "impact": "P0/V2-004 metadata preparation only. Does not approve secret exceptions, activate new guard, certify runner/protection or change canonical/task status. New guard P1 remediation remains separately blocking activation.",
+      "reviewer": "Same primary implementer; agent-assisted supporting review, not independent acceptance",
+      "replacement_validation": "Exact non-trust semantic and byte equality, actual project runner/ref bootstrap sources, fixed candidate identities and accepted verifier rejection of current actual unactivated project configuration. Guard/remote CI/host verification explicitly pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/enrollment-20261005/authorization.md",
+        "sha256": "f3bf84f6a2a2a6a7c96f544098c3ffc53ccce2fca32698f7d0eedb7ef01eafd1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/policy-semantic-review.json",
+          "sha256": "f2bdfaa26f6b66b087f67f4963b212cf59857d88fce3c641944525ed81afece3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/paused-runner.json",
+          "sha256": "d1d5d8f3f7a5e0d0ee2209477b234c941172ac06643328b00fcc65027ffd00f5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/bootstrap-ref.json",
+          "sha256": "93873ae5dde2d8a7b10e8dd12ed8776692819ed6c9c0cd2cb9efed01242bea52"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/enrollment-20261005/guard-review-remediation.md",
+          "sha256": "2b76ebce45fa255ee016be30cc3e1ccebc22681eef7335e28fd495261e3187b7"
+        }
+      ]
+    }
+  ]
+}
