@@ -22,11 +22,7 @@ Authority: docs/V2-005_IMPLEMENTATION_CONTRACT.md
 Baseline: 4248258339fa1c90df1c9e34572df24abe13330d
 """
 
-from dataclasses import dataclass
-from enum import Enum
-from typing import Literal, NewType, Optional, Union
-
-# Type aliases will be defined here
-# Enums will be defined here
-# Dataclasses will be defined here
-# Functions will be defined here
+# Type aliases will be defined in Step 2
+# Enums will be defined in Step 2
+# Dataclasses will be defined in Step 2
+# Functions will be defined in Step 3+
