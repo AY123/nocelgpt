@@ -1,0 +1,113 @@
+{
+  "record_type": "execution_input_hash_check",
+  "opening_revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "plan_manifest_sha256": "cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e",
+  "inputs": [
+    {
+      "source_ref": "07_PLATFORM_SECURITY_AND_DELIVERY.md",
+      "source_sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d",
+      "snapshot_sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d",
+      "declared": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d",
+      "matches": true
+    },
+    {
+      "source_ref": "09_TASK_EXECUTION_GUIDE.md",
+      "source_sha256": "824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682",
+      "snapshot_sha256": "824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682",
+      "declared": "824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682",
+      "matches": true
+    },
+    {
+      "source_ref": "PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
+      "source_sha256": "a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82",
+      "snapshot_sha256": "a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82",
+      "declared": "a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82",
+      "matches": true
+    },
+    {
+      "source_ref": "AI_EXECUTION_PROTOCOL.md",
+      "source_sha256": "6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac",
+      "snapshot_sha256": "6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac",
+      "declared": "6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac",
+      "matches": true
+    },
+    {
+      "source_ref": "00_GOVERNANCE_AND_SOURCE_AUTHORITY.md",
+      "source_sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2",
+      "snapshot_sha256": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2",
+      "declared": "558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2",
+      "matches": true
+    },
+    {
+      "source_ref": "08_ROADMAP_AND_GATES.md",
+      "source_sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb",
+      "snapshot_sha256": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb",
+      "declared": "5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb",
+      "matches": true
+    },
+    {
+      "source_ref": "README.md",
+      "source_sha256": "1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2",
+      "snapshot_sha256": "1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2",
+      "declared": "1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/implementation-backlog.yaml",
+      "source_sha256": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "snapshot_sha256": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "declared": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/test-catalog.yaml",
+      "source_sha256": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "snapshot_sha256": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "declared": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/decision-register.yaml",
+      "source_sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "snapshot_sha256": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "declared": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/ai-execution-policy.yaml",
+      "source_sha256": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "snapshot_sha256": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "declared": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/ci-gates.yaml",
+      "source_sha256": "594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e",
+      "snapshot_sha256": "594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e",
+      "declared": "594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/governance-baseline.yaml",
+      "source_sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c",
+      "snapshot_sha256": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c",
+      "declared": "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/phase-gates.yaml",
+      "source_sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9",
+      "snapshot_sha256": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9",
+      "declared": "086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9",
+      "matches": true
+    },
+    {
+      "source_ref": "machine/authority-policy.yaml",
+      "source_sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91",
+      "snapshot_sha256": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91",
+      "declared": "4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91",
+      "matches": true
+    }
+  ],
+  "all_match": true
+}

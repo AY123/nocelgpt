@@ -1,0 +1,149 @@
+{
+  "record_type": "reviewed_exact_revision_remote_ci_handoff",
+  "base_sha": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
+  "review_sha": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "local_dev_gpt": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "remote_dev_gpt": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "independent_review_verdict": "ACCEPTED_WITH_FINDINGS",
+  "review_source": "Explicit user report and authorization",
+  "implementation_status": "ACCEPTED_FOR_INTEGRATION",
+  "integration_status": "FAST_FORWARD_AND_PUSH_COMPLETED",
+  "no_new_commit": true,
+  "no_MR": true,
+  "user_working_files_preserved": true,
+  "pipeline_id": 2911068784,
+  "pipeline_url": "https://gitlab.com/ayitnovel/ainovelos/-/pipelines/2911068784",
+  "pipeline_status": "failed",
+  "pipeline_source": "push",
+  "jobs": {
+    "static": {
+      "job_id": 16922765246,
+      "status": "PASS",
+      "command_contract": "MATCHED_TO_REVIEWED_9fe",
+      "receipt_and_artifact_hashes": "MATCHED",
+      "allow_failure": false,
+      "runner_type": "instance_type",
+      "runner_id": 54907241
+    },
+    "unit": {
+      "job_id": 16922765248,
+      "status": "PASS",
+      "command_contract": "MATCHED_TO_REVIEWED_9fe",
+      "receipt_and_artifact_hashes": "MATCHED",
+      "allow_failure": false,
+      "runner_type": "instance_type",
+      "runner_id": 54907241,
+      "junit": {
+        "tests": 273,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "schema_contract": {
+      "job_id": 16922765247,
+      "status": "PASS",
+      "command_contract": "MATCHED_TO_REVIEWED_9fe",
+      "receipt_and_artifact_hashes": "MATCHED",
+      "allow_failure": false,
+      "runner_type": "instance_type",
+      "runner_id": 54907241,
+      "governance_commands": 5
+    },
+    "arch_fitness": {
+      "job_id": 16922765249,
+      "status": "PASS",
+      "command_contract": "MATCHED_TO_REVIEWED_9fe",
+      "receipt_and_artifact_hashes": "MATCHED",
+      "allow_failure": false,
+      "runner_type": "instance_type",
+      "runner_id": 54907241,
+      "junit": {
+        "tests": 212,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "secret_dependency": {
+      "job_id": 16922765251,
+      "status": "FAIL",
+      "command_contract": "MATCHED_TO_REVIEWED_9fe",
+      "receipt_and_artifact_hashes": "MATCHED",
+      "allow_failure": false,
+      "runner_type": "instance_type",
+      "runner_id": 54907241
+    },
+    "postgres_env": {
+      "job_id": 16922765250,
+      "status": "PASS",
+      "command_contract": "MATCHED_TO_REVIEWED_9fe",
+      "receipt_and_artifact_hashes": "MATCHED",
+      "allow_failure": false,
+      "runner_type": "instance_type",
+      "runner_id": 54907241,
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "junit_total": {
+    "tests": 486,
+    "success": 486,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "actual_security": {
+    "status": "FAIL",
+    "findings": {
+      "tracked_worktree": 16,
+      "git_history": 29
+    },
+    "total": 45,
+    "stable_location_identity_set_matches_canonical": true,
+    "value_or_scanner_fingerprint_equality_not_inferred_from_location_match": true,
+    "dependency": {
+      "status": "PASS",
+      "audited_packages": 51,
+      "vulnerabilities": 0
+    }
+  },
+  "canonical_security": {
+    "open": 45,
+    "pending_approvals": 38,
+    "owner_required": 7,
+    "approved": 0,
+    "applied": 0,
+    "closed": 0,
+    "sha256": "28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749",
+    "unchanged": true
+  },
+  "remote_branch_protected": false,
+  "real_protected_runner_execution": "NOT_VERIFIED",
+  "TRUSTED_EXECUTION": "NOT_VERIFIED",
+  "V2-004": "IN_PROGRESS",
+  "P0": "NOT_VERIFIED",
+  "primary_governance_worktree": "Three local historical governance files preserved as unstaged differences; not the clean CI packet",
+  "P2_findings": {
+    "IR-P2-01": "DEFERRED_NON_BLOCKING",
+    "IR-P2-02": "DEFERRED_NON_BLOCKING"
+  },
+  "raw_evidence": {
+    "ref": "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2004-reviewed-integration-20261005/RAW_REMOTE_CI_ARTIFACTS.tar.gz",
+    "sha256": "760ce9f0c67c6e23d0047feafe4ef2d149ff92bb49e6419707162a0dc28fa752",
+    "collector_ref": "/private/tmp/anovel-v2004-9fe-ci-final-retry1-20261005/pipeline-index.json",
+    "collector_sha256": "ff1deebb8f80f92909eddb1c0ead51fbbb49dc8fcc68e0eaea9b4ae5e2465329"
+  },
+  "next_required": [
+    "Authorized continuously available runner host and secure runner token custody",
+    "Appropriate role and manage_runner scope for verifier runner-detail API",
+    "Protected dedicated project runner and protected trusted configuration acceptance path",
+    "Actual negative permission controls",
+    "Security authority closure and exact approved secret exception consumption",
+    "All six hard gates PASS at one final SHA in trusted protected execution"
+  ]
+}
