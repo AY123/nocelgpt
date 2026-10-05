@@ -1,0 +1,9 @@
+include:
+- project: ayitnovel/ainovelos
+  ref: 9fe51abf5ba2e050b7f48204f5c26927ace712af
+  file: .gitlab-ci.yml
+- project: ayitnovel/ainovelos
+  ref: acceptance/v2-004
+  file: plan/validation/execution/V2-004/enrollment-20261005/acceptance-overlay.yml
+  rules:
+  - if: $CI_COMMIT_BRANCH == "acceptance/v2-004" && $CI_COMMIT_REF_PROTECTED == "true"
