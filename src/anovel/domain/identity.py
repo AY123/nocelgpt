@@ -24,7 +24,7 @@ Baseline: 4248258339fa1c90df1c9e34572df24abe13330d
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import NewType, Union
+from typing import NewType
 
 # --- Type Aliases (Step 2) ---
 
