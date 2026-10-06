@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: e87477b9fd0e71609322f336de5793ca9d9f1fbb
+STATUS_AS_OF_REVISION: b71608e5d06456aefdeeede99af539342ad9aa00
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 6 - add_alias and remove_alias
-V2_005_PROGRESS: 6/8 steps in progress
-STATUS: IMPLEMENTED_PENDING_CI
+CURRENT_STEP: Step 6 - add_alias and remove_alias (VERIFIED)
+V2_005_PROGRESS: 6/8 steps complete
+STATUS: READY_FOR_STEP_7
 ```
 
 ---
@@ -161,33 +161,44 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 6: add_alias and remove_alias (CURRENT)
+### Step 6: add_alias and remove_alias
 ```
-STATUS: 🔄 IMPLEMENTED_PENDING_CI
+STATUS: ✅ VERIFIED (CI PASS)
 DESCRIPTION: Implement alias management operations
+IMPLEMENTATION_SHA: 3ee2c8b9dcc67e56299088955cdc950751af0fe5 (initial)
+VERIFIED_SHA: b71608e5d06456aefdeeede99af539342ad9aa00 (H1 contract fix)
+VERIFICATION_PIPELINE: 2916297457
 BASELINE_SHA: e87477b9fd0e71609322f336de5793ca9d9f1fbb (Step 5 SSOT)
-BRANCH: work/h2-convergence-closure
+CI_RESULT: 6/6 PASS
+  - STATIC: PASS
+  - SCHEMA_CONTRACT: PASS
+  - UNIT: PASS
+  - ARCH_FITNESS: PASS
+  - POSTGRES_ENV: PASS
+  - SECRET_DEPENDENCY: PASS
+JUNIT_EXECUTIONS: 681/681 PASS
+  - UNIT: 459/459
+  - ARCH_FITNESS: 222/222
+BASELINE_PRESERVED: 646/646
+NEW_TESTS: 35
 
 IMPLEMENTATION:
   - add_alias (normalize_for_lookup duplicate detection, idempotent)
-  - remove_alias (normalize_for_lookup matching, canonical name protection)
+  - remove_alias (normalize_for_lookup matching, exact canonical name protection)
   - Both return new immutable EntityIdentity
   - Outer whitespace trimming
   - Input validation with ValueError
 
+H1_FIX:
+  - Issue: canonical name protection used normalized comparison
+  - Fix: changed to exact equality per §3.4
+  - Allows removing case variants of canonical name from aliases
+
 ARTIFACTS:
   - src/anovel/domain/identity.py (add_alias, remove_alias functions)
-  - tests/contract/test_v2_005_step6.py (34 tests)
+  - tests/contract/test_v2_005_step6.py (35 tests)
 
-LOCAL_VERIFICATION:
-  - Step 3 tests: 29/29 PASS
-  - Step 4 tests: 20/20 PASS
-  - Step 5 tests: 32/32 PASS
-  - Step 6 tests: 34/34 PASS
-  - Total: 115/115 PASS
-  - mypy --strict: PASS
-
-STARTED: 2026-10-06
+VERIFIED_DATE: 2026-10-06
 ```
 
 ---
@@ -237,9 +248,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: 6/8 steps in progress
+PROGRESS: 6/8 steps complete
 TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 7 (resolve_alias) after Step 6 verification
+NEXT_STEP: Step 7 (resolve_alias)
 ```
 
 ---
@@ -251,13 +262,13 @@ All 6 gates are operational in new repository:
 ```
 STATIC:             ✅ OPERATIONAL (lint, type check)
 SCHEMA_CONTRACT:    ✅ OPERATIONAL (JSON schema validation)
-UNIT:               ✅ OPERATIONAL (424 tests)
+UNIT:               ✅ OPERATIONAL (459 tests)
 ARCH_FITNESS:       ✅ OPERATIONAL (222 tests)
 POSTGRES_ENV:       ✅ OPERATIONAL (DB bootstrap tests)
 SECRET_DEPENDENCY:  ✅ OPERATIONAL (gitleaks scan)
 ```
 
-**Latest Verified**: Pipeline 2916214784 (6/6 PASS, 646/646 tests)
+**Latest Verified**: Pipeline 2916297457 (6/6 PASS, 681/681 executions)
 
 ---
 
@@ -295,13 +306,14 @@ RESULT: 6/6 PASS, 614/614 PASS
 VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 5 Exact Verification
+### Step 6 Exact Verification
 ```
-IMPLEMENTATION_SHA: 9d98f57c871d1cf1b776b9fda9107a5c79e803a4
-COMMIT_MESSAGE: "feat(V2-005): implement Step 5 - create_identity and rename_identity"
-PIPELINE_ID: 2916214784
-PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916214784
-RESULT: 6/6 PASS, 646/646 PASS
+IMPLEMENTATION_SHA: 3ee2c8b9dcc67e56299088955cdc950751af0fe5 (initial)
+VERIFIED_SHA: b71608e5d06456aefdeeede99af539342ad9aa00 (H1 contract fix)
+COMMIT_MESSAGE: "fix(V2-005): correct Step 6 canonical name protection boundary"
+PIPELINE_ID: 2916297457
+PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916297457
+RESULT: 6/6 PASS, 681/681 executions PASS
 VERIFIED_DATE: 2026-10-06
 ```
 
@@ -309,17 +321,18 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Pending Step 6 CI Verification)
-1. Await CI pipeline completion for Step 6 implementation
-2. Verify 6/6 gates pass
-3. Confirm test count > 646 (baseline + 34 new tests)
-4. Update status to VERIFIED after CI confirmation
+### Immediate (Step 7 Implementation)
+1. Implement resolve_alias operation
+2. Write unit tests for alias resolution
+3. Verify contract tests pass
+4. Run full CI locally
+5. Commit and push to work/h2-convergence-closure
+6. Verify CI passes in GitLab
 
-### After Step 6 Verification
-1. Proceed to Step 7 (resolve_alias)
-2. Implement alias resolution with conflict detection
-3. Write unit tests for Step 7 functionality
-4. Run full CI verification
+### After Step 7 Completion
+1. Update this status document
+2. Verify exact SHA via CI pipeline
+3. Proceed to V2-005 Step 8 (final integration and schema)
 
 ---
 
@@ -374,4 +387,4 @@ VERIFIED_DATE: 2026-10-06
 
 **Status Document Version**: 1.1.0  
 **Last Updated**: 2026-10-06  
-**Next Update**: After Step 6 completion or significant status change
+**Next Update**: After Step 7 completion or significant status change
