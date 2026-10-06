@@ -135,4 +135,72 @@ Union of all possible resolution results.
 Discriminated by the 'status' field.
 """
 
-# Functions will be defined in Step 3+
+# --- ID Generation (Step 3) ---
+
+import uuid
+
+
+def _generate_entity_id() -> EntityId:
+    """
+    Generate a new unique entity ID.
+
+    Uses UUID v4 (random) for entity identity.
+
+    Returns:
+        EntityId: Fresh entity ID (never previously issued)
+
+    Contract: V2-005 §3.1
+    """
+    return EntityId(str(uuid.uuid4()))
+
+
+# --- Name Normalization (Step 3) ---
+
+
+def normalize_for_lookup(s: str) -> str:
+    """
+    Normalize string for case-insensitive lookup.
+
+    Normalization steps:
+    1. Strip leading/trailing whitespace
+    2. Remove all U+3000 (full-width space)
+    3. Collapse consecutive ASCII U+0020 spaces to single space
+    4. Lowercase only if result is pure ASCII
+
+    Args:
+        s: Input string to normalize
+
+    Returns:
+        Normalized string for lookup comparison
+
+    Examples:
+        >>> normalize_for_lookup("  张三  ")
+        '张三'
+        >>> normalize_for_lookup("Zhang  San")
+        'zhang san'
+        >>> normalize_for_lookup("SMITH")
+        'smith'
+        >>> normalize_for_lookup("李　明")
+        '李明'
+
+    Contract: V2-005 §3.6
+    """
+    # Step 1: Strip leading/trailing whitespace
+    result = s.strip()
+
+    # Step 2: Remove all U+3000 (full-width space)
+    result = result.replace("　", "")
+
+    # Step 3: Collapse consecutive ASCII spaces (U+0020) to single space
+    # Only collapse U+0020, not other whitespace characters
+    while "  " in result:  # consecutive ASCII spaces
+        result = result.replace("  ", " ")
+
+    # Step 4: Lowercase only if pure ASCII
+    if result.isascii():
+        result = result.lower()
+
+    return result
+
+
+# Functions for Step 3+ operations (to be implemented)
