@@ -12,11 +12,11 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-CURRENT_HEAD: be6e475b77b5802cfcc73242f7273588288d06bf
+CURRENT_HEAD: <pending Step 4 commit>
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 3 - Implement ID Generation and Normalization
-STATUS: IN_PROGRESS
+CURRENT_STEP: Step 4 - Entity Registry
+STATUS: IMPLEMENTED_PENDING_CI
 ```
 
 ---
@@ -72,24 +72,41 @@ EVIDENCE:
   - docs/V2-005_STEP_2_H1_FIX_REPORT.md
 ```
 
-### Step 3: ID Generation and Normalization (CURRENT)
+### Step 3: ID Generation and Normalization
 ```
-STATUS: 🔄 IN PROGRESS
+STATUS: ✅ COMPLETE
 DESCRIPTION: Implement UUID generation and name normalization logic
+COMPLETION_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c
+ARTIFACTS:
+  - src/anovel/domain/identity.py (_generate_entity_id, normalize_for_lookup)
+  - tests/contract/test_v2_005_step3.py (29 tests)
+TEST_RESULT: 29/29 PASS
+```
+
+### Step 4: Entity Registry (CURRENT)
+```
+STATUS: 🔄 IMPLEMENTED_PENDING_CI
+DESCRIPTION: Implement in-memory EntityRegistry for testing
+BASELINE_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c
 BRANCH: work/h2-convergence-closure
-CONTINUATION_SHA: be6e475b77b5802cfcc73242f7273588288d06bf
-PARENT_1: 1aa31e7 (Step 2 exact SHA)
-PARENT_2: 376565f (new repository initial commit)
-FILE_DIFF_VS_STEP2: 0 (merge commit, content identical to 1aa31e7)
 
-ACCEPTANCE_CRITERIA:
-  - UUID v4 generation for EntityId
-  - Name normalization (strip, lowercase, collapse whitespace)
-  - Alias resolution with conflict detection
-  - All existing tests pass
-  - Contract tests validate new functionality
+IMPLEMENTATION:
+  - EntityRegistry.__init__
+  - EntityRegistry.add_entity (with value equality idempotency)
+  - EntityRegistry.get_entity
+  - EntityRegistry.get_entities (project isolation)
 
-STARTED: 2026-10-06 (after housekeeping)
+ARTIFACTS:
+  - src/anovel/domain/identity.py (EntityRegistry class)
+  - tests/contract/test_v2_005_step4.py (20 tests)
+
+LOCAL_VERIFICATION:
+  - Step 3 tests: 29/29 PASS
+  - Step 4 tests: 20/20 PASS
+  - mypy --strict: PASS
+  - Total new tests: 49 (baseline + 20)
+
+STARTED: 2026-10-06
 ```
 
 ---

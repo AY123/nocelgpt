@@ -203,4 +203,92 @@ def normalize_for_lookup(s: str) -> str:
     return result
 
 
-# Functions for Step 3+ operations (to be implemented)
+# --- Entity Registry (Step 4) ---
+
+
+class EntityRegistry:
+    """
+    In-memory registry for entity identity management.
+
+    This is a simple in-memory storage for V2-005 contract tests.
+    NOT persistent (persistence is V2-009).
+    NOT thread-safe (concurrency is V2-009).
+
+    Contract: V2-005 §4
+    """
+
+    def __init__(self) -> None:
+        """Initialize empty entity registry."""
+        self._entities: dict[EntityId, EntityIdentity] = {}
+        self._by_project: dict[ProjectId, set[EntityId]] = {}
+
+    def add_entity(self, entity: EntityIdentity) -> None:
+        """
+        Add entity to registry with uniqueness enforcement.
+
+        Uniqueness Constraint:
+        - entity_id MUST be unique across registry
+        - Duplicate entity_id with different content → ValueError
+
+        Idempotency:
+        - Same entity_id + same content (by value equality) → no-op
+        - Same entity_id + different content → ValueError
+
+        NOT Constrained:
+        - canonical_name MAY be duplicate (across entities)
+        - Aliases MAY be duplicate (across entities) → AMBIGUOUS at resolution
+
+        Args:
+            entity: EntityIdentity to add
+
+        Raises:
+            ValueError: If entity_id already registered with different content
+
+        Contract: V2-005 §4.1
+        """
+        if entity.entity_id in self._entities:
+            existing = self._entities[entity.entity_id]
+            if existing != entity:  # Value equality (frozen dataclass)
+                raise ValueError(
+                    f"Entity ID {entity.entity_id} already registered "
+                    f"with different content"
+                )
+            # Same content → idempotent, no-op
+            return
+
+        # Normal registration
+        self._entities[entity.entity_id] = entity
+        # Add to project index (set ensures no duplicates)
+        self._by_project.setdefault(entity.project_id, set()).add(entity.entity_id)
+
+    def get_entity(self, entity_id: EntityId) -> EntityIdentity | None:
+        """
+        Retrieve entity by ID.
+
+        Args:
+            entity_id: Entity identifier to look up
+
+        Returns:
+            EntityIdentity if found, None otherwise
+
+        Contract: V2-005 §4
+        """
+        return self._entities.get(entity_id)
+
+    def get_entities(self, project_id: ProjectId) -> list[EntityIdentity]:
+        """
+        Retrieve all entities in project.
+
+        Args:
+            project_id: Project scope to query
+
+        Returns:
+            List of EntityIdentity objects in project (empty if project unknown)
+
+        Contract: V2-005 §4
+        """
+        entity_ids = self._by_project.get(project_id, set())
+        return [self._entities[eid] for eid in entity_ids]
+
+
+# Functions for Step 5+ operations (to be implemented)
