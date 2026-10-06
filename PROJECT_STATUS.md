@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: 637ab05eb4e1bc19815a6e5c766a529a6ae7d2eb
+STATUS_AS_OF_REVISION: 9d98f57c871d1cf1b776b9fda9107a5c79e803a4
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 5 - create_identity and rename_identity
-V2_005_PROGRESS: 5/8 steps in progress
-STATUS: IMPLEMENTED_PENDING_CI
+CURRENT_STEP: Step 5 - create_identity and rename_identity (VERIFIED)
+V2_005_PROGRESS: 5/8 steps complete
+STATUS: READY_FOR_STEP_6
 ```
 
 ---
@@ -128,12 +128,25 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 5: create_identity and rename_identity (CURRENT)
+### Step 5: create_identity and rename_identity
 ```
-STATUS: 🔄 IMPLEMENTED_PENDING_CI
+STATUS: ✅ VERIFIED (CI PASS)
 DESCRIPTION: Implement entity creation and rename operations
+IMPLEMENTATION_SHA: 9d98f57c871d1cf1b776b9fda9107a5c79e803a4
+VERIFICATION_PIPELINE: 2916214784
 BASELINE_SHA: 637ab05eb4e1bc19815a6e5c766a529a6ae7d2eb (Step 4 SSOT)
-BRANCH: work/h2-convergence-closure
+CI_RESULT: 6/6 PASS
+  - STATIC: PASS
+  - SCHEMA_CONTRACT: PASS
+  - UNIT: PASS
+  - ARCH_FITNESS: PASS
+  - POSTGRES_ENV: PASS
+  - SECRET_DEPENDENCY: PASS
+TEST_RESULT: 646/646 PASS
+  - UNIT: 424/424
+  - ARCH_FITNESS: 222/222
+BASELINE_PRESERVED: 614/614
+NEW_TESTS: 32
 
 IMPLEMENTATION:
   - create_identity (fresh UUID v4, outer trim, validation)
@@ -145,14 +158,7 @@ ARTIFACTS:
   - src/anovel/domain/identity.py (create_identity, rename_identity functions)
   - tests/contract/test_v2_005_step5.py (32 tests)
 
-LOCAL_VERIFICATION:
-  - Step 3 tests: 29/29 PASS
-  - Step 4 tests: 20/20 PASS
-  - Step 5 tests: 32/32 PASS
-  - Total: 81/81 PASS
-  - mypy --strict: PASS
-
-STARTED: 2026-10-06
+VERIFIED_DATE: 2026-10-06
 ```
 
 ---
@@ -202,9 +208,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: 5/8 steps in progress
+PROGRESS: 5/8 steps complete
 TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 6 (add_alias, remove_alias) after Step 5 verification
+NEXT_STEP: Step 6 (add_alias, remove_alias)
 ```
 
 ---
@@ -216,13 +222,13 @@ All 6 gates are operational in new repository:
 ```
 STATIC:             ✅ OPERATIONAL (lint, type check)
 SCHEMA_CONTRACT:    ✅ OPERATIONAL (JSON schema validation)
-UNIT:               ✅ OPERATIONAL (392 tests)
+UNIT:               ✅ OPERATIONAL (424 tests)
 ARCH_FITNESS:       ✅ OPERATIONAL (222 tests)
 POSTGRES_ENV:       ✅ OPERATIONAL (DB bootstrap tests)
 SECRET_DEPENDENCY:  ✅ OPERATIONAL (gitleaks scan)
 ```
 
-**Latest Verified**: Pipeline 2916144168 (6/6 PASS, 614/614 tests)
+**Latest Verified**: Pipeline 2916214784 (6/6 PASS, 646/646 tests)
 
 ---
 
@@ -260,21 +266,33 @@ RESULT: 6/6 PASS, 614/614 PASS
 VERIFIED_DATE: 2026-10-06
 ```
 
+### Step 5 Exact Verification
+```
+IMPLEMENTATION_SHA: 9d98f57c871d1cf1b776b9fda9107a5c79e803a4
+COMMIT_MESSAGE: "feat(V2-005): implement Step 5 - create_identity and rename_identity"
+PIPELINE_ID: 2916214784
+PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916214784
+RESULT: 6/6 PASS, 646/646 PASS
+VERIFIED_DATE: 2026-10-06
+```
+
 ---
 
 ## Next Actions
 
-### Immediate (Pending Step 5 CI Verification)
-1. Await CI pipeline completion for Step 5 implementation
-2. Verify 6/6 gates pass
-3. Confirm test count > 614 (baseline + 32 new tests)
-4. Update status to VERIFIED after CI confirmation
+### Immediate (Step 6 Implementation)
+1. Implement add_alias operation
+2. Implement remove_alias operation
+3. Write unit tests for alias management
+4. Verify contract tests pass
+5. Run full CI locally
+6. Commit and push to work/h2-convergence-closure
+7. Verify CI passes in GitLab
 
-### After Step 5 Verification
-1. Proceed to Step 6 (add_alias, remove_alias)
-2. Implement alias management operations
-3. Write unit tests for Step 6 functionality
-4. Run full CI verification
+### After Step 6 Completion
+1. Update this status document
+2. Verify exact SHA via CI pipeline
+3. Proceed to V2-005 Step 7 (resolve_alias)
 
 ---
 
