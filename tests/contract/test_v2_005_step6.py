@@ -262,20 +262,41 @@ def test_remove_alias_idempotent_not_found():
 
 
 def test_remove_alias_canonical_name_raises():
-    """remove_alias raises ValueError when trying to remove canonical name."""
+    """remove_alias raises ValueError when trying to remove exact canonical name."""
     entity = create_identity(ProjectId("proj_01"), "张三")
 
     with pytest.raises(ValueError, match="Cannot remove canonical name"):
         remove_alias(entity, "张三")
 
 
-def test_remove_alias_normalized_canonical_name_raises():
-    """remove_alias raises ValueError for normalized match to canonical name."""
+def test_remove_alias_canonical_name_exact_match_only():
+    """remove_alias only protects exact canonical name, not normalized variants."""
     entity = create_identity(ProjectId("proj_01"), "Zhang")
 
-    # Try to remove with different case
-    with pytest.raises(ValueError, match="Cannot remove canonical name"):
-        remove_alias(entity, "ZHANG")
+    # Add an alias with different case
+    with_alias = add_alias(entity, "ZHANG")
+    assert "ZHANG" in with_alias.aliases
+
+    # Remove with same case should work (not exact match to canonical)
+    without_alias = remove_alias(with_alias, "ZHANG")
+
+    # Should successfully remove the alias
+    assert "ZHANG" not in without_alias.aliases
+    assert without_alias.canonical_name == "Zhang"  # Canonical unchanged
+
+
+def test_remove_alias_canonical_name_case_variant_allowed():
+    """remove_alias allows removing case variants of canonical name from aliases."""
+    entity = create_identity(ProjectId("proj_01"), "smith")
+
+    # Add uppercase variant as alias
+    with_alias = add_alias(entity, "SMITH")
+    assert "SMITH" in with_alias.aliases
+
+    # Remove uppercase variant should work
+    without_alias = remove_alias(with_alias, "SMITH")
+    assert "SMITH" not in without_alias.aliases
+    assert without_alias.canonical_name == "smith"
 
 
 def test_remove_alias_normalized_comparison():

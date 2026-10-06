@@ -485,6 +485,8 @@ def remove_alias(
     matching. If the alias does not exist, this is a no-op.
 
     Cannot remove the canonical name - attempting to do so raises ValueError.
+    The canonical name protection uses exact string equality, not normalized
+    comparison.
 
     Args:
         identity: Existing entity identity
@@ -494,7 +496,7 @@ def remove_alias(
         New EntityIdentity with alias removed (or unchanged if not found)
 
     Raises:
-        ValueError: If alias matches canonical_name (cannot remove canonical name)
+        ValueError: If alias exactly matches canonical_name (cannot remove canonical name)
 
     Example:
         >>> entity = create_identity(ProjectId("proj_01"), "张三")
@@ -507,13 +509,13 @@ def remove_alias(
     """
     # Trim alias for comparison
     trimmed_alias = alias.strip()
-    normalized_target = normalize_for_lookup(trimmed_alias)
 
-    # Check if trying to remove canonical name
-    if normalized_target == normalize_for_lookup(identity.canonical_name):
+    # Check if trying to remove canonical name (exact equality)
+    if trimmed_alias == identity.canonical_name:
         raise ValueError("Cannot remove canonical name as alias")
 
-    # Find and remove matching alias
+    # Find and remove matching alias using normalized comparison
+    normalized_target = normalize_for_lookup(trimmed_alias)
     aliases_to_keep = set()
     for existing_alias in identity.aliases:
         if normalize_for_lookup(existing_alias) != normalized_target:
