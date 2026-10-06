@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: b71608e5d06456aefdeeede99af539342ad9aa00
+STATUS_AS_OF_REVISION: 57d20771d77bf888a4c43b07dc68eb6a451260ed
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 7 - resolve_alias
-V2_005_PROGRESS: 7/8 steps in progress
-STATUS: IMPLEMENTED_PENDING_CI
+CURRENT_STEP: Step 7 - resolve_alias (VERIFIED)
+V2_005_PROGRESS: 7/8 steps complete
+STATUS: READY_FOR_STEP_8
 ```
 
 ---
@@ -201,12 +201,25 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 7: resolve_alias (CURRENT)
+### Step 7: resolve_alias
 ```
-STATUS: 🔄 IMPLEMENTED_PENDING_CI
+STATUS: ✅ VERIFIED (CI PASS)
 DESCRIPTION: Implement alias resolution with ambiguity detection
+IMPLEMENTATION_SHA: 57d20771d77bf888a4c43b07dc68eb6a451260ed
+VERIFICATION_PIPELINE: 2916360355
 BASELINE_SHA: b1cd7153a155bae4a29a15e4744c1002c1082eaf (Step 6 SSOT)
-BRANCH: work/h2-convergence-closure
+CI_RESULT: 6/6 PASS
+  - STATIC: PASS
+  - SCHEMA_CONTRACT: PASS
+  - UNIT: PASS
+  - ARCH_FITNESS: PASS
+  - POSTGRES_ENV: PASS
+  - SECRET_DEPENDENCY: PASS
+JUNIT_EXECUTIONS: 707/707 PASS
+  - UNIT: 485/485
+  - ARCH_FITNESS: 222/222
+BASELINE_PRESERVED: 681/681
+NEW_TESTS: 26
 
 IMPLEMENTATION:
   - resolve_alias (project-scoped, canonical + aliases equal priority)
@@ -219,16 +232,7 @@ ARTIFACTS:
   - src/anovel/domain/identity.py (resolve_alias function)
   - tests/contract/test_v2_005_step7.py (26 tests)
 
-LOCAL_VERIFICATION:
-  - Step 3 tests: 29/29 PASS
-  - Step 4 tests: 20/20 PASS
-  - Step 5 tests: 32/32 PASS
-  - Step 6 tests: 35/35 PASS
-  - Step 7 tests: 26/26 PASS
-  - Total: 142/142 PASS
-  - mypy --strict: PASS
-
-STARTED: 2026-10-06
+VERIFIED_DATE: 2026-10-06
 ```
 
 ---
@@ -278,9 +282,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: 7/8 steps in progress
+PROGRESS: 7/8 steps complete
 TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 8 (schema and final integration) after Step 7 verification
+NEXT_STEP: Step 8 (schema and final integration)
 ```
 
 ---
@@ -292,13 +296,13 @@ All 6 gates are operational in new repository:
 ```
 STATIC:             ✅ OPERATIONAL (lint, type check)
 SCHEMA_CONTRACT:    ✅ OPERATIONAL (JSON schema validation)
-UNIT:               ✅ OPERATIONAL (459 tests)
+UNIT:               ✅ OPERATIONAL (485 tests)
 ARCH_FITNESS:       ✅ OPERATIONAL (222 tests)
 POSTGRES_ENV:       ✅ OPERATIONAL (DB bootstrap tests)
 SECRET_DEPENDENCY:  ✅ OPERATIONAL (gitleaks scan)
 ```
 
-**Latest Verified**: Pipeline 2916297457 (6/6 PASS, 681/681 executions)
+**Latest Verified**: Pipeline 2916360355 (6/6 PASS, 707/707 executions)
 
 ---
 
@@ -336,14 +340,13 @@ RESULT: 6/6 PASS, 614/614 PASS
 VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 6 Exact Verification
+### Step 7 Exact Verification
 ```
-IMPLEMENTATION_SHA: 3ee2c8b9dcc67e56299088955cdc950751af0fe5 (initial)
-VERIFIED_SHA: b71608e5d06456aefdeeede99af539342ad9aa00 (H1 contract fix)
-COMMIT_MESSAGE: "fix(V2-005): correct Step 6 canonical name protection boundary"
-PIPELINE_ID: 2916297457
-PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916297457
-RESULT: 6/6 PASS, 681/681 executions PASS
+IMPLEMENTATION_SHA: 57d20771d77bf888a4c43b07dc68eb6a451260ed
+COMMIT_MESSAGE: "feat(V2-005): implement Step 7 - resolve_alias"
+PIPELINE_ID: 2916360355
+PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916360355
+RESULT: 6/6 PASS, 707/707 executions PASS
 VERIFIED_DATE: 2026-10-06
 ```
 
@@ -351,17 +354,20 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Pending Step 7 CI Verification)
-1. Await CI pipeline completion for Step 7 implementation
-2. Verify 6/6 gates pass
-3. Confirm test count > 681 (baseline + 26 new tests)
-4. Update status to VERIFIED after CI confirmation
+### Immediate (Step 8 Implementation)
+1. Review V2-005 contract for Step 8 scope
+2. Implement schema validation and final integration
+3. Write unit tests for Step 8 functionality
+4. Verify contract tests pass
+5. Run full CI locally
+6. Commit and push to work/h2-convergence-closure
+7. Verify CI passes in GitLab
 
-### After Step 7 Verification
-1. Proceed to Step 8 (schema and final integration)
-2. Complete V2-005 implementation
-3. Perform final contract verification
-4. Prepare for V2-005 closure
+### After Step 8 Completion
+1. Update this status document
+2. Verify exact SHA via CI pipeline
+3. Prepare V2-005 final closure
+4. Complete V2-005 acceptance
 
 ---
 
@@ -416,4 +422,4 @@ VERIFIED_DATE: 2026-10-06
 
 **Status Document Version**: 1.1.0  
 **Last Updated**: 2026-10-06  
-**Next Update**: After Step 7 completion or significant status change
+**Next Update**: After Step 8 completion or significant status change
