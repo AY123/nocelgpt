@@ -291,4 +291,119 @@ class EntityRegistry:
         return [self._entities[eid] for eid in entity_ids]
 
 
-# Functions for Step 5+ operations (to be implemented)
+# --- Entity Operations (Step 5) ---
+
+
+def create_identity(
+    project_id: ProjectId,
+    canonical_name: str,
+    entity_type: str | None = None,
+) -> EntityIdentity:
+    """
+    Create a new entity identity with stable ID.
+
+    Generates a fresh UUID v4 entity ID and creates an immutable EntityIdentity
+    with empty aliases. This is a pure function with no side effects.
+
+    Args:
+        project_id: Project scope for entity (non-empty)
+        canonical_name: Primary display name (non-empty, outer whitespace trimmed)
+        entity_type: Optional entity type tag (if provided, must be non-empty)
+
+    Returns:
+        EntityIdentity with fresh entity_id and empty aliases
+
+    Raises:
+        ValueError: If project_id is empty
+        ValueError: If canonical_name is empty or whitespace-only
+        ValueError: If entity_type is non-None but empty or whitespace-only
+
+    Example:
+        >>> entity = create_identity(
+        ...     ProjectId("proj_01"),
+        ...     "张三",
+        ...     entity_type="CHARACTER"
+        ... )
+        >>> entity.canonical_name
+        '张三'
+        >>> entity.aliases
+        frozenset()
+
+    Contract: V2-005 §3.1
+    """
+    # Validate project_id
+    if not project_id or not project_id.strip():
+        raise ValueError("project_id cannot be empty or whitespace-only")
+
+    # Validate and trim canonical_name
+    if not canonical_name or not canonical_name.strip():
+        raise ValueError("canonical_name cannot be empty or whitespace-only")
+    trimmed_name = canonical_name.strip()
+
+    # Validate entity_type (if provided)
+    if entity_type is not None and (not entity_type or not entity_type.strip()):
+        raise ValueError("entity_type cannot be empty or whitespace-only")
+
+    # Generate fresh entity ID
+    entity_id = _generate_entity_id()
+
+    return EntityIdentity(
+        entity_id=entity_id,
+        project_id=project_id,
+        canonical_name=trimmed_name,
+        aliases=frozenset(),
+        entity_type=entity_type,
+    )
+
+
+def rename_identity(
+    identity: EntityIdentity,
+    new_canonical_name: str,
+) -> EntityIdentity:
+    """
+    Rename entity to new canonical name.
+
+    Returns a new EntityIdentity with the new canonical name. The old canonical
+    name is automatically preserved as an alias. The entity_id, project_id, and
+    entity_type remain unchanged. This is a pure function - the original identity
+    object is not modified.
+
+    Args:
+        identity: Existing entity identity to rename
+        new_canonical_name: New primary display name (non-empty, outer whitespace trimmed)
+
+    Returns:
+        New EntityIdentity with updated canonical_name and old name added to aliases
+
+    Raises:
+        ValueError: If new_canonical_name is empty or whitespace-only
+
+    Example:
+        >>> original = create_identity(ProjectId("proj_01"), "张三")
+        >>> renamed = rename_identity(original, "张三丰")
+        >>> renamed.entity_id == original.entity_id
+        True
+        >>> renamed.canonical_name
+        '张三丰'
+        >>> "张三" in renamed.aliases
+        True
+
+    Contract: V2-005 §3.2
+    """
+    # Validate and trim new canonical name
+    if not new_canonical_name or not new_canonical_name.strip():
+        raise ValueError("new_canonical_name cannot be empty or whitespace-only")
+    trimmed_new_name = new_canonical_name.strip()
+
+    # Return new EntityIdentity with old canonical name added to aliases
+    # frozenset union automatically handles duplicates
+    return EntityIdentity(
+        entity_id=identity.entity_id,
+        project_id=identity.project_id,
+        canonical_name=trimmed_new_name,
+        aliases=identity.aliases | {identity.canonical_name},
+        entity_type=identity.entity_type,
+    )
+
+
+# Functions for Step 6+ operations (to be implemented)

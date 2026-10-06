@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: 50d806dbc6c4c9e41cfc10b2e55cb5237350a744
+STATUS_AS_OF_REVISION: 637ab05eb4e1bc19815a6e5c766a529a6ae7d2eb
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 4 - Entity Registry (VERIFIED)
-V2_005_PROGRESS: 4/8 steps complete
-STATUS: READY_FOR_STEP_5
+CURRENT_STEP: Step 5 - create_identity and rename_identity
+V2_005_PROGRESS: 5/8 steps in progress
+STATUS: IMPLEMENTED_PENDING_CI
 ```
 
 ---
@@ -128,6 +128,33 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
+### Step 5: create_identity and rename_identity (CURRENT)
+```
+STATUS: 🔄 IMPLEMENTED_PENDING_CI
+DESCRIPTION: Implement entity creation and rename operations
+BASELINE_SHA: 637ab05eb4e1bc19815a6e5c766a529a6ae7d2eb (Step 4 SSOT)
+BRANCH: work/h2-convergence-closure
+
+IMPLEMENTATION:
+  - create_identity (fresh UUID v4, outer trim, validation)
+  - rename_identity (preserve ID, old name becomes alias)
+  - Pure functions, no side effects
+  - Input validation with ValueError
+
+ARTIFACTS:
+  - src/anovel/domain/identity.py (create_identity, rename_identity functions)
+  - tests/contract/test_v2_005_step5.py (32 tests)
+
+LOCAL_VERIFICATION:
+  - Step 3 tests: 29/29 PASS
+  - Step 4 tests: 20/20 PASS
+  - Step 5 tests: 32/32 PASS
+  - Total: 81/81 PASS
+  - mypy --strict: PASS
+
+STARTED: 2026-10-06
+```
+
 ---
 
 ## Repository Migration Context
@@ -175,9 +202,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: 4/8 steps complete
+PROGRESS: 5/8 steps in progress
 TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 5 (create_identity, rename_identity)
+NEXT_STEP: Step 6 (add_alias, remove_alias) after Step 5 verification
 ```
 
 ---
@@ -237,19 +264,17 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Step 5 Implementation)
-1. Implement create_identity operation
-2. Implement rename_identity operation
-3. Write unit tests for new functionality
-4. Verify contract tests pass
-5. Run full CI locally
-6. Commit and push to work/h2-convergence-closure
-7. Verify CI passes in GitLab
+### Immediate (Pending Step 5 CI Verification)
+1. Await CI pipeline completion for Step 5 implementation
+2. Verify 6/6 gates pass
+3. Confirm test count > 614 (baseline + 32 new tests)
+4. Update status to VERIFIED after CI confirmation
 
-### After Step 5 Completion
-1. Update this status document
-2. Verify exact SHA via CI pipeline
-3. Proceed to V2-005 Step 6 (add_alias, remove_alias)
+### After Step 5 Verification
+1. Proceed to Step 6 (add_alias, remove_alias)
+2. Implement alias management operations
+3. Write unit tests for Step 6 functionality
+4. Run full CI verification
 
 ---
 
