@@ -300,3 +300,21 @@ def test_unresolved_subscript_loader_or_code_execution_fails(synthetic, source):
 def test_reflective_literal_standard_library_import_is_legal(synthetic):
     write(synthetic, 'src/anovel/domain/model.py', '__builtins__["__import__"]("json")\n')
     assert architecture.check_architecture(synthetic)['status'] == 'PASS'
+
+
+# --- V2-005 Identity Module Boundary Tests ---
+
+
+def test_v2_005_identity_no_persistence_import(synthetic):
+    """V2-005: domain.identity must not import persistence layers."""
+    write(synthetic, 'src/anovel/domain/identity.py', 'import sqlalchemy\n')
+    report = architecture.check_architecture(synthetic)
+    assert 'ARCH_DOMAIN_DEPENDENCY' in codes(report)
+
+
+def test_v2_005_identity_no_provider_import(synthetic):
+    """V2-005: domain.identity must not import LLM providers."""
+    write(synthetic, 'src/anovel/domain/identity.py', 'import openai\n')
+    report = architecture.check_architecture(synthetic)
+    assert 'ARCH_DOMAIN_DEPENDENCY' in codes(report)
+
