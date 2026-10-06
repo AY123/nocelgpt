@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: 57d20771d77bf888a4c43b07dc68eb6a451260ed
+STATUS_AS_OF_REVISION: 48eb836bcb44abce88453c0f07a45d0c31eb96d5
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 7 - resolve_alias (VERIFIED)
-V2_005_PROGRESS: 7/8 steps complete
-STATUS: READY_FOR_STEP_8
+CURRENT_STEP: Step 8 - schema and final integration
+V2_005_PROGRESS: 8/8 steps in progress
+STATUS: IMPLEMENTED_PENDING_CI
 ```
 
 ---
@@ -235,6 +235,39 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
+### Step 8: Schema and Final Integration (CURRENT)
+```
+STATUS: 🔄 IMPLEMENTED_PENDING_CI
+DESCRIPTION: JSON Schema, consolidated contract tests, and final acceptance
+BASELINE_SHA: 48eb836bcb44abce88453c0f07a45d0c31eb96d5 (Step 7 SSOT)
+BRANCH: work/h2-convergence-closure
+
+IMPLEMENTATION:
+  - Entity identity JSON Schema (Draft 2020-12)
+  - Consolidated contract tests (37 tests covering all acceptance criteria)
+  - Architecture boundary validation (2 tests)
+  - Module docstring update per §12.1
+
+ARTIFACTS:
+  - specs/schemas/entity-identity.schema.json
+  - tests/contract/test_v2_005.py (37 tests)
+  - tests/architecture/test_dependency_boundaries.py (2 V2-005 tests added)
+  - src/anovel/domain/identity.py (docstring update)
+
+LOCAL_VERIFICATION:
+  - Step 3 tests: 29/29 PASS
+  - Step 4 tests: 20/20 PASS
+  - Step 5 tests: 32/32 PASS
+  - Step 6 tests: 35/35 PASS
+  - Step 7 tests: 26/26 PASS
+  - Step 8 consolidated tests: 37/37 PASS
+  - Architecture tests: 2/2 PASS (V2-005 boundaries)
+  - Total: 179/179 contract tests PASS
+  - mypy --strict: PASS
+
+STARTED: 2026-10-06
+```
+
 ---
 
 ## Repository Migration Context
@@ -354,20 +387,17 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Step 8 Implementation)
-1. Review V2-005 contract for Step 8 scope
-2. Implement schema validation and final integration
-3. Write unit tests for Step 8 functionality
-4. Verify contract tests pass
-5. Run full CI locally
-6. Commit and push to work/h2-convergence-closure
-7. Verify CI passes in GitLab
+### Immediate (Pending Step 8 CI Verification)
+1. Await CI pipeline completion for Step 8 implementation
+2. Verify 6/6 gates pass
+3. Confirm test count increase (707 → ~746 executions)
+4. Update status to VERIFIED after CI confirmation
 
-### After Step 8 Completion
-1. Update this status document
-2. Verify exact SHA via CI pipeline
-3. Prepare V2-005 final closure
-4. Complete V2-005 acceptance
+### After Step 8 Verification
+1. V2-005 final closure
+2. Update contract status to IMPLEMENTED
+3. Archive V2-005 evidence
+4. Prepare for V2-006 (relationship tracking)
 
 ---
 

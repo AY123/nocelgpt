@@ -10,6 +10,9 @@ Public API:
         EntityId, ProjectId, EntityIdentity, ResolutionResult
     Operations:
         create_identity, rename_identity, add_alias, remove_alias, resolve_alias
+        normalize_for_lookup
+    Data Structures:
+        EntityRegistry (in-memory, for tests)
 
 Invariants:
     - Entity ID never changes (stable across rename)
@@ -18,8 +21,6 @@ Invariants:
     - Deterministic resolution
 
 Contract: V2-005 Implementation Contract v1.1.0
-Authority: docs/V2-005_IMPLEMENTATION_CONTRACT.md
-Baseline: 4248258339fa1c90df1c9e34572df24abe13330d
 """
 
 from dataclasses import dataclass
