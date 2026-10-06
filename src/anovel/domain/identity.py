@@ -531,4 +531,100 @@ def remove_alias(
     )
 
 
-# Functions for Step 7+ operations (to be implemented)
+def resolve_alias(
+    project_id: ProjectId,
+    lookup: str,
+    registry: EntityRegistry,
+) -> ResolutionResult:
+    """
+    Resolve alias to entity ID within project scope.
+
+    Searches for entities matching the lookup string (after normalization) in
+    the specified project. Matches against both canonical names and aliases
+    with equal priority. Returns the appropriate result based on match count.
+
+    Project Isolation:
+    - Only searches entities in the specified project
+    - Cross-project matches are never returned
+
+    Match Rules:
+    - Uses normalize_for_lookup() for comparison
+    - Canonical name and aliases have equal priority (no canonical preference)
+    - Same entity matched via both canonical + alias counts as 1 candidate
+
+    Result Cases:
+    - 0 matches → NotFoundResult
+    - 1 match → ResolvedResult
+    - 2+ matches → AmbiguousResult (with all candidate entity IDs)
+    - Invalid input → InvalidInputResult
+
+    Args:
+        project_id: Project scope for resolution
+        lookup: Name or alias to resolve (normalized for matching)
+        registry: Entity registry to search (not modified)
+
+    Returns:
+        ResolutionResult discriminated union based on match outcome
+
+    Example:
+        >>> entity = create_identity(ProjectId("proj_01"), "张三")
+        >>> registry.add_entity(entity)
+        >>> result = resolve_alias(ProjectId("proj_01"), "张三", registry)
+        >>> result.status == ResolutionStatus.RESOLVED
+        True
+
+    Contract: V2-005 §3.5
+    """
+    # Validate input
+    if lookup is None or not lookup or lookup.isspace():
+        return InvalidInputResult(
+            status=ResolutionStatus.INVALID_INPUT,
+            reason="lookup cannot be None, empty, or whitespace-only",
+        )
+
+    # Normalize lookup for comparison
+    normalized_lookup = normalize_for_lookup(lookup)
+
+    # Check if normalization resulted in empty string
+    if not normalized_lookup:
+        return InvalidInputResult(
+            status=ResolutionStatus.INVALID_INPUT,
+            reason="lookup normalizes to empty string",
+        )
+
+    # Get all entities in project
+    entities = registry.get_entities(project_id)
+
+    # Find matching entities
+    matching_entity_ids: set[EntityId] = set()
+
+    for entity in entities:
+        # Check canonical name
+        if normalize_for_lookup(entity.canonical_name) == normalized_lookup:
+            matching_entity_ids.add(entity.entity_id)
+            continue  # Already matched, skip alias check for this entity
+
+        # Check aliases
+        for alias in entity.aliases:
+            if normalize_for_lookup(alias) == normalized_lookup:
+                matching_entity_ids.add(entity.entity_id)
+                break  # Found match, no need to check more aliases for this entity
+
+    # Return appropriate result based on match count
+    match_count = len(matching_entity_ids)
+
+    if match_count == 0:
+        return NotFoundResult(status=ResolutionStatus.NOT_FOUND)
+    elif match_count == 1:
+        return ResolvedResult(
+            status=ResolutionStatus.RESOLVED,
+            entity_id=next(iter(matching_entity_ids)),
+        )
+    else:  # match_count >= 2
+        return AmbiguousResult(
+            status=ResolutionStatus.AMBIGUOUS,
+            candidates=frozenset(matching_entity_ids),
+        )
+
+
+# Functions for Step 8+ operations (to be implemented)

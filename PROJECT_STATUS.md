@@ -15,9 +15,9 @@ ACTIVE_BRANCH: work/h2-convergence-closure
 STATUS_AS_OF_REVISION: b71608e5d06456aefdeeede99af539342ad9aa00
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 6 - add_alias and remove_alias (VERIFIED)
-V2_005_PROGRESS: 6/8 steps complete
-STATUS: READY_FOR_STEP_7
+CURRENT_STEP: Step 7 - resolve_alias
+V2_005_PROGRESS: 7/8 steps in progress
+STATUS: IMPLEMENTED_PENDING_CI
 ```
 
 ---
@@ -201,6 +201,36 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
+### Step 7: resolve_alias (CURRENT)
+```
+STATUS: 🔄 IMPLEMENTED_PENDING_CI
+DESCRIPTION: Implement alias resolution with ambiguity detection
+BASELINE_SHA: b1cd7153a155bae4a29a15e4744c1002c1082eaf (Step 6 SSOT)
+BRANCH: work/h2-convergence-closure
+
+IMPLEMENTATION:
+  - resolve_alias (project-scoped, canonical + aliases equal priority)
+  - Input validation (empty/whitespace/None → InvalidInputResult)
+  - Ambiguity detection (≥2 candidates → AmbiguousResult with frozenset)
+  - Deterministic resolution (no registration-order dependency)
+  - Registry immutability (read-only operation)
+
+ARTIFACTS:
+  - src/anovel/domain/identity.py (resolve_alias function)
+  - tests/contract/test_v2_005_step7.py (26 tests)
+
+LOCAL_VERIFICATION:
+  - Step 3 tests: 29/29 PASS
+  - Step 4 tests: 20/20 PASS
+  - Step 5 tests: 32/32 PASS
+  - Step 6 tests: 35/35 PASS
+  - Step 7 tests: 26/26 PASS
+  - Total: 142/142 PASS
+  - mypy --strict: PASS
+
+STARTED: 2026-10-06
+```
+
 ---
 
 ## Repository Migration Context
@@ -248,9 +278,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: 6/8 steps complete
+PROGRESS: 7/8 steps in progress
 TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 7 (resolve_alias)
+NEXT_STEP: Step 8 (schema and final integration) after Step 7 verification
 ```
 
 ---
@@ -321,18 +351,17 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Step 7 Implementation)
-1. Implement resolve_alias operation
-2. Write unit tests for alias resolution
-3. Verify contract tests pass
-4. Run full CI locally
-5. Commit and push to work/h2-convergence-closure
-6. Verify CI passes in GitLab
+### Immediate (Pending Step 7 CI Verification)
+1. Await CI pipeline completion for Step 7 implementation
+2. Verify 6/6 gates pass
+3. Confirm test count > 681 (baseline + 26 new tests)
+4. Update status to VERIFIED after CI confirmation
 
-### After Step 7 Completion
-1. Update this status document
-2. Verify exact SHA via CI pipeline
-3. Proceed to V2-005 Step 8 (final integration and schema)
+### After Step 7 Verification
+1. Proceed to Step 8 (schema and final integration)
+2. Complete V2-005 implementation
+3. Perform final contract verification
+4. Prepare for V2-005 closure
 
 ---
 
