@@ -39,12 +39,14 @@ After Exact-SHA CI SUCCESS: GRANTED (final)
 **Verified Bindings**:
 ```yaml
 TASK_ID: V2-005
-FROZEN_CONTRACT_CONTENT_BASELINE: 4248258339fa1c90df1c9e34572df24abe13330d
-PRE_AUTH_GOVERNANCE_BASELINE: 58515f3d4dce83ff61a39dbb6a96182df388f83e
 CONTRACT_VERSION: v1.1.0
 AUTHORIZATION_GATE: PASS
 AUTH_BLOCKERS: 0
 ```
+
+Frozen contract content baseline (Git commit): `4248258339fa1c90df1c9e34572df24abe13330d`
+
+Pre-authorization governance baseline (Git commit): `58515f3d4dce83ff61a39dbb6a96182df388f83e`
 
 **Authorized Scope**:
 - V2-005 technical implementation per frozen 8-step plan
@@ -249,10 +251,11 @@ AUTHORIZATION_DECISION: APPROVED
 CONTRACT_STATUS: CONTRACT_FROZEN
 CONTRACT_APPROVAL: GRANTED
 FORMAL_CONTRACT_FREEZE: GRANTED
-FROZEN_CONTRACT_CONTENT_BASELINE: 4248258339fa1c90df1c9e34572df24abe13330d
+# Frozen Contract Baseline
+Frozen contract content baseline (Git commit): `4248258339fa1c90df1c9e34572df24abe13330d`
 
 # Pre-Authorization Governance
-PRE_AUTH_GOVERNANCE_BASELINE: 58515f3d4dce83ff61a39dbb6a96182df388f83e
+Pre-authorization governance baseline (Git commit): `58515f3d4dce83ff61a39dbb6a96182df388f83e`
 
 # Authorization Record
 IMPLEMENTATION_AUTHORIZATION_SHA: d0bb6d3817afecf93e4ca3e8c5c7296e6aa4f86f

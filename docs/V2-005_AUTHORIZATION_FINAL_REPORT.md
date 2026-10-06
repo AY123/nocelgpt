@@ -58,10 +58,14 @@ Step 5: Authorization Effectuation (this task)
 **Bindings**:
 ```yaml
 TASK_ID: V2-005
-FROZEN_CONTRACT_CONTENT_BASELINE: 4248258339fa1c90df1c9e34572df24abe13330d
-PRE_AUTH_GOVERNANCE_BASELINE: 58515f3d4dce83ff61a39dbb6a96182df388f83e
 CONTRACT_VERSION: v1.1.0
 IMPLEMENTATION_LOCATION: src/anovel/domain/identity/
+
+Frozen contract content baseline (Git commit):
+`4248258339fa1c90df1c9e34572df24abe13330d`
+
+Pre-authorization governance baseline (Git commit):
+`58515f3d4dce83ff61a39dbb6a96182df388f83e`
 TEST_LOCATION: tests/domain/test_identity.py
 TEST_CONTRACT: TC-005-001 through TC-005-051 (51 tests)
 ```
@@ -135,11 +139,13 @@ AUTHORIZATION_DECISION: APPROVED
 CONTRACT_STATUS: CONTRACT_FROZEN
 CONTRACT_APPROVAL: GRANTED
 FORMAL_CONTRACT_FREEZE: GRANTED
-FROZEN_CONTRACT_CONTENT_BASELINE: 4248258339fa1c90df1c9e34572df24abe13330d
+
+Frozen contract content baseline (Git commit): `4248258339fa1c90df1c9e34572df24abe13330d`
 
 # Governance Baselines
-PRE_AUTH_GOVERNANCE_BASELINE: 58515f3d4dce83ff61a39dbb6a96182df388f83e
-IMPLEMENTATION_AUTHORIZATION_SHA: d0bb6d3fa27563293b774cf744386748f996144f
+Pre-authorization governance baseline (Git commit): `58515f3d4dce83ff61a39dbb6a96182df388f83e`
+
+Implementation authorization SHA (Git commit): `d0bb6d3fa27563293b774cf744386748f996144f`
 
 # Authorization State (Current)
 IMPLEMENTATION_AUTHORIZATION: GRANTED_PENDING_CI

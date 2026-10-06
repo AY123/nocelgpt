@@ -321,10 +321,12 @@ STATUS: Active and accepted
 ```
 DATE: 2026-10-06
 LOCATION: This AI conversation transcript
-TOKEN: glpat-7gcul-eLSRtExxC7iY3anmM6MQpvOjEKdTp1bzN5Dg.01.160swo0cq
+TOKEN: <REDACTED_GITLAB_PAT>
+FORMAT: glpat-[60_characters]
 SCOPE: AI session logs (ephemeral)
 USER_RESPONSE: "不用管，我这不是需要保密的仓库项目，没有安全问题"
-STATUS: User-accepted exposure
+STATUS: Credential exposed, value not recorded in repository
+OWNER_ACTION: REVOKE_OR_ROTATE_REQUIRED
 ```
 
 **Event 3: Git Config Storage**
