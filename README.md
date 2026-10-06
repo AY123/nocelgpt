@@ -2,13 +2,13 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0**。P0 (Repository & Governance) 已验证完成，V2-001 through V2-004 CLOSED，V2-005 Step 2 VERIFIED (Pipeline 2915904387, 6/6 PASS)，G-P0 PASS。当前仓库：`https://gitlab.com/angyang/ainovel.git`。权威阶段状态见 [phase-gates.yaml](plan/machine/phase-gates.yaml)。
+当前为 **Plan v1.3.0**。P0 (Repository & Governance) 已验证完成，V2-001 through V2-004 CLOSED，V2-005 COMPLETE AND RATIFIED (8/8 steps verified, Tag v2.005-complete)，G-P0 PASS。当前仓库：`https://gitlab.com/angyang/ainovel.git`。权威阶段状态见 [phase-gates.yaml](plan/machine/phase-gates.yaml)。
 
 最小 Python 包、锁定安装、真实 PostgreSQL 环境、资料治理命令、远端 CI 与架构检查器已实现并验证。剩余任务见 [任务清单](plan/machine/implementation-backlog.yaml)。
 
-**当前状态**: V2-005 Step 3 实施中 (ID Generation and Normalization)  
+**当前状态**: V2-005 COMPLETE (Entity Identity & Alias Resolution), V2-006 pending authorization  
 **当前分支**: `work/h2-convergence-closure`  
-**Step 2 验证**: SHA `1aa31e7`, Pipeline 2915904387, 6/6 PASS, 565/565 PASS  
+**V2-005 Final**: SHA `bd303e6`, Tag `v2.005-complete`, 8/8 steps VERIFIED  
 **详细状态**: 见 [PROJECT_STATUS.md](PROJECT_STATUS.md)
 
 ## 从这里开始
@@ -72,14 +72,19 @@ V2-003 已完成本地实施与验证，复用 V2-001 的锁定环境和 V2-002 
 V2-004 (Secret/依赖 CI、远端来源与保护权限) 已完成并验证。远端 CI、架构检查器和权限边界均已实现。正式任务关闭需要代码、测试、真实 CI 和验收记录，本地 PASS 与 CI PASS 分别记录。
 
 **V2-005 当前进度**:
-- **Step 1** (Entity Identity Module Structure): ✅ COMPLETE
-- **Step 2** (Core Entity Types Implementation): ✅ VERIFIED
-  - Exact SHA: `1aa31e7cdaff14e777210011c766badcd797b836`
-  - Pipeline: 2915904387 (6/6 PASS, 565/565 PASS)
+- **Step 1-2** (Types and Module Structure): ✅ VERIFIED
+  - SHA: `1aa31e7`, Pipeline: 2915904387 (6/6 PASS)
+- **Step 3** (ID Generation and Normalization): ✅ VERIFIED
+- **Step 4** (EntityRegistry): ✅ VERIFIED
+- **Step 5** (create_identity, rename_identity): ✅ VERIFIED
+- **Step 6** (add_alias, remove_alias): ✅ VERIFIED
+- **Step 7** (resolve_alias): ✅ VERIFIED
+- **Step 8** (Schema and Final Integration): ✅ VERIFIED
+- **V2-005 Status**: ✅ COMPLETE AND RATIFIED (2026-10-06)
+  - Final SHA: `bd303e6`, Tag: `v2.005-complete`
+  - Evidence: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
   - Contract: docs/V2-005_IMPLEMENTATION_CONTRACT.md v1.1.0
-- **Step 3** (ID Generation and Normalization): 🔄 IN PROGRESS
   - Branch: `work/h2-convergence-closure`
-  - 详细状态: [PROJECT_STATUS.md](PROJECT_STATUS.md)
 
 P1 (Narrative Kernel) 将实现核心叙事模型。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
 
