@@ -9,10 +9,10 @@
 ## Current State Summary
 
 ```
-PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
+PROJECT: ANovelOS V2 - 中文网文自动创作與可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-CURRENT_HEAD: <pending Step 4 commit>
+CURRENT_HEAD: 1fe8f44c2fcccf839bb0b8215729e5a3ff86a848
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
 CURRENT_STEP: Step 4 - Entity Registry
