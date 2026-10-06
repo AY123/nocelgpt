@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: 9d98f57c871d1cf1b776b9fda9107a5c79e803a4
+STATUS_AS_OF_REVISION: e87477b9fd0e71609322f336de5793ca9d9f1fbb
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 5 - create_identity and rename_identity (VERIFIED)
-V2_005_PROGRESS: 5/8 steps complete
-STATUS: READY_FOR_STEP_6
+CURRENT_STEP: Step 6 - add_alias and remove_alias
+V2_005_PROGRESS: 6/8 steps in progress
+STATUS: IMPLEMENTED_PENDING_CI
 ```
 
 ---
@@ -161,6 +161,35 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
+### Step 6: add_alias and remove_alias (CURRENT)
+```
+STATUS: 🔄 IMPLEMENTED_PENDING_CI
+DESCRIPTION: Implement alias management operations
+BASELINE_SHA: e87477b9fd0e71609322f336de5793ca9d9f1fbb (Step 5 SSOT)
+BRANCH: work/h2-convergence-closure
+
+IMPLEMENTATION:
+  - add_alias (normalize_for_lookup duplicate detection, idempotent)
+  - remove_alias (normalize_for_lookup matching, canonical name protection)
+  - Both return new immutable EntityIdentity
+  - Outer whitespace trimming
+  - Input validation with ValueError
+
+ARTIFACTS:
+  - src/anovel/domain/identity.py (add_alias, remove_alias functions)
+  - tests/contract/test_v2_005_step6.py (34 tests)
+
+LOCAL_VERIFICATION:
+  - Step 3 tests: 29/29 PASS
+  - Step 4 tests: 20/20 PASS
+  - Step 5 tests: 32/32 PASS
+  - Step 6 tests: 34/34 PASS
+  - Total: 115/115 PASS
+  - mypy --strict: PASS
+
+STARTED: 2026-10-06
+```
+
 ---
 
 ## Repository Migration Context
@@ -208,9 +237,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: 5/8 steps complete
+PROGRESS: 6/8 steps in progress
 TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 6 (add_alias, remove_alias)
+NEXT_STEP: Step 7 (resolve_alias) after Step 6 verification
 ```
 
 ---
@@ -280,19 +309,17 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Step 6 Implementation)
-1. Implement add_alias operation
-2. Implement remove_alias operation
-3. Write unit tests for alias management
-4. Verify contract tests pass
-5. Run full CI locally
-6. Commit and push to work/h2-convergence-closure
-7. Verify CI passes in GitLab
+### Immediate (Pending Step 6 CI Verification)
+1. Await CI pipeline completion for Step 6 implementation
+2. Verify 6/6 gates pass
+3. Confirm test count > 646 (baseline + 34 new tests)
+4. Update status to VERIFIED after CI confirmation
 
-### After Step 6 Completion
-1. Update this status document
-2. Verify exact SHA via CI pipeline
-3. Proceed to V2-005 Step 7 (resolve_alias)
+### After Step 6 Verification
+1. Proceed to Step 7 (resolve_alias)
+2. Implement alias resolution with conflict detection
+3. Write unit tests for Step 7 functionality
+4. Run full CI verification
 
 ---
 
@@ -347,4 +374,4 @@ VERIFIED_DATE: 2026-10-06
 
 **Status Document Version**: 1.1.0  
 **Last Updated**: 2026-10-06  
-**Next Update**: After Step 5 completion or significant status change
+**Next Update**: After Step 6 completion or significant status change

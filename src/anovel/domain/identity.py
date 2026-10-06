@@ -406,4 +406,127 @@ def rename_identity(
     )
 
 
-# Functions for Step 6+ operations (to be implemented)
+def add_alias(
+    identity: EntityIdentity,
+    alias: str,
+) -> EntityIdentity:
+    """
+    Add alias to entity identity.
+
+    Returns a new EntityIdentity with the alias added to the aliases set.
+    The alias is trimmed of outer whitespace before storage. If the alias
+    already exists (compared via normalized lookup), this is a no-op and
+    returns a new EntityIdentity with the same aliases.
+
+    Duplicate detection uses normalize_for_lookup() for comparison, ensuring
+    case-insensitive matching for ASCII and whitespace normalization.
+
+    Args:
+        identity: Existing entity identity
+        alias: Alternative name to add (non-empty, outer whitespace trimmed)
+
+    Returns:
+        New EntityIdentity with alias added (or unchanged if duplicate)
+
+    Raises:
+        ValueError: If alias is empty or whitespace-only
+
+    Example:
+        >>> entity = create_identity(ProjectId("proj_01"), "张三")
+        >>> with_alias = add_alias(entity, "老张")
+        >>> "老张" in with_alias.aliases
+        True
+
+    Contract: V2-005 §3.3
+    """
+    # Validate and trim alias
+    if not alias or not alias.strip():
+        raise ValueError("alias cannot be empty or whitespace-only")
+    trimmed_alias = alias.strip()
+
+    # Check if alias already exists using normalized comparison
+    normalized_new = normalize_for_lookup(trimmed_alias)
+
+    # Check against canonical name and existing aliases
+    if normalized_new == normalize_for_lookup(identity.canonical_name):
+        # Alias matches canonical name - still add to aliases (idempotent)
+        pass
+
+    for existing_alias in identity.aliases:
+        if normalized_new == normalize_for_lookup(existing_alias):
+            # Alias already exists (after normalization) - idempotent no-op
+            return EntityIdentity(
+                entity_id=identity.entity_id,
+                project_id=identity.project_id,
+                canonical_name=identity.canonical_name,
+                aliases=identity.aliases,
+                entity_type=identity.entity_type,
+            )
+
+    # Add new alias
+    return EntityIdentity(
+        entity_id=identity.entity_id,
+        project_id=identity.project_id,
+        canonical_name=identity.canonical_name,
+        aliases=identity.aliases | {trimmed_alias},
+        entity_type=identity.entity_type,
+    )
+
+
+def remove_alias(
+    identity: EntityIdentity,
+    alias: str,
+) -> EntityIdentity:
+    """
+    Remove alias from entity identity.
+
+    Returns a new EntityIdentity with the specified alias removed from the
+    aliases set. The alias is compared using normalize_for_lookup() for
+    matching. If the alias does not exist, this is a no-op.
+
+    Cannot remove the canonical name - attempting to do so raises ValueError.
+
+    Args:
+        identity: Existing entity identity
+        alias: Alias to remove (compared via normalized lookup)
+
+    Returns:
+        New EntityIdentity with alias removed (or unchanged if not found)
+
+    Raises:
+        ValueError: If alias matches canonical_name (cannot remove canonical name)
+
+    Example:
+        >>> entity = create_identity(ProjectId("proj_01"), "张三")
+        >>> with_alias = add_alias(entity, "老张")
+        >>> without = remove_alias(with_alias, "老张")
+        >>> "老张" in without.aliases
+        False
+
+    Contract: V2-005 §3.4
+    """
+    # Trim alias for comparison
+    trimmed_alias = alias.strip()
+    normalized_target = normalize_for_lookup(trimmed_alias)
+
+    # Check if trying to remove canonical name
+    if normalized_target == normalize_for_lookup(identity.canonical_name):
+        raise ValueError("Cannot remove canonical name as alias")
+
+    # Find and remove matching alias
+    aliases_to_keep = set()
+    for existing_alias in identity.aliases:
+        if normalize_for_lookup(existing_alias) != normalized_target:
+            aliases_to_keep.add(existing_alias)
+
+    # Return new EntityIdentity with updated aliases
+    return EntityIdentity(
+        entity_id=identity.entity_id,
+        project_id=identity.project_id,
+        canonical_name=identity.canonical_name,
+        aliases=frozenset(aliases_to_keep),
+        entity_type=identity.entity_type,
+    )
+
+
+# Functions for Step 7+ operations (to be implemented)
