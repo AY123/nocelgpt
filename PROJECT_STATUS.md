@@ -9,14 +9,15 @@
 ## Current State Summary
 
 ```
-PROJECT: ANovelOS V2 - 中文网文自动创作與可靠生产
+PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-CURRENT_HEAD: 1fe8f44c2fcccf839bb0b8215729e5a3ff86a848
+STATUS_AS_OF_REVISION: 50d806dbc6c4c9e41cfc10b2e55cb5237350a744
 CURRENT_PHASE: P1 (Narrative Kernel)
 CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 4 - Entity Registry
-STATUS: IMPLEMENTED_PENDING_CI
+CURRENT_STEP: Step 4 - Entity Registry (VERIFIED)
+V2_005_PROGRESS: 4/8 steps complete
+STATUS: READY_FOR_STEP_5
 ```
 
 ---
@@ -74,21 +75,45 @@ EVIDENCE:
 
 ### Step 3: ID Generation and Normalization
 ```
-STATUS: ✅ COMPLETE
+STATUS: ✅ VERIFIED (CI PASS)
 DESCRIPTION: Implement UUID generation and name normalization logic
-COMPLETION_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c
+IMPLEMENTATION_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c
+VERIFICATION_PIPELINE: 2916084059
+CI_RESULT: 6/6 PASS
+  - STATIC: PASS
+  - SCHEMA_CONTRACT: PASS
+  - UNIT: PASS
+  - ARCH_FITNESS: PASS
+  - POSTGRES_ENV: PASS
+  - SECRET_DEPENDENCY: PASS
+TEST_RESULT: 594/594 PASS
+  - UNIT: 372/372
+  - ARCH_FITNESS: 222/222
 ARTIFACTS:
   - src/anovel/domain/identity.py (_generate_entity_id, normalize_for_lookup)
   - tests/contract/test_v2_005_step3.py (29 tests)
-TEST_RESULT: 29/29 PASS
+VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 4: Entity Registry (CURRENT)
+### Step 4: Entity Registry
 ```
-STATUS: 🔄 IMPLEMENTED_PENDING_CI
+STATUS: ✅ VERIFIED (CI PASS)
 DESCRIPTION: Implement in-memory EntityRegistry for testing
-BASELINE_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c
-BRANCH: work/h2-convergence-closure
+IMPLEMENTATION_SHA: 1fe8f44c2fcccf839bb0b8215729e5a3ff86a848
+VERIFICATION_SHA: 50d806dbc6c4c9e41cfc10b2e55cb5237350a744
+VERIFICATION_PIPELINE: 2916144168
+BASELINE_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c (Step 3)
+CI_RESULT: 6/6 PASS
+  - STATIC: PASS
+  - SCHEMA_CONTRACT: PASS
+  - UNIT: PASS
+  - ARCH_FITNESS: PASS
+  - POSTGRES_ENV: PASS
+  - SECRET_DEPENDENCY: PASS
+TEST_RESULT: 614/614 PASS
+  - UNIT: 392/392
+  - ARCH_FITNESS: 222/222
+NEW_TESTS: 20
 
 IMPLEMENTATION:
   - EntityRegistry.__init__
@@ -100,13 +125,7 @@ ARTIFACTS:
   - src/anovel/domain/identity.py (EntityRegistry class)
   - tests/contract/test_v2_005_step4.py (20 tests)
 
-LOCAL_VERIFICATION:
-  - Step 3 tests: 29/29 PASS
-  - Step 4 tests: 20/20 PASS
-  - mypy --strict: PASS
-  - Total new tests: 49 (baseline + 20)
-
-STARTED: 2026-10-06
+VERIFIED_DATE: 2026-10-06
 ```
 
 ---
@@ -156,8 +175,9 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ```
 STATUS: 🔄 IN PROGRESS
 CURRENT_TASK: V2-005
-PROGRESS: Step 2 of 3 complete
+PROGRESS: 4/8 steps complete
 TARGET: Core entity identity and alias resolution
+NEXT_STEP: Step 5 (create_identity, rename_identity)
 ```
 
 ---
@@ -169,13 +189,13 @@ All 6 gates are operational in new repository:
 ```
 STATIC:             ✅ OPERATIONAL (lint, type check)
 SCHEMA_CONTRACT:    ✅ OPERATIONAL (JSON schema validation)
-UNIT:               ✅ OPERATIONAL (343 tests)
+UNIT:               ✅ OPERATIONAL (392 tests)
 ARCH_FITNESS:       ✅ OPERATIONAL (222 tests)
 POSTGRES_ENV:       ✅ OPERATIONAL (DB bootstrap tests)
 SECRET_DEPENDENCY:  ✅ OPERATIONAL (gitleaks scan)
 ```
 
-**Latest Verified**: Pipeline 2915904387 (6/6 PASS)
+**Latest Verified**: Pipeline 2916144168 (6/6 PASS, 614/614 tests)
 
 ---
 
@@ -192,27 +212,44 @@ RESULT: 6/6 PASS, 565/565 PASS
 VERIFIED_DATE: 2026-10-06
 ```
 
-This is the immutable baseline for Step 3 work.
+### Step 3 Exact Verification
+```
+EXACT_SHA: 0b091b229dc010e0e87a4be1eada4be5d3ba422c
+COMMIT_MESSAGE: "feat(V2-005): implement Step 3 - ID generation and normalization"
+PIPELINE_ID: 2916084059
+PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916084059
+RESULT: 6/6 PASS, 594/594 PASS
+VERIFIED_DATE: 2026-10-06
+```
+
+### Step 4 Exact Verification
+```
+IMPLEMENTATION_SHA: 1fe8f44c2fcccf839bb0b8215729e5a3ff86a848
+VERIFICATION_SHA: 50d806dbc6c4c9e41cfc10b2e55cb5237350a744
+COMMIT_MESSAGE: "feat(V2-005): implement Step 4 - EntityRegistry"
+PIPELINE_ID: 2916144168
+PIPELINE_URL: https://gitlab.com/angyang/ainovel/-/pipelines/2916144168
+RESULT: 6/6 PASS, 614/614 PASS
+VERIFIED_DATE: 2026-10-06
+```
 
 ---
 
 ## Next Actions
 
-### Immediate (Step 3 Implementation)
-1. Implement UUID v4 generation for EntityId
-2. Implement name normalization utilities
-3. Implement alias resolution logic with conflict detection
-4. Write unit tests for new functionality
-5. Verify contract tests pass
-6. Run full CI locally
-7. Commit and push to work/h2-convergence-closure
-8. Verify CI passes in GitLab
+### Immediate (Step 5 Implementation)
+1. Implement create_identity operation
+2. Implement rename_identity operation
+3. Write unit tests for new functionality
+4. Verify contract tests pass
+5. Run full CI locally
+6. Commit and push to work/h2-convergence-closure
+7. Verify CI passes in GitLab
 
-### After Step 3 Completion
-1. Create Step 3 completion report
-2. Verify exact SHA via new verification branch
-3. Update this status document
-4. Proceed to V2-005 Step 4 (if defined) or mark V2-005 complete
+### After Step 5 Completion
+1. Update this status document
+2. Verify exact SHA via CI pipeline
+3. Proceed to V2-005 Step 6 (add_alias, remove_alias)
 
 ---
 
@@ -238,18 +275,17 @@ This is the immutable baseline for Step 3 work.
 
 ## Critical Constraints
 
-### Prohibited Actions (Step 3)
+### Prohibited Actions (Current Step)
 - ❌ Modify V2-005 contract semantics
-- ❌ Change ResolutionResult frozen contract
+- ❌ Change frozen dataclass contracts
 - ❌ Weaken existing tests
-- ❌ Modify Step 1 or Step 2 production code
-- ❌ Change UUID v4 requirement to other formats
-- ❌ Add features outside Step 3 scope
+- ❌ Modify completed step production code
+- ❌ Add features outside current step scope
 
 ### Required Before Commit
-- ✅ All existing tests pass (565/565)
-- ✅ New tests for Step 3 functionality
-- ✅ Contract tests validate Step 3
+- ✅ All existing tests pass
+- ✅ New tests for current step functionality
+- ✅ Contract tests validate current step
 - ✅ Lint, type check, schema validation pass
 - ✅ Architecture boundaries maintained
 - ✅ No secret leakage
@@ -266,5 +302,6 @@ This is the immutable baseline for Step 3 work.
 
 ---
 
-**Status Document Version**: 1.0.0  
-**Next Update**: After Step 3 completion or significant status change
+**Status Document Version**: 1.1.0  
+**Last Updated**: 2026-10-06  
+**Next Update**: After Step 5 completion or significant status change
