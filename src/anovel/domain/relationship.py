@@ -26,7 +26,7 @@ from typing import NewType
 
 # --- Type Aliases (Step 1) ---
 
-RelationshipId = NewType('RelationshipId', str)
+RelationshipId = NewType("RelationshipId", str)
 """
 Opaque stable identifier for relationships.
 
@@ -36,7 +36,7 @@ Example: "a1b2c3d4-e5f6-4789-a012-b3c4d5e6f7a8"
 Contract: V2-006 §3.1
 """
 
-RelationshipType = NewType('RelationshipType', str)
+RelationshipType = NewType("RelationshipType", str)
 """
 Extensible relationship type identifier.
 
