@@ -124,3 +124,167 @@ class EntityRelationship:
     source_entity_id: EntityId
     target_entity_id: EntityId
     relationship_type: RelationshipType
+
+
+# --- Relationship Registry (Step 3) ---
+
+
+class RelationshipRegistry:
+    """
+    In-memory relationship store for tests and prototyping.
+
+    NOT for production persistence (see V2-007).
+
+    Identity: relationship_id (primary key)
+    Uniqueness: (source_entity_id, target_entity_id, relationship_type, project_id) tuple
+
+    Contract: V2-006 §4
+    """
+
+    def __init__(self) -> None:
+        """Initialize empty registry."""
+        self._relationships: dict[RelationshipId, EntityRelationship] = {}
+        self._by_project: dict[ProjectId, set[RelationshipId]] = {}
+
+    def add_relationship(self, relationship: EntityRelationship) -> None:
+        """
+        Add relationship to registry.
+
+        Idempotent based on relationship_id:
+        - If relationship_id exists with same content → no-op
+        - If relationship_id exists with different content → ValueError
+
+        Uniqueness constraint:
+        - If (source, target, type, project) tuple exists with different ID → no-op (idempotent)
+
+        Args:
+            relationship: EntityRelationship to add
+
+        Raises:
+            ValueError: If relationship_id exists with different content
+
+        Example:
+            >>> registry = RelationshipRegistry()
+            >>> rel = EntityRelationship(...)
+            >>> registry.add_relationship(rel)
+            >>> registry.add_relationship(rel)  # no-op (same content)
+
+        Contract: V2-006 §4.2
+        """
+        rel_id = relationship.relationship_id
+
+        # Check if relationship_id already exists
+        if rel_id in self._relationships:
+            existing = self._relationships[rel_id]
+            if existing != relationship:
+                raise ValueError(
+                    f"RelationshipId {rel_id} already exists with different content"
+                )
+            # Same content → no-op
+            return
+
+        # Check uniqueness constraint: (source, target, type, project) tuple
+        for existing_rel in self._relationships.values():
+            if (
+                existing_rel.source_entity_id == relationship.source_entity_id
+                and existing_rel.target_entity_id == relationship.target_entity_id
+                and existing_rel.relationship_type == relationship.relationship_type
+                and existing_rel.project_id == relationship.project_id
+            ):
+                # Tuple already exists → no-op (idempotent)
+                return
+
+        # Add relationship
+        self._relationships[rel_id] = relationship
+
+        # Add to project index
+        if relationship.project_id not in self._by_project:
+            self._by_project[relationship.project_id] = set()
+        self._by_project[relationship.project_id].add(rel_id)
+
+    def remove_relationship(self, relationship_id: RelationshipId) -> None:
+        """
+        Remove relationship by ID.
+
+        Idempotent: no-op if relationship_id not found (does not raise).
+
+        Args:
+            relationship_id: ID of relationship to remove
+
+        Example:
+            >>> registry.remove_relationship(rel_id)
+            >>> registry.remove_relationship(rel_id)  # no-op (not found)
+
+        Contract: V2-006 §4.2
+        """
+        if relationship_id not in self._relationships:
+            return  # no-op
+
+        relationship = self._relationships[relationship_id]
+        project_id = relationship.project_id
+
+        # Remove from main storage
+        del self._relationships[relationship_id]
+
+        # Remove from project index
+        if project_id in self._by_project:
+            self._by_project[project_id].discard(relationship_id)
+            # Clean up empty project sets
+            if not self._by_project[project_id]:
+                del self._by_project[project_id]
+
+    def get_relationship(
+        self, relationship_id: RelationshipId
+    ) -> EntityRelationship | None:
+        """
+        Get relationship by ID.
+
+        Args:
+            relationship_id: ID to lookup
+
+        Returns:
+            EntityRelationship if found, None otherwise
+
+        Example:
+            >>> rel = registry.get_relationship(rel_id)
+            >>> if rel is not None:
+            ...     print(rel.relationship_type)
+
+        Contract: V2-006 §4.2
+        """
+        return self._relationships.get(relationship_id)
+
+    def get_relationships(
+        self, entity_id: EntityId, project_id: ProjectId
+    ) -> list[EntityRelationship]:
+        """
+        Get all relationships for an entity (source or target).
+
+        Returns relationships where entity_id appears as source OR target,
+        within the specified project.
+
+        Args:
+            entity_id: Entity to find relationships for
+            project_id: Project scope
+
+        Returns:
+            List of EntityRelationship (empty list if none found)
+            Order is deterministic but unspecified (implementation-defined)
+
+        Example:
+            >>> rels = registry.get_relationships(entity_id, project_id)
+            >>> for rel in rels:
+            ...     print(rel.relationship_type)
+
+        Contract: V2-006 §4.2
+        """
+        if project_id not in self._by_project:
+            return []
+
+        results = []
+        for rel_id in self._by_project[project_id]:
+            rel = self._relationships[rel_id]
+            if rel.source_entity_id == entity_id or rel.target_entity_id == entity_id:
+                results.append(rel)
+
+        return results
