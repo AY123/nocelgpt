@@ -22,7 +22,10 @@ Relationship Semantics:
 Contract: V2-006 Implementation Contract v1.0.0
 """
 
+from dataclasses import dataclass
 from typing import NewType
+
+from anovel.domain.identity import EntityId, ProjectId
 
 # --- Type Aliases (Step 1) ---
 
@@ -79,3 +82,45 @@ def validate_relationship_type(s: str) -> RelationshipType:
     if not trimmed:
         raise ValueError("RelationshipType cannot be empty or whitespace-only")
     return RelationshipType(trimmed)
+
+
+# --- Domain Model (Step 2) ---
+
+
+@dataclass(frozen=True)
+class EntityRelationship:
+    """
+    Directed relationship between two entities.
+
+    Immutable after creation. Identity is relationship_id.
+    Uniqueness constraint: (source_entity_id, target_entity_id, relationship_type, project_id).
+
+    Attributes:
+        relationship_id: Stable unique identifier (UUID v4)
+        project_id: Project scope (from V2-005)
+        source_entity_id: Source entity (from V2-005)
+        target_entity_id: Target entity (from V2-005)
+        relationship_type: Type of relationship (extensible string)
+
+    Invariants:
+        - Immutable (frozen dataclass)
+        - All fields required (no None values)
+        - Source and target may be equal (self-relationships allowed)
+
+    Example:
+        >>> rel = EntityRelationship(
+        ...     relationship_id=RelationshipId("a1b2c3d4-e5f6-4789-a012-b3c4d5e6f7a8"),
+        ...     project_id=ProjectId("proj_001"),
+        ...     source_entity_id=EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        ...     target_entity_id=EntityId("650e8400-e29b-41d4-a716-446655440001"),
+        ...     relationship_type=RelationshipType("knows")
+        ... )
+
+    Contract: V2-006 §3.3
+    """
+
+    relationship_id: RelationshipId
+    project_id: ProjectId
+    source_entity_id: EntityId
+    target_entity_id: EntityId
+    relationship_type: RelationshipType
