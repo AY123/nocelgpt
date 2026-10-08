@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "scope": "LOCAL_REAL_SCANNER_AND_IMMUTABLE_AUTHORITY_OBJECTS",
+  "base_sha": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "authority_sha": "858192444448717b25beff2c9e285c6d4f909f98",
+  "repo": "/private/tmp/v2004-approved-candidate-d8p8awde/repository",
+  "detected": 45,
+  "known": 45,
+  "approved_and_consumed": 45,
+  "unapproved": 0,
+  "expired": 0,
+  "new_or_unmatched": 0,
+  "unused_approvals": 0,
+  "tracked_files_scanned": 1386,
+  "history_commits": 153,
+  "raw_scanner_status": "FAIL",
+  "pending_original_inputs_preserved": true,
+  "primary_policy_authorities": "EMPTY_NOT_ACTIVATED",
+  "remote_requests": 0,
+  "remote_ci_runs": 0,
+  "runner_activations": 0,
+  "pushes": 0,
+  "V2_004": "IN_PROGRESS",
+  "P0": "NOT_VERIFIED",
+  "limitations": [
+    "Not an immutable final source revision yet.",
+    "Local scanner PASS is not six-gate or trusted-CI PASS.",
+    "No final protected source enrollment or independent acceptance is claimed."
+  ]
+}

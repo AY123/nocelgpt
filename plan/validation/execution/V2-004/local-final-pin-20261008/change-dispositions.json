@@ -1,0 +1,154 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "839c25b43824e09a84b57c671f3fdd0065fe0fdc",
+    "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/scope.json",
+    "sha256": "544654b4125870c443338bbd9cf201782b2599aa9f0ba152db49b2203f496a5f"
+  },
+  "dispositions": [
+    {
+      "path": "scripts/ci/check_security.py",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "dc940a3c35655e564a1d55bea26dce41fad070f110156eaacc8d4c1a9b83a224",
+      "new_sha": "4f4fdbf1b472b4a4bae2bf1cb5ba78c7046f21babad5e1d9262df2f62ee95600",
+      "finding_id": "21f7906deafc0fabc5f46b1356f9aea6d472554278ff6a07b8cfbf3a3f3cdea0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Retains actual pinned default-rule tracked-worktree/full-history scanning with empty scanner ignores and hard scanner errors; only the post-scan exact authority decision can consume the fixed known identity.13 real Git-binding controls reject unmatched,drift,wrongpin,expiry and unused approval.",
+      "impact": "V2-004/P0 exact approval consumption only; all45 findings remain OPEN, no new finding authorized, no scanner/gate downgrade or remote permission assertion.",
+      "reviewer": "Same Codex operator technical review with read-only shared-team review; not independent acceptance.",
+      "replacement_validation": "Actual complete existing baseline-ref scan45detected45known45consumed and real immutable approval-object controls13/13,0mocks. These pre-final binding artifacts are not current-C remote CI or six-gate evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/AUTHORIZATION.md",
+        "sha256": "120e1e39c9d102ee8bf6a6a8e35f1f7b3311c373c091dcdd4f5197c360120af4"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/real-authority-probes.json",
+          "sha256": "7d9f99c7ad64fb07997ec7aea5b60e11608e6f97a57f4a244b429f97e487904b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/approved-detection-record.json",
+          "sha256": "54f046753fca667c3e192050a0236f7f493a809083913d2cda94170c87ba89f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/local-scan-status.json",
+          "sha256": "6ef1861d0806652b5b05f60869d9653df655b5ebf162294650e7455f8485ddfe"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/baseline-ref-snapshot.json",
+          "sha256": "247cc52903423f2df280fea56bd47fc70146d17a32cb8eee9073ff4cf1ff25b8"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/check_security.py",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "dc940a3c35655e564a1d55bea26dce41fad070f110156eaacc8d4c1a9b83a224",
+      "new_sha": "4f4fdbf1b472b4a4bae2bf1cb5ba78c7046f21babad5e1d9262df2f62ee95600",
+      "finding_id": "6fb8dba827b42dd11e17995b97d60ea779712e8aaf7b4b9dc67c54d7d673bae6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Retains actual pinned default-rule tracked-worktree/full-history scanning with empty scanner ignores and hard scanner errors; only the post-scan exact authority decision can consume the fixed known identity.13 real Git-binding controls reject unmatched,drift,wrongpin,expiry and unused approval.",
+      "impact": "V2-004/P0 exact approval consumption only; all45 findings remain OPEN, no new finding authorized, no scanner/gate downgrade or remote permission assertion.",
+      "reviewer": "Same Codex operator technical review with read-only shared-team review; not independent acceptance.",
+      "replacement_validation": "Actual complete existing baseline-ref scan45detected45known45consumed and real immutable approval-object controls13/13,0mocks. These pre-final binding artifacts are not current-C remote CI or six-gate evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/AUTHORIZATION.md",
+        "sha256": "120e1e39c9d102ee8bf6a6a8e35f1f7b3311c373c091dcdd4f5197c360120af4"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/real-authority-probes.json",
+          "sha256": "7d9f99c7ad64fb07997ec7aea5b60e11608e6f97a57f4a244b429f97e487904b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/approved-detection-record.json",
+          "sha256": "54f046753fca667c3e192050a0236f7f493a809083913d2cda94170c87ba89f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/local-scan-status.json",
+          "sha256": "6ef1861d0806652b5b05f60869d9653df655b5ebf162294650e7455f8485ddfe"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/baseline-ref-snapshot.json",
+          "sha256": "247cc52903423f2df280fea56bd47fc70146d17a32cb8eee9073ff4cf1ff25b8"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+      "new_sha": "d3f623b77f1221937cb3fbf8b1b5210968dc34073b725a9dc230cf7879cabb50",
+      "finding_id": "acfd43d783df8cc1b27803ce8a571b0d190511b8d44e675a3372b7cbb8e7d3e8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserves scanner pins, both scan targets, dependency obligations and six mandatory jobs; adds only unchanged exact-ledger hash plus two actual Owner authority object pins. No rule/path/filetype/count suppression. Known detection is retained, not hidden.",
+      "impact": "V2-004/P0 exact approval consumption only; all45 findings remain OPEN, no new finding authorized, no scanner/gate downgrade or remote permission assertion.",
+      "reviewer": "Same Codex operator technical review with read-only shared-team review; not independent acceptance.",
+      "replacement_validation": "Actual complete existing baseline-ref scan45detected45known45consumed and real immutable approval-object controls13/13,0mocks. These pre-final binding artifacts are not current-C remote CI or six-gate evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/AUTHORIZATION.md",
+        "sha256": "120e1e39c9d102ee8bf6a6a8e35f1f7b3311c373c091dcdd4f5197c360120af4"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/real-authority-probes.json",
+          "sha256": "7d9f99c7ad64fb07997ec7aea5b60e11608e6f97a57f4a244b429f97e487904b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/approved-detection-record.json",
+          "sha256": "54f046753fca667c3e192050a0236f7f493a809083913d2cda94170c87ba89f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/local-scan-status.json",
+          "sha256": "6ef1861d0806652b5b05f60869d9653df655b5ebf162294650e7455f8485ddfe"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/baseline-ref-snapshot.json",
+          "sha256": "247cc52903423f2df280fea56bd47fc70146d17a32cb8eee9073ff4cf1ff25b8"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "f4ddf0be77090080a0dc4bb18cf0644c8450bf72d64ea7b3c8e81355acde7703",
+      "new_sha": "d3f623b77f1221937cb3fbf8b1b5210968dc34073b725a9dc230cf7879cabb50",
+      "finding_id": "9e63ce96122b41aece1c0b082f8545510b9d48e404d31063a78c6917684a16c0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserves scanner pins, both scan targets, dependency obligations and six mandatory jobs; adds only unchanged exact-ledger hash plus two actual Owner authority object pins. No rule/path/filetype/count suppression. Known detection is retained, not hidden.",
+      "impact": "V2-004/P0 exact approval consumption only; all45 findings remain OPEN, no new finding authorized, no scanner/gate downgrade or remote permission assertion.",
+      "reviewer": "Same Codex operator technical review with read-only shared-team review; not independent acceptance.",
+      "replacement_validation": "Actual complete existing baseline-ref scan45detected45known45consumed and real immutable approval-object controls13/13,0mocks. These pre-final binding artifacts are not current-C remote CI or six-gate evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/AUTHORIZATION.md",
+        "sha256": "120e1e39c9d102ee8bf6a6a8e35f1f7b3311c373c091dcdd4f5197c360120af4"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/real-authority-probes.json",
+          "sha256": "7d9f99c7ad64fb07997ec7aea5b60e11608e6f97a57f4a244b429f97e487904b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/approved-detection-record.json",
+          "sha256": "54f046753fca667c3e192050a0236f7f493a809083913d2cda94170c87ba89f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/local-scan-status.json",
+          "sha256": "6ef1861d0806652b5b05f60869d9653df655b5ebf162294650e7455f8485ddfe"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/local-final-pin-20261008/verification/baseline-ref-snapshot.json",
+          "sha256": "247cc52903423f2df280fea56bd47fc70146d17a32cb8eee9073ff4cf1ff25b8"
+        }
+      ]
+    }
+  ]
+}

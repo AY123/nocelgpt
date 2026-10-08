@@ -1,0 +1,234 @@
+{
+  "record_type": "real_local_owner_authority_git_binding_probes",
+  "status": "PASS",
+  "revision": "858192444448717b25beff2c9e285c6d4f909f98",
+  "repo": "/private/tmp/v2004-approved-candidate-d8p8awde/repository",
+  "consumer_sha256": "45107046d86c0dc51be1da90c3cee015ba853cd6b5dcbc6291c98609e62b49d2",
+  "config_file_sha256": "198798384b24c0a69d4352b4b3dbf0125bd1c24f89824e91bf940cbd46ae5bf5",
+  "ledger_sha256": "38b23aab2d41fbe0ecd37ad25c2fe5e85c1f42d41aa453f9a2397af337a36ce7",
+  "checked_at": "2026-10-08T06:18:27.025113+00:00",
+  "baseline_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+  "authority_records": [
+    {
+      "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_RISK_ACCEPTANCE.json",
+      "revision": "858192444448717b25beff2c9e285c6d4f909f98",
+      "sha256": "27908d42735f4a68dfe8fef7ce7ddf5ed2c413579239069c4cedeacde87a7db4",
+      "authority_id": "V2-004-OWNER-RISK-7",
+      "actor": "YANG YANG",
+      "approval_kind": "OWNER_RISK_ACCEPTANCE",
+      "decision": "APPROVED",
+      "role": "PROJECT_OWNER",
+      "approved_at": "2026-10-08T06:07:49Z",
+      "expires_at": "2027-01-06T06:07:49Z",
+      "identity_count": 7
+    },
+    {
+      "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/PRECISE_EXCEPTION_APPROVAL.json",
+      "revision": "858192444448717b25beff2c9e285c6d4f909f98",
+      "sha256": "c8030edd5ab78709ebf46121534bb880040112bf84d5d51376e72bb993d9ed81",
+      "authority_id": "V2-004-EXCEPTION-38",
+      "actor": "YANG YANG",
+      "approval_kind": "PRECISE_EXCEPTION",
+      "decision": "APPROVED",
+      "role": "PROJECT_OWNER",
+      "approved_at": "2026-10-08T06:07:49Z",
+      "expires_at": "2027-01-06T06:07:49Z",
+      "identity_count": 38
+    }
+  ],
+  "controls": [
+    {
+      "name": "actual_owner_records_exact_45_git_objects_consumed",
+      "expected": "PASS",
+      "actual": "PASS",
+      "error": null,
+      "summary": {
+        "status": "PASS",
+        "detected": 45,
+        "known": 45,
+        "approved_and_consumed": 45,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 0,
+        "unused_approvals": 0,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "changed_path_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 45,
+        "known": 44,
+        "approved_and_consumed": 44,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 1,
+        "unused_approvals": 1,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "changed_fingerprint_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 45,
+        "known": 44,
+        "approved_and_consumed": 44,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 1,
+        "unused_approvals": 1,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "changed_source_hash_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 45,
+        "known": 44,
+        "approved_and_consumed": 44,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 1,
+        "unused_approvals": 1,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "history_worktree_scope_mismatch_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 45,
+        "known": 44,
+        "approved_and_consumed": 44,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 1,
+        "unused_approvals": 1,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "additional_finding_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 46,
+        "known": 45,
+        "approved_and_consumed": 45,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 1,
+        "unused_approvals": 0,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "missing_actual_finding_reports_unused_approval",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 44,
+        "known": 44,
+        "approved_and_consumed": 44,
+        "unapproved": 0,
+        "expired": 0,
+        "unmatched_findings": 0,
+        "unused_approvals": 1,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "missing_authority_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 45,
+        "known": 45,
+        "approved_and_consumed": 0,
+        "unapproved": 45,
+        "expired": 0,
+        "unmatched_findings": 0,
+        "unused_approvals": 0,
+        "unmatched_approvals": 0
+      }
+    },
+    {
+      "name": "wrong_actual_authority_blob_oid_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": "SECRET_EXCEPTION_AUTHORITY_PIN",
+      "summary": {}
+    },
+    {
+      "name": "wrong_actual_authority_sha256_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": "SECRET_EXCEPTION_AUTHORITY_PIN",
+      "summary": {}
+    },
+    {
+      "name": "unknown_authority_revision_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": "SECRET_EXCEPTION_GIT",
+      "summary": {}
+    },
+    {
+      "name": "malformed_anchor_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": "SECRET_EXCEPTION_SCHEMA",
+      "summary": {}
+    },
+    {
+      "name": "expired_real_authority_rejected",
+      "expected": "FAIL",
+      "actual": "FAIL",
+      "error": null,
+      "summary": {
+        "status": "FAIL",
+        "detected": 45,
+        "known": 45,
+        "approved_and_consumed": 0,
+        "unapproved": 0,
+        "expired": 45,
+        "unmatched_findings": 0,
+        "unused_approvals": 45,
+        "unmatched_approvals": 0
+      }
+    }
+  ],
+  "control_count": 13,
+  "positive_count": 1,
+  "negative_count": 12,
+  "mocks": 0,
+  "git_mutation_count": 0,
+  "remote_operation_count": 0,
+  "limitations": [
+    "Identities are sanitized ledger identities, not fresh scanner detections.",
+    "Local authority anchor verification is not trusted protected execution or independent acceptance.",
+    "No complete six-gate pipeline is run."
+  ],
+  "head_and_index_unchanged": true
+}

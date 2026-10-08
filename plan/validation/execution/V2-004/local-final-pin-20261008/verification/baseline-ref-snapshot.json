@@ -1,0 +1,130 @@
+{
+  "source": "/Users/angyang/Documents/AI/ANovelOS",
+  "source_head": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "source_reachable_commit_count": 152,
+  "local_reachable_commit_count_before_new_commits": 152,
+  "source_refs": [
+    {
+      "source_ref": "refs/codex/snapshots/e87f5531eaab17f93b6002ae58160d2c5cd61b04",
+      "revision": "04295459fcf3c93ff3f74a79948f0ac77d47dd87",
+      "local_snapshot_ref": "refs/baseline-source/codex/snapshots/e87f5531eaab17f93b6002ae58160d2c5cd61b04"
+    },
+    {
+      "source_ref": "refs/codex/turn-diffs/captures/1791439568236/e0001251-66bb-4e21-8d13-e90e6b565d9a/base",
+      "revision": "b83e5bec9e6feef0b8f809a1b45bbacbc3064dd5",
+      "local_snapshot_ref": "refs/baseline-source/codex/turn-diffs/captures/1791439568236/e0001251-66bb-4e21-8d13-e90e6b565d9a/base"
+    },
+    {
+      "source_ref": "refs/codex/turn-diffs/checkpoints/1e961d09400afbecbd7a67afbb13e1c4/fe3f4f3f5dac28bf0bf49a2002d38ac3/1791439253690/53a58091-5612-438f-b440-d89af92815db",
+      "revision": "b83e5bec9e6feef0b8f809a1b45bbacbc3064dd5",
+      "local_snapshot_ref": "refs/baseline-source/codex/turn-diffs/checkpoints/1e961d09400afbecbd7a67afbb13e1c4/fe3f4f3f5dac28bf0bf49a2002d38ac3/1791439253690/53a58091-5612-438f-b440-d89af92815db"
+    },
+    {
+      "source_ref": "refs/heads/codex/v2-004-runner-exact-20261004",
+      "revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+      "local_snapshot_ref": "refs/baseline-source/heads/codex/v2-004-runner-exact-20261004"
+    },
+    {
+      "source_ref": "refs/heads/codex/v2-004-runner-review-20261004",
+      "revision": "6b7d6fcda17254f19325549cfe0ef576557f546e",
+      "local_snapshot_ref": "refs/baseline-source/heads/codex/v2-004-runner-review-20261004"
+    },
+    {
+      "source_ref": "refs/heads/dev_cc",
+      "revision": "323eaae71a94ff882569939fd70ee11b7e19597b",
+      "local_snapshot_ref": "refs/baseline-source/heads/dev_cc"
+    },
+    {
+      "source_ref": "refs/heads/dev_gpt",
+      "revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+      "local_snapshot_ref": "refs/baseline-source/heads/dev_gpt"
+    },
+    {
+      "source_ref": "refs/heads/main",
+      "revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+      "local_snapshot_ref": "refs/baseline-source/heads/main"
+    },
+    {
+      "source_ref": "refs/heads/work/at08-enable-mr-pipeline",
+      "revision": "9471543d74e723acc052fdd074156b0633389e76",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/at08-enable-mr-pipeline"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-final-closure",
+      "revision": "3803f95aa033a2b35157826a3bd4979d72ffdbe8",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-final-closure"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-final-closure-c3",
+      "revision": "4a6c3ae24312d3b2ab738dd3b54ca23b1ef648d3",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-final-closure-c3"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-h1-security-alignment",
+      "revision": "f1bcbcb7ce4709d36fc73a5a9bfd1d38789487ad",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-h1-security-alignment"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-h2-validator-self-test",
+      "revision": "c595ba560d3ceb1d297889e5d587bb49d33edcd9",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-h2-validator-self-test"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-preclosure-harness",
+      "revision": "42c43038220012ce3687b9203dfa65a9417f94b9",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-preclosure-harness"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-preclosure-task-exec-fixture",
+      "revision": "049d5027399871e8e989042906d10eb8d3542bff",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-preclosure-task-exec-fixture"
+    },
+    {
+      "source_ref": "refs/heads/work/g-p0-revision-semantics",
+      "revision": "27beb323e305e352ee73f1a8ea854c41b464e9f6",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/g-p0-revision-semantics"
+    },
+    {
+      "source_ref": "refs/heads/work/p0-final-architecture-audit-h3",
+      "revision": "5b92bba8861dcd660796e84957b3d6c879bfe328",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/p0-final-architecture-audit-h3"
+    },
+    {
+      "source_ref": "refs/heads/work/v2-002-superseding-revalidation",
+      "revision": "a752afa1bee2f134612bd6bed3927fd76ada992f",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/v2-002-superseding-revalidation"
+    },
+    {
+      "source_ref": "refs/heads/work/v2-004-evidence-binding",
+      "revision": "1ee5e4617d035ab40a0e129b796474d745af2efc",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/v2-004-evidence-binding"
+    },
+    {
+      "source_ref": "refs/heads/work/v2-004-superseding-revalidation",
+      "revision": "e7587cb6812e8b747de6b18462ed8c4b28947b53",
+      "local_snapshot_ref": "refs/baseline-source/heads/work/v2-004-superseding-revalidation"
+    },
+    {
+      "source_ref": "refs/remotes/origin/dev_cc",
+      "revision": "323eaae71a94ff882569939fd70ee11b7e19597b",
+      "local_snapshot_ref": "refs/baseline-source/remotes/origin/dev_cc"
+    },
+    {
+      "source_ref": "refs/remotes/origin/dev_gpt",
+      "revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+      "local_snapshot_ref": "refs/baseline-source/remotes/origin/dev_gpt"
+    },
+    {
+      "source_ref": "refs/remotes/origin/main",
+      "revision": "882d0cdf833464dd6a5ebfac3a542204c32cd325",
+      "local_snapshot_ref": "refs/baseline-source/remotes/origin/main"
+    },
+    {
+      "source_ref": "refs/stash",
+      "revision": "de052ccfbbfae137102646303317557e0c94bf43",
+      "local_snapshot_ref": "refs/baseline-source/stash"
+    }
+  ],
+  "remote_requests": 0,
+  "purpose": "Preserve exact existing full-history scan coverage; not a count threshold or new finding authorization."
+}
