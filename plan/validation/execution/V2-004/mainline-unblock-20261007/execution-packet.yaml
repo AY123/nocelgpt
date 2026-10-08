@@ -1,0 +1,230 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-004
+plan_version: 1.3.0
+repository_revision: 9fe51abf5ba2e050b7f48204f5c26927ace712af
+worktree_dirty: true
+plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
+environment:
+  fingerprint: macOS 15.1.1 arm64; primary dev_gpt checkout; existing user differences
+    preserved; local-only sub-work-package recorded 2026-10-07 Asia/Shanghai
+  runtime_versions:
+    python: 3.12.14
+    PyYAML: 6.0.3
+    jsonschema: 4.26.0
+  database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+  ci_context: No remote run authorized. Previous trusted execution is historical evidence
+    only; this new candidate has no exact-SHA trusted CI.
+implementer: Codex primary operator with shared-workspace agents
+verifier: Same operator local tests; parallel agents do not constitute independent
+  acceptance
+owner_role: delivery-maintainer
+scope: 'V2-004-P0-MAINLINE-UNBLOCK-001: direct-human-authorized local exact secret
+  exception consumer, schemas, fixed known-finding requests and single Owner risk-acceptance
+  input design. Preserve all previous user/evidence material and mandatory gates.
+  No P1 implementation or task-state promotion.'
+action: IMPLEMENT
+inputs:
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
+  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+- source_ref: 09_TASK_EXECUTION_GUIDE.md
+  ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
+  sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
+- source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  ref: validation/execution/V2-004/inputs/a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82.txt
+  sha256: a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
+  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+- source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  ref: validation/execution/V2-004/inputs/558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2.txt
+  sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
+- source_ref: 08_ROADMAP_AND_GATES.md
+  ref: validation/execution/V2-004/inputs/5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb.txt
+  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+- source_ref: README.md
+  ref: validation/execution/V2-004/inputs/1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2.txt
+  sha256: 1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
+  sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-004/inputs/c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18.txt
+  sha256: c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
+  sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
+  sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
+- source_ref: machine/ci-gates.yaml
+  ref: validation/execution/V2-004/inputs/594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e.txt
+  sha256: 594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e
+- source_ref: machine/governance-baseline.yaml
+  ref: validation/execution/V2-004/inputs/ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c.txt
+  sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-004/inputs/086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9.txt
+  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+- source_ref: machine/authority-policy.yaml
+  ref: validation/execution/V2-004/inputs/4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91.txt
+  sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
+- source_ref: validation/execution/V2-004/mainline-unblock-20261007/AUTHORIZATION.md
+  ref: validation/execution/V2-004/mainline-unblock-20261007/AUTHORIZATION.md
+  sha256: cd49e4c667e9e7747a0ec7da7e34a78d9a7d7b70967bb568a56eda2a8e01957d
+expected_outputs:
+- scripts/ci/secret_exceptions.py
+- scripts/ci/check_security.py
+- tests/contract/test_secret_exceptions.py
+- docs/V2-004_SECRET_EXCEPTION_CONSUMER.md
+- plan/validation/execution/V2-004/mainline-unblock-20261007/
+- dist/validation/v2004-mainline-unblock-20261007/
+allowed_paths:
+- scripts/ci/secret_exceptions.py
+- scripts/ci/check_security.py
+- tests/contract/test_secret_exceptions.py
+- plan/validation/execution/V2-004/mainline-unblock-20261007/
+- docs/V2-004_SECRET_EXCEPTION_CONSUMER.md
+- security-policy.yaml
+- dist/validation/v2004-mainline-unblock-20261007/
+required_decisions: []
+claims:
+- id: DIRECT_LOCAL_IMPLEMENTATION_AUTHORIZATION
+  kind: FACT
+  statement: The latest human instruction expressly authorizes bounded local IMPLEMENT
+    and tests while prohibiting remote CI, GitLab changes, runner activation, push
+    and broad bypass. It stops prior credential evidence acquisition.
+  sources:
+  - ref: validation/execution/V2-004/mainline-unblock-20261007/AUTHORIZATION.md
+    sha256: cd49e4c667e9e7747a0ec7da7e34a78d9a7d7b70967bb568a56eda2a8e01957d
+  blocks_actions: []
+  verification_plan: Preserve authorization bytes and audit actual implementation
+    diff against this bounded scope.
+- id: TASK_IDENTITY_AND_ADR
+  kind: FACT
+  statement: Backlog V2-004 is IN_PROGRESS / P0 with no required decisions. This sub-work-package
+    does not alter its identity, dependency list, acceptance scenarios or status.
+    Future ADRs remain out of scope.
+  sources:
+  - ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
+    sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
+  - ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
+    sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+  blocks_actions: []
+  verification_plan: Validate input hashes and task/scenario mapping; retain existing
+    machine sources.
+- id: CANONICAL_HISTORICAL_BASELINE_PRESERVED
+  kind: FACT
+  statement: The existing canonical 45-finding baseline is an input and will not be
+    edited by this work package. Findings being accounted for is distinct from finding
+    closure, approval and consumer application.
+  sources:
+  - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
+    sha256: 28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749
+  blocks_actions: []
+  verification_plan: Compare the original canonical hash before/after; match all known
+    entries by full identity rather than finding count.
+- id: FIXED_SCOPE_REVIEW_PIN_ABSENT
+  kind: UNKNOWN
+  statement: This new sub-work-package has no newly committed fixed Git scope/review
+    pin. The historical pins do not cover the new test/docs paths or preserved dirty
+    opening snapshot; no existing HEAD is represented as a new authorization/review
+    pin.
+  sources: []
+  blocks_actions:
+  - LIVE_CALL
+  - CERTIFY
+  verification_plan: Report task-entry binding as NOT_SATISFIED. Do not claim task_entry
+    PASS. Independent review and later exact-revision integration require a separate
+    authorized fixed-pin or equivalent protected provenance step.
+- id: AUTHORITY_APPROVAL_NOT_INFERRED
+  kind: UNKNOWN
+  statement: Consumer implementation and input design do not by themselves create
+    valid approval of 38 requests or execute Owner risk acceptance for 7 historical
+    credentials. Missing, malformed, unauthorized or mismatched authority must leave
+    the security gate failed.
+  sources: []
+  blocks_actions:
+  - LIVE_CALL
+  - CERTIFY
+  verification_plan: Negative tests reject missing/malformed/untrusted authority;
+    fixed pending authority state and remaining blockers are reported without renewed
+    credential investigation.
+- id: FINAL_TRUSTED_CI_NOT_EXECUTED
+  kind: UNKNOWN
+  statement: The new local candidate has no final trusted protected pipeline. This
+    instruction prohibits running one. Local tests do not verify V2-004, P0 or final
+    source/permission boundaries.
+  sources: []
+  blocks_actions:
+  - LIVE_CALL
+  - CERTIFY
+  verification_plan: Report final trusted-CI candidate prerequisites separately from
+    actual acceptance; stop after local evidence and diff.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - No remote access or paid services. Use the existing locked local environment.
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 30
+  maximum_runtime: 3600
+stop_conditions:
+- Scope or baseline identity changes unexpectedly; preserve user material and report
+  the affected action.
+- A proposed exception suppresses a rule/path/filetype or grants future findings.
+- Consumer would pass on new/unmatched findings, malformed or unauthorized authority,
+  identity mismatch, expired approval or an unused approval.
+- Any action would run remote CI, mutate GitLab, activate runner, commit/push/MR,
+  invoke paid Provider, or resume H2/H3/H4 credential acquisition.
+- 'Local implementation, tests and exact diff are complete: STOP for independent review.'
+review_notes:
+- This is a new non-template local supplemental packet; task_id remains V2-004. Work-package
+  identity is in scope/AUTHORIZATION.md, not a new backlog identity.
+- Existing backlog.execution_packet_ref and old packet/context remain untouched as
+  requested. This new packet is not silently made the backlog-bound active entry.
+- action=IMPLEMENT is truthful. change_review=null records the missing new fixed Git
+  pins rather than inventing pins or disguising implementation as PREPARE.
+- Latest direct human authorization governs this bounded local implementation. The
+  formal task-entry fixed pin requirements are explicitly NOT_SATISFIED and are not
+  represented as passed.
+- No reduction of any mandatory gate, scan target/rule coverage, threshold or failure
+  propagation is authorized. Raw detected findings remain available alongside consumed-exception
+  accounting.
+- security-policy.yaml is permitted only if required for exact consumer integration;
+  unrelated policy/CI/trust settings must remain unchanged.
+- No expiry, approver decision, service event, historical credential classification
+  or approval is fabricated; the single Owner input and 38 requests remain explicit
+  and bounded.
+- Independent review is NOT_COMPLETED; shared-agent implementation/review is not independent
+  acceptance.
+handoff:
+  current_step: Bounded local implementation authorized; source hashes/ADR/task scope
+    checked; new fixed-pin task entry not satisfied.
+  completed_steps:
+  - Read current task, four normative specs, source authority and execution protocol,
+    eight AT-V2-004 scenarios, decision register and packet/change-review implementation.
+  - Verified every pre-existing packet input source and snapshot hash against current
+    plan bytes.
+  - Recorded human scope and existing-worktree/evidence preservation boundaries without
+    modifying old packet/backlog.
+  pending_items:
+  - Implement exact consumer, schemas and authority input design; integrate without
+    relaxing raw scanning.
+  - Run local positive/negative tests, static, architecture and governance checks;
+    preserve failures and exact commands.
+  - Report fixed scope/review pin gap, actual authority status, final candidate conditions
+    and local exact diff.
+  - Independent review; any future final exact-revision trusted CI requires separate
+    authorization and binding.
+  next_action: IMPLEMENT
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null

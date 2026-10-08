@@ -24,6 +24,13 @@ from typing import Any, Callable, cast
 
 import yaml
 from bootstrap_scanners import ARCHIVES, VERSION, verify_cached_scanner
+from secret_exceptions import (
+    ExceptionFailure,
+    consume,
+    finding_identity,
+    load_ledger,
+    parse_json,
+)
 
 ROOT = Path(__file__).resolve().parents[2]
 AUDIT_VERSION = "2.10.1"
@@ -193,10 +200,41 @@ def complete_history(root: Path) -> int:
     return count
 
 
-def scan_secrets(root: Path, output: Path, executable: Path) -> dict[str, Any]:
+def scan_secrets(
+    root: Path,
+    output: Path,
+    executable: Path,
+    policy: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     executable = scanner_binary(executable)
     commits = complete_history(root)
     scans: list[dict[str, Any]] = []
+    identities: list[dict[str, Any]] = []
+    exception_config = policy.get("secret_exceptions") if policy is not None else None
+    baseline = git(root, "rev-parse", "HEAD").decode().strip()
+    exception_error: str | None = (
+        "SECRET_EXCEPTION_CONFIG_MISSING"
+        if policy is not None and "secret_exceptions" not in policy
+        else None
+    )
+    if policy is not None and "secret_exceptions" in policy:
+        try:
+            if not isinstance(exception_config, dict):
+                raise ExceptionFailure("SECRET_EXCEPTION_SCHEMA")
+            baseline = load_ledger(root, exception_config)["baseline_revision"]
+        except (
+            OSError,
+            ValueError,
+            TypeError,
+            KeyError,
+            subprocess.SubprocessError,
+        ) as exc:
+            # Continue the complete scan; invalid approval metadata cannot hide it.
+            exception_error = (
+                str(exc)
+                if isinstance(exc, ExceptionFailure)
+                else "SECRET_EXCEPTION_INVALID"
+            )
     with tempfile.TemporaryDirectory(prefix="anovel-secret-scan-") as temporary:
         private = Path(temporary)
         copied = private / "tracked"
@@ -237,14 +275,24 @@ def scan_secrets(root: Path, output: Path, executable: Path) -> dict[str, Any]:
             ]
             if command == "git":
                 argv.append("--log-opts=--all --full-history --root")
-            result = subprocess.run(
-                argv,
-                cwd=private,
-                env=env,
-                capture_output=True,
-                timeout=600,
-                check=False,
-            )
+            try:
+                result = subprocess.run(
+                    argv,
+                    cwd=private,
+                    env=env,
+                    capture_output=True,
+                    timeout=600,
+                    check=False,
+                )
+            except (OSError, subprocess.SubprocessError):
+                scans.append(
+                    {
+                        "target": label,
+                        "status": "FAIL",
+                        "error": "SECURITY_SECRET_EXECUTION",
+                    }
+                )
+                continue
             row: dict[str, Any] = {
                 "target": label,
                 "exit_code": result.returncode,
@@ -254,69 +302,95 @@ def scan_secrets(root: Path, output: Path, executable: Path) -> dict[str, Any]:
             if not report.is_file():
                 row.update(status="FAIL", error="SECURITY_SECRET_REPORT_MISSING")
             else:
-                payload = report.read_bytes()
-                findings = json.loads(payload)
-                if not isinstance(findings, list) or any(
-                    not isinstance(item, dict) for item in findings
-                ):
-                    raise SecurityFailure("SECURITY_SECRET_REPORT_INVALID")
-                # Deliberately omit Match, Secret, author and line contents.
-                locations: list[dict[str, Any]] = []
-                for item in findings:
-                    rule = item.get("RuleID")
-                    name = item.get("File")
-                    line = item.get("StartLine")
-                    commit = item.get("Commit", "")
-                    if (
-                        not isinstance(rule, str)
-                        or not CODE.fullmatch(rule)
-                        or not isinstance(name, str)
-                        or any(ord(char) < 32 for char in name)
-                        or not isinstance(line, int)
-                        or line < 1
-                        or not isinstance(commit, str)
-                        or (
-                            commit
-                            and not re.fullmatch(
-                                r"[0-9a-f]{40}(?:[0-9a-f]{24})?", commit
-                            )
-                        )
+                try:
+                    payload = report.read_bytes()
+                    row["report_sha256"] = sha(payload)
+                    findings = parse_json(payload)
+                    if not isinstance(findings, list) or any(
+                        not isinstance(item, dict) for item in findings
                     ):
-                        raise SecurityFailure("SECURITY_SECRET_FINDING_INVALID")
-                    location = Path(name)
-                    safe_name = (
-                        str(location.relative_to(copied))
-                        if location.is_relative_to(copied)
-                        else name
+                        raise SecurityFailure("SECURITY_SECRET_REPORT_INVALID")
+                    row.update(
+                        finding_count=len(findings),
+                        locations=[],
+                        finding_fingerprints=[
+                            sha(str(item.get("Fingerprint", "")).encode())
+                            for item in findings
+                        ],
+                        status="PASS"
+                        if result.returncode == 0 and not findings
+                        else "FAIL",
                     )
-                    locations.append(
-                        {
-                            "rule_id": rule,
-                            "path": safe_name,
-                            "line": line,
-                            "commit": commit,
-                        }
+                    for item in findings:
+                        try:
+                            identity = finding_identity(
+                                root, item, label, copied, baseline
+                            )
+                            identities.append(identity)
+                            row["locations"].append(
+                                {
+                                    key: identity[key]
+                                    for key in ("rule_id", "path", "line", "commit")
+                                }
+                            )
+                        except (
+                            OSError,
+                            ValueError,
+                            TypeError,
+                            KeyError,
+                            subprocess.SubprocessError,
+                        ) as exc:
+                            row.update(
+                                status="FAIL",
+                                error=str(exc)
+                                if isinstance(exc, ExceptionFailure)
+                                else "SECURITY_SECRET_FINDING_INVALID",
+                            )
+                    if not (
+                        (result.returncode == 0 and not findings)
+                        or (result.returncode == 1 and findings)
+                    ):
+                        row["error"] = "SECURITY_SECRET_EXIT_REPORT_MISMATCH"
+                except (OSError, ValueError, TypeError, KeyError) as exc:
+                    row.update(
+                        status="FAIL",
+                        error=str(exc)
+                        if isinstance(exc, (ExceptionFailure, SecurityFailure))
+                        else "SECURITY_SECRET_REPORT_INVALID",
                     )
-                row.update(
-                    report_sha256=sha(payload),
-                    finding_count=len(findings),
-                    locations=locations,
-                    finding_fingerprints=[
-                        sha(str(item.get("Fingerprint", "")).encode())
-                        for item in findings
-                    ],
-                    status="PASS"
-                    if result.returncode == 0 and not findings
-                    else "FAIL",
-                )
             scans.append(row)
+    try:
+        decisions = consume(root, identities, exception_config)
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        subprocess.SubprocessError,
+    ) as exc:
+        decisions = {
+            "status": "FAIL",
+            "detected": len(identities),
+            "error": str(exc)
+            if isinstance(exc, ExceptionFailure)
+            else "SECRET_EXCEPTION_INVALID",
+        }
+    decisions["detected"] = sum(row.get("finding_count", 0) for row in scans)
+    decisions["identified"] = len(identities)
+    if exception_error is not None:
+        decisions.update(status="FAIL", error=exception_error)
+    scan_complete = all("error" not in row and "locations" in row for row in scans)
+    raw_status = "PASS" if all(row["status"] == "PASS" for row in scans) else "FAIL"
     result_data: dict[str, Any] = {
-        "status": "PASS" if all(row["status"] == "PASS" for row in scans) else "FAIL",
+        "status": "PASS" if scan_complete and decisions["status"] == "PASS" else "FAIL",
+        "raw_status": raw_status,
         "scanner": "gitleaks",
         "version": VERSION,
         "history_commits": commits,
         **inventory,
         "scans": scans,
+        "finding_identities": identities,
+        "exception_consumption": decisions,
     }
     (output / "secret-scan.json").write_text(json.dumps(result_data, indent=2) + "\n")
     return result_data
@@ -517,7 +591,7 @@ def check_security(root: Path, output: Path, executable: Path) -> dict[str, Any]
     try:
         policy = read_policy(root)
         actions: list[tuple[str, Callable[[], dict[str, Any]]]] = [
-            ("secret", lambda: scan_secrets(root, output, executable)),
+            ("secret", lambda: scan_secrets(root, output, executable, policy)),
             ("dependency", lambda: audit_dependencies(root, output, policy)),
         ]
         for name, action in actions:

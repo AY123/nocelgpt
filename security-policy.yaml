@@ -19,30 +19,43 @@ secret_scanner:
   linux_x64_sha256: 5bc41815076e6ed6ef8fbecc9d9b75bcae31f39029ceb55da08086315316e3ba
   darwin_arm64_sha256: cad3de5dc9a4d5447d967a70a4d49499c557f04db028274cc324f9ff983f6502
 scan_targets:
-  - tracked_worktree
-  - git_history
+- tracked_worktree
+- git_history
 dependency_exceptions: []
 trusted_execution:
   runner_ids: []
   ci_config_path: null
   protected_ref: null
   status: NOT_ENROLLED
-  note: >-
-    Candidate-local CI is implementation evidence only. Trusted runner/configuration
+  note: Candidate-local CI is implementation evidence only. Trusted runner/configuration
     enrollment and permission positive/negative controls require actual protected
     remote setup; fields here do not grant permissions or prove their enforcement.
 static_coverage:
   format_lint_typecheck:
-    - src/anovel/
-    - scripts/ci/
+  - src/anovel/
+  - scripts/ci/
   test_format_lint:
-    - tests/contract/test_delivery_gates.py
-    - tests/integration/test_postgres_ci_service.py
+  - tests/contract/test_delivery_gates.py
+  - tests/integration/test_postgres_ci_service.py
   legacy_compile:
-    - scripts/
-    - plan/scripts/
-    - tests/
-  note: >-
-    P0 runtime and new CI tools are checked; existing legacy governance code stays
+  - scripts/
+  - plan/scripts/
+  - tests/
+  note: P0 runtime and new CI tools are checked; existing legacy governance code stays
     under its original regression and syntax checks. This is not a claim that all
     historical Python has been migrated to strict typing or one formatting style.
+secret_exceptions:
+  repository:
+    project_id: 86656946
+    project_path: ayitnovel/ainovelos
+  ledger_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/KNOWN_FINDING_DISPOSITIONS.json
+  ledger_sha256: 38b23aab2d41fbe0ecd37ad25c2fe5e85c1f42d41aa453f9a2397af337a36ce7
+  trusted_authorities:
+  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_RISK_ACCEPTANCE.json
+    revision: 858192444448717b25beff2c9e285c6d4f909f98
+    blob_oid: 903d97cc03dd96dec4aeb8502e5309232e24b46d
+    sha256: 27908d42735f4a68dfe8fef7ce7ddf5ed2c413579239069c4cedeacde87a7db4
+  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/PRECISE_EXCEPTION_APPROVAL.json
+    revision: 858192444448717b25beff2c9e285c6d4f909f98
+    blob_oid: 257e5e3866700a695c715afd236beeda47977602
+    sha256: c8030edd5ab78709ebf46121534bb880040112bf84d5d51376e72bb993d9ed81

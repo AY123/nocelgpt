@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Exact finding-specific secret dispositions",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "record_type",
+    "repository",
+    "baseline_revision",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "record_type": {
+      "const": "secret_finding_dispositions"
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "project_id",
+        "project_path"
+      ],
+      "properties": {
+        "project_id": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "project_path": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]+(/[A-Za-z0-9_.-]+)+$"
+        }
+      }
+    },
+    "baseline_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "finding_id",
+          "identity",
+          "identity_sha256",
+          "classification",
+          "disposition",
+          "authority_id"
+        ],
+        "properties": {
+          "finding_id": {
+            "type": "string",
+            "pattern": "^V2-004-SF-[0-9]{3}$"
+          },
+          "identity": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rule_id",
+              "target",
+              "path",
+              "line",
+              "commit",
+              "source_revision",
+              "source_sha256",
+              "source_blob_oid",
+              "source_line_sha256",
+              "scanner_fingerprint_sha256"
+            ],
+            "properties": {
+              "rule_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9_.-]{1,200}$"
+              },
+              "target": {
+                "enum": [
+                  "tracked_worktree",
+                  "git_history"
+                ]
+              },
+              "path": {
+                "type": "string",
+                "minLength": 1
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "commit": {
+                "type": "string",
+                "pattern": "^([0-9a-f]{40}([0-9a-f]{24})?)?$"
+              },
+              "source_revision": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+              },
+              "source_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "source_blob_oid": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{40}([0-9a-f]{24})?$"
+              },
+              "source_line_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "scanner_fingerprint_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "identity_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "classification": {
+            "enum": [
+              "FALSE_POSITIVE",
+              "PUBLIC_IDENTIFIER",
+              "TEST_FIXTURE",
+              "POSSIBLE_EXPOSURE",
+              "TRUNCATED_REFERENCE_UNRESOLVED"
+            ]
+          },
+          "disposition": {
+            "enum": [
+              "PRECISE_EXCEPTION",
+              "OWNER_RISK_ACCEPTANCE"
+            ]
+          },
+          "authority_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,200}$"
+          },
+          "canonical_identity_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "canonical_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

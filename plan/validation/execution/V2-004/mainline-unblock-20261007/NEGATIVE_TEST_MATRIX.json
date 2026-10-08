@@ -1,0 +1,94 @@
+{
+  "task": "V2-004-P0-MAINLINE-UNBLOCK-001",
+  "test_file": "tests/contract/test_secret_exceptions.py",
+  "controls": {
+    "exact_approved_consumed": [
+      "test_exact_approved_worktree_and_history_findings_are_consumed",
+      "test_real_scanner_exact_approval_preserves_raw_findings_and_rejects_new_secret"
+    ],
+    "single_owner_risk_input": [
+      "test_one_owner_acceptance_binds_seven_history_identities_without_credentials"
+    ],
+    "new_or_additional_finding": [
+      "test_additional_finding_fails_even_when_all_known_findings_are_approved",
+      "test_real_scanner_exact_approval_preserves_raw_findings_and_rejects_new_secret"
+    ],
+    "changed_path_fingerprint_or_scope": [
+      "test_identity_change_is_unmatched_and_cannot_consume_approval"
+    ],
+    "missing_or_malformed_authority": [
+      "test_missing_authority_is_not_inferred_from_owner_or_disposition",
+      "test_malformed_or_unauthorized_approval_is_rejected"
+    ],
+    "unused_approval": [
+      "test_unused_approval_is_reported_and_fails_closed"
+    ],
+    "expiry_and_immutable_authority": [
+      "test_expired_approval_cannot_be_consumed",
+      "test_authority_git_pin_tampering_is_rejected",
+      "test_unpinned_candidate_approval_cannot_self_authorize"
+    ],
+    "scanner_errors_and_evidence_retention": [
+      "test_scanner_exit_report_mismatch_cannot_pass_with_exact_approvals",
+      "test_malformed_first_scan_preserves_failure_and_still_scans_second_target",
+      "test_worktree_copy_under_symlink_temp_prefix_has_normalized_identity"
+    ],
+    "approved_disposition_semantics_binding": [
+      "test_stale_owner_precise_approval_cannot_authorize_new_risk_disposition",
+      "test_classification_only_change_requires_new_exact_ledger_approval",
+      "test_new_approval_for_unchanged_semantics_binds_current_ledger_bytes",
+      "test_approval_ledger_digest_is_mandatory_exact_and_well_formed",
+      "test_approval_kind_is_mandatory_and_limited_to_exact_dispositions",
+      "test_correct_ledger_digest_cannot_compensate_for_wrong_approval_kind",
+      "test_new_explicit_owner_risk_record_authorizes_refreshed_ledger"
+    ]
+  },
+  "all_test_functions": [
+    "test_exact_approved_worktree_and_history_findings_are_consumed",
+    "test_one_owner_acceptance_binds_seven_history_identities_without_credentials",
+    "test_stale_owner_precise_approval_cannot_authorize_new_risk_disposition",
+    "test_classification_only_change_requires_new_exact_ledger_approval",
+    "test_new_approval_for_unchanged_semantics_binds_current_ledger_bytes",
+    "test_approval_ledger_digest_is_mandatory_exact_and_well_formed",
+    "test_approval_kind_is_mandatory_and_limited_to_exact_dispositions",
+    "test_correct_ledger_digest_cannot_compensate_for_wrong_approval_kind",
+    "test_new_explicit_owner_risk_record_authorizes_refreshed_ledger",
+    "test_identity_change_is_unmatched_and_cannot_consume_approval",
+    "test_additional_finding_fails_even_when_all_known_findings_are_approved",
+    "test_missing_authority_is_not_inferred_from_owner_or_disposition",
+    "test_unused_approval_is_reported_and_fails_closed",
+    "test_authorized_identity_absent_from_ledger_is_unmatched_not_global_permission",
+    "test_expired_approval_cannot_be_consumed",
+    "test_invalid_or_future_approval_time_is_rejected",
+    "test_malformed_or_unauthorized_approval_is_rejected",
+    "test_security_approver_cannot_consume_owner_risk_acceptance",
+    "test_owner_risk_acceptance_cannot_cover_current_worktree",
+    "test_malformed_or_inconsistent_ledger_is_rejected",
+    "test_nonancestor_baseline_is_rejected",
+    "test_wrong_repository_origin_is_rejected",
+    "test_wrong_numeric_project_binding_is_rejected",
+    "test_authority_git_pin_tampering_is_rejected",
+    "test_candidate_approval_edit_cannot_replace_immutable_authority",
+    "test_unpinned_candidate_approval_cannot_self_authorize",
+    "test_duplicate_approval_identity_is_rejected",
+    "test_multiple_authorities_cannot_approve_same_identity",
+    "test_duplicate_actual_finding_is_rejected",
+    "test_malformed_authority_bytes_fail_with_safe_code",
+    "test_ledger_configuration_cannot_redirect_or_modify_scope",
+    "test_unconfigured_consumer_accepts_no_findings_but_rejects_any_new_finding",
+    "test_naive_verification_clock_is_rejected",
+    "test_identity_digest_is_order_independent_and_sensitive_to_every_field",
+    "test_real_scanner_exact_approval_preserves_raw_findings_and_rejects_new_secret",
+    "test_scanner_exit_report_mismatch_cannot_pass_with_exact_approvals",
+    "test_worktree_identity_normalizes_scanner_path_to_copied_bytes",
+    "test_scanner_metadata_cannot_forge_finding_identity",
+    "test_explicit_policy_with_missing_or_malformed_consumer_fails_even_when_scan_is_safe",
+    "test_malformed_first_scan_preserves_failure_and_still_scans_second_target",
+    "test_whitespace_only_authority_identity_or_reason_is_rejected",
+    "test_owner_risk_classification_cannot_be_consumed_as_precise_exception",
+    "test_first_scanner_execution_or_report_failure_still_records_history_target",
+    "test_worktree_copy_under_symlink_temp_prefix_has_normalized_identity"
+  ],
+  "fixture_authority_is_not_production_approval": true,
+  "followup": "IR-MAINLINE-P2-01 / 2026-10-08; exact ledger digest and explicit approval kind"
+}
