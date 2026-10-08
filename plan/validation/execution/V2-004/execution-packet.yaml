@@ -21,7 +21,7 @@ owner_role: delivery-maintainer
 scope: Bounded local V2-004 integration of accepted historical enrollment with approved
   exact consumer in NEW disposable clone. No main/C mutation, remote action, broad
   bypass, approval amendment, finding closure or P1.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
   ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
@@ -224,20 +224,25 @@ review_notes:
   No Owner key acquisition, new approval, alias P2 or remote operation. Prospective
   unreviewed controls remain blocked until exact technical dispositions are pinned.'
 handoff:
-  current_step: Preparing fixed integration scope before isolated source reconciliation;
-    actual protected-source execution is not claimed.
+  current_step: Local integrated source packet and review pins prepared; new exact
+    revision formal gates and independent review remain.
   completed_steps:
   - CurrentC clean IMPLEMENT entry passed
   - OriginalC/E packets/context preserved
+  - Exact policy merge technical dispositions pinned
+  - K395focused/13realauthority controls passed; failures retained
   pending_items:
-  - Prospective merge and exact findings
-  - Meaningful new-revision local tests
-  - Review pin and final current packet
+  - Final exactSHA local formal entry and six mandatory gates
   - Independent review
-  - Remaining real permission controls and authorized final six-gate remote CI
-  next_action: PREPARE
+  - Remaining real permission controls
+  - Explicitly authorized final same-SHA protected CI
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 758a46b149c7f0ea6e35a6764ce1b4c0040df78e
+  scope_ref: plan/validation/execution/V2-004/trusted-integration-local-20261008/scope.json
+  review_revision: 696f4a02f9f44245bdba622655e8f94e6fcacc81
+  review_ref: plan/validation/execution/V2-004/trusted-integration-local-20261008/change-dispositions.json
