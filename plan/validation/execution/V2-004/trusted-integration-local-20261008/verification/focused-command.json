@@ -1,0 +1,31 @@
+{
+  "record_type": "local_integration_focused_test_receipt",
+  "revision": "24cefe6058fe75dfca106bcf3af160d4613ea7e3",
+  "command": [
+    "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "-q",
+    "tests/contract/test_trusted_execution_enrollment.py",
+    "tests/contract/test_secret_exceptions.py",
+    "tests/contract/test_delivery_gates.py",
+    "--junitxml=dist/validation/pre-review-focused-cache-ready/junit.xml"
+  ],
+  "environment": {
+    "PATH_prefix": "/Users/angyang/Documents/AI/ANovelOS/dist/tools/uv-bootstrap/bin",
+    "UV_PYTHON": "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+    "UV_CACHE_DIR": "/Users/angyang/Documents/AI/ANovelOS/dist/cache/uv"
+  },
+  "exit_code": 0,
+  "tool_result_observed": "395 passed in90.25s; actual execution result observed in current supporting agent tool output",
+  "junit_sha256": "8db7013cd5fa72ac0120772c378c16abe1dbe8a980378f2175b60dc507352022",
+  "tests": 395,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "Pre-review implementationK only, not future final SHA or protected CI",
+  "first_attempt_retained": "dist/validation/pre-review-focused/junit.xml (scanner/uv cache absent,13fail/3error/379pass)",
+  "code_changes_between_attempts": 0,
+  "remote_operation_count": 0
+}

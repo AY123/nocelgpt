@@ -1,0 +1,25 @@
+{
+  "record_type": "local_policy_reconciliation_review",
+  "revision": "24cefe6058fe75dfca106bcf3af160d4613ea7e3",
+  "candidate_input_sha": "542a5f264afbb99f8d664bdfd8fdfa50c1243cf4",
+  "enrollment_input_sha": "ba22d2ce09c17ac0a6790592e24fae08b0391a9e",
+  "candidate_config_outside_trusted_execution_unchanged": true,
+  "enrollment_trust_identity_fields_retained": [
+    "runner_ids",
+    "runner_tag",
+    "ci_config_path",
+    "protected_ref",
+    "status"
+  ],
+  "trust_status": "Retained historical enrollment candidate status; no current remote verification or execution assertion",
+  "authority_anchors_unchanged": true,
+  "approved_ledger_unchanged": true,
+  "root_ci_identical_fixed9fe": true,
+  "six_mandatory_allow_failure_false": true,
+  "scanner_targets_and_pins_unchanged": true,
+  "guard_executable_body_unchanged": true,
+  "two_self_exclusions_unchanged": true,
+  "source_inventory_files_before_review": 1402,
+  "technical_review_role": "Same operator/team supporting review; not independent acceptance",
+  "actual_weakening_authority_created": false
+}

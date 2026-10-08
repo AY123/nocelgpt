@@ -1,0 +1,82 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "758a46b149c7f0ea6e35a6764ce1b4c0040df78e",
+    "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/scope.json",
+    "sha256": "bf5580ce3f88f955e34ba568720fc305ff641f04332938ab436531c6c3f9d051"
+  },
+  "dispositions": [
+    {
+      "path": "security-policy.yaml",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "d3f623b77f1221937cb3fbf8b1b5210968dc34073b725a9dc230cf7879cabb50",
+      "new_sha": "822283045429290aed2d4c89098f39dfb715311cd9b64e3ef25114a9956e23c7",
+      "finding_id": "43c9fed1a38a95c74d57f37bc6194599e15bdc685fb13d66f854e9b31f0bb290",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Merges preserved enrollment runner57044314/dedicatedtag/protectedref/customCI identities into exact candidate policy while retaining all scanner/dependency/gate/ledger/actualauthority fields fromC. No suppression or security threshold changes; local data alone grants no GitLab permission.",
+      "impact": "V2-004 local trusted-source integration only. All45 findings remainOPEN; no independent/protected same-SHA acceptance, current remote metadata assertion or runner action.",
+      "reviewer": "Same Codex operator/team supporting technical review, not independent acceptance.",
+      "replacement_validation": "ActualK395focused tests incl enrollment guard+consumer+delivery,0failure/error/skip;13 actual immutableGit authority controls,0mocks; field-by-field policy equality and exact unchanged9fe CI. FinalSHA formal entry/ARCH/allgates are still required after packet/inventory pins.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/AUTHORIZATION.md",
+        "sha256": "0405af1996d24e97a1fcbf5f79621c828a1565c70ae74edd67596159c4532e7b"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/authority-probes.json",
+          "sha256": "eb2e42c4e83e889298b4474e4cc27c4fc03cf07a30471121a04ad12fecc6c04a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/focused-command.json",
+          "sha256": "14f429506912dc5b30e1b0386b58539211a1d4ea161365d933fd762090fc7030"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/focused-junit.xml",
+          "sha256": "8db7013cd5fa72ac0120772c378c16abe1dbe8a980378f2175b60dc507352022"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/policy-reconciliation.json",
+          "sha256": "0e131f2ead7a81a805b116bdf8b2b63fb8e72cd3395078784f3e0809a1883ed3"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "d3f623b77f1221937cb3fbf8b1b5210968dc34073b725a9dc230cf7879cabb50",
+      "new_sha": "822283045429290aed2d4c89098f39dfb715311cd9b64e3ef25114a9956e23c7",
+      "finding_id": "e258c25487607d14f8ab85cdd740f439f7e9090cdf14535b53bc11b29b5ef263",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Merges preserved enrollment runner57044314/dedicatedtag/protectedref/customCI identities into exact candidate policy while retaining all scanner/dependency/gate/ledger/actualauthority fields fromC. No suppression or security threshold changes; local data alone grants no GitLab permission.",
+      "impact": "V2-004 local trusted-source integration only. All45 findings remainOPEN; no independent/protected same-SHA acceptance, current remote metadata assertion or runner action.",
+      "reviewer": "Same Codex operator/team supporting technical review, not independent acceptance.",
+      "replacement_validation": "ActualK395focused tests incl enrollment guard+consumer+delivery,0failure/error/skip;13 actual immutableGit authority controls,0mocks; field-by-field policy equality and exact unchanged9fe CI. FinalSHA formal entry/ARCH/allgates are still required after packet/inventory pins.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/AUTHORIZATION.md",
+        "sha256": "0405af1996d24e97a1fcbf5f79621c828a1565c70ae74edd67596159c4532e7b"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/authority-probes.json",
+          "sha256": "eb2e42c4e83e889298b4474e4cc27c4fc03cf07a30471121a04ad12fecc6c04a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/focused-command.json",
+          "sha256": "14f429506912dc5b30e1b0386b58539211a1d4ea161365d933fd762090fc7030"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/focused-junit.xml",
+          "sha256": "8db7013cd5fa72ac0120772c378c16abe1dbe8a980378f2175b60dc507352022"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/verification/policy-reconciliation.json",
+          "sha256": "0e131f2ead7a81a805b116bdf8b2b63fb8e72cd3395078784f3e0809a1883ed3"
+        }
+      ]
+    }
+  ]
+}
