@@ -205,6 +205,39 @@ def delete_relationship(
     registry.remove_relationship(relationship_id)
 
 
+def get_relationships(
+    entity_id: EntityId,
+    project_id: ProjectId,
+    registry: "RelationshipRegistry",
+) -> list[EntityRelationship]:
+    """
+    Get all relationships for an entity (source or target).
+
+    Returns relationships where entity_id appears as source OR target,
+    within the specified project.
+
+    Args:
+        entity_id: Entity to find relationships for
+        project_id: Project scope
+        registry: RelationshipRegistry to query
+
+    Returns:
+        List of EntityRelationship (empty list if none found)
+        Order is deterministic but unspecified
+
+    Example:
+        >>> rel1 = create_relationship(A, B, "knows", proj)
+        >>> rel2 = create_relationship(B, C, "likes", proj)
+        >>> registry.add_relationship(rel1)
+        >>> registry.add_relationship(rel2)
+        >>> get_relationships(B, proj, registry)
+        [rel1, rel2]  # B appears as target in rel1, source in rel2
+
+    Contract: V2-006 §5.3 (v1.0.1)
+    """
+    return registry.get_relationships(entity_id, project_id)
+
+
 # --- Relationship Registry (Step 3) ---
 
 
