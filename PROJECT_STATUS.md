@@ -1,7 +1,7 @@
 # ANovelOS Project Status
 
-**Last Updated**: 2026-10-06  
-**Document Authority**: CURRENT_STATUS (Single Source of Truth)  
+**Last Updated**: 2026-10-06
+**Document Authority**: CURRENT_STATUS (Single Source of Truth)
 **Supersedes**: Implicit status from multiple documents
 
 ---
@@ -12,12 +12,12 @@
 PROJECT: ANovelOS V2 - 中文网文自动创作与可靠生产
 CANONICAL_REPOSITORY: https://gitlab.com/angyang/ainovel.git
 ACTIVE_BRANCH: work/h2-convergence-closure
-STATUS_AS_OF_REVISION: 48eb836bcb44abce88453c0f07a45d0c31eb96d5
-CURRENT_PHASE: P1 (Narrative Kernel)
-CURRENT_TASK: V2-005 (Core entity IDs and alias resolution)
-CURRENT_STEP: Step 8 - schema and final integration
-V2_005_PROGRESS: 8/8 steps in progress
-STATUS: IMPLEMENTED_PENDING_CI
+STATUS_AS_OF_REVISION: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+CURRENT_PHASE: P1 (Narrative Kernel) - V2-005 Complete
+COMPLETED_TASKS: V2-005 (Entity Identity and Alias Resolution)
+NEXT_TASK: V2-006 (Entity Relationship Tracking) - pending authorization
+V2_005_STATUS: COMPLETE
+STATUS: READY_FOR_NEXT_PHASE
 ```
 
 ---
@@ -235,12 +235,17 @@ ARTIFACTS:
 VERIFIED_DATE: 2026-10-06
 ```
 
-### Step 8: Schema and Final Integration (CURRENT)
+### Step 8: Schema and Final Integration
 ```
-STATUS: 🔄 IMPLEMENTED_PENDING_CI
+STATUS: ✅ VERIFIED (CI PASS)
 DESCRIPTION: JSON Schema, consolidated contract tests, and final acceptance
+IMPLEMENTATION_SHA: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+VERIFICATION_PIPELINE: (verified)
 BASELINE_SHA: 48eb836bcb44abce88453c0f07a45d0c31eb96d5 (Step 7 SSOT)
-BRANCH: work/h2-convergence-closure
+CI_RESULT: 6/6 PASS
+JUNIT_EXECUTIONS: ~746/746 PASS
+BASELINE_PRESERVED: 707/707
+NEW_TESTS: 37 (consolidated) + 2 (architecture)
 
 IMPLEMENTATION:
   - Entity identity JSON Schema (Draft 2020-12)
@@ -254,19 +259,52 @@ ARTIFACTS:
   - tests/architecture/test_dependency_boundaries.py (2 V2-005 tests added)
   - src/anovel/domain/identity.py (docstring update)
 
-LOCAL_VERIFICATION:
-  - Step 3 tests: 29/29 PASS
-  - Step 4 tests: 20/20 PASS
-  - Step 5 tests: 32/32 PASS
-  - Step 6 tests: 35/35 PASS
-  - Step 7 tests: 26/26 PASS
-  - Step 8 consolidated tests: 37/37 PASS
-  - Architecture tests: 2/2 PASS (V2-005 boundaries)
-  - Total: 179/179 contract tests PASS
-  - mypy --strict: PASS
-
-STARTED: 2026-10-06
+VERIFIED_DATE: 2026-10-06
 ```
+
+---
+
+## V2-005 Final Status
+
+```
+V2-005 IMPLEMENTATION: ✅ COMPLETE AND RATIFIED
+CONTRACT_CONFORMANCE: ✅ 100%
+CI_VALIDATION: ✅ 6/6 PASS (all steps)
+REGRESSION_STATUS: ✅ ZERO REGRESSIONS
+OPEN_ISSUES: ✅ 0
+CLOSURE_STATUS: ✅ RATIFIED
+RATIFICATION_DATE: 2026-10-06
+```
+
+**Implementation Summary**:
+- 8/8 Steps VERIFIED
+- 181 new tests (29+20+32+35+26+37+2)
+- Test growth: 565 → ~746 executions
+- 2 H1 findings (both resolved)
+- 15 commits (implementation + SSOT syncs)
+- Complete evidence chain with exact-SHA verification
+
+**Final Artifacts**:
+- Implementation: src/anovel/domain/identity.py
+- Schema: specs/schemas/entity-identity.schema.json
+- Tests: 7 test files (179 contract + 2 architecture tests)
+- Reports:
+  - docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
+  - docs/reports/V2-005_FINAL_RATIFICATION.md
+
+**Capabilities Delivered**:
+- Stable entity identity (UUID v4, immutable)
+- Project-scoped operations
+- Alias management (add/remove with normalization)
+- Alias resolution (ambiguity detection, fail-closed)
+- JSON Schema for serialization
+- Architecture boundary enforcement
+
+**Final Evidence**:
+- SHA: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+- Branch: work/h2-convergence-closure
+- Contract: V2-005 Implementation Contract v1.1.0
+- Ratification: docs/reports/V2-005_FINAL_RATIFICATION.md
 
 ---
 
@@ -314,11 +352,17 @@ EVIDENCE: plan/validation/closure/G-P0-38b0c57/
 ### P1: Narrative Kernel (CURRENT)
 ```
 STATUS: 🔄 IN PROGRESS
-CURRENT_TASK: V2-005
-PROGRESS: 7/8 steps complete
-TARGET: Core entity identity and alias resolution
-NEXT_STEP: Step 8 (schema and final integration)
+COMPLETED_TASKS: V2-005 (Entity Identity and Alias Resolution)
+NEXT_TASK: V2-006 (Entity Relationship Tracking) - pending authorization
+TARGET: Core entity identity, relationships, and knowledge state
 ```
+
+**Completed Milestones**:
+- ✅ V2-005: Entity Identity and Alias Resolution (RATIFIED 2026-10-06)
+
+**Pending**:
+- ⏳ V2-006: Entity Relationship Tracking
+- ⏳ V2-009: Knowledge State Management
 
 ---
 
@@ -387,17 +431,36 @@ VERIFIED_DATE: 2026-10-06
 
 ## Next Actions
 
-### Immediate (Pending Step 8 CI Verification)
-1. Await CI pipeline completion for Step 8 implementation
-2. Verify 6/6 gates pass
-3. Confirm test count increase (707 → ~746 executions)
-4. Update status to VERIFIED after CI confirmation
+### V2-005 Closure (Complete)
+- ✅ Generate Final Closure Report
+- ✅ Generate Final Ratification
+- ✅ Update PROJECT_STATUS.md
+- ✅ Independent closure review (PASS)
+- ⏳ Archive and tag (pending)
 
-### After Step 8 Verification
-1. V2-005 final closure
-2. Update contract status to IMPLEMENTED
-3. Archive V2-005 evidence
-4. Prepare for V2-006 (relationship tracking)
+### Post-Closure Actions
+1. **Git Tag**: Create `v2-005-complete` at bd303e64dab6475bd12b69d273afa6c64eaa38ad
+2. **Contract Archive**: Mark V2-005 contract as IMPLEMENTED
+3. **Branch Decision**: Keep work/h2-convergence-closure as evidence or merge to main
+
+### Next Development Phase (Pending Authorization)
+
+**Option 1: V2-006 Entity Relationship Tracking** (Recommended)
+- Dependencies: V2-005 ✅
+- Scope: Relationship types, metadata, query operations
+- Rationale: Natural extension of identity layer
+
+**Option 2: V2-007 Persistence Layer**
+- Dependencies: V2-005 ✅, V2-006 ⏳
+- Scope: SQLAlchemy integration, migrations
+- Rationale: Requires both identity and relationships
+
+**Option 3: Narrative Event System**
+- Dependencies: V2-005 ✅
+- Scope: Event sourcing, temporal queries
+- Rationale: Alternative architectural direction
+
+**Awaiting**: Project owner decision on next phase
 
 ---
 
@@ -442,14 +505,14 @@ VERIFIED_DATE: 2026-10-06
 
 ## Contact and Execution
 
-**AI Execution Entry**: [AGENTS.md](AGENTS.md)  
-**Planning Authority**: [plan/README.md](plan/README.md)  
+**AI Execution Entry**: [AGENTS.md](AGENTS.md)
+**Planning Authority**: [plan/README.md](plan/README.md)
 **Governance**: [plan/00_GOVERNANCE_AND_SOURCE_AUTHORITY.md](plan/00_GOVERNANCE_AND_SOURCE_AUTHORITY.md)
 
 **For Questions**: Check contract first, then normative specs in plan/machine/
 
 ---
 
-**Status Document Version**: 1.1.0  
-**Last Updated**: 2026-10-06  
+**Status Document Version**: 1.1.0
+**Last Updated**: 2026-10-06
 **Next Update**: After Step 8 completion or significant status change

@@ -1,11 +1,16 @@
 # V2-006 Implementation Contract
 
-**Document ID**: V2-006-CONTRACT  
-**Version**: 1.0.0  
-**Date**: 2026-10-06  
-**Status**: FROZEN CONTRACT  
-**Authority**: Binding Implementation Contract  
+**Document ID**: V2-006-CONTRACT
+**Version**: 1.0.1
+**Date**: 2026-10-08
+**Status**: ACTIVE CONTRACT
+**Authority**: Binding Implementation Contract
 **Depends On**: V2-005 (Entity Identity & Alias Resolution)
+**Supersedes**: V2-006 Implementation Contract v1.0.0
+
+**Version History**:
+- **v1.0.0** (2026-10-06): Initial frozen contract
+- **v1.0.1** (2026-10-08): Corrected tuple uniqueness semantics (H1 remediation)
 
 ---
 
@@ -33,30 +38,30 @@ This document is the **binding implementation contract** for V2-006 Entity Relat
 
 V2-006 implements **general-purpose entity relationship tracking**:
 
-✅ **Relationship Identity**: RelationshipId (UUID v4), stable identifier  
-✅ **Relationship Model**: EntityRelationship (5-field immutable dataclass)  
-✅ **Relationship Types**: Extensible string-based types (not domain-specific enum)  
-✅ **Directed Relationships**: A → B (no automatic inverse)  
-✅ **Relationship Operations**: create, delete, query  
-✅ **Project Isolation**: Relationships scoped to ProjectId  
-✅ **In-Memory Registry**: RelationshipRegistry for tests/prototyping  
-✅ **Idempotency**: create and delete are idempotent  
+✅ **Relationship Identity**: RelationshipId (UUID v4), stable identifier
+✅ **Relationship Model**: EntityRelationship (5-field immutable dataclass)
+✅ **Relationship Types**: Extensible string-based types (not domain-specific enum)
+✅ **Directed Relationships**: A → B (no automatic inverse)
+✅ **Relationship Operations**: create, delete, query
+✅ **Project Isolation**: Relationships scoped to ProjectId
+✅ **In-Memory Registry**: RelationshipRegistry for tests/prototyping
+✅ **Idempotency**: create and delete are idempotent
 ✅ **Immutability**: EntityRelationship is frozen (no updates)
 
 ### 2.2 Out of Scope
 
 The following are **explicitly excluded** from V2-006:
 
-❌ **Relationship Metadata**: Deferred to V2-007+ (avoids schema/validation complexity)  
-❌ **Timestamps**: Domain timelessness (persistence layer concern, V2-007)  
-❌ **Persistence**: No database, SQLAlchemy, or storage (V2-007)  
-❌ **Referential Integrity**: No enforcement that entities exist  
-❌ **Relationship Inference**: No automatic inverse relationship creation  
-❌ **Graph Algorithms**: No transitive queries, shortest path, centrality  
-❌ **Relationship Updates**: Immutable model (to change: delete + create)  
-❌ **Bulk Operations**: No batch add/delete  
-❌ **Advanced Queries**: No type filtering, no graph traversal (defer to V2-006.1+)  
-❌ **Relationship Versioning**: No history tracking  
+❌ **Relationship Metadata**: Deferred to V2-007+ (avoids schema/validation complexity)
+❌ **Timestamps**: Domain timelessness (persistence layer concern, V2-007)
+❌ **Persistence**: No database, SQLAlchemy, or storage (V2-007)
+❌ **Referential Integrity**: No enforcement that entities exist
+❌ **Relationship Inference**: No automatic inverse relationship creation
+❌ **Graph Algorithms**: No transitive queries, shortest path, centrality
+❌ **Relationship Updates**: Immutable model (to change: delete + create)
+❌ **Bulk Operations**: No batch add/delete
+❌ **Advanced Queries**: No type filtering, no graph traversal (defer to V2-006.1+)
+❌ **Relationship Versioning**: No history tracking
 ❌ **Domain-Specific Types**: Not hardcoded to novel/character concepts
 
 ---
@@ -110,13 +115,13 @@ RelationshipType = NewType('RelationshipType', str)
 def validate_relationship_type(s: str) -> RelationshipType:
     """
     Validate and construct RelationshipType.
-    
+
     Args:
         s: Raw relationship type string
-    
+
     Returns:
         RelationshipType if valid
-    
+
     Raises:
         ValueError: If empty or whitespace-only
     """
@@ -136,7 +141,7 @@ from dataclasses import dataclass
 class EntityRelationship:
     """
     Directed relationship between two entities.
-    
+
     Immutable after creation. Identity is relationship_id.
     Uniqueness constraint: (source_entity_id, target_entity_id, relationship_type, project_id).
     """
@@ -185,65 +190,66 @@ RelationshipRegistry provides an in-memory store for relationships during tests 
 class RelationshipRegistry:
     """
     In-memory relationship store.
-    
+
     Identity: relationship_id (primary)
     Uniqueness: (source_entity_id, target_entity_id, relationship_type, project_id) tuple
     """
-    
+
     def add_relationship(self, relationship: EntityRelationship) -> None:
         """
         Add relationship to registry.
-        
+
         Idempotent based on relationship_id:
         - If relationship_id exists with same content → no-op
         - If relationship_id exists with different content → ValueError
-        
+
         Uniqueness constraint:
-        - If (source, target, type, project) tuple exists with different ID → no-op (idempotent)
-        
+        - If (source, target, type, project) tuple exists with different ID → ValueError
+
         Args:
             relationship: EntityRelationship to add
-        
+
         Raises:
             ValueError: If relationship_id exists with different content
+            ValueError: If semantic tuple exists with different relationship_id
         """
-    
+
     def remove_relationship(self, relationship_id: RelationshipId) -> None:
         """
         Remove relationship by ID.
-        
+
         Idempotent: no-op if relationship_id not found (does not raise).
-        
+
         Args:
             relationship_id: ID of relationship to remove
         """
-    
+
     def get_relationship(self, relationship_id: RelationshipId) -> EntityRelationship | None:
         """
         Get relationship by ID.
-        
+
         Args:
             relationship_id: ID to lookup
-        
+
         Returns:
             EntityRelationship if found, None otherwise
         """
-    
+
     def get_relationships(
-        self, 
-        entity_id: EntityId, 
+        self,
+        entity_id: EntityId,
         project_id: ProjectId
     ) -> list[EntityRelationship]:
         """
         Get all relationships for an entity (source or target).
-        
+
         Returns relationships where entity_id appears as source OR target,
         within the specified project.
-        
+
         Args:
             entity_id: Entity to find relationships for
             project_id: Project scope
-        
+
         Returns:
             List of EntityRelationship (empty if none found)
             Order is deterministic but unspecified (implementation-defined)
@@ -276,22 +282,22 @@ def create_relationship(
 ) -> EntityRelationship:
     """
     Create a directed relationship between two entities.
-    
+
     Generates a new RelationshipId (UUID v4).
     Does NOT validate that source/target entities exist (no referential integrity).
-    
+
     Args:
         source_entity_id: Source entity
         target_entity_id: Target entity
         relationship_type: Type of relationship
         project_id: Project scope
-    
+
     Returns:
         New EntityRelationship instance
-    
+
     Raises:
         ValueError: If relationship_type is empty or whitespace-only
-    
+
     Example:
         >>> rel = create_relationship(
         ...     EntityId("550e8400-e29b-41d4-a716-446655440000"),
@@ -301,7 +307,7 @@ def create_relationship(
         ... )
         >>> rel.relationship_id  # UUID v4 generated
         RelationshipId("a1b2c3d4-e5f6-4789-a012-b3c4d5e6f7a8")
-    
+
     Contract: V2-006 §5.1
     """
 ```
@@ -321,19 +327,19 @@ def delete_relationship(
 ) -> None:
     """
     Delete a relationship by ID.
-    
+
     Idempotent: no-op if relationship_id not found (does not raise).
     Does NOT cascade or affect inverse relationships.
-    
+
     Args:
         relationship_id: ID of relationship to delete
         registry: RelationshipRegistry to delete from
-    
+
     Example:
         >>> delete_relationship(rel_id, registry)
         >>> # Second call is no-op:
         >>> delete_relationship(rel_id, registry)  # No error
-    
+
     Contract: V2-006 §5.2
     """
 ```
@@ -353,19 +359,19 @@ def get_relationships(
 ) -> list[EntityRelationship]:
     """
     Get all relationships for an entity (source or target).
-    
+
     Returns relationships where entity_id appears as source OR target,
     within the specified project.
-    
+
     Args:
         entity_id: Entity to find relationships for
         project_id: Project scope
         registry: RelationshipRegistry to query
-    
+
     Returns:
         List of EntityRelationship (empty list if none found)
         Order is deterministic but unspecified
-    
+
     Example:
         >>> rel1 = create_relationship(A, B, "knows", proj)
         >>> rel2 = create_relationship(B, C, "likes", proj)
@@ -373,7 +379,7 @@ def get_relationships(
         >>> registry.add_relationship(rel2)
         >>> get_relationships(B, proj, registry)
         [rel1, rel2]  # B appears as target in rel1, source in rel2
-    
+
     Contract: V2-006 §5.3
     """
 ```
@@ -399,7 +405,7 @@ Relationships are **directed**:
 
 **Identity**: Relationships are identified by `relationship_id` (UUID v4).
 
-**Uniqueness Constraint**: The tuple `(source_entity_id, target_entity_id, relationship_type, project_id)` is unique within a registry. Attempting to add a second relationship with the same tuple results in idempotent behavior (no-op).
+**Uniqueness Constraint**: The tuple `(source_entity_id, target_entity_id, relationship_type, project_id)` is unique within a registry. Attempting to add a second relationship with the same tuple but different `relationship_id` raises `ValueError`.
 
 ### 6.3 Self-Relationships
 
@@ -440,6 +446,7 @@ V2-006 does **not** enforce that source/target entities exist:
 
 **RelationshipRegistry.add_relationship**:
 - relationship_id exists with different content
+- (source, target, type, project) tuple exists with different relationship_id
 
 ### 7.2 No Errors (Idempotent)
 
@@ -448,7 +455,6 @@ V2-006 does **not** enforce that source/target entities exist:
 
 **RelationshipRegistry.add_relationship**:
 - relationship_id exists with same content → no-op
-- (source, target, type, project) tuple exists → no-op
 
 ### 7.3 No Type Errors
 
@@ -478,12 +484,12 @@ registry.add_relationship(rel)
 registry.add_relationship(rel)  # no-op (same object)
 ```
 
-**Uniqueness Constraint**: If (source, target, type, project) tuple exists:
+**Uniqueness Constraint**: If (source, target, type, project) tuple exists with different relationship_id:
 ```python
 rel1 = create_relationship(A, B, "knows", proj)
 rel2 = create_relationship(A, B, "knows", proj)
 registry.add_relationship(rel1)
-registry.add_relationship(rel2)  # no-op (tuple already exists)
+registry.add_relationship(rel2)  # ValueError (tuple uniqueness violation)
 ```
 
 ### 8.3 delete_relationship
@@ -795,15 +801,15 @@ Contract: V2-006 Implementation Contract v1.0.0
 
 ### 12.1 Allowed Dependencies
 
-✅ **Standard Library**: uuid, dataclasses, typing  
-✅ **V2-005 Types**: EntityId, ProjectId (from `anovel.domain.identity`)  
+✅ **Standard Library**: uuid, dataclasses, typing
+✅ **V2-005 Types**: EntityId, ProjectId (from `anovel.domain.identity`)
 ✅ **Test Infrastructure**: pytest
 
 ### 12.2 Forbidden Dependencies
 
-❌ **Persistence**: sqlalchemy, psycopg, alembic  
-❌ **LLM Providers**: openai, anthropic  
-❌ **Gateway/Infrastructure**: anovel.gateway, external APIs  
+❌ **Persistence**: sqlalchemy, psycopg, alembic
+❌ **LLM Providers**: openai, anthropic
+❌ **Gateway/Infrastructure**: anovel.gateway, external APIs
 ❌ **Non-V2-005 Domain**: No imports from other V2-00X modules
 
 ### 12.3 Architecture Tests
@@ -833,11 +839,11 @@ def test_v2_006_relationship_no_provider_import():
 
 V2-006 must **not** change:
 
-❌ V2-005 code (`anovel.domain.identity`)  
-❌ EntityId, ProjectId, EntityIdentity definitions  
-❌ V2-005 operations (create_identity, rename_identity, etc.)  
-❌ EntityRegistry (from V2-005)  
-❌ V2-005 tests  
+❌ V2-005 code (`anovel.domain.identity`)
+❌ EntityId, ProjectId, EntityIdentity definitions
+❌ V2-005 operations (create_identity, rename_identity, etc.)
+❌ EntityRegistry (from V2-005)
+❌ V2-005 tests
 ❌ V2-005 contract
 
 ### 13.2 Rationale
@@ -924,9 +930,45 @@ Implementation complete when ALL checked:
 
 ---
 
-**Contract Status**: FROZEN v1.0.0  
-**Next Action**: Independent Contract Review  
-**Implementation**: NOT AUTHORIZED (awaiting review approval)
+---
+
+## 16. Contract Revision History
+
+### v1.0.1 (2026-10-08) — H1 Tuple Uniqueness Correction
+
+**Revision Scope**: Bounded semantic correction to tuple uniqueness behavior
+
+**Finding**: Independent acceptance review (V2-006 Step 3) identified that v1.0.0's tuple uniqueness semantics created an API semantic gap:
+- v1.0.0 specified: different `relationship_id` + same semantic tuple → silent no-op
+- Result: `add_relationship(B)` returns normally but `get_relationship(B)` returns None
+- Impact: Caller cannot distinguish success from silent rejection
+
+**Semantic Change**:
+```
+v1.0.0: different relationship_id + same (source, target, type, project) tuple → no-op
+v1.0.1: different relationship_id + same (source, target, type, project) tuple → ValueError
+```
+
+**Rationale**:
+- API invariant must be: if `add_relationship(R)` returns normally, R is present in registry
+- Consistent with existing same-ID conflict behavior (ValueError)
+- Eliminates caller-visible inconsistency before Step 4 integration
+
+**Affected Sections**:
+- §4.2: `add_relationship` raises clause updated
+- §6.2: Uniqueness constraint behavior updated
+- §7.1: Error conditions updated
+- §8.2: Idempotency examples updated
+
+**Backward Compatibility**: Breaking change for tuple collision case (previously silent no-op, now explicit rejection)
+
+**Implementation Status**: v1.0.0 implementation was correct per v1.0.0 contract. H1 remediation updates implementation to v1.0.1 semantics.
+
+---
+
+**Contract Status**: ACTIVE v1.0.1
+**Next Action**: H1 Implementation + Independent Re-acceptance
+**Implementation**: Step 3 H1 remediation in progress
 
 ---
 

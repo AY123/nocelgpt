@@ -155,13 +155,14 @@ class RelationshipRegistry:
         - If relationship_id exists with different content → ValueError
 
         Uniqueness constraint:
-        - If (source, target, type, project) tuple exists with different ID → no-op (idempotent)
+        - If (source, target, type, project) tuple exists with different ID → ValueError
 
         Args:
             relationship: EntityRelationship to add
 
         Raises:
             ValueError: If relationship_id exists with different content
+            ValueError: If semantic tuple exists with different relationship_id
 
         Example:
             >>> registry = RelationshipRegistry()
@@ -169,7 +170,7 @@ class RelationshipRegistry:
             >>> registry.add_relationship(rel)
             >>> registry.add_relationship(rel)  # no-op (same content)
 
-        Contract: V2-006 §4.2
+        Contract: V2-006 §4.2 (v1.0.1)
         """
         rel_id = relationship.relationship_id
 
@@ -191,8 +192,14 @@ class RelationshipRegistry:
                 and existing_rel.relationship_type == relationship.relationship_type
                 and existing_rel.project_id == relationship.project_id
             ):
-                # Tuple already exists → no-op (idempotent)
-                return
+                # Tuple collision with different ID → reject
+                raise ValueError(
+                    f"Relationship with tuple (source={relationship.source_entity_id}, "
+                    f"target={relationship.target_entity_id}, "
+                    f"type={relationship.relationship_type}, "
+                    f"project={relationship.project_id}) already exists with "
+                    f"RelationshipId {existing_rel.relationship_id}"
+                )
 
         # Add relationship
         self._relationships[rel_id] = relationship

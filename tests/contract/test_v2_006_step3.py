@@ -16,7 +16,6 @@ from anovel.domain.relationship import (
     RelationshipType,
 )
 
-
 # --- Registry Initialization Tests ---
 
 
@@ -196,8 +195,8 @@ def test_registry_same_id_different_content_raises():
 # --- Uniqueness Constraint Tests ---
 
 
-def test_registry_same_tuple_different_id_is_noop():
-    """Adding relationship with same (source, target, type, project) tuple but different ID is no-op."""
+def test_registry_same_tuple_different_id_raises():
+    """Adding relationship with same (source, target, type, project) tuple but different ID raises ValueError."""
     registry = RelationshipRegistry()
 
     rel1 = EntityRelationship(
@@ -217,12 +216,133 @@ def test_registry_same_tuple_different_id_is_noop():
     )
 
     registry.add_relationship(rel1)
-    registry.add_relationship(rel2)  # no-op (tuple already exists)
 
-    # Only first relationship added
-    results = registry.get_relationships(rel1.source_entity_id, rel1.project_id)
-    assert len(results) == 1
-    assert results[0].relationship_id == rel1.relationship_id
+    # Attempting to add same tuple with different ID raises ValueError
+    with pytest.raises(ValueError, match="already exists with RelationshipId"):
+        registry.add_relationship(rel2)
+
+    # Original relationship unchanged
+    assert registry.get_relationship(rel1.relationship_id) == rel1
+    # New relationship was not added
+    assert registry.get_relationship(rel2.relationship_id) is None
+
+
+# --- H1 Collision Matrix Tests ---
+
+
+def test_h1_t01_same_id_same_content():
+    """H1-T01: Same ID + same content → no-op (true idempotency)."""
+    registry = RelationshipRegistry()
+    rel = EntityRelationship(
+        relationship_id=RelationshipId("00000000-0000-4000-8000-000000000001"),
+        project_id=ProjectId("proj_001"),
+        source_entity_id=EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        target_entity_id=EntityId("650e8400-e29b-41d4-a716-446655440001"),
+        relationship_type=RelationshipType("knows"),
+    )
+
+    registry.add_relationship(rel)
+    initial_count = len(
+        registry.get_relationships(rel.source_entity_id, rel.project_id)
+    )
+
+    # Add again - should be no-op
+    registry.add_relationship(rel)
+    final_count = len(registry.get_relationships(rel.source_entity_id, rel.project_id))
+
+    assert final_count == initial_count == 1
+    assert registry.get_relationship(rel.relationship_id) == rel
+
+
+def test_h1_t02_same_id_different_content():
+    """H1-T02: Same ID + different content → ValueError."""
+    registry = RelationshipRegistry()
+    rel_id = RelationshipId("00000000-0000-4000-8000-000000000001")
+
+    rel1 = EntityRelationship(
+        relationship_id=rel_id,
+        project_id=ProjectId("proj_001"),
+        source_entity_id=EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        target_entity_id=EntityId("650e8400-e29b-41d4-a716-446655440001"),
+        relationship_type=RelationshipType("knows"),
+    )
+
+    rel2 = EntityRelationship(
+        relationship_id=rel_id,  # Same ID
+        project_id=ProjectId("proj_001"),
+        source_entity_id=EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        target_entity_id=EntityId("DIFFERENT-0000-0000-0000-000000000000"),  # Different target
+        relationship_type=RelationshipType("knows"),
+    )
+
+    registry.add_relationship(rel1)
+
+    with pytest.raises(ValueError, match="already exists with different content"):
+        registry.add_relationship(rel2)
+
+    # Original unchanged
+    assert registry.get_relationship(rel_id) == rel1
+
+
+def test_h1_t03_different_id_same_semantic_tuple():
+    """H1-T03: Different ID + same semantic tuple → ValueError."""
+    registry = RelationshipRegistry()
+
+    rel1 = EntityRelationship(
+        relationship_id=RelationshipId("00000000-0000-4000-8000-000000000001"),
+        project_id=ProjectId("proj_001"),
+        source_entity_id=EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        target_entity_id=EntityId("650e8400-e29b-41d4-a716-446655440001"),
+        relationship_type=RelationshipType("knows"),
+    )
+
+    rel2 = EntityRelationship(
+        relationship_id=RelationshipId("00000000-0000-4000-8000-000000000002"),  # Different ID
+        project_id=ProjectId("proj_001"),  # Same tuple
+        source_entity_id=EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        target_entity_id=EntityId("650e8400-e29b-41d4-a716-446655440001"),
+        relationship_type=RelationshipType("knows"),
+    )
+
+    registry.add_relationship(rel1)
+
+    with pytest.raises(ValueError, match="already exists with RelationshipId"):
+        registry.add_relationship(rel2)
+
+    # Original unchanged, new ID not inserted
+    assert registry.get_relationship(rel1.relationship_id) == rel1
+    assert registry.get_relationship(rel2.relationship_id) is None
+
+
+def test_h1_t04_same_tuple_different_project():
+    """H1-T04: Same relationship fields but different project → both allowed."""
+    registry = RelationshipRegistry()
+    source_id = EntityId("550e8400-e29b-41d4-a716-446655440000")
+    target_id = EntityId("650e8400-e29b-41d4-a716-446655440001")
+    rel_type = RelationshipType("knows")
+
+    rel_proj1 = EntityRelationship(
+        relationship_id=RelationshipId("00000000-0000-4000-8000-000000000001"),
+        project_id=ProjectId("proj_001"),
+        source_entity_id=source_id,
+        target_entity_id=target_id,
+        relationship_type=rel_type,
+    )
+
+    rel_proj2 = EntityRelationship(
+        relationship_id=RelationshipId("00000000-0000-4000-8000-000000000002"),
+        project_id=ProjectId("proj_002"),  # Different project
+        source_entity_id=source_id,
+        target_entity_id=target_id,
+        relationship_type=rel_type,
+    )
+
+    # Both should succeed (project is part of uniqueness key)
+    registry.add_relationship(rel_proj1)
+    registry.add_relationship(rel_proj2)
+
+    assert registry.get_relationship(rel_proj1.relationship_id) == rel_proj1
+    assert registry.get_relationship(rel_proj2.relationship_id) == rel_proj2
 
 
 # --- Remove Tests ---
