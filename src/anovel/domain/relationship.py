@@ -19,9 +19,10 @@ Relationship Semantics:
     - Project-scoped (isolation)
     - Idempotent (create/delete)
 
-Contract: V2-006 Implementation Contract v1.0.0
+Contract: V2-006 Implementation Contract v1.0.1
 """
 
+import uuid
 from dataclasses import dataclass
 from typing import NewType
 
@@ -124,6 +125,61 @@ class EntityRelationship:
     source_entity_id: EntityId
     target_entity_id: EntityId
     relationship_type: RelationshipType
+
+
+# --- Public Operations (Step 4) ---
+
+
+def create_relationship(
+    source_entity_id: EntityId,
+    target_entity_id: EntityId,
+    relationship_type: RelationshipType,
+    project_id: ProjectId,
+) -> EntityRelationship:
+    """
+    Create a directed relationship between two entities.
+
+    Generates a new RelationshipId (UUID v4).
+    Does NOT validate that source/target entities exist (no referential integrity).
+
+    Args:
+        source_entity_id: Source entity
+        target_entity_id: Target entity
+        relationship_type: Type of relationship
+        project_id: Project scope
+
+    Returns:
+        New EntityRelationship instance
+
+    Raises:
+        ValueError: If relationship_type is empty or whitespace-only
+
+    Example:
+        >>> rel = create_relationship(
+        ...     EntityId("550e8400-e29b-41d4-a716-446655440000"),
+        ...     EntityId("650e8400-e29b-41d4-a716-446655440001"),
+        ...     RelationshipType("knows"),
+        ...     ProjectId("proj_001")
+        ... )
+        >>> rel.relationship_id  # UUID v4 generated
+        RelationshipId("a1b2c3d4...")
+
+    Contract: V2-006 §5.1 (v1.0.1)
+    """
+    # Validate relationship type (reuses Step 1 validator)
+    validated_type = validate_relationship_type(relationship_type)
+
+    # Generate new UUID v4
+    relationship_id = RelationshipId(str(uuid.uuid4()))
+
+    # Return immutable relationship
+    return EntityRelationship(
+        relationship_id=relationship_id,
+        project_id=project_id,
+        source_entity_id=source_entity_id,
+        target_entity_id=target_entity_id,
+        relationship_type=validated_type,
+    )
 
 
 # --- Relationship Registry (Step 3) ---
