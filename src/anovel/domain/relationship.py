@@ -10,14 +10,20 @@ Public API:
         RelationshipId, RelationshipType, EntityRelationship
     Operations:
         create_relationship, delete_relationship, get_relationships
+        validate_relationship_type
     Data Structures:
         RelationshipRegistry (in-memory, for tests)
 
 Relationship Semantics:
     - Directed (no automatic inverse)
-    - Immutable (no updates)
-    - Project-scoped (isolation)
-    - Idempotent (create/delete)
+    - Immutable (no updates after creation)
+    - Project-scoped (cross-project isolation)
+    - Fresh identity (create_relationship generates new UUID v4 each call)
+    - Idempotent deletion (delete_relationship is idempotent)
+    - Registry replay (adding same ID + same content is no-op)
+    - No referential integrity (entities need not exist)
+    - No graph inference (no transitive traversal)
+    - No cascade (deleting relationship does not affect entities or other relationships)
 
 Contract: V2-006 Implementation Contract v1.0.1
 """

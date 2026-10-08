@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/entity-relationship.schema.json",
+  "title": "EntityRelationship",
+  "description": "Directed relationship between narrative entities",
+  "type": "object",
+  "required": [
+    "relationship_id",
+    "project_id",
+    "source_entity_id",
+    "target_entity_id",
+    "relationship_type"
+  ],
+  "properties": {
+    "relationship_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "Unique relationship identifier (UUID v4 format)"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Project scope identifier"
+    },
+    "source_entity_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "Source entity identifier (UUID v4 format)"
+    },
+    "target_entity_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+      "description": "Target entity identifier (UUID v4 format)"
+    },
+    "relationship_type": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relationship type (extensible string, not enum)"
+    }
+  },
+  "additionalProperties": false
+}

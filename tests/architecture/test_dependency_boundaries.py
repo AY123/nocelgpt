@@ -5,9 +5,9 @@ business implementation is installed by this suite.
 """
 import importlib.util
 import json
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 import pytest
 import yaml
@@ -315,6 +315,20 @@ def test_v2_005_identity_no_persistence_import(synthetic):
 def test_v2_005_identity_no_provider_import(synthetic):
     """V2-005: domain.identity must not import LLM providers."""
     write(synthetic, 'src/anovel/domain/identity.py', 'import openai\n')
+    report = architecture.check_architecture(synthetic)
+    assert 'ARCH_DOMAIN_DEPENDENCY' in codes(report)
+
+
+def test_v2_006_relationship_no_persistence_import(synthetic):
+    """V2-006: domain.relationship must not import persistence layers."""
+    write(synthetic, 'src/anovel/domain/relationship.py', 'import sqlalchemy\n')
+    report = architecture.check_architecture(synthetic)
+    assert 'ARCH_DOMAIN_DEPENDENCY' in codes(report)
+
+
+def test_v2_006_relationship_no_provider_import(synthetic):
+    """V2-006: domain.relationship must not import LLM providers."""
+    write(synthetic, 'src/anovel/domain/relationship.py', 'import openai\n')
     report = architecture.check_architecture(synthetic)
     assert 'ARCH_DOMAIN_DEPENDENCY' in codes(report)
 
