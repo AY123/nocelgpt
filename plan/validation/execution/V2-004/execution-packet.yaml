@@ -189,8 +189,8 @@ review_notes:
   replaces further key acquisition only. This local copied packet has new exact scope;
   source pins and all mandatory obligations must pass, no remote promotion.'
 handoff:
-  current_step: Locally binding the approved exact consumption contract with new applicable
-    scope/review pins; no independent or remote acceptance.
+  current_step: Immutable local approved source candidate fixed; actual local entry
+    and formal ARCH checks pending. No remote or independent acceptance.
   completed_steps:
   - Preserved original local implementation19 and old evidence
   - Actual two-group90day Owner decision recorded separately
@@ -206,4 +206,8 @@ handoff:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 839c25b43824e09a84b57c671f3fdd0065fe0fdc
+  scope_ref: plan/validation/execution/V2-004/local-final-pin-20261008/scope.json
+  review_revision: a96580cc1e4e456edf8a181d7523bf72656de595
+  review_ref: plan/validation/execution/V2-004/local-final-pin-20261008/change-dispositions.json
