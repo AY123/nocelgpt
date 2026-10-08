@@ -1,29 +1,35 @@
 {
   "record_type": "execution_context_selection",
-  "source_revision": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
-  "active_context": "CLEAN_COMMITTED_LOCAL_EXACT_PIN",
-  "scope_revision": "a3496f79b6abeeaf3a4c7be950ddc2b2d09bb7c6",
-  "scope_ref": "plan/validation/execution/V2-004/followup-20261004/scope-ci-v3.json",
-  "review_revision": "b998576759cf530708fd914e805448d6871ad1ef",
-  "review_ref": "plan/validation/execution/V2-004/runner-exact-20261004/change-dispositions-ci.json",
-  "implementation_status": "IMPLEMENTED_PENDING_EXACT_REVISION_VALIDATION",
-  "last_result": "Fresh isolated focused72 PASS; full pre-pin and post-pin clean checks pending, no old dirty-worktree results consumed as PASS.",
-  "recovery": "Check actual clean checkout ancestry, fixed scope/review and all normative input hashes. Install an independent locked environment and generate all artifacts outside plan. Do not replace the primary local packet or user files with this clean-context packet. No remote mutation or task/security acceptance is authorized here.",
-  "security_baseline": {
-    "revision": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
-    "findings": 45,
+  "source_revision": "542a5f264afbb99f8d664bdfd8fdfa50c1243cf4",
+  "active_context": "LOCAL_TRUSTED_SOURCE_INTEGRATION",
+  "scope_revision": "758a46b149c7f0ea6e35a6764ce1b4c0040df78e",
+  "scope_ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/scope.json",
+  "review_revision": null,
+  "review_ref": null,
+  "implementation_status": "LOCAL_INTEGRATION_PENDING_REVIEW",
+  "security_findings": {
+    "total": 45,
     "open": 45,
-    "pending_exception_requests": 38,
-    "owner_required": 7,
-    "approved": 0,
-    "applied": 0,
     "closed": 0,
-    "canonical_ref": "plan/validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json",
-    "canonical_sha256": "28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749"
+    "owner_risk_acceptance": 7,
+    "precise_exceptions_approved": 38,
+    "ledger_sha256": "38b23aab2d41fbe0ecd37ad25c2fe5e85c1f42d41aa453f9a2397af337a36ce7",
+    "current_scan_status": "NOT_RUN_NEW_INTEGRATED_REVISION",
+    "sf037_group": "UNGROUPED"
   },
-  "remote_ci_for_patch": "NOT_RUN",
-  "real_protected_runner_execution": "NOT_VERIFIED",
+  "historical_trusted_execution_revision": "ba22d2ce09c17ac0a6790592e24fae08b0391a9e",
+  "historical_trusted_execution_pipeline": 2912870306,
+  "current_revision_remote_ci": "NOT_RUN",
+  "current_revision_protected_execution": "NOT_VERIFIED",
+  "remaining_permission_controls": "NOT_PROMOTED",
+  "independent_review": "NOT_COMPLETED",
+  "host_lifecycle_review": "NOT_COMPLETED",
   "v2004_status": "IN_PROGRESS",
   "p0_status": "NOT_VERIFIED",
-  "acceptance_eligible": false
+  "acceptance_eligible": false,
+  "limits": [
+    "No remote operation authorized or executed",
+    "Historical acceptance never substitutes for new exact revision",
+    "Authority records and canonical left unchanged"
+  ]
 }

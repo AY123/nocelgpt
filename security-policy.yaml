@@ -23,13 +23,15 @@ scan_targets:
 - git_history
 dependency_exceptions: []
 trusted_execution:
-  runner_ids: []
-  ci_config_path: null
-  protected_ref: null
-  status: NOT_ENROLLED
-  note: Candidate-local CI is implementation evidence only. Trusted runner/configuration
-    enrollment and permission positive/negative controls require actual protected
-    remote setup; fields here do not grant permissions or prove their enforcement.
+  runner_ids:
+  - 57044314
+  runner_tag: trusted-acceptance
+  ci_config_path: plan/validation/execution/V2-004/enrollment-20261005/trusted-ci.yml@ayitnovel/ainovelos:acceptance/v2-004
+  protected_ref: acceptance/v2-004
+  status: ENROLLMENT_CANDIDATE_NOT_ACTIVATED
+  note: Historical enrolled configuration identities retained from exactba22d2c; current
+    integrated local revision has not been independently reviewed or executed remotely.
+    No runner activation or current remote metadata verification is implied.
 static_coverage:
   format_lint_typecheck:
   - src/anovel/

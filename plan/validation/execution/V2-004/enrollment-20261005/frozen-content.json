@@ -1,0 +1,11 @@
+{
+  "record_type": "accepted_content_preservation",
+  "source_revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "files": {
+    "scripts/ci/verify_remote.py": "f513d5bd1331b2abf7d8fb0a243b45b5244733a4614d58b227867db5cfb51e13",
+    ".gitlab-ci.yml": "878152f3382017c4953a1c319a44d6ea01f77747389edd3c69b1c70121a2e5d3",
+    "plan/validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json": "28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749"
+  },
+  "task_statuses_unchanged": true,
+  "acceptance_eligible": false
+}

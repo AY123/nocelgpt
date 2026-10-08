@@ -1,0 +1,62 @@
+{
+  "observed_at": "2026-10-05T01:28:53.868652+00:00",
+  "record_type": "actual_gitlab_include_schema_dry_run",
+  "request": {
+    "content": "include:\n  - project: ayitnovel/ainovelos\n    ref: 9fe51abf5ba2e050b7f48204f5c26927ace712af\n    file: .gitlab-ci.yml\n",
+    "ref": "dev_gpt",
+    "dry_run": true,
+    "include_jobs": true
+  },
+  "request_sha256": "a90b3b31c1b263dbbc10342913771a6c6d99ec3fe8f6f348acb4ce9a6c6e7941",
+  "http_status": 200,
+  "response_sha256": "7d5641ce1f549a6ec4dca8e44b8b479f87f9c7646bbcc0f5de62bef878de9ea1",
+  "valid_is_true": true,
+  "errors_count": 0,
+  "job_names": [
+    "static",
+    "schema_contract",
+    "unit",
+    "arch_fitness",
+    "postgres_env",
+    "secret_dependency"
+  ],
+  "includes": [
+    {
+      "keys": [
+        "blob",
+        "context_project",
+        "context_sha",
+        "extra",
+        "location",
+        "raw",
+        "type"
+      ],
+      "value_types": {
+        "type": "str",
+        "location": "str",
+        "blob": "str",
+        "raw": "str",
+        "extra": "dict",
+        "context_project": "str",
+        "context_sha": "str"
+      },
+      "type": "file",
+      "location": ".gitlab-ci.yml",
+      "context_project": "ayitnovel/ainovelos",
+      "context_sha": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+      "extra_keys": [
+        "project",
+        "ref"
+      ],
+      "extra": {
+        "project": "ayitnovel/ainovelos",
+        "ref": "9fe51abf5ba2e050b7f48204f5c26927ace712af"
+      },
+      "blob": "https://gitlab.com/ayitnovel/ainovelos/-/blob/9fe51abf5ba2e050b7f48204f5c26927ace712af/.gitlab-ci.yml",
+      "raw": "https://gitlab.com/ayitnovel/ainovelos/-/raw/9fe51abf5ba2e050b7f48204f5c26927ace712af/.gitlab-ci.yml"
+    }
+  ],
+  "config_mutations": 0,
+  "pipelines_created": 0,
+  "runner_or_host_started": false
+}

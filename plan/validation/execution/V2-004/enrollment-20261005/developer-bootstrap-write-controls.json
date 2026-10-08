@@ -1,0 +1,301 @@
+{
+  "record_type": "V2_004_BOOTSTRAP_DEVELOPER_WRITE_CONTROLS",
+  "phase": "BOOTSTRAP_NOT_FINAL_SEALED_EXECUTION",
+  "expected_baseline": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "actor": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "id": 2897322,
+        "username": "TomAy47287015",
+        "public_email": "",
+        "name": "Tom Ay",
+        "state": "active",
+        "locked": false,
+        "avatar_url": "https://secure.gravatar.com/avatar/668920b0dbc8183c95e31947249805e63d33fe21a749dba5c9730fd796df821d?s=80&d=identicon",
+        "web_url": "https://gitlab.com/TomAy47287015",
+        "created_at": "2018-09-27T02:00:30.888Z",
+        "bio": "",
+        "location": "",
+        "linkedin": "",
+        "twitter": "",
+        "discord": "",
+        "website_url": "",
+        "github": "",
+        "job_title": "",
+        "pronouns": null,
+        "organization": "",
+        "bot": false,
+        "work_information": null,
+        "local_time": null,
+        "last_sign_in_at": "2018-09-27T02:00:30.956Z",
+        "confirmed_at": "2026-09-26T12:29:44.817Z",
+        "last_activity_on": "2026-10-05",
+        "email": "angityang@163.com",
+        "theme_id": 1,
+        "color_scheme_id": 1,
+        "projects_limit": 100000,
+        "current_sign_in_at": "2026-09-26T12:29:46.984Z",
+        "identities": [],
+        "can_create_group": true,
+        "can_create_project": true,
+        "two_factor_enabled": false,
+        "external": false,
+        "private_profile": false,
+        "commit_email": "angityang@163.com",
+        "preferred_language": "en",
+        "shared_runners_minutes_limit": null,
+        "extra_shared_runners_minutes_limit": null,
+        "scim_identities": []
+      },
+      "pagination": {
+        "next_page": null,
+        "page": null,
+        "per_page": null,
+        "prev_page": null,
+        "total": null,
+        "total_pages": null,
+        "link": null
+      }
+    },
+    "isError": false
+  },
+  "branch_before": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "name": "acceptance/v2-004",
+        "commit": {
+          "id": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+          "short_id": "9fe51abf",
+          "created_at": "2026-10-04T22:14:21.000+08:00",
+          "parent_ids": [
+            "b998576759cf530708fd914e805448d6871ad1ef"
+          ],
+          "title": "fix(V2-004): enforce trusted runner acceptance invariants",
+          "message": "fix(V2-004): enforce trusted runner acceptance invariants\n",
+          "author_name": "昂扬",
+          "author_email": "angyang@chinaums.com",
+          "authored_date": "2026-10-04T22:14:21.000+08:00",
+          "committer_name": "昂扬",
+          "committer_email": "angyang@chinaums.com",
+          "committed_date": "2026-10-04T22:14:21.000+08:00",
+          "trailers": {},
+          "extended_trailers": {},
+          "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/commit/9fe51abf5ba2e050b7f48204f5c26927ace712af"
+        },
+        "merged": false,
+        "protected": true,
+        "developers_can_push": false,
+        "developers_can_merge": false,
+        "can_push": false,
+        "default": false,
+        "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/tree/acceptance/v2-004"
+      },
+      "pagination": {
+        "next_page": null,
+        "page": null,
+        "per_page": null,
+        "prev_page": null,
+        "total": null,
+        "total_pages": null,
+        "link": null
+      }
+    },
+    "isError": false
+  },
+  "positive_branch": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "name": "codex/v2-004-enrollment-permission-probe-20261005",
+        "commit": {
+          "id": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+          "short_id": "9fe51abf",
+          "created_at": "2026-10-04T22:14:21.000+08:00",
+          "parent_ids": [
+            "b998576759cf530708fd914e805448d6871ad1ef"
+          ],
+          "title": "fix(V2-004): enforce trusted runner acceptance invariants",
+          "message": "fix(V2-004): enforce trusted runner acceptance invariants\n",
+          "author_name": "昂扬",
+          "author_email": "angyang@chinaums.com",
+          "authored_date": "2026-10-04T22:14:21.000+08:00",
+          "committer_name": "昂扬",
+          "committer_email": "angyang@chinaums.com",
+          "committed_date": "2026-10-04T22:14:21.000+08:00",
+          "trailers": {},
+          "extended_trailers": {},
+          "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/commit/9fe51abf5ba2e050b7f48204f5c26927ace712af"
+        },
+        "merged": false,
+        "protected": false,
+        "developers_can_push": false,
+        "developers_can_merge": false,
+        "can_push": true,
+        "default": false,
+        "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/tree/codex/v2-004-enrollment-permission-probe-20261005"
+      },
+      "pagination": {
+        "next_page": null,
+        "page": null,
+        "per_page": null,
+        "prev_page": null,
+        "total": null,
+        "total_pages": null,
+        "link": null
+      }
+    },
+    "isError": false
+  },
+  "positive_commit": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "id": "0d83f267890d2e3f9b7b8d3b66f1a87524501e5a",
+        "short_id": "0d83f267",
+        "created_at": "2026-10-05T00:46:38.000+00:00",
+        "parent_ids": [
+          "9fe51abf5ba2e050b7f48204f5c26927ace712af"
+        ],
+        "title": "test(V2-004): probe protected acceptance write boundary",
+        "message": "test(V2-004): probe protected acceptance write boundary",
+        "author_name": "Tom Ay",
+        "author_email": "angityang@163.com",
+        "authored_date": "2026-10-05T00:46:38.000+00:00",
+        "committer_name": "Tom Ay",
+        "committer_email": "angityang@163.com",
+        "committed_date": "2026-10-05T00:46:38.000+00:00",
+        "trailers": {},
+        "extended_trailers": {},
+        "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/commit/0d83f267890d2e3f9b7b8d3b66f1a87524501e5a",
+        "stats": {
+          "additions": 1,
+          "deletions": 0,
+          "total": 1
+        },
+        "status": null,
+        "project_id": 86656946,
+        "last_pipeline": null
+      },
+      "pagination": {
+        "next_page": null,
+        "page": null,
+        "per_page": null,
+        "prev_page": null,
+        "total": null,
+        "total_pages": null,
+        "link": null
+      }
+    },
+    "isError": false
+  },
+  "payload": {
+    "actions": [
+      {
+        "action": "create",
+        "file_path": "plan/validation/execution/V2-004/enrollment-permission-probe-20261005/control.txt",
+        "content": "Harmless write control. No credentials or executable code.\n"
+      }
+    ],
+    "branch": "codex/v2-004-enrollment-permission-probe-20261005",
+    "commit_message": "test(V2-004): probe protected acceptance write boundary",
+    "force": false,
+    "link_id": "link_6ab7c42c2aec8191967fa6e3e692824a",
+    "project_id": 86656946
+  },
+  "negative_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "GitLabGoldenSchemaApiError: create_commit returned HTTP 403: 403 Forbidden - You are not allowed to push into this branch"
+      }
+    ],
+    "structuredContent": {
+      "error": "GitLabGoldenSchemaApiError: create_commit returned HTTP 403: 403 Forbidden - You are not allowed to push into this branch",
+      "error_code": "FORBIDDEN",
+      "error_data": {
+        "type": "gitlab_api_error",
+        "code": "403 Forbidden - You are not allowed to push into this branch",
+        "message": "create_commit returned HTTP 403: 403 Forbidden - You are not allowed to push into this branch",
+        "response": {
+          "message": "403 Forbidden - You are not allowed to push into this branch"
+        }
+      }
+    },
+    "isError": true
+  },
+  "branch_after": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Action completed."
+      }
+    ],
+    "structuredContent": {
+      "data": {
+        "name": "acceptance/v2-004",
+        "commit": {
+          "id": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+          "short_id": "9fe51abf",
+          "created_at": "2026-10-04T22:14:21.000+08:00",
+          "parent_ids": [
+            "b998576759cf530708fd914e805448d6871ad1ef"
+          ],
+          "title": "fix(V2-004): enforce trusted runner acceptance invariants",
+          "message": "fix(V2-004): enforce trusted runner acceptance invariants\n",
+          "author_name": "昂扬",
+          "author_email": "angyang@chinaums.com",
+          "authored_date": "2026-10-04T22:14:21.000+08:00",
+          "committer_name": "昂扬",
+          "committer_email": "angyang@chinaums.com",
+          "committed_date": "2026-10-04T22:14:21.000+08:00",
+          "trailers": {},
+          "extended_trailers": {},
+          "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/commit/9fe51abf5ba2e050b7f48204f5c26927ace712af"
+        },
+        "merged": false,
+        "protected": true,
+        "developers_can_push": false,
+        "developers_can_merge": false,
+        "can_push": false,
+        "default": false,
+        "web_url": "https://gitlab.com/ayitnovel/ainovelos/-/tree/acceptance/v2-004"
+      },
+      "pagination": {
+        "next_page": null,
+        "page": null,
+        "per_page": null,
+        "prev_page": null,
+        "total": null,
+        "total_pages": null,
+        "link": null
+      }
+    },
+    "isError": false
+  },
+  "limitations": [
+    "Only actual branch write permission controls; not CI/config settings modification denial or final runner/trust certification",
+    "Ordinary isolated feature branch created; dev_gpt unchanged"
+  ]
+}

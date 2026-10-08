@@ -1,0 +1,1392 @@
+{
+  "record_type": "trusted_execution_enrollment_readonly_preflight",
+  "observed_at": "2026-10-05T00:21:42.813654+00:00",
+  "project_id": 86656946,
+  "transport": "glab fixed keyring service (captured and decoded in memory)",
+  "records": {
+    "actor": {
+      "http_status": 200,
+      "response_sha256": "446378e117a0e99439a4f8f7a44a39c3d9baeccf1bc558a496fc5f04898bab06",
+      "value": {
+        "id": 2897271,
+        "username": "angyang582821422",
+        "name": "YANG YANG",
+        "state": "active"
+      }
+    },
+    "token": {
+      "http_status": 200,
+      "response_sha256": "7c398485a9b95df4f1dc0426606af097963d867bd72ac51dbf0514080b7fd587",
+      "value": {
+        "user_id": 2897271,
+        "scopes": [
+          "read_user",
+          "read_repository",
+          "read_virtual_registry",
+          "read_registry",
+          "read_api",
+          "self_rotate",
+          "write_repository",
+          "write_virtual_registry",
+          "write_registry",
+          "api",
+          "ai_features",
+          "create_runner",
+          "manage_runner",
+          "k8s_proxy"
+        ],
+        "active": true,
+        "revoked": false,
+        "expires_at": "2026-10-28"
+      }
+    },
+    "project": {
+      "http_status": 200,
+      "response_sha256": "f1fc39ed317613e90ccf277f04b43ba9b5c310d5feb6badff9378d11d849fdae",
+      "value": {
+        "id": 86656946,
+        "path_with_namespace": "ayitnovel/ainovelos",
+        "default_branch": "main",
+        "ci_config_path": "",
+        "only_allow_merge_if_pipeline_succeeds": true,
+        "shared_runners_enabled": true,
+        "group_runners_enabled": true,
+        "build_timeout": 3600,
+        "allow_merge_on_skipped_pipeline": null,
+        "ci_pipeline_variables_minimum_override_role": "no_one_allowed",
+        "ci_allow_fork_pipelines_to_run_in_parent_project": true,
+        "permissions": {
+          "project_access": null,
+          "group_access": {
+            "access_level": 50,
+            "notification_level": 3
+          }
+        }
+      }
+    },
+    "owner_membership": {
+      "http_status": 200,
+      "response_sha256": "c28c10c7c184d01d2d6708f7657d681fb9693a70750ae4491b78fa79b012fdf9",
+      "value": {
+        "id": 2897271,
+        "username": "angyang582821422",
+        "name": "YANG YANG",
+        "access_level": 50,
+        "state": "active",
+        "expires_at": null
+      }
+    },
+    "developer_membership": {
+      "http_status": 200,
+      "response_sha256": "f4af78469ff25b816f46fa9467ec5ec84e1466ea908f5a76d41bc54baefedecb",
+      "value": {
+        "id": 2897322,
+        "username": "TomAy47287015",
+        "name": "Tom Ay",
+        "access_level": 30,
+        "state": "active",
+        "expires_at": null
+      }
+    },
+    "dev_gpt": {
+      "http_status": 200,
+      "response_sha256": "8198ec3f0dc92521582712884bbbe4653f942e3261b29fe8b747c50cb82dcb65",
+      "value": {
+        "name": "dev_gpt",
+        "protected": false,
+        "can_push": true,
+        "developers_can_push": false,
+        "developers_can_merge": false,
+        "sha": "9fe51abf5ba2e050b7f48204f5c26927ace712af"
+      }
+    },
+    "acceptance_ref": {
+      "http_status": 404,
+      "response_sha256": "657f3016a454dec65e221ae87b4b4b80c7b4b91ea689c126185ef4cf41ca4da8",
+      "value": null
+    },
+    "protected_branches": {
+      "status": "OBSERVED",
+      "pages": [
+        {
+          "page": 1,
+          "http_status": 200,
+          "response_sha256": "90e5a687b355278b61840b937089c78e2379d4e66b39e06638a45048690279af"
+        }
+      ],
+      "complete": true,
+      "total": 1,
+      "rows": [
+        {
+          "name": "main",
+          "allow_force_push": false,
+          "push_access_levels": [
+            {
+              "id": 383221237,
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "deploy_key_id": null,
+              "user_id": null,
+              "group_id": null
+            }
+          ],
+          "merge_access_levels": [
+            {
+              "id": 351353964,
+              "access_level": 40,
+              "access_level_description": "Maintainers",
+              "user_id": null,
+              "group_id": null
+            }
+          ],
+          "unprotect_access_levels": [],
+          "inherited": false
+        }
+      ]
+    },
+    "project_runners": {
+      "status": "OBSERVED",
+      "pages": [
+        {
+          "page": 1,
+          "http_status": 200,
+          "response_sha256": "c003eca18beb543d09776ea9926311736a20dc507a96efdbc3ccd60d524a270b"
+        },
+        {
+          "page": 2,
+          "http_status": 200,
+          "response_sha256": "c36d2c3645488a65a180f1888ff80d38e22a322ee37287f253925df0d9e4c5cc"
+        }
+      ],
+      "complete": true,
+      "total": 136,
+      "rows": [
+        {
+          "id": 1506020,
+          "description": "windows-shared-runners-manager-1",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 1506021,
+          "description": "windows-shared-runners-manager-2",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11573930,
+          "description": "1-blue.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11573990,
+          "description": "2-blue.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11574038,
+          "description": "3-blue.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11574045,
+          "description": "4-blue.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11574068,
+          "description": "1-green.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11574076,
+          "description": "2-green.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11574084,
+          "description": "3-green.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11574096,
+          "description": "4-green.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11728715,
+          "description": "1-blue.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11728725,
+          "description": "2-blue.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11728729,
+          "description": "3-blue.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11728733,
+          "description": "4-blue.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 11728737,
+          "description": "1-green.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11728740,
+          "description": "2-green.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11728747,
+          "description": "3-green.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 11728750,
+          "description": "4-green.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 12270807,
+          "description": "1-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 12270831,
+          "description": "2-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 12270835,
+          "description": "3-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 12270837,
+          "description": "4-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 12270840,
+          "description": "5-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 12270845,
+          "description": "1-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 12270848,
+          "description": "2-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 12270852,
+          "description": "3-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 12270857,
+          "description": "4-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 12270859,
+          "description": "5-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142246,
+          "description": "blue-1.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142247,
+          "description": "blue-2.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142248,
+          "description": "blue-3.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142249,
+          "description": "blue-4.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142250,
+          "description": "blue-5.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142251,
+          "description": "green-1.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142252,
+          "description": "green-2.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142253,
+          "description": "green-3.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142254,
+          "description": "green-4.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142255,
+          "description": "green-5.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142257,
+          "description": "blue-1.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142258,
+          "description": "blue-2.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142259,
+          "description": "blue-3.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142260,
+          "description": "blue-4.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142261,
+          "description": "blue-5.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17142262,
+          "description": "green-1.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142263,
+          "description": "green-2.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142264,
+          "description": "green-3.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142265,
+          "description": "green-4.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17142266,
+          "description": "green-5.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17529416,
+          "description": "blue-1.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17529417,
+          "description": "blue-2.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17529418,
+          "description": "blue-3.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17529419,
+          "description": "blue-4.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17529420,
+          "description": "blue-5.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17529422,
+          "description": "green-1.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17529423,
+          "description": "green-2.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17529424,
+          "description": "green-3.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 17529425,
+          "description": "green-4.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 17529430,
+          "description": "green-5.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 22075880,
+          "description": "blue-1.saas-macos-medium-m1.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 22075882,
+          "description": "blue-2.saas-macos-medium-m1.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 22075883,
+          "description": "green-1.saas-macos-medium-m1.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 22075884,
+          "description": "green-2.saas-macos-medium-m1.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25141601,
+          "description": "blue-1.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25141637,
+          "description": "blue-2.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25141674,
+          "description": "blue-3.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25141675,
+          "description": "blue-4.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25141676,
+          "description": "blue-5.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25141677,
+          "description": "green-1.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25141678,
+          "description": "green-2.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25141679,
+          "description": "green-3.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25141680,
+          "description": "green-4.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25141681,
+          "description": "green-5.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25848330,
+          "description": "blue-1.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25848331,
+          "description": "blue-2.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25848333,
+          "description": "blue-3.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25848334,
+          "description": "blue-4.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25848335,
+          "description": "blue-5.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 25848336,
+          "description": "green-1.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25848339,
+          "description": "green-2.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25848340,
+          "description": "green-3.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25848342,
+          "description": "green-4.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 25848343,
+          "description": "green-5.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 31629601,
+          "description": "1.saas-windows-medium-amd64.runners-manager.gitlab.com/default ",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 31629607,
+          "description": "2.saas-windows-medium-amd64.runners-manager.gitlab.com/default ",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 32976645,
+          "description": "6-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 32976687,
+          "description": "blue-6.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34204787,
+          "description": "5-blue.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34204811,
+          "description": "5-blue.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34204851,
+          "description": "6-blue.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34204852,
+          "description": "6-blue.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34204874,
+          "description": "5-green.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34204885,
+          "description": "5-green.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34204890,
+          "description": "6-green.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34204892,
+          "description": "6-green.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34425479,
+          "description": "blue-1.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34425557,
+          "description": "blue-2.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34425605,
+          "description": "blue-3.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34425655,
+          "description": "green-1.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34425687,
+          "description": "green-2.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34425704,
+          "description": "green-3.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34425755,
+          "description": "green-1.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34425770,
+          "description": "green-2.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34425792,
+          "description": "green-3.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 34425813,
+          "description": "blue-1.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34425828,
+          "description": "blue-2.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 34425941,
+          "description": "blue-3.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 36390554,
+          "description": "blue-1.saas-macos-large-m2pro.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 36390563,
+          "description": "blue-2.saas-macos-large-m2pro.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 36390564,
+          "description": "green-1.saas-macos-large-m2pro.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 36390565,
+          "description": "green-2.saas-macos-large-m2pro.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 43780403,
+          "description": "blue-1.saas-linux-small-arm64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 43780405,
+          "description": "blue-2.saas-linux-small-arm64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 43780407,
+          "description": "blue-3.saas-linux-small-arm64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 43780410,
+          "description": "green-1.saas-linux-small-arm64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 43780412,
+          "description": "green-2.saas-linux-small-arm64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 43780419,
+          "description": "green-3.saas-linux-small-arm64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 50141252,
+          "description": "medium.shared-gitlab-org.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 52823603,
+          "description": "7-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 52823616,
+          "description": "8-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 52823645,
+          "description": "9-green.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "paused",
+          "online": false
+        },
+        {
+          "id": 52823665,
+          "description": "7-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 52823678,
+          "description": "8-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 52823682,
+          "description": "9-blue.saas-linux-small-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": true,
+          "status": "stale",
+          "online": false
+        },
+        {
+          "id": 54907241,
+          "description": "k8s.saas-linux-small-amd64.runners-manager.gitlab.com/default ",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314121,
+          "description": "k8s.saas-linux-medium-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314154,
+          "description": "k8s.saas-linux-large-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314171,
+          "description": "k8s.saas-linux-xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314183,
+          "description": "k8s.saas-linux-2xlarge-amd64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314190,
+          "description": "k8s.saas-linux-small-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314209,
+          "description": "k8s.saas-linux-medium-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314225,
+          "description": "k8s.saas-linux-large-arm64.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55314245,
+          "description": "k8s.saas-linux-medium-amd64-gpu-standard.runners-manager.gitlab.com/default",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55459754,
+          "description": "k8s.shared-gitlab-org.runners-manager.gitlab.com/medium",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55459782,
+          "description": "k8s.shared-gitlab-org.runners-manager.gitlab.com/dind",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55459829,
+          "description": "k8s.shared-gitlab-org.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        },
+        {
+          "id": 55554958,
+          "description": "k8s.saas-windows-medium-amd64.runners-manager.gitlab.com",
+          "runner_type": "instance_type",
+          "is_shared": true,
+          "paused": false,
+          "status": "online",
+          "online": true
+        }
+      ]
+    }
+  },
+  "server_mutations": 0
+}

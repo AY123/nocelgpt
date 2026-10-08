@@ -1,0 +1,72 @@
+{
+  "record_type": "enrollment_pre_pin_local_review",
+  "base_revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "phase": "PRE_CONFIGURATION_PIN",
+  "source_kind": "LOCAL_WORKTREE",
+  "checks": {
+    "unit": {
+      "tests": 342,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_ref": "/private/tmp/anovel-v2004-enrollment-20261005/dist/validation/enrollment-local-unit-configured/junit.xml",
+      "sha256": "eee51c7bc0ced58f571cdaa439bf138146692a8707ef19ca501656b6dada28ad"
+    },
+    "arch": {
+      "tests": 212,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_ref": "/private/tmp/anovel-v2004-enrollment-20261005/dist/validation/enrollment-local-full/architecture/junit.xml",
+      "sha256": "0dc7bca8d30d9b7c82e9c22b5c5a8718e6aab948fc830ac59bb345f2fdf72f18"
+    },
+    "guard": {
+      "tests": 69,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_ref": "/private/tmp/anovel-v2004-enrollment-20261005/dist/validation/enrollment-local-full/focused.xml",
+      "sha256": "18f422a9afe76487521de88618b27dfa15dbcf3cbc732411d545ff54d84ce93d"
+    },
+    "static_receipt": {
+      "local_ref": "/private/tmp/anovel-v2004-enrollment-20261005/dist/validation/enrollment-local-full/static/receipt.json",
+      "sha256": "de079fb12f7e6f1e7a45e5223df231c69e5959f501ec6351b021378d85b64e3f",
+      "status": "PASS"
+    },
+    "schema_contract_receipt": {
+      "local_ref": "/private/tmp/anovel-v2004-enrollment-20261005/dist/validation/enrollment-local-full/contract/receipt.json",
+      "sha256": "b7709aa12f574daed783d518539cf2dbe8a7dcd168e4ad133ed8565b3241b56c",
+      "status": "PASS"
+    },
+    "unit_receipt": {
+      "local_ref": "/private/tmp/anovel-v2004-enrollment-20261005/dist/validation/enrollment-local-unit-configured/receipt.json",
+      "sha256": "132a6f62b27194efcb4a43ce19a47dcf41079c38b2d9855a5fb2a0a150c15ea4",
+      "status": "PASS"
+    },
+    "governance": {
+      "checks": 5,
+      "status": "PASS"
+    }
+  },
+  "review_role": "SAME_OPERATOR_WITH_READONLY_AGENT_SUPPORT_NOT_INDEPENDENT_ACCEPTANCE",
+  "resolved_guard_findings": [
+    "CANDIDATE_OVERLAY_EXECUTION",
+    "ROOT_MODULE_SHADOWING",
+    "PREINSTALLED_ENVIRONMENT_AND_CONFIG"
+  ],
+  "normalized_guard_sha256": "dbd923257bc44717b9b01fd4ebcdd3a794a05c23a118ed7b98666b52ee82e25b",
+  "platform_helper_sha256": "ed10e1fc52f3dc2c2cb39f4e224f361fd304c7fdcfe335cf62b017b62749745a",
+  "platform_helper_mock_controls": 64,
+  "prior_failures_retained": [
+    "sandbox scanner download URLError",
+    "retry omitted uv PATH:338PASS/1FAIL/3ERROR"
+  ],
+  "remote_config_activated": false,
+  "actual_protected_execution": "NOT_RUN",
+  "security_findings_canonical": 45,
+  "approved": 0,
+  "applied": 0,
+  "closed": 0,
+  "acceptance_eligible": false,
+  "next_required": "Fresh exact-SHA replay then actual source/config/protection readback; host authorization before launch"
+}

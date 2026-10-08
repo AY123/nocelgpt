@@ -1,0 +1,42 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-004",
+  "opening_revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "packet_ref": "plan/validation/execution/V2-004/execution-packet.yaml",
+  "allowed_paths": [
+    ".gitlab-ci.yml",
+    "security-policy.yaml",
+    "scripts/ci/",
+    "tests/contract/test_delivery_gates.py",
+    "tests/contract/test_trusted_execution_enrollment.py",
+    "plan/validation/execution/V2-004/"
+  ],
+  "pre_existing": {},
+  "protected_paths": [
+    "plan/scripts/",
+    "scripts/",
+    "plan/machine/",
+    "plan/schemas/",
+    "pyproject.toml",
+    "uv.lock",
+    ".gitignore",
+    ".gitlab-ci.yml",
+    ".gitleaks.toml",
+    "security-policy.yaml",
+    "AGENTS.md"
+  ],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-004/enrollment-20261005/authorization.md",
+    "sha256": "f3bf84f6a2a2a6a7c96f544098c3ffc53ccce2fca32698f7d0eedb7ef01eafd1"
+  },
+  "limitations": [
+    "Local immutable scope does not authenticate remote authority or certify host custody.",
+    "Accepted scripts/ci/verify_remote.py, original .gitlab-ci.yml and canonical security disposition are frozen; their bytes must remain identical to opening9fe.",
+    "No weakening exception authorizations exist. Policy changes require exact technical findings and a separate review pin.",
+    "New wrapper/overlay and narrowly scoped additional tests implement the existing V2-004 consumers; no production source or task status changes.",
+    "Runner stays paused until applicable host grant and final protected configuration are read back.",
+    "Original task artifact paths remain in allowed_paths solely because the execution validator requires every registered artifact in expected_outputs and scope; authorization/frozen-content still forbids altering the accepted original CI/tests/verifier/canonical."
+  ]
+}
