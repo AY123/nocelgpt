@@ -182,6 +182,29 @@ def create_relationship(
     )
 
 
+def delete_relationship(
+    relationship_id: RelationshipId, registry: "RelationshipRegistry"
+) -> None:
+    """
+    Delete a relationship by ID.
+
+    Idempotent: no-op if relationship_id not found (does not raise).
+    Does NOT cascade or affect inverse relationships.
+
+    Args:
+        relationship_id: ID of relationship to delete
+        registry: RelationshipRegistry to delete from
+
+    Example:
+        >>> delete_relationship(rel_id, registry)
+        >>> # Second call is no-op:
+        >>> delete_relationship(rel_id, registry)  # No error
+
+    Contract: V2-006 §5.2 (v1.0.1)
+    """
+    registry.remove_relationship(relationship_id)
+
+
 # --- Relationship Registry (Step 3) ---
 
 
