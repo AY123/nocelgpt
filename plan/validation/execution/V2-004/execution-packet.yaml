@@ -2,27 +2,26 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-004
 plan_version: 1.3.0
-repository_revision: 9fe51abf5ba2e050b7f48204f5c26927ace712af
+repository_revision: 542a5f264afbb99f8d664bdfd8fdfa50c1243cf4
 worktree_dirty: true
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: Disposable local Git clone; complete existing primary ref snapshot
-    preserved; source candidate/authority under exact local Git pins.
+  fingerprint: New local isolated repository preserving all152 baseline commit/ref
+    inputs, C approval ancestry and E enrollment history.
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: Local engineering candidate only; no new remote CI, current remote settings
-    verification, runner execution or final six-gate acceptance.
+  ci_context: Local integration only; no new pipeline/runner/current remote verification
+    or final acceptance.
 implementer: Codex primary operator
 verifier: Same operator with parallel read-only analysis; no independent personnel
   acceptance
 owner_role: delivery-maintainer
-scope: Bounded local V2-004 exact consumer, actual Owner authority binding, fixed
-  scope/review inputs and validation in disposable clone only. Primary 29 differences/19
-  candidate bytes preserved; no remote actions, P1, broad suppression, scanner downgrade
-  or finding closure.
-action: IMPLEMENT
+scope: Bounded local V2-004 integration of accepted historical enrollment with approved
+  exact consumer in NEW disposable clone. No main/C mutation, remote action, broad
+  bypass, approval amendment, finding closure or P1.
+action: PREPARE
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
   ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
@@ -106,8 +105,41 @@ allowed_paths:
 - plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/PRECISE_EXCEPTION_APPROVAL.json
 - plan/validation/execution/V2-004/execution-packet.yaml
 - plan/validation/execution/V2-004/local-final-pin-20261008/
+- plan/validation/execution/V2-004/enrollment-20261005/acceptance-overlay.yml
+- plan/validation/execution/V2-004/enrollment-20261005/authorization.md
+- plan/validation/execution/V2-004/enrollment-20261005/bootstrap-ref.json
+- plan/validation/execution/V2-004/enrollment-20261005/developer-bootstrap-write-controls.json
+- plan/validation/execution/V2-004/enrollment-20261005/frozen-content.json
+- plan/validation/execution/V2-004/enrollment-20261005/guard-review-remediation.md
+- plan/validation/execution/V2-004/enrollment-20261005/include-schema-readonly.json
+- plan/validation/execution/V2-004/enrollment-20261005/input-hash-check.json
+- plan/validation/execution/V2-004/enrollment-20261005/local-implementation-review.json
+- plan/validation/execution/V2-004/enrollment-20261005/paused-runner.json
+- plan/validation/execution/V2-004/enrollment-20261005/policy-change-dispositions.json
+- plan/validation/execution/V2-004/enrollment-20261005/policy-exact-findings.json
+- plan/validation/execution/V2-004/enrollment-20261005/policy-semantic-review.json
+- plan/validation/execution/V2-004/enrollment-20261005/preflight-readonly.json
+- plan/validation/execution/V2-004/enrollment-20261005/previous-execution-context-9fe51ab.json
+- plan/validation/execution/V2-004/enrollment-20261005/previous-execution-packet-9fe51ab.yaml
+- plan/validation/execution/V2-004/enrollment-20261005/prior-remote-ci-9fe51ab.json
+- plan/validation/execution/V2-004/enrollment-20261005/scope-v2.json
+- plan/validation/execution/V2-004/enrollment-20261005/scope.json
+- plan/validation/execution/V2-004/enrollment-20261005/trusted-ci.yml
+- plan/validation/execution/V2-004/execution-context.json
+- tests/contract/test_trusted_execution_enrollment.py
+- plan/validation/execution/V2-004/trusted-integration-local-20261008/
 required_decisions: []
 claims:
+- id: DIRECT_LOCAL_INTEGRATION_CONTINUATION
+  kind: FACT
+  statement: Actual user continuation authorizes normal bounded local V2-004 progression;
+    precise engineering interpretation and excluded remote actions recorded.
+  sources:
+  - ref: validation/execution/V2-004/trusted-integration-local-20261008/AUTHORIZATION.md
+    sha256: 0405af1996d24e97a1fcbf5f79621c828a1565c70ae74edd67596159c4532e7b
+  blocks_actions: []
+  verification_plan: Preserve immutable C/E inputs, record exact merge conflicts,
+    retain unreviewed failures and bind new scope/review to actual tests.
 - id: DIRECT_BOUNDED_IMPLEMENTATION
   kind: FACT
   statement: The human task and continuation authorize bounded local exact-consumer
@@ -188,26 +220,24 @@ review_notes:
 - '2026-10-08 local final pin: original9fe packet retained; actual human authority
   replaces further key acquisition only. This local copied packet has new exact scope;
   source pins and all mandatory obligations must pass, no remote promotion.'
+- '2026-10-08 local integration: prior C/E packets and context are historical inputs.
+  No Owner key acquisition, new approval, alias P2 or remote operation. Prospective
+  unreviewed controls remain blocked until exact technical dispositions are pinned.'
 handoff:
-  current_step: Immutable local approved source candidate fixed; actual local entry
-    and formal ARCH checks pending. No remote or independent acceptance.
+  current_step: Preparing fixed integration scope before isolated source reconciliation;
+    actual protected-source execution is not claimed.
   completed_steps:
-  - Preserved original local implementation19 and old evidence
-  - Actual two-group90day Owner decision recorded separately
-  - Fresh complete local scan45known45,13real Git-binding controls pass
+  - CurrentC clean IMPLEMENT entry passed
+  - OriginalC/E packets/context preserved
   pending_items:
-  - Create and check exact scope/review bindings
-  - Validate immutable candidate locally
+  - Prospective merge and exact findings
+  - Meaningful new-revision local tests
+  - Review pin and final current packet
   - Independent review
-  - Accepted enrollment history/full source guard and remaining permission controls
-  - Explicitly authorized final same-SHA protected trusted six-gate CI
-  next_action: IMPLEMENT
+  - Remaining real permission controls and authorized final six-gate remote CI
+  next_action: PREPARE
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review:
-  scope_revision: 839c25b43824e09a84b57c671f3fdd0065fe0fdc
-  scope_ref: plan/validation/execution/V2-004/local-final-pin-20261008/scope.json
-  review_revision: a96580cc1e4e456edf8a181d7523bf72656de595
-  review_ref: plan/validation/execution/V2-004/local-final-pin-20261008/change-dispositions.json
+change_review: null

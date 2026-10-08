@@ -1,0 +1,32 @@
+{
+  "record_type": "execution_context_selection",
+  "source_revision": "9fe51abf5ba2e050b7f48204f5c26927ace712af",
+  "active_context": "TRUSTED_EXECUTION_ENROLLMENT_ISOLATED",
+  "scope_revision": "f71d7ede2421293cf97e598466c43f3cce0695e5",
+  "scope_ref": "plan/validation/execution/V2-004/enrollment-20261005/scope-v2.json",
+  "review_revision": null,
+  "review_ref": null,
+  "implementation_status": "ENROLLMENT_IMPLEMENTATION_IN_PROGRESS",
+  "last_result": "Read-only preflight and normative hashes verified; new action-entry check pending.",
+  "recovery": "Use isolated clone and packet-bound frozen scope; preserve previous9fe context and primary user worktree. Review exact new policy/wrapper changes; controller launch/unpause remains blocked by host runtime/custody authorization. No task/security/permission acceptance inferred from local scope.",
+  "security_baseline": {
+    "revision": "1449da9783e36aa4704d45be9d35a3f2a39d4b52",
+    "findings": 45,
+    "open": 45,
+    "pending_exception_requests": 38,
+    "owner_required": 7,
+    "approved": 0,
+    "applied": 0,
+    "closed": 0,
+    "canonical_ref": "plan/validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json",
+    "canonical_sha256": "28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749"
+  },
+  "remote_ci_for_accepted_verifier": "EXECUTED_FAILED_AT_9fe51ab_PIPELINE2911068784",
+  "remote_ci_for_enrollment_candidate": "NOT_RUN",
+  "real_protected_runner_execution": "NOT_VERIFIED",
+  "trusted_runner_enrollment": "NOT_ENROLLED",
+  "host_runtime_authorization": "UNKNOWN",
+  "v2004_status": "IN_PROGRESS",
+  "p0_status": "NOT_VERIFIED",
+  "acceptance_eligible": false
+}

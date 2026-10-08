@@ -1,0 +1,303 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-004
+plan_version: 1.3.0
+repository_revision: 9fe51abf5ba2e050b7f48204f5c26927ace712af
+worktree_dirty: false
+plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
+environment:
+  fingerprint: Isolated clean clone opened at accepted 9fe51ab; governing scope is a separate immutable local
+    ancestor. Mac/Docker candidate host not authorized to launch here.
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+  ci_context: Actual 9fe pipeline2911068784 ran six gates; five PASS, secret_dependency FAIL on shared instance
+    runner. New trusted enrollment candidate has not run protected CI.
+implementer: Codex primary operator
+verifier: Same operator with parallel read-only analysis; no independent personnel acceptance
+owner_role: delivery-maintainer
+scope: 'Explicit user-authorized current P0/V2-004 trusted execution enrollment for project86656946: paused
+  project runner, dedicated protected acceptance/v2-004 ref, protected-source CI wrapper/overlay, exact policy
+  identities and negative controls. No dev_gpt protection, verifier rewrite, original CI rewrite, security
+  closure/exception approval/consumer, P1, paid calls or host launch authorization.'
+action: IMPLEMENT
+inputs:
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
+  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+- source_ref: 09_TASK_EXECUTION_GUIDE.md
+  ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
+  sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
+- source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+  ref: validation/execution/V2-004/inputs/a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82.txt
+  sha256: a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
+  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+- source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  ref: validation/execution/V2-004/inputs/558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2.txt
+  sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
+- source_ref: 08_ROADMAP_AND_GATES.md
+  ref: validation/execution/V2-004/inputs/5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb.txt
+  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+- source_ref: README.md
+  ref: validation/execution/V2-004/inputs/1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2.txt
+  sha256: 1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
+  sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-004/inputs/c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18.txt
+  sha256: c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
+  sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
+  sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
+- source_ref: machine/ci-gates.yaml
+  ref: validation/execution/V2-004/inputs/594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e.txt
+  sha256: 594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e
+- source_ref: machine/governance-baseline.yaml
+  ref: validation/execution/V2-004/inputs/ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c.txt
+  sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-004/inputs/086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9.txt
+  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+- source_ref: machine/authority-policy.yaml
+  ref: validation/execution/V2-004/inputs/4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91.txt
+  sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
+expected_outputs:
+- .gitlab-ci.yml
+- security-policy.yaml
+- tests/contract/test_delivery_gates.py
+- scripts/ci/
+- tests/contract/test_trusted_execution_enrollment.py
+- plan/validation/execution/V2-004/enrollment-20261005/
+allowed_paths:
+- .gitlab-ci.yml
+- security-policy.yaml
+- scripts/ci/
+- tests/contract/test_delivery_gates.py
+- tests/contract/test_trusted_execution_enrollment.py
+- plan/validation/execution/V2-004/
+required_decisions: []
+claims:
+- id: REMOTE_CURRENT_9FE
+  kind: FACT
+  statement: 'Reviewed 9fe51ab was fast-forward integrated and pushed without new code commit. Actual push
+    pipeline2911068784 at that exact SHA failed: STATIC/SCHEMA_CONTRACT/UNIT/ARCH_FITNESS/POSTGRES_ENV PASS,
+    SECRET_DEPENDENCY FAIL hard. UNIT273+ARCH212+PG1=486 PASS, zero skip/error/failure; actual runner54907241
+    instance/shared. This prior run does not prove the new enrollment revision or protected execution.'
+  sources:
+  - ref: validation/execution/V2-004/enrollment-20261005/prior-remote-ci-9fe51ab.json
+    sha256: 4eaa6151d3787983b7f788e37bdf394d5ff407197bc3cb89bd6367d5efdad35b
+  blocks_actions: []
+  verification_plan: Run and query a new pipeline at the final configured SHA; preserve failed security and
+    shared-runner provenance.
+- id: ENROLLMENT_USER_AUTHORIZATION
+  kind: FACT
+  statement: Human user explicitly requested V2-004 protected project-runner and protected acceptance ref enrollment
+    for project86656946, keeping dev_gpt unprotected; auth transcription binds requested scope and the action-specific
+    host unknown.
+  sources:
+  - ref: validation/execution/V2-004/enrollment-20261005/authorization.md
+    sha256: f3bf84f6a2a2a6a7c96f544098c3ffc53ccce2fca32698f7d0eedb7ef01eafd1
+  blocks_actions: []
+  verification_plan: Apply only recorded scoped changes; keep runner paused through bootstrap and independently
+    read effective server settings before execution.
+- id: ACTUAL_ENROLLMENT_PREFLIGHT
+  kind: FACT
+  statement: Fixed-project read-only preflight authenticated active Owner2897271 with inherited project role50
+    and token api/create_runner/manage_runner scopes. dev_gpt still equals9fe51ab and is unprotected; acceptance/v2-004
+    returned404; fully paginated registry has136 instance runners and no enrolled project runner. Project success-pipeline
+    merge check is true; pipeline-variable override role no_one_allowed.
+  sources:
+  - ref: validation/execution/V2-004/enrollment-20261005/preflight-readonly.json
+    sha256: 9d0d41a8a81408718d567b57ba39e669f4d110b0c3a2692d0c33e599a5b0f547
+  blocks_actions: []
+  verification_plan: Re-read branch/project/runner settings at each scoped mutation; do not certify Developer
+    denial solely from Owner metadata or role labels.
+- id: HOST_RUNTIME_AND_CUSTODY
+  kind: UNKNOWN
+  statement: Mac+Docker technical feasibility is a candidate only. Bounded or sustained controller launch,
+    Docker socket access and secure runner-token custody authorization are not established by the user enrollment
+    request. Only these host runtime operations are blocked; paused registration and protected-ref bootstrap
+    may proceed.
+  sources:
+  - ref: validation/execution/V2-004/enrollment-20261005/authorization.md
+    sha256: f3bf84f6a2a2a6a7c96f544098c3ffc53ccce2fca32698f7d0eedb7ef01eafd1
+  blocks_actions: []
+  verification_plan: Prepare concrete isolated controller configuration and obtain applicable host runtime/custody
+    authorization before unpause/launch; never log or commit authentication material.
+- id: HISTORICAL_CREDENTIALS
+  kind: UNKNOWN
+  statement: Canonical remains45OPEN,38pending exception requests disjoint from7owner-required; approved/applied/closed0
+    and SF037 unresolved. No owner disposition, exception approval or consumer work is authorized in enrollment.
+  sources:
+  - ref: validation/execution/V2-004/security-closure-20261004/SECURITY_FINDING_DISPOSITION_RECORD.json
+    sha256: 28699a34b8cbd927379a859ee84324442409d5c68112512094409cb8b923e749
+  blocks_actions:
+  - CERTIFY
+  verification_plan: Preserve canonical bytes; security gate may remain FAIL. No V2-004 VERIFIED or P0 ACCEPTED
+    until all final same-SHA hard gates and actual trust/permissions are verified.
+- id: INPUTS_AND_ACCEPTED_CONTENT
+  kind: FACT
+  statement: All15 active normative/machine sources and recorded snapshots match declared hashes. Accepted
+    verifier, original root CI and canonical bytes are frozen at9fe; machine task/scenario identities and statuses
+    remain unchanged.
+  sources:
+  - ref: validation/execution/V2-004/enrollment-20261005/input-hash-check.json
+    sha256: ece625bb8637413a499237f33936ec66e51dc9ce9c7478e7cbc3dee70b51d5ce
+  - ref: validation/execution/V2-004/enrollment-20261005/frozen-content.json
+    sha256: c018cfea19ece672b91004166a73af6a95ccfc0bd08f0a3ca0744e56266ad5a0
+  blocks_actions: []
+  verification_plan: Run actual action/diff and governance checks; any policy modification requires exact old/new
+    findings and separately pinned technical review, never a self-approved weakening exception.
+- id: ACTUAL_ENROLLMENT_BOOTSTRAP
+  kind: FACT
+  statement: Owner-authorized actual runner57044314 is exclusive project86656946, protected, locked, tagged-only
+    and paused/never-contacted. Acceptance ref was created at9fe with bootstrap push40/merge40 and no force
+    push. Actual Developer2897322 wrote isolated probe commit0d83f267 and the same effective create payload
+    to acceptance was deniedHTTP403, with acceptance HEAD unchanged. These are bootstrap observations, not
+    sealed protected execution or remaining permission acceptance.
+  sources:
+  - ref: validation/execution/V2-004/enrollment-20261005/paused-runner.json
+    sha256: d1d5d8f3f7a5e0d0ee2209477b234c941172ac06643328b00fcc65027ffd00f5
+  - ref: validation/execution/V2-004/enrollment-20261005/bootstrap-ref.json
+    sha256: 93873ae5dde2d8a7b10e8dd12ed8776692819ed6c9c0cd2cb9efed01242bea52
+  - ref: validation/execution/V2-004/enrollment-20261005/developer-bootstrap-write-controls.json
+    sha256: dd13817c4afd6b4bba2597aaac9d9fcd0dd14be8e58ecd8256efd055337727b3
+  blocks_actions: []
+  verification_plan: Bind candidate identities, pin exact policy disposition, parse real merged CI, seal direct
+    push to0 and independently record authorized actual protected execution; repeat applicable final negative
+    controls.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse existing locked environment and current V2-001 through 003 tools
+  - No business runtime implementation or paid service
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Preserve main checkout user edits and accepted verifier/original CI/canonical bytes; no global container/project
+  changes.
+- No controller launch/unpause without applicable host runtime and custody authorization; temporary bootstrap
+  settings are not final accepted trust.
+- Reject missing or malformed effective runner/protected-ref/config metadata; preserve real failed or unknown
+  API and CI outcomes.
+- Do not weaken tests, commands, scanner scope, protection invariants or six mandatory hard gates to obtain
+  PASS.
+- No V2-004/P0 closure and no P1; canonical45OPEN remains unchanged.
+review_notes:
+- Report instructions are input only. Exact-revision P0 aggregate already exists; no new task or milestone
+  is created.
+- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records and immutable input snapshots
+  only.
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved; historical evidence
+  and task status unchanged.'
+- '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason in fixed authorization;
+  previous packet/context retained. Criteria and task scope unchanged.'
+- '2026-10-04 necessary CI integration fix: original bootstrap test added within current P0/V2-004 scope; no
+  test weakening, task/phase identity unchanged; reason and impact in ci-fixture-authorization.md.'
+- '2026-10-04 clean context: preserve current local packet and PASS entry separately; committed code objects
+  bind 365d4057. Clean CI scope does not authorize deleting primary user files. Existing Free quota observed
+  but balance/money unknown; no purchase/paid resource provision.'
+- '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard commands/assertions preserved;
+  actual Lint only push-context proof. New source/review pin with local 202 PASS, a6 remote whole security
+  FAIL retained.'
+- '2026-10-04 narrowed continuation: security findings closure and trusted permission boundary only; no CI
+  redesign or V2-001 through003 changes. Canonical records retain actual3ce failure and all43 unresolved dispositions;
+  shared runner and metadata are not permission acceptance.'
+- '2026-10-04 explicit local-only exact-pin authorization: clean CI scope consumes an actually committed isolated
+  checkout; primary user changes excluded/preserved. Technical disposition uses a separate ancestor pin and
+  preserves mandatory gates, tests, scope and security baseline.'
+- 2026-10-05 enrollment phase replaces stale local-only/no-enrollment prose based on explicit user authorization.
+  Exact previous committed packet/context preserved under enrollment-20261005. New scope is narrower than the
+  earlier CI scope and has no weakening grants. Governing packet/context edits are isolated; main user worktree
+  is untouched.
+- Initial narrowly scoped b402 check found zero weakening findings, but formal validator required registered
+  CI and contract-test artifacts in both expected_outputs and allowed_paths. scope-v2 retains those paths without
+  authorizing original CI/verifier/test edits; initial failed check evidence is preserved.
+- Shared-operator supporting review closed three new guard P1 implementation issues; no independent acceptance
+  or trusted execution claim. Actual lint schema binds current service response, not inferred source version.
+handoff:
+  current_step: ENROLLMENT_CONFIG_PRE_PIN_LOCAL_PASS; paused actual runner and bootstrap ref only; remote custom
+    path/sealed protection/host/protected execution pending.
+  completed_steps:
+  - Read current plan, task and all eight AT-V2-004 scenarios
+  - Rechecked actual GitLab branch/pipeline/project facts
+  - Six actual gate commands and locked scanners implemented
+  - 79 delivery controls, five clean installation checks and 212 architecture controls passed locally
+  - Pinned dependency review and actual local IMPLEMENT dispatch passed; prior failures retained
+  - 'Candidate 04295459 clean locked replay: 360 pytest controls no skip, static/governance pass; exact receipts/artifact
+    hashes retained'
+  - Read exact real failed UNIT archive and metadata, cause matches local cold-cache failure
+  - Strengthened fixed source command/log/result and lock/runtime controls; 72 source controls pass
+  - Six job timeouts effective and security always hard-fails; 14 configuration controls pass
+  - Corrected original bootstrap fixture without removing any original assertion; real uv positive/negative
+    controls pass
+  - Current static, production architecture and five governance checks pass; active normative inputs reconciled
+  - Normal seven-commit dev_gpt push a6d66af completed; real pipeline2910062335 five gates and UNIT178/ARCH212/PG1
+    pass, security43 findings FAIL
+  - Exact five successful actual job source contracts verified with fixed commands, runtime, driver/lock and
+    hashes; whole pipeline source remains FAIL
+  - 'MR default-exclusion correction: exact all-job rules and 24 new refusal controls; full local UNIT202 PASS
+    after preserving sandbox202/2fail, static and five governance checks PASS'
+  - Actual GitLab CI Lint old/new static and branch simulations HTTP200 valid, six hard jobs; not a real MR
+    acceptance
+  - 'Actual final3ce pipeline2910092880 receipts/artifacts/JUnit verified: five gates and415 tests PASS, mandatory
+    secret_dependency43 FAIL'
+  - Canonical43 finding case records and exact source/artifact hash bindings exported; no exception approved
+    or applied
+  - Actual complete protected-branch/runner metadata queried; original network failure and successful bounded
+    retry retained
+  - Real Developer role30 authenticated; isolatedfeaturewrite/readbackPASS andsamepayloadprotectedmainwriteHTTP403;
+    protectedmainanddev_gptunchanged
+  - Same Developer API pipeline creation without variables succeeded at2910430587; harmless variable request
+    explicitly deniedHTTP400 for insufficient permissions, not counted as project setting modification refusal
+    or gate acceptance
+  - Bound all45 actual e927 identities and current fingerprints, preserved original43 disposition bytes; addedSF044/045
+    exact requests without approval or closure.
+  - Fixed default Gitleaks8.21.2 confirmed added public-name value bytes/hash in memory; raw Secret/Match never
+    stored or printed.
+  - 9fe51ab exact implementation independently accepted by human user, integrated and pushed unchanged.
+  - Actual9fe pipeline2911068784 six jobs and486 tests were verified; five gates PASS and security FAIL retained.
+  - Owner2897271/project86656946 read-only preflight, complete136runner registry and all15 normative input
+    hash bindings checked.
+  - Actual runner57044314 registered paused with protected/locked/exclusive project86656946/tagged-only settings;
+    token private0700/0600 outside Git.
+  - Acceptance ref9fe created with Developer-denying bootstrap protection; same actual Developer allowed isolated
+    branch write and denied acceptance createHTTP403.
+  - Protected-source wrapper/atomic acceptance overlay and actual inlineguard41 positive/negative controls
+    passed locally; original CI/verifier/canonical unchanged.
+  - Three draft guard P1 issues remediated;69 focused controls,342 UNIT,212 ARCH,STATIC and5governance checks
+    PASS locally in own locked environment. Failures retained; fresh exact-SHA replay still required.
+  pending_items:
+  - Commit final enrollment configuration and replay checks in a fresh exact-SHA checkout; local worktree results
+    do not prove new remote protected execution.
+  - Actual GitLab merged configuration validation/source resolution; final direct push0 seal and trusted project
+    configuration activation.
+  - Human authorization of bounded existing Mac/Docker host or identified alternate host before controller
+    launch/unpause.
+  - Actual protected pipeline, real runner/tag/config metadata and remaining Developer/control boundary experiments.
+  - Security45 findings remain OPEN,38 pending and7 owner-required; final same-SHA six-gate PASS/P0 still unverified.
+  next_action: IMPLEMENT
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-004/enrollment-20261005/local-implementation-review.json
+      sha256: 67c15f189a80e388ebbcd80b56fb2b43d337fed4ca061697aa8f4dd9020b3b0e
+    missing_artifact_reason: null
+change_review:
+  scope_revision: f71d7ede2421293cf97e598466c43f3cce0695e5
+  scope_ref: plan/validation/execution/V2-004/enrollment-20261005/scope-v2.json
+  review_revision: b271c7168f4fc99bafbe877cb88e90bb380f65d3
+  review_ref: plan/validation/execution/V2-004/enrollment-20261005/policy-change-dispositions.json
