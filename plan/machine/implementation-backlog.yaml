@@ -387,32 +387,138 @@ tasks:
   design_references:
   - archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/NARRATIVE_DOMAIN_SPEC.md
 - task_id: V2-006
-  title: Character relationship knowledge core
+  title: Entity Relationship Tracking
   phase: P1
   priority: P0
-  goal: 合法派生字段和非默认值往返不丢失
+  goal: Stable, directed, project-scoped entity relationship tracking without persistence coupling
+  normative_specs:
+  - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - docs/V2-006_IMPLEMENTATION_CONTRACT.md
+  - AI_EXECUTION_PROTOCOL.md
+  dependencies:
+  - V2-005
+  acceptance_criteria:
+  - Stable UUID v4 relationship identity (RelationshipId)
+  - Directed relationships (no automatic inverse)
+  - Project isolation (relationships scoped to ProjectId)
+  - Semantic tuple uniqueness (different ID + same live tuple → ValueError)
+  - Same-ID same-content replay is no-op
+  - Same-ID conflicting-content raises ValueError
+  - Delete releases semantic tuple for reuse
+  - No persistence coupling (no database/ORM imports)
+  - No provider coupling (no LLM provider imports)
+  - No graph traversal or transitive inference
+  - Immutable EntityRelationship (frozen dataclass)
+  - Extensible RelationshipType (string-based, not enum)
+  tests:
+  - AT-V2-006
+  artifacts:
+  - src/anovel/domain/relationship.py
+  - specs/schemas/entity-relationship.schema.json
+  - tests/contract/test_v2_006.py
+  - tests/contract/test_v2_006_step1.py
+  - tests/contract/test_v2_006_step2.py
+  - tests/contract/test_v2_006_step3.py
+  - tests/contract/test_v2_006_step4.py
+  - tests/contract/test_v2_006_step5.py
+  - tests/contract/test_v2_006_step6.py
+  - tests/contract/test_v2_006_step7.py
+  out_of_scope:
+  - 不绕过前置阶段门禁
+  - 不引入数据库/Provider 实现依赖
+  - 不实现关系元数据/时间戳
+  - 不实现图遍历算法
+  - 不实现关系推理
+  status: CLOSED
+  execution_packet_ref: docs/V2-006_IMPLEMENTATION_CONTRACT.md
+  owner_role: domain-maintainer
+  readiness: READY_TO_START
+  start_gate: G-P0
+  required_decisions:
+  - ADR-002
+  evidence:
+    code:
+    - ref: src/anovel/domain/relationship.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: specs/schemas/entity-relationship.schema.json
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    tests:
+    - ref: tests/contract/test_v2_006.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step1.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step2.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step3.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step4.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step5.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step6.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: tests/contract/test_v2_006_step7.py
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    ci:
+    - ref: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    acceptance:
+    - ref: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+    - ref: docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md
+      revision: bba1061ef27669ece55530bfdd846767b2fe21af
+      status: PASS
+  related_findings:
+  - AR-03
+  - RR-05
+  design_references:
+  - docs/V2-006_IMPLEMENTATION_CONTRACT.md
+  - docs/reports/V2-006_CONTRACT_REVIEW.md
+  - changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md
+- task_id: V2-061
+  title: Character Knowledge & Intent Core
+  phase: P1
+  priority: P0
+  goal: 角色知识状态、主观误信与客观事实并存，目标/意图建模，合法派生字段往返不丢失
   normative_specs:
   - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   - AI_EXECUTION_PROTOCOL.md
   dependencies:
   - V2-005
+  - V2-006
   acceptance_criteria:
   - 合法派生字段和非默认值往返不丢失
   - 错误实体类型与生命周期被拒绝
   - 角色误信与客观事实并存且角色不能凭空知情
-  - 角色目标/意图、误信与客观事件分别建模，计划动作不被当作已发生事实
+  - 角色目标/意图、误信与客观事件分别建模
+  - 计划动作不被当作已发生事实
+  - 知识获取边界：角色不能无路径获知事实
+  - 角色生命周期和类型正确性验证
   tests:
-  - AT-V2-006
+  - AT-V2-061
   artifacts:
   - src/anovel/domain/character.py
   - src/anovel/domain/knowledge.py
   - specs/schemas/character.schema.json
-  - tests/contract/test_v2_006.py
+  - tests/contract/test_v2_061.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
+  - 不实现通用关系追踪（已由 V2-006 提供）
   status: OPEN
   execution_packet_ref: null
   owner_role: domain-maintainer
@@ -426,14 +532,13 @@ tasks:
     ci: []
     acceptance: []
   related_findings:
-  - AR-03
   - CA-06
-  - RR-05
   - RR-06
   - SUP-03
   design_references:
   - archive/gptdoc/ANovel_V2_Narrative_Domain_Spec_v1.0/NARRATIVE_DOMAIN_SPEC.md
   - changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md
+  - changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md
   external_practices:
   - EXT-005
   foundational_references:
@@ -492,6 +597,7 @@ tasks:
   dependencies:
   - V2-006
   - V2-007
+  - V2-061
   acceptance_criteria:
   - SET_FACT 缺必要路径值证据被拒绝
   - UNKNOWN 与 NO_CHANGE 及撤销明确区分

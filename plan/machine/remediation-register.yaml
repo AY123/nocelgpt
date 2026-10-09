@@ -391,6 +391,7 @@ findings:
   disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
   related_tasks:
   - V2-006
+  - V2-061
   - V2-009
   latest_gate_note: P1 / P2
   acceptance_evidence:
@@ -717,6 +718,7 @@ findings:
   related_tasks:
   - V2-002
   - V2-006
+  - V2-061
   - V2-008
   - V2-010
   - V2-019
@@ -860,6 +862,7 @@ findings:
   disposition: ADOPT_ACCEPTANCE_REQUIREMENT
   related_tasks:
   - V2-006
+  - V2-061
   - V2-007
   - V2-018
   - V2-021

@@ -52,9 +52,9 @@ V2-006 implements **general-purpose entity relationship tracking**:
 
 The following are **explicitly excluded** from V2-006:
 
-❌ **Relationship Metadata**: Deferred to V2-007+ (avoids schema/validation complexity)
-❌ **Timestamps**: Domain timelessness (persistence layer concern, V2-007)
-❌ **Persistence**: No database, SQLAlchemy, or storage (V2-007)
+❌ **Relationship Metadata**: Deferred to future task (avoids schema/validation complexity)
+❌ **Timestamps**: Domain timelessness (persistence layer concern)
+❌ **Persistence**: No database, SQLAlchemy, or storage (deferred to persistence tasks)
 ❌ **Referential Integrity**: No enforcement that entities exist
 ❌ **Relationship Inference**: No automatic inverse relationship creation
 ❌ **Graph Algorithms**: No transitive queries, shortest path, centrality
@@ -182,7 +182,7 @@ EntityRelationship(
 
 ### 4.1 Purpose
 
-RelationshipRegistry provides an in-memory store for relationships during tests and prototyping. It is **not intended for production persistence** (see V2-007).
+RelationshipRegistry provides an in-memory store for relationships during tests and prototyping. It is **not intended for production persistence** (deferred to future persistence tasks).
 
 ### 4.2 Interface
 
@@ -431,7 +431,7 @@ EntityRelationship is immutable (frozen dataclass):
 
 V2-006 does **not** enforce that source/target entities exist:
 - `create_relationship` accepts any valid EntityId
-- Referential integrity is deferred to persistence layer (V2-007)
+- Referential integrity is deferred to persistence layer (future task)
 - Allows flexible relationship creation order
 
 ---

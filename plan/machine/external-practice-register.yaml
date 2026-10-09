@@ -259,10 +259,11 @@ practices:
   - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   related_tasks:
   - V2-006
+  - V2-061
   - V2-017
   - V2-025
   acceptance_scenarios:
-  - AT-V2-006-04
+  - AT-V2-061-04
   - AT-V2-017-06
   - AT-V2-025-05
   verification_refs: []

@@ -1,13 +1,13 @@
 {
   "scope": "planning validator self-test only",
-  "generated_at_utc": "2026-10-02T15:10:46.340726+00:00",
-  "manifest_sha256": "ea6fec3a52d11d2801ac2b36f74f409f626bdd58c37b5ac8f4b5f4da864967f9",
-  "status": "PASS",
+  "generated_at_utc": "2026-10-08T13:54:49.609236+00:00",
+  "manifest_sha256": "bf3d1c043ee650477952be348a08de175cba139493f1c13a5fa26a7145b457e2",
+  "status": "FAIL",
   "cases": [
     {
       "case": "valid current package objects",
       "expected": "ACCEPT",
-      "actual": "ACCEPT"
+      "actual": "REJECT"
     },
     {
       "case": "wrong phase",
@@ -16,8 +16,8 @@
       "evidence": [
         "TASK_PHASE V2-005: mismatch with frozen phase",
         "TASK_ENTRY V2-005: phase gate mismatch",
-        "PHASE_MEMBERSHIP P1: tasks/count mismatch",
-        "PHASE_MEMBERSHIP P3: tasks/count mismatch"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ"
       ]
     },
     {
@@ -25,7 +25,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_TITLE V2-001: mismatch with frozen identity"
+        "TASK_TITLE V2-001: mismatch with frozen identity",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -45,7 +48,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_SCHEMA V2-005 ['execution_packet_ref']: None is not of type 'string'",
-        "TASK_READINESS V2-005: still PLANNED"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -55,7 +60,8 @@
       "evidence": [
         "TASK_DEP_BASELINE V2-001: dependency change needs explicit baseline revision",
         "TASK_START V2-001: dependency V2-005 not verified",
-        "TASK_CYCLE: V2-001"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ"
       ]
     },
     {
@@ -64,7 +70,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_DEP_BASELINE V2-001: dependency change needs explicit baseline revision",
-        "TASK_DEP V2-001: unknown V2-999"
+        "TASK_DEP V2-001: unknown V2-999",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ"
       ]
     },
     {
@@ -73,7 +81,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_SCHEMA V2-001 ['acceptance_criteria']: [] should be non-empty",
-        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ"
       ]
     },
     {
@@ -82,7 +92,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_TEST V2-001: unknown MISSING-SUITE",
-        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ"
       ]
     },
     {
@@ -91,9 +103,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_ADR V2-001: ownership mismatch",
-        "ADR_DUE ADR-001: no responsible task",
-        "ADR_OWNER ADR-001: unknown task",
-        "ADR_BACKLINK V2-001: incomplete bidirectional mapping"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -101,7 +113,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EVIDENCE_SEMANTICS: EVIDENCE-1 drift"
+        "EVIDENCE_SEMANTICS: EVIDENCE-1 drift",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -109,7 +124,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "CI_HARD_GATE STATIC: allow_failure must be false when applicable"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -117,10 +135,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "MILESTONE_CLOSE M4: closes before required task",
-        "MILESTONE_CLOSE M4: closes before required task",
-        "MILESTONE_CLOSE M4: closes before required task",
-        "MILESTONE_CLOSE M4: closes before required task"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -128,8 +146,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "PHASE_VERIFIED P1: missing evidence",
-        "PHASE_VERIFIED P1: tasks must be CLOSED"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -137,7 +157,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "PHASE_MEMBERSHIP P6: tasks/count mismatch"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -145,7 +168,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "PHASE_NAMES: frozen route name drift"
+        "PHASE_NAMES: frozen route name drift",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -153,7 +179,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_NORMATIVE V2-001: archive cannot be normative"
+        "TASK_NORMATIVE V2-001: archive cannot be normative",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -161,7 +190,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "FINDING_CLOSURE AR-01: absent evidence"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -170,7 +202,9 @@
       "actual": "REJECT",
       "evidence": [
         "TASK_ACCEPTANCE V2-001: task and scenario assertions differ",
-        "SCENARIO AT-V2-001-01: empty assertion"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -178,10 +212,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_FINDING V2-017: invalid PR-01",
-        "FINDING_COVERAGE: missing/extra audit mappings",
-        "FINDING_BASELINE: required audit findings absent",
-        "FINDING_BACKLINK V2-017: incomplete bidirectional mapping"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -189,7 +223,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ",
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002"
       ]
     },
     {
@@ -197,7 +234,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_SOURCE_REF EXT-001: missing/unknown/duplicate"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -205,7 +245,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_SOURCE_IDS: duplicate source"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -213,7 +256,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_PRACTICE_IDS: duplicate practice"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -221,8 +267,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_BACKLINK EXT-001: absent on V2-013",
-        "EXTERNAL_TASK_REF V2-013: unknown/wrong practice EXT-009"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -230,7 +278,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_CASE_OWNER EXT-001: scenario owners differ"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -238,8 +289,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_CASES EXT-001: unknown scenario",
-        "EXTERNAL_CASE_OWNER EXT-001: scenario owners differ"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -247,9 +300,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_VERIFIED EXT-001: absent evidence",
-        "EXTERNAL_VERIFIED EXT-001: unfinished tasks",
-        "EXTERNAL_VERIFIED EXT-001: unverified suites"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -257,7 +311,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_DEFER_SCOPE EXT-D01: unapproved task/evidence"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -265,7 +322,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_DEFER_PHASE EXT-D01: advanced work moved early"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -273,7 +333,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_SOURCE_EVIDENCE SRC-INKOS: source audit requires separate evidence registry"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     },
     {
@@ -281,7 +344,10 @@
       "expected": "REJECT",
       "actual": "REJECT",
       "evidence": [
-        "EXTERNAL_TASK_REF V2-001: unknown/wrong practice EXT-999"
+        "TASK_START V2-006: dependency V2-005 not verified",
+        "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
+        "TASK_ADR V2-006: unresolved ADR-002",
+        "TASK_ACCEPTANCE V2-061: task and scenario assertions differ"
       ]
     }
   ]

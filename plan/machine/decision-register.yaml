@@ -17,7 +17,8 @@ decisions:
   owner_role: domain-maintainer
   related_tasks:
   - V2-006
-  decision_due_task: V2-006
+  - V2-061
+  decision_due_task: V2-061
   timing: before_interface_implementation
   decision_record: null
   verification_refs: []

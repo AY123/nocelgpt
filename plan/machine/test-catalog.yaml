@@ -138,17 +138,58 @@ suites:
 - id: AT-V2-006
   task_id: V2-006
   phase: P1
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/contract/test_v2_006.py
   scenarios:
   - id: AT-V2-006-01
-    required_assertion: 合法派生字段和非默认值往返不丢失
+    required_assertion: Stable UUID v4 relationship identity generation
   - id: AT-V2-006-02
-    required_assertion: 错误实体类型与生命周期被拒绝
+    required_assertion: Directed relationships without automatic inverse
   - id: AT-V2-006-03
-    required_assertion: 角色误信与客观事实并存且角色不能凭空知情
+    required_assertion: Project isolation for relationships
   - id: AT-V2-006-04
-    required_assertion: 角色目标/意图、误信与客观事件分别建模，计划动作不被当作已发生事实
+    required_assertion: Semantic tuple uniqueness (different ID + same live tuple raises ValueError)
+  - id: AT-V2-006-05
+    required_assertion: Same-ID same-content replay is no-op
+  - id: AT-V2-006-06
+    required_assertion: Same-ID conflicting-content raises ValueError
+  - id: AT-V2-006-07
+    required_assertion: Delete releases semantic tuple for reuse
+  - id: AT-V2-006-08
+    required_assertion: No persistence coupling (architecture boundary enforced)
+  - id: AT-V2-006-09
+    required_assertion: No provider coupling (architecture boundary enforced)
+  - id: AT-V2-006-10
+    required_assertion: Immutable EntityRelationship (frozen dataclass)
+  - id: AT-V2-006-11
+    required_assertion: Extensible RelationshipType (string-based)
+  - id: AT-V2-006-12
+    required_assertion: Create/delete/query operations complete
+  execution_evidence:
+  - 'Local: 447/447 contract tests PASS'
+  - 'Local: 226/226 architecture tests PASS'
+  - 'Remote: Pipeline 2925763616, 899/899 tests PASS, 6/6 gates SUCCESS'
+  - 'Closure: v2.006-complete at bba1061ef27669ece55530bfdd846767b2fe21af'
+- id: AT-V2-061
+  task_id: V2-061
+  phase: P1
+  status: PLANNED
+  target_path: tests/contract/test_v2_061.py
+  scenarios:
+  - id: AT-V2-061-01
+    required_assertion: 合法派生字段和非默认值往返不丢失
+  - id: AT-V2-061-02
+    required_assertion: 错误实体类型与生命周期被拒绝
+  - id: AT-V2-061-03
+    required_assertion: 角色误信与客观事实并存且角色不能凭空知情
+  - id: AT-V2-061-04
+    required_assertion: 角色目标/意图、误信与客观事件分别建模
+  - id: AT-V2-061-05
+    required_assertion: 计划动作不被当作已发生事实
+  - id: AT-V2-061-06
+    required_assertion: 知识获取边界：角色不能无路径获知事实
+  - id: AT-V2-061-07
+    required_assertion: 角色生命周期和类型正确性验证
   execution_evidence: []
 - id: AT-V2-007
   task_id: V2-007

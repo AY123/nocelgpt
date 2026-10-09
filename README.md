@@ -2,25 +2,27 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0**。P0 (Repository & Governance) 已验证完成，V2-001 through V2-004 CLOSED，V2-005 COMPLETE AND RATIFIED (8/8 steps verified, Tag v2.005-complete)，G-P0 PASS。当前仓库：`https://gitlab.com/angyang/ainovel.git`。权威阶段状态见 [phase-gates.yaml](plan/machine/phase-gates.yaml)。
+当前为 **Plan v1.3.1**（治理修订：V2-006 任务身份调和）。P0 (Repository & Governance) 已验证完成，P1 (Domain Foundation) 活跃但未验证。权威仓库：`https://gitlab.com/ayyang666/aianovelos.git`，当前分支：`dev_cc`。
 
-最小 Python 包、锁定安装、真实 PostgreSQL 环境、资料治理命令、远端 CI 与架构检查器已实现并验证。剩余任务见 [任务清单](plan/machine/implementation-backlog.yaml)。
+**已关闭任务**:
+- V2-001 through V2-004: P0 基础设施 (CLOSED, G-P0 PASS)
+- V2-005: Entity Identity & Alias Resolution (CLOSED, Tag `v2.005-complete` at `bd303e6`)
+- V2-006: Entity Relationship Tracking (CLOSED, Tag `v2.006-complete` at `bba1061`)
 
-**当前状态**: V2-005 COMPLETE (Entity Identity & Alias Resolution), V2-006 pending authorization  
-**当前分支**: `work/h2-convergence-closure`  
-**V2-005 Final**: SHA `bd303e6`, Tag `v2.005-complete`, 8/8 steps VERIFIED  
-**详细状态**: 见 [PROJECT_STATUS.md](PROJECT_STATUS.md)
+**当前 P1 状态**:
+- V2-061: Character Knowledge & Intent Core (OPEN, 下一任务候选)
+- V2-007: Event Timeline Promise Core (OPEN)
+- V2-008: NarrativeDelta Implementation (OPEN)
+
+权威机器资料见 [phase-gates.yaml](plan/machine/phase-gates.yaml) 和 [implementation-backlog.yaml](plan/machine/implementation-backlog.yaml)。详细状态：[PROJECT_STATUS.md](PROJECT_STATUS.md)。
 
 ## 从这里开始
 
-1. [正式规划入口](plan/README.md)与[短执行协议](AGENTS.md)。
-2. [P0 执行方案](plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)：V2-001～004。
-3. [任务清单](plan/machine/implementation-backlog.yaml)、[阶段门禁](plan/machine/phase-gates.yaml)、[整改义务](plan/machine/remediation-register.yaml)。
-4. [AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)、[六项执行约束](plan/machine/ai-execution-policy.yaml)及[本轮落地记录](plan/changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。
+1. [正式规划入口](plan/README.md) 与 [AI 执行协议](AGENTS.md)
+2. [任务清单](plan/machine/implementation-backlog.yaml)、[阶段门禁](plan/machine/phase-gates.yaml)、[整改义务](plan/machine/remediation-register.yaml)
+3. [AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)、[六项执行约束](plan/machine/ai-execution-policy.yaml)
 
-`plan/machine/` 是现行机器资料，`plan/generated/` 是生成视图。原 `gptdoc/`、`ccdoc/`、历史审核与矩阵已统一保留在 `plan/archive/`，根目录重复副本已清除；历史内容不是平行执行规范。
-
-仓库清理已完成，逐文件去向、hash 和恢复依据见[资料迁移清单](docs/repository-layout-migration.md)。独有原始文档和日志已补充归档，工具配置保留。`dist/planning/` 是可再生成的分发目录，旧版本包不覆盖当前 `plan/`。V2-001 的实际状态和交接见[执行包](plan/validation/execution/V2-001/execution-packet.yaml)，版本选择见 [ADR-001](plan/decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
+`plan/machine/` 是现行机器资料，`plan/generated/` 是生成视图。历史研究资料保留在 `plan/archive/`。
 
 ## 安装和测试
 

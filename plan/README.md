@@ -1,8 +1,12 @@
 # ANovelOS 正式架构建设实施资料
 
-Plan Version：1.3.0；更新日期：2026-09-22；历史资料来源基线：`5cffff8`。本目录是正式实施入口。审核报告的版本不替代本计划版本。
+Plan Version：1.3.1；更新日期：2026-10-08；历史资料来源基线：`5cffff8`。本目录是正式实施入口。审核报告的版本不替代本计划版本。
 
-v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTOCOL.md)、执行包 Schema、交接模板、本地检查及 P0 验收要求。见 [v1.3.0 变更与验证说明](changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。P0—P14、双 Anchor、60 个任务身份/阶段/依赖不变；246 个验收场景按机器源分别记录实施和验证状态。本地回归不是业务运行或可信 CI 认证。
+v1.3.1 是治理修订：V2-006 任务身份调和（范围拆分与重新归属），正式将任务数从 60 更新为 61。见 [v1.3.1 变更记录](changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md)。
+
+v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTOCOL.md)、执行包 Schema、交接模板、本地检查及 P0 验收要求。见 [v1.3.0 变更与验证说明](changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。
+
+P0—P14、双 Anchor 架构保持不变。61 个任务身份/阶段/依赖按机器源记录。246 个验收场景按机器源分别记录实施和验证状态。本地回归不是业务运行或可信 CI 认证。
 
 保留 [v1.2.2](changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)、[v1.2.1](changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)、[v1.2](changes/2026-09-21_REVIEW_ADOPTION.md)和 [v1.1](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)的历史变更记录；旧版本数字与结论只适用于其声明时点。
 

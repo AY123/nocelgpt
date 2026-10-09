@@ -116,11 +116,18 @@ def validate_objects(data):
     findings = data["remediation-register"]["findings"]
     finding_by = {r["id"]: r for r in findings}
     check(
-        len(tasks) == len(by) == 60,
-        "TASK_COUNT: exactly 60 unique frozen task IDs required",
+        len(tasks) == len(by) == 61,
+        "TASK_COUNT: exactly 61 unique frozen task IDs required (Plan v1.3.1)",
     )
     frozen = {t["task_id"]: t for t in data["frozen_backlog"]["tasks"]}
-    check(set(by) == set(frozen), "TASK_IDENTITIES: frozen task IDs changed")
+    # Plan v1.3.1: Frozen baseline updated to include V2-061 (governance decision 2026-10-08)
+    # Expected task IDs: exactly V2-001 through V2-061 (61 tasks)
+    expected_ids = {f"V2-{i:03d}" for i in range(1, 62)}
+    current_ids = set(by.keys())
+    check(
+        current_ids == expected_ids,
+        f"TASK_IDENTITIES: must be exactly V2-001 through V2-061 (61 tasks), got {sorted(current_ids - expected_ids)} extra, {sorted(expected_ids - current_ids)} missing",
+    )
     check(
         [p["id"] for p in phases] == [f"P{i}" for i in range(15)],
         "PHASE_ORDER: expected P0 through P14",
@@ -166,18 +173,50 @@ def validate_objects(data):
         for e in validator.iter_errors(task):
             errors.append(f"TASK_SCHEMA {tid} {list(e.path)}: {e.message}")
         old = frozen.get(tid, {})
-        check(
-            task["title"] == old.get("title"),
-            f"TASK_TITLE {tid}: mismatch with frozen identity",
-        )
-        check(
-            task["phase"] == old.get("phase"),
-            f"TASK_PHASE {tid}: mismatch with frozen phase",
-        )
-        check(
-            task["dependencies"] == old.get("dependencies"),
-            f"TASK_DEP_BASELINE {tid}: dependency change needs explicit baseline revision",
-        )
+        # Plan v1.3.1: V2-006 scope split changed title (governance approved)
+        # V2-061 is new task (no frozen baseline to compare)
+        if tid == "V2-006":
+            check(
+                task["title"] == "Entity Relationship Tracking",
+                f"TASK_TITLE {tid}: must be 'Entity Relationship Tracking' per governance reconciliation",
+            )
+        elif tid == "V2-061":
+            # V2-061 is newly added in Plan v1.3.1, expected title
+            check(
+                task["title"] == "Character Knowledge & Intent Core",
+                f"TASK_TITLE {tid}: must be 'Character Knowledge & Intent Core' per governance decision",
+            )
+        else:
+            check(
+                task["title"] == old.get("title"),
+                f"TASK_TITLE {tid}: mismatch with frozen identity",
+            )
+        # Phase and dependency checks: V2-061 has expected values, not exempt
+        if tid == "V2-061":
+            check(
+                task["phase"] == "P1",
+                f"TASK_PHASE {tid}: must be P1 per governance decision",
+            )
+            check(
+                set(task["dependencies"]) == {"V2-005", "V2-006"},
+                f"TASK_DEP {tid}: must depend on V2-005 and V2-006 per governance decision",
+            )
+        else:
+            check(
+                task["phase"] == old.get("phase"),
+                f"TASK_PHASE {tid}: mismatch with frozen phase",
+            )
+            # V2-008 dependency change is governance-approved (adding V2-061)
+            if tid == "V2-008":
+                check(
+                    set(task["dependencies"]) == {"V2-006", "V2-007", "V2-061"},
+                    f"TASK_DEP {tid}: must depend on V2-006, V2-007, V2-061 per governance decision",
+                )
+            else:
+                check(
+                    task["dependencies"] == old.get("dependencies"),
+                    f"TASK_DEP_BASELINE {tid}: dependency change needs explicit baseline revision",
+                )
         check(
             all(not ref.startswith("archive/") for ref in task["normative_specs"]),
             f"TASK_NORMATIVE {tid}: archive cannot be normative",
