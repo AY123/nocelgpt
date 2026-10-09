@@ -668,6 +668,37 @@ class GovernanceTests(unittest.TestCase):
         self.assertEqual(ci_record["revision"], REVISION)
         self.assertEqual(milestone_record["revision"], REVISION)
 
+    def test_absence_record_not_allowed_for_active_tasks(self):
+        """Execution packet absence records must only be used for CLOSED historical tasks,
+        not as a bypass for OPEN/IN_PROGRESS/IMPLEMENTED tasks."""
+        # Create an absence record for an OPEN task (should fail)
+        tasks = self.data["implementation-backlog"]["tasks"]
+        open_task = next(t for t in tasks if t["status"] == "OPEN")
+        tid = open_task["task_id"]
+
+        absence_record = self.records / f"absence-{tid}.yaml"
+        absence_record.write_text(f"""record_type: execution_packet_absence_record
+schema_version: '1.0'
+task_id: {tid}
+closure_revision: {'a' * 40}
+closure_tag: fake-tag
+registration_context: test
+reason: Testing absence record bypass prevention
+evidence_refs:
+- type: implementation
+  ref: src/fake.py
+""")
+
+        # Point the OPEN task at the absence record
+        open_task["execution_packet_ref"] = f"validation/fixture/absence-{tid}.yaml"
+
+        # This should produce EXEC_ABSENCE_BYPASS error
+        errors = execution_checks(self.data, self.plan)
+        self.assertTrue(
+            any(f"EXEC_ABSENCE_BYPASS {tid}" in e for e in errors),
+            f"Absence record should be rejected for OPEN task {tid}"
+        )
+
 
 class RecordedResult(unittest.TextTestResult):
     def __init__(self, *args, **kwargs):

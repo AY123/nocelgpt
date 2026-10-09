@@ -6,7 +6,7 @@ v1.3.1 是治理修订：V2-006 任务身份调和（范围拆分与重新归属
 
 v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTOCOL.md)、执行包 Schema、交接模板、本地检查及 P0 验收要求。见 [v1.3.0 变更与验证说明](changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。
 
-P0—P14、双 Anchor 架构保持不变。61 个任务身份/阶段/依赖按机器源记录。246 个验收场景按机器源分别记录实施和验证状态。本地回归不是业务运行或可信 CI 认证。
+P0—P14、双 Anchor 架构保持不变。61 个任务身份/阶段/依赖按机器源记录。验收场景按机器源分别记录实施和验证状态。本地回归不是业务运行或可信 CI 认证。
 
 保留 [v1.2.2](changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)、[v1.2.1](changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)、[v1.2](changes/2026-09-21_REVIEW_ADOPTION.md)和 [v1.1](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)的历史变更记录；旧版本数字与结论只适用于其声明时点。
 
@@ -57,6 +57,6 @@ P0—P14、双 Anchor 架构保持不变。61 个任务身份/阶段/依赖按�
 
 [archive/](archive/) 保留来源快照；内部的 NORMATIVE、FINAL、READY、PASS 等标签都是历史内容，不构成当前授权。旧 Schema 不进入生产验证器的自动扫描路径，需经任务修正、正反例测试后进入未来的 `specs/`。
 
-当前 V2-001～V2-003 为 IMPLEMENTED，其余 57 个任务仍 OPEN。V2-002 已接入资料检查与本地动作/恢复命令；V2-003 已实现本地架构、实际差异与防降标检查并通过本地验证，交接见其[执行包](validation/execution/V2-003/followup/execution-packet.yaml)。V2-004、生产服务、真实模型和作品发布均未开始。任务关闭的证据须写入任务记录并通过检查，本地结果不替代缺失的真实 CI 与验收。V2-002 已将本地提交后 CODE/TEST_RESULT 绑定修复提交 `9c2fd253326e87e9e6c43920f29a95dc68680a64`；当前交接见其[执行包](validation/execution/V2-002/execution-packet.yaml)，开工 HEAD 和旧工作区记录仍作为历史保留。可信 CI/最终验收仍缺失。
+**实施状态（当前）**：V2-001 通过 [G-P0 出口审核](validation/closure/G-P0-38b0c57/)（M0、4 任务、16 个实施契约、146 步验收）。V2-002 至 V2-006 已 CLOSED。V2-061、V2-007、V2-008 及更高任务尚未开工。实施历史记录见 validation/execution/。
 
 规划验证还需运行 `python3 -B plan/scripts/test_governance.py` 与 `python3 -B plan/scripts/test_ai_execution.py`。最低义务基线不可由 `--write-views` 自动放宽；原始审核和新复测结果分开保留。V2-003 的 `scripts/check_architecture.py` 扫描完整生产包并区分 Canon 公共提交服务与内部写能力；`scripts/check_changes.py` 使用固定 scope/review Git pin 审查实际变化，`task_execution.py` 对受限动作按执行包绑定强制运行命令前后差异检查。用法见[任务执行指南](09_TASK_EXECUTION_GUIDE.md)。这些本地工具不能抵抗共享写权限者修改检查器，可信 CI 和有效权限保护仍须 V2-004 实施。V2-017 的[设计执行包](task-packets/V2-017_PLANNING_CONTRACT_PACKET.md)在 P4 消费，不替代任务开工时的正式记录。

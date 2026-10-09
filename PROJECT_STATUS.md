@@ -48,6 +48,7 @@
   - SHA: `bba1061ef27669ece55530bfdd846767b2fe21af`
   - Evidence: Steps 1-8 verified, see `docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md`
   - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
+  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab) - 899/899 tests, 6/6 gates
 
 **Open Tasks**:
 - **V2-061**: Character Knowledge & Intent Core (OPEN, next task candidate)

@@ -16,13 +16,12 @@ Historical V2-005 and V2-006 task closures (completed before governance reconcil
 
 The current plan validation system expects typed evidence records under `plan/validation/` with structured metadata.
 
-This mismatch generates 60 legacy evidence architecture findings categorized as:
+This mismatch generates 59 legacy evidence architecture findings categorized as:
 - `EVIDENCE_RECORD`: Evidence files outside plan/ package (22 findings)
 - `LOCAL_REF`: References outside plan/ (21 findings)
+- `EVIDENCE_ARTIFACT`: Missing artifact bindings (7 findings)
 - `EVIDENCE_COVERAGE`: Missing typed coverage checks (6 findings)
-- `EVIDENCE_ARTIFACT`: Missing artifact bindings (6 findings)
 - `TASK_SUITE_EVIDENCE`: Test results not linked to suite (2 findings)
-- `EXEC_PACKET`: Execution packet references (2 findings)
 - `TASK_NORMATIVE`: Normative specifications outside plan/ (1 finding)
 
 Additionally, 3 current derived-artifact findings exist:
@@ -30,6 +29,11 @@ Additionally, 3 current derived-artifact findings exist:
 - `MANIFEST`: Stale file manifest (1 finding)
 
 These derived-artifact findings are blocked by evidence_checks and would regenerate if legacy evidence were migrated.
+
+Additionally, 2 execution packet absence findings exist:
+- `EXEC_PACKET_ABSENT`: V2-005 and V2-006 have no genuine historical execution packets (registered debt)
+
+These absence findings are truthful representations, not schema violations.
 
 ## Existing Real Evidence
 
@@ -50,7 +54,7 @@ Both V2-005 and V2-006 have **legitimate closure evidence**:
 - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
 - Closure: `docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md`
 - Authorization: `docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md`
-- External CI: Pipeline 2925763616 @ ayyang666/aianovelos (GitLab, 899/899 tests, 6/6 gates)
+- External CI: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab, 899/899 tests, 6/6 gates)
 - Tag: `v2.006-complete` @ bba1061ef27669ece55530bfdd846767b2fe21af
 
 ## What This Debt Does NOT Mean
@@ -92,22 +96,26 @@ Both V2-005 and V2-006 have **legitimate closure evidence**:
 
 ## Validator Findings Classification
 
-After H3 machine state reconciliation:
+After H3.2 truth and validation closure:
 
 ```
-Total findings: 63
-├─ Legacy evidence architecture: 60
+Total findings: 64
+├─ Legacy evidence architecture: 59
 │  ├─ EVIDENCE_RECORD: 22 (files in docs/, src/, tests/)
 │  ├─ LOCAL_REF: 21 (references outside plan/)
+│  ├─ EVIDENCE_ARTIFACT: 7 (G-P0 superseding revalidation)
 │  ├─ EVIDENCE_COVERAGE: 6 (missing typed checks)
-│  ├─ EVIDENCE_ARTIFACT: 6 (G-P0 superseding revalidation)
 │  ├─ TASK_SUITE_EVIDENCE: 2 (V2-005, V2-006)
-│  ├─ EXEC_PACKET: 2 (V2-005, V2-006 absent packets)
 │  └─ TASK_NORMATIVE: 1 (contract in docs/)
-└─ Current derived-artifact consistency: 3
-   ├─ GENERATED_VIEW: 2 (blocked by evidence_checks)
-   └─ MANIFEST: 1 (blocked by evidence_checks)
+├─ Current derived-artifact consistency: 3
+│  ├─ GENERATED_VIEW: 2 (blocked by evidence_checks)
+│  └─ MANIFEST: 1 (blocked by evidence_checks)
+└─ Execution packet absence (registered historical debt): 2
+   ├─ EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists
+   └─ EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists
 ```
+
+The 2 EXEC_PACKET_ABSENT findings are registered debt, not schema violations. Absence records are truthful representations of historical fact, not fabricated execution packets.
 
 ## Acceptance Criteria for Debt Resolution
 

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:anovelos:plan:task-execution-packet-absence:1",
+  "title": "Execution packet absence record",
+  "description": "Records the historical fact that no genuine task execution packet exists for a closed task. This is NOT an execution context and NOT historical execution evidence. It exists solely to satisfy structural requirements for CLOSED tasks where the execution predated the execution packet framework.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "record_type",
+    "schema_version",
+    "task_id",
+    "closure_revision",
+    "closure_tag",
+    "registration_context",
+    "reason",
+    "evidence_refs"
+  ],
+  "properties": {
+    "record_type": {
+      "const": "execution_packet_absence_record"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+$"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^V2-[0-9]{3}$"
+    },
+    "closure_revision": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "description": "Git SHA at which the task was closed"
+    },
+    "closure_tag": {
+      "type": "string",
+      "description": "Immutable closure tag if one exists"
+    },
+    "registration_context": {
+      "type": "string",
+      "description": "When and why this absence record was created (e.g., 'H3.2 governance reconciliation 2026-10-09')"
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Explanation of why no execution packet exists"
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "ref"],
+        "properties": {
+          "type": {
+            "enum": ["implementation", "tests", "schema", "closure_report", "contract", "ci_pipeline", "tag"]
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "note": {
+            "type": "string"
+          }
+        }
+      },
+      "minItems": 1
+    }
+  }
+}

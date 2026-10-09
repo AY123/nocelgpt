@@ -59,8 +59,11 @@ def execution_checks(data, plan):
     plan = Path(plan).resolve()
     errors = []
     schema = json.loads((plan / "schemas/execution-packet.schema.json").read_text())
+    absence_schema = json.loads((plan / "schemas/execution-packet-absence.schema.json").read_text())
     Draft202012Validator.check_schema(schema)
+    Draft202012Validator.check_schema(absence_schema)
     validator = Draft202012Validator(schema)
+    absence_validator = Draft202012Validator(absence_schema)
     decisions = {a["id"]: a for a in data["decision-register"]["decisions"]}
 
     def require(ok, prefix, tid, message):
@@ -96,6 +99,32 @@ def execution_checks(data, plan):
             continue
         try:
             packet = yaml.safe_load(path.read_text())
+            record_type = packet.get("record_type")
+
+            # Handle absence records for historical CLOSED tasks
+            if record_type == "execution_packet_absence_record":
+                issues = list(absence_validator.iter_errors(packet))
+                if issues:
+                    errors.append(
+                        f"EXEC_ABSENCE_SCHEMA {tid}: " + "; ".join(e.message for e in issues[:3])
+                    )
+                    continue
+                # Absence records only permitted for CLOSED tasks
+                if task["status"] != "CLOSED":
+                    errors.append(
+                        f"EXEC_ABSENCE_BYPASS {tid}: absence record not allowed for {task['status']} task; only CLOSED historical tasks may use absence records"
+                    )
+                    continue
+                # Verify task_id matches
+                if packet.get("task_id") != tid:
+                    errors.append(f"EXEC_ABSENCE_SUBJECT {tid}: wrong task_id in absence record")
+                # Register the absence explicitly
+                errors.append(
+                    f"EXEC_PACKET_ABSENT {tid}: no genuine historical execution packet exists (absence record registered)"
+                )
+                continue
+
+            # Standard execution packet validation
             issues = list(validator.iter_errors(packet))
             if issues:
                 errors.append(

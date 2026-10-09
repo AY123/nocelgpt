@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-09T09:57:31.277633+00:00",
+  "generated_at_utc": "2026-10-09T14:47:10.236485+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "00eaf617a391dd1731556537f7e06b2355a9a6e5",
+  "validated_repository_revision": "0195757565c4fcb09b5f5fa141f0762c8b004896",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -90,8 +90,8 @@
     "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-04.yaml: missing/changed machine/remediation-register.yaml",
     "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-05.yaml: missing/changed machine/remediation-register.yaml",
     "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/M0-milestone-decision.yaml: missing/changed machine/milestones.yaml",
-    "EXEC_SCHEMA V2-005: 0 is less than the minimum of 1; None is not of type 'number'; [] should be non-empty",
-    "EXEC_SCHEMA V2-006: 0 is less than the minimum of 1; None is not of type 'number'; [] should be non-empty",
+    "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered)",
+    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered)",
     "LOCAL_REF: absent/outside package src/anovel/domain/identity.py",
     "LOCAL_REF: absent/outside package tests/contract/test_v2_005.py",
     "LOCAL_REF: absent/outside package docs/reports/V2-005_FINAL_CLOSURE_REPORT.md",
