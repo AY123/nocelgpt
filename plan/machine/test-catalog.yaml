@@ -1,4 +1,4 @@
-version: 1.3.0
+version: 1.3.1
 meaning: 逐套件记录计划、实现和验证状态；本地结果不代替真实 CI 与正式验收
 suites:
 - id: AT-V2-001
@@ -125,7 +125,7 @@ suites:
 - id: AT-V2-005
   task_id: V2-005
   phase: P1
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/contract/test_v2_005.py
   scenarios:
   - id: AT-V2-005-01
@@ -134,7 +134,9 @@ suites:
     required_assertion: 改名保留稳定 ID
   - id: AT-V2-005-03
     required_assertion: 歧义别名返回明确冲突而非随机选择
-  execution_evidence: []
+  execution_evidence:
+  - 'Closure: v2.005-complete at bd303e64dab6475bd12b69d273afa6c64eaa38ad'
+  - 'Evidence: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md (8/8 steps VERIFIED)'
 - id: AT-V2-006
   task_id: V2-006
   phase: P1
@@ -142,13 +144,13 @@ suites:
   target_path: tests/contract/test_v2_006.py
   scenarios:
   - id: AT-V2-006-01
-    required_assertion: Stable UUID v4 relationship identity generation
+    required_assertion: Stable UUID v4 relationship identity (RelationshipId)
   - id: AT-V2-006-02
-    required_assertion: Directed relationships without automatic inverse
+    required_assertion: Directed relationships (no automatic inverse)
   - id: AT-V2-006-03
-    required_assertion: Project isolation for relationships
+    required_assertion: Project isolation (relationships scoped to ProjectId)
   - id: AT-V2-006-04
-    required_assertion: Semantic tuple uniqueness (different ID + same live tuple raises ValueError)
+    required_assertion: Semantic tuple uniqueness (different ID + same live tuple → ValueError)
   - id: AT-V2-006-05
     required_assertion: Same-ID same-content replay is no-op
   - id: AT-V2-006-06
@@ -156,13 +158,13 @@ suites:
   - id: AT-V2-006-07
     required_assertion: Delete releases semantic tuple for reuse
   - id: AT-V2-006-08
-    required_assertion: No persistence coupling (architecture boundary enforced)
+    required_assertion: No persistence coupling (no database/ORM imports)
   - id: AT-V2-006-09
-    required_assertion: No provider coupling (architecture boundary enforced)
+    required_assertion: No provider coupling (no LLM provider imports)
   - id: AT-V2-006-10
     required_assertion: Immutable EntityRelationship (frozen dataclass)
   - id: AT-V2-006-11
-    required_assertion: Extensible RelationshipType (string-based)
+    required_assertion: Extensible RelationshipType (string-based, not enum)
   - id: AT-V2-006-12
     required_assertion: Create/delete/query operations complete
   execution_evidence:

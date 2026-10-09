@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-09T04:47:12.418718+00:00",
+  "generated_at_utc": "2026-10-09T06:21:39.484396+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,8 +11,8 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "35342bc77d98abdf1c846511d0419a9a1e9ad570",
-  "validated_worktree_dirty": false,
+  "validated_repository_revision": "fd9ba682471a3eefaee60fae00ebfeb47501cf3f",
+  "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
   "manifest_sha256": "bf3d1c043ee650477952be348a08de175cba139493f1c13a5fa26a7145b457e2",
@@ -34,8 +34,8 @@
       "P12": 3
     },
     "statuses": {
-      "CLOSED": 5,
-      "OPEN": 56
+      "CLOSED": 6,
+      "OPEN": 55
     },
     "suites": 61,
     "scenarios": 261,
@@ -50,17 +50,16 @@
     }
   },
   "errors": [
-    "TASK_START V2-006: dependency V2-005 not verified",
-    "TASK_ACCEPTANCE V2-006: task and scenario assertions differ",
-    "TASK_ADR V2-006: unresolved ADR-002",
-    "EXTERNAL_CASE_OWNER EXT-005: scenario owners differ",
-    "EXTERNAL_BACKLINK EXT-005: absent on V2-006",
-    "EXTERNAL_NORMATIVE EXT-005: task V2-006 omits specification",
-    "FINDING_BACKLINK V2-006: incomplete bidirectional mapping",
-    "FOUNDATION_BACKLINK V2-006: mapping differs",
     "TASK_NORMATIVE V2-006: missing/outside plan docs/V2-006_IMPLEMENTATION_CONTRACT.md",
     "GENERATED_VIEW: stale or missing generated/PHASE_TASK_REGISTRY.md",
     "GENERATED_VIEW: stale or missing generated/EXTERNAL_PRACTICE_MAP.md",
+    "EVIDENCE_RECORD src/anovel/domain/identity.py: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD tests/contract/test_v2_005.py: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD docs/reports/V2-005_FINAL_CLOSURE_REPORT.md: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD docs/reports/V2-005_FINAL_RATIFICATION.md: local evidence file missing/outside package/not a file",
+    "EVIDENCE_COVERAGE V2-005: missing checks",
+    "EVIDENCE_COVERAGE V2-005 acceptance: missing checks",
+    "TASK_SUITE_EVIDENCE V2-005: results not linked to suite",
     "EVIDENCE_RECORD src/anovel/domain/relationship.py: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD specs/schemas/entity-relationship.schema.json: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD tests/contract/test_v2_006.py: local evidence file missing/outside package/not a file",
@@ -76,6 +75,9 @@
     "EVIDENCE_COVERAGE V2-006: missing checks",
     "EVIDENCE_COVERAGE V2-006 acceptance: missing checks",
     "TASK_SUITE_EVIDENCE V2-006: results not linked to suite",
+    "EVIDENCE_RECORD Closure: v2.005-complete at bd303e64dab6475bd12b69d273afa6c64eaa38ad: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD Evidence: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md (8/8 steps VERIFIED): local evidence file missing/outside package/not a file",
+    "EVIDENCE_COVERAGE AT-V2-005: missing checks",
     "EVIDENCE_RECORD Local: 447/447 contract tests PASS: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD Local: 226/226 architecture tests PASS: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD Remote: Pipeline 2925763616, 899/899 tests PASS, 6/6 gates SUCCESS: local evidence file missing/outside package/not a file",
@@ -87,7 +89,13 @@
     "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-03.yaml: missing/changed machine/remediation-register.yaml",
     "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-04.yaml: missing/changed machine/remediation-register.yaml",
     "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-05.yaml: missing/changed machine/remediation-register.yaml",
+    "EXEC_PACKET V2-005: packet must resolve to a real file under validation/ (outside manifest)",
     "EXEC_PACKET V2-006: packet must resolve to a real file under validation/ (outside manifest)",
+    "LOCAL_REF: absent/outside package src/anovel/domain/identity.py",
+    "LOCAL_REF: absent/outside package tests/contract/test_v2_005.py",
+    "LOCAL_REF: absent/outside package docs/reports/V2-005_FINAL_CLOSURE_REPORT.md",
+    "LOCAL_REF: absent/outside package docs/reports/V2-005_FINAL_CLOSURE_REPORT.md",
+    "LOCAL_REF: absent/outside package docs/reports/V2-005_FINAL_RATIFICATION.md",
     "LOCAL_REF: absent/outside package docs/V2-006_IMPLEMENTATION_CONTRACT.md",
     "LOCAL_REF: absent/outside package docs/V2-006_IMPLEMENTATION_CONTRACT.md",
     "LOCAL_REF: absent/outside package docs/reports/V2-006_CONTRACT_REVIEW.md",

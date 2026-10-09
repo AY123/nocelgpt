@@ -1,8 +1,8 @@
 document_id: ANOVELOS-PLAN-BACKLOG
-version: 1.3.0
+version: 1.3.1
 status: ACTIVE_PLANNING_BASELINE
 supersedes: archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml
-note: 保留首批 60 任务身份、阶段与原任务依赖；新增阶段门禁和具体执行要求；不是工程完成证据
+note: 包含 61 个任务（V2-001 through V2-061），含治理调和后的 V2-006 与新增 V2-061；阶段门禁和具体执行要求；不是工程完成证据
 tasks:
 - task_id: V2-001
   title: Repository bootstrap
@@ -370,17 +370,32 @@ tasks:
   - 不绕过前置阶段门禁
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
-  status: OPEN
-  execution_packet_ref: null
+  status: CLOSED
+  execution_packet_ref: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
   owner_role: domain-maintainer
-  readiness: PLANNED
+  readiness: READY_TO_START
   start_gate: G-P0
   required_decisions: []
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: src/anovel/domain/identity.py
+      revision: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+      status: PASS
+    tests:
+    - ref: tests/contract/test_v2_005.py
+      revision: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+      status: PASS
+    ci:
+    - ref: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
+      revision: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+      status: PASS
+    acceptance:
+    - ref: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
+      revision: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+      status: PASS
+    - ref: docs/reports/V2-005_FINAL_RATIFICATION.md
+      revision: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+      status: PASS
   related_findings:
   - AR-03
   - AR-13
@@ -407,9 +422,9 @@ tasks:
   - Delete releases semantic tuple for reuse
   - No persistence coupling (no database/ORM imports)
   - No provider coupling (no LLM provider imports)
-  - No graph traversal or transitive inference
   - Immutable EntityRelationship (frozen dataclass)
   - Extensible RelationshipType (string-based, not enum)
+  - Create/delete/query operations complete
   tests:
   - AT-V2-006
   artifacts:
@@ -434,8 +449,7 @@ tasks:
   owner_role: domain-maintainer
   readiness: READY_TO_START
   start_gate: G-P0
-  required_decisions:
-  - ADR-002
+  required_decisions: []
   evidence:
     code:
     - ref: src/anovel/domain/relationship.py
@@ -482,11 +496,15 @@ tasks:
       status: PASS
   related_findings:
   - AR-03
+  - CA-06
   - RR-05
+  - RR-06
+  - SUP-03
   design_references:
   - docs/V2-006_IMPLEMENTATION_CONTRACT.md
   - docs/reports/V2-006_CONTRACT_REVIEW.md
-  - changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md
+  foundational_references:
+  - FND-003
 - task_id: V2-061
   title: Character Knowledge & Intent Core
   phase: P1
