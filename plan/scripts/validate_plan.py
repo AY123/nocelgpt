@@ -35,7 +35,7 @@ from execution_checks import execution_checks
 from governance_checks import evidence_checks, object_checks
 
 APPROVED_GOVERNANCE_BASELINE = (
-    "ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c"
+    "a7b1a29c9495d19615f3a5c758dcb6ca7046113a43a80b8c7749319f191c2eef"
 )
 NAMES = [
     "implementation-backlog",

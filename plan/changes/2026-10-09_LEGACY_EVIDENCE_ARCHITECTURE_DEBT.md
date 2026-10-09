@@ -16,12 +16,20 @@ Historical V2-005 and V2-006 task closures (completed before governance reconcil
 
 The current plan validation system expects typed evidence records under `plan/validation/` with structured metadata.
 
-This mismatch generates 60 validator findings categorized as:
-- `EVIDENCE_RECORD`: Evidence files outside plan/ package (45 findings)
+This mismatch generates 60 legacy evidence architecture findings categorized as:
+- `EVIDENCE_RECORD`: Evidence files outside plan/ package (22 findings)
+- `LOCAL_REF`: References outside plan/ (21 findings)
 - `EVIDENCE_COVERAGE`: Missing typed coverage checks (6 findings)
 - `EVIDENCE_ARTIFACT`: Missing artifact bindings (6 findings)
 - `TASK_SUITE_EVIDENCE`: Test results not linked to suite (2 findings)
-- `EXEC_PACKET`: Execution packet references outside validation/ (1 finding)
+- `EXEC_PACKET`: Execution packet references (2 findings)
+- `TASK_NORMATIVE`: Normative specifications outside plan/ (1 finding)
+
+Additionally, 3 current derived-artifact findings exist:
+- `GENERATED_VIEW`: Stale or missing generated views (2 findings)
+- `MANIFEST`: Stale file manifest (1 finding)
+
+These derived-artifact findings are blocked by evidence_checks and would regenerate if legacy evidence were migrated.
 
 ## Existing Real Evidence
 
@@ -30,7 +38,7 @@ Both V2-005 and V2-006 have **legitimate closure evidence**:
 ### V2-005 (v2.005-complete @ bd303e6)
 - Implementation: `src/anovel/domain/identity.py`
 - Tests: `tests/contract/test_v2_005.py`
-- Schema: `specs/schemas/entity.schema.json`
+- Schema: `specs/schemas/entity-identity.schema.json`
 - Closure: `docs/reports/V2-005_FINAL_CLOSURE_REPORT.md` (8/8 steps VERIFIED)
 - Ratification: `docs/reports/V2-005_FINAL_RATIFICATION.md`
 - Tag: `v2.005-complete` @ bd303e64dab6475bd12b69d273afa6c64eaa38ad
@@ -40,9 +48,9 @@ Both V2-005 and V2-006 have **legitimate closure evidence**:
 - Tests: `tests/contract/test_v2_006*.py` (447/447 PASS)
 - Schema: `specs/schemas/entity-relationship.schema.json`
 - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
-- Closure: `docs/reports/V2-006_FINAL_CLOSURE_REPORT.md`
+- Closure: `docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md`
 - Authorization: `docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md`
-- External CI: Pipeline 2925763616 @ TomAy47287015/aianovelcc (899/899 tests, 6/6 gates)
+- External CI: Pipeline 2925763616 @ ayyang666/aianovelos (GitLab, 899/899 tests, 6/6 gates)
 - Tag: `v2.006-complete` @ bba1061ef27669ece55530bfdd846767b2fe21af
 
 ## What This Debt Does NOT Mean
@@ -88,16 +96,16 @@ After H3 machine state reconciliation:
 
 ```
 Total findings: 63
-├─ Current SSOT errors: 0 ✓
-└─ Legacy evidence architecture: 63
-   ├─ EVIDENCE_RECORD: 22 (files in docs/, src/, tests/)
-   ├─ LOCAL_REF: 21 (references outside plan/)
-   ├─ EVIDENCE_COVERAGE: 6 (missing typed checks)
-   ├─ EVIDENCE_ARTIFACT: 6 (G-P0 superseding revalidation)
-   ├─ TASK_SUITE_EVIDENCE: 2 (V2-005, V2-006)
+├─ Legacy evidence architecture: 60
+│  ├─ EVIDENCE_RECORD: 22 (files in docs/, src/, tests/)
+│  ├─ LOCAL_REF: 21 (references outside plan/)
+│  ├─ EVIDENCE_COVERAGE: 6 (missing typed checks)
+│  ├─ EVIDENCE_ARTIFACT: 6 (G-P0 superseding revalidation)
+│  ├─ TASK_SUITE_EVIDENCE: 2 (V2-005, V2-006)
+│  ├─ EXEC_PACKET: 2 (V2-005, V2-006 absent packets)
+│  └─ TASK_NORMATIVE: 1 (contract in docs/)
+└─ Current derived-artifact consistency: 3
    ├─ GENERATED_VIEW: 2 (blocked by evidence_checks)
-   ├─ EXEC_PACKET: 2 (V2-005, V2-006)
-   ├─ TASK_NORMATIVE: 1 (contract in docs/)
    └─ MANIFEST: 1 (blocked by evidence_checks)
 ```
 
@@ -117,7 +125,7 @@ When this technical debt is addressed in the future, resolution requires:
 ## References
 
 - V2-005 Final Closure: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
-- V2-006 Final Closure: docs/reports/V2-006_FINAL_CLOSURE_REPORT.md
+- V2-006 Final Closure: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
 - V2-006 Implementation Contract: docs/V2-006_IMPLEMENTATION_CONTRACT.md
 - Immutable tags: v2.005-complete, v2.006-complete
 - H3 reconciliation commit: d49cdd8

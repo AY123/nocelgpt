@@ -73,20 +73,10 @@ V2-003 已完成本地实施与验证，复用 V2-001 的锁定环境和 V2-002 
 
 V2-004 (Secret/依赖 CI、远端来源与保护权限) 已完成并验证。远端 CI、架构检查器和权限边界均已实现。正式任务关闭需要代码、测试、真实 CI 和验收记录，本地 PASS 与 CI PASS 分别记录。
 
-**V2-005 当前进度**:
-- **Step 1-2** (Types and Module Structure): ✅ VERIFIED
-  - SHA: `1aa31e7`, Pipeline: 2915904387 (6/6 PASS)
-- **Step 3** (ID Generation and Normalization): ✅ VERIFIED
-- **Step 4** (EntityRegistry): ✅ VERIFIED
-- **Step 5** (create_identity, rename_identity): ✅ VERIFIED
-- **Step 6** (add_alias, remove_alias): ✅ VERIFIED
-- **Step 7** (resolve_alias): ✅ VERIFIED
-- **Step 8** (Schema and Final Integration): ✅ VERIFIED
-- **V2-005 Status**: ✅ COMPLETE AND RATIFIED (2026-10-06)
+**V2-005 Status**: ✅ CLOSED (2026-10-06)
   - Final SHA: `bd303e6`, Tag: `v2.005-complete`
   - Evidence: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
   - Contract: docs/V2-005_IMPLEMENTATION_CONTRACT.md v1.1.0
-  - Branch: `work/h2-convergence-closure`
 
 P1 (Narrative Kernel) 将实现核心叙事模型。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
 

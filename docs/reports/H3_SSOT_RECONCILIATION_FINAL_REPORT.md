@@ -30,7 +30,7 @@
 
 **Machine Status**: CLOSED ✓ (was OPEN)  
 **AT-V2-005 Status**: VERIFIED ✓ (was PLANNED)  
-**Execution Packet**: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md  
+**Execution Packet**: null (no genuine historical packet exists)  
 **Closure Tag**: v2.005-complete @ bd303e6 ✓
 
 **Typed Evidence**:
@@ -47,7 +47,7 @@
 
 **Machine Status**: CLOSED ✓ (unchanged)  
 **AT-V2-006 Status**: VERIFIED ✓ (unchanged)  
-**Execution Packet**: docs/V2-006_IMPLEMENTATION_CONTRACT.md  
+**Execution Packet**: null (no genuine historical packet exists)  
 **Closure Tag**: v2.006-complete @ bba1061 ✓
 
 **Acceptance Alignment**: COMPLETE ✓
@@ -64,7 +64,7 @@
 - Tests: tests/contract/test_v2_006*.py @ bba1061
 - CI: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md @ bba1061
 - Acceptance: Implementation authorization + closure @ bba1061
-- External: Pipeline 2925763616 @ TomAy47287015/aianovelcc (899/899, 6/6)
+- External: Pipeline 2925763616 @ ayyang666/aianovelos (GitLab, 899/899, 6/6)
 
 ---
 
@@ -80,9 +80,19 @@
 
 ## M1 Milestone & Phase Authority
 
-**M1 Narrative Kernel**: (Checked governance-baseline.yaml)  
-**Phase P1 Tasks**: V2-005, V2-006, V2-061, V2-007, V2-008 ✓  
-**Critical Path**: V2-061 correctly represented in dependency chain ✓
+**CORRECTION (H3.1)**: At the completion of H3 (2a044f8), M1 membership was NOT yet consistent with P1 tasks. This section incorrectly claimed consistency.
+
+**Actual H3 State**:
+- M1 required_tasks in milestones.yaml: V2-005, V2-006, V2-007, V2-008 (missing V2-061)
+- M1 required_tasks in governance-baseline.yaml: V2-005, V2-006, V2-007, V2-008 (missing V2-061)
+- Phase P1 Tasks: V2-005, V2-006, V2-061, V2-007, V2-008
+
+**H3.1 Correction**: Both milestone registries updated to include V2-061.
+
+**After H3.1**:
+- M1 required_tasks: V2-005, V2-006, V2-061, V2-007, V2-008 ✓
+- Phase P1 tasks: V2-005, V2-006, V2-061, V2-007, V2-008 ✓
+- M1 membership now consistent with P1 phase membership ✓
 
 ---
 

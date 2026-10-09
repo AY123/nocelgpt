@@ -371,7 +371,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   status: CLOSED
-  execution_packet_ref: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
+  execution_packet_ref: validation/execution/V2-005/execution-packet-absent.yaml
   owner_role: domain-maintainer
   readiness: READY_TO_START
   start_gate: G-P0
@@ -445,7 +445,7 @@ tasks:
   - 不实现图遍历算法
   - 不实现关系推理
   status: CLOSED
-  execution_packet_ref: docs/V2-006_IMPLEMENTATION_CONTRACT.md
+  execution_packet_ref: validation/execution/V2-006/execution-packet-absent.yaml
   owner_role: domain-maintainer
   readiness: READY_TO_START
   start_gate: G-P0
