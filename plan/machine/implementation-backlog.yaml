@@ -364,7 +364,7 @@ tasks:
   - AT-V2-005
   artifacts:
   - src/anovel/domain/identity.py
-  - specs/schemas/entity.schema.json
+  - specs/schemas/entity-identity.schema.json
   - tests/contract/test_v2_005.py
   out_of_scope:
   - 不绕过前置阶段门禁
