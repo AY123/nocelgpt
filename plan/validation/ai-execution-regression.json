@@ -1,0 +1,153 @@
+{
+  "scope": "Local declared execution packet checks only; no actual action interception, diff review or remote CI",
+  "generated_at_utc": "2026-10-10T02:18:52.864312+00:00",
+  "manifest_sha256": "bf3d1c043ee650477952be348a08de175cba139493f1c13a5fa26a7145b457e2",
+  "status": "FAIL",
+  "test_count": 36,
+  "cases": [
+    {
+      "case": "__main__.AIExecutionTests.test_active_task_requires_packet",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_certification_positive_and_decision_negative",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_changed_live_input",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_changed_snapshot",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_completed_packet_keeps_recoverable_historical_inputs",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_declared_output_outside_scope",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_fabricated_pass_without_artifact_rejected",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_fact_needs_source",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_handoff_template_and_alias_are_not_run_results",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_historical_packet_not_rewritten_for_new_task_outputs",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_implementation_with_declared_decision",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_input_escape",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_interface_requires_decision",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_live_action_positive_and_decision_negative",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_live_budget_is_required_even_in_eligible_phase",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_live_call_early_phase_and_missing_budget_rejected",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_missing_failure_artifacts_can_be_reported_honestly",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_missing_handoff_rejected",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_missing_normative_input",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_missing_packet_file",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_next_action_mismatch",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_open_task_can_only_prepare",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_packet_cannot_create_manifest_hash_cycle",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_policy_cannot_claim_unimplemented_p0_is_verified",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_policy_rejects_unsupported_local_success_label",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_preparation_allows_required_decision",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_required_decision_not_silently_removed",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_root_and_wildcard_scopes_rejected",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_sourced_fact_declaration",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_stale_manifest_on_resume",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_stale_plan_version",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_task_output_not_silently_dropped",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_template_alias_cannot_be_packet",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_unknown_blocks_implementation_but_allows_preparation",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_unknown_decision_timing_rejected",
+      "status": "ERROR"
+    },
+    {
+      "case": "__main__.AIExecutionTests.test_wrong_task",
+      "status": "ERROR"
+    }
+  ]
+}

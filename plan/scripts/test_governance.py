@@ -44,14 +44,31 @@ class GovernanceTests(unittest.TestCase):
         }
 
         # Normalize live historical debt for positive fixture isolation
-        # V2-005 and V2-006 have absence records in production, but test fixtures need clean baseline
+        # V2-005 and V2-006 are CLOSED in production with absence records and phase evidence
+        # For positive fixture, remove all their traces to achieve clean baseline
         tasks = self.data["implementation-backlog"]["tasks"]
         for task in tasks:
             if task["task_id"] in ("V2-005", "V2-006"):
-                # Replace with synthetic valid execution packet for positive control
-                task["execution_packet_ref"] = None  # Will be set by make_p0() if needed
+                task["status"] = "OPEN"
+                task["execution_packet_ref"] = None
+                task["evidence"] = {"code": [], "tests": [], "ci": [], "acceptance": []}
+
+        # Remove V2-005/V2-006 evidence from phase-gates
+        for phase in self.data["phase-gates"]["phases"]:
+            if "evidence_refs" in phase:
+                phase["evidence_refs"] = [
+                    ref for ref in phase["evidence_refs"]
+                    if not any(x in ref.get("note", "") for x in ["v2.005-complete", "v2.006-complete", "V2-005", "V2-006"])
+                ]
+
+        # Remove from test-catalog status
+        for suite in self.data["test-catalog"]["suites"]:
+            if suite.get("task_id") in ("V2-005", "V2-006"):
+                suite["status"] = "PLANNED"
+                suite["execution_evidence"] = []
 
         self.make_p0()
+
         self.assertEqual(
             self.errors(), [], "Positive evidence fixture must be valid before mutation"
         )
@@ -206,6 +223,9 @@ class GovernanceTests(unittest.TestCase):
             dict.fromkeys(task["normative_specs"] + list(CONTROL_INPUTS))
         ):
             original = self.plan / ref
+            # Skip files that don't exist in test fixture (e.g., docs/ files for V2-005/V2-006)
+            if not original.exists():
+                continue
             snapshot = self.records / f"{task['task_id']}-input-{index}.txt"
             snapshot.write_bytes(original.read_bytes())
             inputs.append(
@@ -809,8 +829,15 @@ evidence_refs:
 
     def test_grandfathered_absence_records_valid(self):
         """V2-005 and V2-006 with correct absence records should produce EXEC_PACKET_ABSENT only."""
-        # This test verifies that properly configured grandfathered absence records
-        # are accepted structurally and produce the expected EXEC_PACKET_ABSENT finding
+        # Positive fixture has synthetic packets, so we need to explicitly configure absence records
+        tasks = self.data["implementation-backlog"]["tasks"]
+        v2_005 = next(t for t in tasks if t["task_id"] == "V2-005")
+        v2_006 = next(t for t in tasks if t["task_id"] == "V2-006")
+
+        # Point to actual absence records (they exist in the copied plan tree)
+        v2_005["execution_packet_ref"] = "validation/execution/V2-005/execution-packet-absent.yaml"
+        v2_006["execution_packet_ref"] = "validation/execution/V2-006/execution-packet-absent.yaml"
+
         errors = execution_checks(self.data, self.plan)
 
         # Should have EXEC_PACKET_ABSENT findings
@@ -832,7 +859,10 @@ evidence_refs:
         tasks = self.data["implementation-backlog"]["tasks"]
         v2_005 = next(t for t in tasks if t["task_id"] == "V2-005")
 
-        # V2-005 is grandfathered and has correct closure_revision/tag in absence record
+        # V2-005 is grandfathered with correct identity in absence record
+        # Point to actual absence record
+        v2_005["execution_packet_ref"] = "validation/execution/V2-005/execution-packet-absent.yaml"
+
         # But if status is not CLOSED, it should still be rejected
         original_status = v2_005["status"]
         v2_005["status"] = "OPEN"
