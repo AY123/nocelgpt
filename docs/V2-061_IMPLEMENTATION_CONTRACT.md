@@ -251,10 +251,12 @@ class Proposition:
     (subject, predicate, object, context, project_id) across all
     CharacterKnowledge records in the project.
 
-    Context Immutability: If context is provided, it must be deep-immutable.
-    frozen=True on the dataclass is insufficient if context contains mutable
-    structures. Implementation must ensure context cannot be mutated after
-    Proposition creation.
+    Context Immutability: Stored Proposition.context MUST NOT be mutable dict.
+    Context input may originate as JSON object, but domain construction MUST
+    canonicalize/deep-freeze it before storing in Proposition. Implementation
+    should use immutable/frozen representation (e.g., MappingProxyType or
+    frozen structures) to prevent post-creation mutation that would violate
+    collision identity invariant.
     """
 
     proposition_id: PropositionId
@@ -262,7 +264,7 @@ class Proposition:
     subject: EntityId | str  # What the claim is about (if EntityId, must be same project)
     predicate: str  # "betrayed", "loves", "owns", "is_alive", "is_dead"
     object: EntityId | str | None = None  # Target of predicate (if EntityId, must be same project)
-    context: dict | None = None  # Additional structured context (must be deep-immutable)
+    context: Mapping[str, Any] | None = None  # Immutable structured context (canonicalized on construction)
 ```
 
 ### CharacterKnowledge
@@ -412,9 +414,9 @@ IntentId = NewType("IntentId", str)
 @dataclass
 class PlannedAction:
     """
-    Action character intends to take (NOT yet occurred).
+    Intent record describing an action the character plans/planned to take.
 
-    Occurrence Authority: V2-007 owns objective occurrence.
+    Occurrence Authority: V2-007 owns objective occurrence exclusively.
     PlannedAction tracks intent and links to V2-007 Event if/when action occurs.
     """
 
@@ -1231,7 +1233,7 @@ assert restored == character  # Exact equality
 **CACHE State** (ADR-002):
 - Contextual evaluation requiring external Canon context
 - NOT derivable from BASE alone
-- Optional serialization; discarded/revalidated on load
+- Runtime evaluation state; NOT persisted in semantic schema payload
 - Does NOT participate in semantic equality (field(compare=False) required)
 - Example: `aligns_with_fact` (requires V2-005/V2-006/V2-007 Canon context)
 
@@ -1414,7 +1416,7 @@ All V2-061 classes MUST:
 
 **Machine SSOT Compliance** (合法派生字段和非默认值往返不丢失):
 
-P1 Decision for aligns_with_fact:
+Proposed ADR-002 disposition for aligns_with_fact:
 - `aligns_with_fact` is runtime CACHE, NOT part of persisted semantic schema payload
 - Does NOT participate in Machine semantic round-trip acceptance
 - If implementation chooses to persist CACHE, must define validity/revision binding
@@ -1439,13 +1441,13 @@ assert char1.planned_actions == char2.planned_actions  # BASE: exact list equali
 assert char1.active_goals() == char2.active_goals()  # Recomputed from BASE
 
 # CACHE is runtime state, not part of semantic round-trip
-# aligns_with_fact excluded from persisted payload by P1 decision
+# aligns_with_fact excluded from persisted payload by proposed ADR-002 disposition
 ```
 
 **Acceptance Criterion**: `validate_round_trip(character) -> PASS` requires:
 - BASE preservation (exact equality)
 - DERIVED recomputation equivalence
-- CACHE excluded from semantic round-trip (runtime evaluation only)
+- CACHE excluded from semantic persisted payload (runtime evaluation only)
 
 **Scope of ADR-002 Decision**:
 1. Explicit list of base vs derived vs cache fields for Character
@@ -1453,7 +1455,7 @@ assert char1.active_goals() == char2.active_goals()  # Recomputed from BASE
 3. Equality semantics (which fields participate in equality check)
 4. Schema strategy (which fields appear in character.schema.json)
 
-**Recommendation for ADR-002** (draft, pending formal ratification):
+**Proposed ADR-002 disposition** (draft, pending formal ratification):
 
 **BASE Fields** (authoritative, always serialized):
 ```python
