@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-10T06:11:19.522791+00:00",
+  "generated_at_utc": "2026-10-10T06:48:56.420467+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "c69a3427985ea6adbaf7425dac71b1e8e28239b5",
+  "validated_repository_revision": "55d509d41b676d6d6d6c762faa4fab6a0fdeb291",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -70,7 +70,7 @@
     "EVIDENCE_RECORD tests/contract/test_v2_006_step5.py: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD tests/contract/test_v2_006_step6.py: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD tests/contract/test_v2_006_step7.py: local evidence file missing/outside package/not a file",
-    "EVIDENCE_RECORD docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md: local evidence file missing/outside package/not a file",
+    "EVIDENCE_RECORD docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md: local evidence file missing/outside package/not a file",
     "EVIDENCE_RECORD docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md: local evidence file missing/outside package/not a file",
     "EVIDENCE_COVERAGE V2-006: missing checks",
     "EVIDENCE_COVERAGE V2-006 acceptance: missing checks",
@@ -99,7 +99,7 @@
     "LOCAL_REF: absent/outside package docs/reports/V2-005_FINAL_RATIFICATION.md",
     "LOCAL_REF: absent/outside package docs/V2-006_IMPLEMENTATION_CONTRACT.md",
     "LOCAL_REF: absent/outside package docs/V2-006_IMPLEMENTATION_CONTRACT.md",
-    "LOCAL_REF: absent/outside package docs/reports/V2-006_CONTRACT_REVIEW.md",
+    "LOCAL_REF: absent/outside package docs/archive/v2-005-remediation/V2-006_CONTRACT_REVIEW.md",
     "LOCAL_REF: absent/outside package src/anovel/domain/relationship.py",
     "LOCAL_REF: absent/outside package specs/schemas/entity-relationship.schema.json",
     "LOCAL_REF: absent/outside package tests/contract/test_v2_006.py",
@@ -110,8 +110,8 @@
     "LOCAL_REF: absent/outside package tests/contract/test_v2_006_step5.py",
     "LOCAL_REF: absent/outside package tests/contract/test_v2_006_step6.py",
     "LOCAL_REF: absent/outside package tests/contract/test_v2_006_step7.py",
-    "LOCAL_REF: absent/outside package docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md",
-    "LOCAL_REF: absent/outside package docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md",
+    "LOCAL_REF: absent/outside package docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md",
+    "LOCAL_REF: absent/outside package docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md",
     "LOCAL_REF: absent/outside package docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md",
     "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
   ]

@@ -12,7 +12,7 @@ P0—P14、双 Anchor 架构保持不变。61 个任务身份/阶段/依赖按�
 
 **当前状态：P0 阶段已完成并验证（V2-001 through V2-004 CLOSED）。P1 阶段活跃（V2-005, V2-006 CLOSED; V2-061, V2-007, V2-008 OPEN）。** Plan v1.3.1，61 任务。文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
 
-开工前清理已按用户授权完成：根目录旧资料的重复副本已删除，独有文件补充归档；旧根 ZIP 的 Git 恢复依据和逐文件去向保存在项目根下 `docs/repository-layout-migration.md` / `.json`。来源登记中的 `origin` 是历史位置，不要求根副本继续存在。2026-09-23 V2-001 已 IMPLEMENTED：具备最小 Python 骨架、锁定安装和本地真实 PostgreSQL 测试；远端 CI 和最终验收仍缺失。见[执行包](validation/execution/V2-001/execution-packet.yaml)及 [ADR-001](decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
+开工前清理已按用户授权完成：根目录旧资料的重复副本已删除，独有文件补充归档；旧根 ZIP 的 Git 恢复依据和逐文件去向保存在项目根下 `docs/archive/remediation/repository-layout-migration.md` / `.json`。来源登记中的 `origin` 是历史位置，不要求根副本继续存在。2026-09-23 V2-001 已 IMPLEMENTED：具备最小 Python 骨架、锁定安装和本地真实 PostgreSQL 测试；远端 CI 和最终验收仍缺失。见[执行包](validation/execution/V2-001/execution-packet.yaml)及 [ADR-001](decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
 
 ## 阅读与执行顺序
 

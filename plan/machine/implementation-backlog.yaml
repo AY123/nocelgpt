@@ -33,7 +33,7 @@ tasks:
   - src/anovel/__init__.py
   - tests/integration/test_repository_bootstrap.py
   - tests/integration/test_postgres_environment.py
-  - docs/repository-layout-migration.md
+  - docs/archive/remediation/repository-layout-migration.md
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
@@ -484,11 +484,11 @@ tasks:
       revision: bba1061ef27669ece55530bfdd846767b2fe21af
       status: PASS
     ci:
-    - ref: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
+    - ref: docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md
       revision: bba1061ef27669ece55530bfdd846767b2fe21af
       status: PASS
     acceptance:
-    - ref: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
+    - ref: docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md
       revision: bba1061ef27669ece55530bfdd846767b2fe21af
       status: PASS
     - ref: docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md
@@ -502,7 +502,7 @@ tasks:
   - SUP-03
   design_references:
   - docs/V2-006_IMPLEMENTATION_CONTRACT.md
-  - docs/reports/V2-006_CONTRACT_REVIEW.md
+  - docs/archive/v2-005-remediation/V2-006_CONTRACT_REVIEW.md
   foundational_references:
   - FND-003
 - task_id: V2-061

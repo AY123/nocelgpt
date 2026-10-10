@@ -46,7 +46,7 @@
   - Status: CLOSED
   - Tag: `v2.006-complete`
   - SHA: `bba1061ef27669ece55530bfdd846767b2fe21af`
-  - Evidence: Steps 1-8 verified, see `docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md`
+  - Evidence: Steps 1-8 verified, see `docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md`
   - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
   - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab) - 899/899 tests, 6/6 gates
 
@@ -137,7 +137,7 @@ pytest tests/architecture/ -v
 
 **Closure Reports**:
 - `docs/reports/V2-005_FINAL_CLOSURE_REPORT.md`
-- `docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md`
+- `docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md`
 
 **Governance Records**:
 - `plan/changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md`

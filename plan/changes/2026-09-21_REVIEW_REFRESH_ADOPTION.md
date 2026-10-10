@@ -67,7 +67,7 @@ CI 产物应与被版本管理的规划输入分离，但不要求输出到 chec
 
 | 任务 | 新增计划验收场景 | 对应改进 |
 |---|---|---|
-| V2-001 | AT-V2-001-05 | 历史资料与分发包处置清单；目标产物 `docs/repository-layout-migration.md` |
+| V2-001 | AT-V2-001-05 | 历史资料与分发包处置清单；目标产物 `docs/archive/remediation/repository-layout-migration.md` |
 | V2-002 | AT-V2-002-09～12 | PASS 见证边界、独立报告目录、模板真实路径、里程碑 revision |
 | V2-004 | AT-V2-004-05 | 真实 CI 运行与产物来源/版本核对 |
 

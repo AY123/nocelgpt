@@ -326,7 +326,7 @@ AR-03, CA-06, RR-05, RR-06, SUP-03, FND-003, EXT-005
 
 - V2-006 Implementation Contract v1.0.1: docs/V2-006_IMPLEMENTATION_CONTRACT.md
 - V2-006 Authorization: docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md
-- V2-006 Closure: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
+- V2-006 Closure: docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md
 - Post-consolidation audit: (This reconciliation task)
 - Immutable closure tag: v2.006-complete (bba1061ef27669ece55530bfdd846767b2fe21af)
 

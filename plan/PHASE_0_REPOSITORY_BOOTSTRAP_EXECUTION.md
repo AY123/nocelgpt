@@ -16,7 +16,7 @@
 
 验收：干净环境锁定安装成功；最小包/测试启动；隔离 PostgreSQL 可启动、连接和清理；缺配置有明确失败；不得包含真实凭证。运行环境决定写 ADR-001。
 
-产物目标：`pyproject.toml`、`uv.lock`、`.python-version`、`src/anovel/__init__.py`、`compose.yaml`、`README.md`、`tests/integration/test_postgres_environment.py`、`docs/repository-layout-migration.md`。
+产物目标：`pyproject.toml`、`uv.lock`、`.python-version`、`src/anovel/__init__.py`、`compose.yaml`、`README.md`、`tests/integration/test_postgres_environment.py`、`docs/archive/remediation/repository-layout-migration.md`。
 
 ## 3. V2-002 Normative documentation index
 
@@ -85,7 +85,7 @@ DA-01～05 的现有反例通过不等于其所有工程责任已关闭。DA-07/
 
 ## 后续授权：开工前资料清理
 
-用户随后明确要求删除过时无用文件。已完成根目录历史副本核对与清理，并将未覆盖的独有资料补入 archive，实际清单为项目根下 `docs/repository-layout-migration.md` / `.json`。这更新了上节“未删除”的当时状态，不改变历史审核记录。P0 实施时复核清单后继续骨架、锁文件、架构测试、PostgreSQL 和真实 CI；不得把资料清理记为 V2-001 或 G-P0 完成。
+用户随后明确要求删除过时无用文件。已完成根目录历史副本核对与清理，并将未覆盖的独有资料补入 archive，实际清单为项目根下 `docs/archive/remediation/repository-layout-migration.md` / `.json`。这更新了上节”未删除”的当时状态，不改变历史审核记录。P0 实施时复核清单后继续骨架、锁文件、架构测试、PostgreSQL 和真实 CI；不得把资料清理记为 V2-001 或 G-P0 完成。
 
 ## v1.3.0 AI 开发约束接入
 

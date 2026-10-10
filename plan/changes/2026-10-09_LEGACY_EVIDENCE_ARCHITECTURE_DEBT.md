@@ -52,7 +52,7 @@ Both V2-005 and V2-006 have **legitimate closure evidence**:
 - Tests: `tests/contract/test_v2_006*.py` (447/447 PASS)
 - Schema: `specs/schemas/entity-relationship.schema.json`
 - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
-- Closure: `docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md`
+- Closure: `docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md`
 - Authorization: `docs/reports/V2-006_IMPLEMENTATION_AUTHORIZATION.md`
 - External CI: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab, 899/899 tests, 6/6 gates)
 - Tag: `v2.006-complete` @ bba1061ef27669ece55530bfdd846767b2fe21af
@@ -133,7 +133,7 @@ When this technical debt is addressed in the future, resolution requires:
 ## References
 
 - V2-005 Final Closure: docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
-- V2-006 Final Closure: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md
+- V2-006 Final Closure: docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md
 - V2-006 Implementation Contract: docs/V2-006_IMPLEMENTATION_CONTRACT.md
 - Immutable tags: v2.005-complete, v2.006-complete
 - H3 reconciliation commit: d49cdd8

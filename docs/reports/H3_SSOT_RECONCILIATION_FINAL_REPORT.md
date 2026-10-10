@@ -64,7 +64,7 @@
 **Typed Evidence**:
 - Code: src/anovel/domain/relationship.py @ bba1061
 - Tests: tests/contract/test_v2_006*.py @ bba1061
-- CI: docs/reports/V2-006_FINAL_CLOSURE_CANDIDATE.md @ bba1061
+- CI: docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md @ bba1061
 - Acceptance: Implementation authorization + closure @ bba1061
 - External: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab, 899/899, 6/6)
 
