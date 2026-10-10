@@ -692,12 +692,131 @@ evidence_refs:
         # Point the OPEN task at the absence record
         open_task["execution_packet_ref"] = f"validation/fixture/absence-{tid}.yaml"
 
-        # This should produce EXEC_ABSENCE_BYPASS error
+        # This should produce EXEC_ABSENCE_NOT_GRANDFATHERED error
         errors = execution_checks(self.data, self.plan)
         self.assertTrue(
-            any(f"EXEC_ABSENCE_BYPASS {tid}" in e for e in errors),
-            f"Absence record should be rejected for OPEN task {tid}"
+            any(f"EXEC_ABSENCE_NOT_GRANDFATHERED {tid}" in e for e in errors),
+            f"Absence record should be rejected for non-grandfathered task {tid}"
         )
+
+    def test_absence_record_only_for_grandfathered_tasks(self):
+        """Only V2-005 and V2-006 may use absence records (explicit grandfathering)."""
+        tasks = self.data["implementation-backlog"]["tasks"]
+
+        # Find a future CLOSED task (or create one)
+        v2_007 = next((t for t in tasks if t["task_id"] == "V2-007"), None)
+        if v2_007:
+            # Temporarily mark as CLOSED for this test
+            original_status = v2_007["status"]
+            v2_007["status"] = "CLOSED"
+
+            absence_record = self.records / "absence-V2-007.yaml"
+            absence_record.write_text("""record_type: execution_packet_absence_record
+schema_version: '1.0'
+task_id: V2-007
+closure_revision: 0000000000000000000000000000000000000000
+closure_tag: fake-v2-007-complete
+registration_context: test
+reason: Testing future task bypass prevention
+evidence_refs:
+- type: implementation
+  ref: src/fake.py
+""")
+
+            v2_007["execution_packet_ref"] = "validation/fixture/absence-V2-007.yaml"
+
+            errors = execution_checks(self.data, self.plan)
+            self.assertTrue(
+                any("EXEC_ABSENCE_NOT_GRANDFATHERED V2-007" in e for e in errors),
+                "V2-007 should not be allowed to use absence record (not grandfathered)"
+            )
+
+            # Restore
+            v2_007["status"] = original_status
+
+    def test_absence_record_wrong_closure_sha_rejected(self):
+        """Absence record with wrong closure SHA must be rejected."""
+        tasks = self.data["implementation-backlog"]["tasks"]
+        v2_005 = next(t for t in tasks if t["task_id"] == "V2-005")
+
+        # Create absence record with wrong SHA
+        absence_record = self.records / "absence-V2-005-wrong.yaml"
+        absence_record.write_text("""record_type: execution_packet_absence_record
+schema_version: '1.0'
+task_id: V2-005
+closure_revision: 0000000000000000000000000000000000000000
+closure_tag: v2.005-complete
+registration_context: test
+reason: Testing wrong SHA rejection
+evidence_refs:
+- type: implementation
+  ref: src/fake.py
+""")
+
+        original_ref = v2_005.get("execution_packet_ref")
+        v2_005["execution_packet_ref"] = "validation/fixture/absence-V2-005-wrong.yaml"
+
+        errors = execution_checks(self.data, self.plan)
+        self.assertTrue(
+            any("EXEC_ABSENCE_IDENTITY V2-005" in e and "closure_revision" in e for e in errors),
+            "Wrong closure_revision should be rejected"
+        )
+
+        # Restore
+        if original_ref:
+            v2_005["execution_packet_ref"] = original_ref
+
+    def test_absence_record_wrong_tag_rejected(self):
+        """Absence record with wrong closure tag must be rejected."""
+        tasks = self.data["implementation-backlog"]["tasks"]
+        v2_006 = next(t for t in tasks if t["task_id"] == "V2-006")
+
+        # Create absence record with wrong tag
+        absence_record = self.records / "absence-V2-006-wrong.yaml"
+        absence_record.write_text("""record_type: execution_packet_absence_record
+schema_version: '1.0'
+task_id: V2-006
+closure_revision: bba1061ef27669ece55530bfdd846767b2fe21af
+closure_tag: wrong-tag
+registration_context: test
+reason: Testing wrong tag rejection
+evidence_refs:
+- type: implementation
+  ref: src/fake.py
+""")
+
+        original_ref = v2_006.get("execution_packet_ref")
+        v2_006["execution_packet_ref"] = "validation/fixture/absence-V2-006-wrong.yaml"
+
+        errors = execution_checks(self.data, self.plan)
+        self.assertTrue(
+            any("EXEC_ABSENCE_IDENTITY V2-006" in e and "closure_tag" in e for e in errors),
+            "Wrong closure_tag should be rejected"
+        )
+
+        # Restore
+        if original_ref:
+            v2_006["execution_packet_ref"] = original_ref
+
+    def test_grandfathered_absence_records_valid(self):
+        """V2-005 and V2-006 with correct absence records should produce EXEC_PACKET_ABSENT only."""
+        # This test verifies that properly configured grandfathered absence records
+        # are accepted structurally and produce the expected EXEC_PACKET_ABSENT finding
+        errors = execution_checks(self.data, self.plan)
+
+        # Should have EXEC_PACKET_ABSENT findings
+        v2_005_absent = [e for e in errors if "EXEC_PACKET_ABSENT V2-005" in e]
+        v2_006_absent = [e for e in errors if "EXEC_PACKET_ABSENT V2-006" in e]
+
+        self.assertEqual(len(v2_005_absent), 1, "V2-005 should have exactly one EXEC_PACKET_ABSENT finding")
+        self.assertEqual(len(v2_006_absent), 1, "V2-006 should have exactly one EXEC_PACKET_ABSENT finding")
+
+        # Should NOT have bypass/identity errors for grandfathered tasks
+        v2_005_bypass = [e for e in errors if "V2-005" in e and ("BYPASS" in e or "NOT_GRANDFATHERED" in e or "IDENTITY" in e)]
+        v2_006_bypass = [e for e in errors if "V2-006" in e and ("BYPASS" in e or "NOT_GRANDFATHERED" in e or "IDENTITY" in e)]
+
+        self.assertEqual(len(v2_005_bypass), 0, "V2-005 should not have bypass/identity errors with valid absence record")
+        self.assertEqual(len(v2_006_bypass), 0, "V2-006 should not have bypass/identity errors with valid absence record")
 
 
 class RecordedResult(unittest.TextTestResult):

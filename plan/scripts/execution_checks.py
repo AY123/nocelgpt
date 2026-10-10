@@ -29,6 +29,22 @@ ACTION_TIMINGS = {
     },
 }
 
+# Historical execution packet absence grandfathering
+# These are the ONLY tasks permitted to use execution_packet_absence_record.
+# Adding new tasks requires explicit governance approval and baseline revision.
+GRANDFATHERED_EXECUTION_PACKET_ABSENCES = {
+    "V2-005": {
+        "closure_revision": "bd303e64dab6475bd12b69d273afa6c64eaa38ad",
+        "closure_tag": "v2.005-complete",
+        "reason": "Task closed before execution packet framework established (2026-10-06)",
+    },
+    "V2-006": {
+        "closure_revision": "bba1061ef27669ece55530bfdd846767b2fe21af",
+        "closure_tag": "v2.006-complete",
+        "reason": "Task closed before execution packet framework established (2026-10-08)",
+    },
+}
+
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -109,15 +125,37 @@ def execution_checks(data, plan):
                         f"EXEC_ABSENCE_SCHEMA {tid}: " + "; ".join(e.message for e in issues[:3])
                     )
                     continue
-                # Absence records only permitted for CLOSED tasks
+
+                # Absence records ONLY permitted for explicitly grandfathered tasks
+                if tid not in GRANDFATHERED_EXECUTION_PACKET_ABSENCES:
+                    errors.append(
+                        f"EXEC_ABSENCE_NOT_GRANDFATHERED {tid}: execution packet absence records are only permitted for explicitly approved historical tasks (V2-005, V2-006); this task is not grandfathered"
+                    )
+                    continue
+
+                # Verify task is actually CLOSED
                 if task["status"] != "CLOSED":
                     errors.append(
                         f"EXEC_ABSENCE_BYPASS {tid}: absence record not allowed for {task['status']} task; only CLOSED historical tasks may use absence records"
                     )
                     continue
-                # Verify task_id matches
+
+                # Verify subject identity matches grandfathered record
+                grandfather = GRANDFATHERED_EXECUTION_PACKET_ABSENCES[tid]
                 if packet.get("task_id") != tid:
-                    errors.append(f"EXEC_ABSENCE_SUBJECT {tid}: wrong task_id in absence record")
+                    errors.append(f"EXEC_ABSENCE_IDENTITY {tid}: task_id mismatch in absence record")
+                    continue
+                if packet.get("closure_revision") != grandfather["closure_revision"]:
+                    errors.append(
+                        f"EXEC_ABSENCE_IDENTITY {tid}: closure_revision must be {grandfather['closure_revision']}"
+                    )
+                    continue
+                if packet.get("closure_tag") != grandfather["closure_tag"]:
+                    errors.append(
+                        f"EXEC_ABSENCE_IDENTITY {tid}: closure_tag must be {grandfather['closure_tag']}"
+                    )
+                    continue
+
                 # Register the absence explicitly
                 errors.append(
                     f"EXEC_PACKET_ABSENT {tid}: no genuine historical execution packet exists (absence record registered)"
