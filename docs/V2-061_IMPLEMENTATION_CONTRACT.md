@@ -250,6 +250,11 @@ class Proposition:
     Each PropositionId must map to exactly one stable semantic payload
     (subject, predicate, object, context, project_id) across all
     CharacterKnowledge records in the project.
+
+    Context Immutability: If context is provided, it must be deep-immutable.
+    frozen=True on the dataclass is insufficient if context contains mutable
+    structures. Implementation must ensure context cannot be mutated after
+    Proposition creation.
     """
 
     proposition_id: PropositionId
@@ -257,7 +262,7 @@ class Proposition:
     subject: EntityId | str  # What the claim is about (if EntityId, must be same project)
     predicate: str  # "betrayed", "loves", "owns", "is_alive", "is_dead"
     object: EntityId | str | None = None  # Target of predicate (if EntityId, must be same project)
-    context: dict | None = None  # Additional structured context
+    context: dict | None = None  # Additional structured context (must be deep-immutable)
 ```
 
 ### CharacterKnowledge
@@ -280,6 +285,7 @@ class CharacterKnowledge:
     ignores CACHE fields.
     """
 
+    # Required fields (no defaults)
     knower: EntityId  # The character who holds this epistemic state
     proposition: Proposition  # Full proposition (contains proposition_id + structured payload)
 
@@ -290,6 +296,26 @@ class CharacterKnowledge:
         "SUSPECTED",  # Weak belief, uncertain
     ]
 
+    # Provenance: How did character acquire this knowledge? (REQUIRED)
+    acquisition_source: Literal[
+        "DIRECT_OBSERVATION",  # Character witnessed directly
+        "COMMUNICATION",       # Told by another character (source_character required)
+        "DOCUMENT",           # Read from written source (source_ref required)
+        "INFERENCE",          # Reasoned from other knowledge (basis_ref required)
+        "RUMOR",              # Heard indirectly (source_character OR source_ref required)
+    ]
+
+    # Optional fields (with explicit defaults)
+    # Source References (requirements depend on acquisition_source)
+    source_character: EntityId | None = None  # For COMMUNICATION, RUMOR
+    source_ref: str | None = None  # For DIRECT_OBSERVATION, DOCUMENT, RUMOR
+    basis_ref: list[PropositionId] | None = None  # For INFERENCE (what was reasoned from)
+
+    acquired_at: datetime | None = None  # System timestamp (when record created)
+    story_time_ref: str | None = None  # Opaque story-world temporal reference (V2-007 authority)
+    confidence: float | None = None  # 0.0-1.0 confidence level
+
+    # CACHE field (runtime evaluation, not BASE state)
     # Truth Alignment (CACHE, not authoritative state)
     # This is a NON-AUTHORITATIVE truth-alignment evaluation cache produced
     # using external objective Canon context (V2-005/V2-006/V2-007).
@@ -303,24 +329,6 @@ class CharacterKnowledge:
     # Character epistemic proposition is the authoritative V2-061 state.
     # MUST use field(compare=False) so dict equality ignores CACHE.
     aligns_with_fact: bool | None = field(default=None, compare=False)
-
-    # Provenance: How did character acquire this knowledge? (REQUIRED)
-    acquisition_source: Literal[
-        "DIRECT_OBSERVATION",  # Character witnessed directly
-        "COMMUNICATION",       # Told by another character (source_character required)
-        "DOCUMENT",           # Read from written source (source_ref required)
-        "INFERENCE",          # Reasoned from other knowledge (basis_ref required)
-        "RUMOR",              # Heard indirectly (source_character OR source_ref required)
-    ]
-
-    # Source References (requirements depend on acquisition_source)
-    source_character: EntityId | None  # For COMMUNICATION, RUMOR
-    source_ref: str | None  # For DIRECT_OBSERVATION, DOCUMENT, RUMOR
-    basis_ref: list[PropositionId] | None  # For INFERENCE (what was reasoned from)
-
-    acquired_at: datetime | None  # System timestamp (when record created)
-    story_time_ref: str | None  # Opaque story-world temporal reference (V2-007 authority)
-    confidence: float | None  # 0.0-1.0 confidence level
 ```
 
 **Proposition Resolution**:
@@ -440,7 +448,15 @@ V2-007 owns:
 
 **Occurrence Determination**:
 Objective occurrence is determined ONLY by validated V2-007 Event existence,
-NOT by PlannedAction status.
+NOT by PlannedAction status or occurred_event_ref field alone.
+
+`occurred_event_ref=None` means V2-061 has no linked occurrence evidence.
+It does NOT independently prove the action did not occur.
+
+Allowed conceptual outcomes:
+- Validated V2-007 Event → action occurred
+- Explicit V2-007 non-occurrence/cancellation record → action did not occur
+- Insufficient V2-007 authority → unknown / no occurrence evidence available
 
 **Linking Plan to Occurrence**:
 - If action occurs, V2-007 creates Event
@@ -481,25 +497,29 @@ plan_with_link = PlannedAction(
 )
 ```
 
-**Occurrence Inference**: To determine if action occurred, check for validated V2-007 Event,
-not PlannedAction status. Absence of valid V2-007 Event means no occurrence.
+**Occurrence Inference**: To determine if action occurred, query V2-007 for validated Event.
+`occurred_event_ref=None` means no linked occurrence evidence in V2-061, not proof of non-occurrence.
 
 ---
 
 ## Objective Fact Boundary
 
-**V2-061 does NOT define objective facts**.
+**V2-061 Scope**:
 
-Objective facts are:
-- Canonical state entities (V2-005)
-- Relationships (V2-006)
-- Events (V2-007)
+V2-061 is not a general objective fact store. It owns Character domain state:
+- Current Character lifecycle (V2-061 domain authority)
+- Character epistemic state (what characters know/believe)
+- Character intentional state (what characters intend to do)
 
-V2-061 defines:
-- **What characters know/believe about objective facts**
-- **What characters intend to do** (not what they did)
+**External Authority**:
+- Entity identity/naming/aliases/entity_type: V2-005
+- Entity-to-entity relationships: V2-006
+- Objective event occurrences and lifecycle-changing events: V2-007
+- Accepted committed state/history: Canon
 
-**Invariant**: Character knowledge state is SEPARATE from canonical fact state.
+**Invariant**: Character epistemic state is SEPARATE from canonical fact state.
+Character beliefs about objective facts are V2-061 authority; the objective facts
+themselves are external authority.
 
 ---
 
@@ -513,7 +533,7 @@ Character can ONLY acquire knowledge through explicit paths:
 2. **COMMUNICATION**: Another character tells them (requires `source_character`)
 3. **DOCUMENT**: Character reads written source (requires `source_ref`)
 4. **INFERENCE**: Character deduces from existing knowledge (requires `basis_ref`)
-5. **RUMOR**: Character hears indirectly (low reliability, source may be unknown)
+5. **RUMOR**: Character hears indirectly (requires `source_character` OR `source_ref`)
 
 **Hard Rule**: Character CANNOT have knowledge without one of these paths.
 
@@ -1241,10 +1261,10 @@ assert restored == character  # Exact equality
 
 | Scenario | Expected |
 |----------|----------|
-| Character observes event directly | knowledge_level=KNOWN, acquisition_source=DIRECT_OBSERVATION |
+| Character observes event directly | knowledge_level=KNOWN, acquisition_source=DIRECT_OBSERVATION, source_ref REQUIRED |
 | Character told by another | knowledge_level=BELIEVED, acquisition_source=COMMUNICATION, source_character REQUIRED |
 | Character reads document | knowledge_level=KNOWN, acquisition_source=DOCUMENT, source_ref REQUIRED |
-| Character hears rumor | knowledge_level=SUSPECTED, acquisition_source=RUMOR |
+| Character hears rumor | knowledge_level=SUSPECTED, acquisition_source=RUMOR, source_character OR source_ref REQUIRED |
 | Character has no path to fact | NO knowledge entry (ordinary UNKNOWN) |
 
 ### Misbelief Representation (AC-2)
@@ -1257,12 +1277,14 @@ assert restored == character  # Exact equality
 
 ### Intent vs Occurrence (AC-3)
 
-| Scenario | PlannedAction Status | V2-007 Event Created? | occurred_event_ref |
-|----------|----------------------|----------------|--------------------|
-| Character plans to attack | PLANNED | NO | None |
-| Plan executed successfully | PLANNED | YES | event_id |
-| Plan cancelled before execution | CANCELLED | NO | None |
-| Plan cancelled after execution | CANCELLED | YES | event_id |
+| Scenario | PlannedAction Status | V2-007 Event Created? | occurred_event_ref | Occurrence Determination |
+|----------|----------------------|----------------|--------------------|--------------------------|
+| Character plans to attack | PLANNED | NO | None | No occurrence evidence |
+| Plan executed successfully | PLANNED | YES | event_id | V2-007 Event validates occurrence |
+| Plan cancelled before execution | CANCELLED | NO | None | No occurrence evidence |
+
+**Note**: occurred_event_ref=None means V2-061 has no linked occurrence evidence.
+It does NOT prove non-occurrence. Query V2-007 for occurrence truth.
 
 ### Goal Lifecycle (AC-4)
 
@@ -1388,7 +1410,14 @@ All V2-061 classes MUST:
 **Round-Trip Strategy**:
 1. **BASE fields**: Always serialize, always deserialize (authoritative)
 2. **DERIVED fields**: Never serialized (recomputed on load from BASE state)
-3. **CACHE fields**: Optional serialization, discarded/revalidated on load
+3. **CACHE fields**: Runtime evaluation state, not persisted in semantic schema payload
+
+**Machine SSOT Compliance** (合法派生字段和非默认值往返不丢失):
+
+P1 Decision for aligns_with_fact:
+- `aligns_with_fact` is runtime CACHE, NOT part of persisted semantic schema payload
+- Does NOT participate in Machine semantic round-trip acceptance
+- If implementation chooses to persist CACHE, must define validity/revision binding
 
 **Critical Requirement** (Machine Round-Trip Acceptance):
 ```python
@@ -1409,12 +1438,14 @@ assert char1.planned_actions == char2.planned_actions  # BASE: exact list equali
 # DERIVED state must be equivalent when recomputed (not stored)
 assert char1.active_goals() == char2.active_goals()  # Recomputed from BASE
 
-# CACHE may differ or be None (not part of semantic equality)
-# aligns_with_fact may be None after deserialization if not re-evaluated
-# CACHE fields discarded/revalidated, do NOT affect semantic equality
+# CACHE is runtime state, not part of semantic round-trip
+# aligns_with_fact excluded from persisted payload by P1 decision
 ```
 
-**Acceptance Criterion**: `validate_round_trip(character) -> PASS` requires BASE preservation, DERIVED recomputation equivalence, CACHE discarding without semantic change.
+**Acceptance Criterion**: `validate_round_trip(character) -> PASS` requires:
+- BASE preservation (exact equality)
+- DERIVED recomputation equivalence
+- CACHE excluded from semantic round-trip (runtime evaluation only)
 
 **Scope of ADR-002 Decision**:
 1. Explicit list of base vs derived vs cache fields for Character
@@ -1735,8 +1766,9 @@ planned = PlannedAction(
 )
 ```
 
-**Occurrence Inference**: Absence of validated V2-007 Event means action has not occurred.
-Do not infer occurrence status from PlannedAction.status alone.
+**Occurrence Inference**: Query V2-007 for validated Event to determine occurrence.
+`occurred_event_ref=None` means no linked occurrence evidence in V2-061, not proof
+the action did not occur. V2-007 is sole occurrence authority.
 
 **Anti-Pattern Prevention**:
 - System MUST NOT treat planned action as occurred event
