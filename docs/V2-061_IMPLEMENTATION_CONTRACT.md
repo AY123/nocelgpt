@@ -63,12 +63,12 @@ This prevents character omniscience, information leakage across viewpoints, and 
 - Proposition identity (PropositionId, Proposition)
 - Knowledge acquisition provenance (REQUIRED)
 - Source tracking: DIRECT_OBSERVATION, COMMUNICATION, DOCUMENT, INFERENCE, RUMOR
-- Truth alignment (aligns_with_fact: derived evaluation result)
+- Truth alignment (aligns_with_fact: CACHE evaluation requiring Canon context)
 
 **Intent Model**:
 - Character goals
 - Character intents
-- Planned actions (not yet occurred)
+- Planned actions (intent records, occurrence determined by V2-007)
 - Goal lifecycle: ACTIVE, BLOCKED, ACHIEVED, FAILED, ABANDONED
 
 **Boundaries**:
@@ -149,7 +149,7 @@ This prevents character omniscience, information leakage across viewpoints, and 
 
 **Intent**: Character's formed intention to pursue a goal or take action.
 
-**Planned Action**: Action a character intends to take (not yet occurred).
+**Planned Action**: Action a character intends to take (intent record; occurrence determined by V2-007).
 
 **Occurred Event**: Action/event that has actually happened in story world (V2-007 domain).
 
@@ -181,8 +181,9 @@ class Character:
 
     # Character Lifecycle (V2-061 authority)
     # V2-061 owns character epistemic/intent lifecycle state.
-    # V2-005 EntityIdentity owns entity naming/identity lifecycle.
-    # These are separate concerns and may have different lifecycle values.
+    # V2-005 EntityIdentity owns entity naming/identity authority.
+    # V2-007 owns objective lifecycle-changing event occurrences.
+    # These are separate concerns and may have different values.
     lifecycle: Literal["PLANNED", "ACTIVE", "INACTIVE", "DECEASED", "SUPERSEDED"]
 
     # Knowledge State
@@ -245,18 +246,18 @@ class Proposition:
     Project Scope: All entity references (subject, object if EntityId)
     MUST belong to the same project as the proposition.
 
-    Collision Invariant: Same proposition_id + different content = INVALID.
-    Each PropositionId must map to exactly one stable content across all
+    Collision Invariant: Same proposition_id + different BASE payload = INVALID.
+    Each PropositionId must map to exactly one stable semantic payload
+    (subject, predicate, object, context, project_id) across all
     CharacterKnowledge records in the project.
     """
 
     proposition_id: PropositionId
-    content: str  # Human-readable claim (e.g., "Character B is dead")
+    project_id: ProjectId  # Project scope (all EntityId references must match)
     subject: EntityId | str  # What the claim is about (if EntityId, must be same project)
     predicate: str  # "betrayed", "loves", "owns", "is_alive", "is_dead"
-    object: EntityId | str | None  # Target of predicate (if EntityId, must be same project)
-    context: dict | None  # Additional structured context
-    project_id: ProjectId  # Project scope (all EntityId references must match)
+    object: EntityId | str | None = None  # Target of predicate (if EntityId, must be same project)
+    context: dict | None = None  # Additional structured context
 ```
 
 ### CharacterKnowledge
@@ -273,14 +274,14 @@ class CharacterKnowledge:
     Proposition Ownership: CharacterKnowledge owns the Proposition content.
     The proposition field contains the full Proposition, not just an ID reference.
 
-    CACHE Field Equality: aligns_with_fact is DERIVED/CACHE and should not
-    participate in semantic equality checks. When comparing CharacterKnowledge
-    for equivalence, either use field(compare=False) on aligns_with_fact or
-    implement explicit semantic_equals() that excludes CACHE fields.
+    CACHE Field Equality: aligns_with_fact is CACHE and must not
+    participate in semantic equality checks. Use field(compare=False)
+    on aligns_with_fact so that char1.knowledge == char2.knowledge
+    ignores CACHE fields.
     """
 
     knower: EntityId  # The character who holds this epistemic state
-    proposition: Proposition  # Full proposition (contains proposition_id + content)
+    proposition: Proposition  # Full proposition (contains proposition_id + structured payload)
 
     # Epistemic Level
     knowledge_level: Literal[
@@ -289,17 +290,19 @@ class CharacterKnowledge:
         "SUSPECTED",  # Weak belief, uncertain
     ]
 
-    # Truth Alignment (DERIVED EVALUATION, not authoritative state)
-    # This is a NON-AUTHORITATIVE result of comparing character epistemic
-    # proposition against objective Canon state (V2-005/V2-006/V2-007).
+    # Truth Alignment (CACHE, not authoritative state)
+    # This is a NON-AUTHORITATIVE truth-alignment evaluation cache produced
+    # using external objective Canon context (V2-005/V2-006/V2-007).
     # None = alignment not yet evaluated
     # True = epistemic proposition aligns with objective Canon
     # False = misbelief (epistemic proposition contradicts objective Canon)
     #
-    # IMPORTANT: This field is DERIVED/CACHE, not BASE state.
+    # IMPORTANT: This field is CACHE, not BASE state.
+    # It is NOT derivable from Character BASE alone - requires objective Canon context.
     # If objective Canon changes, this field becomes stale and must be re-evaluated.
     # Character epistemic proposition is the authoritative V2-061 state.
-    aligns_with_fact: bool | None
+    # MUST use field(compare=False) so dict equality ignores CACHE.
+    aligns_with_fact: bool | None = field(default=None, compare=False)
 
     # Provenance: How did character acquire this knowledge? (REQUIRED)
     acquisition_source: Literal[
@@ -429,11 +432,15 @@ PlannedActionId = NewType("PlannedActionId", str)
 **PlannedAction Occurrence Invariant**:
 
 V2-061 owns:
-- `status = "PLANNED"`: Character intends to take action (not yet occurred)
-- `status = "CANCELLED"`: Character cancelled plan (will not occur)
+- `status = "PLANNED"`: Plan record is active (not cancelled)
+- `status = "CANCELLED"`: Character cancelled plan
 
 V2-007 owns:
 - Objective action occurrence (Event)
+
+**Occurrence Determination**:
+Objective occurrence is determined ONLY by validated V2-007 Event existence,
+NOT by PlannedAction status.
 
 **Linking Plan to Occurrence**:
 - If action occurs, V2-007 creates Event
@@ -442,18 +449,18 @@ V2-007 owns:
 
 **Valid States**:
 
-1. **Not yet occurred**: `status="PLANNED"`, `occurred_event_ref=None`
-2. **Occurred**: `status="PLANNED"`, `occurred_event_ref=<event_id>` (links to V2-007 Event)
-3. **Cancelled before occurrence**: `status="CANCELLED"`, `occurred_event_ref=None`
-4. **Cancelled after occurrence**: `status="CANCELLED"`, `occurred_event_ref=<event_id>` (character retracted intent after action already occurred)
+1. **Plan exists, no linked occurrence**: `status="PLANNED"`, `occurred_event_ref=None`
+2. **Plan exists, linked to occurrence**: `status="PLANNED"`, `occurred_event_ref=<event_id>` (links to V2-007 Event)
+3. **Plan cancelled, no occurrence**: `status="CANCELLED"`, `occurred_event_ref=None`
 
-**Invalid States** (MUST be rejected):
+**Invalid States** (MUST be rejected for P1):
+- `status="CANCELLED"`, `occurred_event_ref=<event_id>` (reject unless concrete narrative use case proves necessary)
 - Treating `occurred_event_ref` presence as proof of occurrence without V2-007 Event validation
 - Using PlannedAction status to determine occurrence (occurrence authority is V2-007 only)
 
 **Correct Pattern**:
 ```python
-# Plan exists (not yet occurred)
+# Plan exists, no linked occurrence
 plan = PlannedAction(
     action_id=PlannedActionId("..."),
     status="PLANNED",
@@ -465,16 +472,17 @@ plan = PlannedAction(
 event = Event(...)  # V2-007 authority
 canon.add_event(event)
 
-# Link plan to event (status stays "PLANNED" - this is still a plan record)
+# Link plan to event (status stays "PLANNED" - plan record remains active)
 plan_with_link = PlannedAction(
     ...
-    status="PLANNED",  # Intent record, not occurrence record
+    status="PLANNED",  # Plan record, not occurrence record
     occurred_event_ref=event.id,  # Links to V2-007 occurrence
     ...
 )
 ```
 
-**No Second Occurrence Authority**: V2-061 does NOT determine whether action occurred. Query V2-007 for occurrence truth.
+**Occurrence Inference**: To determine if action occurred, check for validated V2-007 Event,
+not PlannedAction status. Absence of valid V2-007 Event means no occurrence.
 
 ---
 
@@ -599,13 +607,14 @@ char_a.knowledge[prop_id] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_id,
-        content="Character B is dead",
-        project_id=project_id
+        project_id=project_id,
+        subject=char_b_id,
+        predicate="is_dead"
     ),
     knowledge_level="BELIEVED",  # A believes strongly (but incorrectly)
     acquisition_source="COMMUNICATION",
     source_character=char_c.entity_id,  # C told A this (C lied or was wrong)
-    aligns_with_fact=False,  # DERIVED/CACHE - Misbelief
+    aligns_with_fact=False,  # CACHE - Misbelief
     confidence=0.95  # High confidence, but still BELIEVED not KNOWN
 )
 ```
@@ -692,16 +701,15 @@ char.knowledge[prop_id] = CharacterKnowledge(
     knower=char.entity_id,
     proposition=Proposition(
         proposition_id=prop_id,
+        project_id=project_id,
         subject=target_entity_id,
-        predicate="is_guilty",
-        ...
+        predicate="is_guilty"
     ),
     knowledge_level="SUSPECTED",  # Uncertain
     acquisition_source="RUMOR",
     source_character=rumor_source_id,  # Where rumor came from
     confidence=0.3,  # Low confidence
-    aligns_with_fact=None,  # Unknown if true
-    ...
+    aligns_with_fact=None  # CACHE - Unknown if true
 )
 ```
 
@@ -768,11 +776,12 @@ Intent(
 
 ## PlannedAction Semantics
 
-**PlannedAction** = Specific action character intends to take.
+**PlannedAction** = Intent record for specific action character plans to take.
 
 **Critical Distinction**:
-- PlannedAction status = "PLANNED" → HAS NOT OCCURRED
-- V2-007 Event → HAS OCCURRED
+- PlannedAction = Intent record (V2-061 authority)
+- V2-007 Event = Objective occurrence record (V2-007 authority)
+- Occurrence determined by validated V2-007 Event, NOT by PlannedAction status
 
 **Anti-Pattern Prevention**:
 ```python
@@ -1028,14 +1037,15 @@ char_c.knowledge[prop_id] = CharacterKnowledge(
     knower=char_c.entity_id,
     proposition=Proposition(
         proposition_id=prop_id,
-        content="char_a is married to char_b",
-        project_id=project_id
+        project_id=project_id,
+        subject=char_a_id,
+        predicate="married_to",
+        object=char_b_id
     ),
     knowledge_level="BELIEVED",  # C believes it but hasn't verified
     acquisition_source="RUMOR",
     source_character=some_gossip_source,  # RUMOR requires source
-    aligns_with_fact=True,  # DERIVED/CACHE - Belief happens to be correct
-    ...
+    aligns_with_fact=True  # CACHE - Belief happens to be correct
 )
 
 # Character D's MISBELIEF about relationship (V2-061 authority)
@@ -1043,15 +1053,15 @@ char_d.knowledge[prop_id_2] = CharacterKnowledge(
     knower=char_d.entity_id,
     proposition=Proposition(
         proposition_id=prop_id_2,
-        content="char_a is single",
-        project_id=project_id
+        project_id=project_id,
+        subject=char_a_id,
+        predicate="is_single"
     ),
     knowledge_level="BELIEVED",  # D believes strongly (but incorrectly)
     acquisition_source="DIRECT_OBSERVATION",  # D thinks they saw evidence
     source_ref="scene_ref_123",  # DIRECT_OBSERVATION requires source_ref
-    aligns_with_fact=False,  # DERIVED/CACHE - Misbelief (A is actually married)
-    confidence=0.90,  # High confidence, but objectively wrong
-    ...
+    aligns_with_fact=False,  # CACHE - Misbelief (A is actually married)
+    confidence=0.90  # High confidence, but objectively wrong
 )
 ```
 
@@ -1188,18 +1198,22 @@ assert restored == character  # Exact equality
 - Deserialize JSON → Character
 - Result MUST equal original for all base state (semantic equality)
 
-**Base State** (ADR-002):
-- Base fields: Always serialize/deserialize
-- Authoritative, participates in semantic equality
+**BASE State** (ADR-002):
+- Authoritative state that must be preserved in round-trip
+- Always serialize/deserialize
+- Exact semantic equality required after deserialization
 
-**Derived State** (ADR-002):
-- May be recomputed from base state
-- Not required for semantic equality
+**DERIVED State** (ADR-002):
+- Computed from BASE state alone
+- Never serialized; recomputed on load
+- Must be semantically equivalent when recomputed
 
-**Cache State** (ADR-002):
-- Optional, discardable
-- Does NOT participate in semantic equality
-- Example: `aligns_with_fact` (derived evaluation result)
+**CACHE State** (ADR-002):
+- Contextual evaluation requiring external Canon context
+- NOT derivable from BASE alone
+- Optional serialization; discarded/revalidated on load
+- Does NOT participate in semantic equality (field(compare=False) required)
+- Example: `aligns_with_fact` (requires V2-005/V2-006/V2-007 Canon context)
 
 **Machine SSOT**: `specs/schemas/character.schema.json` is the sole schema artifact for V2-061.
 
@@ -1358,17 +1372,18 @@ All V2-061 classes MUST:
 - Source of truth
 - Examples: `entity_id`, `project_id`, `lifecycle`, `knowledge` dict, `goals`, `intents`, `planned_actions`
 
-**Derived State** (computed):
-- CAN be recalculated from base state
-- May be cached for performance
+**Derived State** (computed from BASE alone):
+- CAN be recalculated from BASE state without external context
+- Never serialized; recomputed on load
 - NOT authoritative (if derived conflicts with base, base wins)
-- Examples: `active_goals` (filter of `goals` where status=ACTIVE), `misbeliefs` (filter of `knowledge` where aligns_with_fact=False)
+- Examples: `active_goals` (filter of `goals` where status=ACTIVE), `knowledge_count` (len(knowledge))
 
-**Cache** (performance optimization):
-- Derived state that's expensive to compute
-- Can be discarded and regenerated
-- Must NOT affect semantic equality
-- Must be clearly marked as cache
+**Cache** (contextual evaluation requiring external Canon):
+- NOT derivable from BASE alone - requires external Canon context
+- Can be discarded and regenerated using Canon context
+- Must NOT affect semantic equality (field(compare=False) required)
+- Must be clearly marked as CACHE
+- Example: `aligns_with_fact` (requires V2-005/V2-006/V2-007 Canon to evaluate)
 
 **Round-Trip Strategy**:
 1. **BASE fields**: Always serialize, always deserialize (authoritative)
@@ -1424,7 +1439,7 @@ authority: str               # Provenance metadata
 provenance: dict             # Provenance metadata
 ```
 
-**DERIVED Fields** (computed from BASE, never serialized):
+**DERIVED Fields** (computed from BASE alone, never serialized):
 ```python
 @property
 def active_goals(self) -> list[Goal]:
@@ -1437,13 +1452,16 @@ def knowledge_count(self) -> int:
     return len(self.knowledge)
 ```
 
-**CACHE Fields** (non-authoritative evaluation results):
+**CACHE Fields** (contextual evaluations requiring external Canon, not BASE-derivable):
 ```python
 # In CharacterKnowledge:
-aligns_with_fact: bool | None  # CACHE: truth alignment evaluation result
+aligns_with_fact: bool | None = field(default=None, compare=False)
+                                # CACHE: truth alignment evaluation cache
+                                # Requires objective Canon context (V2-005/V2-006/V2-007)
+                                # NOT derivable from Character BASE alone
                                 # Can be None (not evaluated)
                                 # Can be discarded/revalidated
-                                # Does NOT participate in semantic equality
+                                # MUST NOT participate in semantic equality (compare=False)
                                 # If Canon changes, must be re-evaluated
 ```
 
@@ -1586,17 +1604,14 @@ char_a.knowledge[prop_murder] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_murder,
-        content="Character C is the murderer",
+        project_id=project_id,
         subject=char_c_id,
-        predicate="is_the_murderer",
-        object=None,
-        context=None,
-        project_id=project_id
+        predicate="is_the_murderer"
     ),
     knowledge_level="BELIEVED",
     acquisition_source="INFERENCE",
     basis_ref=[prop_motive, prop_opportunity],  # A reasoned incorrectly
-    aligns_with_fact=False,  # DERIVED/CACHE - Misbelief (it's actually char_b)
+    aligns_with_fact=False,  # CACHE - Misbelief (it's actually char_b)
     confidence=0.8
 )
 ```
@@ -1628,7 +1643,7 @@ char_a.knowledge[prop_murder] = CharacterKnowledge(
 
 **Scenario**:
 - Character A hears rumor: "B is dead"
-- Objective fact: B is alive (EntityIdentity lifecycle = ACTIVE)
+- Objective fact: B is alive (V2-007 lifecycle-changing events show B alive)
 
 **V2-061 Representation**:
 ```python
@@ -1637,26 +1652,25 @@ char_a.knowledge[prop_b_dead] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_b_dead,
-        content="Character B is dead",
+        project_id=project_id,
         subject=char_b_id,
         predicate="is_dead",
         object=None,
-        context=None,
-        project_id=project_id
+        context=None
     ),
     knowledge_level="BELIEVED",
     acquisition_source="RUMOR",
     source_character=rumor_source_id,  # REQUIRED: At least one of source_character OR source_ref
     source_ref=None,  # Could alternatively be source location reference
-    aligns_with_fact=False,  # DERIVED/CACHE - B is actually alive
+    aligns_with_fact=False,  # CACHE - B is actually alive
     confidence=0.6
 )
 
-# Objective fact (V2-005 or lifecycle state)
+# Objective fact: Character lifecycle state (V2-061 domain state)
 char_b.lifecycle = "ACTIVE"  # B is alive
 ```
 
-**Validation**: Rumor-based misbelief coexists with objective lifecycle state. Rumor MUST have provenance path (source_character OR source_ref).
+**Validation**: Rumor-based misbelief coexists with objective Character lifecycle state. Rumor MUST have provenance path (source_character OR source_ref).
 
 ### Case 4: Acting on Suspicion
 
@@ -1672,17 +1686,15 @@ char_a.knowledge[prop_betrayal] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_betrayal,
-        content="Character B betrayed Character A",
+        project_id=project_id,
         subject=char_b_id,
         predicate="betrayed",
-        object=char_a_id,
-        context=None,
-        project_id=project_id
+        object=char_a_id
     ),
     knowledge_level="SUSPECTED",  # Uncertain
     acquisition_source="INFERENCE",
     basis_ref=[prop_unusual_behavior],
-    aligns_with_fact=None,  # DERIVED/CACHE - Unknown if true
+    aligns_with_fact=None,  # CACHE - Unknown if true
     confidence=0.4  # Low confidence
 )
 
@@ -1705,30 +1717,32 @@ intent = Intent(
 
 **Scenario**:
 - Character A plans to kill B tomorrow
-- Plan has NOT been executed yet
+- Plan exists but no V2-007 Event yet
 
 **V2-061 Representation**:
 ```python
-# A's planned action (intent, not fact)
+# A's planned action (intent record)
 planned = PlannedAction(
     action_id=PlannedActionId("..."),
     character=char_a.entity_id,
     action_description="Kill char_b at dawn",
     intent_ref=None,
     planned_for="dawn_tomorrow",  # Story-world temporal hint (opaque)
-    status="PLANNED",  # NOT occurred
-    occurred_event_ref=None,  # No event yet
+    status="PLANNED",  # Plan is active (not cancelled)
+    occurred_event_ref=None,  # No V2-007 Event linked
     created_at=datetime.now(),
     cancelled_at=None
 )
 ```
 
-**Critical Invariant**: `status="PLANNED"` means event has NOT occurred.
+**Occurrence Inference**: Absence of validated V2-007 Event means action has not occurred.
+Do not infer occurrence status from PlannedAction.status alone.
 
 **Anti-Pattern Prevention**:
 - System MUST NOT treat planned action as occurred event
-- System MUST NOT create V2-007 Event when action is PLANNED
-- System MUST NOT update Canon state based on plan
+- System MUST NOT create V2-007 Event when PlannedAction exists without occurrence
+- System MUST NOT update Canon state based on plan alone
+- System MUST verify V2-007 Event existence to determine occurrence
 
 **Test**: Verify planned action does NOT affect Canon entity states or create events.
 
@@ -1746,19 +1760,15 @@ char_a.knowledge[prop_distrust] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_distrust,
-        content="Character C is untrustworthy",
+        project_id=project_id,
         subject=char_c.entity_id,
-        predicate="is_untrustworthy",
-        object=None,
-        context=None,
-        project_id=project_id
+        predicate="is_untrustworthy"
     ),
     knowledge_level="KNOWN",
     acquisition_source="DIRECT_OBSERVATION",  # Witnessed betrayal
     source_ref="betrayal_scene_ref",  # DIRECT_OBSERVATION requires source_ref
     story_time_ref="day_3",
-    aligns_with_fact=True,  # DERIVED/CACHE
-    ...
+    aligns_with_fact=True  # CACHE
 )
 
 # Old belief about trustworthiness is NO LONGER in char_a.knowledge
