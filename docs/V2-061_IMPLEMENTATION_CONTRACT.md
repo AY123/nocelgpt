@@ -58,16 +58,12 @@ This prevents character omniscience, information leakage across viewpoints, and 
 - Project isolation
 
 **Knowledge Model**:
-- Per-character knowledge state
-- Knowledge levels: KNOWN, BELIEVED, SUSPECTED, UNKNOWN, FALSELY_BELIEVED
-- Knowledge acquisition provenance
-- Source tracking (observation, communication, inference, document, rumor)
-
-**Belief Model**:
-- Propositions held by characters
-- Confidence levels
-- Source attribution
-- Distinction from objective facts
+- Per-character epistemic state (CharacterKnowledge)
+- Knowledge levels: KNOWN, BELIEVED, SUSPECTED
+- Proposition identity (PropositionId, Proposition)
+- Knowledge acquisition provenance (REQUIRED)
+- Source tracking: DIRECT_OBSERVATION, COMMUNICATION, DOCUMENT, INFERENCE, RUMOR
+- Truth alignment (aligns_with_fact: derived evaluation result)
 
 **Intent Model**:
 - Character goals
@@ -76,14 +72,13 @@ This prevents character omniscience, information leakage across viewpoints, and 
 - Goal lifecycle: ACTIVE, BLOCKED, ACHIEVED, FAILED, ABANDONED
 
 **Boundaries**:
-- Character cannot act on unknown facts without explicit path
-- Knowledge boundary validation
-- Anti-omniscience enforcement
+- Character epistemic state independent from objective Canon
+- Knowledge acquisition requires explicit provenance path
+- Anti-omniscience enforcement (no author/reader knowledge leakage)
 
 **Schema & Serialization**:
-- `character.schema.json`
-- `knowledge.schema.json` (if separate)
-- Round-trip preservation of legal derived fields
+- `character.schema.json` with embedded `$defs` for Proposition, CharacterKnowledge, Goal, Intent, PlannedAction
+- Round-trip preservation of base state (ADR-002)
 - Rejection of invalid entity types and lifecycle states
 
 ---
@@ -139,9 +134,11 @@ This prevents character omniscience, information leakage across viewpoints, and 
 **Misbelief**: Character knowledge where `aligns_with_fact = False` (character believes X, but ¬X is objectively true). Source of dramatic irony.
 
 **Knowledge Level**:
-- `KNOWN`: Character has high-confidence, verified knowledge
-- `BELIEVED`: Character accepts as true but hasn't independently verified
-- `SUSPECTED`: Character has weak/uncertain belief
+- `KNOWN`: Character has verified knowledge. If objective truth is evaluable, KNOWN must not be contradicted by objective fact.
+- `BELIEVED`: Character accepts as true but hasn't independently verified. May be correct or incorrect.
+- `SUSPECTED`: Character has weak/uncertain belief.
+
+**Invariant**: `knowledge_level = "KNOWN"` with `aligns_with_fact = False` is INVALID. High-confidence but objectively false cognition must use `BELIEVED` with high confidence, not `KNOWN`.
 
 **UNKNOWN Semantics**:
 - **No epistemic record** = ordinary UNKNOWN (character has no information)
@@ -210,12 +207,23 @@ class Character:
 ```python
 PropositionId = NewType("PropositionId", str)
 """
-Stable identifier for propositions (claims about story-world state).
+Stable identifier for propositions (claims about story-world state) within a project.
 
 Format: UUID v4 (lowercase, with hyphens, 36 characters)
 
-A proposition has stable identity independent of its content.
-This allows belief revision, truth alignment checks, and NarrativeDelta targeting.
+Identity Semantics:
+- PropositionId identifies ONE explicit proposition within a project
+- When multiple characters refer to the SAME known proposition, reuse the same PropositionId
+- Content similarity alone does NOT automatically deduplicate propositions
+- No semantic inference engine required
+
+Example:
+- If Author explicitly establishes proposition P1 = "Character A is the murderer"
+- All characters who learn/believe this proposition reference the same PropositionId
+- If a character independently forms similar belief, may receive different PropositionId
+  (unless explicitly modeled as referring to same proposition)
+
+Project Scope: PropositionId is project-scoped. Cross-project references are invalid.
 
 Contract: V2-061 §3.6
 """
@@ -230,14 +238,15 @@ class Proposition:
     Structured representation of a claimable fact about story-world state.
 
     Immutable. Identity is proposition_id.
-    Content equality does NOT imply identity equality (two characters
-    can independently form beliefs about "the same" content with different IDs).
+
+    Project Scope: All entity references (subject, object if EntityId)
+    MUST belong to the same project as the proposition.
     """
 
     proposition_id: PropositionId
-    subject: EntityId | str  # What the claim is about
+    subject: EntityId | str  # What the claim is about (if EntityId, must be same project)
     predicate: str  # "betrayed", "loves", "owns", "is_alive", "is_dead"
-    object: EntityId | str | None  # Target of predicate (if applicable)
+    object: EntityId | str | None  # Target of predicate (if EntityId, must be same project)
     context: dict | None  # Additional structured context
 ```
 
@@ -251,22 +260,31 @@ class CharacterKnowledge:
 
     This is the epistemic state: what information the character has access to
     and how they relate to it.
+
+    Proposition Ownership: CharacterKnowledge owns the Proposition content.
+    The proposition field contains the full Proposition, not just an ID reference.
     """
 
     knower: EntityId  # The character who holds this epistemic state
-    proposition_id: PropositionId  # What proposition this is about
+    proposition: Proposition  # Full proposition (contains proposition_id + content)
 
     # Epistemic Level
     knowledge_level: Literal[
-        "KNOWN",      # High-confidence, verified knowledge
-        "BELIEVED",   # Accepted as true, not independently verified
+        "KNOWN",      # Verified knowledge (must not contradict objective fact if evaluable)
+        "BELIEVED",   # Accepted as true, not independently verified (may be correct or incorrect)
         "SUSPECTED",  # Weak belief, uncertain
     ]
 
-    # Truth Alignment (can be checked against objective Canon state)
-    # None = alignment unknown/not yet evaluated
-    # True = belief aligns with objective fact
-    # False = misbelief (character believes X, but ¬X is objectively true)
+    # Truth Alignment (DERIVED EVALUATION, not authoritative state)
+    # This is a NON-AUTHORITATIVE result of comparing character epistemic
+    # proposition against objective Canon state (V2-005/V2-006/V2-007).
+    # None = alignment not yet evaluated
+    # True = epistemic proposition aligns with objective Canon
+    # False = misbelief (epistemic proposition contradicts objective Canon)
+    #
+    # IMPORTANT: This field is DERIVED/CACHE, not BASE state.
+    # If objective Canon changes, this field becomes stale and must be re-evaluated.
+    # Character epistemic proposition is the authoritative V2-061 state.
     aligns_with_fact: bool | None
 
     # Provenance: How did character acquire this knowledge? (REQUIRED)
@@ -275,16 +293,29 @@ class CharacterKnowledge:
         "COMMUNICATION",       # Told by another character (source_character required)
         "DOCUMENT",           # Read from written source (source_ref required)
         "INFERENCE",          # Reasoned from other knowledge (basis_ref required)
-        "RUMOR",              # Heard indirectly (low reliability)
+        "RUMOR",              # Heard indirectly (source_character OR source_ref required)
     ]
 
     # Source References (requirements depend on acquisition_source)
-    source_character: EntityId | None  # For COMMUNICATION
-    source_ref: str | None  # For DOCUMENT, event reference, etc.
+    source_character: EntityId | None  # For COMMUNICATION, RUMOR
+    source_ref: str | None  # For DIRECT_OBSERVATION, DOCUMENT, RUMOR
     basis_ref: list[PropositionId] | None  # For INFERENCE (what was reasoned from)
 
-    acquired_at: datetime | None  # When knowledge was acquired
+    acquired_at: datetime | None  # System timestamp (when record created)
+    story_time_ref: str | None  # Opaque story-world temporal reference (V2-007 authority)
     confidence: float | None  # 0.0-1.0 confidence level
+```
+
+**Proposition Resolution**:
+- `Character.knowledge` dict is keyed by `PropositionId`
+- Key MUST match `CharacterKnowledge.proposition.proposition_id`
+- Proposition content is stored inline in CharacterKnowledge
+- No separate proposition registry required for V2-061
+
+**Invariant**:
+```python
+for prop_id, ck in character.knowledge.items():
+    assert prop_id == ck.proposition.proposition_id
 ```
 
 ### Belief
@@ -355,22 +386,75 @@ IntentId = NewType("IntentId", str)
 ```python
 @dataclass
 class PlannedAction:
-    """Action character intends to take (NOT yet occurred)."""
+    """
+    Action character intends to take (NOT yet occurred).
+
+    Occurrence Authority: V2-007 owns objective occurrence.
+    PlannedAction tracks intent and links to V2-007 Event if/when action occurs.
+    """
 
     action_id: PlannedActionId  # Stable identifier (UUID v4)
     character: EntityId
     action_description: str
     intent_ref: IntentId | None
-    planned_for: datetime | None
+    planned_for: str | None  # Story-world temporal hint (opaque, V2-007 interprets)
 
-    # Status
-    status: Literal["PLANNED", "CANCELLED", "OCCURRED"]
-    occurred_event_ref: str | None  # Ref to V2-007 Event if executed
+    # Status (V2-061 owns PLANNED/CANCELLED, V2-007 owns occurrence)
+    status: Literal["PLANNED", "CANCELLED"]
+    occurred_event_ref: str | None  # Links to V2-007 Event if action occurred
+
+    # System metadata
+    created_at: datetime  # When plan record created
+    cancelled_at: datetime | None  # When plan cancelled (if status=CANCELLED)
 
 
 PlannedActionId = NewType("PlannedActionId", str)
 """Stable identifier for planned actions (UUID v4 format)."""
 ```
+
+**PlannedAction Occurrence Invariant**:
+
+V2-061 owns:
+- `status = "PLANNED"`: Character intends to take action (not yet occurred)
+- `status = "CANCELLED"`: Character cancelled plan (will not occur)
+
+V2-007 owns:
+- Objective action occurrence (Event)
+
+**Linking Plan to Occurrence**:
+- If action occurs, V2-007 creates Event
+- `occurred_event_ref` links PlannedAction to V2-007 Event
+- V2-061 does NOT have "OCCURRED" status (occurrence is V2-007 authority)
+
+**Invalid States** (MUST be rejected):
+- `occurred_event_ref != None` with `status = "PLANNED"` (contradicts not-yet-occurred)
+- Treating `occurred_event_ref` presence as proof of occurrence without V2-007 Event validation
+
+**Correct Pattern**:
+```python
+# Plan exists
+plan = PlannedAction(
+    action_id=PlannedActionId("..."),
+    status="PLANNED",
+    occurred_event_ref=None,  # Not occurred yet
+    ...
+)
+
+# Later: action occurs (V2-007 creates Event)
+event = Event(...)  # V2-007 authority
+canon.add_event(event)
+
+# Link plan to event (but plan status remains PLANNED or becomes CANCELLED)
+# Occurrence status lives in V2-007, not V2-061
+plan_with_link = PlannedAction(
+    ...
+    status="PLANNED",  # Still a plan record (occurrence in V2-007)
+    occurred_event_ref=event.id,  # Links to occurrence
+    ...
+)
+```
+
+**No Second Occurrence Authority**: V2-061 does NOT determine whether action occurred. Query V2-007 for occurrence truth.
 
 ---
 
@@ -494,41 +578,17 @@ These require more complex epistemic modeling and are OUT OF SCOPE for V2-061 in
 char_a.knowledge[prop_id] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition_id=prop_id,  # "Character B is dead"
-    knowledge_level="KNOWN",  # A is confident
+    knowledge_level="BELIEVED",  # A believes strongly (but incorrectly)
     acquisition_source="COMMUNICATION",
     source_character=char_c.entity_id,  # C told A this (C lied or was wrong)
     aligns_with_fact=False,  # Misbelief
-    confidence=0.95
+    confidence=0.95  # High confidence, but still BELIEVED not KNOWN
 )
 ```
 
 **Validation Rule**: System MUST allow misbeliefs without error. A character having `aligns_with_fact=False` is VALID and expected.
 
 ---
-
-## Belief Semantics
-
-**Belief** represents character's acceptance of a proposition.
-
-**Key Properties**:
-- Beliefs can contradict objective facts (misbeliefs)
-- Beliefs can contradict other characters' beliefs
-- Beliefs can change over time
-- Beliefs have confidence levels
-
-**Validation**: System must allow:
-```python
-# Objective fact
-canon.entities["char_a"].lifecycle = "ALIVE"
-
-# Character B's belief
-char_b.beliefs.append(Belief(
-    holder="char_b",
-    proposition=Proposition("char_a", "is_dead", None),
-    confidence=0.9,
-    aligns_with_fact=False  # Misbelief
-))
-```
 
 ---
 
@@ -559,18 +619,26 @@ Every `CharacterKnowledge` entry MUST have:
 
 **Source Reference Requirements by Acquisition Type**:
 
-| acquisition_source | source_character | source_ref | basis_ref |
-|-------------------|------------------|------------|-----------|
-| DIRECT_OBSERVATION | - | OPTIONAL (event ref) | - |
-| COMMUNICATION | **REQUIRED** | OPTIONAL (conversation ref) | - |
-| DOCUMENT | - | **REQUIRED** (document id/ref) | - |
-| INFERENCE | - | OPTIONAL | **REQUIRED** (proposition ids) |
-| RUMOR | OPTIONAL | OPTIONAL | - |
+| acquisition_source | source_character | source_ref | basis_ref | Notes |
+|-------------------|------------------|------------|-----------|-------|
+| DIRECT_OBSERVATION | - | **REQUIRED** | - | Event/observation context reference |
+| COMMUNICATION | **REQUIRED** | OPTIONAL | - | Who told character |
+| DOCUMENT | - | **REQUIRED** | - | Document identifier/reference |
+| INFERENCE | - | OPTIONAL | **REQUIRED** (non-empty) | What was reasoned from |
+| RUMOR | **At least one REQUIRED** | **At least one REQUIRED** | - | Must have source_character OR source_ref |
+
+**Hard Invariant**: `acquisition_source` alone is NOT sufficient provenance. Every epistemic record MUST have an actual causal path (source entity, document reference, or inference basis).
+
+**RUMOR Provenance**: Even for rumors with unknown original source, the character must have acquired the rumor from SOMEONE or SOMEWHERE. At minimum:
+- `source_character` (who told them the rumor), OR
+- `source_ref` (where they heard/read the rumor)
+
+If both are genuinely unknown, character does NOT have epistemic record (ordinary UNKNOWN state = no record).
 
 **Validation**:
-- Missing required source reference → INVALID (reject, not warning)
-- Validation enforces provenance completeness
-- No "warning-only" mode for missing provenance
+- Missing required source reference → REJECT (not warning)
+- `acquisition_source` with no actual path → REJECT
+- All source reference fields None/empty → REJECT
 
 **V2-061 Minimum**: Define provenance fields and validation rules.
 
@@ -598,9 +666,15 @@ Characters can be UNCERTAIN about facts.
 # Character suspects but isn't certain
 char.knowledge[prop_id] = CharacterKnowledge(
     knower=char.entity_id,
-    proposition_id=prop_id,
+    proposition=Proposition(
+        proposition_id=prop_id,
+        subject=target_entity_id,
+        predicate="is_guilty",
+        ...
+    ),
     knowledge_level="SUSPECTED",  # Uncertain
     acquisition_source="RUMOR",
+    source_character=rumor_source_id,  # Where rumor came from
     confidence=0.3,  # Low confidence
     aligns_with_fact=None,  # Unknown if true
     ...
@@ -632,11 +706,14 @@ This is VALID narrative behavior, not an error condition.
 **Example**:
 ```python
 Goal(
-    id="goal_001",
-    character="char_protagonist",
+    goal_id=GoalId("goal_001"),
+    character=EntityId("char_protagonist"),
     description="Rescue sister from kidnappers",
     status="ACTIVE",
-    priority=10
+    priority=10,
+    target_state=None,
+    formed_at=datetime.now(),
+    resolved_at=None
 )
 ```
 
@@ -654,10 +731,12 @@ Goal(
 **Example**:
 ```python
 Intent(
-    character="char_protagonist",
-    goal_ref="goal_001",
+    intent_id=IntentId("intent_001"),
+    character=EntityId("char_protagonist"),
+    goal_ref=GoalId("goal_001"),
     description="Infiltrate enemy compound tonight",
-    formed_at="2024-05-20T22:00:00Z"
+    formed_at=datetime.now(),
+    abandoned_at=None
 )
 ```
 
@@ -669,7 +748,7 @@ Intent(
 
 **Critical Distinction**:
 - PlannedAction status = "PLANNED" → HAS NOT OCCURRED
-- PlannedAction status = "OCCURRED" → Links to V2-007 Event
+- V2-007 Event → HAS OCCURRED
 
 **Anti-Pattern Prevention**:
 ```python
@@ -677,11 +756,22 @@ Intent(
 if character.planned_actions[0].status == "PLANNED":
     canon.add_event(...)  # NO! Plan ≠ occurrence
 
-# CORRECT: Plan and occurrence are separate
+# CORRECT: Plan and occurrence are separate authorities
+plan = PlannedAction(
+    action_id=PlannedActionId("..."),
+    status="PLANNED",  # Plan exists
+    occurred_event_ref=None,
+    ...
+)
+
+# If action occurs (V2-007 authority)
 if event_occurred:
-    action.status = "OCCURRED"
-    action.occurred_event_ref = event.id
-    canon.add_event(event)  # Only event goes to canon
+    event = Event(...)  # V2-007 creates event
+    canon.add_event(event)  # Only V2-007 event goes to canon
+
+    # Link plan to event (optional)
+    plan.occurred_event_ref = event.id
+    # Plan status remains "PLANNED" (V2-061 doesn't have "OCCURRED" status)
 ```
 
 ---
@@ -690,17 +780,30 @@ if event_occurred:
 
 **V2-061 does NOT implement authoritative timeline**.
 
-**Allowed**:
-- Timestamp fields (`acquired_at`, `formed_at`, `resolved_at`)
-- Ordering within single character's knowledge/intent history
-- Relative sequencing hints
+**System Metadata Time** (V2-061 responsibility):
+- `created_at`, `updated_at` in Character: System timestamps (when record created/modified)
+- These are infrastructure metadata, NOT story-world time
 
-**NOT Allowed**:
+**Story-World Temporal Reference** (V2-007 authority):
+- `story_time_ref`: Opaque string reference to story-world time
+- V2-061 does NOT interpret, order, or validate story time
+- V2-007 owns temporal ordering and timeline semantics
+- Genre-neutral: does NOT assume Gregorian calendar valid for all story-worlds
+
+**Temporal Fields in V2-061**:
+- `acquired_at` (CharacterKnowledge): System timestamp (record creation time)
+- `story_time_ref` (CharacterKnowledge): Story-world temporal hook (optional, opaque)
+- `formed_at` (Goal, Intent): System timestamp (when goal/intent record created)
+- `resolved_at` (Goal): System timestamp (when goal status changed to terminal state)
+- `planned_for` (PlannedAction): Story-world temporal hint (optional, interpreted by V2-007)
+
+**NOT Allowed in V2-061**:
 - Cross-character temporal ordering
 - Global timeline enforcement
 - Promise/event occurrence ordering
+- Assuming `datetime` represents valid story-world time for all genres
 
-**Rationale**: V2-007 owns timeline. V2-061 provides temporal hooks for V2-007 to consume.
+**Rationale**: V2-007 owns timeline. V2-061 provides temporal hooks for V2-007 to consume, but does NOT implement timeline logic.
 
 ---
 
@@ -910,9 +1013,10 @@ char_c.knowledge[prop_id] = CharacterKnowledge(
 char_d.knowledge[prop_id_2] = CharacterKnowledge(
     knower=char_d.entity_id,
     proposition_id=prop_id_2,  # "char_a is single"
-    knowledge_level="KNOWN",  # D is confident
+    knowledge_level="BELIEVED",  # D believes strongly (but incorrectly)
     acquisition_source="DIRECT_OBSERVATION",  # D thinks they saw evidence
     aligns_with_fact=False,  # Misbelief - A is actually married
+    confidence=0.90  # High confidence, but objectively wrong
     ...
 )
 ```
@@ -1037,19 +1141,33 @@ assert restored == character  # Exact equality
 
 ## Serialization
 
-**Schema Files**:
-- `specs/schemas/character.schema.json`
-- `specs/schemas/knowledge.schema.json` (if separate)
+**Schema File**:
+- `specs/schemas/character.schema.json` (single schema)
+
+**Schema Structure**:
+- Root: Character
+- Embedded `$defs`: Proposition, CharacterKnowledge, Goal, Intent, PlannedAction
+- No separate `knowledge.schema.json`
 
 **Round-Trip Requirement**:
 - Serialize Character → JSON
 - Deserialize JSON → Character
-- Result MUST equal original for all legal fields
+- Result MUST equal original for all base state (semantic equality)
 
-**Derived Fields**:
-- ADR-002 defines which fields are derived/computed
-- Derived fields with non-default values MUST round-trip
-- See ADR-002 for base vs derived strategy
+**Base State** (ADR-002):
+- Base fields: Always serialize/deserialize
+- Authoritative, participates in semantic equality
+
+**Derived State** (ADR-002):
+- May be recomputed from base state
+- Not required for semantic equality
+
+**Cache State** (ADR-002):
+- Optional, discardable
+- Does NOT participate in semantic equality
+- Example: `aligns_with_fact` (derived evaluation result)
+
+**Machine SSOT**: `specs/schemas/character.schema.json` is the sole schema artifact for V2-061.
 
 ---
 
@@ -1214,27 +1332,27 @@ All V2-061 classes MUST:
 - Must be clearly marked as cache
 
 **Round-Trip Strategy**:
-1. **Base fields**: Always serialize, always deserialize
-2. **Derived fields with non-default values**:
-   - Serialize if present (performance optimization - avoid recompute)
-   - If absent on deserialize, recompute from base
-   - Round-trip MUST preserve semantic state (not necessarily byte-identical)
-3. **Cache fields**: Optional serialization, never affects equality
+1. **BASE fields**: Always serialize, always deserialize (authoritative)
+2. **DERIVED fields**: May be omitted from serialization (recomputed on load)
+3. **CACHE fields**: Optional serialization, discarded/revalidated on load
 
 **Critical Requirement**:
 ```python
-# Round-trip must preserve semantic state
+# Round-trip must preserve semantic state (BASE only)
 char1 = Character(...)
 serialized = to_json(char1)
 char2 = from_json(serialized)
 
-# Semantic equality (may recompute derived fields)
+# Semantic equality checks BASE state only
 assert char1.entity_id == char2.entity_id
-assert char1.knowledge == char2.knowledge  # Base state identical
-assert char1.active_goals() == char2.active_goals()  # Derived state equivalent
+assert char1.knowledge == char2.knowledge  # BASE state identical
+assert char1.goals == char2.goals  # BASE state identical
 
-# Byte-identical serialization NOT required
-# (derived fields may or may not be serialized)
+# Derived state equivalent (may be recomputed)
+assert char1.active_goals() == char2.active_goals()
+
+# Cache may differ (stale cache discarded/revalidated)
+# aligns_with_fact may be None after deserialization if not re-evaluated
 ```
 
 **Scope of ADR-002 Decision**:
@@ -1245,44 +1363,54 @@ assert char1.active_goals() == char2.active_goals()  # Derived state equivalent
 
 **Recommendation for ADR-002** (draft, pending formal ratification):
 
-**Base Fields** (always serialized):
+**BASE Fields** (authoritative, always serialized):
 ```python
 entity_id: EntityId          # Identity
 project_id: ProjectId        # Scope
 lifecycle: Literal[...]      # State
-knowledge: dict[PropositionId, CharacterKnowledge]  # Epistemic state
-goals: list[Goal]            # Intentional state
-intents: list[Intent]
-planned_actions: list[PlannedAction]
-created_at: datetime         # Metadata
-updated_at: datetime
-authority: str
-provenance: dict
+knowledge: dict[PropositionId, CharacterKnowledge]  # Epistemic state (BASE)
+goals: list[Goal]            # Intentional state (BASE)
+intents: list[Intent]        # Intentional state (BASE)
+planned_actions: list[PlannedAction]  # Intentional state (BASE)
+created_at: datetime         # System metadata
+updated_at: datetime         # System metadata
+authority: str               # Provenance metadata
+provenance: dict             # Provenance metadata
 ```
 
-**Derived Fields** (computed from base, may cache):
+**DERIVED Fields** (computed from BASE, never serialized):
 ```python
 @property
 def active_goals(self) -> list[Goal]:
-    """Goals where status == ACTIVE."""
+    """Goals where status == ACTIVE. Computed from BASE goals."""
     return [g for g in self.goals if g.status == "ACTIVE"]
 
 @property
-def misbeliefs(self) -> list[CharacterKnowledge]:
-    """Knowledge where aligns_with_fact == False."""
-    return [k for k in self.knowledge.values() if k.aligns_with_fact is False]
-
-@property
 def knowledge_count(self) -> int:
-    """Total epistemic records."""
+    """Total epistemic records. Computed from BASE knowledge."""
     return len(self.knowledge)
+```
+
+**CACHE Fields** (non-authoritative evaluation results):
+```python
+# In CharacterKnowledge:
+aligns_with_fact: bool | None  # CACHE: truth alignment evaluation result
+                                # Can be None (not evaluated)
+                                # Can be discarded/revalidated
+                                # Does NOT participate in semantic equality
+                                # If Canon changes, must be re-evaluated
 ```
 
 **NOT in Character** (V2-005 authority):
 ```python
-# canonical_name: NO - query EntityRegistry
-# aliases: NO - query EntityRegistry
+# canonical_name: NO - query EntityRegistry.get_entity(entity_id).canonical_name
+# aliases: NO - query EntityRegistry.get_entity(entity_id).aliases
 ```
+
+**Equality Semantics**:
+- BASE fields participate in equality
+- DERIVED fields do NOT participate (recomputed)
+- CACHE fields do NOT participate (non-authoritative)
 
 **Formal ADR-002 Decision Required Before Implementation Authorization**.
 
@@ -1410,7 +1538,13 @@ The following cases MUST be correctly handled by V2-061 implementation. These ar
 # Character A's misbelief
 char_a.knowledge[prop_murder] = CharacterKnowledge(
     knower=char_a.entity_id,
-    proposition_id=prop_murder,  # "char_c is the murderer"
+    proposition=Proposition(
+        proposition_id=prop_murder,
+        subject=char_c_id,
+        predicate="is_the_murderer",
+        object=None,
+        context=None
+    ),
     knowledge_level="BELIEVED",
     acquisition_source="INFERENCE",
     basis_ref=[prop_motive, prop_opportunity],  # A reasoned incorrectly
@@ -1450,13 +1584,20 @@ char_a.knowledge[prop_murder] = CharacterKnowledge(
 
 **V2-061 Representation**:
 ```python
-# A's belief from rumor
+# A's belief from rumor (MUST have provenance path)
 char_a.knowledge[prop_b_dead] = CharacterKnowledge(
     knower=char_a.entity_id,
-    proposition_id=prop_b_dead,  # "char_b is dead"
+    proposition=Proposition(
+        proposition_id=prop_b_dead,
+        subject=char_b_id,
+        predicate="is_dead",
+        object=None,
+        context=None
+    ),
     knowledge_level="BELIEVED",
     acquisition_source="RUMOR",
-    source_character=None,  # Unknown original source
+    source_character=rumor_source_id,  # REQUIRED: At least one of source_character OR source_ref
+    source_ref=None,  # Could alternatively be source location reference
     aligns_with_fact=False,  # B is actually alive
     confidence=0.6
 )
@@ -1465,7 +1606,7 @@ char_a.knowledge[prop_b_dead] = CharacterKnowledge(
 char_b.lifecycle = "ACTIVE"  # B is alive
 ```
 
-**Validation**: Rumor-based misbelief coexists with objective lifecycle state.
+**Validation**: Rumor-based misbelief coexists with objective lifecycle state. Rumor MUST have provenance path (source_character OR source_ref).
 
 ### Case 4: Acting on Suspicion
 
@@ -1479,7 +1620,13 @@ char_b.lifecycle = "ACTIVE"  # B is alive
 # A's suspicion (weak epistemic state)
 char_a.knowledge[prop_betrayal] = CharacterKnowledge(
     knower=char_a.entity_id,
-    proposition_id=prop_betrayal,  # "char_b betrayed me"
+    proposition=Proposition(
+        proposition_id=prop_betrayal,
+        subject=char_b_id,
+        predicate="betrayed",
+        object=char_a_id,
+        context=None
+    ),
     knowledge_level="SUSPECTED",  # Uncertain
     acquisition_source="INFERENCE",
     basis_ref=[prop_unusual_behavior],
@@ -1491,8 +1638,10 @@ char_a.knowledge[prop_betrayal] = CharacterKnowledge(
 intent = Intent(
     intent_id=IntentId("..."),
     character=char_a.entity_id,
+    goal_ref=None,
     description="Investigate B's activities",
-    ...
+    formed_at=datetime.now(),
+    abandoned_at=None
 )
 ```
 
@@ -1513,9 +1662,12 @@ planned = PlannedAction(
     action_id=PlannedActionId("..."),
     character=char_a.entity_id,
     action_description="Kill char_b at dawn",
+    intent_ref=None,
+    planned_for="dawn_tomorrow",  # Story-world temporal hint (opaque)
     status="PLANNED",  # NOT occurred
     occurred_event_ref=None,  # No event yet
-    ...
+    created_at=datetime.now(),
+    cancelled_at=None
 )
 ```
 
@@ -1535,36 +1687,41 @@ planned = PlannedAction(
 - Day 3: A discovers C betrayed them
 - A revises belief to "C is untrustworthy"
 
-**V2-061 Representation**:
+**V2-061 Current State Model**:
 ```python
-# Initial belief (day 1)
-belief_v1 = CharacterKnowledge(
+# Day 3: A's CURRENT epistemic state (after revision)
+char_a.knowledge[prop_distrust] = CharacterKnowledge(
     knower=char_a.entity_id,
-    proposition_id=prop_trust,  # "char_c is trustworthy"
-    knowledge_level="BELIEVED",
-    acquired_at=datetime(2024, 1, 1),
-    aligns_with_fact=False,  # Was wrong
-    ...
-)
-
-# Revised belief (day 3) - NEW proposition
-belief_v2 = CharacterKnowledge(
-    knower=char_a.entity_id,
-    proposition_id=prop_distrust,  # "char_c is untrustworthy"
+    proposition=Proposition(
+        proposition_id=prop_distrust,
+        subject=char_c.entity_id,
+        predicate="is_untrustworthy",
+        ...
+    ),
     knowledge_level="KNOWN",
-    acquired_at=datetime(2024, 1, 3),
     acquisition_source="DIRECT_OBSERVATION",  # Witnessed betrayal
+    story_time_ref="day_3",
     aligns_with_fact=True,
     ...
 )
+
+# Old belief about trustworthiness is NO LONGER in char_a.knowledge
+# (replaced/removed during revision)
 ```
 
-**Requirements**:
-- Historical belief (belief_v1) should be retained or superseded (not destroyed)
-- Belief revision is explicit operation, not silent overwrite
-- System can track belief history (for narrative explanation)
+**V2-061 Responsibility**: Current epistemic state only.
 
-**V2-008 Integration**: Belief revision generates NarrativeDelta like `CharacterRevisedBelief`.
+**V2-008 + Canon Responsibility**: State transition history.
+- NarrativeDelta operations like `CharacterRevisedBelief(from=prop_trust, to=prop_distrust)`
+- Historical Canon event log preserves that character once believed differently
+- V2-061 does NOT store full belief version history
+
+**Belief Revision Semantics**:
+- V2-061 supports replacement: old proposition removed, new proposition added
+- Historical tracking: V2-008 NarrativeDelta + Canon event history
+- V2-061 may provide metadata (story_time_ref) for temporal ordering by V2-007
+
+**Test**: Verify V2-061 can represent current epistemic state after revision, without claiming to store full historical versions internally.
 
 ### Case 7: Cross-Project Isolation
 
