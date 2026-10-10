@@ -179,7 +179,10 @@ class Character:
     entity_id: EntityId  # References V2-005 EntityIdentity
     project_id: ProjectId  # Project scope (must match EntityIdentity.project_id)
 
-    # Lifecycle
+    # Character Lifecycle (V2-061 authority)
+    # V2-061 owns character epistemic/intent lifecycle state.
+    # V2-005 EntityIdentity owns entity naming/identity lifecycle.
+    # These are separate concerns and may have different lifecycle values.
     lifecycle: Literal["PLANNED", "ACTIVE", "INACTIVE", "DECEASED", "SUPERSEDED"]
 
     # Knowledge State
@@ -241,13 +244,19 @@ class Proposition:
 
     Project Scope: All entity references (subject, object if EntityId)
     MUST belong to the same project as the proposition.
+
+    Collision Invariant: Same proposition_id + different content = INVALID.
+    Each PropositionId must map to exactly one stable content across all
+    CharacterKnowledge records in the project.
     """
 
     proposition_id: PropositionId
+    content: str  # Human-readable claim (e.g., "Character B is dead")
     subject: EntityId | str  # What the claim is about (if EntityId, must be same project)
     predicate: str  # "betrayed", "loves", "owns", "is_alive", "is_dead"
     object: EntityId | str | None  # Target of predicate (if EntityId, must be same project)
     context: dict | None  # Additional structured context
+    project_id: ProjectId  # Project scope (all EntityId references must match)
 ```
 
 ### CharacterKnowledge
@@ -263,6 +272,11 @@ class CharacterKnowledge:
 
     Proposition Ownership: CharacterKnowledge owns the Proposition content.
     The proposition field contains the full Proposition, not just an ID reference.
+
+    CACHE Field Equality: aligns_with_fact is DERIVED/CACHE and should not
+    participate in semantic equality checks. When comparing CharacterKnowledge
+    for equivalence, either use field(compare=False) on aligns_with_fact or
+    implement explicit semantic_equals() that excludes CACHE fields.
     """
 
     knower: EntityId  # The character who holds this epistemic state
@@ -426,17 +440,24 @@ V2-007 owns:
 - `occurred_event_ref` links PlannedAction to V2-007 Event
 - V2-061 does NOT have "OCCURRED" status (occurrence is V2-007 authority)
 
+**Valid States**:
+
+1. **Not yet occurred**: `status="PLANNED"`, `occurred_event_ref=None`
+2. **Occurred**: `status="PLANNED"`, `occurred_event_ref=<event_id>` (links to V2-007 Event)
+3. **Cancelled before occurrence**: `status="CANCELLED"`, `occurred_event_ref=None`
+4. **Cancelled after occurrence**: `status="CANCELLED"`, `occurred_event_ref=<event_id>` (character retracted intent after action already occurred)
+
 **Invalid States** (MUST be rejected):
-- `occurred_event_ref != None` with `status = "PLANNED"` (contradicts not-yet-occurred)
 - Treating `occurred_event_ref` presence as proof of occurrence without V2-007 Event validation
+- Using PlannedAction status to determine occurrence (occurrence authority is V2-007 only)
 
 **Correct Pattern**:
 ```python
-# Plan exists
+# Plan exists (not yet occurred)
 plan = PlannedAction(
     action_id=PlannedActionId("..."),
     status="PLANNED",
-    occurred_event_ref=None,  # Not occurred yet
+    occurred_event_ref=None,
     ...
 )
 
@@ -444,12 +465,11 @@ plan = PlannedAction(
 event = Event(...)  # V2-007 authority
 canon.add_event(event)
 
-# Link plan to event (but plan status remains PLANNED or becomes CANCELLED)
-# Occurrence status lives in V2-007, not V2-061
+# Link plan to event (status stays "PLANNED" - this is still a plan record)
 plan_with_link = PlannedAction(
     ...
-    status="PLANNED",  # Still a plan record (occurrence in V2-007)
-    occurred_event_ref=event.id,  # Links to occurrence
+    status="PLANNED",  # Intent record, not occurrence record
+    occurred_event_ref=event.id,  # Links to V2-007 occurrence
     ...
 )
 ```
@@ -577,11 +597,15 @@ These require more complex epistemic modeling and are OUT OF SCOPE for V2-061 in
 # Character A's misbelief (V2-061)
 char_a.knowledge[prop_id] = CharacterKnowledge(
     knower=char_a.entity_id,
-    proposition_id=prop_id,  # "Character B is dead"
+    proposition=Proposition(
+        proposition_id=prop_id,
+        content="Character B is dead",
+        project_id=project_id
+    ),
     knowledge_level="BELIEVED",  # A believes strongly (but incorrectly)
     acquisition_source="COMMUNICATION",
     source_character=char_c.entity_id,  # C told A this (C lied or was wrong)
-    aligns_with_fact=False,  # Misbelief
+    aligns_with_fact=False,  # DERIVED/CACHE - Misbelief
     confidence=0.95  # High confidence, but still BELIEVED not KNOWN
 )
 ```
@@ -1002,21 +1026,31 @@ relationship_registry.add_relationship(
 # Character C's KNOWLEDGE of relationship (V2-061 authority)
 char_c.knowledge[prop_id] = CharacterKnowledge(
     knower=char_c.entity_id,
-    proposition_id=prop_id,  # "char_a is married to char_b"
+    proposition=Proposition(
+        proposition_id=prop_id,
+        content="char_a is married to char_b",
+        project_id=project_id
+    ),
     knowledge_level="BELIEVED",  # C believes it but hasn't verified
     acquisition_source="RUMOR",
-    aligns_with_fact=True,  # Belief happens to be correct
+    source_character=some_gossip_source,  # RUMOR requires source
+    aligns_with_fact=True,  # DERIVED/CACHE - Belief happens to be correct
     ...
 )
 
 # Character D's MISBELIEF about relationship (V2-061 authority)
 char_d.knowledge[prop_id_2] = CharacterKnowledge(
     knower=char_d.entity_id,
-    proposition_id=prop_id_2,  # "char_a is single"
+    proposition=Proposition(
+        proposition_id=prop_id_2,
+        content="char_a is single",
+        project_id=project_id
+    ),
     knowledge_level="BELIEVED",  # D believes strongly (but incorrectly)
     acquisition_source="DIRECT_OBSERVATION",  # D thinks they saw evidence
-    aligns_with_fact=False,  # Misbelief - A is actually married
-    confidence=0.90  # High confidence, but objectively wrong
+    source_ref="scene_ref_123",  # DIRECT_OBSERVATION requires source_ref
+    aligns_with_fact=False,  # DERIVED/CACHE - Misbelief (A is actually married)
+    confidence=0.90,  # High confidence, but objectively wrong
     ...
 )
 ```
@@ -1177,12 +1211,13 @@ assert restored == character  # Exact equality
 - Invalid entity type (e.g., `entity_type != "CHARACTER"`)
 - Invalid lifecycle state (e.g., unknown status)
 - Cross-project entity references
-- Character acting on knowledge outside boundary (if validation enabled)
+- Missing required `acquisition_source`
+- Missing required provenance path/reference (based on acquisition_source requirements)
 
 **Graceful Degradation**:
-- Missing provenance → Warning, not error
 - Unknown confidence → Default to None
-- Missing timestamps → Allowed (optional fields)
+- Missing `acquired_at` timestamp → Allowed (optional field)
+- Missing `story_time_ref` → Allowed (optional field)
 
 ---
 
@@ -1208,11 +1243,12 @@ assert restored == character  # Exact equality
 
 ### Intent vs Occurrence (AC-3)
 
-| Scenario | PlannedAction Status | V2-007 Event Created? |
-|----------|----------------------|----------------|
-| Character plans to attack | PLANNED | NO |
-| Plan executed successfully | OCCURRED | YES |
-| Plan cancelled | CANCELLED | NO |
+| Scenario | PlannedAction Status | V2-007 Event Created? | occurred_event_ref |
+|----------|----------------------|----------------|--------------------|
+| Character plans to attack | PLANNED | NO | None |
+| Plan executed successfully | PLANNED | YES | event_id |
+| Plan cancelled before execution | CANCELLED | NO | None |
+| Plan cancelled after execution | CANCELLED | YES | event_id |
 
 ### Goal Lifecycle (AC-4)
 
@@ -1237,12 +1273,15 @@ assert restored == character  # Exact equality
 
 ### Schema Round-Trip (AC-6)
 
-| Input | Round-Trip Preserves? |
-|-------|----------------------|
-| Legal derived field with value | YES (ADR-002) |
-| Base field with value | YES |
-| Invalid entity type | REJECT on deserialize |
-| Invalid lifecycle | REJECT on deserialize |
+| Input | Round-Trip Preserves? | Notes |
+|-------|----------------------|-------|
+| BASE fields (entity_id, knowledge, goals, etc.) | YES - exact equality required | Authoritative state |
+| DERIVED fields (active_goals, knowledge_count) | Equivalent when recomputed | Never serialized |
+| CACHE fields (aligns_with_fact) | May be discarded/None | Not semantic equality |
+| Invalid entity type | REJECT on deserialize | Validation failure |
+| Invalid lifecycle | REJECT on deserialize | Validation failure |
+
+**Acceptance**: Round-trip test MUST preserve all BASE state exactly. DERIVED state MUST be equivalent when recomputed. CACHE state MAY differ without failing round-trip test.
 
 ### Identity Authority (AC-7)
 
@@ -1333,27 +1372,34 @@ All V2-061 classes MUST:
 
 **Round-Trip Strategy**:
 1. **BASE fields**: Always serialize, always deserialize (authoritative)
-2. **DERIVED fields**: May be omitted from serialization (recomputed on load)
+2. **DERIVED fields**: Never serialized (recomputed on load from BASE state)
 3. **CACHE fields**: Optional serialization, discarded/revalidated on load
 
-**Critical Requirement**:
+**Critical Requirement** (Machine Round-Trip Acceptance):
 ```python
-# Round-trip must preserve semantic state (BASE only)
+# Round-trip must preserve BASE state exactly
 char1 = Character(...)
 serialized = to_json(char1)
 char2 = from_json(serialized)
 
-# Semantic equality checks BASE state only
+# BASE state must be identical (exact equality)
 assert char1.entity_id == char2.entity_id
-assert char1.knowledge == char2.knowledge  # BASE state identical
-assert char1.goals == char2.goals  # BASE state identical
+assert char1.project_id == char2.project_id
+assert char1.lifecycle == char2.lifecycle
+assert char1.knowledge == char2.knowledge  # BASE: exact dict equality
+assert char1.goals == char2.goals  # BASE: exact list equality
+assert char1.intents == char2.intents  # BASE: exact list equality
+assert char1.planned_actions == char2.planned_actions  # BASE: exact list equality
 
-# Derived state equivalent (may be recomputed)
-assert char1.active_goals() == char2.active_goals()
+# DERIVED state must be equivalent when recomputed (not stored)
+assert char1.active_goals() == char2.active_goals()  # Recomputed from BASE
 
-# Cache may differ (stale cache discarded/revalidated)
+# CACHE may differ or be None (not part of semantic equality)
 # aligns_with_fact may be None after deserialization if not re-evaluated
+# CACHE fields discarded/revalidated, do NOT affect semantic equality
 ```
+
+**Acceptance Criterion**: `validate_round_trip(character) -> PASS` requires BASE preservation, DERIVED recomputation equivalence, CACHE discarding without semantic change.
 
 **Scope of ADR-002 Decision**:
 1. Explicit list of base vs derived vs cache fields for Character
@@ -1432,10 +1478,10 @@ Current ADR-002 machine state: `status=REQUIRED, decision_record=null`
 - Define acquisition source types
 - Add provenance fields
 
-### Step 3: Belief Model
-- Define Belief dataclass
+### Step 3: Proposition and Belief Model
 - Define Proposition dataclass
 - Implement misbelief support (aligns_with_fact field)
+- Ensure CharacterKnowledge stores full Proposition object
 
 ### Step 4: Intent Model
 - Define Goal dataclass with lifecycle
@@ -1540,15 +1586,17 @@ char_a.knowledge[prop_murder] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_murder,
+        content="Character C is the murderer",
         subject=char_c_id,
         predicate="is_the_murderer",
         object=None,
-        context=None
+        context=None,
+        project_id=project_id
     ),
     knowledge_level="BELIEVED",
     acquisition_source="INFERENCE",
     basis_ref=[prop_motive, prop_opportunity],  # A reasoned incorrectly
-    aligns_with_fact=False,  # Misbelief - it's actually char_b
+    aligns_with_fact=False,  # DERIVED/CACHE - Misbelief (it's actually char_b)
     confidence=0.8
 )
 ```
@@ -1589,16 +1637,18 @@ char_a.knowledge[prop_b_dead] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_b_dead,
+        content="Character B is dead",
         subject=char_b_id,
         predicate="is_dead",
         object=None,
-        context=None
+        context=None,
+        project_id=project_id
     ),
     knowledge_level="BELIEVED",
     acquisition_source="RUMOR",
     source_character=rumor_source_id,  # REQUIRED: At least one of source_character OR source_ref
     source_ref=None,  # Could alternatively be source location reference
-    aligns_with_fact=False,  # B is actually alive
+    aligns_with_fact=False,  # DERIVED/CACHE - B is actually alive
     confidence=0.6
 )
 
@@ -1622,15 +1672,17 @@ char_a.knowledge[prop_betrayal] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_betrayal,
+        content="Character B betrayed Character A",
         subject=char_b_id,
         predicate="betrayed",
         object=char_a_id,
-        context=None
+        context=None,
+        project_id=project_id
     ),
     knowledge_level="SUSPECTED",  # Uncertain
     acquisition_source="INFERENCE",
     basis_ref=[prop_unusual_behavior],
-    aligns_with_fact=None,  # Unknown if true
+    aligns_with_fact=None,  # DERIVED/CACHE - Unknown if true
     confidence=0.4  # Low confidence
 )
 
@@ -1694,14 +1746,18 @@ char_a.knowledge[prop_distrust] = CharacterKnowledge(
     knower=char_a.entity_id,
     proposition=Proposition(
         proposition_id=prop_distrust,
+        content="Character C is untrustworthy",
         subject=char_c.entity_id,
         predicate="is_untrustworthy",
-        ...
+        object=None,
+        context=None,
+        project_id=project_id
     ),
     knowledge_level="KNOWN",
     acquisition_source="DIRECT_OBSERVATION",  # Witnessed betrayal
+    source_ref="betrayal_scene_ref",  # DIRECT_OBSERVATION requires source_ref
     story_time_ref="day_3",
-    aligns_with_fact=True,
+    aligns_with_fact=True,  # DERIVED/CACHE
     ...
 )
 
