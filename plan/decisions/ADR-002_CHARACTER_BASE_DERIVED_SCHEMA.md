@@ -75,8 +75,8 @@ V2-061 必须在接口实现前冻结此决策。
 
 | 字段 | 分类 | 持久化 | 相等性 | 重计算来源 | 权威 |
 |------|------|--------|--------|------------|------|
-| `entity_id` | BASE | Yes | Yes | — | V2-061 |
-| `project_id` | BASE | Yes | Yes | — | V2-061 |
+| `entity_id` | BASE | Yes | Yes | — | V2-005 (identity) |
+| `project_id` | BASE | Yes | Yes | — | V2-005 (membership) |
 | `lifecycle` | BASE | Yes | Yes | — | V2-061 |
 | `knowledge` | BASE | Yes | Yes | — | V2-061 |
 | `goals` | BASE | Yes | Yes | — | V2-061 |
@@ -90,6 +90,7 @@ V2-061 必须在接口实现前冻结此决策。
 | `knowledge_count()` | DERIVED | No | Recomputed | `len(knowledge)` | V2-061 |
 
 **说明**:
+- `entity_id`, `project_id`: V2-061 持久化这些引用字段，但 identity/project membership 权威归 V2-005
 - `created_at`, `updated_at`, `authority`, `provenance` 是系统元数据，但仍属 BASE 语义状态
 - 如未来需区分"语义 BASE"与"系统元数据"，需明确定义，不在本 ADR 范围
 
@@ -139,8 +140,8 @@ aligns_with_fact: bool | None = field(default=None, compare=False)
 
 - 类型签名: `context: Mapping[str, Any] | None`
 - 输入可能是 JSON object
-- 领域构造时必须规范化/深度冻结为不可变表示
-- 推荐: `MappingProxyType` 或冻结结构
+- 领域构造时必须规范化/**递归深度冻结**为不可变表示
+- 推荐: 递归冻结结构（注意 `MappingProxyType` 仅浅冻结，需递归处理嵌套）
 - **存储的 `Proposition.context` 禁止是可变 dict**
 - 避免创建后修改导致 PropositionId 碰撞不变式失效
 
@@ -390,6 +391,21 @@ assert ck1 == ck2  # PASS (compare=False 排除 aligns_with_fact)
 
 **Machine 要求**: 合法派生字段和非默认值往返不丢失
 
+**适用域解释**:
+
+Machine SSOT 要求针对**合法 persisted semantic fields**（合法持久化语义字段）。
+
+本 ADR 明确定义:
+- **合法 persisted semantic fields** = BASE 字段
+- **CACHE 字段明确不是合法 persisted semantic fields**
+
+因此:
+- BASE 往返不丢失 → Machine SSOT 要求适用
+- DERIVED 从 BASE 重算等价 → Machine SSOT 要求适用
+- CACHE reset 为 None → **不属于语义状态丢失**，因 CACHE 不是合法持久化语义字段
+
+这是**适用域解释**，不是弱化 Machine SSOT。
+
 **解释**:
 
 - **BASE**: 精确语义保留
@@ -402,6 +418,7 @@ assert ck1 == ck2  # PASS (compare=False 排除 aligns_with_fact)
 2. 需要外部 Canon 上下文
 3. 不参与语义相等性
 4. 可从外部权威重新生成
+5. **明确定义为非合法持久化语义字段**
 
 ### 往返验证
 
@@ -459,9 +476,11 @@ assert char1 == char2  # PASS
 
 **理由**: 防止意外的 CACHE 权威化
 
-**边界**: 在指定的适配器边界拒绝或显式剥离
+**语义**: 进入 semantic persisted payload 的 `aligns_with_fact` 字段**必须 REJECT**
 
-**推荐**: 语义 schema 规则直接 REJECT
+任何包含 `aligns_with_fact` 的持久化语义 JSON payload 在反序列化时必须被拒绝，不得静默剥离或忽略。
+
+**实现边界**: 在 semantic payload deserialization 边界强制执行
 
 ---
 
@@ -673,10 +692,11 @@ jsonschema validate --schema character.schema.json invalid_with_cache.json
 1. **独立审核**: ADR-002 内容通过独立审核
 2. **治理一致性**: decision-register.yaml 更新 `decision_record` 指向批准证据
 3. **Contract 对齐**: 与冻结 Contract d35be3d 无语义冲突
-4. **Machine SSOT**: `character.schema.json` 符合此决策（实现前验证）
-5. **验收准备**: V2-061 验收场景已更新反映此决策
+4. **验收准备**: V2-061 验收场景已更新反映此决策
 
 **当前状态**: PROPOSED / DRAFT — 不具备批准权威
+
+**注**: Schema/code/test conformance 属于 V2-061 implementation verification，不是 ADR-002 ratification 前提条件。ADR-002 在 interface implementation 前批准，implementation 验证 conformance。
 
 ---
 
