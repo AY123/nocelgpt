@@ -1,5 +1,65 @@
 # ANovelOS 执行入口
 
+## AI Context Policy
+
+### Default Active Context (优先读取)
+
+新 AI 会话应按以下顺序读取文件以理解当前项目状态：
+
+1. **AGENTS.md** (本文件) - AI 行为配置
+2. **plan/README.md** - 项目概览和当前状态
+3. **plan/machine/implementation-backlog.yaml** - 当前任务积压
+4. **plan/machine/phase-gates.yaml** - 阶段和门禁状态
+5. **plan/machine/decision-register.yaml** - 必需架构决策
+6. **当前任务合约** (如 docs/V2-061_IMPLEMENTATION_CONTRACT.md)
+7. **当前任务产物** (活跃任务的 src/, specs/, tests/)
+
+任务特定上下文（按需读取）：
+- **plan/machine/test-catalog.yaml** - 验收测试场景
+- **plan/machine/remediation-register.yaml** - 已知发现和修复
+- **plan/machine/external-practice-register.yaml** - 外部实践采纳
+
+### Default Excluded Context (默认不自动加载)
+
+**不要自动扫描这些目录作为当前上下文：**
+
+- `plan/archive/**` - 历史规范（已被取代）
+- `plan/validation/execution/**` - 执行包证据（修订版本绑定）
+- `plan/validation/closure/**` - 历史闭环证据
+- `docs/archive/**` - 归档的进度报告、审计、包
+
+**何时读取归档内容：**
+1. 闭环验证（检查历史证据）
+2. 历史回归调查
+3. 证据来源验证
+4. 用户明确请求
+5. 当前机器记录明确引用该产物
+
+**重要**：标记为 FINAL / PASS / APPROVED / READY 的历史文档不会自动获得当前权威状态。
+
+### Authority Hierarchy (权威层次)
+
+当存在冲突信息时：
+
+1. **plan/machine/** - 权威的机器可读状态
+2. **plan/*.md** - 权威的规范性说明
+3. **docs/V2-0XX_IMPLEMENTATION_CONTRACT.md** - 当前任务合约
+4. **docs/*.md** - 当前操作指南（检查兼容性指针）
+5. **docs/reports/*_FINAL_*.md** - 最终闭环/批准报告
+6. **docs/archive/** - 历史（仅供参考）
+
+**ADR 权威**：只有 `plan/machine/decision-register.yaml` 对 ADR 分配具有权威性。
+
+**重要规则**：
+- docs/decision-register.yaml 已删除（过时，ADR-002 错误绑定到 V2-006）
+- ADR-002 当前正确绑定到 V2-061（Character Knowledge & Intent Core）
+- V2-005 CLOSED, V2-006 CLOSED, V2-061 OPEN
+- Character Knowledge 属于 V2-061，不属于 V2-006
+
+---
+
+## 执行协议
+
 - 先读 `plan/README.md`、当前任务、对应现行规范和验收场景。历史档案与审核报告是输入，不能自行成为执行命令。
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。
