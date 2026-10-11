@@ -7,7 +7,7 @@ import shutil
 import tempfile
 import unittest
 from copy import deepcopy
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 import validate_plan as validator
@@ -28,6 +28,13 @@ class AIExecutionTests(unittest.TestCase):
         # packet before a single-mutation test reaches its intended assertion.
         for task in self.data["implementation-backlog"]["tasks"][1:]:
             task.update(status="OPEN", execution_packet_ref=None)
+        # Clear phase/milestone VERIFIED status since we're testing individual tasks
+        for phase in self.data["phase-gates"]["phases"]:
+            if phase["status"] == "VERIFIED":
+                phase.update(status="NOT_VERIFIED", evidence_refs=[])
+        for milestone in self.data["milestones"]["milestones"]:
+            if milestone["status"] == "VERIFIED":
+                milestone.update(status="NOT_VERIFIED", evidence_refs=[])
         for control in self.data["ai-execution-policy"]["controls"]:
             control["p0_enforcement_status"] = "NOT_IMPLEMENTED"
         self.task = self.data["implementation-backlog"]["tasks"][0]
@@ -42,7 +49,9 @@ class AIExecutionTests(unittest.TestCase):
         for ref in (
             self.task["normative_specs"]
             + list(CONTROL_INPUTS)
-            + ["schemas/execution-packet.schema.json", "FILE_MANIFEST.json"]
+            + ["schemas/execution-packet.schema.json",
+               "schemas/execution-packet-absence.schema.json",
+               "FILE_MANIFEST.json"]
         ):
             dest = self.plan / ref
             dest.parent.mkdir(parents=True, exist_ok=True)
@@ -391,7 +400,7 @@ if __name__ == "__main__":
     ).run(suite)  # type: ignore[assignment]
     report = {
         "scope": "Local declared execution packet checks only; no actual action interception, diff review or remote CI",
-        "generated_at_utc": datetime.now(UTC).isoformat(),
+        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "manifest_sha256": validator.sha(validator.PLAN / "FILE_MANIFEST.json"),
         "status": "PASS" if result.wasSuccessful() else "FAIL",
         "test_count": result.testsRun,

@@ -283,9 +283,12 @@ class GovernanceTests(unittest.TestCase):
             dict.fromkeys(task["normative_specs"] + list(CONTROL_INPUTS))
         ):
             original = self.plan / ref
-            # Skip files that don't exist in test tree (e.g., archived contracts)
+            # Required normative/control inputs must never disappear silently
             if not original.exists():
-                continue
+                raise FileNotFoundError(
+                    f"Required input missing from test fixture: {ref}\n"
+                    f"Fixture setup must copy all required normative/control inputs."
+                )
             snapshot = self.records / f"{task['task_id']}-input-{index}.txt"
             snapshot.write_bytes(original.read_bytes())
             inputs.append(
@@ -619,6 +622,19 @@ class GovernanceTests(unittest.TestCase):
                 if p.is_file()
             }
 
+        # Generate views and manifest first
+        result = subprocess.run(
+            [
+                sys.executable,
+                "-B",
+                str(self.plan / "scripts/validate_plan.py"),
+                "--write-views",
+            ],
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+
         before = inventory()
         reports = Path(self.tmp.name) / "dist/validation/job-1"
         for mode, name in [
@@ -637,10 +653,10 @@ class GovernanceTests(unittest.TestCase):
                 capture_output=True,
                 text=True,
             )
-            # The test verifies that validation doesn't modify plan files,
-            # not that the production plan is validation-clean
+            # Clean positive fixture must validate successfully
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             report = json.loads((reports / name).read_text())
-            self.assertIn(report["status"], ("PASS", "FAIL"))
+            self.assertEqual(report["status"], "PASS", f"Clean fixture must pass: {report.get('errors', [])}")
         self.assertEqual(before, inventory())
 
     def test_phase_requires_applicable_ci(self):
@@ -700,10 +716,12 @@ class GovernanceTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        # Test verifies that write-views generates correct views
-        # Production plan may have other issues (missing docs/ files)
-        # but the fixture itself should be structurally valid
-        self.assertIn(result.returncode, (0, 1))
+        # After write-views, clean positive fixture must validate successfully
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        report = json.loads(result.stdout)
+        self.assertEqual(report["status"], "PASS", f"Clean fixture must pass after write-views: {report.get('errors', [])}")
+
+        # Now introduce a deliberate negative mutation
         gates = self.data["ci-gates"]
         gates["gates"] = []
         (self.plan / "machine/ci-gates.yaml").write_text(yaml.safe_dump(gates))
