@@ -86,8 +86,8 @@ V2-061 必须在接口实现前冻结此决策。
 | `updated_at` | BASE | Yes | Yes | — | V2-061 |
 | `authority` | BASE | Yes | Yes | — | V2-061 |
 | `provenance` | BASE | Yes | Yes | — | V2-061 |
-| `active_goals()` | DERIVED | No | Recomputed | Filter BASE `goals` | V2-061 |
-| `knowledge_count()` | DERIVED | No | Recomputed | `len(knowledge)` | V2-061 |
+| `active_goals` | DERIVED | No | Recomputed | Filter BASE `goals` | V2-061 |
+| `knowledge_count` | DERIVED | No | Recomputed | `len(knowledge)` | V2-061 |
 
 **说明**:
 - `entity_id`, `project_id`: V2-061 持久化这些引用字段，但 identity/project membership 权威归 V2-005
@@ -366,7 +366,7 @@ char1.goals == char2.goals  # list 精确相等
 ```python
 # 不作为存储字段独立比较
 # 重新计算结果必须等价
-char1.active_goals() == char2.active_goals()  # 从 BASE 重算
+char1.active_goals == char2.active_goals  # 从 BASE 重算
 ```
 
 ### CACHE 字段相等
@@ -391,34 +391,39 @@ assert ck1 == ck2  # PASS (compare=False 排除 aligns_with_fact)
 
 **Machine 要求**: 合法派生字段和非默认值往返不丢失
 
-**适用域解释**:
+**适用域明确**:
 
-Machine SSOT 要求针对**合法 persisted semantic fields**（合法持久化语义字段）。
+本 ADR 定义三类状态及其对 Machine SSOT 的映射:
 
-本 ADR 明确定义:
-- **合法 persisted semantic fields** = BASE 字段
-- **CACHE 字段明确不是合法 persisted semantic fields**
+#### 持久化 BASE 义务
 
-因此:
-- BASE 往返不丢失 → Machine SSOT 要求适用
-- DERIVED 从 BASE 重算等价 → Machine SSOT 要求适用
-- CACHE reset 为 None → **不属于语义状态丢失**，因 CACHE 不是合法持久化语义字段
+合法 persisted BASE 字段及其合法非默认值:
 
-这是**适用域解释**，不是弱化 Machine SSOT。
+→ 精确语义往返保留
 
-**解释**:
+**Machine SSOT 要求适用**: BASE 字段必须往返不丢失
 
-- **BASE**: 精确语义保留
-- **DERIVED**: 相同恢复的 BASE 产生语义等价的派生结果
-- **CACHE**: 不属于持久化语义状态，因此不属于语义往返 payload
+#### DERIVED 义务
 
-**CACHE 排除不是丢失权威状态**，因为:
+合法 DERIVED 视图:
 
-1. CACHE 非权威（不是领域真值来源）
-2. 需要外部 Canon 上下文
-3. 不参与语义相等性
-4. 可从外部权威重新生成
-5. **明确定义为非合法持久化语义字段**
+→ 不持久化
+→ 从恢复的 BASE 重新计算
+→ 语义结果必须等价
+
+**Machine SSOT 要求适用**: 恢复的 BASE 必须产生等价的 DERIVED 结果
+
+#### CACHE
+
+运行时 CACHE:
+
+→ 不是合法持久化语义字段
+→ 不是权威持久化状态
+→ reset/重新评估不是持久化状态丢失
+
+**Machine SSOT 要求不适用**: CACHE 明确不是合法持久化语义字段
+
+**说明**: 这明确了适用域；它不修改或弱化 Machine SSOT。
 
 ### 往返验证
 
@@ -444,8 +449,8 @@ assert char1.intents == char2.intents
 assert char1.planned_actions == char2.planned_actions
 
 # DERIVED 重新计算后等价
-assert char1.active_goals() == char2.active_goals()
-assert char1.knowledge_count() == char2.knowledge_count()
+assert char1.active_goals == char2.active_goals
+assert char1.knowledge_count == char2.knowledge_count
 
 # CACHE 不是语义往返的一部分
 # aligns_with_fact 反序列化后为 None
@@ -503,8 +508,10 @@ prop.context["x"] = 1  # 仍可修改内部 dict
 2. **领域存储**: 必须是不可变/冻结表示
 3. **输入规范化**: 
    - 输入可能来自 JSON object
-   - 领域构造必须在存储前规范化/深度冻结
-4. **推荐实现**: `MappingProxyType` 或冻结结构
+   - 领域构造必须在存储前规范化/**递归深度冻结**
+4. **推荐实现**: 递归冻结结构
+   - **重要**: `MappingProxyType` 仅浅冻结，对嵌套结构不足够
+   - 必须递归处理嵌套 mapping/list 以确保完全不可变
 5. **不变式**: 存储的 `Proposition.context` 禁止是可变 dict
 
 **边界**: 不为此建立重框架；最小收口即可
@@ -591,7 +598,7 @@ BASE + DERIVED + CACHE: 全部持久化
 ### V2-061 权威
 
 - Character 当前认知/意图/生命周期领域状态
-- `aligns_with_fact` 是 V2-061 存储的 CACHE 字段，但评估需外部 Canon
+- `aligns_with_fact` is a V2-061 runtime CACHE field and is not persisted in the semantic payload; evaluation requires external Canon context
 
 ### 外部权威
 
@@ -652,16 +659,38 @@ def test_derived_recomputation():
     char = Character(goals=[...])
     serialized = to_json(char)
     char2 = from_json(serialized)
-    assert char.active_goals() == char2.active_goals()
+    assert char.active_goals == char2.active_goals
 
 def test_proposition_collision_reject():
-    prop1 = Proposition(id="P1", subject="A", predicate="is_alive")
-    prop2 = Proposition(id="P1", subject="B", predicate="is_dead")
-    # System must reject: same ID + different BASE payload
+    # Same PropositionId + different BASE payload must be rejected
+    prop1 = Proposition(
+        proposition_id=PropositionId("prop-123"),
+        project_id=ProjectId("project-1"),
+        subject=EntityId("entity-A"),
+        predicate="is_alive",
+        object=None,
+        context=None
+    )
+    prop2 = Proposition(
+        proposition_id=PropositionId("prop-123"),
+        project_id=ProjectId("project-1"),
+        subject=EntityId("entity-B"),  # Different subject
+        predicate="is_dead",  # Different predicate
+        object=None,
+        context=None
+    )
+    # System must reject: same PropositionId + different BASE payload
 
 def test_proposition_context_immutable():
     context = {"key": "value"}
-    prop = Proposition(..., context=context)
+    prop = Proposition(
+        proposition_id=PropositionId("prop-456"),
+        project_id=ProjectId("project-1"),
+        subject=EntityId("entity-C"),
+        predicate="owns",
+        object="artifact-X",
+        context=context
+    )
     with pytest.raises(TypeError):
         prop.context["key"] = "modified"
 ```
@@ -690,13 +719,26 @@ jsonschema validate --schema character.schema.json invalid_with_cache.json
 ## 批准前提条件
 
 1. **独立审核**: ADR-002 内容通过独立审核
-2. **治理一致性**: decision-register.yaml 更新 `decision_record` 指向批准证据
-3. **Contract 对齐**: 与冻结 Contract d35be3d 无语义冲突
-4. **验收准备**: V2-061 验收场景已更新反映此决策
+2. **Contract 对齐**: 与冻结 Contract d35be3d 无语义冲突
+3. **分类完整**: BASE/DERIVED/CACHE 分类明确且无歧义
+4. **权威边界**: V2-005/V2-006/V2-007/V2-008 边界清晰
+5. **Machine 接受映射**: BASE/DERIVED/CACHE 对 Machine SSOT 的映射明确
+6. **无未解决语义冲突**: 无内部矛盾或与其他已接受决策冲突
 
 **当前状态**: PROPOSED / DRAFT — 不具备批准权威
 
 **注**: Schema/code/test conformance 属于 V2-061 implementation verification，不是 ADR-002 ratification 前提条件。ADR-002 在 interface implementation 前批准，implementation 验证 conformance。
+
+---
+
+## 批准输出 / 原子治理更新
+
+批准后需执行的原子治理更新（尚未执行）:
+
+1. **ADR 状态**: PROPOSED / DRAFT → ACCEPTED
+2. **创建批准证据**: 生成正式决策证据文档
+3. **decision_register.yaml**: `decision_record: null` → 批准证据路径
+4. **验证引用**: 按当前治理要求添加适用的 verification_refs
 
 ---
 
