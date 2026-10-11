@@ -4,7 +4,7 @@ task_id: V2-061
 plan_version: 1.3.1
 repository_revision: 3be14656094a8b475ee56329458148dabc10e258
 worktree_dirty: false
-plan_manifest_sha256: bf3d1c043ee650477952be348a08de175cba139493f1c13a5fa26a7145b457e2
+plan_manifest_sha256: 29ffa0157199df502931f89637a877c80d3a319691d7d3f187ea0e144656c475
 environment:
   fingerprint: macOS15.1.1-arm64; Python3.9.6
   runtime_versions:
@@ -24,8 +24,8 @@ inputs:
   ref: validation/execution/V2-061/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
   sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
 - source_ref: AI_EXECUTION_PROTOCOL.md
-  ref: validation/execution/V2-061/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
-  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+  ref: validation/execution/V2-061/inputs/c581c7fe0496d3b3962bdcc2913e1f5d8a4052d6f3ba5e51796eb6ebf7e88670.txt
+  sha256: c581c7fe0496d3b3962bdcc2913e1f5d8a4052d6f3ba5e51796eb6ebf7e88670
 - source_ref: decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
   ref: validation/execution/V2-061/inputs/0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8.txt
   sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
