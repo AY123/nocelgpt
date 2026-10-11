@@ -10,7 +10,7 @@ executed_at: '2026-10-11T06:06:53.673831+00:00'
 environment_fingerprint: Governance decision - no runtime environment required
 artifacts:
 - ref: decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
-  sha256: 9e5b868afa94a293409d11b310d0bcdf54332946feb2b6e043bacefc2aa7c4d5
+  sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
 input_evidence_refs: []
 decision: ACCEPTED
 rationale: ADR-002 completed independent review, is aligned with the frozen V2-061

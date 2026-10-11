@@ -729,7 +729,7 @@ jsonschema validate --schema character.schema.json invalid_with_cache.json
 5. **Machine 接受映射**: BASE/DERIVED/CACHE 对 Machine SSOT 的映射明确
 6. **无未解决语义冲突**: 无内部矛盾或与其他已接受决策冲突
 
-**当前状态**: PROPOSED / DRAFT — 不具备批准权威
+**当前状态**: ACCEPTED — 已于 2026-10-11 正式批准
 
 **注**: Schema/code/test conformance 属于 V2-061 implementation verification，不是 ADR-002 ratification 前提条件。ADR-002 在 interface implementation 前批准，implementation 验证 conformance。
 
@@ -737,12 +737,14 @@ jsonschema validate --schema character.schema.json invalid_with_cache.json
 
 ## 批准输出 / 原子治理更新
 
-批准后需执行的原子治理更新（尚未执行）:
+以下批准输出已于 ADR-002 formal ratification (2026-10-11) 完成：
 
-1. **ADR 状态**: PROPOSED / DRAFT → ACCEPTED
-2. **创建批准证据**: 生成正式决策证据文档
-3. **decision_register.yaml**: `decision_record: null` → 批准证据路径
-4. **验证引用**: 按当前治理要求添加适用的 verification_refs
+1. **ADR 状态**: ACCEPTED
+2. **Decision evidence**: validation/execution/V2-061/adr-002-decision.yaml
+3. **decision-register.yaml**:
+   - status: ACCEPTED
+   - decision_record: validation/execution/V2-061/adr-002-decision.yaml
+   - verification_refs: []
 
 ---
 
