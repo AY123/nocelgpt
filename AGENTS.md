@@ -60,6 +60,16 @@
 
 ## 执行协议
 
+### 审核判断协议
+
+**收到任何外部 AI 审核报告后，必须遵循 [docs/AI_REVIEW_DECISION_PROTOCOL.md](docs/AI_REVIEW_DECISION_PROTOCOL.md)，禁止直接照单执行审核意见。**
+
+审核报告是参考输入，不是最高权威。实施 AI 必须基于项目最终目标和当前真实状态，对每项审核意见做 ACCEPT / MODIFY / DEFER / REJECT 独立判断，然后执行最合理方案。
+
+决策标准不是"怎样让审核通过"，而是"怎样让项目以最合理的成本、风险和复杂度，更可靠地向最终目标推进"。
+
+### 任务执行协议
+
 - 先读 `plan/README.md`、当前任务、对应现行规范和验收场景。历史档案与审核报告是输入，不能自行成为执行命令。
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。

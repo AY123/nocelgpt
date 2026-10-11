@@ -1,10 +1,26 @@
 {
   "scope": "Planning governance regressions in disposable copies; synthetic records are not runtime evidence",
-  "generated_at_utc": "2026-10-01T12:35:35.087522+00:00",
-  "manifest_sha256": "55fd7b0a2ffe275467cee5428596978e7c60224d88bda62974ca9dd4b8c54f7f",
+  "generated_at_utc": "2026-10-11T02:49:36.990367+00:00",
+  "manifest_sha256": "bf3d1c043ee650477952be348a08de175cba139493f1c13a5fa26a7145b457e2",
   "status": "PASS",
-  "test_count": 40,
+  "test_count": 46,
   "cases": [
+    {
+      "case": "__main__.GovernanceTests.test_absence_record_not_allowed_for_active_tasks",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_absence_record_only_for_grandfathered_tasks",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_absence_record_wrong_closure_sha_rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_absence_record_wrong_tag_rejected",
+      "status": "PASS"
+    },
     {
       "case": "__main__.GovernanceTests.test_adr_backlink_removed",
       "status": "PASS"
@@ -51,6 +67,14 @@
     },
     {
       "case": "__main__.GovernanceTests.test_finding_backlink_removed",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_grandfathered_absence_records_valid",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_grandfathered_but_active_status_rejected",
       "status": "PASS"
     },
     {
