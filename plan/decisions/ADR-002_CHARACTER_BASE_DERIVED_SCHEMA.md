@@ -1,18 +1,22 @@
 # ADR-002 — Character 基础/派生/缓存状态与 Schema 一致策略
 
-**状态**: PROPOSED / DRAFT
+**状态**: ACCEPTED
 
 **关联任务**: V2-061
 
 **责任角色**: domain-maintainer
 
-**决策权威**: 待独立审核与正式批准
+**决策权威**: FORMALLY RATIFIED
 
-**Machine ADR Status**: REQUIRED
+**Machine ADR Status**: ACCEPTED
 
 **日期**: 2026-10-10
 
+**批准日期**: 2026-10-11
+
 **冻结 Contract 基线**: d35be3dbb9c6613ff76b70f164427caa84d8da11
+
+**Ratification Evidence**: validation/execution/V2-061/adr-002-decision.yaml
 
 ---
 
