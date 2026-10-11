@@ -5,22 +5,24 @@
 **Status**: CLOSED  
 **Created**: 2026-10-09  
 **Resolved**: 2026-10-11  
-**Resolution Commit**: 266a2259ec8b74e0b0a5257ab7a26ff34b98c0c5
+**Resolution Commit**: 611bebfe46e58452757834e28514f7731d3b53aa
 
 ---
 
 ## Resolution
 
 **Date**: 2026-10-11  
-**Commit**: 266a2259ec8b74e0b0a5257ab7a26ff34b98c0c5  
-**GitLab**: https://gitlab.com/ayyang666/aianovelos/-/commit/266a2259ec8b74e0b0a5257ab7a26ff34b98c0c5
+**Commit**: 611bebfe46e58452757834e28514f7731d3b53aa  
+**GitLab**: https://gitlab.com/ayyang666/aianovelos/-/commit/611bebfe46e58452757834e28514f7731d3b53aa
 
 ### Achieved Results
 
 ✅ **Zero Raw Errors**: Base fixture achieves true zero raw validation errors (not filtered)  
 ✅ **No Error Masking**: All error filtering/masking mechanisms removed  
-✅ **All Tests Pass**: 46/46 tests PASS  
-✅ **Fixture Normalization**: V2-005/V2-006 properly normalized to OPEN in base fixture
+✅ **All Tests Pass**: 46/46 governance + 36/36 AI execution = 82/82 PASS  
+✅ **Fixture Normalization**: V2-005/V2-006 properly normalized to OPEN in base fixture  
+✅ **Strict CLI Assertions**: Positive fixtures genuinely pass (not conditionally accepted)  
+✅ **No Silent Skips**: Required inputs fail loudly if missing from fixture
 
 ### Technical Solution
 
@@ -89,9 +91,11 @@ Governance test suite positive fixture isolation for V2-005/V2-006 is incomplete
 
 **Achieved**:
 1. ✅ `test_governance.py` achieves PASS status (46/46)
-2. ✅ `test_ai_execution.py` must achieve PASS status (deferred - different scope)
+2. ✅ `test_ai_execution.py` achieves PASS status (36/36)
 3. ✅ Positive fixture baseline has 0 errors (raw, not filtered)
 4. ✅ All absence grandfathering tests pass
+5. ✅ CLI positive fixtures genuinely pass (not conditionally accepted)
+6. ✅ No silent normative-input skip (fails loudly if missing)
 
 **Technical Approach** (implemented):
 - ✅ Redesigned fixture to normalize V2-005/V2-006 to OPEN in base state
@@ -118,7 +122,8 @@ Governance test suite positive fixture isolation for V2-005/V2-006 is incomplete
 - `9f705d9`: V2-005 artifact fix (entity-identity.schema.json) ✓
 - `b7a97fe`: WIP fixture isolation attempt (FAILED)
 - `c7d06cb`: Revert WIP attempt ✓
-- `266a225`: **RESOLUTION** - Remove all error masking, achieve zero raw errors ✓
+- `266a225`: Partial harness fix (incomplete - missing AI execution suite)
+- `611bebf`: **RESOLUTION** - Complete raw-green governance and execution harness ✓
 
 ---
 
@@ -126,9 +131,9 @@ Governance test suite positive fixture isolation for V2-005/V2-006 is incomplete
 
 **Status**: CLOSED  
 **Root Cause**: Test fixture included historical CLOSED tasks with absence records, causing validation errors  
-**Solution**: Normalize V2-005/V2-006 to OPEN in base fixture, remove all error filtering  
-**Result**: True zero raw errors (not filtered), 46/46 tests pass  
+**Solution**: Normalize V2-005/V2-006 to OPEN in base fixture, remove all error filtering, restore strict CLI assertions  
+**Result**: True zero raw errors (not filtered), 82/82 tests pass (46 governance + 36 AI execution)  
 **Verification**: `python3 -B check_raw_errors.py` and `HARNESS_DEBT_CLOSURE_PROOF.md`  
-**GitLab SHA**: 266a2259ec8b74e0b0a5257ab7a26ff34b98c0c5
+**GitLab SHA**: 611bebfe46e58452757834e28514f7731d3b53aa
 
-All blockers removed. V2-061 implementation may proceed.
+All blockers removed. V2-061 implementation may proceed after ADR-002 ratification.
