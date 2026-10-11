@@ -1,7 +1,16 @@
 # Project Status
 
-**Last Updated**: 2026-10-08
-**Document Type**: Current State Summary
+**Last Updated**: 2026-10-11
+**Document Type**: Derived Summary (Canonical: plan/machine/*)
+
+**IMPORTANT**: This is a human-readable derived summary.
+
+Canonical machine-readable state:
+- Tasks: plan/machine/implementation-backlog.yaml
+- Gates: plan/machine/phase-gates.yaml  
+- Decisions: plan/machine/decision-register.yaml
+
+If conflicts exist, machine SSOT always wins.
 
 ---
 
@@ -51,30 +60,15 @@
   - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab) - 899/899 tests, 6/6 gates
 
 **Open Tasks**:
-- **V2-061**: Character Knowledge & Intent Core (OPEN, next task candidate)
+- **V2-061**: Character Knowledge & Intent Core
+  - Status: IN_PROGRESS (execution packet authorized)
+  - Readiness: READY_TO_START
+  - Execution Packet: validation/execution/V2-061/execution-packet.yaml
+  - ADR-002: ACCEPTED (2026-10-11)
+  - Operational State: READY_FOR_PREFLIGHT
+  - Production IMPLEMENT: BLOCKED until task_entry IMPLEMENT preflight PASS
 - **V2-007**: Event Timeline Promise Core (OPEN)
 - **V2-008**: NarrativeDelta Implementation (OPEN)
-
----
-
-## Next Task Candidate
-
-**V2-061: Character Knowledge & Intent Core**
-
-**Rationale**: Restores missing P1 character knowledge semantics that were separated from V2-006 during governance reconciliation. Required by V2-008 NarrativeDelta as part of complete narrative state foundation.
-
-**Authorization Status**: NOT YET AUTHORIZED (requires contract refinement)
-
-**Dependencies**:
-- V2-005 (Entity Identity) — CLOSED ✓
-- V2-006 (Relationship Tracking) — CLOSED ✓
-
-**Key Requirements**:
-- Character-scoped knowledge state
-- Objective fact vs subjective belief distinction
-- Knowledge acquisition boundaries
-- Goals and intent modeling
-- Planned action vs occurred event distinction
 
 ---
 

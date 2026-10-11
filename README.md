@@ -10,7 +10,7 @@
 - V2-006: Entity Relationship Tracking (CLOSED, Tag `v2.006-complete` at `bba1061`)
 
 **当前 P1 状态**:
-- V2-061: Character Knowledge & Intent Core (OPEN, 下一任务候选)
+- V2-061: Character Knowledge & Intent Core (IN_PROGRESS, authorized with execution packet)
 - V2-007: Event Timeline Promise Core (OPEN)
 - V2-008: NarrativeDelta Implementation (OPEN)
 
