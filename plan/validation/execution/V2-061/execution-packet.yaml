@@ -1,0 +1,200 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-061
+plan_version: 1.3.1
+repository_revision: c1131f0f242b73f6f166205513a0629bab882c5e
+worktree_dirty: false
+plan_manifest_sha256: dbccad960a510668382874bfd5763cf27d7169ffcd2a3d09d12a6a35bbaadabc
+environment:
+  fingerprint: macOS15.1.1-arm64; Python3.9.6
+  runtime_versions:
+    python: 3.9.6
+  database_image: null
+  ci_context: null
+implementer: Local AI implementer under V2-061 authorization
+verifier: Local contract tests plus governance regression; not independent human review
+owner_role: domain-maintainer
+scope: Character Knowledge & Intent Core per frozen V2-061 Contract and accepted ADR-002. Implements Character/CharacterKnowledge/Proposition with BASE/DERIVED/CACHE semantics. No database, Provider, Canon persistence, or V2-007/V2-008 expansion.
+action: IMPLEMENT
+inputs:
+- source_ref: plan/03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: plan/03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: plan/05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: plan/05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: plan/AI_EXECUTION_PROTOCOL.md
+  ref: plan/AI_EXECUTION_PROTOCOL.md
+  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+- source_ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
+  ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
+  sha256: 04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0
+- source_ref: plan/decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
+  ref: plan/decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
+  sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
+- source_ref: plan/validation/execution/V2-061/adr-002-decision.yaml
+  ref: plan/validation/execution/V2-061/adr-002-decision.yaml
+  sha256: 58d4b74420282d842bc704a714884b74f58552e733e867ff20f6035ea043510d
+- source_ref: plan/machine/implementation-backlog.yaml
+  ref: plan/machine/implementation-backlog.yaml
+  sha256: 451a332da318e8f2f9a914f9580fff3a2292278bb528f430f18278fa0f693b3e
+- source_ref: plan/machine/decision-register.yaml
+  ref: plan/machine/decision-register.yaml
+  sha256: 80ce42eba73f7105aa6512fd6fb9089c183ec4f9a1f8625c286e30f41e29c2c7
+- source_ref: plan/machine/phase-gates.yaml
+  ref: plan/machine/phase-gates.yaml
+  sha256: 32a9b314e4729f6f776254d34d6477256440ca88affd9c1ab272ecc3c439e213
+- source_ref: plan/machine/test-catalog.yaml
+  ref: plan/machine/test-catalog.yaml
+  sha256: f7774ac97955f8d762c06ccf08e79129809e591706a7433a73c4c394ba91564e
+- source_ref: plan/machine/governance-baseline.yaml
+  ref: plan/machine/governance-baseline.yaml
+  sha256: a7b1a29c9495d19615f3a5c758dcb6ca7046113a43a80b8c7749319f191c2eef
+- source_ref: plan/machine/ai-execution-policy.yaml
+  ref: plan/machine/ai-execution-policy.yaml
+  sha256: feeeaed2bea5436f93509a617459744e30f31c6640d11f309b0f2afa939f1171
+- source_ref: plan/schemas/execution-packet.schema.json
+  ref: plan/schemas/execution-packet.schema.json
+  sha256: 4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404
+- source_ref: plan/templates/EXECUTION_PACKET.yaml
+  ref: plan/templates/EXECUTION_PACKET.yaml
+  sha256: e3415dfb6d22ab59e37718ed1a3a549df164f2c6763a11e0557079a605bdf54f
+expected_outputs:
+- src/anovel/domain/character.py
+- src/anovel/domain/knowledge.py
+- specs/schemas/character.schema.json
+- tests/contract/test_v2_061.py
+allowed_paths:
+- src/anovel/domain/character.py
+- src/anovel/domain/knowledge.py
+- src/anovel/domain/__init__.py
+- specs/schemas/character.schema.json
+- tests/contract/test_v2_061.py
+- plan/validation/execution/V2-061/
+- plan/machine/implementation-backlog.yaml
+required_decisions:
+- ADR-002
+claims:
+- id: CLAIM-001-P0-GATE
+  kind: FACT
+  statement: G-P0 phase gate is VERIFIED
+  sources:
+  - ref: plan/machine/phase-gates.yaml
+    sha256: 32a9b314e4729f6f776254d34d6477256440ca88affd9c1ab272ecc3c439e213
+  blocks_actions: []
+  verification_plan: Verified by reading phase-gates.yaml P0 phase status field
+- id: CLAIM-002-DEPENDENCIES
+  kind: FACT
+  statement: V2-005 and V2-006 are CLOSED
+  sources:
+  - ref: plan/machine/implementation-backlog.yaml
+    sha256: 451a332da318e8f2f9a914f9580fff3a2292278bb528f430f18278fa0f693b3e
+  blocks_actions: []
+  verification_plan: Verified by reading implementation-backlog.yaml task status fields
+- id: CLAIM-003-ADR
+  kind: FACT
+  statement: ADR-002 is ACCEPTED with valid decision_record bound
+  sources:
+  - ref: plan/machine/decision-register.yaml
+    sha256: 80ce42eba73f7105aa6512fd6fb9089c183ec4f9a1f8625c286e30f41e29c2c7
+  - ref: plan/validation/execution/V2-061/adr-002-decision.yaml
+    sha256: 58d4b74420282d842bc704a714884b74f58552e733e867ff20f6035ea043510d
+  blocks_actions: []
+  verification_plan: Verified by reading decision-register status and decision_record path
+- id: CLAIM-004-CONTRACT
+  kind: FACT
+  statement: V2-061 implementation contract content is frozen at baseline d35be3dbb9c6613ff76b70f164427caa84d8da11
+  sources:
+  - ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
+    sha256: 04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0
+  blocks_actions: []
+  verification_plan: Verified by reading contract freeze marker and comparing content hash
+- id: CLAIM-005-V2-005-AUTHORITY
+  kind: FACT
+  statement: V2-005 remains sole authority for entity identity, EntityId is reused not redesigned
+  sources:
+  - ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
+    sha256: 04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0
+  blocks_actions:
+  - IMPLEMENT
+  verification_plan: Implementation must import and use V2-005 EntityIdentity without modification
+- id: CLAIM-006-V2-006-AUTHORITY
+  kind: FACT
+  statement: V2-006 remains sole authority for relationship topology
+  sources:
+  - ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
+    sha256: 04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0
+  blocks_actions:
+  - IMPLEMENT
+  verification_plan: Implementation must not duplicate V2-006 relationship logic
+- id: CLAIM-007-BASE-DERIVED-CACHE
+  kind: FACT
+  statement: ADR-002 defines BASE (persisted authoritative), DERIVED (recomputed from BASE), CACHE (runtime non-authoritative)
+  sources:
+  - ref: plan/decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
+    sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
+  blocks_actions:
+  - IMPLEMENT
+  verification_plan: Implementation must follow BASE/DERIVED/CACHE classification per ADR-002
+- id: CLAIM-008-ALIGNS-WITH-FACT-CACHE
+  kind: FACT
+  statement: aligns_with_fact is CACHE (compare=False, not persisted to semantic payload)
+  sources:
+  - ref: plan/decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
+    sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
+  blocks_actions:
+  - IMPLEMENT
+  verification_plan: CharacterKnowledge.aligns_with_fact must use field(compare=False) and not appear in character.schema.json
+estimate:
+  range: 4-8 hours
+  unit: implementation hours
+  assumptions:
+  - Contract and ADR are internally consistent
+  - V2-005/V2-006 interfaces are stable
+  - No database/Provider implementation required
+  - Dataclass-based domain model following V2-005/V2-006 patterns
+  confidence: MEDIUM
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 3
+  maximum_runtime: 28800
+stop_conditions:
+- Stop if ADR-002 status changes from ACCEPTED
+- Stop if frozen Contract (d35be3d) and ADR-002 are found semantically contradictory
+- Stop if V2-005/V2-006 authority must be modified to implement V2-061
+- Stop if implementation requires database, Provider, or Canon persistence
+- Stop on scope violation (files outside allowed_paths)
+- Stop on validator weakening or test removal
+- Stop if required input SHA256 hashes no longer match current source bytes
+- Stop if task_entry IMPLEMENT check does not pass
+- Stop if attempt to expand scope to V2-007/V2-008
+- Stop if CACHE field appears in character.schema.json persisted payload
+review_notes:
+- V2-061 is pure domain implementation with no external dependencies
+- Character must use EntityId from V2-005 for entity_id field
+- Proposition.context must be recursively deep-frozen (not mutable dict)
+- CharacterKnowledge acquisition provenance is mandatory
+- absence of occurrence evidence is not proof of non-occurrence
+- PlannedAction occurrence link is not occurrence truth (V2-007 is authority)
+- character.schema.json contains BASE fields only, no DERIVED, no CACHE
+- Contract explicitly states this is knowledge modeling, not AI knowledge base
+handoff:
+  current_step: Implementation authorization and execution packet preparation
+  completed_steps:
+  - Verified all preconditions (G-P0, V2-005, V2-006, ADR-002)
+  - Gathered all normative input hashes
+  - Created execution packet with bounded scope
+  pending_items:
+  - Commit authorization packet and Machine transition
+  - Create scope record for change_review binding
+  - Run task_entry IMPLEMENT preflight check
+  - Execute V2-061 production implementation
+  next_action: IMPLEMENT
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: Authorization preflight not yet executed
+change_review: null
+
