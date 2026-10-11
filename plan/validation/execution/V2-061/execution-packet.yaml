@@ -18,46 +18,46 @@ scope: Character Knowledge & Intent Core per frozen V2-061 Contract and accepted
 action: IMPLEMENT
 inputs:
 - source_ref: plan/03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
-  ref: plan/03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: plan/validation/execution/V2-061/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
   sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
 - source_ref: plan/05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
-  ref: plan/05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: plan/validation/execution/V2-061/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
   sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
 - source_ref: plan/AI_EXECUTION_PROTOCOL.md
-  ref: plan/AI_EXECUTION_PROTOCOL.md
+  ref: plan/validation/execution/V2-061/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
   sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
 - source_ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
-  ref: docs/V2-061_IMPLEMENTATION_CONTRACT.md
+  ref: plan/validation/execution/V2-061/inputs/04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0.txt
   sha256: 04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0
 - source_ref: plan/decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
-  ref: plan/decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
+  ref: plan/validation/execution/V2-061/inputs/0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8.txt
   sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
 - source_ref: plan/validation/execution/V2-061/adr-002-decision.yaml
-  ref: plan/validation/execution/V2-061/adr-002-decision.yaml
+  ref: plan/validation/execution/V2-061/inputs/58d4b74420282d842bc704a714884b74f58552e733e867ff20f6035ea043510d.txt
   sha256: 58d4b74420282d842bc704a714884b74f58552e733e867ff20f6035ea043510d
 - source_ref: plan/machine/implementation-backlog.yaml
-  ref: plan/machine/implementation-backlog.yaml
+  ref: plan/validation/execution/V2-061/inputs/451a332da318e8f2f9a914f9580fff3a2292278bb528f430f18278fa0f693b3e.txt
   sha256: 451a332da318e8f2f9a914f9580fff3a2292278bb528f430f18278fa0f693b3e
 - source_ref: plan/machine/decision-register.yaml
-  ref: plan/machine/decision-register.yaml
+  ref: plan/validation/execution/V2-061/inputs/80ce42eba73f7105aa6512fd6fb9089c183ec4f9a1f8625c286e30f41e29c2c7.txt
   sha256: 80ce42eba73f7105aa6512fd6fb9089c183ec4f9a1f8625c286e30f41e29c2c7
 - source_ref: plan/machine/phase-gates.yaml
-  ref: plan/machine/phase-gates.yaml
+  ref: plan/validation/execution/V2-061/inputs/32a9b314e4729f6f776254d34d6477256440ca88affd9c1ab272ecc3c439e213.txt
   sha256: 32a9b314e4729f6f776254d34d6477256440ca88affd9c1ab272ecc3c439e213
 - source_ref: plan/machine/test-catalog.yaml
-  ref: plan/machine/test-catalog.yaml
+  ref: plan/validation/execution/V2-061/inputs/f7774ac97955f8d762c06ccf08e79129809e591706a7433a73c4c394ba91564e.txt
   sha256: f7774ac97955f8d762c06ccf08e79129809e591706a7433a73c4c394ba91564e
 - source_ref: plan/machine/governance-baseline.yaml
-  ref: plan/machine/governance-baseline.yaml
+  ref: plan/validation/execution/V2-061/inputs/a7b1a29c9495d19615f3a5c758dcb6ca7046113a43a80b8c7749319f191c2eef.txt
   sha256: a7b1a29c9495d19615f3a5c758dcb6ca7046113a43a80b8c7749319f191c2eef
 - source_ref: plan/machine/ai-execution-policy.yaml
-  ref: plan/machine/ai-execution-policy.yaml
+  ref: plan/validation/execution/V2-061/inputs/feeeaed2bea5436f93509a617459744e30f31c6640d11f309b0f2afa939f1171.txt
   sha256: feeeaed2bea5436f93509a617459744e30f31c6640d11f309b0f2afa939f1171
 - source_ref: plan/schemas/execution-packet.schema.json
-  ref: plan/schemas/execution-packet.schema.json
+  ref: plan/validation/execution/V2-061/inputs/4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404.txt
   sha256: 4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404
 - source_ref: plan/templates/EXECUTION_PACKET.yaml
-  ref: plan/templates/EXECUTION_PACKET.yaml
+  ref: plan/validation/execution/V2-061/inputs/e3415dfb6d22ab59e37718ed1a3a549df164f2c6763a11e0557079a605bdf54f.txt
   sha256: e3415dfb6d22ab59e37718ed1a3a549df164f2c6763a11e0557079a605bdf54f
 expected_outputs:
 - src/anovel/domain/character.py
@@ -196,5 +196,7 @@ handoff:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: Authorization preflight not yet executed
-change_review: null
+change_review:
+  scope_revision: 8b2eced67e0c7f93086ef87b1f8d0e9cb82e50a8
+  scope_ref: plan/validation/execution/V2-061/scope-authorization.md
 

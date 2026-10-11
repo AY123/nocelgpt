@@ -1,0 +1,21 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-002-20261011-ratification
+evidence_type: ADR_DECISION
+subject_id: ADR-002
+revision: 99bc021e60f36ac25891ba859c6be67a54fee334
+status: PASS
+producer: Governance ratification under verified harness closure
+executed_at: '2026-10-11T06:06:53.673831+00:00'
+environment_fingerprint: Governance decision - no runtime environment required
+artifacts:
+- ref: decisions/ADR-002_CHARACTER_BASE_DERIVED_SCHEMA.md
+  sha256: 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: ADR-002 completed independent review, is aligned with the frozen V2-061
+  Contract (d35be3dbb9c6613ff76b70f164427caa84d8da11), preserves V2-005/V2-006/V2-007/V2-008
+  authority boundaries, explicitly maps BASE/DERIVED/CACHE to Machine round-trip
+  semantics, and the previously blocking governance harness debt is independently
+  closed (611bebfe46e58452757834e28514f7731d3b53aa). This ratifies the architecture
+  decision only; it does not authorize or attest V2-061 implementation.
