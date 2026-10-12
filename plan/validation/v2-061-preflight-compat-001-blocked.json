@@ -1,0 +1,15 @@
+{
+  "status": "BLOCKED",
+  "task_id": "V2-061",
+  "action": "IMPLEMENT",
+  "error_count": 7,
+  "errors": [
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/P0-phase-decision.yaml: missing/changed machine/phase-gates.yaml",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-01.yaml: missing/changed machine/remediation-register.yaml",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-02.yaml: missing/changed machine/remediation-register.yaml",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-03.yaml: missing/changed machine/remediation-register.yaml",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-04.yaml: missing/changed machine/remediation-register.yaml",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-05.yaml: missing/changed machine/remediation-register.yaml",
+    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/M0-milestone-decision.yaml: missing/changed machine/milestones.yaml"
+  ]
+}
