@@ -158,7 +158,10 @@ def execution_checks(data, plan):
 
                 # Register the absence as INFORMATIONAL (not a blocker)
                 # This is legitimate historical fact for grandfathered tasks
-                # The error is recorded for visibility but does not block validation
+                # The error is recorded for visibility but marked as INFORMATIONAL
+                errors.append(
+                    f"EXEC_PACKET_ABSENT {tid}: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
+                )
                 continue
 
             # Standard execution packet validation

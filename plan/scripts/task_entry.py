@@ -105,6 +105,22 @@ def validate_context(root, task_id, action):
     errors = validator.validate_objects(data) + validator.check_files(
         data, validator.expected_views(data)
     )
+
+    # Filter out INFORMATIONAL errors that should not block execution
+    # These are recorded for visibility but don't prevent task execution
+    blocking_errors = []
+    informational_errors = []
+
+    for error in errors:
+        # EXEC_PACKET_ABSENT with "(absence record registered, INFORMATIONAL)" marker
+        if "EXEC_PACKET_ABSENT" in error and "INFORMATIONAL)" in error:
+            informational_errors.append(error)
+        else:
+            blocking_errors.append(error)
+
+    # Only blocking errors prevent task execution
+    errors = blocking_errors
+
     task = next(
         (t for t in data["implementation-backlog"]["tasks"] if t["task_id"] == task_id),
         None,
