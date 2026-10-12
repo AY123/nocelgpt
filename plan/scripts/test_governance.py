@@ -82,26 +82,37 @@ class GovernanceTests(unittest.TestCase):
 
         # Normalize live historical debt for positive fixture isolation
         # V2-005/V2-006 are CLOSED with absence records in production.
+        # V2-061 is IN_PROGRESS with execution packet in production.
         # Change them to OPEN in the base fixture for a truly clean baseline.
         # Individual tests will set them to CLOSED with absence records as needed.
         tasks = self.data["implementation-backlog"]["tasks"]
         for task in tasks:
-            if task["task_id"] in ("V2-005", "V2-006"):
+            if task["task_id"] in ("V2-005", "V2-006", "V2-061"):
                 task["status"] = "OPEN"
+                task["readiness"] = "PLANNED"
                 task["evidence"] = {"code": [], "tests": [], "ci": [], "acceptance": []}
                 task["execution_packet_ref"] = None
 
-        # Remove absence record files from the temporary copy
-        for task_id in ("V2-005", "V2-006"):
+        # Remove absence record files and execution packets from the temporary copy
+        for task_id in ("V2-005", "V2-006", "V2-061"):
             absence_dir = self.plan / "validation/execution" / task_id
             if absence_dir.exists():
                 shutil.rmtree(absence_dir)
 
         # Set test suites to PLANNED (tasks are now OPEN)
         for suite in self.data["test-catalog"]["suites"]:
-            if suite["task_id"] in ("V2-005", "V2-006"):
+            if suite["task_id"] in ("V2-005", "V2-006", "V2-061"):
                 suite["status"] = "PLANNED"
                 suite["execution_evidence"] = []
+
+        # Clear decision records that point to removed execution packets
+        for decision in self.data["decision-register"]["decisions"]:
+            if decision["id"] in ("ADR-001", "ADR-002"):
+                # ADR-001 is in V2-001 (P0, still has packet)
+                # ADR-002 is in V2-061 (removed in fixture)
+                if decision["id"] == "ADR-002":
+                    decision["status"] = "REQUIRED"
+                    decision["decision_record"] = None
 
         # Remove historical closure_refs from findings (they point to excluded validation/closure/)
         # Change CLOSED findings to OPEN since they no longer have closure evidence
