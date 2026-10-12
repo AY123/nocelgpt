@@ -1,193 +1,193 @@
 {
   "scope": "Planning governance regressions in disposable copies; synthetic records are not runtime evidence",
-  "generated_at_utc": "2026-10-11T08:54:01.962258+00:00",
-  "manifest_sha256": "bf3d1c043ee650477952be348a08de175cba139493f1c13a5fa26a7145b457e2",
-  "status": "FAIL",
+  "generated_at_utc": "2026-10-12T00:58:03.646742+00:00",
+  "manifest_sha256": "0e00f691c2b8a79e22f38b097716b5915a9b6061ff8d3fb643ffebf3d7cfa9b2",
+  "status": "PASS",
   "test_count": 46,
   "cases": [
     {
       "case": "__main__.GovernanceTests.test_absence_record_not_allowed_for_active_tasks",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_absence_record_only_for_grandfathered_tasks",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_absence_record_wrong_closure_sha_rejected",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_absence_record_wrong_tag_rejected",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_adr_backlink_removed",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_adr_template_not_decision",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_all_ci_removed",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_bad_artifact_hash",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_ci_checks_removed",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_ci_duplicate",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_ci_postponed",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_cli_external_reports_do_not_change_plan",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_directory_not_record",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_evidence_cycle",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_failed_run_rejected",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_finding_backlink_removed",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_grandfathered_absence_records_valid",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_grandfathered_but_active_status_rejected",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_milestone_requires_phase",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_milestone_revision_matches_phase_decision",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_milestone_shrink",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_missing_finding_disposition",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_missing_phase_file",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_missing_suite_file",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_normalized_template_aliases_are_rejected",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_p0_blocked",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_partial_finding_requires_next_owner",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_phase_decision_revision_identifies_verified_candidate",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_phase_input_binding",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_phase_requires_applicable_ci",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_planned_readiness_cannot_start",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_readme_not_test_record",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_runtime_failure_states_are_not_closure_witnesses",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_source_registry_does_not_claim_fresh_verification",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_suite_coverage_not_just_nonempty",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_template_artifact_cannot_support_decision",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_artifact_in_nested_templates_named_directory",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_exported_cli_and_single_negative",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_future_task_start",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_historical_task_revision_in_current_phase",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_multiple_suites_for_one_task",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_p0_completion_chain",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_valid_partial_finding_disposition",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_wrong_evidence_type",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_wrong_revision",
-      "status": "FAIL"
+      "status": "PASS"
     },
     {
       "case": "__main__.GovernanceTests.test_wrong_subject",
-      "status": "FAIL"
+      "status": "PASS"
     }
   ]
 }
