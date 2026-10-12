@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T03:03:07.389167+00:00",
+  "generated_at_utc": "2026-10-12T03:18:54.164566+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "359a0da29b4d6321e8b2291c9a738741f2720a7d",
+  "validated_repository_revision": "dd60a8683b85f7244e1a17e11aac0005f044d8ab",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "8719e535f4f7b6951a059497f839fbe23a50554370363ca34bf403d4c4dfb1f2",
+  "manifest_sha256": "d23e7004b496246fba6940ddfe73fe786a19e59600a8244da69d4c7d29007a71",
   "counts": {
     "tasks": 61,
     "phase_distribution": {
@@ -51,13 +51,6 @@
     }
   },
   "errors": [
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/P0-phase-decision.yaml: missing/changed machine/phase-gates.yaml",
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-01.yaml: missing/changed machine/remediation-register.yaml",
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-02.yaml: missing/changed machine/remediation-register.yaml",
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-03.yaml: missing/changed machine/remediation-register.yaml",
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-04.yaml: missing/changed machine/remediation-register.yaml",
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/findings/DA-05.yaml: missing/changed machine/remediation-register.yaml",
-    "EVIDENCE_ARTIFACT validation/closure/G-P0-38b0c57/M0-milestone-decision.yaml: missing/changed machine/milestones.yaml",
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
     "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
   ]
