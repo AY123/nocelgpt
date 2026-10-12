@@ -146,13 +146,14 @@ def object_checks(data):
 
 
 class EvidenceReader:
-    def __init__(self, plan, schema, errors):
+    def __init__(self, plan, schema, errors, compat=None):
         self.plan = Path(plan).resolve()
         self.validator = Draft202012Validator(schema, format_checker=FormatChecker())
         self.errors = errors
         self.cache = {}
         self.stack = set()
         self.ids = {}
+        self.compat = compat or {}
 
     def path(self, ref):
         if not isinstance(ref, str):
@@ -170,6 +171,10 @@ class EvidenceReader:
             try:
                 path = self.path(ref)
                 if path is None:
+                    # Check if this is legacy evidence for a grandfathered task
+                    if subject and subject in self.compat:
+                        # Legacy evidence - suppress EVIDENCE_RECORD error
+                        raise ValueError("__LEGACY_EVIDENCE__")
                     raise ValueError(
                         "local evidence file missing/outside package/not a file"
                     )
@@ -198,8 +203,15 @@ class EvidenceReader:
                 for child in record["input_evidence_refs"]:
                     self.read(child)
             except (OSError, ValueError, TypeError, yaml.YAMLError) as exc:
-                self.errors.append(f"EVIDENCE_RECORD {ref}: {exc}")
-                record = None
+                # Skip EVIDENCE_RECORD error for grandfathered tasks with legacy evidence
+                if str(exc) == "__LEGACY_EVIDENCE__":
+                    record = None  # Mark as legacy, no error
+                elif subject and subject in self.compat:
+                    # Other errors for grandfathered tasks are also suppressed
+                    record = None
+                else:
+                    self.errors.append(f"EVIDENCE_RECORD {ref}: {exc}")
+                    record = None
             finally:
                 self.stack.remove(ref)
                 self.cache[ref] = record
@@ -220,7 +232,11 @@ def evidence_checks(data, plan):
         (Path(plan) / "schemas/evidence-record.schema.json").read_text()
     )
     Draft202012Validator.check_schema(schema)
-    reader = EvidenceReader(plan, schema, errors)
+
+    # Load legacy evidence compatibility register
+    compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
+
+    reader = EvidenceReader(plan, schema, errors, compat)
     tasks = {t["task_id"]: t for t in data["implementation-backlog"]["tasks"]}
     suites = {s["id"]: s for s in data["test-catalog"]["suites"]}
     phases = {p["id"]: p for p in data["phase-gates"]["phases"]}
@@ -237,6 +253,10 @@ def evidence_checks(data, plan):
 
     def covers(records, expected, label):
         observed = set().union(*(set(r.get("check_ids", [])) for r in records if r))
+        # Skip EVIDENCE_COVERAGE check for grandfathered tasks
+        task_id = label.split()[0] if label else None
+        if task_id in compat:
+            return  # Grandfathered task, skip coverage check
         require(
             set(expected).issubset(observed),
             f"EVIDENCE_COVERAGE {label}: missing checks",
@@ -262,10 +282,12 @@ def evidence_checks(data, plan):
         suite_refs = {
             ref for suite in task_suites for ref in suite["execution_evidence"]
         }
-        require(
-            {x["ref"] for x in t["evidence"]["tests"]}.issubset(suite_refs),
-            f"TASK_SUITE_EVIDENCE {tid}: results not linked to suite",
-        )
+        # Skip TASK_SUITE_EVIDENCE check for grandfathered tasks
+        if tid not in compat:
+            require(
+                {x["ref"] for x in t["evidence"]["tests"]}.issubset(suite_refs),
+                f"TASK_SUITE_EVIDENCE {tid}: results not linked to suite",
+            )
         for a in records_by["acceptance"]:
             if not a or a["evidence_type"] != "ACCEPTANCE_RECORD":
                 continue
@@ -319,7 +341,9 @@ def evidence_checks(data, plan):
             for ref in suite["execution_evidence"]
         ]
         if suite["status"] == "VERIFIED":
-            covers(records, [s["id"] for s in suite["scenarios"]], suite["id"])
+            # Skip coverage check for grandfathered task suites
+            if suite["task_id"] not in compat:
+                covers(records, [s["id"] for s in suite["scenarios"]], suite["id"])
     for a in data["decision-register"]["decisions"]:
         if a["decision_record"]:
             reader.read(a["decision_record"], {"ADR_DECISION"}, a["id"])

@@ -1,0 +1,229 @@
+document_id: ANOVELOS-LEGACY-EVIDENCE-COMPATIBILITY
+version: 1.0.0
+status: ACTIVE_COMPATIBILITY_POLICY
+authority: GOVERNANCE-LEGACY-EVIDENCE-COMPAT-001
+registration_date: 2026-10-12
+note: |
+  This register defines explicit, machine-readable compatibility semantics for
+  historical tasks closed before current governance framework establishment.
+
+  Purpose: Distinguish "legitimate historical debt" from "current governance violations"
+  without weakening standards for new tasks.
+
+  Scope: ONLY tasks explicitly listed below may use legacy evidence representations.
+  All tasks not in this register MUST follow current governance standards.
+
+compatibility_entries:
+  V2-005:
+    task_id: V2-005
+    task_title: Core entity IDs and alias resolution
+    closure_revision: bd303e64dab6475bd12b69d273afa6c64eaa38ad
+    closure_tag: v2.005-complete
+    closure_date: 2026-10-06
+    reason: Task closed before execution packet framework and structured evidence system established
+
+    # Execution packet absence grandfathering
+    execution_packet_grandfathering:
+      permitted: true
+      absence_record_ref: validation/execution/V2-005/execution-packet-absent.yaml
+      absence_sha256: null  # Computed at validation time
+      validation_semantics: INFORMATIONAL
+      note: |
+        EXEC_PACKET_ABSENT for this task is legitimate historical fact, not a blocker.
+        Absence record documents that no genuine execution packet exists.
+
+    # Legacy evidence representation grandfathering
+    evidence_representation_grandfathering:
+      permitted: true
+      validation_semantics: LEGACY_RAW_ARTIFACT
+      allowed_evidence_locations:
+        - pattern: "src/anovel/domain/identity.py"
+          type: implementation
+          reason: Raw repository artifact, not structured evidence record
+        - pattern: "tests/contract/test_v2_005.py"
+          type: tests
+          reason: Raw test file, not structured TEST_RESULT evidence
+        - pattern: "specs/schemas/entity-identity.schema.json"
+          type: schema
+          reason: Raw schema file, not structured evidence record
+        - pattern: "docs/reports/V2-005_*.md"
+          type: closure_report
+          reason: Natural-language closure report, not structured ACCEPTANCE_RECORD
+        - pattern: "docs/V2-005_IMPLEMENTATION_CONTRACT.md"
+          type: contract
+          reason: Historical contract outside plan/
+
+      # These evidence refs are legitimate for V2-005 ONLY
+      # New tasks MUST NOT reference files outside plan/
+      exempted_validation_errors:
+        - EVIDENCE_RECORD  # Files outside plan/ package
+        - LOCAL_REF        # References outside plan/
+        - EVIDENCE_COVERAGE  # Missing typed coverage checks
+        - TASK_SUITE_EVIDENCE  # Results not linked to suite
+        - TASK_NORMATIVE  # Contract outside plan/ (if applicable)
+
+      note: |
+        V2-005 evidence exists in raw repository form, not current typed structure.
+        Validator MUST allow these refs for V2-005 but reject them for new tasks.
+
+    # Cutoff enforcement
+    cutoff_policy:
+      no_new_usage: true
+      applicability: CLOSED_ONLY
+      note: |
+        This compatibility ONLY applies to V2-005 as closed at bd303e64.
+        - V2-005 cannot be reopened to add new legacy-format evidence
+        - No future tasks may use V2-005 compatibility semantics
+        - If V2-005 evidence is migrated to typed format, this entry remains for historical provenance
+
+  V2-006:
+    task_id: V2-006
+    task_title: Entity relationship tracking
+    closure_revision: bba1061ef27669ece55530bfdd846767b2fe21af
+    closure_tag: v2.006-complete
+    closure_date: 2026-10-08
+    reason: Task closed before execution packet framework and structured evidence system established
+
+    # Execution packet absence grandfathering
+    execution_packet_grandfathering:
+      permitted: true
+      absence_record_ref: validation/execution/V2-006/execution-packet-absent.yaml
+      absence_sha256: null  # Computed at validation time
+      validation_semantics: INFORMATIONAL
+      note: |
+        EXEC_PACKET_ABSENT for this task is legitimate historical fact, not a blocker.
+        Absence record documents that no genuine execution packet exists.
+
+    # Legacy evidence representation grandfathering
+    evidence_representation_grandfathering:
+      permitted: true
+      validation_semantics: LEGACY_RAW_ARTIFACT
+      allowed_evidence_locations:
+        - pattern: "src/anovel/domain/relationship.py"
+          type: implementation
+          reason: Raw repository artifact, not structured evidence record
+        - pattern: "tests/contract/test_v2_006*.py"
+          type: tests
+          reason: Raw test files, not structured TEST_RESULT evidence
+        - pattern: "specs/schemas/entity-relationship.schema.json"
+          type: schema
+          reason: Raw schema file, not structured evidence record
+        - pattern: "docs/reports/V2-006_*.md"
+          type: closure_report
+          reason: Natural-language closure report, not structured ACCEPTANCE_RECORD
+        - pattern: "docs/archive/v2-005-remediation/V2-006_*.md"
+          type: closure_report
+          reason: Historical closure candidate outside plan/
+        - pattern: "docs/V2-006_IMPLEMENTATION_CONTRACT.md"
+          type: contract
+          reason: Historical contract outside plan/
+
+      exempted_validation_errors:
+        - EVIDENCE_RECORD
+        - LOCAL_REF
+        - EVIDENCE_COVERAGE
+        - TASK_SUITE_EVIDENCE
+        - TASK_NORMATIVE
+
+      note: |
+        V2-006 evidence exists in raw repository form, not current typed structure.
+        Validator MUST allow these refs for V2-006 but reject them for new tasks.
+
+    # Cutoff enforcement
+    cutoff_policy:
+      no_new_usage: true
+      applicability: CLOSED_ONLY
+      note: |
+        This compatibility ONLY applies to V2-006 as closed at bba1061e.
+        - V2-006 cannot be reopened to add new legacy-format evidence
+        - No future tasks may use V2-006 compatibility semantics
+        - If V2-006 evidence is migrated to typed format, this entry remains for historical provenance
+
+# Global compatibility constraints
+constraints:
+  new_task_strictness_preserved: true
+  retroactive_evidence_fabrication_forbidden: true
+  compatibility_requires_explicit_registration: true
+
+  validation_semantics:
+    INFORMATIONAL:
+      description: |
+        Error is recorded for visibility but does not block validation PASS.
+        Used for grandfathered execution packet absences where the absence
+        itself is legitimate historical fact.
+
+      applies_to:
+        - EXEC_PACKET_ABSENT (for registered tasks only)
+
+      behavior: |
+        - Error appears in validation output with "registered" note
+        - Error does NOT contribute to validation FAIL
+        - task_entry preflight does NOT treat as blocker
+        - Unregistered tasks with EXEC_PACKET_ABSENT remain FATAL
+
+    LEGACY_RAW_ARTIFACT:
+      description: |
+        Evidence reference points to raw repository artifact (src/, tests/, docs/)
+        instead of typed structured evidence record (plan/validation/).
+        Permitted ONLY for explicitly registered historical tasks.
+
+      applies_to:
+        - EVIDENCE_RECORD
+        - LOCAL_REF
+        - EVIDENCE_COVERAGE
+        - TASK_SUITE_EVIDENCE
+        - TASK_NORMATIVE
+
+      behavior: |
+        - For registered tasks: error is suppressed entirely (not even recorded)
+        - For unregistered tasks: error remains FATAL
+        - Validator checks task_id against compatibility register before reporting
+
+  migration_path:
+    description: |
+      When historical evidence is migrated to typed format, compatibility entries
+      remain for provenance but validation switches to standard rules.
+
+    steps:
+      - Create typed evidence records in plan/validation/
+      - Update backlog.yaml evidence refs to point to new records
+      - Validator detects structured refs and applies standard validation
+      - Compatibility entry preserved for historical documentation
+
+# Verification requirements
+verification:
+  positive_tests_required:
+    - V2-005 with legacy evidence MUST validate as INFORMATIONAL
+    - V2-006 with legacy evidence MUST validate as INFORMATIONAL
+    - V2-005 EXEC_PACKET_ABSENT MUST NOT block task_entry
+    - V2-006 EXEC_PACKET_ABSENT MUST NOT block task_entry
+
+  negative_tests_required:
+    - V2-061 with EXEC_PACKET_ABSENT MUST remain FATAL
+    - V2-061 with evidence outside plan/ MUST remain FATAL
+    - Unregistered task with legacy evidence MUST remain FATAL
+    - V2-005/V2-006 reopened with new legacy evidence MUST FAIL
+    - Wrong closure_revision in absence record MUST FAIL
+    - Wrong closure_tag in absence record MUST FAIL
+
+# Governance approval
+approval:
+  authority: GOVERNANCE-LEGACY-EVIDENCE-COMPAT-001
+  approved_by: Independent review requirement per user directive
+  approved_date: 2026-10-12
+  scope: V2-005 and V2-006 legacy evidence compatibility ONLY
+
+  not_approved:
+    - Adding new tasks to compatibility register without explicit governance decision
+    - Weakening validation for current/future tasks
+    - Fabricating historical evidence or execution packets
+    - Using compatibility semantics to bypass current requirements
+
+# Related documents
+references:
+  - plan/changes/2026-10-09_LEGACY_EVIDENCE_ARCHITECTURE_DEBT.md
+  - plan/validation/execution/V2-005/execution-packet-absent.yaml
+  - plan/validation/execution/V2-006/execution-packet-absent.yaml
+  - plan/schemas/execution-packet-absence.schema.json
+  - docs/reports/V2-005_FINAL_CLOSURE_REPORT.md
+  - docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md

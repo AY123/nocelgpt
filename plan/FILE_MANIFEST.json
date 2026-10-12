@@ -1352,7 +1352,7 @@
   {
     "path": "generated/EXTERNAL_PRACTICE_MAP.md",
     "bytes": 3286,
-    "sha256": "1a4bf3f578631a8795ba023d06bc2cf2e07482e37446da9e1e1d9bd6a275000d"
+    "sha256": "c5f816a2050dacad720ff5a5600e0d89d52b19052d09dcd7d9af98299058eb4d"
   },
   {
     "path": "generated/MILESTONE_MAP.md",
@@ -1361,8 +1361,8 @@
   },
   {
     "path": "generated/PHASE_TASK_REGISTRY.md",
-    "bytes": 6133,
-    "sha256": "d5f34ad840ed112c668a1e4fe8a3d382a7bc3607a35cb85f7efa7ff2b98ddbfd"
+    "bytes": 6232,
+    "sha256": "6ed2cdb11721fd7e3c45c5ba370e4e9dc008cbe455349ff80d9262f5916e8511"
   },
   {
     "path": "machine/ai-execution-policy.yaml",
@@ -1403,6 +1403,11 @@
     "path": "machine/implementation-backlog.yaml",
     "bytes": 92819,
     "sha256": "47e7b5ac878576d8234571abb9ef73de1a724e2a4867e96e286e0fc79200989b"
+  },
+  {
+    "path": "machine/legacy-evidence-compatibility.yaml",
+    "bytes": 9636,
+    "sha256": "f3fe2ab7264d1e487cfae98b9e7ecf8de5ba3a456c942210ba1359e2adc1ee19"
   },
   {
     "path": "machine/milestones.yaml",
@@ -1476,13 +1481,13 @@
   },
   {
     "path": "scripts/execution_checks.py",
-    "bytes": 13497,
-    "sha256": "5e5bbcc206cb4066ddd1f5bfae2abc44af4393e116f7f23c8cbc9278cc924748"
+    "bytes": 13509,
+    "sha256": "275639ae3be098083dd3f4ddfea18212cd06a8986a1c56fc557dbeb552261308"
   },
   {
     "path": "scripts/governance_checks.py",
-    "bytes": 17053,
-    "sha256": "7ae824f60b39b41b5cd07520333ae5e80cfe4ebba3e889918d6b4dc9f7c3c61e"
+    "bytes": 18372,
+    "sha256": "06a3075f18c96098cfacc5585f42061e07efd996f5b5ed3131e9a57973abf7d8"
   },
   {
     "path": "scripts/probe_governance_legacy.py",
@@ -1506,13 +1511,13 @@
   },
   {
     "path": "scripts/test_governance.py",
-    "bytes": 42261,
-    "sha256": "6808ddfe29a6a8b0ea57e72573ec539376039168a9155aa903fb69c2f6ef0aa1"
+    "bytes": 42905,
+    "sha256": "3ec75e69f2d25610d1707e8a44b7dc5d1cadba6408fd10f7f307fb9d6863d55b"
   },
   {
     "path": "scripts/validate_plan.py",
-    "bytes": 44703,
-    "sha256": "e901128cbfd422e35d2c349acfece122470ff7a5a4af440d273e9d2ecb92d778"
+    "bytes": 46618,
+    "sha256": "1de87b00b4e7aaf794e0a5a6a4c8c3a51a9b46f7d76aa00ad6bf70162f3e8bbe"
   },
   {
     "path": "scripts/weakening_checks.py",

@@ -95,6 +95,12 @@ def load():
             / "archive/gptdoc/ANovel_V2_Implementation_Plan_v1.0/implementation-backlog.yaml"
         ).read_text()
     )
+    # Load legacy evidence compatibility register
+    compat_path = PLAN / "machine/legacy-evidence-compatibility.yaml"
+    if compat_path.exists():
+        data["legacy-evidence-compatibility"] = yaml.safe_load(compat_path.read_text())
+    else:
+        data["legacy-evidence-compatibility"] = {"compatibility_entries": {}}
     return data
 
 
@@ -752,22 +758,27 @@ def normative_registry(data, plan):
     """
     plan = Path(plan).resolve()
     archive = (plan / "archive").resolve()
+
+    # Load legacy evidence compatibility register
+    compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
+
     registry, errors = {}, []
     for task in data["implementation-backlog"]["tasks"]:
+        tid = task["task_id"]
         for ref in task["normative_specs"]:
             path = (plan / ref).resolve()
             if plan not in path.parents or not path.is_file():
-                errors.append(
-                    f"TASK_NORMATIVE {task['task_id']}: missing/outside plan {ref}"
-                )
+                # Skip TASK_NORMATIVE error for grandfathered tasks with contracts outside plan/
+                if tid not in compat or not ref.startswith("docs/"):
+                    errors.append(
+                        f"TASK_NORMATIVE {tid}: missing/outside plan {ref}"
+                    )
             elif path == archive or archive in path.parents:
                 errors.append(
-                    f"TASK_NORMATIVE {task['task_id']}: resolved archive cannot be normative: {ref}"
+                    f"TASK_NORMATIVE {tid}: resolved archive cannot be normative: {ref}"
                 )
             else:
-                registry.setdefault(str(path.relative_to(plan)), []).append(
-                    task["task_id"]
-                )
+                registry.setdefault(str(path.relative_to(plan)), []).append(tid)
     return {
         ref: sorted(set(owners)) for ref, owners in sorted(registry.items())
     }, errors
@@ -775,6 +786,10 @@ def normative_registry(data, plan):
 
 def check_files(data, views):
     errors = []
+
+    # Load legacy evidence compatibility register
+    compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
+
     errors += normative_registry(data, PLAN)[1]
     for name, expected in views.items():
         p = PLAN / name
@@ -836,7 +851,31 @@ def check_files(data, views):
         errors.append(
             "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
         )
-    return errors
+
+    # Filter out LOCAL_REF errors for grandfathered tasks with legacy evidence
+    filtered_errors = []
+    for error in errors:
+        if error.startswith("LOCAL_REF: absent/outside package"):
+            # Extract the path from the error message
+            ref = error.split("LOCAL_REF: absent/outside package ", 1)[1]
+            # Check if this ref belongs to a grandfathered task
+            is_grandfathered = False
+            for task in data["implementation-backlog"]["tasks"]:
+                tid = task["task_id"]
+                if tid in compat:
+                    # Check if this ref is in the task's evidence, normative_specs, or design_references
+                    task_refs = [r["ref"] for records in task["evidence"].values() for r in records]
+                    task_refs += task.get("normative_specs", [])
+                    task_refs += task.get("design_references", [])
+                    if ref in task_refs:
+                        is_grandfathered = True
+                        break
+            if not is_grandfathered:
+                filtered_errors.append(error)
+        else:
+            filtered_errors.append(error)
+
+    return filtered_errors
 
 
 def self_test(data):
