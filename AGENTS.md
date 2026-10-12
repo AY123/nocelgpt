@@ -25,6 +25,7 @@
 
 - `plan/archive/**` - 历史规范（已被取代）
 - `plan/validation/execution/**` - 执行包证据（修订版本绑定）
+  - **例外**：当前活跃任务的 execution 目录（如 `plan/validation/execution/V2-061/**` when V2-061 is active）可按需读取
 - `plan/validation/closure/**` - 历史闭环证据
 - `docs/archive/**` - 归档的进度报告、审计、包
 
@@ -53,7 +54,7 @@
 **重要规则**：
 - docs/decision-register.yaml 已删除（过时，ADR-002 错误绑定到 V2-006）
 - ADR-002 当前正确绑定到 V2-061（Character Knowledge & Intent Core）
-- V2-005 CLOSED, V2-006 CLOSED, V2-061 OPEN
+- V2-005 CLOSED, V2-006 CLOSED, V2-061 IN_PROGRESS
 - Character Knowledge 属于 V2-061，不属于 V2-006
 
 ---
@@ -74,7 +75,7 @@
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。
 - 原 `.claude/convergence/` 已归档至 `plan/archive/convergence/`，根历史副本已按用户要求清除；历史内容不恢复为现行规范。工具配置单独保留，不因整理资料而停用或删除配置。
-- 当前状态：P0 已验证完成 (G-P0 PASS)，P1 活跃但未验证。以 `plan/machine/` 的任务、阶段和证据状态为准。P1 继续实施中，已关闭 V2-005 和 V2-006；V2-061、V2-007、V2-008 开放。
+- 当前状态：P0 已验证完成 (G-P0 PASS)，P1 活跃但未验证。以 `plan/machine/` 的任务、阶段和证据状态为准。P1 继续实施中，已关闭 V2-005 和 V2-006；V2-061 IN_PROGRESS（contract remediation and true closure）；V2-007、V2-008 OPEN（blocked until V2-061 closure）。
 - 用户请求修改规划时，完成必要的资料和验证器修改；不要据此自动创建业务内核、部署、调用付费 Provider 或关闭工程任务。
 - 保留用户已有改动。任务身份、阶段、依赖及架构范围变更需符合用户授权，并留下明确变更理由与影响记录。
 - 同步正文、机器源、任务/验收场景与生成视图。使用 `python3 -B plan/scripts/validate_plan.py --write-views`、`--check`、`--self-test` 和 `python3 -B plan/scripts/test_governance.py`。

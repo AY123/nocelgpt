@@ -61,14 +61,14 @@ If conflicts exist, machine SSOT always wins.
 
 **Open Tasks**:
 - **V2-061**: Character Knowledge & Intent Core
-  - Status: IN_PROGRESS (execution packet authorized)
-  - Readiness: READY_TO_START
+  - Status: IN_PROGRESS (contract remediation and true closure in progress)
+  - Readiness: Implementation authorized, checkpoint 005A committed
   - Execution Packet: validation/execution/V2-061/execution-packet.yaml
   - ADR-002: ACCEPTED (2026-10-11)
-  - Operational State: READY_FOR_PREFLIGHT
-  - Production IMPLEMENT: BLOCKED until task_entry IMPLEMENT preflight PASS
-- **V2-007**: Event Timeline Promise Core (OPEN)
-- **V2-008**: NarrativeDelta Implementation (OPEN)
+  - Current Work: Final contract delta implementation (project isolation, proposition collision, lifecycle semantics, serialization, governance closure)
+  - Continuation: See plan/validation/execution/V2-061/continuation-handoff-005a.md
+- **V2-007**: Event Timeline Promise Core (OPEN, blocked until V2-061 closure)
+- **V2-008**: NarrativeDelta Implementation (OPEN, blocked until V2-061 closure)
 
 ---
 
@@ -92,12 +92,17 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 
 ## CI and Platform Notes
 
-### Remote CI
+### Canonical Repository and CI
 
-**Verification Repository**: `TomAy47287015/aianovelcc` (GitHub Actions)
-**V2-006 CI Evidence**: Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
+**Canonical Repository**: `ayyang666/aianovelos` (GitLab)
+**Canonical Branch**: `dev_cc`
+**Current CI**: GitLab CI/CD (`.gitlab-ci.yml`)
 
-**Primary Repository**: `ayyang666/aianovelos` (GitLab)
+### Historical Verification (Non-Canonical)
+
+**Historical V2-006 Remote Verification**: `TomAy47287015/aianovelcc` (GitHub Actions)
+- Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
+- Note: This was historical verification only; current canonical CI is GitLab
 **CI Status**: Pipelines exist but not yet configured as authoritative gates
 
 ### Local Validation
