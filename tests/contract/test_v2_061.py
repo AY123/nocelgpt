@@ -866,3 +866,296 @@ class TestDerivedSemantics:
         from dataclasses import replace
         char = replace(char, knowledge={prop.proposition_id: ck})
         assert char.knowledge_count == 1
+
+
+# ============================================================================
+# Project Isolation (Frozen Contract §Project Isolation)
+# ============================================================================
+
+
+class TestProjectIsolation:
+    """Project isolation validation per frozen Contract §Project Isolation."""
+
+    def test_same_project_character_valid(self):
+        """Character with matching project_id passes validation."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+        from dataclasses import replace
+
+        registry = EntityRegistry()
+        identity = create_identity(
+            ProjectId("proj_01"),
+            "张三",
+            entity_type="CHARACTER"
+        )
+        registry.add_entity(identity)
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        # Use the identity's entity_id
+        char = replace(char, entity_id=identity.entity_id)
+
+        # Should not raise
+        validate_project_isolation(char, registry)
+
+    def test_project_id_mismatch_reject(self):
+        """Character.project_id != EntityIdentity.project_id must be rejected."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+        from dataclasses import replace
+
+        registry = EntityRegistry()
+        identity = create_identity(
+            ProjectId("proj_01"),
+            "张三",
+            entity_type="CHARACTER"
+        )
+        registry.add_entity(identity)
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        char = replace(char, entity_id=identity.entity_id)
+        # Force project_id mismatch
+        char = replace(char, project_id=ProjectId("proj_02"))
+
+        with pytest.raises(ValueError, match="project_id.*must match"):
+            validate_project_isolation(char, registry)
+
+    def test_cross_project_source_character_reject(self):
+        """source_character from different project must be rejected."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+        from dataclasses import replace
+
+        registry = EntityRegistry()
+
+        # Project 1 character
+        identity1 = create_identity(ProjectId("proj_01"), "张三", entity_type="CHARACTER")
+        registry.add_entity(identity1)
+
+        # Project 2 source
+        identity2 = create_identity(ProjectId("proj_02"), "李四", entity_type="CHARACTER")
+        registry.add_entity(identity2)
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        char = replace(char, entity_id=identity1.entity_id)
+
+        prop = create_proposition(
+            ProjectId("proj_01"),
+            EntityId("entity-123"),
+            "is_alive"
+        )
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.BELIEVED,
+            acquisition_source=AcquisitionSource.COMMUNICATION,
+            source_character=identity2.entity_id,  # Cross-project!
+        )
+
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        with pytest.raises(ValueError, match="Cross-project provenance invalid"):
+            validate_project_isolation(char, registry)
+
+    def test_entity_type_not_character_reject(self):
+        """Entity with entity_type != CHARACTER must be rejected."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+        from dataclasses import replace
+
+        registry = EntityRegistry()
+        identity = create_identity(
+            ProjectId("proj_01"),
+            "某地",
+            entity_type="LOCATION"  # Not CHARACTER
+        )
+        registry.add_entity(identity)
+
+        char = create_character(ProjectId("proj_01"), "某地")
+        # Force entity_id to the LOCATION identity
+        char = replace(char, entity_id=identity.entity_id)
+
+        with pytest.raises(ValueError, match="entity_type='CHARACTER'"):
+            validate_project_isolation(char, registry)
+
+
+# ============================================================================
+# Proposition Collision (Frozen Contract §Proposition Collision Invariant)
+# ============================================================================
+
+
+class TestPropositionCollision:
+    """Proposition collision detection per frozen Contract."""
+
+    def test_same_id_same_base_valid(self):
+        """Same PropositionId + same BASE payload is valid."""
+        from src.anovel.domain.knowledge import validate_proposition_collision
+
+        prop1 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+        prop2 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+
+        # Should not raise
+        validate_proposition_collision(prop1, prop2)
+
+    def test_same_id_different_predicate_reject(self):
+        """Same PropositionId + different predicate must be rejected."""
+        from src.anovel.domain.knowledge import validate_proposition_collision
+
+        prop1 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+        prop2 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_dead",  # Different!
+            object=None,
+            context=None
+        )
+
+        with pytest.raises(ValueError, match="Proposition collision.*different predicate"):
+            validate_proposition_collision(prop1, prop2)
+
+    def test_same_id_different_subject_reject(self):
+        """Same PropositionId + different subject must be rejected."""
+        from src.anovel.domain.knowledge import validate_proposition_collision
+
+        prop1 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+        prop2 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-456"),  # Different!
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+
+        with pytest.raises(ValueError, match="Proposition collision.*different subject"):
+            validate_proposition_collision(prop1, prop2)
+
+
+# ============================================================================
+# Knowledge Key Invariant (Frozen Contract §Proposition Resolution)
+# ============================================================================
+
+
+class TestKnowledgeKeyInvariant:
+    """Knowledge dict key invariant per frozen Contract."""
+
+    def test_key_matches_proposition_id_valid(self):
+        """Dict key == proposition.proposition_id is valid."""
+        from src.anovel.domain.character import validate_knowledge_key_invariant
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        prop = create_proposition(
+            ProjectId("proj_01"),
+            EntityId("entity-123"),
+            "is_alive"
+        )
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-123"
+        )
+
+        from dataclasses import replace
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        # Should not raise
+        validate_knowledge_key_invariant(char)
+
+    def test_key_mismatch_proposition_id_reject(self):
+        """Dict key != proposition.proposition_id must be rejected."""
+        from src.anovel.domain.character import validate_knowledge_key_invariant
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        prop = create_proposition(
+            ProjectId("proj_01"),
+            EntityId("entity-123"),
+            "is_alive"
+        )
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-123"
+        )
+
+        wrong_key = PropositionId("550e8400-e29b-41d4-a716-446655440000")
+
+        from dataclasses import replace
+        char = replace(char, knowledge={wrong_key: ck})  # Mismatched key!
+
+        with pytest.raises(ValueError, match="knowledge key.*must match"):
+            validate_knowledge_key_invariant(char)
+
+
+# ============================================================================
+# UUID v4 Validation (Frozen Contract §PropositionId, §GoalId, etc.)
+# ============================================================================
+
+
+class TestUUIDv4Validation:
+    """UUID v4 format validation per frozen Contract."""
+
+    def test_valid_uuid_v4_pass(self):
+        """Valid lowercase hyphenated UUID v4 passes validation."""
+        from src.anovel.domain.knowledge import validate_uuid_v4_format
+
+        valid_uuid = "550e8400-e29b-41d4-a716-446655440000"
+        # Should not raise
+        validate_uuid_v4_format(valid_uuid, "test_field")
+
+    def test_malformed_string_reject(self):
+        """Malformed string must be rejected."""
+        from src.anovel.domain.knowledge import validate_uuid_v4_format
+
+        with pytest.raises(ValueError, match="36 characters"):
+            validate_uuid_v4_format("not-a-uuid", "test_field")
+
+    def test_uuid_v1_reject(self):
+        """UUID v1 format must be rejected (wrong version digit)."""
+        from src.anovel.domain.knowledge import validate_uuid_v4_format
+
+        # UUID v1 has version digit 1, not 4
+        uuid_v1 = "550e8400-e29b-11d4-a716-446655440000"
+
+        with pytest.raises(ValueError, match="valid UUID v4 format"):
+            validate_uuid_v4_format(uuid_v1, "test_field")
+
+    def test_uppercase_uuid_reject(self):
+        """Uppercase UUID must be rejected (contract requires lowercase)."""
+        from src.anovel.domain.knowledge import validate_uuid_v4_format
+
+        uppercase_uuid = "550E8400-E29B-41D4-A716-446655440000"
+
+        with pytest.raises(ValueError, match="valid UUID v4 format"):
+            validate_uuid_v4_format(uppercase_uuid, "test_field")

@@ -263,6 +263,130 @@ class Character:
         return len(self.knowledge)
 
 
+def validate_knowledge_key_invariant(character: Character) -> None:
+    """
+    Validate that Character.knowledge dict keys match proposition IDs.
+
+    Frozen Contract §CharacterKnowledge requires:
+    dict key == CharacterKnowledge.proposition.proposition_id
+
+    Args:
+        character: Character to validate
+
+    Raises:
+        ValueError: If key doesn't match embedded proposition_id
+
+    Contract: Frozen V2-061 §Proposition Resolution
+    """
+    for key, ck in character.knowledge.items():
+        if key != ck.proposition.proposition_id:
+            raise ValueError(
+                f"Character.knowledge key ({key}) must match "
+                f"CharacterKnowledge.proposition.proposition_id "
+                f"({ck.proposition.proposition_id})"
+            )
+
+
+def validate_project_isolation(
+    character: Character,
+    entity_registry: 'EntityRegistry',
+) -> None:
+    """
+    Validate that Character respects project isolation boundaries.
+
+    Frozen Contract §Project Isolation requires:
+    - Character.project_id matches EntityIdentity.project_id
+    - Entity exists in registry
+    - Entity entity_type == "CHARACTER"
+    - All knowledge provenance respects project boundaries
+
+    Args:
+        character: Character to validate
+        entity_registry: V2-005 EntityRegistry for identity lookup
+
+    Raises:
+        ValueError: If project isolation violated
+
+    Contract: Frozen V2-061 §Project Isolation
+    """
+    from .identity import EntityRegistry
+
+    # Validate character entity exists
+    identity = entity_registry.get_entity(character.entity_id)
+    if identity is None:
+        raise ValueError(
+            f"Character entity_id {character.entity_id} not found in EntityRegistry"
+        )
+
+    # Validate project_id matches
+    if identity.project_id != character.project_id:
+        raise ValueError(
+            f"Character.project_id ({character.project_id}) must match "
+            f"EntityIdentity.project_id ({identity.project_id})"
+        )
+
+    # Validate entity_type is CHARACTER
+    if identity.entity_type != "CHARACTER":
+        raise ValueError(
+            f"Character entity must have entity_type='CHARACTER', "
+            f"got '{identity.entity_type}' for {character.entity_id}"
+        )
+
+    # Validate all knowledge provenance respects project boundaries
+    for prop_id, ck in character.knowledge.items():
+        # Knower must be same character (implicitly same project)
+        if ck.knower != character.entity_id:
+            raise ValueError(
+                f"CharacterKnowledge.knower ({ck.knower}) must match "
+                f"Character.entity_id ({character.entity_id})"
+            )
+
+        # Source character must be same project if present
+        if ck.source_character is not None:
+            source_identity = entity_registry.get_entity(ck.source_character)
+            if source_identity is None:
+                raise ValueError(
+                    f"source_character {ck.source_character} not found in EntityRegistry"
+                )
+            if source_identity.project_id != character.project_id:
+                raise ValueError(
+                    f"source_character {ck.source_character} belongs to project "
+                    f"{source_identity.project_id}, but character belongs to "
+                    f"{character.project_id}. Cross-project provenance invalid."
+                )
+
+        # Proposition subject/object must be same project if EntityId
+        prop = ck.proposition
+        if prop.project_id != character.project_id:
+            raise ValueError(
+                f"Proposition.project_id ({prop.project_id}) must match "
+                f"Character.project_id ({character.project_id})"
+            )
+
+        # Validate subject if it's an EntityId reference
+        from .identity import EntityId
+        if isinstance(prop.subject, EntityId):
+            subj_identity = entity_registry.get_entity(prop.subject)
+            if subj_identity is not None:  # If found, must be same project
+                if subj_identity.project_id != character.project_id:
+                    raise ValueError(
+                        f"Proposition subject {prop.subject} belongs to project "
+                        f"{subj_identity.project_id}, but character belongs to "
+                        f"{character.project_id}. Cross-project references invalid."
+                    )
+
+        # Validate object if it's an EntityId reference
+        if isinstance(prop.object, EntityId):
+            obj_identity = entity_registry.get_entity(prop.object)
+            if obj_identity is not None:  # If found, must be same project
+                if obj_identity.project_id != character.project_id:
+                    raise ValueError(
+                        f"Proposition object {prop.object} belongs to project "
+                        f"{obj_identity.project_id}, but character belongs to "
+                        f"{character.project_id}. Cross-project references invalid."
+                    )
+
+
 def create_character(
     project_id: ProjectId,
     canonical_name: str,

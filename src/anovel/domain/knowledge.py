@@ -36,6 +36,44 @@ PropositionId = NewType("PropositionId", str)
 """Unique identifier for propositions (UUID v4 format)."""
 
 
+def validate_uuid_v4_format(value: str, field_name: str) -> None:
+    """
+    Validate that a string is valid UUID v4 format.
+
+    Contract format: lowercase, hyphenated, 36 characters
+    Pattern: xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx
+    where x is [0-9a-f] and y is [89ab]
+
+    Args:
+        value: String to validate
+        field_name: Field name for error messages
+
+    Raises:
+        ValueError: If not valid UUID v4 format
+
+    Contract: Frozen V2-061 §PropositionId, §GoalId, §IntentId, §PlannedActionId
+    """
+    import re
+
+    if len(value) != 36:
+        raise ValueError(
+            f"{field_name} must be 36 characters (UUID v4 format), got {len(value)}"
+        )
+
+    # UUID v4 pattern: lowercase, hyphenated
+    # Version 4: xxxx-4xxx
+    # Variant: [89ab]xxx
+    uuid_v4_pattern = re.compile(
+        r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+    )
+
+    if not uuid_v4_pattern.match(value):
+        raise ValueError(
+            f"{field_name} must be valid UUID v4 format "
+            f"(lowercase, hyphenated, version 4). Got: {value}"
+        )
+
+
 # --- Enums ---
 
 
@@ -225,6 +263,68 @@ def create_proposition(
         object=object,
         context=frozen_context,
     )
+
+
+def validate_proposition_collision(
+    prop1: Proposition,
+    prop2: Proposition,
+) -> None:
+    """
+    Validate that two Propositions with same ID have same BASE payload.
+
+    Frozen Contract §Proposition Collision Invariant requires:
+    Same proposition_id + different BASE payload = INVALID
+
+    BASE payload comparison:
+    - project_id
+    - subject
+    - predicate
+    - object
+    - context (semantic equality, not identity)
+
+    Args:
+        prop1: First proposition
+        prop2: Second proposition
+
+    Raises:
+        ValueError: If same ID but different BASE payload
+
+    Contract: Frozen V2-061 §Proposition (Collision Invariant)
+    """
+    if prop1.proposition_id != prop2.proposition_id:
+        return  # Different IDs, no collision check needed
+
+    # Same ID - must have same BASE payload
+    if prop1.project_id != prop2.project_id:
+        raise ValueError(
+            f"Proposition collision: same proposition_id {prop1.proposition_id} "
+            f"but different project_id ({prop1.project_id} vs {prop2.project_id})"
+        )
+
+    if prop1.subject != prop2.subject:
+        raise ValueError(
+            f"Proposition collision: same proposition_id {prop1.proposition_id} "
+            f"but different subject ({prop1.subject} vs {prop2.subject})"
+        )
+
+    if prop1.predicate != prop2.predicate:
+        raise ValueError(
+            f"Proposition collision: same proposition_id {prop1.proposition_id} "
+            f"but different predicate ({prop1.predicate} vs {prop2.predicate})"
+        )
+
+    if prop1.object != prop2.object:
+        raise ValueError(
+            f"Proposition collision: same proposition_id {prop1.proposition_id} "
+            f"but different object ({prop1.object} vs {prop2.object})"
+        )
+
+    # Context semantic equality (both None, or both equal)
+    if prop1.context != prop2.context:
+        raise ValueError(
+            f"Proposition collision: same proposition_id {prop1.proposition_id} "
+            f"but different context ({prop1.context} vs {prop2.context})"
+        )
 
 
 @dataclass(frozen=True)
