@@ -1,0 +1,321 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://anovel.ai/schemas/character.schema.json",
+  "title": "Character",
+  "description": "Character aggregate with knowledge, goals, intents, and planned actions. Contains BASE fields only per ADR-002.",
+  "type": "object",
+  "required": [
+    "entity_id",
+    "project_id",
+    "lifecycle",
+    "knowledge",
+    "goals",
+    "intents",
+    "planned_actions",
+    "created_at",
+    "updated_at",
+    "authority"
+  ],
+  "properties": {
+    "entity_id": {
+      "type": "string",
+      "description": "Stable entity identifier from V2-005",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Project scope identifier"
+    },
+    "lifecycle": {
+      "type": "string",
+      "enum": ["active", "inactive", "deceased"],
+      "description": "Character lifecycle state"
+    },
+    "knowledge": {
+      "type": "object",
+      "description": "Map of PropositionId to CharacterKnowledge (BASE fields only)",
+      "additionalProperties": {
+        "$ref": "#/$defs/CharacterKnowledge"
+      }
+    },
+    "goals": {
+      "type": "array",
+      "description": "Character goals",
+      "items": {
+        "$ref": "#/$defs/Goal"
+      }
+    },
+    "intents": {
+      "type": "array",
+      "description": "Character intents",
+      "items": {
+        "$ref": "#/$defs/Intent"
+      }
+    },
+    "planned_actions": {
+      "type": "array",
+      "description": "Planned actions",
+      "items": {
+        "$ref": "#/$defs/PlannedAction"
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Creation timestamp"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last update timestamp"
+    },
+    "authority": {
+      "type": "string",
+      "description": "Authority source for this character state"
+    },
+    "provenance": {
+      "type": ["string", "null"],
+      "description": "Optional provenance information"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "Proposition": {
+      "type": "object",
+      "description": "Proposition BASE fields only",
+      "required": [
+        "proposition_id",
+        "project_id",
+        "subject",
+        "predicate"
+      ],
+      "properties": {
+        "proposition_id": {
+          "type": "string",
+          "description": "Unique proposition identifier",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+        },
+        "project_id": {
+          "type": "string",
+          "description": "Project scope"
+        },
+        "subject": {
+          "type": "string",
+          "description": "Entity this proposition is about"
+        },
+        "predicate": {
+          "type": "string",
+          "description": "What is claimed"
+        },
+        "object": {
+          "type": ["string", "null"],
+          "description": "Optional target entity or value"
+        },
+        "context": {
+          "type": ["object", "null"],
+          "description": "Optional structured metadata"
+        }
+      },
+      "additionalProperties": false
+    },
+    "CharacterKnowledge": {
+      "type": "object",
+      "description": "Character knowledge BASE fields only (aligns_with_fact CACHE field excluded)",
+      "required": [
+        "knower",
+        "proposition",
+        "knowledge_level",
+        "acquisition_source"
+      ],
+      "properties": {
+        "knower": {
+          "type": "string",
+          "description": "Character who holds this knowledge"
+        },
+        "proposition": {
+          "$ref": "#/$defs/Proposition"
+        },
+        "knowledge_level": {
+          "type": "string",
+          "enum": ["believes_true", "believes_false", "uncertain", "unaware"],
+          "description": "Character's epistemic state"
+        },
+        "acquisition_source": {
+          "type": "string",
+          "enum": ["witnessed", "told_by", "inferred", "assumed", "initial_state"],
+          "description": "How knowledge was acquired"
+        },
+        "source_character": {
+          "type": ["string", "null"],
+          "description": "Entity from whom knowledge was acquired (required for told_by)"
+        },
+        "source_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to source event/scene"
+        },
+        "basis_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to evidence/basis"
+        },
+        "acquired_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "System timestamp of knowledge acquisition"
+        },
+        "story_time_ref": {
+          "type": ["string", "null"],
+          "description": "Narrative time reference"
+        },
+        "confidence": {
+          "type": ["number", "null"],
+          "minimum": 0.0,
+          "maximum": 1.0,
+          "description": "Character's confidence level"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Goal": {
+      "type": "object",
+      "description": "Character goal BASE fields",
+      "required": [
+        "goal_id",
+        "character",
+        "description",
+        "status",
+        "priority",
+        "formed_at"
+      ],
+      "properties": {
+        "goal_id": {
+          "type": "string",
+          "description": "Unique goal identifier"
+        },
+        "character": {
+          "type": "string",
+          "description": "Character who holds this goal"
+        },
+        "description": {
+          "type": "string",
+          "description": "Natural language goal description"
+        },
+        "target_state": {
+          "type": ["object", "null"],
+          "description": "Desired outcome representation"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "achieved", "abandoned", "blocked"],
+          "description": "Goal pursuit status"
+        },
+        "priority": {
+          "type": "integer",
+          "description": "Relative priority (higher = more important)"
+        },
+        "formed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When goal was formed"
+        },
+        "resolved_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When goal was achieved/abandoned"
+        }
+      },
+      "additionalProperties": false
+    },
+    "Intent": {
+      "type": "object",
+      "description": "Character intent BASE fields",
+      "required": [
+        "intent_id",
+        "character",
+        "description",
+        "formed_at"
+      ],
+      "properties": {
+        "intent_id": {
+          "type": "string",
+          "description": "Unique intent identifier"
+        },
+        "character": {
+          "type": "string",
+          "description": "Character who holds this intent"
+        },
+        "goal_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to related goal"
+        },
+        "description": {
+          "type": "string",
+          "description": "Natural language intent description"
+        },
+        "formed_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When intent was formed"
+        },
+        "abandoned_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When intent was abandoned"
+        }
+      },
+      "additionalProperties": false
+    },
+    "PlannedAction": {
+      "type": "object",
+      "description": "Planned action BASE fields. occurred_event_ref is reference, not occurrence authority.",
+      "required": [
+        "action_id",
+        "character",
+        "action_description",
+        "status",
+        "created_at"
+      ],
+      "properties": {
+        "action_id": {
+          "type": "string",
+          "description": "Unique action identifier"
+        },
+        "character": {
+          "type": "string",
+          "description": "Character planning this action"
+        },
+        "action_description": {
+          "type": "string",
+          "description": "Natural language action description"
+        },
+        "intent_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to related intent"
+        },
+        "planned_for": {
+          "type": ["string", "null"],
+          "description": "When action is planned to occur"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["planned", "in_progress", "completed", "cancelled"],
+          "description": "Action execution status"
+        },
+        "occurred_event_ref": {
+          "type": ["string", "null"],
+          "description": "Reference to event if action occurred (not occurrence authority)"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When action was planned"
+        },
+        "cancelled_at": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "When action was cancelled"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -23,9 +23,11 @@ Invariants:
 Contract: V2-005 Implementation Contract v1.1.0
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from enum import Enum
-from typing import Literal, NewType
+from typing import Literal, NewType, Optional, Union
 
 # --- Type Aliases (Step 2) ---
 
@@ -68,7 +70,7 @@ class EntityIdentity:
     project_id: ProjectId
     canonical_name: str
     aliases: frozenset[str]
-    entity_type: str | None = None
+    entity_type: Optional[str] = None
 
 
 @dataclass(frozen=True)
@@ -127,9 +129,9 @@ class InvalidInputResult:
 
 # --- Resolution Result Union (Step 2) ---
 
-ResolutionResult = (
-    ResolvedResult | NotFoundResult | AmbiguousResult | InvalidInputResult
-)
+ResolutionResult = Union[
+    ResolvedResult, NotFoundResult, AmbiguousResult, InvalidInputResult
+]
 """
 Union of all possible resolution results.
 
@@ -262,7 +264,7 @@ class EntityRegistry:
         # Add to project index (set ensures no duplicates)
         self._by_project.setdefault(entity.project_id, set()).add(entity.entity_id)
 
-    def get_entity(self, entity_id: EntityId) -> EntityIdentity | None:
+    def get_entity(self, entity_id: EntityId) -> Optional[EntityIdentity]:
         """
         Retrieve entity by ID.
 
@@ -298,7 +300,7 @@ class EntityRegistry:
 def create_identity(
     project_id: ProjectId,
     canonical_name: str,
-    entity_type: str | None = None,
+    entity_type: Optional[str] = None,
 ) -> EntityIdentity:
     """
     Create a new entity identity with stable ID.
