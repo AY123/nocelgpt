@@ -11,11 +11,17 @@ import os
 import stat
 import subprocess
 import tempfile
-from datetime import UTC, datetime
 from pathlib import Path, PurePosixPath
 
 import yaml
 from execution_checks import bounded_path
+
+# Python 3.9 compatibility
+try:
+    from datetime import UTC, datetime
+except ImportError:
+    from datetime import datetime, timezone
+    UTC = timezone.utc  # noqa: UP017
 
 
 class ReviewError(ValueError):

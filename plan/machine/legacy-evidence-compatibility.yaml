@@ -13,6 +13,22 @@ note: |
   Scope: ONLY tasks explicitly listed below may use legacy evidence representations.
   All tasks not in this register MUST follow current governance standards.
 
+# Historical closure artifact provenance
+# Maps historical closure evidence to the revision where artifacts were actually produced
+historical_closure_artifact_provenance:
+  G-P0-38b0c57:
+    subject_revision: 38b0c5749e9ccf58aa1ddf911d8c245a328e3ead
+    artifact_revision: 4f118fb9f25e4845d576075157141d2d252d5b96
+    note: |
+      P0 closure evidence was produced at 4f118fb (after candidate revision 38b0c57).
+      Artifacts reference machine files as they existed at evidence-producing time,
+      not at subject/candidate time.
+
+      Verified artifact hashes at 4f118fb:
+      - phase-gates.yaml: 2dae46ac9b682be8cb3c273e78907a559645527c49f7e29c5dcdb05572f099e9
+      - remediation-register.yaml: 7c552a7103bef8e06c8603b7be8bc6656ed408d858f3396b1624c024c76165e9
+      - milestones.yaml: f4f0bcd42ed08b9b0fe40fc8c08b91103105e5b86997d25c482fea2f0fff3a96
+
 compatibility_entries:
   V2-005:
     task_id: V2-005

@@ -146,7 +146,7 @@ def object_checks(data):
 
 
 class EvidenceReader:
-    def __init__(self, plan, schema, errors, compat=None):
+    def __init__(self, plan, schema, errors, compat=None, historical_provenance=None):
         self.plan = Path(plan).resolve()
         self.validator = Draft202012Validator(schema, format_checker=FormatChecker())
         self.errors = errors
@@ -154,6 +154,7 @@ class EvidenceReader:
         self.stack = set()
         self.ids = {}
         self.compat = compat or {}
+        self.historical_provenance = historical_provenance or {}
 
     def path(self, ref):
         if not isinstance(ref, str):
@@ -186,20 +187,56 @@ class EvidenceReader:
                 if eid in self.ids and self.ids[eid] != ref:
                     self.errors.append(f"EVIDENCE_ID {eid}: reused by different files")
                 self.ids[eid] = ref
+
+                # Determine artifact revision for historical closure evidence
+                artifact_revision = None
+                if hasattr(self, 'historical_provenance'):
+                    # Check if this evidence belongs to a historical closure with known artifact provenance
+                    for closure_id, provenance in self.historical_provenance.items():
+                        if closure_id in ref:  # e.g., "G-P0-38b0c57" in path
+                            artifact_revision = provenance.get('artifact_revision')
+                            break
+
                 for artifact in record["artifacts"]:
                     p = self.path(artifact["ref"])
-                    if (
-                        p is None
-                        or hashlib.sha256(p.read_bytes()).hexdigest()
-                        != artifact["sha256"]
-                    ):
+                    if p is None:
                         self.errors.append(
                             f"EVIDENCE_ARTIFACT {ref}: missing/changed {artifact['ref']}"
                         )
-                    elif p.relative_to(self.plan).parts[0] == "templates":
-                        self.errors.append(
-                            f"EVIDENCE_ARTIFACT {ref}: a template is not an execution result"
-                        )
+                    else:
+                        # Validate artifact hash at appropriate revision
+                        if artifact_revision:
+                            # Historical closure: check artifact at evidence-producing revision
+                            import subprocess
+                            try:
+                                # Artifact ref is relative to plan/, need to prepend "plan/" for Git
+                                git_path = f"plan/{artifact['ref']}"
+                                result = subprocess.run(
+                                    ["git", "show", f"{artifact_revision}:{git_path}"],
+                                    capture_output=True,
+                                    check=True,
+                                    cwd=self.plan.parent
+                                )
+                                actual_hash = hashlib.sha256(result.stdout).hexdigest()
+                                if actual_hash != artifact["sha256"]:
+                                    self.errors.append(
+                                        f"EVIDENCE_ARTIFACT {ref}: hash mismatch at {artifact_revision[:7]} for {artifact['ref']}"
+                                    )
+                            except subprocess.CalledProcessError:
+                                self.errors.append(
+                                    f"EVIDENCE_ARTIFACT {ref}: cannot read {artifact['ref']} at {artifact_revision[:7]}"
+                                )
+                        else:
+                            # Current evidence: check artifact at current HEAD
+                            if hashlib.sha256(p.read_bytes()).hexdigest() != artifact["sha256"]:
+                                self.errors.append(
+                                    f"EVIDENCE_ARTIFACT {ref}: missing/changed {artifact['ref']}"
+                                )
+                        # Check that artifact is not a template (applies to both historical and current)
+                        if p.relative_to(self.plan).parts[0] == "templates":
+                            self.errors.append(
+                                f"EVIDENCE_ARTIFACT {ref}: a template is not an execution result"
+                            )
                 for child in record["input_evidence_refs"]:
                     self.read(child)
             except (OSError, ValueError, TypeError, yaml.YAMLError) as exc:
@@ -236,7 +273,10 @@ def evidence_checks(data, plan):
     # Load legacy evidence compatibility register
     compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
 
-    reader = EvidenceReader(plan, schema, errors, compat)
+    # Load historical closure artifact provenance
+    historical_provenance = data.get("legacy-evidence-compatibility", {}).get("historical_closure_artifact_provenance", {})
+
+    reader = EvidenceReader(plan, schema, errors, compat, historical_provenance)
     tasks = {t["task_id"]: t for t in data["implementation-backlog"]["tasks"]}
     suites = {s["id"]: s for s in data["test-catalog"]["suites"]}
     phases = {p["id"]: p for p in data["phase-gates"]["phases"]}
