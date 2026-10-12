@@ -28,8 +28,8 @@
     },
     "lifecycle": {
       "type": "string",
-      "enum": ["active", "inactive", "deceased"],
-      "description": "Character lifecycle state"
+      "enum": ["PLANNED", "ACTIVE", "INACTIVE", "DECEASED", "SUPERSEDED"],
+      "description": "Character lifecycle state per frozen V2-061 Contract"
     },
     "knowledge": {
       "type": "object",
@@ -137,13 +137,13 @@
         },
         "knowledge_level": {
           "type": "string",
-          "enum": ["believes_true", "believes_false", "uncertain", "unaware"],
-          "description": "Character's epistemic state"
+          "enum": ["KNOWN", "BELIEVED", "SUSPECTED"],
+          "description": "Character's epistemic state per frozen V2-061 Contract"
         },
         "acquisition_source": {
           "type": "string",
-          "enum": ["witnessed", "told_by", "inferred", "assumed", "initial_state"],
-          "description": "How knowledge was acquired"
+          "enum": ["DIRECT_OBSERVATION", "COMMUNICATION", "DOCUMENT", "INFERENCE", "RUMOR"],
+          "description": "How knowledge was acquired per frozen V2-061 Contract"
         },
         "source_character": {
           "type": ["string", "null"],
@@ -154,8 +154,11 @@
           "description": "Reference to source event/scene"
         },
         "basis_ref": {
-          "type": ["string", "null"],
-          "description": "Reference to evidence/basis"
+          "type": ["array", "null"],
+          "items": {
+            "type": "string"
+          },
+          "description": "List of PropositionIds reasoned from (for INFERENCE, non-empty required)"
         },
         "acquired_at": {
           "type": ["string", "null"],
@@ -205,17 +208,17 @@
         },
         "status": {
           "type": "string",
-          "enum": ["active", "achieved", "abandoned", "blocked"],
-          "description": "Goal pursuit status"
+          "enum": ["ACTIVE", "BLOCKED", "ACHIEVED", "FAILED", "ABANDONED", "SUPERSEDED"],
+          "description": "Goal pursuit status per frozen V2-061 Contract (AC-4)"
         },
         "priority": {
-          "type": "integer",
-          "description": "Relative priority (higher = more important)"
+          "type": ["integer", "null"],
+          "description": "Relative priority (higher = more important). Optional per frozen V2-061 Contract."
         },
         "formed_at": {
-          "type": "string",
+          "type": ["string", "null"],
           "format": "date-time",
-          "description": "When goal was formed"
+          "description": "When goal was formed. Optional per frozen V2-061 Contract."
         },
         "resolved_at": {
           "type": ["string", "null"],
@@ -252,9 +255,9 @@
           "description": "Natural language intent description"
         },
         "formed_at": {
-          "type": "string",
+          "type": ["string", "null"],
           "format": "date-time",
-          "description": "When intent was formed"
+          "description": "When intent was formed. Optional per frozen V2-061 Contract."
         },
         "abandoned_at": {
           "type": ["string", "null"],
@@ -297,8 +300,8 @@
         },
         "status": {
           "type": "string",
-          "enum": ["planned", "in_progress", "completed", "cancelled"],
-          "description": "Action execution status"
+          "enum": ["PLANNED", "CANCELLED"],
+          "description": "Action status per frozen V2-061 Contract (AC-3). V2-061 owns PLANNED/CANCELLED only. V2-007 owns occurrence."
         },
         "occurred_event_ref": {
           "type": ["string", "null"],

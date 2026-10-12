@@ -46,6 +46,9 @@ from .character import (
     CharacterLifecycle,
     GoalStatus,
     ActionStatus,
+    GoalId,
+    IntentId,
+    PlannedActionId,
     create_character,
 )
 
@@ -79,5 +82,8 @@ __all__ = [
     "CharacterLifecycle",
     "GoalStatus",
     "ActionStatus",
+    "GoalId",
+    "IntentId",
+    "PlannedActionId",
     "create_character",
 ]

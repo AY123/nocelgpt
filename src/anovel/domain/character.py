@@ -27,38 +27,69 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Dict, List, Mapping, Optional
+from typing import Dict, List, Mapping, NewType, Optional
 
 from .identity import EntityId, ProjectId
 from .knowledge import CharacterKnowledge, PropositionId
+
+# --- Type Aliases ---
+
+GoalId = NewType("GoalId", str)
+"""Stable identifier for character goals (UUID v4 format)."""
+
+IntentId = NewType("IntentId", str)
+"""Stable identifier for character intents (UUID v4 format)."""
+
+PlannedActionId = NewType("PlannedActionId", str)
+"""Stable identifier for planned actions (UUID v4 format)."""
 
 # --- Enums ---
 
 
 class CharacterLifecycle(Enum):
-    """Character lifecycle state."""
+    """Character lifecycle state.
 
-    ACTIVE = "active"
-    INACTIVE = "inactive"
-    DECEASED = "deceased"
+    Contract: Frozen V2-061 §Lifecycle
+
+    PLANNED: Defined but not yet active in story
+    ACTIVE: Currently part of story
+    INACTIVE: Temporarily not appearing (still alive/existing)
+    DECEASED: Character has died in story
+    SUPERSEDED: Character concept replaced/merged
+    """
+
+    PLANNED = "PLANNED"
+    ACTIVE = "ACTIVE"
+    INACTIVE = "INACTIVE"
+    DECEASED = "DECEASED"
+    SUPERSEDED = "SUPERSEDED"
 
 
 class GoalStatus(Enum):
-    """Goal pursuit status."""
+    """Goal pursuit status.
 
-    ACTIVE = "active"
-    ACHIEVED = "achieved"
-    ABANDONED = "abandoned"
-    BLOCKED = "blocked"
+    Contract: Frozen V2-061 §Goal Lifecycle (AC-4)
+    """
+
+    ACTIVE = "ACTIVE"
+    BLOCKED = "BLOCKED"
+    ACHIEVED = "ACHIEVED"
+    FAILED = "FAILED"
+    ABANDONED = "ABANDONED"
+    SUPERSEDED = "SUPERSEDED"
 
 
 class ActionStatus(Enum):
-    """Planned action status."""
+    """Planned action status.
 
-    PLANNED = "planned"
-    IN_PROGRESS = "in_progress"
-    COMPLETED = "completed"
-    CANCELLED = "cancelled"
+    Contract: Frozen V2-061 §PlannedAction Occurrence Invariant (AC-3)
+
+    V2-061 owns PLANNED/CANCELLED only.
+    V2-007 owns objective occurrence authority.
+    """
+
+    PLANNED = "PLANNED"
+    CANCELLED = "CANCELLED"
 
 
 # --- Domain Models ---
@@ -70,7 +101,7 @@ class Goal:
     Character goal representation.
 
     BASE fields (all persisted):
-        goal_id: Unique identifier
+        goal_id: Unique stable identifier (UUID v4)
         character: Character who holds this goal
         description: Natural language goal description
         target_state: Desired outcome representation
@@ -79,16 +110,16 @@ class Goal:
         formed_at: When goal was formed
         resolved_at: When goal was achieved/abandoned
 
-    Contract: ADR-002 Goal BASE fields
+    Contract: ADR-002 Goal BASE fields + Frozen V2-061 §Goal Lifecycle (AC-4)
     """
 
-    goal_id: str
+    goal_id: GoalId
     character: EntityId
     description: str
     target_state: Optional[Mapping[str, str]]
     status: GoalStatus
-    priority: int
-    formed_at: datetime
+    priority: Optional[int]
+    formed_at: Optional[datetime]
     resolved_at: Optional[datetime] = None
 
 
@@ -98,21 +129,21 @@ class Intent:
     Character intent representation.
 
     BASE fields (all persisted):
-        intent_id: Unique identifier
+        intent_id: Unique stable identifier (UUID v4)
         character: Character who holds this intent
         goal_ref: Reference to related goal
         description: Natural language intent description
         formed_at: When intent was formed
         abandoned_at: When intent was abandoned
 
-    Contract: ADR-002 Intent BASE fields
+    Contract: ADR-002 Intent BASE fields + Frozen V2-061 §Intent
     """
 
-    intent_id: str
+    intent_id: IntentId
     character: EntityId
-    goal_ref: Optional[str]
+    goal_ref: Optional[GoalId]
     description: str
-    formed_at: datetime
+    formed_at: Optional[datetime]
     abandoned_at: Optional[datetime] = None
 
 
@@ -122,12 +153,12 @@ class PlannedAction:
     Planned action representation.
 
     BASE fields (all persisted):
-        action_id: Unique identifier
+        action_id: Unique stable identifier (UUID v4)
         character: Character planning this action
         action_description: Natural language action description
         intent_ref: Reference to related intent
         planned_for: When action is planned to occur
-        status: Action execution status
+        status: Action status (PLANNED or CANCELLED only - V2-061 authority)
         occurred_event_ref: Reference to event if action occurred
         created_at: When action was planned
         cancelled_at: When action was cancelled
@@ -135,19 +166,33 @@ class PlannedAction:
     Invariants:
         - occurred_event_ref is a reference/link, NOT occurrence authority
         - V2-007 owns occurrence truth, not PlannedAction
+        - status can only be PLANNED or CANCELLED (no IN_PROGRESS/COMPLETED)
+        - status=CANCELLED + occurred_event_ref != None is INVALID
 
-    Contract: ADR-002 PlannedAction BASE fields
+    Contract: ADR-002 PlannedAction BASE fields + Frozen V2-061 §PlannedAction Occurrence Invariant (AC-3)
     """
 
-    action_id: str
+    action_id: PlannedActionId
     character: EntityId
     action_description: str
-    intent_ref: Optional[str]
+    intent_ref: Optional[IntentId]
     planned_for: Optional[str]
     status: ActionStatus
     occurred_event_ref: Optional[str]
     created_at: datetime
     cancelled_at: Optional[datetime] = None
+
+    def __post_init__(self) -> None:
+        """Validate PlannedAction invariants.
+
+        Contract: Frozen V2-061 §PlannedAction Occurrence Invariant
+        """
+        # CANCELLED + occurred_event_ref != None is invalid
+        if self.status == ActionStatus.CANCELLED and self.occurred_event_ref is not None:
+            raise ValueError(
+                "PlannedAction with status=CANCELLED cannot have occurred_event_ref. "
+                "Cancelled plans should not link to occurrence events."
+            )
 
 
 @dataclass(frozen=True)
@@ -221,7 +266,6 @@ class Character:
 def create_character(
     project_id: ProjectId,
     canonical_name: str,
-    entity_type: str = "CHARACTER",
     authority: str = "initial_state",
 ) -> Character:
     """
@@ -233,7 +277,6 @@ def create_character(
     Args:
         project_id: Project scope
         canonical_name: Character canonical name
-        entity_type: Entity type (defaults to "CHARACTER")
         authority: Authority source for this character
 
     Returns:
@@ -249,17 +292,21 @@ def create_character(
         ...     authority="initial_state"
         ... )
         >>> char.lifecycle
-        <CharacterLifecycle.ACTIVE: 'active'>
+        <CharacterLifecycle.ACTIVE: 'ACTIVE'>
 
-    Contract: V2-061 + ADR-002
+    Contract: V2-061 + ADR-002 + Frozen V2-061 §Entity Type Validation
+
+    Note: entity_type is hardcoded to "CHARACTER" per contract requirement.
+    V2-061 only handles CHARACTER entity_type. Other types must be rejected.
     """
     from .identity import create_identity
 
     # Create stable entity identity via V2-005
+    # entity_type must be "CHARACTER" per frozen contract
     identity = create_identity(
         project_id=project_id,
         canonical_name=canonical_name,
-        entity_type=entity_type,
+        entity_type="CHARACTER",
     )
 
     now = datetime.utcnow()

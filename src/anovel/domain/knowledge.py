@@ -40,22 +40,40 @@ PropositionId = NewType("PropositionId", str)
 
 
 class KnowledgeLevel(Enum):
-    """Character's epistemic state regarding a proposition."""
+    """Character's epistemic state regarding a proposition.
 
-    BELIEVES_TRUE = "believes_true"
-    BELIEVES_FALSE = "believes_false"
-    UNCERTAIN = "uncertain"
-    UNAWARE = "unaware"
+    Contract: Frozen V2-061 Contract §Knowledge Semantics
+
+    KNOWN: High-confidence, verified knowledge. Must NOT contradict objective fact.
+    BELIEVED: Accepted as true, not independently verified. May be correct or incorrect.
+    SUSPECTED: Weak belief, uncertain.
+
+    UNKNOWN representation: Absence of CharacterKnowledge record (no explicit enum).
+    """
+
+    KNOWN = "KNOWN"
+    BELIEVED = "BELIEVED"
+    SUSPECTED = "SUSPECTED"
 
 
 class AcquisitionSource(Enum):
-    """How character acquired knowledge."""
+    """How character acquired knowledge.
 
-    WITNESSED = "witnessed"
-    TOLD_BY = "told_by"
-    INFERRED = "inferred"
-    ASSUMED = "assumed"
-    INITIAL_STATE = "initial_state"
+    Contract: Frozen V2-061 Contract §Provenance
+
+    Each source has REQUIRED provenance fields:
+    - DIRECT_OBSERVATION: source_ref REQUIRED
+    - COMMUNICATION: source_character REQUIRED
+    - DOCUMENT: source_ref REQUIRED
+    - INFERENCE: basis_ref REQUIRED (non-empty list)
+    - RUMOR: source_character OR source_ref REQUIRED (at least one)
+    """
+
+    DIRECT_OBSERVATION = "DIRECT_OBSERVATION"
+    COMMUNICATION = "COMMUNICATION"
+    DOCUMENT = "DOCUMENT"
+    INFERENCE = "INFERENCE"
+    RUMOR = "RUMOR"
 
 
 # --- Context Freezing ---
@@ -217,11 +235,11 @@ class CharacterKnowledge:
     BASE fields (persisted):
         knower: Character who holds this knowledge
         proposition: What is known/believed
-        knowledge_level: Character's epistemic state
-        acquisition_source: How knowledge was acquired
-        source_character: Entity from whom knowledge was acquired (for TOLD_BY)
-        source_ref: Reference to source event/scene
-        basis_ref: Reference to evidence/basis
+        knowledge_level: Character's epistemic state (KNOWN/BELIEVED/SUSPECTED)
+        acquisition_source: How knowledge was acquired (REQUIRED)
+        source_character: Entity from whom knowledge was acquired (for COMMUNICATION/RUMOR)
+        source_ref: Reference to source event/scene (for DIRECT_OBSERVATION/DOCUMENT/RUMOR)
+        basis_ref: Reference to inference basis (for INFERENCE, non-empty list required)
         acquired_at: System timestamp of knowledge acquisition
         story_time_ref: Narrative time reference
         confidence: Character's confidence level (0.0-1.0)
@@ -230,9 +248,10 @@ class CharacterKnowledge:
         aligns_with_fact: Whether knowledge aligns with Canon truth
 
     Invariants:
-        - acquisition_source = TOLD_BY → source_character required
+        - KNOWN + aligns_with_fact=False = INVALID (high-confidence misbelief not allowed)
+        - BELIEVED/SUSPECTED + aligns_with_fact=False = VALID (misbelief allowed)
+        - acquisition_source provenance requirements MUST be satisfied
         - aligns_with_fact does not participate in equality
-        - aligns_with_fact not in persisted JSON payload
 
     Contract: ADR-002 CharacterKnowledge BASE + CACHE
     """
@@ -244,7 +263,7 @@ class CharacterKnowledge:
     acquisition_source: AcquisitionSource
     source_character: Optional[EntityId] = None
     source_ref: Optional[str] = None
-    basis_ref: Optional[str] = None
+    basis_ref: Optional[list[PropositionId]] = None
     acquired_at: Optional[datetime] = None
     story_time_ref: Optional[str] = None
     confidence: Optional[float] = None
@@ -253,13 +272,56 @@ class CharacterKnowledge:
     aligns_with_fact: Optional[bool] = field(default=None, compare=False)
 
     def __post_init__(self) -> None:
-        """Validate invariants after construction."""
-        # Validate TOLD_BY requires source_character
-        if self.acquisition_source == AcquisitionSource.TOLD_BY:
-            if self.source_character is None:
+        """Validate invariants after construction.
+
+        Contract: Frozen V2-061 §Provenance Hard Rules
+        """
+        # Validate KNOWN + aligns_with_fact=False invariant
+        if self.knowledge_level == KnowledgeLevel.KNOWN and self.aligns_with_fact is False:
+            raise ValueError(
+                "knowledge_level=KNOWN with aligns_with_fact=False is INVALID. "
+                "High-confidence misbelief must use BELIEVED with high confidence, not KNOWN."
+            )
+
+        # Validate acquisition source provenance requirements
+        if self.acquisition_source == AcquisitionSource.DIRECT_OBSERVATION:
+            if not self.source_ref:
                 raise ValueError(
-                    "acquisition_source=TOLD_BY requires source_character"
+                    "acquisition_source=DIRECT_OBSERVATION requires source_ref (event/observation context)"
                 )
+
+        elif self.acquisition_source == AcquisitionSource.COMMUNICATION:
+            if not self.source_character:
+                raise ValueError(
+                    "acquisition_source=COMMUNICATION requires source_character (who told character)"
+                )
+
+        elif self.acquisition_source == AcquisitionSource.DOCUMENT:
+            if not self.source_ref:
+                raise ValueError(
+                    "acquisition_source=DOCUMENT requires source_ref (document identifier)"
+                )
+
+        elif self.acquisition_source == AcquisitionSource.INFERENCE:
+            if not self.basis_ref or len(self.basis_ref) == 0:
+                raise ValueError(
+                    "acquisition_source=INFERENCE requires basis_ref (non-empty list of what was reasoned from)"
+                )
+
+        elif self.acquisition_source == AcquisitionSource.RUMOR:
+            if not self.source_character and not self.source_ref:
+                raise ValueError(
+                    "acquisition_source=RUMOR requires source_character OR source_ref (at least one)"
+                )
+
+        # Hard invariant: acquisition_source alone is NOT sufficient provenance
+        # At least one actual source reference must exist
+        if not any([self.source_character, self.source_ref, self.basis_ref]):
+            raise ValueError(
+                "CharacterKnowledge requires actual provenance path: "
+                "at least one of source_character, source_ref, or basis_ref must be provided. "
+                "acquisition_source alone is not sufficient."
+            )
 
         # Validate confidence range if provided
         if self.confidence is not None:
