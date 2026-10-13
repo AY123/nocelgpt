@@ -211,7 +211,7 @@ class Character:
         created_at: Creation timestamp
         updated_at: Last update timestamp
         authority: Authority source for this character state
-        provenance: Provenance information
+        provenance: Structured provenance metadata (dict)
 
     DERIVED fields (not persisted, computed from BASE):
         active_goals: Filtered list of goals with status=ACTIVE
@@ -221,8 +221,9 @@ class Character:
         - entity_id from V2-005 (reused, not redesigned)
         - knowledge values contain CACHE field aligns_with_fact (not persisted)
         - DERIVED fields recomputed after deserialization
+        - provenance is dict[str, str] per frozen Contract line 206
 
-    Contract: ADR-002 Character BASE/DERIVED classification
+    Contract: ADR-002 Character BASE/DERIVED classification + Frozen V2-061 §Character
     """
 
     # BASE fields
@@ -236,7 +237,7 @@ class Character:
     created_at: datetime
     updated_at: datetime
     authority: str
-    provenance: Optional[str] = None
+    provenance: Dict[str, str] = field(default_factory=dict)
 
     @property
     def active_goals(self) -> List[Goal]:
@@ -444,5 +445,5 @@ def create_character(
         created_at=now,
         updated_at=now,
         authority=authority,
-        provenance=None,
+        provenance={},
     )

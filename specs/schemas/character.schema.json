@@ -14,7 +14,8 @@
     "planned_actions",
     "created_at",
     "updated_at",
-    "authority"
+    "authority",
+    "provenance"
   ],
   "properties": {
     "entity_id": {
@@ -74,8 +75,11 @@
       "description": "Authority source for this character state"
     },
     "provenance": {
-      "type": ["string", "null"],
-      "description": "Optional provenance information"
+      "type": "object",
+      "description": "Structured provenance metadata per frozen Contract line 206",
+      "additionalProperties": {
+        "type": "string"
+      }
     }
   },
   "additionalProperties": false,
