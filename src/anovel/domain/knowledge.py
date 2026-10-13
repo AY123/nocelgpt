@@ -23,10 +23,11 @@ Contract: V2-061 Implementation Contract + ADR-002
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Any, Mapping, NewType
+from typing import Any, NewType
 
 from .identity import EntityId, ProjectId
 

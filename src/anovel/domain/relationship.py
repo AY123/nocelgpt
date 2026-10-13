@@ -30,7 +30,7 @@ Contract: V2-006 Implementation Contract v1.0.1
 
 import uuid
 from dataclasses import dataclass
-from typing import NewType, Optional
+from typing import NewType
 
 from anovel.domain.identity import EntityId, ProjectId
 
@@ -360,7 +360,7 @@ class RelationshipRegistry:
 
     def get_relationship(
         self, relationship_id: RelationshipId
-    ) -> Optional[EntityRelationship]:
+    ) -> EntityRelationship | None:
         """
         Get relationship by ID.
 
