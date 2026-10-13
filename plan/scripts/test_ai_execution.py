@@ -7,7 +7,7 @@ import shutil
 import tempfile
 import unittest
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import validate_plan as validator
@@ -402,7 +402,7 @@ if __name__ == "__main__":
     ).run(suite)  # type: ignore[assignment]
     report = {
         "scope": "Local declared execution packet checks only; no actual action interception, diff review or remote CI",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": datetime.now(UTC).isoformat(),
         "manifest_sha256": validator.sha(validator.PLAN / "FILE_MANIFEST.json"),
         "status": "PASS" if result.wasSuccessful() else "FAIL",
         "test_count": result.testsRun,
