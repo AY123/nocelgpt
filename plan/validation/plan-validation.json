@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-13T06:54:34.472632+00:00",
+  "generated_at_utc": "2026-10-13T13:43:45.816071+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,7 +11,7 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "04fa0fccaa8bd316ad1e0d9f399275742ac47e33",
+  "validated_repository_revision": "4d27321034ec8a4f095aec47fb421a34f9d24ff3",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
@@ -53,10 +53,12 @@
   "errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
     "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_HANDOFF V2-061: next action differs from current checked action"
+    "EXEC_HANDOFF V2-061: next action differs from current checked action",
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
   ],
   "fatal_errors": [
-    "EXEC_HANDOFF V2-061: next action differs from current checked action"
+    "EXEC_HANDOFF V2-061: next action differs from current checked action",
+    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
   ],
   "informational_errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",

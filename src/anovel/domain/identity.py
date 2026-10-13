@@ -27,7 +27,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Literal, NewType, Optional, Union
+from typing import Literal, NewType, Union
 
 # --- Type Aliases (Step 2) ---
 
@@ -70,7 +70,7 @@ class EntityIdentity:
     project_id: ProjectId
     canonical_name: str
     aliases: frozenset[str]
-    entity_type: Optional[str] = None
+    entity_type: str | None = None
 
 
 @dataclass(frozen=True)
@@ -264,7 +264,7 @@ class EntityRegistry:
         # Add to project index (set ensures no duplicates)
         self._by_project.setdefault(entity.project_id, set()).add(entity.entity_id)
 
-    def get_entity(self, entity_id: EntityId) -> Optional[EntityIdentity]:
+    def get_entity(self, entity_id: EntityId) -> EntityIdentity | None:
         """
         Retrieve entity by ID.
 
@@ -300,7 +300,7 @@ class EntityRegistry:
 def create_identity(
     project_id: ProjectId,
     canonical_name: str,
-    entity_type: Optional[str] = None,
+    entity_type: str | None = None,
 ) -> EntityIdentity:
     """
     Create a new entity identity with stable ID.

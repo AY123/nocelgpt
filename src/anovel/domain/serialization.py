@@ -16,7 +16,7 @@ from __future__ import annotations
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict
+from typing import Any
 
 from .character import (
     ActionStatus,
@@ -40,7 +40,7 @@ from .knowledge import (
 )
 
 
-def serialize_character(character: Character) -> Dict[str, Any]:
+def serialize_character(character: Character) -> dict[str, Any]:
     """
     Serialize Character to JSON-compatible dict (BASE fields only).
 
@@ -79,9 +79,9 @@ def serialize_character(character: Character) -> Dict[str, Any]:
     }
 
 
-def _serialize_character_knowledge(ck: CharacterKnowledge) -> Dict[str, Any]:
+def _serialize_character_knowledge(ck: CharacterKnowledge) -> dict[str, Any]:
     """Serialize CharacterKnowledge BASE fields (excludes aligns_with_fact CACHE)."""
-    result: Dict[str, Any] = {
+    result: dict[str, Any] = {
         "knower": ck.knower,
         "proposition": _serialize_proposition(ck.proposition),
         "knowledge_level": ck.knowledge_level.value,
@@ -106,9 +106,9 @@ def _serialize_character_knowledge(ck: CharacterKnowledge) -> Dict[str, Any]:
     return result
 
 
-def _serialize_proposition(prop: Proposition) -> Dict[str, Any]:
+def _serialize_proposition(prop: Proposition) -> dict[str, Any]:
     """Serialize Proposition BASE fields with recursive context thaw."""
-    result: Dict[str, Any] = {
+    result: dict[str, Any] = {
         "proposition_id": prop.proposition_id,
         "project_id": prop.project_id,
         "subject": prop.subject,
@@ -159,9 +159,9 @@ def _thaw_context(ctx: Any) -> Any:
         return ctx
 
 
-def _serialize_goal(goal: Goal) -> Dict[str, Any]:
+def _serialize_goal(goal: Goal) -> dict[str, Any]:
     """Serialize Goal BASE fields."""
-    result: Dict[str, Any] = {
+    result: dict[str, Any] = {
         "goal_id": goal.goal_id,
         "character": goal.character,
         "description": goal.description,
@@ -180,9 +180,9 @@ def _serialize_goal(goal: Goal) -> Dict[str, Any]:
     return result
 
 
-def _serialize_intent(intent: Intent) -> Dict[str, Any]:
+def _serialize_intent(intent: Intent) -> dict[str, Any]:
     """Serialize Intent BASE fields."""
-    result: Dict[str, Any] = {
+    result: dict[str, Any] = {
         "intent_id": intent.intent_id,
         "character": intent.character,
         "description": intent.description,
@@ -198,9 +198,9 @@ def _serialize_intent(intent: Intent) -> Dict[str, Any]:
     return result
 
 
-def _serialize_planned_action(pa: PlannedAction) -> Dict[str, Any]:
+def _serialize_planned_action(pa: PlannedAction) -> dict[str, Any]:
     """Serialize PlannedAction BASE fields."""
-    result: Dict[str, Any] = {
+    result: dict[str, Any] = {
         "action_id": pa.action_id,
         "character": pa.character,
         "action_description": pa.action_description,
@@ -220,7 +220,7 @@ def _serialize_planned_action(pa: PlannedAction) -> Dict[str, Any]:
     return result
 
 
-def deserialize_character(data: Dict[str, Any]) -> Character:
+def deserialize_character(data: dict[str, Any]) -> Character:
     """
     Deserialize Character from JSON-compatible dict.
 
@@ -271,7 +271,7 @@ def deserialize_character(data: Dict[str, Any]) -> Character:
     return char
 
 
-def _deserialize_character_knowledge(data: Dict[str, Any]) -> CharacterKnowledge:
+def _deserialize_character_knowledge(data: dict[str, Any]) -> CharacterKnowledge:
     """Deserialize CharacterKnowledge BASE fields (aligns_with_fact reset to None)."""
     return CharacterKnowledge(
         knower=EntityId(data["knower"]),
@@ -282,7 +282,7 @@ def _deserialize_character_knowledge(data: Dict[str, Any]) -> CharacterKnowledge
         source_character=EntityId(data["source_character"])
         if "source_character" in data
         else None,
-        basis_ref=tuple(PropositionId(p) for p in data["basis_ref"])
+        basis_ref=list(PropositionId(p) for p in data["basis_ref"])
         if "basis_ref" in data
         else None,
         acquired_at=datetime.fromisoformat(data["acquired_at"])
@@ -294,7 +294,7 @@ def _deserialize_character_knowledge(data: Dict[str, Any]) -> CharacterKnowledge
     )
 
 
-def _deserialize_proposition(data: Dict[str, Any]) -> Proposition:
+def _deserialize_proposition(data: dict[str, Any]) -> Proposition:
     """Deserialize Proposition BASE fields."""
     from .knowledge import freeze_context
 
@@ -309,7 +309,7 @@ def _deserialize_proposition(data: Dict[str, Any]) -> Proposition:
     )
 
 
-def _deserialize_goal(data: Dict[str, Any]) -> Goal:
+def _deserialize_goal(data: dict[str, Any]) -> Goal:
     """Deserialize Goal BASE fields."""
     from types import MappingProxyType
 
@@ -332,7 +332,7 @@ def _deserialize_goal(data: Dict[str, Any]) -> Goal:
     )
 
 
-def _deserialize_intent(data: Dict[str, Any]) -> Intent:
+def _deserialize_intent(data: dict[str, Any]) -> Intent:
     """Deserialize Intent BASE fields."""
     return Intent(
         intent_id=IntentId(data["intent_id"]),
@@ -348,7 +348,7 @@ def _deserialize_intent(data: Dict[str, Any]) -> Intent:
     )
 
 
-def _deserialize_planned_action(data: Dict[str, Any]) -> PlannedAction:
+def _deserialize_planned_action(data: dict[str, Any]) -> PlannedAction:
     """Deserialize PlannedAction BASE fields."""
     return PlannedAction(
         action_id=PlannedActionId(data["action_id"]),
@@ -365,7 +365,7 @@ def _deserialize_planned_action(data: Dict[str, Any]) -> PlannedAction:
     )
 
 
-def validate_against_schema(data: Dict[str, Any]) -> None:
+def validate_against_schema(data: dict[str, Any]) -> None:
     """
     Validate serialized Character against character.schema.json.
 
