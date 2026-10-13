@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-10-13T13:43:45.816071+00:00",
+  "generated_at_utc": "2026-10-13T13:47:24.703806+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "FAIL",
+  "status": "PASS",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "4d27321034ec8a4f095aec47fb421a34f9d24ff3",
+  "validated_repository_revision": "53da54d32c43f9f8a172386f8999a926bfcdb268",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "ee22938f37ca474d6fc923c1e3ef1d97f168c9a5ed0b38b1a126526414b97ac2",
+  "manifest_sha256": "63cd8497e1a8f87d077a44487b3a678cb3982e0f2ead62d28b2c11b2f4a285df",
   "counts": {
     "tasks": 61,
     "phase_distribution": {
@@ -52,14 +52,9 @@
   },
   "errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_HANDOFF V2-061: next action differs from current checked action",
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
   ],
-  "fatal_errors": [
-    "EXEC_HANDOFF V2-061: next action differs from current checked action",
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
-  ],
+  "fatal_errors": [],
   "informational_errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
     "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
