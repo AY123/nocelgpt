@@ -98,6 +98,8 @@ unit:
 schema_contract:
   extends: .base_job
   stage: validate
+  variables:
+    GIT_DEPTH: "0"
   allow_failure: false
   script:
     - echo "=== SCHEMA_CONTRACT Gate ==="
