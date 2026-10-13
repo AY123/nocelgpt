@@ -9,7 +9,8 @@ CHECKPOINT_DATE = 2026-10-12
 ## Base State
 
 BASE_SHA = cfcc3ae27dec390e1407d2b84a7b2ef46b5462b3
-CHECKPOINT_SHA = d031d8f993576e4e03b11a8c7769ee1c8af2a608
+CHECKPOINT_005A_COMMIT = f43aab95e29e07cabf8b7346275e4bf105def0f8
+POST_CHECKPOINT_CONTEXT_REPAIR_COMMIT = 39f40ef44b952273a6d03b9313f92602598f4560
 
 FROZEN_CONTRACT_HASH = 04862fca053aff49c2aa334be72ba1f68296c8e4610ded1a631ea18e2b7929a0
 ADR_002_HASH = 0aadbc379da2668673cfc21d97620fedeb7e07933f2334920fa5f264d5db90f8
@@ -43,6 +44,12 @@ Exit Code: 0
 git diff --check
 ```
 Result: PASS (no whitespace errors)
+
+## Known Issues in Checkpoint 005A
+
+**Project Isolation H1**: Current implementation uses `isinstance(prop.subject, EntityId)` and `isinstance(prop.object, EntityId)`, which is invalid because V2-005 EntityId uses `typing.NewType` (not a runtime class). Requires registry-based resolution fix in 005B.
+
+**UUID v4 Validation**: Helper function exists but not integrated into production construction/deserialization paths for PropositionId, GoalId, IntentId, PlannedActionId.
 
 ## Changed Files
 
