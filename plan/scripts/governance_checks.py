@@ -190,11 +190,11 @@ class EvidenceReader:
 
                 # Determine artifact revision for historical closure evidence
                 artifact_revision = None
-                if hasattr(self, 'historical_provenance'):
+                if hasattr(self, "historical_provenance"):
                     # Check if this evidence belongs to a historical closure with known artifact provenance
                     for closure_id, provenance in self.historical_provenance.items():
                         if closure_id in ref:  # e.g., "G-P0-38b0c57" in path
-                            artifact_revision = provenance.get('artifact_revision')
+                            artifact_revision = provenance.get("artifact_revision")
                             break
 
                 for artifact in record["artifacts"]:
@@ -208,6 +208,7 @@ class EvidenceReader:
                         if artifact_revision:
                             # Historical closure: check artifact at evidence-producing revision
                             import subprocess
+
                             try:
                                 # Artifact ref is relative to plan/, need to prepend "plan/" for Git
                                 git_path = f"plan/{artifact['ref']}"
@@ -215,7 +216,7 @@ class EvidenceReader:
                                     ["git", "show", f"{artifact_revision}:{git_path}"],
                                     capture_output=True,
                                     check=True,
-                                    cwd=self.plan.parent
+                                    cwd=self.plan.parent,
                                 )
                                 actual_hash = hashlib.sha256(result.stdout).hexdigest()
                                 if actual_hash != artifact["sha256"]:
@@ -228,7 +229,10 @@ class EvidenceReader:
                                 )
                         else:
                             # Current evidence: check artifact at current HEAD
-                            if hashlib.sha256(p.read_bytes()).hexdigest() != artifact["sha256"]:
+                            if (
+                                hashlib.sha256(p.read_bytes()).hexdigest()
+                                != artifact["sha256"]
+                            ):
                                 self.errors.append(
                                     f"EVIDENCE_ARTIFACT {ref}: missing/changed {artifact['ref']}"
                                 )
@@ -271,10 +275,14 @@ def evidence_checks(data, plan):
     Draft202012Validator.check_schema(schema)
 
     # Load legacy evidence compatibility register
-    compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
+    compat = data.get("legacy-evidence-compatibility", {}).get(
+        "compatibility_entries", {}
+    )
 
     # Load historical closure artifact provenance
-    historical_provenance = data.get("legacy-evidence-compatibility", {}).get("historical_closure_artifact_provenance", {})
+    historical_provenance = data.get("legacy-evidence-compatibility", {}).get(
+        "historical_closure_artifact_provenance", {}
+    )
 
     reader = EvidenceReader(plan, schema, errors, compat, historical_provenance)
     tasks = {t["task_id"]: t for t in data["implementation-backlog"]["tasks"]}

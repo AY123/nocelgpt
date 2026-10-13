@@ -64,7 +64,7 @@ def validate_uuid_v4_format(value: str, field_name: str) -> None:
     # Version 4: xxxx-4xxx
     # Variant: [89ab]xxx
     uuid_v4_pattern = re.compile(
-        r'^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$'
+        r"^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     )
 
     if not uuid_v4_pattern.match(value):
@@ -117,7 +117,9 @@ class AcquisitionSource(Enum):
 # --- Context Freezing ---
 
 
-def freeze_context(ctx: Union[Mapping[str, Any], dict[str, Any], None]) -> Optional[Mapping[str, Any]]:
+def freeze_context(
+    ctx: Union[Mapping[str, Any], dict[str, Any], None],
+) -> Optional[Mapping[str, Any]]:
     """
     Recursively freeze context mapping to immutable representation.
 
@@ -165,6 +167,7 @@ def freeze_context(ctx: Union[Mapping[str, Any], dict[str, Any], None]) -> Optio
 
     # Freeze top-level mapping
     from types import MappingProxyType
+
     frozen_dict = {k: _freeze_value(v) for k, v in ctx.items()}
     return MappingProxyType(frozen_dict)
 
@@ -386,7 +389,10 @@ class CharacterKnowledge:
         Contract: Frozen V2-061 §Provenance Hard Rules
         """
         # Validate KNOWN + aligns_with_fact=False invariant
-        if self.knowledge_level == KnowledgeLevel.KNOWN and self.aligns_with_fact is False:
+        if (
+            self.knowledge_level == KnowledgeLevel.KNOWN
+            and self.aligns_with_fact is False
+        ):
             raise ValueError(
                 "knowledge_level=KNOWN with aligns_with_fact=False is INVALID. "
                 "High-confidence misbelief must use BELIEVED with high confidence, not KNOWN."

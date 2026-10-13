@@ -75,7 +75,9 @@ def execution_checks(data, plan):
     plan = Path(plan).resolve()
     errors = []
     schema = json.loads((plan / "schemas/execution-packet.schema.json").read_text())
-    absence_schema = json.loads((plan / "schemas/execution-packet-absence.schema.json").read_text())
+    absence_schema = json.loads(
+        (plan / "schemas/execution-packet-absence.schema.json").read_text()
+    )
     Draft202012Validator.check_schema(schema)
     Draft202012Validator.check_schema(absence_schema)
     validator = Draft202012Validator(schema)
@@ -122,7 +124,8 @@ def execution_checks(data, plan):
                 issues = list(absence_validator.iter_errors(packet))
                 if issues:
                     errors.append(
-                        f"EXEC_ABSENCE_SCHEMA {tid}: " + "; ".join(e.message for e in issues[:3])
+                        f"EXEC_ABSENCE_SCHEMA {tid}: "
+                        + "; ".join(e.message for e in issues[:3])
                     )
                     continue
 
@@ -143,7 +146,9 @@ def execution_checks(data, plan):
                 # Verify subject identity matches grandfathered record
                 grandfather = GRANDFATHERED_EXECUTION_PACKET_ABSENCES[tid]
                 if packet.get("task_id") != tid:
-                    errors.append(f"EXEC_ABSENCE_IDENTITY {tid}: task_id mismatch in absence record")
+                    errors.append(
+                        f"EXEC_ABSENCE_IDENTITY {tid}: task_id mismatch in absence record"
+                    )
                     continue
                 if packet.get("closure_revision") != grandfather["closure_revision"]:
                     errors.append(

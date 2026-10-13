@@ -69,7 +69,9 @@ def serialize_character(character: Character) -> Dict[str, Any]:
         },
         "goals": [_serialize_goal(g) for g in character.goals],
         "intents": [_serialize_intent(i) for i in character.intents],
-        "planned_actions": [_serialize_planned_action(pa) for pa in character.planned_actions],
+        "planned_actions": [
+            _serialize_planned_action(pa) for pa in character.planned_actions
+        ],
         "created_at": character.created_at.isoformat(),
         "updated_at": character.updated_at.isoformat(),
         "authority": character.authority,
@@ -257,7 +259,9 @@ def deserialize_character(data: Dict[str, Any]) -> Character:
         knowledge=knowledge,
         goals=[_deserialize_goal(g) for g in data["goals"]],
         intents=[_deserialize_intent(i) for i in data["intents"]],
-        planned_actions=[_deserialize_planned_action(pa) for pa in data["planned_actions"]],
+        planned_actions=[
+            _deserialize_planned_action(pa) for pa in data["planned_actions"]
+        ],
         created_at=datetime.fromisoformat(data["created_at"]),
         updated_at=datetime.fromisoformat(data["updated_at"]),
         authority=data["authority"],
@@ -275,9 +279,15 @@ def _deserialize_character_knowledge(data: Dict[str, Any]) -> CharacterKnowledge
         knowledge_level=KnowledgeLevel(data["knowledge_level"]),
         acquisition_source=AcquisitionSource(data["acquisition_source"]),
         source_ref=data.get("source_ref"),
-        source_character=EntityId(data["source_character"]) if "source_character" in data else None,
-        basis_ref=tuple(PropositionId(p) for p in data["basis_ref"]) if "basis_ref" in data else None,
-        acquired_at=datetime.fromisoformat(data["acquired_at"]) if "acquired_at" in data else None,
+        source_character=EntityId(data["source_character"])
+        if "source_character" in data
+        else None,
+        basis_ref=tuple(PropositionId(p) for p in data["basis_ref"])
+        if "basis_ref" in data
+        else None,
+        acquired_at=datetime.fromisoformat(data["acquired_at"])
+        if "acquired_at" in data
+        else None,
         story_time_ref=data.get("story_time_ref"),
         confidence=data.get("confidence"),
         aligns_with_fact=None,  # CACHE field reset to None
@@ -308,11 +318,17 @@ def _deserialize_goal(data: Dict[str, Any]) -> Goal:
         goal_id=GoalId(data["goal_id"]),
         character=EntityId(data["character"]),
         description=data["description"],
-        target_state=MappingProxyType(target_state) if target_state is not None else None,
+        target_state=MappingProxyType(target_state)
+        if target_state is not None
+        else None,
         status=GoalStatus(data["status"]),
         priority=data.get("priority"),
-        formed_at=datetime.fromisoformat(data["formed_at"]) if "formed_at" in data else None,
-        resolved_at=datetime.fromisoformat(data["resolved_at"]) if "resolved_at" in data else None,
+        formed_at=datetime.fromisoformat(data["formed_at"])
+        if "formed_at" in data
+        else None,
+        resolved_at=datetime.fromisoformat(data["resolved_at"])
+        if "resolved_at" in data
+        else None,
     )
 
 
@@ -323,8 +339,12 @@ def _deserialize_intent(data: Dict[str, Any]) -> Intent:
         character=EntityId(data["character"]),
         goal_ref=GoalId(data["goal_ref"]) if "goal_ref" in data else None,
         description=data["description"],
-        formed_at=datetime.fromisoformat(data["formed_at"]) if "formed_at" in data else None,
-        abandoned_at=datetime.fromisoformat(data["abandoned_at"]) if "abandoned_at" in data else None,
+        formed_at=datetime.fromisoformat(data["formed_at"])
+        if "formed_at" in data
+        else None,
+        abandoned_at=datetime.fromisoformat(data["abandoned_at"])
+        if "abandoned_at" in data
+        else None,
     )
 
 
@@ -339,7 +359,9 @@ def _deserialize_planned_action(data: Dict[str, Any]) -> PlannedAction:
         status=ActionStatus(data["status"]),
         occurred_event_ref=data.get("occurred_event_ref"),
         created_at=datetime.fromisoformat(data["created_at"]),
-        cancelled_at=datetime.fromisoformat(data["cancelled_at"]) if "cancelled_at" in data else None,
+        cancelled_at=datetime.fromisoformat(data["cancelled_at"])
+        if "cancelled_at" in data
+        else None,
     )
 
 
@@ -358,7 +380,12 @@ def validate_against_schema(data: Dict[str, Any]) -> None:
     import jsonschema
 
     # Path from src/anovel/domain/ to specs/schemas/
-    schema_path = Path(__file__).parent.parent.parent.parent / "specs" / "schemas" / "character.schema.json"
+    schema_path = (
+        Path(__file__).parent.parent.parent.parent
+        / "specs"
+        / "schemas"
+        / "character.schema.json"
+    )
     with open(schema_path) as f:
         schema = json.load(f)
 

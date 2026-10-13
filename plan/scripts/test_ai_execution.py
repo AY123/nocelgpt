@@ -49,9 +49,11 @@ class AIExecutionTests(unittest.TestCase):
         for ref in (
             self.task["normative_specs"]
             + list(CONTROL_INPUTS)
-            + ["schemas/execution-packet.schema.json",
-               "schemas/execution-packet-absence.schema.json",
-               "FILE_MANIFEST.json"]
+            + [
+                "schemas/execution-packet.schema.json",
+                "schemas/execution-packet-absence.schema.json",
+                "FILE_MANIFEST.json",
+            ]
         ):
             dest = self.plan / ref
             dest.parent.mkdir(parents=True, exist_ok=True)

@@ -13,8 +13,7 @@ from .character import Character, CharacterLifecycle
 
 
 def validate_character_not_superseded(
-    character: Character,
-    operation_context: str = "new content creation"
+    character: Character, operation_context: str = "new content creation"
 ) -> None:
     """
     Validate that character is not SUPERSEDED for new content operations.

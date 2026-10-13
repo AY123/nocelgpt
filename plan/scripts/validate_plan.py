@@ -790,7 +790,9 @@ def normative_registry(data, plan):
     archive = (plan / "archive").resolve()
 
     # Load legacy evidence compatibility register
-    compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
+    compat = data.get("legacy-evidence-compatibility", {}).get(
+        "compatibility_entries", {}
+    )
 
     registry, errors = {}, []
     for task in data["implementation-backlog"]["tasks"]:
@@ -800,9 +802,7 @@ def normative_registry(data, plan):
             if plan not in path.parents or not path.is_file():
                 # Skip TASK_NORMATIVE error for grandfathered tasks with contracts outside plan/
                 if tid not in compat or not ref.startswith("docs/"):
-                    errors.append(
-                        f"TASK_NORMATIVE {tid}: missing/outside plan {ref}"
-                    )
+                    errors.append(f"TASK_NORMATIVE {tid}: missing/outside plan {ref}")
             elif path == archive or archive in path.parents:
                 errors.append(
                     f"TASK_NORMATIVE {tid}: resolved archive cannot be normative: {ref}"
@@ -818,7 +818,9 @@ def check_files(data, views):
     errors = []
 
     # Load legacy evidence compatibility register
-    compat = data.get("legacy-evidence-compatibility", {}).get("compatibility_entries", {})
+    compat = data.get("legacy-evidence-compatibility", {}).get(
+        "compatibility_entries", {}
+    )
 
     errors += normative_registry(data, PLAN)[1]
     for name, expected in views.items():
@@ -894,7 +896,11 @@ def check_files(data, views):
                 tid = task["task_id"]
                 if tid in compat:
                     # Check if this ref is in the task's evidence, normative_specs, or design_references
-                    task_refs = [r["ref"] for records in task["evidence"].values() for r in records]
+                    task_refs = [
+                        r["ref"]
+                        for records in task["evidence"].values()
+                        for r in records
+                    ]
                     task_refs += task.get("normative_specs", [])
                     task_refs += task.get("design_references", [])
                     if ref in task_refs:
@@ -1165,7 +1171,9 @@ def main():
 
         # Classify errors by severity
         fatal_errors = [e for e in errors if classify_error_severity(e) == "FATAL"]
-        informational_errors = [e for e in errors if classify_error_severity(e) == "INFORMATIONAL"]
+        informational_errors = [
+            e for e in errors if classify_error_severity(e) == "INFORMATIONAL"
+        ]
 
         tasks = data["implementation-backlog"]["tasks"]
         report = {

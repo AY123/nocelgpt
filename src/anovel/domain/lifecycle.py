@@ -133,7 +133,10 @@ def validate_lifecycle_transition(
         return
 
     # DECEASED → ACTIVE requires explicit genre override
-    if from_state == CharacterLifecycle.DECEASED and to_state == CharacterLifecycle.ACTIVE:
+    if (
+        from_state == CharacterLifecycle.DECEASED
+        and to_state == CharacterLifecycle.ACTIVE
+    ):
         if not allow_resurrection:
             raise ValueError(
                 "DECEASED → ACTIVE transition not allowed by default. "
@@ -181,7 +184,12 @@ def validate_goal_transition(
         return
 
     # Define invalid transitions (terminal states cannot reactivate)
-    terminal_states = {GoalStatus.ACHIEVED, GoalStatus.FAILED, GoalStatus.ABANDONED, GoalStatus.SUPERSEDED}
+    terminal_states = {
+        GoalStatus.ACHIEVED,
+        GoalStatus.FAILED,
+        GoalStatus.ABANDONED,
+        GoalStatus.SUPERSEDED,
+    }
 
     if from_status in terminal_states and to_status == GoalStatus.ACTIVE:
         raise ValueError(
@@ -226,7 +234,12 @@ def transition_goal(goal: Goal, new_status: GoalStatus) -> Goal:
     from datetime import datetime
 
     # Update resolved_at for terminal states
-    if new_status in {GoalStatus.ACHIEVED, GoalStatus.FAILED, GoalStatus.ABANDONED, GoalStatus.SUPERSEDED}:
+    if new_status in {
+        GoalStatus.ACHIEVED,
+        GoalStatus.FAILED,
+        GoalStatus.ABANDONED,
+        GoalStatus.SUPERSEDED,
+    }:
         if goal.resolved_at is None:
             return replace(goal, status=new_status, resolved_at=datetime.utcnow())
 

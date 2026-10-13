@@ -131,6 +131,7 @@ class Goal:
         Contract: Frozen V2-061 §GoalId UUID v4 format
         """
         from .knowledge import validate_uuid_v4_format
+
         validate_uuid_v4_format(self.goal_id, "goal_id")
 
 
@@ -166,6 +167,7 @@ class Intent:
         Contract: Frozen V2-061 §IntentId UUID v4 format
         """
         from .knowledge import validate_uuid_v4_format
+
         validate_uuid_v4_format(self.intent_id, "intent_id")
 
 
@@ -212,10 +214,14 @@ class PlannedAction:
         """
         # Validate UUID v4 format
         from .knowledge import validate_uuid_v4_format
+
         validate_uuid_v4_format(self.action_id, "action_id")
 
         # CANCELLED + occurred_event_ref != None is invalid
-        if self.status == ActionStatus.CANCELLED and self.occurred_event_ref is not None:
+        if (
+            self.status == ActionStatus.CANCELLED
+            and self.occurred_event_ref is not None
+        ):
             raise ValueError(
                 "PlannedAction with status=CANCELLED cannot have occurred_event_ref. "
                 "Cancelled plans should not link to occurrence events."
@@ -317,7 +323,7 @@ def validate_knowledge_key_invariant(character: Character) -> None:
 
 def validate_project_isolation(
     character: Character,
-    entity_registry: 'EntityRegistry',
+    entity_registry: "EntityRegistry",
 ) -> None:
     """
     Validate that Character respects project isolation boundaries.

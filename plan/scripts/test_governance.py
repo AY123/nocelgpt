@@ -54,11 +54,13 @@ class GovernanceTests(unittest.TestCase):
         docs_dst.mkdir(exist_ok=True)
 
         # Copy contract files referenced by tasks
-        for contract in ["V2-001_IMPLEMENTATION_CONTRACT.md",
-                        "V2-002_IMPLEMENTATION_CONTRACT.md",
-                        "V2-003_IMPLEMENTATION_CONTRACT.md",
-                        "V2-004_IMPLEMENTATION_CONTRACT.md",
-                        "V2-006_IMPLEMENTATION_CONTRACT.md"]:
+        for contract in [
+            "V2-001_IMPLEMENTATION_CONTRACT.md",
+            "V2-002_IMPLEMENTATION_CONTRACT.md",
+            "V2-003_IMPLEMENTATION_CONTRACT.md",
+            "V2-004_IMPLEMENTATION_CONTRACT.md",
+            "V2-006_IMPLEMENTATION_CONTRACT.md",
+        ]:
             src = docs_src / contract
             if src.exists():
                 shutil.copy2(src, docs_dst / contract)
@@ -135,8 +137,7 @@ class GovernanceTests(unittest.TestCase):
             readme_content = readme_path.read_text()
             # Remove the markdown link to validation/closure/
             readme_content = readme_content.replace(
-                "[G-P0 出口审核](validation/closure/G-P0-38b0c57/)",
-                "G-P0 出口审核"
+                "[G-P0 出口审核](validation/closure/G-P0-38b0c57/)", "G-P0 出口审核"
             )
             readme_path.write_text(readme_content)
 
@@ -667,7 +668,11 @@ class GovernanceTests(unittest.TestCase):
             # Clean positive fixture must validate successfully
             self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
             report = json.loads((reports / name).read_text())
-            self.assertEqual(report["status"], "PASS", f"Clean fixture must pass: {report.get('errors', [])}")
+            self.assertEqual(
+                report["status"],
+                "PASS",
+                f"Clean fixture must pass: {report.get('errors', [])}",
+            )
         self.assertEqual(before, inventory())
 
     def test_phase_requires_applicable_ci(self):
@@ -730,7 +735,11 @@ class GovernanceTests(unittest.TestCase):
         # After write-views, clean positive fixture must validate successfully
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         report = json.loads(result.stdout)
-        self.assertEqual(report["status"], "PASS", f"Clean fixture must pass after write-views: {report.get('errors', [])}")
+        self.assertEqual(
+            report["status"],
+            "PASS",
+            f"Clean fixture must pass after write-views: {report.get('errors', [])}",
+        )
 
         # Now introduce a deliberate negative mutation
         gates = self.data["ci-gates"]
@@ -798,7 +807,8 @@ class GovernanceTests(unittest.TestCase):
         tasks = self.data["implementation-backlog"]["tasks"]
         # Pick an OPEN task that is NOT V2-005/V2-006 (those are grandfathered)
         open_task = next(
-            t for t in tasks
+            t
+            for t in tasks
             if t["status"] == "OPEN" and t["task_id"] not in ("V2-005", "V2-006")
         )
         tid = open_task["task_id"]
@@ -807,7 +817,7 @@ class GovernanceTests(unittest.TestCase):
         absence_record.write_text(f"""record_type: execution_packet_absence_record
 schema_version: '1.0'
 task_id: {tid}
-closure_revision: {'a' * 40}
+closure_revision: {"a" * 40}
 closure_tag: fake-tag
 registration_context: test
 reason: Testing absence record bypass prevention
@@ -823,7 +833,7 @@ evidence_refs:
         errors = execution_checks(self.data, self.plan)
         self.assertTrue(
             any(f"EXEC_ABSENCE_NOT_GRANDFATHERED {tid}" in e for e in errors),
-            f"Absence record should be rejected for non-grandfathered task {tid}"
+            f"Absence record should be rejected for non-grandfathered task {tid}",
         )
 
     def test_absence_record_only_for_grandfathered_tasks(self):
@@ -855,7 +865,7 @@ evidence_refs:
             errors = execution_checks(self.data, self.plan)
             self.assertTrue(
                 any("EXEC_ABSENCE_NOT_GRANDFATHERED V2-007" in e for e in errors),
-                "V2-007 should not be allowed to use absence record (not grandfathered)"
+                "V2-007 should not be allowed to use absence record (not grandfathered)",
             )
 
             # Restore
@@ -888,8 +898,11 @@ evidence_refs:
 
         errors = execution_checks(self.data, self.plan)
         self.assertTrue(
-            any("EXEC_ABSENCE_IDENTITY V2-005" in e and "closure_revision" in e for e in errors),
-            "Wrong closure_revision should be rejected"
+            any(
+                "EXEC_ABSENCE_IDENTITY V2-005" in e and "closure_revision" in e
+                for e in errors
+            ),
+            "Wrong closure_revision should be rejected",
         )
 
         # Restore
@@ -923,8 +936,11 @@ evidence_refs:
 
         errors = execution_checks(self.data, self.plan)
         self.assertTrue(
-            any("EXEC_ABSENCE_IDENTITY V2-006" in e and "closure_tag" in e for e in errors),
-            "Wrong closure_tag should be rejected"
+            any(
+                "EXEC_ABSENCE_IDENTITY V2-006" in e and "closure_tag" in e
+                for e in errors
+            ),
+            "Wrong closure_tag should be rejected",
         )
 
         # Restore
@@ -945,15 +961,41 @@ evidence_refs:
         v2_005_absent = [e for e in errors if "EXEC_PACKET_ABSENT V2-005" in e]
         v2_006_absent = [e for e in errors if "EXEC_PACKET_ABSENT V2-006" in e]
 
-        self.assertEqual(len(v2_005_absent), 1, "V2-005 should have exactly one EXEC_PACKET_ABSENT finding")
-        self.assertEqual(len(v2_006_absent), 1, "V2-006 should have exactly one EXEC_PACKET_ABSENT finding")
+        self.assertEqual(
+            len(v2_005_absent),
+            1,
+            "V2-005 should have exactly one EXEC_PACKET_ABSENT finding",
+        )
+        self.assertEqual(
+            len(v2_006_absent),
+            1,
+            "V2-006 should have exactly one EXEC_PACKET_ABSENT finding",
+        )
 
         # Should NOT have bypass/identity errors for grandfathered tasks
-        v2_005_bypass = [e for e in errors if "V2-005" in e and ("BYPASS" in e or "NOT_GRANDFATHERED" in e or "IDENTITY" in e)]
-        v2_006_bypass = [e for e in errors if "V2-006" in e and ("BYPASS" in e or "NOT_GRANDFATHERED" in e or "IDENTITY" in e)]
+        v2_005_bypass = [
+            e
+            for e in errors
+            if "V2-005" in e
+            and ("BYPASS" in e or "NOT_GRANDFATHERED" in e or "IDENTITY" in e)
+        ]
+        v2_006_bypass = [
+            e
+            for e in errors
+            if "V2-006" in e
+            and ("BYPASS" in e or "NOT_GRANDFATHERED" in e or "IDENTITY" in e)
+        ]
 
-        self.assertEqual(len(v2_005_bypass), 0, "V2-005 should not have bypass/identity errors with valid absence record")
-        self.assertEqual(len(v2_006_bypass), 0, "V2-006 should not have bypass/identity errors with valid absence record")
+        self.assertEqual(
+            len(v2_005_bypass),
+            0,
+            "V2-005 should not have bypass/identity errors with valid absence record",
+        )
+        self.assertEqual(
+            len(v2_006_bypass),
+            0,
+            "V2-006 should not have bypass/identity errors with valid absence record",
+        )
 
     def _setup_absence_record_tasks(self):
         """Set up V2-005/V2-006 as CLOSED with valid absence records for testing."""
@@ -966,35 +1008,47 @@ evidence_refs:
             code_ref = self.record("CODE", task_id)
             tests_ref = self.record("TEST_RESULT", task_id)
             ci_ref = self.record("CI_RUN", task_id)
-            acceptance_ref = self.record("ACCEPTANCE_RECORD", task_id,
+            acceptance_ref = self.record(
+                "ACCEPTANCE_RECORD",
+                task_id,
                 input_evidence_refs=[code_ref, tests_ref, ci_ref],
                 check_ids=[],
                 finding_dispositions=[],
-                external_practice_results=[])
+                external_practice_results=[],
+            )
 
             task["evidence"] = {
                 "code": [{"ref": code_ref, "revision": REVISION, "status": "PASS"}],
                 "tests": [{"ref": tests_ref, "revision": REVISION, "status": "PASS"}],
                 "ci": [{"ref": ci_ref, "revision": REVISION, "status": "PASS"}],
-                "acceptance": [{"ref": acceptance_ref, "revision": REVISION, "status": "PASS"}]
+                "acceptance": [
+                    {"ref": acceptance_ref, "revision": REVISION, "status": "PASS"}
+                ],
             }
 
             # Create valid absence record
-            absence_path = self.plan / f"validation/execution/{task_id}/execution-packet-absent.yaml"
+            absence_path = (
+                self.plan
+                / f"validation/execution/{task_id}/execution-packet-absent.yaml"
+            )
             absence_record = {
                 "record_type": "execution_packet_absence_record",
                 "schema_version": "1.0",
                 "task_id": task_id,
-                "closure_revision": "bd303e64dab6475bd12b69d273afa6c64eaa38ad" if task_id == "V2-005" else "bba1061ef27669ece55530bfdd846767b2fe21af",
+                "closure_revision": "bd303e64dab6475bd12b69d273afa6c64eaa38ad"
+                if task_id == "V2-005"
+                else "bba1061ef27669ece55530bfdd846767b2fe21af",
                 "closure_tag": f"v2.{'005' if task_id == 'V2-005' else '006'}-complete",
                 "registration_context": "test fixture",
                 "reason": f"{task_id} closed before execution packet framework.",
                 "evidence_refs": [
                     {"type": "implementation", "ref": code_ref, "note": "Test fixture"}
-                ]
+                ],
             }
             absence_path.parent.mkdir(parents=True, exist_ok=True)
-            absence_path.write_text(yaml.safe_dump(absence_record, allow_unicode=True, sort_keys=False))
+            absence_path.write_text(
+                yaml.safe_dump(absence_record, allow_unicode=True, sort_keys=False)
+            )
             task["execution_packet_ref"] = str(absence_path.relative_to(self.plan))
 
     def test_grandfathered_but_active_status_rejected(self):
@@ -1013,7 +1067,7 @@ evidence_refs:
         errors = execution_checks(self.data, self.plan)
         self.assertTrue(
             any("EXEC_ABSENCE_BYPASS V2-005" in e for e in errors),
-            "Grandfathered task with OPEN status should be rejected with EXEC_ABSENCE_BYPASS"
+            "Grandfathered task with OPEN status should be rejected with EXEC_ABSENCE_BYPASS",
         )
 
         # Try IN_PROGRESS as well
@@ -1021,7 +1075,7 @@ evidence_refs:
         errors = execution_checks(self.data, self.plan)
         self.assertTrue(
             any("EXEC_ABSENCE_BYPASS V2-005" in e for e in errors),
-            "Grandfathered task with IN_PROGRESS status should be rejected with EXEC_ABSENCE_BYPASS"
+            "Grandfathered task with IN_PROGRESS status should be rejected with EXEC_ABSENCE_BYPASS",
         )
 
         # Restore
