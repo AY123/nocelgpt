@@ -27,7 +27,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import Enum
-from typing import Literal, NewType, Union
+from typing import Literal, NewType
 
 # --- Type Aliases (Step 2) ---
 
@@ -129,9 +129,9 @@ class InvalidInputResult:
 
 # --- Resolution Result Union (Step 2) ---
 
-ResolutionResult = Union[
-    ResolvedResult, NotFoundResult, AmbiguousResult, InvalidInputResult
-]
+ResolutionResult = (
+    ResolvedResult | NotFoundResult | AmbiguousResult | InvalidInputResult
+)
 """
 Union of all possible resolution results.
 
