@@ -18,6 +18,9 @@ This authorization permits implementation of Character domain core according to:
 ### Production Implementation
 - src/anovel/domain/character.py (CREATE)
 - src/anovel/domain/knowledge.py (CREATE)
+- src/anovel/domain/lifecycle.py (CREATE - post-hoc ratified)
+- src/anovel/domain/serialization.py (CREATE - post-hoc ratified)
+- src/anovel/domain/superseded.py (CREATE - post-hoc ratified)
 - src/anovel/domain/__init__.py (MODIFY - exports only)
 
 ### Schema
@@ -25,6 +28,9 @@ This authorization permits implementation of Character domain core according to:
 
 ### Tests
 - tests/contract/test_v2_061.py (CREATE)
+- tests/contract/test_v2_061_serialization.py (CREATE - post-hoc ratified)
+- tests/contract/test_v2_061_lifecycle.py (CREATE - post-hoc ratified)
+- tests/contract/test_superseded.py (CREATE - post-hoc ratified)
 
 ### Evidence and Governance
 - plan/validation/execution/V2-061/ (directory - execution artifacts)

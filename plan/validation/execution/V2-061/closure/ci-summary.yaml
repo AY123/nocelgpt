@@ -1,12 +1,12 @@
 record_type: plan_execution_evidence
 schema_version: '1.0'
-evidence_id: V2-061-ci-summary-cc92e47e
-evidence_type: CI_RUN
+evidence_id: V2-061-test-result-28776a1
+evidence_type: TEST_RESULT
 subject_id: V2-061
-revision: cc92e47e1e063d5981dc599fa69b31622d01068e
+revision: 28776a1aae31b4e49f48b84ea7f4ed044f9420ec
 status: PASS
-producer: Local contract test validation (V2-061 has no infrastructure CI)
-executed_at: '2026-10-13T02:22:00Z'
+producer: Local contract test validation
+executed_at: '2026-10-13T03:00:00Z'
 environment_fingerprint: Python 3.9.6, pytest 7.4.3
 command: pytest tests/contract/test_v2_061.py tests/contract/test_v2_061_serialization.py tests/contract/test_v2_061_lifecycle.py tests/contract/test_superseded.py -v
 exit_code: 0

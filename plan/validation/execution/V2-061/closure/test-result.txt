@@ -3,8 +3,8 @@ pytest tests/contract/test_v2_061.py tests/contract/test_v2_061_serialization.py
 ============================= test session starts ==============================
 collected 123 items
 
-tests/contract/test_v2_061.py::63 tests PASSED
-tests/contract/test_v2_061_serialization.py::18 tests PASSED
+tests/contract/test_v2_061.py::69 tests PASSED
+tests/contract/test_v2_061_serialization.py::20 tests PASSED
 tests/contract/test_v2_061_lifecycle.py::29 tests PASSED
 tests/contract/test_superseded.py::5 tests PASSED
 

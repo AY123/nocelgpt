@@ -1,9 +1,10 @@
-# V2-061 Final Closure Summary
+# V2-061 Closure Candidate Summary
 
-**Task**: V2-061 Character Knowledge & Intent Core  
-**Status**: CLOSED  
-**Closure Date**: 2026-10-13  
-**Baseline Revision**: cc92e47e1e063d5981dc599fa69b31622d01068e
+**Task**: V2-061 Character Knowledge & Intent Core
+**Status**: CLOSURE_CANDIDATE
+**Independent Acceptance**: PENDING
+**True Closure**: NOT_ACCEPTED
+**Candidate Revision**: 28776a1aae31b4e49f48b84ea7f4ed044f9420ec
 
 ## Implementation Summary
 
@@ -56,14 +57,14 @@ V2-061 is pure domain implementation with no infrastructure dependencies. No sep
 
 ### Governance Closure
 
-All governance requirements satisfied:
+Governance requirements in progress:
 - ✅ Task entry semantic severity classification (#34)
 - ✅ Plan validation fatal vs informational separation (#37)
-- ✅ Execution packet refreshed to current manifest (#38)
-- ✅ Machine SSOT updated with V2-061 closure evidence (#39)
-- ✅ Test catalog AT-V2-061 marked VERIFIED
+- ⏸️ Execution packet refresh (#38) - pending verification
+- ⏸️ Machine SSOT (#39) - remains IN_PROGRESS with empty evidence
+- ⏸️ Test catalog AT-V2-061 - remains PLANNED pending acceptance
 
 ---
 
-**Closure Authority**: Task owner review with contract test validation  
+**Closure Authority**: PENDING independent acceptance review
 **Evidence Location**: `plan/validation/execution/V2-061/closure/`
