@@ -363,28 +363,26 @@ def validate_project_isolation(
                 f"Character.project_id ({character.project_id})"
             )
 
-        # Validate subject if it's an EntityId reference
-        from .identity import EntityId
-        if isinstance(prop.subject, EntityId):
-            subj_identity = entity_registry.get_entity(prop.subject)
-            if subj_identity is not None:  # If found, must be same project
-                if subj_identity.project_id != character.project_id:
-                    raise ValueError(
-                        f"Proposition subject {prop.subject} belongs to project "
-                        f"{subj_identity.project_id}, but character belongs to "
-                        f"{character.project_id}. Cross-project references invalid."
-                    )
+        # Validate subject if it's a registered EntityId reference
+        # Note: EntityId is NewType, not runtime class - use registry lookup instead
+        subj_identity = entity_registry.get_entity(prop.subject)
+        if subj_identity is not None:  # If found in registry, must be same project
+            if subj_identity.project_id != character.project_id:
+                raise ValueError(
+                    f"Proposition subject {prop.subject} belongs to project "
+                    f"{subj_identity.project_id}, but character belongs to "
+                    f"{character.project_id}. Cross-project references invalid."
+                )
 
-        # Validate object if it's an EntityId reference
-        if isinstance(prop.object, EntityId):
-            obj_identity = entity_registry.get_entity(prop.object)
-            if obj_identity is not None:  # If found, must be same project
-                if obj_identity.project_id != character.project_id:
-                    raise ValueError(
-                        f"Proposition object {prop.object} belongs to project "
-                        f"{obj_identity.project_id}, but character belongs to "
-                        f"{character.project_id}. Cross-project references invalid."
-                    )
+        # Validate object if it's a registered EntityId reference
+        obj_identity = entity_registry.get_entity(prop.object)
+        if obj_identity is not None:  # If found in registry, must be same project
+            if obj_identity.project_id != character.project_id:
+                raise ValueError(
+                    f"Proposition object {prop.object} belongs to project "
+                    f"{obj_identity.project_id}, but character belongs to "
+                    f"{character.project_id}. Cross-project references invalid."
+                )
 
 
 def create_character(

@@ -10,6 +10,7 @@ ADR-002: plan/validation/execution/V2-061/inputs/0aadbc37...txt
 """
 
 import json
+import uuid
 from datetime import datetime
 from pathlib import Path
 from types import MappingProxyType
@@ -977,6 +978,87 @@ class TestProjectIsolation:
         with pytest.raises(ValueError, match="entity_type='CHARACTER'"):
             validate_project_isolation(char, registry)
 
+    def test_cross_project_proposition_subject_reject(self):
+        """Proposition with subject from different project must be rejected."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+        from dataclasses import replace
+
+        registry = EntityRegistry()
+
+        # Project 1 character
+        identity1 = create_identity(ProjectId("proj_01"), "张三", entity_type="CHARACTER")
+        registry.add_entity(identity1)
+
+        # Project 2 entity (subject of proposition)
+        identity2 = create_identity(ProjectId("proj_02"), "李四", entity_type="CHARACTER")
+        registry.add_entity(identity2)
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        char = replace(char, entity_id=identity1.entity_id)
+
+        # Proposition with cross-project subject
+        prop = create_proposition(
+            ProjectId("proj_01"),
+            identity2.entity_id,  # From proj_02!
+            "is_alive"
+        )
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-123"
+        )
+
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        with pytest.raises(ValueError, match="Cross-project references invalid"):
+            validate_project_isolation(char, registry)
+
+    def test_cross_project_proposition_object_reject(self):
+        """Proposition with object from different project must be rejected."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+        from dataclasses import replace
+
+        registry = EntityRegistry()
+
+        # Project 1 character and subject
+        identity1 = create_identity(ProjectId("proj_01"), "张三", entity_type="CHARACTER")
+        registry.add_entity(identity1)
+        identity_subj = create_identity(ProjectId("proj_01"), "王五", entity_type="CHARACTER")
+        registry.add_entity(identity_subj)
+
+        # Project 2 entity (object of proposition)
+        identity2 = create_identity(ProjectId("proj_02"), "李四", entity_type="CHARACTER")
+        registry.add_entity(identity2)
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        char = replace(char, entity_id=identity1.entity_id)
+
+        # Proposition with cross-project object
+        prop = Proposition(
+            proposition_id=PropositionId(str(uuid.uuid4())),
+            project_id=ProjectId("proj_01"),
+            subject=identity_subj.entity_id,
+            predicate="knows",
+            object=identity2.entity_id,  # From proj_02!
+            context=None
+        )
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-456"
+        )
+
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        with pytest.raises(ValueError, match="Cross-project references invalid"):
+            validate_project_isolation(char, registry)
+
 
 # ============================================================================
 # Proposition Collision (Frozen Contract §Proposition Collision Invariant)
@@ -1056,6 +1138,78 @@ class TestPropositionCollision:
         )
 
         with pytest.raises(ValueError, match="Proposition collision.*different subject"):
+            validate_proposition_collision(prop1, prop2)
+
+    def test_same_id_different_object_reject(self):
+        """Same PropositionId + different object must be rejected."""
+        from src.anovel.domain.knowledge import validate_proposition_collision
+
+        prop1 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="knows",
+            object=EntityId("entity-456"),
+            context=None
+        )
+        prop2 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="knows",
+            object=EntityId("entity-789"),  # Different!
+            context=None
+        )
+
+        with pytest.raises(ValueError, match="Proposition collision.*different object"):
+            validate_proposition_collision(prop1, prop2)
+
+    def test_same_id_different_context_reject(self):
+        """Same PropositionId + different context must be rejected."""
+        from src.anovel.domain.knowledge import validate_proposition_collision
+
+        prop1 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=MappingProxyType({"location": "Beijing"})
+        )
+        prop2 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=MappingProxyType({"location": "Shanghai"})  # Different!
+        )
+
+        with pytest.raises(ValueError, match="Proposition collision.*different context"):
+            validate_proposition_collision(prop1, prop2)
+
+    def test_same_id_different_project_id_reject(self):
+        """Same PropositionId + different project_id must be rejected."""
+        from src.anovel.domain.knowledge import validate_proposition_collision
+
+        prop1 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+        prop2 = Proposition(
+            proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
+            project_id=ProjectId("proj_02"),  # Different!
+            subject=EntityId("entity-123"),
+            predicate="is_alive",
+            object=None,
+            context=None
+        )
+
+        with pytest.raises(ValueError, match="Proposition collision.*different project_id"):
             validate_proposition_collision(prop1, prop2)
 
 
