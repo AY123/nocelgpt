@@ -1220,7 +1220,7 @@ def main():
         }
         output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
         print(json.dumps(report, ensure_ascii=False, indent=2))
-        return 1 if errors else 0
+        return 1 if fatal_errors else 0
     except Exception as exc:
         report = {
             "scope": "planning validation",

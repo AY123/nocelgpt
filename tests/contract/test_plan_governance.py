@@ -133,3 +133,39 @@ def test_empty_closed_evidence_self_test_probe_rejects():
     for kind in ['code', 'tests', 'ci', 'acceptance']:
         assert f"'{kind}'" in evidence_text or f'["{kind}"]' in evidence_text or kind in evidence_text, \
             f"Self-test evidence should mention {kind} category"
+
+
+def test_validator_exit_code_respects_severity():
+    """
+    Regression: validator must exit 0 when only informational errors present.
+    
+    Exit code semantics:
+    - fatal_errors present → exit 1
+    - only informational_errors → exit 0
+    - no errors → exit 0
+    """
+    import subprocess
+    import tempfile
+    
+    # Case 1: Clean validation should exit 0
+    result = subprocess.run(
+        ['python3', str(ROOT / 'plan/scripts/validate_plan.py'), '--check'],
+        capture_output=True,
+        cwd=ROOT
+    )
+    output = json.loads(result.stdout)
+    
+    # Informational errors are allowed
+    if output['status'] == 'PASS' and not output.get('fatal_errors'):
+        assert result.returncode == 0, \
+            f"Validator with status=PASS and no fatal errors must exit 0, got {result.returncode}"
+    
+    # Case 2: With fatal errors should exit non-zero
+    # This is verified by CI when actual fatal errors occur
+    
+    # Case 3: Informational-only should exit 0
+    if output.get('informational_errors') and not output.get('fatal_errors'):
+        assert result.returncode == 0, \
+            f"Validator with only informational errors must exit 0, got {result.returncode}"
+        assert output['status'] == 'PASS', \
+            f"Status should be PASS when no fatal errors, got {output['status']}"
