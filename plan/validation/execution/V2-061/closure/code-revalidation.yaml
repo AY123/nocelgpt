@@ -1,0 +1,15 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-061-code-revalidation-cc92e47e
+evidence_type: CODE
+subject_id: V2-061
+revision: cc92e47e1e063d5981dc599fa69b31622d01068e
+status: PASS
+producer: V2-061 contract trace matrix validation
+executed_at: '2026-10-13T02:22:00Z'
+environment_fingerprint: macOS 15.1.1, Python 3.9.6
+artifacts:
+- ref: validation/execution/V2-061/closure/code-revalidation.txt
+  sha256: cac597b7543ef0f34e87a97929bc07e9a0b90ffebe94ae7995bc2cc878380b0c
+input_evidence_refs: []
+

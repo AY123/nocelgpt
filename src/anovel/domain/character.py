@@ -110,6 +110,9 @@ class Goal:
         formed_at: When goal was formed
         resolved_at: When goal was achieved/abandoned
 
+    Invariants:
+        - goal_id must be valid UUID v4 format
+
     Contract: ADR-002 Goal BASE fields + Frozen V2-061 §Goal Lifecycle (AC-4)
     """
 
@@ -121,6 +124,14 @@ class Goal:
     priority: Optional[int]
     formed_at: Optional[datetime]
     resolved_at: Optional[datetime] = None
+
+    def __post_init__(self) -> None:
+        """Validate Goal invariants.
+
+        Contract: Frozen V2-061 §GoalId UUID v4 format
+        """
+        from .knowledge import validate_uuid_v4_format
+        validate_uuid_v4_format(self.goal_id, "goal_id")
 
 
 @dataclass(frozen=True)
@@ -136,6 +147,9 @@ class Intent:
         formed_at: When intent was formed
         abandoned_at: When intent was abandoned
 
+    Invariants:
+        - intent_id must be valid UUID v4 format
+
     Contract: ADR-002 Intent BASE fields + Frozen V2-061 §Intent
     """
 
@@ -145,6 +159,14 @@ class Intent:
     description: str
     formed_at: Optional[datetime]
     abandoned_at: Optional[datetime] = None
+
+    def __post_init__(self) -> None:
+        """Validate Intent invariants.
+
+        Contract: Frozen V2-061 §IntentId UUID v4 format
+        """
+        from .knowledge import validate_uuid_v4_format
+        validate_uuid_v4_format(self.intent_id, "intent_id")
 
 
 @dataclass(frozen=True)
@@ -164,6 +186,7 @@ class PlannedAction:
         cancelled_at: When action was cancelled
 
     Invariants:
+        - action_id must be valid UUID v4 format
         - occurred_event_ref is a reference/link, NOT occurrence authority
         - V2-007 owns occurrence truth, not PlannedAction
         - status can only be PLANNED or CANCELLED (no IN_PROGRESS/COMPLETED)
@@ -185,8 +208,12 @@ class PlannedAction:
     def __post_init__(self) -> None:
         """Validate PlannedAction invariants.
 
-        Contract: Frozen V2-061 §PlannedAction Occurrence Invariant
+        Contract: Frozen V2-061 §PlannedAction Occurrence Invariant + §PlannedActionId UUID v4 format
         """
+        # Validate UUID v4 format
+        from .knowledge import validate_uuid_v4_format
+        validate_uuid_v4_format(self.action_id, "action_id")
+
         # CANCELLED + occurred_event_ref != None is invalid
         if self.status == ActionStatus.CANCELLED and self.occurred_event_ref is not None:
             raise ValueError(

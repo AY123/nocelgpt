@@ -60,14 +60,19 @@
     "sha256": "c581c7fe0496d3b3962bdcc2913e1f5d8a4052d6f3ba5e51796eb6ebf7e88670"
   },
   {
+    "path": "GOVERNANCE-EVIDENCE-PROVENANCE-CLOSURE-002_FINAL_REPORT.md",
+    "bytes": 7447,
+    "sha256": "239129c97e8f987897a088cfdad2d4caa9c93b59b4dcd59d0880df159cdc224c"
+  },
+  {
     "path": "PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
     "bytes": 10865,
     "sha256": "3fd92a1031d19b3a30c2ef712d4ce8a24f97bef36563caa25cdcbb87534cdc87"
   },
   {
     "path": "README.md",
-    "bytes": 7445,
-    "sha256": "b95291ec42e61abf2f651182331319b09e60e933ae010d2faddc2c1821b5ff1b"
+    "bytes": 7520,
+    "sha256": "593c167b40657629630df5ad1e763dba862597aff5fa4ba62dfb1a410c5a1cd8"
   },
   {
     "path": "archive/README.md",
@@ -1476,8 +1481,8 @@
   },
   {
     "path": "scripts/change_review.py",
-    "bytes": 28786,
-    "sha256": "25bf32a01b8a72432fa149d074781f11dc68774ab9e894587297828ca2b36405"
+    "bytes": 28925,
+    "sha256": "d454490b98b8ccf8c50962eaaef42fd4d2440c5a467d111a0735cdaf2684c15f"
   },
   {
     "path": "scripts/execution_checks.py",
@@ -1501,8 +1506,8 @@
   },
   {
     "path": "scripts/task_entry.py",
-    "bytes": 20655,
-    "sha256": "29540c2f2583ccbc71bb4b81c0fd03c4aa3e46d88977d882667607178d6c0576"
+    "bytes": 21724,
+    "sha256": "7f95075b947779090527ec9a58cc86af89cd61dbdba028fd274a130c9953876b"
   },
   {
     "path": "scripts/test_ai_execution.py",
@@ -1516,8 +1521,8 @@
   },
   {
     "path": "scripts/validate_plan.py",
-    "bytes": 46618,
-    "sha256": "1de87b00b4e7aaf794e0a5a6a4c8c3a51a9b46f7d76aa00ad6bf70162f3e8bbe"
+    "bytes": 48081,
+    "sha256": "19100d6334cec105adc15c62a1322160301672f6d8548793853ec051009e072a"
   },
   {
     "path": "scripts/weakening_checks.py",

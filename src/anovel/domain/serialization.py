@@ -105,7 +105,7 @@ def _serialize_character_knowledge(ck: CharacterKnowledge) -> Dict[str, Any]:
 
 
 def _serialize_proposition(prop: Proposition) -> Dict[str, Any]:
-    """Serialize Proposition BASE fields."""
+    """Serialize Proposition BASE fields with recursive context thaw."""
     result: Dict[str, Any] = {
         "proposition_id": prop.proposition_id,
         "project_id": prop.project_id,
@@ -116,9 +116,45 @@ def _serialize_proposition(prop: Proposition) -> Dict[str, Any]:
     if prop.object is not None:
         result["object"] = prop.object
     if prop.context is not None:
-        result["context"] = dict(prop.context)
+        result["context"] = _thaw_context(prop.context)
 
     return result
+
+
+def _thaw_context(ctx: Any) -> Any:
+    """
+    Recursively thaw frozen context to JSON-compatible structures.
+
+    Converts:
+    - MappingProxyType → dict (recursively)
+    - tuple → list (recursively)
+    - Nested structures recursively converted
+
+    Args:
+        ctx: Frozen context value
+
+    Returns:
+        JSON-compatible structure
+
+    Contract: Proposition.context JSON serialization compatibility
+    """
+    from types import MappingProxyType
+
+    if isinstance(ctx, MappingProxyType):
+        # Recursively thaw mapping
+        return {k: _thaw_context(v) for k, v in ctx.items()}
+    elif isinstance(ctx, dict):
+        # Already dict, thaw values
+        return {k: _thaw_context(v) for k, v in ctx.items()}
+    elif isinstance(ctx, tuple):
+        # Recursively thaw tuple to list
+        return [_thaw_context(item) for item in ctx]
+    elif isinstance(ctx, list):
+        # Already list, thaw elements
+        return [_thaw_context(item) for item in ctx]
+    else:
+        # Primitive or already JSON-compatible
+        return ctx
 
 
 def _serialize_goal(goal: Goal) -> Dict[str, Any]:
@@ -197,17 +233,28 @@ def deserialize_character(data: Dict[str, Any]) -> Character:
 
     Raises:
         ValueError: If data invalid or missing required fields
+        ValueError: If knowledge dict key != embedded proposition.proposition_id
 
-    Contract: ADR-002 BASE deserialization + DERIVED recomputation
+    Contract: ADR-002 BASE deserialization + DERIVED recomputation + knowledge key invariant
     """
-    return Character(
+    # Deserialize knowledge with key validation
+    knowledge = {}
+    for prop_id, ck_data in data["knowledge"].items():
+        ck = _deserialize_character_knowledge(ck_data)
+        # Validate knowledge key invariant
+        if prop_id != ck.proposition.proposition_id:
+            raise ValueError(
+                f"knowledge dict key '{prop_id}' must match embedded "
+                f"proposition.proposition_id '{ck.proposition.proposition_id}'. "
+                f"Knowledge key invariant violation."
+            )
+        knowledge[PropositionId(prop_id)] = ck
+
+    char = Character(
         entity_id=EntityId(data["entity_id"]),
         project_id=ProjectId(data["project_id"]),
         lifecycle=CharacterLifecycle(data["lifecycle"]),
-        knowledge={
-            PropositionId(prop_id): _deserialize_character_knowledge(ck_data)
-            for prop_id, ck_data in data["knowledge"].items()
-        },
+        knowledge=knowledge,
         goals=[_deserialize_goal(g) for g in data["goals"]],
         intents=[_deserialize_intent(i) for i in data["intents"]],
         planned_actions=[_deserialize_planned_action(pa) for pa in data["planned_actions"]],
@@ -216,6 +263,8 @@ def deserialize_character(data: Dict[str, Any]) -> Character:
         authority=data["authority"],
         provenance=data.get("provenance", {}),
     )
+
+    return char
 
 
 def _deserialize_character_knowledge(data: Dict[str, Any]) -> CharacterKnowledge:

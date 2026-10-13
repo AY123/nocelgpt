@@ -78,6 +78,36 @@ PHASE_NAMES = [
 ]
 
 
+def classify_error_severity(error):
+    """Classify validation error by semantic severity.
+
+    Returns:
+        "INFORMATIONAL": Recorded for visibility, does not cause FAIL status
+        "FATAL": Causes validation FAIL status
+
+    INFORMATIONAL errors (semantic classification):
+    - EXEC_PACKET_ABSENT for grandfathered tasks V2-005, V2-006
+      (these have registered absence records per HYGIENE-003)
+
+    All other errors are FATAL by default.
+
+    Contract: Plan validation governance - severity classification
+    """
+    # EXEC_PACKET_ABSENT for grandfathered tasks is INFORMATIONAL
+    # Extract task_id from error pattern: "EXEC_PACKET_ABSENT <task_id>: ..."
+    if error.startswith("EXEC_PACKET_ABSENT"):
+        # Parse task_id (appears after "EXEC_PACKET_ABSENT " and before ":")
+        parts = error.split()
+        if len(parts) >= 2:
+            task_id_candidate = parts[1].rstrip(":")
+            # Semantic: V2-005 and V2-006 have registered absence records
+            if task_id_candidate in {"V2-005", "V2-006"}:
+                return "INFORMATIONAL"
+
+    # All other errors are fatal
+    return "FATAL"
+
+
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -1132,11 +1162,16 @@ def main():
                 + "\n"
             )
         errors += check_files(data, views)
+
+        # Classify errors by severity
+        fatal_errors = [e for e in errors if classify_error_severity(e) == "FATAL"]
+        informational_errors = [e for e in errors if classify_error_severity(e) == "INFORMATIONAL"]
+
         tasks = data["implementation-backlog"]["tasks"]
         report = {
             "generated_at_utc": datetime.now(UTC).isoformat(),
             "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-            "status": "PASS" if not errors else "FAIL",
+            "status": "PASS" if not fatal_errors else "FAIL",
             "not_certified": [
                 "P0 engineering exit",
                 "runtime",
@@ -1172,6 +1207,8 @@ def main():
                 ),
             },
             "errors": errors,
+            "fatal_errors": fatal_errors,
+            "informational_errors": informational_errors,
         }
         output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n")
         print(json.dumps(report, ensure_ascii=False, indent=2))

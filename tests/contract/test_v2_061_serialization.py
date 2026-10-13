@@ -504,3 +504,229 @@ class TestEntityTypeValidation:
 
         # Should not raise
         validate_project_isolation(char2, registry)
+
+
+class TestKnowledgeKeyInvariantDeserialization:
+    """Knowledge key invariant validation through deserialization."""
+
+    def test_deserialized_character_with_mismatched_knowledge_key_rejects(self):
+        """Deserialized Character with knowledge key != proposition_id rejects."""
+        char = create_character(ProjectId("proj_01"), "张三")
+        prop = create_proposition(ProjectId("proj_01"), EntityId("entity-123"), "is_alive")
+
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-123",
+        )
+
+        from dataclasses import replace
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        data = serialize_character(char)
+
+        # Corrupt knowledge dict key to mismatch embedded proposition_id
+        wrong_key = "99999999-9999-4999-9999-999999999999"
+        data["knowledge"] = {wrong_key: data["knowledge"][prop.proposition_id]}
+
+        # Deserialization must reject
+        with pytest.raises(ValueError, match="knowledge dict key.*must match"):
+            deserialize_character(data)
+
+    def test_deserialized_character_with_correct_knowledge_key_passes(self):
+        """Deserialized Character with knowledge key == proposition_id passes."""
+        char = create_character(ProjectId("proj_01"), "张三")
+        prop = create_proposition(ProjectId("proj_01"), EntityId("entity-123"), "is_alive")
+
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-123",
+        )
+
+        from dataclasses import replace
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        data = serialize_character(char)
+        char2 = deserialize_character(data)
+
+        # Should not raise, knowledge preserved correctly
+        assert len(char2.knowledge) == 1
+        assert prop.proposition_id in char2.knowledge
+
+
+class TestNestedContextJSONCompatibility:
+    """Nested context structures (MappingProxyType, tuple) must serialize to JSON."""
+
+    def test_nested_dict_context_serializes_to_json(self):
+        """Nested MappingProxyType in context serializes to nested dict."""
+        from types import MappingProxyType
+        import json
+
+        char = create_character(ProjectId("proj_01"), "张三")
+
+        # Create nested frozen context: outer MappingProxyType contains inner MappingProxyType
+        inner_context = MappingProxyType({"inner_key": "inner_value", "depth": 2})
+        outer_context = MappingProxyType({"outer_key": "outer_value", "nested": inner_context})
+
+        prop = Proposition(
+            proposition_id=PropositionId(str(uuid.uuid4())),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="has_nested_context",
+            object=None,
+            context=outer_context,
+        )
+
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-nested-test",
+        )
+
+        from dataclasses import replace
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        data = serialize_character(char)
+
+        # Must be JSON-serializable (no MappingProxyType)
+        json_str = json.dumps(data)
+        assert json_str is not None
+
+        # Context must be nested dict
+        ck_data = data["knowledge"][prop.proposition_id]
+        assert isinstance(ck_data["proposition"]["context"], dict)
+        assert isinstance(ck_data["proposition"]["context"]["nested"], dict)
+        assert ck_data["proposition"]["context"]["nested"]["inner_key"] == "inner_value"
+
+        # Schema validation must pass
+        validate_against_schema(data)
+
+        # Round-trip must preserve semantic content
+        char2 = deserialize_character(data)
+        prop2 = char2.knowledge[prop.proposition_id].proposition
+        assert prop2.context["outer_key"] == "outer_value"
+        assert prop2.context["nested"]["inner_key"] == "inner_value"
+
+    def test_nested_list_context_serializes_to_json(self):
+        """Nested tuple in context serializes to nested list."""
+        import json
+
+        char = create_character(ProjectId("proj_01"), "张三")
+
+        # Create nested frozen context: tuple contains inner tuple
+        inner_tuple = ("a", "b", "c")
+        outer_tuple = ("x", inner_tuple, "z")
+
+        from src.anovel.domain.knowledge import freeze_context
+        frozen_context = freeze_context({"items": outer_tuple})
+
+        prop = Proposition(
+            proposition_id=PropositionId(str(uuid.uuid4())),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="has_nested_list",
+            object=None,
+            context=frozen_context,
+        )
+
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-list-test",
+        )
+
+        from dataclasses import replace
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        data = serialize_character(char)
+
+        # Must be JSON-serializable (no tuple)
+        json_str = json.dumps(data)
+        assert json_str is not None
+
+        # Context must be nested list
+        ck_data = data["knowledge"][prop.proposition_id]
+        assert isinstance(ck_data["proposition"]["context"]["items"], list)
+        assert isinstance(ck_data["proposition"]["context"]["items"][1], list)
+        assert ck_data["proposition"]["context"]["items"][1] == ["a", "b", "c"]
+
+        # Schema validation must pass
+        validate_against_schema(data)
+
+        # Round-trip must preserve semantic content
+        char2 = deserialize_character(data)
+        prop2 = char2.knowledge[prop.proposition_id].proposition
+        assert prop2.context["items"][0] == "x"
+        assert prop2.context["items"][1] == ("a", "b", "c")  # Refrozen to tuple
+        assert prop2.context["items"][2] == "z"
+
+    def test_nested_mixed_context_serializes_to_json(self):
+        """Mixed nested dict/list structures serialize correctly."""
+        from types import MappingProxyType
+        import json
+
+        char = create_character(ProjectId("proj_01"), "张三")
+
+        # Create complex nested structure: dict contains list contains dict
+        inner_dict = MappingProxyType({"level": 3, "type": "leaf"})
+        middle_list = ("item1", inner_dict, "item3")
+        outer_dict = MappingProxyType({
+            "meta": "data",
+            "nested_list": middle_list,
+            "simple": "value"
+        })
+
+        prop = Proposition(
+            proposition_id=PropositionId(str(uuid.uuid4())),
+            project_id=ProjectId("proj_01"),
+            subject=EntityId("entity-123"),
+            predicate="has_mixed_context",
+            object=None,
+            context=outer_dict,
+        )
+
+        ck = CharacterKnowledge(
+            knower=char.entity_id,
+            proposition=prop,
+            knowledge_level=KnowledgeLevel.KNOWN,
+            acquisition_source=AcquisitionSource.DIRECT_OBSERVATION,
+            source_ref="event-mixed-test",
+        )
+
+        from dataclasses import replace
+        char = replace(char, knowledge={prop.proposition_id: ck})
+
+        data = serialize_character(char)
+
+        # Must be JSON-serializable
+        json_str = json.dumps(data)
+        assert json_str is not None
+
+        # Verify structure conversion
+        ck_data = data["knowledge"][prop.proposition_id]
+        ctx = ck_data["proposition"]["context"]
+        assert isinstance(ctx, dict)
+        assert isinstance(ctx["nested_list"], list)
+        assert isinstance(ctx["nested_list"][1], dict)
+        assert ctx["nested_list"][1]["level"] == 3
+
+        # Schema validation must pass
+        validate_against_schema(data)
+
+        # Round-trip must preserve semantic BASE content
+        char2 = deserialize_character(data)
+        prop2 = char2.knowledge[prop.proposition_id].proposition
+        assert prop2.context["meta"] == "data"
+        assert prop2.context["nested_list"][0] == "item1"
+        assert prop2.context["nested_list"][1]["level"] == 3
+        assert prop2.context["nested_list"][1]["type"] == "leaf"
+        assert prop2.context["nested_list"][2] == "item3"

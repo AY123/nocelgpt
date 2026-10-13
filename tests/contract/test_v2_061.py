@@ -404,7 +404,7 @@ class TestIntentOccurrenceSeparation:
         """
         # PLANNED is valid
         action1 = PlannedAction(
-            action_id=PlannedActionId("action-123"),
+            action_id=PlannedActionId(str(uuid.uuid4())),
             character=EntityId("char-456"),
             action_description="Attack the fortress",
             intent_ref=None,
@@ -417,7 +417,7 @@ class TestIntentOccurrenceSeparation:
 
         # CANCELLED is valid
         action2 = PlannedAction(
-            action_id=PlannedActionId("action-124"),
+            action_id=PlannedActionId(str(uuid.uuid4())),
             character=EntityId("char-456"),
             action_description="Retreat",
             intent_ref=None,
@@ -443,7 +443,7 @@ class TestIntentOccurrenceSeparation:
         """
         with pytest.raises(ValueError, match="CANCELLED cannot have occurred_event_ref"):
             PlannedAction(
-                action_id=PlannedActionId("action-123"),
+                action_id=PlannedActionId(str(uuid.uuid4())),
                 character=EntityId("char-456"),
                 action_description="Attack",
                 intent_ref=None,
@@ -462,7 +462,7 @@ class TestIntentOccurrenceSeparation:
         """
         # Plan with linked occurrence reference
         action = PlannedAction(
-            action_id=PlannedActionId("action-123"),
+            action_id=PlannedActionId(str(uuid.uuid4())),
             character=EntityId("char-456"),
             action_description="Enter room",
             intent_ref=None,
@@ -519,6 +519,43 @@ class TestGoalLifecycle:
         import re
         uuid_pattern = r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
         assert re.match(uuid_pattern, goal.goal_id)
+
+    def test_goal_abandoned_to_superseded_transition_acceptance(self):
+        """Acceptance matrix: ABANDONED → SUPERSEDED transition is valid.
+
+        Contract: Frozen V2-061 §Goal Lifecycle (AC-4)
+
+        This test explicitly validates the acceptance matrix entry for
+        ABANDONED → SUPERSEDED transition. While the contract doesn't forbid
+        this transition, we explicitly test it to ensure the model supports
+        goal evolution after abandonment (e.g., abandoned goal replaced by
+        refined/merged goal).
+        """
+        char = create_character(ProjectId("proj_01"), "张三")
+
+        # Create goal in ABANDONED status
+        goal_abandoned = Goal(
+            goal_id=GoalId(str(uuid.uuid4())),
+            character=char.entity_id,
+            description="Original abandoned goal",
+            target_state=None,
+            status=GoalStatus.ABANDONED,
+            priority=5,
+            formed_at=datetime.utcnow(),
+            resolved_at=datetime.utcnow(),
+        )
+
+        # Transition to SUPERSEDED (goal concept replaced/merged)
+        from dataclasses import replace
+        goal_superseded = replace(goal_abandoned, status=GoalStatus.SUPERSEDED)
+
+        # Must be valid - no runtime rejection
+        assert goal_superseded.status == GoalStatus.SUPERSEDED
+        assert goal_superseded.goal_id == goal_abandoned.goal_id
+
+        # Semantic validation: SUPERSEDED goals represent replaced concepts
+        # This is a valid evolution: abandoned goal later recognized as
+        # replaced by different/merged goal rather than truly abandoned
 
 
 class TestIntentModel:
@@ -1297,6 +1334,87 @@ class TestUUIDv4Validation:
 
     def test_uuid_v1_reject(self):
         """UUID v1 format must be rejected (wrong version digit)."""
+        from src.anovel.domain.knowledge import validate_uuid_v4_format
+
+        uuid_v1 = "550e8400-e29b-11d4-a716-446655440000"  # Version 1
+        with pytest.raises(ValueError, match="version 4"):
+            validate_uuid_v4_format(uuid_v1, "test_field")
+
+    def test_uppercase_reject(self):
+        """Uppercase UUID must be rejected."""
+        from src.anovel.domain.knowledge import validate_uuid_v4_format
+
+        uppercase_uuid = "550E8400-E29B-41D4-A716-446655440000"
+        with pytest.raises(ValueError, match="lowercase"):
+            validate_uuid_v4_format(uppercase_uuid, "test_field")
+
+    def test_proposition_malformed_id_reject(self):
+        """Proposition with malformed proposition_id rejects at construction."""
+        with pytest.raises(ValueError, match="36 characters"):
+            Proposition(
+                proposition_id=PropositionId("malformed-id"),
+                project_id=ProjectId("proj_01"),
+                subject=EntityId("entity-123"),
+                predicate="is_alive",
+                object=None,
+                context=None
+            )
+
+    def test_proposition_uuid_v1_reject(self):
+        """Proposition with UUID v1 format rejects at construction."""
+        with pytest.raises(ValueError, match="version 4"):
+            Proposition(
+                proposition_id=PropositionId("550e8400-e29b-11d4-a716-446655440000"),
+                project_id=ProjectId("proj_01"),
+                subject=EntityId("entity-123"),
+                predicate="is_alive",
+                object=None,
+                context=None
+            )
+
+    def test_goal_malformed_id_reject(self):
+        """Goal with malformed goal_id rejects at construction."""
+        from datetime import datetime
+
+        with pytest.raises(ValueError, match="36 characters"):
+            Goal(
+                goal_id=GoalId("goal-abc"),
+                character=EntityId("char-123"),
+                description="Find artifact",
+                target_state=None,
+                status=GoalStatus.ACTIVE,
+                priority=10,
+                formed_at=datetime.utcnow(),
+            )
+
+    def test_intent_malformed_id_reject(self):
+        """Intent with malformed intent_id rejects at construction."""
+        from datetime import datetime
+
+        with pytest.raises(ValueError, match="36 characters"):
+            Intent(
+                intent_id=IntentId("intent-xyz"),
+                character=EntityId("char-123"),
+                goal_ref=None,
+                description="Investigate",
+                formed_at=datetime.utcnow(),
+            )
+
+    def test_planned_action_malformed_id_reject(self):
+        """PlannedAction with malformed action_id rejects at construction."""
+        from datetime import datetime
+
+        with pytest.raises(ValueError, match="36 characters"):
+            PlannedAction(
+                action_id=PlannedActionId("action-123"),
+                character=EntityId("char-123"),
+                action_description="Visit library",
+                intent_ref=None,
+                planned_for=None,
+                status=ActionStatus.PLANNED,
+                occurred_event_ref=None,
+                created_at=datetime.utcnow(),
+            )
         from src.anovel.domain.knowledge import validate_uuid_v4_format
 
         # UUID v1 has version digit 1, not 4

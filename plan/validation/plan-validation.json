@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-10-12T15:15:30.188191+00:00",
+  "generated_at_utc": "2026-10-13T02:49:21.366883+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
   "status": "FAIL",
   "not_certified": [
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "f43aab95e29e07cabf8b7346275e4bf105def0f8",
+  "validated_repository_revision": "cc92e47e1e063d5981dc599fa69b31622d01068e",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "d23e7004b496246fba6940ddfe73fe786a19e59600a8244da69d4c7d29007a71",
+  "manifest_sha256": "ee22938f37ca474d6fc923c1e3ef1d97f168c9a5ed0b38b1a126526414b97ac2",
   "counts": {
     "tasks": 61,
     "phase_distribution": {
@@ -53,6 +53,13 @@
   "errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
     "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+    "EXEC_VERSION V2-061: manifest changed; reconcile context before continuation"
+  ],
+  "fatal_errors": [
+    "EXEC_VERSION V2-061: manifest changed; reconcile context before continuation"
+  ],
+  "informational_errors": [
+    "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
+    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
   ]
 }

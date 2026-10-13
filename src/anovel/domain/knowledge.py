@@ -178,7 +178,7 @@ class Proposition:
     Immutable proposition representing a statement about the narrative world.
 
     BASE fields (all persisted):
-        proposition_id: Unique identifier
+        proposition_id: Unique identifier (UUID v4 format)
         project_id: Project scope
         subject: Entity this proposition is about
         predicate: What is claimed (e.g., "is_alive", "owns")
@@ -186,10 +186,11 @@ class Proposition:
         context: Optional structured metadata (recursively immutable)
 
     Invariants:
+        - proposition_id must be valid UUID v4 format
         - context must be recursively frozen (not mutable dict)
         - Same PropositionId + different BASE payload → REJECT
 
-    Contract: ADR-002 Proposition BASE fields
+    Contract: ADR-002 Proposition BASE fields + Frozen V2-061 §PropositionId
     """
 
     proposition_id: PropositionId
@@ -198,6 +199,14 @@ class Proposition:
     predicate: str
     object: Optional[Union[str, EntityId]]
     context: Optional[Mapping[str, Any]]
+
+    def __post_init__(self) -> None:
+        """Validate Proposition invariants.
+
+        Contract: Frozen V2-061 §PropositionId UUID v4 format
+        """
+        # Validate UUID v4 format
+        validate_uuid_v4_format(self.proposition_id, "proposition_id")
 
 
 def create_proposition(

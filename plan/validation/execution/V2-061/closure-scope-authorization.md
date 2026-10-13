@@ -19,11 +19,15 @@ V2-061 true closure only. This authorization extends the original V2-061 impleme
 ### Production Delta (V2-061 domain only)
 - src/anovel/domain/character.py (MODIFY - add validation operations)
 - src/anovel/domain/knowledge.py (MODIFY - add validation operations)
+- src/anovel/domain/serialization.py (MODIFY - add knowledge key validation, nested context thawing)
+- src/anovel/domain/superseded.py (CREATE - SUPERSEDED lifecycle validation)
 - src/anovel/domain/__init__.py (MODIFY - export new operations)
 - specs/schemas/character.schema.json (MODIFY - add UUID patterns, fix provenance type)
 
 ### Tests
 - tests/contract/test_v2_061.py (MODIFY - add delta coverage tests)
+- tests/contract/test_v2_061_serialization.py (MODIFY - add knowledge key, nested context tests)
+- tests/contract/test_superseded.py (CREATE - SUPERSEDED validation tests)
 
 ### Governance (closure-specific corrections)
 - plan/scripts/task_entry.py (MODIFY - replace string-based severity with semantic)

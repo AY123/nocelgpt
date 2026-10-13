@@ -99,6 +99,36 @@ def observe(root):
     }
 
 
+def classify_error_severity(error):
+    """Classify validation error by semantic severity.
+
+    Returns:
+        "INFORMATIONAL": Recorded for visibility, does not block execution
+        "BLOCKING": Prevents task execution
+
+    INFORMATIONAL errors (semantic classification):
+    - EXEC_PACKET_ABSENT for grandfathered tasks V2-005, V2-006
+      (these have registered absence records per HYGIENE-003)
+
+    All other errors are BLOCKING by default.
+
+    Contract: Task execution governance - severity classification
+    """
+    # EXEC_PACKET_ABSENT for grandfathered tasks is INFORMATIONAL
+    # Extract task_id from error pattern: "EXEC_PACKET_ABSENT <task_id>: ..."
+    if error.startswith("EXEC_PACKET_ABSENT"):
+        # Parse task_id (appears after "EXEC_PACKET_ABSENT " and before ":")
+        parts = error.split()
+        if len(parts) >= 2:
+            task_id_candidate = parts[1].rstrip(":")
+            # Semantic: V2-005 and V2-006 have registered absence records
+            if task_id_candidate in {"V2-005", "V2-006"}:
+                return "INFORMATIONAL"
+
+    # All other errors block execution
+    return "BLOCKING"
+
+
 def validate_context(root, task_id, action):
     """Reuse the full current rules, then bind selected action to the real Git base."""
     data = validator.load()
@@ -106,14 +136,14 @@ def validate_context(root, task_id, action):
         data, validator.expected_views(data)
     )
 
-    # Filter out INFORMATIONAL errors that should not block execution
-    # These are recorded for visibility but don't prevent task execution
+    # Classify errors by semantic severity
+    # INFORMATIONAL errors are recorded for visibility but don't block execution
+    # BLOCKING errors prevent task execution
     blocking_errors = []
     informational_errors = []
 
     for error in errors:
-        # EXEC_PACKET_ABSENT with "(absence record registered, INFORMATIONAL)" marker
-        if "EXEC_PACKET_ABSENT" in error and "INFORMATIONAL)" in error:
+        if classify_error_severity(error) == "INFORMATIONAL":
             informational_errors.append(error)
         else:
             blocking_errors.append(error)

@@ -96,8 +96,8 @@
       "properties": {
         "proposition_id": {
           "type": "string",
-          "description": "Unique proposition identifier",
-          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          "description": "Unique proposition identifier (UUID v4 format)",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
         "project_id": {
           "type": "string",
@@ -196,7 +196,8 @@
       "properties": {
         "goal_id": {
           "type": "string",
-          "description": "Unique goal identifier"
+          "description": "Unique goal identifier (UUID v4 format)",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
         "character": {
           "type": "string",
@@ -244,7 +245,8 @@
       "properties": {
         "intent_id": {
           "type": "string",
-          "description": "Unique intent identifier"
+          "description": "Unique intent identifier (UUID v4 format)",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
         "character": {
           "type": "string",
@@ -284,7 +286,8 @@
       "properties": {
         "action_id": {
           "type": "string",
-          "description": "Unique action identifier"
+          "description": "Unique action identifier (UUID v4 format)",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
         },
         "character": {
           "type": "string",
