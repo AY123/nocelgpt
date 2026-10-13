@@ -451,3 +451,56 @@ class TestSchemaValidation:
 
         # Should not raise
         validate_against_schema(data)
+
+
+class TestEntityTypeValidation:
+    """Entity type validation through deserialization and registry."""
+
+    def test_deserialized_character_with_wrong_entity_type_rejects(self):
+        """Deserialized Character with entity_type != CHARACTER rejects via registry."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+
+        # Create LOCATION identity (not CHARACTER)
+        registry = EntityRegistry()
+        location_identity = create_identity(
+            ProjectId("proj_01"),
+            "某地",
+            entity_type="LOCATION"
+        )
+        registry.add_entity(location_identity)
+
+        # Create Character with valid entity_id, serialize, deserialize
+        char = create_character(ProjectId("proj_01"), "张三")
+        data = serialize_character(char)
+
+        # Swap entity_id to LOCATION before deserialization
+        data["entity_id"] = location_identity.entity_id
+
+        char2 = deserialize_character(data)
+
+        # Validation through registry must reject
+        with pytest.raises(ValueError, match="entity_type='CHARACTER'"):
+            validate_project_isolation(char2, registry)
+
+    def test_deserialized_character_with_character_type_passes(self):
+        """Deserialized Character with entity_type=CHARACTER passes validation."""
+        from src.anovel.domain.identity import EntityRegistry, create_identity
+        from src.anovel.domain.character import validate_project_isolation
+
+        registry = EntityRegistry()
+        identity = create_identity(
+            ProjectId("proj_01"),
+            "张三",
+            entity_type="CHARACTER"
+        )
+        registry.add_entity(identity)
+
+        char = create_character(ProjectId("proj_01"), "张三")
+        data = serialize_character(char)
+        data["entity_id"] = identity.entity_id
+
+        char2 = deserialize_character(data)
+
+        # Should not raise
+        validate_project_isolation(char2, registry)
