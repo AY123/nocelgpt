@@ -11,9 +11,12 @@ Tests Character serialization/deserialization against ADR-002:
 Contract Authority: ADR-002 + Frozen V2-061 §Serialization
 """
 
+import json
 import uuid
 from datetime import datetime
+from pathlib import Path
 from types import MappingProxyType
+from typing import Any
 
 import pytest
 
@@ -41,7 +44,39 @@ from anovel.domain.serialization import (
     deserialize_character,
     serialize_character,
 )
-from tests.contract.schema_validator import validate_against_schema
+
+
+def validate_against_schema(data: dict[str, Any]) -> None:
+    """
+    Validate serialized Character against character.schema.json.
+
+    Test-only helper - intentionally not in domain layer to avoid
+    introducing jsonschema as a runtime dependency.
+
+    Args:
+        data: Serialized Character dict
+
+    Raises:
+        ValueError: If validation fails
+
+    Contract: character.schema.json compliance
+    """
+    import jsonschema
+
+    # Path from tests/contract/ to specs/schemas/
+    schema_path = (
+        Path(__file__).parent.parent.parent
+        / "specs"
+        / "schemas"
+        / "character.schema.json"
+    )
+    with open(schema_path) as f:
+        schema = json.load(f)
+
+    try:
+        jsonschema.validate(instance=data, schema=schema)
+    except jsonschema.ValidationError as e:
+        raise ValueError(f"Schema validation failed: {e.message}") from e
 
 
 class TestBASESerialization:
