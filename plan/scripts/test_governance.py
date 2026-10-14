@@ -10,7 +10,7 @@ import sys
 import tempfile
 import unittest
 from copy import deepcopy
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 import validate_plan as validator
@@ -1113,7 +1113,7 @@ if __name__ == "__main__":
     ).run(suite)  # type: ignore[assignment]
     report = {
         "scope": "Planning governance regressions in disposable copies; synthetic records are not runtime evidence",
-        "generated_at_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_at_utc": datetime.now(UTC).isoformat(),
         "manifest_sha256": validator.sha(validator.PLAN / "FILE_MANIFEST.json"),
         "status": "PASS" if result.wasSuccessful() else "FAIL",
         "test_count": result.testsRun,

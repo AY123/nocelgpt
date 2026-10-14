@@ -11,45 +11,44 @@ Public submodules:
 """
 
 # V2-005 Entity Identity
+# V2-061 Character
+from .character import (
+    ActionStatus,
+    Character,
+    CharacterLifecycle,
+    Goal,
+    GoalId,
+    GoalStatus,
+    Intent,
+    IntentId,
+    PlannedAction,
+    PlannedActionId,
+    create_character,
+)
 from .identity import (
     EntityId,
-    ProjectId,
     EntityIdentity,
+    EntityRegistry,
+    ProjectId,
     ResolutionResult,
     ResolutionStatus,
-    create_identity,
-    rename_identity,
     add_alias,
-    remove_alias,
-    resolve_alias,
+    create_identity,
     normalize_for_lookup,
-    EntityRegistry,
+    remove_alias,
+    rename_identity,
+    resolve_alias,
 )
 
 # V2-061 Character Knowledge
 from .knowledge import (
-    PropositionId,
-    Proposition,
+    AcquisitionSource,
     CharacterKnowledge,
     KnowledgeLevel,
-    AcquisitionSource,
+    Proposition,
+    PropositionId,
     create_proposition,
     freeze_context,
-)
-
-# V2-061 Character
-from .character import (
-    Character,
-    Goal,
-    Intent,
-    PlannedAction,
-    CharacterLifecycle,
-    GoalStatus,
-    ActionStatus,
-    GoalId,
-    IntentId,
-    PlannedActionId,
-    create_character,
 )
 
 __all__ = [

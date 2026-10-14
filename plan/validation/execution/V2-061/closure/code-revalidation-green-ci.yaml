@@ -1,0 +1,18 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-061-code-green-ci
+evidence_type: CODE
+subject_id: V2-061
+revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+status: PASS
+producer: Local static analysis + architecture fitness
+executed_at: '2026-10-14T03:00:00Z'
+environment_fingerprint: Python 3.12.14, uv 0.12.17, ruff 0.9.1, mypy 1.14.0
+artifacts:
+- ref: validation/execution/V2-061/closure/green-ci-code-artifacts.txt
+  sha256: e934380957d371a5c298b703a95a6eef9e10f16364c2844938740fc836abe539
+input_evidence_refs: []
+finding_dispositions: []
+check_ids: []
+decision: VERIFIED
+rationale: Green-CI candidate d9abdaa verified with ruff format/lint, mypy typecheck, architecture fitness

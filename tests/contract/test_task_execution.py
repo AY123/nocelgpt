@@ -45,6 +45,16 @@ def reconcile(repo):
         packet = load(path)
         packet['repository_revision'] = call(repo, 'git', 'rev-parse', 'HEAD').stdout.strip()
         packet['plan_manifest_sha256'] = module.sha(plan / 'FILE_MANIFEST.json')
+        packet['plan_version'] = data['implementation-backlog']['version']
+        # Reconcile expected_outputs: ensure current task artifacts are included
+        current_artifacts = set(task.get('artifacts', []))
+        existing_outputs = set(packet.get('expected_outputs', []))
+        packet['expected_outputs'] = sorted(existing_outputs | current_artifacts)
+        # Reconcile allowed_paths: ensure all expected_outputs are covered
+        existing_allowed = set(packet.get('allowed_paths', []))
+        # Add any new artifacts that aren't already covered by existing allowed_paths
+        new_artifacts = current_artifacts - existing_outputs
+        packet['allowed_paths'] = sorted(existing_allowed | new_artifacts)
         for index, item in enumerate(packet['inputs']):
             dest = plan / f'validation/fixture-current/{task["task_id"]}/{index}.txt'
             dest.parent.mkdir(parents=True, exist_ok=True)

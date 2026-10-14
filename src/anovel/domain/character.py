@@ -24,12 +24,13 @@ Contract: V2-061 Implementation Contract + ADR-002
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Dict, List, Mapping, NewType, Optional
+from typing import NewType
 
-from .identity import EntityId, ProjectId
+from .identity import EntityId, EntityRegistry, ProjectId
 from .knowledge import CharacterKnowledge, PropositionId
 
 # --- Type Aliases ---
@@ -119,11 +120,11 @@ class Goal:
     goal_id: GoalId
     character: EntityId
     description: str
-    target_state: Optional[Mapping[str, str]]
+    target_state: Mapping[str, str] | None
     status: GoalStatus
-    priority: Optional[int]
-    formed_at: Optional[datetime]
-    resolved_at: Optional[datetime] = None
+    priority: int | None
+    formed_at: datetime | None
+    resolved_at: datetime | None = None
 
     def __post_init__(self) -> None:
         """Validate Goal invariants.
@@ -156,10 +157,10 @@ class Intent:
 
     intent_id: IntentId
     character: EntityId
-    goal_ref: Optional[GoalId]
+    goal_ref: GoalId | None
     description: str
-    formed_at: Optional[datetime]
-    abandoned_at: Optional[datetime] = None
+    formed_at: datetime | None
+    abandoned_at: datetime | None = None
 
     def __post_init__(self) -> None:
         """Validate Intent invariants.
@@ -200,12 +201,12 @@ class PlannedAction:
     action_id: PlannedActionId
     character: EntityId
     action_description: str
-    intent_ref: Optional[IntentId]
-    planned_for: Optional[str]
+    intent_ref: IntentId | None
+    planned_for: str | None
     status: ActionStatus
-    occurred_event_ref: Optional[str]
+    occurred_event_ref: str | None
     created_at: datetime
-    cancelled_at: Optional[datetime] = None
+    cancelled_at: datetime | None = None
 
     def __post_init__(self) -> None:
         """Validate PlannedAction invariants.
@@ -263,17 +264,17 @@ class Character:
     entity_id: EntityId
     project_id: ProjectId
     lifecycle: CharacterLifecycle
-    knowledge: Dict[PropositionId, CharacterKnowledge]
-    goals: List[Goal]
-    intents: List[Intent]
-    planned_actions: List[PlannedAction]
+    knowledge: dict[PropositionId, CharacterKnowledge]
+    goals: list[Goal]
+    intents: list[Intent]
+    planned_actions: list[PlannedAction]
     created_at: datetime
     updated_at: datetime
     authority: str
-    provenance: Dict[str, str] = field(default_factory=dict)
+    provenance: dict[str, str] = field(default_factory=dict)
 
     @property
-    def active_goals(self) -> List[Goal]:
+    def active_goals(self) -> list[Goal]:
         """
         DERIVED: Filter goals with status=ACTIVE.
 
@@ -323,7 +324,7 @@ def validate_knowledge_key_invariant(character: Character) -> None:
 
 def validate_project_isolation(
     character: Character,
-    entity_registry: "EntityRegistry",
+    entity_registry: EntityRegistry,
 ) -> None:
     """
     Validate that Character respects project isolation boundaries.
@@ -343,7 +344,6 @@ def validate_project_isolation(
 
     Contract: Frozen V2-061 §Project Isolation
     """
-    from .identity import EntityRegistry
 
     # Validate character entity exists
     identity = entity_registry.get_entity(character.entity_id)
@@ -367,7 +367,7 @@ def validate_project_isolation(
         )
 
     # Validate all knowledge provenance respects project boundaries
-    for prop_id, ck in character.knowledge.items():
+    for _prop_id, ck in character.knowledge.items():
         # Knower must be same character (implicitly same project)
         if ck.knower != character.entity_id:
             raise ValueError(
@@ -409,7 +409,16 @@ def validate_project_isolation(
                 )
 
         # Validate object if it's a registered EntityId reference
-        obj_identity = entity_registry.get_entity(prop.object)
+        if isinstance(prop.object, str):
+            try:
+                obj_id = EntityId(prop.object)
+                obj_identity = entity_registry.get_entity(obj_id)
+            except (ValueError, TypeError):
+                obj_identity = None
+        elif prop.object is not None:
+            obj_identity = entity_registry.get_entity(prop.object)
+        else:
+            obj_identity = None
         if obj_identity is not None:  # If found in registry, must be same project
             if obj_identity.project_id != character.project_id:
                 raise ValueError(

@@ -23,10 +23,11 @@ Contract: V2-061 Implementation Contract + ADR-002
 
 from __future__ import annotations
 
+from collections.abc import Mapping
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-from typing import Any, Mapping, NewType, Optional, Union
+from typing import Any, NewType
 
 from .identity import EntityId, ProjectId
 
@@ -118,8 +119,8 @@ class AcquisitionSource(Enum):
 
 
 def freeze_context(
-    ctx: Union[Mapping[str, Any], dict[str, Any], None],
-) -> Optional[Mapping[str, Any]]:
+    ctx: Mapping[str, Any] | dict[str, Any] | None,
+) -> Mapping[str, Any] | None:
     """
     Recursively freeze context mapping to immutable representation.
 
@@ -166,7 +167,6 @@ def freeze_context(
             return value
 
     # Freeze top-level mapping
-    from types import MappingProxyType
 
     frozen_dict = {k: _freeze_value(v) for k, v in ctx.items()}
     return MappingProxyType(frozen_dict)
@@ -200,8 +200,8 @@ class Proposition:
     project_id: ProjectId
     subject: EntityId
     predicate: str
-    object: Optional[Union[str, EntityId]]
-    context: Optional[Mapping[str, Any]]
+    object: str | EntityId | None
+    context: Mapping[str, Any] | None
 
     def __post_init__(self) -> None:
         """Validate Proposition invariants.
@@ -216,8 +216,8 @@ def create_proposition(
     project_id: ProjectId,
     subject: EntityId,
     predicate: str,
-    object: Optional[Union[str, EntityId]] = None,
-    context: Union[Mapping[str, Any], dict[str, Any], None] = None,
+    object: str | EntityId | None = None,
+    context: Mapping[str, Any] | dict[str, Any] | None = None,
 ) -> Proposition:
     """
     Create a new proposition with frozen context.
@@ -373,15 +373,15 @@ class CharacterKnowledge:
     proposition: Proposition
     knowledge_level: KnowledgeLevel
     acquisition_source: AcquisitionSource
-    source_character: Optional[EntityId] = None
-    source_ref: Optional[str] = None
-    basis_ref: Optional[list[PropositionId]] = None
-    acquired_at: Optional[datetime] = None
-    story_time_ref: Optional[str] = None
-    confidence: Optional[float] = None
+    source_character: EntityId | None = None
+    source_ref: str | None = None
+    basis_ref: list[PropositionId] | None = None
+    acquired_at: datetime | None = None
+    story_time_ref: str | None = None
+    confidence: float | None = None
 
     # CACHE field (not persisted, not in equality)
-    aligns_with_fact: Optional[bool] = field(default=None, compare=False)
+    aligns_with_fact: bool | None = field(default=None, compare=False)
 
     def __post_init__(self) -> None:
         """Validate invariants after construction.

@@ -1,0 +1,46 @@
+V2-061 Green-CI Test Artifacts Validation
+==========================================
+
+Validation Date: 2026-10-14T03:00:00Z
+Green-CI Candidate: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+Test Runner: pytest 9.1.1
+Python: 3.12.14
+
+Verified Test Artifacts at d9abdaa:
+------------------------------------
+
+1. tests/contract/test_v2_061.py
+   SHA256: e2f39e46d0f528ec466f6e055cb280f769d2bd4e2f9ada47c5010ce0b6ff0f32
+   Status: VERIFIED
+   Coverage: AT-V2-061-01 through AT-V2-061-07
+
+2. tests/contract/test_v2_061_lifecycle.py
+   SHA256: 86e4338ad69acc6612a309ffe0a444a91778bc602dc34764b4518a3a745af649
+   Status: VERIFIED
+   Coverage: Lifecycle state machine validation
+
+3. tests/contract/test_v2_061_serialization.py
+   SHA256: e2c99666b1cd3c27c224d2b37b6b979c4052370a17bb18333ac8addd59e5d3e9
+   Status: VERIFIED
+   Coverage: BASE/DERIVED/CACHE serialization semantics
+
+Test Execution Results:
+-----------------------
+Command: uv run python -m pytest tests/contract/test_v2_061*.py -v
+Exit Code: 0
+Total Tests: 118
+Passed: 118
+Failed: 0
+Skipped: 0
+
+Scenario Coverage:
+------------------
+AT-V2-061-01: Character BASE field persistence - PASS
+AT-V2-061-02: CharacterKnowledge acquisition semantics - PASS
+AT-V2-061-03: Proposition deep-freeze invariant - PASS
+AT-V2-061-04: BASE/DERIVED/CACHE classification - PASS
+AT-V2-061-05: Lifecycle state constraints - PASS
+AT-V2-061-06: Entity authority boundaries - PASS
+AT-V2-061-07: External practice EXT-005 intent modeling - PASS
+
+Conclusion: All 118 tests passed against green-CI candidate d9abdaa

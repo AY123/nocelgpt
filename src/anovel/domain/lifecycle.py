@@ -14,9 +14,7 @@ Contract: Frozen V2-061 §Lifecycle Semantics + §Goal Lifecycle
 
 from __future__ import annotations
 
-from typing import Optional
-
-from .character import CharacterLifecycle, Goal, GoalStatus, Intent
+from .character import CharacterLifecycle, Goal, GoalStatus
 
 
 def validate_goal_formation(
@@ -205,8 +203,8 @@ def validate_goal_transition(
 
     if from_status == GoalStatus.SUPERSEDED:
         raise ValueError(
-            f"Goal status transition from SUPERSEDED is INVALID. "
-            f"SUPERSEDED is terminal state (goal replaced by another)."
+            "Goal status transition from SUPERSEDED is INVALID. "
+            "SUPERSEDED is terminal state (goal replaced by another)."
         )
 
     # All other transitions are valid

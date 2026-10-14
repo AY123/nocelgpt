@@ -11,13 +11,16 @@ Tests Character serialization/deserialization against ADR-002:
 Contract Authority: ADR-002 + Frozen V2-061 §Serialization
 """
 
+import json
 import uuid
 from datetime import datetime
+from pathlib import Path
 from types import MappingProxyType
+from typing import Any
 
 import pytest
 
-from src.anovel.domain import (
+from anovel.domain import (
     AcquisitionSource,
     ActionStatus,
     Character,
@@ -36,12 +39,44 @@ from src.anovel.domain import (
     create_character,
     create_proposition,
 )
-from src.anovel.domain.identity import EntityId, ProjectId
-from src.anovel.domain.serialization import (
+from anovel.domain.identity import EntityId, ProjectId
+from anovel.domain.serialization import (
     deserialize_character,
     serialize_character,
-    validate_against_schema,
 )
+
+
+def validate_against_schema(data: dict[str, Any]) -> None:
+    """
+    Validate serialized Character against character.schema.json.
+
+    Test-only helper - intentionally not in domain layer to avoid
+    introducing jsonschema as a runtime dependency.
+
+    Args:
+        data: Serialized Character dict
+
+    Raises:
+        ValueError: If validation fails
+
+    Contract: character.schema.json compliance
+    """
+    import jsonschema
+
+    # Path from tests/contract/ to specs/schemas/
+    schema_path = (
+        Path(__file__).parent.parent.parent
+        / "specs"
+        / "schemas"
+        / "character.schema.json"
+    )
+    with open(schema_path) as f:
+        schema = json.load(f)
+
+    try:
+        jsonschema.validate(instance=data, schema=schema)
+    except jsonschema.ValidationError as e:
+        raise ValueError(f"Schema validation failed: {e.message}") from e
 
 
 class TestBASESerialization:
@@ -458,8 +493,8 @@ class TestEntityTypeValidation:
 
     def test_deserialized_character_with_wrong_entity_type_rejects(self):
         """Deserialized Character with entity_type != CHARACTER rejects via registry."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
 
         # Create LOCATION identity (not CHARACTER)
         registry = EntityRegistry()
@@ -485,8 +520,8 @@ class TestEntityTypeValidation:
 
     def test_deserialized_character_with_character_type_passes(self):
         """Deserialized Character with entity_type=CHARACTER passes validation."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
 
         registry = EntityRegistry()
         identity = create_identity(
@@ -624,7 +659,7 @@ class TestNestedContextJSONCompatibility:
         inner_tuple = ("a", "b", "c")
         outer_tuple = ("x", inner_tuple, "z")
 
-        from src.anovel.domain.knowledge import freeze_context
+        from anovel.domain.knowledge import freeze_context
         frozen_context = freeze_context({"items": outer_tuple})
 
         prop = Proposition(

@@ -16,9 +16,9 @@ If conflicts exist, machine SSOT always wins.
 
 ## Current State
 
-**Canonical Repository**: `https://gitlab.com/ayyang666/aianovelos.git`
+**Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Latest Product Closure Baseline**: `bba1061ef27669ece55530bfdd846767b2fe21af` (V2-006 closure)
+**Latest Product Closure Baseline**: `718c3cba2491bdbbd4c08838b45c0c54cf554646` (V2-061 closure)
 
 **Plan Version**: 1.3.1 (治理修订：V2-006 任务身份调和)
 **Task Count**: 61 (V2-001 through V2-061)
@@ -57,18 +57,18 @@ If conflicts exist, machine SSOT always wins.
   - SHA: `bba1061ef27669ece55530bfdd846767b2fe21af`
   - Evidence: Steps 1-8 verified, see `docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md`
   - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
-  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianovelcc (GitLab) - 899/899 tests, 6/6 gates
+  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianoveloacc (GitLab) - 899/899 tests, 6/6 gates
+
+- **V2-061**: Character Knowledge & Intent Core
+  - Status: CLOSED
+  - SHA: `718c3cba2491bdbbd4c08838b45c0c54cf554646`
+  - Evidence: Pipeline #16 PASS (2945466336), 118/118 tests, 6/6 gates
+  - Contract: ADR-002 ACCEPTED
+  - Closure: See `plan/validation/execution/V2-061/closure/`
 
 **Open Tasks**:
-- **V2-061**: Character Knowledge & Intent Core
-  - Status: IN_PROGRESS (contract remediation and true closure in progress)
-  - Readiness: Implementation authorized, checkpoint 005A committed
-  - Execution Packet: validation/execution/V2-061/execution-packet.yaml
-  - ADR-002: ACCEPTED (2026-10-11)
-  - Current Work: Final contract delta implementation (project isolation, proposition collision, lifecycle semantics, serialization, governance closure)
-  - Continuation: See plan/validation/execution/V2-061/continuation-handoff-005a.md
-- **V2-007**: Event Timeline Promise Core (OPEN, blocked until V2-061 closure)
-- **V2-008**: NarrativeDelta Implementation (OPEN, blocked until V2-061 closure)
+- **V2-007**: Event Timeline Promise Core (OPEN, requires ADR-003)
+- **V2-008**: NarrativeDelta Implementation (OPEN)
 
 ---
 
@@ -94,7 +94,7 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 
 ### Canonical Repository and CI
 
-**Canonical Repository**: `ayyang666/aianovelos` (GitLab)
+**Canonical Repository**: `TomAy47287015/ainoveloacc` (GitLab)
 **Canonical Branch**: `dev_cc`
 **Current CI**: GitLab CI/CD (`.gitlab-ci.yml`)
 
