@@ -102,7 +102,7 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 
 ### Historical Verification (Non-Canonical)
 
-**Historical V2-006 Remote Verification**: `TomAy47287015/aianoveloacc` (GitLab)
+**Historical V2-006 Remote Verification**: `TomAy47287015/aianovelcc` (GitLab)
 - Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
 - Note: This was historical verification only; current canonical state is dev_cc @ 01aa056
 
