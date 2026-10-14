@@ -1,0 +1,21 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-003-20261014-architecture-decision
+evidence_type: ADR_DECISION
+subject_id: ADR-003
+revision: b8ad843dd4507e0de694f0d33b64e3e6ad524e45
+status: PASS
+producer: Architecture decision under ADR-003 requirement for V2-007
+executed_at: '2026-10-14T14:07:00.000000+00:00'
+environment_fingerprint: Architecture decision - no runtime environment required
+artifacts:
+- ref: decisions/ADR-003_EVENT_PROMISE_TEMPORAL_SEMANTICS.md
+  sha256: a31349ec4544afc6ab3a38525b3573f81f5cf2e0766312c2121719fa6db01907
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: ADR-003 establishes Event occurrence and Promise temporal semantics for V2-007
+  Event Timeline Promise Core. Defines Event/Promise/PromiseFulfillmentLink/Timeline
+  domain model, hard invariants vs soft policies separation, Canon ownership, idempotency
+  guarantees, and support for non-linear narrative (flashbacks, story_time vs occurrence_chapter).
+  Rejects over-engineered alternatives. Preserves V2-005/V2-006/V2-061 authority boundaries.
+  This ratifies the architecture decision only; V2-007 implementation verification is separate.
