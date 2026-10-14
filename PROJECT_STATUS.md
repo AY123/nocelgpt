@@ -1,6 +1,6 @@
 # Project Status
 
-**Last Updated**: 2026-10-11
+**Last Updated**: 2026-10-14
 **Document Type**: Derived Summary (Canonical: plan/machine/*)
 
 **IMPORTANT**: This is a human-readable derived summary.
@@ -18,7 +18,8 @@ If conflicts exist, machine SSOT always wins.
 
 **Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Latest Product Closure Baseline**: `718c3cba2491bdbbd4c08838b45c0c54cf554646` (V2-061 closure)
+**Canonical HEAD**: `01aa056ed994653240338958716f542a8786600e` (MR !1 integration)
+**Latest Product Closure**: V2-061 (718c3cb) verified and integrated to default branch
 
 **Plan Version**: 1.3.1 (治理修订：V2-006 任务身份调和)
 **Task Count**: 61 (V2-001 through V2-061)
@@ -97,13 +98,13 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 **Canonical Repository**: `TomAy47287015/ainoveloacc` (GitLab)
 **Canonical Branch**: `dev_cc`
 **Current CI**: GitLab CI/CD (`.gitlab-ci.yml`)
+**Latest Pipeline**: #19 (2946187234) - SUCCESS, 6/6 hard gates PASS at 01aa056
 
 ### Historical Verification (Non-Canonical)
 
-**Historical V2-006 Remote Verification**: `TomAy47287015/aianovelcc` (GitHub Actions)
+**Historical V2-006 Remote Verification**: `TomAy47287015/aianovelcc` (GitLab)
 - Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
-- Note: This was historical verification only; current canonical CI is GitLab
-**CI Status**: Pipelines exist but not yet configured as authoritative gates
+- Note: This was historical verification only; current canonical state is dev_cc @ 01aa056
 
 ### Local Validation
 
@@ -152,9 +153,12 @@ pytest tests/architecture/ -v
 4. Consult task-specific implementation contracts before starting work
 5. All changes require explicit authorization before implementation
 
-**Current Phase**: P1 Domain Foundation (NOT VERIFIED)
-**Current Task Execution**: V2-061 implementation/remediation authorized and IN_PROGRESS (checkpoint 005A committed, contract delta ongoing)
-**Next Task Implementation**: Not authorized until V2-061 true closure accepted
+**Current Phase**: P1 Domain Foundation (ACTIVE / NOT VERIFIED)
+**Current Active Implementation Task**: NONE
+**Last Closed Task**: V2-061 (Character Knowledge & Intent Core)
+**Next Candidate Task**: V2-007 (Event Timeline Promise Core)
+**Required Decision**: ADR-003 (Event Timeline Core Architecture)
+**V2-007 Implementation Status**: NOT YET AUTHORIZED (ADR-003 decision required first)
 
 ---
 
