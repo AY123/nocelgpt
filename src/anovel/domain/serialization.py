@@ -13,9 +13,7 @@ Contract: ADR-002 + Frozen V2-061 §Serialization
 
 from __future__ import annotations
 
-import json
 from datetime import datetime
-from pathlib import Path
 from typing import Any
 
 from .character import (
@@ -363,33 +361,3 @@ def _deserialize_planned_action(data: dict[str, Any]) -> PlannedAction:
         if "cancelled_at" in data
         else None,
     )
-
-
-def validate_against_schema(data: dict[str, Any]) -> None:
-    """
-    Validate serialized Character against character.schema.json.
-
-    Args:
-        data: Serialized Character dict
-
-    Raises:
-        ValueError: If validation fails
-
-    Contract: character.schema.json compliance
-    """
-    import jsonschema
-
-    # Path from src/anovel/domain/ to specs/schemas/
-    schema_path = (
-        Path(__file__).parent.parent.parent.parent
-        / "specs"
-        / "schemas"
-        / "character.schema.json"
-    )
-    with open(schema_path) as f:
-        schema = json.load(f)
-
-    try:
-        jsonschema.validate(instance=data, schema=schema)
-    except jsonschema.ValidationError as e:
-        raise ValueError(f"Schema validation failed: {e.message}") from e

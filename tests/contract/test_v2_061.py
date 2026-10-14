@@ -17,7 +17,7 @@ from types import MappingProxyType
 
 import pytest
 
-from src.anovel.domain import (
+from anovel.domain import (
     AcquisitionSource,
     ActionStatus,
     Character,
@@ -705,7 +705,7 @@ class TestEntityTypeValidation:
 
     def test_create_character_uses_character_entity_type(self):
         """create_character uses entity_type="CHARACTER" (hardcoded per contract)."""
-        from src.anovel.domain.identity import EntityRegistry
+        from anovel.domain.identity import EntityRegistry
 
         registry = EntityRegistry()
         char = create_character(ProjectId("proj_01"), "张三")
@@ -825,7 +825,7 @@ class TestAuthorityBoundaries:
         char = create_character(ProjectId("proj_01"), "张三")
 
         # EntityId is from identity module (V2-005)
-        from src.anovel.domain.identity import EntityId as V2005EntityId
+        from anovel.domain.identity import EntityId as V2005EntityId
         assert isinstance(char.entity_id, str)
         assert EntityId == V2005EntityId
 
@@ -916,8 +916,8 @@ class TestProjectIsolation:
 
     def test_same_project_character_valid(self):
         """Character with matching project_id passes validation."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
         from dataclasses import replace
 
         registry = EntityRegistry()
@@ -937,8 +937,8 @@ class TestProjectIsolation:
 
     def test_project_id_mismatch_reject(self):
         """Character.project_id != EntityIdentity.project_id must be rejected."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
         from dataclasses import replace
 
         registry = EntityRegistry()
@@ -959,8 +959,8 @@ class TestProjectIsolation:
 
     def test_cross_project_source_character_reject(self):
         """source_character from different project must be rejected."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
         from dataclasses import replace
 
         registry = EntityRegistry()
@@ -996,8 +996,8 @@ class TestProjectIsolation:
 
     def test_entity_type_not_character_reject(self):
         """Entity with entity_type != CHARACTER must be rejected."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
         from dataclasses import replace
 
         registry = EntityRegistry()
@@ -1017,8 +1017,8 @@ class TestProjectIsolation:
 
     def test_cross_project_proposition_subject_reject(self):
         """Proposition with subject from different project must be rejected."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
         from dataclasses import replace
 
         registry = EntityRegistry()
@@ -1055,8 +1055,8 @@ class TestProjectIsolation:
 
     def test_cross_project_proposition_object_reject(self):
         """Proposition with object from different project must be rejected."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
         from dataclasses import replace
 
         registry = EntityRegistry()
@@ -1107,7 +1107,7 @@ class TestPropositionCollision:
 
     def test_same_id_same_base_valid(self):
         """Same PropositionId + same BASE payload is valid."""
-        from src.anovel.domain.knowledge import validate_proposition_collision
+        from anovel.domain.knowledge import validate_proposition_collision
 
         prop1 = Proposition(
             proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
@@ -1131,7 +1131,7 @@ class TestPropositionCollision:
 
     def test_same_id_different_predicate_reject(self):
         """Same PropositionId + different predicate must be rejected."""
-        from src.anovel.domain.knowledge import validate_proposition_collision
+        from anovel.domain.knowledge import validate_proposition_collision
 
         prop1 = Proposition(
             proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
@@ -1155,7 +1155,7 @@ class TestPropositionCollision:
 
     def test_same_id_different_subject_reject(self):
         """Same PropositionId + different subject must be rejected."""
-        from src.anovel.domain.knowledge import validate_proposition_collision
+        from anovel.domain.knowledge import validate_proposition_collision
 
         prop1 = Proposition(
             proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
@@ -1179,7 +1179,7 @@ class TestPropositionCollision:
 
     def test_same_id_different_object_reject(self):
         """Same PropositionId + different object must be rejected."""
-        from src.anovel.domain.knowledge import validate_proposition_collision
+        from anovel.domain.knowledge import validate_proposition_collision
 
         prop1 = Proposition(
             proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
@@ -1203,7 +1203,7 @@ class TestPropositionCollision:
 
     def test_same_id_different_context_reject(self):
         """Same PropositionId + different context must be rejected."""
-        from src.anovel.domain.knowledge import validate_proposition_collision
+        from anovel.domain.knowledge import validate_proposition_collision
 
         prop1 = Proposition(
             proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
@@ -1227,7 +1227,7 @@ class TestPropositionCollision:
 
     def test_same_id_different_project_id_reject(self):
         """Same PropositionId + different project_id must be rejected."""
-        from src.anovel.domain.knowledge import validate_proposition_collision
+        from anovel.domain.knowledge import validate_proposition_collision
 
         prop1 = Proposition(
             proposition_id=PropositionId("550e8400-e29b-41d4-a716-446655440000"),
@@ -1260,7 +1260,7 @@ class TestKnowledgeKeyInvariant:
 
     def test_key_matches_proposition_id_valid(self):
         """Dict key == proposition.proposition_id is valid."""
-        from src.anovel.domain.character import validate_knowledge_key_invariant
+        from anovel.domain.character import validate_knowledge_key_invariant
 
         char = create_character(ProjectId("proj_01"), "张三")
         prop = create_proposition(
@@ -1284,7 +1284,7 @@ class TestKnowledgeKeyInvariant:
 
     def test_key_mismatch_proposition_id_reject(self):
         """Dict key != proposition.proposition_id must be rejected."""
-        from src.anovel.domain.character import validate_knowledge_key_invariant
+        from anovel.domain.character import validate_knowledge_key_invariant
 
         char = create_character(ProjectId("proj_01"), "张三")
         prop = create_proposition(
@@ -1319,7 +1319,7 @@ class TestUUIDv4Validation:
 
     def test_valid_uuid_v4_pass(self):
         """Valid lowercase hyphenated UUID v4 passes validation."""
-        from src.anovel.domain.knowledge import validate_uuid_v4_format
+        from anovel.domain.knowledge import validate_uuid_v4_format
 
         valid_uuid = "550e8400-e29b-41d4-a716-446655440000"
         # Should not raise
@@ -1327,14 +1327,14 @@ class TestUUIDv4Validation:
 
     def test_malformed_string_reject(self):
         """Malformed string must be rejected."""
-        from src.anovel.domain.knowledge import validate_uuid_v4_format
+        from anovel.domain.knowledge import validate_uuid_v4_format
 
         with pytest.raises(ValueError, match="36 characters"):
             validate_uuid_v4_format("not-a-uuid", "test_field")
 
     def test_uuid_v1_reject(self):
         """UUID v1 format must be rejected (wrong version digit)."""
-        from src.anovel.domain.knowledge import validate_uuid_v4_format
+        from anovel.domain.knowledge import validate_uuid_v4_format
 
         uuid_v1 = "550e8400-e29b-11d4-a716-446655440000"  # Version 1
         with pytest.raises(ValueError, match="version 4"):
@@ -1342,7 +1342,7 @@ class TestUUIDv4Validation:
 
     def test_uppercase_reject(self):
         """Uppercase UUID must be rejected."""
-        from src.anovel.domain.knowledge import validate_uuid_v4_format
+        from anovel.domain.knowledge import validate_uuid_v4_format
 
         uppercase_uuid = "550E8400-E29B-41D4-A716-446655440000"
         with pytest.raises(ValueError, match="lowercase"):
@@ -1415,7 +1415,7 @@ class TestUUIDv4Validation:
                 occurred_event_ref=None,
                 created_at=datetime.utcnow(),
             )
-        from src.anovel.domain.knowledge import validate_uuid_v4_format
+        from anovel.domain.knowledge import validate_uuid_v4_format
 
         # UUID v1 has version digit 1, not 4
         uuid_v1 = "550e8400-e29b-11d4-a716-446655440000"
@@ -1425,7 +1425,7 @@ class TestUUIDv4Validation:
 
     def test_uppercase_uuid_reject(self):
         """Uppercase UUID must be rejected (contract requires lowercase)."""
-        from src.anovel.domain.knowledge import validate_uuid_v4_format
+        from anovel.domain.knowledge import validate_uuid_v4_format
 
         uppercase_uuid = "550E8400-E29B-41D4-A716-446655440000"
 

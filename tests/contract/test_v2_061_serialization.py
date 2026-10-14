@@ -17,7 +17,7 @@ from types import MappingProxyType
 
 import pytest
 
-from src.anovel.domain import (
+from anovel.domain import (
     AcquisitionSource,
     ActionStatus,
     Character,
@@ -36,12 +36,12 @@ from src.anovel.domain import (
     create_character,
     create_proposition,
 )
-from src.anovel.domain.identity import EntityId, ProjectId
-from src.anovel.domain.serialization import (
+from anovel.domain.identity import EntityId, ProjectId
+from anovel.domain.serialization import (
     deserialize_character,
     serialize_character,
-    validate_against_schema,
 )
+from tests.contract.schema_validator import validate_against_schema
 
 
 class TestBASESerialization:
@@ -458,8 +458,8 @@ class TestEntityTypeValidation:
 
     def test_deserialized_character_with_wrong_entity_type_rejects(self):
         """Deserialized Character with entity_type != CHARACTER rejects via registry."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
 
         # Create LOCATION identity (not CHARACTER)
         registry = EntityRegistry()
@@ -485,8 +485,8 @@ class TestEntityTypeValidation:
 
     def test_deserialized_character_with_character_type_passes(self):
         """Deserialized Character with entity_type=CHARACTER passes validation."""
-        from src.anovel.domain.identity import EntityRegistry, create_identity
-        from src.anovel.domain.character import validate_project_isolation
+        from anovel.domain.identity import EntityRegistry, create_identity
+        from anovel.domain.character import validate_project_isolation
 
         registry = EntityRegistry()
         identity = create_identity(
@@ -624,7 +624,7 @@ class TestNestedContextJSONCompatibility:
         inner_tuple = ("a", "b", "c")
         outer_tuple = ("x", inner_tuple, "z")
 
-        from src.anovel.domain.knowledge import freeze_context
+        from anovel.domain.knowledge import freeze_context
         frozen_context = freeze_context({"items": outer_tuple})
 
         prop = Proposition(

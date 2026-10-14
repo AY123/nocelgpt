@@ -9,13 +9,13 @@ Contract Authority: Frozen V2-061 §SUPERSEDED new-content rule
 
 import pytest
 
-from src.anovel.domain import (
+from anovel.domain import (
     Character,
     CharacterLifecycle,
     create_character,
 )
-from src.anovel.domain.identity import ProjectId
-from src.anovel.domain.superseded import validate_character_not_superseded
+from anovel.domain.identity import ProjectId
+from anovel.domain.superseded import validate_character_not_superseded
 
 
 class TestSupersededValidation:

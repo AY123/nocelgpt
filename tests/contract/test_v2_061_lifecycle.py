@@ -15,7 +15,7 @@ from datetime import datetime
 
 import pytest
 
-from src.anovel.domain import (
+from anovel.domain import (
     Character,
     CharacterKnowledge,
     CharacterLifecycle,
@@ -29,8 +29,8 @@ from src.anovel.domain import (
     create_character,
     create_proposition,
 )
-from src.anovel.domain.identity import EntityId, ProjectId
-from src.anovel.domain.lifecycle import (
+from anovel.domain.identity import EntityId, ProjectId
+from anovel.domain.lifecycle import (
     validate_goal_formation,
     validate_intent_formation,
     validate_knowledge_acquisition,
