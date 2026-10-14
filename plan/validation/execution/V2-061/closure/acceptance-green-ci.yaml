@@ -9,15 +9,12 @@ producer: Local acceptance verification against AT-V2-061 criteria
 executed_at: '2026-10-14T03:00:00Z'
 environment_fingerprint: Python 3.12.14, pytest 9.1.1, uv 0.12.17
 artifacts:
-- ref: tests/contract/test_v2_061.py
-  sha256: e2f39e46d0f528ec466f6e055cb280f769d2bd4e2f9ada47c5010ce0b6ff0f32
-- ref: tests/contract/test_v2_061_lifecycle.py
-  sha256: 86e4338ad69acc6612a309ffe0a444a91778bc602dc34764b4518a3a745af649
-- ref: tests/contract/test_v2_061_serialization.py
-  sha256: e2c99666b1cd3c27c224d2b37b6b979c4052370a17bb18333ac8addd59e5d3e9
+- ref: validation/execution/V2-061/closure/green-ci-test-artifacts.txt
+  sha256: 08d422c0575945c64fff9c44a1b26b6a549d206ab122b039805c54b223fdb5b8
 input_evidence_refs:
 - validation/execution/V2-061/closure/code-revalidation-green-ci.yaml
 - validation/execution/V2-061/closure/test-result-green-ci.yaml
+- validation/execution/V2-061/closure/ci/pipeline-14-evidence.yaml
 finding_dispositions:
 - finding_id: CA-06
   responsibility: FULL
@@ -38,6 +35,20 @@ finding_dispositions:
   - validation/execution/V2-061/closure/test-result-green-ci.yaml
   reason: V2-061 implements SUPERSEDED lifecycle semantics
 check_ids:
-- AT-V2-061
+- AT-V2-061-01
+- AT-V2-061-02
+- AT-V2-061-03
+- AT-V2-061-04
+- AT-V2-061-05
+- AT-V2-061-06
+- AT-V2-061-07
+external_practice_results:
+- practice_id: EXT-005
+  adoption_mode: REFINE_EXISTING
+  source_version_note: Baseline Character/Knowledge contracts from NOVELFORGE/QMAI/WEBNOVEL domain analysis
+  verification_refs:
+  - validation/execution/V2-061/closure/test-result-green-ci.yaml
+  conclusion: V2-061 implements intent modeling (Goal/Intent/PlannedAction) and knowledge acquisition boundaries per EXT-005 adaptation
+  limitations: Intent quality metrics and creative freedom boundaries deferred to future tasks
 decision: ACCEPTED
 rationale: 118/118 tests passed, all AT-V2-061 scenarios verified against green-CI candidate d9abdaa

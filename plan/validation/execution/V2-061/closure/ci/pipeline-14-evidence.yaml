@@ -14,8 +14,8 @@ pipeline_id: '2944984121'
 job_id: static-schema_contract-unit-arch_fitness-postgres_env-secret_dependency
 pipeline_url: https://gitlab.com/TomAy47287015/ainoveloacc/-/pipelines/2944984121
 artifacts:
-- ref: .gitlab-ci.yml
-  sha256: 639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+- ref: validation/execution/V2-061/closure/green-ci-pipeline-artifacts.txt
+  sha256: 43c031d9ae6aa38374a080bf96de0a5d183f510d36b89867039ba9a2bbae6780
 input_evidence_refs: []
 finding_dispositions: []
 check_ids:

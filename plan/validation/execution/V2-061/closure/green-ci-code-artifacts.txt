@@ -1,0 +1,39 @@
+V2-061 Green-CI Code Artifacts Validation
+==========================================
+
+Validation Date: 2026-10-14T03:00:00Z
+Green-CI Candidate: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+Validator: Local static analysis + architecture fitness
+
+Verified Artifacts at d9abdaa:
+-------------------------------
+
+1. src/anovel/domain/character.py
+   SHA256: 0bacd20a7bb506a4f5c936016a952b74f4204f10ce7bb8ab82e6f12d0d0be299
+   Status: VERIFIED
+
+2. src/anovel/domain/knowledge.py
+   SHA256: e225c178defeb0d153381b183110a9e0c7e7dd7971adf5c819ae0e4906ee407c
+   Status: VERIFIED
+
+3. src/anovel/domain/serialization.py
+   SHA256: 9cd38a6ee7982ca23a35737891b1cd30103473ee1d680c6b86cc1086ef51c3ac
+   Status: VERIFIED
+
+4. specs/schemas/character.schema.json
+   SHA256: 0829507c533a14314a2319e9a3118eb95d06599af6ca1a1c005322cd21dea333
+   Status: VERIFIED
+
+Static Analysis Results:
+------------------------
+ruff format --check: PASS
+ruff lint: PASS
+mypy typecheck: PASS
+
+Architecture Fitness:
+---------------------
+V2-005 EntityId authority preserved: PASS
+V2-006 relationship topology not duplicated: PASS
+ADR-002 BASE/DERIVED/CACHE classification: PASS
+
+Conclusion: Green-CI candidate d9abdaa implementation artifacts verified

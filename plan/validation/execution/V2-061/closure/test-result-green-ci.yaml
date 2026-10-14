@@ -11,15 +11,17 @@ environment_fingerprint: Python 3.12.14, pytest 9.1.1, uv 0.12.17
 command: uv run python -m pytest tests/contract/test_v2_061.py tests/contract/test_v2_061_lifecycle.py tests/contract/test_v2_061_serialization.py -v
 exit_code: 0
 artifacts:
-- ref: tests/contract/test_v2_061.py
-  sha256: e2f39e46d0f528ec466f6e055cb280f769d2bd4e2f9ada47c5010ce0b6ff0f32
-- ref: tests/contract/test_v2_061_lifecycle.py
-  sha256: 86e4338ad69acc6612a309ffe0a444a91778bc602dc34764b4518a3a745af649
-- ref: tests/contract/test_v2_061_serialization.py
-  sha256: e2c99666b1cd3c27c224d2b37b6b979c4052370a17bb18333ac8addd59e5d3e9
+- ref: validation/execution/V2-061/closure/green-ci-test-artifacts.txt
+  sha256: 08d422c0575945c64fff9c44a1b26b6a549d206ab122b039805c54b223fdb5b8
 input_evidence_refs: []
 finding_dispositions: []
 check_ids:
-- AT-V2-061
+- AT-V2-061-01
+- AT-V2-061-02
+- AT-V2-061-03
+- AT-V2-061-04
+- AT-V2-061-05
+- AT-V2-061-06
+- AT-V2-061-07
 decision: VERIFIED
 rationale: 118/118 tests passed against green-CI candidate d9abdaa

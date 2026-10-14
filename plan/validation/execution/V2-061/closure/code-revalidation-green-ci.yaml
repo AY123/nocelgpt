@@ -9,14 +9,8 @@ producer: Local static analysis + architecture fitness
 executed_at: '2026-10-14T03:00:00Z'
 environment_fingerprint: Python 3.12.14, uv 0.12.17, ruff 0.9.1, mypy 1.14.0
 artifacts:
-- ref: src/anovel/domain/character.py
-  sha256: 0bacd20a7bb506a4f5c936016a952b74f4204f10ce7bb8ab82e6f12d0d0be299
-- ref: src/anovel/domain/knowledge.py
-  sha256: e225c178defeb0d153381b183110a9e0c7e7dd7971adf5c819ae0e4906ee407c
-- ref: src/anovel/domain/serialization.py
-  sha256: 9cd38a6ee7982ca23a35737891b1cd30103473ee1d680c6b86cc1086ef51c3ac
-- ref: specs/schemas/character.schema.json
-  sha256: 0829507c533a14314a2319e9a3118eb95d06599af6ca1a1c005322cd21dea333
+- ref: validation/execution/V2-061/closure/green-ci-code-artifacts.txt
+  sha256: e934380957d371a5c298b703a95a6eef9e10f16364c2844938740fc836abe539
 input_evidence_refs: []
 finding_dispositions: []
 check_ids: []

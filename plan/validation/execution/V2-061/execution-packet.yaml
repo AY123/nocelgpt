@@ -85,7 +85,7 @@ claims:
   statement: V2-005 and V2-006 are CLOSED
   sources:
   - ref: machine/implementation-backlog.yaml
-    sha256: 47e7b5ac878576d8234571abb9ef73de1a724e2a4867e96e286e0fc79200989b
+    sha256: a12f600f0c9d5843dc132283c66380c92ef5b63ad04dd8a0c8dba0ac51862407
   blocks_actions: []
   verification_plan: Verified by reading implementation-backlog.yaml task status fields
 - id: CLAIM-003-ADR

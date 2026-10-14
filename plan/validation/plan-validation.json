@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-10-14T03:40:50.016850+00:00",
+  "generated_at_utc": "2026-10-14T06:06:11.342815+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "FAIL",
+  "status": "PASS",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "d9abdaac1968e4b1ea524a695b8d2f3ef80684ec",
+  "validated_repository_revision": "2e70877cd089fa43b5d69f1046f637f9e975e837",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "f611d27ca9212c9aa2e8ec17b989186a085809c6477bf64e45e8f9528aca8539",
+  "manifest_sha256": "b7398250d011bbcf9aee06eef48b644664e4aefbd8a0d05fb9bc36f710e51b35",
   "counts": {
     "tasks": 61,
     "phase_distribution": {
@@ -50,49 +50,10 @@
     }
   },
   "errors": [
-    "GENERATED_VIEW: stale or missing generated/PHASE_TASK_REGISTRY.md",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed src/anovel/domain/character.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed src/anovel/domain/knowledge.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed src/anovel/domain/serialization.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed specs/schemas/character.schema.json",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/test-result-green-ci.yaml: missing/changed tests/contract/test_v2_061.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/test-result-green-ci.yaml: missing/changed tests/contract/test_v2_061_lifecycle.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/test-result-green-ci.yaml: missing/changed tests/contract/test_v2_061_serialization.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/ci/pipeline-14-evidence.yaml: missing/changed .gitlab-ci.yml",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/acceptance-green-ci.yaml: missing/changed tests/contract/test_v2_061.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/acceptance-green-ci.yaml: missing/changed tests/contract/test_v2_061_lifecycle.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/acceptance-green-ci.yaml: missing/changed tests/contract/test_v2_061_serialization.py",
-    "EVIDENCE_COVERAGE V2-061: missing checks",
-    "EVIDENCE_COVERAGE V2-061 acceptance: missing checks",
-    "ACCEPTANCE_INPUTS V2-061: missing code/test/CI binding",
-    "ACCEPTANCE_EXTERNAL V2-061: missing/duplicate practice results",
-    "EVIDENCE_COVERAGE AT-V2-061: missing checks",
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_INPUT V2-061: missing/changed artifact machine/implementation-backlog.yaml",
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
+    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
   ],
-  "fatal_errors": [
-    "GENERATED_VIEW: stale or missing generated/PHASE_TASK_REGISTRY.md",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed src/anovel/domain/character.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed src/anovel/domain/knowledge.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed src/anovel/domain/serialization.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/code-revalidation-green-ci.yaml: missing/changed specs/schemas/character.schema.json",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/test-result-green-ci.yaml: missing/changed tests/contract/test_v2_061.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/test-result-green-ci.yaml: missing/changed tests/contract/test_v2_061_lifecycle.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/test-result-green-ci.yaml: missing/changed tests/contract/test_v2_061_serialization.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/ci/pipeline-14-evidence.yaml: missing/changed .gitlab-ci.yml",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/acceptance-green-ci.yaml: missing/changed tests/contract/test_v2_061.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/acceptance-green-ci.yaml: missing/changed tests/contract/test_v2_061_lifecycle.py",
-    "EVIDENCE_ARTIFACT validation/execution/V2-061/closure/acceptance-green-ci.yaml: missing/changed tests/contract/test_v2_061_serialization.py",
-    "EVIDENCE_COVERAGE V2-061: missing checks",
-    "EVIDENCE_COVERAGE V2-061 acceptance: missing checks",
-    "ACCEPTANCE_INPUTS V2-061: missing code/test/CI binding",
-    "ACCEPTANCE_EXTERNAL V2-061: missing/duplicate practice results",
-    "EVIDENCE_COVERAGE AT-V2-061: missing checks",
-    "EXEC_INPUT V2-061: missing/changed artifact machine/implementation-backlog.yaml",
-    "MANIFEST: missing/stale file manifest; explicit --write-views required for intentional changes"
-  ],
+  "fatal_errors": [],
   "informational_errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
     "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
