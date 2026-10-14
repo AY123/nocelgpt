@@ -51,6 +51,7 @@ stages:
     - pip install uv==0.12.17
     - uv --version
     - uv sync --frozen
+    - uv pip install -e .
     - source .venv/bin/activate
   <<: *cache_template
 
