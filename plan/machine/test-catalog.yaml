@@ -175,7 +175,7 @@ suites:
 - id: AT-V2-061
   task_id: V2-061
   phase: P1
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/contract/test_v2_061.py
   scenarios:
   - id: AT-V2-061-01
@@ -192,7 +192,8 @@ suites:
     required_assertion: 知识获取边界：角色不能无路径获知事实
   - id: AT-V2-061-07
     required_assertion: 角色生命周期和类型正确性验证
-  execution_evidence: []
+  execution_evidence:
+  - validation/execution/V2-061/closure/test-result-green-ci.yaml
 - id: AT-V2-007
   task_id: V2-007
   phase: P1

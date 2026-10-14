@@ -537,7 +537,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   - 不实现通用关系追踪（已由 V2-006 提供）
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-061/execution-packet.yaml
   owner_role: domain-maintainer
   readiness: READY_TO_START
@@ -545,10 +545,22 @@ tasks:
   required_decisions:
   - ADR-002
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-061/closure/code-revalidation-green-ci.yaml
+      revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-061/closure/test-result-green-ci.yaml
+      revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-061/closure/ci/pipeline-14-evidence.yaml
+      revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-061/closure/acceptance-green-ci.yaml
+      revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+      status: PASS
   related_findings:
   - CA-06
   - RR-06

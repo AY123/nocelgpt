@@ -1,0 +1,29 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-061-ci-pipeline-14
+evidence_type: CI_RUN
+subject_id: V2-061
+revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+status: PASS
+producer: GitLab CI Pipeline #14
+executed_at: '2026-10-14T03:00:00Z'
+environment_fingerprint: GitLab CI, Python 3.12-bookworm, PostgreSQL 17.0
+command: GitLab CI automated pipeline execution
+exit_code: 0
+pipeline_id: '2944984121'
+job_id: static-schema_contract-unit-arch_fitness-postgres_env-secret_dependency
+pipeline_url: https://gitlab.com/TomAy47287015/ainoveloacc/-/pipelines/2944984121
+artifacts:
+- ref: .gitlab-ci.yml
+  sha256: 639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+input_evidence_refs: []
+finding_dispositions: []
+check_ids:
+- STATIC
+- SCHEMA_CONTRACT
+- UNIT
+- ARCH_FITNESS
+- POSTGRES_ENV
+- SECRET_DEPENDENCY
+decision: VERIFIED
+rationale: 'Pipeline #14: static PASS, schema_contract PASS, unit PASS, arch_fitness PASS, postgres_env PASS, secret_dependency PASS'

@@ -1,0 +1,25 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: V2-061-test-green-ci
+evidence_type: TEST_RESULT
+subject_id: V2-061
+revision: d9abdaac1968e4b1ea524a695b8d2f3ef80684ec
+status: PASS
+producer: pytest 9.1.1
+executed_at: '2026-10-14T03:00:00Z'
+environment_fingerprint: Python 3.12.14, pytest 9.1.1, uv 0.12.17
+command: uv run python -m pytest tests/contract/test_v2_061.py tests/contract/test_v2_061_lifecycle.py tests/contract/test_v2_061_serialization.py -v
+exit_code: 0
+artifacts:
+- ref: tests/contract/test_v2_061.py
+  sha256: e2f39e46d0f528ec466f6e055cb280f769d2bd4e2f9ada47c5010ce0b6ff0f32
+- ref: tests/contract/test_v2_061_lifecycle.py
+  sha256: 86e4338ad69acc6612a309ffe0a444a91778bc602dc34764b4518a3a745af649
+- ref: tests/contract/test_v2_061_serialization.py
+  sha256: e2c99666b1cd3c27c224d2b37b6b979c4052370a17bb18333ac8addd59e5d3e9
+input_evidence_refs: []
+finding_dispositions: []
+check_ids:
+- AT-V2-061
+decision: VERIFIED
+rationale: 118/118 tests passed against green-CI candidate d9abdaa
