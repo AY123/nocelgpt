@@ -48,7 +48,7 @@ Ran 46 tests in 76.597s
 OK
 ```
 
-See `HARNESS_DEBT_CLOSURE_PROOF.md` for detailed proof and metrics.
+See `docs/archive/governance/HARNESS_DEBT_CLOSURE_PROOF.md` for detailed proof and metrics.
 
 ---
 
@@ -133,7 +133,7 @@ Governance test suite positive fixture isolation for V2-005/V2-006 is incomplete
 **Root Cause**: Test fixture included historical CLOSED tasks with absence records, causing validation errors  
 **Solution**: Normalize V2-005/V2-006 to OPEN in base fixture, remove all error filtering, restore strict CLI assertions  
 **Result**: True zero raw errors (not filtered), 82/82 tests pass (46 governance + 36 AI execution)  
-**Verification**: `python3 -B check_raw_errors.py` and `HARNESS_DEBT_CLOSURE_PROOF.md`  
+**Verification**: `python3 -B check_raw_errors.py` and `docs/archive/governance/HARNESS_DEBT_CLOSURE_PROOF.md`  
 **GitLab SHA**: 611bebfe46e58452757834e28514f7731d3b53aa
 
 All blockers removed. V2-061 implementation may proceed after ADR-002 ratification.
