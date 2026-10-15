@@ -21,7 +21,7 @@ If conflicts exist, machine SSOT always wins.
 
 **Current Canonical HEAD**: Query live `dev_cc` via `git rev-parse origin/dev_cc`. Do not treat this derived document as HEAD authority.
 
-**Last Verified Baseline Before This Reconciliation**: `04068fff57eedf56aaef063bc6286bad02de844e` (Governance fix integration)
+**Last Verified Baseline Before This Reconciliation**: `04068fff57eefd56aaef063bc6286bad02de844e` (Governance fix integration)
 **Baseline CI**: Pipeline #29 (2948969594) - SUCCESS, 6/6 hard gates PASS
 
 **Latest Product Closure**: V2-061 (718c3cb) verified and integrated to default branch
@@ -63,7 +63,7 @@ If conflicts exist, machine SSOT always wins.
   - SHA: `bba1061ef27669ece55530bfdd846767b2fe21af`
   - Evidence: Steps 1-8 verified, see `docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md`
   - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
-  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianoveloacc (GitLab) - 899/899 tests, 6/6 gates
+  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianovelcc (historical GitLab repository) - 899/899 tests, 6/6 gates
 
 - **V2-061**: Character Knowledge & Intent Core
   - Status: CLOSED
