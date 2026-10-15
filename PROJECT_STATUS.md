@@ -1,6 +1,6 @@
 # Project Status
 
-**Last Updated**: 2026-10-14
+**Last Updated**: 2026-10-15
 **Document Type**: Derived Summary (Canonical: plan/machine/*)
 
 **IMPORTANT**: This is a human-readable derived summary.
@@ -18,7 +18,12 @@ If conflicts exist, machine SSOT always wins.
 
 **Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Canonical HEAD**: `01aa056ed994653240338958716f542a8786600e` (MR !1 integration)
+
+**Current Canonical HEAD**: Query live `dev_cc` via `git rev-parse origin/dev_cc`. Do not treat this derived document as HEAD authority.
+
+**Last Verified Baseline Before This Reconciliation**: `04068fff57eefd56aaef063bc6286bad02de844e` (Governance fix integration)
+**Baseline CI**: Pipeline #29 (2948969594) - SUCCESS, 6/6 hard gates PASS
+
 **Latest Product Closure**: V2-061 (718c3cb) verified and integrated to default branch
 
 **Plan Version**: 1.3.1 (治理修订：V2-006 任务身份调和)
@@ -58,7 +63,7 @@ If conflicts exist, machine SSOT always wins.
   - SHA: `bba1061ef27669ece55530bfdd846767b2fe21af`
   - Evidence: Steps 1-8 verified, see `docs/archive/v2-005-remediation/V2-006_FINAL_CLOSURE_CANDIDATE.md`
   - Contract: `docs/V2-006_IMPLEMENTATION_CONTRACT.md` v1.0.1
-  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianoveloacc (GitLab) - 899/899 tests, 6/6 gates
+  - Remote Acceptance: Pipeline 2925763616 @ TomAy47287015/aianovelcc (historical GitLab repository) - 899/899 tests, 6/6 gates
 
 - **V2-061**: Character Knowledge & Intent Core
   - Status: CLOSED
@@ -80,7 +85,7 @@ If conflicts exist, machine SSOT always wins.
 The historical machine V2-006 definition ("Character relationship knowledge core") was reconciled with the implemented and closed V2-006 ("Entity Relationship Tracking") through formal scope split and rehoming:
 
 - **V2-006** retained as "Entity Relationship Tracking" (CLOSED)
-- **V2-061** created as "Character Knowledge & Intent Core" (OPEN) to preserve unimplemented character knowledge requirements
+- **V2-061** created as "Character Knowledge & Intent Core" (OPEN at reconciliation time; now CLOSED — see machine SSOT)
 - **Plan v1.3.0 → v1.3.1**: Task count 60 → 61
 
 **Governance Decision**: `plan/changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md`
@@ -95,16 +100,16 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 
 ### Canonical Repository and CI
 
-**Canonical Repository**: `TomAy47287015/ainoveloacc` (GitLab)
+**Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
 **Current CI**: GitLab CI/CD (`.gitlab-ci.yml`)
-**Latest Pipeline**: #19 (2946187234) - SUCCESS, 6/6 hard gates PASS at 01aa056
+**Last Verified Baseline Pipeline**: #29 (2948969594) - SUCCESS, 6/6 hard gates PASS at 04068ff
 
-### Historical Verification (Non-Canonical)
+### Historical V2-006 Remote Verification (Non-Canonical)
 
-**Historical V2-006 Remote Verification**: `TomAy47287015/aianovelcc` (GitLab)
+**Historical V2-006 Remote Verification Repository**: `TomAy47287015/aianovelcc` (GitLab)
 - Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
-- Note: This was historical verification only; current canonical state is dev_cc @ 01aa056
+- Note: This was historical verification only; current canonical state is queried from live dev_cc
 
 ### Local Validation
 
