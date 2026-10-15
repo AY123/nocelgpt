@@ -1,21 +1,23 @@
 {
   "record_type": "execution_context_selection",
-  "source_revision": "542a5f264afbb99f8d664bdfd8fdfa50c1243cf4",
-  "active_context": "LOCAL_TRUSTED_SOURCE_INTEGRATION",
-  "scope_revision": "758a46b149c7f0ea6e35a6764ce1b4c0040df78e",
-  "scope_ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/scope.json",
-  "review_revision": "696f4a02f9f44245bdba622655e8f94e6fcacc81",
-  "review_ref": "plan/validation/execution/V2-004/trusted-integration-local-20261008/change-dispositions.json",
-  "implementation_status": "LOCAL_SOURCE_INTEGRATED_PENDING_FINAL_REVISION_GATES",
+  "source_revision": "5ed63dd47f1a7068bad9c5227bd654ee7e98fb9d",
+  "active_context": "LOCAL_APPROVED_HISTORY_DELTA",
+  "scope_revision": "ec86dd09629268ca35c53bcf48ab8477468a9ca2",
+  "scope_ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/scope.json",
+  "review_revision": "4c1173213fc958e028b73db12b5dc7312f1a142c",
+  "review_ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/change-dispositions.json",
+  "implementation_status": "LOCAL_APPROVED_52_FINDING_CANDIDATE",
   "security_findings": {
-    "total": 45,
-    "open": 45,
+    "detected": 52,
+    "open": 52,
     "closed": 0,
-    "owner_risk_acceptance": 7,
-    "precise_exceptions_approved": 38,
-    "ledger_sha256": "38b23aab2d41fbe0ecd37ad25c2fe5e85c1f42d41aa453f9a2397af337a36ce7",
-    "current_scan_status": "NOT_RUN_NEW_INTEGRATED_REVISION",
-    "sf037_group": "UNGROUPED"
+    "precise_exception_identities_approved": 43,
+    "historical_risk_rule_hits_accepted": 9,
+    "expires_at": "2027-01-06T06:07:49Z",
+    "prior45_unchanged": true,
+    "SF-037_group": "UNRESOLVED",
+    "latest_local_pre_pin_scan": "PASS_52_CONSUMED_0_UNMATCHED",
+    "current_revision_remote_security": "NOT_RUN"
   },
   "historical_trusted_execution_revision": "ba22d2ce09c17ac0a6790592e24fae08b0391a9e",
   "historical_trusted_execution_pipeline": 2912870306,
@@ -35,5 +37,5 @@
   "pre_final_validation_revision": "24cefe6058fe75dfca106bcf3af160d4613ea7e3",
   "pre_final_focused_tests": 395,
   "pre_final_real_authority_controls": 13,
-  "final_candidate_validation": "NOT_RUN_YET"
+  "final_candidate_validation": "PENDING_EXACT_REVISION_REPLAY"
 }

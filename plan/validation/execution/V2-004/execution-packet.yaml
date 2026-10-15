@@ -226,8 +226,8 @@ review_notes:
   No Owner key acquisition, new approval, alias P2 or remote operation. Prospective
   unreviewed controls remain blocked until exact technical dispositions are pinned.'
 handoff:
-  current_step: Owner approved exact52-item ledger rebinding and seven-item delta;
-    local candidate validation pending.
+  current_step: Approved52-item ledger and immutable authorities integrated locally;
+    exact-revision formal checks next. No remote action or finding closure.
   completed_steps:
   - CurrentC clean IMPLEMENT entry passed
   - OriginalC/E packets/context preserved
@@ -244,5 +244,5 @@ handoff:
 change_review:
   scope_revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
   scope_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/scope.json
-  review_revision: null
-  review_ref: null
+  review_revision: 4c1173213fc958e028b73db12b5dc7312f1a142c
+  review_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/change-dispositions.json
