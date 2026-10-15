@@ -1,26 +1,31 @@
 record_type: plan_execution_evidence
 schema_version: '1.0'
-evidence_id: ADR-003-20261015-architecture-decision-finalized
+evidence_id: ADR-003-20261015-architecture-decision-final
 evidence_type: ADR_DECISION
 subject_id: ADR-003
-revision: ef2f1459ea8d7fe6ca3a6b67553e54cb54bb4d0e
+revision: e9c64ca56b67a90c1bf0e87c75e52fc14bb5a0b1
 status: PASS
-producer: Architecture decision under ADR-003 requirement for V2-007 (finalized semantics)
-executed_at: '2026-10-15T04:00:00.000000+00:00'
+producer: Architecture decision under ADR-003 requirement for V2-007 (final internally-consistent
+  semantics)
+executed_at: '2026-10-15T05:00:00.000000+00:00'
 environment_fingerprint: Architecture decision - no runtime environment required
 artifacts:
 - ref: decisions/ADR-003_EVENT_PROMISE_TEMPORAL_SEMANTICS.md
-  sha256: 839f3f45f1e5d04038425ec4484c02395f95b485d21a61ba980542a63ff8f96f
+  sha256: 86464a64e3241419d1a97cafed24825619e5a87268968130fb637e438bb7eb70
 input_evidence_refs: []
 decision: ACCEPTED
 rationale: 'ADR-003 establishes Event occurrence and Promise temporal semantics for
-  V2-007 with critical corrections: (M1) Promise.status as pure derivation function
-  without external store query, (M2) FULFILLED/FAILED/ABANDONED terminal exclusivity,
-  (M3) IntervalTime OVERLAP/UNKNOWN semantics, (M4) planning order as presentation
-  hint not canonical fact, (M5) schema artifacts deferred, (M6) verification examples
-  within V2-007 pure-domain boundary, (M7) decision_record authority unified. Defines
-  Event/Promise/PromiseFulfillmentLink/Timeline domain model, hard invariants vs soft
-  policies separation, Canon ownership semantics (implementation in V2-009), idempotency
-  requirements, non-linear narrative support. Rejects over-engineered alternatives.
-  Preserves V2-005/V2-006/V2-061 authority boundaries. Ratifies finalized architecture
-  decision; V2-007 implementation verification is separate.'
+  V2-007. Final corrections eliminate residual contradictions: terminal state mutual
+  exclusivity (no FULFILLED↔FAILED/ABANDONED transitions), PromiseFulfillmentLink
+  immutability enforcement, FAILED+PRIMARY test clarified as invalid-state defensive
+  behavior, V2-007 uniqueness semantics vs V2-009 retry mechanism distinguished, Timeline.events
+  partial-order wording (list position ≠ temporal truth), implementation guidance
+  consolidated, test_v2_007.py non-replaceability explicit. Core semantics: (M1)
+  Promise.status pure derivation, (M2) terminal exclusivity, (M3) IntervalTime OVERLAP/UNKNOWN,
+  (M4) planning order as presentation hint, (M5) schema deferred, (M6) verification
+  within V2-007 boundary, (M7) decision_record unified. Defines Event/Promise/PromiseFulfillmentLink/Timeline
+  domain model, hard invariants vs soft policies, Canon ownership semantics (V2-009
+  implementation), idempotency requirements, non-linear narrative support. Rejects
+  over-engineered alternatives. Preserves V2-005/V2-006/V2-061 authority boundaries.
+  Ratifies final internally-consistent architecture decision; V2-007 implementation
+  verification is separate.'
