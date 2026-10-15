@@ -318,9 +318,7 @@ def execution_checks(data, plan):
         )
 
         # Build mapping from source_ref to frozen input for claim resolution
-        input_by_source = {
-            inp["source_ref"]: inp for inp in packet["inputs"]
-        }
+        input_by_source = {inp["source_ref"]: inp for inp in packet["inputs"]}
 
         for claim in packet["claims"]:
             for item in claim["sources"]:
@@ -330,7 +328,7 @@ def execution_checks(data, plan):
                     frozen_input = input_by_source[item["ref"]]
                     frozen_item = {
                         "ref": frozen_input["ref"],
-                        "sha256": frozen_input["sha256"]
+                        "sha256": frozen_input["sha256"],
                     }
                     check_artifact(frozen_item, tid)
                 else:
