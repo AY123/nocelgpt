@@ -183,19 +183,19 @@ class Promise:
         authority: 权威来源标识
         provenance: 结构化出处元数据
     
-    DERIVED field (computed, not persisted):
-        status: 承诺当前状态，从 terminal_disposition 和 PromiseFulfillmentLink 推导
-    
     Invariants:
         - promise_id 必须 UUID v4 format
         - terminal_disposition = FAILED/ABANDONED 时不可回退到 None
-        - status = FULFILLED 当且仅当 terminal_disposition = None 且存在至少一个 PRIMARY/COMPLETE Link
+        - terminal_disposition = FAILED/ABANDONED 与 PRIMARY/COMPLETE fulfillment Link 互斥
+        - 已存在 PRIMARY/COMPLETE Link 时不允许设置 terminal_disposition = FAILED/ABANDONED
+        - terminal_disposition = FAILED/ABANDONED 时不允许新增 PRIMARY/COMPLETE Link
         - target_entities 引用的 EntityId 必须存在于同一 project
     
     Status Authority:
         - terminal_disposition (BASE): 明确的不可逆终态由 Canon 持久化
-        - status (DERIVED): 从 terminal_disposition + PromiseFulfillmentLink 确定性推导
+        - status (DERIVED): 通过显式纯函数从 terminal_disposition + PromiseFulfillmentLink 推导
         - 避免双重真相：active 状态 (OPEN/FULFILLED) 由 Link 集合推导，不单独持久化
+        - Promise dataclass 本身不包含 status 字段或 @property，避免污染 pure domain object
     """
     promise_id: PromiseId  # NewType("PromiseId", str)
     project_id: ProjectId
@@ -208,30 +208,46 @@ class Promise:
     created_at: datetime
     authority: str
     provenance: dict[str, str]
+
+
+def derive_promise_status(
+    promise: Promise,
+    fulfillment_links: Sequence[PromiseFulfillmentLink],
+) -> PromiseStatus:
+    """
+    纯函数推导 Promise 当前状态。
     
-    @property
-    def status(self) -> PromiseStatus:
-        """
-        从 BASE 字段确定性推导当前状态。
-        
-        推导规则：
-        1. 如果 terminal_disposition = FAILED → PromiseStatus.FAILED
-        2. 如果 terminal_disposition = ABANDONED → PromiseStatus.ABANDONED
-        3. 如果 terminal_disposition = None：
-           - 存在 PRIMARY/COMPLETE Link → PromiseStatus.FULFILLED
-           - 否则 → PromiseStatus.OPEN
-        """
-        if self.terminal_disposition == "FAILED":
-            return PromiseStatus.FAILED
-        if self.terminal_disposition == "ABANDONED":
-            return PromiseStatus.ABANDONED
-        
-        # Active 状态：从 Link 推导
-        links = get_fulfillment_links(self.promise_id)
-        if any(link.contribution_role in [ContributionRole.PRIMARY, ContributionRole.COMPLETE] 
-               for link in links):
-            return PromiseStatus.FULFILLED
-        return PromiseStatus.OPEN
+    V2-007 pure-domain 要求：
+    - 不查询外部 Link store / repository / database
+    - 调用方显式传入相关 Links
+    - 确定性推导，无副作用
+    
+    推导规则：
+    1. 如果 terminal_disposition = FAILED → PromiseStatus.FAILED
+    2. 如果 terminal_disposition = ABANDONED → PromiseStatus.ABANDONED
+    3. 如果 terminal_disposition = None：
+       - 存在至少一个 PRIMARY/COMPLETE Link → PromiseStatus.FULFILLED
+       - 否则 → PromiseStatus.OPEN
+    
+    参数：
+        promise: Promise domain object
+        fulfillment_links: 与该 Promise 相关的所有 PromiseFulfillmentLink
+    
+    返回：
+        PromiseStatus (OPEN / FULFILLED / FAILED / ABANDONED)
+    """
+    if promise.terminal_disposition == "FAILED":
+        return PromiseStatus.FAILED
+    if promise.terminal_disposition == "ABANDONED":
+        return PromiseStatus.ABANDONED
+    
+    # Active 状态：从 Link 集合推导
+    has_completion = any(
+        link.contribution_role in [ContributionRole.PRIMARY, ContributionRole.COMPLETE]
+        for link in fulfillment_links
+        if link.promise_id == promise.promise_id
+    )
+    return PromiseStatus.FULFILLED if has_completion else PromiseStatus.OPEN
 ```
 
 #### Promise Lifecycle
@@ -257,9 +273,39 @@ class PromiseStatus(Enum):
 | 状态 | 语义层次 | 判断依据 | 示例 | 是否可逆 |
 |------|---------|---------|------|---------|
 | **OPEN** | Active | 无 terminal_disposition，无 PRIMARY/COMPLETE Link | 复仇承诺刚建立 | 可转 FULFILLED/FAILED/ABANDONED |
-| **FULFILLED** | Active | 无 terminal_disposition，存在 PRIMARY/COMPLETE Link | 复仇成功，Link 关联复仇事件 | 可转 ABANDONED（但不建议） |
+| **FULFILLED** | Active | 无 terminal_disposition，存在 PRIMARY/COMPLETE Link | 复仇成功，Link 关联复仇事件 | **不可转** FAILED/ABANDONED（互斥终局） |
 | **FAILED** | Terminal | terminal_disposition = FAILED，有 world evidence | 角色死亡 → 复仇承诺无法兑现 | 不可逆 |
 | **ABANDONED** | Terminal | terminal_disposition = ABANDONED，planning 决策 | 支线被砍，承诺不再追踪 | 不可逆 |
+
+**三种终局互斥原则**：
+
+```
+OPEN (无终态标记，无完整兑现证据)
+ ├─→ FULFILLED (存在 PRIMARY/COMPLETE 兑现证据)
+ ├─→ FAILED (世界内确定无法兑现)
+ └─→ ABANDONED (叙事层放弃追踪)
+```
+
+**硬约束**：
+1. **已 FULFILLED 不可进入 FAILED/ABANDONED**
+   - 原因：已有 PRIMARY/COMPLETE Link 证明兑现已发生
+   - 不允许用 terminal_disposition 遮掉已存在的 reader-facing 兑现事实
+   - 实施：有 PRIMARY/COMPLETE Link 时，禁止设置 terminal_disposition = FAILED/ABANDONED
+
+2. **已 FAILED/ABANDONED 不可进入 FULFILLED**
+   - 原因：terminal_disposition 是不可逆终态
+   - 不允许在 FAILED/ABANDONED 后新增 PRIMARY/COMPLETE Link
+   - 实施：terminal_disposition = FAILED/ABANDONED 时，拒绝新增 PRIMARY/COMPLETE Link
+
+3. **SUPPORTING Link 不受互斥约束**
+   - SUPPORTING Link 可作为历史部分兑现证据存在
+   - 即使 Promise 进入 FAILED/ABANDONED，已有的 SUPPORTING Link 仍保留
+   - 但不能因 SUPPORTING Link 将状态判定为 FULFILLED
+
+4. **FULFILLED 与 ABANDONED 不兼容**（订正）
+   - 原 ADR 允许 "FULFILLED → ABANDONED（但不建议）"
+   - **现修正为：已 FULFILLED 则互斥 ABANDONED**
+   - Reader-facing 承诺一旦兑现，不应事后声明"不再追踪"
 
 **FAILED vs ABANDONED 区分**：
 
@@ -437,6 +483,7 @@ class Timeline:
    - `Timeline.events` 按小说世界时间（story_time）排序
    - 支持 **partial order**：当两个 Event 的 story_time 无法确定先后关系时，保持 planning 层指定的排列
    - 不要求 total order（全序）
+   - **重要**：planning 指定的排列只是 presentation hint，不代表 canonical temporal fact
 
 2. **Narrative Order**：
    - `Timeline.narrative_sequence` 按叙述顺序（occurrence_chapter）排序
@@ -448,16 +495,46 @@ class Timeline:
    - Story order: [X, Y]
    - Narrative order: [Y, X]
 
-4. **Ordering 规则**：
-   - **PreciseTime**: 按 timestamp 比较
-   - **IntervalTime**: 按 earliest 比较，或 planning 层决定
-   - **RelativeTime**: 按 anchor 递归解析，或 planning 层决定
-   - **无法比较时**：保持 planning 层指定顺序，不报错，不要求 total order
+4. **Ordering 规则（修正）**：
+   
+   **PreciseTime 比较**：
+   - 按 timestamp 直接比较
+   - 可建立确定的 BEFORE / AFTER / EQUAL 关系
+   
+   **IntervalTime 比较**（订正错误规则）：
+   - **禁止按 earliest 简单排序**
+   - 正确规则：
+     ```
+     A BEFORE B  iff  A.latest < B.earliest
+     A AFTER B   iff  A.earliest > B.latest
+     Otherwise        OVERLAP / UNKNOWN
+     ```
+   - 示例：
+     ```
+     A = [Jan 1, Dec 31]
+     B = [Jun 1, Jun 2]
+     
+     A.earliest < B.earliest  但不能推断 A BEFORE B
+     实际：A 与 B OVERLAP（B 完全包含在 A 内）
+     ```
+   - 无法确定顺序时，不强制排序，保持 partial order
+   
+   **RelativeTime 比较**：
+   - 按 anchor 递归解析（如 anchor 本身可比较）
+   - 如 anchor 也是 relative 或 interval，可能仍无法确定
+   - 无完整 constraint solver 时，允许 UNKNOWN 关系
+   
+   **无法比较时的处理**：
+   - 保持 planning 层指定的排列作为 **presentation order / tie-break hint**
+   - **该顺序不升级为 canonical story-time fact**
+   - 不得因 list position 推断 "Event A 在 Event B 之前发生"
+   - Timeline query 应支持返回 "partial order" 或 "unknown temporal relation"
 
 5. **不要求完整约束求解**：
    - V2-007 不实现 temporal constraint solver
-   - 支持人工/planning 层指定顺序
+   - 支持人工/planning 层指定 presentation order
    - 冲突检测属于 quality 层，不阻塞提交
+   - Partial order 是合法的 Timeline 状态
 
 ---
 
@@ -679,13 +756,21 @@ Promise Lifecycle: OPEN | REINFORCED | DELAYED | PARTIAL | PAID | BROKEN |
 
 ### Schema 影响
 
-**新增 Schema 文件**：
+**Schema 设计边界**（修正）：
+
+以下 schema 文件 **不属于 V2-007 当前强制交付物**，除非正式更新 `plan/machine/implementation-backlog.yaml` 的 `artifacts` 列表：
+
 - `specs/schemas/event.schema.json`
 - `specs/schemas/promise.schema.json`
 - `specs/schemas/promise-fulfillment-link.schema.json`
 - `specs/schemas/timeline.schema.json`
 
-**Schema 设计原则**：
+**当前决策**：
+- Schema artifacts = **DEFER**（延后到 schema contract formalization 任务）
+- V2-007 定义 domain semantics，不强制要求 JSON Schema 输出
+- 如需 schema validation，应作为独立任务或 V2-009 persistence layer 的一部分
+
+**如实施 schema**，设计原则：
 - 仅包含 BASE 字段（遵循 ADR-002 原则）
 - `additionalProperties: false`
 - UUID v4 format validation for all IDs
@@ -695,6 +780,17 @@ Promise Lifecycle: OPEN | REINFORCED | DELAYED | PARTIAL | PAID | BROKEN |
 **V2-007 authoritative artifacts**（根据 `plan/machine/implementation-backlog.yaml`）：
 - `src/anovel/domain/events.py`（复数形式）
 - `src/anovel/domain/promises.py`（复数形式）
+- `tests/contract/test_v2_007.py`
+
+**实现约束**：
+- `test_v2_007.py` **必须存在**作为 authoritative acceptance contract
+- 可增加辅助测试文件（如 `test_v2_007_event.py`, `test_v2_007_promise.py` 等），但不得替代 `test_v2_007.py`
+- 如需拆分测试，`test_v2_007.py` 应至少包含核心 acceptance scenarios 或作为测试套件入口
+
+**实现建议**（可在实现时调整）：
+- `events.py` 可包含 Event, StoryTime, Timeline 相关定义
+- `promises.py` 可包含 Promise, PromiseFulfillmentLink 相关定义
+- 如需拆分模块（如 `event.py`, `timeline.py`, `promise.py`, `fulfillment.py`），须保持 `events.py` 和 `promises.py` 作为公开入口模块，或先走 governance 变更流程更新 `implementation-backlog.yaml`
 - `tests/contract/test_v2_007.py`
 
 **实现建议**（可在实现时调整）：
@@ -761,9 +857,14 @@ ADR-003 是独立决策，不替代 ADR-001/ADR-002。
   - V2-007
   decision_due_task: V2-007
   timing: before_interface_implementation
-  decision_record: plan/decisions/ADR-003_EVENT_PROMISE_TEMPORAL_SEMANTICS.md
+  decision_record: validation/execution/V2-007/adr-003-decision.yaml
   verification_refs: []
 ```
+
+**说明**：
+- `decision_record` 指向 decision evidence file（`validation/execution/V2-007/adr-003-decision.yaml`）
+- Decision evidence 再通过 `artifacts` 字段引用 ADR 正文（`decisions/ADR-003_EVENT_PROMISE_TEMPORAL_SEMANTICS.md`）
+- 这是统一的 provenance 结构
 
 ### V2-007 Implementation Constraints
 
@@ -829,7 +930,7 @@ V2-007 实现必须：
 
 ## 验证要求
 
-### 单元测试
+### 单元测试（V2-007 pure-domain 范围）
 
 ```python
 def test_event_immutability():
@@ -838,39 +939,62 @@ def test_event_immutability():
     with pytest.raises(FrozenInstanceError):
         event.story_time = ...
 
-def test_promise_fulfillment_requires_link():
-    """Promise.status=FULFILLED 必须从 Link 推导"""
+def test_promise_status_derivation():
+    """Promise.status 从 terminal_disposition + Link 纯函数推导"""
     promise = Promise(..., terminal_disposition=None)
-    links = get_fulfillment_links(promise.promise_id)
     
-    # 无 Link 时，status = OPEN
-    if len(links) == 0:
-        assert promise.status == PromiseStatus.OPEN
+    # 无 Link 时 → OPEN
+    links_empty = []
+    assert derive_promise_status(promise, links_empty) == PromiseStatus.OPEN
     
-    # 有 PRIMARY/COMPLETE Link 时，status = FULFILLED
-    if any(link.contribution_role in [ContributionRole.PRIMARY, ContributionRole.COMPLETE] 
-           for link in links):
-        assert promise.status == PromiseStatus.FULFILLED
+    # 有 SUPPORTING Link → 仍为 OPEN
+    links_supporting = [
+        PromiseFulfillmentLink(promise_id=promise.promise_id, contribution_role=ContributionRole.SUPPORTING, ...)
+    ]
+    assert derive_promise_status(promise, links_supporting) == PromiseStatus.OPEN
+    
+    # 有 PRIMARY Link → FULFILLED
+    links_primary = [
+        PromiseFulfillmentLink(promise_id=promise.promise_id, contribution_role=ContributionRole.PRIMARY, ...)
+    ]
+    assert derive_promise_status(promise, links_primary) == PromiseStatus.FULFILLED
 
-def test_promise_terminal_disposition():
-    """Terminal disposition 不可逆，优先于 Link"""
+def test_promise_terminal_disposition_priority():
+    """Terminal disposition 优先于 fulfillment Links"""
     promise_failed = Promise(..., terminal_disposition="FAILED")
-    # 即使有 Link，status 也是 FAILED
-    assert promise_failed.status == PromiseStatus.FAILED
+    links_with_primary = [
+        PromiseFulfillmentLink(promise_id=promise_failed.promise_id, contribution_role=ContributionRole.PRIMARY, ...)
+    ]
+    
+    # 即使有 PRIMARY Link，terminal_disposition 优先
+    assert derive_promise_status(promise_failed, links_with_primary) == PromiseStatus.FAILED
     
     promise_abandoned = Promise(..., terminal_disposition="ABANDONED")
-    assert promise_abandoned.status == PromiseStatus.ABANDONED
+    assert derive_promise_status(promise_abandoned, links_with_primary) == PromiseStatus.ABANDONED
 
-def test_fulfillment_link_idempotency():
-    """相同 (promise_id, event_id) 不可重复创建"""
-    link1 = create_link(promise_id="p1", event_id="e1")
-    link2 = create_link(promise_id="p1", event_id="e1")  # 重复
-    assert link1.link_id == link2.link_id  # 返回相同 Link
+def test_fulfillment_link_uniqueness_invariant():
+    """相同 (promise_id, event_id) 对不可重复（idempotency 语义）"""
+    link1 = PromiseFulfillmentLink(
+        link_id="link_123",
+        promise_id="p1",
+        event_id="e1",
+        contribution_role=ContributionRole.PRIMARY,
+        ...
+    )
+    
+    # V2-007 验证：duplicate pair 违反 uniqueness invariant
+    # 真正的 idempotency retry 机制由 V2-009 persistence 实现
+    with pytest.raises(ValueError, match="duplicate.*promise_id.*event_id"):
+        validate_link_uniqueness([link1, link1])
 
 def test_project_isolation():
     """Event/Promise 不可跨 project 引用"""
-    event = Event(project_id="proj1", participants=[EntityId("entity_from_proj2")])
-    with pytest.raises(ValueError):
+    event = Event(
+        project_id="proj1",
+        participants=[EntityId("entity_from_proj2")],
+        ...
+    )
+    with pytest.raises(ValueError, match="project isolation"):
         validate_project_isolation(event)
 
 def test_story_time_vs_occurrence_chapter():
@@ -878,38 +1002,64 @@ def test_story_time_vs_occurrence_chapter():
     flashback = Event(
         event_id="e1",
         story_time=PreciseTime(timestamp="2010-01-01", precision="day"),
-        occurrence_chapter="ch80"
+        occurrence_chapter="ch80",
+        ...
     )
     mainline = Event(
         event_id="e2",
         story_time=PreciseTime(timestamp="2020-01-01", precision="day"),
-        occurrence_chapter="ch05"
+        occurrence_chapter="ch05",
+        ...
     )
     
-    # Story order
-    story_order = sort_by_story_time([flashback, mainline])
+    # Story order (按 story_time)
+    story_order = sort_events_by_story_time([flashback, mainline])
     assert story_order == [flashback, mainline]
     
-    # Narrative order
-    narrative_order = sort_by_occurrence_chapter([flashback, mainline])
+    # Narrative order (按 occurrence_chapter)
+    narrative_order = sort_events_by_occurrence_chapter([flashback, mainline])
     assert narrative_order == [mainline, flashback]
+
+def test_terminal_exclusivity_invariant():
+    """FULFILLED 与 FAILED/ABANDONED 互斥"""
+    promise = Promise(promise_id="p1", terminal_disposition=None, ...)
+    primary_link = PromiseFulfillmentLink(
+        promise_id="p1",
+        event_id="e1",
+        contribution_role=ContributionRole.PRIMARY,
+        ...
+    )
+    
+    # 已有 PRIMARY link → 不允许设置 terminal_disposition
+    with pytest.raises(ValueError, match="cannot set terminal_disposition.*already fulfilled"):
+        validate_terminal_exclusivity(promise, [primary_link], new_disposition="FAILED")
+    
+    # 反之：已 FAILED → 不允许新增 PRIMARY link
+    promise_failed = Promise(promise_id="p2", terminal_disposition="FAILED", ...)
+    new_primary_link = PromiseFulfillmentLink(
+        promise_id="p2",
+        contribution_role=ContributionRole.PRIMARY,
+        ...
+    )
+    with pytest.raises(ValueError, match="cannot add PRIMARY.*already terminal"):
+        validate_terminal_exclusivity(promise_failed, [], new_link=new_primary_link)
 ```
 
-### Contract 测试
+### Contract 测试（V2-007 domain semantics）
 
 ```python
 def test_v2_061_occurred_event_ref_integration():
-    """PlannedAction.occurred_event_ref 指向 V2-007 Event"""
+    """PlannedAction.occurred_event_ref 指向 V2-007 Event（引用语义）"""
+    # V2-007 只验证 reference semantics，不验证 persistence
     event = Event(event_id="evt_123", ...)
-    commit_to_canon(event)
-    
     planned_action = PlannedAction(
         ...,
         occurred_event_ref="evt_123"
     )
     
-    # 验证引用存在
-    assert get_event(planned_action.occurred_event_ref) == event
+    # 验证引用格式
+    assert is_valid_event_id(planned_action.occurred_event_ref)
+    assert planned_action.occurred_event_ref == event.event_id
     
 def test_gradual_promise_fulfillment():
     """渐进式兑现：多 SUPPORTING + 1 PRIMARY"""
@@ -920,17 +1070,19 @@ def test_gradual_promise_fulfillment():
     link1 = PromiseFulfillmentLink(
         promise_id="p1",
         event_id="e1",
-        contribution_role=ContributionRole.SUPPORTING
+        contribution_role=ContributionRole.SUPPORTING,
+        ...
     )
-    # Promise 仍为 OPEN（从 terminal_disposition + Link 推导）
-    assert promise.status == PromiseStatus.OPEN
+    # Promise 仍为 OPEN
+    assert derive_promise_status(promise, [link1]) == PromiseStatus.OPEN
     
     # 第二个支持事件
     event2 = Event(event_id="e2", ...)
     link2 = PromiseFulfillmentLink(
         promise_id="p1",
         event_id="e2",
-        contribution_role=ContributionRole.SUPPORTING
+        contribution_role=ContributionRole.SUPPORTING,
+        ...
     )
     
     # 最终主要兑现事件
@@ -938,12 +1090,19 @@ def test_gradual_promise_fulfillment():
     link3 = PromiseFulfillmentLink(
         promise_id="p1",
         event_id="e3",
-        contribution_role=ContributionRole.PRIMARY
+        contribution_role=ContributionRole.PRIMARY,
+        ...
     )
     
-    # 现在 Promise.status 应为 FULFILLED（从 Link 推导）
-    assert promise.status == PromiseStatus.FULFILLED
+    # 现在 Promise 应为 FULFILLED（从所有 Links 推导）
+    all_links = [link1, link2, link3]
+    assert derive_promise_status(promise, all_links) == PromiseStatus.FULFILLED
 ```
+
+**说明**：
+- V2-007 验证 pure-domain semantics（ID/reference rules, invariants, derivation logic）
+- Persistence operations (`commit_to_canon`, `create_link` with retry) 属于 V2-009 scope
+- Idempotency **语义**由 V2-007 定义，idempotency **机制**由 V2-009 实现
 
 ### AT-V2-007 验收场景
 
