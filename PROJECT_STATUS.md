@@ -18,7 +18,7 @@ If conflicts exist, machine SSOT always wins.
 
 **Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Canonical HEAD**: `01aa056ed994653240338958716f542a8786600e` (MR !1 integration)
+**Canonical HEAD**: `04068fff57eedf56aaef063bc6286bad02de844e` (Governance fix integration)
 **Latest Product Closure**: V2-061 (718c3cb) verified and integrated to default branch
 
 **Plan Version**: 1.3.1 (治理修订：V2-006 任务身份调和)
@@ -95,16 +95,15 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 
 ### Canonical Repository and CI
 
-**Canonical Repository**: `TomAy47287015/ainoveloacc` (GitLab)
+**Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Current CI**: GitLab CI/CD (`.gitlab-ci.yml`)
-**Latest Pipeline**: #19 (2946187234) - SUCCESS, 6/6 hard gates PASS at 01aa056
+**Latest Pipeline**: #29 (2948969594) - SUCCESS, 6/6 hard gates PASS at 04068ff
 
-### Historical Verification (Non-Canonical)
+### Historical V2-006 Remote Verification (Non-Canonical)
 
-**Historical V2-006 Remote Verification**: `TomAy47287015/aianovelcc` (GitLab)
+**Historical V2-006 Remote Verification Repository**: `TomAy47287015/aianovelcc` (GitLab)
 - Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
-- Note: This was historical verification only; current canonical state is dev_cc @ 01aa056
+- Note: This was historical verification only; current canonical state is dev_cc @ 04068ff
 
 ### Local Validation
 
