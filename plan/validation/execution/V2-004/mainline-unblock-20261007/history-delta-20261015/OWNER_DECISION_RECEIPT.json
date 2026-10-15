@@ -1,0 +1,60 @@
+{
+  "record_type": "actual_owner_delta_decision_receipt",
+  "source": "Latest direct human message in this conversation; exact verbatim retained",
+  "owner": "YANG YANG",
+  "owner_role": "PROJECT_OWNER",
+  "recorded_at": "2026-10-15T14:05:08+00:00",
+  "approved_at_basis": "Time this actual received decision was recorded, not an asserted original chat timestamp or service event time",
+  "human_verbatim_ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/OWNER_AUTHORIZATION.txt",
+  "human_verbatim_sha256": "2e05b008180214565895ada67993b1eb8aca424c589d7f26f11f2f8116927551",
+  "approved_ledger_sha256": "583750aaf7dde8d40677446609382980af214df6bb96199a2c73de75507eb9cb",
+  "prior_ledger_sha256": "38b23aab2d41fbe0ecd37ad25c2fe5e85c1f42d41aa453f9a2397af337a36ce7",
+  "prior45_unchanged": true,
+  "new_public_identifier_count": 5,
+  "new_risk_rule_hits": 2,
+  "new_risk_distinct_source_lines": 1,
+  "expires_at": "2027-01-06T06:07:49Z",
+  "expiry_basis": "Unchanged exact prior/requested expiry; human reaffirmed calendar date2027-01-06; no extension to end-of-day or a fresh90days",
+  "authority_records": [
+    {
+      "authority_id": "V2-004-EXCEPTION-38",
+      "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-EXCEPTION-38.json",
+      "sha256": "0d60cc7567401c56a7418aad8385dc893a1625d47aa18371348dc337b0815407",
+      "count": 38,
+      "kind": "PRECISE_EXCEPTION"
+    },
+    {
+      "authority_id": "V2-004-OWNER-RISK-7",
+      "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-OWNER-RISK-7.json",
+      "sha256": "eef7b049e53c074cd7bbbdad51f934b76f765bfd21502a1b78f50495beed288f",
+      "count": 7,
+      "kind": "OWNER_RISK_ACCEPTANCE"
+    },
+    {
+      "authority_id": "V2-004-DELTA-EXCEPTION-5",
+      "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-DELTA-EXCEPTION-5.json",
+      "sha256": "ee0e26f5dff41caccbac18ee4dd74817aedf11b97843a23bf8b79e63df07e196",
+      "count": 5,
+      "kind": "PRECISE_EXCEPTION"
+    },
+    {
+      "authority_id": "V2-004-DELTA-RISK-2",
+      "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-DELTA-RISK-2.json",
+      "sha256": "47920f1941333595cdf9831eae0fb66b037aa3e48f783c9ac163960a1da7aa25",
+      "count": 2,
+      "kind": "OWNER_RISK_ACCEPTANCE"
+    }
+  ],
+  "finding_status": "OPEN",
+  "closed": 0,
+  "no_future_findings_approved": true,
+  "CI_and_push_not_authorized": true,
+  "frozen_delta_observation_note": "SCANNED_FINDING_DELTA.json is the unchanged preapproval observation bound by the requested ledger; its PENDING marker is historical, not the current approval state.",
+  "canonical_evidence": {
+    "logical_ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/SCANNED_FINDING_DELTA.json",
+    "delivery_ref": "dist/validation/v2004-history-delta-20261015/evidence/plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/SCANNED_FINDING_DELTA.json",
+    "sha256": "04eeb58e683ca52ee18c8a5364b1006dc9ed0feacfe87dd79048178785af375c",
+    "role": "Immutable preapproval observation; runtime verification instead reads approved ledger and each original source blob/line",
+    "repository_tracked": false
+  }
+}

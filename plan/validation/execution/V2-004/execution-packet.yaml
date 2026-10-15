@@ -2,7 +2,7 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-004
 plan_version: 1.3.0
-repository_revision: 542a5f264afbb99f8d664bdfd8fdfa50c1243cf4
+repository_revision: 5ed63dd47f1a7068bad9c5227bd654ee7e98fb9d
 worktree_dirty: true
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
@@ -12,15 +12,16 @@ environment:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: Local integration only; no new pipeline/runner/current remote verification
-    or final acceptance.
+  ci_context: Pipeline2950088026 at5ed63dd failed on7 unmatched historical hits. Local52-item
+    candidate only; no new remote execution or independent acceptance.
 implementer: Codex primary operator
 verifier: Same operator with parallel read-only analysis; no independent personnel
   acceptance
 owner_role: delivery-maintainer
-scope: Bounded local V2-004 integration of accepted historical enrollment with approved
-  exact consumer in NEW disposable clone. No main/C mutation, remote action, broad
-  bypass, approval amendment, finding closure or P1.
+scope: 'V2-004 authorized local52-finding delta: rebind original45 immutable identities
+  and decisions, precisely approve5 public identifiers and2 historical risk hits;
+  update exact policy anchors and source inventory. Preserve original evidence and
+  mandatory gates. No remote mutation, runner activation, push, CI, closure or P1.'
 action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
@@ -128,6 +129,7 @@ allowed_paths:
 - plan/validation/execution/V2-004/execution-context.json
 - tests/contract/test_trusted_execution_enrollment.py
 - plan/validation/execution/V2-004/trusted-integration-local-20261008/
+- plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/
 required_decisions: []
 claims:
 - id: DIRECT_LOCAL_INTEGRATION_CONTINUATION
@@ -224,25 +226,19 @@ review_notes:
   No Owner key acquisition, new approval, alias P2 or remote operation. Prospective
   unreviewed controls remain blocked until exact technical dispositions are pinned.'
 handoff:
-  current_step: Local integrated source packet and review pins prepared; new exact
-    revision formal gates and independent review remain.
+  current_step: Owner approved exact52-item ledger rebinding and seven-item delta;
+    local candidate validation pending.
   completed_steps:
   - CurrentC clean IMPLEMENT entry passed
   - OriginalC/E packets/context preserved
   - Exact policy merge technical dispositions pinned
   - K395focused/13realauthority controls passed; failures retained
   pending_items:
-  - Final exactSHA local formal entry and six mandatory gates
-  - Independent review
-  - Remaining real permission controls
-  - Explicitly authorized final same-SHA protected CI
+  - Local exact candidate full-history security regression and formal checks.
+  - Independent review and separately authorized remote delivery/final trusted CI.
   next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review:
-  scope_revision: 758a46b149c7f0ea6e35a6764ce1b4c0040df78e
-  scope_ref: plan/validation/execution/V2-004/trusted-integration-local-20261008/scope.json
-  review_revision: 696f4a02f9f44245bdba622655e8f94e6fcacc81
-  review_ref: plan/validation/execution/V2-004/trusted-integration-local-20261008/change-dispositions.json
+change_review: null

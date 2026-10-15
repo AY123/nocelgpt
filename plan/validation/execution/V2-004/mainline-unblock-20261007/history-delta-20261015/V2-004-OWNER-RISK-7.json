@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "record_type": "secret_exception_authority",
+  "authority_id": "V2-004-OWNER-RISK-7",
+  "actor": "YANG YANG",
+  "role": "PROJECT_OWNER",
+  "repository": {
+    "project_id": 86656946,
+    "project_path": "ayitnovel/ainovelos"
+  },
+  "decision": "APPROVED",
+  "approved_at": "2026-10-15T14:05:08+00:00",
+  "expires_at": "2027-01-06T06:07:49Z",
+  "reason": "Direct human Project Owner decision in this conversation: preserve the original45 finding identities and disposition kinds while rebinding them to the explicitly requested52-item ledger; approve precisely the five enumerated public identifiers and accept the residual risk of two scanner-rule hits of one historical token-shaped source line. Original expiry retained; no closure, credential-state assertion, future approval, broad suppression, remote CI or push authority is created.",
+  "approved_ledger_sha256": "583750aaf7dde8d40677446609382980af214df6bb96199a2c73de75507eb9cb",
+  "approval_kind": "OWNER_RISK_ACCEPTANCE",
+  "finding_identity_sha256": [
+    "5857eca8f9f71b9ac994cd6f9911480d1d7150e70ac4cde4bdb8b920a78a729f",
+    "4cadb31f3c8060dfda2c44acb6f29227af07a9e5c61d30719f88de6b53aba0c4",
+    "2a75452c0d2f628dc974aeb2122070d4094c2cff5074062d25db28ef54a8c77a",
+    "dd6f3399b7cae8505d4fc762c4e69a9afcfc31698172d19cbf543cfe6eeec80b",
+    "e58f36a174437a145e1f767bbd071d99e165a7bc877e7b8fd719abfcde25acc6",
+    "2240949bd459f7ecf22393f11d7c51c44abbd1ce30d02f5c740c66bc303b3e12",
+    "3455e410ca936ca2ac873523a8fa836981f6b6bd46baeea63fcbea2ff7db2730"
+  ]
+}
