@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-10-14T14:31:30.609666+00:00",
+  "generated_at_utc": "2026-10-15T03:43:03.844919+00:00",
   "scope": "planning structure, IDs, graph, ownership, evidence fields, snapshots, links, external practice traceability and generated views",
-  "status": "FAIL",
+  "status": "PASS",
   "not_certified": [
     "P0 engineering exit",
     "runtime",
@@ -11,11 +11,11 @@
     "reader/market result"
   ],
   "source_snapshot_baseline_commit": "5cffff885e9d3de8cf822535758543579bcdcf5f",
-  "validated_repository_revision": "b8ad843dd4507e0de694f0d33b64e3e6ad524e45",
+  "validated_repository_revision": "13791d40e6e3b0512805de74d8915d54222ef906",
   "validated_worktree_dirty": true,
   "validation_input_kind": "WORKTREE_SNAPSHOT",
   "input_identity_note": "manifest SHA identifies actual plan bytes; HEAD is checkout context, not proof all inputs were committed",
-  "manifest_sha256": "cc54f9b574f67955fa91538ba57e4acab57f6a3cf7bb5274b83df6bf13376118",
+  "manifest_sha256": "76a6bd7280d305bbd3eb0633a78e491e64b467b8e860d2ba2aae4e0367afaccb",
   "counts": {
     "tasks": 61,
     "phase_distribution": {
@@ -51,12 +51,9 @@
   },
   "errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
-    "EXEC_INPUT V2-061: missing/changed artifact machine/decision-register.yaml"
+    "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"
   ],
-  "fatal_errors": [
-    "EXEC_INPUT V2-061: missing/changed artifact machine/decision-register.yaml"
-  ],
+  "fatal_errors": [],
   "informational_errors": [
     "EXEC_PACKET_ABSENT V2-005: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)",
     "EXEC_PACKET_ABSENT V2-006: no genuine historical execution packet exists (absence record registered, INFORMATIONAL)"

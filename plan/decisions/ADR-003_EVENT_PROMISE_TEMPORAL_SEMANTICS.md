@@ -177,16 +177,25 @@ class Promise:
         opened_at_chapter: 承诺建立的章节引用
         target_entities: 相关实体（可选）
         target_window: 期望兑现的时间窗口（story_time，可选）
-        status: 承诺状态
+        terminal_disposition: 明确的不可逆终态标记（FAILED | ABANDONED | None）
         description: 人类可读承诺描述
         created_at: Canon 提交时间
         authority: 权威来源标识
         provenance: 结构化出处元数据
     
+    DERIVED field (computed, not persisted):
+        status: 承诺当前状态，从 terminal_disposition 和 PromiseFulfillmentLink 推导
+    
     Invariants:
         - promise_id 必须 UUID v4 format
-        - status = FULFILLED 必须有至少一个 PromiseFulfillmentLink
+        - terminal_disposition = FAILED/ABANDONED 时不可回退到 None
+        - status = FULFILLED 当且仅当 terminal_disposition = None 且存在至少一个 PRIMARY/COMPLETE Link
         - target_entities 引用的 EntityId 必须存在于同一 project
+    
+    Status Authority:
+        - terminal_disposition (BASE): 明确的不可逆终态由 Canon 持久化
+        - status (DERIVED): 从 terminal_disposition + PromiseFulfillmentLink 确定性推导
+        - 避免双重真相：active 状态 (OPEN/FULFILLED) 由 Link 集合推导，不单独持久化
     """
     promise_id: PromiseId  # NewType("PromiseId", str)
     project_id: ProjectId
@@ -194,11 +203,35 @@ class Promise:
     opened_at_chapter: str
     target_entities: list[EntityId]
     target_window: StoryTime | None
-    status: PromiseStatus
+    terminal_disposition: Literal["FAILED", "ABANDONED"] | None
     description: str
     created_at: datetime
     authority: str
     provenance: dict[str, str]
+    
+    @property
+    def status(self) -> PromiseStatus:
+        """
+        从 BASE 字段确定性推导当前状态。
+        
+        推导规则：
+        1. 如果 terminal_disposition = FAILED → PromiseStatus.FAILED
+        2. 如果 terminal_disposition = ABANDONED → PromiseStatus.ABANDONED
+        3. 如果 terminal_disposition = None：
+           - 存在 PRIMARY/COMPLETE Link → PromiseStatus.FULFILLED
+           - 否则 → PromiseStatus.OPEN
+        """
+        if self.terminal_disposition == "FAILED":
+            return PromiseStatus.FAILED
+        if self.terminal_disposition == "ABANDONED":
+            return PromiseStatus.ABANDONED
+        
+        # Active 状态：从 Link 推导
+        links = get_fulfillment_links(self.promise_id)
+        if any(link.contribution_role in [ContributionRole.PRIMARY, ContributionRole.COMPLETE] 
+               for link in links):
+            return PromiseStatus.FULFILLED
+        return PromiseStatus.OPEN
 ```
 
 #### Promise Lifecycle
@@ -206,12 +239,12 @@ class Promise:
 ```python
 class PromiseStatus(Enum):
     """
-    Promise 生命周期状态。
+    Promise 生命周期状态（DERIVED，从 terminal_disposition + Link 推导）。
     
-    OPEN: 承诺已建立，尚未兑现
-    FULFILLED: 承诺已完全兑现
-    FAILED: 承诺明确失败（如角色死亡导致复仇承诺失败）
-    ABANDONED: 承诺被放弃或不再相关
+    OPEN: 承诺已建立，尚未兑现，仍在活跃追踪中
+    FULFILLED: 承诺已完全兑现（存在 PRIMARY/COMPLETE Link）
+    FAILED: 承诺在世界内已确定无法兑现
+    ABANDONED: 承诺因叙事方向改变而不再追踪
     """
     OPEN = "OPEN"
     FULFILLED = "FULFILLED"
@@ -219,11 +252,54 @@ class PromiseStatus(Enum):
     ABANDONED = "ABANDONED"
 ```
 
+**状态语义澄清**：
+
+| 状态 | 语义层次 | 判断依据 | 示例 | 是否可逆 |
+|------|---------|---------|------|---------|
+| **OPEN** | Active | 无 terminal_disposition，无 PRIMARY/COMPLETE Link | 复仇承诺刚建立 | 可转 FULFILLED/FAILED/ABANDONED |
+| **FULFILLED** | Active | 无 terminal_disposition，存在 PRIMARY/COMPLETE Link | 复仇成功，Link 关联复仇事件 | 可转 ABANDONED（但不建议） |
+| **FAILED** | Terminal | terminal_disposition = FAILED，有 world evidence | 角色死亡 → 复仇承诺无法兑现 | 不可逆 |
+| **ABANDONED** | Terminal | terminal_disposition = ABANDONED，planning 决策 | 支线被砍，承诺不再追踪 | 不可逆 |
+
+**FAILED vs ABANDONED 区分**：
+
+**FAILED（世界内失败）**：
+- **定义**：叙事承诺在世界内已确定无法兑现
+- **必须条件**：有明确的 world evidence（Event）支撑
+- **示例**：
+  - Promise: "角色 A 将完成对 B 的复仇"
+  - Event: "角色 A 在决战中死亡"
+  - Disposition: FAILED（复仇主体消失，承诺世界内不可能兑现）
+  
+  - Promise: "角色将找到传说中的宝藏"
+  - Event: "宝藏被毁灭"
+  - Disposition: FAILED（目标物消失，承诺无法兑现）
+
+**ABANDONED（叙事层放弃）**：
+- **定义**：叙事方向改变，承诺不再追踪，但世界内并非不可能
+- **判断依据**：作者/planning 层决策，不需要 world evidence
+- **示例**：
+  - Promise: "支线角色 C 与 D 的感情发展"
+  - 叙事决策：支线篇幅压缩，不再展开
+  - Disposition: ABANDONED（非世界内失败，只是不再讲述）
+
+**与 Character Goal 的三层区分**：
+
+| 层次 | 概念 | 示例：复仇场景 | Authority |
+|------|------|--------------|-----------|
+| **World state** | Event outcome | 角色 A 死亡（Event） | V2-007 Event |
+| **Narrative disposition** | Promise terminal state | "A 将复仇" Promise → FAILED | V2-007 Promise.terminal_disposition |
+| **Planning state** | Character Goal status | A 的复仇 Goal → 失败 | V2-061 Character.goals |
+
+**关键区别**：
+- **Event FAILED**: 不存在此概念，Event 是不可变事实（"发生" 或 "未发生"）
+- **Promise FAILED**: 叙事承诺在世界内确定无法兑现
+- **Goal failed**: 角色目标未达成（角色视角的失败）
+
 **说明**：
 - **不包含** `REINFORCED`, `DELAYED`, `PARTIAL`：这些属于 soft quality evaluation，不是 hard state
-- **FULFILLED** 是确定性状态，由 PromiseFulfillmentLink 支撑
-- **FAILED** 表示承诺明确无法兑现（非简单未兑现）
-- **ABANDONED** 用于叙事方向改变、承诺不再相关的情况
+- **FULFILLED** 从 Link 集合推导，不单独持久化（避免双重真相）
+- **FAILED** 和 **ABANDONED** 是明确的 terminal disposition，需持久化
 
 #### Promise 与 Character Goal 的区分
 
@@ -234,7 +310,8 @@ class PromiseStatus(Enum):
 | 评估者 | 读者、叙事规划层 | 角色本身 |
 | 示例 | "这段感情会发展" | 角色：我要追求她 |
 | 权威 | V2-007 | V2-061 |
-| 失败语义 | 叙事承诺破裂 | 角色目标未达成 |
+| 失败语义 | 叙事承诺在世界内无法兑现（FAILED）或叙事层不再追踪（ABANDONED） | 角色目标未达成 |
+| 失败依据 | World evidence (Event) 或 planning 决策 | 角色视角的成功/失败判断 |
 
 ---
 
@@ -287,9 +364,14 @@ class ContributionRole(Enum):
 
 #### Fulfillment 判断逻辑
 
-1. **Promise.status = FULFILLED** 的充要条件：
-   - 存在至少一个 `PromiseFulfillmentLink` 其中 `contribution_role = COMPLETE`，或
-   - 存在至少一个 `contribution_role = PRIMARY` 的 Link
+1. **Promise.status 推导规则**：
+   - 如果 `terminal_disposition = FAILED` → `PromiseStatus.FAILED`
+   - 如果 `terminal_disposition = ABANDONED` → `PromiseStatus.ABANDONED`
+   - 如果 `terminal_disposition = None`：
+     - 存在至少一个 `PromiseFulfillmentLink` 其中 `contribution_role = COMPLETE`，或
+     - 存在至少一个 `contribution_role = PRIMARY` 的 Link
+     - → `PromiseStatus.FULFILLED`
+     - 否则 → `PromiseStatus.OPEN`
 
 2. **部分兑现**：
    - 多个 `contribution_role = SUPPORTING` 的 Link
@@ -298,6 +380,11 @@ class ContributionRole(Enum):
 3. **Idempotency**：
    - 相同 `(promise_id, event_id)` 对不可重复创建 Link
    - 重试时返回已存在的 Link，不创建新记录
+
+4. **Status Authority**：
+   - `terminal_disposition` (BASE): 由 Canon 持久化，不可从其他数据推导
+   - `status` (DERIVED): 从 `terminal_disposition` + `PromiseFulfillmentLink` 确定性推导
+   - 避免双重真相：OPEN/FULFILLED 状态不单独持久化
 
 #### 支持的兑现模式
 
@@ -331,7 +418,8 @@ class Timeline:
     
     Invariants:
         - events 中的 Event 必须属于同一 project
-        - events 列表按 story_time 可比较顺序排序
+        - events 列表按 story_time 的已知可比较关系排序
+        - 支持 partial order：当 story_time 无法确定顺序时，保持 planning 层指定排列
         - narrative_sequence（如存在）按 occurrence_chapter 排序
     """
     timeline_id: str  # UUID v4
@@ -347,7 +435,8 @@ class Timeline:
 
 1. **Story Order**：
    - `Timeline.events` 按小说世界时间（story_time）排序
-   - 支持时间区间、相对时间的偏序关系
+   - 支持 **partial order**：当两个 Event 的 story_time 无法确定先后关系时，保持 planning 层指定的排列
+   - 不要求 total order（全序）
 
 2. **Narrative Order**：
    - `Timeline.narrative_sequence` 按叙述顺序（occurrence_chapter）排序
@@ -359,7 +448,13 @@ class Timeline:
    - Story order: [X, Y]
    - Narrative order: [Y, X]
 
-4. **不要求完整约束求解**：
+4. **Ordering 规则**：
+   - **PreciseTime**: 按 timestamp 比较
+   - **IntervalTime**: 按 earliest 比较，或 planning 层决定
+   - **RelativeTime**: 按 anchor 递归解析，或 planning 层决定
+   - **无法比较时**：保持 planning 层指定顺序，不报错，不要求 total order
+
+5. **不要求完整约束求解**：
    - V2-007 不实现 temporal constraint solver
    - 支持人工/planning 层指定顺序
    - 冲突检测属于 quality 层，不阻塞提交
@@ -380,16 +475,18 @@ class Timeline:
    - 修正通过 Retcon Event（V2-007 不实现）
 
 3. **Fulfillment Evidence**：
-   - `Promise.status = FULFILLED` 必须有至少一个 PromiseFulfillmentLink
+   - `Promise.status = FULFILLED` 当且仅当 `terminal_disposition = None` 且存在至少一个 PRIMARY/COMPLETE Link
    - Link 指向的 Event 必须已提交到 Canon
+   - `terminal_disposition = FAILED/ABANDONED` 时，status 不依赖 Link
 
 4. **Project Isolation**：
    - Event, Promise, Link 不可跨 project 引用
    - 所有 EntityId 引用必须属于同一 project
 
 5. **Terminal State Protection**：
-   - `Promise.status = FULFILLED/FAILED/ABANDONED` 不可回退到 OPEN
-   - State transition 单向：OPEN → {FULFILLED | FAILED | ABANDONED}
+   - `Promise.terminal_disposition = FAILED/ABANDONED` 不可回退到 None
+   - Terminal disposition 单向：None → {FAILED | ABANDONED}
+   - Status transition: OPEN → FULFILLED (可逆，取决于 Link) / OPEN → FAILED/ABANDONED (不可逆)
 
 6. **Reference Integrity**：
    - `PlannedAction.occurred_event_ref` 指向的 Event 必须存在
@@ -423,39 +520,50 @@ class Timeline:
 
 ### 决策 G：Canon Ownership 与 Idempotency
 
-#### Canon Authority
+#### V2-007 定义语义，Canon Integration 属于 V2-009
+
+**重要边界说明**：
+- V2-007 定义 Event/Promise/Link/Timeline 的**领域语义**和 **hard invariants**
+- **Persistence 实现**（数据库、CanonCommitService）属于 **V2-009/V2-010**，不在 V2-007 范围
+- V2-007 实现应提供 **in-memory domain model** 和 **invariant validation**
+- 以下描述的 Canon ownership 是**未来 integration 的语义声明**，不要求 V2-007 实现
+
+#### Event Occurrence Authority（语义声明）
 
 1. **Event Occurrence**：
-   - 唯一 truth authority: Canon (V2-009/V2-010)
-   - 通过 CanonCommitService 提交
-   - Event 是 immutable fact
+   - 唯一 truth authority: Canon（未来由 V2-009/V2-010 实现）
+   - Event 是 immutable fact，一旦提交不可修改
+   - V2-007 定义 Event 语义和 immutability invariant
 
 2. **Promise State**：
-   - 唯一 truth authority: Canon
-   - Promise 状态变更通过 Canon Commit
+   - `terminal_disposition` 唯一 truth authority: Canon（未来实现）
+   - `status` 为 DERIVED，从 `terminal_disposition` + Link 推导
+   - V2-007 定义推导规则
 
 3. **Fulfillment Link**：
-   - 通过 Canon Commit 建立
-   - Link 建立后 immutable（不可修改 contribution_role）
+   - Link 是 immutable relationship（建立后不可修改 contribution_role）
+   - V2-007 定义 Link 语义和 idempotency invariant
 
-#### Idempotency 保证
+#### Idempotency 保证（语义要求）
 
 1. **Event Commit Idempotency**：
    - 使用稳定 idempotent key（由 workflow 层提供）
    - 相同 key + 相同 payload → 返回原 receipt
    - 相同 key + 不同 payload → 报冲突
+   - V2-007 定义 idempotency 语义，V2-009 实现
 
 2. **Promise Fulfillment Idempotency**：
    - `(promise_id, event_id)` 对作为 natural key
    - 重复创建相同 Link → 返回已存在 Link，不创建新记录
+   - V2-007 定义 uniqueness invariant
 
 3. **Replay Safety**：
    - Event 重放不产生重复 occurrence（由 idempotent key 保证）
    - Promise fulfillment 重试不双重兑现（由 Link uniqueness 保证）
 
 4. **Deterministic Derived State**：
-   - `Promise.status = FULFILLED` 可从 Link 集合确定性推导
-   - Timeline 顺序可从 Event.story_time 确定性重建
+   - `Promise.status` 可从 `terminal_disposition` + Link 集合确定性推导
+   - Timeline 顺序可从 Event.story_time 关系重建（支持 partial order）
 
 ---
 
@@ -553,14 +661,21 @@ Promise Lifecycle: OPEN | REINFORCED | DELAYED | PARTIAL | PAID | BROKEN |
 
 ### 对 Canon (V2-009/V2-010) 的影响
 
-1. **Canon Commit 协议扩展**：
+**重要说明**：以下描述的是 **未来 Canon integration 的语义要求**，不属于 V2-007 实现范围。
+
+1. **Canon Commit 协议扩展**（V2-009 实现）：
    - 需支持 Event 类型提交
    - 需支持 Promise 类型提交
    - 需支持 PromiseFulfillmentLink 类型提交
 
-2. **Idempotency Key**：
+2. **Idempotency Key**（V2-009 实现）：
    - Event 使用 workflow 层提供的稳定 key
    - Link 使用 `(promise_id, event_id)` 作为 natural key
+
+3. **V2-007 职责边界**：
+   - V2-007 定义 Event/Promise/Link 的领域语义和 hard invariants
+   - V2-007 提供 in-memory domain model 和 validation
+   - V2-007 不实现 persistence、不依赖 CanonCommitService
 
 ### Schema 影响
 
@@ -577,16 +692,19 @@ Promise Lifecycle: OPEN | REINFORCED | DELAYED | PARTIAL | PAID | BROKEN |
 
 ### 代码影响
 
-**新增模块**：
-- `src/anovel/domain/event.py`
-- `src/anovel/domain/promise.py`
-- `src/anovel/domain/timeline.py`
+**V2-007 authoritative artifacts**（根据 `plan/machine/implementation-backlog.yaml`）：
+- `src/anovel/domain/events.py`（复数形式）
+- `src/anovel/domain/promises.py`（复数形式）
+- `tests/contract/test_v2_007.py`
 
-**新增测试**：
-- `tests/contract/test_v2_007_event.py`
-- `tests/contract/test_v2_007_promise.py`
-- `tests/contract/test_v2_007_fulfillment.py`
-- `tests/contract/test_v2_007_timeline.py`
+**实现建议**（可在实现时调整）：
+- `events.py` 可包含 Event, StoryTime, Timeline 相关定义
+- `promises.py` 可包含 Promise, PromiseFulfillmentLink 相关定义
+- 如需拆分模块（如 `event.py`, `timeline.py`, `promise.py`, `fulfillment.py`），须保持 `events.py` 和 `promises.py` 作为公开入口模块，或先走 governance 变更流程更新 `implementation-backlog.yaml`
+
+**测试建议**：
+- `test_v2_007.py` 可拆分为多个文件（如 `test_v2_007_event.py`, `test_v2_007_promise.py`, `test_v2_007_fulfillment.py`, `test_v2_007_timeline.py`）
+- 或保持单一文件，按 test class 组织
 
 ### 数据库影响（V2-009 实现时）
 
@@ -653,9 +771,11 @@ V2-007 实现必须：
 1. 严格遵循 ADR-003 定义的 Event/Promise/Link/Timeline 语义
 2. 实现所有 hard invariants 验证
 3. 不硬编码 soft quality policies
-4. 通过 Canon Commit 提交 Event/Promise
-5. 保证 idempotency 和 replay safety
-6. 支持插叙场景测试（story_time vs occurrence_chapter）
+4. 提供 in-memory domain model（不实现 persistence）
+5. 不依赖 CanonCommitService（Canon integration 属于 V2-009）
+6. 保证 idempotency 和 replay safety 的**语义定义**（实际 idempotency 机制由 V2-009 实现）
+7. 支持插叙场景测试（story_time vs occurrence_chapter）
+8. Promise.status 必须从 terminal_disposition + Link 推导，不单独持久化
 
 ---
 
@@ -719,12 +839,27 @@ def test_event_immutability():
         event.story_time = ...
 
 def test_promise_fulfillment_requires_link():
-    """Promise.status=FULFILLED 必须有 Link"""
-    promise = Promise(..., status=PromiseStatus.FULFILLED)
+    """Promise.status=FULFILLED 必须从 Link 推导"""
+    promise = Promise(..., terminal_disposition=None)
     links = get_fulfillment_links(promise.promise_id)
-    assert len(links) > 0
-    assert any(link.contribution_role in [ContributionRole.PRIMARY, ContributionRole.COMPLETE] 
-               for link in links)
+    
+    # 无 Link 时，status = OPEN
+    if len(links) == 0:
+        assert promise.status == PromiseStatus.OPEN
+    
+    # 有 PRIMARY/COMPLETE Link 时，status = FULFILLED
+    if any(link.contribution_role in [ContributionRole.PRIMARY, ContributionRole.COMPLETE] 
+           for link in links):
+        assert promise.status == PromiseStatus.FULFILLED
+
+def test_promise_terminal_disposition():
+    """Terminal disposition 不可逆，优先于 Link"""
+    promise_failed = Promise(..., terminal_disposition="FAILED")
+    # 即使有 Link，status 也是 FAILED
+    assert promise_failed.status == PromiseStatus.FAILED
+    
+    promise_abandoned = Promise(..., terminal_disposition="ABANDONED")
+    assert promise_abandoned.status == PromiseStatus.ABANDONED
 
 def test_fulfillment_link_idempotency():
     """相同 (promise_id, event_id) 不可重复创建"""
@@ -778,7 +913,7 @@ def test_v2_061_occurred_event_ref_integration():
     
 def test_gradual_promise_fulfillment():
     """渐进式兑现：多 SUPPORTING + 1 PRIMARY"""
-    promise = Promise(promise_id="p1", status=PromiseStatus.OPEN)
+    promise = Promise(promise_id="p1", terminal_disposition=None, ...)
     
     # 第一个支持事件
     event1 = Event(event_id="e1", ...)
@@ -787,7 +922,7 @@ def test_gradual_promise_fulfillment():
         event_id="e1",
         contribution_role=ContributionRole.SUPPORTING
     )
-    # Promise 仍为 OPEN
+    # Promise 仍为 OPEN（从 terminal_disposition + Link 推导）
     assert promise.status == PromiseStatus.OPEN
     
     # 第二个支持事件
@@ -806,9 +941,8 @@ def test_gradual_promise_fulfillment():
         contribution_role=ContributionRole.PRIMARY
     )
     
-    # 现在 Promise 应为 FULFILLED
-    promise_updated = update_promise_status(promise.promise_id)
-    assert promise_updated.status == PromiseStatus.FULFILLED
+    # 现在 Promise.status 应为 FULFILLED（从 Link 推导）
+    assert promise.status == PromiseStatus.FULFILLED
 ```
 
 ### AT-V2-007 验收场景
@@ -825,10 +959,11 @@ def test_gradual_promise_fulfillment():
    - 则：Story order ≠ narrative order
 
 3. **AC-3：Promise 生命周期**
-   - 给定：新建 Promise（status=OPEN）
+   - 给定：新建 Promise（terminal_disposition=None）
    - 当：关联事件发生并创建 PRIMARY Link
-   - 则：Promise.status → FULFILLED
-   - 则：不可回退到 OPEN
+   - 则：Promise.status → FULFILLED（从 Link 推导）
+   - 给定：Promise 标记为 FAILED
+   - 则：terminal_disposition = FAILED，status 不可回退
 
 4. **AC-4：Promise 与 Goal 区分**
    - 给定：角色有 Goal "revenge"
