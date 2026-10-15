@@ -1,6 +1,6 @@
 # Project Status
 
-**Last Updated**: 2026-10-14
+**Last Updated**: 2026-10-15
 **Document Type**: Derived Summary (Canonical: plan/machine/*)
 
 **IMPORTANT**: This is a human-readable derived summary.
@@ -18,7 +18,12 @@ If conflicts exist, machine SSOT always wins.
 
 **Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Canonical HEAD**: `04068fff57eedf56aaef063bc6286bad02de844e` (Governance fix integration)
+
+**Current Canonical HEAD**: Query live `dev_cc` via `git rev-parse origin/dev_cc`. Do not treat this derived document as HEAD authority.
+
+**Last Verified Baseline Before This Reconciliation**: `04068fff57eedf56aaef063bc6286bad02de844e` (Governance fix integration)
+**Baseline CI**: Pipeline #29 (2948969594) - SUCCESS, 6/6 hard gates PASS
+
 **Latest Product Closure**: V2-061 (718c3cb) verified and integrated to default branch
 
 **Plan Version**: 1.3.1 (治理修订：V2-006 任务身份调和)
@@ -80,7 +85,7 @@ If conflicts exist, machine SSOT always wins.
 The historical machine V2-006 definition ("Character relationship knowledge core") was reconciled with the implemented and closed V2-006 ("Entity Relationship Tracking") through formal scope split and rehoming:
 
 - **V2-006** retained as "Entity Relationship Tracking" (CLOSED)
-- **V2-061** created as "Character Knowledge & Intent Core" (OPEN) to preserve unimplemented character knowledge requirements
+- **V2-061** created as "Character Knowledge & Intent Core" (OPEN at reconciliation time; now CLOSED — see machine SSOT)
 - **Plan v1.3.0 → v1.3.1**: Task count 60 → 61
 
 **Governance Decision**: `plan/changes/2026-10-08_V2_006_TASK_IDENTITY_RECONCILIATION.md`
@@ -97,13 +102,14 @@ The historical machine V2-006 definition ("Character relationship knowledge core
 
 **Canonical Repository**: `https://gitlab.com/TomAy47287015/ainoveloacc.git`
 **Canonical Branch**: `dev_cc`
-**Latest Pipeline**: #29 (2948969594) - SUCCESS, 6/6 hard gates PASS at 04068ff
+**Current CI**: GitLab CI/CD (`.gitlab-ci.yml`)
+**Last Verified Baseline Pipeline**: #29 (2948969594) - SUCCESS, 6/6 hard gates PASS at 04068ff
 
 ### Historical V2-006 Remote Verification (Non-Canonical)
 
 **Historical V2-006 Remote Verification Repository**: `TomAy47287015/aianovelcc` (GitLab)
 - Pipeline 2925763616, 6/6 gates SUCCESS, 899/899 tests PASS
-- Note: This was historical verification only; current canonical state is dev_cc @ 04068ff
+- Note: This was historical verification only; current canonical state is queried from live dev_cc
 
 ### Local Validation
 
