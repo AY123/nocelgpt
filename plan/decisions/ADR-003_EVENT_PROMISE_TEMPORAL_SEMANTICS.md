@@ -423,9 +423,13 @@ class ContributionRole(Enum):
    - 多个 `contribution_role = SUPPORTING` 的 Link
    - Promise.status 仍为 OPEN，直到有 PRIMARY 或 COMPLETE Link
 
-3. **Idempotency**：
-   - 相同 `(promise_id, event_id)` 对不可重复创建 Link
-   - 重试时返回已存在的 Link，不创建新记录
+3. **Idempotency Semantics**（V2-007 定义，V2-009 实现）：
+   - **V2-007 uniqueness invariant**：相同 `(promise_id, event_id)` 对不可重复存在
+   - Duplicate pair 违反 domain uniqueness constraint
+   - **V2-009 persistence retry behavior**（future）：
+     - 重试相同 Link 创建请求应返回已存在的 Link
+     - 不创建新记录，不报错
+     - 这是 idempotency 机制实现，不属于 V2-007 pure-domain 范围
 
 4. **Status Authority**：
    - `terminal_disposition` (BASE): 由 Canon 持久化，不可从其他数据推导
@@ -457,7 +461,7 @@ class Timeline:
         timeline_id: 唯一标识符
         project_id: 项目隔离边界
         name: Timeline 名称（如 "主线", "角色A回忆线"）
-        events: Event ID 列表（按 story_time 排序）
+        events: Event ID 列表（确定性 presentation linearization，符合已知 story-time 约束）
         narrative_sequence: Event ID 列表（按 occurrence_chapter 排序，可选）
         created_at: 创建时间
         authority: 权威来源
@@ -466,6 +470,7 @@ class Timeline:
         - events 中的 Event 必须属于同一 project
         - events 列表按 story_time 的已知可比较关系排序
         - 支持 partial order：当 story_time 无法确定顺序时，保持 planning 层指定排列
+        - **重要**：list position between incomparable events is NOT temporal truth
         - narrative_sequence（如存在）按 occurrence_chapter 排序
     """
     timeline_id: str  # UUID v4
@@ -563,7 +568,15 @@ class Timeline:
 5. **Terminal State Protection**：
    - `Promise.terminal_disposition = FAILED/ABANDONED` 不可回退到 None
    - Terminal disposition 单向：None → {FAILED | ABANDONED}
-   - Status transition: OPEN → FULFILLED (可逆，取决于 Link) / OPEN → FAILED/ABANDONED (不可逆)
+   - **Mutual Exclusivity**：FULFILLED / FAILED / ABANDONED 是互斥的最终叙事结局
+   - **No transitions between final outcomes**：已进入任一终局后不可转换到另一终局
+   - PromiseFulfillmentLink 是 immutable relationship，completion evidence 不可撤销
+   - 状态转换只能从 OPEN 单向进入三种终局之一：
+     ```
+     OPEN → FULFILLED (有 PRIMARY/COMPLETE Link，不可再进入 FAILED/ABANDONED)
+     OPEN → FAILED (terminal_disposition = FAILED，不可再新增 PRIMARY/COMPLETE Link)
+     OPEN → ABANDONED (terminal_disposition = ABANDONED，不可再新增 PRIMARY/COMPLETE Link)
+     ```
 
 6. **Reference Integrity**：
    - `PlannedAction.occurred_event_ref` 指向的 Event 必须存在
@@ -784,23 +797,14 @@ Promise Lifecycle: OPEN | REINFORCED | DELAYED | PARTIAL | PAID | BROKEN |
 
 **实现约束**：
 - `test_v2_007.py` **必须存在**作为 authoritative acceptance contract
-- 可增加辅助测试文件（如 `test_v2_007_event.py`, `test_v2_007_promise.py` 等），但不得替代 `test_v2_007.py`
+- 可增加辅助测试文件（如 `test_v2_007_event.py`, `test_v2_007_promise.py` 等），但**不得替代** `test_v2_007.py`
+- Additional test files must not replace the authoritative artifact
 - 如需拆分测试，`test_v2_007.py` 应至少包含核心 acceptance scenarios 或作为测试套件入口
 
 **实现建议**（可在实现时调整）：
 - `events.py` 可包含 Event, StoryTime, Timeline 相关定义
 - `promises.py` 可包含 Promise, PromiseFulfillmentLink 相关定义
 - 如需拆分模块（如 `event.py`, `timeline.py`, `promise.py`, `fulfillment.py`），须保持 `events.py` 和 `promises.py` 作为公开入口模块，或先走 governance 变更流程更新 `implementation-backlog.yaml`
-- `tests/contract/test_v2_007.py`
-
-**实现建议**（可在实现时调整）：
-- `events.py` 可包含 Event, StoryTime, Timeline 相关定义
-- `promises.py` 可包含 Promise, PromiseFulfillmentLink 相关定义
-- 如需拆分模块（如 `event.py`, `timeline.py`, `promise.py`, `fulfillment.py`），须保持 `events.py` 和 `promises.py` 作为公开入口模块，或先走 governance 变更流程更新 `implementation-backlog.yaml`
-
-**测试建议**：
-- `test_v2_007.py` 可拆分为多个文件（如 `test_v2_007_event.py`, `test_v2_007_promise.py`, `test_v2_007_fulfillment.py`, `test_v2_007_timeline.py`）
-- 或保持单一文件，按 test class 组织
 
 ### 数据库影响（V2-009 实现时）
 
@@ -961,12 +965,16 @@ def test_promise_status_derivation():
 
 def test_promise_terminal_disposition_priority():
     """Terminal disposition 优先于 fulfillment Links"""
+    # 注意：FAILED + PRIMARY Link 组合本身是非法状态
+    # 此测试验证 derivation 逻辑在遇到非法输入时的行为
+    # 正常情况下，系统应阻止创建这种组合（见 test_terminal_exclusivity_invariant）
+    
     promise_failed = Promise(..., terminal_disposition="FAILED")
     links_with_primary = [
         PromiseFulfillmentLink(promise_id=promise_failed.promise_id, contribution_role=ContributionRole.PRIMARY, ...)
     ]
     
-    # 即使有 PRIMARY Link，terminal_disposition 优先
+    # Derivation function 对非法状态的防御性处理：terminal_disposition 优先
     assert derive_promise_status(promise_failed, links_with_primary) == PromiseStatus.FAILED
     
     promise_abandoned = Promise(..., terminal_disposition="ABANDONED")
