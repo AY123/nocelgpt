@@ -273,7 +273,7 @@ class PromiseStatus(Enum):
 | 状态 | 语义层次 | 判断依据 | 示例 | 是否可逆 |
 |------|---------|---------|------|---------|
 | **OPEN** | Active | 无 terminal_disposition，无 PRIMARY/COMPLETE Link | 复仇承诺刚建立 | 可转 FULFILLED/FAILED/ABANDONED |
-| **FULFILLED** | Active | 无 terminal_disposition，存在 PRIMARY/COMPLETE Link | 复仇成功，Link 关联复仇事件 | **不可转** FAILED/ABANDONED（互斥终局） |
+| **FULFILLED** | Final (Derived) | 无 terminal_disposition，存在 PRIMARY/COMPLETE Link | 复仇成功，Link 关联复仇事件 | **不可转** FAILED/ABANDONED（互斥终局） |
 | **FAILED** | Terminal | terminal_disposition = FAILED，有 world evidence | 角色死亡 → 复仇承诺无法兑现 | 不可逆 |
 | **ABANDONED** | Terminal | terminal_disposition = ABANDONED，planning 决策 | 支线被砍，承诺不再追踪 | 不可逆 |
 
@@ -476,7 +476,7 @@ class Timeline:
     timeline_id: str  # UUID v4
     project_id: ProjectId
     name: str
-    events: list[EventId]  # story_time order
+    events: list[EventId]  # deterministic presentation linearization
     narrative_sequence: list[EventId] | None  # occurrence_chapter order
     created_at: datetime
     authority: str
@@ -485,10 +485,11 @@ class Timeline:
 #### Timeline 语义
 
 1. **Story Order**：
-   - `Timeline.events` 按小说世界时间（story_time）排序
+   - `Timeline.events` 提供确定性 presentation linearization，符合已知 story-time 约束
    - 支持 **partial order**：当两个 Event 的 story_time 无法确定先后关系时，保持 planning 层指定的排列
    - 不要求 total order（全序）
    - **重要**：planning 指定的排列只是 presentation hint，不代表 canonical temporal fact
+   - **关键**：list position between incomparable events is NOT temporal truth
 
 2. **Narrative Order**：
    - `Timeline.narrative_sequence` 按叙述顺序（occurrence_chapter）排序
@@ -963,22 +964,27 @@ def test_promise_status_derivation():
     ]
     assert derive_promise_status(promise, links_primary) == PromiseStatus.FULFILLED
 
-def test_promise_terminal_disposition_priority():
-    """Terminal disposition 优先于 fulfillment Links"""
-    # 注意：FAILED + PRIMARY Link 组合本身是非法状态
-    # 此测试验证 derivation 逻辑在遇到非法输入时的行为
-    # 正常情况下，系统应阻止创建这种组合（见 test_terminal_exclusivity_invariant）
+def test_terminal_disposition_priority_over_links():
+    """Terminal disposition 存在时，status 不依赖 Links"""
+    # 注意：这些测试 Promise 对象构造时应无 Links
+    # FAILED/ABANDONED + PRIMARY/COMPLETE Link 组合是非法状态，
+    # 应由 invariant validation 在创建时阻止（见 test_terminal_exclusivity_invariant）
     
     promise_failed = Promise(..., terminal_disposition="FAILED")
-    links_with_primary = [
-        PromiseFulfillmentLink(promise_id=promise_failed.promise_id, contribution_role=ContributionRole.PRIMARY, ...)
-    ]
-    
-    # Derivation function 对非法状态的防御性处理：terminal_disposition 优先
-    assert derive_promise_status(promise_failed, links_with_primary) == PromiseStatus.FAILED
+    assert derive_promise_status(promise_failed, []) == PromiseStatus.FAILED
     
     promise_abandoned = Promise(..., terminal_disposition="ABANDONED")
-    assert derive_promise_status(promise_abandoned, links_with_primary) == PromiseStatus.ABANDONED
+    assert derive_promise_status(promise_abandoned, []) == PromiseStatus.ABANDONED
+    
+    # 即使有 SUPPORTING Link，terminal disposition 仍优先
+    supporting_links = [
+        PromiseFulfillmentLink(
+            promise_id=promise_failed.promise_id,
+            contribution_role=ContributionRole.SUPPORTING,
+            ...
+        )
+    ]
+    assert derive_promise_status(promise_failed, supporting_links) == PromiseStatus.FAILED
 
 def test_fulfillment_link_uniqueness_invariant():
     """相同 (promise_id, event_id) 对不可重复（idempotency 语义）"""
