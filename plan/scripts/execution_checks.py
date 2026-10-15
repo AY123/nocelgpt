@@ -316,9 +316,24 @@ def execution_checks(data, plan):
             tid,
             "duplicate claim ID",
         )
+
+        # Build mapping from source_ref to frozen input for claim resolution
+        input_by_source = {inp["source_ref"]: inp for inp in packet["inputs"]}
+
         for claim in packet["claims"]:
             for item in claim["sources"]:
-                check_artifact(item, tid)
+                # If claim source corresponds to a packet input's source_ref,
+                # validate the frozen snapshot instead of live source
+                if item["ref"] in input_by_source:
+                    frozen_input = input_by_source[item["ref"]]
+                    frozen_item = {
+                        "ref": frozen_input["ref"],
+                        "sha256": frozen_input["sha256"],
+                    }
+                    check_artifact(frozen_item, tid)
+                else:
+                    # Ordinary immutable artifact - check as-is
+                    check_artifact(item, tid)
             if active:
                 require(
                     claim["kind"] == "FACT" or action not in claim["blocks_actions"],
