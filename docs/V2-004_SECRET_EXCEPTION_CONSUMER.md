@@ -1,5 +1,7 @@
 # V2-004 exact secret exception consumer
 
+Current local delta (2026-10-15): the active candidate ledger contains52 exact identities:43 precise exceptions and9 historical risk-accepted rule hits. The original45 rows and their disposition kinds are unchanged; five public identifiers and two rule hits of one historical token-shaped source line were explicitly approved by the Project Owner. All52 findings remain OPEN. The original exact expiry2027-01-06T06:07:49Z is retained. Active policy uses four immutable authority records under `mainline-unblock-20261007/history-delta-20261015/`. The original45-item canonical, old approvals and pending inputs remain historical evidence. This local candidate has no final same-SHA trusted CI acceptance.
+
 Work package: `V2-004-P0-MAINLINE-UNBLOCK-001`, 2026-10-07. Local implementation
 and tests only; no remote CI, project setting change, runner start, push or P0
 acceptance. Credential evidence acquisition under H2/H3/H4 is stopped.
@@ -88,8 +90,8 @@ The policy/consumer/schema/ledger and authority anchors must themselves be cover
 by the final trusted source-integrity boundary. Git object hashes alone do not
 authenticate an approver or prevent a Developer from rewriting an unprotected
 policy. Local synthetic approvals prove behavior, not real authority or GitLab
-permissions. Current production `trusted_authorities: []` deliberately grants
-no approval; all 45 historical findings remain unapproved by this mechanism.
+permissions. At the original design stage, `trusted_authorities: []` granted no approval.
+The current local candidate uses the explicitly approved immutable anchors described above; historical pending inputs do not describe its current authority state.
 
 ## Decision and reporting
 
@@ -118,3 +120,5 @@ still requires real exact authority decisions (with expiry), immutable approved
 source/policy bindings and the final candidate revision. This run does not claim
 V2-004 VERIFIED, P0 accepted or any product phase started. After independent review,
 resume the final candidate path without reopening credential evidence collection.
+
+The ledger retains the exactly approved `canonical_ref`/hash as a logical review-artifact identity. That unchanged preapproval observation is delivered under `dist/validation/v2004-history-delta-20261015/evidence/`, as explicitly recorded in OWNER_DECISION_RECEIPT.json; it is not tracked source or a runtime input. Runtime approval matching verifies every exact source blob/line and immutable authority directly. Scan reports remain execution artifacts.

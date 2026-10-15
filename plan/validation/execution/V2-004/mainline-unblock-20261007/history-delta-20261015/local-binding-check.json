@@ -1,0 +1,19 @@
+{
+  "record_type": "local_delta_pre_pin_verification_not_final_acceptance",
+  "status": "PASS",
+  "revision_at_scan": "ec86dd09629268ca35c53bcf48ab8477468a9ca2",
+  "worktree_policy_modified_for_approved_delta": true,
+  "report_ref": "dist/validation/v2004-history-delta-20261015/delivery-security-initial/secret-scan.json",
+  "report_sha256": "98623dfe18b10e25a97d515fdf4bad9c87c8746f761c07a41380c58bf25ea887",
+  "history_commits": 328,
+  "detected": 52,
+  "consumed": 52,
+  "unmatched": 0,
+  "old45_rows_identical": true,
+  "other_policy_fields_identical": true,
+  "scanner_consumer_code_unchanged": true,
+  "expiry": "2027-01-06T06:07:49Z",
+  "findings_closed": 0,
+  "no_remote_action": true,
+  "verification_role": "Same implementing operator; no claim of independent acceptance"
+}

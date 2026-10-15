@@ -50,14 +50,22 @@ secret_exceptions:
   repository:
     project_id: 86656946
     project_path: ayitnovel/ainovelos
-  ledger_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/KNOWN_FINDING_DISPOSITIONS.json
-  ledger_sha256: 38b23aab2d41fbe0ecd37ad25c2fe5e85c1f42d41aa453f9a2397af337a36ce7
+  ledger_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/KNOWN_FINDING_DISPOSITIONS.json
+  ledger_sha256: 583750aaf7dde8d40677446609382980af214df6bb96199a2c73de75507eb9cb
   trusted_authorities:
-  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_RISK_ACCEPTANCE.json
-    revision: 858192444448717b25beff2c9e285c6d4f909f98
-    blob_oid: 903d97cc03dd96dec4aeb8502e5309232e24b46d
-    sha256: 27908d42735f4a68dfe8fef7ce7ddf5ed2c413579239069c4cedeacde87a7db4
-  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/PRECISE_EXCEPTION_APPROVAL.json
-    revision: 858192444448717b25beff2c9e285c6d4f909f98
-    blob_oid: 257e5e3866700a695c715afd236beeda47977602
-    sha256: c8030edd5ab78709ebf46121534bb880040112bf84d5d51376e72bb993d9ed81
+  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-EXCEPTION-38.json
+    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
+    blob_oid: 9b19e2dcd455afacfe33fc66a1ad8ad1de7a03e7
+    sha256: 0d60cc7567401c56a7418aad8385dc893a1625d47aa18371348dc337b0815407
+  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-OWNER-RISK-7.json
+    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
+    blob_oid: edd4a3efc5c997a293812445bfec185a83b51d7f
+    sha256: eef7b049e53c074cd7bbbdad51f934b76f765bfd21502a1b78f50495beed288f
+  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-DELTA-EXCEPTION-5.json
+    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
+    blob_oid: 479437c03729e279188900b6530a2fb884876482
+    sha256: ee0e26f5dff41caccbac18ee4dd74817aedf11b97843a23bf8b79e63df07e196
+  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-DELTA-RISK-2.json
+    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
+    blob_oid: e61e5952341dd670313639cc32f63aab67268da2
+    sha256: 47920f1941333595cdf9831eae0fb66b037aa3e48f783c9ac163960a1da7aa25

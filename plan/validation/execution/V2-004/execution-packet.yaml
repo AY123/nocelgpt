@@ -241,4 +241,8 @@ handoff:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
+  scope_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/scope.json
+  review_revision: null
+  review_ref: null

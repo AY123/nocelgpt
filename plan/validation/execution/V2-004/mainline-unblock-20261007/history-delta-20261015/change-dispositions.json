@@ -1,0 +1,58 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "ec86dd09629268ca35c53bcf48ab8477468a9ca2",
+    "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/scope.json",
+    "sha256": "256c4af326e0de985775d4fb47a290e92559e60170c096728bd973eff2843170"
+  },
+  "dispositions": [
+    {
+      "path": "security-policy.yaml",
+      "layer": "index",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "822283045429290aed2d4c89098f39dfb715311cd9b64e3ef25114a9956e23c7",
+      "new_sha": "dbf12e5aec2b3d38f4dee67ab1999b50ced1dcd9f8249ba44a2c17d9c7085695",
+      "finding_id": "22f3091039b31b04d82c51b732bf0f4fe6449601775d6c81de4cf98f0d683ac3",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Direct human Owner explicitly approved the five exact public identifiers, two exact historical risk hits and rebinding of original45 unchanged rows to the fixed52-item ledger. Only exact ledger/immutable authority anchors change; scanner rules, all refs history coverage, dependency policy, required jobs and hard failures remain unchanged.",
+      "impact": "All52 findings remain OPEN; no new/future identity approval, source suppression, remote CI, push or runner action.",
+      "reviewer": "Codex implementing operator; technical local review, not independent acceptance.",
+      "replacement_validation": "Real full-history pinned gitleaks scan PASS on328 commits:52 detected,52 consumed,0 unmatched or unused; policy field-by-field and original45 identity equality checks. Final revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/OWNER_AUTHORIZATION.txt",
+        "sha256": "2e05b008180214565895ada67993b1eb8aca424c589d7f26f11f2f8116927551"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/local-binding-check.json",
+          "sha256": "04b6295333660508c6cfe8af82da4c72ee4f533ceec34d0440cb47bbc1a3f229"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "worktree",
+      "code": "PROTECTION_CHANGED",
+      "old_sha": "822283045429290aed2d4c89098f39dfb715311cd9b64e3ef25114a9956e23c7",
+      "new_sha": "dbf12e5aec2b3d38f4dee67ab1999b50ced1dcd9f8249ba44a2c17d9c7085695",
+      "finding_id": "86bd3f692edac7389a7005a8d78951243c37662c125b98ea72d4fed2dbb42a9a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Direct human Owner explicitly approved the five exact public identifiers, two exact historical risk hits and rebinding of original45 unchanged rows to the fixed52-item ledger. Only exact ledger/immutable authority anchors change; scanner rules, all refs history coverage, dependency policy, required jobs and hard failures remain unchanged.",
+      "impact": "All52 findings remain OPEN; no new/future identity approval, source suppression, remote CI, push or runner action.",
+      "reviewer": "Codex implementing operator; technical local review, not independent acceptance.",
+      "replacement_validation": "Real full-history pinned gitleaks scan PASS on328 commits:52 detected,52 consumed,0 unmatched or unused; policy field-by-field and original45 identity equality checks. Final revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/OWNER_AUTHORIZATION.txt",
+        "sha256": "2e05b008180214565895ada67993b1eb8aca424c589d7f26f11f2f8116927551"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/local-binding-check.json",
+          "sha256": "04b6295333660508c6cfe8af82da4c72ee4f533ceec34d0440cb47bbc1a3f229"
+        }
+      ]
+    }
+  ]
+}
