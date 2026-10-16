@@ -230,8 +230,8 @@ review_notes:
   No Owner key acquisition, new approval, alias P2 or remote operation. Prospective
   unreviewed controls remain blocked until exact technical dispositions are pinned.'
 handoff:
-  current_step: GitHub migration authorized; private-to-public publication choice
-    pending. Local adapter/workflow implementation next.
+  current_step: Native GitHub CI local candidate pinned; exact-revision local gates
+    next. Publication awaits public/private decision; no remote workflow has run.
   completed_steps:
   - CurrentC clean IMPLEMENT entry passed
   - OriginalC/E packets/context preserved
@@ -250,5 +250,5 @@ handoff:
 change_review:
   scope_revision: 7fe244519211633e3ee262d582afaadd0d1a2230
   scope_ref: plan/validation/execution/V2-004/github-migration-20261016/scope.json
-  review_revision: null
-  review_ref: null
+  review_revision: a1f31d35d9aca81e00caaf41e29d985033243702
+  review_ref: plan/validation/execution/V2-004/github-migration-20261016/change-dispositions.json
