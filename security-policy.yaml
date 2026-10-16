@@ -69,3 +69,14 @@ secret_exceptions:
     revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
     blob_oid: e61e5952341dd670313639cc32f63aab67268da2
     sha256: 47920f1941333595cdf9831eae0fb66b037aa3e48f783c9ac163960a1da7aa25
+  repository_migration:
+    ref: plan/validation/execution/V2-004/github-migration-20261016/REPOSITORY_MIGRATION.json
+    revision: 7fe244519211633e3ee262d582afaadd0d1a2230
+    blob_oid: b1f225f71c8a0ca394eff719fa2f11eab9137c3c
+    sha256: 4990fa98ce0f007d24e32a957e665b958c6e0227ceb4011cb6e78c6465ae5cda
+github_repository:
+  id: 1421585508
+  full_name: AY123/nocelgpt
+  workflow_path: .github/workflows/v2-004.yml
+  acceptance_ref: refs/heads/main
+  trusted_execution: NOT_VERIFIED_ON_GITHUB

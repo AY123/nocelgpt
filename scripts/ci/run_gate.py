@@ -63,6 +63,9 @@ CHILD_ENVIRONMENT_KEYS = frozenset(
         "CI_MERGE_REQUEST_SOURCE_BRANCH_NAME",
         "CI_MERGE_REQUEST_TARGET_BRANCH_NAME",
         "ANOVELOS_TEST_DSN",
+        "GITHUB_ACTIONS",
+        "GITHUB_REPOSITORY",
+        "GITHUB_REPOSITORY_ID",
     }
 )
 
@@ -284,6 +287,15 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if platform.python_version() != "3.12.14":
             raise ValueError("Exact ADR Python version required")
+        if os.getenv("GITHUB_ACTIONS") == "true":
+            from github_context import validate_context
+
+            if os.getenv("GITLAB_CI") == "true":
+                raise ValueError("Ambiguous CI platform")
+            receipt["source_kind"] = "UNVERIFIED_GITHUB_ENVIRONMENT"
+            receipt["github"] = validate_context(
+                os.environ, receipt["revision"], args.job
+            )
         if os.getenv("GITLAB_CI") == "true":
             if receipt["revision"] != os.getenv("CI_COMMIT_SHA"):
                 raise ValueError("Actual checkout does not match CI_COMMIT_SHA")

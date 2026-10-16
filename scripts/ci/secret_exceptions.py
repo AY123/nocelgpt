@@ -95,16 +95,74 @@ def _ancestor(root: Path, revision: str) -> None:
     _git(root, "merge-base", "--is-ancestor", revision, "HEAD")
 
 
-def _repository(root: Path, expected: dict[str, Any]) -> None:
+def _repository(root: Path, expected: dict[str, Any], config: dict[str, Any]) -> None:
+    host = "gitlab.com"
+    repository_path = expected["project_path"]
+    migration = config.get("repository_migration")
+    if migration is not None:
+        _ancestor(root, migration["revision"])
+        raw, oid = _blob(root, migration["revision"], _path(migration["ref"]))
+        if oid != migration["blob_oid"] or digest(raw) != migration["sha256"]:
+            raise ExceptionFailure("SECRET_EXCEPTION_MIGRATION_PIN")
+        record = parse_json(raw)
+        if (
+            not isinstance(record, dict)
+            or record.get("record_type") != "repository_migration_authority"
+            or type(record.get("schema_version")) is not int
+            or record.get("schema_version") != 1
+            or record.get("decision") != "APPROVED"
+            or record.get("role") != "PROJECT_OWNER"
+            or not isinstance(record.get("actor"), str)
+            or not record["actor"].strip()
+            or record.get("source") != {"host": "gitlab.com", **expected}
+            or record.get("approved_ledger_sha256") != config["ledger_sha256"]
+        ):
+            raise ExceptionFailure("SECRET_EXCEPTION_MIGRATION_AUTHORITY")
+        target = record.get("target")
+        if (
+            not isinstance(target, dict)
+            or set(target) != {"host", "repository_id", "repository_path"}
+            or target["host"] != "github.com"
+            or type(target["repository_id"]) is not int
+            or target["repository_id"] < 1
+            or not isinstance(target["repository_path"], str)
+            or not re.fullmatch(
+                r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", target["repository_path"]
+            )
+        ):
+            raise ExceptionFailure("SECRET_EXCEPTION_MIGRATION_TARGET")
+        statement, _ = _blob(
+            root, migration["revision"], _path(record.get("owner_statement_ref"))
+        )
+        if not statement.strip() or digest(statement) != record.get(
+            "owner_statement_sha256"
+        ):
+            raise ExceptionFailure("SECRET_EXCEPTION_MIGRATION_STATEMENT")
+        if os.getenv("GITHUB_ACTIONS") == "true" and (
+            os.getenv("GITHUB_REPOSITORY_ID") != str(target["repository_id"])
+            or os.getenv("GITHUB_REPOSITORY") != target["repository_path"]
+        ):
+            raise ExceptionFailure("SECRET_EXCEPTION_MIGRATION_RUNTIME")
+        host, repository_path = target["host"], target["repository_path"]
     remote = _git(root, "remote", "get-url", "origin").decode().strip()
-    if remote.startswith("git@gitlab.com:"):
-        path = remote.removeprefix("git@gitlab.com:")
+    if remote.startswith(f"git@{host}:"):
+        path = remote.removeprefix(f"git@{host}:")
     else:
         parsed = urlsplit(remote)
-        if parsed.hostname != "gitlab.com" or parsed.scheme not in {"https", "ssh"}:
+        if (
+            parsed.hostname != host
+            or parsed.scheme not in {"https", "ssh"}
+            or parsed.password is not None
+            or parsed.query
+            or parsed.fragment
+            or (
+                parsed.username is not None
+                and not (parsed.scheme == "ssh" and parsed.username == "git")
+            )
+        ):
             raise ExceptionFailure("SECRET_EXCEPTION_REPOSITORY")
         path = parsed.path.removeprefix("/")
-    if path.removesuffix(".git") != expected["project_path"]:
+    if path.removesuffix(".git") != repository_path:
         raise ExceptionFailure("SECRET_EXCEPTION_REPOSITORY")
 
 
@@ -214,7 +272,7 @@ def load_ledger(root: Path, config: dict[str, Any]) -> dict[str, Any]:
     _schema(ledger, "finding-disposition.schema.json")
     if ledger["repository"] != config["repository"]:
         raise ExceptionFailure("SECRET_EXCEPTION_REPOSITORY")
-    _repository(root, ledger["repository"])
+    _repository(root, ledger["repository"], config)
     _ancestor(root, ledger["baseline_revision"])
     ids: set[str] = set()
     hashes: set[str] = set()

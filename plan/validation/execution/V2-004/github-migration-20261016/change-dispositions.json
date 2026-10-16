@@ -1,0 +1,202 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "7fe244519211633e3ee262d582afaadd0d1a2230",
+    "ref": "plan/validation/execution/V2-004/github-migration-20261016/scope.json",
+    "sha256": "0db244ada1f42b5b362cacf26088679c1d425e89dc9a10cff259ebdfd9d3a3bf"
+  },
+  "dispositions": [
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "layer": "index",
+      "old_sha": "bf2cf0d70b6d164d49a6cc36f92db16a87f9147d0869bb604d00c661b75e9287",
+      "new_sha": "3522a7adc176a32f15ca8d6cde188fd90428a6516d031a32215ef860887f68e9",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "ffd3bcca97f30bf375451f881ac3a9ee954303f34e5a1af572b0de1e055caa60",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/check_configuration.py",
+      "layer": "worktree",
+      "old_sha": "bf2cf0d70b6d164d49a6cc36f92db16a87f9147d0869bb604d00c661b75e9287",
+      "new_sha": "3522a7adc176a32f15ca8d6cde188fd90428a6516d031a32215ef860887f68e9",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "4542723c7f1d06e1d92bf632d2eda6de8a4515dbe2592e6e42bdb81f5752a879",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "layer": "index",
+      "old_sha": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+      "new_sha": "fc977e9ba17c9a89e509baebed191a44e4d071cfea85cb45da242fb43d406ba9",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "60c6152065fe27f99626480035d4f2a067d99b9cb68fe42e2b399dd07d476b42",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "layer": "worktree",
+      "old_sha": "08cfafa3dbb657a66ec79e9601e064d36cac1bd55e457e7e2458b8a2e0cd78e4",
+      "new_sha": "fc977e9ba17c9a89e509baebed191a44e4d071cfea85cb45da242fb43d406ba9",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "7a6f25e1689e6d9336881db67d0d4566fb4832831839a298dc81f5fa4280f284",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/secret_exceptions.py",
+      "layer": "index",
+      "old_sha": "45107046d86c0dc51be1da90c3cee015ba853cd6b5dcbc6291c98609e62b49d2",
+      "new_sha": "7e270b98bbb47648ac65e22da63d5df88942011332ef708474ae1d2c35369492",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "e97fe9ca0adc8f6c31f271ff23042648da3a5134177cdc3e05924cdd0052285e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/secret_exceptions.py",
+      "layer": "worktree",
+      "old_sha": "45107046d86c0dc51be1da90c3cee015ba853cd6b5dcbc6291c98609e62b49d2",
+      "new_sha": "7e270b98bbb47648ac65e22da63d5df88942011332ef708474ae1d2c35369492",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "7eee1a3095379dda4601369d6274d2b377124fe42239d3f5f58437617a2b75e0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "index",
+      "old_sha": "dbf12e5aec2b3d38f4dee67ab1999b50ced1dcd9f8249ba44a2c17d9c7085695",
+      "new_sha": "646174e5212433bd876126ae1ee620a64d3d85172e5d65f383c774a9dbfb18c6",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "6414b0b9cbde72772396a3ab426d19bd1788d92a4d58e86a31ea79abb912e36e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "worktree",
+      "old_sha": "dbf12e5aec2b3d38f4dee67ab1999b50ced1dcd9f8249ba44a2c17d9c7085695",
+      "new_sha": "646174e5212433bd876126ae1ee620a64d3d85172e5d65f383c774a9dbfb18c6",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "32b06c17a0a116182e5064a0c379eed83733d944718b0399eaff7edbe92e8308",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Explicit same-project GitHub migration: exact target repository1421585508/AY123/nocelgpt and same approved52-item ledger pinned by an immutable migration authority. Legacy GitLab checks retained; native Actions workflow requires all six hard-failing gates, complete330-commit minimum and all current history. Missing workflow, wrong context, weak jobs, unknown migration/identity/approval still fail.",
+      "impact": "New GitHub environment provenance is marked UNVERIFIED until remote result verification; historical GitLab permission evidence is not promoted. No finding closure, expiry extension, broad suppression or automatic future finding approval.",
+      "reviewer": "Same Codex implementing operator, not independent acceptance.",
+      "replacement_validation": "46 actual focused positive/negative tests plus earlier149 combined consumer/migration tests; real complete331-commit scan52 detected/52 consumed/0 unmatched; final exact-revision formal suites follow.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+        "sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/github-migration-20261016/local-migration-check.json",
+          "sha256": "6168880abb47dbab1e70ba3667893841afa6f2c13ec904d09ddc9811c2f9ec85"
+        }
+      ]
+    }
+  ]
+}

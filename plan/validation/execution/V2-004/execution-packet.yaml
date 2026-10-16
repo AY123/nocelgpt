@@ -247,4 +247,8 @@ handoff:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 7fe244519211633e3ee262d582afaadd0d1a2230
+  scope_ref: plan/validation/execution/V2-004/github-migration-20261016/scope.json
+  review_revision: null
+  review_ref: null

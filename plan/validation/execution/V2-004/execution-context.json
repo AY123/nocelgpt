@@ -1,12 +1,12 @@
 {
   "record_type": "execution_context_selection",
-  "source_revision": "5ed63dd47f1a7068bad9c5227bd654ee7e98fb9d",
-  "active_context": "LOCAL_APPROVED_HISTORY_DELTA",
-  "scope_revision": "ec86dd09629268ca35c53bcf48ab8477468a9ca2",
-  "scope_ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/scope.json",
-  "review_revision": "4c1173213fc958e028b73db12b5dc7312f1a142c",
-  "review_ref": "plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/change-dispositions.json",
-  "implementation_status": "LOCAL_APPROVED_52_FINDING_CANDIDATE",
+  "source_revision": "06c301bd9e4da184a65ad6fa3fd15cfd9668b621",
+  "active_context": "GITHUB_PLATFORM_MIGRATION",
+  "scope_revision": "7fe244519211633e3ee262d582afaadd0d1a2230",
+  "scope_ref": "plan/validation/execution/V2-004/github-migration-20261016/scope.json",
+  "review_revision": null,
+  "review_ref": null,
+  "implementation_status": "LOCAL_GITHUB_ADAPTER_IN_PROGRESS",
   "security_findings": {
     "detected": 52,
     "open": 52,
@@ -21,8 +21,8 @@
   },
   "historical_trusted_execution_revision": "ba22d2ce09c17ac0a6790592e24fae08b0391a9e",
   "historical_trusted_execution_pipeline": 2912870306,
-  "current_revision_remote_ci": "NOT_RUN",
-  "current_revision_protected_execution": "NOT_VERIFIED",
+  "current_revision_remote_ci": "NOT_RUN_ON_GITHUB",
+  "current_revision_protected_execution": "NOT_VERIFIED_ON_GITHUB",
   "remaining_permission_controls": "NOT_PROMOTED",
   "independent_review": "NOT_COMPLETED",
   "host_lifecycle_review": "NOT_COMPLETED",
@@ -37,5 +37,11 @@
   "pre_final_validation_revision": "24cefe6058fe75dfca106bcf3af160d4613ea7e3",
   "pre_final_focused_tests": 395,
   "pre_final_real_authority_controls": 13,
-  "final_candidate_validation": "PENDING_EXACT_REVISION_REPLAY"
+  "final_candidate_validation": "PENDING_EXACT_REVISION_REPLAY",
+  "github_target": {
+    "repository": "AY123/nocelgpt",
+    "id": 1421585508,
+    "workflow": ".github/workflows/v2-004.yml",
+    "publication_visibility_decision": "PENDING"
+  }
 }

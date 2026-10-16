@@ -1,0 +1,17 @@
+{
+  "record_type": "local_github_migration_pre_pin_checks",
+  "status": "PASS",
+  "focused_tests": 46,
+  "focused_junit_sha256": "74c92f7645887ed8af56a3620bf9a009e264814eea247a5734f82137ba13cfb1",
+  "prior_combined_core_tests": 149,
+  "scan_report_sha256": "5880f496a201492a58f67e40dfda8948e79ce38db8ec1cb31881f7baa99892ab",
+  "scan_history_commits": 331,
+  "detected": 52,
+  "consumed": 52,
+  "original_ledger_sha256": "583750aaf7dde8d40677446609382980af214df6bb96199a2c73de75507eb9cb",
+  "no_approval_identity_or_expiry_change": true,
+  "github_permission_boundary": "NOT_VERIFIED",
+  "CI_created": 0,
+  "publication": "PENDING_VISIBILITY_DECISION",
+  "verifier": "Same implementing operator; no independent acceptance claim"
+}

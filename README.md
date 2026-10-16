@@ -1,5 +1,7 @@
 # ANovelOS
 
+Current delivery target: [AY123/nocelgpt](https://github.com/AY123/nocelgpt). V2-004 uses `.github/workflows/v2-004.yml` with manual dispatch only, six mandatory gates and read-only Actions permissions. GitLab files/evidence remain historical. The migration is under local validation; GitHub permission protection and final P0 acceptance are not yet verified.
+
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
 当前为 **Plan v1.3.0 / V2-001～V2-003 IMPLEMENTED**。最小 Python 包、锁定安装、真实 PostgreSQL 基础测试与资料治理命令已实现；V2-003 的本地架构、实际差异和防降标检查已完成本地验证，证据绑定实际代码提交。V2-004 已进入 IN_PROGRESS，新增六项 CI 作业、交付与来源检查工具；其余 56 个任务仍 OPEN。密钥历史扫描未通过，可信远端 CI、P0 退出和章节生产未验证。见[审核独立分析](docs/reviews/2026-10-03-report-assessment/ASSESSMENT.md)与[V2-004 实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)。

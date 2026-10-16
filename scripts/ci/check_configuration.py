@@ -119,6 +119,15 @@ def validate_configuration(source: str) -> list[str]:
 
 def main() -> int:
     errors = validate_configuration((ROOT / ".gitlab-ci.yml").read_text())
+    workflow = ROOT / ".github/workflows/v2-004.yml"
+    if workflow.is_file() and not workflow.is_symlink():
+        from github_configuration import validate_github_configuration
+
+        errors += validate_github_configuration(
+            yaml.load(workflow.read_text(), Loader=UniqueLoader)
+        )
+    else:
+        errors.append("Missing mandatory GitHub workflow")
     for error in errors:
         print(error)
     return 1 if errors else 0
