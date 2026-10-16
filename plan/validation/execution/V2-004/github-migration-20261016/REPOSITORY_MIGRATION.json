@@ -1,0 +1,27 @@
+{
+  "record_type": "repository_migration_authority",
+  "schema_version": 1,
+  "actor": "YANG YANG",
+  "role": "PROJECT_OWNER",
+  "decision": "APPROVED",
+  "source": {
+    "host": "gitlab.com",
+    "project_id": 86656946,
+    "project_path": "ayitnovel/ainovelos"
+  },
+  "target": {
+    "host": "github.com",
+    "repository_id": 1421585508,
+    "repository_path": "AY123/nocelgpt"
+  },
+  "approved_ledger_sha256": "583750aaf7dde8d40677446609382980af214df6bb96199a2c73de75507eb9cb",
+  "owner_statement_ref": "plan/validation/execution/V2-004/github-migration-20261016/AUTHORIZATION.txt",
+  "owner_statement_sha256": "654da8df40155b8e47003f0175d89314fb1c3a1fa1340c5ae5e3701bf77472ab",
+  "recorded_at": "2026-10-16T03:52:46+00:00",
+  "limits": [
+    "Same project migration only; original52 exact identities/dispositions/expiry unchanged",
+    "No future finding approval or finding closure",
+    "New GitHub permission/trusted-execution boundary is not inherited from historical GitLab evidence",
+    "Publication visibility decision is separate; no history published before it"
+  ]
+}
