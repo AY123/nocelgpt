@@ -2,40 +2,37 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-004
 plan_version: 1.3.0
-repository_revision: 06c301bd9e4da184a65ad6fa3fd15cfd9668b621
+repository_revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
 worktree_dirty: true
 plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
 environment:
-  fingerprint: New local isolated repository preserving all152 baseline commit/ref
-    inputs, C approval ancestry and E enrollment history.
+  fingerprint: New local isolated repository preserving all152 baseline commit/ref inputs, C approval ancestry and
+    E enrollment history.
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
-  ci_context: GitHub repository1421585508 verified empty; migration engineering checks
-    only. Historical GitLab execution is not GitHub trust evidence.
+  ci_context: GitHub1421585508 private, workflow run38917341667 all6 PASS @611d777; current closure commit is documentation
+    registration, not a new tested code revision
 implementer: Codex primary operator
-verifier: Same operator with parallel read-only analysis; no independent personnel
-  acceptance
+verifier: Same operator with parallel read-only analysis; no independent personnel acceptance
 owner_role: delivery-maintainer
-scope: User-authorized same-project migration to GitHub AY123/nocelgpt, native six
-  mandatory Actions gates and exact receipt/repository identity adaptation. Preserve52
-  exact approvals, complete history and all negative controls. No P1. Publication
-  waits for explicit public/private decision.
+scope: Docs-only V2-004 closure on actual GitHub611d777 six-gate evidence, Owner-directed internal_single_operator
+  profile; preserve all code/tests/CI/approvals, no new CI, no P0/P1 promotion.
 action: IMPLEMENT
 inputs:
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
-  ref: validation/execution/V2-004/inputs/20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d.txt
-  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+  ref: validation/execution/V2-004/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
+  sha256: f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033
 - source_ref: 09_TASK_EXECUTION_GUIDE.md
   ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
   sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-004/inputs/a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82.txt
-  sha256: a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82
+  ref: validation/execution/V2-004/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+  sha256: c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22
 - source_ref: AI_EXECUTION_PROTOCOL.md
-  ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
-  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+  ref: validation/execution/V2-004/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+  sha256: 7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10
 - source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   ref: validation/execution/V2-004/inputs/558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2.txt
   sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
@@ -43,14 +40,14 @@ inputs:
   ref: validation/execution/V2-004/inputs/5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb.txt
   sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
 - source_ref: README.md
-  ref: validation/execution/V2-004/inputs/1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2.txt
-  sha256: 1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2
+  ref: validation/execution/V2-004/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+  sha256: 7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
-  sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
+  ref: validation/execution/V2-004/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+  sha256: b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-004/inputs/c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18.txt
-  sha256: c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18
+  ref: validation/execution/V2-004/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+  sha256: 3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-004/inputs/f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
@@ -58,8 +55,8 @@ inputs:
   ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
   sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
 - source_ref: machine/ci-gates.yaml
-  ref: validation/execution/V2-004/inputs/594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e.txt
-  sha256: 594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e
+  ref: validation/execution/V2-004/inputs/736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b.txt
+  sha256: 736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b
 - source_ref: machine/governance-baseline.yaml
   ref: validation/execution/V2-004/inputs/ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
@@ -77,35 +74,69 @@ expected_outputs:
 - tests/integration/test_postgres_ci_service.py
 - docs/V2-004_IMPLEMENTATION_REPORT.md
 allowed_paths:
+- .github/workflows/v2-004.yml
 - .gitlab-ci.yml
-- security-policy.yaml
-- tests/contract/test_delivery_gates.py
-- scripts/ci/
-- tests/integration/test_postgres_ci_service.py
+- README.md
 - docs/V2-004_IMPLEMENTATION_REPORT.md
-- scripts/ci/check_security.py
-- scripts/ci/secret_exceptions.py
-- tests/contract/test_secret_exceptions.py
 - docs/V2-004_SECRET_EXCEPTION_CONSUMER.md
-- plan/validation/execution/V2-004/mainline-unblock-20261007/AUTHORIZATION.md
-- plan/validation/execution/V2-004/mainline-unblock-20261007/EXCEPTION_APPROVAL_INPUT.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/INPUT_HASH_CHECK.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/KNOWN_FINDING_DISPOSITIONS.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/NEGATIVE_TEST_MATRIX.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/OWNER_RISK_ACCEPTANCE_INPUT.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/SCOPE_AND_IMPACT.md
-- plan/validation/execution/V2-004/mainline-unblock-20261007/execution-packet.yaml
-- plan/validation/execution/V2-004/mainline-unblock-20261007/finding-approval.schema.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/finding-disposition.schema.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/finding-exception-consumer.schema.json
+- plan/07_PLATFORM_SECURITY_AND_DELIVERY.md
+- plan/AI_EXECUTION_PROTOCOL.md
+- plan/FILE_MANIFEST.json
+- plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
+- plan/README.md
+- plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md
+- plan/generated/
+- plan/generated/PHASE_TASK_REGISTRY.md
+- plan/machine/ci-gates.yaml
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/validation/execution/V2-001/execution-packet.yaml
+- plan/validation/execution/V2-001/inputs/
+- plan/validation/execution/V2-001/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+- plan/validation/execution/V2-001/inputs/500b91dc31d2e52247bd5b17de814ceead56b9f4ecff60e0a5a0efccd7124152.txt
+- plan/validation/execution/V2-001/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+- plan/validation/execution/V2-001/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+- plan/validation/execution/V2-001/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+- plan/validation/execution/V2-001/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+- plan/validation/execution/V2-001/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
+- plan/validation/execution/V2-002/execution-packet.yaml
+- plan/validation/execution/V2-002/inputs/
+- plan/validation/execution/V2-002/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+- plan/validation/execution/V2-002/inputs/500b91dc31d2e52247bd5b17de814ceead56b9f4ecff60e0a5a0efccd7124152.txt
+- plan/validation/execution/V2-002/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+- plan/validation/execution/V2-002/inputs/736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b.txt
+- plan/validation/execution/V2-002/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+- plan/validation/execution/V2-002/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+- plan/validation/execution/V2-002/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+- plan/validation/execution/V2-003/followup/execution-packet.yaml
+- plan/validation/execution/V2-003/followup/inputs/
+- plan/validation/execution/V2-003/followup/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+- plan/validation/execution/V2-003/followup/inputs/500b91dc31d2e52247bd5b17de814ceead56b9f4ecff60e0a5a0efccd7124152.txt
+- plan/validation/execution/V2-003/followup/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+- plan/validation/execution/V2-003/followup/inputs/736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b.txt
+- plan/validation/execution/V2-003/followup/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+- plan/validation/execution/V2-003/followup/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+- plan/validation/execution/V2-003/followup/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+- plan/validation/execution/V2-003/followup/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
 - plan/validation/execution/V2-004/approval-semantics-fix-20261008/AUTHORIZATION.md
 - plan/validation/execution/V2-004/approval-semantics-fix-20261008/INPUT_HASH_CHECK.json
 - plan/validation/execution/V2-004/approval-semantics-fix-20261008/execution-packet.yaml
-- plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_DECISION_RECEIPT.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_RISK_ACCEPTANCE.json
-- plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/PRECISE_EXCEPTION_APPROVAL.json
-- plan/validation/execution/V2-004/execution-packet.yaml
-- plan/validation/execution/V2-004/local-final-pin-20261008/
+- plan/validation/execution/V2-004/closure-20261016/
+- plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md
+- plan/validation/execution/V2-004/closure-20261016/REMOTE_VERIFICATION.json
+- plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json
+- plan/validation/execution/V2-004/closure-20261016/SINGLE_OPERATOR_DECISION.json
+- plan/validation/execution/V2-004/closure-20261016/acceptance-evidence.yaml
+- plan/validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+- plan/validation/execution/V2-004/closure-20261016/code-evidence.yaml
+- plan/validation/execution/V2-004/closure-20261016/gate-arch_fitness-38917341667-1.zip
+- plan/validation/execution/V2-004/closure-20261016/gate-postgres_env-38917341667-1.zip
+- plan/validation/execution/V2-004/closure-20261016/gate-schema_contract-38917341667-1.zip
+- plan/validation/execution/V2-004/closure-20261016/gate-secret_dependency-38917341667-1.zip
+- plan/validation/execution/V2-004/closure-20261016/gate-static-38917341667-1.zip
+- plan/validation/execution/V2-004/closure-20261016/gate-unit-38917341667-1.zip
+- plan/validation/execution/V2-004/closure-20261016/preclosure-execution-packet.yaml
+- plan/validation/execution/V2-004/closure-20261016/tests-evidence.yaml
 - plan/validation/execution/V2-004/enrollment-20261005/acceptance-overlay.yml
 - plan/validation/execution/V2-004/enrollment-20261005/authorization.md
 - plan/validation/execution/V2-004/enrollment-20261005/bootstrap-ref.json
@@ -127,56 +158,87 @@ allowed_paths:
 - plan/validation/execution/V2-004/enrollment-20261005/scope.json
 - plan/validation/execution/V2-004/enrollment-20261005/trusted-ci.yml
 - plan/validation/execution/V2-004/execution-context.json
-- tests/contract/test_trusted_execution_enrollment.py
-- plan/validation/execution/V2-004/trusted-integration-local-20261008/
-- plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/
+- plan/validation/execution/V2-004/execution-packet.yaml
 - plan/validation/execution/V2-004/github-migration-20261016/
-- .github/workflows/v2-004.yml
+- plan/validation/execution/V2-004/inputs/
+- plan/validation/execution/V2-004/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+- plan/validation/execution/V2-004/inputs/500b91dc31d2e52247bd5b17de814ceead56b9f4ecff60e0a5a0efccd7124152.txt
+- plan/validation/execution/V2-004/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+- plan/validation/execution/V2-004/inputs/736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b.txt
+- plan/validation/execution/V2-004/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+- plan/validation/execution/V2-004/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+- plan/validation/execution/V2-004/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+- plan/validation/execution/V2-004/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
+- plan/validation/execution/V2-004/local-final-pin-20261008/
+- plan/validation/execution/V2-004/mainline-unblock-20261007/AUTHORIZATION.md
+- plan/validation/execution/V2-004/mainline-unblock-20261007/EXCEPTION_APPROVAL_INPUT.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/INPUT_HASH_CHECK.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/KNOWN_FINDING_DISPOSITIONS.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/NEGATIVE_TEST_MATRIX.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/OWNER_RISK_ACCEPTANCE_INPUT.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/SCOPE_AND_IMPACT.md
+- plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_DECISION_RECEIPT.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_RISK_ACCEPTANCE.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/PRECISE_EXCEPTION_APPROVAL.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/execution-packet.yaml
+- plan/validation/execution/V2-004/mainline-unblock-20261007/finding-approval.schema.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/finding-disposition.schema.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/finding-exception-consumer.schema.json
+- plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/
+- plan/validation/execution/V2-004/trusted-integration-local-20261008/
+- scripts/ci/
+- scripts/ci/check_security.py
+- scripts/ci/secret_exceptions.py
+- security-policy.yaml
+- tests/contract/test_delivery_gates.py
 - tests/contract/test_github_delivery.py
-- README.md
+- tests/contract/test_secret_exceptions.py
+- tests/contract/test_trusted_execution_enrollment.py
+- tests/integration/test_postgres_ci_service.py
 required_decisions: []
 claims:
 - id: DIRECT_LOCAL_INTEGRATION_CONTINUATION
   kind: FACT
-  statement: Actual user continuation authorizes normal bounded local V2-004 progression;
-    precise engineering interpretation and excluded remote actions recorded.
+  statement: Actual user continuation authorizes normal bounded local V2-004 progression; precise engineering interpretation
+    and excluded remote actions recorded.
   sources:
   - ref: validation/execution/V2-004/trusted-integration-local-20261008/AUTHORIZATION.md
     sha256: 0405af1996d24e97a1fcbf5f79621c828a1565c70ae74edd67596159c4532e7b
   blocks_actions: []
-  verification_plan: Preserve immutable C/E inputs, record exact merge conflicts,
-    retain unreviewed failures and bind new scope/review to actual tests.
+  verification_plan: Preserve immutable C/E inputs, record exact merge conflicts, retain unreviewed failures and
+    bind new scope/review to actual tests.
 - id: DIRECT_BOUNDED_IMPLEMENTATION
   kind: FACT
-  statement: The human task and continuation authorize bounded local exact-consumer
-    implementation and tests; execution interpretation and prohibited remote actions
-    are explicit.
+  statement: The human task and continuation authorize bounded local exact-consumer implementation and tests; execution
+    interpretation and prohibited remote actions are explicit.
   sources:
   - ref: validation/execution/V2-004/local-final-pin-20261008/AUTHORIZATION.md
     sha256: 120e1e39c9d102ee8bf6a6a8e35f1f7b3311c373c091dcdd4f5197c360120af4
   blocks_actions: []
-  verification_plan: Use actual immutable scope/review pins, retained exact findings
-    and real command receipts; no task promotion from local declarations.
+  verification_plan: Use actual immutable scope/review pins, retained exact findings and real command receipts;
+    no task promotion from local declarations.
 - id: ACTUAL_TWO_GROUP_OWNER_DECISION
   kind: FACT
-  statement: Actual human Project Owner approved38 exact exceptions and accepted7
-    historical risks for90days; operational receipt basis recorded. This does not
-    close findings or authorize CI/push/runner.
+  statement: Actual human Project Owner approved38 exact exceptions and accepted7 historical risks for90days; operational
+    receipt basis recorded. This does not close findings or authorize CI/push/runner.
   sources:
   - ref: validation/execution/V2-004/mainline-unblock-20261007/authority-20261008/OWNER_DECISION_RECEIPT.json
     sha256: 0ebe7182fe500637298451b48a45ce2819b4388931e61930a9e22ff56589f3a5
   blocks_actions: []
-  verification_plan: Bind the two real authority objects by revision/ref/blob/SHA
-    and unchanged ledger identity; enforce kind and expiry. Do not request keys.
-- id: FINAL_CURRENT_REVISION_ACCEPTANCE
-  kind: UNKNOWN
-  statement: No final protected source enrollment, remaining real permissions, independent
-    acceptance or same-final-SHA six-gate remote evidence exists for this local candidate.
-  sources: []
-  blocks_actions:
-  - CERTIFY
-  verification_plan: Retain all actual local failures and limits. Final remote actions
-    require their applicable authorization and actual service evidence.
+  verification_plan: Bind the two real authority objects by revision/ref/blob/SHA and unchanged ledger identity;
+    enforce kind and expiry. Do not request keys.
+- id: GITHUB_ENGINEERING_SIX_GATES
+  kind: FACT
+  statement: Exact611d777/run38917341667 all6 PASS,714tests0skip;52 precise decisions consumed. Single-operator
+    authority profile explicitly accepted for closure, no adversarial isolation claim.
+  sources:
+  - ref: validation/execution/V2-004/closure-20261016/REMOTE_VERIFICATION.json
+    sha256: 8558e6a52c4ffbdd0c702b6b9e15a77dea72cabb33923252a8e4607a8a93ed83
+  - ref: validation/execution/V2-004/closure-20261016/SINGLE_OPERATOR_DECISION.json
+    sha256: 1a3fd8da84e2a821f370c19afeb53ca7f674700e177f95390686abe384309d5c
+  blocks_actions: []
+  verification_plan: Retained original6 remote artifactZIPs and45 content hashes; local plan/governance checks for
+    docs-only registration.
 estimate:
   range: null
   unit: null
@@ -191,64 +253,52 @@ budget:
   maximum_attempts: 10
   maximum_runtime: 14400
 stop_conditions:
-- Keep remote verification pending until actual current-revision results and effective
-  trust boundary are verified
-- Preserve user changes; never weaken existing obligations to obtain PASS
-- Do not start P1 before P0 VERIFIED
+- Preserve original workspace changes, history, tests, six mandatory gates and finite exact approvals
+- No new remote CI, runner or project setting mutation for docs-only closure
+- P0 aggregate remains NOT_VERIFIED; no P1 start
 review_notes:
-- Report instructions are input only. Exact-revision P0 aggregate already exists;
-  no new task or milestone is created.
-- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records
-  and immutable input snapshots only.
-- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
-  preserved; historical evidence and task status unchanged.'
-- '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason
-  in fixed authorization; previous packet/context retained. Criteria and task scope
-  unchanged.'
-- '2026-10-04 necessary CI integration fix: original bootstrap test added within current
-  P0/V2-004 scope; no test weakening, task/phase identity unchanged; reason and impact
-  in ci-fixture-authorization.md.'
-- '2026-10-04 clean context: preserve current local packet and PASS entry separately;
-  committed code objects bind 365d4057. Clean CI scope does not authorize deleting
-  primary user files. Existing Free quota observed but balance/money unknown; no purchase/paid
-  resource provision.'
-- '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard
-  commands/assertions preserved; actual Lint only push-context proof. New source/review
-  pin with local 202 PASS, a6 remote whole security FAIL retained.'
-- '2026-10-04 narrowed continuation: security findings closure and trusted permission
-  boundary only; no CI redesign or V2-001 through003 changes. Canonical records retain
-  actual3ce failure and all43 unresolved dispositions; shared runner and metadata
-  are not permission acceptance.'
-- '2026-10-04 explicit local-only exact-pin authorization: clean CI scope consumes
-  an actually committed isolated checkout; primary user changes excluded/preserved.
-  Technical disposition uses a separate ancestor pin and preserves mandatory gates,
-  tests, scope and security baseline.'
-- '2026-10-08 local final pin: original9fe packet retained; actual human authority
-  replaces further key acquisition only. This local copied packet has new exact scope;
-  source pins and all mandatory obligations must pass, no remote promotion.'
-- '2026-10-08 local integration: prior C/E packets and context are historical inputs.
-  No Owner key acquisition, new approval, alias P2 or remote operation. Prospective
-  unreviewed controls remain blocked until exact technical dispositions are pinned.'
+- Report instructions are input only. Exact-revision P0 aggregate already exists; no new task or milestone is created.
+- Raw transient diagnostics stay under dist or /tmp; retain compact canonical records and immutable input snapshots
+  only.
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved; historical evidence
+  and task status unchanged.'
+- '2026-10-04 resume: user prompt reference only; opening HEAD refreshed with reason in fixed authorization; previous
+  packet/context retained. Criteria and task scope unchanged.'
+- '2026-10-04 necessary CI integration fix: original bootstrap test added within current P0/V2-004 scope; no test
+  weakening, task/phase identity unchanged; reason and impact in ci-fixture-authorization.md.'
+- '2026-10-04 clean context: preserve current local packet and PASS entry separately; committed code objects bind
+  365d4057. Clean CI scope does not authorize deleting primary user files. Existing Free quota observed but balance/money
+  unknown; no purchase/paid resource provision.'
+- '2026-10-04 MR default trigger correction: exact fixed job rules, all original hard commands/assertions preserved;
+  actual Lint only push-context proof. New source/review pin with local 202 PASS, a6 remote whole security FAIL
+  retained.'
+- '2026-10-04 narrowed continuation: security findings closure and trusted permission boundary only; no CI redesign
+  or V2-001 through003 changes. Canonical records retain actual3ce failure and all43 unresolved dispositions; shared
+  runner and metadata are not permission acceptance.'
+- '2026-10-04 explicit local-only exact-pin authorization: clean CI scope consumes an actually committed isolated
+  checkout; primary user changes excluded/preserved. Technical disposition uses a separate ancestor pin and preserves
+  mandatory gates, tests, scope and security baseline.'
+- '2026-10-08 local final pin: original9fe packet retained; actual human authority replaces further key acquisition
+  only. This local copied packet has new exact scope; source pins and all mandatory obligations must pass, no remote
+  promotion.'
+- '2026-10-08 local integration: prior C/E packets and context are historical inputs. No Owner key acquisition,
+  new approval, alias P2 or remote operation. Prospective unreviewed controls remain blocked until exact technical
+  dispositions are pinned.'
 handoff:
-  current_step: Native GitHub CI local candidate pinned; exact-revision local gates
-    next. Publication awaits public/private decision; no remote workflow has run.
+  current_step: V2-004 CLOSED under explicit single-operator profile; engineering source611d777 validated on GitHub.
   completed_steps:
-  - CurrentC clean IMPLEMENT entry passed
-  - OriginalC/E packets/context preserved
-  - Exact policy merge technical dispositions pinned
-  - K395focused/13realauthority controls passed; failures retained
+  - Native GitHub six-gate remote run PASS
+  - 714 tests /52 exact approvals /334history verified
+  - User-directed requirement delta and scoped acceptance recorded
   pending_items:
-  - Local GitHub CI adapter/workflow positive and negative tests
-  - Publication visibility decision
-  - One exact-SHA GitHub Actions six-gate run; GitHub trust permissions remain separately
-    verified
-  next_action: IMPLEMENT
+  - Separate P0 aggregate and V2-001..003 acceptance before P1; not V2-004 implementation blockers
+  next_action: PREPARE
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-004/closure-20261016/REMOTE_VERIFICATION.json
+      sha256: 8558e6a52c4ffbdd0c702b6b9e15a77dea72cabb33923252a8e4607a8a93ed83
     missing_artifact_reason: null
 change_review:
-  scope_revision: 7fe244519211633e3ee262d582afaadd0d1a2230
-  scope_ref: plan/validation/execution/V2-004/github-migration-20261016/scope.json
-  review_revision: a1f31d35d9aca81e00caaf41e29d985033243702
-  review_ref: plan/validation/execution/V2-004/github-migration-20261016/change-dispositions.json
+  scope_revision: c0872853a609004844f7f12b40ffda64b995de33
+  scope_ref: plan/validation/execution/V2-004/closure-20261016/scope.json

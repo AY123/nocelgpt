@@ -1,0 +1,34 @@
+{
+  "record_type": "owner_directed_acceptance_profile",
+  "actor": "YANG YANG / Project Owner",
+  "basis": "Current human completion request following explicit single-operator discussion; interpretation recorded, not verbatim prior approval template",
+  "profile": "internal_single_operator",
+  "accepted_at": "2026-10-16T15:28:33.544335+00:00",
+  "authorization_ref": "AUTHORIZATION.md",
+  "authorization_sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8",
+  "waived_requirements": [
+    "mandatory protected branch / protected dedicated runner",
+    "separate Developer/Owner negative management controls",
+    "adversarial self-approval separation"
+  ],
+  "not_verified": [
+    "GitHub branch protection",
+    "adversarial permission isolation",
+    "independent personnel review"
+  ],
+  "retained": [
+    "six mandatory gates",
+    "fail-closed exact secret approvals",
+    "full repository history coverage",
+    "same-revision remote report verification",
+    "no unauthorized history deletion or force-push"
+  ],
+  "reconsider_when": [
+    "additional repository writers",
+    "unattended public release",
+    "external deployment credentials"
+  ],
+  "security_findings_open": 52,
+  "security_findings_closed": 0,
+  "exception_expires_at": "2027-01-06T06:07:49Z"
+}

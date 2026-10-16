@@ -4,7 +4,7 @@ task_id: V2-002
 plan_version: 1.3.0
 repository_revision: 21849ed8919086982dd94d0a4c852db40eca5d40
 worktree_dirty: true
-plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
+plan_manifest_sha256: 7956da340626e6fc4b9174dd8ee1fc937a29fd16589ea4ca7231917b5e5046ed
 environment:
   fingerprint: macOS-15.1.1-arm64-arm-64bit; local CPython 3.12.14
   runtime_versions:
@@ -13,12 +13,10 @@ environment:
   database_image: null
   ci_context: null
 implementer: Codex primary implementer / local operator
-verifier: Codex local tests and bounded AI review; shared trust boundary, not independent
-  certification
+verifier: Codex local tests and bounded AI review; shared trust boundary, not independent certification
 owner_role: governance-maintainer
-scope: 'Only P0 V2-002: reuse normative validation, engineering command integration
-  and local action/resume checks. No V2-003/004 or P1+, paid Provider, deployment
-  or remote changes. Currency USD; zero spend.'
+scope: 'Only P0 V2-002: reuse normative validation, engineering command integration and local action/resume checks.
+  No V2-003/004 or P1+, paid Provider, deployment or remote changes. Currency USD; zero spend.'
 action: IMPLEMENT
 inputs:
 - source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
@@ -34,20 +32,20 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt
   sha256: f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-004/inputs/a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82.txt
-  sha256: a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82
+  ref: validation/execution/V2-002/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+  sha256: c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22
 - source_ref: AI_EXECUTION_PROTOCOL.md
-  ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
-  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+  ref: validation/execution/V2-002/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+  sha256: 7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10
 - source_ref: README.md
-  ref: validation/execution/V2-004/inputs/1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2.txt
-  sha256: 1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2
+  ref: validation/execution/V2-002/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+  sha256: 7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
-  sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
+  ref: validation/execution/V2-002/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+  sha256: b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-004/inputs/c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18.txt
-  sha256: c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18
+  ref: validation/execution/V2-002/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+  sha256: 3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
@@ -61,8 +59,8 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/12-governance-baseline.yaml.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
 - source_ref: machine/ci-gates.yaml
-  ref: validation/execution/V2-004/inputs/594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e.txt
-  sha256: 594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e
+  ref: validation/execution/V2-002/inputs/736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b.txt
+  sha256: 736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b
 - source_ref: machine/authority-policy.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/14-authority-policy.yaml.txt
   sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
@@ -143,26 +141,23 @@ required_decisions: []
 claims:
 - id: BASELINE
   kind: FACT
-  statement: Clean initial main at 21849ed8919086982dd94d0a4c852db40eca5d40; Plan
-    1.3.0 PASS; V2-002 OPEN with no dependencies/required ADR; P0 entry ready. V2-001
-    IMPLEMENTED, CI/acceptance absent.
+  statement: Clean initial main at 21849ed8919086982dd94d0a4c852db40eca5d40; Plan 1.3.0 PASS; V2-002 OPEN with no
+    dependencies/required ADR; P0 entry ready. V2-001 IMPLEMENTED, CI/acceptance absent.
   sources:
   - ref: validation/execution/V2-002/raw/preflight.json
     sha256: 888d0b8085ae2b6bc2093cfc6261b197262e0e071b6baf27f1d4b2908c19c22c
   blocks_actions: []
-  verification_plan: Full plan checks before IMPLEMENT; preserve missing remote CI
-    status.
+  verification_plan: Full plan checks before IMPLEMENT; preserve missing remote CI status.
 - id: FOLLOWUP_BASELINE
   kind: FACT
-  statement: Follow-up starts from committed V2-002 at a3ea77304f0c68967f21532adf3852bec3ea0a4d
-    on main; only existing user report was dirty before recording. Actual IMPLEMENT
-    entry passed.
+  statement: Follow-up starts from committed V2-002 at a3ea77304f0c68967f21532adf3852bec3ea0a4d on main; only existing
+    user report was dirty before recording. Actual IMPLEMENT entry passed.
   sources:
   - ref: validation/execution/V2-002/followup/preflight.json
     sha256: fab6753def504f6a84841e6c8d23c04dffb352dd6c0a4f3db41363fbf2bdf7bd
   blocks_actions: []
-  verification_plan: Verify original test assertions remain; run regression on committed
-    fix; keep CI/acceptance absent.
+  verification_plan: Verify original test assertions remain; run regression on committed fix; keep CI/acceptance
+    absent.
 estimate:
   range: null
   unit: null
@@ -180,96 +175,88 @@ stop_conditions:
 - No other task implementation, paid calls or gate weakening.
 - Preserve actual failures, user changes and prior evidence.
 review_notes:
-- User explicitly authorized V2-002 and normal task steps. Existing V2-001 active
-  packet must track shared input changes; only its context is reconciled.
-- Normative registry remains backlog normative_specs plus existing source/authority
-  registers; no parallel governance system.
-- Any fixture isolation correction retains positive controls and all rejection assertions.
-  Minimum baseline/acceptance remains unchanged.
-- 'V2-002 prepare: reconciled live inputs/manifest; previous packet preserved under
-  V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 implementation-start: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 first-implementation: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- V2-002 implementation adds engineering commands and resolved normative path checks;
-  no acceptance/threshold/baseline weakening. Fixture failures are retrospectively
-  reproduced against opening revision. Worktree delivery is not a tested source commit;
-  no typed closure evidence or CI is fabricated.
-- 'V2-002 implemented-local: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 final-docs: reconciled live inputs/manifest; previous packet preserved under
-  V2-002 snapshots. No V2-001 work or evidence recertification.'
-- User subsequently said 继续; continued the same V2-002 scope and local execution window.
-  No paid budget, task or phase expansion.
-- Final source bytes are worktree snapshots checked against the real entry observation.
-  No source commit was made; do not label opening HEAD as the implementation revision.
-- Subagents hit account usage limits; primary completed implementation/testing. No
-  independent review or successful subagent final audit is claimed.
-- User continued after review of two reports. Follow-up limited to detached HEAD handling,
-  malformed checkpoint rejection, AI-EXEC-01 full-obligation status correction, post-commit
-  local evidence and handoff. Existing user report is excluded from edits/commits.
-  Original opening revision and historical results remain unchanged.
-- 'V2-002 review-fixes: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'Review follow-up binding: CODE/TEST_RESULT at actual fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64;
-  shared active inputs reconciled, unchanged snapshots reused. V2-001 status/evidence
-  not recertified. Old packet retained under followup/binding-inputs.'
-- 'Follow-up binding-correction: shared inputs reconciled; prior packet preserved,
-  unchanged snapshots reused; no V2-001 recertification.'
-- Final metadata handoff does not retag post-commit tests to a later evidence commit.
-  Resume must inspect checkout, user report and typed evidence; no next task or trusted
-  CI is authorized by this packet.
-- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable
-  snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 implementation-start: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 final-implementation: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 precommit-validation: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 evidence-binding: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable
-  snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 implementation: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 schema-format: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 prior-scope-grant: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 regression-ready: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 final-evidence: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
-  preserved; historical evidence and task status unchanged.'
+- User explicitly authorized V2-002 and normal task steps. Existing V2-001 active packet must track shared input
+  changes; only its context is reconciled.
+- Normative registry remains backlog normative_specs plus existing source/authority registers; no parallel governance
+  system.
+- Any fixture isolation correction retains positive controls and all rejection assertions. Minimum baseline/acceptance
+  remains unchanged.
+- 'V2-002 prepare: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001
+  work or evidence recertification.'
+- 'V2-002 implementation-start: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots.
+  No V2-001 work or evidence recertification.'
+- 'V2-002 first-implementation: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots.
+  No V2-001 work or evidence recertification.'
+- V2-002 implementation adds engineering commands and resolved normative path checks; no acceptance/threshold/baseline
+  weakening. Fixture failures are retrospectively reproduced against opening revision. Worktree delivery is not
+  a tested source commit; no typed closure evidence or CI is fabricated.
+- 'V2-002 implemented-local: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots.
+  No V2-001 work or evidence recertification.'
+- 'V2-002 final-docs: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001
+  work or evidence recertification.'
+- User subsequently said 继续; continued the same V2-002 scope and local execution window. No paid budget, task or
+  phase expansion.
+- Final source bytes are worktree snapshots checked against the real entry observation. No source commit was made;
+  do not label opening HEAD as the implementation revision.
+- Subagents hit account usage limits; primary completed implementation/testing. No independent review or successful
+  subagent final audit is claimed.
+- User continued after review of two reports. Follow-up limited to detached HEAD handling, malformed checkpoint
+  rejection, AI-EXEC-01 full-obligation status correction, post-commit local evidence and handoff. Existing user
+  report is excluded from edits/commits. Original opening revision and historical results remain unchanged.
+- 'V2-002 review-fixes: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001
+  work or evidence recertification.'
+- 'Review follow-up binding: CODE/TEST_RESULT at actual fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64; shared
+  active inputs reconciled, unchanged snapshots reused. V2-001 status/evidence not recertified. Old packet retained
+  under followup/binding-inputs.'
+- 'Follow-up binding-correction: shared inputs reconciled; prior packet preserved, unchanged snapshots reused; no
+  V2-001 recertification.'
+- Final metadata handoff does not retag post-commit tests to a later evidence commit. Resume must inspect checkout,
+  user report and typed evidence; no next task or trusted CI is authorized by this packet.
+- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 implementation-start: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 final-implementation: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 precommit-validation: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 evidence-binding: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 implementation: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 schema-format: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 prior-scope-grant: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 regression-ready: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 final-evidence: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved; historical evidence
+  and task status unchanged.'
+- '2026-10-16 V2-004 closure: reconcile changed shared planning inputs and manifest only; this task status and acceptance
+  not promoted.'
 handoff:
-  current_step: 'STOPPED: V2-002 IMPLEMENTED; bounded fixes committed and post-commit
-    local CODE/TEST_RESULT bound; CI and final acceptance absent'
+  current_step: 'STOPPED: V2-002 IMPLEMENTED; bounded fixes committed and post-commit local CODE/TEST_RESULT bound;
+    CI and final acceptance absent'
   completed_steps:
   - Observed clean opening main/HEAD, Plan version and manifest; baseline PASS
   - Created and validated dedicated PREPARE packet, then passed IMPLEMENT start gate
-  - Reused governance system; integrated normative index, real local action/resume
-    entry and contract tests
-  - Preserved and retrospectively reproduced old fixture failures; all original test
-    assertions retained
-  - Contract tests 39, bootstrap regression 5, self-test 32, governance 39, AI 36,
-    legacy probes 13 PASS
-  - Compared acceptance/scope/protection to opening Git revision; no weakening or
-    other task implementation
+  - Reused governance system; integrated normative index, real local action/resume entry and contract tests
+  - Preserved and retrospectively reproduced old fixture failures; all original test assertions retained
+  - Contract tests 39, bootstrap regression 5, self-test 32, governance 39, AI 36, legacy probes 13 PASS
+  - Compared acceptance/scope/protection to opening Git revision; no weakening or other task implementation
   - Archived exact code bytes, commands, real outputs and worktree context
-  - 'Follow-up: detached HEAD/checkpoint fixes; 51 contract tests and all governance
-    commands PASS; original assertions/acceptance/gates unchanged against a3ea7730'
-  - 'Fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64: post-commit contract 51,
-    bootstrap 5, self-test 32, governance 39, AI 36, legacy 13 PASS; 19 source paths
-    equal Git blobs; typed evidence bound in backlog/suite'
-  - Evidence/backlog/suite/README and handoff reconciled; final bound governance aggregate
-    PASS; initial missing-pointer-status failure retained and corrected without schema
-    changes
+  - 'Follow-up: detached HEAD/checkpoint fixes; 51 contract tests and all governance commands PASS; original assertions/acceptance/gates
+    unchanged against a3ea7730'
+  - 'Fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64: post-commit contract 51, bootstrap 5, self-test 32, governance
+    39, AI 36, legacy 13 PASS; 19 source paths equal Git blobs; typed evidence bound in backlog/suite'
+  - Evidence/backlog/suite/README and handoff reconciled; final bound governance aggregate PASS; initial missing-pointer-status
+    failure retained and corrected without schema changes
   pending_items:
-  - Real trusted CI_RUN for applicable revision (V2-004 responsibility; not started
-    here)
+  - Real trusted CI_RUN for applicable revision (V2-004 responsibility; not started here)
   - Final acceptance and finding dispositions
   - G-P0/M0 remain NOT_VERIFIED
   - V2-003/004 remain OPEN; P1+ forbidden until verified G-P0

@@ -1,0 +1,203 @@
+{
+  "run_id": 38917341667,
+  "sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+  "url": "https://github.com/AY123/nocelgpt/actions/runs/38917341667",
+  "status": "completed",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 117028102974,
+      "name": "POSTGRES_ENV",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000000057"
+    },
+    {
+      "id": 117028103089,
+      "name": "SECRET_DEPENDENCY",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000000055"
+    },
+    {
+      "id": 117028103230,
+      "name": "STATIC",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000000056"
+    },
+    {
+      "id": 117028103252,
+      "name": "ARCH_FITNESS",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000000059"
+    },
+    {
+      "id": 117028103436,
+      "name": "UNIT",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000000058"
+    },
+    {
+      "id": 117028103498,
+      "name": "SCHEMA_CONTRACT",
+      "status": "completed",
+      "conclusion": "success",
+      "runner_name": "GitHub Actions 1000000060"
+    }
+  ],
+  "artifacts": [
+    {
+      "id": 12053676426,
+      "name": "gate-unit-38917341667-1",
+      "sha256": "0c59c719376e9d4d0065637f4bea97c54ef2b939699e71d1126b4453c85eebd3",
+      "gate": "UNIT",
+      "status": "PASS",
+      "source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "context": {
+        "repository": "AY123/nocelgpt",
+        "repository_id": "1421585508",
+        "run_id": "38917341667",
+        "run_attempt": "1",
+        "job_key": "gates",
+        "workflow_ref": "AY123/nocelgpt/.github/workflows/v2-004.yml@refs/heads/main",
+        "workflow_sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+        "ref_protected": "false",
+        "permission_boundary": "NOT_VERIFIED_BY_ENVIRONMENT"
+      },
+      "junit": {
+        "tests": 501,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": 12053640617,
+      "name": "gate-arch_fitness-38917341667-1",
+      "sha256": "3821fc32212ed71174d347f92b3eb57d68fb7255cdf170fec6efff5c80a4843b",
+      "gate": "ARCH_FITNESS",
+      "status": "PASS",
+      "source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "context": {
+        "repository": "AY123/nocelgpt",
+        "repository_id": "1421585508",
+        "run_id": "38917341667",
+        "run_attempt": "1",
+        "job_key": "gates",
+        "workflow_ref": "AY123/nocelgpt/.github/workflows/v2-004.yml@refs/heads/main",
+        "workflow_sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+        "ref_protected": "false",
+        "permission_boundary": "NOT_VERIFIED_BY_ENVIRONMENT"
+      },
+      "junit": {
+        "tests": 212,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": 12053530578,
+      "name": "gate-static-38917341667-1",
+      "sha256": "ee0ab5665f6e17183811780d6f15e1fc15e312d61dc68d79b54c38aaa295558d",
+      "gate": "STATIC",
+      "status": "PASS",
+      "source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "context": {
+        "repository": "AY123/nocelgpt",
+        "repository_id": "1421585508",
+        "run_id": "38917341667",
+        "run_attempt": "1",
+        "job_key": "gates",
+        "workflow_ref": "AY123/nocelgpt/.github/workflows/v2-004.yml@refs/heads/main",
+        "workflow_sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+        "ref_protected": "false",
+        "permission_boundary": "NOT_VERIFIED_BY_ENVIRONMENT"
+      }
+    },
+    {
+      "id": 12053480792,
+      "name": "gate-postgres_env-38917341667-1",
+      "sha256": "a6a53a252a9e656102074054d86fcf88544b104f76fd6e347c4c06bc0a430765",
+      "gate": "POSTGRES_ENV",
+      "status": "PASS",
+      "source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "context": {
+        "repository": "AY123/nocelgpt",
+        "repository_id": "1421585508",
+        "run_id": "38917341667",
+        "run_attempt": "1",
+        "job_key": "postgres_env",
+        "workflow_ref": "AY123/nocelgpt/.github/workflows/v2-004.yml@refs/heads/main",
+        "workflow_sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+        "ref_protected": "false",
+        "permission_boundary": "NOT_VERIFIED_BY_ENVIRONMENT"
+      },
+      "junit": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "id": 12052802753,
+      "name": "gate-schema_contract-38917341667-1",
+      "sha256": "545301b51b638eab785eb82c4424bc760bc5941a4ad10612256c23cb33e89089",
+      "gate": "SCHEMA_CONTRACT",
+      "status": "PASS",
+      "source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "context": {
+        "repository": "AY123/nocelgpt",
+        "repository_id": "1421585508",
+        "run_id": "38917341667",
+        "run_attempt": "1",
+        "job_key": "gates",
+        "workflow_ref": "AY123/nocelgpt/.github/workflows/v2-004.yml@refs/heads/main",
+        "workflow_sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+        "ref_protected": "false",
+        "permission_boundary": "NOT_VERIFIED_BY_ENVIRONMENT"
+      }
+    },
+    {
+      "id": 12052608388,
+      "name": "gate-secret_dependency-38917341667-1",
+      "sha256": "6a5e935e8cebc2ccd34d0b087c90c24d4f1bd7753de7b43d0cb595275ac5c796",
+      "gate": "SECRET_DEPENDENCY",
+      "status": "PASS",
+      "source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "context": {
+        "repository": "AY123/nocelgpt",
+        "repository_id": "1421585508",
+        "run_id": "38917341667",
+        "run_attempt": "1",
+        "job_key": "gates",
+        "workflow_ref": "AY123/nocelgpt/.github/workflows/v2-004.yml@refs/heads/main",
+        "workflow_sha": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+        "ref_protected": "false",
+        "permission_boundary": "NOT_VERIFIED_BY_ENVIRONMENT"
+      },
+      "security": {
+        "detected": 52,
+        "consumed": 52,
+        "unmatched": 0,
+        "unused": 0,
+        "history_commits": 334,
+        "dependency_packages": 51,
+        "vulnerabilities": 0
+      }
+    }
+  ],
+  "totals": {
+    "tests": 714,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "V2_004": "IN_PROGRESS",
+  "P0": "NOT_VERIFIED",
+  "github_permission_boundary": "NOT_VERIFIED"
+}

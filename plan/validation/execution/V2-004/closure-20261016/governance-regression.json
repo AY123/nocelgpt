@@ -1,0 +1,165 @@
+{
+  "scope": "Planning governance regressions in disposable copies; synthetic records are not runtime evidence",
+  "generated_at_utc": "2026-10-16T15:32:19.316179+00:00",
+  "manifest_sha256": "7956da340626e6fc4b9174dd8ee1fc937a29fd16589ea4ca7231917b5e5046ed",
+  "status": "PASS",
+  "test_count": 39,
+  "cases": [
+    {
+      "case": "__main__.GovernanceTests.test_adr_backlink_removed",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_adr_template_not_decision",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_all_ci_removed",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_bad_artifact_hash",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_ci_checks_removed",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_ci_duplicate",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_ci_postponed",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_cli_external_reports_do_not_change_plan",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_directory_not_record",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_evidence_cycle",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_failed_run_rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_finding_backlink_removed",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_milestone_requires_phase",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_milestone_revision_matches_phase_decision",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_milestone_shrink",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_missing_finding_disposition",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_missing_phase_file",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_missing_suite_file",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_normalized_template_aliases_are_rejected",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_p0_blocked",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_partial_finding_requires_next_owner",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_phase_input_binding",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_phase_requires_applicable_ci",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_planned_readiness_cannot_start",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_readme_not_test_record",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_runtime_failure_states_are_not_closure_witnesses",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_source_registry_does_not_claim_fresh_verification",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_suite_coverage_not_just_nonempty",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_template_artifact_cannot_support_decision",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_artifact_in_nested_templates_named_directory",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_exported_cli_and_single_negative",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_future_task_start",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_historical_task_revision_in_current_phase",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_multiple_suites_for_one_task",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_p0_completion_chain",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_valid_partial_finding_disposition",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_wrong_evidence_type",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_wrong_revision",
+      "status": "PASS"
+    },
+    {
+      "case": "__main__.GovernanceTests.test_wrong_subject",
+      "status": "PASS"
+    }
+  ]
+}

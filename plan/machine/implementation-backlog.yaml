@@ -21,8 +21,7 @@ tasks:
   - 隔离 PostgreSQL 启动连接清理成功
   - 缺配置明确失败且无真实凭证
   - 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，开工记录区分计划版本/审核编号并记录 checkout、工作区/manifest、实际环境与负责人
-  - 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让
-    archive 进入业务构建
+  - 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive 进入业务构建
   tests:
   - AT-V2-001
   artifacts:
@@ -98,13 +97,11 @@ tasks:
   - 校验产物可输出到 plan 外的独立目录（如项目内 dist/validation）；该模式不回写被测计划，已提交 JSON 不视为当前提交认证
   - 模板 Artifact 按解析后路径判定；相对路径别名与符号链接不能冒充执行结果，合法产物不被误拒绝
   - 里程碑与其阶段决定及阶段适用 CI 绑定同一被核验 revision，同时允许保留适用的历史任务证据
-  - 任务从 OPEN 进入执行须引用具体 task_execution_packet；缺失、模板、错误任务/规范/输入 hash 或过期上下文被拒绝，合格执行包按
-    PREPARE/IMPLEMENT/LIVE_CALL/CERTIFY 动作通过对应检查；本地资料通过不代替 runner 开工拦截
-  - 动作前核对所需 ADR 与授权：PREPARE 可调查未决项但不执行受其约束的实现，IMPLEMENT/LIVE_CALL/CERTIFY 到达决定点时未接受
-    ADR 被拒绝，已接受且适用的决定允许继续；必要付费上限缺失时不得调用
+  - 任务从 OPEN 进入执行须引用具体 task_execution_packet；缺失、模板、错误任务/规范/输入 hash 或过期上下文被拒绝，合格执行包按 PREPARE/IMPLEMENT/LIVE_CALL/CERTIFY
+    动作通过对应检查；本地资料通过不代替 runner 开工拦截
+  - 动作前核对所需 ADR 与授权：PREPARE 可调查未决项但不执行受其约束的实现，IMPLEMENT/LIVE_CALL/CERTIFY 到达决定点时未接受 ADR 被拒绝，已接受且适用的决定允许继续；必要付费上限缺失时不得调用
   - 执行判断显式区分 FACT/ASSUMPTION/UNKNOWN 与独立 ADR 决定 并绑定依据；阻断当前动作的未知项或无依据事实不得被猜测成已解决，已核实事项和不影响当前动作的明确假设可按范围继续
-  - 恢复执行须核对交接记录、仓库与工作区、规范/输入快照、实际测试产物和未决事项；缺失交接或失效证据不得继承完成结论，合格恢复可继续原任务，不因摘要或模型更换静默重开或越过
-    Gate
+  - 恢复执行须核对交接记录、仓库与工作区、规范/输入快照、实际测试产物和未决事项；缺失交接或失效证据不得继承完成结论，合格恢复可继续原任务，不因摘要或模型更换静默重开或越过 Gate
   tests:
   - AT-V2-002
   artifacts:
@@ -200,8 +197,7 @@ tasks:
   - 新增模块纳入扫描而非空扫描报成功
   - 以任务执行包核对实际 diff 的新增/修改/删除/重命名及未跟踪文件、路径解析、依赖和跨阶段范围；越界或空扫描冒充覆盖被拒绝，合法任务改动通过，路径匹配不冒充业务语义正确性证明
   - 比较可信基线与本次改动，联动识别验收和场景同步降标、测试删除/skip、阈值放宽、扫描排除扩大和门禁删改；任务与场景仍一致不能使未处置的降标通过，差异报告保留理由与影响
-  - 范围与防降标检查同时覆盖合法新增测试、等效重构及有适用授权和影响记录的规则修订正例，以及跨任务越界和无依据削弱负例；不能只按文件名拒绝合法改动，也不能由实施
-    AI 自写理由自动批准例外
+  - 范围与防降标检查同时覆盖合法新增测试、等效重构及有适用授权和影响记录的规则修订正例，以及跨任务越界和无依据削弱负例；不能只按文件名拒绝合法改动，也不能由实施 AI 自写理由自动批准例外
   tests:
   - AT-V2-003
   artifacts:
@@ -260,23 +256,24 @@ tasks:
   - 适用硬门禁失败使 CI 失败
   - 无害 Secret 与违规依赖夹具被阻断
   - PostgreSQL job 实际连接且当前提交 CI 证据可查
-  - 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
-  - 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实 CI
-    放行证据
-  - 可信 CI 按实际受保护 runner 核对项目、被测 revision、运行命令、job 与原始 artifact；本地伪造 JSON、他项目/旧提交/未受信运行记录被拒绝，真实当前运行可通过，来源无法核验记未验证
-  - 普通实施凭证采用最小权限，不同时具备修改保护规则、绕过合并门禁和批准自身例外的能力；用安全测试验证越权操作确被拒绝且授权范围内操作可用，不具备核验权限时不得自称权限隔离生效
-  - 在真实 CI/仓库保护环境验证治理校验器、基线、测试及流水线变更不能由同次改动移除必需检查后自行放行；无害失败夹具与未授权保护变更被阻断，有适用授权的规则修订经可信重新验证后可进入，不增加固定团队人数要求
+  - 单人 Owner 开发模式明确记录 GitHub 分支保护与平台合并拦截的实际未启用状态及接受范围；不将本地或人工流程冒称远程权限保护，六门失败仍必须返回失败
+  - 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实 CI 放行证据
+  - 核对 GitHub 托管运行的 repository ID、被测 revision、workflow/run/job、运行命令和原始 artifact hash；模拟 JSON、错仓库/旧 revision/缺失结果不能作真实来源证明，合法当前运行可核验；专用
+    protected runner 不适用于已接受的单人模式
+  - 单一 Owner 掌握实施和规则权限的信任边界与剩余风险有用户依据；不声称对抗性角色隔离，不再要求虚构 Developer/Owner 分离实验；精确例外仍绑定真实 Owner 决定、身份和期限
+  - 六项必需检查、治理/差异/安全验证与正负测试实际保留；规则修订记录用户依据、原要求、影响和替代验证；单人模式明确不能抵抗同一 Owner 改写全部防线，不声称存在平台强制反绕过保障
   tests:
   - AT-V2-004
   artifacts:
   - .gitlab-ci.yml
   - security-policy.yaml
   - tests/contract/test_delivery_gates.py
+  - .github/workflows/v2-004.yml
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-004/execution-packet.yaml
   owner_role: delivery-maintainer
   readiness: READY_TO_START
@@ -284,15 +281,21 @@ tasks:
   required_decisions: []
   evidence:
     code:
-    - ref: validation/execution/V2-004/code-evidence.yaml
-      revision: 04295459fcf3c93ff3f74a79948f0ac77d47dd87
+    - ref: validation/execution/V2-004/closure-20261016/code-evidence.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
     tests:
-    - ref: validation/execution/V2-004/test-result.yaml
-      revision: 04295459fcf3c93ff3f74a79948f0ac77d47dd87
+    - ref: validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
-    ci: []
-    acceptance: []
+    ci:
+    - ref: validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-004/closure-20261016/acceptance-evidence.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+      status: PASS
   related_findings:
   - AR-06
   - AR-17

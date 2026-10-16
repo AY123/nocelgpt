@@ -16,7 +16,8 @@ suites:
   - id: AT-V2-001-04
     required_assertion: 根 README 和 AGENTS 指向现行 plan；执行入口不宣称未完成能力，开工记录区分计划版本/审核编号并记录 checkout、工作区/manifest、实际环境与负责人
   - id: AT-V2-001-05
-    required_assertion: 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive 进入业务构建
+    required_assertion: 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive
+      进入业务构建
   execution_evidence:
   - validation/execution/V2-001/test-result.yaml
 - id: AT-V2-002
@@ -50,7 +51,8 @@ suites:
   - id: AT-V2-002-12
     required_assertion: 里程碑与其阶段决定及阶段适用 CI 绑定同一被核验 revision，同时允许保留适用的历史任务证据
   - id: AT-V2-002-13
-    required_assertion: 任务从 OPEN 进入执行须引用具体 task_execution_packet；缺失、模板、错误任务/规范/输入 hash 或过期上下文被拒绝，合格执行包按 PREPARE/IMPLEMENT/LIVE_CALL/CERTIFY 动作通过对应检查；本地资料通过不代替 runner 开工拦截
+    required_assertion: 任务从 OPEN 进入执行须引用具体 task_execution_packet；缺失、模板、错误任务/规范/输入 hash 或过期上下文被拒绝，合格执行包按 PREPARE/IMPLEMENT/LIVE_CALL/CERTIFY
+      动作通过对应检查；本地资料通过不代替 runner 开工拦截
   - id: AT-V2-002-14
     required_assertion: 动作前核对所需 ADR 与授权：PREPARE 可调查未决项但不执行受其约束的实现，IMPLEMENT/LIVE_CALL/CERTIFY 到达决定点时未接受 ADR 被拒绝，已接受且适用的决定允许继续；必要付费上限缺失时不得调用
   - id: AT-V2-002-15
@@ -83,7 +85,7 @@ suites:
 - id: AT-V2-004
   task_id: V2-004
   phase: P0
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/contract/test_delivery_gates.py
   scenarios:
   - id: AT-V2-004-01
@@ -93,17 +95,19 @@ suites:
   - id: AT-V2-004-03
     required_assertion: PostgreSQL job 实际连接且当前提交 CI 证据可查
   - id: AT-V2-004-04
-    required_assertion: 远程合并保护的实际状态可核验；CI 缺权限记未验证，必需门禁删除后移及失败不能制造绿色
+    required_assertion: 单人 Owner 开发模式明确记录 GitHub 分支保护与平台合并拦截的实际未启用状态及接受范围；不将本地或人工流程冒称远程权限保护，六门失败仍必须返回失败
   - id: AT-V2-004-05
     required_assertion: 由当前提交的真实 CI 生成运行结果和 artifact，核对项目/commit/pipeline/job/结果/hash；缺失或来源未核验不作真实 CI 放行证据
   - id: AT-V2-004-06
-    required_assertion: 可信 CI 按实际受保护 runner 核对项目、被测 revision、运行命令、job 与原始 artifact；本地伪造 JSON、他项目/旧提交/未受信运行记录被拒绝，真实当前运行可通过，来源无法核验记未验证
+    required_assertion: 核对 GitHub 托管运行的 repository ID、被测 revision、workflow/run/job、运行命令和原始 artifact hash；模拟 JSON、错仓库/旧
+      revision/缺失结果不能作真实来源证明，合法当前运行可核验；专用 protected runner 不适用于已接受的单人模式
   - id: AT-V2-004-07
-    required_assertion: 普通实施凭证采用最小权限，不同时具备修改保护规则、绕过合并门禁和批准自身例外的能力；用安全测试验证越权操作确被拒绝且授权范围内操作可用，不具备核验权限时不得自称权限隔离生效
+    required_assertion: 单一 Owner 掌握实施和规则权限的信任边界与剩余风险有用户依据；不声称对抗性角色隔离，不再要求虚构 Developer/Owner 分离实验；精确例外仍绑定真实 Owner
+      决定、身份和期限
   - id: AT-V2-004-08
-    required_assertion: 在真实 CI/仓库保护环境验证治理校验器、基线、测试及流水线变更不能由同次改动移除必需检查后自行放行；无害失败夹具与未授权保护变更被阻断，有适用授权的规则修订经可信重新验证后可进入，不增加固定团队人数要求
+    required_assertion: 六项必需检查、治理/差异/安全验证与正负测试实际保留；规则修订记录用户依据、原要求、影响和替代验证；单人模式明确不能抵抗同一 Owner 改写全部防线，不声称存在平台强制反绕过保障
   execution_evidence:
-  - validation/execution/V2-004/test-result.yaml
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
 - id: AT-V2-005
   task_id: V2-005
   phase: P1

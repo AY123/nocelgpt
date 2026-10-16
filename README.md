@@ -1,10 +1,10 @@
 # ANovelOS
 
-Current delivery target: [AY123/nocelgpt](https://github.com/AY123/nocelgpt). V2-004 uses `.github/workflows/v2-004.yml` with manual dispatch only, six mandatory gates and read-only Actions permissions. GitLab files/evidence remain historical. The migration is under local validation; GitHub permission protection and final P0 acceptance are not yet verified.
+Current delivery target: [AY123/nocelgpt](https://github.com/AY123/nocelgpt) (private). V2-004 is CLOSED under the Owner-directed single-operator profile. Engineering revision `611d777`, [Actions run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667): six mandatory gates PASS,714 tests,0 skips. CI is manual at key deliveries. Adversarial permission isolation is not claimed; P0 aggregate remains NOT_VERIFIED.
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001～V2-003 IMPLEMENTED**。最小 Python 包、锁定安装、真实 PostgreSQL 基础测试与资料治理命令已实现；V2-003 的本地架构、实际差异和防降标检查已完成本地验证，证据绑定实际代码提交。V2-004 已进入 IN_PROGRESS，新增六项 CI 作业、交付与来源检查工具；其余 56 个任务仍 OPEN。密钥历史扫描未通过，可信远端 CI、P0 退出和章节生产未验证。见[审核独立分析](docs/reviews/2026-10-03-report-assessment/ASSESSMENT.md)与[V2-004 实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)。
+当前为 **Plan v1.3.0 / V2-001～V2-003 IMPLEMENTED / V2-004 CLOSED**。GitHub 工程提交611d777六门全绿、714测试通过。52项历史安全发现保持OPEN，按有限期精确批准消费；没有全局忽略。单人Owner模式与权限限制按用户要求明确登记。其余56任务仍OPEN，P0整体未验证、章节生产未开始。见[V2-004实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)与[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。
 
 ## 从这里开始
 
@@ -62,11 +62,11 @@ python3 -B plan/scripts/test_ai_execution.py --output-dir dist/validation/local
 
 ## 当前实施边界
 
-V2-003 已完成本地实施与验证，复用 V2-001 的锁定环境和 V2-002 的动作入口。`scripts/check_architecture.py` 扫描完整 `src/anovel` Python 源码，检查导入边界和当前 P0 硬门禁政策；`scripts/check_changes.py` 比较固定 Git 基线与实际 index/worktree，审查任务范围和可识别的验收弱化。代码存在与验证完成分别记录。V2-004 已编写 Secret/依赖 CI 与在线来源核验工具并开始本地验证；远端保护权限与验收仍未完成。正式任务关闭需要代码、测试、真实 CI 和验收记录，本地 PASS 与 CI PASS 分别记录。
+V2-003 已完成本地实施与验证，复用 V2-001 的锁定环境和 V2-002 的动作入口。`scripts/check_architecture.py` 扫描完整 `src/anovel` Python 源码，检查导入边界和当前 P0 硬门禁政策；`scripts/check_changes.py` 比较固定 Git 基线与实际 index/worktree，审查任务范围和可识别的验收弱化。代码存在与验证完成分别记录。V2-004已完成真实GitHub六门CI及单人模式验收，证据绑定611d777；本次后续文档登记不冒称其新SHA已运行CI。
 
 G-P0 未验证前不开始 Narrative Kernel。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
 
-V2-004 的候选流水线由 `.gitlab-ci.yml`、`security-policy.yaml` 和 `scripts/ci/` 实现。本地使用上面的精确版本 uv/Python 环境，运行 `uv run --locked python -B scripts/ci/run_gate.py static --output-dir dist/validation/static-run-1`；其余作业命令与来源核验步骤见[实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)。本地收据不能替代真实 GitLab 结果，候选仓库内的配置也不能证明受保护权限。历史密钥扫描保持失败，不为绿色结果新增忽略规则。
+V2-004当前流水线为 `.github/workflows/v2-004.yml`，六门均mandatory，仅关键交付手动触发。`.gitlab-ci.yml`及旧protected runner记录保留历史，不用它们冒充GitHub权限验证。本地命令仍可复用 `uv run --locked python -B scripts/ci/run_gate.py static --output-dir dist/validation/static-run-1`；真实结果见实施记录。
 
 ## 资料治理与本地任务入口
 
@@ -107,4 +107,4 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 
 差异检查中的 scope commit 固定开工范围、用户既有改动身份和授权来源。运行前将 `pinned-baseline.json` 中的最新 pin 与当前有效交接核对；该文件提供定位信息，授权内容从明确的 Git commit 读取。开工清单的补正原因和原 pin 保留在准备记录中。尚未处置的 finding 返回失败并保留报告；有依据的技术处置需再提供 `--review-revision` 与 `--review-ref`，二者从当前有效交接取值，绑定准确内容和验证产物。改变被审内容后须重新核对，不能把旧 review 用于新改动。命令和处置方法见[任务执行指南](plan/09_TASK_EXECUTION_GUIDE.md)。
 
-`task_execution.py` 对 IMPLEMENT/LIVE_CALL/CERTIFY 自动读取执行包 `change_review` 的 scope/review pin，在命令前后强制核对差异；缺少绑定会阻断，CLI 只能重述同值、不能覆盖绑定。PREPARE 允许先调查再冻结范围；付费/认证 dispatch 仍被拒绝。架构检查作为明确的子命令执行。所有本地工具均不能抵抗同一写入者修改或绕过检查器；受保护 CI、远端来源和有效权限核验仍由 V2-004 交付。
+`task_execution.py` 对 IMPLEMENT/LIVE_CALL/CERTIFY 自动读取执行包 `change_review` 的 scope/review pin，在命令前后强制核对差异；缺少绑定会阻断，CLI 只能重述同值、不能覆盖绑定。PREPARE 允许先调查再冻结范围；付费/认证 dispatch 仍被拒绝。架构检查作为明确的子命令执行。所有本地工具均不能抵抗同一写入者修改或绕过检查器；V2-004已交付真实GitHub来源核对；单人模式不声称对抗性权限隔离。

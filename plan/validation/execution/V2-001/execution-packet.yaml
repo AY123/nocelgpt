@@ -4,7 +4,7 @@ task_id: V2-001
 plan_version: 1.3.0
 repository_revision: 0089eecc496b0c0b4039fb2b26c186fc437c032e
 worktree_dirty: true
-plan_manifest_sha256: cc2cc3cf1e27c50e37ab5f5bbab2f859f3483ae472057a7719e519b5258cbc5e
+plan_manifest_sha256: 7956da340626e6fc4b9174dd8ee1fc937a29fd16589ea4ca7231917b5e5046ed
 environment:
   fingerprint: macOS15.1.1-arm64; Python3.12.14; uv0.12.17; Docker29.4.0; Compose5.1.2
   runtime_versions:
@@ -16,31 +16,30 @@ environment:
   database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
   ci_context: null
 implementer: Codex main implementer / local operator
-verifier: Codex local tests plus bounded AI review; not independent human or remote
-  CI
+verifier: Codex local tests plus bounded AI review; not independent human or remote CI
 owner_role: repository-maintainer
-scope: Only P0/V2-001 bootstrap, ADR-001, package and isolated PostgreSQL tests. No
-  V2-002/003/004 or P1+ implementation; no Provider or publication.
+scope: Only P0/V2-001 bootstrap, ADR-001, package and isolated PostgreSQL tests. No V2-002/003/004 or P1+ implementation;
+  no Provider or publication.
 action: IMPLEMENT
 inputs:
 - source_ref: 02_ARCHITECTURE_BASELINE.md
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-001/00-02_ARCHITECTURE_BASELINE.md.txt
   sha256: 7abd92d24a1fa38152031145dd14d71d21d4e6d5a352d65c279693837779a7f9
 - source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
-  ref: validation/execution/V2-002/snapshots/review-fixes/V2-001/01-07_PLATFORM_SECURITY_AND_DELIVERY.md.txt
-  sha256: 20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d
+  ref: validation/execution/V2-001/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
+  sha256: f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033
 - source_ref: 09_TASK_EXECUTION_GUIDE.md
   ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
   sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-004/inputs/a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82.txt
-  sha256: a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82
+  ref: validation/execution/V2-001/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
+  sha256: c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22
 - source_ref: AI_EXECUTION_PROTOCOL.md
-  ref: validation/execution/V2-003/followup/inputs/6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac.txt
-  sha256: 6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac
+  ref: validation/execution/V2-001/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
+  sha256: 7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10
 - source_ref: README.md
-  ref: validation/execution/V2-004/inputs/1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2.txt
-  sha256: 1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2
+  ref: validation/execution/V2-001/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
+  sha256: 7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e
 - source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
   sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
@@ -48,8 +47,8 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/01-08_ROADMAP_AND_GATES.md.txt
   sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-004/inputs/75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055.txt
-  sha256: 75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055
+  ref: validation/execution/V2-001/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
+  sha256: b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76
 - source_ref: machine/phase-gates.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/11-phase-gates.yaml.txt
   sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
@@ -60,8 +59,8 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-004/inputs/c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18.txt
-  sha256: c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18
+  ref: validation/execution/V2-001/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
+  sha256: 3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842
 - source_ref: machine/ai-execution-policy.yaml
   ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
   sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
@@ -114,8 +113,8 @@ required_decisions:
 claims:
 - id: OBSERVED_ENVIRONMENT
   kind: FACT
-  statement: Initial macOS arm64 environment has Python 3.9.6, no uv on PATH, Docker
-    client installed but daemon unavailable.
+  statement: Initial macOS arm64 environment has Python 3.9.6, no uv on PATH, Docker client installed but daemon
+    unavailable.
   sources:
   - ref: validation/execution/V2-001/raw/preflight.json
     sha256: 6e87f6d89cdd7c3b3221c67a30bb06d12ecd40228389147285c5f7df12698e9f
@@ -123,8 +122,7 @@ claims:
   verification_plan: Recheck actual binaries, daemon and image before accepting ADR-001.
 - id: ADR001_ACCEPTED
   kind: FACT
-  statement: ADR-001 is accepted and bound to the real committed decision; toolchain
-    installed and image inspected.
+  statement: ADR-001 is accepted and bound to the real committed decision; toolchain installed and image inspected.
   sources:
   - ref: validation/execution/V2-001/adr-001-decision.yaml
     sha256: fe35bc22258f42d7a4aa8e93b022c8ccb9934982ca305f55f5542d4c61159ffe
@@ -149,77 +147,70 @@ stop_conditions:
 - Stop at highest honest V2-001 state; no next task
 - Record concrete permission/failure blockers, do not weaken tests
 review_notes:
-- Support changes are task registration, ADR, generated views, evidence and operating
-  documentation.
-- No user source changes existed at initial inventory; preserve archive and local
-  tool configuration.
-- An initial inline preparation script failed Python source decoding before execution;
-  the following plan check covered the prior planning baseline only.
-- Raw snapshots retain exact input bytes in .txt containers; current normative Markdown
-  remains checked. Initial .md snapshots caused relative-link validation failures;
-  no validator/exclusion change was made.
-- 'Support-only fixture correction: raw/016 reproduces one failure after real ADR
-  acceptance. Reset ADR-001 to REQUIRED only inside isolated AIExecutionTests.setUp.
-  Original requirement remains: unresolved ADR rejects IMPLEMENT; accepted ADR permits
-  it. No validator, assertions, acceptance, exclusions or thresholds changed; no V2-002
-  implementation.'
-- 2026-09-23 user explicitly requested continuation after idle interruption; renewed
-  local execution window. No paid budget or scope increase. Agent failed due usage
-  limit without file edits; primary implementer resumed responsibility.
-- Support change plan/README.md updates stale all-OPEN statements after V2-001 implementation
-  only; no architecture or task/gate changes.
-- Final read-only AI code review found no actionable issue; same AI trust boundary,
-  no independent human/platform/remote CI validation. repository_revision remains
-  original opening baseline; evidence revision is the committed implementation. Stop
-  instruction is preserved; IMPLEMENT identifies the performed action, not authorization
-  to start V2-002.
-- 'Full A-K implementation report: docs/V2-001_IMPLEMENTATION_REPORT.md. Artifacts
-  written after code revision are evidence/metadata only; tests bind the actual source
-  revision, not the subsequent delivery commit.'
-- 'V2-002 prepare: reconciled live inputs/manifest; previous packet preserved under
-  V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 implementation-start: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 first-implementation: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 implemented-local: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 final-docs: reconciled live inputs/manifest; previous packet preserved under
-  V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'V2-002 review-fixes: reconciled live inputs/manifest; previous packet preserved
-  under V2-002 snapshots. No V2-001 work or evidence recertification.'
-- 'Review follow-up binding: CODE/TEST_RESULT at actual fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64;
-  shared active inputs reconciled, unchanged snapshots reused. V2-001 status/evidence
-  not recertified. Old packet retained under followup/binding-inputs.'
-- 'Follow-up binding-correction: shared inputs reconciled; prior packet preserved,
-  unchanged snapshots reused; no V2-001 recertification.'
-- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable
-  snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 implementation-start: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 final-implementation: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 precommit-validation: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 evidence-binding: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable
-  snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 implementation: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 schema-format: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 prior-scope-grant: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 regression-ready: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- 'V2-003 final-evidence: shared inputs reconciled; old packet retained; identical
-  immutable snapshots reused. Historical V2-001/002 evidence/status not recertified.'
-- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet
-  preserved; historical evidence and task status unchanged.'
+- Support changes are task registration, ADR, generated views, evidence and operating documentation.
+- No user source changes existed at initial inventory; preserve archive and local tool configuration.
+- An initial inline preparation script failed Python source decoding before execution; the following plan check
+  covered the prior planning baseline only.
+- Raw snapshots retain exact input bytes in .txt containers; current normative Markdown remains checked. Initial
+  .md snapshots caused relative-link validation failures; no validator/exclusion change was made.
+- 'Support-only fixture correction: raw/016 reproduces one failure after real ADR acceptance. Reset ADR-001 to REQUIRED
+  only inside isolated AIExecutionTests.setUp. Original requirement remains: unresolved ADR rejects IMPLEMENT; accepted
+  ADR permits it. No validator, assertions, acceptance, exclusions or thresholds changed; no V2-002 implementation.'
+- 2026-09-23 user explicitly requested continuation after idle interruption; renewed local execution window. No
+  paid budget or scope increase. Agent failed due usage limit without file edits; primary implementer resumed responsibility.
+- Support change plan/README.md updates stale all-OPEN statements after V2-001 implementation only; no architecture
+  or task/gate changes.
+- Final read-only AI code review found no actionable issue; same AI trust boundary, no independent human/platform/remote
+  CI validation. repository_revision remains original opening baseline; evidence revision is the committed implementation.
+  Stop instruction is preserved; IMPLEMENT identifies the performed action, not authorization to start V2-002.
+- 'Full A-K implementation report: docs/V2-001_IMPLEMENTATION_REPORT.md. Artifacts written after code revision are
+  evidence/metadata only; tests bind the actual source revision, not the subsequent delivery commit.'
+- 'V2-002 prepare: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001
+  work or evidence recertification.'
+- 'V2-002 implementation-start: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots.
+  No V2-001 work or evidence recertification.'
+- 'V2-002 first-implementation: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots.
+  No V2-001 work or evidence recertification.'
+- 'V2-002 implemented-local: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots.
+  No V2-001 work or evidence recertification.'
+- 'V2-002 final-docs: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001
+  work or evidence recertification.'
+- 'V2-002 review-fixes: reconciled live inputs/manifest; previous packet preserved under V2-002 snapshots. No V2-001
+  work or evidence recertification.'
+- 'Review follow-up binding: CODE/TEST_RESULT at actual fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64; shared
+  active inputs reconciled, unchanged snapshots reused. V2-001 status/evidence not recertified. Old packet retained
+  under followup/binding-inputs.'
+- 'Follow-up binding-correction: shared inputs reconciled; prior packet preserved, unchanged snapshots reused; no
+  V2-001 recertification.'
+- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 implementation-start: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 final-implementation: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 precommit-validation: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 evidence-binding: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 prepare: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 implementation: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 schema-format: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- 'V2-003 prior-scope-grant: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 regression-ready: shared inputs reconciled; old packet retained; identical immutable snapshots reused.
+  Historical V2-001/002 evidence/status not recertified.'
+- 'V2-003 final-evidence: shared inputs reconciled; old packet retained; identical immutable snapshots reused. Historical
+  V2-001/002 evidence/status not recertified.'
+- '2026-10-03 V2-004 preparation: current shared inputs reconciled, original packet preserved; historical evidence
+  and task status unchanged.'
+- '2026-10-16 V2-004 closure: reconcile changed shared planning inputs and manifest only; this task status and acceptance
+  not promoted.'
 handoff:
-  current_step: 'STOPPED AS REQUESTED: V2-001 IMPLEMENTED; local results bound to
-    390aa0f4f28068fdd146fca3eb98df1a5ec1a334; no next task started'
+  current_step: 'STOPPED AS REQUESTED: V2-001 IMPLEMENTED; local results bound to 390aa0f4f28068fdd146fca3eb98df1a5ec1a334;
+    no next task started'
   completed_steps:
   - Checked initial clean main and HEAD
   - Read mandated inputs and task/scenario requirements
@@ -229,16 +220,13 @@ handoff:
   - 'Initial PostgreSQL tests: 10 PASS, real connect/cleanup/negative cases'
   - 'AI fixture corrected without changing rejection assertions: 36 PASS'
   - Committed actual implementation
-  - 'Formal local tests on implementation revision: pytest15, self32, governance39,
-    AI36, plan check PASS'
+  - 'Formal local tests on implementation revision: pytest15, self32, governance39, AI36, plan check PASS'
   - Bound CODE and TEST_RESULT artifacts to implementation revision
-  - Evidence-bound current Plan validation PASS; A-K report and final scoped diff
-    inventory written
+  - Evidence-bound current Plan validation PASS; A-K report and final scoped diff inventory written
   pending_items:
   - 'V2-001 remains IMPLEMENTED: real CI_RUN and final ACCEPTANCE_RECORD absent'
   - Recommend V2-002 only; requires a separately authorized task scope
-  - V2-003 architecture and V2-004 trusted CI/permissions remain OPEN; P1 forbidden
-    until G-P0
+  - V2-003 architecture and V2-004 trusted CI/permissions remain OPEN; P1 forbidden until G-P0
   next_action: IMPLEMENT
   last_check:
     status: PASS

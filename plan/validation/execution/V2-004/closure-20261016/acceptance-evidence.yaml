@@ -1,0 +1,116 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-004
+revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+status: PASS
+producer: Codex implementation and service-result verification, same operator; Owner-directed single-operator acceptance,
+  no independent personnel claim
+executed_at: '2026-10-16T15:28:33.544335+00:00'
+environment_fingerprint: GitHub Actions hosted Ubuntu24.04 / Python3.12.14 / locked uv0.12.17; original run38917341667
+  artifacts verified; acceptance registration is a later docs-only revision
+artifacts:
+- ref: validation/execution/V2-004/closure-20261016/AUTHORIZATION.md
+  sha256: 45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8
+- ref: validation/execution/V2-004/closure-20261016/REMOTE_VERIFICATION.json
+  sha256: 8558e6a52c4ffbdd0c702b6b9e15a77dea72cabb33923252a8e4607a8a93ed83
+- ref: validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json
+  sha256: 66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade
+- ref: validation/execution/V2-004/closure-20261016/SINGLE_OPERATOR_DECISION.json
+  sha256: 1a3fd8da84e2a821f370c19afeb53ca7f674700e177f95390686abe384309d5c
+- ref: validation/execution/V2-004/closure-20261016/gate-arch_fitness-38917341667-1.zip
+  sha256: 3821fc32212ed71174d347f92b3eb57d68fb7255cdf170fec6efff5c80a4843b
+- ref: validation/execution/V2-004/closure-20261016/gate-postgres_env-38917341667-1.zip
+  sha256: a6a53a252a9e656102074054d86fcf88544b104f76fd6e347c4c06bc0a430765
+- ref: validation/execution/V2-004/closure-20261016/gate-schema_contract-38917341667-1.zip
+  sha256: 545301b51b638eab785eb82c4424bc760bc5941a4ad10612256c23cb33e89089
+- ref: validation/execution/V2-004/closure-20261016/gate-secret_dependency-38917341667-1.zip
+  sha256: 6a5e935e8cebc2ccd34d0b087c90c24d4f1bd7753de7b43d0cb595275ac5c796
+- ref: validation/execution/V2-004/closure-20261016/gate-static-38917341667-1.zip
+  sha256: ee0ab5665f6e17183811780d6f15e1fc15e312d61dc68d79b54c38aaa295558d
+- ref: validation/execution/V2-004/closure-20261016/gate-unit-38917341667-1.zip
+  sha256: 0c59c719376e9d4d0065637f4bea97c54ef2b939699e71d1126b4453c85eebd3
+input_evidence_refs:
+- validation/execution/V2-004/closure-20261016/code-evidence.yaml
+- validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+- validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+evidence_id: V2-004-GitHub-acceptance-611d777
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-004-01
+- AT-V2-004-02
+- AT-V2-004-03
+- AT-V2-004-04
+- AT-V2-004-05
+- AT-V2-004-06
+- AT-V2-004-07
+- AT-V2-004-08
+decision: ACCEPTED
+rationale: User-directed completion under revised internal_single_operator acceptance profile; actual engineering
+  source611d777 has all6 remote gates green. Four permission criteria explicitly revised with old/new record. No
+  assertion that GitHub branch/role protection exists.52 findings remainOPEN with time-bounded decisions. P0 aggregate
+  not promoted.
+finding_dispositions:
+- finding_id: AR-06
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: AR-17
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: AR-18
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: CA-17
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: RR-04
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: RR-09
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: RR-10
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.
+- finding_id: DA-01
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/tests-evidence.yaml
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
+  reason: Only the V2-004 delivery/CI responsibility is accepted by real same-revision gates and revised Owner-directed
+    single-operator profile; this does not close the cross-task audit finding or its later-phase responsibilities.

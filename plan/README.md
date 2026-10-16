@@ -6,7 +6,7 @@ v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTO
 
 保留 [v1.2.2](changes/2026-09-21_REVIEW_ROUND3_ADOPTION.md)、[v1.2.1](changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md)、[v1.2](changes/2026-09-21_REVIEW_ADOPTION.md)和 [v1.1](changes/2026-09-20_EXTERNAL_PRACTICES_ADOPTION.md)的历史变更记录；旧版本数字与结论只适用于其声明时点。
 
-**当前状态：资料基线已整理，可启动 P0；V2 工程、P0 退出、业务内核及题材认证尚未完成。** 文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
+**当前状态：V2-004按单人Owner模式CLOSED、GitHub六门已通过；V2-001～003仍IMPLEMENTED，P0整体退出、业务内核及题材认证尚未完成。** 文档校验通过只说明本资料包内部检查通过，不代表 CI、数据库或真实模型已经通过。
 
 开工前清理已按用户授权完成：根目录旧资料的重复副本已删除，独有文件补充归档；旧根 ZIP 的 Git 恢复依据和逐文件去向保存在项目根下 `docs/repository-layout-migration.md` / `.json`。来源登记中的 `origin` 是历史位置，不要求根副本继续存在。2026-09-23 V2-001 已 IMPLEMENTED：具备最小 Python 骨架、锁定安装和本地真实 PostgreSQL 测试；远端 CI 和最终验收仍缺失。见[执行包](validation/execution/V2-001/execution-packet.yaml)及 [ADR-001](decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
 
@@ -53,6 +53,6 @@ v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTO
 
 [archive/](archive/) 保留来源快照；内部的 NORMATIVE、FINAL、READY、PASS 等标签都是历史内容，不构成当前授权。旧 Schema 不进入生产验证器的自动扫描路径，需经任务修正、正反例测试后进入未来的 `specs/`。
 
-当前 V2-001～V2-003 为 IMPLEMENTED，V2-004 为 IN_PROGRESS，其余 56 个任务仍 OPEN。V2-002 已接入资料检查与本地动作/恢复命令；V2-003 已实现本地架构、实际差异与防降标检查并通过本地验证，交接见其[执行包](validation/execution/V2-003/followup/execution-packet.yaml)。V2-004 已运行真实 dev_gpt 流水线：恢复提交的四项作业成功、UNIT 失败、安全作业跳过，整体失败；已核对 UNIT 原始产物并修复其离线缓存前提，正在推进新候选交付。历史凭据处置、全部门禁绿色、受保护执行及权限正反例尚未完成。见[执行包与实施交接](validation/execution/V2-004/execution-packet.yaml)；根目录 `docs/V2-004_IMPLEMENTATION_REPORT.md` 记录实现和未完成项。生产服务、真实模型和作品发布均未开始。任务关闭的证据须写入任务记录并通过检查，本地结果不替代缺失的真实 CI 与验收。V2-002 已将本地提交后 CODE/TEST_RESULT 绑定修复提交 `9c2fd253326e87e9e6c43920f29a95dc68680a64`；当前交接见其[执行包](validation/execution/V2-002/execution-packet.yaml)，开工 HEAD 和旧工作区记录仍作为历史保留。可信 CI/最终验收仍缺失。
+当前 V2-001～V2-003 为 IMPLEMENTED，V2-004 为 CLOSED，其余 56 个任务仍 OPEN。V2-004按用户确认的单人Owner模式验收：GitHub代码611d777/run38917341667六门全绿、714测试0skip，保护未启用作为明确接受的限制；52项finding仍OPEN且精确批准有限期。证据见 validation/execution/V2-004/closure-20261016/；P0整体仍NOT_VERIFIED。V2-002 已接入资料检查与本地动作/恢复命令；V2-003 已实现本地架构、实际差异与防降标检查并通过本地验证，交接见其[执行包](validation/execution/V2-003/followup/execution-packet.yaml)。V2-004早期GitLab失败记录保留为历史，已由上述GitHub同版本六门通过和用户确认的验收范围完成该任务收口。见[执行包与实施交接](validation/execution/V2-004/execution-packet.yaml)；根目录 `docs/V2-004_IMPLEMENTATION_REPORT.md` 记录实现和未完成项。生产服务、真实模型和作品发布均未开始。任务关闭的证据须写入任务记录并通过检查，本地结果不替代缺失的真实 CI 与验收。V2-002 已将本地提交后 CODE/TEST_RESULT 绑定修复提交 `9c2fd253326e87e9e6c43920f29a95dc68680a64`；当前交接见其[执行包](validation/execution/V2-002/execution-packet.yaml)，开工 HEAD 和旧工作区记录仍作为历史保留。可信 CI/最终验收仍缺失。
 
 规划验证还需运行 `python3 -B plan/scripts/test_governance.py` 与 `python3 -B plan/scripts/test_ai_execution.py`。最低义务基线不可由 `--write-views` 自动放宽；原始审核和新复测结果分开保留。V2-003 的 `scripts/check_architecture.py` 扫描完整生产包并区分 Canon 公共提交服务与内部写能力；`scripts/check_changes.py` 使用固定 scope/review Git pin 审查实际变化，`task_execution.py` 对受限动作按执行包绑定强制运行命令前后差异检查。用法见[任务执行指南](09_TASK_EXECUTION_GUIDE.md)。这些本地工具不能抵抗共享写权限者修改检查器，可信 CI 和有效权限保护仍须 V2-004 实施。V2-017 的[设计执行包](task-packets/V2-017_PLANNING_CONTRACT_PACKET.md)在 P4 消费，不替代任务开工时的正式记录。

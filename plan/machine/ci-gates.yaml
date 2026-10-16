@@ -1,5 +1,5 @@
 version: 1.2.0
-status: CANDIDATE_IMPLEMENTED_NOT_VERIFIED
+status: P0_SIX_GATES_VERIFIED_FUTURE_GATES_PENDING
 gates:
 - id: STATIC
   activation_phase: P0
@@ -9,16 +9,18 @@ gates:
   - format
   - lint
   - typecheck
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
 - id: UNIT
   activation_phase: P0
   mode: every_change
   allow_failure: false
   checks:
   - unit
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
 - id: SCHEMA_CONTRACT
   activation_phase: P0
   mode: every_change
@@ -26,16 +28,18 @@ gates:
   checks:
   - plan validation
   - active schemas and contracts
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
 - id: ARCH_FITNESS
   activation_phase: P0
   mode: every_change
   allow_failure: false
   checks:
   - positive and negative boundary fixtures
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
 - id: SECRET_DEPENDENCY
   activation_phase: P0
   mode: every_change
@@ -43,16 +47,18 @@ gates:
   checks:
   - secret scan
   - locked dependency scan
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
 - id: POSTGRES_ENV
   activation_phase: P0
   mode: every_change
   allow_failure: false
   checks:
   - real database connect and clean fixture
-  status: IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-004/closure-20261016/ci-evidence.yaml
 - id: CANON_CAS_IDEMPOTENCY
   activation_phase: P2
   mode: every_change

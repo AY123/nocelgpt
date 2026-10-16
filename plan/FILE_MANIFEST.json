@@ -36,8 +36,8 @@
   },
   {
     "path": "07_PLATFORM_SECURITY_AND_DELIVERY.md",
-    "bytes": 6462,
-    "sha256": "20fc849c4c3b30298d5dd0d1462a755bc6223acd66c7a401c25763e98055832d"
+    "bytes": 6832,
+    "sha256": "f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033"
   },
   {
     "path": "08_ROADMAP_AND_GATES.md",
@@ -56,18 +56,18 @@
   },
   {
     "path": "AI_EXECUTION_PROTOCOL.md",
-    "bytes": 11718,
-    "sha256": "6cde04eca6443d08ad053064142bcfa00ded4b7e9ba953d7705acbca0cc54aac"
+    "bytes": 11940,
+    "sha256": "7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10"
   },
   {
     "path": "PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md",
-    "bytes": 11089,
-    "sha256": "a17686c9880bdcd9e0df3c9def7518223bd5f947e103b342a76ffb496c3c6f82"
+    "bytes": 10892,
+    "sha256": "c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22"
   },
   {
     "path": "README.md",
-    "bytes": 8086,
-    "sha256": "1f2f09507356cb705791cb9df6a7f0fd863c6397062cebc2e847391c41d4d3e2"
+    "bytes": 8246,
+    "sha256": "7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e"
   },
   {
     "path": "archive/README.md",
@@ -1325,6 +1325,11 @@
     "sha256": "4305f6a46d4d76d3ca642b51c49d040b6de2ae51b1cdd444370d6b4f0e5f57ba"
   },
   {
+    "path": "changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md",
+    "bytes": 1777,
+    "sha256": "e9ee3e69cbf47e6d7731b7beb901c7f2859ad0ce7aab02b906bb0a80ea6c06bc"
+  },
+  {
     "path": "decisions/ADR-001_RUNTIME_AND_LOCKING.md",
     "bytes": 5676,
     "sha256": "234d6b6e6735a70aaded8228159ab07aa0800ea0ee90fa7095169899824477bc"
@@ -1341,8 +1346,8 @@
   },
   {
     "path": "generated/PHASE_TASK_REGISTRY.md",
-    "bytes": 6176,
-    "sha256": "4749c05b38a70545347888c23e2cdf3651f34b5db379b9e45fa3826cb7c5f190"
+    "bytes": 6166,
+    "sha256": "acba9bac47fb78435016cee59e79e0cc1d351fb5e55322cff71fb94ae0c54b9b"
   },
   {
     "path": "machine/ai-execution-policy.yaml",
@@ -1356,8 +1361,8 @@
   },
   {
     "path": "machine/ci-gates.yaml",
-    "bytes": 2186,
-    "sha256": "594191f7ec68718e71dd8425f6798f57d76b584137cfe868135ac3300774561e"
+    "bytes": 2554,
+    "sha256": "736cca28842cea4b3dbc3a9b3a2fed8d8c83d9986eaceabc954ea8230e82d04b"
   },
   {
     "path": "machine/decision-register.yaml",
@@ -1381,8 +1386,8 @@
   },
   {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 85836,
-    "sha256": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055"
+    "bytes": 86242,
+    "sha256": "b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76"
   },
   {
     "path": "machine/milestones.yaml",
@@ -1406,8 +1411,8 @@
   },
   {
     "path": "machine/test-catalog.yaml",
-    "bytes": 37831,
-    "sha256": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18"
+    "bytes": 37933,
+    "sha256": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842"
   },
   {
     "path": "schemas/evidence-record.schema.json",
