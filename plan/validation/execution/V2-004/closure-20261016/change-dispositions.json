@@ -1,0 +1,346 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "c0872853a609004844f7f12b40ffda64b995de33",
+    "ref": "plan/validation/execution/V2-004/closure-20261016/scope.json",
+    "sha256": "469c837a8e05b15fc67aba97459df2a1e0fcca1fdaf5dc5e681a1889f03f34f2"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "index",
+      "old_sha": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "new_sha": "b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76",
+      "code": "AC_REMOVED",
+      "finding_id": "893fcefd690dd651593aa88d9607dcf00c12780f621802834b185a687913eaa6",
+      "disposition": "AUTHORIZED_EXCEPTION",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "explicit_rule_revision_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "index",
+      "old_sha": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "new_sha": "b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76",
+      "code": "MACHINE_POLICY_CHANGED",
+      "finding_id": "b568ab7acacab69c7fa2c6eedb3bf072532ad7bb0508f9994c06e64535a3fbfd",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "worktree",
+      "old_sha": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "new_sha": "b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76",
+      "code": "AC_REMOVED",
+      "finding_id": "6f6f4f382f2a5e3fe49aa20cd2f417c039cbaf6639925bf8f5731f045c858c9e",
+      "disposition": "AUTHORIZED_EXCEPTION",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "explicit_rule_revision_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "worktree",
+      "old_sha": "75e57907ded4e8f6011d6d8cf99f402936803c93c490a4e0d13ce915a541f055",
+      "new_sha": "b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76",
+      "code": "MACHINE_POLICY_CHANGED",
+      "finding_id": "3c66379d08518711b0741d4647dbcecc8c58061b6d2f0b5b24bfd5ef4f124e24",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "index",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "996efcfb013111b7cd84f583855739d9744875de12ecca0c45cd1b0ab5c487a2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "index",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "854b9c03e59dff5857ae84decd686e70258e653941d623b2eba2c1065a1c9944",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "index",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "85259dd844e3aa5ed8d43c9e5845a08b36c8df481ecb9c638230bceefac5ce3c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "index",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "adfcad08be11f863c8b7bf05811dedc14020def8cfd4c53cd73db3adde225a64",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "worktree",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "37286cc3dc07610201cb700ae5f87073de554a0c4365c478b8424cb21e6f3292",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "worktree",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "a2771b3febe80836dc5e2b0bd75b530585a8d829a5fbb67d5e127e0f679bfa8a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "worktree",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "405cc542bae861575be5c92e4fae83f55f0fbf32d82ff4c916cadb24424517e0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "layer": "worktree",
+      "old_sha": "c2739e41cba25b7dd6cf01dd0e3202088014047b381727151f54d7bc0ea0af18",
+      "new_sha": "3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842",
+      "code": "SCENARIO_ASSERTION_CHANGED",
+      "finding_id": "cdcbcf7967cd2be8bd49df46c4581cff1fbca6c4728dbb27e9c27a2bfbca2381",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual user directs single-operator completion. AC_REMOVED explicitly reduces four role/protection obligations; scenario mappings mirror the separately authorized reduction and do not introduce further weakening. REQUIREMENT_DELTA.json preserves old/new text.",
+      "impact": "Shared Owner authority accepted; no claim of adversarial isolation. Six gates, code/tests, full-history scans and exact finite approval identities unchanged. No P0/P1 promotion.",
+      "reviewer": "Same Codex implementer, not independent personnel.",
+      "replacement_validation": "Real611d777/run38917341667 six gatesPASS,714tests0skip; docs planPASS,32validator/39governance/36AIcontrolsPASS; local52 findings52consumed0unmatched.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-004/closure-20261016/AUTHORIZATION.md",
+        "sha256": "45e4acc55d42460287afe2366cc0d9f9cb4168cc6bded743fa5f14910b309aa8"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/governance-regression.json",
+          "sha256": "f0a9825ad76d98638b982a373bc323fb44034d9aa185ec5f9d3a8292b155fb22"
+        },
+        {
+          "ref": "plan/validation/execution/V2-004/closure-20261016/REQUIREMENT_DELTA.json",
+          "sha256": "66b293946d32b1adfb5dd5c3b8834a8a4ab1a74c73f2c7f031937d3ce83bbade"
+        }
+      ]
+    }
+  ]
+}
