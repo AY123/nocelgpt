@@ -106,7 +106,8 @@ def validate_github_configuration(document: Any) -> list[str]:
             },
             {
                 "name": "Verify GitHub source context",
-                "run": "python -I -B scripts/ci/github_context.py",
+                "run": 'git config --global --add safe.directory "$GITHUB_WORKSPACE"\n'
+                "python -I -B scripts/ci/github_context.py\n",
             },
             {
                 "name": "Install locked runtime",

@@ -307,3 +307,16 @@ def test_weakened_actions_configuration_is_rejected(change: str) -> None:
     elif change == "push_trigger":
         document["on"] = {"push": None}
     assert configuration.validate_github_configuration(document)
+
+
+@pytest.mark.parametrize("job", ["gates", "postgres_env"])
+def test_container_ownership_trust_is_limited_to_checkout(job: str) -> None:
+    document = yaml.safe_load((ROOT / ".github/workflows/v2-004.yml").read_text())
+    step = document["jobs"][job]["steps"][1]
+    assert step["run"].splitlines() == [
+        'git config --global --add safe.directory "$GITHUB_WORKSPACE"',
+        "python -I -B scripts/ci/github_context.py",
+    ]
+    assert configuration.validate_github_configuration(document) == []
+    step["run"] = step["run"].replace('"$GITHUB_WORKSPACE"', "'*'")
+    assert configuration.validate_github_configuration(document)

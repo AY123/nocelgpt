@@ -37,7 +37,9 @@ jobs:
         fetch-tags: true
         persist-credentials: false
     - name: Verify GitHub source context
-      run: python -I -B scripts/ci/github_context.py
+      run: |
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        python -I -B scripts/ci/github_context.py
     - name: Install locked runtime
       run: 'python -m pip install --index-url https://pypi.org/simple uv==0.12.17
 
@@ -78,7 +80,9 @@ jobs:
         fetch-tags: true
         persist-credentials: false
     - name: Verify GitHub source context
-      run: python -I -B scripts/ci/github_context.py
+      run: |
+        git config --global --add safe.directory "$GITHUB_WORKSPACE"
+        python -I -B scripts/ci/github_context.py
     - name: Install locked runtime
       run: 'python -m pip install --index-url https://pypi.org/simple uv==0.12.17
 
