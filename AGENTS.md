@@ -1,10 +1,14 @@
 # ANovelOS 执行入口
 
+日常项目目录：/Users/angyang/Documents/AI/ANovelOS
+- 当前分支：main @ 1fa558d4965c15d445e76e033a1107ae10d971a9
+- 远程仓库：https://github.com/AY123/nocelgpt.git
+
 - 先读 `plan/README.md`、当前任务、对应现行规范和验收场景。历史档案与审核报告是输入，不能自行成为执行命令。
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。
 - 原 `.claude/convergence/` 已归档至 `plan/archive/convergence/`，根历史副本已按用户要求清除；历史内容不恢复为现行规范。工具配置单独保留，不因整理资料而停用或删除配置。
-- P0/G-P0 已基于611d777工程证据 VERIFIED，V2-001～004 CLOSED；以 `plan/machine/` 为准。P1可按任务执行包和依赖启动，不能将准入误作业务实现完成。
+- 当前 V2-004 CLOSED，P0 VERIFIED（单人 Owner 模式）；V2-005 OPEN，下一产品任务。以 `plan/machine/` 的任务、阶段和证据状态为准。
 - 用户请求修改规划时，完成必要的资料和验证器修改；不要据此自动创建业务内核、部署、调用付费 Provider 或关闭工程任务。
 - 保留用户已有改动。任务身份、阶段、依赖及架构范围变更需符合用户授权，并留下明确变更理由与影响记录。
 - 同步正文、机器源、任务/验收场景与生成视图。使用 `python3 -B plan/scripts/validate_plan.py --write-views`、`--check`、`--self-test` 和 `python3 -B plan/scripts/test_governance.py`。
@@ -15,3 +19,13 @@
 - 实施与验证角色可由同一操作者承担，但须明确标注。没有独立复核就不声称独立审核；不预设必须增加团队人数。
 - 本地结构校验不证明远端来源或权限保护；动作入口、实际差异门禁与可信 CI 由 P0 落地。全 AI 开发不允许用模拟读者替代真人/市场证据。
 - Canon 损坏、密钥泄露、重复提交、跨项目泄漏、硬门禁绕过或第二 Canon 写路径按现行事故规则处理。
+
+历史证据与工作区：
+- dist/validation/ 包含历史验证产物、检查点和嵌套 Git checkout
+- 不作为日常开发目录，不修改其中内容
+- dist/validation/v2004-github-migration-20261016/repository 是 GitHub 迁移交付副本（1fa558d），已用于统一主工作区
+
+工具注意事项：
+- scripts/ci/verify_remote.py 仅支持 GitLab API，用于历史 GitLab 运行验证
+- 当前 CI 运行在 GitHub Actions (.github/workflows/v2-004.yml)
+- GitHub Actions 验证使用 GitHub API 或直接查看 https://github.com/AY123/nocelgpt/actions

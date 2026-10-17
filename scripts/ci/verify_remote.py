@@ -1,4 +1,30 @@
-"""Read GitLab's exact-job evidence; source verification is not task acceptance.
+"""
+GitLab CI 来源验证工具（历史用途）
+
+警告：此工具仅支持 GitLab API，用于验证历史 GitLab CI 运行。
+项目已于 2026-10-16 迁移到 GitHub，当前 CI 运行在 GitHub Actions。
+
+适用场景：
+- 验证历史 GitLab 运行记录（如 ayitnovel/ainovelos 项目）
+- 兼容性测试参考
+
+不适用场景：
+- GitHub Actions 运行验证（使用 GitHub API）
+- 当前项目 CI 验证（查看 https://github.com/AY123/nocelgpt/actions）
+
+保留原因：
+- 历史证据核验
+- 兼容性检查参考
+- 文档化 GitLab 验证逻辑
+"""
+import argparse
+import hashlib
+import json
+import os
+import sys
+import urllib.error
+import urllib.parse
+import urllib.request
 
 CLI authentication comes only from ANOVELOS_GITLAB_TOKEN. The HTTP client never
 follows redirects, so an artifact redirect cannot forward credentials elsewhere.
