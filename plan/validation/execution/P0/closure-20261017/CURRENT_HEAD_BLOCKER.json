@@ -1,0 +1,42 @@
+{
+  "record_type": "current_head_security_blocker",
+  "observed_at": "2026-10-17T01:27:39.502935+00:00",
+  "candidate_revision": "267d4e403e34d0f9e9e85422d8ff559b5bc3e256",
+  "cause": "Implementer copied full legacy probe report into a new tracked path; one public content digest matched generic-api-key in worktree and commit9d71f91 history. Final scan failure was noticed after the authorized push had already started. No CI was triggered.",
+  "classification": "PUBLIC_FILE_DIGEST_NOT_CREDENTIAL",
+  "rule": "generic-api-key",
+  "detected": 54,
+  "approved_and_consumed": 52,
+  "unmatched": 2,
+  "authority_status": "PENDING_HUMAN_DECISION",
+  "finding_candidates": [
+    {
+      "rule_id": "generic-api-key",
+      "target": "tracked_worktree",
+      "path": "plan/validation/execution/P0/closure-20261017/legacy.json",
+      "line": 49,
+      "commit": "",
+      "source_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+      "source_sha256": "0b7045efb84d51b3dad3440f1c6185d4581cb79ed3882f6407cf324b38556070",
+      "source_blob_oid": "c18dbf790e184430263b34dfcc03f138b9046873",
+      "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+      "scanner_fingerprint_sha256": "063acdf870ff71754a7b25bd02bda15d859a5f9d2efa21da00f22ce91e7493a2"
+    },
+    {
+      "rule_id": "generic-api-key",
+      "target": "git_history",
+      "path": "plan/validation/execution/P0/closure-20261017/legacy.json",
+      "line": 49,
+      "commit": "9d71f91415dc71d17446db38201560efebcae311",
+      "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+      "source_sha256": "0b7045efb84d51b3dad3440f1c6185d4581cb79ed3882f6407cf324b38556070",
+      "source_blob_oid": "c18dbf790e184430263b34dfcc03f138b9046873",
+      "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+      "scanner_fingerprint_sha256": "e77084fc245734966c5af047b116e4cfc7658373e894c786019d642c7dda29fd"
+    }
+  ],
+  "requested_scope": "Two exact additional public-identifier approvals and52-to54 ledger rebind; existing expiry2027-01-06 unchanged, no finding closure",
+  "no_bypass_applied": true,
+  "no_history_rewrite": true,
+  "engineering_baseline_611d777": "Existing714-test six-gate remote result remains historical true evidence; current delivery held until new findings disposition."
+}

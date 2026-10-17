@@ -10,9 +10,8 @@ milestones:
   - V2-002
   - V2-003
   - V2-004
-  status: VERIFIED
-  evidence_refs:
-  - validation/execution/P0/closure-20261017/M0-decision.yaml
+  status: NOT_VERIFIED
+  evidence_refs: []
 - id: M1
   name: Narrative Kernel
   introduced_phase: P1

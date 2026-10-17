@@ -1,3 +1,5 @@
+**当前交付暂缓（2026-10-17）**：V2-001～004的611d777工程验收记录已齐备；新增归档报告导致2项公开内容哈希误报未获精确批准，当前54发现/52已批准。P0/G-P0和M0已回置NOT_VERIFIED，P1不得启动。详见 `plan/validation/execution/P0/closure-20261017/CURRENT_HEAD_BLOCKER.json`。下述验收描述仅适用于既有611d777工程基线，不代表当前head安全门禁通过。
+
 **当前：P0 工程验收 VERIFIED；V2-001～004 CLOSED；M0 VERIFIED。** 证据与限制见 [P0验收](docs/P0_ACCEPTANCE.md)。工程CI基线611d777，后续文档/夹具维护未新增远程CI。P1尚未开始。
 
 # ANovelOS

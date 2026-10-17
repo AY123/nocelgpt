@@ -4,7 +4,7 @@
 
 | ID | 名称 | 引入阶段 | 最早关闭阶段 | 状态 |
 |---|---|---|---|---|
-| M0 | Repository & Governance | P0 | P0 | VERIFIED |
+| M0 | Repository & Governance | P0 | P0 | NOT_VERIFIED |
 | M1 | Narrative Kernel | P1 | P1 | NOT_VERIFIED |
 | M2 | Canon Kernel | P2 | P2 | NOT_VERIFIED |
 | M3 | Dual Genre Kernel | P3 | P3 | NOT_VERIFIED |

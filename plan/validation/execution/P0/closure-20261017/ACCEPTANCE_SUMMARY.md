@@ -1,3 +1,5 @@
+**当前交付暂缓（2026-10-17）**：V2-001～004的611d777工程验收记录已齐备；新增归档报告导致2项公开内容哈希误报未获精确批准，当前54发现/52已批准。P0/G-P0和M0已回置NOT_VERIFIED，P1不得启动。详见 `plan/validation/execution/P0/closure-20261017/CURRENT_HEAD_BLOCKER.json`。下述验收描述仅适用于既有611d777工程基线，不代表当前head安全门禁通过。
+
 # P0 工程汇总验收（2026-10-17）
 
 V2-001～004 CLOSED，G-P0/P0 VERIFIED，M0 VERIFIED。工程验收基线 `611d77779ccf12a9f4e4f1aa1edbf14b53aadde5`，GitHub [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667) 六门PASS、714测试0失败0错误0skip。原始6ZIP保留在V2-004 closure目录，重新核对45个artifact hash；27项V2-001～003场景与真实控制逐项映射在 SCENARIO_COVERAGE.json。

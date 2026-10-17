@@ -249,12 +249,17 @@ review_notes:
 - '2026-10-16 V2-004 closure: reconcile changed shared planning inputs and manifest only; this task status and acceptance
   not promoted.'
 handoff:
-  current_step: P0/G-P0 andM0 accepted on engineering611d777. Local502UNIT/212ARCH and all governance controlsPASS.
-    New fixture maintenance not claimed remotely tested; P1notstarted.
+  current_step: 'Current delivery held: original611d777 engineering witnesses retained, local502UNIT/212ARCH passed;
+    copying legacy probe report introduced two unmatched public-digest findings. Final push completed before final
+    scan failure was handled; noCIcreated.'
   completed_steps:
   - Original45artifact hashes and27scenario control mapping verified
   - FourP0 task acceptances andDA01..05 recorded
-  pending_items: []
+  pending_items:
+  - Actual human approval for the two exact public-digest findings and52-to54 ledger rebind; no bypass or history
+    rewrite
+  - Refresh bounded review/current CI packet scope after authority disposition, then local checks; no additional
+    remote CI
   next_action: IMPLEMENT
   last_check:
     status: PASS
