@@ -1,0 +1,274 @@
+{
+  "task_id": "V2-005",
+  "baseline_pin": {
+    "revision": "0e53b4893ccbc6122cbf9e06ad539fb23dcad66b",
+    "ref": "plan/validation/execution/V2-005/scope.json",
+    "sha256": "e3ad9d1973ea4ebb65ed0bb40185798fd54faa0db19a7da8103b71cc96d4329c"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "e472f85aa08ee4eb8c8a7f083ddafcff2ec40c24e98183fea50454eb2cd2cb75",
+      "new_sha": "1c298ee273322d7faf574086a486960685add6318beb580994181ebb50e7bb5a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "72f92066f9210e0f458208b39f8020530f288f6ff2ee47d8e67453aaaa35f5c2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start the authorized V2-005 task with a real packet and satisfied P0/dependency gates; status stays IN_PROGRESS, not CLOSED.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "32 plan self-tests, 39 governance controls, and real start check",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "e472f85aa08ee4eb8c8a7f083ddafcff2ec40c24e98183fea50454eb2cd2cb75",
+      "new_sha": "1c298ee273322d7faf574086a486960685add6318beb580994181ebb50e7bb5a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "9ae1ce0a5fe72da89087cd45a2a998f61cf8962a6707291dd517b2ae428947a0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start the authorized V2-005 task with a real packet and satisfied P0/dependency gates; status stays IN_PROGRESS, not CLOSED.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "32 plan self-tests, 39 governance controls, and real start check",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+      "new_sha": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "c284d0c186d21955a6038bb978b81bd4ee5d37daef51d15851f1fea277140be1",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Reset non-P0 state only inside a disposable synthetic P0 fixture. Existing positive and negative assertions and production validation are unchanged.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "39/39 current governance regressions after this fixture repair; explicit valid-future-start positive remains",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+      "new_sha": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "b76722868ac40910cafccdfff24bc3e6c850cd2517096616662d89068478ad72",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Reset non-P0 state only inside a disposable synthetic P0 fixture. Existing positive and negative assertions and production validation are unchanged.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "39/39 current governance regressions after this fixture repair; explicit valid-future-start positive remains",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "old_sha": "d7d5886239314902343d12085820fb51ea63b0d1fde00f98744adda5614ee65d",
+      "new_sha": "619f4b441eec459355c9bbd2852855f6137099548e85b623be501d331194194e",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "695c5f1a6d24b1ec1afcac4d50a17413fca13acc2813a7e09e6f575beb0c3fa7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Route the unique active task through the original task_execution IMPLEMENT check; preserve completed-P0 audit fallback, fail closed on ambiguity or bad packet, and retain all three arch commands.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "256 gate/task controls plus unchanged mandatory six-gate configuration checks",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "b1876e8afa87d5f8dff6c059a6895483465dc87be05403b785ea69342facbf96",
+      "new_sha": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "6c263c299a9807f575ea9eff5175cc52afdf5f64c2dff12ce11855c45a0652f8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Replace the historical one-task fixture assumptions with explicit active/completed fixtures and add malformed/multiple task and packet pin controls. Original gate requirements remain asserted.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "256/256 delivery controls, including positive active routing and fail-closed negative cases",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "b1876e8afa87d5f8dff6c059a6895483465dc87be05403b785ea69342facbf96",
+      "new_sha": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "0e8cba30a3b8408bebb4423a5cef1e75d0a403acdf11f1a6fcd6e120cd98fdaa",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Replace the historical one-task fixture assumptions with explicit active/completed fixtures and add malformed/multiple task and packet pin controls. Original gate requirements remain asserted.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "256/256 delivery controls, including positive active routing and fail-closed negative cases",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+      "new_sha": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "d1cc6a31060b4041952650927fe1c027eb0042cb7997a43832ffa558e1f6ade6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Restore the intended isolated negative premise: future task OPEN/PLANNED before deliberately invalidating predecessor gates. Keep both clean premise and rejected mutation assertions.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "15/15 plan contract tests within the 851-test run",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+      "new_sha": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "57765dfab03457c5a47559b2a5876a0546dbed5182ba6464d16045436330ba36",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Restore the intended isolated negative premise: future task OPEN/PLANNED before deliberately invalidating predecessor gates. Keep both clean premise and rejected mutation assertions.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "15/15 plan contract tests within the 851-test run",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_trusted_execution_enrollment.py",
+      "old_sha": "5f9822a29a1b71f49f0abab4d768cc579bf73ee279a09be1bdc78469ed59f1cd",
+      "new_sha": "5ba8060941b8a6ddb44ad8e8e26c0e3f0fea85ad1a9b934c648c57b784f80eb3",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "f55acaae4e9dfba672d2087a3b03c6e3822585f634288399e6fa10cef0753d40",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Remove the pre-existing skip. Run the unmodified guard against its immutable historical source tree; add dirty-worktree independence and changed/missing/extra rejection controls. No manifest or guard weakening.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "73/73 historical enrollment tests with zero skip, including actual guard subprocesses",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_trusted_execution_enrollment.py",
+      "old_sha": "5f9822a29a1b71f49f0abab4d768cc579bf73ee279a09be1bdc78469ed59f1cd",
+      "new_sha": "5ba8060941b8a6ddb44ad8e8e26c0e3f0fea85ad1a9b934c648c57b784f80eb3",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "7cfaa30d0099b0c55c533c55c86da05068d103581a065673489991e7cbb42104",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Remove the pre-existing skip. Run the unmodified guard against its immutable historical source tree; add dirty-worktree independence and changed/missing/extra rejection controls. No manifest or guard weakening.",
+      "impact": "Equivalent or stronger local validation; no authorization, scanner, threshold, production validator, mandatory gate or remote setting is weakened.",
+      "reviewer": "Codex same-operator technical review; delegated AI cross-check, not independent personnel approval",
+      "replacement_validation": "73/73 historical enrollment tests with zero skip, including actual guard subprocesses",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/verification-summary.json",
+          "sha256": "c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1"
+        }
+      ]
+    }
+  ]
+}

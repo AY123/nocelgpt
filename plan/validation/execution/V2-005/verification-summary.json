@@ -1,0 +1,76 @@
+{
+  "record_type": "local_remediation_verification",
+  "task_id": "V2-005",
+  "observed_utc": "2026-10-17T15:58:02.480584+00:00",
+  "subject": "Uncommitted local implementation content identified by source hashes; Git HEAD is metadata context, not an exact delivered source revision.",
+  "opening_revision": "5e0c87fdb4c04f3dc361d595dd8d0c3dcb195fc4",
+  "operator": "Codex same-operator verification with delegated AI technical cross-checks; no independent personnel acceptance",
+  "source_sha256": {
+    "src/anovel/domain/__init__.py": "f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6",
+    "src/anovel/domain/identity.py": "cbacb2cec0edc99e8ef3c9be29443a1c4a14218493798d00f6093055e7a15342",
+    "specs/schemas/entity.schema.json": "49a3f6bd2c2ede90ffe1a4d682ea31eced606cf3b43d0453d3dd9114e91547fb",
+    "tests/contract/test_v2_005.py": "db29534138315f66a65b888dbe1a9261e8272dce0dd794f4a7efb3efdcbcfff6",
+    "demo_v2_005.py": "2f2f27c94a93fa36d18b943db08e31b5a6966652361eb6da5e5400d9c3be6569",
+    "scripts/ci/run_gate.py": "619f4b441eec459355c9bbd2852855f6137099548e85b623be501d331194194e",
+    "tests/contract/test_delivery_gates.py": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+    "tests/contract/test_plan_governance.py": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+    "tests/contract/test_trusted_execution_enrollment.py": "5ba8060941b8a6ddb44ad8e8e26c0e3f0fea85ad1a9b934c648c57b784f80eb3",
+    "plan/scripts/test_governance.py": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5"
+  },
+  "checks": {
+    "contract_and_architecture": {
+      "passed": 851,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "domain_subset": 97,
+      "architecture_subset": 212,
+      "gate_entry_subset": 256,
+      "historical_guard_subset": 73,
+      "overlapping_subsets": true
+    },
+    "static": "PASS",
+    "plan_structure": "PASS",
+    "plan_self_test": {
+      "passed": 32
+    },
+    "governance_regressions": {
+      "passed": 39,
+      "note": "Executed after isolated-fixture repair; all original positive/negative assertions retained"
+    },
+    "execution_regressions": {
+      "passed": 36
+    },
+    "offline_secret_scan": {
+      "detected": 54,
+      "consumed": 54,
+      "unmatched": 0,
+      "unused": 0,
+      "status": "PASS"
+    },
+    "required_history_commits": {
+      "required": 330,
+      "missing": 0
+    },
+    "business_demo": "PASS"
+  },
+  "artifact_sha256": {
+    "dist/validation/v2005-remediation-20261017/full-local-result.json": "9b2114d6e557b52175ef1f8ff6d48d52a5ff64dddf46dfdc548815cb16a5e17b",
+    "dist/validation/v2005-remediation-20261017/full-local-junit.xml": "845b42590087ec58fba2e4a99474057430c31383a33cefc1775d762dbc746894",
+    "dist/validation/v2005-remediation-20261017/static-results.json": "74f537a6e7853b3a9845b7118d0638f1ef2ad877c876836dfa94b7d0f838df1e",
+    "dist/validation/v2005-remediation-20261017/final-planning-results.json": "faad48052ecbc948be8c0c997283a82f82638435d3fdf26eca3591539d1ab00d",
+    "dist/validation/v2005-remediation-20261017/final-governance/governance-regression.json": "89335e4302be9cf15f7708c7ad839d42cf2d6880a882fc77581470ef1f455132",
+    "dist/validation/v2005-remediation-20261017/execution-result.json/ai-execution-regression.json": "43b08e752169bb56e4014a632c1e11e9208f358fd60ab491c7ae196dea6c636b",
+    "dist/validation/v2005-remediation-20261017/security-canonical-origin/summary.json": "b7bdc817c56abed0ece22d653483613e86d5086e556a9669dc99a5bee8738653",
+    "dist/validation/v2005-remediation-20261017/history-restored.json": "e663eb3df1cfbd3d9b95e1db61027c84a554647d40b3f7395b18d96610a59ea4"
+  },
+  "limitations": [
+    "No remote CI or push",
+    "No live PostgreSQL replay in this remediation",
+    "No online dependency audit replay",
+    "No paid Provider calls",
+    "No task closure or product-completion claim",
+    "Historical GitLab guard uses fixed historical tree, not current GitHub source attestation"
+  ],
+  "attempt_history": "Earlier entry/diff checks and two stale synthetic-fixture failures are retained under dist. Scope inventory was corrected to review task-owned files and preserve unrelated user content; no gate minimum was reduced."
+}
