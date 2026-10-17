@@ -22,6 +22,187 @@
     "plan/scripts/test_ai_execution.py"
   ],
   "pre_existing": {
+    ".claude/settings.local.json": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "41253d234667464fd7bff5577a471421cd7e330d8059107270099e20957e61a2"
+      }
+    },
+    ".ruff_cache/0.16.9/959113868420226254": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "239dfaf269d2554a248189dfe5517545055a7ed855df269f5ca78e1b69e24b42"
+      }
+    },
+    "src/anovel/domain/__init__.py": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6"
+      }
+    },
+    ".ruff_cache/0.16.9/11886257862359367215": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cd0f7bab2ed74b3a1a581ad1e71534c2a5bf9a696db6279636a1aa90b7444251"
+      }
+    },
+    ".ruff_cache/0.3.5/10903926339352573898": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1731b1571106e03cf9f0723c39737750bf8cf125de816d6f54bfe9a2cc925d32"
+      }
+    },
+    ".ruff_cache/0.16.9/13056714302951847452": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "16dd049c520c99ba54a709455543955aca30216df26f05908f436bd00dd006dd"
+      }
+    },
+    ".ruff_cache/0.16.9/6798283675010981388": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4182d690829f7e1a875ddbffebf4ea33d2decb56aeb037d3908d405e4997a8f6"
+      }
+    },
+    ".ruff_cache/0.16.9/13877278328354463655": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "714361d1da455d4bbfa09b9877bb234f1682134b81b6cb6292dc992e1baf45a0"
+      }
+    },
+    ".ruff_cache/0.16.9/8608686967974812163": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ea5a95bcba20f4183beea27a91afdf76ac1d6765e7a23667a01d9245ca756f10"
+      }
+    },
+    "V2-005_HANDOFF.md": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "7f92de7af43327ff7f7cb06f7039e3ee838273ecbe7fa2763dbe7b3fa02f8478"
+      }
+    },
+    "tests/contract/test_trusted_execution_enrollment.py": {
+      "index": {
+        "mode": "100644",
+        "oid": "31607ce04232512355034936dc198155429849c4"
+      },
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f4d29159f2355545189e6f0ffdc3ce714ef00a394e245fdb4112be93cf6fc306"
+      }
+    },
+    ".ruff_cache/0.16.9/11108012421718830363": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "8b749b5331ec49085c741eea148813c860b0b73f4c68991117b995e9d7eeb2c5"
+      }
+    },
+    "V2-003任务prompt.txt": {
+      "index": {
+        "mode": "100644",
+        "oid": "72a56964483203c8bd8a59aae772375dd1a06e97"
+      },
+      "worktree": null
+    },
+    ".ruff_cache/0.16.9/17846823409441908587": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cbdf54ed8361e081b3ae6911d690ca882045410fb121b6821c9879880ed8be84"
+      }
+    },
+    ".ruff_cache/0.16.9/2810076663079653525": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "566d1e191127d82b2cd1e17abeeffcd6c2b9514a17be2eb8464ef90c02c11a36"
+      }
+    },
+    ".mypy_cache/.gitignore": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6a69da670d11530d37f0f0cfdc7bed30b78ea6434e24f7a73208b982e29d322c"
+      }
+    },
+    "specs/schemas/entity.schema.json": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "bad8c8026201ebd5dbcfdd14a5f75cd17c58f1475341f8baeb34cd9a7dd8da6b"
+      }
+    },
+    "plan/validation/plan-validation.json": {
+      "index": {
+        "mode": "100644",
+        "oid": "35ec6f7148c57d9dfa6d9dc868b5322958f090c6"
+      },
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ced1736abecf50e15c4b5d9451b703ba528d99195a39046a3bbaed0ddff144b1"
+      }
+    },
+    ".ruff_cache/CACHEDIR.TAG": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+      }
+    },
+    ".ruff_cache/0.16.9/14193604871157969726": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "28f644acf84d776117ad846728df614057d2f8b83dd7b43a5b118a7cca10ec76"
+      }
+    },
+    ".ruff_cache/0.16.9/8983490051935027635": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ae3cc825188417b6e054242a1a91c18f3414bbb42aaa09b6f12edc97620bff64"
+      }
+    },
+    ".ruff_cache/0.16.9/9021910096072807015": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1b4914fff854f3c5f606a34e3915106221853e778d43fd399e9194165f2031a3"
+      }
+    },
     "AGENTS.md": {
       "index": {
         "mode": "100644",
@@ -33,22 +214,20 @@
         "sha256": "d4e95e0c569be2bf77118a93f381048b46640fc2c759e3328016c49f6194c481"
       }
     },
-    "V2-003任务prompt.txt": {
-      "index": {
-        "mode": "100644",
-        "oid": "72a56964483203c8bd8a59aae772375dd1a06e97"
-      },
-      "worktree": null
-    },
-    "docs/V2-004_SECRET_EXCEPTION_CONSUMER.md": {
-      "index": {
-        "mode": "100644",
-        "oid": "6527b9344ea50a19cf6d5d979ba5c2ed453dde01"
-      },
+    ".ruff_cache/0.16.9/13302307240886945296": {
+      "index": null,
       "worktree": {
         "kind": "file",
         "mode": "100644",
-        "sha256": "1f4de6c028bb4515957eea624263ba93c842511f817337c2c8c4593f1baf7fde"
+        "sha256": "f9a50dbbe4dc4a45cd0d47600fbdbd3af117ada977599822f2f2bdcd4780c701"
+      }
+    },
+    ".ruff_cache/0.16.9/15916300167252620757": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "d108bd6e28da3541ba2ddbce6ec9534ff32875b33f6be081f9be27085203897c"
       }
     },
     "plan/README.md": {
@@ -62,12 +241,226 @@
         "sha256": "172409b911426e68b8048e84c20276d61a2746cdfd4295add1d9c7d4498bf10d"
       }
     },
+    ".ruff_cache/0.3.5/7893816796303948972": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ea9d03ed0b9547e5049d456f0f868e85dccb351a8d2d36f60db210f9d8d40ca8"
+      }
+    },
+    ".mypy_cache/CACHEDIR.TAG": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f1c13afc555358c9033b0f1f30aaa177fe88bda40f4b8a24598400d547876adc"
+      }
+    },
+    ".ruff_cache/0.16.9/1289053319362791746": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6eedd845479e3fd4c4e4fc64e60b010cb140b89f76162bb59639f88351b0abd0"
+      }
+    },
+    ".ruff_cache/0.16.9/17684940595358575834": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6f0f957d663a7d3d592d1de517516272c898a4b783cd61c8d0a479a6c5d6515b"
+      }
+    },
+    ".ruff_cache/0.16.9/12808479074502042827": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6f93d7b7cc8bccad934d57cf2f71168f199caac8eb056d76882f88df99d6b352"
+      }
+    },
+    ".ruff_cache/0.16.9/603533849042220900": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "758a16646217a076588436a9fab890617f2244856f342c82af08bc35cbcbf625"
+      }
+    },
+    ".ruff_cache/0.16.9/13848888526301811239": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "bd1364879ac5d2a637bf5b0afb88ffc74018ba7add9bd2b9bc2a2a236c6d9eac"
+      }
+    },
+    ".ruff_cache/0.16.9/13148325495301770339": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "b24d7cd572cfb06601904c8433a4f49b1265c877ec07558b3b23d9ad0f54c2f8"
+      }
+    },
+    ".ruff_cache/0.16.9/12282497893086595631": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4d3aa484e7391decda0bc0b8bf6852c762678495228a79106652dafecf0b63da"
+      }
+    },
+    "docs/V2-004_SECRET_EXCEPTION_CONSUMER.md": {
+      "index": {
+        "mode": "100644",
+        "oid": "6527b9344ea50a19cf6d5d979ba5c2ed453dde01"
+      },
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1f4de6c028bb4515957eea624263ba93c842511f817337c2c8c4593f1baf7fde"
+      }
+    },
+    "plan/validation/governance-regression.json": {
+      "index": {
+        "mode": "100644",
+        "oid": "666f8a84bf5d777e4a4c51389f278e13c730b221"
+      },
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "7ab1f8313517ff4df3508e939aafcd6f886f65f6e76f88a372b0b89ab8ad5408"
+      }
+    },
+    ".ruff_cache/0.16.9/4616468440965764961": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4cb3c2d414ada2498bddcf140d5be58b55646d464e9f033168225bd7e2065f98"
+      }
+    },
     "审核报告.txt": {
       "index": {
         "mode": "100644",
         "oid": "2bb8fdecc2a44cac115ec1d0de225e802cba5353"
       },
       "worktree": null
+    },
+    ".ruff_cache/0.16.9/3480378986590756246": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "38a5616f94e28a2428b0d7d34406a29e78371f3ab4729241626b034e4bdd385c"
+      }
+    },
+    ".ruff_cache/0.16.9/967308886628406001": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6eed7631a13842a057c43c48f4b2732839b7bd3b1de350a019ecace9c3821472"
+      }
+    },
+    "demo_v2_005.py": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "2be678496f6704da212e9b90543ebbd58b402684669a9b9a059aa0fd736513c5"
+      }
+    },
+    "tests/contract/test_v2_005.py": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "8072dbb94bc68e81e083afee69017448d5ff589b970f8704d34221392fb6759c"
+      }
+    },
+    ".ruff_cache/0.16.9/15865860232782635180": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "47a6d2e7bc207f88f54e7af958b8debc39cbd4e2f263d30615acdf10c0d10a60"
+      }
+    },
+    ".ruff_cache/0.16.9/14057343153781895557": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "02d37845aaa49d3ced5e7622091a31d94d7669566a4f34fc76fa31b94b65f597"
+      }
+    },
+    ".ruff_cache/0.16.9/2081484057962727863": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6cdfaf7ae8abdd73b4284564f42ea99e3cff902f9630f038f054c8bc3038a511"
+      }
+    },
+    ".ruff_cache/.gitignore": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316"
+      }
+    },
+    "src/anovel/domain/identity.py": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "956482b2572462d3e39877600b17a891574b1f4ba9318183dee07b94eb705b73"
+      }
+    },
+    ".ruff_cache/0.16.9/10417621801813473352": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "145998b16e50a3f32fc415069f295a1985ada8542096820a12aef04e436484eb"
+      }
+    },
+    ".ruff_cache/0.16.9/11679114932256957068": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ec46b92203e77529a277de7d695a61f0da252333e4dacdd46a3a5cb5c0195fb2"
+      }
+    },
+    ".ruff_cache/0.16.9/10741484265304906432": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cd452b09e0089b4f137d3062aa40c881bc25de16e025ed83d5ff75ee26b2f18f"
+      }
+    },
+    ".ruff_cache/0.16.9/2862835371097959004": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "7a034e0a3178fffabb74a6562c530b14903002420668fa987976b80ab93b1a78"
+      }
+    },
+    ".mypy_cache/3.12/cache.db": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ee422a4fb4114d1900b336266a5d951a05bbf20092848d4cd882e0895467aa5c"
+      }
     }
   },
   "protected_paths": [
