@@ -16,16 +16,8 @@ GitLab CI 来源验证工具（历史用途）
 - 历史证据核验
 - 兼容性检查参考
 - 文档化 GitLab 验证逻辑
-"""
-import argparse
-import hashlib
-import json
-import os
-import sys
-import urllib.error
-import urllib.parse
-import urllib.request
 
+原始说明：
 CLI authentication comes only from ANOVELOS_GITLAB_TOKEN. The HTTP client never
 follows redirects, so an artifact redirect cannot forward credentials elsewhere.
 Synthetic fetchers are supported only by the Python API for logic tests.
