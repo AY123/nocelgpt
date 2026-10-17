@@ -2,7 +2,7 @@
 
 唯一源：`machine/implementation-backlog.yaml` 与 `machine/phase-gates.yaml`。不要手工修改。
 
-共 60 个任务。当前任务状态：{"CLOSED": 4, "OPEN": 56}
+共 60 个任务。当前任务状态：{"CLOSED": 4, "IN_PROGRESS": 1, "OPEN": 55}
 
 ## P0 — Repository & Governance
 
@@ -21,7 +21,7 @@
 
 | ID | 名称 | 依赖 | 状态 |
 |---|---|---|---|
-| V2-005 | Core entity IDs and alias resolution | V2-001 | OPEN |
+| V2-005 | Core entity IDs and alias resolution | V2-001 | IN_PROGRESS |
 | V2-006 | Character relationship knowledge core | V2-005 | OPEN |
 | V2-007 | Event timeline promise core | V2-005 | OPEN |
 | V2-008 | NarrativeDelta implementation | V2-006, V2-007 | OPEN |
