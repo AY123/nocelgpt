@@ -1,0 +1,347 @@
+{
+  "record_type": "existing_remote_control_coverage",
+  "revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+  "run_id": 38917341667,
+  "scenario_count": 27,
+  "artifact_file_hashes_verified": 45,
+  "scenarios": [
+    {
+      "scenario_id": "AT-V2-001-01",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.integration.test_repository_bootstrap::test_clean_locked_install_and_import",
+        "tests.integration.test_repository_bootstrap::test_locked_install_rejects_manifest_drift"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-001-02",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.integration.test_postgres_ci_service::test_exact_postgres_service_and_connections"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-001-03",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.contract.test_delivery_gates::test_missing_real_postgres_dsn_is_failure"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-001-04",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.integration.test_repository_bootstrap::test_current_entrypoints_and_runtime_decision"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-001-05",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.integration.test_repository_bootstrap::test_builds_exclude_archive_and_tools",
+        "tests.integration.test_repository_bootstrap::test_historical_materials_preserved"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-01",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.contract.test_plan_governance::test_current_normative_registry_and_owner_mapping",
+        "tests.contract.test_plan_governance::test_generated_views_match_current_source",
+        "tests.contract.test_plan_governance::test_missing_normative_reference_rejected"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-02",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_missing_suite_file",
+        "__main__.GovernanceTests.test_valid_p0_completion_chain",
+        "tests.contract.test_task_execution::test_p1_cannot_start_before_gate"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-03",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.contract.test_plan_governance::test_actual_repository_context_entries_and_configuration",
+        "tests.contract.test_plan_governance::test_context_import_alias_resolves_to_history",
+        "tests.contract.test_plan_governance::test_resolved_history_cannot_be_normative[./archive/history.md]",
+        "tests.contract.test_plan_governance::test_resolved_history_cannot_be_normative[alias.md]",
+        "tests.contract.test_plan_governance::test_resolved_history_cannot_be_normative[archive/history.md]",
+        "tests.contract.test_plan_governance::test_resolved_history_cannot_be_normative[current/../archive/history.md]"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-04",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.contract.test_plan_governance::test_existing_rules_reject_single_mutations[<lambda>-EXTERNAL_SOURCE]",
+        "tests.contract.test_plan_governance::test_existing_rules_reject_single_mutations[<lambda>-TASK_PHASE]",
+        "tests.contract.test_plan_governance::test_existing_rules_reject_single_mutations[<lambda>-TASK_SCHEMA]",
+        "tests.contract.test_plan_governance::test_existing_rules_reject_single_mutations[<lambda>-TASK_START]"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-05",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_all_ci_removed",
+        "__main__.GovernanceTests.test_ci_duplicate",
+        "__main__.GovernanceTests.test_ci_postponed",
+        "__main__.GovernanceTests.test_milestone_shrink",
+        "__main__.GovernanceTests.test_phase_requires_applicable_ci"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-06",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_adr_template_not_decision",
+        "__main__.GovernanceTests.test_bad_artifact_hash",
+        "__main__.GovernanceTests.test_directory_not_record",
+        "__main__.GovernanceTests.test_wrong_evidence_type",
+        "__main__.GovernanceTests.test_wrong_revision",
+        "__main__.GovernanceTests.test_wrong_subject"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-07",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_adr_backlink_removed",
+        "__main__.GovernanceTests.test_finding_backlink_removed",
+        "__main__.GovernanceTests.test_missing_finding_disposition",
+        "__main__.GovernanceTests.test_p0_blocked",
+        "__main__.GovernanceTests.test_planned_readiness_cannot_start"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-08",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_valid_multiple_suites_for_one_task",
+        "__main__.GovernanceTests.test_valid_p0_completion_chain"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-09",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_failed_run_rejected",
+        "__main__.GovernanceTests.test_runtime_failure_states_are_not_closure_witnesses"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-10",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_cli_external_reports_do_not_change_plan",
+        "tests.contract.test_task_execution::test_reports_cannot_overwrite_plan_or_previous_result"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-11",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_normalized_template_aliases_are_rejected",
+        "__main__.GovernanceTests.test_valid_artifact_in_nested_templates_named_directory"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-12",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.GovernanceTests.test_milestone_revision_matches_phase_decision",
+        "__main__.GovernanceTests.test_valid_historical_task_revision_in_current_phase"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-13",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-ENTRY_BASE]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_CLAIM]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_INPUT]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_SCHEMA0]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_SCHEMA1]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_SCHEMA2]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_SUBJECT]",
+        "tests.contract.test_task_execution::test_invalid_packet_blocks_child[<lambda>-EXEC_VERSION]",
+        "tests.contract.test_task_execution::test_missing_packet_blocks_child",
+        "tests.contract.test_task_execution::test_valid_command_runs_and_resume_rechecks_actual_state"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-14",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.AIExecutionTests.test_live_budget_is_required_even_in_eligible_phase",
+        "tests.contract.test_task_execution::test_accepted_adr_allows_actual_implementation_command",
+        "tests.contract.test_task_execution::test_open_prepare_allows_unresolved_adr_and_implement_blocks"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-15",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.AIExecutionTests.test_fact_needs_source",
+        "__main__.AIExecutionTests.test_sourced_fact_declaration",
+        "__main__.AIExecutionTests.test_unknown_blocks_implementation_but_allows_preparation"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-002-16",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "__main__.AIExecutionTests.test_missing_handoff_rejected",
+        "tests.contract.test_task_execution::test_resume_detects_real_changes_even_when_both_states_dirty[artifact]",
+        "tests.contract.test_task_execution::test_resume_detects_real_changes_even_when_both_states_dirty[branch]",
+        "tests.contract.test_task_execution::test_resume_detects_real_changes_even_when_both_states_dirty[head]",
+        "tests.contract.test_task_execution::test_resume_detects_real_changes_even_when_both_states_dirty[tracked]",
+        "tests.contract.test_task_execution::test_resume_detects_real_changes_even_when_both_states_dirty[untracked]",
+        "tests.contract.test_task_execution::test_unknown_handoff_not_inherited"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-003-01",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[def helper():\\n    from sqlalchemy import create_engine]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[from anthropic import Client as Provider]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[from sqlalchemy.orm import Session]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[from typing import TYPE_CHECKING\\nif TYPE_CHECKING:\\n    import openai]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[if False:\\n    import openai]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[import fastapi]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[import openai as provider]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[import psycopg]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[import sqlite3]",
+        "tests.architecture.test_dependency_boundaries::test_domain_implementation_dependencies_fail[import temporalio]",
+        "tests.architecture.test_dependency_boundaries::test_legal_domain_ports_and_workflow_public_service"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-003-02",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[commit_service-context/compiler]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[commit_service-gateway/writer]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[commit_service-intelligence/reference]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[commit_service-quality/reviewer]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[commit_service-repair/patcher]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[repository-context/compiler]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[repository-gateway/writer]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[repository-intelligence/reference]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[repository-quality/reviewer]",
+        "tests.architecture.test_dependency_boundaries::test_unauthorized_canon_imports_fail[repository-repair/patcher]",
+        "tests.architecture.test_dependency_boundaries::test_workflow_may_not_access_internal_repository"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-003-03",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.architecture.test_dependency_boundaries::test_empty_discovery_and_scan_narrowing_fail",
+        "tests.architecture.test_dependency_boundaries::test_new_nested_namespace_module_is_always_scanned",
+        "tests.architecture.test_dependency_boundaries::test_real_production_tree_is_discovered_separately_from_synthetic_fixtures"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-003-04",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.architecture.test_change_review::test_coverage_rejects_injected_empty_change_collection",
+        "tests.architecture.test_change_review::test_ordinary_in_scope_changes_pass[added]",
+        "tests.architecture.test_change_review::test_ordinary_in_scope_changes_pass[committed]",
+        "tests.architecture.test_change_review::test_ordinary_in_scope_changes_pass[deleted]",
+        "tests.architecture.test_change_review::test_ordinary_in_scope_changes_pass[modified]",
+        "tests.architecture.test_change_review::test_ordinary_in_scope_changes_pass[renamed]",
+        "tests.architecture.test_change_review::test_ordinary_in_scope_changes_pass[staged]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[changed_user]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[deleted]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[modified]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[rename_in]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[rename_out]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[staged_user]",
+        "tests.architecture.test_change_review::test_out_of_scope_changes_cannot_hide[untracked]"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-003-05",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.architecture.test_change_review::test_index_weakening_is_seen_even_when_worktree_restores_original",
+        "tests.architecture.test_weakening_checks::test_checker_and_tests_cannot_silently_weaken_together"
+      ]
+    },
+    {
+      "scenario_id": "AT-V2-003-06",
+      "status": "PASS",
+      "engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+      "run_id": 38917341667,
+      "actual_passed_controls": [
+        "tests.architecture.test_change_review::test_exact_pinned_technical_review_can_resolve_uncertain_protection_change",
+        "tests.architecture.test_change_review::test_self_signed_disposition_cannot_approve_real_test_deletion",
+        "tests.architecture.test_weakening_checks::test_baseline_enhancement_passes_and_unmodelled_policy_change_is_reviewed"
+      ]
+    }
+  ],
+  "notes": [
+    "Existing original JUnit and governance/AI reports; no new remote execution.",
+    "PostgreSQL isolated service initialize/connect/Stop containers steps independently read back.",
+    "Archive preservation assertions read and hash real retained source; builds inspected wheel andsdist.",
+    "Domain/Canon rules are bootstrap fixture fitness, not implemented business kernel."
+  ]
+}

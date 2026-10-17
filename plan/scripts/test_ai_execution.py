@@ -22,6 +22,12 @@ class AIExecutionTests(unittest.TestCase):
         self.records = self.plan/'validation/fixture'
         self.records.mkdir(parents=True)
         self.data = deepcopy(validator.load())
+        # This fixture opens one P0 task even after real P0 is accepted.
+        self.data['phase-gates']['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+        self.data['milestones']['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+        for practice in self.data['external-practice-register']['practices']:
+            if practice['status'] == 'VERIFIED':
+                practice.update(status='PLANNED', verification_refs=[])
         # This suite tests one packet at a time in a deliberately minimal plan.
         # Live progress in another task must not introduce a missing, unrelated
         # packet before a single-mutation test reaches its intended assertion.

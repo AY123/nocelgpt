@@ -1,6 +1,8 @@
+**2026-10-17 当前状态：V2-001～004 CLOSED，P0/G-P0 与 M0 VERIFIED。** 工程验收基线611d777；详见[汇总验收](validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)及 `validation/execution/P0/closure-20261017/`。以下早期IMPLEMENTED/未验证叙述为历史进度，不覆盖当前机器源；本轮未开始P1实现。
+
 # P0 Repository Bootstrap 执行方案
 
-范围：仅 V2-001～004。V2-004 已按用户确认的单人模式 CLOSED：GitHub main 的工程提交611d777、run38917341667六门PASS、714测试0skip。52项finding仍OPEN，精确批准到2027-01-06；多人权限隔离明确不适用，不声称GitHub保护已验证。V2-001～003仍IMPLEMENTED，P0整体尚未VERIFIED。本次是后续文档登记，不冒称新文档SHA已跑CI。
+范围：仅 V2-001～004。V2-004 已按用户确认的单人模式 CLOSED：GitHub main 的工程提交611d777、run38917341667六门PASS、714测试0skip。52项finding仍OPEN，精确批准到2027-01-06；多人权限隔离明确不适用，不声称GitHub保护已验证。V2-001～003已由汇总验收CLOSED，P0整体VERIFIED。本次是后续文档登记，不冒称新文档SHA已跑CI。
 
 ## 1. 目标与排除项
 

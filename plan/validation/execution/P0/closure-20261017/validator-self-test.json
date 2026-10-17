@@ -1,0 +1,275 @@
+{
+  "scope": "planning validator self-test only",
+  "generated_at_utc": "2026-10-17T01:02:15.411412+00:00",
+  "manifest_sha256": "5d7b0d5ba8c4f5d177776fe4468ae1951ae3487af5c32886d22c8d247b1527b2",
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "valid current package objects",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT"
+    },
+    {
+      "case": "wrong phase",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_PHASE V2-005: mismatch with frozen phase",
+        "TASK_ENTRY V2-005: phase gate mismatch"
+      ]
+    },
+    {
+      "case": "wrong title",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_TITLE V2-001: mismatch with frozen identity"
+      ]
+    },
+    {
+      "case": "empty CLOSED evidence",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_SCHEMA V2-001 ['evidence', 'code']: [] should be non-empty",
+        "TASK_SCHEMA V2-001 ['evidence', 'tests']: [] should be non-empty"
+      ]
+    },
+    {
+      "case": "premature P1 start",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_SCHEMA V2-005 ['execution_packet_ref']: None is not of type 'string'",
+        "TASK_START V2-005: phase entry not verified"
+      ]
+    },
+    {
+      "case": "task dependency cycle",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_DEP_BASELINE V2-001: dependency change needs explicit baseline revision",
+        "TASK_START V2-001: dependency V2-005 not verified"
+      ]
+    },
+    {
+      "case": "unknown dependency",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_DEP_BASELINE V2-001: dependency change needs explicit baseline revision",
+        "TASK_DEP V2-001: unknown V2-999"
+      ]
+    },
+    {
+      "case": "empty acceptance criteria",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_SCHEMA V2-001 ['acceptance_criteria']: [] should be non-empty",
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+      ]
+    },
+    {
+      "case": "missing test suite",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_TEST V2-001: unknown MISSING-SUITE",
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+      ]
+    },
+    {
+      "case": "wrong ADR owner",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_ADR V2-001: ownership mismatch",
+        "ADR_DUE ADR-001: no responsible task"
+      ]
+    },
+    {
+      "case": "simulated reader mislabeled human",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EVIDENCE_SEMANTICS: EVIDENCE-1 drift"
+      ]
+    },
+    {
+      "case": "softened hard CI",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "CI_HARD_GATE STATIC: allow_failure must be false when applicable"
+      ]
+    },
+    {
+      "case": "premature M4 closure phase",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "MILESTONE_CLOSE M4: closes before required task",
+        "MILESTONE_CLOSE M4: closes before required task"
+      ]
+    },
+    {
+      "case": "false verified phase",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "PHASE_VERIFIED P0: missing evidence"
+      ]
+    },
+    {
+      "case": "wrong phase task count",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "PHASE_MEMBERSHIP P6: tasks/count mismatch"
+      ]
+    },
+    {
+      "case": "wrong phase name",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "PHASE_NAMES: frozen route name drift"
+      ]
+    },
+    {
+      "case": "archive treated as normative",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_NORMATIVE V2-001: archive cannot be normative"
+      ]
+    },
+    {
+      "case": "closed finding without evidence",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "FINDING_CLOSURE AR-01: absent evidence"
+      ]
+    },
+    {
+      "case": "scenario assertion removed",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ",
+        "SCENARIO AT-V2-001-01: empty assertion"
+      ]
+    },
+    {
+      "case": "missing audit mapping",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_FINDING V2-017: invalid PR-01",
+        "FINDING_COVERAGE: missing/extra audit mappings"
+      ]
+    },
+    {
+      "case": "acceptance and scenario drift",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "TASK_ACCEPTANCE V2-001: task and scenario assertions differ"
+      ]
+    },
+    {
+      "case": "unknown external source",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_SOURCE_REF EXT-001: missing/unknown/duplicate"
+      ]
+    },
+    {
+      "case": "duplicate external source",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_SOURCE_IDS: duplicate source"
+      ]
+    },
+    {
+      "case": "duplicate external practice",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_PRACTICE_IDS: duplicate practice"
+      ]
+    },
+    {
+      "case": "missing external task backlink",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_BACKLINK EXT-001: absent on V2-013",
+        "EXTERNAL_TASK_REF V2-013: unknown/wrong practice EXT-009"
+      ]
+    },
+    {
+      "case": "wrong external scenario owner",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_CASE_OWNER EXT-001: scenario owners differ"
+      ]
+    },
+    {
+      "case": "missing external scenario",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_CASES EXT-001: unknown scenario",
+        "EXTERNAL_CASE_OWNER EXT-001: scenario owners differ"
+      ]
+    },
+    {
+      "case": "false verified adoption",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_VERIFIED EXT-001: absent evidence",
+        "EXTERNAL_VERIFIED EXT-001: unfinished tasks"
+      ]
+    },
+    {
+      "case": "deferred work attached to early task",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_DEFER_SCOPE EXT-D01: unapproved task/evidence"
+      ]
+    },
+    {
+      "case": "deferred work moved to P0",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_DEFER_PHASE EXT-D01: advanced work moved early"
+      ]
+    },
+    {
+      "case": "public document mislabeled runtime verified",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_SOURCE_EVIDENCE SRC-INKOS: source audit requires separate evidence registry"
+      ]
+    },
+    {
+      "case": "unknown task practice",
+      "expected": "REJECT",
+      "actual": "REJECT",
+      "evidence": [
+        "EXTERNAL_TASK_REF V2-001: unknown/wrong practice EXT-999"
+      ]
+    }
+  ]
+}

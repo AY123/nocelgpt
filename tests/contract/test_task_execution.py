@@ -63,6 +63,8 @@ def seed(tmp_path_factory):
     # intended missing-packet rejection with a different action mismatch.
     backlog_path = repo / 'plan/machine/implementation-backlog.yaml'
     backlog = load(backlog_path)
+    for task in backlog['tasks'][:2]:
+        task.update(status='IMPLEMENTED')
     for task in backlog['tasks'][2:]:
         task.update(status='OPEN', execution_packet_ref=None)
         task['evidence'] = {kind: [] for kind in task['evidence']}
@@ -72,11 +74,26 @@ def seed(tmp_path_factory):
     for suite in catalog['suites'][2:]:
         suite.update(status='PLANNED', execution_evidence=[])
     save(catalog_path, catalog)
+    phases_path = repo / 'plan/machine/phase-gates.yaml'
+    phases = load(phases_path)
+    phases['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+    save(phases_path, phases)
+    milestones_path = repo / 'plan/machine/milestones.yaml'
+    milestones = load(milestones_path)
+    milestones['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+    save(milestones_path, milestones)
+    for filename, collection, evidence in [('remediation-register.yaml', 'findings', 'closure_refs'), ('external-practice-register.yaml', 'practices', 'verification_refs')]:
+        path = repo / 'plan/machine' / filename
+        document = load(path)
+        for record in document[collection]:
+            if record['status'] in {'VERIFIED', 'CLOSED'}:
+                record.update(status='OPEN_TRACKED' if collection == 'findings' else 'PLANNED')
+                record[evidence] = []
+        save(path, document)
     policy_path = repo / 'plan/machine/ai-execution-policy.yaml'
     policy = load(policy_path)
     for control in policy['controls']:
-        if set(control['owner_tasks']) - {'V2-001', 'V2-002'}:
-            control['p0_enforcement_status'] = 'NOT_IMPLEMENTED'
+        control['p0_enforcement_status'] = ('NOT_IMPLEMENTED' if set(control['owner_tasks']) - {'V2-001', 'V2-002'} else 'IMPLEMENTED')
     save(policy_path, policy)
     (repo / '.gitignore').write_text('dist/\n__pycache__/\n')
     for command in (('git', 'init', '-b', 'main'), ('git', 'add', '.'),

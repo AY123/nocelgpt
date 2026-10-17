@@ -4,7 +4,7 @@ suites:
 - id: AT-V2-001
   task_id: V2-001
   phase: P0
-  status: IMPLEMENTED
+  status: VERIFIED
   target_path: tests/integration/test_repository_bootstrap.py
   scenarios:
   - id: AT-V2-001-01
@@ -19,11 +19,11 @@ suites:
     required_assertion: 形成包含 .claude/convergence 等隐藏历史资料的目录与分发包清单，核对归档覆盖/hash/实际入口引用与独有资料，保留工具配置；迁移不得丢失唯一版本或让 archive
       进入业务构建
   execution_evidence:
-  - validation/execution/V2-001/test-result.yaml
+  - validation/execution/P0/closure-20261017/V2-001-tests.yaml
 - id: AT-V2-002
   task_id: V2-002
   phase: P0
-  status: IMPLEMENTED
+  status: VERIFIED
   target_path: tests/contract/test_plan_governance.py
   scenarios:
   - id: AT-V2-002-01
@@ -60,12 +60,11 @@ suites:
   - id: AT-V2-002-16
     required_assertion: 恢复执行须核对交接记录、仓库与工作区、规范/输入快照、实际测试产物和未决事项；缺失交接或失效证据不得继承完成结论，合格恢复可继续原任务，不因摘要或模型更换静默重开或越过 Gate
   execution_evidence:
-  - validation/execution/V2-002/test-result.yaml
-  - validation/execution/V2-002/governance-result.yaml
+  - validation/execution/P0/closure-20261017/V2-002-tests.yaml
 - id: AT-V2-003
   task_id: V2-003
   phase: P0
-  status: IMPLEMENTED
+  status: VERIFIED
   target_path: tests/architecture/test_dependency_boundaries.py
   scenarios:
   - id: AT-V2-003-01
@@ -81,7 +80,7 @@ suites:
   - id: AT-V2-003-06
     required_assertion: 范围与防降标检查同时覆盖合法新增测试、等效重构及有适用授权和影响记录的规则修订正例，以及跨任务越界和无依据削弱负例；不能只按文件名拒绝合法改动，也不能由实施 AI 自写理由自动批准例外
   execution_evidence:
-  - validation/execution/V2-003/followup/test-result.yaml
+  - validation/execution/P0/closure-20261017/V2-003-tests.yaml
 - id: AT-V2-004
   task_id: V2-004
   phase: P0

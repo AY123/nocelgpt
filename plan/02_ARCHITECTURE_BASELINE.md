@@ -55,7 +55,7 @@ pyproject.toml        构建与工具配置
 uv.lock               唯一依赖锁
 .python-version       实际选择的精确 Python 版本
 compose.yaml          PostgreSQL 测试环境
-.gitlab-ci.yml        本项目实际 CI
+.github/workflows/    当前GitHub六门CI；.gitlab-ci.yml保留历史
 ```
 
 当前只是目标目录，不在本次资料整理中创建空业务模块冒充实现。P10/P11 模块无需在 P0 装入依赖或服务。

@@ -37,7 +37,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: IMPLEMENTED
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-001/execution-packet.yaml
   owner_role: repository-maintainer
   readiness: READY_TO_START
@@ -46,18 +46,21 @@ tasks:
   - ADR-001
   evidence:
     code:
-    - ref: validation/execution/V2-001/code-evidence.yaml
-      revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+    - ref: validation/execution/P0/closure-20261017/V2-001-code.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
     tests:
-    - ref: validation/execution/V2-001/test-result.yaml
-      revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+    - ref: validation/execution/P0/closure-20261017/V2-001-tests.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
-    - ref: validation/execution/V2-001/governance-result.yaml
-      revision: 390aa0f4f28068fdd146fca3eb98df1a5ec1a334
+    ci:
+    - ref: validation/execution/P0/closure-20261017/V2-001-ci.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
-    ci: []
-    acceptance: []
+    acceptance:
+    - ref: validation/execution/P0/closure-20261017/V2-001-acceptance.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+      status: PASS
   related_findings:
   - AR-06
   - AR-17
@@ -129,7 +132,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: IMPLEMENTED
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-002/execution-packet.yaml
   owner_role: governance-maintainer
   readiness: READY_TO_START
@@ -137,18 +140,21 @@ tasks:
   required_decisions: []
   evidence:
     code:
-    - ref: validation/execution/V2-002/code-evidence.yaml
-      revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+    - ref: validation/execution/P0/closure-20261017/V2-002-code.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
     tests:
-    - ref: validation/execution/V2-002/test-result.yaml
-      revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+    - ref: validation/execution/P0/closure-20261017/V2-002-tests.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
-    - ref: validation/execution/V2-002/governance-result.yaml
-      revision: 9c2fd253326e87e9e6c43920f29a95dc68680a64
+    ci:
+    - ref: validation/execution/P0/closure-20261017/V2-002-ci.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
-    ci: []
-    acceptance: []
+    acceptance:
+    - ref: validation/execution/P0/closure-20261017/V2-002-acceptance.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+      status: PASS
   related_findings:
   - AR-01
   - AR-02
@@ -213,7 +219,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现叙事实体、Canon 业务和完整质量栈
   - 不接入真实 Provider 或自动 Genesis
-  status: IMPLEMENTED
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-003/followup/execution-packet.yaml
   owner_role: architecture-maintainer
   readiness: READY_TO_START
@@ -221,15 +227,21 @@ tasks:
   required_decisions: []
   evidence:
     code:
-    - ref: validation/execution/V2-003/followup/code-evidence.yaml
-      revision: 284f5f793dc8470df72ecbbd727b3b991085c2ad
+    - ref: validation/execution/P0/closure-20261017/V2-003-code.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
     tests:
-    - ref: validation/execution/V2-003/followup/test-result.yaml
-      revision: 284f5f793dc8470df72ecbbd727b3b991085c2ad
+    - ref: validation/execution/P0/closure-20261017/V2-003-tests.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
       status: PASS
-    ci: []
-    acceptance: []
+    ci:
+    - ref: validation/execution/P0/closure-20261017/V2-003-ci.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+      status: PASS
+    acceptance:
+    - ref: validation/execution/P0/closure-20261017/V2-003-acceptance.yaml
+      revision: 611d77779ccf12a9f4e4f1aa1edbf14b53aadde5
+      status: PASS
   related_findings:
   - AR-06
   - AR-17

@@ -1,0 +1,43 @@
+{
+  "record_type": "post_completion_fixture_maintenance",
+  "production_validator_ast_unchanged": true,
+  "validator_change": "self_test negative mutation setup only",
+  "remote_engineering_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+  "new_fixture_fixes_remote_ci": "NOT_RUN",
+  "local_verification": "PASS",
+  "raw_reproduction": [
+    "empty CLOSED evidence status-only mutation becomes no-op after completion",
+    "false verified phase status-only mutation becomes no-op after completion"
+  ],
+  "exclusions": [
+    "no business/kernel/module implementation",
+    "no gate/test/assertion removal",
+    "no scanner or approval changes",
+    "no remote pipeline"
+  ],
+  "local_unit": {
+    "tests": 502,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "architecture": {
+    "tests": 212,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "governance_cases": 39,
+  "ai_execution_cases": 36,
+  "validator_cases": 32,
+  "legacy_cases": 13,
+  "actual_remote_engineering_test_count": 714,
+  "local_input_kind": "staged worktree, source bytes fixed during successful local suites; later review/registration commits are not claimed remote CI-tested",
+  "tested_harness_content": {
+    "plan/scripts/validate_plan.py": "f111bfd472c0c15dba8332370ff528744c5530633b3d60b699301f55be14ef3f",
+    "plan/scripts/test_governance.py": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+    "plan/scripts/test_ai_execution.py": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+    "tests/contract/test_plan_governance.py": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+    "tests/contract/test_task_execution.py": "d583b05573715dc02677c1c413e9755eaa94801c722617ff55943ef4cff1ac1b"
+  }
+}

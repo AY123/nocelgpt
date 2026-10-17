@@ -1,0 +1,1123 @@
+version: 1.2.1
+meaning: 分配与规范修订不等于运行修复；所有条目等待独立关闭证据
+findings:
+- id: AR-01
+  title: 里程碑与规范权威同步
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  latest_gate_note: P0 closure
+  acceptance_evidence:
+  - 唯一里程碑映射
+  - 正文/YAML invariant 对账
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-02
+  title: 证据等级语义统一
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-022
+  - V2-026
+  latest_gate_note: P0 terminology; P7 enforcement
+  acceptance_evidence:
+  - E1/E3/E4 唯一定义
+  - 模拟评价与人工 Gold 不混淆
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-03
+  title: Character Schema 组合修正
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-005
+  - V2-006
+  latest_gate_note: V2-006
+  acceptance_evidence:
+  - identity 等字段正例通过
+  - 错误实体类型与 lifecycle 拒绝
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-04
+  title: 类型化操作与转移契约
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-008
+  - V2-010
+  - V2-017
+  latest_gate_note: P1/P2/P4
+  acceptance_evidence:
+  - 操作条件与 reducer 对应
+  - 未知操作不能提交
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-05
+  title: Quality 到 Permit 的证据闭环
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-010
+  - V2-022
+  - V2-023
+  - V2-024
+  - V2-025
+  - V2-026
+  - V2-029
+  latest_gate_note: P2 baseline; V2-026 integration
+  acceptance_evidence:
+  - 必跑检查完整
+  - 空 ALLOW/矛盾 PASS 不可提交
+  - Permit 由授权来源签发并重新核验
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-06
+  title: 任务执行包与 CLOSED 证据
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-001
+  - V2-002
+  - V2-003
+  - V2-004
+  latest_gate_note: P0 first four; before each task
+  acceptance_evidence:
+  - 具体规范与测试映射
+  - Closure 验证 CI/产物/验收证据
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-07
+  title: 阶段门槛与任务 DAG
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-020
+  - V2-028
+  - V2-033
+  - V2-036
+  - V2-040
+  latest_gate_note: P0/P6/P8 gates
+  acceptance_evidence:
+  - M0 未验证不能启动 P1
+  - M4 在真实门禁集成后关闭
+  - 恢复测试为认证必要证据
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-08
+  title: 最小 Genesis 与根提交引导
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-009
+  - V2-010
+  - V2-017
+  - V2-048
+  latest_gate_note: P2/P4
+  acceptance_evidence:
+  - 同一服务初始化
+  - 并发 root 唯一
+  - P10 自动开书不前移
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-09
+  title: 短数据库事务与幂等冲突
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-009
+  - V2-010
+  - V2-011
+  latest_gate_note: V2-009..011
+  acceptance_evidence:
+  - DB 事务不包含 LLM 等待
+  - 同 key 不同载荷冲突
+  - CAS/提交响应丢失真实 DB 测试
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-10
+  title: Hash/Artifact/依赖绑定
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-009
+  - V2-010
+  - V2-012
+  - V2-017
+  - V2-018
+  latest_gate_note: P2/P4/P5
+  acceptance_evidence:
+  - 版本化序列化测试向量
+  - 精确正文持久化
+  - Scene 间接或直接绑定明确定义
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-11
+  title: 章内候选状态
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-017
+  - V2-020
+  - V2-027
+  latest_gate_note: P4..P6
+  acceptance_evidence:
+  - Scene 前后状态可重建
+  - 上游 repair 使下游失效
+  - 失败章不推进 Canon
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-12
+  title: 抽取覆盖与正文漏检
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-021
+  - V2-022
+  - V2-023
+  - V2-024
+  - V2-025
+  - V2-034
+  - V2-035
+  latest_gate_note: P7/P8
+  acceptance_evidence:
+  - 关键命题 UNKNOWN 不放行
+  - 正文违规但 delta 空的反例
+  - 漏检误杀分开报告
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-13
+  title: 项目/分支/缓存作用域
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-005
+  - V2-009
+  - V2-011
+  - V2-018
+  latest_gate_note: P2/P5
+  acceptance_evidence:
+  - 统一全局与项目作用域
+  - 双项目同名 main 交错执行隔离
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-14
+  title: Provider 结果未知与费用对账
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-019
+  - V2-027
+  - V2-028
+  latest_gate_note: P5/P6
+  acceptance_evidence:
+  - 无响应失败可表示
+  - UNKNOWN 恢复与预算策略
+  - 主动采样不等于缓存重放
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-15
+  title: 双 Anchor 可执行扩展
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-013
+  - V2-014
+  - V2-015
+  - V2-016
+  - V2-034
+  - V2-035
+  latest_gate_note: P3/P8
+  acceptance_evidence:
+  - 双 Pack 正负边界语料
+  - 注册扩展有 Schema/validator/projector
+  - 现实重生例外显式声明
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-16
+  title: 认证准入与证据协议
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-033
+  - V2-034
+  - V2-035
+  - V2-036
+  - V2-040
+  latest_gate_note: before P8; verify P9
+  acceptance_evidence:
+  - 认证模式保留硬门禁
+  - Reference 不阻塞早期核认证
+  - 报告绑定版本/正文/提交/失败
+  - Pack 生命周期不自失效
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-17
+  title: CI 分阶段门禁与真实 Provider 强制条件
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-001
+  - V2-003
+  - V2-004
+  - V2-019
+  - V2-034
+  - V2-035
+  latest_gate_note: P0 rules; P5/P8 evidence
+  acceptance_evidence:
+  - 故意违规样例可使 CI 失败
+  - 空测试/工具失败不假绿
+  - 认证/发布需相关版本的真实 Provider 证据
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-18
+  title: 横切基础能力分配
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-001
+  - V2-004
+  - V2-009
+  - V2-010
+  - V2-019
+  - V2-027
+  - V2-058
+  - V2-059
+  latest_gate_note: before first relevant durable data/call
+  acceptance_evidence:
+  - 最小权限/审计/费用随主链交付
+  - 早期数据可恢复
+  - 完整 DR 继续 P12
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-19
+  title: 研究来源与推断边界
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-042
+  - V2-044
+  latest_gate_note: before use in ADR/P10/P13
+  acceptance_evidence:
+  - 准确版本与来源
+  - claim-source 绑定
+  - 市场观察不会自动成为硬规则
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: AR-20
+  title: 工程/阅读/商业分别验收
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-034
+  - V2-035
+  - V2-040
+  - V2-055
+  - V2-056
+  latest_gate_note: P8/P9 then P11/P13
+  acceptance_evidence:
+  - 早期实际阅读正文
+  - 工程 PASS 与阅读评价分别报告
+  - 不声称工程认证等于爆款
+  source: archive/architecture-review-2026-09-18/REMEDIATION_REGISTER.yaml
+  closure_refs: []
+- id: CA-01
+  title: 权威规范、仓库策略和实施顺序没有收敛
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-002
+  latest_gate_note: P0
+  acceptance_evidence:
+  - 所有首批任务只有一个现行阶段、一个规范来源链；旧部署/推送命令不会成为默认行动；V2-005 必须依赖 V2-001—004 的 P0 证据。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-02
+  title: Canon 唯一提交原则没有进入具体模型、仓储和 API
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-010
+  - V2-020
+  latest_gate_note: P2 / P6
+  acceptance_evidence:
+  - 对 CLI、API、任务、人工编辑和修复逐个验证：未经许可不能推进 Canon；改正文后旧许可失效；任何投影都能从权威记录重建。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-03
+  title: 失败、未知、草稿保存、接受和发布未分离
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-020
+  - V2-026
+  latest_gate_note: P6 / P7
+  acceptance_evidence:
+  - 缺少任何必需证据、空结果、失效证据、正文后半段未检查、检查后正文改变，均不能进入 accepted/published；失败产物仍可保留以便诊断。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-04
+  title: 事务写法没有解决并发、重复投递和恢复
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-011
+  - V2-027
+  - V2-028
+  latest_gate_note: P2 / P6
+  acceptance_evidence:
+  - 并发提交、持久化边界崩溃、提交后失联、重复投递、取消后迟到响应均有回归，Canon 至多接受一次；Provider 重复执行/计费取决于其实际能力，不能由本地缓存保证；不因候选技术文章而引入 Celery。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+  normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
+- id: CA-05
+  title: 书籍与项目隔离没有贯穿数据库及上下文
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-009
+  - V2-018
+  latest_gate_note: P2 / P5
+  acceptance_evidence:
+  - 对每一类读写交换 novel/project/branch ID，均不得跨作用域读取正文、拼接关系、复用 Context 或接受 Delta；缓存命中仍执行授权。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-06
+  title: 领域模型、JSONB、API 和序列化没有一致映射
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-006
+  - V2-009
+  latest_gate_note: P1 / P2
+  acceptance_evidence:
+  - 每种非默认字段完成 domain→storage→domain 无损往返；未知枚举、错题材扩展、未支持 Schema 版本拒绝或走明确迁移；旧快照可按版本恢复。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-07
+  title: 章节有效期尚不足以表达叙事事实、知识和变化
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-007
+  - V2-012
+  latest_gate_note: P1 / P2
+  acceptance_evidence:
+  - 同章前后变化、插叙、未知未来、角色误信、别名改名、合法倒退和 retcon 各有反例；重新投影能得到对应时间与视角的状态。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-08
+  title: 两个粗粒度 Genre 不能代表两个已冻结 Anchor
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-013
+  - V2-015
+  - V2-016
+  latest_gate_note: P3
+  acceptance_evidence:
+  - 双包共享同一内核、不同扩展，Profile 版本与内容 hash 固定；书籍生产时不能由参考关键词重新决定 Genre。暂不扩展 30 个包，不妨碍基础模型正确分离这些维度。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-09
+  title: 关键词检测不能作为题材事实的硬裁判
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-014
+  - V2-024
+  - V2-034
+  - V2-035
+  latest_gate_note: P3 / P7
+  acceptance_evidence:
+  - 在两个 Anchor 中覆盖实际超自然污染、谈论游戏/小说、玄幻商会、未声明现代金融制度、现实向非法重生/系统等对照；重生另 Pack 的未来支持不纳入当前承诺；分别报告误报、漏报和未知并覆盖全文。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+  normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
+- id: CA-10
+  title: Temporal RAG 不能替代 Context Compiler
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-017
+  - V2-018
+  latest_gate_note: P4 / P5
+  acceptance_evidence:
+  - 关键事实即使在第 1 章且与查询语义弱相关也不会丢；无权限/未来/错误视角信息不泄漏；模型切换及压缩后保留全部必要约束；Context 可以离线解释和重建。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-11
+  title: 三稿制并未构成受控修复闭环
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-031
+  - V2-032
+  latest_gate_note: P7
+  acceptance_evidence:
+  - 修复题材后新增事实错误、删掉兑现、改变人物动机或失去情节功能都能检出；只接受重新验证的候选；记录成对阅读偏好与缺陷增减，不能只看分数上涨。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-12
+  title: 未校准分数重新获得发布和策略晋级权限
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-029
+  - V2-057
+  latest_gate_note: P7 / P11
+  acceptance_evidence:
+  - 单样本、无对照、未校准、缺失数据和任一硬失败不能自动晋级；反馈数据中的正文指令不能覆盖 Judge 的系统规则；受测模型和评价器升级必须触发相应回归。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-13
+  title: 试读意向、可读性与真实留存混用
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-034
+  - V2-035
+  - V2-040
+  - V2-055
+  latest_gate_note: P8 / P9 / P11 / P13
+  acceptance_evidence:
+  - P8/P9 可用小规模人工反馈，但不能宣称市场验证；商业晋级必须有单独协议。样本量依据基线、最小有意义差异和不确定性决定，不另编一个“万能人数”。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-14
+  title: 类型模板把可选套路变成质量公理
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-017
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: P4 / P8 / P9
+  acceptance_evidence:
+  - 同一 Genre 的不同 premise 在遮去名字后仍可被读者区分；关键情节能解释为什么发生、谁主动选择、付出什么；安静章节、失败章节与关系章节也可在满足其契约时通过。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-15
+  title: Model Gateway 尚未提供可追溯请求与安全重试语义
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-019
+  - V2-027
+  latest_gate_note: P5 / P6
+  acceptance_evidence:
+  - 不同 scope 或模型参数不会错误复用；重启后恢复的是同一 run；未知计费可对账；成功 JSON 必须通过约定 Schema，模型调用成功不等于叙事任务成功。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-16
+  title: 成本表存在量级错误，且没有接受章节的全成本口径
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-019
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: P5 / P8 / P9
+  acceptance_evidence:
+  - run 汇总与调用 ledger 一致；失败与未知费用可见；预算、P50/P95 及人工介入可查；任何成本优化都不得省略强制门禁。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-17
+  title: CI 示例未实现被冻结的 P0 治理门禁
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-001
+  - V2-003
+  - V2-004
+  latest_gate_note: P0
+  acceptance_evidence:
+  - P0 锁定安装、PostgreSQL 基础环境和实际 CI 通过，违规依赖/无害 Secret/边界夹具能使 CI 失败；业务迁移与 CAS/幂等随 P2 启用。不得通过删测试、全 skip 或手写 CLOSED 绕过，live
+    Provider 在适用阶段单独取得证据。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+  normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
+- id: CA-18
+  title: DDL 存在可定位的落地错误与依赖缺口
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-009
+  - V2-012
+  latest_gate_note: P2
+  acceptance_evidence:
+  - P2 从空 PostgreSQL 执行当前迁移并验证隔离、事务及旧快照版本；P3 随扩展装载双 Anchor 夹具。不能用 SQLite 结果替代 PostgreSQL 的约束、锁和事务测试；检索组件引入时另验中文文本。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+  normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
+- id: CA-19
+  title: 部署、健康检查和备份可能给出错误成功信号
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-001
+  - V2-012
+  - V2-058
+  latest_gate_note: P0 / P2 / P12
+  acceptance_evidence:
+  - 已采用的依赖失联、镜像不匹配、迁移失败、dump 失败或备份截断应明确失败；恢复后核对 Canon、Artifact hash 与 HEAD。不要求首期引入未选用的 Redis；P2 最小重建、P8 故障恢复、P12
+    正式备份认证分阶段完成。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+  normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
+- id: CA-20
+  title: 研究证据被外推为项目收益与必要范围
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-002
+  - V2-053
+  latest_gate_note: P0 / P11
+  acceptance_evidence:
+  - 收益声明必须对应本项目实验条件和原始结果，不把不可比百分比相加或用于收益承诺；来源局限保留在归档产品专项审核中。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+  normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
+- id: CA-21
+  title: 排期和范围扩张缺少关键链约束
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-002
+  latest_gate_note: P0
+  acceptance_evidence:
+  - 每项早期新增工作映射回关键链问题、产物和测试；超范围功能明确 DEFER；工期标明人员、依赖、未知项及证据，不能以降低质量门槛补偿超期。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-22
+  title: 示例尚不能承担“可直接执行”的身份
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-002
+  - V2-013
+  - V2-019
+  - V2-031
+  latest_gate_note: P0 / P3 / P5 / P7
+  acceptance_evidence:
+  - 可执行示例编译与对应负向测试通过；所有变量、字段和状态一致；后稿不再引用已停用示例作为实施入口。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-23
+  title: Reference 原创边界与学习/评测隔离未成为验收协议
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-042
+  - V2-045
+  - V2-049
+  - V2-053
+  latest_gate_note: P10 / P11
+  acceptance_evidence:
+  - 换名复写不能仅凭“没有原文输入”自动通过；相似度低也不能自动视为原创证明；外部材料中的指令不得越过资料边界。本报告不对版权或起点当前准入规则作法律结论。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: CA-24
+  title: 长期自动写作的成功口径缺少人工贡献与叙事债务
+  status: OPEN_TRACKED
+  disposition: ADAPT_OR_REJECT_LEGACY_EXAMPLE
+  related_tasks:
+  - V2-017
+  - V2-040
+  - V2-060
+  latest_gate_note: P4 / P8 / P9 / P12 / P14
+  acceptance_evidence:
+  - 10/30/100/300+ 章按实际长度分别认证；每个阶段报告是否因人工重写才成功、是否牺牲前文承诺；30 章不外推全部题材或百万字。自动化衡量的是必要人工投入持续下降且质量不退化，而非点击按钮后出现一堆文件。
+  source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
+  closure_refs: []
+- id: RR-01
+  title: 阶段、任务和里程碑权威一致
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  latest_gate_note: P0 基线冻结前
+  acceptance_evidence:
+  - 所有现行规范阶段/任务引用匹配唯一注册表
+  - 宪章与实施计划旧 M 编号有明确替代关系
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-02
+  title: 证据来源、可信度与权限语义统一
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-022
+  - V2-026
+  latest_gate_note: P0 冻结术语；P7 验证执行
+  acceptance_evidence:
+  - E 编码版本唯一
+  - 模拟读者不能冒充人工 Gold
+  - 质量来源不隐式获得提交权限
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-03
+  title: 用真实生成结果替换失真收敛记录
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-003
+  latest_gate_note: P0 基线冻结前
+  acceptance_evidence:
+  - 验证记录绑定提交和源哈希
+  - 计数由源生成且相符
+  - 已移除文件有明确替代证据
+  - 全量规范检查能够捕获残留旧引用
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-04
+  title: 任务执行契约与阶段门禁
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-001
+  - V2-002
+  - V2-003
+  - V2-004
+  latest_gate_note: P0 首批；每个后续任务启动前
+  acceptance_evidence:
+  - 前四任务有具体规范/产物/测试/范围
+  - CLOSED 缺证据被拒绝
+  - P0 未验证时 P1 不能被放行
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-05
+  title: ADR 归属及决定时点纠正
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-006
+  - V2-007
+  - V2-013
+  - V2-018
+  - V2-019
+  - V2-020
+  - V2-031
+  latest_gate_note: P0 修正归属；接口首次实现前决策
+  acceptance_evidence:
+  - ADR 指向真实任务与负责角色
+  - 基础类型决定先于对应持久接口实现
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-06
+  title: 修正当前启用的机器契约
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-006
+  - V2-008
+  - V2-010
+  - V2-019
+  - V2-026
+  latest_gate_note: 治理 CLOSED 约束 P0；业务契约随对应阶段
+  acceptance_evidence:
+  - 正反例映射到结构/领域/权限/数据库负责层
+  - 不以 Schema 通过代替业务放行
+  - 历史探针中适用项取得修复后证据
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-07
+  title: 保留已接受提交的证据闭包
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-009
+  - V2-010
+  - V2-017
+  - V2-018
+  latest_gate_note: P2 定义；P4/P5 接入验证
+  acceptance_evidence:
+  - 失效 Permit 历史记录或自足收据仍可核验
+  - 保留策略不留下无法解析的接受提交依赖
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-08
+  title: 确定性哈希与稳定逻辑请求身份
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-010
+  - V2-011
+  - V2-019
+  - V2-027
+  latest_gate_note: P2 基础；P5/P6 Provider 与恢复
+  acceptance_evidence:
+  - 固定规范化测试向量
+  - 同键同载荷同收据
+  - 同键异载荷冲突
+  - 重试 attempt 不改变逻辑幂等身份
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-09
+  title: 实际 P0 工程产物和验证
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-001
+  - V2-003
+  - V2-004
+  latest_gate_note: P0 退出
+  acceptance_evidence:
+  - 可复现构建和锁定
+  - 真实架构/安全/依赖门禁
+  - PostgreSQL 测试环境
+  - 当前提交 CI 与验收记录
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-10
+  title: V1 目录转为可运行回归
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-003
+  - V2-004
+  - V2-010
+  - V2-020
+  latest_gate_note: P0 起随对应任务
+  acceptance_evidence:
+  - 回归条目有原证据/输入/期望/测试路径/结果
+  - 目录数不冒充失败测试数
+  - 计划态与验证态分开
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-11
+  title: 双 Genre 与连续章节认证协议
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-013
+  - V2-015
+  - V2-016
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: P3 边界；P8 前协议冻结
+  acceptance_evidence:
+  - 正例/污染/合法语境/遗漏样本
+  - 自然生成和故障注入分别报告
+  - 版本、误报漏报弃权、全部尝试分母可查
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: RR-12
+  title: 阅读质量、人工贡献和成本验收
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-019
+  - V2-020
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: P5 日志；P8/P9 最小真人验收；P11/P13 升级
+  acceptance_evidence:
+  - 接受章节全成本与人工介入可见
+  - 同条件基线比较
+  - 工程/阅读/市场结果分别记录
+  source: archive/readiness-review-2026-09-20/review-actions.json
+  closure_refs: []
+- id: SUP-01
+  title: 标准测试书
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-015
+  - V2-016
+  - V2-017
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 双人工审定 fixture 通过同一根提交初始化；计划与事实分开
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-02
+  title: 持续故事机制
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-017
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 选择代价对手适应承诺兑现有文本证据
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-03
+  title: 三类认知分离
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-006
+  - V2-007
+  - V2-018
+  - V2-021
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 传闻误信读者先知和作者未来计划不混入世界事实
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-04
+  title: 创作自由与硬规则
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-017
+  - V2-025
+  - V2-029
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 安静与信息揭示章节可通过对应合约；套路不作硬门禁
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-05
+  title: 有限修复升级
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-027
+  - V2-030
+  - V2-031
+  - V2-032
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 无改善或预算耗尽停止且可退回计划/合约修订
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-06
+  title: 真实模型与基线
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-019
+  - V2-020
+  - V2-034
+  - V2-035
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 受控 live 接缝与简单基线条件和实际成本公开
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-07
+  title: 独立样本与多输入
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 开发与 holdout 分开；不在观察后改变样本与分母
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: SUP-08
+  title: 版本绑定和重验
+  status: OPEN_TRACKED
+  disposition: ADOPT_ACCEPTANCE_REQUIREMENT
+  related_tasks:
+  - V2-012
+  - V2-013
+  - V2-034
+  - V2-035
+  - V2-040
+  - V2-059
+  latest_gate_note: 随关联任务首次使用前落实
+  acceptance_evidence:
+  - 模型政策规则变更有影响分析和适用重验
+  source: 10_DECISIONS_AND_REMEDIATION.md
+  closure_refs: []
+- id: DA-01
+  title: 必需 CI 集合与启用阶段可被删减
+  status: CLOSED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  - V2-004
+  latest_gate_note: V2-002/V2-004 完成及 G-P0 前
+  acceptance_evidence:
+  - 删除、重复、推迟必需门禁及错误豁免应被拒绝；合法未来项与真实完整证据可通过。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-01-closure.yaml
+  classification: REPRODUCED_GOVERNANCE_DEFECT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-02
+  title: 完成证据缺少完整引用遍历和类型/关联校验
+  status: CLOSED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  latest_gate_note: V2-002 完成及 G-P0 前
+  acceptance_evidence:
+  - 缺失、目录、README、未接受 ADR 模板、错任务/版本/失败证据不可关闭；合格真实记录可关闭。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-02-closure.yaml
+  classification: REPRODUCED_GOVERNANCE_DEFECT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+  supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
+- id: DA-03
+  title: 里程碑最低内容和完成聚合未受到可靠约束
+  status: CLOSED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  latest_gate_note: V2-002 完成及 G-P0 前
+  acceptance_evidence:
+  - M6/M7 不可通过缩减必要任务或缺失认证报告而 VERIFIED。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-03-closure.yaml
+  classification: REPRODUCED_GOVERNANCE_DEFECT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+  supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
+- id: DA-04
+  title: readiness、ADR 反向完整性及 P0 准入执行不完整
+  status: CLOSED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  latest_gate_note: V2-002 完成及 G-P0 前
+  acceptance_evidence:
+  - 三个复现反例分别拒绝；未来未到期 ADR 和合法任务重开仍可表达。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-04-closure.yaml
+  classification: REPRODUCED_GOVERNANCE_DEFECT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-05
+  title: 任务关闭缺少关联未关闭问题的逐项处置
+  status: CLOSED
+  disposition: ADAPT
+  related_tasks:
+  - V2-002
+  latest_gate_note: V2-002 和首次相关任务关闭前
+  acceptance_evidence:
+  - 没有处置不可关闭；跨阶段 finding 的已验证局部处置可以关闭本任务。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-05-closure.yaml
+  classification: REPRODUCED_GOVERNANCE_DEFECT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-06
+  title: 取消与唯一提交边界的原子次序和执行权限失效未明确
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-009
+  - V2-010
+  - V2-026
+  - V2-027
+  latest_gate_note: V2-009/V2-010 定接口；V2-026/V2-027 集成
+  acceptance_evidence:
+  - 测试取消先赢、提交先赢、已签发许可、重启旧权限、响应丢失收据恢复。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs: []
+  classification: CONTRACT_GAP_NOT_RUNTIME_VERIFIED
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-07
+  title: 语义硬门禁的可接受证据与裁决协议需落地
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-021
+  - V2-022
+  - V2-023
+  - V2-024
+  - V2-025
+  - V2-026
+  - V2-029
+  latest_gate_note: V2-021/V2-022 接口冻结前
+  acceptance_evidence:
+  - 遗漏违规、错误正文定位、合法语境、证据冲突与未知不得伪报确定通过；合法事实正常通过。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs: []
+  classification: CONTRACT_REFINEMENT_NOT_RUNTIME_VERIFIED
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-08
+  title: 预算字段尚未形成未知费用及多 attempt 的调用约束
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-019
+  - V2-027
+  - V2-031
+  latest_gate_note: V2-019 首次真实调用前
+  acceptance_evidence:
+  - 余额耗尽、UNKNOWN 后重试、重启、并发额度争用、fallback 与修复均有边界。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs: []
+  classification: CONTRACT_REFINEMENT_NOT_RUNTIME_VERIFIED
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-09
+  title: 章数之外的规模与自动程度需要可执行协议
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-033
+  - V2-034
+  - V2-035
+  - V2-040
+  latest_gate_note: ADR-013 / V2-033 运行前
+  acceptance_evidence:
+  - 短段落计章、人工重写冒充自动、挑选成功运行、运行后改变阈值不能支持原认证结论。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs: []
+  classification: CERTIFICATION_REFINEMENT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-10
+  title: 阅读不改善时进入高级智能阶段的投入决策不明确
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-040
+  - V2-041
+  latest_gate_note: V2-040 验收 / V2-041 开始前
+  acceptance_evidence:
+  - 工程 PASS 不能自动宣称阅读收益；不优/不足结果有明确后续选择、理由、责任与预算。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs: []
+  classification: PRODUCT_DECISION_GAP
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: DA-11
+  title: 早期持久数据恢复策略缺少具体责任与验收点
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-009
+  - V2-012
+  - V2-028
+  - V2-036
+  - V2-058
+  latest_gate_note: 首次有价值持久运行前明确；V2-028 前演练
+  acceptance_evidence:
+  - 数据库和 Artifact 隔离恢复后 HEAD、正文、Delta、收据、许可和政策引用可核验。
+  source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
+  closure_refs: []
+  classification: DELIVERY_REFINEMENT
+  planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
+- id: PR-01
+  title: V2-017 内规划版本与编译职责需要执行包分解
+  status: OPEN_TRACKED
+  disposition: ADAPT
+  related_tasks:
+  - V2-017
+  latest_gate_note: ADR-008 / V2-017 实施前
+  acceptance_evidence:
+  - 规划版本、冻结边界、失效与重规划提议独立于 Contract 编译；旧输入不得静默复用；无第二 Canon 写路径
+  source: archive/review-inputs-2026-09-21/TWO_PLANNING_EVALUATIONS.txt
+  closure_refs: []

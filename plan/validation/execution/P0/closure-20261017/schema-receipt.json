@@ -1,0 +1,86 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "schema_contract",
+  "gate": "SCHEMA_CONTRACT",
+  "status": "PASS",
+  "revision": "bb3d1fa79227284995938c47adcb19bc8437c481",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "fc977e9ba17c9a89e509baebed191a44e4d071cfea85cb45da242fb43d406ba9",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-17T01:02:12.679705+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/check_governance.py",
+        "--output-dir",
+        "dist/validation/p0-closure/schema-final/governance"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/p0-closure/schema-final/command-01.stdout.log",
+        "sha256": "f10eb817939f430a63fd6ca32dfa9b1fc3fec8a7e9c1f486c31426150a3c0a2b"
+      },
+      "stderr": {
+        "ref": "dist/validation/p0-closure/schema-final/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/p0-closure/schema-final/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/command-01.stdout.log",
+      "sha256": "f10eb817939f430a63fd6ca32dfa9b1fc3fec8a7e9c1f486c31426150a3c0a2b"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/ai/ai-execution-regression.json",
+      "sha256": "6ee67173a22299fa52b7f669dd3ea6095d7cfc0c7f5e39046acd19c7cb98ecbf"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/context-inventory.json",
+      "sha256": "dacb13d054942eeddd4e395ab585f01827b0ea5bd8cc0dee7b8ff4acd1e9c5f3"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/governance/governance-regression.json",
+      "sha256": "cc1f7a9eee445cbc137a20b58870e92cf9cf5e579ac91fa27030ff82b41927f4"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/governance-summary.json",
+      "sha256": "16c1c319fc2f2c0e14f268199cc4f917aa9983296cda56badeca72776bcd7e2b"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/legacy.json",
+      "sha256": "0b7045efb84d51b3dad3440f1c6185d4581cb79ed3882f6407cf324b38556070"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/normative-index.json",
+      "sha256": "17dcb9f1546265df44cdf2a46a054a16137e3109a04a81050489aee097114fe3"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/plan/plan-validation.json",
+      "sha256": "f9a302c6d88c83070f205f0757a02b86f53ebed259554b94d29fe4a18206b8af"
+    },
+    {
+      "ref": "dist/validation/p0-closure/schema-final/governance/self-test/validator-self-test.json",
+      "sha256": "e342701474663fcb90003a53c9bb4a3e5c6344f913b92929835de57ba5fcab4b"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-17T01:03:49.272785+00:00"
+}

@@ -2,7 +2,7 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-002
 plan_version: 1.3.0
-repository_revision: 21849ed8919086982dd94d0a4c852db40eca5d40
+repository_revision: 73b30d9a8c482ada1e3f2d58d4b76d455d810cf4
 worktree_dirty: true
 plan_manifest_sha256: 7956da340626e6fc4b9174dd8ee1fc937a29fd16589ea4ca7231917b5e5046ed
 environment:
@@ -15,16 +15,16 @@ environment:
 implementer: Codex primary implementer / local operator
 verifier: Codex local tests and bounded AI review; shared trust boundary, not independent certification
 owner_role: governance-maintainer
-scope: 'Only P0 V2-002: reuse normative validation, engineering command integration and local action/resume checks.
-  No V2-003/004 or P1+, paid Provider, deployment or remote changes. Currency USD; zero spend.'
+scope: P0 aggregate closeout of V2-001..003 using existing actual611d777 remote evidence, local-only post-completion
+  fixture corrections, no CI dispatch or P1 implementation.
 action: IMPLEMENT
 inputs:
 - source_ref: 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/00-00_GOVERNANCE_AND_SOURCE_AUTHORITY.md.txt
   sha256: 558fc835e0128f7c2d0af463c869f0569cfa96ed6819a86a97e126c643b14fd2
 - source_ref: 08_ROADMAP_AND_GATES.md
-  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/01-08_ROADMAP_AND_GATES.md.txt
-  sha256: 5734a943ecd1536c0807ada90a8c1a6edfb72cd4dcc0fb54d6001ce9c71bfdcb
+  ref: validation/execution/P0/closure-20261017/inputs/36eb6e341ad9413020abf825dc8bcff163aedd3dc4b96f32ce03ad144fc5cf7c.txt
+  sha256: 36eb6e341ad9413020abf825dc8bcff163aedd3dc4b96f32ce03ad144fc5cf7c
 - source_ref: 09_TASK_EXECUTION_GUIDE.md
   ref: validation/execution/V2-003/followup/inputs/824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682.txt
   sha256: 824c4828f7e2fb7cf83d31024a1a4234333e21079893322e8ce5f61f4a931682
@@ -32,29 +32,29 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/03-10_DECISIONS_AND_REMEDIATION.md.txt
   sha256: f0caade0b2520929561c5d5460cd3d7b35c2f1466195f6a7e7bd22291c74b74e
 - source_ref: PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md
-  ref: validation/execution/V2-002/inputs/c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22.txt
-  sha256: c3f04713cd35de4ee832e2e2fcb1bc3069db1febf4c711d163ea970e3fa0ba22
+  ref: validation/execution/P0/closure-20261017/inputs/4b0fdb6dbe70b9d0aec3ed7fc960b557507aa23a910f14d13c9fe3fde05c8336.txt
+  sha256: 4b0fdb6dbe70b9d0aec3ed7fc960b557507aa23a910f14d13c9fe3fde05c8336
 - source_ref: AI_EXECUTION_PROTOCOL.md
   ref: validation/execution/V2-002/inputs/7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10.txt
   sha256: 7365aa6b1a429db9016a423a3d61d5cee28bf9709b176dfc996de73c9f469d10
 - source_ref: README.md
-  ref: validation/execution/V2-002/inputs/7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e.txt
-  sha256: 7a9930a5267f953c87cb275ec5adba9a5689ef433ae19b85e54edd5bac7ad95e
+  ref: validation/execution/P0/closure-20261017/inputs/3e77fcfc8a663e4cc7a04f402ff5dd331e7ecc5e2e7856cba8dbebdd6dc830cb.txt
+  sha256: 3e77fcfc8a663e4cc7a04f402ff5dd331e7ecc5e2e7856cba8dbebdd6dc830cb
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-002/inputs/b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76.txt
-  sha256: b4216b6fbf2215069a437d1a2c19ef00324deca36fa6ebaa53a050ffda9f7f76
+  ref: validation/execution/P0/closure-20261017/inputs/e472f85aa08ee4eb8c8a7f083ddafcff2ec40c24e98183fea50454eb2cd2cb75.txt
+  sha256: e472f85aa08ee4eb8c8a7f083ddafcff2ec40c24e98183fea50454eb2cd2cb75
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-002/inputs/3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842.txt
-  sha256: 3acbc2bb37aca60e1daf0d282ffbdd91f621896e1f99ee10ebe8da21fedeb842
+  ref: validation/execution/P0/closure-20261017/inputs/48015914da9d926ad6d5b62578d253117725a2d6ccfc2fdf23316003dee545c3.txt
+  sha256: 48015914da9d926ad6d5b62578d253117725a2d6ccfc2fdf23316003dee545c3
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/09-decision-register.yaml.txt
   sha256: f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1
 - source_ref: machine/ai-execution-policy.yaml
-  ref: validation/execution/V2-003/followup/inputs/2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6.txt
-  sha256: 2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6
+  ref: validation/execution/P0/closure-20261017/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
 - source_ref: machine/phase-gates.yaml
-  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/11-phase-gates.yaml.txt
-  sha256: 086690e7d66aba6308863ae54df2117d72df1d6050b41d86c77fa4a2f2aae6d9
+  ref: validation/execution/P0/closure-20261017/inputs/649c135de7a99e9355069e0303cf5f3a9ca9a019fdf60d8acb4fcc9320fdd83d.txt
+  sha256: 649c135de7a99e9355069e0303cf5f3a9ca9a019fdf60d8acb4fcc9320fdd83d
 - source_ref: machine/governance-baseline.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/12-governance-baseline.yaml.txt
   sha256: ab7a40f13686601f34a339c04005efd5a8d65e92e3d561ab94bc6f2b8898e68c
@@ -65,14 +65,14 @@ inputs:
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/14-authority-policy.yaml.txt
   sha256: 4d31e00f1e1ea277d42fbb8de1a3acd4e3d0e082844c360f50051512c6990c91
 - source_ref: machine/external-practice-register.yaml
-  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/15-external-practice-register.yaml.txt
-  sha256: 6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42
+  ref: validation/execution/P0/closure-20261017/inputs/3ade0a8ead3c2feb5aedf7325a8391b6ee26528ed2e8a8ee0f916cc121f7f06c.txt
+  sha256: 3ade0a8ead3c2feb5aedf7325a8391b6ee26528ed2e8a8ee0f916cc121f7f06c
 - source_ref: machine/source-register.yaml
   ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/16-source-register.yaml.txt
   sha256: 7f1f4e8e3e4e3951ad8357bd5d9a6602da0b53f2560ceda35a4cf0dd93aa36ac
 - source_ref: machine/remediation-register.yaml
-  ref: validation/execution/V2-002/snapshots/review-fixes/V2-002/17-remediation-register.yaml.txt
-  sha256: 1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e
+  ref: validation/execution/P0/closure-20261017/inputs/74e88f1a4c6a24e4952da0b31fc758e09ba619f05cf96530e0ad58ac9add7d1c.txt
+  sha256: 74e88f1a4c6a24e4952da0b31fc758e09ba619f05cf96530e0ad58ac9add7d1c
 - source_ref: schemas/execution-packet.schema.json
   ref: validation/execution/V2-003/followup/inputs/4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404.txt
   sha256: 4edb2219d3ecaa05cc8de1a7fb7378adbe64b7415a40dbb9d3e2a57d202ab404
@@ -137,6 +137,16 @@ allowed_paths:
 - plan/validation/execution/V2-002/
 - plan/validation/execution/V2-001/execution-packet.yaml
 - docs/V2-002_IMPLEMENTATION_REPORT.md
+- docs/P0_ACCEPTANCE.md
+- plan/02_ARCHITECTURE_BASELINE.md
+- plan/08_ROADMAP_AND_GATES.md
+- plan/machine/phase-gates.yaml
+- plan/machine/milestones.yaml
+- plan/machine/remediation-register.yaml
+- plan/machine/external-practice-register.yaml
+- plan/validation/execution/P0/closure-20261017/
+- plan/validation/execution/V2-004/enrollment-20261005/acceptance-overlay.yml
+- tests/contract/test_task_execution.py
 required_decisions: []
 claims:
 - id: BASELINE
@@ -239,39 +249,19 @@ review_notes:
 - '2026-10-16 V2-004 closure: reconcile changed shared planning inputs and manifest only; this task status and acceptance
   not promoted.'
 handoff:
-  current_step: 'STOPPED: V2-002 IMPLEMENTED; bounded fixes committed and post-commit local CODE/TEST_RESULT bound;
-    CI and final acceptance absent'
+  current_step: P0/G-P0/M0 accepted at actual engineering611d777; maintenance fixtures local verification pending.
   completed_steps:
-  - Observed clean opening main/HEAD, Plan version and manifest; baseline PASS
-  - Created and validated dedicated PREPARE packet, then passed IMPLEMENT start gate
-  - Reused governance system; integrated normative index, real local action/resume entry and contract tests
-  - Preserved and retrospectively reproduced old fixture failures; all original test assertions retained
-  - Contract tests 39, bootstrap regression 5, self-test 32, governance 39, AI 36, legacy probes 13 PASS
-  - Compared acceptance/scope/protection to opening Git revision; no weakening or other task implementation
-  - Archived exact code bytes, commands, real outputs and worktree context
-  - 'Follow-up: detached HEAD/checkpoint fixes; 51 contract tests and all governance commands PASS; original assertions/acceptance/gates
-    unchanged against a3ea7730'
-  - 'Fix commit 9c2fd253326e87e9e6c43920f29a95dc68680a64: post-commit contract 51, bootstrap 5, self-test 32, governance
-    39, AI 36, legacy 13 PASS; 19 source paths equal Git blobs; typed evidence bound in backlog/suite'
-  - Evidence/backlog/suite/README and handoff reconciled; final bound governance aggregate PASS; initial missing-pointer-status
-    failure retained and corrected without schema changes
+  - Original45artifact hashes and27scenario control mapping verified
+  - FourP0 task acceptances andDA01..05 recorded
   pending_items:
-  - Real trusted CI_RUN for applicable revision (V2-004 responsibility; not started here)
-  - Final acceptance and finding dispositions
-  - G-P0/M0 remain NOT_VERIFIED
-  - V2-003/004 remain OPEN; P1+ forbidden until verified G-P0
+  - Local maintenance and final bounded-diff verification; no new remote CI
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-002/test-result.yaml
-      sha256: 7fbc9f35e6b005ad5dde8de3e69c2c1108a3d05b214b16174b001f6b97aae1a8
-    - ref: validation/execution/V2-002/governance-result.yaml
-      sha256: 1982d4479b511d959c0b826e9688d395ef46adaac15bc066d8b849eb604fc149
-    - ref: validation/execution/V2-002/followup/postcommit/binding-summary.json
-      sha256: 88a5ab6bdfff5c8aa7011d848b2fb94841e5afb77b44605473b7c5139bb58eca
-    - ref: validation/execution/V2-002/followup/bound-governance/governance-summary.json
-      sha256: c2f488e14b4a1932d3281990838c6b8bcb597f71a46bb11612d9cd353338f6f1
-    - ref: validation/execution/V2-002/followup/final-scope.json
-      sha256: 80b7e0fbed6090bb3f4fa0ec823ad3309ecfde84a110d958e2325661c52f3dc1
+    - ref: validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json
+      sha256: f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9
     missing_artifact_reason: null
+change_review:
+  scope_revision: bb3d1fa79227284995938c47adcb19bc8437c481
+  scope_ref: plan/validation/execution/P0/closure-20261017/scope.json

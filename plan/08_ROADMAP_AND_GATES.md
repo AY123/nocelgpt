@@ -43,3 +43,6 @@ V2-005 → 008 → 009 → 010 → 013 → 017 → 018 → 019 → 020 → 021 �
 ## 5. 当前状态
 
 P0_ENTRY_READY；G-P0～G-P14 和 M0～M12 初始均 NOT_VERIFIED。P13/P14 具体任务未排入首批 60 项。机器资料通过只证明文件一致性，不能把这些状态改成 PASS。
+
+
+2026-10-17：P0/G-P0和M0已基于611d777原始工程CI及四项任务验收VERIFIED；后续资料与夹具维护不冒称新远程CI。P1仍NOT_VERIFIED，V2-005尚未开始。见 validation/execution/P0/closure-20261017/P0-decision.yaml。

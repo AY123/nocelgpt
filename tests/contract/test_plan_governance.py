@@ -77,19 +77,23 @@ def test_context_import_alias_resolves_to_history(tmp_path):
 
 @pytest.mark.parametrize('mutate,prefix', [
     (lambda d: d['implementation-backlog']['tasks'][1].update(phase='P1'), 'TASK_PHASE'),
-    (lambda d: d['implementation-backlog']['tasks'][1].update(status='CLOSED'), 'TASK_SCHEMA'),
+    (lambda d: d['implementation-backlog']['tasks'][1].update(status='CLOSED', evidence={**d['implementation-backlog']['tasks'][1]['evidence'], 'ci': [], 'acceptance': []}), 'TASK_SCHEMA'),
     (lambda d: d['implementation-backlog']['tasks'][4].update(status='IN_PROGRESS'), 'TASK_START'),
     (lambda d: d['external-practice-register']['practices'][0].update(source_refs=['MISSING']), 'EXTERNAL_SOURCE'),
 ])
 def test_existing_rules_reject_single_mutations(mutate, prefix):
     data = deepcopy(validator.load())
+    if prefix == 'TASK_START':
+        # Explicit missing predecessor gate; real project progress is irrelevant.
+        data['phase-gates']['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+        data['milestones']['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
     assert validator.validate_objects(data) == []
     mutate(data)
     errors = validator.validate_objects(data)
     assert any(error.startswith(prefix) for error in errors), errors
     if prefix == 'TASK_SCHEMA':
-        # Local CODE/TEST_RESULT share a revision now; CI and acceptance are
-        # still absent. Check each actual closure defect, not mixed revisions.
+        # This isolated mutation removes CI and acceptance from a real valid
+        # record. Each absent witness must still block closure after P0 ends.
         for kind in ('ci', 'acceptance'):
             assert any(error.startswith(f"TASK_SCHEMA V2-002 ['evidence', '{kind}']:")
                        for error in errors), errors
@@ -98,3 +102,15 @@ def test_existing_rules_reject_single_mutations(mutate, prefix):
 def test_generated_views_match_current_source():
     for name, content in validator.expected_views(validator.load()).items():
         assert (ROOT / 'plan' / name).read_text() == content
+
+
+def test_validator_self_test_rejects_empty_evidence_after_p0_completion():
+    # Exercise all negative mutations against valid live data, including CLOSED
+    # tasks and VERIFIED P0. Self-test must mutate evidence, not merely set a
+    # status which can already be true in the real project.
+    data = deepcopy(validator.load())
+    assert validator.validate_objects(data) == []
+    results = validator.self_test(data)
+    assert all(item['expected'] == item['actual'] for item in results), results
+    assert {'empty CLOSED evidence', 'false verified phase', 'premature P1 start'}.issubset(
+        {item['case'] for item in results})

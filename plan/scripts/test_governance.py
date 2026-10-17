@@ -27,6 +27,10 @@ class GovernanceTests(unittest.TestCase):
         self.plan = Path(self.tmp.name)/'plan'
         shutil.copytree(validator.PLAN, self.plan, ignore=shutil.ignore_patterns('__pycache__', '.DS_Store'))
         self.data = deepcopy(validator.load())
+        # Real finding closures cannot serve as synthetic task attestations.
+        for finding in self.data['remediation-register']['findings']:
+            if finding['closure_refs']:
+                finding.update(status='OPEN_TRACKED', closure_refs=[])
         self.records = self.plan/'validation/fixture'
         self.records.mkdir(parents=True, exist_ok=True)
         raw = self.records/'raw.txt'

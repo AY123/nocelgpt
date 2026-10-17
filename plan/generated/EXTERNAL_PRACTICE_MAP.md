@@ -12,7 +12,7 @@
 | EXT-006 | 审阅正文与变化及人工编辑失效 | REFINE_EXISTING | PLANNED | V2-010, V2-020, V2-026, V2-038 | AT-V2-010-04, AT-V2-020-05, AT-V2-026-04, AT-V2-038-04 |
 | EXT-007 | 修复循环停滞与退化检测 | REFINE_EXISTING | PLANNED | V2-031, V2-032 | AT-V2-031-04, AT-V2-032-04 |
 | EXT-008 | 简单基线与阅读收益分开验证 | REFINE_EXISTING | PLANNED | V2-034, V2-035, V2-040 | AT-V2-034-04, AT-V2-035-04, AT-V2-040-04 |
-| EXT-009 | 来源到本地验收的追踪 | ADD_TRACEABILITY | PLANNED | V2-002 | AT-V2-002-04 |
+| EXT-009 | 来源到本地验收的追踪 | ADD_TRACEABILITY | VERIFIED | V2-002 | AT-V2-002-04 |
 | EXT-D01 | 完整作者工作台与自动开书/参考产品体验 | DEFER | DEFERRED | 未安排 | 无早期实施要求 |
 | EXT-D02 | 自动调优与大规模模拟读者循环 | DEFER | DEFERRED | 未安排 | 无早期实施要求 |
 | EXT-R01 | 将多 Agent 数量、题材模板数或 AI 总分作为质量保证 | REJECT | REJECTED | 未安排 | 无早期实施要求 |

@@ -1,0 +1,405 @@
+document_id: ANOVELOS-EXTERNAL-PRACTICES
+version: 1.1.0
+reviewed_on: '2026-09-20'
+policy: 采纳本地机制与反例；不整库迁入。来源页面未锁定 commit；全部运行收益待验证。
+sources:
+- id: SRC-INKOS
+  name: InkOS
+  url: https://github.com/Narcooo/inkos
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 项目说明描述统一执行入口、章节工作区、上下文分层和可恢复生产。
+  limitation: 说明不是原子提交/故障恢复实测；不采纳其全部产品范围或默认配置。
+- id: SRC-WEBNOVEL
+  name: webnovel-writer
+  url: https://github.com/lingfengQAQ/webnovel-writer/blob/master/README.md
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 中文连载流程覆盖卷纲、伏笔、记忆和审查；版本说明区分维护线、冻结线与开发线。
+  limitation: 未验证百万字能力；具体行为应固定到所研究版本。
+- id: SRC-WEBNOVEL-GENRE
+  name: webnovel-writer Issue 135
+  url: https://github.com/lingfengQAQ/webnovel-writer/issues/135
+  source_kind: PUBLIC_ISSUE_REPORT
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 报告显式题材在 fallback 路径被子流派替代并注入无关桥段。
+  limitation: 提交者的报告，未独立复现；本地构造同类机制反例，不认定所有版本均有缺陷。
+- id: SRC-WEBNOVEL-SEAM
+  name: webnovel-writer Issue 139
+  url: https://github.com/lingfengQAQ/webnovel-writer/issues/139
+  source_kind: PUBLIC_ISSUE_REPORT
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 报告章纲节点检查遗漏正文实际收尾，造成相邻章节动作重写。
+  limitation: 提交者的报告，未独立复现；文本重叠不自动等于叙事错误。
+- id: SRC-QMAI
+  name: QMAI
+  url: https://github.com/Mochocyang/QMAI
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明描述章节摄取、知识边界、混合检索与上下文优先级。
+  limitation: 不采纳其优先级排序为本项目权威；长篇效果和检索正确性待实测。
+- id: SRC-NOVEL-STUDIO
+  name: Novel Studio AI
+  url: https://github.com/YfengJ/novel-studio-ai
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明区分草稿与接受章节，接受后更新记忆，并提供 Context Pack 预览。
+  limitation: 未源码审计或运行验证；本地仍采用受控 Permit 和数据库事务。
+- id: SRC-NOVELFORGE
+  name: NovelForge
+  url: https://github.com/hzhang092/novel-agent
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明包含分层规划、角色意图、场景生成与审查正文/事实变化后提交。
+  limitation: 不能将审查按钮存在当成提交安全性证明。
+- id: SRC-GENERATOR
+  name: AI_NovelGenerator
+  url: https://github.com/YILING0013/AI_NovelGenerator
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明描述多阶段生成、状态跟踪、语义检索与一致性检查。
+  limitation: 作为基线思路参考，不宣称本地已部署该项目或完成横评。
+- id: SRC-MUMU
+  name: MuMuAINovel
+  url: https://github.com/xiamuceer-j/MuMuAINovel
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明包含开书向导、角色关系和章节编辑/重新生成。
+  limitation: 产品功能不证明长篇一致性；首期不引入完整多用户工作台。
+- id: SRC-NOVELCRAFTER
+  name: Novelcrafter
+  url: https://www.novelcrafter.com/
+  source_kind: OFFICIAL_PRODUCT_DOCUMENTATION
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 官方介绍 Codex 设定关联、规划与系列资料共享。
+  limitation: 没有获取内部实现；产品体验参考不能直接替代 Canon 设计。
+- id: SRC-SUDOWRITE
+  name: Sudowrite
+  url: https://sudowrite.com/blog/how-sudowrite-works/
+  source_kind: OFFICIAL_PRODUCT_DOCUMENTATION
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 官方介绍 Story Bible 到场景与正文的创作链。
+  limitation: 产品说明不是中文网文质量或爆款证据。
+- id: SRC-NOVELAI
+  name: NovelAI Lorebook
+  url: https://docs.novelai.net/en/text/lorebook/
+  source_kind: OFFICIAL_PRODUCT_DOCUMENTATION
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 官方文档说明条目激活、token 预算、预留及插入控制。
+  limitation: 借鉴预算机制，具体强制保留规则由本地设计并验证。
+- id: SRC-AUTONOVEL
+  name: NousResearch autonovel
+  url: https://github.com/NousResearch/autonovel
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明包含评估修订循环和停滞检测。
+  limitation: 模型读者和总分不是人工/市场证据；不采用其分数作为硬门禁。
+- id: SRC-NARRACAT
+  name: NarraCat
+  url: https://github.com/yannikzz/narracat-novel-agent
+  source_kind: OFFICIAL_REPOSITORY
+  reviewed_on: '2026-09-20'
+  review_level: PUBLIC_DOCUMENT_REVIEW
+  pinned_revision: null
+  code_review: NOT_PERFORMED
+  runtime_verification: NOT_PERFORMED
+  observation: 说明描述中文网文立项卡、设定管理、长程记忆和创作引擎。
+  limitation: 人机共创体验参考；未验证其长程记忆效果。
+practices:
+- id: EXT-001
+  title: 显式题材绑定与无匹配策略
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-WEBNOVEL
+  - SRC-WEBNOVEL-GENRE
+  baseline_coverage: 已有 Pack 绑定和禁止静默 fallback，缺少子流派/策略无命中反例。
+  local_adaptation: 区分 Pack 与可选策略；无命中不覆盖显式 Genre，也不自动塞入相近题材套路。
+  expected_benefit: 降低路由与检索引入的题材污染；收益待认证。
+  normative_refs:
+  - 04_GENRE_AND_STORY_FIXTURES.md
+  related_tasks:
+  - V2-013
+  - V2-014
+  - V2-024
+  acceptance_scenarios:
+  - AT-V2-013-04
+  - AT-V2-014-04
+  - AT-V2-024-04
+  verification_refs: []
+- id: EXT-002
+  title: 正文实际落点与跨章接续
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-WEBNOVEL-SEAM
+  baseline_coverage: 已有时间线和连续章认证，未要求合约引用实际正文落点。
+  local_adaptation: 接续绑定上一接受正文及证据位置；保留有意回忆/视角转换，区分语义未知和可确定版本错配。
+  expected_benefit: 发现章纲通过但正文重复收尾的遗漏。
+  normative_refs:
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-017
+  - V2-018
+  - V2-025
+  - V2-033
+  acceptance_scenarios:
+  - AT-V2-017-05
+  - AT-V2-018-04
+  - AT-V2-025-04
+  - AT-V2-033-04
+  verification_refs: []
+- id: EXT-003
+  title: 可检查的上下文清单与离线编译
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-INKOS
+  - SRC-QMAI
+  - SRC-NOVELAI
+  baseline_coverage: 已有预算、必需项、来源和 inspector，补足离线检查和角色隔离的具体验收。
+  local_adaptation: 冻结输入可离线编译；清单记录每项作用域、可见范围、预算与选取原因，支持版本间比较。
+  expected_benefit: 减少上下文误裁剪和角色提前知情，并降低诊断成本。
+  normative_refs:
+  - 02_ARCHITECTURE_BASELINE.md
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-018
+  - V2-037
+  acceptance_scenarios:
+  - AT-V2-018-05
+  - AT-V2-037-04
+  verification_refs: []
+- id: EXT-004
+  title: 统一生产入口与恢复前指纹复核
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-INKOS
+  baseline_coverage: 已有 Workflow、幂等和检查点，补足多入口共用和输入变化后的恢复。
+  local_adaptation: CLI/任务入口共用应用服务；恢复核对候选、parent、Contract、Pack 和政策，不信任口头完成声明。
+  expected_benefit: 避免入口分叉、过期检查点提交和伪成功。
+  normative_refs:
+  - 02_ARCHITECTURE_BASELINE.md
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-020
+  - V2-027
+  - V2-028
+  acceptance_scenarios:
+  - AT-V2-020-04
+  - AT-V2-027-04
+  - AT-V2-028-04
+  verification_refs: []
+- id: EXT-005
+  title: 角色意图与知识边界进入章节合约
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-NOVELFORGE
+  - SRC-QMAI
+  - SRC-WEBNOVEL
+  baseline_coverage: 已有 Character/Knowledge 与持续冲突要求，补足意图的消费者和合法误判。
+  local_adaptation: 计划表达目标、判断依据、选择及代价；硬边界和主观动机质量分开。
+  expected_benefit: 减少角色无理由行动和凭空知情，同时保留创作自由。
+  normative_refs:
+  - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-006
+  - V2-017
+  - V2-025
+  acceptance_scenarios:
+  - AT-V2-006-04
+  - AT-V2-017-06
+  - AT-V2-025-05
+  verification_refs: []
+- id: EXT-006
+  title: 审阅正文与变化及人工编辑失效
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-NOVEL-STUDIO
+  - SRC-NOVELFORGE
+  - SRC-MUMU
+  baseline_coverage: 已有单 Canon 写入口和 hash 失效，补足人工改稿和最小审阅产物。
+  local_adaptation: 审阅展示正文、变化、阻断项和版本；手改候选重新验证；已接受内容走受控更正或明确拒绝。
+  expected_benefit: 防止人工干预变成第二 Canon 写路径。
+  normative_refs:
+  - 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  related_tasks:
+  - V2-010
+  - V2-020
+  - V2-026
+  - V2-038
+  acceptance_scenarios:
+  - AT-V2-010-04
+  - AT-V2-020-05
+  - AT-V2-026-04
+  - AT-V2-038-04
+  verification_refs: []
+- id: EXT-007
+  title: 修复循环停滞与退化检测
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-AUTONOVEL
+  - SRC-INKOS
+  baseline_coverage: 已有轮次/预算限制和重复无改进停止，补足缺陷往返场景。
+  local_adaptation: 按稳定缺陷身份与范围比较尝试，识别循环和新缺陷，不以模型总分代替改善。
+  expected_benefit: 控制无效重写成本，避免为修一处破坏其他事实。
+  normative_refs:
+  - 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  related_tasks:
+  - V2-031
+  - V2-032
+  acceptance_scenarios:
+  - AT-V2-031-04
+  - AT-V2-032-04
+  verification_refs: []
+- id: EXT-008
+  title: 简单基线与阅读收益分开验证
+  decision: REFINE_EXISTING
+  status: PLANNED
+  source_refs:
+  - SRC-GENERATOR
+  - SRC-AUTONOVEL
+  baseline_coverage: 已有 P8/P9 人工盲评和基线要求，补足对照约束和不优结果。
+  local_adaptation: 相同输入与可比预算，隔离基线正文，计入所有尝试和人工成本，保留不优/不确定结论。
+  expected_benefit: 验证新增机制是否值得其复杂度，不将工程通过换算为阅读竞争力。
+  normative_refs:
+  - 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  related_tasks:
+  - V2-034
+  - V2-035
+  - V2-040
+  acceptance_scenarios:
+  - AT-V2-034-04
+  - AT-V2-035-04
+  - AT-V2-040-04
+  verification_refs: []
+- id: EXT-009
+  title: 来源到本地验收的追踪
+  decision: ADD_TRACEABILITY
+  status: VERIFIED
+  source_refs:
+  - SRC-INKOS
+  - SRC-WEBNOVEL-GENRE
+  - SRC-WEBNOVEL-SEAM
+  baseline_coverage: 已有历史来源归档，新增网络机制到当前任务与断言的映射。
+  local_adaptation: 登记来源级别与未知版本，拒绝悬空映射和无证据验证；复用时补上不可变 revision 与路径。
+  expected_benefit: 使借鉴可审查，并避免宣传或未复现 Issue 被误作实现证据。
+  normative_refs:
+  - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  - 09_TASK_EXECUTION_GUIDE.md
+  related_tasks:
+  - V2-002
+  acceptance_scenarios:
+  - AT-V2-002-04
+  verification_refs:
+  - validation/execution/P0/closure-20261017/V2-002-tests.yaml
+- id: EXT-D01
+  title: 完整作者工作台与自动开书/参考产品体验
+  decision: DEFER
+  status: DEFERRED
+  source_refs:
+  - SRC-MUMU
+  - SRC-NARRACAT
+  - SRC-NOVELCRAFTER
+  - SRC-SUDOWRITE
+  baseline_coverage: 已有范围冻结与证据分层。
+  local_adaptation: 仅记录体验参考；最小 CLI/报告在既有任务实现。自动 Genesis/Reference 按 P10，复杂编辑器仍需单独范围决定。
+  expected_benefit: 控制早期范围与证据误用。
+  normative_refs:
+  - 01_PRODUCT_SCOPE_AND_SUCCESS.md
+  - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  related_tasks: []
+  acceptance_scenarios: []
+  verification_refs: []
+  earliest_reconsider_phase: P10
+- id: EXT-D02
+  title: 自动调优与大规模模拟读者循环
+  decision: DEFER
+  status: DEFERRED
+  source_refs:
+  - SRC-AUTONOVEL
+  baseline_coverage: 已有范围冻结与证据分层。
+  local_adaptation: 停滞检测现在细化；自动策略学习待 P11 的实验/校准/晋级体系，真实市场仍在 P13。
+  expected_benefit: 控制早期范围与证据误用。
+  normative_refs:
+  - 01_PRODUCT_SCOPE_AND_SUCCESS.md
+  - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  related_tasks: []
+  acceptance_scenarios: []
+  verification_refs: []
+  earliest_reconsider_phase: P11
+- id: EXT-R01
+  title: 将多 Agent 数量、题材模板数或 AI 总分作为质量保证
+  decision: REJECT
+  status: REJECTED
+  source_refs:
+  - SRC-WEBNOVEL
+  - SRC-AUTONOVEL
+  - SRC-INKOS
+  baseline_coverage: 已有范围冻结与证据分层。
+  local_adaptation: 不采用该推论；该条是本项目范围判断，不声称所有来源项目都作出这种保证。
+  expected_benefit: 控制早期范围与证据误用。
+  normative_refs:
+  - 01_PRODUCT_SCOPE_AND_SUCCESS.md
+  - 00_GOVERNANCE_AND_SOURCE_AUTHORITY.md
+  related_tasks: []
+  acceptance_scenarios: []
+  verification_refs: []
+  earliest_reconsider_phase: null

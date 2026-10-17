@@ -537,8 +537,8 @@ findings:
   - V2-004
   latest_gate_note: P0
   acceptance_evidence:
-  - P0 锁定安装、PostgreSQL 基础环境和实际 CI 通过，违规依赖/无害 Secret/边界夹具能使 CI 失败；业务迁移与 CAS/幂等随 P2 启用。不得通过删测试、全 skip 或手写 CLOSED
-    绕过，live Provider 在适用阶段单独取得证据。
+  - P0 锁定安装、PostgreSQL 基础环境和实际 CI 通过，违规依赖/无害 Secret/边界夹具能使 CI 失败；业务迁移与 CAS/幂等随 P2 启用。不得通过删测试、全 skip 或手写 CLOSED 绕过，live
+    Provider 在适用阶段单独取得证据。
   source: archive/ccdoc-review-2026-09-19/REMEDIATION_REGISTER.json
   closure_refs: []
   normalization_note: 按本包阶段与首期技术范围归一；原审核原文保留在 source 快照中。
@@ -942,7 +942,7 @@ findings:
   closure_refs: []
 - id: DA-01
   title: 必需 CI 集合与启用阶段可被删减
-  status: OPEN_TRACKED
+  status: CLOSED
   disposition: ADAPT
   related_tasks:
   - V2-002
@@ -951,12 +951,13 @@ findings:
   acceptance_evidence:
   - 删除、重复、推迟必需门禁及错误豁免应被拒绝；合法未来项与真实完整证据可通过。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
-  closure_refs: []
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-01-closure.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
 - id: DA-02
   title: 完成证据缺少完整引用遍历和类型/关联校验
-  status: OPEN_TRACKED
+  status: CLOSED
   disposition: ADAPT
   related_tasks:
   - V2-002
@@ -964,13 +965,14 @@ findings:
   acceptance_evidence:
   - 缺失、目录、README、未接受 ADR 模板、错任务/版本/失败证据不可关闭；合格真实记录可关闭。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
-  closure_refs: []
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-02-closure.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
   supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
 - id: DA-03
   title: 里程碑最低内容和完成聚合未受到可靠约束
-  status: OPEN_TRACKED
+  status: CLOSED
   disposition: ADAPT
   related_tasks:
   - V2-002
@@ -978,13 +980,14 @@ findings:
   acceptance_evidence:
   - M6/M7 不可通过缩减必要任务或缺失认证报告而 VERIFIED。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
-  closure_refs: []
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-03-closure.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
   supplemental_review: changes/2026-09-21_REVIEW_REFRESH_ADOPTION.md
 - id: DA-04
   title: readiness、ADR 反向完整性及 P0 准入执行不完整
-  status: OPEN_TRACKED
+  status: CLOSED
   disposition: ADAPT
   related_tasks:
   - V2-002
@@ -992,12 +995,13 @@ findings:
   acceptance_evidence:
   - 三个复现反例分别拒绝；未来未到期 ADR 和合法任务重开仍可表达。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
-  closure_refs: []
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-04-closure.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
 - id: DA-05
   title: 任务关闭缺少关联未关闭问题的逐项处置
-  status: OPEN_TRACKED
+  status: CLOSED
   disposition: ADAPT
   related_tasks:
   - V2-002
@@ -1005,7 +1009,8 @@ findings:
   acceptance_evidence:
   - 没有处置不可关闭；跨阶段 finding 的已验证局部处置可以关闭本任务。
   source: archive/plan-review-2026-09-21/PLAN_V1_1_DEEP_AUDIT_REPORT.md
-  closure_refs: []
+  closure_refs:
+  - validation/execution/P0/closure-20261017/DA-05-closure.yaml
   classification: REPRODUCED_GOVERNANCE_DEFECT
   planning_resolution: changes/2026-09-21_REVIEW_ADOPTION.md
 - id: DA-06

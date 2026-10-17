@@ -333,7 +333,7 @@ practices:
 - id: EXT-009
   title: 来源到本地验收的追踪
   decision: ADD_TRACEABILITY
-  status: PLANNED
+  status: VERIFIED
   source_refs:
   - SRC-INKOS
   - SRC-WEBNOVEL-GENRE
@@ -348,7 +348,8 @@ practices:
   - V2-002
   acceptance_scenarios:
   - AT-V2-002-04
-  verification_refs: []
+  verification_refs:
+  - validation/execution/P0/closure-20261017/V2-002-tests.yaml
 - id: EXT-D01
   title: 完整作者工作台与自动开书/参考产品体验
   decision: DEFER
