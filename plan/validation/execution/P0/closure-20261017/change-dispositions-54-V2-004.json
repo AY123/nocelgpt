@@ -1,0 +1,1018 @@
+{
+  "task_id": "V2-004",
+  "baseline_pin": {
+    "revision": "9fb803df2d1f7d8e1d4cb12c3227633621c01e36",
+    "ref": "plan/validation/execution/P0/closure-20261017/scope-54-V2-004.json",
+    "sha256": "aa90630fbd5f2e57d1831bb4152e3b7ef7e7c336ec111ab68c10b705150ce26b"
+  },
+  "dispositions": [
+    {
+      "path": "AGENTS.md",
+      "layer": "index",
+      "old_sha": "cc48c2491ae1ce621c6223155bf2c8edb4e2afb4c7601cd2803b339cda5a438f",
+      "new_sha": "ea6b9903fdda334bfdb62c0da5f77e543994105e3e376d1939ebc29bbecfd559",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "b7bf8de8ef49b42875ab3227e85f24e76301a79e6b8cab164d565ef9ff646429",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "layer": "worktree",
+      "old_sha": "cc48c2491ae1ce621c6223155bf2c8edb4e2afb4c7601cd2803b339cda5a438f",
+      "new_sha": "ea6b9903fdda334bfdb62c0da5f77e543994105e3e376d1939ebc29bbecfd559",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "c6242ebf5f75c3668ed0b00a00497d980885d3a74c27d93003d1963a628bbf6f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "layer": "index",
+      "old_sha": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "new_sha": "3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "6727fc699a12aff52dba4b9a7bb0dbf654bbcd83d11dd7d9f7ca1979a2685ddb",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "layer": "worktree",
+      "old_sha": "2a14428c7b955f88fcaaab193f0fff8541845bfb6c60a7497f9da9528caa86c6",
+      "new_sha": "3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "ec9d047dea2ef8887df125622ab05552f6f9a2f5679c5ce8e1a8da6c975a0e13",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/external-practice-register.yaml",
+      "layer": "index",
+      "old_sha": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42",
+      "new_sha": "3ade0a8ead3c2feb5aedf7325a8391b6ee26528ed2e8a8ee0f916cc121f7f06c",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "467cd8e222cb46858e496a15e0a5cce15fc4c70ee497c37a8270f408fc5df917",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/external-practice-register.yaml",
+      "layer": "worktree",
+      "old_sha": "6f603a80bfa38e3574510a85abe0fd906959f688f7a50ebc4bb9a98d64cb9d42",
+      "new_sha": "3ade0a8ead3c2feb5aedf7325a8391b6ee26528ed2e8a8ee0f916cc121f7f06c",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "af82540465fcb1cebf943cd74c0f3e8de7625dc851b7f944dbde5d18d3a874a7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/remediation-register.yaml",
+      "layer": "index",
+      "old_sha": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e",
+      "new_sha": "74e88f1a4c6a24e4952da0b31fc758e09ba619f05cf96530e0ad58ac9add7d1c",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "d8d84239a53b392fd229de40164204d3d236f216e6b328c7a7669285e8416e68",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/remediation-register.yaml",
+      "layer": "worktree",
+      "old_sha": "1230c0b98b6d6495157266c49ba3435d94c7fd3c26fc1c824ae18020b17c878e",
+      "new_sha": "74e88f1a4c6a24e4952da0b31fc758e09ba619f05cf96530e0ad58ac9add7d1c",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "cf8a8c6cccb1b5c137d30800e9511fd7d5ac717e0c5ae0c4d420b195b2a7b8c0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "layer": "index",
+      "old_sha": "69c2ab97e1555bcb03d2b84f4d9ecf64b81f808ffe1d985dfbb60e1db00d1024",
+      "new_sha": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "f4a1e14e6e126037e5d26213e9bfd9f17a829c81cde01bbbc511dfd562eaeee5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "layer": "index",
+      "old_sha": "69c2ab97e1555bcb03d2b84f4d9ecf64b81f808ffe1d985dfbb60e1db00d1024",
+      "new_sha": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "1cf6f5304b2f117e3025bce36965d4d9e820bb23e302e2f9f6ecfd5f29eaeb53",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "layer": "worktree",
+      "old_sha": "69c2ab97e1555bcb03d2b84f4d9ecf64b81f808ffe1d985dfbb60e1db00d1024",
+      "new_sha": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "4a2452564f4517ca23c1489c362b40e1bfcc55f213aad899cf3656da163b0533",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "layer": "worktree",
+      "old_sha": "69c2ab97e1555bcb03d2b84f4d9ecf64b81f808ffe1d985dfbb60e1db00d1024",
+      "new_sha": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "4727e920b0385c10d5a92a5e9ce6f3246c7c362835cf8ca37ec2a82c8dadd838",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "layer": "index",
+      "old_sha": "577c74a240a3d504da4cfd3e4d981b3a91922ac968a7bb2b9ca6b9c8bac1c2a8",
+      "new_sha": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "31c067fc5545ac6b14528ddd6dd15cc904427458b1dba1d3047dab1915b79809",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "layer": "index",
+      "old_sha": "577c74a240a3d504da4cfd3e4d981b3a91922ac968a7bb2b9ca6b9c8bac1c2a8",
+      "new_sha": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "668ed81ef200e1fd8bb52433365aea130fe58f75ef12b81da8c305aba5ecf892",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "layer": "worktree",
+      "old_sha": "577c74a240a3d504da4cfd3e4d981b3a91922ac968a7bb2b9ca6b9c8bac1c2a8",
+      "new_sha": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "5d93ad57966d007731c5ca8564ded4d1c798c31f1e947ef61c05564ce17da7b4",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "layer": "worktree",
+      "old_sha": "577c74a240a3d504da4cfd3e4d981b3a91922ac968a7bb2b9ca6b9c8bac1c2a8",
+      "new_sha": "278824de4313f9e8e586d298c42cae1b5b8e43f9a055344eda51b346c6ff01b3",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "98ec2f43d1dff172631af5074e2dfbdfd644ee75e91004b79294293fdc87cb11",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/validate_plan.py",
+      "layer": "index",
+      "old_sha": "fceb58f3d58cb07158b1a3dc357c422a0d3cec2543d6f7d51bce4d501a370bfd",
+      "new_sha": "f111bfd472c0c15dba8332370ff528744c5530633b3d60b699301f55be14ef3f",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "04a90e5f387ed2c52ef84317e976b8d958fa51b653512ce2b347ac2984a7974b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/validate_plan.py",
+      "layer": "worktree",
+      "old_sha": "fceb58f3d58cb07158b1a3dc357c422a0d3cec2543d6f7d51bce4d501a370bfd",
+      "new_sha": "f111bfd472c0c15dba8332370ff528744c5530633b3d60b699301f55be14ef3f",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "0f88b0e84e314baf203445c01cc9716827e0cd9698a2959bd348bb9499fe29fc",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "index",
+      "old_sha": "646174e5212433bd876126ae1ee620a64d3d85172e5d65f383c774a9dbfb18c6",
+      "new_sha": "7aa3a6d14cf0b2a9dc5c35ee46330f58cff3650254cdeca91b69ff8ab1afb8b7",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "39e1edbc506b287123bbefaee9697f67e9c8f9cda5af237b4d3b99795bea755a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "security-policy.yaml",
+      "layer": "worktree",
+      "old_sha": "646174e5212433bd876126ae1ee620a64d3d85172e5d65f383c774a9dbfb18c6",
+      "new_sha": "7aa3a6d14cf0b2a9dc5c35ee46330f58cff3650254cdeca91b69ff8ab1afb8b7",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "e5771a3bab8cc767251f71b1336888fafac10f476adf71fa574860f0ff9dc55d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "layer": "index",
+      "old_sha": "f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906",
+      "new_sha": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "cf64141c3773722a14557eea2f4fa712a357caf54db5ace479bcd85d93311e1d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "layer": "index",
+      "old_sha": "f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906",
+      "new_sha": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "71cc17601990668e6f2163cb1390a57c1ce2b6f990afc18b54bd8a2f9d575aba",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "layer": "worktree",
+      "old_sha": "f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906",
+      "new_sha": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "c4b87c248027a8b02e954c706c2307e4309aacb7782a1bf5ae63068b0e47dbb7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "layer": "worktree",
+      "old_sha": "f932e55eabd5ff3c8d732f9a2d82e02acff3a466180e1c8cc583b10e764d0906",
+      "new_sha": "c3ade74ff94787f930705212c05c0dbb2f7fadc157cea83cbfa4eac7578d457d",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "4eac8c86e1a34146c5889fe1ebee9f5e1c8aa9a19d9a98e3311a6ab709b78443",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "index",
+      "old_sha": "3d8b9d3e7099bd959b8b55873aef4522f6c1066fa4bd0dda982fbe6ac6bc0815",
+      "new_sha": "d583b05573715dc02677c1c413e9755eaa94801c722617ff55943ef4cff1ac1b",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "59eafce94f07a931f26555a79815225ab2b910fb52472f16c4cc1b1fb086f028",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "index",
+      "old_sha": "3d8b9d3e7099bd959b8b55873aef4522f6c1066fa4bd0dda982fbe6ac6bc0815",
+      "new_sha": "d583b05573715dc02677c1c413e9755eaa94801c722617ff55943ef4cff1ac1b",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "a6a5f9cecd094e4b012f25b8d45e60334971ce0e2f2de9394f61e7584801eb87",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "worktree",
+      "old_sha": "3d8b9d3e7099bd959b8b55873aef4522f6c1066fa4bd0dda982fbe6ac6bc0815",
+      "new_sha": "d583b05573715dc02677c1c413e9755eaa94801c722617ff55943ef4cff1ac1b",
+      "code": "PROTECTION_CHANGED",
+      "finding_id": "c2326bb00bf417cd009228e47caca825941302053183b00cbe6ce76bb974b3d8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "layer": "worktree",
+      "old_sha": "3d8b9d3e7099bd959b8b55873aef4522f6c1066fa4bd0dda982fbe6ac6bc0815",
+      "new_sha": "d583b05573715dc02677c1c413e9755eaa94801c722617ff55943ef4cff1ac1b",
+      "code": "TEST_LOGIC_CHANGED",
+      "finding_id": "fb9594c0dbf9ccf49e4e7aefa19ca221a098d45232e0446ce8ca97e54b98e4c7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original611d777 engineering acceptance supports P0 registrations; isolated negative fixture setup removes required evidence/predecessor gates rather than relying on stale live statuses. No assertions or tests deleted. Security policy binds only actual Owner-approved54 identities with unchanged expiry, scanner and all other policy settings unchanged.",
+      "impact": "No business/runtime/CI/gate/scanner/consumer code or lock change. validate_plan production AST unchanged outside self_test. Single-Owner boundary was explicitly accepted earlier, never claimed adversarial isolation. All54 security findings remainOPEN, no future identity approval.",
+      "reviewer": "Same Codex implementing and verifying operator; no independent personnel review claimed",
+      "replacement_validation": "Original remote six gates714tests at611d777; local502UNIT/212ARCH maintained harness hashes; current159 exact-consumer/GitHub and69source controls,5 governance checks and real54 full scan PASS. Native architecture action entry is the final local check after pin.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+        "sha256": "3d1dfd65f1d1cad686827417fefbbf50004d9e2d658df67c78d370ba66232a00"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/LOCAL_VERIFICATION_54.json",
+          "sha256": "853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/MAINTENANCE_SCOPE.json",
+          "sha256": "6f200125c0e3206b66c6414be204a9d3636ce3de2664b3c5a4334680642b8368"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/SCENARIO_COVERAGE.json",
+          "sha256": "f3eca18429a39be3b656031f06d68e3d10d95d9c06b7f57c10ff181e741852c9"
+        },
+        {
+          "ref": "plan/validation/execution/P0/closure-20261017/authority-54/OWNER_DECISION_RECEIPT.json",
+          "sha256": "f46fe72ff9f9f8c20c7ae418b0eed783f18c52f5a21cd31f6b98ab9076a47182"
+        }
+      ]
+    }
+  ]
+}

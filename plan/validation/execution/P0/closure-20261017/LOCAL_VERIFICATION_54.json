@@ -1,0 +1,64 @@
+{
+  "record_type": "bounded_exact54_local_verification",
+  "input_kind": "Staged worktree before final review pin, not a remote exact-SHA assertion",
+  "source_baseline": "73b30d9a8c482ada1e3f2d58d4b76d455d810cf4",
+  "full_scan": {
+    "status": "PASS",
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "raw_scanner_findings_remain": true
+  },
+  "consumer_and_github_tests": {
+    "tests": 159,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_guard_tests": {
+    "tests": 69,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "governance_contract": "5/5 PASS",
+  "existing_local_unit": {
+    "tests": 502,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "original_local_unit_harness_hashes_still_match": true,
+  "production_validator_ast_unchanged_outside_self_test": true,
+  "runtime_scanner_consumer_workflow_gate_code_and_lock_unchanged": true,
+  "all_policy_settings_outside_exact_exception_anchors_unchanged": true,
+  "original_engineering_ci": {
+    "revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+    "run": 38917341667,
+    "tests": 714,
+    "six_gates": "PASS"
+  },
+  "findings_closed": 0,
+  "expiry_unchanged": "2027-01-06T06:07:49Z",
+  "remote_ci_for_maintenance": "NOT_RUN",
+  "new_ci_dispatches": 0,
+  "artifacts": [
+    {
+      "output": "dist/validation/p0-closure/approved54-focused.xml",
+      "sha256": "614ea74e91e7eda8bc1511bd07daa8040989d7dfaa94f18abcccc752f8be99a1"
+    },
+    {
+      "output": "dist/validation/p0-closure/approved54-guard.xml",
+      "sha256": "b1234fc81484011fa1577832da58af1f28b640efe387a01553a39c14173e0901"
+    },
+    {
+      "output": "dist/validation/p0-closure/approved54-governance/governance-summary.json",
+      "sha256": "9cbe363b4a7dce70182dfb7d1540cecf846333dba71d9ae175d8c63e7c360f1a"
+    },
+    {
+      "output": "dist/validation/p0-closure/approved54-scan/summary.json",
+      "sha256": "e3856781424be92e1dc0f4e69c077b2afd0f3071a176e2affeef850eea7910ed"
+    }
+  ]
+}

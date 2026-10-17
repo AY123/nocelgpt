@@ -1,5 +1,3 @@
-**当前交付暂缓（2026-10-17）**：V2-001～004的611d777工程验收记录已齐备；新增归档报告导致2项公开内容哈希误报未获精确批准，当前54发现/52已批准。P0/G-P0和M0已回置NOT_VERIFIED，P1不得启动。详见 `plan/validation/execution/P0/closure-20261017/CURRENT_HEAD_BLOCKER.json`。下述验收描述仅适用于既有611d777工程基线，不代表当前head安全门禁通过。
-
 **当前：P0 工程验收 VERIFIED；V2-001～004 CLOSED；M0 VERIFIED。** 证据与限制见 [P0验收](docs/P0_ACCEPTANCE.md)。工程CI基线611d777，后续文档/夹具维护未新增远程CI。P1尚未开始。
 
 # ANovelOS
@@ -8,7 +6,7 @@ Current delivery target: [AY123/nocelgpt](https://github.com/AY123/nocelgpt) (pr
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001～V2-004 CLOSED / G-P0 VERIFIED**。GitHub 工程提交611d777六门全绿、714测试通过。52项历史安全发现保持OPEN，按有限期精确批准消费；没有全局忽略。单人Owner模式与权限限制按用户要求明确登记。其余56任务仍OPEN，P0整体已完成工程验收，章节生产未开始。见[V2-004实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)与[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。
+当前为 **Plan v1.3.0 / V2-001～V2-004 CLOSED / G-P0 VERIFIED**。GitHub 工程提交611d777六门全绿、714测试通过。54项安全发现保持OPEN，按有限期精确批准消费；没有全局忽略。单人Owner模式与权限限制按用户要求明确登记。其余56任务仍OPEN，P0整体已完成工程验收，章节生产未开始。见[V2-004实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)与[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。
 
 ## 从这里开始
 
@@ -112,3 +110,5 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 差异检查中的 scope commit 固定开工范围、用户既有改动身份和授权来源。运行前将 `pinned-baseline.json` 中的最新 pin 与当前有效交接核对；该文件提供定位信息，授权内容从明确的 Git commit 读取。开工清单的补正原因和原 pin 保留在准备记录中。尚未处置的 finding 返回失败并保留报告；有依据的技术处置需再提供 `--review-revision` 与 `--review-ref`，二者从当前有效交接取值，绑定准确内容和验证产物。改变被审内容后须重新核对，不能把旧 review 用于新改动。命令和处置方法见[任务执行指南](plan/09_TASK_EXECUTION_GUIDE.md)。
 
 `task_execution.py` 对 IMPLEMENT/LIVE_CALL/CERTIFY 自动读取执行包 `change_review` 的 scope/review pin，在命令前后强制核对差异；缺少绑定会阻断，CLI 只能重述同值、不能覆盖绑定。PREPARE 允许先调查再冻结范围；付费/认证 dispatch 仍被拒绝。架构检查作为明确的子命令执行。所有本地工具均不能抵抗同一写入者修改或绕过检查器；V2-004已交付真实GitHub来源核对；单人模式不声称对抗性权限隔离。
+
+2026-10-17精确处置补记：Owner已批准报告公开哈希的两个精确例外及52→54账本重绑定，仍到期于2027-01-06T06:07:49Z；当前54项OPEN（45精确例外、9历史风险接纳），本地完整扫描54/54消费、0未匹配、0未使用批准。工作区来源基线推进至9d71f91且原16项内容逐一不变，历史身份不变；旧52项GitHub扫描结果仍仅属于611d777。原暂停记录保留在CURRENT_HEAD_BLOCKER.json，由CURRENT_HEAD_RESOLUTION.json及authority-54/OWNER_DECISION_RECEIPT.json补充解除，不改写历史。

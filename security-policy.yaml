@@ -50,30 +50,34 @@ secret_exceptions:
   repository:
     project_id: 86656946
     project_path: ayitnovel/ainovelos
-  ledger_ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/KNOWN_FINDING_DISPOSITIONS.json
-  ledger_sha256: 583750aaf7dde8d40677446609382980af214df6bb96199a2c73de75507eb9cb
+  ledger_ref: plan/validation/execution/P0/closure-20261017/authority-54/KNOWN_FINDING_DISPOSITIONS.json
+  ledger_sha256: 21a5477f5e4a8f86b3345df593aede2c7d1814a55a88005b138dec1257d78ba3
   trusted_authorities:
-  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-EXCEPTION-38.json
-    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
-    blob_oid: 9b19e2dcd455afacfe33fc66a1ad8ad1de7a03e7
-    sha256: 0d60cc7567401c56a7418aad8385dc893a1625d47aa18371348dc337b0815407
-  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-OWNER-RISK-7.json
-    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
-    blob_oid: edd4a3efc5c997a293812445bfec185a83b51d7f
-    sha256: eef7b049e53c074cd7bbbdad51f934b76f765bfd21502a1b78f50495beed288f
-  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-DELTA-EXCEPTION-5.json
-    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
-    blob_oid: 479437c03729e279188900b6530a2fb884876482
-    sha256: ee0e26f5dff41caccbac18ee4dd74817aedf11b97843a23bf8b79e63df07e196
-  - ref: plan/validation/execution/V2-004/mainline-unblock-20261007/history-delta-20261015/V2-004-DELTA-RISK-2.json
-    revision: ec86dd09629268ca35c53bcf48ab8477468a9ca2
-    blob_oid: e61e5952341dd670313639cc32f63aab67268da2
-    sha256: 47920f1941333595cdf9831eae0fb66b037aa3e48f783c9ac163960a1da7aa25
+  - ref: plan/validation/execution/P0/closure-20261017/authority-54/V2-004-EXCEPTION-38.json
+    revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
+    blob_oid: 725c1be1ab67163aa5e375988fec2bd3cb2384ff
+    sha256: b318d1ef81ee21d905b00660fa861cff4014ccd6159f1e5275d75a823d0febe5
+  - ref: plan/validation/execution/P0/closure-20261017/authority-54/V2-004-OWNER-RISK-7.json
+    revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
+    blob_oid: ba896486fdb92e3b87ae7a20f72e1a94e1e51d7f
+    sha256: 5fbf4513ba2aadbcc5d90a24a806f3dcc293f16ff28873e062d8bf6dbec160ba
+  - ref: plan/validation/execution/P0/closure-20261017/authority-54/V2-004-DELTA-EXCEPTION-5.json
+    revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
+    blob_oid: a57a8dc9e36a614288d4d2f4894fda716f36fc01
+    sha256: daa24ca78995d37c933b91bcdd6d6d82fd782a1c73f3e85b142d34d0df6c21a2
+  - ref: plan/validation/execution/P0/closure-20261017/authority-54/V2-004-DELTA-RISK-2.json
+    revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
+    blob_oid: 07e98f5c19853cb4173b7f9e0c0b5316a514a8c3
+    sha256: d6f27a33a4ed82e49c081cbb0208d59b824125da196866ffcd0598cf2a215db7
+  - ref: plan/validation/execution/P0/closure-20261017/authority-54/P0-PUBLIC-DIGEST-EXCEPTION-2.json
+    revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
+    blob_oid: 5dfe2b04e6391b26753da65a27a6593d3790a899
+    sha256: ec2b30a5a3fa6a6f931e18c9378bf75517e0b971260f239991ae4eb5377c687e
   repository_migration:
-    ref: plan/validation/execution/V2-004/github-migration-20261016/REPOSITORY_MIGRATION.json
-    revision: 7fe244519211633e3ee262d582afaadd0d1a2230
-    blob_oid: b1f225f71c8a0ca394eff719fa2f11eab9137c3c
-    sha256: 4990fa98ce0f007d24e32a957e665b958c6e0227ceb4011cb6e78c6465ae5cda
+    ref: plan/validation/execution/P0/closure-20261017/authority-54/REPOSITORY_MIGRATION.json
+    revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
+    blob_oid: 83dc78bc73bfac872006d508359fa57330697e33
+    sha256: 513f7e7e216ca3e72ebb8dd2d0136ffd231ca8f9e14ea3aa8af0f3cc74338f99
 github_repository:
   id: 1421585508
   full_name: AY123/nocelgpt
