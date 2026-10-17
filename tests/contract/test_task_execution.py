@@ -112,6 +112,10 @@ def seed(tmp_path_factory):
         path = repo / f'plan/validation/execution/{task_id}/execution-packet.yaml'
         packet = load(path)
         packet.pop('change_review', None)
+        # Reopen this synthetic scenario explicitly; live closure handoff may
+        # correctly point to PREPARE rather than a new implementation action.
+        packet['action'] = 'IMPLEMENT'
+        packet['handoff']['next_action'] = 'IMPLEMENT'
         packet['allowed_paths'] = list(dict.fromkeys(packet['allowed_paths'] + ['plan/', 'scripts/', 'sentinel', 'already-dirty']))
         save(path, packet)
         baseline = {'record_type':'local_change_baseline','schema_version':'1.0','task_id':task_id,

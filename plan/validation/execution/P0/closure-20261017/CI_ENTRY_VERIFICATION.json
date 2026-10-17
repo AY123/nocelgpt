@@ -22,7 +22,8 @@
   "static": "PASS",
   "tested_content": {
     "scripts/ci/run_gate.py": "d7d5886239314902343d12085820fb51ea63b0d1fde00f98744adda5614ee65d",
-    "tests/contract/test_delivery_gates.py": "b1876e8afa87d5f8dff6c059a6895483465dc87be05403b785ea69342facbf96"
+    "tests/contract/test_delivery_gates.py": "b1876e8afa87d5f8dff6c059a6895483465dc87be05403b785ea69342facbf96",
+    "tests/contract/test_task_execution.py": "5197329e5fe3ffd1b5d4524e1c549db574f4a9a98a8a90bfe1fa7a416056f79d"
   },
   "focused_junit_sha256": "2f6c42ca80adbcc961bb8bdc6ffb8eaad65a4ab890041a3ad8c418d298ccf57a",
   "earlier_failed_controls_retained": [
@@ -33,5 +34,17 @@
   ],
   "current_native_complete_suites": "Run after final commit; no current complete-suite PASS asserted here",
   "remote_ci": "NOT_RUN",
-  "independent_personnel_review": "NOT_CLAIMED_SAME_OPERATOR"
+  "independent_personnel_review": "NOT_CLAIMED_SAME_OPERATOR",
+  "post_completion_fixture_followup": {
+    "cause": "Full514 at a4c8184 had475pass/39setup errors because synthetic reopened tasks inherited live PREPARE handoff",
+    "fix": "Explicit action=IMPLEMENT and handoff.next_action=IMPLEMENT in isolated V2-001/002 seed only; production state/action validation unchanged",
+    "focused": {
+      "tests": 39,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "48f3136eb4593d9749d6317763b9994c0f94aac278b4005d935d0a39d28c0f4a",
+    "assertions_removed": 0
+  }
 }
