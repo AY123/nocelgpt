@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "record_type": "secret_exception_authority",
+  "authority_id": "P0-PUBLIC-DIGEST-EXCEPTION-2",
+  "actor": "YANG YANG",
+  "role": "PROJECT_OWNER",
+  "repository": {
+    "project_id": 86656946,
+    "project_path": "ayitnovel/ainovelos"
+  },
+  "decision": "APPROVED",
+  "approved_at": "2026-10-17T01:32:47.179655+00:00",
+  "expires_at": "2027-01-06T06:07:49Z",
+  "reason": "Actual direct human reply approves exactly the public-digest worktree and9d71f91 history findings at the specified report path/line, plus52-to54 ledger rebinding; original expiry retained, no finding closure or broad/future approval. Local receipt timestamp only.",
+  "approved_ledger_sha256": "21a5477f5e4a8f86b3345df593aede2c7d1814a55a88005b138dec1257d78ba3",
+  "approval_kind": "PRECISE_EXCEPTION",
+  "finding_identity_sha256": [
+    "2c321308e9110988d58b41ba72fa33693640ddccb47319cc75ebb2c81a92ad6e",
+    "ece6cface4b0d49d635932940d78a1a0defdfb256348e346e29a4ad33faaef64"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "record_type": "actual_direct_human_decision_receipt",
+  "observed_at": "2026-10-17T01:32:47.179655+00:00",
+  "timestamp_basis": "Local receipt recording time; original message has no service-supplied timestamp",
+  "actual_human_reply": "批准这两项精确例外及54项账本重绑定",
+  "authority": "YANG YANG / PROJECT_OWNER; established human session identity",
+  "authorization_ref": "plan/validation/execution/P0/closure-20261017/authority-54/AUTHORIZATION.md",
+  "ledger_ref": "plan/validation/execution/P0/closure-20261017/authority-54/KNOWN_FINDING_DISPOSITIONS.json",
+  "ledger_sha256": "21a5477f5e4a8f86b3345df593aede2c7d1814a55a88005b138dec1257d78ba3",
+  "approved_precise": 45,
+  "accepted_historical_risk": 9,
+  "findings_open": 54,
+  "findings_closed": 0,
+  "expires_at": "2027-01-06T06:07:49Z",
+  "no_ci_dispatch": true,
+  "no_scanner_code_change": true,
+  "sf037_group": "UNRESOLVED",
+  "scope": "Two precise public digest approvals plus original52-decision ledger rebind;16worktree sources use new committed baseline, unchanged bytes;36priorhistory identities unchanged."
+}

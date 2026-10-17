@@ -1,0 +1,47 @@
+{
+  "record_type": "execution_context_selection",
+  "source_revision": "611d77779ccf12a9f4e4f1aa1edbf14b53aadde5",
+  "active_context": "GITHUB_SINGLE_OPERATOR_ACCEPTED_CLOSURE",
+  "scope_revision": "c0872853a609004844f7f12b40ffda64b995de33",
+  "scope_ref": "plan/validation/execution/V2-004/closure-20261016/scope.json",
+  "review_revision": "7590367dc5ab8f69113e76b48dc1396a60842426",
+  "review_ref": "plan/validation/execution/V2-004/closure-20261016/change-dispositions.json",
+  "implementation_status": "CLOSED",
+  "security_findings": {
+    "detected": 52,
+    "open": 52,
+    "closed": 0,
+    "precise_exception_identities_approved": 43,
+    "historical_risk_rule_hits_accepted": 9,
+    "expires_at": "2027-01-06T06:07:49Z",
+    "prior45_unchanged": true,
+    "SF-037_group": "UNRESOLVED",
+    "latest_local_pre_pin_scan": "PASS_52_CONSUMED_0_UNMATCHED",
+    "current_revision_remote_security": "PASS_52_CONSUMED_0_UNMATCHED_0_UNUSED"
+  },
+  "historical_trusted_execution_revision": "ba22d2ce09c17ac0a6790592e24fae08b0391a9e",
+  "historical_trusted_execution_pipeline": 2912870306,
+  "current_revision_remote_ci": "PASS_6_OF_6_RUN_38917341667",
+  "current_revision_protected_execution": "NOT_APPLICABLE_SINGLE_OPERATOR_PROFILE_NOT_VERIFIED",
+  "remaining_permission_controls": "WAIVED_BY_USER_SINGLE_OPERATOR_PROFILE",
+  "independent_review": "NOT_CLAIMED_SAME_OPERATOR",
+  "host_lifecycle_review": "NOT_COMPLETED",
+  "v2004_status": "CLOSED",
+  "p0_status": "NOT_VERIFIED",
+  "acceptance_eligible": true,
+  "limits": [
+    "Engineering revision611d777 only; docs-only registration not claimed CI-tested",
+    "GitHub adversarial isolation not established; accepted shared Owner authority",
+    "52 findings remainOPEN, finite approvals unchanged"
+  ],
+  "pre_final_validation_revision": "24cefe6058fe75dfca106bcf3af160d4613ea7e3",
+  "pre_final_focused_tests": 395,
+  "pre_final_real_authority_controls": 13,
+  "final_candidate_validation": "714_TESTS_0_FAILURE_0_ERROR_0_SKIP",
+  "github_target": {
+    "repository": "AY123/nocelgpt",
+    "id": 1421585508,
+    "workflow": ".github/workflows/v2-004.yml",
+    "publication_visibility_decision": "PRIVATE_VERIFIED"
+  }
+}
