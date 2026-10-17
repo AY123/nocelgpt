@@ -106,6 +106,8 @@ expected_outputs:
 - scripts/check_governance.py
 - plan/scripts/task_entry.py
 - tests/contract/test_task_execution.py
+- scripts/ci/run_gate.py
+- tests/contract/test_delivery_gates.py
 allowed_paths:
 - plan/machine/implementation-backlog.yaml
 - plan/scripts/validate_plan.py
@@ -150,6 +152,7 @@ allowed_paths:
 - security-policy.yaml
 - plan/validation/execution/V2-004/execution-packet.yaml
 - plan/validation/execution/V2-004/execution-context.json
+- scripts/ci/run_gate.py
 required_decisions: []
 claims:
 - id: BASELINE
@@ -252,9 +255,9 @@ review_notes:
 - '2026-10-16 V2-004 closure: reconcile changed shared planning inputs and manifest only; this task status and acceptance
   not promoted.'
 handoff:
-  current_step: P0 engineering acceptance at611d777 registered; exact54 authority maintenance and local focused
-    checks verified. Final native architecture execution/readback are delivery checks retained under dist, no new
-    remoteCI.
+  current_step: P0 engineering acceptance at611d777 registered;54 exact authority decisions and native completed-task
+    CI audit compatibility implemented. Final local suites/readback under dist are delivery checks; no remoteCI
+    or P1 implementation.
   completed_steps:
   - Same611d777 engineering CI six gates714tests0skip; original45artifact hashes and27scenario mappings verified
   - All fourP0 tasks CLOSED, governanceDA01..05 closed with engineering evidence
@@ -269,7 +272,5 @@ handoff:
       sha256: 853456424832d13fede48437bf101dbc2d84355836e6371bdad23ae18c6f6d6c
     missing_artifact_reason: null
 change_review:
-  scope_revision: 9fb803df2d1f7d8e1d4cb12c3227633621c01e36
-  scope_ref: plan/validation/execution/P0/closure-20261017/scope-54-V2-002.json
-  review_revision: 79ab5077992c8777f02c1b691e7ce42a73d38ec8
-  review_ref: plan/validation/execution/P0/closure-20261017/change-dispositions-54-V2-002.json
+  scope_revision: 27a2d54244c05179a82eb69f7d2e163993143a2a
+  scope_ref: plan/validation/execution/P0/closure-20261017/scope-final-V2-002.json

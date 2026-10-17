@@ -194,15 +194,107 @@ def test_gate_output_cannot_overwrite_sources_or_prior_receipt(tmp_path):
     assert b"never overwrite" in result.stderr
 
 
-def test_production_architecture_and_action_entry_are_actual_commands():
-    commands = runner.commands_for("arch_fitness", ROOT / "dist/ci/arch_fitness")
+@pytest.fixture
+def architecture_task(tmp_path, monkeypatch):
+    # Action behavior must not depend on whether the live task is already done.
+    monkeypatch.setattr(runner, "ROOT", tmp_path)
+    registry = tmp_path / "plan/machine/implementation-backlog.yaml"
+    registry.parent.mkdir(parents=True)
+    packet = tmp_path / "plan/validation/execution/V2-004/packet.yaml"
+    packet.parent.mkdir(parents=True)
+    task = {
+        "task_id": "V2-004",
+        "status": "IMPLEMENTED",
+        "execution_packet_ref": "validation/execution/V2-004/packet.yaml",
+    }
+    binding = {
+        "scope_revision": "a" * 40,
+        "scope_ref": "plan/validation/scope.json",
+        "review_revision": "b" * 40,
+        "review_ref": "plan/validation/review.json",
+    }
+    registry.write_text(yaml.safe_dump({"tasks": [task]}))
+    packet.write_text(yaml.safe_dump({"task_id": "V2-004", "change_review": binding}))
+    return registry, packet, task, binding
+
+
+def test_production_architecture_and_action_entry_are_actual_commands(
+    architecture_task,
+):
+    # Active implementation still needs the original restricted-action entry.
+    commands = runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
     assert any("scripts/check_architecture.py" in command for command in commands)
     assert any(
         "scripts/task_execution.py" in command and "IMPLEMENT" in command
         for command in commands
     )
-    commands = runner.commands_for("schema_contract", ROOT / "dist/ci/schema_contract")
+    commands = runner.commands_for(
+        "schema_contract", runner.ROOT / "dist/ci/schema_contract"
+    )
     assert any("scripts/check_governance.py" in command for command in commands)
+
+
+@pytest.mark.parametrize("status", ["VERIFIED", "CLOSED"])
+def test_completed_architecture_task_audits_exact_pins_and_keeps_all_checks(
+    architecture_task, status
+):
+    registry, _, task, binding = architecture_task
+    task["status"] = status
+    registry.write_text(yaml.safe_dump({"tasks": [task]}))
+    commands = runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
+    assert len(commands) == 3
+    assert commands[0][2:5] == ["scripts/check_changes.py", "--task", "V2-004"]
+    for key, value in binding.items():
+        assert commands[0][commands[0].index("--" + key.replace("_", "-")) + 1] == value
+    assert "scripts/check_architecture.py" in commands[1]
+    assert "tests/architecture" in commands[2]
+    assert "IMPLEMENT" not in commands[0]
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "missing_task",
+        "duplicate_task",
+        "null_status",
+        "missing_packet",
+        "outside_packet",
+        "wrong_task",
+        "missing_binding",
+        "missing_scope",
+        "null_review",
+        "empty_review",
+    ],
+)
+def test_completed_architecture_entry_rejects_missing_or_bad_evidence(
+    architecture_task, mutation
+):
+    registry, packet, task, binding = architecture_task
+    task["status"] = "CLOSED"
+    document = {"task_id": "V2-004", "change_review": binding}
+    if mutation == "null_status":
+        task["status"] = None
+    elif mutation == "missing_packet":
+        task["execution_packet_ref"] = None
+    elif mutation == "outside_packet":
+        task["execution_packet_ref"] = "validation/../../README.md"
+    elif mutation == "wrong_task":
+        document["task_id"] = "V2-005"
+    elif mutation == "missing_binding":
+        document.pop("change_review")
+    elif mutation == "missing_scope":
+        binding.pop("scope_revision")
+    elif mutation == "null_review":
+        binding["review_revision"] = None
+    elif mutation == "empty_review":
+        binding["review_ref"] = ""
+    tasks = [] if mutation == "missing_task" else [task]
+    if mutation == "duplicate_task":
+        tasks.append(task.copy())
+    registry.write_text(yaml.safe_dump({"tasks": tasks}))
+    packet.write_text(yaml.safe_dump(document))
+    with pytest.raises(ValueError):
+        runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
 
 
 """Synthetic API controls cover logic; they are not real CI/permission evidence."""
@@ -320,9 +412,44 @@ def source_fixture():
             artifacts.append(descriptor)
             return descriptor
 
-        for number, argv in enumerate(
-            runner.commands_for(name, ROOT / "dist/ci" / name), 1
-        ):
+        if name == "arch_fitness":
+            # This synthetic GitLab source models the historical implementation
+            # receipt, not the now-completed task in the live working copy.
+            source_commands = [
+                [
+                    sys.executable,
+                    "-B",
+                    "scripts/task_execution.py",
+                    "check",
+                    "--task",
+                    "V2-004",
+                    "--action",
+                    "IMPLEMENT",
+                    "--output",
+                    "dist/ci/arch_fitness/action-entry.json",
+                ],
+                [
+                    sys.executable,
+                    "-B",
+                    "scripts/check_architecture.py",
+                    "--output",
+                    "dist/ci/arch_fitness/architecture.json",
+                ],
+                [
+                    sys.executable,
+                    "-B",
+                    "-m",
+                    "pytest",
+                    "-q",
+                    "-p",
+                    "no:cacheprovider",
+                    "tests/architecture",
+                    "--junitxml=dist/ci/arch_fitness/junit.xml",
+                ],
+            ]
+        else:
+            source_commands = runner.commands_for(name, ROOT / "dist/ci" / name)
+        for number, argv in enumerate(source_commands, 1):
             commands.append(
                 {
                     "argv": [SOURCE_PYTHON, *argv[1:]],
@@ -459,8 +586,12 @@ def test_remote_source_rejects_empty_or_failed_command_receipt(field, value):
 
 
 @pytest.mark.parametrize("name", remote.REQUIRED_JOBS)
-def test_remote_source_fixed_command_contract_matches_actual_driver(name):
-    actual = runner.commands_for(name, ROOT / "dist/ci" / name)
+def test_remote_source_fixed_command_contract_matches_actual_driver(
+    name, architecture_task
+):
+    # Preserve the historical GitLab implementation receipt contract separately
+    # from the completed-task audit path tested above.
+    actual = runner.commands_for(name, runner.ROOT / "dist/ci" / name)
     assert [argv[1:] for argv in actual] == remote.command_tails(name)
 
 

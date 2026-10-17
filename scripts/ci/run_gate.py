@@ -15,6 +15,8 @@ from pathlib import Path
 from typing import Any
 from urllib.parse import urlsplit
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[2]
 GATES = {
     "static": "STATIC",
@@ -78,6 +80,57 @@ def git(*args: str) -> str:
     return subprocess.check_output(["git", "-C", str(ROOT), *args], text=True).strip()
 
 
+def architecture_entry(python: list[str], target: str) -> list[str]:
+    """Audit completed work without requesting a new implementation action."""
+    backlog = yaml.safe_load(
+        (ROOT / "plan/machine/implementation-backlog.yaml").read_text()
+    )
+    if not isinstance(backlog, dict) or not isinstance(backlog.get("tasks"), list):
+        raise ValueError("Architecture task registry required")
+    tasks = [
+        task
+        for task in backlog["tasks"]
+        if isinstance(task, dict) and task.get("task_id") == "V2-004"
+    ]
+    if len(tasks) != 1:
+        raise ValueError("Exactly one architecture entry task required")
+    status = tasks[0].get("status")
+    if not isinstance(status, str):
+        raise ValueError("Architecture task status required")
+    if status in {"VERIFIED", "CLOSED"}:
+        ref = tasks[0].get("execution_packet_ref")
+        if not isinstance(ref, str) or not ref.startswith("validation/"):
+            raise ValueError("Completed task packet required")
+        packet_path = ROOT / "plan" / ref
+        if packet_path.is_symlink() or not packet_path.resolve().is_relative_to(
+            ROOT / "plan/validation"
+        ):
+            raise ValueError("Completed task packet path invalid")
+        packet = yaml.safe_load(packet_path.read_text())
+        if not isinstance(packet, dict) or packet.get("task_id") != "V2-004":
+            raise ValueError("Completed task packet identity invalid")
+        binding = packet.get("change_review")
+        keys = ("scope_revision", "scope_ref", "review_revision", "review_ref")
+        if not isinstance(binding, dict) or not all(
+            isinstance(binding.get(key), str) and binding[key].strip() for key in keys
+        ):
+            raise ValueError("Completed task requires exact scope and review pins")
+        command = python + ["scripts/check_changes.py", "--task", "V2-004"]
+        for key in keys:
+            command += ["--" + key.replace("_", "-"), binding[key]]
+        return command + ["--output", target + "/action-entry.json"]
+    return python + [
+        "scripts/task_execution.py",
+        "check",
+        "--task",
+        "V2-004",
+        "--action",
+        "IMPLEMENT",
+        "--output",
+        target + "/action-entry.json",
+    ]
+
+
 def commands_for(job: str, output: Path) -> list[list[str]]:
     """Actual command plans are code-reviewed with the gate driver."""
     python = [sys.executable, "-B"]
@@ -124,17 +177,7 @@ def commands_for(job: str, output: Path) -> list[list[str]]:
         ]
     if job == "arch_fitness":
         return [
-            python
-            + [
-                "scripts/task_execution.py",
-                "check",
-                "--task",
-                "V2-004",
-                "--action",
-                "IMPLEMENT",
-                "--output",
-                target + "/action-entry.json",
-            ],
+            architecture_entry(python, target),
             python
             + [
                 "scripts/check_architecture.py",
@@ -307,7 +350,7 @@ def main(argv: list[str] | None = None) -> int:
         records, code = execute_commands(commands_for(args.job, output), output)
         receipt["commands"] = records
         receipt["status"] = "PASS" if code == 0 else "FAIL"
-    except (OSError, ValueError, subprocess.SubprocessError) as exc:
+    except (OSError, ValueError, yaml.YAMLError, subprocess.SubprocessError) as exc:
         receipt["errors"].append(f"{type(exc).__name__}: {exc}")
     receipt["exit_code"] = code
     receipt["finished_at"] = datetime.now(timezone.utc).isoformat()
