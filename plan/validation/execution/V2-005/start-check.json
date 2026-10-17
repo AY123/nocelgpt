@@ -1,0 +1,7 @@
+{
+  "check": "validate_objects with current task start gates/dependencies",
+  "errors": [],
+  "task_id": "V2-005",
+  "readiness_transition": "PLANNED -> READY_AFTER_GATES",
+  "does_not_claim": "implementation, CI or task acceptance complete"
+}

@@ -1,0 +1,58 @@
+{
+  "task_id": "V2-005",
+  "baseline_pin": {
+    "revision": "6e3562727cb9de1aa6e6006ae722d10019f87086",
+    "ref": "plan/validation/execution/V2-005/scope.json",
+    "sha256": "b2405bc490fd1d031fdad96c8afbf976e7e2471b348206f594ca2088bd2eab07"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "e472f85aa08ee4eb8c8a7f083ddafcff2ec40c24e98183fea50454eb2cd2cb75",
+      "new_sha": "1c298ee273322d7faf574086a486960685add6318beb580994181ebb50e7bb5a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "72f92066f9210e0f458208b39f8020530f288f6ff2ee47d8e67453aaaa35f5c2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start explicitly authorized V2-005 remediation after P0 and V2-001 gates; task identity, dependencies and acceptance assertions are unchanged.",
+      "impact": "Only readiness metadata changes; no scanner, threshold or hard gate is weakened.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "Actual validate_objects phase/dependency/start checks; task implementation review follows.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/start-check.json",
+          "sha256": "0a5528a52cd7e54a1b5f2943378470f7f582fe15cd8aefc87dd1237a5da7ad67"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "e472f85aa08ee4eb8c8a7f083ddafcff2ec40c24e98183fea50454eb2cd2cb75",
+      "new_sha": "1c298ee273322d7faf574086a486960685add6318beb580994181ebb50e7bb5a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "9ae1ce0a5fe72da89087cd45a2a998f61cf8962a6707291dd517b2ae428947a0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start explicitly authorized V2-005 remediation after P0 and V2-001 gates; task identity, dependencies and acceptance assertions are unchanged.",
+      "impact": "Only readiness metadata changes; no scanner, threshold or hard gate is weakened.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "Actual validate_objects phase/dependency/start checks; task implementation review follows.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
+        "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/start-check.json",
+          "sha256": "0a5528a52cd7e54a1b5f2943378470f7f582fe15cd8aefc87dd1237a5da7ad67"
+        }
+      ]
+    }
+  ]
+}
