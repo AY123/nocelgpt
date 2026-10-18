@@ -66,8 +66,8 @@
   },
   {
     "path": "README.md",
-    "bytes": 10643,
-    "sha256": "ba51b74b3434d8248d17175d27829361ba1f7732f9a18447b8da910953c7f68b"
+    "bytes": 10788,
+    "sha256": "f094a0a32d33a3c62610a5916be9242ca52d5e75d9a90c32fb73bf1191b118cb"
   },
   {
     "path": "archive/README.md",
@@ -1356,13 +1356,13 @@
   },
   {
     "path": "generated/MILESTONE_MAP.md",
-    "bytes": 950,
-    "sha256": "c948e2cd300be6cf1429541d2d3ade2d360b731375f2f65dac86f8abc0ff0f70"
+    "bytes": 946,
+    "sha256": "1086043371937a76cbac3234504dec074560ed256e736f0b2a6f51aef80f520e"
   },
   {
     "path": "generated/PHASE_TASK_REGISTRY.md",
-    "bytes": 6164,
-    "sha256": "e2dff417ffe53ae546ca41124cc5c7c0179b28e25081360591394581e524a4cb"
+    "bytes": 6141,
+    "sha256": "ff7ed8c31ea5d3ff7499c55896f958fbfe24f233d2cd034c6d567832ffd3c19b"
   },
   {
     "path": "machine/ai-execution-policy.yaml",
@@ -1401,18 +1401,18 @@
   },
   {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 88955,
-    "sha256": "e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0"
+    "bytes": 89547,
+    "sha256": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31"
   },
   {
     "path": "machine/milestones.yaml",
-    "bytes": 2811,
-    "sha256": "35262b8c219f085056deb5aae6ad5aaaba2c0d160c123558f5d646c804fbea65"
+    "bytes": 2866,
+    "sha256": "2f81bf76ff5086f815fe133a780ba6ebb32e84b182e3eb6f12028a72cc3d73c9"
   },
   {
     "path": "machine/phase-gates.yaml",
-    "bytes": 5690,
-    "sha256": "649c135de7a99e9355069e0303cf5f3a9ca9a019fdf60d8acb4fcc9320fdd83d"
+    "bytes": 5743,
+    "sha256": "1da8fc8f45a29b534c2e0d7e1fa6bb1d21a6c23b6bf31a69e542ee1b444329be"
   },
   {
     "path": "machine/remediation-register.yaml",
@@ -1426,8 +1426,8 @@
   },
   {
     "path": "machine/test-catalog.yaml",
-    "bytes": 38107,
-    "sha256": "1b5bb6f6d9366e6df0f5734ff8089eb71e2da8c42396c26880f24dce6a525a75"
+    "bytes": 38170,
+    "sha256": "aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7"
   },
   {
     "path": "schemas/evidence-record.schema.json",
@@ -1476,13 +1476,13 @@
   },
   {
     "path": "scripts/test_ai_execution.py",
-    "bytes": 14605,
-    "sha256": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c"
+    "bytes": 14745,
+    "sha256": "f52a7db84661bf6d28634a802beaa78a6d500447fb7292e23cdd0585705ce6cb"
   },
   {
     "path": "scripts/test_governance.py",
-    "bytes": 20796,
-    "sha256": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5"
+    "bytes": 21219,
+    "sha256": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c"
   },
   {
     "path": "scripts/validate_plan.py",

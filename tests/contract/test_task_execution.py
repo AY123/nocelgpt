@@ -76,11 +76,13 @@ def seed(tmp_path_factory):
     save(catalog_path, catalog)
     phases_path = repo / 'plan/machine/phase-gates.yaml'
     phases = load(phases_path)
-    phases['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+    for phase in phases['phases']:
+        phase.update(status='NOT_VERIFIED', evidence_refs=[])
     save(phases_path, phases)
     milestones_path = repo / 'plan/machine/milestones.yaml'
     milestones = load(milestones_path)
-    milestones['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+    for milestone in milestones['milestones']:
+        milestone.update(status='NOT_VERIFIED', evidence_refs=[])
     save(milestones_path, milestones)
     for filename, collection, evidence in [('remediation-register.yaml', 'findings', 'closure_refs'), ('external-practice-register.yaml', 'practices', 'verification_refs')]:
         path = repo / 'plan/machine' / filename

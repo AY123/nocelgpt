@@ -22,8 +22,9 @@ milestones:
   - V2-006
   - V2-007
   - V2-008
-  status: NOT_VERIFIED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/P1/closure-20261018/M1-decision.yaml
 - id: M2
   name: Canon Kernel
   introduced_phase: P2

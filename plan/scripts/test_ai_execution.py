@@ -23,8 +23,11 @@ class AIExecutionTests(unittest.TestCase):
         self.records.mkdir(parents=True)
         self.data = deepcopy(validator.load())
         # This fixture opens one P0 task even after real P0 is accepted.
-        self.data['phase-gates']['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
-        self.data['milestones']['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+        # All later tasks below are reopened in this isolated P0 fixture.
+        for phase in self.data['phase-gates']['phases']:
+            phase.update(status='NOT_VERIFIED', evidence_refs=[])
+        for milestone in self.data['milestones']['milestones']:
+            milestone.update(status='NOT_VERIFIED', evidence_refs=[])
         for practice in self.data['external-practice-register']['practices']:
             if practice['status'] == 'VERIFIED':
                 practice.update(status='PLANNED', verification_refs=[])

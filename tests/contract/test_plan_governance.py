@@ -91,8 +91,10 @@ def test_existing_rules_reject_single_mutations(mutate, prefix):
             if task['phase'] != 'P0':
                 task['status'] = 'OPEN'
         data['implementation-backlog']['tasks'][4].update(status='OPEN', readiness='PLANNED')
-        data['phase-gates']['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
-        data['milestones']['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
+        for phase in data['phase-gates']['phases']:
+            phase.update(status='NOT_VERIFIED', evidence_refs=[])
+        for milestone in data['milestones']['milestones']:
+            milestone.update(status='NOT_VERIFIED', evidence_refs=[])
     assert validator.validate_objects(data) == []
     mutate(data)
     errors = validator.validate_objects(data)

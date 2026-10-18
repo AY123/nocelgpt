@@ -1,0 +1,42 @@
+{
+  "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+  "source": "Exact Git blobs and SHA256; no duplicate source copies",
+  "files": [
+    {
+      "path": "src/anovel/domain/delta.py",
+      "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+      "sha256": "08d1d1e8567defc97d53641520f9e000e0796ded772a5da9b5fa0631e68f93b1",
+      "blob_oid": "7f0d287c3c7195bf72bb4a9eff9629bf24ebc2ad"
+    },
+    {
+      "path": "specs/schemas/narrative-delta.schema.json",
+      "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+      "sha256": "8f55dd81a89a767436bec289c151b19415707c3029696ab5ee1ad2acaabf62c5",
+      "blob_oid": "0f9e0d817bff67cd5d06c5d2fbc0764027238d77"
+    },
+    {
+      "path": "tests/contract/test_v2_008.py",
+      "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+      "sha256": "7b52aed27cdaf83f62d66aca94d9208568f84d087500bbe75a5a373f3b0e1ac8",
+      "blob_oid": "ac7296706188743d24b4de855245c150f988c931"
+    },
+    {
+      "path": "demo_v2_008.py",
+      "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+      "sha256": "91a7a87086670d0d3ed1d066db41646b9e803c736019bcb64e1f9c4e6dfa7b42",
+      "blob_oid": "afc7e30e07693f2e2f7b94b1100e07d703eb9af3"
+    },
+    {
+      "path": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+      "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+      "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e",
+      "blob_oid": "aa226831b6f1edb034ebe6b2b8ec92ea52aa889c"
+    },
+    {
+      "path": "plan/validation/execution/V2-008/adr-004-decision.yaml",
+      "revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+      "sha256": "63890e0236a58a38233086115742b4c401edb86ad7738e813246f7224c4c7519",
+      "blob_oid": "7a09d3a23954b0c8dc772ec931fad0b3124b889f"
+    }
+  ]
+}

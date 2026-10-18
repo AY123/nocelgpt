@@ -1,0 +1,30 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: P1
+revision: f611ba3374f3974280d591159c5f58d4aee296a8
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-18T12:55:41.051142+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17 locked, repository1421585508/run39128464248/attempt1;
+  accepted single-operator profile
+input_evidence_refs:
+- validation/execution/V2-005/closure-20261018/acceptance-evidence.yaml
+- validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml
+- validation/execution/V2-007/closure-20261018/acceptance-evidence.yaml
+- validation/execution/V2-008/closure-20261018/acceptance-evidence.yaml
+- validation/execution/V2-008/closure-20261018/ci-evidence.yaml
+evidence_id: P1-engineering-f611ba3
+evidence_type: PHASE_DECISION
+decision: VERIFIED
+rationale: All four task acceptances,381 actual current remote domain cases, same-SHA six-gate PASS, unchanged prior
+  implementation bytes and accepted foundational ADRs; no product/persistence claim.
+artifacts:
+- ref: validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json
+  sha256: 64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0
+- ref: validation/execution/P1/closure-20261018/ACCEPTANCE_SUMMARY.md
+  sha256: 243f8aa883c7c9f22d4d1db06e7992c766369da86235eae26d5e8415aefeaeae
+- ref: validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json
+  sha256: cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894
+ci_evidence_refs:
+- validation/execution/V2-008/closure-20261018/ci-evidence.yaml

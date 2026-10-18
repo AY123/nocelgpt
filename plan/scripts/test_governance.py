@@ -37,6 +37,12 @@ class GovernanceTests(unittest.TestCase):
         for suite in self.data['test-catalog']['suites']:
             if suite['task_id'] not in p0_tasks:
                 suite.update(status='PLANNED', execution_evidence=[])
+        # Reopening future tasks also reopens their synthetic phase/milestone.
+        # Live P1 completion must not invalidate this old-P0 positive fixture.
+        for phase in self.data['phase-gates']['phases'][1:]:
+            phase.update(status='NOT_VERIFIED', evidence_refs=[])
+        for milestone in self.data['milestones']['milestones'][1:]:
+            milestone.update(status='NOT_VERIFIED', evidence_refs=[])
         # Real finding closures cannot serve as synthetic task attestations.
         for finding in self.data['remediation-register']['findings']:
             if finding['closure_refs']:

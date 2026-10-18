@@ -4,7 +4,7 @@ task_id: V2-008
 plan_version: 1.3.0
 repository_revision: 81bfc13aa8fcbe0acdf3b2c01c4915aea7a55272
 worktree_dirty: false
-plan_manifest_sha256: a635bf668011a9079e5d3e2d0c8363820cf719d788175fe09960a1711c55317a
+plan_manifest_sha256: e2582e432ad30f97e73eaf3d204bd0d91d79fec5f99163a65786a65976a83854
 environment:
   fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
   runtime_versions:
@@ -26,11 +26,11 @@ inputs:
   ref: validation/execution/V2-008/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-008/inputs/e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0.txt
-  sha256: e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0
+  ref: validation/execution/V2-008/inputs/6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31.txt
+  sha256: 6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-008/inputs/1b5bb6f6d9366e6df0f5734ff8089eb71e2da8c42396c26880f24dce6a525a75.txt
-  sha256: 1b5bb6f6d9366e6df0f5734ff8089eb71e2da8c42396c26880f24dce6a525a75
+  ref: validation/execution/V2-008/inputs/aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7.txt
+  sha256: aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-008/inputs/81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d.txt
   sha256: 81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d
@@ -59,6 +59,11 @@ allowed_paths:
 - plan/README.md
 - tests/contract/test_plan_governance.py
 - tests/contract/test_task_execution.py
+- plan/validation/execution/P1/
+- plan/machine/phase-gates.yaml
+- plan/machine/milestones.yaml
+- plan/scripts/test_governance.py
+- plan/scripts/test_ai_execution.py
 required_decisions:
 - ADR-004
 claims: []
@@ -81,26 +86,26 @@ stop_conditions:
 review_notes:
 - 'Direct user request: ADR-004 before interfaces, then bounded local implementation and tests'
 - Original task identities, dependencies and all three assertions stay unchanged; history only reference
+- Current human continuation after explicit one-run V2-008 acceptance and P1 exit review proposal authorizes evidence-based
+  closure. Added scope is only P1 state/decisions and isolated P0 test-fixture resets; no identity/dependency/assertion/gate
+  or production code changes. Original implementation scope/review and prior packet versions remain in Git.
 handoff:
-  current_step: Local implementation and isolated revision replay PASS; ready for later single remote-CI candidate,
-    not VERIFIED
+  current_step: V2-008 CLOSED; P1/M1 VERIFIED at f611ba3374f3974280d591159c5f58d4aee296a8 / run39128464248
   completed_steps:
-  - ADR-004 accepted before interfaces and original IMPLEMENT entry PASS
-  - V2-008 102 tests / full UNIT 928 / ARCH 244 PASS,0 skips
-  - Original STATIC and five governance checks PASS; no remote CI
-  - 'Exact local checkout f679b5c2c8b753ae175574e501c339cf27e26467: install/focused/static/governance/action entry/architecture
-    scan/demo PASS; source/test bytes match full local regression'
-  - Local secret-only scan:54 detected/54 identified, existing precise decisions consumed; no authority/scanner
-    change
+  - Accepted ADR-004 preceded interfaces; local worktree and exact checkout results retained
+  - One same-SHA remote six-gate run PASS,1173 total,102 V2-008 and381 P1 cases,0 skips
+  - All three unchanged V2-008 assertions and all three P1 exit criteria verified
   pending_items:
-  - One later same-final-SHA remote six-gate run and formal V2-008 acceptance; not auto-dispatched
-  - P1 aggregate verification after V2-008 acceptance; no P2 start
-  next_action: IMPLEMENT
+  - No P2 implementation this round; V2-009 requires ADR-005/006 and its own execution packet
+  - No durable Canon, real Permit, Provider, chapter production or reader/market verification
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-008/local-results/EXACT_REPLAY.json
-      sha256: ca5744730b15a38957bde4790168467feac65009b098f387fa643e6057c9b724
+    - ref: validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json
+      sha256: cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894
+    - ref: validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json
+      sha256: 64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0
     missing_artifact_reason: null
 change_review:
   scope_revision: b52e8c0bc85cef7f62bb9f90aea0a422b4afb230

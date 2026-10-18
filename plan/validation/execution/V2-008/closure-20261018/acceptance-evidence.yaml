@@ -1,0 +1,50 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-008
+revision: f611ba3374f3974280d591159c5f58d4aee296a8
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-18T12:55:41.051142+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17 locked, repository1421585508/run39128464248/attempt1;
+  accepted single-operator profile
+input_evidence_refs: &id001
+- validation/execution/V2-008/closure-20261018/code-evidence.yaml
+- validation/execution/V2-008/closure-20261018/tests-evidence.yaml
+- validation/execution/V2-008/closure-20261018/ci-evidence.yaml
+evidence_id: V2-008-acceptance-f611ba3
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-008-01
+- AT-V2-008-02
+- AT-V2-008-03
+artifacts:
+- ref: validation/execution/V2-008/closure-20261018/ACCEPTANCE_SUMMARY.md
+  sha256: 0cfb7160a940f01d16ba464fecf9978d59f6777071f48cbbd5367c9213040dd9
+- ref: validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json
+  sha256: cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894
+- ref: validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json
+  sha256: b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc
+decision: ACCEPTED
+rationale: Three unchanged V2-008 assertions covered by original remote JUnit and same-SHA six-gate PASS; no Canon/product
+  claim.
+finding_dispositions:
+- finding_id: AR-04
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Finite typed operations, preconditions and pure reducer reject unknown operations and stale/wrong contexts.
+  remaining_work: Real Permit, unique Canon commit and consumer candidate binding remain V2-010/017.
+  next_task: V2-010
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: RR-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Closed operation/state Schema and runtime validation have positive and negative original JUnit evidence.
+  remaining_work: Actual durable/permission/workflow contracts remain their owning V2-010/019/026 tasks; Schema
+    is not business authorization.
+  next_task: V2-010
+  owner_role: canon-maintainer
+  due_gate: G-P2

@@ -520,7 +520,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
-  status: IMPLEMENTED
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-008/execution-packet.yaml
   owner_role: domain-maintainer
   readiness: READY_AFTER_GATES
@@ -528,10 +528,22 @@ tasks:
   required_decisions:
   - ADR-004
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-008/closure-20261018/code-evidence.yaml
+      revision: f611ba3374f3974280d591159c5f58d4aee296a8
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-008/closure-20261018/tests-evidence.yaml
+      revision: f611ba3374f3974280d591159c5f58d4aee296a8
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-008/closure-20261018/ci-evidence.yaml
+      revision: f611ba3374f3974280d591159c5f58d4aee296a8
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-008/closure-20261018/acceptance-evidence.yaml
+      revision: f611ba3374f3974280d591159c5f58d4aee296a8
+      status: PASS
   related_findings:
   - AR-04
   - RR-06
