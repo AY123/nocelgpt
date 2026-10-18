@@ -19,7 +19,13 @@
     "plan/validation/plan-validation.json",
     "plan/validation/governance-regression.json",
     "plan/scripts/test_governance.py",
-    "plan/scripts/test_ai_execution.py"
+    "plan/scripts/test_ai_execution.py",
+    "AGENTS.md",
+    "README.md",
+    "plan/README.md",
+    "docs/V2-004_SECRET_EXCEPTION_CONSUMER.md",
+    "V2-003任务prompt.txt",
+    "审核报告.txt"
   ],
   "pre_existing": {
     ".claude/settings.local.json": {
@@ -333,53 +339,6 @@
         "mode": "100644",
         "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
       }
-    },
-    "AGENTS.md": {
-      "index": {
-        "mode": "100644",
-        "oid": "5003bcfd7fa308921da755efc548e25c2df25c47"
-      },
-      "worktree": {
-        "kind": "file",
-        "mode": "100644",
-        "sha256": "d4e95e0c569be2bf77118a93f381048b46640fc2c759e3328016c49f6194c481"
-      }
-    },
-    "V2-003任务prompt.txt": {
-      "index": {
-        "mode": "100644",
-        "oid": "72a56964483203c8bd8a59aae772375dd1a06e97"
-      },
-      "worktree": null
-    },
-    "docs/V2-004_SECRET_EXCEPTION_CONSUMER.md": {
-      "index": {
-        "mode": "100644",
-        "oid": "6527b9344ea50a19cf6d5d979ba5c2ed453dde01"
-      },
-      "worktree": {
-        "kind": "file",
-        "mode": "100644",
-        "sha256": "1f4de6c028bb4515957eea624263ba93c842511f817337c2c8c4593f1baf7fde"
-      }
-    },
-    "plan/README.md": {
-      "index": {
-        "mode": "100644",
-        "oid": "fb5b79360a001647e00ab00ab44cc0efb3007209"
-      },
-      "worktree": {
-        "kind": "file",
-        "mode": "100644",
-        "sha256": "172409b911426e68b8048e84c20276d61a2746cdfd4295add1d9c7d4498bf10d"
-      }
-    },
-    "审核报告.txt": {
-      "index": {
-        "mode": "100644",
-        "oid": "2bb8fdecc2a44cac115ec1d0de225e802cba5353"
-      },
-      "worktree": null
     }
   },
   "protected_paths": [
@@ -399,7 +358,7 @@
   "authorization_source": {
     "kind": "existing_user_task_authorization",
     "ref": "plan/validation/execution/V2-005/AUTHORIZATION.txt",
-    "sha256": "eaa1be50035eb467f4981c71d3bb0b2df39d6d4c290ed088825f57c1e589402f"
+    "sha256": "000d8daa6c2898ed38d506693ea40f59bf6c8f813d111356173299a190bc0f32"
   },
   "exception_authorizations": []
 }

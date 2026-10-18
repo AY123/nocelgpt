@@ -3,3 +3,7 @@ Scope: repair entity identity/alias behavior, remove skip using pinned historica
 No remote push, CI dispatch, runner activation, paid Provider calls, history rewriting, new secret approvals or finding closure.
 Local scope/review Git pins are execution metadata, not independent approval or a delivered implementation commit.
 The pre-existing implementation lacked a packet; this record starts remediation now and does not retroactively certify those actions.
+
+2026-10-18 scope and delivery extension — direct human instruction:
+“那就都以main为开发，提交所有到远程”
+The Owner authorizes committing all current project source, tests, documentation and previously requested deletions, and fast-forward pushing main to https://github.com/AY123/nocelgpt.git. Existing local changes must be preserved. Ignored local evidence, environments, tool caches and credentials remain local. No CI dispatch, runner activation, remote settings, force push, new secret approval or task closure is authorized by this delivery.
