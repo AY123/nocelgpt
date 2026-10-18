@@ -346,17 +346,29 @@ tasks:
   - 不绕过前置阶段门禁
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-005/execution-packet.yaml
   owner_role: domain-maintainer
   readiness: READY_AFTER_GATES
   start_gate: G-P0
   required_decisions: []
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-005/closure-20261018/code-evidence.yaml
+      revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-005/closure-20261018/tests-evidence.yaml
+      revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-005/closure-20261018/ci-evidence.yaml
+      revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-005/closure-20261018/acceptance-evidence.yaml
+      revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+      status: PASS
   related_findings:
   - AR-03
   - AR-13

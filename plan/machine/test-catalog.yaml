@@ -110,7 +110,7 @@ suites:
 - id: AT-V2-005
   task_id: V2-005
   phase: P1
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/contract/test_v2_005.py
   scenarios:
   - id: AT-V2-005-01
@@ -119,7 +119,8 @@ suites:
     required_assertion: 改名保留稳定 ID
   - id: AT-V2-005-03
     required_assertion: 歧义别名返回明确冲突而非随机选择
-  execution_evidence: []
+  execution_evidence:
+  - validation/execution/V2-005/closure-20261018/tests-evidence.yaml
 - id: AT-V2-006
   task_id: V2-006
   phase: P1

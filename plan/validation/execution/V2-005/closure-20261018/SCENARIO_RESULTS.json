@@ -1,0 +1,22 @@
+{
+  "revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+  "run_id": 39088653270,
+  "domain_tests_passed": 97,
+  "scenario_tests": {
+    "AT-V2-005-01": [
+      "test_same_name_different_projects_no_confusion",
+      "test_cross_project_reference_rejected"
+    ],
+    "AT-V2-005-02": [
+      "test_entity_id_stable_across_renames",
+      "test_rename_preserves_old_name_as_alias"
+    ],
+    "AT-V2-005-03": [
+      "test_ambiguous_alias_returns_conflict",
+      "test_alias_conflict_within_project_is_explicitly_ambiguous",
+      "test_rename_to_existing_name_is_ambiguous_without_merging"
+    ]
+  },
+  "source": "Original remote UNIT JUnit; every named case exists with no failure/error/skip",
+  "negative_and_boundary_tests": "Same suite also covers missing/invalid scope, wrong project, immutable snapshots, duplicate IDs, invalid JSON types, rename index consistency and actual ambiguity"
+}

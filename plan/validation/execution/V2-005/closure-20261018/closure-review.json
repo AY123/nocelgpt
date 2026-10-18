@@ -1,0 +1,202 @@
+{
+  "task_id": "V2-005",
+  "baseline_pin": {
+    "revision": "40bf7fd39299affc1bb760c36555fd94537222e8",
+    "ref": "plan/validation/execution/V2-005/portable-scope.json",
+    "sha256": "da5a845a67559539c508ea0d3b2395a071c76667b07cc41520ca94cffaf4862b"
+  },
+  "dispositions": [
+    {
+      "path": "plan/scripts/change_review.py",
+      "old_sha": "6fa2902d8e409f0b0ec7815142a26e59e573a6cce393b473c30cddb4f35a09bf",
+      "new_sha": "5e2c3eea1d8e079fc9e1251b3540942090e3b691588c99a0ec954b4f32b1a8c1",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "6292b9e6438b4a23cc128ff6b86578f565806b31986a69d1832c30e5a8428f48",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Make only exact pinned untracked regular host tool artifacts optional when absent; preserve required user/source identities, staged drift, immutable scope checks and new-file review.",
+      "impact": "Correct a host-only availability assumption without lowering source, user-file, scanner or mandatory-gate requirements.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "87 focused controls, actual static/schema gates, and forthcoming exact-revision clean checkout gate replay. Existing required-input controls remain unchanged.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/portability-verification.json",
+          "sha256": "0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/change_review.py",
+      "old_sha": "6fa2902d8e409f0b0ec7815142a26e59e573a6cce393b473c30cddb4f35a09bf",
+      "new_sha": "5e2c3eea1d8e079fc9e1251b3540942090e3b691588c99a0ec954b4f32b1a8c1",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ecd17a4720e402273b534cdf2522bc3a3898a25180791d43ba070d272efdaebe",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Make only exact pinned untracked regular host tool artifacts optional when absent; preserve required user/source identities, staged drift, immutable scope checks and new-file review.",
+      "impact": "Correct a host-only availability assumption without lowering source, user-file, scanner or mandatory-gate requirements.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "87 focused controls, actual static/schema gates, and forthcoming exact-revision clean checkout gate replay. Existing required-input controls remain unchanged.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/portability-verification.json",
+          "sha256": "0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_change_review.py",
+      "old_sha": "8ba6a733e1b54ad278c466a7eb108f8069f33b2a16fa919740fc1cb121081c89",
+      "new_sha": "d4a686fb067e9e6ab9120ea64cc0bec5b3235f322ab13e43c7784286b6007d2e",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "f9782eceb8c220e02a55659e1fb6b890566a00775839be366ca6cd1f857cd2e7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Add positive clean-clone and fail-closed controls for exact optional host records; existing test functions/assertions remain, only an already unused import is removed.",
+      "impact": "Correct a host-only availability assumption without lowering source, user-file, scanner or mandatory-gate requirements.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "87 focused controls, actual static/schema gates, and forthcoming exact-revision clean checkout gate replay. Existing required-input controls remain unchanged.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/portability-verification.json",
+          "sha256": "0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_change_review.py",
+      "old_sha": "8ba6a733e1b54ad278c466a7eb108f8069f33b2a16fa919740fc1cb121081c89",
+      "new_sha": "d4a686fb067e9e6ab9120ea64cc0bec5b3235f322ab13e43c7784286b6007d2e",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "a35e8b1ecfe2dcd81002b33785e5639c92bf9676133522513725763edde9505b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Add positive clean-clone and fail-closed controls for exact optional host records; existing test functions/assertions remain, only an already unused import is removed.",
+      "impact": "Correct a host-only availability assumption without lowering source, user-file, scanner or mandatory-gate requirements.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "87 focused controls, actual static/schema gates, and forthcoming exact-revision clean checkout gate replay. Existing required-input controls remain unchanged.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/portability-verification.json",
+          "sha256": "0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_change_review.py",
+      "old_sha": "8ba6a733e1b54ad278c466a7eb108f8069f33b2a16fa919740fc1cb121081c89",
+      "new_sha": "d4a686fb067e9e6ab9120ea64cc0bec5b3235f322ab13e43c7784286b6007d2e",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "a64b909633ba6927e1b174e97fc160bd4e6c0fa311b07959d99292d0d0d627d2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Add positive clean-clone and fail-closed controls for exact optional host records; existing test functions/assertions remain, only an already unused import is removed.",
+      "impact": "Correct a host-only availability assumption without lowering source, user-file, scanner or mandatory-gate requirements.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "87 focused controls, actual static/schema gates, and forthcoming exact-revision clean checkout gate replay. Existing required-input controls remain unchanged.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/portability-verification.json",
+          "sha256": "0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20"
+        }
+      ]
+    },
+    {
+      "path": "tests/architecture/test_change_review.py",
+      "old_sha": "8ba6a733e1b54ad278c466a7eb108f8069f33b2a16fa919740fc1cb121081c89",
+      "new_sha": "d4a686fb067e9e6ab9120ea64cc0bec5b3235f322ab13e43c7784286b6007d2e",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "aa7526ee6d02ab70f2ffbf01d0f2e467409df7974230b3c9919cf58d5fec92f9",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Add positive clean-clone and fail-closed controls for exact optional host records; existing test functions/assertions remain, only an already unused import is removed.",
+      "impact": "Correct a host-only availability assumption without lowering source, user-file, scanner or mandatory-gate requirements.",
+      "reviewer": "Codex same-operator technical review; not independent personnel approval",
+      "replacement_validation": "87 focused controls, actual static/schema gates, and forthcoming exact-revision clean checkout gate replay. Existing required-input controls remain unchanged.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/portability-verification.json",
+          "sha256": "0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "old_sha": "ebcd004accec3fc7f2abeaf09c6c919ee438506a29bc7e951b5b02a2132a8100",
+      "new_sha": "bf8b2102728207559e001b6ec53ec19e14f0d272ab582ebc366b1937414298ed",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "d181eb5bc6851c46cbf0b13626ac88e9af679a5cdb8fac1f0ee185263f8f6207",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only update current-task status and next-task entry after actual same-SHA six-gate acceptance. Every instruction and security requirement remains unchanged.",
+      "impact": "V2-005 CLOSED, V2-006 still OPEN and ADR-002 required; no scope, scanner, gate or authority weakening.",
+      "reviewer": "Codex same-operator technical review; no independent personnel claim",
+      "replacement_validation": "Original remote run39088653270 six mandatory gates PASS; local closure structure check,32 validator controls,39 governance and36 execution controls PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "f486423c9528e32200aa1ef769c4cbb04733559e5fd90eca934c83144f077f99"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "old_sha": "ebcd004accec3fc7f2abeaf09c6c919ee438506a29bc7e951b5b02a2132a8100",
+      "new_sha": "bf8b2102728207559e001b6ec53ec19e14f0d272ab582ebc366b1937414298ed",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "bc81664cd58a220d0e21a2cb6bc1b932fc82a4632f628ab2c922c0c5e249ef3a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only update current-task status and next-task entry after actual same-SHA six-gate acceptance. Every instruction and security requirement remains unchanged.",
+      "impact": "V2-005 CLOSED, V2-006 still OPEN and ADR-002 required; no scope, scanner, gate or authority weakening.",
+      "reviewer": "Codex same-operator technical review; no independent personnel claim",
+      "replacement_validation": "Original remote run39088653270 six mandatory gates PASS; local closure structure check,32 validator controls,39 governance and36 execution controls PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-005/portability-authorization.txt",
+        "sha256": "9df7d7dadc0401988bc1f45f7230a6470cc90fb408bbb774e05bf9022c33fda0"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-005/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "f486423c9528e32200aa1ef769c4cbb04733559e5fd90eca934c83144f077f99"
+        }
+      ]
+    }
+  ]
+}

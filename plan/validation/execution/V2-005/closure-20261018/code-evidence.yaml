@@ -1,0 +1,25 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-005
+revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+status: PASS
+producer: Codex implementation and GitHub service-result verification, same operator; no independent personnel claim
+executed_at: '2026-10-18T02:18:28.159540+00:00'
+environment_fingerprint: GitHub Actions hosted Ubuntu24.04 / Python3.12.14 / uv0.12.17 locked; repository1421585508;
+  run39088653270 attempt1; native unprotected main under accepted single-operator profile
+input_evidence_refs: []
+evidence_id: V2-005-code-72219b4
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-005/closure-20261018/CODE_MANIFEST.json
+  sha256: e7a9023ea951d852b9c3e2c26b9a4f0f3820754e9830d60d607c1ab18461d2ca
+- ref: validation/execution/V2-005/closure-20261018/source/src/anovel/domain/__init__.py.txt
+  sha256: f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6
+- ref: validation/execution/V2-005/closure-20261018/source/src/anovel/domain/identity.py.txt
+  sha256: cbacb2cec0edc99e8ef3c9be29443a1c4a14218493798d00f6093055e7a15342
+- ref: validation/execution/V2-005/closure-20261018/source/specs/schemas/entity.schema.json.txt
+  sha256: 49a3f6bd2c2ede90ffe1a4d682ea31eced606cf3b43d0453d3dd9114e91547fb
+- ref: validation/execution/V2-005/closure-20261018/source/tests/contract/test_v2_005.py.txt
+  sha256: db29534138315f66a65b888dbe1a9261e8272dce0dd794f4a7efb3efdcbcfff6
+- ref: validation/execution/V2-005/closure-20261018/source/demo_v2_005.py.txt
+  sha256: 2f2f27c94a93fa36d18b943db08e31b5a6966652361eb6da5e5400d9c3be6569

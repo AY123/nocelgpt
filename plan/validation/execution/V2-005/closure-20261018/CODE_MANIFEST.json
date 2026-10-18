@@ -1,0 +1,41 @@
+{
+  "revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+  "files": [
+    {
+      "source_path": "src/anovel/domain/__init__.py",
+      "source_revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+      "snapshot_ref": "validation/execution/V2-005/closure-20261018/source/src/anovel/domain/__init__.py.txt",
+      "sha256": "f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6",
+      "git_blob_oid": "83926d3ecfe476fa6066ec75375d4a4ca593acb5"
+    },
+    {
+      "source_path": "src/anovel/domain/identity.py",
+      "source_revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+      "snapshot_ref": "validation/execution/V2-005/closure-20261018/source/src/anovel/domain/identity.py.txt",
+      "sha256": "cbacb2cec0edc99e8ef3c9be29443a1c4a14218493798d00f6093055e7a15342",
+      "git_blob_oid": "890d0cec141d35a827482f888a9ce9100ab93080"
+    },
+    {
+      "source_path": "specs/schemas/entity.schema.json",
+      "source_revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+      "snapshot_ref": "validation/execution/V2-005/closure-20261018/source/specs/schemas/entity.schema.json.txt",
+      "sha256": "49a3f6bd2c2ede90ffe1a4d682ea31eced606cf3b43d0453d3dd9114e91547fb",
+      "git_blob_oid": "7783e715fc579cb930f3becd351eb8be3b718aff"
+    },
+    {
+      "source_path": "tests/contract/test_v2_005.py",
+      "source_revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+      "snapshot_ref": "validation/execution/V2-005/closure-20261018/source/tests/contract/test_v2_005.py.txt",
+      "sha256": "db29534138315f66a65b888dbe1a9261e8272dce0dd794f4a7efb3efdcbcfff6",
+      "git_blob_oid": "82e837bf3000f7d644b479f768ee128bc38a24d8"
+    },
+    {
+      "source_path": "demo_v2_005.py",
+      "source_revision": "72219b4e04d66f434c3d58b0442eb9efda7d76ef",
+      "snapshot_ref": "validation/execution/V2-005/closure-20261018/source/demo_v2_005.py.txt",
+      "sha256": "2f2f27c94a93fa36d18b943db08e31b5a6966652361eb6da5e5400d9c3be6569",
+      "git_blob_oid": "656e38a786cc657ed60bfd628ee0fa1ea9e1d5ce"
+    }
+  ],
+  "scope": "V2-005 in-memory identities, aliases and serialization; no database, Provider or Canon implementation"
+}

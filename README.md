@@ -1,4 +1,4 @@
-**当前：P0 工程验收 VERIFIED；V2-001～004 CLOSED；V2-005 IN_PROGRESS。** 日常开发统一使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。V2-005 实体与别名能力已完成本地验证（851 项契约/架构测试通过、0 skip），交接见 [V2-005_HANDOFF.md](V2-005_HANDOFF.md)。P0 工程 CI 仍绑定611d777，本轮未触发新 CI。
+**当前：V2-001～005 CLOSED；P0 VERIFIED，P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。V2-005 工程修订 `72219b4` 的[远程六门验收](https://github.com/AY123/nocelgpt/actions/runs/39088653270)全部通过，889 项测试、0 skip，其中领域测试97项。见 [验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。下一任务是 V2-006 角色关系与知识内核，先完成 ADR-002；当前仍无小说生产闭环。
 
 # ANovelOS
 

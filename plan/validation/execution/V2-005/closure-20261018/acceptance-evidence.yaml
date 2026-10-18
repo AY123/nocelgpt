@@ -1,0 +1,54 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-005
+revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+status: PASS
+producer: Codex implementation and GitHub service-result verification, same operator; no independent personnel claim
+executed_at: '2026-10-18T02:18:28.159540+00:00'
+environment_fingerprint: GitHub Actions hosted Ubuntu24.04 / Python3.12.14 / uv0.12.17 locked; repository1421585508;
+  run39088653270 attempt1; native unprotected main under accepted single-operator profile
+input_evidence_refs:
+- validation/execution/V2-005/closure-20261018/code-evidence.yaml
+- validation/execution/V2-005/closure-20261018/tests-evidence.yaml
+- validation/execution/V2-005/closure-20261018/ci-evidence.yaml
+evidence_id: V2-005-acceptance-72219b4
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-005-01
+- AT-V2-005-02
+- AT-V2-005-03
+artifacts:
+- ref: validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md
+  sha256: b7f3bd9b89c69848c898961cf7db0009fa0a723f37e9235b065bbc53aa128cdf
+- ref: validation/execution/V2-005/closure-20261018/REMOTE_VERIFICATION.json
+  sha256: f486423c9528e32200aa1ef769c4cbb04733559e5fd90eca934c83144f077f99
+- ref: validation/execution/V2-005/closure-20261018/SCENARIO_RESULTS.json
+  sha256: 6e39370897eb08d856cd25f94872b342ac434d1ace4e1c6e6b010cb74a6c1999
+decision: ACCEPTED
+rationale: All three V2-005 acceptance assertions have real named passing domain cases; all six mandatory gates
+  passed on exact72219b4. Register task closure only, not P1/product completion.
+finding_dispositions:
+- finding_id: AR-03
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-005/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-005/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-005/closure-20261018/ci-evidence.yaml
+  reason: Stable identity and entity code/schema consistency verified in V2-005. Character subtype/lifecycle composition
+    is a separate V2-006 obligation.
+  remaining_work: Character schema composition and illegal type/lifecycle rejection; not claimed by base Entity
+  next_task: V2-006
+  owner_role: domain-maintainer
+  due_gate: G-P1
+- finding_id: AR-13
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-005/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-005/closure-20261018/ci-evidence.yaml
+  reason: Project-scoped identities and lookups verified. Branch/cache scopes remain separate obligations.
+  remaining_work: Branch and Canon version isolation plus downstream context/cache isolation under V2-009/V2-011/V2-018
+  next_task: V2-009
+  owner_role: canon-maintainer
+  due_gate: G-P2

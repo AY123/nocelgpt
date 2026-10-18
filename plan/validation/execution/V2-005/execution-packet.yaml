@@ -97,22 +97,25 @@ review_notes:
   is superseded only for this GitHub main delivery.
 - '2026-10-18 resume from delivered main: distinguish optional exact host-local files from required source/user
   inputs. No broad ignore or automatic acceptance of new files.'
+- 2026-10-18 subsequent user continuation authorized one remote six-gate acceptance and task closure on success;
+  prior repair-only no-CI/no-closure stop boundary superseded for this acceptance. Original opening snapshot and
+  pin bindings retained.
 handoff:
-  current_step: Bounded portability repair implemented; focused, static and schema checks passed; prepare exact
-    committed clean-checkout verification
+  current_step: V2-005 CLOSED after actual GitHub six-gate run39088653270 at 72219b4e04d66f434c3d58b0442eb9efda7d76ef
   completed_steps:
-  - V2-005 source delivered as 39be349cba2b06c1e2ffc49761c158c53e5b8ee3
-  - Fresh-checkout task entry failure reproduced and preserved under dist
-  - Optional exact host-local records implemented; 87 focused controls and existing static/schema gates passed
+  - Immutable project-scoped entity IDs, stable rename and explicit ambiguous aliases implemented
+  - Clean checkout with own locked runtime verified; local888 tests, no skip
+  - 'Single remote run: six mandatory gates PASS; original artifacts verified'
+  - All three acceptance scenarios and typed code/test/CI/acceptance evidence bound to exact72219b4
   pending_items:
-  - Repair exact local-only input semantics and add positive/negative controls
-  - Verify complete local checkout gates, commit and synchronize main; remote CI remains unexecuted
-  next_action: IMPLEMENT
+  - V2-006 remains OPEN; ADR-002 must be accepted before interface implementation
+  - P1 is not verified; persistence, Canon, Provider and product validation remain later work
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-005/portability-verification.json
-      sha256: 0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20
+    - ref: validation/execution/V2-005/closure-20261018/REMOTE_VERIFICATION.json
+      sha256: f486423c9528e32200aa1ef769c4cbb04733559e5fd90eca934c83144f077f99
     missing_artifact_reason: null
 change_review:
   scope_revision: 40bf7fd39299affc1bb760c36555fd94537222e8

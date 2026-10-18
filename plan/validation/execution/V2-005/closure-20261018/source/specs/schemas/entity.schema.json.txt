@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.ai/schemas/entity.schema.json",
+  "title": "Entity",
+  "description": "Immutable entity snapshot with project-scoped stable identity; equal names never merge identities",
+  "type": "object",
+  "required": [
+    "id",
+    "display_name"
+  ],
+  "properties": {
+    "id": {
+      "type": "object",
+      "description": "Stable entity identifier scoped to project",
+      "required": [
+        "project",
+        "local_id"
+      ],
+      "properties": {
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Project scope identifier"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Unique identifier within project"
+        }
+      },
+      "additionalProperties": false
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Current display name; registry rename replaces the snapshot while retaining its ID"
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Exact alternative names; duplicate names across entities produce an ambiguous resolution",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "default": []
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,44 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-005
+revision: 72219b4e04d66f434c3d58b0442eb9efda7d76ef
+status: PASS
+producer: Codex implementation and GitHub service-result verification, same operator; no independent personnel claim
+executed_at: '2026-10-18T02:18:28.159540+00:00'
+environment_fingerprint: GitHub Actions hosted Ubuntu24.04 / Python3.12.14 / uv0.12.17 locked; repository1421585508;
+  run39088653270 attempt1; native unprotected main under accepted single-operator profile
+input_evidence_refs:
+- validation/execution/V2-005/closure-20261018/code-evidence.yaml
+- validation/execution/V2-005/closure-20261018/ci-evidence.yaml
+evidence_id: V2-005-tests-72219b4
+evidence_type: TEST_RESULT
+check_ids:
+- AT-V2-005-01
+- AT-V2-005-02
+- AT-V2-005-03
+- STATIC
+- SCHEMA_CONTRACT
+- UNIT
+- ARCH_FITNESS
+- POSTGRES_ENV
+- SECRET_DEPENDENCY
+artifacts:
+- ref: validation/execution/V2-005/closure-20261018/REMOTE_VERIFICATION.json
+  sha256: f486423c9528e32200aa1ef769c4cbb04733559e5fd90eca934c83144f077f99
+- ref: validation/execution/V2-005/closure-20261018/SCENARIO_RESULTS.json
+  sha256: 6e39370897eb08d856cd25f94872b342ac434d1ace4e1c6e6b010cb74a6c1999
+- ref: validation/execution/V2-005/closure-20261018/gate-postgres_env-39088653270-1.zip
+  sha256: af0dde100faf8c3d746f4de9f9b90babec1a3ab7374cd2beeef8a06dddcc20e6
+- ref: validation/execution/V2-005/closure-20261018/gate-arch_fitness-39088653270-1.zip
+  sha256: 1e8fc942de8ae5ede5a2ba3c824436431b90548215d1bce330d92dc4a2230ea3
+- ref: validation/execution/V2-005/closure-20261018/gate-secret_dependency-39088653270-1.zip
+  sha256: 2fc28d28b7f9b01841b0af388b55d4d16b6c1a8a71ffe5b24f30c4028147d3c0
+- ref: validation/execution/V2-005/closure-20261018/gate-schema_contract-39088653270-1.zip
+  sha256: 7ace574aecb997da9d92ced141a492e222aa941fd22fdc34f13d47e1b3640345
+- ref: validation/execution/V2-005/closure-20261018/gate-static-39088653270-1.zip
+  sha256: 880cfc72709f2b606b9c8b79c0ffd3ff5926f50d76d7e0b24f763b4710f8c22f
+- ref: validation/execution/V2-005/closure-20261018/gate-unit-39088653270-1.zip
+  sha256: 944324f22934cacaff72e49cbc9f006797c6c1e9d1203aca2f61fe4f5ea52f79
+command: GitHub workflow_dispatch run39088653270 six native scripts/ci/run_gate.py gates; original JUnit and receipt
+  hashes verified, no retry
+exit_code: 0
