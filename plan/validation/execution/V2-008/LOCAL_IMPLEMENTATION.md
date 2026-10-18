@@ -18,3 +18,5 @@ Schema封闭四类操作与各层字段；动态基线、外部授权集合、�
 最终专项102项、全UNIT928项、ARCH244项通过，0skip；STATIC与五项治理检查PASS。原始本地receipt/JUnit和四个交付文件hash见`local-results/`。首次ARCH入口因新Ruff缓存越界被正确阻断，缓存保留后原门禁通过；未增加忽略或降低检查。
 
 这是内存提议与预演，不是Canon写入、真实Permit、ChangeSet、模型调用或小说生产能力。未改现有知识/事件/Promise模块，无DB/Provider/新增依赖。正式V2-008验收后还需P1汇总，当前不开始P2。
+
+隔离复核SHA：`f679b5c2c8b753ae175574e501c339cf27e26467`。新checkout内锁定依赖离线安装、102项专项、STATIC、五项治理、原IMPLEMENT入口、实际架构扫描及demo全部PASS；工作区干净，四个交付文件与完整本地回归摘要hash一致。未把旧完整回归重标为此SHA。见`local-results/EXACT_REPLAY.json`。本地secret-only扫描54项匹配既有精确决定；未重跑依赖漏洞审计或远程CI。

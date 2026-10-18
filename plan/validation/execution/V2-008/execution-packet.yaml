@@ -82,19 +82,25 @@ review_notes:
 - 'Direct user request: ADR-004 before interfaces, then bounded local implementation and tests'
 - Original task identities, dependencies and all three assertions stay unchanged; history only reference
 handoff:
-  current_step: Finite NarrativeDelta implementation and local tests PASS; exact local replay before delivery
+  current_step: Local implementation and isolated revision replay PASS; ready for later single remote-CI candidate,
+    not VERIFIED
   completed_steps:
   - ADR-004 accepted before interfaces and original IMPLEMENT entry PASS
   - V2-008 102 tests / full UNIT 928 / ARCH 244 PASS,0 skips
   - Original STATIC and five governance checks PASS; no remote CI
+  - 'Exact local checkout f679b5c2c8b753ae175574e501c339cf27e26467: install/focused/static/governance/action entry/architecture
+    scan/demo PASS; source/test bytes match full local regression'
+  - Local secret-only scan:54 detected/54 identified, existing precise decisions consumed; no authority/scanner
+    change
   pending_items:
-  - Exact revision isolated local replay
   - One later same-final-SHA remote six-gate run and formal V2-008 acceptance; not auto-dispatched
-  - P1 aggregate verification remains separate; no P2 start
+  - P1 aggregate verification after V2-008 acceptance; no P2 start
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-008/local-results/EXACT_REPLAY.json
+      sha256: ca5744730b15a38957bde4790168467feac65009b098f387fa643e6057c9b724
     missing_artifact_reason: null
 change_review:
   scope_revision: b52e8c0bc85cef7f62bb9f90aea0a422b4afb230

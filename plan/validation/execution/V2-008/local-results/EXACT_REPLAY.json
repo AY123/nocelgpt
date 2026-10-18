@@ -1,0 +1,28 @@
+{
+  "revision": "f679b5c2c8b753ae175574e501c339cf27e26467",
+  "started_at": "2026-10-18T12:16:22.968937+00:00",
+  "finished_at": "2026-10-18T12:18:12.315470+00:00",
+  "mode": "EXACT_LOCAL_CHECKOUT",
+  "checks": {
+    "focused": 0,
+    "architecture_scan": 0,
+    "demo": 0,
+    "static": 0,
+    "action_entry": 0,
+    "schema_contract": 0
+  },
+  "source_sha256": {
+    "src/anovel/domain/delta.py": "08d1d1e8567defc97d53641520f9e000e0796ded772a5da9b5fa0631e68f93b1",
+    "specs/schemas/narrative-delta.schema.json": "8f55dd81a89a767436bec289c151b19415707c3029696ab5ee1ad2acaabf62c5",
+    "tests/contract/test_v2_008.py": "7b52aed27cdaf83f62d66aca94d9208568f84d087500bbe75a5a373f3b0e1ac8",
+    "demo_v2_008.py": "91a7a87086670d0d3ed1d066db41646b9e803c736019bcb64e1f9c4e6dfa7b42"
+  },
+  "tracked_worktree_clean": true,
+  "root_code_bytes_match": true,
+  "remote_ci_run": false,
+  "not_rerun": [
+    "Full UNIT and ARCH regression already run locally on the same source implementation; raw original reports retained, not relabelled as this SHA.",
+    "No PostgreSQL or dependency audit run; no dependency/DB change."
+  ],
+  "status": "PASS"
+}
