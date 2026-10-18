@@ -6,7 +6,7 @@
 
 AI 执行同时遵守 [AI 开发执行协议](AI_EXECUTION_PROTOCOL.md)。正式开工由任务的 `execution_packet_ref` 绑定非模板执行包；准备、实现、付费调用和认证分别检查前置条件。已有授权内的正常实施和修复自主推进，缺少必要依据则阻断对应动作，不靠模型猜测补齐，也不要求用户逐项重复批准。
 
-前四任务已提供执行级要求，可以开始；并不意味着它们已实现。后续任务具备明确目标和验收映射，具体接口设计在最晚决策点前细化。
+前四任务的执行级要求属于 P0 开工资料；当前状态和验收依据读取机器源及[实施入口](README.md)，不据早期说明重新开始已关闭任务。后续任务具备明确目标和验收映射，具体接口设计在最晚决策点前细化。
 
 `normative_specs` 指向本包现行规则；`design_references` 指向对应领域的原始详细设计快照，便于查阅候选字段和研究背景。参考快照中的旧阶段、证据语义、缺陷 Schema 和完成状态不恢复为现行规则。任务产物与目标测试路径相对项目根目录；规范、参考和验收记录引用相对 plan 目录。
 
@@ -44,7 +44,7 @@ V2-002 将既有检查接入项目根 `scripts/check_governance.py --output-dir 
 
 本地动作入口为项目根 `scripts/task_execution.py check|run|resume --task <id> --action <action> --output <新 JSON>`；`run` 在完整现行校验通过后执行 `--` 后的命令，`resume` 还需 `--checkpoint <旧 PASS JSON>`。入口采集真实 Git/context 与文件内容，重读交接和实际产物；不自动改变任务状态。输出不能覆盖计划或旧记录，仓库内使用 Git 忽略目录。工作区变化后先核对差异并重新 check，不能修改旧 checkpoint 来继承 PASS。命令失败/超时及运行后观察失败分别保留 FAIL/UNKNOWN。
 
-V2-003 已实现本地架构、差异归属和防降标工具并完成本地验证；用法见第 10 节。受限动作必须具备执行包 change_review 绑定；省略 CLI 参数时自动消费绑定，缺失绑定则阻断。PREPARE 可在未冻结 scope 时调查。该入口只约束经它发起的本地命令，不能判断任意命令的业务语义或抵抗同写权限者绕过；可信远端来源与有效权限保护仍由 V2-004 实施。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
+V2-003 已实现本地架构、差异归属和防降标工具，其工程验收见[P0 汇总验收](validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)；用法见第 10 节。受限动作必须具备执行包 change_review 绑定；省略 CLI 参数时自动消费绑定，缺失绑定则阻断。PREPARE 可在未冻结 scope 时调查。该入口只约束经它发起的本地命令，不能判断任意命令的业务语义或抵抗同写权限者绕过；远端来源和权限边界按 V2-004 实际验收及[现行交付规范](07_PLATFORM_SECURITY_AND_DELIVERY.md)核对，不从本地 PASS 推断。LIVE_CALL/CERTIFY 的声明检查可运行，付费/认证子命令在可信授权适配器落实前明确拒绝，不能靠本地预算数字解锁。
 
 ## 5. 工作纪律
 
@@ -101,9 +101,9 @@ V2-003 已实现本地架构、差异归属和防降标工具并完成本地验�
 
 P0 将任务范围与实际代码差异关联，并对验收删减、测试 skip、阈值下降、排除扩大和门禁修改做基线比较。正文、任务验收和测试同时修改仍需评估要求是否被放宽，不能仅凭三者一致放行。受信任比较基线及有效权限由真实交付环境提供，本地结构检查不能自证可信。
 
-V2-003 当前为 IMPLEMENTED，本地实现已验证，可信 CI 与最终验收仍缺失。`scripts/check_architecture.py` 固定扫描整个 `src/anovel` 的 Python 源码，记录文件、导入边和启用阶段；不能通过缩小目录、空扫描或关闭适用 P0 硬门禁得到成功。检查器静态解析绝对/相对导入、别名及可解析加载关系，对不能确定的加载行为返回 finding，不执行候选源码。Workflow 可以请求 `anovel.canon.commit_service` 公共提交服务；`anovel.canon.repository` 内部写能力限制在 repository/commit service 内。尚未存在的业务模块由无副作用测试夹具覆盖，静态检查不证明 P2 运行时权限。
+V2-003 的本地工具与后续工程验收分别保留在任务证据中，当前状态以机器源为准。`scripts/check_architecture.py` 固定扫描整个 `src/anovel` 的 Python 源码，记录文件、导入边和启用阶段；不能通过缩小目录、空扫描或关闭适用 P0 硬门禁得到成功。检查器静态解析绝对/相对导入、别名及可解析加载关系，对不能确定的加载行为返回 finding，不执行候选源码。Workflow 可以请求 `anovel.canon.commit_service` 公共提交服务；`anovel.canon.repository` 内部写能力限制在 repository/commit service 内。尚未存在的业务模块由无副作用测试夹具覆盖，静态检查不证明 P2 运行时权限。
 
-在项目根目录执行，输出文件每次换新名称：
+以下 V2-003 命令与 pin 是历史用法示例，不是当前任务的开工入口；已关闭任务的 IMPLEMENT 仍应被拒绝。新任务从自己的执行包读取固定绑定，在项目根目录执行，输出文件每次换新名称：
 
 ```bash
 .venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-1.json
@@ -115,7 +115,7 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 .venv/bin/python -B -m pytest -q tests/architecture tests/contract
 ```
 
-当前 scope 定位记录见 [pinned-baseline.json](validation/execution/V2-003/followup/pinned-baseline.json)，正式入口从 backlog 绑定的当前执行包读取同一 pin。原交付的 v1/v2/v3 基线保留为历史；本轮报告核实、范围和授权记录见 [followup](validation/execution/V2-003/followup/assessment/authorization.md)。定位文件与 Git pin 均不是远端权限证明。
+V2-003 的历史 scope 定位记录见 [pinned-baseline.json](validation/execution/V2-003/followup/pinned-baseline.json)，对应范围和授权记录见 [followup](validation/execution/V2-003/followup/assessment/authorization.md)。原交付的 v1/v2/v3 基线同样保留为历史。当前任务的正式入口只消费 backlog 所绑定的本任务执行包及 pin；这些定位文件与 Git pin 均不是远端权限证明。
 
 检查比较开工 Git 内容与当前已提交改动、index、worktree 和未跟踪文件，保留删除/新增两端及 rename 提示。既有用户改动仅在身份未变化时单独归属，不能为得到干净差异而恢复或删除。候选 packet/白名单不能扩张固定范围；新增 ignore 不能隐藏被审源码。路径通过仍不证明任务业务语义正确。
 
@@ -141,7 +141,7 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 
 跨 checkout 复核时，固定 scope 的 `pre_existing` 可逐项声明 `allow_absent: true`：仅适用于未跟踪、非可执行的 Ruff/mypy 工具产物与 `.claude/settings.local.json`，且仍绑定确切路径、类型、模式和 SHA256。干净 checkout 不要求复制这些主机文件；文件若存在，身份变化或被暂存仍失败。普通用户文件、已跟踪文件和源码不能使用此声明；未列出的新增文件仍参与范围与弱化检查。声明必须来自固定 Git pin，候选不能自行添加；它不是目录忽略、源码排除或安全扫描例外。
 
-独立差异 CLI 是范围/弱化审查，不替代执行包、动作 ADR、预算或恢复检查；正式动作继续经过任务入口。多个 Agent 共享写权限也不构成独立审核。V2-004 仍须接通实际 CI、远端来源与保护权限，未具备这些证据时不据本地 PASS 关闭任务或进入 P1。
+独立差异 CLI 是范围/弱化审查，不替代执行包、动作 ADR、预算或恢复检查；正式动作继续经过任务入口。多个 Agent 共享写权限也不构成独立审核。V2-004 的实际 CI、来源核验与已接受的单人模式边界见[现行交付规范](07_PLATFORM_SECURITY_AND_DELIVERY.md)及对应验收；本地 PASS 不能替代适用的真实证据，也不能单独关闭任务或放行后续阶段。
 
 在 `PREPARE` 中允许调查未决 ADR；转 `IMPLEMENT`、`LIVE_CALL`、`CERTIFY` 时，按 ADR 最晚时点核对正式决定。任务写成 IN_PROGRESS 不表示所有后续动作都获准。交接记录保存真实结果与下一动作；恢复先与工作区和输入 hash 核对，版本变化后重验受影响证据。详细规则及 V2-002～004 分工见 [AI 开发执行协议](AI_EXECUTION_PROTOCOL.md)，不以本轮文件新增关闭这些工程任务。
 
