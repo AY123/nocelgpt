@@ -108,7 +108,7 @@ handoff:
       sha256: 64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0
     missing_artifact_reason: null
 change_review:
-  scope_revision: b52e8c0bc85cef7f62bb9f90aea0a422b4afb230
-  scope_ref: plan/validation/execution/V2-008/scope.json
+  scope_revision: 0c48e0068f53ffafbd28c978506176aba64de880
+  scope_ref: plan/validation/execution/V2-008/closure-scope.json
   review_revision: 630d5308abe7f9b18f0bf9e985272f57b05603e2
   review_ref: plan/validation/execution/V2-008/implementation-review.json

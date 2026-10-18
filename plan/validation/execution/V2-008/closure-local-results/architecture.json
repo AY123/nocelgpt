@@ -1,0 +1,528 @@
+{
+  "record_type": "local_architecture_check",
+  "status": "PASS",
+  "root": "/Users/angyang/Documents/AI/ANovelOS",
+  "phase": "P0",
+  "package": "src/anovel",
+  "scope": "Static production-source discovery and import policy; synthetic fixtures are separate test evidence",
+  "coverage": {
+    "file_count": 8,
+    "module_count": 8,
+    "bootstrap_only": false
+  },
+  "files": [
+    {
+      "path": "src/anovel/__init__.py",
+      "module": "anovel",
+      "sha256": "e519341f3ee46ba145ea994a5ddab86dbdc0d7bc74d11b5b2bf797a85a59f724"
+    },
+    {
+      "path": "src/anovel/domain/__init__.py",
+      "module": "anovel.domain",
+      "sha256": "f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6"
+    },
+    {
+      "path": "src/anovel/domain/character.py",
+      "module": "anovel.domain.character",
+      "sha256": "8394f88384a562257600532c305ffb444567886ed701c60b667c2b2ebaa59dda"
+    },
+    {
+      "path": "src/anovel/domain/delta.py",
+      "module": "anovel.domain.delta",
+      "sha256": "08d1d1e8567defc97d53641520f9e000e0796ded772a5da9b5fa0631e68f93b1"
+    },
+    {
+      "path": "src/anovel/domain/events.py",
+      "module": "anovel.domain.events",
+      "sha256": "8709af25bfc49adb64ae3feb5cf343ad19569b8e45f12b15e402e1a3269c46e3"
+    },
+    {
+      "path": "src/anovel/domain/identity.py",
+      "module": "anovel.domain.identity",
+      "sha256": "cbacb2cec0edc99e8ef3c9be29443a1c4a14218493798d00f6093055e7a15342"
+    },
+    {
+      "path": "src/anovel/domain/knowledge.py",
+      "module": "anovel.domain.knowledge",
+      "sha256": "a9e471529ecd7ba62398b34a647f2afcd4ca5acf15219341fba83d18bdb4552b"
+    },
+    {
+      "path": "src/anovel/domain/promises.py",
+      "module": "anovel.domain.promises",
+      "sha256": "4dcb070a98378a308bd4406a5d9a99fa27411365ac08c4ca34ae1c64646ec596"
+    }
+  ],
+  "modules": [
+    "anovel",
+    "anovel.domain",
+    "anovel.domain.character",
+    "anovel.domain.delta",
+    "anovel.domain.events",
+    "anovel.domain.identity",
+    "anovel.domain.knowledge",
+    "anovel.domain.promises"
+  ],
+  "edges": [
+    {
+      "source": "anovel.domain.character",
+      "target": "__future__",
+      "path": "src/anovel/domain/character.py",
+      "line": 3,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.character",
+      "target": "dataclasses",
+      "path": "src/anovel/domain/character.py",
+      "line": 5,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.character",
+      "target": "enum",
+      "path": "src/anovel/domain/character.py",
+      "line": 6,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.character",
+      "target": "math",
+      "path": "src/anovel/domain/character.py",
+      "line": 7,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.character",
+      "target": "anovel",
+      "path": "src/anovel/domain/character.py",
+      "line": 9,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.character",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/character.py",
+      "line": 9,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.character",
+      "target": "anovel.domain.identity",
+      "path": "src/anovel/domain/character.py",
+      "line": 9,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "__future__",
+      "path": "src/anovel/domain/delta.py",
+      "line": 8,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "collections.abc",
+      "path": "src/anovel/domain/delta.py",
+      "line": 10,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "dataclasses",
+      "path": "src/anovel/domain/delta.py",
+      "line": 11,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "enum",
+      "path": "src/anovel/domain/delta.py",
+      "line": 12,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "typing",
+      "path": "src/anovel/domain/delta.py",
+      "line": 13,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel",
+      "path": "src/anovel/domain/delta.py",
+      "line": 15,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/delta.py",
+      "line": 15,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel.domain.events",
+      "path": "src/anovel/domain/delta.py",
+      "line": 15,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel",
+      "path": "src/anovel/domain/delta.py",
+      "line": 16,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/delta.py",
+      "line": 16,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel.domain.identity",
+      "path": "src/anovel/domain/delta.py",
+      "line": 16,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel",
+      "path": "src/anovel/domain/delta.py",
+      "line": 17,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/delta.py",
+      "line": 17,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.delta",
+      "target": "anovel.domain.knowledge",
+      "path": "src/anovel/domain/delta.py",
+      "line": 17,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "__future__",
+      "path": "src/anovel/domain/events.py",
+      "line": 7,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "collections.abc",
+      "path": "src/anovel/domain/events.py",
+      "line": 9,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "dataclasses",
+      "path": "src/anovel/domain/events.py",
+      "line": 10,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "enum",
+      "path": "src/anovel/domain/events.py",
+      "line": 11,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "anovel",
+      "path": "src/anovel/domain/events.py",
+      "line": 13,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/events.py",
+      "line": 13,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.events",
+      "target": "anovel.domain.identity",
+      "path": "src/anovel/domain/events.py",
+      "line": 13,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.identity",
+      "target": "__future__",
+      "path": "src/anovel/domain/identity.py",
+      "line": 3,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.identity",
+      "target": "collections.abc",
+      "path": "src/anovel/domain/identity.py",
+      "line": 5,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.identity",
+      "target": "dataclasses",
+      "path": "src/anovel/domain/identity.py",
+      "line": 6,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.identity",
+      "target": "enum",
+      "path": "src/anovel/domain/identity.py",
+      "line": 7,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "__future__",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 7,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "collections.abc",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 9,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "dataclasses",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 10,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "enum",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 11,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "math",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 12,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "typing",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 13,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "anovel",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 15,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 15,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "anovel.domain.character",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 15,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "anovel",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 16,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 16,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.knowledge",
+      "target": "anovel.domain.identity",
+      "path": "src/anovel/domain/knowledge.py",
+      "line": 16,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "__future__",
+      "path": "src/anovel/domain/promises.py",
+      "line": 7,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "dataclasses",
+      "path": "src/anovel/domain/promises.py",
+      "line": 9,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "enum",
+      "path": "src/anovel/domain/promises.py",
+      "line": 10,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "anovel",
+      "path": "src/anovel/domain/promises.py",
+      "line": 12,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/promises.py",
+      "line": 12,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "anovel.domain.events",
+      "path": "src/anovel/domain/promises.py",
+      "line": 12,
+      "kind": "import"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "anovel",
+      "path": "src/anovel/domain/promises.py",
+      "line": 13,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "anovel.domain",
+      "path": "src/anovel/domain/promises.py",
+      "line": 13,
+      "kind": "package-initializer"
+    },
+    {
+      "source": "anovel.domain.promises",
+      "target": "anovel.domain.identity",
+      "path": "src/anovel/domain/promises.py",
+      "line": 13,
+      "kind": "import"
+    }
+  ],
+  "gates": [
+    {
+      "id": "STATIC",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "UNIT",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "SCHEMA_CONTRACT",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "ARCH_FITNESS",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "SECRET_DEPENDENCY",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "POSTGRES_ENV",
+      "activation_phase": "P0",
+      "applicable": true,
+      "disabled_requested": false,
+      "result": "POLICY_CHECK_ONLY",
+      "reason": "No CI execution is attested"
+    },
+    {
+      "id": "CANON_CAS_IDEMPOTENCY",
+      "activation_phase": "P2",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    },
+    {
+      "id": "DETERMINISTIC_E2E",
+      "activation_phase": "P7",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    },
+    {
+      "id": "GENRE_SMOKE",
+      "activation_phase": "P8",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    },
+    {
+      "id": "LIVE_PROVIDER",
+      "activation_phase": "P5",
+      "applicable": false,
+      "disabled_requested": false,
+      "result": "NOT_APPLICABLE",
+      "reason": "Activation is after P0"
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "No candidate module is imported or executed.",
+    "Static imports, package re-exports and recognized literal loaders are inspected; arbitrary reflection is not proven safe.",
+    "Aliases are conservatively combined across scopes; unresolved loader forms fail for review.",
+    "P0 Canon caller policy is provisional static enforcement, not a P2 runtime/DB capability proof.",
+    "Shared repository write access, remote CI provenance and protected permissions are not attested."
+  ]
+}

@@ -1,0 +1,586 @@
+{
+  "task_id": "V2-008",
+  "baseline_pin": {
+    "revision": "0c48e0068f53ffafbd28c978506176aba64de880",
+    "ref": "plan/validation/execution/V2-008/closure-scope.json",
+    "sha256": "e303865dc41aa5b1eb3bf6ceb1fed422a297783038c6155c67b09fc02d87751f"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "new_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "fa1bf5a9b5dbe4d5d326a9b6fd61cff0545cf54a6efb6443c04746455c03f736",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "new_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "9a28dd6d3a67b9f7b2ae7c569e34dc46cae572f552a178f562c9d49b31bea20b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "old_sha": "649c135de7a99e9355069e0303cf5f3a9ca9a019fdf60d8acb4fcc9320fdd83d",
+      "new_sha": "1da8fc8f45a29b534c2e0d7e1fa6bb1d21a6c23b6bf31a69e542ee1b444329be",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "bd9521d5ca6be4a9b680cf095f735b9dfddfae927dd8884b1de45d9617e65a5e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "old_sha": "649c135de7a99e9355069e0303cf5f3a9ca9a019fdf60d8acb4fcc9320fdd83d",
+      "new_sha": "1da8fc8f45a29b534c2e0d7e1fa6bb1d21a6c23b6bf31a69e542ee1b444329be",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "170b3d1f2a0704e0c2f032fd71e54652dfe9e8739933e1ccc4bc695c79742798",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "old_sha": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+      "new_sha": "f52a7db84661bf6d28634a802beaa78a6d500447fb7292e23cdd0585705ce6cb",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "5c1818ba8ab4339ad9d5130e429f3812b4360becefd118c736e5955a0a9b015f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_ai_execution.py",
+      "old_sha": "9b21f2d33e32c4510ba8ce9fe7732f8f33353248462b5038e738fc5676b9c53c",
+      "new_sha": "f52a7db84661bf6d28634a802beaa78a6d500447fb7292e23cdd0585705ce6cb",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "913059e619beebcaa3c35810106fcf2cd09f61a686391c681bdb0a8ca7b2a243",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5",
+      "new_sha": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "48d0b52d00caf5a92710cc6317e053593c28f710812a81c6fdebf321fb4f6c76",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5",
+      "new_sha": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "e2fc1c372cac01312103a79d1c0f4a64d2587d7c79d562350a0818064b2f84e7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "new_sha": "fcc583013e6568084b31b87a8cb2446480b393df137319550b133478f7aff30a",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "d7b0a37048c557cdeb9946a7f03ae4b382bab9a778f512c5b608036c66e20cab",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "new_sha": "fcc583013e6568084b31b87a8cb2446480b393df137319550b133478f7aff30a",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "b16a88d46ef395ac8ec204fee2d1ab27d515d00906c4faa94320000cc67933a6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "old_sha": "5197329e5fe3ffd1b5d4524e1c549db574f4a9a98a8a90bfe1fa7a416056f79d",
+      "new_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "1e04509d50857f61a54706b82ac1edb98ef5ee145ea38c4060411230b1f28dbd",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_task_execution.py",
+      "old_sha": "5197329e5fe3ffd1b5d4524e1c549db574f4a9a98a8a90bfe1fa7a416056f79d",
+      "new_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "db608d9b3ea9b29d095e415efe0e87664998a88488494f4b58961ceacfccc8b4",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Actual same-SHA run39128464248 passed six mandatory gates and1173 tests0skip, including all381 P1 cases. Task readiness and phase refinement now reflect accepted implemented work. Four test edits only restore isolated old-P0 phase/milestone premises after live P1 progress; every assertion, test case, positive baseline validity check and rejection remains. Closure-specific scope explicitly includes this authorized phase registration and synthetic-fixture maintenance; original implementation scope/history preserved.",
+      "impact": "No business domain/Schema, task ID/dependency/assertion, phase criterion, mandatory gate, scanner policy, secret decision or runtime permission changed. No skipped/deleted tests or warning fallback. Metadata/fixture registration revision is not represented as remotely tested. No P2 implementation.",
+      "reviewer": "Codex same implementing/verifying operator technical review; no independent personnel claim",
+      "replacement_validation": "Remote UNIT928/ARCH244/PG1 PASS atf611ba3; actual current local five governance checks and54 fixture pytest cases PASS0skip; STATIC and architecture scan PASS. Existing prior domain source/test blobs match current tested revision.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/closure-authorization.txt",
+        "sha256": "6c3d8be25cf30606dcf34e18145f718f0cc9dd78fe020fd00938893c6b19054e"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "cd4518a2b1368852529465dbfe4c64194a037337d233b7353c52eee02b2f2894"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "b6a3ec6937520e98963be5652ec275ed972ac2d67cc96768f7f968c2834f58bc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "110262146c7f98e19301f8331e074a3c9f59128e82f0956de0f2dfdd008ba0c7"
+        },
+        {
+          "ref": "plan/validation/execution/P1/closure-20261018/CRITERIA_COVERAGE.json",
+          "sha256": "64d0f7f6025bb51a99df124b0bfa83b3b71fa0d38139f78cf927e01024b535a0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/SUMMARY.json",
+          "sha256": "22e7c93e54e539f79dfec8bfe8a946982a07680b3fc3781f280108ef7286709a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/governance-summary.json",
+          "sha256": "81b275065340a8eb9a36fe81c89bb3b21029b3c8c99ac1132ccfc916f407947a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/closure-local-results/fixtures.xml",
+          "sha256": "667b299166a30bd62a82993dc365aa60536bce92318a049c2ef497b3df1898a8"
+        }
+      ]
+    }
+  ]
+}

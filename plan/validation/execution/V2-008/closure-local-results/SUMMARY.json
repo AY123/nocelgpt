@@ -1,0 +1,21 @@
+{
+  "kind": "LOCAL_POST_ACCEPTANCE_REGISTRATION_CHECK",
+  "remote_tested_revision": "f611ba3374f3974280d591159c5f58d4aee296a8",
+  "registration_scope_pin": "0c48e0068f53ffafbd28c978506176aba64de880",
+  "governance": "5/5 PASS",
+  "fixture_pytest": {
+    "tests": 54,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "static": "PASS",
+  "architecture_scan": "PASS",
+  "modified_test_fixture_sha256": {
+    "plan/scripts/test_governance.py": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c",
+    "plan/scripts/test_ai_execution.py": "f52a7db84661bf6d28634a802beaa78a6d500447fb7292e23cdd0585705ce6cb",
+    "tests/contract/test_plan_governance.py": "fcc583013e6568084b31b87a8cb2446480b393df137319550b133478f7aff30a",
+    "tests/contract/test_task_execution.py": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c"
+  },
+  "limits": "Post-CI fixture/state maintenance tested locally, not claimed as another remote six-gate run; production domain/Schema unchanged."
+}
