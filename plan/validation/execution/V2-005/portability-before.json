@@ -1,0 +1,12 @@
+{
+  "subject_revision": "39be349cba2b06c1e2ffc49761c158c53e5b8ee3",
+  "check": "Actual V2-005 IMPLEMENT entry in fresh Git checkout",
+  "status": "BLOCKED",
+  "exit_code": 2,
+  "errors": [
+    "ENTRY_DIFF: actual changes failed frozen scope or weakening review"
+  ],
+  "missing_host_local_inputs": 39,
+  "checkout": "/var/folders/10/r2gqmdy11s1_21qd9r9tmwsh0000gn/T/anovel-v2005-before-j5uavc3d/repository",
+  "remote_ci_created": false
+}

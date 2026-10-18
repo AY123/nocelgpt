@@ -1,0 +1,4 @@
+2026-10-18 direct user continuation: “继续”, following the proposed V2-005 clean-checkout portability fix.
+Repair the actual task-entry dependency on host-local Ruff/mypy caches and .claude/settings.local.json. Preserve production source, ordinary user edits, exact immutable review bindings, mandatory gates and fail-closed behavior. Add bounded regression tests and run local fresh-checkout verification.
+Existing Owner instruction continues to require development and delivery on main. No remote CI dispatch, new secret approvals, paid calls or task closure in this repair.
+The new action opens from already delivered main 39be349cba2b06c1e2ffc49761c158c53e5b8ee3; prior V2-005 implementation and review history are retained, not reclassified as remotely accepted.
