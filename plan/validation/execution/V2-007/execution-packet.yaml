@@ -1,0 +1,104 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-007
+plan_version: 1.3.0
+repository_revision: b5d050d89b2c43871dbc5a51870ec97eaa18a119
+worktree_dirty: false
+plan_manifest_sha256: 4124cf4f3e2e3fbb00f036fd90fb15b7b18928ad89a947d78f953bb4f4591334
+environment:
+  fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex primary with bounded delegated domain subtasks after ADR/action gate
+verifier: Same Codex operator and technical cross-checks; no independent personnel claim
+owner_role: domain-maintainer
+scope: V2-007 pure in-memory Event occurrence identity, narrative/story timeline ordering, Promise windows/lifecycle
+  and strict JSON contracts. No knowledge mutation, Delta/reducer, Canon/persistence, Provider or remote CI.
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-007/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 04_GENRE_AND_STORY_FIXTURES.md
+  ref: validation/execution/V2-007/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
+  sha256: 9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-007/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-007/inputs/f37d4e6a5b93d277feb3b156db37f0d404d621b6a7970d623fad1c5a09e7f28d.txt
+  sha256: f37d4e6a5b93d277feb3b156db37f0d404d621b6a7970d623fad1c5a09e7f28d
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-007/inputs/e9e909904b011ede264f7a9e4bb57df3ebce6adb7906824552b0bad0d3883a9c.txt
+  sha256: e9e909904b011ede264f7a9e4bb57df3ebce6adb7906824552b0bad0d3883a9c
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-007/inputs/73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40.txt
+  sha256: 73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-007/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/domain/events.py
+- src/anovel/domain/promises.py
+- specs/schemas/events.schema.json
+- specs/schemas/promises.schema.json
+- tests/contract/test_v2_007.py
+- demo_v2_007.py
+allowed_paths:
+- src/anovel/domain/events.py
+- src/anovel/domain/promises.py
+- specs/schemas/events.schema.json
+- specs/schemas/promises.schema.json
+- tests/contract/test_v2_007.py
+- demo_v2_007.py
+- plan/decisions/ADR-003_EVENT_TIMELINE_PROMISE.md
+- plan/validation/execution/V2-007/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/decision-register.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- AGENTS.md
+- README.md
+- plan/README.md
+- tests/contract/test_plan_governance.py
+- tests/contract/test_task_execution.py
+required_decisions:
+- ADR-003
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse EntityId and frozen dataclasses/closed JSON boundaries; no dependency change
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 7200
+stop_conditions:
+- Unrelated user modifications would be lost
+- Need DB/Provider/Canon/reducer, remote CI/settings or scanner/authority changes
+- Actual mandatory gate weakening required
+review_notes:
+- Direct user start covers ADR-003 preparation then bounded local implementation, not a product or phase acceptance
+- History is reference only; preserve all task IDs/dependencies and three acceptance assertions
+- Known existing prerequisite-fixture paths are bounded for necessary regression repairs, not exempt from exact
+  review
+handoff:
+  current_step: PREPARE ADR-003; no event/promise source implementation yet
+  completed_steps:
+  - Actual clean main and G-P0/V2-005 dependency read; V2-006 contracts reviewed
+  pending_items:
+  - Decide occurrence/story order/window semantics before interface code
+  - Run original action gate, implementation and local checks
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
