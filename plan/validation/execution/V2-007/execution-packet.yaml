@@ -4,7 +4,7 @@ task_id: V2-007
 plan_version: 1.3.0
 repository_revision: b5d050d89b2c43871dbc5a51870ec97eaa18a119
 worktree_dirty: false
-plan_manifest_sha256: 4124cf4f3e2e3fbb00f036fd90fb15b7b18928ad89a947d78f953bb4f4591334
+plan_manifest_sha256: f42b611cb0a90c4fa95291fe6fa502bf7ca2643b63ae1fa3fcc5dcb3a66f184b
 environment:
   fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
   runtime_versions:
@@ -17,7 +17,7 @@ verifier: Same Codex operator and technical cross-checks; no independent personn
 owner_role: domain-maintainer
 scope: V2-007 pure in-memory Event occurrence identity, narrative/story timeline ordering, Promise windows/lifecycle
   and strict JSON contracts. No knowledge mutation, Delta/reducer, Canon/persistence, Provider or remote CI.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-007/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -29,14 +29,14 @@ inputs:
   ref: validation/execution/V2-007/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-007/inputs/f37d4e6a5b93d277feb3b156db37f0d404d621b6a7970d623fad1c5a09e7f28d.txt
-  sha256: f37d4e6a5b93d277feb3b156db37f0d404d621b6a7970d623fad1c5a09e7f28d
+  ref: validation/execution/V2-007/inputs/cd6bebe51733e7608895825ea019d4cb1941e4f991390083c775471250fbca40.txt
+  sha256: cd6bebe51733e7608895825ea019d4cb1941e4f991390083c775471250fbca40
 - source_ref: machine/test-catalog.yaml
   ref: validation/execution/V2-007/inputs/e9e909904b011ede264f7a9e4bb57df3ebce6adb7906824552b0bad0d3883a9c.txt
   sha256: e9e909904b011ede264f7a9e4bb57df3ebce6adb7906824552b0bad0d3883a9c
 - source_ref: machine/decision-register.yaml
-  ref: validation/execution/V2-007/inputs/73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40.txt
-  sha256: 73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40
+  ref: validation/execution/V2-007/inputs/c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a.txt
+  sha256: c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a
 - source_ref: machine/ai-execution-policy.yaml
   ref: validation/execution/V2-007/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
   sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
@@ -91,14 +91,18 @@ review_notes:
 - Known existing prerequisite-fixture paths are bounded for necessary regression repairs, not exempt from exact
   review
 handoff:
-  current_step: PREPARE ADR-003; no event/promise source implementation yet
+  current_step: ADR-003 accepted against committed source; run IMPLEMENT gate before interface code
   completed_steps:
-  - Actual clean main and G-P0/V2-005 dependency read; V2-006 contracts reviewed
+  - PREPARE action PASS
+  - ADR-003 committed and accepted before source implementation
   pending_items:
-  - Decide occurrence/story order/window semantics before interface code
-  - Run original action gate, implementation and local checks
-  next_action: PREPARE
+  - Implement pure in-memory domain and original three acceptance cases
+  - Local gates only; remote CI and formal acceptance not run
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
+change_review:
+  scope_revision: f2bd207d6e4bf64645514c0683364c7fd81339a9
+  scope_ref: plan/validation/execution/V2-007/scope.json
