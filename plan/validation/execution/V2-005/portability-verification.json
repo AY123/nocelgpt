@@ -1,0 +1,39 @@
+{
+  "record_type": "local_portability_verification",
+  "task_id": "V2-005",
+  "role": "Same Codex operator implementation and technical review; not independent personnel acceptance",
+  "opening_revision": "39be349cba2b06c1e2ffc49761c158c53e5b8ee3",
+  "source_sha256": {
+    "plan/scripts/change_review.py": "5e2c3eea1d8e079fc9e1251b3540942090e3b691588c99a0ec954b4f32b1a8c1",
+    "tests/architecture/test_change_review.py": "d4a686fb067e9e6ab9120ea64cc0bec5b3235f322ab13e43c7784286b6007d2e",
+    "plan/09_TASK_EXECUTION_GUIDE.md": "baee88a0f5a22f9c5f584840c0f5d48bb6718af64f25435ea7539753639e070b"
+  },
+  "checks": {
+    "focused_passed": 87,
+    "focused_skipped": 0,
+    "static": "PASS",
+    "schema_contract": "PASS",
+    "additional_lint": "PASS",
+    "fresh_checkout_before_repair": "BLOCKED: 39 missing host-local artifacts"
+  },
+  "test_semantics": [
+    "Exact pinned optional host artifacts may be absent in a clean clone",
+    "Present changed/staged/symlink host files fail",
+    "Ordinary required user files remain required",
+    "Tracked files and source cannot be optional",
+    "Unlisted source/cache files remain reviewed",
+    "Malformed optional records and candidate scope edits fail closed"
+  ],
+  "artifacts": {
+    "dist/validation/v2005-portability-20261018/final-focused-junit.xml": "58961073bd91b9df87142a3a518f63a3217c139f2d64e887d33be1fd87d31c6e",
+    "dist/validation/v2005-portability-20261018/additional-controls-junit.xml": "b8e155fed136d0cf641f9a8dbba1a13c1765ed7655d0275470bb466343ae22aa",
+    "dist/validation/v2005-portability-20261018/static-before-pin/receipt.json": "5c7a6088299179c79793c1ca084d9399c01afa9194acfbd80a82970540f543e9",
+    "dist/validation/v2005-portability-20261018/schema-before-pin/receipt.json": "f305f1b3c3adf9b65dab06caade52a624588deb4f7a3102bd310636f1f1bb15c",
+    "dist/validation/v2005-portability-20261018/before-summary.json": "6c8537a30e95f7ad2d1319207a9b4154271ad9a50002141a5a8416788cd5ab35"
+  },
+  "limitations": [
+    "Exact committed clean-checkout gate run follows; not claimed complete here",
+    "Focused run preceded removal of an already unused test import; test bodies unchanged",
+    "No remote CI, task closure, scanner exception or new product feature"
+  ]
+}
