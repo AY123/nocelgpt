@@ -15,3 +15,5 @@ ADR-003原文先在f2bd207固定，再由c586d98登记接受，IMPLEMENT入口PA
 V2-007专项 81项、全UNIT 826项、ARCH 244项通过，0 skip；STATIC和五项治理检查PASS。原始本地receipt/JUnit与代码hash在 `local-results/`；这些record的revision是当时dirty worktree的HEAD上下文，不冒称该HEAD已包含实现。固定后隔离复核另在dist保存actual SHA及结果。
 
 不改知识/事实/Intent，不新增DB、Provider、Canon/reducer、Agent或付费调用；不认证自然语言确已发生/兑现，不声称小说生产能力。首轮UNIT有两项被沙箱uv缓存权限阻止；未删改测试，改在沙箱外重跑原始门禁并通过。终态直接断言已在重跑前补强，后续固定版本复核使用最终测试文件。尚需选择一次关键交付的同SHA真实六门CI，再单独做正式验收。未触发远程CI。
+
+隔离复核实际SHA：`1b3326c5447b5450a36ae8a7c63677fd1ea61319`。锁定依赖离线安装、最终81条专项、STATIC、五项治理、原始IMPLEMENT入口、实际架构扫描及demo全部PASS，隔离工作区干净，六个实现/Schema/测试/演示文件与完整本地回归的摘要hash完全一致。未将旧完整回归重新标成此SHA。见 `local-results/EXACT_REPLAY.json`。本地secret-only额外扫描54项全部消费既有精确决定；未重跑依赖漏洞审计，不冒称完整SECRET_DEPENDENCY门禁。

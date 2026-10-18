@@ -1,0 +1,30 @@
+{
+  "revision": "1b3326c5447b5450a36ae8a7c63677fd1ea61319",
+  "started_at": "2026-10-18T10:14:16.735058+00:00",
+  "finished_at": "2026-10-18T10:16:01.989548+00:00",
+  "mode": "EXACT_LOCAL_CHECKOUT",
+  "checks": {
+    "focused": 0,
+    "architecture_scan": 0,
+    "demo": 0,
+    "static": 0,
+    "action_entry": 0,
+    "schema_contract": 0
+  },
+  "source_sha256": {
+    "src/anovel/domain/events.py": "8709af25bfc49adb64ae3feb5cf343ad19569b8e45f12b15e402e1a3269c46e3",
+    "src/anovel/domain/promises.py": "4dcb070a98378a308bd4406a5d9a99fa27411365ac08c4ca34ae1c64646ec596",
+    "specs/schemas/events.schema.json": "db9d9f1ab48d9095f95c126550f271ac635474593c9a4e02828ab0ff514c20e1",
+    "specs/schemas/promises.schema.json": "0df05e7c77aea4a2b3a386754caddbd8d657ed19cf0d343dfdbd519424867f94",
+    "tests/contract/test_v2_007.py": "7b86a8de5c5253c38a377721f5e6844d6d08d3bc934faf09587d39ec6b3cab65",
+    "demo_v2_007.py": "bc9703b4acecde8221bc0e77fa90d54c4dc624904ca0f07bde96387224d76094"
+  },
+  "tracked_worktree_clean": true,
+  "root_code_bytes_match": true,
+  "remote_ci_run": false,
+  "not_rerun": [
+    "Full UNIT and ARCH regression already run locally on the same source implementation; raw original reports retained, not relabelled as this SHA.",
+    "No PostgreSQL or dependency audit run; no dependency/DB change."
+  ],
+  "status": "PASS"
+}
