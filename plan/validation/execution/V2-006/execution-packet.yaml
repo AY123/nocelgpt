@@ -92,28 +92,25 @@ review_notes:
 - Previous nine-file documentation cleanup is carried unchanged except current task entry updates; historical evidence
   stays untouched.
 - ADR-002 must be accepted before interface implementation.
+- Current direct human continuation after explicit proposal authorized main push, one remote six-gate run and evidence-based
+  acceptance. Previous local-only/no-push/no-CI boundary belonged to prior implementation run; original source snapshots
+  remain unchanged.
 handoff:
-  current_step: Local exact-checkout verification completed; V2-006 IMPLEMENTED; remote CI and task acceptance pending
+  current_step: V2-006 CLOSED at e210078441f7d9df9fc78dc904aef998abf6f4f7 / run39106725089
   completed_steps:
-  - ADR-002 accepted before interfaces; Entity code/schema unchanged
-  - Character and Relationship immutable leaves with strict closed serialization
-  - Explicit observations, holder-bound acquisitions, beliefs, goals and intents implemented
-  - 198 domain tests PASS (97 V2-005 +101 V2-006); demo PASS
-  - STATIC equivalent commands, ARCH244 and five governance commands PASS
-  - Prerequisite mutation fixture repaired in isolated data only; 15 focused regressions PASS; bootstrap5 PASS after
-    sandbox-cache rerun
-  - 'Exact local revision 3f8068d631d122e3e455890cd9f689ab830d2026: UNIT745/745 ARCH244/244 STATIC/SCHEMA PASS,0skip;
-    demo PASS;54 secret findings exact-consumed, no new findings'
+  - Character/Relationship and explicit knowledge/belief/goal/intent implemented
+  - Local clean-checkout verification retained at its original revision
+  - 'One exact-SHA GitHub run: all six mandatory gates PASS,101 V2-006 domain cases'
+  - Four scenarios and code/test/CI/acceptance records bound to same tested revision
   pending_items:
-  - No remote CI/push in this run; formal acceptance still pending
-  - Database and dependency-vulnerability gates must be included in key-delivery six-gate CI; no inheritance of
-    PASS from old revisions
-  next_action: IMPLEMENT
+  - V2-007 remains OPEN; prepare ADR-003 before Event/Timeline/Promise interfaces
+  - P1 not verified; no persistence, Canon, Provider, text or reader/market closure
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-006/LOCAL_VERIFICATION.json
-      sha256: 75cbc3aaff8f6c13dc9bde5378f8389e1ce823380fe3933b8394a3cb89bc5356
+    - ref: validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json
+      sha256: 634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0
     missing_artifact_reason: null
 change_review:
   scope_revision: a534f61b63bc517037ee81d52ef9f7efef80107e

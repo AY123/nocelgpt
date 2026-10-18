@@ -1,0 +1,204 @@
+{
+  "status": "PASS",
+  "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+  "repository": "AY123/nocelgpt",
+  "repository_id": 1421585508,
+  "pipeline_id": 39106725089,
+  "pipeline_url": "https://github.com/AY123/nocelgpt/actions/runs/39106725089",
+  "run_attempt": 1,
+  "event": "workflow_dispatch",
+  "six_mandatory_gates": {
+    "secret_dependency": {
+      "status": "PASS",
+      "job_id": 117614060885,
+      "artifact": "gate-secret_dependency-39106725089-1.zip",
+      "receipt_sha256": "a62a887bdae0addfe3b37ff70a025cb4eea3731c7b9927da25c65915dc0a5237",
+      "command_count": 2,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "unit": {
+      "status": "PASS",
+      "job_id": 117614060781,
+      "artifact": "gate-unit-39106725089-1.zip",
+      "receipt_sha256": "e070f3618c2637ad226010102a7e4b77dd8568ab7fb702bc7bddaad751db2b2f",
+      "command_count": 2,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 745,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "domain_tests": 101,
+      "scenario_tests": {
+        "AT-V2-006-01": [
+          "test_character_all_nondefault_derived_fields_roundtrip",
+          "test_registry_rename_preserves_character_subtype_and_nondefault_fields",
+          "test_relationship_has_identity_and_preserves_negative_trust",
+          "test_whole_projection_preserves_nondefault_fields_and_replays_acquisitions"
+        ],
+        "AT-V2-006-02": [
+          "test_single_invalid_character_field_rejected_by_code_and_schema[entity_type-LOCATION]",
+          "test_single_invalid_character_field_rejected_by_code_and_schema[lifecycle-DESTROYED]",
+          "test_single_invalid_character_field_rejected_by_code_and_schema[lifecycle-DISBANDED]",
+          "test_character_required_discriminator_and_version_not_inferred[id]",
+          "test_generic_entity_parser_does_not_silently_downcast_character"
+        ],
+        "AT-V2-006-03": [
+          "test_world_fact_and_false_belief_coexist_without_magical_knowledge",
+          "test_correct_observation_grants_only_actual_witnesses",
+          "test_known_boolean_contradiction_is_explicit_but_unseen_world_is_not"
+        ],
+        "AT-V2-006-04": [
+          "test_goal_and_mistaken_plan_do_not_change_actual_world_or_knowledge",
+          "test_intent_cannot_borrow_another_characters_belief",
+          "test_intent_cannot_use_a_world_fact_that_its_owner_has_not_learned"
+        ]
+      }
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "job_id": 117614060538,
+      "artifact": "gate-postgres_env-39106725089-1.zip",
+      "receipt_sha256": "d420f6dcc5ec1eec2356c82abb165e79d34b1d99ea8dd65167473bb9fe7ce26d",
+      "command_count": 1,
+      "command_exit_codes": [
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 1,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "job_id": 117614060745,
+      "artifact": "gate-schema_contract-39106725089-1.zip",
+      "receipt_sha256": "3edde631aaa90be8cc7129de3c387cdd06ead1d5077c5cb250c49a34868c1606",
+      "command_count": 1,
+      "command_exit_codes": [
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "job_id": 117614060980,
+      "artifact": "gate-arch_fitness-39106725089-1.zip",
+      "receipt_sha256": "3118174383958290b1c68c4fe7ca58c7b1752289f699950a76725533e24b9630",
+      "command_count": 3,
+      "command_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 244,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "static": {
+      "status": "PASS",
+      "job_id": 117614060784,
+      "artifact": "gate-static-39106725089-1.zip",
+      "receipt_sha256": "372ed8c008f4b08b21a57ca50795859191e6f98285dc1543b9a17f6ba01ece3d",
+      "command_count": 5,
+      "command_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    }
+  },
+  "junit_totals": {
+    "tests": 990,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "artifacts": [
+    {
+      "name": "gate-secret_dependency-39106725089-1.zip",
+      "artifact_id": 12129210086,
+      "sha256": "e5f80f3772d3853d5d5839672c12bd33f37c9b785941abc387ef786603ba2035",
+      "bytes": 21452,
+      "github_digest": "sha256:e5f80f3772d3853d5d5839672c12bd33f37c9b785941abc387ef786603ba2035",
+      "run_id": 39106725089,
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7"
+    },
+    {
+      "name": "gate-unit-39106725089-1.zip",
+      "artifact_id": 12128537670,
+      "sha256": "805a98d8c402ad41139ea93f36be19505530b0d9cfda754bd86b12f177bb43a1",
+      "bytes": 13011,
+      "github_digest": "sha256:805a98d8c402ad41139ea93f36be19505530b0d9cfda754bd86b12f177bb43a1",
+      "run_id": 39106725089,
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7"
+    },
+    {
+      "name": "gate-postgres_env-39106725089-1.zip",
+      "artifact_id": 12128419049,
+      "sha256": "918d83d69b94e9b3803fc791543963a771deba1e403eada84721c482cf1c25e0",
+      "bytes": 1831,
+      "github_digest": "sha256:918d83d69b94e9b3803fc791543963a771deba1e403eada84721c482cf1c25e0",
+      "run_id": 39106725089,
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7"
+    },
+    {
+      "name": "gate-schema_contract-39106725089-1.zip",
+      "artifact_id": 12128369568,
+      "sha256": "7f5240095ee80025f594d38e1a3d7ff9032c53abe2da92a1b97f38a344955cce",
+      "bytes": 29947,
+      "github_digest": "sha256:7f5240095ee80025f594d38e1a3d7ff9032c53abe2da92a1b97f38a344955cce",
+      "run_id": 39106725089,
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7"
+    },
+    {
+      "name": "gate-arch_fitness-39106725089-1.zip",
+      "artifact_id": 12128324400,
+      "sha256": "8ec3923b66de5ac53b92eaa9a3de198e188737be5cf46700c364a2f640f63d64",
+      "bytes": 152775,
+      "github_digest": "sha256:8ec3923b66de5ac53b92eaa9a3de198e188737be5cf46700c364a2f640f63d64",
+      "run_id": 39106725089,
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7"
+    },
+    {
+      "name": "gate-static-39106725089-1.zip",
+      "artifact_id": 12127829069,
+      "sha256": "e283d0a1196c6e9db0d1face63a607a985d8ca80aca55cec552443f6e9b73bd0",
+      "bytes": 2856,
+      "github_digest": "sha256:e283d0a1196c6e9db0d1face63a607a985d8ca80aca55cec552443f6e9b73bd0",
+      "run_id": 39106725089,
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7"
+    }
+  ],
+  "verified_at": "2026-10-18T08:00:58.074058+00:00",
+  "remote_dispatch_attempts": 1,
+  "automatic_retries": 0,
+  "implementation_and_verification": "same operator; no independent personnel review claim",
+  "permission_boundary": "Owner-directed single-operator profile, not adversarial branch protection",
+  "source_revision_after_this_run": "future acceptance registration is metadata-only and is not represented as a tested revision"
+}

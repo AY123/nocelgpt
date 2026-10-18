@@ -1,0 +1,450 @@
+{
+  "task_id": "V2-006",
+  "baseline_pin": {
+    "revision": "a534f61b63bc517037ee81d52ef9f7efef80107e",
+    "ref": "plan/validation/execution/V2-006/scope-with-regression.json",
+    "sha256": "54d6a4ebfb72731098a3256adb101e07535ea8d9f2dc17dbc086d07e7738d756"
+  },
+  "dispositions": [
+    {
+      "path": "AGENTS.md",
+      "old_sha": "bf8b2102728207559e001b6ec53ec19e14f0d272ab582ebc366b1937414298ed",
+      "new_sha": "d83116e60d0f90905302a00d02923bcb3571a195be50daa58c08cbd70c7ed691",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "26f7aa68dff5f1acd2e206d546a1df4a33ed3cf0fd270af04dca015d537fbae9",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Update task navigation to V2-006 CLOSED only after real exact-SHA six-gate run39106725089; P1 remains unverified and next task stays OPEN. All execution rules retained.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "old_sha": "bf8b2102728207559e001b6ec53ec19e14f0d272ab582ebc366b1937414298ed",
+      "new_sha": "d83116e60d0f90905302a00d02923bcb3571a195be50daa58c08cbd70c7ed691",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "d47a39f71340862699dbc4d73935b9e6bfc86210fd9abaef9f8cb0a751c6e086",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Update task navigation to V2-006 CLOSED only after real exact-SHA six-gate run39106725089; P1 remains unverified and next task stays OPEN. All execution rules retained.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/decision-register.yaml",
+      "old_sha": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "new_sha": "73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "a8cca0872a4569ce9eaad39a377ed339716e0065062d60a8f8a4c9af3419e24d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Register actual ADR-002 original source and typed acceptance before interfaces; no decision bypass.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/decision-register.yaml",
+      "old_sha": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "new_sha": "73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "bd6a1d139fe298f555925323c1f63fa11e89a30f85efab33a175a10f574c9575",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Register actual ADR-002 original source and typed acceptance before interfaces; no decision bypass.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "a5e77dcda2fd5830ce714452ae356b2017f0751739ff7793841d52a8e7e2e1a8",
+      "new_sha": "7ea87a2d75ac77cd7b024b6c040f381abc09f092f22d966d3a72dca1c9452175",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "0d3bd421b523db3f3c16f602ef132f11a677158e2caef50320f74a5a59b11e4d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Record four same-SHA typed code/test/CI/acceptance witnesses and close V2-006 after real remote PASS. Task ID, dependencies, phase, criteria and scope unchanged. Current direct human continuation authorized delivery/acceptance after prior local-only implementation run.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "a5e77dcda2fd5830ce714452ae356b2017f0751739ff7793841d52a8e7e2e1a8",
+      "new_sha": "7ea87a2d75ac77cd7b024b6c040f381abc09f092f22d966d3a72dca1c9452175",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "6d82ce09e529973eda3ac88f0432ee7dd5875af948a2fc8d416f7a84154c6437",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Record four same-SHA typed code/test/CI/acceptance witnesses and close V2-006 after real remote PASS. Task ID, dependencies, phase, criteria and scope unchanged. Current direct human continuation authorized delivery/acceptance after prior local-only implementation run.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+      "new_sha": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "f33cf0daebcc56fd5530ab6f401c1ebbeb650a91a438424a7cee68d947ceaf26",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Repair only isolated TASK_START fixture after V2-006 becomes active: reset downstream tasks in copied data before simulating missing P0. Preserve every old assertion and add specific V2-005 phase-entry rejection. No production rule/test removed.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+      "new_sha": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "d3779b169009c7e7ef69c1fd5fafbfbdd66f1eb2d97329e7ce19950a2045ae78",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Repair only isolated TASK_START fixture after V2-006 becomes active: reset downstream tasks in copied data before simulating missing P0. Preserve every old assertion and add specific V2-005 phase-entry rejection. No production rule/test removed.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+      "new_sha": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "3c67c399d4e2da58ec0dd577115685462835061520cec57dcb8d74ef2f75a561",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Repair only isolated TASK_START fixture after V2-006 becomes active: reset downstream tasks in copied data before simulating missing P0. Preserve every old assertion and add specific V2-005 phase-entry rejection. No production rule/test removed.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "old_sha": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+      "new_sha": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "79b5ccd6e9868946e8c7fd34b5de3b2c6494bc22d1c90bfdb5ea034d0991ff67",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Repair only isolated TASK_START fixture after V2-006 becomes active: reset downstream tasks in copied data before simulating missing P0. Preserve every old assertion and add specific V2-005 phase-entry rejection. No production rule/test removed.",
+      "impact": "No gate, test, requirement, dependency, scanner, authority record or production source weakened by closure registration. Source acceptance is e210078; later metadata commits are not claimed to have CI.",
+      "reviewer": "Same Codex operator technical review, not independent personnel",
+      "replacement_validation": "Actual GitHub run39106725089: six mandatory gates PASS,990 JUnit cases0skip,101 V2-006 cases; API and artifact/receipt digests independently recomputed by collector.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/CURRENT_AUTHORIZATION.json",
+          "sha256": "bf9c0e976fa9a42e4a71dbfb5564e89ab6ee69dafdd6d6524111d24419f4c9fa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "878ce16b9d71dc7d937b97b42c20d8e360e655e6d517124bb32061d24d8a47bf"
+        },
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/prerequisite-fixture-tests.xml",
+          "sha256": "cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e"
+        }
+      ]
+    }
+  ]
+}

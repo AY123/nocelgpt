@@ -1,0 +1,100 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-006
+revision: e210078441f7d9df9fc78dc904aef998abf6f4f7
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-18T08:00:58.074058+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17 locked, repository1421585508/run39106725089/attempt1,
+  accepted single-operator profile
+input_evidence_refs:
+- validation/execution/V2-006/closure-20261018/code-evidence.yaml
+- validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+- validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+evidence_id: V2-006-acceptance-e210078
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-006-01
+- AT-V2-006-02
+- AT-V2-006-03
+- AT-V2-006-04
+artifacts:
+- ref: validation/execution/V2-006/closure-20261018/ACCEPTANCE_SUMMARY.md
+  sha256: 5cdfd1f07739fa5059610f4d3dc590be502f92e471add4c313d662c50309d47b
+- ref: validation/execution/V2-006/closure-20261018/REMOTE_VERIFICATION.json
+  sha256: 634172b3be324024b88644a3279667754d0a80d75ce0d571c12242ae911175c0
+- ref: validation/execution/V2-006/closure-20261018/SCENARIO_RESULTS.json
+  sha256: bb6b7092a2c4e1ace2184fb2e9c59111c23ac135d0a11f58c2a4e3f4af33fb1d
+decision: ACCEPTED
+rationale: All four current V2-006 assertions covered by original remote JUnit and exact-SHA six-gate PASS; not
+  P1/product completion.
+finding_dispositions:
+- finding_id: AR-03
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-006/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+  reason: Closed Character leaf, complete derived fields, type/lifecycle positive and negative tests; V2-005 prerequisite
+    already closed.
+- finding_id: CA-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-006/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+  reason: Domain/JSON roundtrip and version rejection verified.
+  remaining_work: JSONB/storage/API roundtrip remains unimplemented
+  next_task: V2-009
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: RR-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-006/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+  reason: Accepted ADR-002 precedes interface code.
+  remaining_work: Other task ADR decisions remain before their interfaces
+  next_task: V2-007
+  owner_role: domain-maintainer
+  due_gate: G-P1
+- finding_id: RR-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-006/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+  reason: Structural Schema and cross-record domain checks have passing legal and illegal controls.
+  remaining_work: Delta/reducer, persistence and permission contracts remain in respective tasks
+  next_task: V2-008
+  owner_role: domain-maintainer
+  due_gate: G-P1
+- finding_id: SUP-03
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-006/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+  reason: Belief, observed fact and plan separated without magical knowledge.
+  remaining_work: Occurrence/timeline and actual context/text consumers under V2-007/018/021 remain
+  next_task: V2-007
+  owner_role: domain-maintainer
+  due_gate: G-P1
+external_practice_results:
+- practice_id: EXT-005
+  adoption_mode: Independent domain implementation; no upstream code reuse
+  source_version_note: Existing practice register is planning context only; no invented upstream revision or proven
+    product benefit
+  verification_refs:
+  - validation/execution/V2-006/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-006/closure-20261018/ci-evidence.yaml
+  conclusion: Owner/goal/basis/action/cost stay separate from world facts; false belief may inform a plan
+  limitations: Chapter contracts and text-quality consumers remain V2-017/025; no reader/market verification

@@ -1,0 +1,36 @@
+{
+  "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+  "run_id": 39106725089,
+  "domain_tests": 101,
+  "scenario_tests": {
+    "AT-V2-006-01": [
+      "test_character_all_nondefault_derived_fields_roundtrip",
+      "test_registry_rename_preserves_character_subtype_and_nondefault_fields",
+      "test_relationship_has_identity_and_preserves_negative_trust",
+      "test_whole_projection_preserves_nondefault_fields_and_replays_acquisitions"
+    ],
+    "AT-V2-006-02": [
+      "test_single_invalid_character_field_rejected_by_code_and_schema[entity_type-LOCATION]",
+      "test_single_invalid_character_field_rejected_by_code_and_schema[lifecycle-DESTROYED]",
+      "test_single_invalid_character_field_rejected_by_code_and_schema[lifecycle-DISBANDED]",
+      "test_character_required_discriminator_and_version_not_inferred[id]",
+      "test_generic_entity_parser_does_not_silently_downcast_character"
+    ],
+    "AT-V2-006-03": [
+      "test_world_fact_and_false_belief_coexist_without_magical_knowledge",
+      "test_correct_observation_grants_only_actual_witnesses",
+      "test_known_boolean_contradiction_is_explicit_but_unseen_world_is_not"
+    ],
+    "AT-V2-006-04": [
+      "test_goal_and_mistaken_plan_do_not_change_actual_world_or_knowledge",
+      "test_intent_cannot_borrow_another_characters_belief",
+      "test_intent_cannot_use_a_world_fact_that_its_owner_has_not_learned"
+    ]
+  },
+  "source": "Every named case is present and PASS in original remote UNIT JUnit; all101 V2-006 cases have0 failure/error/skip",
+  "limits": [
+    "Pure in-memory domain and structured knowledge-source association",
+    "No database storage/API mapping, Provider, Canon or novel generation",
+    "Schema handles structure; domain checks cross-record references and strict Python numeric boundaries"
+  ]
+}

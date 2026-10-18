@@ -1,0 +1,48 @@
+{
+  "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+  "source": "Exact immutable repository Git objects, paths and SHA256; no duplicate source copies",
+  "files": [
+    {
+      "path": "src/anovel/domain/character.py",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "8394f88384a562257600532c305ffb444567886ed701c60b667c2b2ebaa59dda",
+      "blob_oid": "fa7e590e4e7f5d9cb3bc1c125cb9ddac12951603"
+    },
+    {
+      "path": "src/anovel/domain/knowledge.py",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "a9e471529ecd7ba62398b34a647f2afcd4ca5acf15219341fba83d18bdb4552b",
+      "blob_oid": "7fa6652b49ea9cde3bed87f7f4ff01ffd3ad3fde"
+    },
+    {
+      "path": "specs/schemas/character.schema.json",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "afe3d656a65902bf2a07d66874550378efea80be6b37dbb1e9699fa21a338c7b",
+      "blob_oid": "046e856f230cc710c57f814b333bca4a4d4dcac6"
+    },
+    {
+      "path": "specs/schemas/knowledge.schema.json",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "710b533a69064a9df9531636e055838e26a93533cf941fa0d572d6c5921b2501",
+      "blob_oid": "fb165465bda2111db51692e0fcd0b367428921ee"
+    },
+    {
+      "path": "tests/contract/test_v2_006.py",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "398ba2993514d65baa4e2a93f5acd238516b12f55c7f9ffcdc316dbda659d336",
+      "blob_oid": "3a1ef0db442edb05e1ffdbea6f6fa450bf74b422"
+    },
+    {
+      "path": "tests/contract/test_plan_governance.py",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+      "blob_oid": "149a9565deba7c76d82a72970bc08c9b55385b19"
+    },
+    {
+      "path": "demo_v2_006.py",
+      "revision": "e210078441f7d9df9fc78dc904aef998abf6f4f7",
+      "sha256": "b367596363986bce2869e5dff6d297371812666d431f79eaf7d6f385e1ebecad",
+      "blob_oid": "e1fa69cc122684d1591f2c4945c3bd473249eb72"
+    }
+  ]
+}

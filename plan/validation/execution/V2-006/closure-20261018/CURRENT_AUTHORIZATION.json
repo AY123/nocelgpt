@@ -1,0 +1,16 @@
+{
+  "human_message": "继续",
+  "context": "Direct continuation after explicit proposed next step: review, push and one six-mandatory-gate CI acceptance for V2-006.",
+  "scope": [
+    "fast-forward main to tested candidate",
+    "one workflow_dispatch",
+    "read results and register task acceptance only if all six pass"
+  ],
+  "prohibited": [
+    "paid Provider",
+    "runner or repository settings changes",
+    "automatic redispatch",
+    "unrelated feature implementation"
+  ],
+  "previous_local_only_scope": "applied to preceding implementation run; expanded by current continuation"
+}
