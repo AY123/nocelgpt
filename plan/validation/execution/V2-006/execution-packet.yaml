@@ -93,8 +93,8 @@ review_notes:
   stays untouched.
 - ADR-002 must be accepted before interface implementation.
 handoff:
-  current_step: Character/Relationship/Knowledge implemented and local focused tests passed; preparing exact local
-    source pin, no remote CI
+  current_step: Domain implementation committed; actual review bound; run exact clean-checkout local verification,
+    no remote CI
   completed_steps:
   - ADR-002 accepted before interfaces; Entity code/schema unchanged
   - Character and Relationship immutable leaves with strict closed serialization
@@ -116,3 +116,5 @@ handoff:
 change_review:
   scope_revision: a534f61b63bc517037ee81d52ef9f7efef80107e
   scope_ref: plan/validation/execution/V2-006/scope-with-regression.json
+  review_revision: 4f2ef9864d09b3e719f8be56bf81b00c5ebbea25
+  review_ref: plan/validation/execution/V2-006/implementation-review.json
