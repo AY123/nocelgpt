@@ -1,0 +1,66 @@
+{
+  "record_type": "local_implementation_summary",
+  "task_id": "V2-008",
+  "observed_utc": "2026-10-18T11:51:56.197192+00:00",
+  "verification_kind": "LOCAL_WORKTREE_NOT_REMOTE_CI",
+  "gates": {
+    "unit": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "f2b4c3b65ecc2607f014ed8419000e05e23a6f87",
+      "receipt_sha256": "1bcb4a67ad6f026c0f7baf8eafb3a869797f9b5e448e7f37bb2febc249a8d015"
+    },
+    "static": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "f2b4c3b65ecc2607f014ed8419000e05e23a6f87",
+      "receipt_sha256": "fd81599adc3b58ecac2fd65c5d07cef5462802e21ddba456521432f6ca0b362f"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "f2b4c3b65ecc2607f014ed8419000e05e23a6f87",
+      "receipt_sha256": "27e1771352060cb34c9e15bd48ec73d9c856cbb2ff54fb8aefb99e4f3ee36e73"
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "f2b4c3b65ecc2607f014ed8419000e05e23a6f87",
+      "receipt_sha256": "0ca83896f99ea5ebdc4e7f3bdc8363610415aaa8d95b67b4b582d33298aa2c1c"
+    }
+  },
+  "unit": {
+    "tests": 928,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "architecture": {
+    "tests": 244,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "v2_008": {
+    "tests": 102,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "src/anovel/domain/delta.py": "08d1d1e8567defc97d53641520f9e000e0796ded772a5da9b5fa0631e68f93b1",
+    "specs/schemas/narrative-delta.schema.json": "8f55dd81a89a767436bec289c151b19415707c3029696ab5ee1ad2acaabf62c5",
+    "tests/contract/test_v2_008.py": "7b52aed27cdaf83f62d66aca94d9208568f84d087500bbe75a5a373f3b0e1ac8",
+    "demo_v2_008.py": "91a7a87086670d0d3ed1d066db41646b9e803c736019bcb64e1f9c4e6dfa7b42"
+  },
+  "notes": [
+    "ADR-004 committed and accepted before interfaces; IMPLEMENT entry passed before implementation.",
+    "First two ARCH entries stopped on a new derived Ruff cache file; bytes preserved under dist/cache-preserved, no source/scope/exclusion/gate changes. Third original ARCH run passed.",
+    "Full UNIT ran outside sandbox for existing bootstrap test cache requirements; tests and skips were not weakened.",
+    "Original receipts name the then-current HEAD of the dirty implementation worktree; they do not claim that HEAD already contained source. Exact isolated checkout replay follows separately."
+  ],
+  "remote_ci": "NOT_RUN",
+  "postgres_env": "NOT_RERUN_NO_DATABASE_CHANGE",
+  "secret_dependency": "NOT_RERUN_NO_DEPENDENCY_OR_POLICY_CHANGE",
+  "independent_personnel_review": false
+}

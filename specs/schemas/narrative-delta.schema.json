@@ -1,0 +1,485 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/narrative-delta.schema.json",
+  "title": "Finite narrative fact-change proposal",
+  "description": "Closed proposal structure only, never a Canon commit or Permit. Project/source/authority binding, seed-derived scalar type, registered targets, revision/state/value preconditions and duplicate identities require contextual domain validation. Strict JSON excludes non-finite numbers; the domain parser additionally rejects them in direct Python input.",
+  "$ref": "#/$defs/narrative_delta",
+  "$defs": {
+    "entity_id": {
+      "type": "object",
+      "description": "Stable entity identifier scoped to project",
+      "required": [
+        "project",
+        "local_id"
+      ],
+      "properties": {
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Project scope identifier"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Unique identifier within project"
+        }
+      },
+      "additionalProperties": false
+    },
+    "narrative_position": {
+      "type": "object",
+      "required": [
+        "chapter",
+        "order"
+      ],
+      "properties": {
+        "chapter": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "scalar": {
+      "type": [
+        "string",
+        "boolean",
+        "number"
+      ],
+      "description": "Strict JSON scalar, never null; booleans are distinct from numbers in domain equality"
+    },
+    "proposition": {
+      "type": "object",
+      "required": [
+        "subject",
+        "predicate",
+        "value"
+      ],
+      "properties": {
+        "subject": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": [
+            "string",
+            "boolean",
+            "number"
+          ],
+          "description": "Strict JSON scalar, never null; booleans are distinct from numbers in domain equality"
+        }
+      },
+      "additionalProperties": false
+    },
+    "world_fact": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "proposition",
+        "evidence_ref"
+      ],
+      "properties": {
+        "kind": {
+          "const": "WORLD_FACT"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "proposition": {
+          "$ref": "#/$defs/proposition"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "fact_state": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "status",
+            "value"
+          ],
+          "properties": {
+            "status": {
+              "const": "KNOWN"
+            },
+            "value": {
+              "type": [
+                "string",
+                "boolean",
+                "number"
+              ],
+              "description": "Strict JSON scalar, never null; booleans are distinct from numbers in domain equality"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "UNKNOWN"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "status"
+          ],
+          "properties": {
+            "status": {
+              "const": "RETRACTED"
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "UNKNOWN and RETRACTED are explicit valueless states; null is never a fact value, and NO_CHANGE is an operation rather than a state."
+    },
+    "fact_snapshot": {
+      "type": "object",
+      "required": [
+        "seed_fact",
+        "revision",
+        "state"
+      ],
+      "properties": {
+        "seed_fact": {
+          "$ref": "#/$defs/world_fact"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state": {
+          "$ref": "#/$defs/fact_state"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fact_baseline": {
+      "type": "object",
+      "required": [
+        "kind",
+        "schema_version",
+        "project",
+        "branch",
+        "parent_ref",
+        "facts"
+      ],
+      "properties": {
+        "kind": {
+          "const": "FACT_BASELINE"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$"
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact_snapshot"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "precondition": {
+      "type": "object",
+      "required": [
+        "revision",
+        "state"
+      ],
+      "properties": {
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "state": {
+          "$ref": "#/$defs/fact_state"
+        }
+      },
+      "additionalProperties": false
+    },
+    "prose_evidence": {
+      "type": "object",
+      "required": [
+        "source_id",
+        "position",
+        "evidence_ref"
+      ],
+      "properties": {
+        "source_id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "position": {
+          "$ref": "#/$defs/narrative_position"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "set_fact": {
+      "type": "object",
+      "required": [
+        "op",
+        "version",
+        "id",
+        "target_id",
+        "path",
+        "expected",
+        "evidence",
+        "authorization_ref",
+        "value"
+      ],
+      "properties": {
+        "op": {
+          "const": "SET_FACT"
+        },
+        "version": {
+          "const": "1.0"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "target_id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "path": {
+          "const": "proposition.value"
+        },
+        "expected": {
+          "$ref": "#/$defs/precondition"
+        },
+        "evidence": {
+          "$ref": "#/$defs/prose_evidence"
+        },
+        "authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "$ref": "#/$defs/scalar"
+        }
+      },
+      "additionalProperties": false
+    },
+    "mark_unknown": {
+      "type": "object",
+      "required": [
+        "op",
+        "version",
+        "id",
+        "target_id",
+        "path",
+        "expected",
+        "evidence",
+        "authorization_ref"
+      ],
+      "properties": {
+        "op": {
+          "const": "MARK_UNKNOWN"
+        },
+        "version": {
+          "const": "1.0"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "target_id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "path": {
+          "const": "proposition.value"
+        },
+        "expected": {
+          "$ref": "#/$defs/precondition"
+        },
+        "evidence": {
+          "$ref": "#/$defs/prose_evidence"
+        },
+        "authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "retract_fact": {
+      "type": "object",
+      "required": [
+        "op",
+        "version",
+        "id",
+        "target_id",
+        "path",
+        "expected",
+        "evidence",
+        "authorization_ref"
+      ],
+      "properties": {
+        "op": {
+          "const": "RETRACT_FACT"
+        },
+        "version": {
+          "const": "1.0"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "target_id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "path": {
+          "const": "proposition.value"
+        },
+        "expected": {
+          "$ref": "#/$defs/precondition"
+        },
+        "evidence": {
+          "$ref": "#/$defs/prose_evidence"
+        },
+        "authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "no_change": {
+      "type": "object",
+      "required": [
+        "op",
+        "version",
+        "id",
+        "target_id",
+        "path",
+        "expected",
+        "evidence",
+        "authorization_ref"
+      ],
+      "properties": {
+        "op": {
+          "const": "NO_CHANGE"
+        },
+        "version": {
+          "const": "1.0"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "target_id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "path": {
+          "const": "proposition.value"
+        },
+        "expected": {
+          "$ref": "#/$defs/precondition"
+        },
+        "evidence": {
+          "$ref": "#/$defs/prose_evidence"
+        },
+        "authorization_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "operation": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/set_fact"
+        },
+        {
+          "$ref": "#/$defs/mark_unknown"
+        },
+        {
+          "$ref": "#/$defs/retract_fact"
+        },
+        {
+          "$ref": "#/$defs/no_change"
+        }
+      ]
+    },
+    "narrative_delta": {
+      "type": "object",
+      "required": [
+        "kind",
+        "schema_version",
+        "id",
+        "branch",
+        "parent_ref",
+        "source_id",
+        "operations"
+      ],
+      "properties": {
+        "kind": {
+          "const": "NARRATIVE_DELTA"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "branch": {
+          "type": "string",
+          "minLength": 1
+        },
+        "parent_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/operation"
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

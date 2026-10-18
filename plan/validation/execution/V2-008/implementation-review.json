@@ -1,0 +1,98 @@
+{
+  "task_id": "V2-008",
+  "baseline_pin": {
+    "revision": "b52e8c0bc85cef7f62bb9f90aea0a422b4afb230",
+    "ref": "plan/validation/execution/V2-008/scope.json",
+    "sha256": "e0cb0bd93548c8a60d69beb5ec45432bbbf2efb38b9c84e9908880d25f1bd3bb"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "new_sha": "e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "24ef72a457cfc4970b8319a10570648cf9f5800e19d773cf85f91fb99305c024",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-008 now locally IMPLEMENTED following accepted ADR and original gates. Only task state/readiness/packet reference changed against opening. Task identity, dependencies, phase, artifacts, all three assertions and scope remain intact. Navigation describes local implementation while retaining remote CI/acceptance limitations.",
+      "impact": "No reduced assertion, test removal, threshold reduction, scanner exclusion or mandatory gate change. No DB/Provider/Canon/later task implementation. Local reports are not remote CI or VERIFIED evidence.",
+      "reviewer": "Codex same operator technical review with bounded other-agent source/schema cross-checks, not independent personnel",
+      "replacement_validation": "Original UNIT928,ARCH244,STATIC and five governance checks PASS,0 skips; V2-008102 positive/negative tests and demo PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/authorization.txt",
+        "sha256": "fc112038610aba8450090db2f802732069ffc058464bbf662126965cd8fad82c"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/adr-004-decision.yaml",
+          "sha256": "63890e0236a58a38233086115742b4c401edb86ad7738e813246f7224c4c7519"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/SUMMARY.json",
+          "sha256": "9eb003a148999b78ec9928e4d77883ac15e983294a6eab12067c00a143d22973"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/focused.xml",
+          "sha256": "ae2af3851bc8e7a2e1d35775c7742b919a378602b8c7c579523f82af9073e571"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/unit.xml",
+          "sha256": "2bd02ca7df8763a1ee6f347df945b9baf6f2742d3a696b654f6171f54945caf5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/arch.xml",
+          "sha256": "7449afa903e0a1dd0b7e864cec21db0061ddfa007b3419fa5da29f47e7b43322"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "new_sha": "e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "603fac457cb08e739329fb00c916de914e208d220fcf45a34ccc9d03af5f11d9",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-008 now locally IMPLEMENTED following accepted ADR and original gates. Only task state/readiness/packet reference changed against opening. Task identity, dependencies, phase, artifacts, all three assertions and scope remain intact. Navigation describes local implementation while retaining remote CI/acceptance limitations.",
+      "impact": "No reduced assertion, test removal, threshold reduction, scanner exclusion or mandatory gate change. No DB/Provider/Canon/later task implementation. Local reports are not remote CI or VERIFIED evidence.",
+      "reviewer": "Codex same operator technical review with bounded other-agent source/schema cross-checks, not independent personnel",
+      "replacement_validation": "Original UNIT928,ARCH244,STATIC and five governance checks PASS,0 skips; V2-008102 positive/negative tests and demo PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/authorization.txt",
+        "sha256": "fc112038610aba8450090db2f802732069ffc058464bbf662126965cd8fad82c"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/adr-004-decision.yaml",
+          "sha256": "63890e0236a58a38233086115742b4c401edb86ad7738e813246f7224c4c7519"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/SUMMARY.json",
+          "sha256": "9eb003a148999b78ec9928e4d77883ac15e983294a6eab12067c00a143d22973"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/focused.xml",
+          "sha256": "ae2af3851bc8e7a2e1d35775c7742b919a378602b8c7c579523f82af9073e571"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/unit.xml",
+          "sha256": "2bd02ca7df8763a1ee6f347df945b9baf6f2742d3a696b654f6171f54945caf5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/local-results/arch.xml",
+          "sha256": "7449afa903e0a1dd0b7e864cec21db0061ddfa007b3419fa5da29f47e7b43322"
+        }
+      ]
+    }
+  ]
+}

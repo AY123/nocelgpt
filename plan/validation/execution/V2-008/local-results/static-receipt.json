@@ -1,0 +1,169 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "static",
+  "gate": "STATIC",
+  "status": "PASS",
+  "revision": "f2b4c3b65ecc2607f014ed8419000e05e23a6f87",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "619f4b441eec459355c9bbd2852855f6137099548e85b623be501d331194194e",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-18T11:43:12.056998+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/ci/check_configuration.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-01.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src/anovel",
+        "scripts/ci",
+        "tests/contract/test_delivery_gates.py",
+        "tests/integration/test_postgres_ci_service.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-02.stdout.log",
+        "sha256": "a0a0f191878d553ae2b88299d5ead34d7a6367937ff1bd9e304fb73059c83f8a"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "check",
+        "--select",
+        "F,E9,I",
+        "src/anovel",
+        "scripts/ci",
+        "tests/contract/test_delivery_gates.py",
+        "tests/integration/test_postgres_ci_service.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-03.stdout.log",
+        "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-03.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "mypy",
+        "--strict",
+        "--cache-dir",
+        "dist/cache/mypy",
+        "src/anovel",
+        "scripts/ci"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-04.stdout.log",
+        "sha256": "59cc4d21606d1f60735af82101c6094ef4d27a1054cb5061988711c9db04c37e"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-04.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/ci/check_syntax.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-05.stdout.log",
+        "sha256": "becf923c07c3ff246858504f9d0ad9b1c3f45b3d3e1fce6d69757eb8b479a2d0"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/static/command-05.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-01.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-02.stdout.log",
+      "sha256": "a0a0f191878d553ae2b88299d5ead34d7a6367937ff1bd9e304fb73059c83f8a"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-03.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-03.stdout.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-04.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-04.stdout.log",
+      "sha256": "59cc4d21606d1f60735af82101c6094ef4d27a1054cb5061988711c9db04c37e"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-05.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/static/command-05.stdout.log",
+      "sha256": "becf923c07c3ff246858504f9d0ad9b1c3f45b3d3e1fce6d69757eb8b479a2d0"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-18T11:43:12.623407+00:00"
+}

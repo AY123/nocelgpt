@@ -1,0 +1,127 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "arch_fitness",
+  "gate": "ARCH_FITNESS",
+  "status": "PASS",
+  "revision": "f2b4c3b65ecc2607f014ed8419000e05e23a6f87",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "619f4b441eec459355c9bbd2852855f6137099548e85b623be501d331194194e",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-18T11:46:59.198306+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/task_execution.py",
+        "check",
+        "--task",
+        "V2-008",
+        "--action",
+        "IMPLEMENT",
+        "--output",
+        "dist/validation/v2008-local-20261018/arch_fitness-3/action-entry.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-01.stdout.log",
+        "sha256": "958f8c92aa07e7521c7346cceb48724760116cb0acb03d958d6ea4bc6f0926f9"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/check_architecture.py",
+        "--output",
+        "dist/validation/v2008-local-20261018/arch_fitness-3/architecture.json"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-02.stdout.log",
+        "sha256": "0d169a502654cc0ebc7f623b16bc1f2110f55cb42cf2c19981d41e98fb8a0f38"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/architecture",
+        "--junitxml=dist/validation/v2008-local-20261018/arch_fitness-3/junit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-03.stdout.log",
+        "sha256": "290647131bca24360357a4ced0f3147f6ec8ea2ca9ad0b3ac738c18d28063f97"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-03.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/action-entry.json",
+      "sha256": "ea6b72ccc2931a4ee2d4150707ba3acea77dc70ae6d17d0e54812d7dcfbbf91f"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/architecture.json",
+      "sha256": "3439cd64708f6cef9b2229410b9571abda42333388b1fdec9e35149eb31d095e"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-01.stdout.log",
+      "sha256": "958f8c92aa07e7521c7346cceb48724760116cb0acb03d958d6ea4bc6f0926f9"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-02.stdout.log",
+      "sha256": "0d169a502654cc0ebc7f623b16bc1f2110f55cb42cf2c19981d41e98fb8a0f38"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-03.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/command-03.stdout.log",
+      "sha256": "290647131bca24360357a4ced0f3147f6ec8ea2ca9ad0b3ac738c18d28063f97"
+    },
+    {
+      "ref": "dist/validation/v2008-local-20261018/arch_fitness-3/junit.xml",
+      "sha256": "7449afa903e0a1dd0b7e864cec21db0061ddfa007b3419fa5da29f47e7b43322"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-18T11:49:03.517038+00:00"
+}

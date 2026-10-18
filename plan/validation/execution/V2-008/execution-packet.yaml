@@ -4,7 +4,7 @@ task_id: V2-008
 plan_version: 1.3.0
 repository_revision: 81bfc13aa8fcbe0acdf3b2c01c4915aea7a55272
 worktree_dirty: false
-plan_manifest_sha256: f7c5f92a4402bcc3f094573e27d1260d35d2292e1da59568043bfaccc6382774
+plan_manifest_sha256: a635bf668011a9079e5d3e2d0c8363820cf719d788175fe09960a1711c55317a
 environment:
   fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
   runtime_versions:
@@ -26,11 +26,11 @@ inputs:
   ref: validation/execution/V2-008/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-008/inputs/fc4a1b28bd0f78974c369af152e21de5fda03bca50dd24d901e7d20a678f88c1.txt
-  sha256: fc4a1b28bd0f78974c369af152e21de5fda03bca50dd24d901e7d20a678f88c1
+  ref: validation/execution/V2-008/inputs/e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0.txt
+  sha256: e798c663bfe9147d5b57fb6bc0a1640df68e8af92656725ab99bc00c353ebfc0
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-008/inputs/5608527c5a42c677139c7884cc14cad94dc2f115065957f4cc2da2028436cea3.txt
-  sha256: 5608527c5a42c677139c7884cc14cad94dc2f115065957f4cc2da2028436cea3
+  ref: validation/execution/V2-008/inputs/1b5bb6f6d9366e6df0f5734ff8089eb71e2da8c42396c26880f24dce6a525a75.txt
+  sha256: 1b5bb6f6d9366e6df0f5734ff8089eb71e2da8c42396c26880f24dce6a525a75
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-008/inputs/81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d.txt
   sha256: 81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d
@@ -82,13 +82,15 @@ review_notes:
 - 'Direct user request: ADR-004 before interfaces, then bounded local implementation and tests'
 - Original task identities, dependencies and all three assertions stay unchanged; history only reference
 handoff:
-  current_step: ADR-004 accepted against committed source; run IMPLEMENT gate before interface code
+  current_step: Finite NarrativeDelta implementation and local tests PASS; exact local replay before delivery
   completed_steps:
-  - PREPARE action PASS
-  - ADR-004 committed and accepted before source implementation
+  - ADR-004 accepted before interfaces and original IMPLEMENT entry PASS
+  - V2-008 102 tests / full UNIT 928 / ARCH 244 PASS,0 skips
+  - Original STATIC and five governance checks PASS; no remote CI
   pending_items:
-  - Implement pure in-memory domain and original three acceptance cases
-  - Local gates only; remote CI and formal acceptance not run
+  - Exact revision isolated local replay
+  - One later same-final-SHA remote six-gate run and formal V2-008 acceptance; not auto-dispatched
+  - P1 aggregate verification remains separate; no P2 start
   next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
@@ -97,3 +99,5 @@ handoff:
 change_review:
   scope_revision: b52e8c0bc85cef7f62bb9f90aea0a422b4afb230
   scope_ref: plan/validation/execution/V2-008/scope.json
+  review_revision: f2b4c3b65ecc2607f014ed8419000e05e23a6f87
+  review_ref: plan/validation/execution/V2-008/entry-review.json

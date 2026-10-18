@@ -2,7 +2,7 @@
 
 唯一源：`machine/implementation-backlog.yaml` 与 `machine/phase-gates.yaml`。不要手工修改。
 
-共 60 个任务。当前任务状态：{"CLOSED": 7, "IN_PROGRESS": 1, "OPEN": 52}
+共 60 个任务。当前任务状态：{"CLOSED": 7, "IMPLEMENTED": 1, "OPEN": 52}
 
 ## P0 — Repository & Governance
 
@@ -24,7 +24,7 @@
 | V2-005 | Core entity IDs and alias resolution | V2-001 | CLOSED |
 | V2-006 | Character relationship knowledge core | V2-005 | CLOSED |
 | V2-007 | Event timeline promise core | V2-005 | CLOSED |
-| V2-008 | NarrativeDelta implementation | V2-006, V2-007 | IN_PROGRESS |
+| V2-008 | NarrativeDelta implementation | V2-006, V2-007 | IMPLEMENTED |
 
 ## P2 — Canon Kernel
 
