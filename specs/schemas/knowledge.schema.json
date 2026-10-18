@@ -1,0 +1,456 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.ai/schemas/knowledge.schema.json",
+  "title": "KnowledgeState",
+  "description": "Closed strict-JSON snapshot; cross-record project, identity and knowledge associations are additionally validated by KnowledgeState.from_dict",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project",
+    "characters",
+    "facts",
+    "observations",
+    "beliefs",
+    "knowledge",
+    "goals",
+    "intents"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^/]+$",
+      "description": "Project scope identifier"
+    },
+    "characters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/character"
+      }
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/fact"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "beliefs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/belief"
+      }
+    },
+    "knowledge": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/acquisition"
+      },
+      "uniqueItems": true
+    },
+    "goals": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/goal"
+      }
+    },
+    "intents": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/intent"
+      }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "object",
+      "description": "Stable entity identifier scoped to project",
+      "required": [
+        "project",
+        "local_id"
+      ],
+      "properties": {
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Project scope identifier"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Unique identifier within project"
+        }
+      },
+      "additionalProperties": false
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "species": {
+          "type": "string",
+          "minLength": 1,
+          "default": "UNKNOWN"
+        },
+        "gender": {
+          "type": "string",
+          "minLength": 1,
+          "default": "UNKNOWN"
+        },
+        "origin": {
+          "type": "string",
+          "minLength": 1,
+          "default": "UNKNOWN"
+        }
+      },
+      "additionalProperties": false
+    },
+    "relationship": {
+      "title": "Relationship",
+      "type": "object",
+      "description": "Project equality is additionally checked by Relationship.from_dict",
+      "required": [
+        "id",
+        "party_a",
+        "party_b",
+        "relationship_types",
+        "entity_type",
+        "schema_version"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "party_a": {
+          "$ref": "#/$defs/id"
+        },
+        "party_b": {
+          "$ref": "#/$defs/id"
+        },
+        "relationship_types": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "trust": {
+          "type": "number",
+          "minimum": -1,
+          "maximum": 1,
+          "default": 0.0
+        },
+        "entity_type": {
+          "const": "RELATIONSHIP"
+        },
+        "schema_version": {
+          "const": "1.0"
+        }
+      },
+      "additionalProperties": false
+    },
+    "character": {
+      "title": "Character",
+      "description": "Closed character leaf; objective facts, knowledge and plans are separate models",
+      "type": "object",
+      "required": [
+        "id",
+        "display_name",
+        "entity_type",
+        "schema_version",
+        "lifecycle"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "display_name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Current display name; registry rename replaces the snapshot while retaining its ID"
+        },
+        "aliases": {
+          "type": "array",
+          "description": "Exact alternative names; duplicate names across entities produce an ambiguous resolution",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "default": []
+        },
+        "entity_type": {
+          "const": "CHARACTER"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "identity": {
+          "$ref": "#/$defs/identity"
+        },
+        "lifecycle": {
+          "enum": [
+            "ACTIVE",
+            "INACTIVE",
+            "DEAD",
+            "UNKNOWN"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "default": ""
+        }
+      },
+      "additionalProperties": false
+    },
+    "proposition": {
+      "type": "object",
+      "required": [
+        "subject",
+        "predicate",
+        "value"
+      ],
+      "properties": {
+        "subject": {
+          "$ref": "#/$defs/id"
+        },
+        "predicate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "type": [
+            "string",
+            "boolean",
+            "number"
+          ],
+          "description": "Strict JSON scalar, never null; booleans are distinct from numbers in domain equality"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fact": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "proposition",
+        "evidence_ref"
+      ],
+      "properties": {
+        "kind": {
+          "const": "WORLD_FACT"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "proposition": {
+          "$ref": "#/$defs/proposition"
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "observation": {
+      "description": "Supplied structured observation; domain validation checks existing fact and registered witnesses, not prose truth",
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "fact_id",
+        "witnesses",
+        "evidence_ref"
+      ],
+      "properties": {
+        "kind": {
+          "const": "OBSERVATION"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "fact_id": {
+          "$ref": "#/$defs/id"
+        },
+        "witnesses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          },
+          "uniqueItems": true
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "belief": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "holder",
+        "proposition",
+        "source_ref"
+      ],
+      "properties": {
+        "kind": {
+          "const": "BELIEF"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "holder": {
+          "$ref": "#/$defs/id"
+        },
+        "proposition": {
+          "$ref": "#/$defs/proposition"
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 1.0
+        },
+        "level": {
+          "enum": [
+            "BELIEVED",
+            "SUSPECTED"
+          ],
+          "default": "BELIEVED"
+        }
+      },
+      "additionalProperties": false
+    },
+    "acquisition": {
+      "description": "Restoration replays learn against a registered matching observation witnessed by holder; no serialized KNOWN flag grants knowledge",
+      "type": "object",
+      "required": [
+        "holder",
+        "fact_id",
+        "source_id"
+      ],
+      "properties": {
+        "holder": {
+          "$ref": "#/$defs/id"
+        },
+        "fact_id": {
+          "$ref": "#/$defs/id"
+        },
+        "source_id": {
+          "$ref": "#/$defs/id"
+        }
+      },
+      "additionalProperties": false
+    },
+    "goal": {
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "owner",
+        "description"
+      ],
+      "properties": {
+        "kind": {
+          "const": "GOAL"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "owner": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "OPEN",
+            "ACTIVE",
+            "BLOCKED",
+            "ACHIEVED",
+            "FAILED",
+            "ABANDONED",
+            "SUPERSEDED"
+          ],
+          "default": "OPEN"
+        },
+        "priority": {
+          "type": "integer",
+          "default": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "intent": {
+      "description": "Future choice, never an occurred event; basis must be own belief or explicitly acquired fact",
+      "type": "object",
+      "required": [
+        "kind",
+        "id",
+        "owner",
+        "goal_id",
+        "action",
+        "based_on"
+      ],
+      "properties": {
+        "kind": {
+          "const": "INTENT"
+        },
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "owner": {
+          "$ref": "#/$defs/id"
+        },
+        "goal_id": {
+          "$ref": "#/$defs/id"
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "based_on": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "expected_cost": {
+          "type": "string",
+          "default": ""
+        },
+        "status": {
+          "enum": [
+            "PLANNED",
+            "CANCELLED"
+          ],
+          "default": "PLANNED"
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

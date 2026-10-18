@@ -85,6 +85,11 @@ def test_existing_rules_reject_single_mutations(mutate, prefix):
     data = deepcopy(validator.load())
     if prefix == 'TASK_START':
         # Explicit missing predecessor gate; real project progress is irrelevant.
+        # Reset downstream tasks in this isolated copy as well: an active V2-006
+        # cannot be a valid control while its predecessor/P0 are reset below.
+        for task in data['implementation-backlog']['tasks']:
+            if task['phase'] != 'P0':
+                task['status'] = 'OPEN'
         data['implementation-backlog']['tasks'][4].update(status='OPEN', readiness='PLANNED')
         data['phase-gates']['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
         data['milestones']['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
@@ -92,6 +97,9 @@ def test_existing_rules_reject_single_mutations(mutate, prefix):
     mutate(data)
     errors = validator.validate_objects(data)
     assert any(error.startswith(prefix) for error in errors), errors
+    if prefix == 'TASK_START':
+        assert any(error.startswith('TASK_START V2-005: phase entry not verified')
+                   for error in errors), errors
     if prefix == 'TASK_SCHEMA':
         # This isolated mutation removes CI and acceptance from a real valid
         # record. Each absent witness must still block closure after P0 ends.

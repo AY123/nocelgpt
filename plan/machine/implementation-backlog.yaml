@@ -397,11 +397,13 @@ tasks:
   - src/anovel/domain/knowledge.py
   - specs/schemas/character.schema.json
   - tests/contract/test_v2_006.py
+  - specs/schemas/knowledge.schema.json
+  - demo_v2_006.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
-  status: IN_PROGRESS
+  status: IMPLEMENTED
   execution_packet_ref: validation/execution/V2-006/execution-packet.yaml
   owner_role: domain-maintainer
   readiness: READY_AFTER_GATES

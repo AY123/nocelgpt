@@ -4,7 +4,7 @@
 
 **阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～005 CLOSED；P0/G-P0、M0 VERIFIED；P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
-当前业务能力是内存中的项目隔离实体、稳定 ID、改名、别名与明确歧义解析；尚无持久化、Canon 提交、模型调用或章节生产闭环。下一任务为 **V2-006：角色关系与知识内核**，已进入本地实施，ADR-002 已接受、执行包已建立，新的代码与CI尚待验证。
+当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离。**V2-006 已完成本地实现，尚待当前提交的远程CI与验收**；尚无持久化、Canon 提交、模型调用或章节生产闭环。
 
 - P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
 - V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
@@ -119,3 +119,5 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 2026-10-17精确处置补记：Owner已批准报告公开哈希的两个精确例外及52→54账本重绑定，仍到期于2027-01-06T06:07:49Z；当前54项OPEN（45精确例外、9历史风险接纳），本地完整扫描54/54消费、0未匹配、0未使用批准。工作区来源基线推进至9d71f91且原16项内容逐一不变，历史身份不变；旧52项GitHub扫描结果仍仅属于611d777。原暂停记录保留在CURRENT_HEAD_BLOCKER.json，由CURRENT_HEAD_RESOLUTION.json及authority-54/OWNER_DECISION_RECEIPT.json补充解除，不改写历史。
 
 结项兼容修正：ARCH_FITNESS对VERIFIED/CLOSED任务执行固定scope/review的实际差异审计；进行中任务仍走原IMPLEMENT动作入口，架构检查及全部架构测试保留。原动作入口继续拒绝对完成任务重新实施。227项本地回归通过；后续完整本地结果保存在dist。六门配置与手动触发方式不变，本维护提交未触发远程CI。
+
+V2-006 本地示例：运行 `.venv/bin/python -B demo_v2_006.py`，可以看到“东库客观事实 / 西库误信 / 观察后才知情 / 计划不改变事实”的完整 JSON 往返。范围与复现见[V2-006本地交付](plan/validation/execution/V2-006/LOCAL_IMPLEMENTATION.md)。

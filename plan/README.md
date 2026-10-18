@@ -2,7 +2,7 @@
 
 本目录的产品目标是中文长篇网文的可靠生产与真实阅读竞争力，详见[产品目标](01_PRODUCT_SCOPE_AND_SUCCESS.md)。工程验收不等于小说生产、真人阅读或市场验证。
 
-**阶段摘要（2026-10-18）：V2-001～005 CLOSED，P0/G-P0、M0 VERIFIED，P1 尚未完成，V2-006 IN_PROGRESS，其余54个任务OPEN。** 日常开发使用 `main`。当前任务为 **V2-006**，已接受[ADR-002](decisions/ADR-002_CHARACTER_SERIALIZATION.md)并建立[执行包](validation/execution/V2-006/execution-packet.yaml)；新的领域实现、测试与CI尚未验收。实际状态读取[任务表](machine/implementation-backlog.yaml)、[阶段门禁](machine/phase-gates.yaml)和[决策登记](machine/decision-register.yaml)，本文不是平行状态源。
+**阶段摘要（2026-10-18）：V2-001～005 CLOSED，P0/G-P0、M0 VERIFIED，P1 尚未完成，V2-006 IMPLEMENTED，其余54个任务OPEN。** 日常开发使用 `main`。当前任务为 **V2-006**，已接受[ADR-002](decisions/ADR-002_CHARACTER_SERIALIZATION.md)并建立[执行包](validation/execution/V2-006/execution-packet.yaml)；领域实现与本地测试已完成，当前提交的远程CI及正式验收尚未完成；见[本地交付](validation/execution/V2-006/LOCAL_IMPLEMENTATION.md)。实际状态读取[任务表](machine/implementation-backlog.yaml)、[阶段门禁](machine/phase-gates.yaml)和[决策登记](machine/decision-register.yaml)，本文不是平行状态源。
 
 V2-005 工程验收绑定 `72219b4` / run39088653270，六门通过、889项测试0skip；见[验收记录](validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。P0验收仍绑定历史 `611d777`，见[P0汇总验收](validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。后续资料维护不冒称新提交已运行CI。
 

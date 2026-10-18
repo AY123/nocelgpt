@@ -4,7 +4,7 @@ task_id: V2-006
 plan_version: 1.3.0
 repository_revision: 5aa64feddd2ea08492728d7a596e75cc403f5535
 worktree_dirty: false
-plan_manifest_sha256: 4b1807b9987d2d18cfab42d8f55abb14d673edf31ccc233f3d3a08808caacdf3
+plan_manifest_sha256: 803b021c3ea07b0a496a57337c8c53075b5e0a30a99a02f59ada236a3f9a4c59
 environment:
   fingerprint: Local Python3.12.14, uv0.12.17, main; pure in-memory domain and locked test dependencies
   runtime_versions:
@@ -30,11 +30,11 @@ inputs:
   ref: validation/execution/V2-006/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-006/inputs/4e8c5da4fbd033071344b8f4e827a77ad16630a8ab08bf46a52cb26034b75cb0.txt
-  sha256: 4e8c5da4fbd033071344b8f4e827a77ad16630a8ab08bf46a52cb26034b75cb0
+  ref: validation/execution/V2-006/inputs/dcdf3ac12f0e2c2f5bbb1a6d0c78d6c834e5c56d1c0d20a77ee4e22f8510d450.txt
+  sha256: dcdf3ac12f0e2c2f5bbb1a6d0c78d6c834e5c56d1c0d20a77ee4e22f8510d450
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-006/inputs/4572f37b354d575b178328ba0e934e8fb8ced6ef9cb88301918050e0fd6edf38.txt
-  sha256: 4572f37b354d575b178328ba0e934e8fb8ced6ef9cb88301918050e0fd6edf38
+  ref: validation/execution/V2-006/inputs/e78d527746b0cf776578d96c6aae9ca4026818b004ff222d12e18a2efa7479c3.txt
+  sha256: e78d527746b0cf776578d96c6aae9ca4026818b004ff222d12e18a2efa7479c3
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-006/inputs/73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40.txt
   sha256: 73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40
@@ -66,6 +66,7 @@ allowed_paths:
 - AGENTS.md
 - README.md
 - plan/README.md
+- tests/contract/test_plan_governance.py
 required_decisions:
 - ADR-002
 claims: []
@@ -92,19 +93,26 @@ review_notes:
   stays untouched.
 - ADR-002 must be accepted before interface implementation.
 handoff:
-  current_step: ADR-002 accepted; exact scope pinned; entering local domain implementation
+  current_step: Character/Relationship/Knowledge implemented and local focused tests passed; preparing exact local
+    source pin, no remote CI
   completed_steps:
-  - Existing Entity and four acceptance scenarios reviewed
-  - Original docs cleanup remains preserved; source has not been changed
-  - ADR source committed and formal acceptance registered before interface implementation
+  - ADR-002 accepted before interfaces; Entity code/schema unchanged
+  - Character and Relationship immutable leaves with strict closed serialization
+  - Explicit observations, holder-bound acquisitions, beliefs, goals and intents implemented
+  - 198 domain tests PASS (97 V2-005 +101 V2-006); demo PASS
+  - STATIC equivalent commands, ARCH244 and five governance commands PASS
+  - Prerequisite mutation fixture repaired in isolated data only; 15 focused regressions PASS; bootstrap5 PASS after
+    sandbox-cache rerun
   pending_items:
-  - Implement and test Character/Relationship and knowledge projection
-  - Validate local original gates; remote CI and task closure not claimed
+  - Exact committed revision local replay and summary
+  - Remote CI not run; task remains IMPLEMENTED, not VERIFIED/CLOSED; P1 not verified
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-006/prerequisite-fixture-tests.xml
+      sha256: cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e
     missing_artifact_reason: null
 change_review:
-  scope_revision: 19366774bfc312c2b49556ec2f39e66a07c16a8b
-  scope_ref: plan/validation/execution/V2-006/scope.json
+  scope_revision: a534f61b63bc517037ee81d52ef9f7efef80107e
+  scope_ref: plan/validation/execution/V2-006/scope-with-regression.json

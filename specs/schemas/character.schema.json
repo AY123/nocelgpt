@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.ai/schemas/character.schema.json",
+  "title": "Character",
+  "description": "Closed character leaf; objective facts, knowledge and plans are separate models",
+  "type": "object",
+  "required": ["id", "display_name", "entity_type", "schema_version", "lifecycle"],
+  "properties": {
+    "id": {"$ref": "#/$defs/id"},
+    "display_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Current display name; registry rename replaces the snapshot while retaining its ID"
+    },
+    "aliases": {
+      "type": "array",
+      "description": "Exact alternative names; duplicate names across entities produce an ambiguous resolution",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true,
+      "default": []
+    },
+    "entity_type": {"const": "CHARACTER"},
+    "schema_version": {"const": "1.0"},
+    "identity": {"$ref": "#/$defs/identity"},
+    "lifecycle": {"enum": ["ACTIVE", "INACTIVE", "DEAD", "UNKNOWN"]},
+    "description": {"type": "string", "default": ""}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "id": {
+      "type": "object",
+      "description": "Stable entity identifier scoped to project",
+      "required": ["project", "local_id"],
+      "properties": {
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Project scope identifier"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Unique identifier within project"
+        }
+      },
+      "additionalProperties": false
+    },
+    "identity": {
+      "type": "object",
+      "properties": {
+        "species": {"type": "string", "minLength": 1, "default": "UNKNOWN"},
+        "gender": {"type": "string", "minLength": 1, "default": "UNKNOWN"},
+        "origin": {"type": "string", "minLength": 1, "default": "UNKNOWN"}
+      },
+      "additionalProperties": false
+    },
+    "relationship": {
+      "title": "Relationship",
+      "type": "object",
+      "description": "Project equality is additionally checked by Relationship.from_dict",
+      "required": ["id", "party_a", "party_b", "relationship_types", "entity_type", "schema_version"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "party_a": {"$ref": "#/$defs/id"},
+        "party_b": {"$ref": "#/$defs/id"},
+        "relationship_types": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1},
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "trust": {"type": "number", "minimum": -1, "maximum": 1, "default": 0.0},
+        "entity_type": {"const": "RELATIONSHIP"},
+        "schema_version": {"const": "1.0"}
+      },
+      "additionalProperties": false
+    }
+  }
+}
