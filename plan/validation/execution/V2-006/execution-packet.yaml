@@ -93,8 +93,7 @@ review_notes:
   stays untouched.
 - ADR-002 must be accepted before interface implementation.
 handoff:
-  current_step: Domain implementation committed; actual review bound; run exact clean-checkout local verification,
-    no remote CI
+  current_step: Local exact-checkout verification completed; V2-006 IMPLEMENTED; remote CI and task acceptance pending
   completed_steps:
   - ADR-002 accepted before interfaces; Entity code/schema unchanged
   - Character and Relationship immutable leaves with strict closed serialization
@@ -103,15 +102,18 @@ handoff:
   - STATIC equivalent commands, ARCH244 and five governance commands PASS
   - Prerequisite mutation fixture repaired in isolated data only; 15 focused regressions PASS; bootstrap5 PASS after
     sandbox-cache rerun
+  - 'Exact local revision 3f8068d631d122e3e455890cd9f689ab830d2026: UNIT745/745 ARCH244/244 STATIC/SCHEMA PASS,0skip;
+    demo PASS;54 secret findings exact-consumed, no new findings'
   pending_items:
-  - Exact committed revision local replay and summary
-  - Remote CI not run; task remains IMPLEMENTED, not VERIFIED/CLOSED; P1 not verified
+  - No remote CI/push in this run; formal acceptance still pending
+  - Database and dependency-vulnerability gates must be included in key-delivery six-gate CI; no inheritance of
+    PASS from old revisions
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-006/prerequisite-fixture-tests.xml
-      sha256: cef4f3bcc9d591891195737bc42da1ed1c8490b6e828e2fb28f2f7b56314630e
+    - ref: validation/execution/V2-006/LOCAL_VERIFICATION.json
+      sha256: 75cbc3aaff8f6c13dc9bde5378f8389e1ce823380fe3933b8394a3cb89bc5356
     missing_artifact_reason: null
 change_review:
   scope_revision: a534f61b63bc517037ee81d52ef9f7efef80107e

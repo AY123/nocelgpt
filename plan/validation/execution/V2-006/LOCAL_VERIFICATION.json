@@ -1,0 +1,113 @@
+{
+  "record_type": "local_verification_summary",
+  "task_id": "V2-006",
+  "scope": "Local code verification only, not remote CI or formal acceptance",
+  "tested_revision": "3f8068d631d122e3e455890cd9f689ab830d2026",
+  "producer": "Same Codex operator; delegated implementation, no independent personnel review",
+  "phase": "EXACT_LOCAL_CHECKOUT",
+  "started_at": "2026-10-18T06:42:39.777943+00:00",
+  "finished_at": "2026-10-18T06:50:02.596269+00:00",
+  "status": "PASS",
+  "gates": [
+    {
+      "name": "static",
+      "command": [
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2006-exact-20261018/checkout/.venv/bin/python",
+        "-B",
+        "scripts/ci/run_gate.py",
+        "static",
+        "--output-dir",
+        "dist/replay/static"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "schema_contract",
+      "command": [
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2006-exact-20261018/checkout/.venv/bin/python",
+        "-B",
+        "scripts/ci/run_gate.py",
+        "schema_contract",
+        "--output-dir",
+        "dist/replay/schema_contract"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "arch_fitness",
+      "command": [
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2006-exact-20261018/checkout/.venv/bin/python",
+        "-B",
+        "scripts/ci/run_gate.py",
+        "arch_fitness",
+        "--output-dir",
+        "dist/replay/arch_fitness"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "unit",
+      "command": [
+        "/Users/angyang/Documents/AI/ANovelOS/dist/validation/v2006-exact-20261018/checkout/.venv/bin/python",
+        "-B",
+        "scripts/ci/run_gate.py",
+        "unit",
+        "--output-dir",
+        "dist/replay/unit"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "pytest": {
+    "unit": {
+      "tests": 745,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "arch_fitness": {
+      "tests": 244,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "v2006_domain_cases": 101,
+  "v2005_domain_cases": 97,
+  "demo_exit": 0,
+  "tracked_worktree_clean": true,
+  "source_sha256": {
+    "src/anovel/domain/character.py": "8394f88384a562257600532c305ffb444567886ed701c60b667c2b2ebaa59dda",
+    "src/anovel/domain/knowledge.py": "a9e471529ecd7ba62398b34a647f2afcd4ca5acf15219341fba83d18bdb4552b",
+    "specs/schemas/character.schema.json": "afe3d656a65902bf2a07d66874550378efea80be6b37dbb1e9699fa21a338c7b",
+    "specs/schemas/knowledge.schema.json": "710b533a69064a9df9531636e055838e26a93533cf941fa0d572d6c5921b2501",
+    "tests/contract/test_v2_006.py": "398ba2993514d65baa4e2a93f5acd238516b12f55c7f9ffcdc316dbda659d336",
+    "tests/contract/test_plan_governance.py": "08159322df4e518aa18bfadda6cf51a55db24a41ec751c52072fe361fc9e2e84",
+    "demo_v2_006.py": "b367596363986bce2869e5dff6d297371812666d431f79eaf7d6f385e1ebecad"
+  },
+  "secret_scan_only": {
+    "status": "PASS",
+    "detected": 54,
+    "approved_consumed": 54,
+    "unapproved": [],
+    "unmatched": [],
+    "unused": [],
+    "error": null,
+    "dependency_audit": "NOT_RUN",
+    "full_secret_dependency_gate": "NOT_RUN",
+    "preceding_failure": "Local clone initially had filesystem origin; repository-bound exception validation correctly rejected it. Only local clone origin metadata corrected to actual source origin."
+  },
+  "postgres_env": "NOT_RERUN",
+  "dependency_vulnerability_audit": "NOT_RERUN",
+  "remote_ci_runs": 0,
+  "pushes": 0,
+  "raw_result_ref": "dist/validation/v2006-exact-20261018/RESULT.json",
+  "gate_receipt_sha256": {
+    "unit": "99ebbb5d455fb51395c8bb7a78c7fffa13d37676510c53cae553868f0b93e2a5",
+    "arch_fitness": "c8849be66b973819098e002ac879e05cf0c24d5e99b365bef055dd5741d0690c",
+    "static": "c167fba35521d3b920a8cb49147320a31a6b5c29ed9a8d78a7d7ea67fb80db2c",
+    "schema_contract": "eeb7c75fa78ccf6ee6563fd46317fe75c1aad1c73bceee3f5bd9f7bf0b7d8522"
+  },
+  "task_state": "IMPLEMENTED_NOT_VERIFIED",
+  "next_action": "Review exact local result, then use one key-delivery remote CI for acceptance; do not start tasks requiring V2-006 VERIFIED yet"
+}
