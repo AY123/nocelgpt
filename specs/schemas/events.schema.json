@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/schemas/events.schema.json",
+  "title": "Project-scoped narrative event timeline",
+  "$ref": "#/$defs/timeline",
+  "$defs": {
+    "entity_id": {
+      "type": "object",
+      "description": "Stable entity identifier scoped to project",
+      "required": [
+        "project",
+        "local_id"
+      ],
+      "properties": {
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Project scope identifier"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$",
+          "description": "Unique identifier within project"
+        }
+      },
+      "additionalProperties": false
+    },
+    "narrative_position": {
+      "type": "object",
+      "required": [
+        "chapter",
+        "order"
+      ],
+      "properties": {
+        "chapter": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "story_time": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "earliest",
+            "latest"
+          ],
+          "properties": {
+            "kind": {
+              "const": "UNKNOWN"
+            },
+            "earliest": {
+              "type": "null"
+            },
+            "latest": {
+              "type": "null"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "earliest",
+            "latest"
+          ],
+          "properties": {
+            "kind": {
+              "const": "EXACT"
+            },
+            "earliest": {
+              "type": "integer"
+            },
+            "latest": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "earliest",
+            "latest"
+          ],
+          "properties": {
+            "kind": {
+              "const": "RANGE"
+            },
+            "earliest": {
+              "type": "integer"
+            },
+            "latest": {
+              "type": "integer"
+            }
+          },
+          "additionalProperties": false
+        }
+      ],
+      "description": "Project-local logical instant or possible-instant range; cross-field bound ordering is validated by the domain parser."
+    },
+    "event": {
+      "type": "object",
+      "required": [
+        "kind",
+        "schema_version",
+        "id",
+        "event_type",
+        "narrative_position",
+        "story_time",
+        "occurrence",
+        "evidence_ref",
+        "description",
+        "participants",
+        "location"
+      ],
+      "properties": {
+        "kind": {
+          "const": "EVENT"
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "event_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "narrative_position": {
+          "$ref": "#/$defs/narrative_position"
+        },
+        "story_time": {
+          "$ref": "#/$defs/story_time"
+        },
+        "occurrence": {
+          "enum": [
+            "OCCURRED",
+            "NOT_OCCURRED",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entity_id"
+          },
+          "uniqueItems": true
+        },
+        "location": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/entity_id"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "timeline": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "project",
+        "events"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "1.0"
+        },
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/event"
+          },
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

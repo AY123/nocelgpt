@@ -1,0 +1,90 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "unit",
+  "gate": "UNIT",
+  "status": "PASS",
+  "revision": "c586d98f11721b017dbba21693074c24c116ff5c",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "619f4b441eec459355c9bbd2852855f6137099548e85b623be501d331194194e",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "55aa474168600593e2470f9b5a24991ec1cc82dba1e87c6fe682b93595163a2e",
+  "started_at": "2026-10-18T10:00:24.054157+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/ci/bootstrap_scanners.py",
+        "--output-dir",
+        "dist/tools/gitleaks-8.21.2",
+        "--reuse-verified"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2007-local-20261018/unit-2/command-01.stdout.log",
+        "sha256": "44cc3609119d7792b7ee7419f163b376feaf4f7cc24175c7b73de6c8b4aa7b15"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2007-local-20261018/unit-2/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/contract",
+        "tests/integration/test_repository_bootstrap.py",
+        "--junitxml=dist/validation/v2007-local-20261018/unit-2/junit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2007-local-20261018/unit-2/command-02.stdout.log",
+        "sha256": "9f3c1ab49cce1162a3a880d9adfe7db981bc98ebfc9654d9b87c830fa6df3006"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2007-local-20261018/unit-2/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/v2007-local-20261018/unit-2/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2007-local-20261018/unit-2/command-01.stdout.log",
+      "sha256": "44cc3609119d7792b7ee7419f163b376feaf4f7cc24175c7b73de6c8b4aa7b15"
+    },
+    {
+      "ref": "dist/validation/v2007-local-20261018/unit-2/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2007-local-20261018/unit-2/command-02.stdout.log",
+      "sha256": "9f3c1ab49cce1162a3a880d9adfe7db981bc98ebfc9654d9b87c830fa6df3006"
+    },
+    {
+      "ref": "dist/validation/v2007-local-20261018/unit-2/junit.xml",
+      "sha256": "b707d04192d0c96980724064169e40d5ec80f3e3475834e36ffe731e6733223d"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-18T10:07:18.971076+00:00"
+}

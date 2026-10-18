@@ -1,0 +1,68 @@
+{
+  "record_type": "local_implementation_summary",
+  "task_id": "V2-007",
+  "observed_utc": "2026-10-18T10:08:11.999164+00:00",
+  "verification_kind": "LOCAL_WORKTREE_NOT_REMOTE_CI",
+  "gates": {
+    "unit": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "c586d98f11721b017dbba21693074c24c116ff5c",
+      "receipt_sha256": "8e66c6240e489acd4bc784e5bf04ccc9dc8b98d5f1fd2e04b1a32bc5e4abbf0d"
+    },
+    "static": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "c586d98f11721b017dbba21693074c24c116ff5c",
+      "receipt_sha256": "865b9bf8254f607e197759881a168e0e885b4df3fe78d3ee5db516a9932e628b"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "c586d98f11721b017dbba21693074c24c116ff5c",
+      "receipt_sha256": "31e5e6f18c2f1dd06dc4fa8dcadf86ccca6fa7d80ea6f105505f0400e4021459"
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "source_kind": "LOCAL",
+      "revision_context": "c586d98f11721b017dbba21693074c24c116ff5c",
+      "receipt_sha256": "514caf2ee30c16223ba776bafa6d7ed377f0f9145fada7b41b622506737526fe"
+    }
+  },
+  "unit": {
+    "tests": 826,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "architecture": {
+    "tests": 244,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "v2_007": {
+    "tests": 81,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "src/anovel/domain/events.py": "8709af25bfc49adb64ae3feb5cf343ad19569b8e45f12b15e402e1a3269c46e3",
+    "src/anovel/domain/promises.py": "4dcb070a98378a308bd4406a5d9a99fa27411365ac08c4ca34ae1c64646ec596",
+    "specs/schemas/events.schema.json": "db9d9f1ab48d9095f95c126550f271ac635474593c9a4e02828ab0ff514c20e1",
+    "specs/schemas/promises.schema.json": "0df05e7c77aea4a2b3a386754caddbd8d657ed19cf0d343dfdbd519424867f94",
+    "tests/contract/test_v2_007.py": "7b86a8de5c5253c38a377721f5e6844d6d08d3bc934faf09587d39ec6b3cab65",
+    "demo_v2_007.py": "bc9703b4acecde8221bc0e77fa90d54c4dc624904ca0f07bde96387224d76094"
+  },
+  "notes": [
+    "Initial UNIT:824 pass,2 bootstrap tests blocked by sandbox uv-cache access. Original UNIT rerun outside sandbox after adding a direct terminal status assertion.",
+    "First ARCH entry stopped on derived Ruff cache drift; bytes preserved outside source tree, original exact optional-host-cache scope unchanged; repeat ARCH PASS.",
+    "Two initial test fixtures corrected (foreign event made internally valid; schema root $ref resolved before checking closure).",
+    "Exact isolated revision replay pending; no tests skipped."
+  ],
+  "remote_ci": "NOT_RUN",
+  "postgres_env": "NOT_RERUN_NO_DATABASE_CHANGE",
+  "secret_dependency": "NOT_RERUN_NO_DEPENDENCY_OR_POLICY_CHANGE",
+  "independent_personnel_review": false
+}

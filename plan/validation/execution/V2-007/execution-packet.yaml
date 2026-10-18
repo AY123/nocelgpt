@@ -4,7 +4,7 @@ task_id: V2-007
 plan_version: 1.3.0
 repository_revision: b5d050d89b2c43871dbc5a51870ec97eaa18a119
 worktree_dirty: false
-plan_manifest_sha256: f42b611cb0a90c4fa95291fe6fa502bf7ca2643b63ae1fa3fcc5dcb3a66f184b
+plan_manifest_sha256: 4d645febdd0d2bef763df505a02f56b1fc09f86b7b43727e805a2a4a83eabf1e
 environment:
   fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
   runtime_versions:
@@ -29,11 +29,11 @@ inputs:
   ref: validation/execution/V2-007/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-007/inputs/cd6bebe51733e7608895825ea019d4cb1941e4f991390083c775471250fbca40.txt
-  sha256: cd6bebe51733e7608895825ea019d4cb1941e4f991390083c775471250fbca40
+  ref: validation/execution/V2-007/inputs/2fba092cb1f72ca81fd9c3704e6b4c21f52a9c46419dd8188c6e97cc4778958f.txt
+  sha256: 2fba092cb1f72ca81fd9c3704e6b4c21f52a9c46419dd8188c6e97cc4778958f
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-007/inputs/e9e909904b011ede264f7a9e4bb57df3ebce6adb7906824552b0bad0d3883a9c.txt
-  sha256: e9e909904b011ede264f7a9e4bb57df3ebce6adb7906824552b0bad0d3883a9c
+  ref: validation/execution/V2-007/inputs/d5389bac7b981268d86195a06804363bfb8b0984a11dd878c4d33331400cff15.txt
+  sha256: d5389bac7b981268d86195a06804363bfb8b0984a11dd878c4d33331400cff15
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-007/inputs/c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a.txt
   sha256: c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a
@@ -91,13 +91,15 @@ review_notes:
 - Known existing prerequisite-fixture paths are bounded for necessary regression repairs, not exempt from exact
   review
 handoff:
-  current_step: ADR-003 accepted against committed source; run IMPLEMENT gate before interface code
+  current_step: Local Event/Timeline/Promise implementation and tests PASS; exact local replay before delivery
   completed_steps:
-  - PREPARE action PASS
-  - ADR-003 committed and accepted before source implementation
+  - ADR-003 accepted before interfaces and original IMPLEMENT entry PASS
+  - V2-007 81 tests / full UNIT 826 / ARCH 244 PASS,0 skip
+  - Original STATIC and five governance checks PASS; no remote CI
   pending_items:
-  - Implement pure in-memory domain and original three acceptance cases
-  - Local gates only; remote CI and formal acceptance not run
+  - Exact revision isolated local replay
+  - One later exact-SHA remote six-gate run and formal acceptance; not auto-dispatched
+  - No DB/Canon/Provider or prose semantic claim
   next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
@@ -106,3 +108,5 @@ handoff:
 change_review:
   scope_revision: f2bd207d6e4bf64645514c0683364c7fd81339a9
   scope_ref: plan/validation/execution/V2-007/scope.json
+  review_revision: c586d98f11721b017dbba21693074c24c116ff5c
+  review_ref: plan/validation/execution/V2-007/entry-review.json
