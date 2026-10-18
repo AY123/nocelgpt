@@ -4,7 +4,7 @@ task_id: V2-008
 plan_version: 1.3.0
 repository_revision: 81bfc13aa8fcbe0acdf3b2c01c4915aea7a55272
 worktree_dirty: false
-plan_manifest_sha256: 448a407d28d695f56a691f0daf4ef8ee66956f4db7bddca1a35cea0dee734f1a
+plan_manifest_sha256: f7c5f92a4402bcc3f094573e27d1260d35d2292e1da59568043bfaccc6382774
 environment:
   fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
   runtime_versions:
@@ -17,7 +17,7 @@ verifier: Same Codex operator and technical cross-checks; no independent personn
 owner_role: domain-maintainer
 scope: V2-008 typed finite fact proposals, explicit unknown/no-change/retraction, strict preconditions and pure
   preview; no Canon writes, DB, Provider or future extension framework.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-008/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -26,14 +26,14 @@ inputs:
   ref: validation/execution/V2-008/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-008/inputs/50b64af86669b5bb0af3962ffd3dd7a067a7e3f73216b0d3edb60159ce6bed73.txt
-  sha256: 50b64af86669b5bb0af3962ffd3dd7a067a7e3f73216b0d3edb60159ce6bed73
+  ref: validation/execution/V2-008/inputs/fc4a1b28bd0f78974c369af152e21de5fda03bca50dd24d901e7d20a678f88c1.txt
+  sha256: fc4a1b28bd0f78974c369af152e21de5fda03bca50dd24d901e7d20a678f88c1
 - source_ref: machine/test-catalog.yaml
   ref: validation/execution/V2-008/inputs/5608527c5a42c677139c7884cc14cad94dc2f115065957f4cc2da2028436cea3.txt
   sha256: 5608527c5a42c677139c7884cc14cad94dc2f115065957f4cc2da2028436cea3
 - source_ref: machine/decision-register.yaml
-  ref: validation/execution/V2-008/inputs/c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a.txt
-  sha256: c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a
+  ref: validation/execution/V2-008/inputs/81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d.txt
+  sha256: 81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d
 - source_ref: machine/ai-execution-policy.yaml
   ref: validation/execution/V2-008/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
   sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
@@ -82,15 +82,18 @@ review_notes:
 - 'Direct user request: ADR-004 before interfaces, then bounded local implementation and tests'
 - Original task identities, dependencies and all three assertions stay unchanged; history only reference
 handoff:
-  current_step: PREPARE ADR-004; no delta source/schema implementation yet
+  current_step: ADR-004 accepted against committed source; run IMPLEMENT gate before interface code
   completed_steps:
-  - Actual clean main checked; V2-006/V2-007 CLOSED and G-P0 verified
-  - Current domain contracts and three task assertions read
+  - PREPARE action PASS
+  - ADR-004 committed and accepted before source implementation
   pending_items:
-  - Decide finite operations/preconditions/reducer/proposal boundary
-  - Accept committed ADR before interface implementation; original action gate
-  next_action: PREPARE
+  - Implement pure in-memory domain and original three acceptance cases
+  - Local gates only; remote CI and formal acceptance not run
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
+change_review:
+  scope_revision: b52e8c0bc85cef7f62bb9f90aea0a422b4afb230
+  scope_ref: plan/validation/execution/V2-008/scope.json

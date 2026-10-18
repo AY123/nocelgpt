@@ -1,0 +1,66 @@
+{
+  "task_id": "V2-008",
+  "baseline_pin": {
+    "revision": "b52e8c0bc85cef7f62bb9f90aea0a422b4afb230",
+    "ref": "plan/validation/execution/V2-008/scope.json",
+    "sha256": "e0cb0bd93548c8a60d69beb5ec45432bbbf2efb38b9c84e9908880d25f1bd3bb"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "new_sha": "fc4a1b28bd0f78974c369af152e21de5fda03bca50dd24d901e7d20a678f88c1",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "bfc6f84d3f9b7553b3796199d70beb635e2887a35c024cfd4a5d7f55a20eb645",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start requested V2-008 after G-P0 and V2-006/V2-007 are CLOSED/VERIFIED and committed ADR-004 is accepted. Only readiness/status and execution packet binding change; original scope/dependencies/three assertions unchanged.",
+      "impact": "Local implementation start only, no task or CI acceptance; no mandatory threshold or check changed.",
+      "reviewer": "Codex same operator technical review; not independent personnel",
+      "replacement_validation": "PREPARE action PASS; ADR original committed before interface code; typed ADR acceptance binds its bytes. IMPLEMENT original entry must pass before source changes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/authorization.txt",
+        "sha256": "fc112038610aba8450090db2f802732069ffc058464bbf662126965cd8fad82c"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/adr-004-decision.yaml",
+          "sha256": "63890e0236a58a38233086115742b4c401edb86ad7738e813246f7224c4c7519"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "new_sha": "fc4a1b28bd0f78974c369af152e21de5fda03bca50dd24d901e7d20a678f88c1",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "89fbda1b5e7055ba7f0f90cc47e77be0c2509be7e823b267c34b56406cec190b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start requested V2-008 after G-P0 and V2-006/V2-007 are CLOSED/VERIFIED and committed ADR-004 is accepted. Only readiness/status and execution packet binding change; original scope/dependencies/three assertions unchanged.",
+      "impact": "Local implementation start only, no task or CI acceptance; no mandatory threshold or check changed.",
+      "reviewer": "Codex same operator technical review; not independent personnel",
+      "replacement_validation": "PREPARE action PASS; ADR original committed before interface code; typed ADR acceptance binds its bytes. IMPLEMENT original entry must pass before source changes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-008/authorization.txt",
+        "sha256": "fc112038610aba8450090db2f802732069ffc058464bbf662126965cd8fad82c"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-008/adr-004-decision.yaml",
+          "sha256": "63890e0236a58a38233086115742b4c401edb86ad7738e813246f7224c4c7519"
+        }
+      ]
+    }
+  ]
+}

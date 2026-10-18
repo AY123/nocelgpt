@@ -1,0 +1,17 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-004-20261018-local
+evidence_type: ADR_DECISION
+subject_id: ADR-004
+revision: b52e8c0bc85cef7f62bb9f90aea0a422b4afb230
+status: PASS
+producer: Codex same operator under direct V2-008 user authorization; not independent personnel review
+executed_at: '2026-10-18T11:29:13.898345+00:00'
+environment_fingerprint: Python3.12.14; frozen EntityId and pure in-memory contracts; no dependency change
+artifacts:
+- ref: decisions/ADR-004_DELTA_OPERATION_CONTRACT.md
+  sha256: 6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Actual committed ADR original accepted before interface implementation. This is design acceptance, not
+  implementation, CI or task closure.
