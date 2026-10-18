@@ -521,7 +521,7 @@ tasks:
   - 不引入数据库/Provider 实现依赖
   - Core 不内置公司财务或修炼境界字段
   status: OPEN
-  execution_packet_ref: null
+  execution_packet_ref: validation/execution/V2-008/execution-packet.yaml
   owner_role: domain-maintainer
   readiness: PLANNED
   start_gate: G-P0

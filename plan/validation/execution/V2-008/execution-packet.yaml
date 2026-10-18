@@ -1,0 +1,96 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-008
+plan_version: 1.3.0
+repository_revision: 81bfc13aa8fcbe0acdf3b2c01c4915aea7a55272
+worktree_dirty: false
+plan_manifest_sha256: 448a407d28d695f56a691f0daf4ef8ee66956f4db7bddca1a35cea0dee734f1a
+environment:
+  fingerprint: Local Python3.12.14 / uv0.12.17; pure in-memory domain, locked dependencies
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex primary with bounded delegated domain subtasks after ADR/action gate
+verifier: Same Codex operator and technical cross-checks; no independent personnel claim
+owner_role: domain-maintainer
+scope: V2-008 typed finite fact proposals, explicit unknown/no-change/retraction, strict preconditions and pure
+  preview; no Canon writes, DB, Provider or future extension framework.
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-008/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-008/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-008/inputs/50b64af86669b5bb0af3962ffd3dd7a067a7e3f73216b0d3edb60159ce6bed73.txt
+  sha256: 50b64af86669b5bb0af3962ffd3dd7a067a7e3f73216b0d3edb60159ce6bed73
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-008/inputs/5608527c5a42c677139c7884cc14cad94dc2f115065957f4cc2da2028436cea3.txt
+  sha256: 5608527c5a42c677139c7884cc14cad94dc2f115065957f4cc2da2028436cea3
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-008/inputs/c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a.txt
+  sha256: c207b5c76f0ec8dbb149ee573e9d425e3c43b9cf7fb21978efd2cfccac97d31a
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-008/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/domain/delta.py
+- specs/schemas/narrative-delta.schema.json
+- tests/contract/test_v2_008.py
+- demo_v2_008.py
+allowed_paths:
+- src/anovel/domain/delta.py
+- specs/schemas/narrative-delta.schema.json
+- tests/contract/test_v2_008.py
+- demo_v2_008.py
+- plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md
+- plan/validation/execution/V2-008/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/decision-register.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- AGENTS.md
+- README.md
+- plan/README.md
+- tests/contract/test_plan_governance.py
+- tests/contract/test_task_execution.py
+required_decisions:
+- ADR-004
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse EntityId, Proposition/WorldFact and strict frozen dataclass contracts; no new dependency
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 7200
+stop_conditions:
+- Need DB, real Permit/Canon persistence or paid Provider
+- Unrelated user modifications would be lost
+- Need changes to mandatory gates, scanner, authority or remote settings
+review_notes:
+- 'Direct user request: ADR-004 before interfaces, then bounded local implementation and tests'
+- Original task identities, dependencies and all three assertions stay unchanged; history only reference
+handoff:
+  current_step: PREPARE ADR-004; no delta source/schema implementation yet
+  completed_steps:
+  - Actual clean main checked; V2-006/V2-007 CLOSED and G-P0 verified
+  - Current domain contracts and three task assertions read
+  pending_items:
+  - Decide finite operations/preconditions/reducer/proposal boundary
+  - Accept committed ADR before interface implementation; original action gate
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
