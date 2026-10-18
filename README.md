@@ -1,4 +1,4 @@
-**当前：P0 工程验收 VERIFIED；V2-001～004 CLOSED；M0 VERIFIED。** 证据与限制见 [P0验收](docs/P0_ACCEPTANCE.md)。工程CI基线611d777，后续文档/夹具维护未新增远程CI。P1尚未开始。
+**当前：P0 工程验收 VERIFIED；V2-001～004 CLOSED；V2-005 IN_PROGRESS。** 日常开发统一使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。V2-005 实体与别名能力已完成本地验证（851 项契约/架构测试通过、0 skip），交接见 [V2-005_HANDOFF.md](V2-005_HANDOFF.md)。P0 工程 CI 仍绑定611d777，本轮未触发新 CI。
 
 # ANovelOS
 
@@ -6,7 +6,7 @@ Current delivery target: [AY123/nocelgpt](https://github.com/AY123/nocelgpt) (pr
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001～V2-004 CLOSED / G-P0 VERIFIED**。GitHub 工程提交611d777六门全绿、714测试通过。54项安全发现保持OPEN，按有限期精确批准消费；没有全局忽略。单人Owner模式与权限限制按用户要求明确登记。其余56任务仍OPEN，P0整体已完成工程验收，章节生产未开始。见[V2-004实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)与[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。
+当前为 **Plan v1.3.0 / V2-001～V2-004 CLOSED / G-P0 VERIFIED / V2-005 IN_PROGRESS**。GitHub 工程提交611d777六门全绿、714测试通过。54项安全发现保持OPEN，按有限期精确批准消费；没有全局忽略。单人Owner模式与权限限制按用户要求明确登记。另55任务仍OPEN，V2-005正在交付内存实体能力，章节生产未开始。见[V2-004实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)与[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。
 
 ## 从这里开始
 

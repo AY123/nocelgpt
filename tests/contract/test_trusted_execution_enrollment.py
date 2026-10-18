@@ -1,15 +1,16 @@
-"""Run the actual protected-overlay guard; synthetic controls do not certify GitLab."""
+"""Exercise the historical GitLab guard, not current GitHub trust certification."""
 
 from __future__ import annotations
 
 import ast
 import base64
 import hashlib
+import io
 import json
 import os
-import shutil
 import subprocess
 import sys
+import tarfile
 import zlib
 from pathlib import Path
 
@@ -23,6 +24,9 @@ OVERLAY = ENROLLMENT + "acceptance-overlay.yml"
 NORMALIZED_GUARD_SHA256 = (
     "dbd923257bc44717b9b01fd4ebcdd3a794a05c23a118ed7b98666b52ee82e25b"
 )
+# This commit refreshed the frozen overlay inventory for its exact source tree.
+# It is a local historical fixture, not a claim of remote CI for this revision.
+HISTORICAL_GUARD_REVISION = "1fa558d4965c15d445e76e033a1107ae10d971a9"
 
 
 def overlay_document():
@@ -206,33 +210,103 @@ def test_trusted_wrapper_uses_fixed_original_source_and_atomic_protected_overlay
     assert "include:local" not in (ROOT / WRAPPER).read_text()
 
 
-def source_only_subject(tmp_path):
+def source_only_subject(tmp_path, repository=ROOT):
+    """Read a fixed Git tree; mutable worktree files never enter the fixture."""
     subject = tmp_path / "source-only-subject"
     subject.mkdir()
-    source = guard_source()
+    document = yaml.safe_load(
+        subprocess.run(
+            ["git", "show", HISTORICAL_GUARD_REVISION + ":" + OVERLAY],
+            cwd=repository,
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout
+    )
+    source = guard_source(document)
     _, areas = literal_assignment(source, "SOURCE_ROOTS")
     _, auxiliary = literal_assignment(source, "AUXILIARY_MODULE_ROOTS")
     _, root_files = literal_assignment(source, "ROOT_FILES")
-    for area in areas:
-        # Preserve links without reading their targets; the real guard rejects
-        # them. Never select copied paths from the candidate manifest payload.
-        shutil.copytree(ROOT / area, subject / area, symlinks=True)
-    for area in auxiliary:
-        if (ROOT / area).exists():
-            shutil.copytree(ROOT / area, subject / area, symlinks=True)
-    for name in root_files:
-        item = ROOT / name
-        if item.exists() or item.is_symlink():
-            shutil.copy2(item, subject / name, follow_symlinks=False)
+    top_level = set(
+        subprocess.run(
+            ["git", "ls-tree", "--name-only", "-z", HISTORICAL_GUARD_REVISION],
+            cwd=repository,
+            capture_output=True,
+            text=True,
+            check=True,
+        ).stdout.split("\0")
+    )
+    assert set(areas).issubset(top_level), "missing historical source roots"
+    # Select roots independently of the embedded manifest. All their tracked
+    # files must be checked, including any extra files absent from its payload.
+    paths = [name for name in (*areas, *auxiliary, *root_files) if name in top_level]
+    archive = subprocess.run(
+        ["git", "archive", "--format=tar", HISTORICAL_GUARD_REVISION, "--", *paths],
+        cwd=repository,
+        capture_output=True,
+        check=True,
+    ).stdout
+    with tarfile.open(fileobj=io.BytesIO(archive), mode="r:") as historical:
+        historical.extractall(subject, filter="data")
     return subject, source
 
 
 def test_actual_guard_accepts_current_source_only_subject(tmp_path):
+    """Keep the historical test ID; its source is the fixed Git fixture, not HEAD."""
     subject, source = source_only_subject(tmp_path)
     assert not os.path.lexists(subject / ".venv")
     result = run_guard(subject, source)
     assert result.returncode == 0, result.stderr
     assert json.loads(result.stdout)["status"] == "PASS"
+
+
+def test_fixed_historical_subject_is_independent_of_dirty_worktree(tmp_path):
+    checkout = tmp_path / "dirty-checkout"
+    subprocess.run(
+        [
+            "git",
+            "clone",
+            "--shared",
+            "--no-checkout",
+            "--quiet",
+            str(ROOT),
+            str(checkout),
+        ],
+        check=True,
+        capture_output=True,
+    )
+    for name in [
+        "scripts/ci/run_gate.py",
+        "src/anovel/new_domain.py",
+        "tests/__pycache__/untracked.pyc",
+        OVERLAY,
+    ]:
+        changed = checkout / name
+        changed.parent.mkdir(parents=True, exist_ok=True)
+        changed.write_text("dirty worktree content must not enter historical fixture\n")
+    subject, source = source_only_subject(tmp_path, repository=checkout)
+    assert not (subject / "src/anovel/new_domain.py").exists()
+    assert not (subject / "tests/__pycache__").exists()
+    result = run_guard(subject, source)
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout)["status"] == "PASS"
+
+
+@pytest.mark.parametrize("mutation", ["changed", "missing", "extra"])
+def test_actual_guard_rejects_mutated_fixed_historical_subject(tmp_path, mutation):
+    subject, source = source_only_subject(tmp_path)
+    item = subject / "scripts/ci/run_gate.py"
+    if mutation == "changed":
+        item.write_text("unapproved changed source\n")
+    elif mutation == "missing":
+        item.unlink()
+    else:
+        (subject / "scripts/unapproved.py").write_text("unapproved additional source\n")
+    result = run_guard(subject, source)
+    assert result.returncode == 1
+    failure = json.loads(result.stderr)
+    assert failure[mutation]
+    assert failure["status"] == "FAIL"
 
 
 def test_actual_guard_accepts_synthetic_fixture_and_unmonitored_output(tmp_path):

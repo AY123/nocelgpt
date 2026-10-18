@@ -85,6 +85,7 @@ def test_existing_rules_reject_single_mutations(mutate, prefix):
     data = deepcopy(validator.load())
     if prefix == 'TASK_START':
         # Explicit missing predecessor gate; real project progress is irrelevant.
+        data['implementation-backlog']['tasks'][4].update(status='OPEN', readiness='PLANNED')
         data['phase-gates']['phases'][0].update(status='NOT_VERIFIED', evidence_refs=[])
         data['milestones']['milestones'][0].update(status='NOT_VERIFIED', evidence_refs=[])
     assert validator.validate_objects(data) == []

@@ -27,6 +27,16 @@ class GovernanceTests(unittest.TestCase):
         self.plan = Path(self.tmp.name)/'plan'
         shutil.copytree(validator.PLAN, self.plan, ignore=shutil.ignore_patterns('__pycache__', '.DS_Store'))
         self.data = deepcopy(validator.load())
+        # This is an isolated P0 closure fixture, independent of live P1+ progress.
+        # Positive future-start cases opt their selected task back in explicitly.
+        p0_tasks = {t['task_id'] for t in self.data['implementation-backlog']['tasks'] if t['phase'] == 'P0'}
+        for task in self.data['implementation-backlog']['tasks']:
+            if task['task_id'] not in p0_tasks:
+                task.update(status='OPEN', readiness='PLANNED', execution_packet_ref=None,
+                            evidence={kind:[] for kind in ('code', 'tests', 'ci', 'acceptance')})
+        for suite in self.data['test-catalog']['suites']:
+            if suite['task_id'] not in p0_tasks:
+                suite.update(status='PLANNED', execution_evidence=[])
         # Real finding closures cannot serve as synthetic task attestations.
         for finding in self.data['remediation-register']['findings']:
             if finding['closure_refs']:

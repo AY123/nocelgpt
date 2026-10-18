@@ -7,6 +7,7 @@ import hashlib
 import json
 import os
 import platform
+import re
 import subprocess
 import sys
 from collections.abc import Mapping
@@ -81,41 +82,85 @@ def git(*args: str) -> str:
 
 
 def architecture_entry(python: list[str], target: str) -> list[str]:
-    """Audit completed work without requesting a new implementation action."""
+    """Use the sole active task; retain the completed P0 audit when none is active."""
     backlog = yaml.safe_load(
         (ROOT / "plan/machine/implementation-backlog.yaml").read_text()
     )
     if not isinstance(backlog, dict) or not isinstance(backlog.get("tasks"), list):
         raise ValueError("Architecture task registry required")
-    tasks = [
+    tasks = {}
+    for task in backlog["tasks"]:
+        if not isinstance(task, dict):
+            raise ValueError("Architecture task registry entry invalid")
+        identity, status = task.get("task_id"), task.get("status")
+        if (
+            not isinstance(identity, str)
+            or not re.fullmatch(r"V2-[0-9]{3}", identity)
+            or identity in tasks
+            or not isinstance(status, str)
+            or status
+            not in {"OPEN", "IN_PROGRESS", "IMPLEMENTED", "VERIFIED", "CLOSED"}
+        ):
+            raise ValueError("Architecture task identity/status invalid or duplicated")
+        tasks[identity] = task
+    active = [
         task
-        for task in backlog["tasks"]
-        if isinstance(task, dict) and task.get("task_id") == "V2-004"
+        for task in tasks.values()
+        if task["status"] in {"IN_PROGRESS", "IMPLEMENTED"}
     ]
-    if len(tasks) != 1:
-        raise ValueError("Exactly one architecture entry task required")
-    status = tasks[0].get("status")
-    if not isinstance(status, str):
-        raise ValueError("Architecture task status required")
-    if status in {"VERIFIED", "CLOSED"}:
-        ref = tasks[0].get("execution_packet_ref")
-        if not isinstance(ref, str) or not ref.startswith("validation/"):
-            raise ValueError("Completed task packet required")
-        packet_path = ROOT / "plan" / ref
-        if packet_path.is_symlink() or not packet_path.resolve().is_relative_to(
-            ROOT / "plan/validation"
+    if len(active) > 1:
+        raise ValueError("Architecture entry is ambiguous: multiple active tasks")
+    task = active[0] if active else tasks.get("V2-004")
+    if not task or (not active and task["status"] not in {"VERIFIED", "CLOSED"}):
+        raise ValueError(
+            "Architecture entry requires an active task or completed P0 audit"
+        )
+    identity = task["task_id"]
+    ref = task.get("execution_packet_ref")
+    if not isinstance(ref, str) or not ref.startswith("validation/"):
+        raise ValueError("Architecture task packet required")
+    packet_path = ROOT / "plan" / ref
+    if (
+        packet_path.is_symlink()
+        or not packet_path.resolve().is_relative_to(ROOT / "plan/validation")
+        or not packet_path.is_file()
+    ):
+        raise ValueError("Architecture task packet path invalid")
+    packet = yaml.safe_load(packet_path.read_text())
+    if (
+        not isinstance(packet, dict)
+        or packet.get("record_type") != "task_execution_packet"
+        or packet.get("task_id") != identity
+        or packet.get("action") != "IMPLEMENT"
+    ):
+        raise ValueError("Architecture task packet identity/action invalid")
+    binding = packet.get("change_review")
+    keys = ("scope_revision", "scope_ref", "review_revision", "review_ref")
+    if not isinstance(binding, dict) or not all(
+        isinstance(binding.get(key), str) and binding[key].strip() for key in keys[:2]
+    ):
+        raise ValueError("Architecture task requires a packet-bound scope pin")
+    review_keys = keys[2:]
+    if not active or any(key in binding for key in review_keys):
+        if not all(
+            isinstance(binding.get(key), str) and binding[key].strip()
+            for key in review_keys
         ):
-            raise ValueError("Completed task packet path invalid")
-        packet = yaml.safe_load(packet_path.read_text())
-        if not isinstance(packet, dict) or packet.get("task_id") != "V2-004":
-            raise ValueError("Completed task packet identity invalid")
-        binding = packet.get("change_review")
-        keys = ("scope_revision", "scope_ref", "review_revision", "review_ref")
-        if not isinstance(binding, dict) or not all(
-            isinstance(binding.get(key), str) and binding[key].strip() for key in keys
+            raise ValueError("Architecture task requires paired exact review pins")
+    for key, value in binding.items():
+        if key not in keys or not isinstance(value, str):
+            raise ValueError("Architecture pin binding invalid")
+        if key.endswith("_revision"):
+            if not re.fullmatch(r"[0-9a-f]{40}([0-9a-f]{24})?", value):
+                raise ValueError("Architecture pin revision invalid")
+        elif (
+            value != value.strip()
+            or Path(value).is_absolute()
+            or ".." in Path(value).parts
         ):
-            raise ValueError("Completed task requires exact scope and review pins")
-        command = python + ["scripts/check_changes.py", "--task", "V2-004"]
+            raise ValueError("Architecture pin ref must be repository-relative")
+    if not active:
+        command = python + ["scripts/check_changes.py", "--task", identity]
         for key in keys:
             command += ["--" + key.replace("_", "-"), binding[key]]
         return command + ["--output", target + "/action-entry.json"]
@@ -123,7 +168,7 @@ def architecture_entry(python: list[str], target: str) -> list[str]:
         "scripts/task_execution.py",
         "check",
         "--task",
-        "V2-004",
+        identity,
         "--action",
         "IMPLEMENT",
         "--output",

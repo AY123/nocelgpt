@@ -1,6 +1,10 @@
 # V2-004 exact secret exception consumer
 
-Current local delta (2026-10-15): the active candidate ledger contains52 exact identities:43 precise exceptions and9 historical risk-accepted rule hits. The original45 rows and their disposition kinds are unchanged; five public identifiers and two rule hits of one historical token-shaped source line were explicitly approved by the Project Owner. All52 findings remain OPEN. The original exact expiry2027-01-06T06:07:49Z is retained. Active policy uses four immutable authority records under `mainline-unblock-20261007/history-delta-20261015/`. The original45-item canonical, old approvals and pending inputs remain historical evidence. This local candidate has no final same-SHA trusted CI acceptance.
+**历史时点（2026-10-15）**：当时候选账本包含 52 项精确身份（43 项精确例外 + 9 项历史风险接纳）。原始 45 项及其处置类型未变；5 个公开标识符和 1 个历史 token 状源行的 2 个规则命中由 Owner 明确批准。所有 52 项 finding 保持 OPEN。原始到期时间 2027-01-06T06:07:49Z 保留。
+
+**当前账本与批准记录**：见 `security-policy.yaml` 的 `secret_exceptions.repository` 字段，指向实际生效的账本和权威批准记录。当前 54 项 OPEN（详见 plan/README.md 第 62 行精确处置补记）。
+
+本文档记录消费器设计与实现，不复制完整账本内容。历史候选未经远程 CI 验证。
 
 Work package: `V2-004-P0-MAINLINE-UNBLOCK-001`, 2026-10-07. Local implementation
 and tests only; no remote CI, project setting change, runner start, push or P0

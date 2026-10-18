@@ -94,16 +94,16 @@ review_notes:
 - 2026-10-18 direct Owner instruction extends delivery to all present project changes on main; prior no-push boundary
   is superseded only for this GitHub main delivery.
 handoff:
-  current_step: 'Authorized main delivery: retain source verification, align documentation, commit project changes
-    and push without CI'
+  current_step: 'Owner-authorized main delivery: source and existing project changes staged, local verification
+    passed; commit and push without CI'
   completed_steps:
   - Entity identity immutability, actual ambiguous aliases, rename indexes and JSON Schema boundary repaired
   - Historical guard skip removed using fixed Git fixture; required history restored
   - 851 contract/architecture tests, static checks, 39 governance tests and offline exact secret scan passed
   - Real packet-bound V2-005 IMPLEMENT entry, production architecture scan and all 212 architecture tests PASS
   pending_items:
-  - Complete main commit/push and exact remote readback
-  - Remote CI and formal V2-005 acceptance are not performed
+  - Finish main commit and exact remote readback
+  - Remote CI and formal V2-005 acceptance remain separate and unexecuted
   next_action: IMPLEMENT
   last_check:
     status: PASS
@@ -112,7 +112,7 @@ handoff:
       sha256: c5cd6576df1aaba85059cd728eb83dec2c85dd829d61adb3250213ee999427f1
     missing_artifact_reason: null
 change_review:
-  scope_revision: 0e53b4893ccbc6122cbf9e06ad539fb23dcad66b
+  scope_revision: 3b0ae87a0812b8f275c53fe9e0e67d03a84c4a9a
   scope_ref: plan/validation/execution/V2-005/scope.json
-  review_revision: 0888a8ad6cf085073c01cab4d58516208f689df7
-  review_ref: plan/validation/execution/V2-005/final-review.json
+  review_revision: 6d06acb93874790af90427bfb53a72dfa39bf1d9
+  review_ref: plan/validation/execution/V2-005/delivery-review.json

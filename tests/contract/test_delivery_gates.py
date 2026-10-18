@@ -214,7 +214,16 @@ def architecture_task(tmp_path, monkeypatch):
         "review_ref": "plan/validation/review.json",
     }
     registry.write_text(yaml.safe_dump({"tasks": [task]}))
-    packet.write_text(yaml.safe_dump({"task_id": "V2-004", "change_review": binding}))
+    packet.write_text(
+        yaml.safe_dump(
+            {
+                "record_type": "task_execution_packet",
+                "task_id": "V2-004",
+                "action": "IMPLEMENT",
+                "change_review": binding,
+            }
+        )
+    )
     return registry, packet, task, binding
 
 
@@ -271,7 +280,12 @@ def test_completed_architecture_entry_rejects_missing_or_bad_evidence(
 ):
     registry, packet, task, binding = architecture_task
     task["status"] = "CLOSED"
-    document = {"task_id": "V2-004", "change_review": binding}
+    document = {
+        "record_type": "task_execution_packet",
+        "task_id": "V2-004",
+        "action": "IMPLEMENT",
+        "change_review": binding,
+    }
     if mutation == "null_status":
         task["status"] = None
     elif mutation == "missing_packet":
@@ -293,6 +307,171 @@ def test_completed_architecture_entry_rejects_missing_or_bad_evidence(
         tasks.append(task.copy())
     registry.write_text(yaml.safe_dump({"tasks": tasks}))
     packet.write_text(yaml.safe_dump(document))
+    with pytest.raises(ValueError):
+        runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
+
+
+@pytest.fixture
+def current_architecture_task(architecture_task):
+    registry, _, historical, binding = architecture_task
+    historical["status"] = "CLOSED"
+    current = {
+        "task_id": "V2-005",
+        "status": "IN_PROGRESS",
+        "execution_packet_ref": "validation/execution/V2-005/packet.yaml",
+    }
+    packet = runner.ROOT / "plan" / current["execution_packet_ref"]
+    packet.parent.mkdir(parents=True)
+    packet.write_text(
+        yaml.safe_dump(
+            {
+                "record_type": "task_execution_packet",
+                "task_id": "V2-005",
+                "action": "IMPLEMENT",
+                "change_review": binding,
+            }
+        )
+    )
+    registry.write_text(yaml.safe_dump({"tasks": [historical, current]}))
+    return registry, packet, historical, current, binding
+
+
+@pytest.mark.parametrize("status", ["IN_PROGRESS", "IMPLEMENTED"])
+@pytest.mark.parametrize("review_required", [False, True])
+def test_current_task_uses_restricted_entry_and_packet_bindings(
+    current_architecture_task, status, review_required
+):
+    registry, packet, historical, current, binding = current_architecture_task
+    current["status"] = status
+    if not review_required:
+        del binding["review_revision"]
+        del binding["review_ref"]
+        document = yaml.safe_load(packet.read_text())
+        document["change_review"] = binding
+        packet.write_text(yaml.safe_dump(document))
+    registry.write_text(yaml.safe_dump({"tasks": [historical, current]}))
+    commands = runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
+    assert commands[0] == [
+        sys.executable,
+        "-B",
+        "scripts/task_execution.py",
+        "check",
+        "--task",
+        "V2-005",
+        "--action",
+        "IMPLEMENT",
+        "--output",
+        "dist/ci/arch_fitness/action-entry.json",
+    ]
+    assert len(commands) == 3
+    assert "scripts/check_architecture.py" in commands[1]
+    assert "tests/architecture" in commands[2]
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "missing_packet",
+        "missing_file",
+        "outside_packet",
+        "symlink_packet",
+        "template",
+        "wrong_task",
+        "wrong_action",
+        "missing_binding",
+        "missing_scope_revision",
+        "missing_scope_ref",
+        "bad_scope_revision",
+        "absolute_scope_ref",
+        "escaping_scope_ref",
+        "missing_review_revision",
+        "missing_review_ref",
+        "null_review",
+        "empty_review",
+        "bad_review_revision",
+    ],
+)
+def test_current_task_rejects_invalid_packet_without_falling_back_to_closed_task(
+    current_architecture_task, mutation
+):
+    registry, packet, historical, current, _ = current_architecture_task
+    document = yaml.safe_load(packet.read_text())
+    binding = document["change_review"]
+    if mutation == "missing_packet":
+        current["execution_packet_ref"] = None
+    elif mutation == "outside_packet":
+        current["execution_packet_ref"] = "validation/../../README.md"
+    elif mutation == "template":
+        document["record_type"] = "execution_packet_template"
+    elif mutation == "wrong_task":
+        document["task_id"] = "V2-004"
+    elif mutation == "wrong_action":
+        document["action"] = "PREPARE"
+    elif mutation == "missing_binding":
+        document.pop("change_review")
+    elif mutation.startswith("missing_") and mutation not in {"missing_file"}:
+        binding.pop(mutation.removeprefix("missing_"))
+    elif mutation == "bad_scope_revision":
+        binding["scope_revision"] = "not-a-pinned-commit"
+    elif mutation == "absolute_scope_ref":
+        binding["scope_ref"] = "/tmp/unchecked.json"
+    elif mutation == "escaping_scope_ref":
+        binding["scope_ref"] = "../unchecked.json"
+    elif mutation == "null_review":
+        binding["review_revision"] = None
+    elif mutation == "empty_review":
+        binding["review_ref"] = ""
+    elif mutation == "bad_review_revision":
+        binding["review_revision"] = "not-a-pinned-commit"
+    registry.write_text(yaml.safe_dump({"tasks": [historical, current]}))
+    packet.write_text(yaml.safe_dump(document))
+    if mutation in {"missing_file", "symlink_packet"}:
+        packet.unlink()
+        if mutation == "symlink_packet":
+            packet.symlink_to(runner.ROOT / "plan" / historical["execution_packet_ref"])
+    with pytest.raises(ValueError):
+        runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
+
+
+@pytest.mark.parametrize("second_status", ["IN_PROGRESS", "IMPLEMENTED"])
+def test_multiple_active_tasks_are_rejected(current_architecture_task, second_status):
+    registry, _, historical, current, _ = current_architecture_task
+    historical["status"] = second_status
+    registry.write_text(yaml.safe_dump({"tasks": [historical, current]}))
+    with pytest.raises(ValueError, match="ambiguous"):
+        runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
+
+
+def test_environment_cannot_select_task_or_override_packet_scope(
+    current_architecture_task, monkeypatch
+):
+    monkeypatch.setenv("ANOVELOS_GATE_TASK", "V2-004")
+    monkeypatch.setenv("ANOVELOS_SCOPE_REVISION", "c" * 40)
+    monkeypatch.setenv("ANOVELOS_REVIEW_REVISION", "d" * 40)
+    commands = runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
+    assert commands[0][commands[0].index("--task") + 1] == "V2-005"
+    assert "--scope-revision" not in commands[0]
+    assert "--review-revision" not in commands[0]
+    assert runner.child_environment(runner.ROOT).get("ANOVELOS_GATE_TASK") is None
+
+
+@pytest.mark.parametrize(
+    "mutation", ["non_object", "bad_id", "bad_status", "duplicate"]
+)
+def test_malformed_task_registry_cannot_hide_active_task(
+    current_architecture_task, mutation
+):
+    registry, _, historical, current, _ = current_architecture_task
+    tasks = [historical, current]
+    if mutation == "non_object":
+        tasks.append("not-a-task")
+    elif mutation == "bad_id":
+        current["task_id"] = "unregistered-task"
+    elif mutation == "bad_status":
+        current["status"] = "READY"
+    else:
+        tasks.append(current.copy())
+    registry.write_text(yaml.safe_dump({"tasks": tasks}))
     with pytest.raises(ValueError):
         runner.commands_for("arch_fitness", runner.ROOT / "dist/ci/arch_fitness")
 

@@ -1,14 +1,15 @@
 # ANovelOS 执行入口
 
 日常项目目录：/Users/angyang/Documents/AI/ANovelOS
-- 当前分支：main @ 1fa558d4965c15d445e76e033a1107ae10d971a9
+- 日常开发统一使用 `main`；旧 `dev_gpt` 保留历史，不再作为开发入口。开始和交接时核对实际 Git 分支及远程同步状态。
 - 远程仓库：https://github.com/AY123/nocelgpt.git
+- 开工前读取当前实际 Git 状态（分支、HEAD、工作区差异）
 
 - 先读 `plan/README.md`、当前任务、对应现行规范和验收场景。历史档案与审核报告是输入，不能自行成为执行命令。
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。
 - 原 `.claude/convergence/` 已归档至 `plan/archive/convergence/`，根历史副本已按用户要求清除；历史内容不恢复为现行规范。工具配置单独保留，不因整理资料而停用或删除配置。
-- 当前 V2-004 CLOSED，P0 VERIFIED（单人 Owner 模式）；V2-005 OPEN，下一产品任务。以 `plan/machine/` 的任务、阶段和证据状态为准。
+- 当前 V2-004 CLOSED，P0 VERIFIED（单人 Owner 模式）；V2-005 IN_PROGRESS，领域实现已完成本地验证，待正式交付验收。以 `plan/machine/` 的任务、阶段和证据状态为准。
 - 用户请求修改规划时，完成必要的资料和验证器修改；不要据此自动创建业务内核、部署、调用付费 Provider 或关闭工程任务。
 - 保留用户已有改动。任务身份、阶段、依赖及架构范围变更需符合用户授权，并留下明确变更理由与影响记录。
 - 同步正文、机器源、任务/验收场景与生成视图。使用 `python3 -B plan/scripts/validate_plan.py --write-views`、`--check`、`--self-test` 和 `python3 -B plan/scripts/test_governance.py`。
