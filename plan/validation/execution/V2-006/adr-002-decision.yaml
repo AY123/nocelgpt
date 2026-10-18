@@ -1,0 +1,17 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-002-20261018-local
+evidence_type: ADR_DECISION
+subject_id: ADR-002
+revision: 5aa64feddd2ea08492728d7a596e75cc403f5535
+status: PASS
+producer: Codex implementer under user V2-006 start authorization; same operator, no independent personnel claim
+executed_at: '2026-10-18T03:28:40.786826+00:00'
+environment_fingerprint: Python3.12.14; existing immutable Entity; no dependency or external service change
+artifacts:
+- ref: decisions/ADR-002_CHARACTER_SERIALIZATION.md
+  sha256: 5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Explicit minimal local type/Schema decision, recorded against actual committed ADR source before interface
+  implementation. This accepts the decision, not test results, remote CI, or task closure.
