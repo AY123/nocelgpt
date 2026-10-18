@@ -1,0 +1,122 @@
+{
+  "task_id": "V2-006",
+  "baseline_pin": {
+    "revision": "19366774bfc312c2b49556ec2f39e66a07c16a8b",
+    "ref": "plan/validation/execution/V2-006/scope.json",
+    "sha256": "14cee9a844ea15a917a8be1b8c4996f442ec47919a1b7c27e71ee81b00fab233"
+  },
+  "dispositions": [
+    {
+      "path": "AGENTS.md",
+      "old_sha": "bf8b2102728207559e001b6ec53ec19e14f0d272ab582ebc366b1937414298ed",
+      "new_sha": "4bdee1be68e0af2bde535105a51408737662b2c5be65a8079ebfab8d91e11bcf",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "8bce99447565943cbff838484da60e75c5dccb6a8dbb585430f05c1f0290711c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Record actual accepted ADR-002 before V2-006 interface implementation, and update current task navigation; all action and evidence requirements remain.",
+      "impact": "No gate, scope, acceptance, test, dependency or security requirement weakened. No implementation or remote acceptance is claimed.",
+      "reviewer": "Codex same-operator technical review; no independent personnel claim",
+      "replacement_validation": "Committed ADR source5aa64fe plus typed acceptance record; existing plan check passed, and actual IMPLEMENT entry must pass after the exact pin is available.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/adr-002-decision.yaml",
+          "sha256": "14baf0cf5b48519059f215a7b745f308358306632518549177d45579d375d2a3"
+        }
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "old_sha": "bf8b2102728207559e001b6ec53ec19e14f0d272ab582ebc366b1937414298ed",
+      "new_sha": "4bdee1be68e0af2bde535105a51408737662b2c5be65a8079ebfab8d91e11bcf",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ffc9f88fbf37ffd14912e95a544d49ac14cf39bd795e2a247c7ae705ef0db5b7",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Record actual accepted ADR-002 before V2-006 interface implementation, and update current task navigation; all action and evidence requirements remain.",
+      "impact": "No gate, scope, acceptance, test, dependency or security requirement weakened. No implementation or remote acceptance is claimed.",
+      "reviewer": "Codex same-operator technical review; no independent personnel claim",
+      "replacement_validation": "Committed ADR source5aa64fe plus typed acceptance record; existing plan check passed, and actual IMPLEMENT entry must pass after the exact pin is available.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/adr-002-decision.yaml",
+          "sha256": "14baf0cf5b48519059f215a7b745f308358306632518549177d45579d375d2a3"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/decision-register.yaml",
+      "old_sha": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "new_sha": "73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40",
+      "code": "PROTECTION_CHANGED",
+      "layer": "index",
+      "finding_id": "a8cca0872a4569ce9eaad39a377ed339716e0065062d60a8f8a4c9af3419e24d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Record actual accepted ADR-002 before V2-006 interface implementation, and update current task navigation; all action and evidence requirements remain.",
+      "impact": "No gate, scope, acceptance, test, dependency or security requirement weakened. No implementation or remote acceptance is claimed.",
+      "reviewer": "Codex same-operator technical review; no independent personnel claim",
+      "replacement_validation": "Committed ADR source5aa64fe plus typed acceptance record; existing plan check passed, and actual IMPLEMENT entry must pass after the exact pin is available.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/adr-002-decision.yaml",
+          "sha256": "14baf0cf5b48519059f215a7b745f308358306632518549177d45579d375d2a3"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/decision-register.yaml",
+      "old_sha": "f7f80f8f20cd3701c87450749db60ded8553c095127fd332cbf172a883c932d1",
+      "new_sha": "73de2246012fc8bda670814fc8d1b041dddb66127be061233f9269f1d59bbd40",
+      "code": "PROTECTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "bd6a1d139fe298f555925323c1f63fa11e89a30f85efab33a175a10f574c9575",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Record actual accepted ADR-002 before V2-006 interface implementation, and update current task navigation; all action and evidence requirements remain.",
+      "impact": "No gate, scope, acceptance, test, dependency or security requirement weakened. No implementation or remote acceptance is claimed.",
+      "reviewer": "Codex same-operator technical review; no independent personnel claim",
+      "replacement_validation": "Committed ADR source5aa64fe plus typed acceptance record; existing plan check passed, and actual IMPLEMENT entry must pass after the exact pin is available.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-006/authorization.txt",
+        "sha256": "cdf9e3afc90061d8229cc78f3512bb56fc0c038e2258ab9eee76a7328af80552"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md",
+          "sha256": "5a3dffbbefb7b550f6612f579503a9972d4f3dca9d47fadf1b55904a927fd0fb"
+        },
+        {
+          "ref": "plan/validation/execution/V2-006/adr-002-decision.yaml",
+          "sha256": "14baf0cf5b48519059f215a7b745f308358306632518549177d45579d375d2a3"
+        }
+      ]
+    }
+  ]
+}

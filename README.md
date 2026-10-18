@@ -4,7 +4,7 @@
 
 **阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～005 CLOSED；P0/G-P0、M0 VERIFIED；P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
-当前业务能力是内存中的项目隔离实体、稳定 ID、改名、别名与明确歧义解析；尚无持久化、Canon 提交、模型调用或章节生产闭环。下一任务为 **V2-006：角色关系与知识内核**，仍 OPEN，实施前先完成 ADR-002 和任务执行包。
+当前业务能力是内存中的项目隔离实体、稳定 ID、改名、别名与明确歧义解析；尚无持久化、Canon 提交、模型调用或章节生产闭环。下一任务为 **V2-006：角色关系与知识内核**，已进入本地实施，ADR-002 已接受、执行包已建立，新的代码与CI尚待验证。
 
 - P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
 - V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
@@ -14,7 +14,7 @@
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-006 的 ADR-002 目前 REQUIRED，不存在已接受的决定原文。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-006 的 ADR-002 已接受，见[决定原文](plan/decisions/ADR-002_CHARACTER_SERIALIZATION.md)；实施仍须通过其[专属执行包](plan/validation/execution/V2-006/execution-packet.yaml)的实际动作检查。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 

@@ -2,7 +2,7 @@
 
 本目录的产品目标是中文长篇网文的可靠生产与真实阅读竞争力，详见[产品目标](01_PRODUCT_SCOPE_AND_SUCCESS.md)。工程验收不等于小说生产、真人阅读或市场验证。
 
-**阶段摘要（2026-10-18）：V2-001～005 CLOSED，P0/G-P0、M0 VERIFIED，P1 尚未完成，其余55个任务OPEN。** 日常开发使用 `main`。下一任务为 **V2-006**，目前未开工、没有执行包；ADR-002 仍 REQUIRED。实际状态读取[任务表](machine/implementation-backlog.yaml)、[阶段门禁](machine/phase-gates.yaml)和[决策登记](machine/decision-register.yaml)，本文不是平行状态源。
+**阶段摘要（2026-10-18）：V2-001～005 CLOSED，P0/G-P0、M0 VERIFIED，P1 尚未完成，V2-006 IN_PROGRESS，其余54个任务OPEN。** 日常开发使用 `main`。当前任务为 **V2-006**，已接受[ADR-002](decisions/ADR-002_CHARACTER_SERIALIZATION.md)并建立[执行包](validation/execution/V2-006/execution-packet.yaml)；新的领域实现、测试与CI尚未验收。实际状态读取[任务表](machine/implementation-backlog.yaml)、[阶段门禁](machine/phase-gates.yaml)和[决策登记](machine/decision-register.yaml)，本文不是平行状态源。
 
 V2-005 工程验收绑定 `72219b4` / run39088653270，六门通过、889项测试0skip；见[验收记录](validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。P0验收仍绑定历史 `611d777`，见[P0汇总验收](validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。后续资料维护不冒称新提交已运行CI。
 
@@ -20,7 +20,7 @@ v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTO
 
 1. 完整仓库先读根目录 `AGENTS.md` → 本页 → [产品目标](01_PRODUCT_SCOPE_AND_SUCCESS.md)与[架构边界](02_ARCHITECTURE_BASELINE.md)。单独导出的 `plan/` 不附带根目录文件，不据此执行仓库动作。
 2. 从[机器任务表](machine/implementation-backlog.yaml)选择本次任务，核对依赖、阶段、[验收场景](machine/test-catalog.yaml)、[ADR](machine/decision-register.yaml)和已有实现。生成的[阶段任务视图](generated/PHASE_TASK_REGISTRY.md)仅供阅读。
-3. 按该任务的 `normative_specs` 阅读现行规范，遵守[AI执行协议](AI_EXECUTION_PROTOCOL.md)和[任务执行规则](09_TASK_EXECUTION_GUIDE.md)。V2-006先准备ADR-002，再在实施前建立并核验其执行包；不能把旧任务执行包或模板当作开工凭证。
+3. 按该任务的 `normative_specs` 阅读现行规范，遵守[AI执行协议](AI_EXECUTION_PROTOCOL.md)和[任务执行规则](09_TASK_EXECUTION_GUIDE.md)。V2-006按已接受的ADR-002和专属执行包实施；每次受限动作仍核验实际输入与差异，不能把旧任务执行包或模板当作开工凭证。
 4. 需要追溯时再读[资料权威](00_GOVERNANCE_AND_SOURCE_AUTHORITY.md)、对应任务验收、[P0历史执行方案](PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)与 archive。无需每次重新证明已验收的P0，也不从历史报告继承新的执行指令。
 
 ## 现行规范
