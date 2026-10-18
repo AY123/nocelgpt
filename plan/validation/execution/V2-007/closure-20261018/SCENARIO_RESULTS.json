@@ -1,0 +1,57 @@
+{
+  "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+  "run_id": 39119023861,
+  "domain_tests": 81,
+  "scenario_tests": {
+    "AT-V2-007-01": [
+      "test_dual_order_distinguishes_same_chapter_and_flashback",
+      "test_story_relations_do_not_invent_order_or_duration[left0-right0-TemporalRelation.BEFORE]",
+      "test_story_relations_do_not_invent_order_or_duration[left1-right1-TemporalRelation.AFTER]",
+      "test_story_relations_do_not_invent_order_or_duration[left2-right2-TemporalRelation.SAME_TIME]",
+      "test_story_relations_do_not_invent_order_or_duration[left3-right3-TemporalRelation.UNKNOWN]",
+      "test_story_relations_do_not_invent_order_or_duration[left4-right4-TemporalRelation.UNKNOWN]",
+      "test_story_relations_do_not_invent_order_or_duration[left5-right5-TemporalRelation.UNKNOWN]",
+      "test_timeline_restore_rechecks_duplicate_scope_and_nested_occurrence"
+    ],
+    "AT-V2-007-02": [
+      "test_complete_promise_json_roundtrip_including_terminal_context[ABANDONED]",
+      "test_complete_promise_json_roundtrip_including_terminal_context[BROKEN]",
+      "test_complete_promise_json_roundtrip_including_terminal_context[OPEN]",
+      "test_complete_promise_json_roundtrip_including_terminal_context[PAID]",
+      "test_promise_window_inclusive_and_lifecycle[1-2-WindowResult.EARLY]",
+      "test_promise_window_inclusive_and_lifecycle[2-1-WindowResult.IN_WINDOW]",
+      "test_promise_window_inclusive_and_lifecycle[3-2-WindowResult.IN_WINDOW]",
+      "test_promise_window_inclusive_and_lifecycle[3-3-WindowResult.LATE]",
+      "test_terminal_states_are_immutable_and_cannot_reopen[abandon]",
+      "test_terminal_states_are_immutable_and_cannot_reopen[break_promise]",
+      "test_terminal_states_are_immutable_and_cannot_reopen[pay_off]",
+      "test_unknown_promise_window_is_explicit_and_valid",
+      "test_unoccurred_claim_cannot_resolve_promise[Occurrence.NOT_OCCURRED-break_promise]",
+      "test_unoccurred_claim_cannot_resolve_promise[Occurrence.NOT_OCCURRED-pay_off]",
+      "test_unoccurred_claim_cannot_resolve_promise[Occurrence.UNKNOWN-break_promise]",
+      "test_unoccurred_claim_cannot_resolve_promise[Occurrence.UNKNOWN-pay_off]"
+    ],
+    "AT-V2-007-03": [
+      "test_event_and_promise_do_not_execute_intent_or_publish_character_knowledge",
+      "test_event_occurrence_is_explicit_and_roundtrips[Occurrence.NOT_OCCURRED]",
+      "test_event_occurrence_is_explicit_and_roundtrips[Occurrence.OCCURRED]",
+      "test_event_occurrence_is_explicit_and_roundtrips[Occurrence.UNKNOWN]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[evidence_ref]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[id]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[kind]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[narrative_position]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[occurrence]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[schema_version]",
+      "test_event_required_identity_and_occurrence_are_not_defaulted[story_time]",
+      "test_exact_time_does_not_prove_occurrence_or_relation[Occurrence.NOT_OCCURRED]",
+      "test_exact_time_does_not_prove_occurrence_or_relation[Occurrence.UNKNOWN]",
+      "test_timeline_duplicate_or_foreign_event_rejected_without_partial_change"
+    ]
+  },
+  "source": "Named cases present and PASS in original remote UNIT JUnit. All81 V2-007 cases have0 failure/error/skip.",
+  "limits": [
+    "Pure in-memory structural claims, reference integrity and two time orders",
+    "Promise resolution is an explicit supplied judgement, not automatic literary payoff certification",
+    "No persistence, retcon/reprojection, Canon, Provider or novel production; no automatic knowledge propagation"
+  ]
+}

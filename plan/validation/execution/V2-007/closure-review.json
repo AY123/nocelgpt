@@ -1,0 +1,82 @@
+{
+  "task_id": "V2-007",
+  "baseline_pin": {
+    "revision": "f2bd207d6e4bf64645514c0683364c7fd81339a9",
+    "ref": "plan/validation/execution/V2-007/scope.json",
+    "sha256": "c51cad1eef568ab5a9a8ca23c91bf1d374901e1cfe4c873c243cda8f6d2bd8a4"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "7ea87a2d75ac77cd7b024b6c040f381abc09f092f22d966d3a72dca1c9452175",
+      "new_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "26741dbc97113acac27c1f2eebefede4c79a3171efb012f437d0998a37dbd50c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-007 started under existing user request and is now CLOSED only after actual same-SHA six-gate run39119023861. Opening readiness PLANNED became READY_AFTER_GATES at start; current change adds verified evidence/status. All original task IDs, phase, dependencies, three assertions, artifact scope, mandatory gates and authority ledger preserved.",
+      "impact": "Metadata-only acceptance registration after tested a0ea8df; no source changes or invented CI for registration SHA. P1 and all cross-task finding remainder remain unverified/open.",
+      "reviewer": "Codex same operator technical review, not independent personnel",
+      "replacement_validation": "Remote UNIT826/826 (including81 V2-007),ARCH244/244,POSTGRES1/1,all6 mandatory gates PASS,0 skips; original ZIP/receipt/JUnit/API hash provenance verified. Current registration five governance checks and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-007/authorization.txt",
+        "sha256": "27f6bc4967a518c38ac38bbbda215f9344f435929a74752164ed2d8ef7d11a82"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "4f040433f90294a770188e07e2e9ffae96021f51d267ec2011793db1587f3d5c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "af16d2a2f5e3d65d7f23705bee78d722482aea5bbee141698b41be252d70a454"
+        },
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "1a044616cf7fb7dd184667bfc891d99f92a116fda8a6a2bbe55f2ee4b0915290"
+        },
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "2caf2fb33e32ad9ee96e2f0dd07c08cdd570907f6787fbf50108837fb73a0c41"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "7ea87a2d75ac77cd7b024b6c040f381abc09f092f22d966d3a72dca1c9452175",
+      "new_sha": "05761251d7cc79e9a66adff2669673d12ca79c58b6c62af0d3397d348b0cbcf7",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "74521bfbe94e78e2c6ef0a9d05ad2264cf24355b4138d9d8fd3ac2e3a67cc58f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-007 started under existing user request and is now CLOSED only after actual same-SHA six-gate run39119023861. Opening readiness PLANNED became READY_AFTER_GATES at start; current change adds verified evidence/status. All original task IDs, phase, dependencies, three assertions, artifact scope, mandatory gates and authority ledger preserved.",
+      "impact": "Metadata-only acceptance registration after tested a0ea8df; no source changes or invented CI for registration SHA. P1 and all cross-task finding remainder remain unverified/open.",
+      "reviewer": "Codex same operator technical review, not independent personnel",
+      "replacement_validation": "Remote UNIT826/826 (including81 V2-007),ARCH244/244,POSTGRES1/1,all6 mandatory gates PASS,0 skips; original ZIP/receipt/JUnit/API hash provenance verified. Current registration five governance checks and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-007/authorization.txt",
+        "sha256": "27f6bc4967a518c38ac38bbbda215f9344f435929a74752164ed2d8ef7d11a82"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/REMOTE_VERIFICATION.json",
+          "sha256": "4f040433f90294a770188e07e2e9ffae96021f51d267ec2011793db1587f3d5c"
+        },
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/SCENARIO_RESULTS.json",
+          "sha256": "af16d2a2f5e3d65d7f23705bee78d722482aea5bbee141698b41be252d70a454"
+        },
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/CODE_MANIFEST.json",
+          "sha256": "1a044616cf7fb7dd184667bfc891d99f92a116fda8a6a2bbe55f2ee4b0915290"
+        },
+        {
+          "ref": "plan/validation/execution/V2-007/closure-20261018/acceptance-evidence.yaml",
+          "sha256": "2caf2fb33e32ad9ee96e2f0dd07c08cdd570907f6787fbf50108837fb73a0c41"
+        }
+      ]
+    }
+  ]
+}

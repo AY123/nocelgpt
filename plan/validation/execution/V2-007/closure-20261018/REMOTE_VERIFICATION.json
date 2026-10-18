@@ -1,0 +1,225 @@
+{
+  "status": "PASS",
+  "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+  "repository": "AY123/nocelgpt",
+  "repository_id": 1421585508,
+  "pipeline_id": 39119023861,
+  "pipeline_url": "https://github.com/AY123/nocelgpt/actions/runs/39119023861",
+  "run_attempt": 1,
+  "event": "workflow_dispatch",
+  "six_mandatory_gates": {
+    "schema_contract": {
+      "status": "PASS",
+      "job_id": 117650626483,
+      "artifact": "gate-schema_contract-39119023861-1.zip",
+      "receipt_sha256": "815c2438808703f98b4bae97f3d137fd1fae72b0ed526f6c6e95cab3e1478fbd",
+      "command_count": 1,
+      "command_exit_codes": [
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "unit": {
+      "status": "PASS",
+      "job_id": 117650626459,
+      "artifact": "gate-unit-39119023861-1.zip",
+      "receipt_sha256": "846e2f287c5108b3fc60ad22a86204910b61a3a46fa041497b330b8a309c3ce9",
+      "command_count": 2,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 826,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "domain_tests": 81,
+      "scenario_tests": {
+        "AT-V2-007-01": [
+          "test_dual_order_distinguishes_same_chapter_and_flashback",
+          "test_story_relations_do_not_invent_order_or_duration[left0-right0-TemporalRelation.BEFORE]",
+          "test_story_relations_do_not_invent_order_or_duration[left1-right1-TemporalRelation.AFTER]",
+          "test_story_relations_do_not_invent_order_or_duration[left2-right2-TemporalRelation.SAME_TIME]",
+          "test_story_relations_do_not_invent_order_or_duration[left3-right3-TemporalRelation.UNKNOWN]",
+          "test_story_relations_do_not_invent_order_or_duration[left4-right4-TemporalRelation.UNKNOWN]",
+          "test_story_relations_do_not_invent_order_or_duration[left5-right5-TemporalRelation.UNKNOWN]",
+          "test_timeline_restore_rechecks_duplicate_scope_and_nested_occurrence"
+        ],
+        "AT-V2-007-02": [
+          "test_complete_promise_json_roundtrip_including_terminal_context[ABANDONED]",
+          "test_complete_promise_json_roundtrip_including_terminal_context[BROKEN]",
+          "test_complete_promise_json_roundtrip_including_terminal_context[OPEN]",
+          "test_complete_promise_json_roundtrip_including_terminal_context[PAID]",
+          "test_promise_window_inclusive_and_lifecycle[1-2-WindowResult.EARLY]",
+          "test_promise_window_inclusive_and_lifecycle[2-1-WindowResult.IN_WINDOW]",
+          "test_promise_window_inclusive_and_lifecycle[3-2-WindowResult.IN_WINDOW]",
+          "test_promise_window_inclusive_and_lifecycle[3-3-WindowResult.LATE]",
+          "test_terminal_states_are_immutable_and_cannot_reopen[abandon]",
+          "test_terminal_states_are_immutable_and_cannot_reopen[break_promise]",
+          "test_terminal_states_are_immutable_and_cannot_reopen[pay_off]",
+          "test_unknown_promise_window_is_explicit_and_valid",
+          "test_unoccurred_claim_cannot_resolve_promise[Occurrence.NOT_OCCURRED-break_promise]",
+          "test_unoccurred_claim_cannot_resolve_promise[Occurrence.NOT_OCCURRED-pay_off]",
+          "test_unoccurred_claim_cannot_resolve_promise[Occurrence.UNKNOWN-break_promise]",
+          "test_unoccurred_claim_cannot_resolve_promise[Occurrence.UNKNOWN-pay_off]"
+        ],
+        "AT-V2-007-03": [
+          "test_event_and_promise_do_not_execute_intent_or_publish_character_knowledge",
+          "test_event_occurrence_is_explicit_and_roundtrips[Occurrence.NOT_OCCURRED]",
+          "test_event_occurrence_is_explicit_and_roundtrips[Occurrence.OCCURRED]",
+          "test_event_occurrence_is_explicit_and_roundtrips[Occurrence.UNKNOWN]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[evidence_ref]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[id]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[kind]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[narrative_position]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[occurrence]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[schema_version]",
+          "test_event_required_identity_and_occurrence_are_not_defaulted[story_time]",
+          "test_exact_time_does_not_prove_occurrence_or_relation[Occurrence.NOT_OCCURRED]",
+          "test_exact_time_does_not_prove_occurrence_or_relation[Occurrence.UNKNOWN]",
+          "test_timeline_duplicate_or_foreign_event_rejected_without_partial_change"
+        ]
+      }
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "job_id": 117650626484,
+      "artifact": "gate-secret_dependency-39119023861-1.zip",
+      "receipt_sha256": "9d7b9202558c167ce8bbdad552fa1b595504764d0c47cfa5fd46cb217f39e913",
+      "command_count": 2,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "job_id": 117650626504,
+      "artifact": "gate-arch_fitness-39119023861-1.zip",
+      "receipt_sha256": "bc4709b962c4a90b68dd584771fcd3a1449a7757d32ff5d5d2ea5f30f08184ea",
+      "command_count": 3,
+      "command_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 244,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "static": {
+      "status": "PASS",
+      "job_id": 117650626436,
+      "artifact": "gate-static-39119023861-1.zip",
+      "receipt_sha256": "6af5fda1ccd6d69778b6cee75d39021c1151b311e9ebeacd800f54e5684ed6df",
+      "command_count": 5,
+      "command_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "job_id": 117650626363,
+      "artifact": "gate-postgres_env-39119023861-1.zip",
+      "receipt_sha256": "8495f9f658fa4236b789f365cce795585cd95a3b777ee60dc4dfff5c45e8e5db",
+      "command_count": 1,
+      "command_exit_codes": [
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 1,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "junit_totals": {
+    "tests": 1071,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "artifacts": [
+    {
+      "name": "gate-schema_contract-39119023861-1.zip",
+      "artifact_id": 12133791230,
+      "sha256": "f34cbc9763decb837f63f228b85c4226883fceb3c41a9e5f80627c0d472a844d",
+      "bytes": 30012,
+      "github_digest": "sha256:f34cbc9763decb837f63f228b85c4226883fceb3c41a9e5f80627c0d472a844d",
+      "run_id": 39119023861,
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1"
+    },
+    {
+      "name": "gate-unit-39119023861-1.zip",
+      "artifact_id": 12133716894,
+      "sha256": "60c67de61906a0c3600aac065f73e199a50d255766f1577de155b7bea89f40ab",
+      "bytes": 14063,
+      "github_digest": "sha256:60c67de61906a0c3600aac065f73e199a50d255766f1577de155b7bea89f40ab",
+      "run_id": 39119023861,
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1"
+    },
+    {
+      "name": "gate-secret_dependency-39119023861-1.zip",
+      "artifact_id": 12133442805,
+      "sha256": "6049b92fd5af5868a321fe076e6ef30e6dccc09734fcbca98a8d7cc6f2ade1ae",
+      "bytes": 21444,
+      "github_digest": "sha256:6049b92fd5af5868a321fe076e6ef30e6dccc09734fcbca98a8d7cc6f2ade1ae",
+      "run_id": 39119023861,
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1"
+    },
+    {
+      "name": "gate-arch_fitness-39119023861-1.zip",
+      "artifact_id": 12133367922,
+      "sha256": "81c0cac0d7c8e9364eda077a914894eeee7148bfb853d11b5596ae5fdb354cb2",
+      "bytes": 158271,
+      "github_digest": "sha256:81c0cac0d7c8e9364eda077a914894eeee7148bfb853d11b5596ae5fdb354cb2",
+      "run_id": 39119023861,
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1"
+    },
+    {
+      "name": "gate-static-39119023861-1.zip",
+      "artifact_id": 12133127876,
+      "sha256": "048c8e3789674d884ea7268c6416c5d076250b2e39d9d2a478be178425dc35a5",
+      "bytes": 2854,
+      "github_digest": "sha256:048c8e3789674d884ea7268c6416c5d076250b2e39d9d2a478be178425dc35a5",
+      "run_id": 39119023861,
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1"
+    },
+    {
+      "name": "gate-postgres_env-39119023861-1.zip",
+      "artifact_id": 12132674240,
+      "sha256": "c99aaeb170c2d666afd6d5cbf7744a5919697ffb890609310c341f1c9bfc06e6",
+      "bytes": 1826,
+      "github_digest": "sha256:c99aaeb170c2d666afd6d5cbf7744a5919697ffb890609310c341f1c9bfc06e6",
+      "run_id": 39119023861,
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1"
+    }
+  ],
+  "verified_at": "2026-10-18T10:53:29.461241+00:00",
+  "remote_dispatch_attempts": 1,
+  "automatic_retries": 0,
+  "implementation_and_verification": "same operator; no independent personnel review claim",
+  "permission_boundary": "Owner-directed single-operator profile, not adversarial branch protection",
+  "source_revision_after_this_run": "future acceptance registration is metadata-only and is not represented as a tested revision"
+}

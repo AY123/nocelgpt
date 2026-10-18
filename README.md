@@ -2,21 +2,23 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-**阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～006 CLOSED；P0/G-P0、M0 VERIFIED；P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+**阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～007 CLOSED；P0/G-P0、M0 VERIFIED；P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
-当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-006 已完成工程验收；V2-007 事件/时间线/Promise 已本地实现，尚待远程CI与正式验收**；尚无持久化、Canon 提交、模型调用或章节生产闭环。
+当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-007 事件/时间线/Promise 已完成工程验收，下一任务为 V2-008 NarrativeDelta（先准备 ADR-004）**；尚无持久化、Canon 提交、模型调用或章节生产闭环。
 
 - P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
 - V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
 
 - V2-006 工程验收绑定 `e210078` / [run39106725089](https://github.com/AY123/nocelgpt/actions/runs/39106725089)，六门通过、990项测试、0skip，领域测试101项；见[验收记录](plan/validation/execution/V2-006/closure-20261018/ACCEPTANCE_SUMMARY.md)。
 
+- V2-007 工程验收绑定 `a0ea8df` / [run39119023861](https://github.com/AY123/nocelgpt/actions/runs/39119023861)，六门通过、1071项测试0skip，含81项专项；见[验收记录](plan/validation/execution/V2-007/closure-20261018/ACCEPTANCE_SUMMARY.md)。
+
 54 项安全发现保持 OPEN，按有限期精确批准消费，没有全局忽略。采用用户确认的单人 Owner 模式，不声称具备对抗性权限隔离；见[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。CI 仅在关键交付时手动触发。
 
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-007已接受ADR-003并绑定专属执行包；后续按包恢复验证，已完成的V2-006不重新走IMPLEMENT。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-008先准备ADR-004并建立专属执行包；已完成的V2-007不重新走IMPLEMENT。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 

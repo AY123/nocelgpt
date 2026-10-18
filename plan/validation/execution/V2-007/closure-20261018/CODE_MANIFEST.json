@@ -1,0 +1,54 @@
+{
+  "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+  "source": "Exact Git blobs and SHA256, no duplicate source copies",
+  "files": [
+    {
+      "path": "src/anovel/domain/events.py",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "8709af25bfc49adb64ae3feb5cf343ad19569b8e45f12b15e402e1a3269c46e3",
+      "blob_oid": "8bb977abb442622ed77bfdd9c4095a9bbb0d09c9"
+    },
+    {
+      "path": "src/anovel/domain/promises.py",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "4dcb070a98378a308bd4406a5d9a99fa27411365ac08c4ca34ae1c64646ec596",
+      "blob_oid": "d2d39a27b6c2c648b8c59daf02cc63e63c7bb506"
+    },
+    {
+      "path": "specs/schemas/events.schema.json",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "db9d9f1ab48d9095f95c126550f271ac635474593c9a4e02828ab0ff514c20e1",
+      "blob_oid": "f842d04cb369d6b01cf9fcd253faeeae5150a745"
+    },
+    {
+      "path": "specs/schemas/promises.schema.json",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "0df05e7c77aea4a2b3a386754caddbd8d657ed19cf0d343dfdbd519424867f94",
+      "blob_oid": "531a023f53cc18c45160497e2f2154c5851e313b"
+    },
+    {
+      "path": "tests/contract/test_v2_007.py",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "7b86a8de5c5253c38a377721f5e6844d6d08d3bc934faf09587d39ec6b3cab65",
+      "blob_oid": "38ec6bee405b698cfb4ea1faba03e44bda8b490e"
+    },
+    {
+      "path": "demo_v2_007.py",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "bc9703b4acecde8221bc0e77fa90d54c4dc624904ca0f07bde96387224d76094",
+      "blob_oid": "a4c4a81dd296b703c2749ea50140f52146e3daab"
+    },
+    {
+      "path": "plan/decisions/ADR-003_EVENT_TIMELINE_PROMISE.md",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "b16dcf9503db3caef5bf9534ac0a2b76d4e295fc0aa7243051255f76ac2a2d2f",
+      "blob_oid": "2ee44f6eaee285198a3399d5f08b5c7707e31713"
+    },
+    {
+      "path": "plan/validation/execution/V2-007/adr-003-decision.yaml",
+      "revision": "a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1",
+      "sha256": "37ce52ffe8995e49857d0db23dd24000c8be7d87941133bb1d02c6b87eb3b0bf",
+      "blob_oid": "ecc176b4625913dc4c5338b68cfb7e9fce4c3472"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-007
+revision: a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-18T10:53:29.461241+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17 locked, repository1421585508/run39119023861/attempt1,
+  accepted single-operator profile
+input_evidence_refs: []
+evidence_id: V2-007-code-a0ea8df
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-007/closure-20261018/CODE_MANIFEST.json
+  sha256: 1a044616cf7fb7dd184667bfc891d99f92a116fda8a6a2bbe55f2ee4b0915290

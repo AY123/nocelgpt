@@ -1,0 +1,68 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-007
+revision: a0ea8dfe4ba86b69e67774d774fcd9e706cea2c1
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-18T10:53:29.461241+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17 locked, repository1421585508/run39119023861/attempt1,
+  accepted single-operator profile
+input_evidence_refs:
+- validation/execution/V2-007/closure-20261018/code-evidence.yaml
+- validation/execution/V2-007/closure-20261018/tests-evidence.yaml
+- validation/execution/V2-007/closure-20261018/ci-evidence.yaml
+evidence_id: V2-007-acceptance-a0ea8df
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-007-01
+- AT-V2-007-02
+- AT-V2-007-03
+artifacts:
+- ref: validation/execution/V2-007/closure-20261018/ACCEPTANCE_SUMMARY.md
+  sha256: 566230e563d70e6ea16d59391e887e716c33b8d2c28d30994ef8714bd213d2ac
+- ref: validation/execution/V2-007/closure-20261018/REMOTE_VERIFICATION.json
+  sha256: 4f040433f90294a770188e07e2e9ffae96021f51d267ec2011793db1587f3d5c
+- ref: validation/execution/V2-007/closure-20261018/SCENARIO_RESULTS.json
+  sha256: af16d2a2f5e3d65d7f23705bee78d722482aea5bbee141698b41be252d70a454
+decision: ACCEPTED
+rationale: All three unchanged V2-007 assertions covered by original remote JUnit and same-SHA six-gate PASS; not
+  P1/product completion.
+finding_dispositions:
+- finding_id: CA-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-007/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-007/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-007/closure-20261018/ci-evidence.yaml
+  reason: Same-chapter events, explicit occurrence and flashback dual order verified in pure in-memory domain.
+  remaining_work: Persistent viewpoint/time reprojection and retcon remain V2-012.
+  next_task: V2-012
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: RR-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-007/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-007/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-007/closure-20261018/ci-evidence.yaml
+  reason: Committed ADR-003 accepted before Event/Timeline/Promise interface implementation.
+  remaining_work: Other owning tasks still decide their ADRs before interfaces; next registered consumer is V2-013.
+  next_task: V2-013
+  owner_role: genre-maintainer
+  due_gate: G-P3
+- finding_id: SUP-03
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-007/closure-20261018/code-evidence.yaml
+  - validation/execution/V2-007/closure-20261018/tests-evidence.yaml
+  - validation/execution/V2-007/closure-20261018/ci-evidence.yaml
+  reason: Narrative revelation, event occurrence and plans remain separate; Promise operations do not publish world
+    facts or character knowledge.
+  remaining_work: Actual context/text consumers and their integration remain V2-018/021.
+  next_task: V2-018
+  owner_role: context-maintainer
+  due_gate: G-P5
