@@ -1,3 +1,5 @@
+> **历史实施记录（HISTORICAL，2026-09-23）**。以下“未验收”“下一任务”等结论仅适用于原报告的阶段，不是当前任务状态。原文保留，不追改当时结果。后续关闭依据见[P0汇总验收](../plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)；当前任务读取[机器任务表](../plan/machine/implementation-backlog.yaml)。
+
 # V2-001 Repository Bootstrap 实施报告（非最终验收）
 
 日期：2026-09-23。范围：仅 P0 / V2-001，Plan v1.3.0。结论：**IMPLEMENTED**；本地测试通过，缺远端 CI 与最终验收，未 VERIFIED/CLOSED。

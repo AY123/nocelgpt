@@ -1,27 +1,30 @@
-**当前：V2-001～005 CLOSED；P0 VERIFIED，P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。V2-005 工程修订 `72219b4` 的[远程六门验收](https://github.com/AY123/nocelgpt/actions/runs/39088653270)全部通过，889 项测试、0 skip，其中领域测试97项。见 [验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。下一任务是 V2-006 角色关系与知识内核，先完成 ADR-002；当前仍无小说生产闭环。
-
 # ANovelOS
-
-Current delivery target: [AY123/nocelgpt](https://github.com/AY123/nocelgpt) (private). V2-004 is CLOSED under the Owner-directed single-operator profile. Engineering revision `611d777`, [Actions run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667): six mandatory gates PASS,714 tests,0 skips. CI is manual at key deliveries. Adversarial permission isolation is not claimed; P0 aggregate is VERIFIED at that engineering baseline; later local fixture maintenance is recorded separately.
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-当前为 **Plan v1.3.0 / V2-001～V2-004 CLOSED / G-P0 VERIFIED / V2-005 IN_PROGRESS**。GitHub 工程提交611d777六门全绿、714测试通过。54项安全发现保持OPEN，按有限期精确批准消费；没有全局忽略。单人Owner模式与权限限制按用户要求明确登记。另55任务仍OPEN，V2-005正在交付内存实体能力，章节生产未开始。见[V2-004实施记录](docs/V2-004_IMPLEMENTATION_REPORT.md)与[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。
+**阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～005 CLOSED；P0/G-P0、M0 VERIFIED；P1 尚未完成。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+
+当前业务能力是内存中的项目隔离实体、稳定 ID、改名、别名与明确歧义解析；尚无持久化、Canon 提交、模型调用或章节生产闭环。下一任务为 **V2-006：角色关系与知识内核**，仍 OPEN，实施前先完成 ADR-002 和任务执行包。
+
+- P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
+- V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
+
+54 项安全发现保持 OPEN，按有限期精确批准消费，没有全局忽略。采用用户确认的单人 Owner 模式，不声称具备对抗性权限隔离；见[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。CI 仅在关键交付时手动触发。
 
 ## 从这里开始
 
-1. [正式规划入口](plan/README.md)与[短执行协议](AGENTS.md)。
-2. [P0 执行方案](plan/PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)：V2-001～004。
-3. [任务清单](plan/machine/implementation-backlog.yaml)、[阶段门禁](plan/machine/phase-gates.yaml)、[整改义务](plan/machine/remediation-register.yaml)。
-4. [AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)、[六项执行约束](plan/machine/ai-execution-policy.yaml)及[本轮落地记录](plan/changes/2026-09-22_AI_EXECUTION_GOVERNANCE.md)。
+1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-006 的 ADR-002 目前 REQUIRED，不存在已接受的决定原文。
+3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
+4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 
 `plan/machine/` 是现行机器资料，`plan/generated/` 是生成视图。原 `gptdoc/`、`ccdoc/`、历史审核与矩阵已统一保留在 `plan/archive/`，根目录重复副本已清除；历史内容不是平行执行规范。
 
-仓库清理已完成，逐文件去向、hash 和恢复依据见[资料迁移清单](docs/repository-layout-migration.md)。独有原始文档和日志已补充归档，工具配置保留。`dist/planning/` 是可再生成的分发目录，旧版本包不覆盖当前 `plan/`。V2-001 的实际状态和交接见[执行包](plan/validation/execution/V2-001/execution-packet.yaml)，版本选择见 [ADR-001](plan/decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
+此前资料迁移的逐文件去向、hash 和恢复依据见[资料迁移清单](docs/repository-layout-migration.md)，不是当前清理授权。独有原始文档和日志已补充归档，工具配置保留。`dist/planning/` 是可再生成的分发目录，旧版本包不覆盖当前 `plan/`；`dist/validation/` 中的历史证据和嵌套 checkout 不作日常开发入口。运行环境选择见 [ADR-001](plan/decisions/ADR-001_RUNTIME_AND_LOCKING.md)。
 
 ## 安装和测试
 
-基线是 Python **3.12.14**、uv **0.12.17**、PostgreSQL **17.11** 的 digest 固定镜像。测试需要运行中的 Docker 和支持 `up --wait` 的 Compose v2+；本轮使用 Docker 29.4.0 / Compose 5.1.2。初次安装需要访问 PyPI 和 Python 分发源，数据库镜像首次拉取需要网络。
+基线是 Python **3.12.14**、uv **0.12.17**、PostgreSQL **17.11** 的 digest 固定镜像。测试需要运行中的 Docker 和支持 `up --wait` 的 Compose v2+；V2-001 本地验收记录使用 Docker 29.4.0 / Compose 5.1.2，不代表后来宿主版本已重新核验。初次安装需要访问 PyPI 和 Python 分发源，数据库镜像首次拉取需要网络。
 
 若尚未安装 uv，可在仓库根目录执行以下本地安装；已有精确版本也可以直接使用。以下命令不修改系统 Python：
 
@@ -66,9 +69,9 @@ python3 -B plan/scripts/test_ai_execution.py --output-dir dist/validation/local
 
 V2-003 已完成本地实施与验证，复用 V2-001 的锁定环境和 V2-002 的动作入口。`scripts/check_architecture.py` 扫描完整 `src/anovel` Python 源码，检查导入边界和当前 P0 硬门禁政策；`scripts/check_changes.py` 比较固定 Git 基线与实际 index/worktree，审查任务范围和可识别的验收弱化。代码存在与验证完成分别记录。V2-004已完成真实GitHub六门CI及单人模式验收，证据绑定611d777；本次后续文档登记不冒称其新SHA已运行CI。
 
-G-P0 未验证前不开始 Narrative Kernel。优先保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
+G-P0 已 VERIFIED，当前按 P1 推进 Narrative Kernel；后续动作仍须满足各自任务与 ADR 前提。保留模块化单体、唯一 Canon 写路径、两个 Anchor Genre、有限修复和分阶段认证，复杂参考智能、学习和市场反馈仍按后期路线实施。
 
-V2-004当前流水线为 `.github/workflows/v2-004.yml`，六门均mandatory，仅关键交付手动触发。`.gitlab-ci.yml`及旧protected runner记录保留历史，不用它们冒充GitHub权限验证。本地命令仍可复用 `uv run --locked python -B scripts/ci/run_gate.py static --output-dir dist/validation/static-run-1`；真实结果见实施记录。
+当前六门流水线为 `.github/workflows/v2-004.yml`，V2-005 也复用该入口；文件名不表示只验证 V2-004。六门均 mandatory，仅关键交付手动触发。`.gitlab-ci.yml`、旧验证器及 protected runner 记录仍供历史与回归使用，不用它们冒充 GitHub 权限验证。本地命令可复用 `uv run --locked python -B scripts/ci/run_gate.py static --output-dir dist/validation/static-run-1`；输出目录须使用新名称。
 
 ## 资料治理与本地任务入口
 
@@ -79,7 +82,7 @@ python3 -B scripts/check_governance.py --output-dir dist/validation/governance-r
 python3 -B -m pytest -q tests/contract
 ```
 
-正式动作前使用已绑定的任务专属执行包。`check` 实际读取仓库和输入；`run` 在检查通过后才启动 `--` 后的命令，保留子命令退出码；`resume` 重新核对上一份 PASS 的实际结束状态和当前输入。下面展示已绑定当前执行包的 V2-003 命令，不创建或推进其他任务；旧 V2-001/002 历史包若缺 change_review，仅保留其历史证据，新受限动作必须重新准备绑定：
+正式动作前使用本任务专属执行包。`check` 实际读取仓库和输入；`run` 在检查通过后才启动 `--` 后的命令，保留子命令退出码；`resume` 重新核对上一份 PASS 的实际结束状态和当前输入。**下面是 V2-003 的历史命令示例，不是当前开工命令**：完成任务的 IMPLEMENT 应被拒绝；新受限动作必须准备本任务的有效绑定，不能复用旧包重新实施已关闭任务。
 
 ```bash
 python3 -B scripts/task_execution.py check --task V2-003 --action IMPLEMENT --output dist/validation/start-1.json
@@ -91,9 +94,9 @@ python3 -B scripts/task_execution.py resume --task V2-003 --action IMPLEMENT --c
 
 这是本地命令入口：不能拦截操作者绕过入口直接使用其他工具，不能判断任意子命令的业务语义，不能证明远端来源或最小权限。PREPARE 仅用于授权的调查命令。LIVE_CALL/CERTIFY 的资料条件仍由既有校验器检查；实际付费/认证 dispatch 在受保护授权接入前保持拒绝。
 
-## V2-003 本地架构与差异检查
+## 本地架构与差异检查（含 V2-003 历史示例）
 
-在仓库根目录使用锁定环境，每次选择新的报告文件：
+在仓库根目录使用锁定环境，每次选择新的报告文件。下面的 V2-003 固定 pin 只用于追溯该历史任务；当前任务的 pin 必须来自它自己的执行包：
 
 ```bash
 .venv/bin/python -B scripts/check_architecture.py --output dist/validation/architecture-run-1.json
@@ -110,6 +113,8 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 差异检查中的 scope commit 固定开工范围、用户既有改动身份和授权来源。运行前将 `pinned-baseline.json` 中的最新 pin 与当前有效交接核对；该文件提供定位信息，授权内容从明确的 Git commit 读取。开工清单的补正原因和原 pin 保留在准备记录中。尚未处置的 finding 返回失败并保留报告；有依据的技术处置需再提供 `--review-revision` 与 `--review-ref`，二者从当前有效交接取值，绑定准确内容和验证产物。改变被审内容后须重新核对，不能把旧 review 用于新改动。命令和处置方法见[任务执行指南](plan/09_TASK_EXECUTION_GUIDE.md)。
 
 `task_execution.py` 对 IMPLEMENT/LIVE_CALL/CERTIFY 自动读取执行包 `change_review` 的 scope/review pin，在命令前后强制核对差异；缺少绑定会阻断，CLI 只能重述同值、不能覆盖绑定。PREPARE 允许先调查再冻结范围；付费/认证 dispatch 仍被拒绝。架构检查作为明确的子命令执行。所有本地工具均不能抵抗同一写入者修改或绕过检查器；V2-004已交付真实GitHub来源核对；单人模式不声称对抗性权限隔离。
+
+## 历史维护记录（非当前任务入口）
 
 2026-10-17精确处置补记：Owner已批准报告公开哈希的两个精确例外及52→54账本重绑定，仍到期于2027-01-06T06:07:49Z；当前54项OPEN（45精确例外、9历史风险接纳），本地完整扫描54/54消费、0未匹配、0未使用批准。工作区来源基线推进至9d71f91且原16项内容逐一不变，历史身份不变；旧52项GitHub扫描结果仍仅属于611d777。原暂停记录保留在CURRENT_HEAD_BLOCKER.json，由CURRENT_HEAD_RESOLUTION.json及authority-54/OWNER_DECISION_RECEIPT.json补充解除，不改写历史。
 

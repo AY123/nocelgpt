@@ -1,3 +1,5 @@
+> **历史实施与整改记录（HISTORICAL，2026-09-24及原交付阶段）**。原文标题中的“当前”及IMPLEMENTED/缺CI结论只指各自时点，不是现行开工状态。原文、固定pin和失败记录保留；后续关闭依据见[P0汇总验收](../plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)，当前任务读取[机器任务表](../plan/machine/implementation-backlog.yaml)。历史IMPLEMENT命令不应作为下一任务入口。
+
 # V2-003 实施与交接
 
 ## 2026-09-24 外部深审整改（当前）

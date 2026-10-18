@@ -1,3 +1,5 @@
+> **历史审计输入（HISTORICAL，原报告日期2026-10-17）**。下文保留原文，不作为当前状态或新的执行指令。后续[V2-005验收](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)已证明实体/别名实现和97项领域测试，“仅3行业务代码”“100%基础设施测试”“下一任务V2-005尚未开始”等表述不适用于该实现之后。章节生产、真人阅读与市场价值仍未完成验证。当前开发入口见[README](README.md)，任务状态见[机器任务表](plan/machine/implementation-backlog.yaml)。本次标注不重新认证原报告的评分、统计方法或独立性。
+
 # ANovelOS 独立项目审计报告（2026-10-17）
 
 **审计执行者**：Claude Opus 5.5  

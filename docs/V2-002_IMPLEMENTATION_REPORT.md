@@ -1,3 +1,5 @@
+> **历史实施记录（HISTORICAL，2026-09-23及其后续本地修复）**。以下“当前”“未VERIFIED/CLOSED”等表述仅适用于各段记录时点；原文及失败事实保留。后续关闭依据见[P0汇总验收](../plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)；当前任务读取[机器任务表](../plan/machine/implementation-backlog.yaml)，不依据本报告重开P0。
+
 # V2-002 Normative Documentation Index 实施报告
 
 日期：2026-09-23。Plan：1.3.0。结论：**IMPLEMENTED，未 VERIFIED/CLOSED**。仅实施 P0 / V2-002；本地命令和测试已存在，真实 CI、提交绑定的最终验收尚未取得。
