@@ -1,0 +1,42 @@
+{
+  "record_type": "local_main_delivery_verification",
+  "task_id": "V2-005",
+  "role": "Same-operator delivery review, not independent personnel acceptance",
+  "implementation_source_unchanged_since_851_test_run": true,
+  "implementation_sha256": {
+    "src/anovel/domain/__init__.py": "f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6",
+    "src/anovel/domain/identity.py": "cbacb2cec0edc99e8ef3c9be29443a1c4a14218493798d00f6093055e7a15342",
+    "specs/schemas/entity.schema.json": "49a3f6bd2c2ede90ffe1a4d682ea31eced606cf3b43d0453d3dd9114e91547fb",
+    "tests/contract/test_v2_005.py": "db29534138315f66a65b888dbe1a9261e8272dce0dd794f4a7efb3efdcbcfff6",
+    "demo_v2_005.py": "2f2f27c94a93fa36d18b943db08e31b5a6966652361eb6da5e5400d9c3be6569",
+    "scripts/ci/run_gate.py": "619f4b441eec459355c9bbd2852855f6137099548e85b623be501d331194194e",
+    "tests/contract/test_delivery_gates.py": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+    "tests/contract/test_plan_governance.py": "ed0adf2af52e5a94c142a19729de8f3ffe9636e15601b50aeb440fafc750ef13",
+    "tests/contract/test_trusted_execution_enrollment.py": "5ba8060941b8a6ddb44ad8e8e26c0e3f0fea85ad1a9b934c648c57b784f80eb3",
+    "plan/scripts/test_governance.py": "69826eaca19e4c788d7eccf22f74d5cf8833eb01453a1db70cc7fbba9a5204c5"
+  },
+  "documentation_sha256": {
+    "AGENTS.md": "ebcd004accec3fc7f2abeaf09c6c919ee438506a29bc7e951b5b02a2132a8100",
+    "README.md": "4ea6c700bab043b7eae96ac54156ef2108464ee921d7521f78b3a0bb7b7cee46",
+    "plan/README.md": "98fc400e33dd39558cf5d2d2a9e20f49d099b0804308f834adfe10a1757c807e",
+    "docs/V2-004_SECRET_EXCEPTION_CONSUMER.md": "1f4de6c028bb4515957eea624263ba93c842511f817337c2c8c4593f1baf7fde"
+  },
+  "current_checks": {
+    "domain_passed": 97,
+    "governance_passed": 39,
+    "plan_self_tests_passed": 32,
+    "static": "PASS",
+    "plan_structure": "PASS",
+    "workflow_trigger": "workflow_dispatch only; workflow bytes unchanged",
+    "task_state": "V2-005 IN_PROGRESS; no task closure or remote CI claim"
+  },
+  "current_artifacts": {
+    "dist/validation/main-delivery-20261018/domain-junit.xml": "063ea89b2fca8b9cce71f3f0e54c19339511f793eedf9260576e7daa7b316577",
+    "dist/validation/main-delivery-20261018/plan-results.json": "7e64dad7269d51c7d36cc3ace353a8ca33dcb81d508df77c2ca2d6ceb9085967",
+    "dist/validation/main-delivery-20261018/plan-check/plan-validation.json": "59be3c2de955812429da633da6f33747d4b971f218e7ba000ac4ad93ae18317a",
+    "dist/validation/main-delivery-20261018/plan-self-test/validator-self-test.json": "9818ab2acc7ac2168d47e0e530dd3ad8d3437fea1dd22ac598418e6e8ff4c2ea",
+    "dist/validation/main-delivery-20261018/governance/governance-regression.json": "1d77e673cec02522f6453794a19c1a1be8831a243cd4615bde3360fb03b86f29",
+    "dist/validation/main-delivery-20261018/static/receipt.json": "f6902e6f4cce5c6eb40c35f9ec6fda9aff5b953040e4c6114472cd8bd5408de7"
+  },
+  "delivery_authorization": "Owner direct message: all development on main; commit all project changes and push. Preserve ignored local materials and credentials; no CI dispatch."
+}
