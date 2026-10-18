@@ -4,7 +4,7 @@ task_id: V2-005
 plan_version: 1.3.0
 repository_revision: 39be349cba2b06c1e2ffc49761c158c53e5b8ee3
 worktree_dirty: false
-plan_manifest_sha256: 247bc498d7b18f98b8cee0e5ad3c19256677dae894734a75c24b61192741868e
+plan_manifest_sha256: 14fed7703f2edcf8eb4f528a1d1124a9119fd0cd9101bd81c47acfec100e24ce
 environment:
   fingerprint: Python 3.12.14 local remediation from committed GitHub main; verify both existing workspace and fresh
     checkout without host-local files.
@@ -98,20 +98,24 @@ review_notes:
 - '2026-10-18 resume from delivered main: distinguish optional exact host-local files from required source/user
   inputs. No broad ignore or automatic acceptance of new files.'
 handoff:
-  current_step: Preparing bounded portability repair after reproducing missing host-local files in a fresh checkout
+  current_step: Bounded portability repair implemented; focused, static and schema checks passed; prepare exact
+    committed clean-checkout verification
   completed_steps:
   - V2-005 source delivered as 39be349cba2b06c1e2ffc49761c158c53e5b8ee3
   - Fresh-checkout task entry failure reproduced and preserved under dist
+  - Optional exact host-local records implemented; 87 focused controls and existing static/schema gates passed
   pending_items:
   - Repair exact local-only input semantics and add positive/negative controls
   - Verify complete local checkout gates, commit and synchronize main; remote CI remains unexecuted
   next_action: IMPLEMENT
   last_check:
-    status: FAIL
+    status: PASS
     artifacts:
-    - ref: validation/execution/V2-005/portability-before.json
-      sha256: 6c8537a30e95f7ad2d1319207a9b4154271ad9a50002141a5a8416788cd5ab35
+    - ref: validation/execution/V2-005/portability-verification.json
+      sha256: 0d49612663cf85f77ac54991dc03619ce20c161540c5b79ed495e7ea993aba20
     missing_artifact_reason: null
 change_review:
-  scope_revision: 39be349cba2b06c1e2ffc49761c158c53e5b8ee3
+  scope_revision: 40bf7fd39299affc1bb760c36555fd94537222e8
   scope_ref: plan/validation/execution/V2-005/portable-scope.json
+  review_revision: ec1140de8ffae5c2dde40bc9d4958f8e7c1761d4
+  review_ref: plan/validation/execution/V2-005/portability-review.json

@@ -139,6 +139,8 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 
 执行包 `change_review` 必须包含 scope_revision/scope_ref；存在处置时再绑定 review_revision/review_ref。CLI 对应参数可全部省略；提供时必须成对且与包内相同。`check`、`run`、`resume` 的受限动作均要求包内绑定；`run` 或带子命令的 `resume` 在命令前检查差异，结束后再次检查命令影响，即使子命令退出 0，事后越界也不能记录为 PASS。架构检查仅在明确调用时执行。检查期间观察到的输入变化须重新核对，这些观察不建立文件锁或操作系统权限边界。
 
+跨 checkout 复核时，固定 scope 的 `pre_existing` 可逐项声明 `allow_absent: true`：仅适用于未跟踪、非可执行的 Ruff/mypy 工具产物与 `.claude/settings.local.json`，且仍绑定确切路径、类型、模式和 SHA256。干净 checkout 不要求复制这些主机文件；文件若存在，身份变化或被暂存仍失败。普通用户文件、已跟踪文件和源码不能使用此声明；未列出的新增文件仍参与范围与弱化检查。声明必须来自固定 Git pin，候选不能自行添加；它不是目录忽略、源码排除或安全扫描例外。
+
 独立差异 CLI 是范围/弱化审查，不替代执行包、动作 ADR、预算或恢复检查；正式动作继续经过任务入口。多个 Agent 共享写权限也不构成独立审核。V2-004 仍须接通实际 CI、远端来源与保护权限，未具备这些证据时不据本地 PASS 关闭任务或进入 P1。
 
 在 `PREPARE` 中允许调查未决 ADR；转 `IMPLEMENT`、`LIVE_CALL`、`CERTIFY` 时，按 ADR 最晚时点核对正式决定。任务写成 IN_PROGRESS 不表示所有后续动作都获准。交接记录保存真实结果与下一动作；恢复先与工作区和输入 hash 核对，版本变化后重验受影响证据。详细规则及 V2-002～004 分工见 [AI 开发执行协议](AI_EXECUTION_PROTOCOL.md)，不以本轮文件新增关闭这些工程任务。

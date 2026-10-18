@@ -1,7 +1,6 @@
 """Real Git/index/worktree and pinned-authority tests in disposable repositories."""
 from pathlib import Path
 import copy
-import hashlib
 import json
 import shutil
 import subprocess
@@ -77,6 +76,159 @@ def test_real_baseline_and_unchanged_user_edit_pass(context):
     result=review(context);assert_pass(result)
     assert result['scanned_files']>0 and result['pre_existing_unchanged']==['user.txt']
     assert not any(c['path']=='user.txt' for c in result['changes'])
+
+
+def pin_host_input(context, name='.ruff_cache/0.16.9/12345', *, allow_absent=True, updates=None):
+    repo, _, original = context
+    base = copy.deepcopy(original)
+    write(repo, name, 'synthetic host-local artifact\n')
+    record = {'index':None, 'worktree':{'kind':'file','mode':'100644',
+              'sha256':cr.digest((repo/name).read_bytes())}, 'allow_absent':allow_absent}
+    record.update(updates or {})
+    base['pre_existing'][name] = record
+    write(repo, SCOPE, json.dumps(base))
+    run(repo, 'git', 'add', SCOPE)
+    run(repo, 'git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+        'commit', '-qm', 'pin exact host-local input')
+    return repo, run(repo, 'git', 'rev-parse', 'HEAD'), base
+
+
+@pytest.mark.parametrize('name', [
+    '.claude/settings.local.json', '.ruff_cache/.gitignore', '.ruff_cache/CACHEDIR.TAG',
+    '.ruff_cache/0.16.9/12345', '.mypy_cache/.gitignore', '.mypy_cache/CACHEDIR.TAG',
+    '.mypy_cache/3.12/cache.db',
+])
+def test_exact_optional_host_input_passes_present_or_absent(context, name):
+    portable = pin_host_input(context, name)
+    assert_pass(review(portable))
+    (portable[0]/name).unlink()
+    result = review(portable)
+    assert_pass(result)
+    assert result['optional_local_inputs_absent'] == [name]
+    assert 'user.txt' in result['pre_existing_unchanged']
+
+
+def test_optional_host_input_is_portable_to_real_clean_clone(context, tmp_path):
+    name = '.claude/settings.local.json'
+    repo, _, base = pin_host_input(context, name)
+    # Remove only the synthetic fixture's intentionally dirty user-file premise.
+    # Ordinary user-file preservation is tested separately and remains strict.
+    write(repo, 'user.txt', 'original user\n')
+    base['pre_existing'].pop('user.txt')
+    write(repo, SCOPE, json.dumps(base))
+    run(repo, 'git', 'add', SCOPE)
+    run(repo, 'git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+        'commit', '-qm', 'pin clean fixture context')
+    pin = run(repo, 'git', 'rev-parse', 'HEAD')
+    clean = tmp_path/'fresh-clone'
+    run(repo, 'git', 'clone', '--shared', '--quiet', str(repo), str(clean))
+    assert run(clean, 'git', 'status', '--porcelain') == ''
+    assert not (clean/name).exists()
+    result = review((clean, pin, base))
+    assert_pass(result)
+    assert result['optional_local_inputs_absent'] == [name]
+
+
+@pytest.mark.parametrize('mutation', ['changed', 'staged', 'symlink'])
+def test_present_optional_host_input_still_rejects_identity_changes(context, mutation):
+    portable = pin_host_input(context)
+    repo = portable[0]; name = '.ruff_cache/0.16.9/12345'
+    if mutation == 'changed':
+        write(repo, name, 'changed host content\n')
+    elif mutation == 'staged':
+        run(repo, 'git', 'add', '--force', name)
+    else:
+        (repo/name).unlink()
+        (repo/name).symlink_to('../../allowed/existing.py')
+    result = review(portable)
+    assert result['status'] == 'FAIL'
+    assert any(f['code']=='PRE_EXISTING_CHANGED' for f in result['scope_findings'])
+
+
+@pytest.mark.parametrize('name', ['user.txt', '.ruff_cache/0.16.9/12345'])
+def test_missing_required_input_still_fails(context, name):
+    required = context if name == 'user.txt' else pin_host_input(context, allow_absent=False)
+    (required[0]/name).unlink()
+    result = review(required)
+    assert result['status'] == 'FAIL'
+    assert any(f['code']=='PRE_EXISTING_CHANGED' and f['path']==name for f in result['scope_findings'])
+
+
+@pytest.mark.parametrize('name', [
+    'outside.py', '.ruff_cache/0.16.9/unlisted.py', '.ruff_cache/0.16.9/67890',
+    'src/anovel/__pycache__/new_source.py',
+])
+def test_missing_optional_input_does_not_hide_new_or_changed_source(context, name):
+    portable = pin_host_input(context)
+    (portable[0]/'.ruff_cache/0.16.9/12345').unlink()
+    write(portable[0], name, 'new_source = 42\n')
+    result = review(portable)
+    assert result['status'] == 'FAIL'
+    assert any(f['path']==name for f in result['scope_findings'] + result['findings'])
+
+
+@pytest.mark.parametrize('name', [
+    'src/anovel/hidden.py', 'user.txt', '.claude/settings.json', '.ruff_cache/0.16.9/hidden.py',
+])
+def test_source_or_ordinary_user_file_cannot_be_declared_optional(context, name):
+    portable = pin_host_input(context, name)
+    result = review(portable)
+    assert result['status'] == 'FAIL'
+    assert any('DIFF_LOCAL_INPUT' in error for error in result['errors'])
+
+
+@pytest.mark.parametrize('updates', [
+    {'allow_absent':'true'}, {'allow_absent':1}, {'allow_absent':None},
+    {'index':{'mode':'100644','oid':'f'*40}}, {'worktree':None},
+    {'worktree':{'kind':'symlink','mode':'120000','sha256':'a'*64}},
+    {'worktree':{'kind':'file','mode':'100755','sha256':'a'*64}},
+    {'worktree':{'kind':'file','mode':'100644','sha256':'invalid'}},
+])
+def test_malformed_optional_local_identity_fails_closed(context, updates):
+    result = review(pin_host_input(context, updates=updates))
+    assert result['status'] == 'FAIL'
+    assert any('DIFF_LOCAL_INPUT' in error for error in result['errors'])
+
+
+def test_candidate_cannot_make_required_host_input_optional_without_new_pin(context):
+    required = pin_host_input(context, allow_absent=False)
+    repo, _, base = required
+    (repo/'.ruff_cache/0.16.9/12345').unlink()
+    base = copy.deepcopy(base)
+    base['pre_existing']['.ruff_cache/0.16.9/12345']['allow_absent'] = True
+    write(repo, SCOPE, json.dumps(base))
+    result = review(required)
+    assert result['status'] == 'FAIL'
+    assert any('frozen baseline' in error for error in result['errors'])
+
+
+def test_optional_host_record_must_explicitly_bind_untracked_index(context):
+    repo, _, base = pin_host_input(context)
+    base['pre_existing']['.ruff_cache/0.16.9/12345'].pop('index')
+    write(repo, SCOPE, json.dumps(base))
+    run(repo, 'git', 'add', SCOPE)
+    run(repo, 'git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+        'commit', '-qm', 'pin malformed missing-index record')
+    result = review((repo, run(repo, 'git', 'rev-parse', 'HEAD'), base))
+    assert result['status'] == 'FAIL'
+    assert any('DIFF_LOCAL_INPUT' in error for error in result['errors'])
+
+
+def test_tracked_cache_file_cannot_be_declared_optional(context):
+    repo, _, base = context
+    name = '.ruff_cache/0.16.9/12345'
+    write(repo, name, 'tracked fixture file\n')
+    run(repo, 'git', 'add', '--force', name)
+    run(repo, 'git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+        'commit', '-qm', 'synthetic tracked cache path')
+    base = copy.deepcopy(base)
+    base['opening_revision'] = run(repo, 'git', 'rev-parse', 'HEAD')
+    packet = yaml.safe_load((repo/'meta/packet.yaml').read_text())
+    packet['repository_revision'] = base['opening_revision']
+    write(repo, 'meta/packet.yaml', yaml.safe_dump(packet))
+    result = review(pin_host_input((repo, base['opening_revision'], base)))
+    assert result['status'] == 'FAIL'
+    assert any('DIFF_LOCAL_INPUT' in error for error in result['errors'])
 
 
 @pytest.mark.parametrize('mutation',['added','modified','deleted','renamed','staged','committed'])

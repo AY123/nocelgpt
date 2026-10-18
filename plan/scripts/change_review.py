@@ -9,6 +9,7 @@ from pathlib import Path, PurePosixPath
 import hashlib
 import json
 import os
+import re
 import stat
 import subprocess
 import tempfile
@@ -91,6 +92,19 @@ def require_revision(root, revision):
         raise ReviewError('DIFF_PIN: pinned revision is not an ancestor of current checkout')
 
 
+def host_local_input(name):
+    """Recognize concrete tool artifacts, never a source-directory exclusion."""
+    if name == '.claude/settings.local.json':
+        return True
+    parts = PurePosixPath(name).parts
+    if len(parts) == 2:
+        return parts[0] in {'.ruff_cache', '.mypy_cache'} and parts[1] in {'.gitignore', 'CACHEDIR.TAG'}
+    if len(parts) != 3 or re.fullmatch(r'[0-9]+(?:\.[0-9]+)*', parts[1]) is None:
+        return False
+    return ((parts[0] == '.ruff_cache' and re.fullmatch(r'[0-9]+', parts[2]) is not None)
+            or (parts[0] == '.mypy_cache' and parts[2] == 'cache.db'))
+
+
 def load_baseline(root, task_id, revision, ref):
     require_revision(root, revision)
     raw = pinned_file(root, revision, ref)
@@ -104,9 +118,18 @@ def load_baseline(root, task_id, revision, ref):
         raise ReviewError('DIFF_SCOPE: baseline contains invalid scope')
     if not isinstance(value.get('pre_existing'), dict):
         raise ReviewError('DIFF_BASELINE: pre-existing inventory is required')
+    opening_files = tree(root, value['opening_revision'])
     for name, record in value['pre_existing'].items():
         if not bounded_path(name) or not isinstance(record, dict) or not isinstance(record.get('worktree'), (dict, type(None))):
             raise ReviewError('DIFF_BASELINE: malformed pre-existing identity')
+        if 'allow_absent' in record and type(record['allow_absent']) is not bool:
+            raise ReviewError('DIFF_LOCAL_INPUT: allow_absent must be a boolean')
+        if record.get('allow_absent'):
+            identity = record.get('worktree') or {}
+            if (not host_local_input(name) or name in opening_files or 'index' not in record or record['index'] is not None
+                    or identity.get('kind') != 'file' or identity.get('mode') != '100644'
+                    or re.fullmatch(r'[0-9a-f]{64}', str(identity.get('sha256', ''))) is None):
+                raise ReviewError('DIFF_LOCAL_INPUT: only exact untracked regular host-local files may be absent')
     # Ref/hash identifies the actual authorization input; it is not an approval
     # merely because a candidate writes a matching string into a new document.
     source = value.get('authorization_source', {})
@@ -287,6 +310,10 @@ def preexisting_drift(observed, baseline):
         current = observed['identity']['worktree'].get(name)
         work = {k:current[k] for k in ('kind','mode','sha256')} if current else None
         index = observed['identity']['index'].get(name)
+        # Fresh checkouts do not contain the originating host's private config
+        # or tool artifacts. Present, changed, staged and new files remain checked.
+        if prior.get('allow_absent') is True and current is None and index is None:
+            continue
         if work == prior['worktree'] and index == prior['index']:
             continue
         # Only an existing explicit task edit grant (the reviewed prompt here)
@@ -378,6 +405,10 @@ def review_changes(root, *, task_id, scope_revision, scope_ref, review_revision=
         changes,preexisting = collect_changes(root,observed,baseline)
         verify_coverage(root,observed,changes,preexisting)
         report.update(head=observed['identity']['head'],observation_sha256=observed['identity_sha256'],scanned_files=len(observed['identity']['worktree']),pre_existing_unchanged=preexisting,scope_findings=path_findings(root,changes,baseline)+preexisting_drift(observed,baseline))
+        report['optional_local_inputs_absent'] = [name for name, record in baseline['pre_existing'].items()
+                                                 if record.get('allow_absent') is True
+                                                 and name not in observed['identity']['worktree']
+                                                 and name not in observed['identity']['index']]
         from weakening_checks import scan_weakening
         findings = scan_weakening(weakening_inputs(changes),task_id=task_id,baseline=baseline)
         # P0 scope permits boundary tooling, not arbitrary production business
