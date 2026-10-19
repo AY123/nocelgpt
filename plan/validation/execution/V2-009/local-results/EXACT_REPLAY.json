@@ -1,0 +1,38 @@
+{
+  "revision": "169328e6589ce40f2977e3d05283d1a5787638be",
+  "started_at": "2026-10-19T12:42:12.941744+00:00",
+  "finished_at": "2026-10-19T12:44:26.706627+00:00",
+  "mode": "EXACT_LOCAL_CHECKOUT",
+  "checks": {
+    "focused": 0,
+    "static": 0,
+    "action_entry": 0,
+    "architecture_scan": 0,
+    "postgres_env": 0,
+    "secret_dependency": 0,
+    "schema_contract": 0
+  },
+  "source_sha256": {
+    "src/anovel/canon/__init__.py": "5c24e3c3d481b6d6d2f4e3b829caea32602f00f94d4f27e208d5e781aae10235",
+    "src/anovel/canon/commit_service.py": "357ba3df730dea5c0e45dbab92c71a5cfc323e2370c1f37a1c13a81a79299dba",
+    "src/anovel/canon/identity.py": "c44b61270c1eea49c68a55091a727194c75e2a855328dad93a9f8c6073d02af6",
+    "src/anovel/canon/migrations.py": "3091627e198a903055cb93f112cc3384dba33a509307af69a1e378eb49f73c64",
+    "src/anovel/canon/models.py": "8c1d4a8cdafcfd58cb49b7696c114c2e9f6122ef2e4b027ce1649b9f8f6807c5",
+    "src/anovel/canon/repository.py": "8b925358b99b34e1722a5f3ce1d69ff9a704a8cbe615321a05beafa3d396b19c",
+    "src/anovel/canon/sql/0001_root.sql": "4babd3c9859913a1cabb57fca7d375fd27c533dbe3a1d4bc87208971cb1f5064",
+    "tests/contract/test_canon_identity.py": "17db3d2c40752a5a574eafa10e6271e644ff97ee9d854d2b776597df963f4533",
+    "tests/integration/test_v2_009.py": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+    "pyproject.toml": "b96889548bd2bad07d2438f9a2b504fcc33326c1d91124fc2bd2357591270c59",
+    "uv.lock": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+    "scripts/ci/run_gate.py": "31a006108bc16c50ed1b3ea23513229c999e53f613054c0a7283ad432fae4658",
+    "tests/contract/test_delivery_gates.py": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+    "tests/integration/test_repository_bootstrap.py": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49"
+  },
+  "tracked_worktree_clean": true,
+  "root_code_bytes_match": true,
+  "remote_ci_run": false,
+  "not_rerun": [
+    "Full UNIT/ARCH ran on matching source bytes in worktree; their original revision context is retained rather than relabelled."
+  ],
+  "status": "PASS"
+}

@@ -15,3 +15,5 @@ UNIT 1014，ARCH 244，字节身份/模型专项84（UNIT子集），真实Postg
 复现：`.venv/bin/python -B scripts/ci/run_gate.py postgres_env --output-dir dist/validation/<new-dir>`；本机Docker须可用，缺失失败不skip。测试自动建临时数据库、清理自己资源。原始结果见local-results；失败尝试保留dist/validation/v2009-local-20261018，不包装为PASS。
 
 原四条验收分别覆盖：空库迁移/checksum；合法与跨scope数据库引用；两个PG backend真实锁竞争和唯一root；接口前ADR、取消/提交次序、权限版本、完整bytes读回及早期恢复责任。最终正式验收仍需一个相同最终SHA远程六门运行。
+
+2026-10-19隔离复核：干净提交 `169328e6589ce40f2977e3d05283d1a5787638be` 在全新checkout通过STATIC、SCHEMA_CONTRACT（五项检查）、身份/模型84项、真实PostgreSQL60项、SECRET_DEPENDENCY、任务入口和架构扫描。见 `local-results/EXACT_REPLAY.json`；原始命令与产物保存在本地 `dist/validation/v2009-exact-local-20261019/`。14项实现/测试/依赖/门禁文件哈希与完整本地回归一致；本次没有重跑完整UNIT/ARCH，不将其原工作树结果改写为该SHA验收。本交接提交只登记结果，尚无远程CI结论。

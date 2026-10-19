@@ -92,19 +92,23 @@ review_notes:
 - Original four assertions unchanged. Add real persistence tests to existing POSTGRES_ENV mandatory gate. No extra
   CI workflow/run.
 handoff:
-  current_step: V2-009 locally implemented; final exact checkout replay before delivery
+  current_step: V2-009 IMPLEMENTED; exact local replay PASS; delivery prepared, remote CI NOT_RUN
   completed_steps:
   - Accepted committed ADRs before interface implementation
   - Local UNIT1014/ARCH244/PostgreSQL60 PASS;0 skips
   - Canonical bytes, scoped SQL, root-only service and actual concurrency/rollback controls implemented
+  - 'Clean exact checkout 169328e6589ce40f2977e3d05283d1a5787638be: STATIC, SCHEMA_CONTRACT, focused84, PostgreSQL60,
+    SECRET_DEPENDENCY, action entry and architecture scan PASS; source bytes match local full UNIT/ARCH'
   pending_items:
-  - Exact checkout replay and reviewed main delivery
+  - Main delivery remote readback
   - One later final-SHA remote six-gate CI and V2-009 acceptance; not automatically dispatched
   - V2-010..012 remain OPEN, P2 NOT_VERIFIED
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-009/local-results/EXACT_REPLAY.json
+      sha256: f1b1b8caf0308fcb9c08348e64dfa5bed87f9dca1a3cec7c75881394109ce24f
     missing_artifact_reason: null
 change_review:
   scope_revision: c8673e4579ab184c65268db1746718bbecd0e1a2
