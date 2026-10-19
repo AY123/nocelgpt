@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+  "repository": "AY123/nocelgpt",
+  "repository_id": 1421585508,
+  "pipeline_id": 39256589017,
+  "pipeline_url": "https://github.com/AY123/nocelgpt/actions/runs/39256589017",
+  "run_attempt": 1,
+  "event": "workflow_dispatch",
+  "six_mandatory_gates": {
+    "postgres_env": {
+      "status": "PASS",
+      "job_id": 118073304904,
+      "artifact": "gate-postgres_env-39256589017-1.zip",
+      "receipt_sha256": "b6bd938fc5d89bb9af41dacb03ed62747aaca2af364c8ce4d63b4d838644bab1",
+      "command_count": 1,
+      "command_exit_codes": [
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 60,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "domain_tests": 59,
+      "scenario_tests": {
+        "AT-V2-009-01": [
+          "test_concurrent_installers_return_the_same_complete_schema",
+          "test_empty_database_migration_is_repeatable_and_creates_no_canon",
+          "test_failed_migration_rolls_back_all_ddl[False]",
+          "test_failed_migration_rolls_back_all_ddl[True]",
+          "test_migration_checksum_or_unknown_version_is_rejected[INSERT INTO anovel_canon.schema_migrations(version,checksum) VALUES (2,repeat('0',64))]",
+          "test_migration_checksum_or_unknown_version_is_rejected[UPDATE anovel_canon.schema_migrations SET checksum=repeat('0',64)]",
+          "test_root_round_trip_preserves_domain_raw_bytes_and_authority"
+        ],
+        "AT-V2-009-02": [
+          "test_commit_references_cannot_cross_project_or_branch[entity-branch]",
+          "test_commit_references_cannot_cross_project_or_branch[entity-project]",
+          "test_commit_references_cannot_cross_project_or_branch[event-branch]",
+          "test_commit_references_cannot_cross_project_or_branch[event-project]",
+          "test_commit_references_cannot_cross_project_or_branch[head-branch]",
+          "test_commit_references_cannot_cross_project_or_branch[head-project]",
+          "test_commit_references_cannot_cross_project_or_branch[parent-branch]",
+          "test_commit_references_cannot_cross_project_or_branch[parent-project]",
+          "test_commit_references_cannot_cross_project_or_branch[receipt-branch]",
+          "test_commit_references_cannot_cross_project_or_branch[receipt-project]",
+          "test_relationship_and_fact_foreign_keys_reject_foreign_scope[fact_subject-branch]",
+          "test_relationship_and_fact_foreign_keys_reject_foreign_scope[fact_subject-project]",
+          "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_a-branch]",
+          "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_a-project]",
+          "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_b-branch]",
+          "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_b-project]",
+          "test_same_entity_names_and_ids_are_independent_between_scopes",
+          "test_service_rejects_wrong_project_seed_and_invalid_utf8_without_writes"
+        ],
+        "AT-V2-009-03": [
+          "test_event_insert_failure_rolls_back_artifacts_commit_indexes_and_head[False]",
+          "test_event_insert_failure_rolls_back_artifacts_commit_indexes_and_head[True]",
+          "test_provisioning_never_initializes_story_and_wrong_actor_is_rejected",
+          "test_same_request_changed_payload_and_second_root_are_rejected",
+          "test_two_real_connections_compete_for_exactly_one_root"
+        ],
+        "AT-V2-009-04": [
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-artifacts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-commit_artifacts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-commits]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-entities]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-events]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-facts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-receipts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[DELETE-relationships]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-artifacts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-commit_artifacts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-commits]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-entities]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-events]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-facts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-receipts]",
+          "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-relationships]",
+          "test_cancel_before_commit_fences_the_original_ticket",
+          "test_commit_before_cancel_preserves_success_and_receipt",
+          "test_forged_or_stale_ticket_cannot_initialize[actor-untrusted-writer]",
+          "test_forged_or_stale_ticket_cannot_initialize[authorization_version-999]",
+          "test_forged_or_stale_ticket_cannot_initialize[branch-foreign-branch]",
+          "test_forged_or_stale_ticket_cannot_initialize[execution_version-999]",
+          "test_forged_or_stale_ticket_cannot_initialize[project-foreign-book]",
+          "test_forged_or_stale_ticket_cannot_initialize[request_id-missing-request]",
+          "test_privileged_storage_corruption_is_detected_on_read",
+          "test_reopening_connection_recovers_committed_root_without_memory",
+          "test_revoke_before_commit_fences_the_original_ticket",
+          "test_successful_receipt_does_not_authorize_another_actor",
+          "test_successful_request_recovers_after_authority_revocation"
+        ]
+      }
+    },
+    "static": {
+      "status": "PASS",
+      "job_id": 118073305242,
+      "artifact": "gate-static-39256589017-1.zip",
+      "receipt_sha256": "ce115d833c33c2492a3a7e95d5e91f46fe1e8d7fe0fbda9f5736ba1b753e2427",
+      "command_count": 5,
+      "command_exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "unit": {
+      "status": "PASS",
+      "job_id": 118073305269,
+      "artifact": "gate-unit-39256589017-1.zip",
+      "receipt_sha256": "4c2ad2ee6fb6cd04885ffebfa3689d6336ed9c3c29823d1a675673848dd09911",
+      "command_count": 2,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 1014,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "domain_tests": 84
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "job_id": 118073305568,
+      "artifact": "gate-arch_fitness-39256589017-1.zip",
+      "receipt_sha256": "47b4d77ba00d45d38938057292e72bde17377949222221752bdf0ffc50399d56",
+      "command_count": 3,
+      "command_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone",
+      "junit": {
+        "tests": 244,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "job_id": 118073305198,
+      "artifact": "gate-schema_contract-39256589017-1.zip",
+      "receipt_sha256": "a416428813fd2c656130abd399997656eeb2dabd99a1e70f7c7fef7aa29ddc08",
+      "command_count": 1,
+      "command_exit_codes": [
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "job_id": 118073305750,
+      "artifact": "gate-secret_dependency-39256589017-1.zip",
+      "receipt_sha256": "f25212cb0d1f497bc2c73573e9ec5891091482b72200e9fff7a52558a6886b3a",
+      "command_count": 2,
+      "command_exit_codes": [
+        0,
+        0
+      ],
+      "receipt_source_kind": "UNVERIFIED_GITHUB_ENVIRONMENT",
+      "remote_binding": "API run/job/artifact provenance plus GitHub digest and exact receipt context; not environment alone"
+    }
+  },
+  "junit_totals": {
+    "tests": 1318,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "artifacts": [
+    {
+      "name": "gate-postgres_env-39256589017-1.zip",
+      "artifact_id": 12188038147,
+      "sha256": "1b93cb52be3d367eedbd209f5ccbaeec787326af30876e88eb355ebe107c84f7",
+      "bytes": 2955,
+      "github_digest": "sha256:1b93cb52be3d367eedbd209f5ccbaeec787326af30876e88eb355ebe107c84f7",
+      "run_id": 39256589017,
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849"
+    },
+    {
+      "name": "gate-static-39256589017-1.zip",
+      "artifact_id": 12187763821,
+      "sha256": "2d153ee9da392f1b44fc265ee6c61e8a11fc94686e8ad61b8b7b45d94e9bd021",
+      "bytes": 2853,
+      "github_digest": "sha256:2d153ee9da392f1b44fc265ee6c61e8a11fc94686e8ad61b8b7b45d94e9bd021",
+      "run_id": 39256589017,
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849"
+    },
+    {
+      "name": "gate-unit-39256589017-1.zip",
+      "artifact_id": 12187749845,
+      "sha256": "723d04386f0542aed5ad069c16b188fef4cb3037f71b1c971a894dd176e01fef",
+      "bytes": 17280,
+      "github_digest": "sha256:723d04386f0542aed5ad069c16b188fef4cb3037f71b1c971a894dd176e01fef",
+      "run_id": 39256589017,
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849"
+    },
+    {
+      "name": "gate-arch_fitness-39256589017-1.zip",
+      "artifact_id": 12187718819,
+      "sha256": "4b40541b327c07b87066a662df23372dcab75881426d8f707d99c7bed30f7e55",
+      "bytes": 171866,
+      "github_digest": "sha256:4b40541b327c07b87066a662df23372dcab75881426d8f707d99c7bed30f7e55",
+      "run_id": 39256589017,
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849"
+    },
+    {
+      "name": "gate-schema_contract-39256589017-1.zip",
+      "artifact_id": 12187519622,
+      "sha256": "46bfe5df4092ba4627a557ae9340b8d6eb67d4e32c562cadf74264a9aad44c63",
+      "bytes": 30183,
+      "github_digest": "sha256:46bfe5df4092ba4627a557ae9340b8d6eb67d4e32c562cadf74264a9aad44c63",
+      "run_id": 39256589017,
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849"
+    },
+    {
+      "name": "gate-secret_dependency-39256589017-1.zip",
+      "artifact_id": 12186469963,
+      "sha256": "1bcde97503de90e568c480a9d33c263f17153f154f0c6bbc248b75e87325900a",
+      "bytes": 21440,
+      "github_digest": "sha256:1bcde97503de90e568c480a9d33c263f17153f154f0c6bbc248b75e87325900a",
+      "run_id": 39256589017,
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849"
+    }
+  ],
+  "verified_at": "2026-10-19T13:10:33.278587+00:00",
+  "remote_dispatch_attempts": 1,
+  "automatic_retries": 0,
+  "implementation_and_verification": "same operator; no independent personnel review claim",
+  "permission_boundary": "Owner-directed single-operator profile, not adversarial branch protection",
+  "source_revision_after_this_run": "future acceptance registration is metadata-only and is not represented as a tested revision"
+}

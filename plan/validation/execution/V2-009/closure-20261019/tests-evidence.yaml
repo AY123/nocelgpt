@@ -1,0 +1,45 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-009
+revision: 3d12f2028ce226eede230e3acc111f1d63740849
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-19T13:10:33.278587+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11 locked; repository1421585508/run39256589017/attempt1,
+  accepted single-operator profile
+input_evidence_refs:
+- validation/execution/V2-009/closure-20261019/code-evidence.yaml
+- validation/execution/V2-009/closure-20261019/ci-evidence.yaml
+evidence_id: V2-009-tests-3d12f20
+evidence_type: TEST_RESULT
+check_ids:
+- AT-V2-009-01
+- AT-V2-009-02
+- AT-V2-009-03
+- AT-V2-009-04
+- STATIC
+- SCHEMA_CONTRACT
+- UNIT
+- ARCH_FITNESS
+- POSTGRES_ENV
+- SECRET_DEPENDENCY
+artifacts:
+- ref: validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json
+  sha256: 25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9
+- ref: validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json
+  sha256: af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194
+- ref: validation/execution/V2-009/closure-20261019/gate-postgres_env-39256589017-1.zip
+  sha256: 1b93cb52be3d367eedbd209f5ccbaeec787326af30876e88eb355ebe107c84f7
+- ref: validation/execution/V2-009/closure-20261019/gate-static-39256589017-1.zip
+  sha256: 2d153ee9da392f1b44fc265ee6c61e8a11fc94686e8ad61b8b7b45d94e9bd021
+- ref: validation/execution/V2-009/closure-20261019/gate-unit-39256589017-1.zip
+  sha256: 723d04386f0542aed5ad069c16b188fef4cb3037f71b1c971a894dd176e01fef
+- ref: validation/execution/V2-009/closure-20261019/gate-arch_fitness-39256589017-1.zip
+  sha256: 4b40541b327c07b87066a662df23372dcab75881426d8f707d99c7bed30f7e55
+- ref: validation/execution/V2-009/closure-20261019/gate-schema_contract-39256589017-1.zip
+  sha256: 46bfe5df4092ba4627a557ae9340b8d6eb67d4e32c562cadf74264a9aad44c63
+- ref: validation/execution/V2-009/closure-20261019/gate-secret_dependency-39256589017-1.zip
+  sha256: 1bcde97503de90e568c480a9d33c263f17153f154f0c6bbc248b75e87325900a
+command: GitHub run39256589017 six mandatory run_gate.py commands, original receipts/JUnit and digests verified
+exit_code: 0

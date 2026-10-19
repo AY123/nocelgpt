@@ -1,0 +1,250 @@
+{
+  "task_id": "V2-009",
+  "baseline_pin": {
+    "revision": "c8673e4579ab184c65268db1746718bbecd0e1a2",
+    "ref": "plan/validation/execution/V2-009/implementation-scope.json",
+    "sha256": "3a7def46f548a37152f54601585c46de52cc607f3783f56c28b5238d51cb1b8f"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "new_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "e8b7d192ab0dea154b1876855586ff72730c5818deb1dd18ae1c7ac344dd20a5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Task readiness remains the implemented READY_AFTER_GATES value; exact finding byte identity changed because V2-009 is now CLOSED with real same-SHA run39256589017 six-gate evidence and1318 tests0skip. Original task ID, phase, dependencies and four assertions unchanged. Closure does not promote P2 or future tasks.",
+      "impact": "Metadata/evidence-only V2-009 closure. Production/schema/test/dependency/gate bytes match remote-tested3d12f20. P2 NOT_VERIFIED; no V2-010 implementation, new CI, settings, exceptions or finding closure.",
+      "reviewer": "Codex same implementation and verification operator; no independent personnel claim",
+      "replacement_validation": "Actual same-SHA UNIT1014/ARCH244/PostgreSQL60=1318 cases,0failure/error/skip; all six mandatory gates PASS; local post-registration five governance checks, static and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/CODE_MANIFEST.json",
+          "sha256": "3453acf96cd48bbbbd800940d4ff43ea6a8f37fc9c8219b18644eb2985a9bf1e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json",
+          "sha256": "af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/SUMMARY.json",
+          "sha256": "a0b149416452baf029574144ba987df3eb4212bcbc45a0a4e724794999f6f83f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/governance-summary.json",
+          "sha256": "2eb8f353785ce3626bf9cb92ef9ec07091f6cf00eef285c432cb57a2dce0b3db"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "new_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "6f961f4a4080fc161a041f7bed85abedb755323865895407e306a972ab4889cd",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Task readiness remains the implemented READY_AFTER_GATES value; exact finding byte identity changed because V2-009 is now CLOSED with real same-SHA run39256589017 six-gate evidence and1318 tests0skip. Original task ID, phase, dependencies and four assertions unchanged. Closure does not promote P2 or future tasks.",
+      "impact": "Metadata/evidence-only V2-009 closure. Production/schema/test/dependency/gate bytes match remote-tested3d12f20. P2 NOT_VERIFIED; no V2-010 implementation, new CI, settings, exceptions or finding closure.",
+      "reviewer": "Codex same implementation and verification operator; no independent personnel claim",
+      "replacement_validation": "Actual same-SHA UNIT1014/ARCH244/PostgreSQL60=1318 cases,0failure/error/skip; all six mandatory gates PASS; local post-registration five governance checks, static and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/CODE_MANIFEST.json",
+          "sha256": "3453acf96cd48bbbbd800940d4ff43ea6a8f37fc9c8219b18644eb2985a9bf1e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json",
+          "sha256": "af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/SUMMARY.json",
+          "sha256": "a0b149416452baf029574144ba987df3eb4212bcbc45a0a4e724794999f6f83f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/governance-summary.json",
+          "sha256": "2eb8f353785ce3626bf9cb92ef9ec07091f6cf00eef285c432cb57a2dce0b3db"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+      "new_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "60952ea91329cfa835d1d6f02cb5f3590ea5e3804b30782635b335cb9c92cb97",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserve explicit historical GitLab POSTGRES command in synthetic old receipt; independently assert current driver is exactly that original command plus V2-009 persistence tests. Existing positive/negative remote controls retained. No remote verifier or mandatory-gate weakening. These exact test bytes were already present in3d12f20 and passed the actual remote1318-case acceptance. No test file changed during closure.",
+      "impact": "Metadata/evidence-only V2-009 closure. Production/schema/test/dependency/gate bytes match remote-tested3d12f20. P2 NOT_VERIFIED; no V2-010 implementation, new CI, settings, exceptions or finding closure.",
+      "reviewer": "Codex same implementation and verification operator; no independent personnel claim",
+      "replacement_validation": "Actual same-SHA UNIT1014/ARCH244/PostgreSQL60=1318 cases,0failure/error/skip; all six mandatory gates PASS; local post-registration five governance checks, static and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/CODE_MANIFEST.json",
+          "sha256": "3453acf96cd48bbbbd800940d4ff43ea6a8f37fc9c8219b18644eb2985a9bf1e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json",
+          "sha256": "af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/SUMMARY.json",
+          "sha256": "a0b149416452baf029574144ba987df3eb4212bcbc45a0a4e724794999f6f83f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/governance-summary.json",
+          "sha256": "2eb8f353785ce3626bf9cb92ef9ec07091f6cf00eef285c432cb57a2dce0b3db"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+      "new_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "1830edc3bf19af7d45395d0b788f58212e8f5bdbe21a626f5e569156cd7ee4b2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserve explicit historical GitLab POSTGRES command in synthetic old receipt; independently assert current driver is exactly that original command plus V2-009 persistence tests. Existing positive/negative remote controls retained. No remote verifier or mandatory-gate weakening. These exact test bytes were already present in3d12f20 and passed the actual remote1318-case acceptance. No test file changed during closure.",
+      "impact": "Metadata/evidence-only V2-009 closure. Production/schema/test/dependency/gate bytes match remote-tested3d12f20. P2 NOT_VERIFIED; no V2-010 implementation, new CI, settings, exceptions or finding closure.",
+      "reviewer": "Codex same implementation and verification operator; no independent personnel claim",
+      "replacement_validation": "Actual same-SHA UNIT1014/ARCH244/PostgreSQL60=1318 cases,0failure/error/skip; all six mandatory gates PASS; local post-registration five governance checks, static and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/CODE_MANIFEST.json",
+          "sha256": "3453acf96cd48bbbbd800940d4ff43ea6a8f37fc9c8219b18644eb2985a9bf1e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json",
+          "sha256": "af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/SUMMARY.json",
+          "sha256": "a0b149416452baf029574144ba987df3eb4212bcbc45a0a4e724794999f6f83f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/governance-summary.json",
+          "sha256": "2eb8f353785ce3626bf9cb92ef9ec07091f6cf00eef285c432cb57a2dce0b3db"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "new_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "57898564cdbb17db30bb04bfe6a3a2c741ef433f70e1c91c77f0ea848bd1e56f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Runtime SQLAlchemy/psycopg now required: disposable cold-cache drift fixture removes both dev and runtime dependencies to retain a valid no-network resolution positive control, then explicitly proves --locked refuses manifest drift. Actual project dependencies untouched. Added no-dev runtime install and packaged SQL assertions. Unique contract filename fixes full discovery without changing discovery settings or removing tests. These exact test bytes were already present in3d12f20 and passed the actual remote1318-case acceptance. No test file changed during closure.",
+      "impact": "Metadata/evidence-only V2-009 closure. Production/schema/test/dependency/gate bytes match remote-tested3d12f20. P2 NOT_VERIFIED; no V2-010 implementation, new CI, settings, exceptions or finding closure.",
+      "reviewer": "Codex same implementation and verification operator; no independent personnel claim",
+      "replacement_validation": "Actual same-SHA UNIT1014/ARCH244/PostgreSQL60=1318 cases,0failure/error/skip; all six mandatory gates PASS; local post-registration five governance checks, static and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/CODE_MANIFEST.json",
+          "sha256": "3453acf96cd48bbbbd800940d4ff43ea6a8f37fc9c8219b18644eb2985a9bf1e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json",
+          "sha256": "af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/SUMMARY.json",
+          "sha256": "a0b149416452baf029574144ba987df3eb4212bcbc45a0a4e724794999f6f83f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/governance-summary.json",
+          "sha256": "2eb8f353785ce3626bf9cb92ef9ec07091f6cf00eef285c432cb57a2dce0b3db"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "new_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "c70f51b9d2895ae6a8220cdd04590d3e390aa37ee05beb9f8dd155a95b8c564f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Runtime SQLAlchemy/psycopg now required: disposable cold-cache drift fixture removes both dev and runtime dependencies to retain a valid no-network resolution positive control, then explicitly proves --locked refuses manifest drift. Actual project dependencies untouched. Added no-dev runtime install and packaged SQL assertions. Unique contract filename fixes full discovery without changing discovery settings or removing tests. These exact test bytes were already present in3d12f20 and passed the actual remote1318-case acceptance. No test file changed during closure.",
+      "impact": "Metadata/evidence-only V2-009 closure. Production/schema/test/dependency/gate bytes match remote-tested3d12f20. P2 NOT_VERIFIED; no V2-010 implementation, new CI, settings, exceptions or finding closure.",
+      "reviewer": "Codex same implementation and verification operator; no independent personnel claim",
+      "replacement_validation": "Actual same-SHA UNIT1014/ARCH244/PostgreSQL60=1318 cases,0failure/error/skip; all six mandatory gates PASS; local post-registration five governance checks, static and architecture scan PASS.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/CODE_MANIFEST.json",
+          "sha256": "3453acf96cd48bbbbd800940d4ff43ea6a8f37fc9c8219b18644eb2985a9bf1e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json",
+          "sha256": "af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/SUMMARY.json",
+          "sha256": "a0b149416452baf029574144ba987df3eb4212bcbc45a0a4e724794999f6f83f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-local-results/governance-summary.json",
+          "sha256": "2eb8f353785ce3626bf9cb92ef9ec07091f6cf00eef285c432cb57a2dce0b3db"
+        }
+      ]
+    }
+  ]
+}

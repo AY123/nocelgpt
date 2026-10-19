@@ -2,9 +2,9 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-**阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～008 CLOSED；P0/G-P0、P1/G-P1、M0/M1 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+**阶段摘要（2026-10-19）：Plan v1.3.0；V2-001～009 CLOSED；P0/G-P0、P1/G-P1、M0/M1 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
-当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已新增本地持久化和人工/测试根提交能力，尚无完整章节Commit/Permit、模型调用或章节生产闭环。
+当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已完成持久化和人工/测试根提交的工程验收，尚无完整章节Commit/Permit、模型调用或章节生产闭环。
 
 - P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
 - V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
@@ -15,12 +15,14 @@
 
 - V2-008及P1汇总绑定`f611ba3` / [run39128464248](https://github.com/AY123/nocelgpt/actions/runs/39128464248)，六门通过、1173项测试0skip；含102项V2-008、381项P1领域测试。见[P1汇总](plan/validation/execution/P1/closure-20261018/ACCEPTANCE_SUMMARY.md)。不代表持久Canon或章节生产。
 
+- V2-009工程验收绑定`3d12f20` / [run39256589017](https://github.com/AY123/nocelgpt/actions/runs/39256589017)，六门通过、1318项测试0skip；见[验收记录](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)。范围为根提交持久化，P2尚未完成。
+
 54 项安全发现保持 OPEN，按有限期精确批准消费，没有全局忽略。采用用户确认的单人 Owner 模式，不声称具备对抗性权限隔离；见[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。CI 仅在关键交付时手动触发。
 
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已本地实现，ADR-005/006已接受，专属执行包记录恢复入口；已完成的V2-008不重新走IMPLEMENT。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已完成工程验收；下一任务V2-010仍OPEN，须核对任务/ADR并建立专属执行包，已完成的任务不重新走IMPLEMENT。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 
@@ -132,4 +134,4 @@ V2-007 本地示例：`.venv/bin/python -B demo_v2_007.py`；插叙、发生状�
 
 V2-008本地示例：`.venv/bin/python -B demo_v2_008.py`；四类事实变化、严格前提及纯预演见[本地实现](plan/validation/execution/V2-008/LOCAL_IMPLEMENTATION.md)。不包含Canon提交或正文生产。
 
-V2-009：ADR-005/006已接受，持久化与root-only服务本地IMPLEMENTED；见[本地实现](plan/validation/execution/V2-009/LOCAL_IMPLEMENTATION.md)。待最终SHA远程六门验收，P2未完成。
+V2-009：ADR-005/006及root-only持久化已完成[工程验收](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)，绑定3d12f20/run39256589017；P2未完成，V2-010仍OPEN。

@@ -1,0 +1,82 @@
+{
+  "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+  "run_id": 39256589017,
+  "scenario_tests": {
+    "AT-V2-009-01": [
+      "test_concurrent_installers_return_the_same_complete_schema",
+      "test_empty_database_migration_is_repeatable_and_creates_no_canon",
+      "test_failed_migration_rolls_back_all_ddl[False]",
+      "test_failed_migration_rolls_back_all_ddl[True]",
+      "test_migration_checksum_or_unknown_version_is_rejected[INSERT INTO anovel_canon.schema_migrations(version,checksum) VALUES (2,repeat('0',64))]",
+      "test_migration_checksum_or_unknown_version_is_rejected[UPDATE anovel_canon.schema_migrations SET checksum=repeat('0',64)]",
+      "test_root_round_trip_preserves_domain_raw_bytes_and_authority"
+    ],
+    "AT-V2-009-02": [
+      "test_commit_references_cannot_cross_project_or_branch[entity-branch]",
+      "test_commit_references_cannot_cross_project_or_branch[entity-project]",
+      "test_commit_references_cannot_cross_project_or_branch[event-branch]",
+      "test_commit_references_cannot_cross_project_or_branch[event-project]",
+      "test_commit_references_cannot_cross_project_or_branch[head-branch]",
+      "test_commit_references_cannot_cross_project_or_branch[head-project]",
+      "test_commit_references_cannot_cross_project_or_branch[parent-branch]",
+      "test_commit_references_cannot_cross_project_or_branch[parent-project]",
+      "test_commit_references_cannot_cross_project_or_branch[receipt-branch]",
+      "test_commit_references_cannot_cross_project_or_branch[receipt-project]",
+      "test_relationship_and_fact_foreign_keys_reject_foreign_scope[fact_subject-branch]",
+      "test_relationship_and_fact_foreign_keys_reject_foreign_scope[fact_subject-project]",
+      "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_a-branch]",
+      "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_a-project]",
+      "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_b-branch]",
+      "test_relationship_and_fact_foreign_keys_reject_foreign_scope[party_b-project]",
+      "test_same_entity_names_and_ids_are_independent_between_scopes",
+      "test_service_rejects_wrong_project_seed_and_invalid_utf8_without_writes"
+    ],
+    "AT-V2-009-03": [
+      "test_event_insert_failure_rolls_back_artifacts_commit_indexes_and_head[False]",
+      "test_event_insert_failure_rolls_back_artifacts_commit_indexes_and_head[True]",
+      "test_provisioning_never_initializes_story_and_wrong_actor_is_rejected",
+      "test_same_request_changed_payload_and_second_root_are_rejected",
+      "test_two_real_connections_compete_for_exactly_one_root"
+    ],
+    "AT-V2-009-04": [
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-artifacts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-commit_artifacts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-commits]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-entities]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-events]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-facts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-receipts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[DELETE-relationships]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-artifacts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-commit_artifacts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-commits]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-entities]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-events]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-facts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-receipts]",
+      "test_accepted_history_cannot_be_modified_or_deleted[UPDATE-relationships]",
+      "test_cancel_before_commit_fences_the_original_ticket",
+      "test_commit_before_cancel_preserves_success_and_receipt",
+      "test_forged_or_stale_ticket_cannot_initialize[actor-untrusted-writer]",
+      "test_forged_or_stale_ticket_cannot_initialize[authorization_version-999]",
+      "test_forged_or_stale_ticket_cannot_initialize[branch-foreign-branch]",
+      "test_forged_or_stale_ticket_cannot_initialize[execution_version-999]",
+      "test_forged_or_stale_ticket_cannot_initialize[project-foreign-book]",
+      "test_forged_or_stale_ticket_cannot_initialize[request_id-missing-request]",
+      "test_privileged_storage_corruption_is_detected_on_read",
+      "test_reopening_connection_recovers_committed_root_without_memory",
+      "test_revoke_before_commit_fences_the_original_ticket",
+      "test_successful_receipt_does_not_authorize_another_actor",
+      "test_successful_request_recovers_after_authority_revocation"
+    ]
+  },
+  "persistence_cases": 59,
+  "identity_model_cases": 84,
+  "source": "Named scenarios present and PASS in original remote POSTGRES_ENV JUnit; identity/model cases in UNIT are a subset, not extra totals",
+  "limits": [
+    "Root-only persistence for base Entity/Relationship/WorldFact; no complete chapter Commit/Permit/CAS/projection/Genesis",
+    "Actor is supplied by trusted application composition; privileged database administrator is outside this Python boundary",
+    "Readback and rollback are verified; isolated loss/disaster recovery and valuable persistent production data are not accepted",
+    "P2 is NOT_VERIFIED and V2-010..012 remain OPEN"
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+  "source": "Exact Git blobs and SHA256; source code is not duplicated",
+  "files": [
+    {
+      "path": "src/anovel/canon/__init__.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "5c24e3c3d481b6d6d2f4e3b829caea32602f00f94d4f27e208d5e781aae10235",
+      "blob_oid": "6f60167a2e0d43aa7a791e2dd6f78846054af9ed"
+    },
+    {
+      "path": "src/anovel/canon/commit_service.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "357ba3df730dea5c0e45dbab92c71a5cfc323e2370c1f37a1c13a81a79299dba",
+      "blob_oid": "3b17c6debd3894d1b1eaf381cbcb06b545a6ca50"
+    },
+    {
+      "path": "src/anovel/canon/identity.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "c44b61270c1eea49c68a55091a727194c75e2a855328dad93a9f8c6073d02af6",
+      "blob_oid": "ddd013a2d39f227aa02fdfbfaebec873bbe20d2e"
+    },
+    {
+      "path": "src/anovel/canon/migrations.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "3091627e198a903055cb93f112cc3384dba33a509307af69a1e378eb49f73c64",
+      "blob_oid": "259e96faa451ebb89fd9391903c5f8598368d08d"
+    },
+    {
+      "path": "src/anovel/canon/models.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "8c1d4a8cdafcfd58cb49b7696c114c2e9f6122ef2e4b027ce1649b9f8f6807c5",
+      "blob_oid": "3ceb7d28a52ab2045a55f00872702c544ebde363"
+    },
+    {
+      "path": "src/anovel/canon/repository.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "8b925358b99b34e1722a5f3ce1d69ff9a704a8cbe615321a05beafa3d396b19c",
+      "blob_oid": "501b8063f1f03d02faa4d697916fae694ce41d6a"
+    },
+    {
+      "path": "src/anovel/canon/sql/0001_root.sql",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "4babd3c9859913a1cabb57fca7d375fd27c533dbe3a1d4bc87208971cb1f5064",
+      "blob_oid": "bce5778692632e1684b4e2ff25951811c4aec074"
+    },
+    {
+      "path": "tests/contract/test_canon_identity.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "17db3d2c40752a5a574eafa10e6271e644ff97ee9d854d2b776597df963f4533",
+      "blob_oid": "92f8e8ab277a918a4dec4bdb6031143bcb2b25e5"
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "blob_oid": "e528c0aa8f77c0761d2c9292efc62f0c903aef8a"
+    },
+    {
+      "path": "pyproject.toml",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "b96889548bd2bad07d2438f9a2b504fcc33326c1d91124fc2bd2357591270c59",
+      "blob_oid": "e0d3ca9a0761e9eaefa47781770743376bf0117b"
+    },
+    {
+      "path": "uv.lock",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+      "blob_oid": "3df30064c48afa1aa9662b7ec66429f5cbf6f894"
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "31a006108bc16c50ed1b3ea23513229c999e53f613054c0a7283ad432fae4658",
+      "blob_oid": "22ce52b0a067c3920680fad730c3caa3f61ee2fd"
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "blob_oid": "8eef496e7e77db6b1a3c7c730f7b36ff02e01463"
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "blob_oid": "674564ae94fd1943651486bc3f19a6893f778eea"
+    },
+    {
+      "path": "migrations/README.md",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "c5f44d12647b6287de3849aaefe31b320fc9018ae296d4de70ccef4917f3fea7",
+      "blob_oid": "70573a7b945db94edb6a5c52a47a4f3e4d2003ce"
+    },
+    {
+      "path": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff",
+      "blob_oid": "19f32cb41c45ec237367fb468540c1cf6fda895d"
+    },
+    {
+      "path": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7",
+      "blob_oid": "4b7f1a1f543865a08aed856453e1721c2385a531"
+    },
+    {
+      "path": "plan/validation/execution/V2-009/adr-005-decision.yaml",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "83824ce7553e824cb06c1d67f8ab457cc665601a578d6d4ca8f5f253ad4ccc00",
+      "blob_oid": "a9c3b3d6b672fb59b78680406c5fbf1c2000ad45"
+    },
+    {
+      "path": "plan/validation/execution/V2-009/adr-006-decision.yaml",
+      "revision": "3d12f2028ce226eede230e3acc111f1d63740849",
+      "sha256": "b735e597b3708220bb0c95129295a51bb56262195ad1d9e5fa8669de262271ca",
+      "blob_oid": "34450f5a01ee6b62bd9d0e0dba539388f7489584"
+    }
+  ]
+}

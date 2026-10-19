@@ -1,0 +1,135 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-009
+revision: 3d12f2028ce226eede230e3acc111f1d63740849
+status: PASS
+producer: Codex implementation and actual GitHub service-result verification, same operator; no independent personnel
+  claim
+executed_at: '2026-10-19T13:10:33.278587+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11 locked; repository1421585508/run39256589017/attempt1,
+  accepted single-operator profile
+input_evidence_refs: &id001
+- validation/execution/V2-009/closure-20261019/code-evidence.yaml
+- validation/execution/V2-009/closure-20261019/tests-evidence.yaml
+- validation/execution/V2-009/closure-20261019/ci-evidence.yaml
+evidence_id: V2-009-acceptance-3d12f20
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-009-01
+- AT-V2-009-02
+- AT-V2-009-03
+- AT-V2-009-04
+artifacts:
+- ref: validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md
+  sha256: 6ccc4d467f0fda6d1c907657c53dbe4c10ba51a25b9524a0729e6df01ee698a4
+- ref: validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json
+  sha256: 25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9
+- ref: validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json
+  sha256: af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194
+decision: ACCEPTED
+rationale: Four unchanged original V2-009 assertions and same-SHA real six-gate PASS; root persistence only, not
+  P2/product completion.
+finding_dispositions:
+- finding_id: AR-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: One root-only service, no initialization bypass, real root concurrency tested.
+  remaining_work: Full chapter authorization and production Genesis belong to later tasks.
+  next_task: V2-010
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: AR-09
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Short root transaction, atomic rollback and same-request payload conflict verified.
+  remaining_work: General chapter CAS, idempotency and response-loss recovery remain future commit work.
+  next_task: V2-011
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: AR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Versioned canonical bytes and complete root prose/input/authority retention round-trip verified.
+  remaining_work: Chapter Delta/Permit/Scene/Context dependency binding is not delivered by root persistence.
+  next_task: V2-010
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: AR-13
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Composite project/branch FKs and same-ID independent root scopes verified.
+  remaining_work: General chapter and cache/context authorization must be verified by their consumers.
+  next_task: V2-011
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: AR-18
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Root fences, version controls and retention/recovery boundary are explicit and tested.
+  remaining_work: Valuable persistent data require real isolated backup recovery; later audit/cost and DR tasks
+    remain.
+  next_task: V2-028
+  owner_role: canon-maintainer
+  due_gate: G-P6
+- finding_id: CA-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Actual SQL rejects cross-project/branch root relations and commit references.
+  remaining_work: Context/cache and chapter consumers are not covered by the root repository.
+  next_task: V2-018
+  owner_role: canon-maintainer
+  due_gate: G-P5
+- finding_id: CA-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Supported base seed Entity/Relationship/WorldFact survives domain-storage-domain and rejects malformed
+    versions.
+  remaining_work: RichCharacter/event/promise durable adapters and projections are not implicitly accepted; extend
+    and verify when introduced.
+  next_task: V2-012
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: CA-18
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Empty real PostgreSQL migration, SQL packaging, checksum, scopes and atomic rollback verified.
+  remaining_work: General projections, reconstruction and later genre fixture loading remain later work.
+  next_task: V2-012
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: RR-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Full root evidence bytes, immutable history and successful receipt after revocation verified.
+  remaining_work: Chapter Permit/policy/Delta/Context evidence closure remains V2-010/017/018.
+  next_task: V2-010
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: DA-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: Interface-before ADR plus actual root cancel-first/commit-first/version rejection and receipt recovery
+    verified.
+  remaining_work: Real chapter Permit and Workflow cancellation must integrate the same order.
+  next_task: V2-010
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: DA-11
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs: *id001
+  reason: ADR-006 assigns backup responsibility and blocks valuable persistent data until isolated recovery.
+  remaining_work: No database-loss recovery is claimed; isolated recovery/hash closure still must be performed.
+  next_task: V2-028
+  owner_role: canon-maintainer
+  due_gate: G-P6

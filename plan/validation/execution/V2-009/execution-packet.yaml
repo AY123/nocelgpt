@@ -91,24 +91,28 @@ review_notes:
 - 'Direct request: accept ADR-005/006 before persistence interfaces'
 - Original four assertions unchanged. Add real persistence tests to existing POSTGRES_ENV mandatory gate. No extra
   CI workflow/run.
+- Direct continuation after explicit single-run acceptance proposal authorizes same-SHA remote validation and evidence-based
+  closure. Closure changes only task/suite status, evidence, entry navigation and generated views. No P2 exit, V2-010
+  implementation, source/test/gate/security/settings changes or new CI.
 handoff:
-  current_step: V2-009 IMPLEMENTED; exact local replay PASS; delivery prepared, remote CI NOT_RUN
+  current_step: V2-009 CLOSED at 3d12f2028ce226eede230e3acc111f1d63740849 / run39256589017
   completed_steps:
-  - Accepted committed ADRs before interface implementation
-  - Local UNIT1014/ARCH244/PostgreSQL60 PASS;0 skips
-  - Canonical bytes, scoped SQL, root-only service and actual concurrency/rollback controls implemented
-  - 'Clean exact checkout 169328e6589ce40f2977e3d05283d1a5787638be: STATIC, SCHEMA_CONTRACT, focused84, PostgreSQL60,
-    SECRET_DEPENDENCY, action entry and architecture scan PASS; source bytes match local full UNIT/ARCH'
+  - ADR-005/006 accepted before interfaces; scoped root persistence implemented
+  - Local full regressions and exact replay retained at original revisions
+  - One same-SHA remote six-gate PASS,1318 tests0skip including84 identity/model and59 persistence cases
+  - Four unchanged scenarios mapped to original remote PostgreSQL JUnit; all related findings remain partial
   pending_items:
-  - Main delivery remote readback
-  - One later final-SHA remote six-gate CI and V2-009 acceptance; not automatically dispatched
-  - V2-010..012 remain OPEN, P2 NOT_VERIFIED
-  next_action: IMPLEMENT
+  - V2-010 remains OPEN and requires its own execution packet/readiness checks
+  - P2 NOT_VERIFIED; no full chapter commit/Permit/CAS/projection/Provider/product closure
+  - No valuable persistent data until real isolated backup recovery is verified
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-009/local-results/EXACT_REPLAY.json
-      sha256: f1b1b8caf0308fcb9c08348e64dfa5bed87f9dca1a3cec7c75881394109ce24f
+    - ref: validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json
+      sha256: 25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9
+    - ref: validation/execution/V2-009/closure-20261019/SCENARIO_RESULTS.json
+      sha256: af200102012ba6d9f94d53fa56cda7cc7cabc18b024ed3eea1bab662c37ab194
     missing_artifact_reason: null
 change_review:
   scope_revision: c8673e4579ab184c65268db1746718bbecd0e1a2
