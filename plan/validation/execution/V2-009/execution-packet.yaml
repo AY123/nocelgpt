@@ -4,7 +4,7 @@ task_id: V2-009
 plan_version: 1.3.0
 repository_revision: 3d7c722fdb9ecfedc5618eabd5c61ae865adda38
 worktree_dirty: false
-plan_manifest_sha256: 5b60c244b87fbec02fbaab37a5cfec2630070c404dc67b6e09467a88821ad8ba
+plan_manifest_sha256: 83b90fa53a4e59934053ca54111c6f0bbd6ddc3efac0393d2704bae99db34c18
 environment:
   fingerprint: Python3.12.14 / uv0.12.17 / PostgreSQL17.11 pinned; temporary isolated database
   runtime_versions:
@@ -29,11 +29,11 @@ inputs:
   ref: validation/execution/V2-009/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-009/inputs/c5547b69f97a425aaf9ef021823ae04faf05131a7cff9600f19d7368261fba66.txt
-  sha256: c5547b69f97a425aaf9ef021823ae04faf05131a7cff9600f19d7368261fba66
+  ref: validation/execution/V2-009/inputs/8050aa0e749be289540575293c0c2fcf70dc46b3a9c7e7a6014571d24fa874bd.txt
+  sha256: 8050aa0e749be289540575293c0c2fcf70dc46b3a9c7e7a6014571d24fa874bd
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-009/inputs/aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7.txt
-  sha256: aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7
+  ref: validation/execution/V2-009/inputs/41785fc2b72c57e70078ece072062adc581e8214bfd5e2fe27e2e5ad399d850b.txt
+  sha256: 41785fc2b72c57e70078ece072062adc581e8214bfd5e2fe27e2e5ad399d850b
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-009/inputs/a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e.txt
   sha256: a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e
@@ -66,6 +66,7 @@ allowed_paths:
 - README.md
 - plan/README.md
 - migrations
+- tests/contract/test_canon_identity.py
 required_decisions:
 - ADR-005
 - ADR-006
@@ -91,19 +92,20 @@ review_notes:
 - Original four assertions unchanged. Add real persistence tests to existing POSTGRES_ENV mandatory gate. No extra
   CI workflow/run.
 handoff:
-  current_step: Accepted ADR-005/006; original IMPLEMENT gate before source
+  current_step: V2-009 locally implemented; final exact checkout replay before delivery
   completed_steps:
-  - PREPARE PASS
-  - Committed design accepted
+  - Accepted committed ADRs before interface implementation
+  - Local UNIT1014/ARCH244/PostgreSQL60 PASS;0 skips
+  - Canonical bytes, scoped SQL, root-only service and actual concurrency/rollback controls implemented
   pending_items:
-  - Implement bounded repository and real PostgreSQL tests
+  - Exact checkout replay and reviewed main delivery
+  - One later final-SHA remote six-gate CI and V2-009 acceptance; not automatically dispatched
+  - V2-010..012 remain OPEN, P2 NOT_VERIFIED
   next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
 change_review:
-  scope_revision: d8df3a9e9d5995035a44674c4fba8abf15ce8cf6
-  scope_ref: plan/validation/execution/V2-009/scope.json
-  review_revision: fb3dadd620d1db3b441a68942aa9b86afb6472ae
-  review_ref: plan/validation/execution/V2-009/entry-review.json
+  scope_revision: c8673e4579ab184c65268db1746718bbecd0e1a2
+  scope_ref: plan/validation/execution/V2-009/implementation-scope.json

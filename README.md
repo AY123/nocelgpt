@@ -4,7 +4,7 @@
 
 **阶段摘要（2026-10-18）：Plan v1.3.0；V2-001～008 CLOSED；P0/G-P0、P1/G-P1、M0/M1 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
-当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；尚无持久化、Canon 提交、模型调用或章节生产闭环。
+当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已新增本地持久化和人工/测试根提交能力，尚无完整章节Commit/Permit、模型调用或章节生产闭环。
 
 - P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
 - V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
@@ -20,7 +20,7 @@
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。下一任务V2-009须先准备ADR-005/006及专属执行包；已完成的V2-008不重新走IMPLEMENT。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已本地实现，ADR-005/006已接受，专属执行包记录恢复入口；已完成的V2-008不重新走IMPLEMENT。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 
@@ -131,3 +131,5 @@ V2-006 本地示例：运行 `.venv/bin/python -B demo_v2_006.py`，可以看到
 V2-007 本地示例：`.venv/bin/python -B demo_v2_007.py`；插叙、发生状态和读者承诺窗口见[V2-007本地实现](plan/validation/execution/V2-007/LOCAL_IMPLEMENTATION.md)。这是领域内存能力，尚非正文生产或Canon提交。
 
 V2-008本地示例：`.venv/bin/python -B demo_v2_008.py`；四类事实变化、严格前提及纯预演见[本地实现](plan/validation/execution/V2-008/LOCAL_IMPLEMENTATION.md)。不包含Canon提交或正文生产。
+
+V2-009：ADR-005/006已接受，持久化与root-only服务本地IMPLEMENTED；见[本地实现](plan/validation/execution/V2-009/LOCAL_IMPLEMENTATION.md)。待最终SHA远程六门验收，P2未完成。

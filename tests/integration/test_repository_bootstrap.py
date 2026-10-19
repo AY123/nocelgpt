@@ -70,13 +70,18 @@ def test_locked_install_rejects_manifest_drift(clean_project):
     run(check, cwd=source, env=env)
     assert (source / "uv.lock").read_bytes() == lock
 
-    # Removing fixture dev dependencies is a valid dependency-graph change,
+    # Removing fixture dev/runtime dependencies is a valid dependency-graph change,
     # not a syntax error or a modification to the real project requirements.
     before, dependency_tail = original.split("dev = [", 1)
     _, after = dependency_tail.split("\n]", 1)
     changed = before + "dev = []" + after
+    runtime = tomllib.loads(original)["project"]["dependencies"]
+    runtime_line = next(line for line in original.splitlines() if line.startswith("dependencies = "))
+    changed = changed.replace(runtime_line, "dependencies = []")
     expected = tomllib.loads(original)
     expected["dependency-groups"]["dev"] = []
+    assert runtime  # Canon introduces runtime packages; preserve the cold-cache test.
+    expected["project"]["dependencies"] = []
     assert tomllib.loads(changed) == expected
     manifest.write_text(changed)
     permitted = run([arg for arg in check if arg != "--locked"], cwd=source, env=env)
@@ -107,10 +112,12 @@ def test_builds_exclude_archive_and_tools(clean_project, tmp_path):
     with zipfile.ZipFile(wheels[0]) as wheel:
         names = wheel.namelist()
         assert "anovel/__init__.py" in names
+        assert "anovel/canon/sql/0001_root.sql" in names
         assert all(name.startswith(("anovel/", "anovelos-0.1.0.dist-info/")) for name in names)
     with tarfile.open(sdists[0]) as sdist:
         names = [str(Path(member.name).relative_to("anovelos-0.1.0")) for member in sdist.getmembers()]
         assert "src/anovel/__init__.py" in names
+        assert "src/anovel/canon/sql/0001_root.sql" in names
         assert not any(Path(name).parts and Path(name).parts[0] in {"plan", ".claude", "tests", "scripts", "docs", "dist"} for name in names)
     # A wheel must also import outside the source checkout, without editable paths.
     target = tmp_path / "wheel-env"
@@ -151,3 +158,11 @@ def test_current_entrypoints_and_runtime_decision():
     assert packet["environment"]["runtime_versions"]["python"] == "3.12.14"
     assert packet["implementer"] and packet["verifier"] and packet["repository_revision"]
     assert packet["environment"]["ci_context"] is None
+
+
+def test_canon_runtime_dependencies_and_sql_present_without_dev_group(clean_project, tmp_path):
+    uv, source, env = clean_project
+    run([uv, "sync", "--locked", "--no-editable", "--no-default-groups"], cwd=source, env=env)
+    python = source / ".venv/bin/python"
+    result = run([str(python), "-I", "-c", "from anovel.canon.commit_service import CanonCommitService; from anovel.canon.migrations import migrate; from importlib.resources import files; import sqlalchemy,psycopg; assert b'CREATE SCHEMA anovel_canon' in files('anovel.canon').joinpath('sql/0001_root.sql').read_bytes(); print('CANON_RUNTIME_AND_MIGRATION_READY')"], cwd=tmp_path, env=env)
+    assert result.stdout.strip() == "CANON_RUNTIME_AND_MIGRATION_READY"

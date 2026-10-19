@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "ANovelOS V2 repository bootstrap"
 readme = "README.md"
 requires-python = "==3.12.14"
-dependencies = []
+dependencies = ["SQLAlchemy==2.0.54", "psycopg[binary]==3.3.6"]
 
 [build-system]
 requires = ["uv_build==0.12.17"]
@@ -15,8 +15,6 @@ dev = [
     "pytest>=8,<10",
     "PyYAML>=6,<7",
     "jsonschema>=4,<5",
-    "SQLAlchemy>=2,<3",
-    "psycopg[binary]>=3,<4",
     "ruff==0.16.9",
     "mypy==1.20.2",
     "types-PyYAML>=6,<7",

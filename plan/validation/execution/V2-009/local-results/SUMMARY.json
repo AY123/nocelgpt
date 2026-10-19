@@ -1,0 +1,73 @@
+{
+  "task_id": "V2-009",
+  "observed_utc": "2026-10-19T07:37:14.491598+00:00",
+  "verification_kind": "LOCAL_WORKTREE_NOT_REMOTE_CI",
+  "gates": {
+    "unit": {
+      "status": "PASS",
+      "revision_context": "c8673e4579ab184c65268db1746718bbecd0e1a2",
+      "receipt_sha256": "dfd632075f991df13c4b1ce34365c583ed3f7c93b8faa1f198fcd51c9f65299b"
+    },
+    "static": {
+      "status": "PASS",
+      "revision_context": "60e83feda5901a0db9680bc3a148baf3828374ba",
+      "receipt_sha256": "3f0262388e1a8d355e424b45d77bb4241b4515fc6275f63b77d48d9e21ec5bfa"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "revision_context": "60e83feda5901a0db9680bc3a148baf3828374ba",
+      "receipt_sha256": "fdbb83e6054f51775a41cce68b0a3677a263a8c949cec5306660dbd34c3b60b1"
+    }
+  },
+  "unit": {
+    "tests": 1014,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "architecture": {
+    "tests": 244,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "focused": {
+    "tests": 84,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "postgres": {
+    "tests": 60,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_sha256": {
+    "src/anovel/canon/__init__.py": "5c24e3c3d481b6d6d2f4e3b829caea32602f00f94d4f27e208d5e781aae10235",
+    "src/anovel/canon/commit_service.py": "357ba3df730dea5c0e45dbab92c71a5cfc323e2370c1f37a1c13a81a79299dba",
+    "src/anovel/canon/identity.py": "c44b61270c1eea49c68a55091a727194c75e2a855328dad93a9f8c6073d02af6",
+    "src/anovel/canon/migrations.py": "3091627e198a903055cb93f112cc3384dba33a509307af69a1e378eb49f73c64",
+    "src/anovel/canon/models.py": "8c1d4a8cdafcfd58cb49b7696c114c2e9f6122ef2e4b027ce1649b9f8f6807c5",
+    "src/anovel/canon/repository.py": "8b925358b99b34e1722a5f3ce1d69ff9a704a8cbe615321a05beafa3d396b19c",
+    "src/anovel/canon/sql/0001_root.sql": "4babd3c9859913a1cabb57fca7d375fd27c533dbe3a1d4bc87208971cb1f5064",
+    "tests/contract/test_canon_identity.py": "17db3d2c40752a5a574eafa10e6271e644ff97ee9d854d2b776597df963f4533",
+    "tests/integration/test_v2_009.py": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+    "pyproject.toml": "b96889548bd2bad07d2438f9a2b504fcc33326c1d91124fc2bd2357591270c59",
+    "uv.lock": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+    "scripts/ci/run_gate.py": "31a006108bc16c50ed1b3ea23513229c999e53f613054c0a7283ad432fae4658",
+    "tests/contract/test_delivery_gates.py": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+    "tests/integration/test_repository_bootstrap.py": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49"
+  },
+  "remote_ci": "NOT_RUN",
+  "notes": [
+    "ADRs committed and accepted before implementation; initial action gate PASS.",
+    "Real PostgreSQL17.11, temporary per-test database, original service public schema untouched; all owned containers/networks/volumes cleaned.",
+    "Initial unavailable Docker run was an environment error, not a test PASS.",
+    "AUTOCOMMIT fault-injection regression exposed inherited OptionEngine configuration overriding transaction isolation; fixed by enforcing READ COMMITTED on the actual connection. Final regression includes both modes.",
+    "Legacy GitLab receipt fixture retains old command list; current PostgreSQL gate explicitly adds persistence suite, no tests/mandatory gate removed.",
+    "Full unit rerun outside sandbox for package cache/install requirements. Unique contract test filename fixes full discovery; cold-cache lock fixture removes dev+runtime dependencies only in disposable copy and still proves exact --locked refusal. No skips or weaker assertions.",
+    "Code tested from dirty implementation tree; exact checkout replay is separate, no false SHA binding."
+  ],
+  "independent_personnel_review": false
+}

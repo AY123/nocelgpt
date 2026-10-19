@@ -626,6 +626,22 @@ def source_fixture():
                     "--junitxml=dist/ci/arch_fitness/junit.xml",
                 ],
             ]
+        elif name == "postgres_env":
+            # Frozen GitLab-era receipt. V2-009 extends the current GitHub gate.
+            source_commands = [
+                [
+                    sys.executable,
+                    "-B",
+                    "-m",
+                    "pytest",
+                    "-q",
+                    "-p",
+                    "no:cacheprovider",
+                    "-s",
+                    "tests/integration/test_postgres_ci_service.py",
+                    "--junitxml=dist/ci/postgres_env/junit.xml",
+                ]
+            ]
         else:
             source_commands = runner.commands_for(name, ROOT / "dist/ci" / name)
         for number, argv in enumerate(source_commands, 1):
@@ -771,7 +787,24 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
     # Preserve the historical GitLab implementation receipt contract separately
     # from the completed-task audit path tested above.
     actual = runner.commands_for(name, runner.ROOT / "dist/ci" / name)
-    assert [argv[1:] for argv in actual] == remote.command_tails(name)
+    if name == "postgres_env":
+        legacy = [
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "-s",
+            "tests/integration/test_postgres_ci_service.py",
+            "--junitxml=dist/ci/postgres_env/junit.xml",
+        ]
+        assert remote.command_tails(name) == [legacy]
+        assert [argv[1:] for argv in actual] == [
+            legacy[:-1] + ["tests/integration/test_v2_009.py", legacy[-1]]
+        ]
+    else:
+        assert [argv[1:] for argv in actual] == remote.command_tails(name)
 
 
 @pytest.mark.parametrize(
@@ -2004,3 +2037,15 @@ def test_real_gate_child_rejects_docker_host_userinfo_or_invalid_endpoint(
     assert "DOCKER_HOST" not in child
     assert "fake-docker-password" not in stdout
     assert "fake-docker-password" not in records
+
+
+def test_postgres_gate_runs_canon_persistence_without_dropping_service_check():
+    commands = runner.commands_for("postgres_env", ROOT / "dist/ci/postgres_env")
+    pytest_commands = [command for command in commands if "pytest" in command]
+    assert len(pytest_commands) == 1
+    command = pytest_commands[0]
+    assert "tests/integration/test_postgres_ci_service.py" in command
+    assert "tests/integration/test_v2_009.py" in command
+    assert not {"--ignore", "--deselect", "-k", "-m"}.intersection(
+        command[command.index("pytest") + 1 :]
+    )

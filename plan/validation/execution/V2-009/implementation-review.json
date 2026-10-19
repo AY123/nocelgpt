@@ -1,0 +1,274 @@
+{
+  "task_id": "V2-009",
+  "baseline_pin": {
+    "revision": "c8673e4579ab184c65268db1746718bbecd0e1a2",
+    "ref": "plan/validation/execution/V2-009/implementation-scope.json",
+    "sha256": "3a7def46f548a37152f54601585c46de52cc607f3783f56c28b5238d51cb1b8f"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "new_sha": "8050aa0e749be289540575293c0c2fcf70dc46b3a9c7e7a6014571d24fa874bd",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "e5f80feb179c98b651319b5fc5783615c1cded1abfe312dd24f825a784434c0b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-009 started after P1 and committed ADR-005/006. Only status/readiness/packet binding change; original four assertions, dependencies, phase and task identity unchanged.",
+      "impact": "V2-009 local persistence delivery only. No task closure, CI dispatch, new security approval or P2 verification. Six mandatory gates remain; POSTGRES coverage strengthened.",
+      "reviewer": "Codex same operator with delegated design and code cross-checks; not independent personnel",
+      "replacement_validation": "UNIT1014, ARCH244, real PostgreSQL60, identity/model84 PASS,0 skipped; static/governance/security PASS; original discovery and lock rejection controls preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/SUMMARY.json",
+          "sha256": "d9820e73bc2edee09057407cfe639e2231e70f70b2f085d604007d2efbc6ed7e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/unit.xml",
+          "sha256": "64bd3081b4da8c172de89bea35cf4e3a21d628fccc6e18645a3bbb1da3192540"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/postgres.xml",
+          "sha256": "9654489377ba1af114ed2a83989c807c16e31e2297d33340e508caee757a922f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/arch.xml",
+          "sha256": "a834d34c3f791b2d523f5634262a5ff1e75e0aff516798fb4a8a45880226517b"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "new_sha": "8050aa0e749be289540575293c0c2fcf70dc46b3a9c7e7a6014571d24fa874bd",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "23263ad7c097389cb1cb7363bdf27bf7b8acb8246b833798915c14bad9380fdd",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-009 started after P1 and committed ADR-005/006. Only status/readiness/packet binding change; original four assertions, dependencies, phase and task identity unchanged.",
+      "impact": "V2-009 local persistence delivery only. No task closure, CI dispatch, new security approval or P2 verification. Six mandatory gates remain; POSTGRES coverage strengthened.",
+      "reviewer": "Codex same operator with delegated design and code cross-checks; not independent personnel",
+      "replacement_validation": "UNIT1014, ARCH244, real PostgreSQL60, identity/model84 PASS,0 skipped; static/governance/security PASS; original discovery and lock rejection controls preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/SUMMARY.json",
+          "sha256": "d9820e73bc2edee09057407cfe639e2231e70f70b2f085d604007d2efbc6ed7e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/unit.xml",
+          "sha256": "64bd3081b4da8c172de89bea35cf4e3a21d628fccc6e18645a3bbb1da3192540"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/postgres.xml",
+          "sha256": "9654489377ba1af114ed2a83989c807c16e31e2297d33340e508caee757a922f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/arch.xml",
+          "sha256": "a834d34c3f791b2d523f5634262a5ff1e75e0aff516798fb4a8a45880226517b"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+      "new_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "60952ea91329cfa835d1d6f02cb5f3590ea5e3804b30782635b335cb9c92cb97",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserve explicit historical GitLab POSTGRES command in synthetic old receipt; independently assert current driver is exactly that original command plus V2-009 persistence tests. Existing positive/negative remote controls retained. No remote verifier or mandatory-gate weakening.",
+      "impact": "V2-009 local persistence delivery only. No task closure, CI dispatch, new security approval or P2 verification. Six mandatory gates remain; POSTGRES coverage strengthened.",
+      "reviewer": "Codex same operator with delegated design and code cross-checks; not independent personnel",
+      "replacement_validation": "UNIT1014, ARCH244, real PostgreSQL60, identity/model84 PASS,0 skipped; static/governance/security PASS; original discovery and lock rejection controls preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/SUMMARY.json",
+          "sha256": "d9820e73bc2edee09057407cfe639e2231e70f70b2f085d604007d2efbc6ed7e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/unit.xml",
+          "sha256": "64bd3081b4da8c172de89bea35cf4e3a21d628fccc6e18645a3bbb1da3192540"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/postgres.xml",
+          "sha256": "9654489377ba1af114ed2a83989c807c16e31e2297d33340e508caee757a922f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/arch.xml",
+          "sha256": "a834d34c3f791b2d523f5634262a5ff1e75e0aff516798fb4a8a45880226517b"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "af3581deed4d6d2aa9fdfd7e56a23e97e311d4b29a47347c894f2793318b153d",
+      "new_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "1830edc3bf19af7d45395d0b788f58212e8f5bdbe21a626f5e569156cd7ee4b2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Preserve explicit historical GitLab POSTGRES command in synthetic old receipt; independently assert current driver is exactly that original command plus V2-009 persistence tests. Existing positive/negative remote controls retained. No remote verifier or mandatory-gate weakening.",
+      "impact": "V2-009 local persistence delivery only. No task closure, CI dispatch, new security approval or P2 verification. Six mandatory gates remain; POSTGRES coverage strengthened.",
+      "reviewer": "Codex same operator with delegated design and code cross-checks; not independent personnel",
+      "replacement_validation": "UNIT1014, ARCH244, real PostgreSQL60, identity/model84 PASS,0 skipped; static/governance/security PASS; original discovery and lock rejection controls preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/SUMMARY.json",
+          "sha256": "d9820e73bc2edee09057407cfe639e2231e70f70b2f085d604007d2efbc6ed7e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/unit.xml",
+          "sha256": "64bd3081b4da8c172de89bea35cf4e3a21d628fccc6e18645a3bbb1da3192540"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/postgres.xml",
+          "sha256": "9654489377ba1af114ed2a83989c807c16e31e2297d33340e508caee757a922f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/arch.xml",
+          "sha256": "a834d34c3f791b2d523f5634262a5ff1e75e0aff516798fb4a8a45880226517b"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "new_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "57898564cdbb17db30bb04bfe6a3a2c741ef433f70e1c91c77f0ea848bd1e56f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Runtime SQLAlchemy/psycopg now required: disposable cold-cache drift fixture removes both dev and runtime dependencies to retain a valid no-network resolution positive control, then explicitly proves --locked refuses manifest drift. Actual project dependencies untouched. Added no-dev runtime install and packaged SQL assertions. Unique contract filename fixes full discovery without changing discovery settings or removing tests.",
+      "impact": "V2-009 local persistence delivery only. No task closure, CI dispatch, new security approval or P2 verification. Six mandatory gates remain; POSTGRES coverage strengthened.",
+      "reviewer": "Codex same operator with delegated design and code cross-checks; not independent personnel",
+      "replacement_validation": "UNIT1014, ARCH244, real PostgreSQL60, identity/model84 PASS,0 skipped; static/governance/security PASS; original discovery and lock rejection controls preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/SUMMARY.json",
+          "sha256": "d9820e73bc2edee09057407cfe639e2231e70f70b2f085d604007d2efbc6ed7e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/unit.xml",
+          "sha256": "64bd3081b4da8c172de89bea35cf4e3a21d628fccc6e18645a3bbb1da3192540"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/postgres.xml",
+          "sha256": "9654489377ba1af114ed2a83989c807c16e31e2297d33340e508caee757a922f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/arch.xml",
+          "sha256": "a834d34c3f791b2d523f5634262a5ff1e75e0aff516798fb4a8a45880226517b"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "62812860af7c096bccb37ec2eab81605c55e37d8949002d215ccf79abf5a0e29",
+      "new_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "c70f51b9d2895ae6a8220cdd04590d3e390aa37ee05beb9f8dd155a95b8c564f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Runtime SQLAlchemy/psycopg now required: disposable cold-cache drift fixture removes both dev and runtime dependencies to retain a valid no-network resolution positive control, then explicitly proves --locked refuses manifest drift. Actual project dependencies untouched. Added no-dev runtime install and packaged SQL assertions. Unique contract filename fixes full discovery without changing discovery settings or removing tests.",
+      "impact": "V2-009 local persistence delivery only. No task closure, CI dispatch, new security approval or P2 verification. Six mandatory gates remain; POSTGRES coverage strengthened.",
+      "reviewer": "Codex same operator with delegated design and code cross-checks; not independent personnel",
+      "replacement_validation": "UNIT1014, ARCH244, real PostgreSQL60, identity/model84 PASS,0 skipped; static/governance/security PASS; original discovery and lock rejection controls preserved.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/SUMMARY.json",
+          "sha256": "d9820e73bc2edee09057407cfe639e2231e70f70b2f085d604007d2efbc6ed7e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/unit.xml",
+          "sha256": "64bd3081b4da8c172de89bea35cf4e3a21d628fccc6e18645a3bbb1da3192540"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/postgres.xml",
+          "sha256": "9654489377ba1af114ed2a83989c807c16e31e2297d33340e508caee757a922f"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/local-results/arch.xml",
+          "sha256": "a834d34c3f791b2d523f5634262a5ff1e75e0aff516798fb4a8a45880226517b"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        }
+      ]
+    }
+  ]
+}
