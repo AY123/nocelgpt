@@ -1350,6 +1350,16 @@
     "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
   },
   {
+    "path": "decisions/ADR-005_CANONICAL_BYTES.md",
+    "bytes": 3515,
+    "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+  },
+  {
+    "path": "decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+    "bytes": 5866,
+    "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+  },
+  {
     "path": "generated/EXTERNAL_PRACTICE_MAP.md",
     "bytes": 3287,
     "sha256": "3c70d810a1ab33bc22479584f433194122d4acd6c5e0e5916db32fd1eae3e94b"
@@ -1401,8 +1411,8 @@
   },
   {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 89547,
-    "sha256": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31"
+    "bytes": 89592,
+    "sha256": "e9fa0260f3e87a25ab2a2d8053a7b5a0fb7810d2a154757cafc637d6b14980f9"
   },
   {
     "path": "machine/milestones.yaml",
