@@ -41,6 +41,42 @@
           "sha256": "b735e597b3708220bb0c95129295a51bb56262195ad1d9e5fa8669de262271ca"
         }
       ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "6c64f35e33acbdefab99e41d0c75729378bdd2261675e8d9d5a74e1782670c31",
+      "new_sha": "c5547b69f97a425aaf9ef021823ae04faf05131a7cff9600f19d7368261fba66",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "d87c2f9d2b51be2e4eee38002e3b1aea8183cd03cd98aec6b836f37e42e2390b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Start requested V2-009 after G-P1 and V2-008 are CLOSED/VERIFIED and committed ADR-005/006 is accepted. Only readiness/status and execution packet binding change; original scope/dependencies/four assertions unchanged.",
+      "impact": "Local implementation start only, no task or CI acceptance; no mandatory threshold or check changed.",
+      "reviewer": "Codex same operator technical review; not independent personnel",
+      "replacement_validation": "PREPARE action PASS; ADR original committed before interface code; typed ADR acceptance binds its bytes. IMPLEMENT original entry must pass before source changes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-009/authorization.txt",
+        "sha256": "9a45e2c6db6192944003c24dd48c235ad8839cf621aa16b0fe15608649fb6a4f"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/adr-005-decision.yaml",
+          "sha256": "83824ce7553e824cb06c1d67f8ab457cc665601a578d6d4ca8f5f253ad4ccc00"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/adr-006-decision.yaml",
+          "sha256": "b735e597b3708220bb0c95129295a51bb56262195ad1d9e5fa8669de262271ca"
+        }
+      ]
     }
   ]
 }
