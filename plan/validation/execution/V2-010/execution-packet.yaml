@@ -1,0 +1,102 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-010
+plan_version: 1.3.0
+repository_revision: 05b4b9723e8ba0c6940048623f2a3b835da68015
+worktree_dirty: false
+plan_manifest_sha256: 6735b31ede9b61ef687c60952218ffd23c4b9af4a543d147d4255cb334962fbf
+environment:
+  fingerprint: Python3.12.14 / uv0.12.17 / PostgreSQL17.11 pinned; temporary isolated database
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+  ci_context: null
+implementer: Codex primary with bounded delegated contracts and acceptance tests
+verifier: Same Codex operator; delegated technical cross-checks are not independent personnel review
+owner_role: canon-maintainer
+scope: Extend the existing sole CanonCommitService from roots to finite-fact chapter proposals; durable exact Permit,
+  authority and evidence, atomic writes and cancel/revoke fences. No Provider/Workflow/quality engine/general projection/Genesis/Retcon.
+action: IMPLEMENT
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-010/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-010/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-010/inputs/51e4dc912b89f69ddda839654826d10a8333f5ce44ae4c3b990c11c1cd848f9e.txt
+  sha256: 51e4dc912b89f69ddda839654826d10a8333f5ce44ae4c3b990c11c1cd848f9e
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-010/inputs/53f7e92e0c0cde537785c065b40d8904915ff9abfa2d429310d76f0412e24538.txt
+  sha256: 53f7e92e0c0cde537785c065b40d8904915ff9abfa2d429310d76f0412e24538
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-010/inputs/a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e.txt
+  sha256: a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-010/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/canon/commit_service.py
+- specs/schemas/commit-receipt.schema.json
+- tests/integration/test_v2_010.py
+allowed_paths:
+- src/anovel/canon/
+- migrations/
+- specs/schemas/commit-receipt.schema.json
+- tests/integration/test_v2_010.py
+- tests/contract/test_canon_commit.py
+- tests/integration/test_v2_009.py
+- tests/integration/test_repository_bootstrap.py
+- tests/contract/test_delivery_gates.py
+- scripts/ci/run_gate.py
+- plan/validation/execution/V2-010/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-004
+- ADR-005
+- ADR-006
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Reuse the locked SQLAlchemy/psycopg runtime and finite Delta; incremental SQL migration, no new framework or
+    dependency.
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Need valuable production database or paid Provider
+- Need weakened acceptance/security gate or changed task dependency
+- Unrelated user changes would be overwritten
+- Unresolved authority/Permit design would permit caller self-approval
+review_notes:
+- Original five V2-010 acceptance assertions unchanged. Existing root API/schema history retained. Extend the existing
+  mandatory PostgreSQL gate, no additional workflow.
+- Artifact and Permit authority are distinct from caller-supplied references. P2 test issuer/profile must be explicitly
+  rejected in production profile.
+handoff:
+  current_step: Design frozen; bind committed scope/review and check IMPLEMENT before source
+  completed_steps:
+  - Clean main@05b4b97; V2-009 same-SHA six-gate evidence and current source previously verified
+  - Read current Canon contracts and accepted ADR-004/005/006
+  pending_items:
+  - Freeze bounded implementation design and exact scope
+  - IMPLEMENT entry before production code changes
+  next_action: IMPLEMENT
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
