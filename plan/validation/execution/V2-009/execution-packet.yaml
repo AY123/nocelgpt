@@ -4,7 +4,7 @@ task_id: V2-009
 plan_version: 1.3.0
 repository_revision: 3d7c722fdb9ecfedc5618eabd5c61ae865adda38
 worktree_dirty: false
-plan_manifest_sha256: 6e21c994b6055a3c5e4ffcb87c8502b8582a4d7ee309929d8449c60768e6147c
+plan_manifest_sha256: 5b60c244b87fbec02fbaab37a5cfec2630070c404dc67b6e09467a88821ad8ba
 environment:
   fingerprint: Python3.12.14 / uv0.12.17 / PostgreSQL17.11 pinned; temporary isolated database
   runtime_versions:
@@ -17,7 +17,7 @@ verifier: Same Codex operator and technical cross-checks; no independent personn
 owner_role: canon-maintainer
 scope: V2-009 canonical identity, scoped PostgreSQL migration/repository, root-only unique service, fencing and
   retention boundary; no chapter commit/Permit issuer/projection/Genesis.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-009/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -29,14 +29,14 @@ inputs:
   ref: validation/execution/V2-009/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-009/inputs/e9fa0260f3e87a25ab2a2d8053a7b5a0fb7810d2a154757cafc637d6b14980f9.txt
-  sha256: e9fa0260f3e87a25ab2a2d8053a7b5a0fb7810d2a154757cafc637d6b14980f9
+  ref: validation/execution/V2-009/inputs/c5547b69f97a425aaf9ef021823ae04faf05131a7cff9600f19d7368261fba66.txt
+  sha256: c5547b69f97a425aaf9ef021823ae04faf05131a7cff9600f19d7368261fba66
 - source_ref: machine/test-catalog.yaml
   ref: validation/execution/V2-009/inputs/aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7.txt
   sha256: aa5e7bb52b9a1c7d5833c39f36745b033f01d02866306371f2e74c7eb396efc7
 - source_ref: machine/decision-register.yaml
-  ref: validation/execution/V2-009/inputs/81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d.txt
-  sha256: 81897c13ae735c720d17d5fc5ea6630eae987d4e9da23068fe7e647480179c8d
+  ref: validation/execution/V2-009/inputs/a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e.txt
+  sha256: a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e
 - source_ref: machine/ai-execution-policy.yaml
   ref: validation/execution/V2-009/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
   sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
@@ -91,15 +91,19 @@ review_notes:
 - Original four assertions unchanged. Add real persistence tests to existing POSTGRES_ENV mandatory gate. No extra
   CI workflow/run.
 handoff:
-  current_step: PREPARE ADR-005/006; no persistence implementation yet
+  current_step: Accepted ADR-005/006; original IMPLEMENT gate before source
   completed_steps:
-  - Clean main and accepted P1 verified
-  - Current task, domain/platform contracts read
+  - PREPARE PASS
+  - Committed design accepted
   pending_items:
-  - Accept committed ADRs before interface implementation
-  - Real PostgreSQL isolation/concurrent root tests
-  next_action: PREPARE
+  - Implement bounded repository and real PostgreSQL tests
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
+change_review:
+  scope_revision: d8df3a9e9d5995035a44674c4fba8abf15ce8cf6
+  scope_ref: plan/validation/execution/V2-009/scope.json
+  review_revision: fb3dadd620d1db3b441a68942aa9b86afb6472ae
+  review_ref: plan/validation/execution/V2-009/entry-review.json

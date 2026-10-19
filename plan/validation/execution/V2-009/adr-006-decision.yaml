@@ -1,0 +1,18 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-006-20261019-local
+evidence_type: ADR_DECISION
+subject_id: ADR-006
+revision: d8df3a9e9d5995035a44674c4fba8abf15ce8cf6
+status: PASS
+producer: Codex same operator under direct V2-009 authorization with delegated technical design checks; not independent
+  personnel
+executed_at: '2026-10-19T01:11:52.627144+00:00'
+environment_fingerprint: Python3.12.14; PostgreSQL17.11; existing locked SQLAlchemy/psycopg
+artifacts:
+- ref: decisions/ADR-006_PERSISTENCE_BOUNDARY.md
+  sha256: ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Committed design accepted before persistence interfaces. Root-only service is necessary for original
+  V2-009 no-bypass assertion; V2-010..012 remain OPEN.
