@@ -1,0 +1,90 @@
+{
+  "task_id": "V2-010",
+  "baseline_pin": {
+    "revision": "62a6cce2a8c944f51cbdccac4baa1dfc5dc95529",
+    "ref": "plan/validation/execution/V2-010/scope.json",
+    "sha256": "5a9811847195f6e0f978a89d193a884103759611792b734ec4199052c6e88eb1"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "new_sha": "51e4dc912b89f69ddda839654826d10a8333f5ce44ae4c3b990c11c1cd848f9e",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "2b808ef4a0234a6219035fcc177c28035483d7c1db415ed49280733dc5c00942",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Direct user request starts V2-010 after accepted V2-009 and VERIFIED G-P1. Task/phase/dependency/five assertions and mandatory gates unchanged. ADR-004/005/006 were accepted before this task; bounded implementation design preserves production rejection of P2 test Permit.",
+      "impact": "Implementation readiness/packet binding only; no task acceptance, future-task implementation or policy weakening.",
+      "reviewer": "Codex same implementing/verifying operator with read-only technical subtask reviews; not independent personnel review",
+      "replacement_validation": "PREPARE actual entry PASS; accepted same-SHA V2-009 six gates with1318 tests0skip, current source hashes match; IMPLEMENT must pass before production source edits.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/IMPLEMENTATION_DESIGN.md",
+          "sha256": "4e3fe7dca52a57299148c9d0ea46067ba0c88e9e77d6fd6a441689bebafe80aa"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "new_sha": "51e4dc912b89f69ddda839654826d10a8333f5ce44ae4c3b990c11c1cd848f9e",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "4b2f5936d05cd68c0a0b1c4e91b73e1049aecdb14f228a8695abcad79c02f866",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Direct user request starts V2-010 after accepted V2-009 and VERIFIED G-P1. Task/phase/dependency/five assertions and mandatory gates unchanged. ADR-004/005/006 were accepted before this task; bounded implementation design preserves production rejection of P2 test Permit.",
+      "impact": "Implementation readiness/packet binding only; no task acceptance, future-task implementation or policy weakening.",
+      "reviewer": "Codex same implementing/verifying operator with read-only technical subtask reviews; not independent personnel review",
+      "replacement_validation": "PREPARE actual entry PASS; accepted same-SHA V2-009 six gates with1318 tests0skip, current source hashes match; IMPLEMENT must pass before production source edits.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/IMPLEMENTATION_DESIGN.md",
+          "sha256": "4e3fe7dca52a57299148c9d0ea46067ba0c88e9e77d6fd6a441689bebafe80aa"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/decisions/ADR-005_CANONICAL_BYTES.md",
+          "sha256": "03001f850e72551cb4df5a09c1eb33ba117b9b98186ba6ad3db1873c191180ff"
+        },
+        {
+          "ref": "plan/decisions/ADR-006_PERSISTENCE_BOUNDARY.md",
+          "sha256": "ab5fc64a4ef3825099c6ac4562486e604e728f24b7a96322cf65a2eb58e682a7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-009/closure-20261019/REMOTE_VERIFICATION.json",
+          "sha256": "25f5cfdbec1ad6520ac1f36bfaeb82904a4ce919d63d4b045ecea2f2746ed4f9"
+        }
+      ]
+    }
+  ]
+}
