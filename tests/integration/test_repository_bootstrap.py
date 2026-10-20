@@ -113,11 +113,13 @@ def test_builds_exclude_archive_and_tools(clean_project, tmp_path):
         names = wheel.namelist()
         assert "anovel/__init__.py" in names
         assert "anovel/canon/sql/0001_root.sql" in names
+        assert "anovel/canon/sql/0002_chapter.sql" in names
         assert all(name.startswith(("anovel/", "anovelos-0.1.0.dist-info/")) for name in names)
     with tarfile.open(sdists[0]) as sdist:
         names = [str(Path(member.name).relative_to("anovelos-0.1.0")) for member in sdist.getmembers()]
         assert "src/anovel/__init__.py" in names
         assert "src/anovel/canon/sql/0001_root.sql" in names
+        assert "src/anovel/canon/sql/0002_chapter.sql" in names
         assert not any(Path(name).parts and Path(name).parts[0] in {"plan", ".claude", "tests", "scripts", "docs", "dist"} for name in names)
     # A wheel must also import outside the source checkout, without editable paths.
     target = tmp_path / "wheel-env"
@@ -164,5 +166,5 @@ def test_canon_runtime_dependencies_and_sql_present_without_dev_group(clean_proj
     uv, source, env = clean_project
     run([uv, "sync", "--locked", "--no-editable", "--no-default-groups"], cwd=source, env=env)
     python = source / ".venv/bin/python"
-    result = run([str(python), "-I", "-c", "from anovel.canon.commit_service import CanonCommitService; from anovel.canon.migrations import migrate; from importlib.resources import files; import sqlalchemy,psycopg; assert b'CREATE SCHEMA anovel_canon' in files('anovel.canon').joinpath('sql/0001_root.sql').read_bytes(); print('CANON_RUNTIME_AND_MIGRATION_READY')"], cwd=tmp_path, env=env)
+    result = run([str(python), "-I", "-c", "from anovel.canon.commit_service import CanonCommitService; from anovel.canon.migrations import migrate; from importlib.resources import files; import sqlalchemy,psycopg; assert b'CREATE SCHEMA anovel_canon' in files('anovel.canon').joinpath('sql/0001_root.sql').read_bytes(); assert files('anovel.canon').joinpath('sql/0002_chapter.sql').read_bytes(); print('CANON_RUNTIME_AND_MIGRATION_READY')"], cwd=tmp_path, env=env)
     assert result.stdout.strip() == "CANON_RUNTIME_AND_MIGRATION_READY"

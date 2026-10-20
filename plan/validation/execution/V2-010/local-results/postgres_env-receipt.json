@@ -1,0 +1,65 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "postgres_env",
+  "gate": "POSTGRES_ENV",
+  "status": "PASS",
+  "revision": "8f0036d5aada0f3752dbab548ce4a235ad230017",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "79f42a2f299c9010873c137c21841606fbe429e644ed6f9e8ac08a77d81ca6b9",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+  "started_at": "2026-10-20T01:01:37.001308+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "-s",
+        "tests/integration/test_postgres_ci_service.py",
+        "tests/integration/test_v2_009.py",
+        "tests/integration/test_v2_010.py",
+        "--junitxml=dist/validation/v2010-local-20261020/postgres-final/gate/junit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-local-20261020/postgres-final/gate/command-01.stdout.log",
+        "sha256": "4fe3524a9b27768b498e8f44b0e8c436c660e9ef4c319356a561b834a10f876e"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-local-20261020/postgres-final/gate/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/v2010-local-20261020/postgres-final/gate/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-local-20261020/postgres-final/gate/command-01.stdout.log",
+      "sha256": "4fe3524a9b27768b498e8f44b0e8c436c660e9ef4c319356a561b834a10f876e"
+    },
+    {
+      "ref": "dist/validation/v2010-local-20261020/postgres-final/gate/junit.xml",
+      "sha256": "e07a7e8ea470aa4c961ffef5cbce89ea6773c6c5676b117a074805f1ced02bf3"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-20T01:02:09.027016+00:00"
+}

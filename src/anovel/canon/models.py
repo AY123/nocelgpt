@@ -2,8 +2,11 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
+from datetime import datetime
 
+from anovel.canon.identity import utc_timestamp
 from anovel.domain.character import Relationship
 from anovel.domain.identity import Entity, EntityId
 from anovel.domain.knowledge import WorldFact
@@ -133,6 +136,71 @@ class CommitReceipt:
     commit_id: str
     payload_hash: str
     created_at: str
+
+    def __post_init__(self) -> None:
+        for value in (self.project, self.branch, self.request_id):
+            identifier(value)
+        if (
+            type(self.commit_id) is not str
+            or re.fullmatch(r"sha256:[0-9a-f]{64}", self.commit_id) is None
+        ):
+            raise CanonError("invalid commit identity")
+        if (
+            type(self.payload_hash) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", self.payload_hash) is None
+        ):
+            raise CanonError("invalid receipt payload hash")
+        if (
+            type(self.created_at) is not str
+            or re.fullmatch(
+                r"[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{6}Z",
+                self.created_at,
+            )
+            is None
+        ):
+            raise CanonError("receipt timestamp must be canonical UTC")
+        try:
+            parsed = datetime.fromisoformat(self.created_at)
+        except ValueError as error:
+            raise CanonError("invalid receipt calendar timestamp") from error
+        if utc_timestamp(parsed) != self.created_at:
+            raise CanonError("noncanonical receipt timestamp")
+
+    def to_dict(self) -> dict[str, object]:
+        return {
+            "kind": "COMMIT_RECEIPT",
+            "schema_version": "1.0",
+            "project": self.project,
+            "branch": self.branch,
+            "request_id": self.request_id,
+            "commit_id": self.commit_id,
+            "payload_hash": self.payload_hash,
+            "created_at": self.created_at,
+        }
+
+    @classmethod
+    def from_dict(cls, value: object) -> CommitReceipt:
+        if type(value) is not dict or set(value) != {
+            "kind",
+            "schema_version",
+            "project",
+            "branch",
+            "request_id",
+            "commit_id",
+            "payload_hash",
+            "created_at",
+        }:
+            raise CanonIntegrityError("invalid receipt record")
+        if value["kind"] != "COMMIT_RECEIPT" or value["schema_version"] != "1.0":
+            raise CanonIntegrityError("unknown receipt kind or version")
+        return cls(
+            value["project"],
+            value["branch"],
+            value["request_id"],
+            value["commit_id"],
+            value["payload_hash"],
+            value["created_at"],
+        )
 
 
 @dataclass(frozen=True, slots=True)

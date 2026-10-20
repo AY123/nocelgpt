@@ -801,7 +801,12 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
         ]
         assert remote.command_tails(name) == [legacy]
         assert [argv[1:] for argv in actual] == [
-            legacy[:-1] + ["tests/integration/test_v2_009.py", legacy[-1]]
+            legacy[:-1]
+            + [
+                "tests/integration/test_v2_009.py",
+                "tests/integration/test_v2_010.py",
+                legacy[-1],
+            ]
         ]
     else:
         assert [argv[1:] for argv in actual] == remote.command_tails(name)
@@ -2046,6 +2051,7 @@ def test_postgres_gate_runs_canon_persistence_without_dropping_service_check():
     command = pytest_commands[0]
     assert "tests/integration/test_postgres_ci_service.py" in command
     assert "tests/integration/test_v2_009.py" in command
+    assert "tests/integration/test_v2_010.py" in command
     assert not {"--ignore", "--deselect", "-k", "-m"}.intersection(
         command[command.index("pytest") + 1 :]
     )

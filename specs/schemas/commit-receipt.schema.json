@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.ai/schemas/commit-receipt.schema.json",
+  "title": "Canon Commit Receipt",
+  "description": "Retained successful root or chapter commit identity; no Permit or authority is granted by this record. UTC shape is checked here; the domain parser additionally enforces a valid calendar timestamp. The date-time format is an annotation unless the consumer enables a capable format checker.",
+  "type": "object",
+  "required": [
+    "kind",
+    "schema_version",
+    "project",
+    "branch",
+    "request_id",
+    "commit_id",
+    "payload_hash",
+    "created_at"
+  ],
+  "properties": {
+    "kind": {
+      "const": "COMMIT_RECEIPT"
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "project": {
+      "$ref": "#/$defs/identifier"
+    },
+    "branch": {
+      "$ref": "#/$defs/identifier"
+    },
+    "request_id": {
+      "$ref": "#/$defs/identifier"
+    },
+    "commit_id": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}(?![\\s\\S])"
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}(?![\\s\\S])"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-5][0-9]\\.[0-9]{6}Z(?![\\s\\S])"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^(?=[\\s\\S]*\\S)[^\\u0000]+$"
+    }
+  }
+}

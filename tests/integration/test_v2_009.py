@@ -11,6 +11,8 @@ import time
 import uuid
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
+from hashlib import sha256
+from importlib.resources import files
 
 import pytest
 from sqlalchemy import create_engine, text
@@ -163,9 +165,22 @@ def test_empty_database_migration_is_repeatable_and_creates_no_canon(database):
     assert migrate(database) == checksum
     assert all(value == 0 for value in counts(database).values())
     with database.connect() as connection:
-        assert connection.execute(
-            text("SELECT version,checksum FROM anovel_canon.schema_migrations")
-        ).all() == [(1, checksum)]
+        expected = [
+            (
+                version,
+                sha256(files("anovel.canon").joinpath(name).read_bytes()).hexdigest(),
+            )
+            for version, name in ((1, "sql/0001_root.sql"), (2, "sql/0002_chapter.sql"))
+        ]
+        assert expected[-1][1] == checksum
+        assert (
+            connection.execute(
+                text(
+                    "SELECT version,checksum FROM anovel_canon.schema_migrations ORDER BY version"
+                )
+            ).all()
+            == expected
+        )
         assert (
             connection.execute(
                 text("SELECT count(*) FROM anovel_canon.branches")
@@ -178,7 +193,7 @@ def test_empty_database_migration_is_repeatable_and_creates_no_canon(database):
     "mutation",
     [
         "UPDATE anovel_canon.schema_migrations SET checksum=repeat('0',64)",
-        "INSERT INTO anovel_canon.schema_migrations(version,checksum) VALUES (2,repeat('0',64))",
+        "INSERT INTO anovel_canon.schema_migrations(version,checksum) VALUES (999,repeat('0',64))",
     ],
 )
 def test_migration_checksum_or_unknown_version_is_rejected(engine, mutation):

@@ -4,7 +4,7 @@ task_id: V2-010
 plan_version: 1.3.0
 repository_revision: 05b4b9723e8ba0c6940048623f2a3b835da68015
 worktree_dirty: false
-plan_manifest_sha256: 6735b31ede9b61ef687c60952218ffd23c4b9af4a543d147d4255cb334962fbf
+plan_manifest_sha256: ca7e3585f64466e13023780d059fcd5e965aaef62d7623c8d0e3aa3e99f0c609
 environment:
   fingerprint: Python3.12.14 / uv0.12.17 / PostgreSQL17.11 pinned; temporary isolated database
   runtime_versions:
@@ -26,11 +26,11 @@ inputs:
   ref: validation/execution/V2-010/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-010/inputs/51e4dc912b89f69ddda839654826d10a8333f5ce44ae4c3b990c11c1cd848f9e.txt
-  sha256: 51e4dc912b89f69ddda839654826d10a8333f5ce44ae4c3b990c11c1cd848f9e
+  ref: validation/execution/V2-010/inputs/c1540e35dc24b7efa42cdff3b9d93b392b7ad19a81f39e5d6c1d913a802a1417.txt
+  sha256: c1540e35dc24b7efa42cdff3b9d93b392b7ad19a81f39e5d6c1d913a802a1417
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-010/inputs/53f7e92e0c0cde537785c065b40d8904915ff9abfa2d429310d76f0412e24538.txt
-  sha256: 53f7e92e0c0cde537785c065b40d8904915ff9abfa2d429310d76f0412e24538
+  ref: validation/execution/V2-010/inputs/4e4007bd860dad180633cf4566c38c8208e1f80e75c6b31aa4a21683f3b8b3f1.txt
+  sha256: 4e4007bd860dad180633cf4566c38c8208e1f80e75c6b31aa4a21683f3b8b3f1
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-010/inputs/a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e.txt
   sha256: a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e
@@ -88,18 +88,26 @@ review_notes:
 - Artifact and Permit authority are distinct from caller-supplied references. P2 test issuer/profile must be explicitly
   rejected in production profile.
 handoff:
-  current_step: Design frozen; bind committed scope/review and check IMPLEMENT before source
+  current_step: Implementation and real local protocol tests complete; bind final technical diff review then exact
+    checkout replay
   completed_steps:
-  - Clean main@05b4b97; V2-009 same-SHA six-gate evidence and current source previously verified
-  - Read current Canon contracts and accepted ADR-004/005/006
+  - Committed scope/design and actual IMPLEMENT entry before source changes
+  - Sole service chapter commit, durable exact Permit and immutable full evidence
+  - Incremental migration and root compatibility; UNIT1099/PG117 and focused+architecture329 PASS0skip; static/security
+    PASS
   pending_items:
-  - Freeze bounded implementation design and exact scope
-  - IMPLEMENT entry before production code changes
+  - Final actual diff and full governance/architecture gate
+  - Exact checkout replay and reviewed delivery
+  - One key same-SHA remote six-gate acceptance; no remote result claimed
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-010/local-results/SUMMARY.json
+      sha256: 11b689a6aca4500609b4ccd960dfd6c3fbbf57c9d4bf1a2a04f97cf1584696fc
     missing_artifact_reason: null
 change_review:
   scope_revision: 62a6cce2a8c944f51cbdccac4baa1dfc5dc95529
   scope_ref: plan/validation/execution/V2-010/scope.json
+  review_revision: 8f0036d5aada0f3752dbab548ce4a235ad230017
+  review_ref: plan/validation/execution/V2-010/entry-review.json

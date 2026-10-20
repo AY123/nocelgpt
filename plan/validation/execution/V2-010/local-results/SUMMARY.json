@@ -1,0 +1,84 @@
+{
+  "task_id": "V2-010",
+  "observed_utc": "2026-10-20T01:10:00.261310+00:00",
+  "verification_kind": "LOCAL_WORKTREE_NOT_REMOTE_CI",
+  "checkout_context": "8f0036d5aada0f3752dbab548ce4a235ad230017",
+  "gates": {
+    "unit": {
+      "status": "PASS",
+      "receipt_sha256": "0de8556c8c51aeeff3e33e8bba04789749de1a4d7a0d29072cf197f916239b77"
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_sha256": "7228ea911b6a55a319985dc7853fec4d8c86d58c6de87e98bdaced8d3dc9e4b9"
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_sha256": "91d227791a34a3621a479d14d4fa9932920ec16e5fa91b551a6dc7b7d4557e31"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_sha256": "6291c36a165cbaea72c50b2945957bd38af04cbe73e980a31b43286579c4bd37",
+      "scope_note": "Final local scan after all new source and test files were staged; exact-checkout history scan follows the commit."
+    }
+  },
+  "remote_ci": "NOT_RUN",
+  "independent_personnel_review": false,
+  "unit": {
+    "tests": 1099,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "postgres_env": {
+    "tests": 117,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "focused_and_architecture": {
+    "tests": 329,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "note": "244 architecture tests plus85 model/receipt contract tests; the85 are a UNIT subset, not extra gate tests."
+  },
+  "v2_010_postgres_cases": 57,
+  "source_sha256": {
+    "pyproject.toml": "b96889548bd2bad07d2438f9a2b504fcc33326c1d91124fc2bd2357591270c59",
+    "scripts/ci/run_gate.py": "79f42a2f299c9010873c137c21841606fbe429e644ed6f9e8ac08a77d81ca6b9",
+    "specs/schemas/commit-receipt.schema.json": "49a9519664046d11d04a9ff5be6bea704c5815a77c4bc6ed6975710f731cd2a9",
+    "src/anovel/canon/__init__.py": "5c24e3c3d481b6d6d2f4e3b829caea32602f00f94d4f27e208d5e781aae10235",
+    "src/anovel/canon/chapter.py": "a3dd04ee21b55f4fa0612f532be4b8a8c2757520b95e8864304f5b505e1e2880",
+    "src/anovel/canon/commit_service.py": "6f5422c46b87ebb6deefe32bea022757624a834fa72883808a6879b4e03be3fe",
+    "src/anovel/canon/identity.py": "c44b61270c1eea49c68a55091a727194c75e2a855328dad93a9f8c6073d02af6",
+    "src/anovel/canon/migrations.py": "338600521571da15667acca7c6c310673bcd85143d5427e2023c36359f9ec89a",
+    "src/anovel/canon/models.py": "02936fb9289a42d8a7f0cc740302ba2303a32ddca50f0d7ece375e1afd70086e",
+    "src/anovel/canon/repository.py": "1b28350c251e357052a7aa90273bcbdede9f24cdafd41c5a97d7984842d7b6e3",
+    "src/anovel/canon/sql/0001_root.sql": "4babd3c9859913a1cabb57fca7d375fd27c533dbe3a1d4bc87208971cb1f5064",
+    "src/anovel/canon/sql/0002_chapter.sql": "39f9c736c5c3ad62a4eb5af1f4ef858301ae5093c4183c6d3b0eaf8f67aa3a97",
+    "tests/contract/test_canon_commit.py": "050f49392195f3177074d4d931b7ea37362d602466e9bd16cb8d5241bc2f1ed2",
+    "tests/contract/test_delivery_gates.py": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+    "tests/integration/test_repository_bootstrap.py": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+    "tests/integration/test_v2_009.py": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+    "tests/integration/test_v2_010.py": "ee54c2e693055eaa114d187e0594b86d4637ddc8c18e4cb3ccfabfbd95a9bcfe",
+    "uv.lock": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737"
+  },
+  "notes": [
+    "Actual IMPLEMENT entry passed before production source edits. Local code and test reviews used delegated bounded subtasks, not independent personnel.",
+    "Initial PostgreSQL run:110 passed,1 failed; malformed stored Permit was rejected but escaped as generic JSON ValueError. Repository now normalizes stored malformed canonical JSON to CanonIntegrityError; final official PG117 passed.",
+    "Additional review regressions prove strict canonical-byte matching rather than Python bool/int equality, no future issued-at acceptance, committed ticket/receipt recovery after grant revocation and historical Permit expiry.",
+    "Incremental0002 migration preserves0001 checksum and accepted root bytes; failures rollback. Wheel/sdist/no-dev install must contain both SQL migrations.",
+    "Default production service refuses new TEST Permit; isolated disposable TEST issuer executes its fixed deterministic checks. P7 quality/production issuer is not implemented.",
+    "Five original acceptance assertions, original PostgreSQL service/root tests, six mandatory gates and no-skip behavior retained. No workflow/settings/security-policy changes.",
+    "Dirty worktree results bind the source hashes above, not a false exact-SHA or remote acceptance. Exact checkout replay is separate."
+  ],
+  "security": {
+    "known_detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "audited_packages": 51,
+    "vulnerabilities": 0
+  }
+}
