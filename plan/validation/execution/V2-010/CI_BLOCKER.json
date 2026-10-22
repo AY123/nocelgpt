@@ -1,0 +1,351 @@
+{
+  "record_type": "remote_execution_blocker",
+  "task_id": "V2-010",
+  "status": "BLOCKED_EXTERNAL_SERVICE",
+  "recorded_at": "2026-10-22T08:39:09.144565+00:00",
+  "candidate_sha": "e35177699d59c15eb22e9bf87bf3a3a88abf5b2f",
+  "run_id": 39747798274,
+  "run_url": "https://github.com/AY123/nocelgpt/actions/runs/39747798274",
+  "run_attempt": 1,
+  "remote_result": "failure",
+  "engineering_result": "NOT_EXECUTED",
+  "reason": "GITHUB_ACCOUNT_BILLING_OR_SPENDING_LIMIT",
+  "provider_message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+  "specific_payment_vs_limit_cause": "NOT_VERIFIED",
+  "dispatch": {
+    "sha": "e35177699d59c15eb22e9bf87bf3a3a88abf5b2f",
+    "attempts": 1,
+    "automatic_retries": 0,
+    "at": "2026-10-22T08:26:52.646376+00:00",
+    "http_status": 204,
+    "request_id": "3C95:389461:8E7742:D6AC06:6AD9C8CD",
+    "status": "ACCEPTED"
+  },
+  "jobs": [
+    {
+      "id": 119720535026,
+      "name": "POSTGRES_ENV",
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0
+    },
+    {
+      "id": 119720535213,
+      "name": "SCHEMA_CONTRACT",
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0
+    },
+    {
+      "id": 119720535218,
+      "name": "STATIC",
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0
+    },
+    {
+      "id": 119720535231,
+      "name": "ARCH_FITNESS",
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0
+    },
+    {
+      "id": 119720535316,
+      "name": "SECRET_DEPENDENCY",
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0
+    },
+    {
+      "id": 119720535574,
+      "name": "UNIT",
+      "conclusion": "failure",
+      "runner_id": 0,
+      "step_count": 0
+    }
+  ],
+  "artifact_count": 0,
+  "read_only_annotation_acquisition": [
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535026",
+      "http_status": 200,
+      "request_id": "B94B:2C03AA:9335B3:DD009C:6AD9CB12",
+      "response_sha256": "a9a8ad194cb089888ee5abfdd871d8fa03665f286e00523c2144ad3fee45e1f2",
+      "observed_utc": "2026-10-22T08:36:35.213531+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535026/annotations",
+      "http_status": 200,
+      "request_id": "F1A9:18674B:915FA7:DB0153:6AD9CB14",
+      "response_sha256": "4b65d75f000737ac148b8c4f36fe67d0fbe092d26e4eaea7ed1345ecd49119ce",
+      "observed_utc": "2026-10-22T08:36:36.651091+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535213",
+      "http_status": 200,
+      "request_id": "0453:A3F68:916068:DB04E5:6AD9CB15",
+      "response_sha256": "7b4335fd1fd7130d4508374d7481d1375ca173c4eb82e15622138a3498c63656",
+      "observed_utc": "2026-10-22T08:36:38.018242+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535213/annotations",
+      "http_status": 200,
+      "request_id": "FB6B:5B197:9336BC:DD0EFB:6AD9CB16",
+      "response_sha256": "4b65d75f000737ac148b8c4f36fe67d0fbe092d26e4eaea7ed1345ecd49119ce",
+      "observed_utc": "2026-10-22T08:36:39.168870+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535218",
+      "http_status": 200,
+      "request_id": "8FD5:14E387:911BD3:DAF8DB:6AD9CB17",
+      "response_sha256": "818119c2db61014defbd1cfbea34ff8fa941afd88f9cbe8a2d108141f98aa7aa",
+      "observed_utc": "2026-10-22T08:36:40.302101+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535218/annotations",
+      "http_status": 200,
+      "request_id": "A3A5:2D5BE7:90CB9E:DA8C2D:6AD9CB18",
+      "response_sha256": "4b65d75f000737ac148b8c4f36fe67d0fbe092d26e4eaea7ed1345ecd49119ce",
+      "observed_utc": "2026-10-22T08:36:41.259187+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535231",
+      "http_status": 200,
+      "request_id": "4093:26A63A:9100D6:DAA3B6:6AD9CB19",
+      "response_sha256": "ad2cd70fab877362d0920433c994eedc0b8be263ec1ec1183c79c9730c4e45fa",
+      "observed_utc": "2026-10-22T08:36:42.320173+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535231/annotations",
+      "http_status": 200,
+      "request_id": "7AAF:627C6:93B884:DDA7E0:6AD9CB1A",
+      "response_sha256": "4b65d75f000737ac148b8c4f36fe67d0fbe092d26e4eaea7ed1345ecd49119ce",
+      "observed_utc": "2026-10-22T08:36:43.226900+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535316",
+      "http_status": 200,
+      "request_id": "2011:4C250:928C58:DC505F:6AD9CB1B",
+      "response_sha256": "f1986149958b196f24b0d5a2b0bc65bf929f0a8fdc8b098057c7f77dc411f38a",
+      "observed_utc": "2026-10-22T08:36:44.168807+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535316/annotations",
+      "http_status": 200,
+      "request_id": "4FD1:35A9F2:93935C:DD9B4B:6AD9CB1C",
+      "response_sha256": "4b65d75f000737ac148b8c4f36fe67d0fbe092d26e4eaea7ed1345ecd49119ce",
+      "observed_utc": "2026-10-22T08:36:45.096643+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535574",
+      "http_status": 200,
+      "request_id": "E9D3:237079:92358A:DC034E:6AD9CB1D",
+      "response_sha256": "f762d588c45c3f3697c5c5327e90637d6768746ea3120172226c58c0d7580b86",
+      "observed_utc": "2026-10-22T08:36:45.941054+00:00"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/119720535574/annotations",
+      "http_status": 200,
+      "request_id": "3455:28C57E:921D9F:DBFAAD:6AD9CB1E",
+      "response_sha256": "4b65d75f000737ac148b8c4f36fe67d0fbe092d26e4eaea7ed1345ecd49119ce",
+      "observed_utc": "2026-10-22T08:36:47.069789+00:00"
+    }
+  ],
+  "annotation_results": [
+    {
+      "job": "POSTGRES_ENV",
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/AY123/nocelgpt/blob/e35177699d59c15eb22e9bf87bf3a3a88abf5b2f/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        }
+      ],
+      "check_summary": null,
+      "check_title": null
+    },
+    {
+      "job": "SCHEMA_CONTRACT",
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/AY123/nocelgpt/blob/e35177699d59c15eb22e9bf87bf3a3a88abf5b2f/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        }
+      ],
+      "check_summary": null,
+      "check_title": null
+    },
+    {
+      "job": "STATIC",
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/AY123/nocelgpt/blob/e35177699d59c15eb22e9bf87bf3a3a88abf5b2f/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        }
+      ],
+      "check_summary": null,
+      "check_title": null
+    },
+    {
+      "job": "ARCH_FITNESS",
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/AY123/nocelgpt/blob/e35177699d59c15eb22e9bf87bf3a3a88abf5b2f/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        }
+      ],
+      "check_summary": null,
+      "check_title": null
+    },
+    {
+      "job": "SECRET_DEPENDENCY",
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/AY123/nocelgpt/blob/e35177699d59c15eb22e9bf87bf3a3a88abf5b2f/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        }
+      ],
+      "check_summary": null,
+      "check_title": null
+    },
+    {
+      "job": "UNIT",
+      "annotations": [
+        {
+          "path": ".github",
+          "blob_href": "https://github.com/AY123/nocelgpt/blob/e35177699d59c15eb22e9bf87bf3a3a88abf5b2f/.github",
+          "start_line": 1,
+          "start_column": null,
+          "end_line": 1,
+          "end_column": null,
+          "annotation_level": "failure",
+          "title": "",
+          "message": "The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings",
+          "raw_details": ""
+        }
+      ],
+      "check_summary": null,
+      "check_title": null
+    }
+  ],
+  "local_patch_result": {
+    "unit": {
+      "tests": 1099,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "static": "PASS",
+    "secret_dependency": "PASS",
+    "known_findings": 54,
+    "exactly_consumed": 54,
+    "audited_packages": 51,
+    "dependency_vulnerabilities": 0,
+    "evidence_ref": "security-local-results/SUMMARY.json",
+    "evidence_sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf",
+    "semantics": "Local patched worktree receipts; not a substitute for final exact-SHA remote acceptance"
+  },
+  "historical_ci": {
+    "sha": "3ac41fb71bb5f384c2584a1624673f3d4fc4eebc",
+    "run_id": 39354762695,
+    "status": "PASS_AT_ITS_OWN_REVISION_ONLY",
+    "not_combined_with_new_lock": true
+  },
+  "source_files": [
+    {
+      "path": "dist/validation/v2010-certifi-remote-failure-20261022/run.json",
+      "sha256": "af3a6bf722dfeefab848809d612db9b51d24e22fc9ac60b46f5c954374a863ca"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-remote-failure-20261022/jobs.json",
+      "sha256": "0978b266688fcec5501eaca2a4e80d5f7b0e70293c8c589006821df48b7ec1f4"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-remote-failure-20261022/artifacts.json",
+      "sha256": "f7417e1fb877d3f5934f143cc38ad9e2905476e8f5ac6776507d09441efcd6f6"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-remote-failure-20261022/requests.json",
+      "sha256": "ceaf5c9a0fbd3d7a3da5cd835632e56114bf61ccab265dc9365789747f7492db"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-failure-annotations-20261022/RESULT.json",
+      "sha256": "9fa0b675f85c8c1365844dc5e84b3d3a319d10b4c3728a206c4b46f5b3b9058e"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-failure-annotations-20261022/requests.json",
+      "sha256": "b5a4a6678cb88abe7d73cd7278f721554103b00abe2bd2723cb3f924a4fd193e"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-dispatch-20261022/dispatch-claim.json",
+      "sha256": "9898f341ff9528ce2e37d9474ae32b5d509b91ac83ef266f9fff2800c646edd6"
+    },
+    {
+      "path": "dist/validation/v2010-certifi-dispatch-20261022/dispatch-result.json",
+      "sha256": "0eb3e46326a1d825c447220f71da24bbf00f553b385523b69b0695b9e5870ae0"
+    }
+  ],
+  "recovery": [
+    "Account Owner must resolve the GitHub Billing & plans condition; this record does not authorize payment or increased spending.",
+    "Do not redispatch or rerun while the platform blocker persists. No automatic retry was attempted.",
+    "After the account condition is resolved, reread actual main, task inputs, current package advisory status and latest run state; the code/lock candidate remains e35177699d59c15eb22e9bf87bf3a3a88abf5b2f.",
+    "Only an explicitly resumed key acceptance run with all six actual mandatory gates passing at one exact SHA can close V2-010. Do not combine old CI and current local results."
+  ],
+  "V2_010": "IMPLEMENTED",
+  "P2": "NOT_VERIFIED",
+  "new_exception_approval": false,
+  "gate_change": false,
+  "independent_personnel_review": "NOT_CLAIMED"
+}

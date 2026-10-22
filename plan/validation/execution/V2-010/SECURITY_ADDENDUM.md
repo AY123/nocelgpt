@@ -12,3 +12,7 @@
 原始失败：dist/validation/v2010-closure-checks-20261022/security/security/dependency-audit.json
 
 恢复上下文补记：发现新的未跟踪host-local Ruff缓存，来源未确认；保留其原字节，不删除、不移动、不纳入代码。security-scope只按精确path/mode/hash补充当前pre_existing身份，允许全新checkout中不存在；allowed_paths仍仅增加uv.lock，无目录排除或扫描放宽。
+
+## 2026-10-22 最新交接
+
+最小certifi修复已随 `e35177699d59c15eb22e9bf87bf3a3a88abf5b2f` 推送至GitHub main。本地UNIT1099/STATIC/安全扫描（54精确消费、51依赖0漏洞）通过。最终 [run39747798274](https://github.com/AY123/nocelgpt/actions/runs/39747798274) 已创建一次，但GitHub以账号付款/支出限额条件拒绝启动全部六个job（runner=0、步骤=0、artifact=0）。具体是付款问题还是限额未独立确定；没有代码测试失败证据，也没有当前候选的远程PASS。详见 [CI_BLOCKER.json](CI_BLOCKER.json)。V2-010继续IMPLEMENTED，P2未完成；停止自动重试，等待账户条件解除。旧3ac验收不与新lock结果拼接。

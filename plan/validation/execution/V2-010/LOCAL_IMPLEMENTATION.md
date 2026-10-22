@@ -17,3 +17,7 @@ UNIT1099，真实PostgreSQL117（原服务1+V2-009的59+V2-010的57），架构2
 五条原验收分别由test_v2_010.py的无授权/伪造/过期/撤销/错误绑定负控；两种engine的故障全回滚；完整证据新连接读回；历史正文UPDATE/DELETE拒绝；取消先胜和提交先胜控制覆盖。迁移/打包/现有服务测试保留并加强。
 
 复现：锁定环境运行 scripts/ci/run_gate.py postgres_env --output-dir dist/validation/<new-dir>；本机Docker不可用时失败、不skip。只创建并清理本次临时数据库和Compose资源。不修改GitHub设置、不使用历史runner。
+
+## 2026-10-22 最新交接
+
+最小certifi修复已随 `e35177699d59c15eb22e9bf87bf3a3a88abf5b2f` 推送至GitHub main。本地UNIT1099/STATIC/安全扫描（54精确消费、51依赖0漏洞）通过。最终 [run39747798274](https://github.com/AY123/nocelgpt/actions/runs/39747798274) 已创建一次，但GitHub以账号付款/支出限额条件拒绝启动全部六个job（runner=0、步骤=0、artifact=0）。具体是付款问题还是限额未独立确定；没有代码测试失败证据，也没有当前候选的远程PASS。详见 [CI_BLOCKER.json](CI_BLOCKER.json)。V2-010继续IMPLEMENTED，P2未完成；停止自动重试，等待账户条件解除。旧3ac验收不与新lock结果拼接。
