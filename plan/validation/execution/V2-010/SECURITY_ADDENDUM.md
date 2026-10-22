@@ -10,3 +10,5 @@
 
 公告：https://github.com/advisories/GHSA-6q48-6c7w-9gw2
 原始失败：dist/validation/v2010-closure-checks-20261022/security/security/dependency-audit.json
+
+恢复上下文补记：发现新的未跟踪host-local Ruff缓存，来源未确认；保留其原字节，不删除、不移动、不纳入代码。security-scope只按精确path/mode/hash补充当前pre_existing身份，允许全新checkout中不存在；allowed_paths仍仅增加uv.lock，无目录排除或扫描放宽。
