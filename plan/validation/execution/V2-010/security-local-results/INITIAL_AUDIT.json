@@ -1,0 +1,21 @@
+{
+  "status": "FAIL",
+  "reason": "Newly published advisory discovered after the historical CI",
+  "affected": [
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "vulns": [
+        {
+          "id": "PYSEC-2026-4320",
+          "fix_versions": [
+            "2026.10.19"
+          ],
+          "aliases": [
+            "GHSA-6q48-6c7w-9gw2"
+          ]
+        }
+      ]
+    }
+  ]
+}

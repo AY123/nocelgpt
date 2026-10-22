@@ -41,6 +41,7 @@ expected_outputs:
 - src/anovel/canon/commit_service.py
 - specs/schemas/commit-receipt.schema.json
 - tests/integration/test_v2_010.py
+- uv.lock
 allowed_paths:
 - src/anovel/canon/
 - migrations/
@@ -88,27 +89,28 @@ review_notes:
   mandatory PostgreSQL gate, no additional workflow.
 - Artifact and Permit authority are distinct from caller-supplied references. P2 test issuer/profile must be explicitly
   rejected in production profile.
+- 20261022 current dependency audit found certifi vulnerability after historical3ac CI. Bounded existing transitive
+  upgrade only; no scanner exceptions. New current-SHA acceptance required after local patch validation.
 handoff:
-  current_step: Implementation and real local protocol tests complete; bind final technical diff review then exact
-    checkout replay
+  current_step: certifi-only patch locally verified; freeze review and new exact-SHA key-delivery CI candidate
   completed_steps:
   - Committed scope/design and actual IMPLEMENT entry before source changes
   - Sole service chapter commit, durable exact Permit and immutable full evidence
   - Incremental migration and root compatibility; UNIT1099/PG117 and focused+architecture329 PASS0skip; static/security
     PASS
   pending_items:
-  - Final actual diff and full governance/architecture gate
-  - Exact checkout replay and reviewed delivery
-  - One key same-SHA remote six-gate acceptance; no remote result claimed
+  - Complete local patch validation and exact diff review
+  - One key six-gate run on the new final lock revision; retain3ac as historical evidence only
+  - No V2-011/012,production issuer or P2 closure
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-010/local-results/SUMMARY.json
-      sha256: 11b689a6aca4500609b4ccd960dfd6c3fbbf57c9d4bf1a2a04f97cf1584696fc
+    - ref: validation/execution/V2-010/security-local-results/SUMMARY.json
+      sha256: 54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf
     missing_artifact_reason: null
 change_review:
-  scope_revision: 62a6cce2a8c944f51cbdccac4baa1dfc5dc95529
-  scope_ref: plan/validation/execution/V2-010/scope.json
-  review_revision: e566affa9856b289c2e52d05a8177963b0f77c77
-  review_ref: plan/validation/execution/V2-010/implementation-review.json
+  scope_revision: c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd
+  scope_ref: plan/validation/execution/V2-010/security-scope.json
+  review_revision: bd7dad2a0b52aebdeafcbb0b579893ccf6d41ced
+  review_ref: plan/validation/execution/V2-010/security-entry-review.json

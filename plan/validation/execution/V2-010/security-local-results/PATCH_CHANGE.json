@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "advisory": "PYSEC-2026-4320 / GHSA-6q48-6c7w-9gw2",
+  "changed_package": "certifi",
+  "before": "2026.7.22",
+  "after": "2026.10.19",
+  "other50_packages_and_lock_metadata_unchanged": true,
+  "direct_dependencies_unchanged": true,
+  "lock_before": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+  "lock_after": "d8e5e96e91e03f5b8a0a232c3a6bf5d1a8c36f28c063540ccfe19b0afd673f0f",
+  "production_code_test_driver_workflow_changes": false,
+  "scope_pin": "c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd",
+  "entry_ref": "dist/validation/v2010-certifi-fix-20261022/implement-entry-resumed.json"
+}

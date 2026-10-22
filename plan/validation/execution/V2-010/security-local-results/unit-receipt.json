@@ -1,0 +1,90 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "unit",
+  "gate": "UNIT",
+  "status": "PASS",
+  "revision": "bd7dad2a0b52aebdeafcbb0b579893ccf6d41ced",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "79f42a2f299c9010873c137c21841606fbe429e644ed6f9e8ac08a77d81ca6b9",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "d8e5e96e91e03f5b8a0a232c3a6bf5d1a8c36f28c063540ccfe19b0afd673f0f",
+  "started_at": "2026-10-22T08:11:45.136484+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/ci/bootstrap_scanners.py",
+        "--output-dir",
+        "dist/tools/gitleaks-8.21.2",
+        "--reuse-verified"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-01.stdout.log",
+        "sha256": "44cc3609119d7792b7ee7419f163b376feaf4f7cc24175c7b73de6c8b4aa7b15"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/contract",
+        "tests/integration/test_repository_bootstrap.py",
+        "--junitxml=dist/validation/v2010-certifi-fix-20261022/unit/gate/junit.xml"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-02.stdout.log",
+        "sha256": "57cd35671fc3f2e83eace954fb07499c7f775f1fe27b4a14be5a3a9002e7f781"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-01.stdout.log",
+      "sha256": "44cc3609119d7792b7ee7419f163b376feaf4f7cc24175c7b73de6c8b4aa7b15"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/command-02.stdout.log",
+      "sha256": "57cd35671fc3f2e83eace954fb07499c7f775f1fe27b4a14be5a3a9002e7f781"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/unit/gate/junit.xml",
+      "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-22T08:20:49.494494+00:00"
+}

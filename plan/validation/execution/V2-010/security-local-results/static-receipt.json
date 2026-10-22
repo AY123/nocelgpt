@@ -1,0 +1,169 @@
+{
+  "record_type": "ci_gate_receipt",
+  "schema_version": "1.0",
+  "job_name": "static",
+  "gate": "STATIC",
+  "status": "PASS",
+  "revision": "bd7dad2a0b52aebdeafcbb0b579893ccf6d41ced",
+  "project_id": null,
+  "pipeline_id": null,
+  "job_id": null,
+  "driver_sha256": "79f42a2f299c9010873c137c21841606fbe429e644ed6f9e8ac08a77d81ca6b9",
+  "source_kind": "LOCAL",
+  "python": "3.12.14",
+  "lock_sha256": "d8e5e96e91e03f5b8a0a232c3a6bf5d1a8c36f28c063540ccfe19b0afd673f0f",
+  "started_at": "2026-10-22T07:26:57.637715+00:00",
+  "commands": [
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/ci/check_configuration.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-01.stdout.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-01.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "src/anovel",
+        "scripts/ci",
+        "tests/contract/test_delivery_gates.py",
+        "tests/integration/test_postgres_ci_service.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-02.stdout.log",
+        "sha256": "cdd24684b33e5200a213c89093e8da4cb81a0de0085a4684d20923e852610123"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-02.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "ruff",
+        "check",
+        "--select",
+        "F,E9,I",
+        "src/anovel",
+        "scripts/ci",
+        "tests/contract/test_delivery_gates.py",
+        "tests/integration/test_postgres_ci_service.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-03.stdout.log",
+        "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-03.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "-m",
+        "mypy",
+        "--strict",
+        "--cache-dir",
+        "dist/cache/mypy",
+        "src/anovel",
+        "scripts/ci"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-04.stdout.log",
+        "sha256": "fa935e779fe5886f2480e415c7e46616bdedad407f9da1cca28e7d341d95f4d7"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-04.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "argv": [
+        "/Users/angyang/Documents/AI/ANovelOS/.venv/bin/python",
+        "-B",
+        "scripts/ci/check_syntax.py"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-05.stdout.log",
+        "sha256": "df20d565c15c303409dc00f0b2c11a8280295a97c359527a19c7b11851ba77e8"
+      },
+      "stderr": {
+        "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-05.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "artifacts": [
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-01.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-01.stdout.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-02.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-02.stdout.log",
+      "sha256": "cdd24684b33e5200a213c89093e8da4cb81a0de0085a4684d20923e852610123"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-03.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-03.stdout.log",
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-04.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-04.stdout.log",
+      "sha256": "fa935e779fe5886f2480e415c7e46616bdedad407f9da1cca28e7d341d95f4d7"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-05.stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "ref": "dist/validation/v2010-certifi-fix-20261022/static/gate/command-05.stdout.log",
+      "sha256": "df20d565c15c303409dc00f0b2c11a8280295a97c359527a19c7b11851ba77e8"
+    }
+  ],
+  "errors": [],
+  "not_certified": [
+    "remote provenance",
+    "permission boundary",
+    "P0 exit"
+  ],
+  "exit_code": 0,
+  "finished_at": "2026-10-22T07:26:58.203855+00:00"
+}

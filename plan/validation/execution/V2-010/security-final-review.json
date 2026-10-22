@@ -1,0 +1,456 @@
+{
+  "task_id": "V2-010",
+  "baseline_pin": {
+    "revision": "c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd",
+    "ref": "plan/validation/execution/V2-010/security-scope.json",
+    "sha256": "4ddc893d719e7b06209ebf73b4c4beff432868995bc6591f5e81c1d71daa33f4"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "new_sha": "c1540e35dc24b7efa42cdff3b9d93b392b7ad19a81f39e5d6c1d913a802a1417",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "39438bd8d06e113345affb332ed732aff32a064bb5d74a43bacbed90b695bed3",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only the authorized V2-010 readiness/packet/status moves from OPEN through IN_PROGRESS to IMPLEMENTED after real local evidence. Original task, phase, dependencies, five assertions and six mandatory gates unchanged. No VERIFIED/CLOSED/P2 claim.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "new_sha": "c1540e35dc24b7efa42cdff3b9d93b392b7ad19a81f39e5d6c1d913a802a1417",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ba443e75c5a84985597ff0ffab2ccbf875eadb1c9d7556b1235305758b1fc179",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only the authorized V2-010 readiness/packet/status moves from OPEN through IN_PROGRESS to IMPLEMENTED after real local evidence. Original task, phase, dependencies, five assertions and six mandatory gates unchanged. No VERIFIED/CLOSED/P2 claim.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "f4772636b96378806f28fad50f731fe17be6bf815e81144631aa558adeb86f0c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "3ad1befa468e34b202e3c5766aa452213e852ec18f4b445481624f5307be9670",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "84fe283e51a521eab7e288c969830c820ec89774215e164cf53e28050c40c648",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "cfae78b1863b0d986727258499fd4e3b417c6282bceb8eeeaebd1b468d291e19",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "new_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "328248b4260f03d44f222cb51f35536147694f524d28172a226ab9372aa0f90d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only add0002_chapter.sql to wheel,sdist and no-dev runtime resource assertions; retain0001, dependency resolution and lock rejection tests. Package contents must include both migrations.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "new_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "2437a531514ee4ada421a07ce6d0f8e9de3ea6c5d9d98860a4989be1761e458b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only add0002_chapter.sql to wheel,sdist and no-dev runtime resource assertions; retain0001, dependency resolution and lock rejection tests. Package contents must include both migrations.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "dd9133febe5ea2ef2b0834fbea4ddf2c7f72c86f78b0a4cc343413ee91cb7af6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "2c556b6d4f55b38368a71a379517453219ca99334d2c14bad9b9098f87fe27ce",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "832932b99871d8fb560f9ef13d46d808c027f4f3b35685900dae20b38b1e70c1",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "19f2ded8523a60981e77d55730d5e9451529d08b8feae70766f424d6e99bf223",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Current local patched lock: UNIT1099,STATIC,fullSecurity54/54 and51packages0vulnerabilities PASS,0skip; plan check and architecture scan PASS. All business/schema/test/driver/workflow bytes equal historical3ac. Exactly certifi2026.7.22->2026.10.19; other50 package records and direct dependencies identical. Final new-SHA remote six gates remain pending; old CI is not combined into new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/SUMMARY.json",
+          "sha256": "54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/PATCH_CHANGE.json",
+          "sha256": "8b67a99efe9d773d9f6982f8a6a4646606aa439f550a43d25ae54698ed37c2a6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/unit.xml",
+          "sha256": "d62a9e868b8cd4f5a05051e32f708613afc80c6a48d29a27d3efea215459c289"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/security-local-results/security-receipt.json",
+          "sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+        }
+      ]
+    }
+  ],
+  "bounded_lock_review": {
+    "status": "PASS",
+    "advisory": "PYSEC-2026-4320 / GHSA-6q48-6c7w-9gw2",
+    "changed_package": "certifi",
+    "before": "2026.7.22",
+    "after": "2026.10.19",
+    "other50_packages_and_lock_metadata_unchanged": true,
+    "direct_dependencies_unchanged": true,
+    "lock_before": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+    "lock_after": "d8e5e96e91e03f5b8a0a232c3a6bf5d1a8c36f28c063540ccfe19b0afd673f0f",
+    "production_code_test_driver_workflow_changes": false,
+    "scope_pin": "c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd",
+    "entry_ref": "dist/validation/v2010-certifi-fix-20261022/implement-entry-resumed.json"
+  }
+}

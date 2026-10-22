@@ -1,0 +1,55 @@
+{
+  "kind": "LOCAL_PATCH_WORKTREE_NOT_REMOTE_CI",
+  "checkout_context": "bd7dad2a0b52aebdeafcbb0b579893ccf6d41ced",
+  "gates": {
+    "unit": {
+      "status": "PASS",
+      "receipt_sha256": "a1840d33dd93a8552e6cd84e56a8ff4862ab58a9fc5e480035e298ca6cec06a1"
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_sha256": "cc9c3334d599323fcb305523c42cb0321806962e65c576433bb5539dbab0d1b0"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_sha256": "f5ed5911bfa7047939c91c91c19f8fb47c1617da20f41114289df3a068be76be"
+    }
+  },
+  "remote_ci_for_patch": "NOT_RUN",
+  "business_tests_schema_driver_workflow_unchanged_from": "3ac41fb71bb5f384c2584a1624673f3d4fc4eebc",
+  "unit": {
+    "tests": 1099,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "audited_packages": 51,
+    "vulnerabilities": 0
+  },
+  "lock_sha256": "d8e5e96e91e03f5b8a0a232c3a6bf5d1a8c36f28c063540ccfe19b0afd673f0f",
+  "package_change": {
+    "status": "PASS",
+    "advisory": "PYSEC-2026-4320 / GHSA-6q48-6c7w-9gw2",
+    "changed_package": "certifi",
+    "before": "2026.7.22",
+    "after": "2026.10.19",
+    "other50_packages_and_lock_metadata_unchanged": true,
+    "direct_dependencies_unchanged": true,
+    "lock_before": "e332e6a28de939fb53ab9e6fe6a03c92fa4e651e57dd2730bcb5f27be57b2737",
+    "lock_after": "d8e5e96e91e03f5b8a0a232c3a6bf5d1a8c36f28c063540ccfe19b0afd673f0f",
+    "production_code_test_driver_workflow_changes": false,
+    "scope_pin": "c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd",
+    "entry_ref": "dist/validation/v2010-certifi-fix-20261022/implement-entry-resumed.json"
+  },
+  "notes": [
+    "Historical3ac run remains true evidence for its source/date only. New mandatory current-SHA six-gate acceptance remains pending.",
+    "Only the existing transitive certifi package record changed; no new dependency,scanner ignore,test change,gate downgrade or product scope expansion.",
+    "Fresh initial20261022 dependency FAIL retained in dist; no secret finding changed or approved.",
+    "Full new unit includes locked cold installs/wheel/no-dev resource checks. Runtime Canon protocol source unchanged; original PG/ARCH evidence is not relabelled as the new lock revision."
+  ]
+}
