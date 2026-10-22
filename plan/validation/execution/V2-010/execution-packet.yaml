@@ -59,6 +59,7 @@ allowed_paths:
 - README.md
 - AGENTS.md
 - plan/README.md
+- uv.lock
 required_decisions:
 - ADR-004
 - ADR-005
