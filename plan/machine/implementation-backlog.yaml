@@ -703,16 +703,16 @@ tasks:
   tests:
   - AT-V2-011
   artifacts:
-  - src/anovel/canon/idempotency.py
+  - src/anovel/canon/repository.py
   - tests/integration/test_v2_011.py
   out_of_scope:
   - 不绕过前置阶段门禁
   - 不在数据库事务内调用模型
   - 不建设完整 Genesis 或另开初始化写路径
-  status: OPEN
-  execution_packet_ref: null
+  status: IN_PROGRESS
+  execution_packet_ref: validation/execution/V2-011/execution-packet.yaml
   owner_role: canon-maintainer
-  readiness: PLANNED
+  readiness: READY_TO_START
   start_gate: G-P1
   required_decisions:
   - ADR-006

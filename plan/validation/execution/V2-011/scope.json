@@ -1,0 +1,382 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-011",
+  "opening_revision": "993ccacde90815cd5e6d31930f3ab62581c69958",
+  "packet_ref": "plan/validation/execution/V2-011/execution-packet.yaml",
+  "allowed_paths": [
+    "src/anovel/canon/idempotency.py",
+    "src/anovel/canon/repository.py",
+    "tests/integration/test_v2_011.py",
+    "tests/contract/test_canon_idempotency.py",
+    "tests/contract/test_delivery_gates.py",
+    "scripts/ci/run_gate.py",
+    "plan/validation/execution/V2-011/",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/generated/",
+    "plan/FILE_MANIFEST.json",
+    "README.md",
+    "AGENTS.md",
+    "plan/README.md"
+  ],
+  "pre_existing": {
+    ".claude/settings.local.json": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "41253d234667464fd7bff5577a471421cd7e330d8059107270099e20957e61a2"
+      },
+      "allow_absent": true
+    },
+    ".mypy_cache/.gitignore": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6a69da670d11530d37f0f0cfdc7bed30b78ea6434e24f7a73208b982e29d322c"
+      },
+      "allow_absent": true
+    },
+    ".mypy_cache/3.12/cache.db": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ee422a4fb4114d1900b336266a5d951a05bbf20092848d4cd882e0895467aa5c"
+      },
+      "allow_absent": true
+    },
+    ".mypy_cache/CACHEDIR.TAG": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f1c13afc555358c9033b0f1f30aaa177fe88bda40f4b8a24598400d547876adc"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/.gitignore": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "9e3a60f1e6ec4ae60215c11d54b171392745ec25e9dded433d5bd921363af316"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/10417621801813473352": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "145998b16e50a3f32fc415069f295a1985ada8542096820a12aef04e436484eb"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/10741484265304906432": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cd452b09e0089b4f137d3062aa40c881bc25de16e025ed83d5ff75ee26b2f18f"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/11009210287699850073": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "fbf4f70ee4b5b00bcbb4225692ddad3ed3a34bfcd47cad8a92cdec41726ce75b"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/11108012421718830363": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "8b749b5331ec49085c741eea148813c860b0b73f4c68991117b995e9d7eeb2c5"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/11886257862359367215": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cd0f7bab2ed74b3a1a581ad1e71534c2a5bf9a696db6279636a1aa90b7444251"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/12282497893086595631": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4d3aa484e7391decda0bc0b8bf6852c762678495228a79106652dafecf0b63da"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/12808479074502042827": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6f93d7b7cc8bccad934d57cf2f71168f199caac8eb056d76882f88df99d6b352"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/1289053319362791746": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6eedd845479e3fd4c4e4fc64e60b010cb140b89f76162bb59639f88351b0abd0"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/13056714302951847452": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "16dd049c520c99ba54a709455543955aca30216df26f05908f436bd00dd006dd"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/13148325495301770339": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "b24d7cd572cfb06601904c8433a4f49b1265c877ec07558b3b23d9ad0f54c2f8"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/13302307240886945296": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "f9a50dbbe4dc4a45cd0d47600fbdbd3af117ada977599822f2f2bdcd4780c701"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/13848888526301811239": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "bd1364879ac5d2a637bf5b0afb88ffc74018ba7add9bd2b9bc2a2a236c6d9eac"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/13877278328354463655": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "714361d1da455d4bbfa09b9877bb234f1682134b81b6cb6292dc992e1baf45a0"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/14057343153781895557": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "02d37845aaa49d3ced5e7622091a31d94d7669566a4f34fc76fa31b94b65f597"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/14193604871157969726": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "603cdbd456c90b983084ab1a61e92be0a101cd2a8358d9abeb05c3a2bd74b95c"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/15865860232782635180": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "47a6d2e7bc207f88f54e7af958b8debc39cbd4e2f263d30615acdf10c0d10a60"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/15916300167252620757": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "d108bd6e28da3541ba2ddbce6ec9534ff32875b33f6be081f9be27085203897c"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/17684940595358575834": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6f0f957d663a7d3d592d1de517516272c898a4b783cd61c8d0a479a6c5d6515b"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/17846823409441908587": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "cbdf54ed8361e081b3ae6911d690ca882045410fb121b6821c9879880ed8be84"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/2081484057962727863": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6cdfaf7ae8abdd73b4284564f42ea99e3cff902f9630f038f054c8bc3038a511"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/2810076663079653525": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1f5f0fbc62a8111c10832c9187b5ef8e151755e562d1d4553986945b12852fc1"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/2862835371097959004": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "7a034e0a3178fffabb74a6562c530b14903002420668fa987976b80ab93b1a78"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/3480378986590756246": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "38a5616f94e28a2428b0d7d34406a29e78371f3ab4729241626b034e4bdd385c"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/4616468440965764961": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "d4ebfbebddef9639fb6b855eb2c6e048182365263613b05199307c9d662e63a1"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/603533849042220900": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "758a16646217a076588436a9fab890617f2244856f342c82af08bc35cbcbf625"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/6798283675010981388": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "4182d690829f7e1a875ddbffebf4ea33d2decb56aeb037d3908d405e4997a8f6"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/8608686967974812163": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ea5a95bcba20f4183beea27a91afdf76ac1d6765e7a23667a01d9245ca756f10"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/8983490051935027635": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "b16e78338656424f8d6e746e920417607c0248c2ba41615d8bc3a7211da479ef"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/9021910096072807015": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1b4914fff854f3c5f606a34e3915106221853e778d43fd399e9194165f2031a3"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/959113868420226254": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "239dfaf269d2554a248189dfe5517545055a7ed855df269f5ca78e1b69e24b42"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.16.9/967308886628406001": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "6eed7631a13842a057c43c48f4b2732839b7bd3b1de350a019ecace9c3821472"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.3.5/10903926339352573898": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "1731b1571106e03cf9f0723c39737750bf8cf125de816d6f54bfe9a2cc925d32"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/0.3.5/7893816796303948972": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "ea9d03ed0b9547e5049d456f0f868e85dccb351a8d2d36f60db210f9d8d40ca8"
+      },
+      "allow_absent": true
+    },
+    ".ruff_cache/CACHEDIR.TAG": {
+      "index": null,
+      "worktree": {
+        "kind": "file",
+        "mode": "100644",
+        "sha256": "5953156d7e0c564a427251316eaf26f8870e6483ae2197f916b630e4f93e31ae"
+      },
+      "allow_absent": true
+    }
+  },
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-011/authorization.txt",
+    "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+  },
+  "exception_authorizations": []
+}
