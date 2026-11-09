@@ -15,7 +15,7 @@
 - 同键同载荷：不同连接同时提交，原收据完全一致，正文/Delta/事件/收据/sequence无重复。
 - 同键异载荷：成功后变更正文、候选版本、依赖或Delta均冲突；相同键两个有效候选并发也只能一个入章。
 - 同parent不同request：提前签发两份合法Permit，两个独立PostgreSQL后端在branch锁前同步，恰好一个成功、另一个CanonConflict，无失败候选残留。采用有超时的barrier和数据库lock/statement timeout，不用顺序执行冒充并发。
-- 响应丢失：唯一服务完成真实事务后，在调用边界丢弃结果并抛TimeoutError；释放原连接池，用新Engine/Service恢复原ticket和receipt，不重建请求ID；随后使用原receipt作为parent提交第二章，历史正文与事实基线均正确。
+- 响应丢失：仅测试的DBAPI连接完成真实commit()后抛OperationalError，使SQLAlchemy/调用方未取得成功返回；独立读回证明数据库已提交。释放原连接池，用新Engine/Service恢复原ticket和receipt，不重建请求ID；随后使用原receipt作为parent提交第二章，历史正文与事实基线均正确，迟到旧请求不回退HEAD。
 - 未提交事务失败后：回滚不得留下半章，原稳定请求可重试成功；重试不允许wrong actor/scope/parent绕过身份检查。
 
 只用现有隔离TEST issuer和可销毁PostgreSQL；不改生产Permit边界、不调用模型、不接生产数据库、不实现V2-012。扩展原mandatory PostgreSQL命令包含V2-011，保留其全部原测试和6门硬失败。实现阶段不运行远程CI；完成本地测试及差异检查后才考虑一次关键验收。

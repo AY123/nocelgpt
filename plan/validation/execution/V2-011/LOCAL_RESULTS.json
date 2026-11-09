@@ -1,0 +1,64 @@
+{
+  "scope": "Local worktree verification; not remote CI",
+  "postgres": {
+    "passed": 131,
+    "v2011": 14,
+    "skipped": 0
+  },
+  "architecture": {
+    "passed": 244,
+    "skipped": 0
+  },
+  "unit": {
+    "contract_passed": 1093,
+    "bootstrap_passed": 6,
+    "unique_passed": 1099,
+    "initial_environment_blocked": 3,
+    "initial_command_status": "FAILED_SANDBOX_UV_CACHE_PERMISSION",
+    "bootstrap_rerun_status": "PASS_NORMAL_HOST_ENVIRONMENT",
+    "duplicate_cases_not_counted": 3
+  },
+  "static": "PASS",
+  "governance_checks": 5,
+  "secret": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0
+  },
+  "dependency": {
+    "packages": 51,
+    "vulnerabilities": 0
+  },
+  "original_artifact_hashes": [
+    {
+      "path": "dist/validation/v2011-local-20261109/unit-junit.xml",
+      "sha256": "e735a795da77b5ad5b7fd22f362c05e2f027f09b133fd06f403b72c688614707"
+    },
+    {
+      "path": "dist/validation/v2011-local-20261109/bootstrap-permitted-junit.xml",
+      "sha256": "5c8b16919f7671e9d1e94432c8bf9a9ed51c5e314b984b55bff19d939d942559"
+    },
+    {
+      "path": "dist/validation/v2011-local-20261109/arch-junit.xml",
+      "sha256": "6b8c5cbbe698636224be710e17f8ec72f38ed119cb8cb86b7b6027dd22528991"
+    },
+    {
+      "path": "dist/validation/v2011-local-20261109/postgres-permitted/junit.xml",
+      "sha256": "a08679402d75fa06b5d184b599123811e1278a3681789fc07833ef20f8734db5"
+    },
+    {
+      "path": "dist/validation/v2011-local-20261109/postgres-permitted/receipt.json",
+      "sha256": "20c4140c6c8ff2d8210439bc202e50092d8c9a25b8f9f0d2850d2e159c280c16"
+    },
+    {
+      "path": "dist/validation/v2011-local-20261109/governance/governance-summary.json",
+      "sha256": "617ac80a5fdb81169248a25fe1b6eab5712dd58353fda0625e41c649a6164934"
+    },
+    {
+      "path": "dist/validation/v2011-local-20261109/security/security-summary.json",
+      "sha256": "5658f6614ac4fdbebbf27d560ef3177f509e4a2c1528dc81fc2ab59291dd71db"
+    }
+  ],
+  "remote_ci": "NOT_RUN"
+}

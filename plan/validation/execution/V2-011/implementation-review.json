@@ -1,0 +1,234 @@
+{
+  "task_id": "V2-011",
+  "baseline_pin": {
+    "revision": "d005283c728d21b78f263774e703a8afc7222856",
+    "ref": "plan/validation/execution/V2-011/scope.json",
+    "sha256": "37ba654b947fe3fbc8e0eb084ff2e189f3ea5624fea0e28cc76ae3f69388eb6c"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "582337951f91a4125f28edbd8ca0f6c4441f52421adacfb3bb03654f58c0043b",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "0b5925d6cb07836e42b3e877682e28f5f090c83447c9ae54bf0028192a1b7ea0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-011 authorized start readiness and artifact correction to reuse existing repository. Original task identity, phase, dependencies and all three acceptance assertions unchanged; no new writer or suppression. Implementation design maps each assertion to real PostgreSQL competition and response-loss probes.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "582337951f91a4125f28edbd8ca0f6c4441f52421adacfb3bb03654f58c0043b",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "874b85c4979bab52950a8b92c7abac8badbb5c58f338548e4c2ce5e6f013aaad",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-011 authorized start readiness and artifact correction to reuse existing repository. Original task identity, phase, dependencies and all three acceptance assertions unchanged; no new writer or suppression. Implementation design maps each assertion to real PostgreSQL competition and response-loss probes.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "582337951f91a4125f28edbd8ca0f6c4441f52421adacfb3bb03654f58c0043b",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "a2cb4ecacebbc103d6a289f0badec46f43f2ce2a45549e846ecc091c45a8329e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-011 authorized start readiness and artifact correction to reuse existing repository. Original task identity, phase, dependencies and all three acceptance assertions unchanged; no new writer or suppression. Implementation design maps each assertion to real PostgreSQL competition and response-loss probes.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "582337951f91a4125f28edbd8ca0f6c4441f52421adacfb3bb03654f58c0043b",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "5ff0fdcd0a59c6b54a3797796d4d21165819feda79d0b0da178a06385c919731",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-011 authorized start readiness and artifact correction to reuse existing repository. Original task identity, phase, dependencies and all three acceptance assertions unchanged; no new writer or suppression. Implementation design maps each assertion to real PostgreSQL competition and response-loss probes.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "ce4c2757445f1af5744df0fedff584babaee24d7f400a0095505d2701f91b778",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing command-contract test preserves every original service/009/010 argument and appends V2-011; mandatory gate persistence test adds its presence assertion, no assertion removed or relaxed. Actual driver only appends the same new suite. No conditional filtering, skips or gate weakening.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "9157614a79b90bf5fba585628da0d93879d5bb1c4c503a4b313421f0d3d74655",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing command-contract test preserves every original service/009/010 argument and appends V2-011; mandatory gate persistence test adds its presence assertion, no assertion removed or relaxed. Actual driver only appends the same new suite. No conditional filtering, skips or gate weakening.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "53775ef43352390588cec2e62d7ce4f6ee8e651c9fdd17882a613fbbf229d4ac",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing command-contract test preserves every original service/009/010 argument and appends V2-011; mandatory gate persistence test adds its presence assertion, no assertion removed or relaxed. Actual driver only appends the same new suite. No conditional filtering, skips or gate weakening.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "f09c8c53fc43caaa5d95306253a693857acbaa93e8498eef1d7801c3cc29880a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing command-contract test preserves every original service/009/010 argument and appends V2-011; mandatory gate persistence test adds its presence assertion, no assertion removed or relaxed. Actual driver only appends the same new suite. No conditional filtering, skips or gate weakening.",
+      "impact": "Bounded current V2-011 task only; no product-readiness or acceptance claim.",
+      "reviewer": "Same Codex operator with bounded read-only technical cross-check; not independent personnel review",
+      "replacement_validation": "Local PostgreSQL131/131 including14 new V2-011, ARCH244/244, governance5/5, 1093 contracts and separately rerun6 bootstrap pass (initial3 installation failures were host cache sandbox access). Static and security pass; LOCAL_RESULTS binds actual original artifacts. Same-operator read-only cross-check confirms actual backend competition and real commit-before-exception recovery. Remote CI not yet run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/IMPLEMENTATION_DESIGN.md",
+          "sha256": "a9148e5cec93a6b0b576cbb1b5d83eb00b9413bb73a1fdf0bf0b5bdcff996e9a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/LOCAL_RESULTS.json",
+          "sha256": "0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f"
+        }
+      ]
+    }
+  ]
+}
