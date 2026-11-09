@@ -97,24 +97,26 @@ review_notes:
 - 20261109 quota restoration confirmed by user. Fresh audit13 filelock advisories repaired by exact existing transitive4.2.1
   upgrade; other50 packages unchanged. Full local security and architecture pass; no scanner/approval/gate changes.
   New current-SHA six-gate acceptance pending.
+- Final acceptance is new current-SHA six-gate run only. Historical billing blocker preserved, superseded for this
+  new execution; no old/new result mixing. Closure metadata is not the CI-tested revision.
 handoff:
-  current_step: Quota restored; filelock-only fresh security repair verified; freeze new acceptance candidate
+  current_step: V2-010 CLOSED at16259d148ac33c5578b40d0221f7f70d7ca55dc4/run42632232950; final same-SHA six mandatory
+    gates1460 tests0skip
   completed_steps:
-  - Committed scope/design and actual IMPLEMENT entry before source changes
-  - Sole service chapter commit, durable exact Permit and immutable full evidence
-  - Incremental migration and root compatibility; UNIT1099/PG117 and focused+architecture329 PASS0skip; static/security
-    PASS
-  - Only certifi updated; new local UNIT1099/STATIC/security54of54 and51packages0vulnerabilities PASS; candidate
-    pushed to main
+  - Authorized chapter protocol implemented; original five assertions unchanged
+  - Quota restored by user; minimal filelock security repair; only one final key CI dispatched
+  - Actual six original artifact ZIPs and digests/receipts/logs/JUnit verified; all five scenarios PASS
   pending_items:
-  - One final current-SHA six-gate CI and source/artifact verification
-  - V2-011/012 and P2 remain unaccepted
-  next_action: IMPLEMENT
+  - V2-011/012 andP2 remain unaccepted
+  - Production issuer/Q0-Q3/product loop/backup are not delivered; preserve early recovery prerequisite
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-010/security-local-results/SUMMARY.json
-      sha256: 54598da3946a125ff2fd3850f8c033eb19e9256a76c6f08d89021059b0fcdeaf
+    - ref: validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json
+      sha256: 1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5
+    - ref: validation/execution/V2-010/closure-20261109/SCENARIO_RESULTS.json
+      sha256: 4d8d13d9b1be60999d8af792a87b020fbe266a69c1e8e6d822e386338407f031
     missing_artifact_reason: null
 change_review:
   scope_revision: c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd

@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "revision": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+  "run_id": 42632232950,
+  "chapter_cases": 57,
+  "scenario_tests": {
+    "AT-V2-010-01": {
+      "status": "PASS",
+      "source": "Original final run PostgreSQL JUnit; every named case executed and passed",
+      "tests": [
+        "test_authority_revocation_fences_an_already_issued_permit",
+        "test_changed_policy_invalidates_old_permit",
+        "test_expired_permit_is_checked_using_actual_database_time",
+        "test_forged_ticket_cannot_consume_valid_permit[actor-untrusted-worker]",
+        "test_forged_ticket_cannot_consume_valid_permit[authorization_version-999]",
+        "test_forged_ticket_cannot_consume_valid_permit[branch-other-branch]",
+        "test_forged_ticket_cannot_consume_valid_permit[execution_version-999]",
+        "test_forged_ticket_cannot_consume_valid_permit[project-other-book]",
+        "test_forged_ticket_cannot_consume_valid_permit[request_id-another-request]",
+        "test_missing_or_forged_permit_ref_never_writes_canon[None]",
+        "test_missing_or_forged_permit_ref_never_writes_canon[]",
+        "test_missing_or_forged_permit_ref_never_writes_canon[self-declared-ALLOW]",
+        "test_missing_or_forged_permit_ref_never_writes_canon[sha256:0000000000000000000000000000000000000000000000000000000000000000]",
+        "test_permit_cannot_authorize_changed_candidate_payload[delta]",
+        "test_permit_cannot_authorize_changed_candidate_payload[dependency-content]",
+        "test_permit_cannot_authorize_changed_candidate_payload[dependency-metadata]",
+        "test_permit_cannot_authorize_changed_candidate_payload[prose]",
+        "test_permit_cannot_authorize_changed_candidate_payload[version]",
+        "test_production_composition_refuses_test_permit",
+        "test_rehashed_permit_issued_in_future_is_rejected_even_with_consistent_expiry",
+        "test_rehashed_permit_rejects_boolean_binding_even_when_numerically_equal[authorization_version-False]",
+        "test_rehashed_permit_rejects_boolean_binding_even_when_numerically_equal[candidate_version-True]",
+        "test_rehashed_permit_with_missing_or_malformed_requirements_is_rejected[malformed-json]",
+        "test_rehashed_permit_with_missing_or_malformed_requirements_is_rejected[missing-checks]",
+        "test_rehashed_permit_with_missing_or_malformed_requirements_is_rejected[missing-policy]",
+        "test_rehashed_permit_with_missing_or_malformed_requirements_is_rejected[unknown-version]",
+        "test_revoked_permit_is_rejected_without_any_story_write",
+        "test_root_initializer_has_no_implicit_chapter_authority"
+      ]
+    },
+    "AT-V2-010-02": {
+      "status": "PASS",
+      "source": "Original final run PostgreSQL JUnit; every named case executed and passed",
+      "tests": [
+        "test_actual_permit_commit_preserves_exact_evidence_and_head_event_receipt",
+        "test_event_failure_rolls_back_chapter_artifacts_commit_receipt_and_head[False]",
+        "test_event_failure_rolls_back_chapter_artifacts_commit_receipt_and_head[True]"
+      ]
+    },
+    "AT-V2-010-03": {
+      "status": "PASS",
+      "source": "Original final run PostgreSQL JUnit; every named case executed and passed",
+      "tests": [
+        "test_actual_permit_commit_preserves_exact_evidence_and_head_event_receipt",
+        "test_expired_committed_permit_remains_readable_as_historical_evidence",
+        "test_two_chapters_read_each_historical_baseline_and_reuse_equal_artifact_bytes"
+      ]
+    },
+    "AT-V2-010-04": {
+      "status": "PASS",
+      "source": "Original final run PostgreSQL JUnit; every named case executed and passed",
+      "tests": [
+        "test_accepted_chapter_prose_cannot_be_replaced_or_removed[DELETE]",
+        "test_accepted_chapter_prose_cannot_be_replaced_or_removed[UPDATE]",
+        "test_accepted_state_damage_is_detected_on_historical_read",
+        "test_two_chapters_read_each_historical_baseline_and_reuse_equal_artifact_bytes"
+      ]
+    },
+    "AT-V2-010-05": {
+      "status": "PASS",
+      "source": "Original final run PostgreSQL JUnit; every named case executed and passed",
+      "tests": [
+        "test_begin_committed_request_after_grant_revocation_restores_ticket_and_receipt",
+        "test_cancel_before_commit_fences_valid_permit",
+        "test_commit_before_cancel_returns_the_original_receipt_and_keeps_history"
+      ]
+    }
+  },
+  "limits": [
+    "P2 isolated test Permit protocol; production refuses this Permit profile",
+    "No P7 production issuer/Q0-Q3 semantic quality or model integration",
+    "Trusted application composition supplies authenticated actor; DB management capability is not granted to Workers",
+    "V2-011 and V2-012 are not accepted by these V2-010 results"
+  ]
+}

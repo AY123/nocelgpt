@@ -1,0 +1,353 @@
+{
+  "status": "PASS",
+  "revision": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+  "run_id": 42632232950,
+  "url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950",
+  "repository_id": 1421585508,
+  "verified_at": "2026-11-09T14:20:16.509364+00:00",
+  "gates": {
+    "schema_contract": {
+      "status": "PASS",
+      "tests": 0,
+      "artifact": "gate-schema_contract-42632232950-1.zip",
+      "sha256": "b5d8faed115b9037b4b3dd096a8f912f4e26101ec404828d6815c84cf1e66fc2",
+      "commands": [
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/check_governance.py",
+            "--output-dir",
+            "dist/ci/schema_contract/governance"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/schema_contract/command-01.stdout.log",
+            "sha256": "1bfc77999b1405b029aa275a10e1d9b8e8d8b0497a257c389d8cb7e73b38026c"
+          },
+          "stderr": {
+            "ref": "dist/ci/schema_contract/command-01.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "job_id": 129211174343
+    },
+    "unit": {
+      "status": "PASS",
+      "tests": 1099,
+      "artifact": "gate-unit-42632232950-1.zip",
+      "sha256": "6edba1de12f20536a41bf379026c4e94c869d24845c7379866c671d1cc6517a1",
+      "commands": [
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/ci/bootstrap_scanners.py",
+            "--output-dir",
+            "dist/tools/gitleaks-8.21.2",
+            "--reuse-verified"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/unit/command-01.stdout.log",
+            "sha256": "c312a31cd03d9a523088287d755cf041d6d9b7be25a73becb6fd69023fdd554d"
+          },
+          "stderr": {
+            "ref": "dist/ci/unit/command-01.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "tests/contract",
+            "tests/integration/test_repository_bootstrap.py",
+            "--junitxml=dist/ci/unit/junit.xml"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/unit/command-02.stdout.log",
+            "sha256": "0b532092f477c50db2170b0057258155e889fe5c24bebb96ea34267fa11e39b8"
+          },
+          "stderr": {
+            "ref": "dist/ci/unit/command-02.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "job_id": 129211174574
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "tests": 244,
+      "artifact": "gate-arch_fitness-42632232950-1.zip",
+      "sha256": "8a03f08cb09f982954b6611ffe9a0876ea664ab4de05892df12063bdc00b8fb4",
+      "commands": [
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/task_execution.py",
+            "check",
+            "--task",
+            "V2-010",
+            "--action",
+            "IMPLEMENT",
+            "--output",
+            "dist/ci/arch_fitness/action-entry.json"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/arch_fitness/command-01.stdout.log",
+            "sha256": "169df0881a0fe960f2a19fbc8662d5b58534a0d3d7b22046bad80ef226180b84"
+          },
+          "stderr": {
+            "ref": "dist/ci/arch_fitness/command-01.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/check_architecture.py",
+            "--output",
+            "dist/ci/arch_fitness/architecture.json"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/arch_fitness/command-02.stdout.log",
+            "sha256": "b851c82d4a9018612c2026d80176b221ed4d8ddd8706101aed78c15b808450dd"
+          },
+          "stderr": {
+            "ref": "dist/ci/arch_fitness/command-02.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "tests/architecture",
+            "--junitxml=dist/ci/arch_fitness/junit.xml"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/arch_fitness/command-03.stdout.log",
+            "sha256": "7b27c837abbed7e9123c6b93a5a30427956664c4946ccafc48ef04ba6152493b"
+          },
+          "stderr": {
+            "ref": "dist/ci/arch_fitness/command-03.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "job_id": 129211174229
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "tests": 117,
+      "artifact": "gate-postgres_env-42632232950-1.zip",
+      "sha256": "11569659503ba54b8314596c50e7bdf669f94e5d0b701dc760156bc5b3cb5756",
+      "commands": [
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "-m",
+            "pytest",
+            "-q",
+            "-p",
+            "no:cacheprovider",
+            "-s",
+            "tests/integration/test_postgres_ci_service.py",
+            "tests/integration/test_v2_009.py",
+            "tests/integration/test_v2_010.py",
+            "--junitxml=dist/ci/postgres_env/junit.xml"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/postgres_env/command-01.stdout.log",
+            "sha256": "4fdb86f51ccdcd93f62b11308e7b89fe7f203d90c014a5d6e357b8a4e486b9c7"
+          },
+          "stderr": {
+            "ref": "dist/ci/postgres_env/command-01.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "job_id": 129211173819
+    },
+    "static": {
+      "status": "PASS",
+      "tests": 0,
+      "artifact": "gate-static-42632232950-1.zip",
+      "sha256": "ce7e237f4a2d2422597e19cc92e62eea289a0452896b52c718167e9d5f98b1ca",
+      "commands": [
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/ci/check_configuration.py"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/static/command-01.stdout.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "ref": "dist/ci/static/command-01.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "-m",
+            "ruff",
+            "format",
+            "--check",
+            "src/anovel",
+            "scripts/ci",
+            "tests/contract/test_delivery_gates.py",
+            "tests/integration/test_postgres_ci_service.py"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/static/command-02.stdout.log",
+            "sha256": "cdd24684b33e5200a213c89093e8da4cb81a0de0085a4684d20923e852610123"
+          },
+          "stderr": {
+            "ref": "dist/ci/static/command-02.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "-m",
+            "ruff",
+            "check",
+            "--select",
+            "F,E9,I",
+            "src/anovel",
+            "scripts/ci",
+            "tests/contract/test_delivery_gates.py",
+            "tests/integration/test_postgres_ci_service.py"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/static/command-03.stdout.log",
+            "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+          },
+          "stderr": {
+            "ref": "dist/ci/static/command-03.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "-m",
+            "mypy",
+            "--strict",
+            "--cache-dir",
+            "dist/cache/mypy",
+            "src/anovel",
+            "scripts/ci"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/static/command-04.stdout.log",
+            "sha256": "fa935e779fe5886f2480e415c7e46616bdedad407f9da1cca28e7d341d95f4d7"
+          },
+          "stderr": {
+            "ref": "dist/ci/static/command-04.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/ci/check_syntax.py"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/static/command-05.stdout.log",
+            "sha256": "df20d565c15c303409dc00f0b2c11a8280295a97c359527a19c7b11851ba77e8"
+          },
+          "stderr": {
+            "ref": "dist/ci/static/command-05.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "job_id": 129211174306
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "tests": 0,
+      "artifact": "gate-secret_dependency-42632232950-1.zip",
+      "sha256": "c54cf3dbccecf0569c260b49ca1ecd63a1a7d5e4dd3c536ccc526ef13ab8504f",
+      "commands": [
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/ci/bootstrap_scanners.py",
+            "--output-dir",
+            "dist/tools/gitleaks-8.21.2",
+            "--reuse-verified"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/secret_dependency/command-01.stdout.log",
+            "sha256": "c312a31cd03d9a523088287d755cf041d6d9b7be25a73becb6fd69023fdd554d"
+          },
+          "stderr": {
+            "ref": "dist/ci/secret_dependency/command-01.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "argv": [
+            "/__w/nocelgpt/nocelgpt/.venv/bin/python",
+            "-B",
+            "scripts/ci/check_security.py",
+            "--output-dir",
+            "dist/ci/secret_dependency/security"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "ref": "dist/ci/secret_dependency/command-02.stdout.log",
+            "sha256": "b78e316a28fb8f086b7634b194bca4b2203672dae0c262e1b16bc78460508096"
+          },
+          "stderr": {
+            "ref": "dist/ci/secret_dependency/command-02.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "job_id": 129211174322
+    }
+  },
+  "tests": 1460,
+  "skipped": 0,
+  "operator": "Same implementing/verifying operator; no independent personnel claim"
+}

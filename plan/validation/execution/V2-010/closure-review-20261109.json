@@ -1,0 +1,394 @@
+{
+  "task_id": "V2-010",
+  "baseline_pin": {
+    "revision": "c3dc73d2dd51e55a2958cd9a9aefa997456c4bfd",
+    "ref": "plan/validation/execution/V2-010/security-scope.json",
+    "sha256": "4ddc893d719e7b06209ebf73b4c4beff432868995bc6591f5e81c1d71daa33f4"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "new_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "c94a3f87a37d52e644d1065f979355abb242fd3dfb7dd4ed4184d00ab8e4cc46",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only V2-010 IMPLEMENTED->CLOSED with typed code/test/CI/acceptance evidence after actual sameSHA16259d1/run42632232950 six-gate PASS; original task/phase/dependencies/assertions/readiness unchanged; other tasks and P2 unaccepted.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "3baf196a42a1ee657fa0501dea35af0b5b1229fbe637db18acdf6256986efcd1",
+      "new_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "86ce0672b15608d4124c6f3ad85de036a814998398a7b566e838400a1ceed063",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only V2-010 IMPLEMENTED->CLOSED with typed code/test/CI/acceptance evidence after actual sameSHA16259d1/run42632232950 six-gate PASS; original task/phase/dependencies/assertions/readiness unchanged; other tasks and P2 unaccepted.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "f4772636b96378806f28fad50f731fe17be6bf815e81144631aa558adeb86f0c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "3ad1befa468e34b202e3c5766aa452213e852ec18f4b445481624f5307be9670",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "84fe283e51a521eab7e288c969830c820ec89774215e164cf53e28050c40c648",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "98acab869d3e0fca7839e30aff1bcf43c0f561a63451189ddc1e7aa666615e4f",
+      "new_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "cfae78b1863b0d986727258499fd4e3b417c6282bceb8eeeaebd1b468d291e19",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Historical GitLab receipt keeps its original explicit PostgreSQL command. Current command assertion adds V2-010 after preserved original service and V2-009 suites; no ignore/deselect/filter. The extra inclusion assertion strengthens coverage; no verifier or mandatory job removed. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "new_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "328248b4260f03d44f222cb51f35536147694f524d28172a226ab9372aa0f90d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only add0002_chapter.sql to wheel,sdist and no-dev runtime resource assertions; retain0001, dependency resolution and lock rejection tests. Package contents must include both migrations. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "f004ced35085d25e966ef289af4f9012a95e91ac834009d14c2c8c966526fc49",
+      "new_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "2437a531514ee4ada421a07ce6d0f8e9de3ea6c5d9d98860a4989be1761e458b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only add0002_chapter.sql to wheel,sdist and no-dev runtime resource assertions; retain0001, dependency resolution and lock rejection tests. Package contents must include both migrations. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "dd9133febe5ea2ef2b0834fbea4ddf2c7f72c86f78b0a4cc343413ee91cb7af6",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "2c556b6d4f55b38368a71a379517453219ca99334d2c14bad9b9098f87fe27ce",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "832932b99871d8fb560f9ef13d46d808c027f4f3b35685900dae20b38b1e70c1",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "old_sha": "4a7a1e632d21e942f57f466892a0915b7915f4ca25dc9910b8d51566d998cd32",
+      "new_sha": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "19f2ded8523a60981e77d55730d5e9451529d08b8feae70766f424d6e99bf223",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The shipped migration prefix now legitimately includes0001+0002; assert both exact packaged checksums in order, repeatability and empty Canon. Unknown-version rejection now uses999 rather than the newly valid2. All existing root, concurrent lock, cancellation, transaction and AUTOCOMMIT checks remain. New010 tests independently prove0001 root bytes preserved and failed0002 rolls back. No further test bytes changed after accepted16259d1.",
+      "impact": "Bounded V2-010 implementation only. No security suppression, provider call, altered phase/dependency, future-task closure or CI/remote setting change.",
+      "reviewer": "Codex same operator with bounded read-only design/code/test cross-checks; no independent personnel review claim",
+      "replacement_validation": "Actual GitHub run42632232950/16259d1 sixPASS; six original artifact digests, all receipt files/log hashes and JUnit1460/0skip verified. Current metadata registration does not claim to be the testedSHA. No test/gate/approval weakening.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-010/authorization.txt",
+        "sha256": "cd1a48f108e9cc49f6b9ef3dc734c476f9b639e23780dfe0d72302c31a20e3a1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json",
+          "sha256": "1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/CODE_MANIFEST.json",
+          "sha256": "cd6bc1e6027145ff938ae95b9702344abf27beff3127ebf2754e23a1e87e27dc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml",
+          "sha256": "63ad3dc21c99f7384ba23afdc96c606c531682d95a32d6594749ca7fc92abba2"
+        }
+      ]
+    }
+  ]
+}

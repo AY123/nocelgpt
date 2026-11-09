@@ -1,0 +1,199 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-010
+revision: 16259d148ac33c5578b40d0221f7f70d7ca55dc4
+status: PASS
+producer: Codex same implementing/verifying operator; no independent personnel claim
+executed_at: '2026-11-09T14:20:16.509364+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11 locked; repository1421585508/run42632232950/attempt1;
+  single-operator profile
+input_evidence_refs:
+- validation/execution/V2-010/closure-20261109/code-evidence.yaml
+- validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+- validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+evidence_id: V2-010-acceptance-16259d1
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-010-01
+- AT-V2-010-02
+- AT-V2-010-03
+- AT-V2-010-04
+- AT-V2-010-05
+artifacts:
+- ref: validation/execution/V2-010/closure-20261109/ACCEPTANCE_SUMMARY.md
+  sha256: 50d147c85d8de381955c6bc309998760cc5d966c4b24c2de3c065041e05eb4aa
+- ref: validation/execution/V2-010/closure-20261109/REMOTE_VERIFICATION.json
+  sha256: 1f3fb1f4bae94f68d9f1f6054b2a262b3139ac956b8168f846a889a4b0c3b9b5
+- ref: validation/execution/V2-010/closure-20261109/SCENARIO_RESULTS.json
+  sha256: 4d8d13d9b1be60999d8af792a87b020fbe266a69c1e8e6d822e386338407f031
+- ref: validation/execution/V2-010/closure-20261109/SECURITY_RESULT.json
+  sha256: c8b0e7a901f7ae5a7428cf77230c0ae46ce4790f5107ef1cf15eeb90739008c6
+decision: ACCEPTED
+rationale: Five unchanged assertions and final current-SHA six mandatory gates actually PASS; isolated TEST Permit
+  protocol only, not production issuer/product/P2 acceptance.
+finding_dispositions:
+- finding_id: AR-04
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Typed finite Delta is revalidated by the same reducer at issue and commit; unknown operations cannot commit.
+  remaining_work: RequiredTransition and real Contract Compiler integration remain.
+  next_task: V2-017
+  owner_role: planning-maintainer
+  due_gate: G-P4
+- finding_id: AR-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Separate TEST issuer executes mandatory deterministic checks; exact durable Permit binds policy,issuer,input,fences,time
+    and revocation. Caller ALLOW is not authority.
+  remaining_work: Production Q0-Q3,quality aggregation and production issuer remain; production rejects TEST.
+  next_task: V2-022
+  owner_role: quality-maintainer
+  due_gate: G-P7
+- finding_id: AR-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Same sole service retains root initialization and incrementally adds chapter commits; old root bytes preserved.
+  remaining_work: Vision/contract integration and eventual P10 automatic Genesis remain.
+  next_task: V2-017
+  owner_role: planning-maintainer
+  due_gate: G-P4
+- finding_id: AR-09
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Short actual database transaction has no model wait; full rollback and stable successful receipt verified.
+  remaining_work: Dedicated concurrent CAS, same-key conflict and lost-response recovery acceptance remains.
+  next_task: V2-011
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: AR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Exact prose,Delta,four dependencies,Permit/policy and state snapshot are retained and hash-checked.
+  remaining_work: Full reconstruction and real Scene/Contract/Context consumers remain.
+  next_task: V2-012
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: AR-18
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Grant/revocation/cancel fences and complete immutable evidence enter the real database path.
+  remaining_work: No valuable production database until early isolated backup/recovery proof; network identity,cost
+    and later full DR are not delivered. Existing early prerequisite is not deferred by this record.
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P6
+- finding_id: CA-02
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Same Canon service is the only accepted chapter write path; modified candidate invalidates old Permit,
+    accepted prose cannot be overwritten.
+  remaining_work: All CLI/API/Workflow/human-edit/repair entry integrations and projection reconstruction remain.
+  next_task: V2-020
+  owner_role: workflow-maintainer
+  due_gate: G-P6
+- finding_id: RR-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: New candidate/receipt contracts have structural/domain/authority/database positive and negative controls.
+    Schema validity alone cannot authorize commit.
+  remaining_work: Provider and production quality/Permit contracts plus remaining historical probes remain.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+- finding_id: RR-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Full consumed test dependencies and policy/Permit survive expiry/revocation; historical bytes and original
+    receipts remain readable.
+  remaining_work: Real compiled artifacts and Scene/Context indirect retention closure remain.
+  next_task: V2-017
+  owner_role: planning-maintainer
+  due_gate: G-P4
+- finding_id: RR-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Stable payload excludes execution attempt; exact canonical bytes reject bool/int aliases; successful request/ticket/receipt
+    recover unchanged.
+  remaining_work: Concurrent/lost-response and Provider retry/checkpoint identity remain.
+  next_task: V2-011
+  owner_role: canon-maintainer
+  due_gate: G-P2
+- finding_id: RR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Actual positive/negative regressions cover forged Permit,changed bindings,rollback,immutable prose,cancel
+    and revoke risks.
+  remaining_work: No complete V1 catalog-to-original-input-to-new-test trace has been established; remaining Workflow
+    regressions remain.
+  next_task: V2-020
+  owner_role: workflow-maintainer
+  due_gate: G-P6
+- finding_id: DA-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-010/closure-20261109/code-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  reason: Same branch lock orders commit,cancel and revoke; cancel-first fences permit,commit-first returns original
+    receipt; authority changes invalidate old execution.
+  remaining_work: Production issuer,Workflow race/checkpoint/restart and late response integration remain.
+  next_task: V2-026
+  owner_role: quality-maintainer
+  due_gate: G-P7
+external_practice_results:
+- practice_id: EXT-006
+  adoption_mode: REFINE_EXISTING; local protocol part only
+  source_version_note: Conceptual pattern adaptation recorded in plan; no external source code/version or audit
+    claim.
+  verification_refs:
+  - validation/execution/V2-010/closure-20261109/tests-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/ci-evidence.yaml
+  conclusion: Read-only review shows actual prose/Delta/blockers/version; candidate edits invalidate Permit and
+    accepted prose cannot be replaced.
+  limitations: Workflow,manual editing UI,production quality and later task020/026/038 integrations remain; register
+    stays PLANNED.

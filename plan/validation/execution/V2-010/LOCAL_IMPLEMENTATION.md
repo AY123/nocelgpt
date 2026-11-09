@@ -21,3 +21,5 @@ UNIT1099，真实PostgreSQL117（原服务1+V2-009的59+V2-010的57），架构2
 ## 2026-10-22 最新交接
 
 最小certifi修复已随 `e35177699d59c15eb22e9bf87bf3a3a88abf5b2f` 推送至GitHub main。本地UNIT1099/STATIC/安全扫描（54精确消费、51依赖0漏洞）通过。最终 [run39747798274](https://github.com/AY123/nocelgpt/actions/runs/39747798274) 已创建一次，但GitHub以账号付款/支出限额条件拒绝启动全部六个job（runner=0、步骤=0、artifact=0）。具体是付款问题还是限额未独立确定；没有代码测试失败证据，也没有当前候选的远程PASS。详见 [CI_BLOCKER.json](CI_BLOCKER.json)。V2-010继续IMPLEMENTED，P2未完成；停止自动重试，等待账户条件解除。旧3ac验收不与新lock结果拼接。
+
+2026-11-09最终状态：V2-010已按16259d148ac33c5578b40d0221f7f70d7ca55dc4/run42632232950完成同SHA六门验收，详见[正式验收](closure-20261109/ACCEPTANCE_SUMMARY.md)。上述内容保留各原时点，不把旧结果重新标记。

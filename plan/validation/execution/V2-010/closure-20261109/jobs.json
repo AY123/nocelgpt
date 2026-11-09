@@ -1,0 +1,653 @@
+{
+  "total_count": 6,
+  "jobs": [
+    {
+      "id": 129211173819,
+      "run_id": 42632232950,
+      "workflow_name": "V2-004 mandatory gates",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/AY123/nocelgpt/actions/runs/42632232950",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVLusZM8AAAAeFZYLuw",
+      "head_sha": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/jobs/129211173819",
+      "html_url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950/job/129211173819",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T14:11:28Z",
+      "started_at": "2026-11-09T14:11:31Z",
+      "completed_at": "2026-11-09T14:12:41Z",
+      "name": "POSTGRES_ENV",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:33Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T14:11:33Z",
+          "completed_at": "2026-11-09T14:12:10Z"
+        },
+        {
+          "name": "Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T14:12:10Z",
+          "completed_at": "2026-11-09T14:12:13Z"
+        },
+        {
+          "name": "Verify GitHub source context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T14:12:13Z",
+          "completed_at": "2026-11-09T14:12:13Z"
+        },
+        {
+          "name": "Install locked runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T14:12:13Z",
+          "completed_at": "2026-11-09T14:12:17Z"
+        },
+        {
+          "name": "Run mandatory gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T14:12:17Z",
+          "completed_at": "2026-11-09T14:12:36Z"
+        },
+        {
+          "name": "Upload original receipts and reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T14:12:36Z",
+          "completed_at": "2026-11-09T14:12:38Z"
+        },
+        {
+          "name": "Post Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-09T14:12:38Z",
+          "completed_at": "2026-11-09T14:12:38Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T14:12:38Z",
+          "completed_at": "2026-11-09T14:12:39Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T14:12:39Z",
+          "completed_at": "2026-11-09T14:12:39Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/129211173819",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001238,
+      "runner_name": "GitHub Actions 1000001238",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 129211174229,
+      "run_id": 42632232950,
+      "workflow_name": "V2-004 mandatory gates",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/AY123/nocelgpt/actions/runs/42632232950",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVLusZM8AAAAeFZYNVQ",
+      "head_sha": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/jobs/129211174229",
+      "html_url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950/job/129211174229",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T14:11:28Z",
+      "started_at": "2026-11-09T14:11:32Z",
+      "completed_at": "2026-11-09T14:12:33Z",
+      "name": "ARCH_FITNESS",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T14:11:33Z",
+          "completed_at": "2026-11-09T14:11:34Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T14:11:34Z",
+          "completed_at": "2026-11-09T14:11:55Z"
+        },
+        {
+          "name": "Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T14:11:55Z",
+          "completed_at": "2026-11-09T14:11:59Z"
+        },
+        {
+          "name": "Verify GitHub source context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T14:11:59Z",
+          "completed_at": "2026-11-09T14:11:59Z"
+        },
+        {
+          "name": "Install locked runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T14:11:59Z",
+          "completed_at": "2026-11-09T14:12:03Z"
+        },
+        {
+          "name": "Run mandatory gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T14:12:03Z",
+          "completed_at": "2026-11-09T14:12:26Z"
+        },
+        {
+          "name": "Upload original receipts and reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T14:12:26Z",
+          "completed_at": "2026-11-09T14:12:28Z"
+        },
+        {
+          "name": "Post Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-09T14:12:28Z",
+          "completed_at": "2026-11-09T14:12:29Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T14:12:29Z",
+          "completed_at": "2026-11-09T14:12:31Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T14:12:31Z",
+          "completed_at": "2026-11-09T14:12:31Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/129211174229",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001236,
+      "runner_name": "GitHub Actions 1000001236",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 129211174306,
+      "run_id": 42632232950,
+      "workflow_name": "V2-004 mandatory gates",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/AY123/nocelgpt/actions/runs/42632232950",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVLusZM8AAAAeFZYNog",
+      "head_sha": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/jobs/129211174306",
+      "html_url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950/job/129211174306",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T14:11:28Z",
+      "started_at": "2026-11-09T14:11:31Z",
+      "completed_at": "2026-11-09T14:12:13Z",
+      "name": "STATIC",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:32Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:57Z"
+        },
+        {
+          "name": "Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T14:11:57Z",
+          "completed_at": "2026-11-09T14:11:59Z"
+        },
+        {
+          "name": "Verify GitHub source context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T14:11:59Z",
+          "completed_at": "2026-11-09T14:12:00Z"
+        },
+        {
+          "name": "Install locked runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T14:12:00Z",
+          "completed_at": "2026-11-09T14:12:05Z"
+        },
+        {
+          "name": "Run mandatory gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T14:12:05Z",
+          "completed_at": "2026-11-09T14:12:08Z"
+        },
+        {
+          "name": "Upload original receipts and reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T14:12:09Z",
+          "completed_at": "2026-11-09T14:12:10Z"
+        },
+        {
+          "name": "Post Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-09T14:12:10Z",
+          "completed_at": "2026-11-09T14:12:10Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T14:12:10Z",
+          "completed_at": "2026-11-09T14:12:11Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T14:12:11Z",
+          "completed_at": "2026-11-09T14:12:11Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/129211174306",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001239,
+      "runner_name": "GitHub Actions 1000001239",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 129211174322,
+      "run_id": 42632232950,
+      "workflow_name": "V2-004 mandatory gates",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/AY123/nocelgpt/actions/runs/42632232950",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVLusZM8AAAAeFZYNsg",
+      "head_sha": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/jobs/129211174322",
+      "html_url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950/job/129211174322",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T14:11:28Z",
+      "started_at": "2026-11-09T14:11:31Z",
+      "completed_at": "2026-11-09T14:12:38Z",
+      "name": "SECRET_DEPENDENCY",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:33Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T14:11:33Z",
+          "completed_at": "2026-11-09T14:12:00Z"
+        },
+        {
+          "name": "Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T14:12:00Z",
+          "completed_at": "2026-11-09T14:12:02Z"
+        },
+        {
+          "name": "Verify GitHub source context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T14:12:02Z",
+          "completed_at": "2026-11-09T14:12:02Z"
+        },
+        {
+          "name": "Install locked runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T14:12:02Z",
+          "completed_at": "2026-11-09T14:12:08Z"
+        },
+        {
+          "name": "Run mandatory gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T14:12:08Z",
+          "completed_at": "2026-11-09T14:12:34Z"
+        },
+        {
+          "name": "Upload original receipts and reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T14:12:34Z",
+          "completed_at": "2026-11-09T14:12:36Z"
+        },
+        {
+          "name": "Post Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-09T14:12:36Z",
+          "completed_at": "2026-11-09T14:12:36Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T14:12:36Z",
+          "completed_at": "2026-11-09T14:12:37Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T14:12:37Z",
+          "completed_at": "2026-11-09T14:12:37Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/129211174322",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001240,
+      "runner_name": "GitHub Actions 1000001240",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 129211174343,
+      "run_id": 42632232950,
+      "workflow_name": "V2-004 mandatory gates",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/AY123/nocelgpt/actions/runs/42632232950",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVLusZM8AAAAeFZYNxw",
+      "head_sha": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/jobs/129211174343",
+      "html_url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950/job/129211174343",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T14:11:28Z",
+      "started_at": "2026-11-09T14:11:31Z",
+      "completed_at": "2026-11-09T14:14:08Z",
+      "name": "SCHEMA_CONTRACT",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:33Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T14:11:33Z",
+          "completed_at": "2026-11-09T14:12:03Z"
+        },
+        {
+          "name": "Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T14:12:03Z",
+          "completed_at": "2026-11-09T14:12:05Z"
+        },
+        {
+          "name": "Verify GitHub source context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T14:12:05Z",
+          "completed_at": "2026-11-09T14:12:05Z"
+        },
+        {
+          "name": "Install locked runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T14:12:05Z",
+          "completed_at": "2026-11-09T14:12:10Z"
+        },
+        {
+          "name": "Run mandatory gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T14:12:10Z",
+          "completed_at": "2026-11-09T14:14:03Z"
+        },
+        {
+          "name": "Upload original receipts and reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T14:14:03Z",
+          "completed_at": "2026-11-09T14:14:05Z"
+        },
+        {
+          "name": "Post Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-09T14:14:05Z",
+          "completed_at": "2026-11-09T14:14:05Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T14:14:05Z",
+          "completed_at": "2026-11-09T14:14:05Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T14:14:05Z",
+          "completed_at": "2026-11-09T14:14:05Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/129211174343",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001237,
+      "runner_name": "GitHub Actions 1000001237",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 129211174574,
+      "run_id": 42632232950,
+      "workflow_name": "V2-004 mandatory gates",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/AY123/nocelgpt/actions/runs/42632232950",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOVLusZM8AAAAeFZYOrg",
+      "head_sha": "16259d148ac33c5578b40d0221f7f70d7ca55dc4",
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/jobs/129211174574",
+      "html_url": "https://github.com/AY123/nocelgpt/actions/runs/42632232950/job/129211174574",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-09T14:11:28Z",
+      "started_at": "2026-11-09T14:11:31Z",
+      "completed_at": "2026-11-09T14:16:40Z",
+      "name": "UNIT",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:32Z"
+        },
+        {
+          "name": "Initialize containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-09T14:11:32Z",
+          "completed_at": "2026-11-09T14:11:59Z"
+        },
+        {
+          "name": "Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-09T14:11:59Z",
+          "completed_at": "2026-11-09T14:12:02Z"
+        },
+        {
+          "name": "Verify GitHub source context",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-09T14:12:02Z",
+          "completed_at": "2026-11-09T14:12:02Z"
+        },
+        {
+          "name": "Install locked runtime",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-09T14:12:02Z",
+          "completed_at": "2026-11-09T14:12:07Z"
+        },
+        {
+          "name": "Run mandatory gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-09T14:12:07Z",
+          "completed_at": "2026-11-09T14:16:09Z"
+        },
+        {
+          "name": "Upload original receipts and reports",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-09T14:16:09Z",
+          "completed_at": "2026-11-09T14:16:10Z"
+        },
+        {
+          "name": "Post Checkout exact revision and complete history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-09T14:16:10Z",
+          "completed_at": "2026-11-09T14:16:10Z"
+        },
+        {
+          "name": "Stop containers",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-09T14:16:10Z",
+          "completed_at": "2026-11-09T14:16:39Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-09T14:16:39Z",
+          "completed_at": "2026-11-09T14:16:39Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/AY123/nocelgpt/check-runs/129211174574",
+      "labels": [
+        "ubuntu-24.04"
+      ],
+      "runner_id": 1000001241,
+      "runner_name": "GitHub Actions 1000001241",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}
