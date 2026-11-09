@@ -18,7 +18,7 @@ owner_role: canon-maintainer
 scope: 'Safe consecutive chapter retries: original receipt for identical payload, conflict for changed
   payload, one winner for competing parents, recovery after response loss. Reuse sole Canon service and
   existing row-lock/CAS; no production generation or projection rebuild.'
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-011/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -94,9 +94,11 @@ handoff:
   - Freeze scope before source/test edits
   - Implement bounded replay contract and real PostgreSQL tests
   - Local and key remote acceptance
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: d005283c728d21b78f263774e703a8afc7222856
+  scope_ref: plan/validation/execution/V2-011/scope.json
