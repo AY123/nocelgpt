@@ -91,21 +91,24 @@ review_notes:
 - Future valuable-data backup remains prerequisite; same-database replay is not disaster recovery or novel
   generation.
 handoff:
-  current_step: PREPARE inspected stored artifacts and actual read interfaces
+  current_step: Local read-only event reconstruction and all1525 engineering cases pass; final exact-SHA
+    CI pending
   completed_steps:
-  - Clean main and accepted009-011 dependencies verified
-  - ADR-005/006 and original acceptance consumed
+  - Existing Canon writer and immutable evidence retained
+  - New25 pure and26 PostgreSQL controls; full local1525/0skip
+  - Static, architecture, five governance checks and exact security consumption pass
   pending_items:
-  - Freeze scope/review before source edits
-  - Implement read-only event replay and real PostgreSQL controls
-  - One key remote acceptance after local checks
+  - One key same-SHA remote acceptance
+  - P2/M2 only if all original exit criteria proven; product/production recovery remain
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-012/LOCAL_RESULTS.json
+      sha256: 49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437
     missing_artifact_reason: null
 change_review:
   scope_revision: a6be8a2ce21105ebe13b5ad369e77ebc9d9da098
   scope_ref: plan/validation/execution/V2-012/scope.json
-  review_revision: fff94ace1091794935984766a97ac7c01e6860cf
-  review_ref: plan/validation/execution/V2-012/entry-review.json
+  review_revision: c8bddd33d44a87cc18f64f1097030bf1ce22b959
+  review_ref: plan/validation/execution/V2-012/implementation-review.json
