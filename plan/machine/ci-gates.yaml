@@ -1,5 +1,5 @@
 version: 1.2.0
-status: P0_SIX_GATES_VERIFIED_FUTURE_GATES_PENDING
+status: P0_P2_GATES_VERIFIED_FUTURE_GATES_PENDING
 gates:
 - id: STATIC
   activation_phase: P0
@@ -68,8 +68,9 @@ gates:
   - CAS
   - same/different payload dedupe
   - rebuild
-  status: NOT_IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml
 - id: DETERMINISTIC_E2E
   activation_phase: P7
   mode: every_change

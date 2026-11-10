@@ -2,9 +2,9 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-**阶段摘要（2026-10-20）：Plan v1.3.0；V2-001～011 CLOSED；P0/G-P0、P1/G-P1、M0/M1 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)（私有）。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+**阶段摘要（2026-11-10）：Plan v1.3.0；V2-001～012 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2及M0/M1/M2 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
-当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已完成持久化和人工/测试根提交的工程验收，V2-010已完成有限事实章节Commit/Permit协议的工程验收（生产默认拒绝TEST Permit）；尚无正式生产issuer、模型调用或章节生产闭环。
+当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已完成持久化和人工/测试根提交的工程验收，V2-010已完成有限事实章节Commit/Permit协议的工程验收（生产默认拒绝TEST Permit）；V2-011/012已验证章节安全重试、并发、断线恢复和有限事实历史重建；尚无正式生产issuer、模型调用或章节生产闭环。
 
 - P0 工程验收绑定 `611d777` / [run38917341667](https://github.com/AY123/nocelgpt/actions/runs/38917341667)，六门通过、714 项测试、0 skip；见[P0 汇总验收](plan/validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。
 - V2-005 工程验收绑定 `72219b4` / [run39088653270](https://github.com/AY123/nocelgpt/actions/runs/39088653270)，六门通过、889 项测试、0 skip，其中领域测试97项；见[V2-005 验收记录](plan/validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。后续文档提交不冒称已重新运行 CI。
@@ -15,7 +15,7 @@
 
 - V2-008及P1汇总绑定`f611ba3` / [run39128464248](https://github.com/AY123/nocelgpt/actions/runs/39128464248)，六门通过、1173项测试0skip；含102项V2-008、381项P1领域测试。见[P1汇总](plan/validation/execution/P1/closure-20261018/ACCEPTANCE_SUMMARY.md)。不代表持久Canon或章节生产。
 
-- V2-009工程验收绑定`3d12f20` / [run39256589017](https://github.com/AY123/nocelgpt/actions/runs/39256589017)，六门通过、1318项测试0skip；见[验收记录](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)。范围为根提交持久化，P2尚未完成。
+- V2-009工程验收绑定`3d12f20` / [run39256589017](https://github.com/AY123/nocelgpt/actions/runs/39256589017)，六门通过、1318项测试0skip；见[验收记录](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)。该次范围为根提交持久化；P2最新工程汇总见下文。
 
 54 项安全发现保持 OPEN，按有限期精确批准消费，没有全局忽略。采用用户确认的单人 Owner 模式，不声称具备对抗性权限隔离；见[收口决定](plan/changes/2026-10-16_V2-004_SINGLE_OPERATOR_CLOSURE.md)。CI 仅在关键交付时手动触发。
 
@@ -116,7 +116,7 @@ V2003_SCOPE_REF=$(.venv/bin/python -B -c 'import json; print(json.load(open("pla
 .venv/bin/python -B -m pytest -q tests/architecture tests/contract
 ```
 
-架构检查静态读取源码，不运行候选模块。它区分 Workflow 可请求的 `anovel.canon.commit_service` 公共提交服务与 `anovel.canon.repository` 内部写能力；这些规则通过测试夹具验证，未创建 Canon 业务实现，也不证明 P2 运行时写权限。空扫描、不能解析的加载行为和关闭适用硬门禁的请求会失败。
+架构检查静态读取源码，不运行候选模块。它区分 Workflow 可请求的 `anovel.canon.commit_service` 公共提交服务与 `anovel.canon.repository` 内部写能力；这些静态规则通过测试夹具验证；当前 Canon 运行证据见下方 P2 验收，静态检查本身不证明运行时写权限。空扫描、不能解析的加载行为和关闭适用硬门禁的请求会失败。
 
 差异检查中的 scope commit 固定开工范围、用户既有改动身份和授权来源。运行前将 `pinned-baseline.json` 中的最新 pin 与当前有效交接核对；该文件提供定位信息，授权内容从明确的 Git commit 读取。开工清单的补正原因和原 pin 保留在准备记录中。尚未处置的 finding 返回失败并保留报告；有依据的技术处置需再提供 `--review-revision` 与 `--review-ref`，二者从当前有效交接取值，绑定准确内容和验证产物。改变被审内容后须重新核对，不能把旧 review 用于新改动。命令和处置方法见[任务执行指南](plan/09_TASK_EXECUTION_GUIDE.md)。
 
@@ -134,10 +134,12 @@ V2-007 本地示例：`.venv/bin/python -B demo_v2_007.py`；插叙、发生状�
 
 V2-008本地示例：`.venv/bin/python -B demo_v2_008.py`；四类事实变化、严格前提及纯预演见[本地实现](plan/validation/execution/V2-008/LOCAL_IMPLEMENTATION.md)。不包含Canon提交或正文生产。
 
-V2-009：ADR-005/006及root-only持久化已完成[工程验收](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)，绑定3d12f20/run39256589017；P2未完成，V2-010已按16259d1/run42632232950完成工程验收。
+V2-009：ADR-005/006及root-only持久化已完成[工程验收](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)，绑定3d12f20/run39256589017；P2最新工程汇总见下文，V2-010已按16259d1/run42632232950完成工程验收。
 
 V2-010本地交付：[授权章节提交协议](plan/validation/execution/V2-010/LOCAL_IMPLEMENTATION.md)。隔离测试Permit与正式生产放行分离；未据此关闭V2-011/012或P2。
 
-V2-010已完成[工程验收](plan/validation/execution/V2-010/closure-20261109/ACCEPTANCE_SUMMARY.md)，绑定16259d1/run42632232950，1460项0skip；V2-012及P2仍未完成。
+V2-010已完成[工程验收](plan/validation/execution/V2-010/closure-20261109/ACCEPTANCE_SUMMARY.md)，绑定16259d1/run42632232950，1460项0skip；V2-012及P2结项见下方最新验收。
 
-V2-011已完成[工程验收](plan/validation/execution/V2-011/closure-20261110/ACCEPTANCE_SUMMARY.md)，绑定b716e7c/run42734728628，1474项0skip；现有提交服务复用不变，新增14项真实PG竞争/恢复控制。V2-012/P2及小说生成产品闭环仍未完成。
+V2-011已完成[工程验收](plan/validation/execution/V2-011/closure-20261110/ACCEPTANCE_SUMMARY.md)，绑定b716e7c/run42734728628，1474项0skip；现有提交服务复用不变，新增14项真实PG竞争/恢复控制。V2-012/P2结项见下方最新验收；小说生成产品闭环仍未完成。
+
+V2-012已完成[工程验收](plan/validation/execution/V2-012/closure-20261110/ACCEPTANCE_SUMMARY.md)，绑定416c451/run42774996789，1525项0skip；[P2/M2汇总](plan/validation/execution/P2/closure-20261110/ACCEPTANCE_SUMMARY.md)VERIFIED。当前仅有限事实Canon和隔离TEST Permit，不代表生产备份或小说生成/阅读质量已完成。下一任务V2-013，P3仍未完成。

@@ -66,7 +66,7 @@ phases:
   name: Canon Kernel
   entry_gate: G-P1
   exit_gate: G-P2
-  status: NOT_VERIFIED
+  status: VERIFIED
   tasks:
   - V2-009
   - V2-010
@@ -76,8 +76,9 @@ phases:
   - 短事务原子性 CAS 幂等 PostgreSQL 证据
   - 唯一根提交与完整收据
   - 快照重建和跨项目隔离
-  evidence_refs: []
-  task_refinement: PLANNED
+  evidence_refs:
+  - validation/execution/P2/closure-20261110/P2-decision.yaml
+  task_refinement: READY
 - id: P3
   name: Genre Kernel
   entry_gate: G-P2

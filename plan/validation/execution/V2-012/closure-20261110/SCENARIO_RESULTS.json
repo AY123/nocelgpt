@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "revision": "416c4510f8d505a1701a2b6e0c1f8181b90418ec",
+  "run_id": 42774996789,
+  "source": "Original same-SHA final PostgreSQL JUnit; all26 cases actually executed, plus25 pure contract version/replay controls in UNIT",
+  "scenario_tests": {
+    "AT-V2-012-01": {
+      "status": "PASS",
+      "tests": [
+        "test_rebuild_replays_finite_history_and_matches_every_historical_snapshot",
+        "test_rebuild_does_not_use_stored_baseline_as_reducer_input",
+        "test_new_connection_rebuilds_old_target_without_future_facts",
+        "test_two_books_named_main_rebuild_only_their_own_interleaved_history",
+        "test_rebuild_refuses_missing_delta_link_instead_of_trusting_snapshot",
+        "test_rebuild_refuses_corrupted_retained_bytes[COMMIT_PERMIT]",
+        "test_rebuild_refuses_corrupted_retained_bytes[DEPENDENCY_BUNDLE]",
+        "test_rebuild_refuses_corrupted_retained_bytes[NARRATIVE_DELTA]",
+        "test_rebuild_refuses_corrupted_retained_bytes[RAW_PROSE]",
+        "test_rebuild_refuses_corrupted_retained_bytes[ROOT_INPUT]",
+        "test_rebuild_refuses_corrupted_retained_bytes[STATE_SNAPSHOT]",
+        "test_rebuild_refuses_missing_ancestor_event[middle]",
+        "test_rebuild_refuses_missing_ancestor_event[root]",
+        "test_rebuild_refuses_missing_ancestor_event[target]",
+        "test_rebuild_rejects_corrupt_persistent_ancestry_before_content_loading[self-cycle]",
+        "test_rebuild_rejects_corrupt_persistent_ancestry_before_content_loading[sequence-gap]",
+        "test_rebuild_rejects_corrupt_persistent_ancestry_before_content_loading[skip-parent]",
+        "test_rebuild_rejects_unknown_or_wrong_scope_target[branch]",
+        "test_rebuild_rejects_unknown_or_wrong_scope_target[project]",
+        "test_rebuild_rejects_unknown_or_wrong_scope_target[unknown-commit]"
+      ]
+    },
+    "AT-V2-012-02": {
+      "status": "PASS",
+      "tests": [
+        "test_projection_failure_keeps_committed_receipt_head_and_original_bytes"
+      ]
+    },
+    "AT-V2-012-03": {
+      "status": "PASS",
+      "tests": [
+        "test_historical_rebuild_does_not_require_current_chapter_authority",
+        "test_rebuild_refuses_unknown_reducer_without_latest_fallback[chapter]",
+        "test_rebuild_refuses_unknown_reducer_without_latest_fallback[root]",
+        "test_rebuild_refuses_wrong_artifact_encoding[chapter]",
+        "test_rebuild_refuses_wrong_artifact_encoding[root]"
+      ]
+    }
+  }
+}

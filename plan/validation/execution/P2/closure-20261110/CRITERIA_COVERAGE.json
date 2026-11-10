@@ -1,0 +1,49 @@
+{
+  "revision": "416c4510f8d505a1701a2b6e0c1f8181b90418ec",
+  "run_id": 42774996789,
+  "source": "Original final current-SHA PostgreSQL JUnit157; all named original stage-exit controls actually run/pass; previous acceptances retained as their own historical revisions",
+  "criteria": [
+    {
+      "criterion": "短事务原子性 CAS 幂等 PostgreSQL 证据",
+      "test_names": [
+        "test_two_real_connections_compete_for_exactly_one_root",
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[same-payload]",
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[changed-payload]",
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[other-key]",
+        "test_committed_but_lost_dbapi_ack_recovers_on_new_connection_and_continues",
+        "test_rolled_back_commit_can_retry_same_key_without_partial_story"
+      ],
+      "status": "PASS"
+    },
+    {
+      "criterion": "唯一根提交与完整收据",
+      "test_names": [
+        "test_root_round_trip_preserves_domain_raw_bytes_and_authority",
+        "test_reopening_connection_recovers_committed_root_without_memory",
+        "test_same_request_changed_payload_and_second_root_are_rejected",
+        "test_two_real_connections_compete_for_exactly_one_root"
+      ],
+      "status": "PASS"
+    },
+    {
+      "criterion": "快照重建和跨项目隔离",
+      "test_names": [
+        "test_rebuild_replays_finite_history_and_matches_every_historical_snapshot",
+        "test_rebuild_does_not_use_stored_baseline_as_reducer_input",
+        "test_two_books_named_main_rebuild_only_their_own_interleaved_history",
+        "test_same_entity_names_and_ids_are_independent_between_scopes"
+      ],
+      "status": "PASS"
+    }
+  ],
+  "pg_case_counts": {
+    "service": 1,
+    "V2-009": 59,
+    "V2-010": 57,
+    "V2-011": 14,
+    "V2-012": 26
+  },
+  "unit": 1124,
+  "arch": 244,
+  "total": 1525
+}

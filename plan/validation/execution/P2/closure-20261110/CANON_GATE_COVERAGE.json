@@ -1,0 +1,27 @@
+{
+  "id": "CANON_CAS_IDEMPOTENCY",
+  "status": "PASS",
+  "revision": "416c4510f8d505a1701a2b6e0c1f8181b90418ec",
+  "run_id": 42774996789,
+  "actual_job": "POSTGRES_ENV",
+  "physical_jobs_unchanged": 6,
+  "source": "Original final same-SHA PG JUnit157, original unchanged four checks mapped to actual executed cases; no new job, skip, allow_failure or workflow change",
+  "checks": {
+    "atomic commit": [
+      "test_rolled_back_commit_can_retry_same_key_without_partial_story"
+    ],
+    "CAS": [
+      "test_two_real_connections_compete_for_exactly_one_root",
+      "test_real_concurrent_chapter_requests_have_one_durable_winner[other-key]"
+    ],
+    "same/different payload dedupe": [
+      "test_real_concurrent_chapter_requests_have_one_durable_winner[same-payload]",
+      "test_real_concurrent_chapter_requests_have_one_durable_winner[changed-payload]",
+      "test_committed_but_lost_dbapi_ack_recovers_on_new_connection_and_continues"
+    ],
+    "rebuild": [
+      "test_rebuild_replays_finite_history_and_matches_every_historical_snapshot",
+      "test_projection_failure_keeps_committed_receipt_head_and_original_bytes"
+    ]
+  }
+}

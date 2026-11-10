@@ -34,8 +34,9 @@ milestones:
   - V2-010
   - V2-011
   - V2-012
-  status: NOT_VERIFIED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/P2/closure-20261110/M2-decision.yaml
 - id: M3
   name: Dual Genre Kernel
   introduced_phase: P3

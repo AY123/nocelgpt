@@ -764,7 +764,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不在数据库事务内调用模型
   - 不建设完整 Genesis 或另开初始化写路径
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-012/execution-packet.yaml
   owner_role: canon-maintainer
   readiness: READY_TO_START
@@ -772,10 +772,22 @@ tasks:
   required_decisions:
   - ADR-006
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-012/closure-20261110/code-evidence.yaml
+      revision: 416c4510f8d505a1701a2b6e0c1f8181b90418ec
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+      revision: 416c4510f8d505a1701a2b6e0c1f8181b90418ec
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+      revision: 416c4510f8d505a1701a2b6e0c1f8181b90418ec
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml
+      revision: 416c4510f8d505a1701a2b6e0c1f8181b90418ec
+      status: PASS
   related_findings:
   - AR-10
   - CA-07

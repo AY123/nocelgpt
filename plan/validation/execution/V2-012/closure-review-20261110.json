@@ -1,0 +1,426 @@
+{
+  "task_id": "V2-012",
+  "baseline_pin": {
+    "revision": "e9427b1d0888c9350b8fc7ef0e5223551de2704e",
+    "ref": "plan/validation/execution/V2-012/scope-p2-closure.json",
+    "sha256": "7816a7e945a9c89620ca2e85cea8adc76961f27cecb92549ca4c597ad5ceb09d"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "new_sha": "7bd1364a7eba6a23069131fa62d1d22c0a277f155a22628b90a020cb2f829cbe",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "0d27c648cd85280a72bf2c1986b252fc5769c544367e70eeb99edca00c04f746",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-012 start readiness and actual accepted task closure. Original task identity, phase, dependencies, target outputs and three required assertions preserved. Only scoped readonly reconstruction added; original service/repository methods retain exact source bytes and AST.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "new_sha": "7bd1364a7eba6a23069131fa62d1d22c0a277f155a22628b90a020cb2f829cbe",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "893f7be22e2f6c5dc8dcd8e0853839cf987fa99bb78f130335998d93a70c8371",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-012 start readiness and actual accepted task closure. Original task identity, phase, dependencies, target outputs and three required assertions preserved. Only scoped readonly reconstruction added; original service/repository methods retain exact source bytes and AST.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "old_sha": "1da8fc8f45a29b534c2e0d7e1fa6bb1d21a6c23b6bf31a69e542ee1b444329be",
+      "new_sha": "56d9bd43073a47f8e56e5a14f65b59afb3b868567e8f04ba1fd410ed78f1a812",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "43a86a62b014a278bcdd9b6510575e0abfa86c605a6d1fac65dc1ce1177cfb31",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "P2 task_refinement advances PLANNED to READY only after all009-012 accepted and all three unchanged original exit assertions directly matched to actual same-SHA PG cases. Existing CANON_CAS_IDEMPOTENCY logical check is verified within unchanged POSTGRES_ENV job, not a new job or waived requirement. CI activation/mode/allow_failure/checks retained.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "old_sha": "1da8fc8f45a29b534c2e0d7e1fa6bb1d21a6c23b6bf31a69e542ee1b444329be",
+      "new_sha": "56d9bd43073a47f8e56e5a14f65b59afb3b868567e8f04ba1fd410ed78f1a812",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "2e425e3db3bf5364e5dd4052d467167e347b610beb74102680e64b4d0eab47c5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "P2 task_refinement advances PLANNED to READY only after all009-012 accepted and all three unchanged original exit assertions directly matched to actual same-SHA PG cases. Existing CANON_CAS_IDEMPOTENCY logical check is verified within unchanged POSTGRES_ENV job, not a new job or waived requirement. CI activation/mode/allow_failure/checks retained.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "690e4f159bb7f25fa9e50344cc52f243ac1ea471439841a3bd8c1348ab0c4dcf",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original exact command-contract and persistence assertions retain service/009/010/011 and append012 only. No skip/filter/assertion removal. Actual final PG157 includes all previous131 plus26 new cases; UNIT1124 includes25 new pure contracts. All original service tests rerun unchanged.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "7299eb9252009fa92ddaea74458489dbe0d5f03777303e67c567ad435f57b245",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original exact command-contract and persistence assertions retain service/009/010/011 and append012 only. No skip/filter/assertion removal. Actual final PG157 includes all previous131 plus26 new cases; UNIT1124 includes25 new pure contracts. All original service tests rerun unchanged.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ca0b705817d563ac7e1ac28a332e92ec3c331a1297784f530145d7f50da4abb8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original exact command-contract and persistence assertions retain service/009/010/011 and append012 only. No skip/filter/assertion removal. Actual final PG157 includes all previous131 plus26 new cases; UNIT1124 includes25 new pure contracts. All original service tests rerun unchanged.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "063940537849934acee1a7bffd2bfdf7c07a288f676b1f320328119213fa88ae",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original exact command-contract and persistence assertions retain service/009/010/011 and append012 only. No skip/filter/assertion removal. Actual final PG157 includes all previous131 plus26 new cases; UNIT1124 includes25 new pure contracts. All original service tests rerun unchanged.",
+      "impact": "V2-012 and original P2/M2 engineering acceptance only; no new Canon writer, migration, paid call, security approval, remote setting or future-task/product closure.",
+      "reviewer": "Same implementing/verifying Codex operator with bounded readonly technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42774996789/416c451, attempt1: six mandatory physical jobs PASS,1525/0failed/error/skip. All six original artifact digests, receipts/command/log hashes and exact JUnit cases verified.37-file CODE_MANIFEST matches accepted source; current5/5 governance and full local security pass. Scope inventory correction is separately frozen/preserved and only registers an already executed logical P2 check.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "73291a51a2bab6affd3e470f143271706b4e594d0343023f2d9a8b75f5aa5a9d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/EXISTING_METHODS_UNCHANGED.json",
+          "sha256": "9901597de4334f2e3b608d6bed93fa871601cf2e31490666e7faecb9157f5b9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "eeb30651ea61277993c849d870b014249244e04c8d01790a624fbed500df8b49"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json",
+          "sha256": "699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/CANON_GATE_COVERAGE.json",
+          "sha256": "c2217e9d4369610fcf3ee04c508bfe5be62d6199ef895ecb84967a8bd4e691dc"
+        },
+        {
+          "ref": "plan/validation/execution/P2/closure-20261110/P2-decision.yaml",
+          "sha256": "686523f4240c8575637ea8fbd38b986764e612bb8066c4942273f0bff2d8146b"
+        }
+      ]
+    }
+  ]
+}

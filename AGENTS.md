@@ -9,7 +9,7 @@
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。
 - 原 `.claude/convergence/` 已归档至 `plan/archive/convergence/`，根历史副本已按用户要求清除；历史内容不恢复为现行规范。工具配置单独保留，不因整理资料而停用或删除配置。
-- 当前 V2-001～011 CLOSED，P0/P1及M0/M1 VERIFIED（单人Owner工程模式）；P1最新工程验收绑定f611ba3/run39128464248。V2-009已按3d12f20/run39256589017完成六门验收（1318项0skip）；V2-010已按16259d1/run42632232950完成工程验收；P2仍未完成。以 `plan/machine/` 的任务、阶段和证据状态为准。
+- 当前 V2-001～012 CLOSED，P0/P1/P2及M0/M1/M2 VERIFIED（单人Owner工程模式）；P1最新工程验收绑定f611ba3/run39128464248。V2-009已按3d12f20/run39256589017完成六门验收（1318项0skip）；V2-010已按16259d1/run42632232950完成工程验收；P2已按下方最新汇总完成工程验收。以 `plan/machine/` 的任务、阶段和证据状态为准。
 - 用户请求修改规划时，完成必要的资料和验证器修改；不要据此自动创建业务内核、部署、调用付费 Provider 或关闭工程任务。
 - 保留用户已有改动。任务身份、阶段、依赖及架构范围变更需符合用户授权，并留下明确变更理由与影响记录。
 - 同步正文、机器源、任务/验收场景与生成视图。使用 `python3 -B plan/scripts/validate_plan.py --write-views`、`--check`、`--self-test` 和 `python3 -B plan/scripts/test_governance.py`。
@@ -31,10 +31,12 @@
 - 当前 CI 运行在 GitHub Actions (.github/workflows/v2-004.yml)
 - GitHub Actions 验证使用 GitHub API 或直接查看 https://github.com/AY123/nocelgpt/actions
 
-V2-009：ADR-005/006及root-only持久化已完成[工程验收](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)，绑定3d12f20/run39256589017；P2未完成，V2-010已按16259d1/run42632232950完成工程验收。
+V2-009：ADR-005/006及root-only持久化已完成[工程验收](plan/validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)，绑定3d12f20/run39256589017；P2最新工程汇总见下文，V2-010已按16259d1/run42632232950完成工程验收。
 
 V2-010本地交付：[授权章节提交协议](plan/validation/execution/V2-010/LOCAL_IMPLEMENTATION.md)。隔离测试Permit与正式生产放行分离；未据此关闭V2-011/012或P2。
 
-V2-010已完成[工程验收](plan/validation/execution/V2-010/closure-20261109/ACCEPTANCE_SUMMARY.md)，绑定16259d1/run42632232950，1460项0skip；V2-012及P2仍未完成。
+V2-010已完成[工程验收](plan/validation/execution/V2-010/closure-20261109/ACCEPTANCE_SUMMARY.md)，绑定16259d1/run42632232950，1460项0skip；V2-012及P2结项见下方最新验收。
 
-V2-011已完成[工程验收](plan/validation/execution/V2-011/closure-20261110/ACCEPTANCE_SUMMARY.md)，绑定b716e7c/run42734728628，1474项0skip；现有提交服务复用不变，新增14项真实PG竞争/恢复控制。V2-012/P2及小说生成产品闭环仍未完成。
+V2-011已完成[工程验收](plan/validation/execution/V2-011/closure-20261110/ACCEPTANCE_SUMMARY.md)，绑定b716e7c/run42734728628，1474项0skip；现有提交服务复用不变，新增14项真实PG竞争/恢复控制。V2-012/P2结项见下方最新验收；小说生成产品闭环仍未完成。
+
+V2-012已完成[工程验收](plan/validation/execution/V2-012/closure-20261110/ACCEPTANCE_SUMMARY.md)，绑定416c451/run42774996789，1525项0skip；[P2/M2汇总](plan/validation/execution/P2/closure-20261110/ACCEPTANCE_SUMMARY.md)VERIFIED。当前仅有限事实Canon和隔离TEST Permit，不代表生产备份或小说生成/阅读质量已完成。下一任务V2-013，P3仍未完成。

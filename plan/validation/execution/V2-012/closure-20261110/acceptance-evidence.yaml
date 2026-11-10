@@ -1,0 +1,109 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-012
+revision: 416c4510f8d505a1701a2b6e0c1f8181b90418ec
+status: PASS
+producer: Codex same implementation/verifying operator with bounded technical cross-checks; not independent personnel
+  audit
+executed_at: '2026-11-10T07:52:32.952375+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11; repository1421585508/run42774996789/attempt1;
+  single operator
+input_evidence_refs:
+- validation/execution/V2-012/closure-20261110/code-evidence.yaml
+- validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+- validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+evidence_id: V2-012-acceptance-416c451
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-012-01
+- AT-V2-012-02
+- AT-V2-012-03
+artifacts:
+- ref: validation/execution/V2-012/closure-20261110/ACCEPTANCE_SUMMARY.md
+  sha256: 33191c1d34f8e0dfbaa0b2b2671a316f7d3c80441fe52c5519ea16e3941bca8d
+- ref: validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json
+  sha256: 285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea
+- ref: validation/execution/V2-012/closure-20261110/SCENARIO_RESULTS.json
+  sha256: 286cb95eafe41bce6e93289922e84edb8093ae627dded66cca8f2979b338d482
+- ref: validation/execution/V2-012/closure-20261110/SECURITY_RESULT.json
+  sha256: 31bfc934a84e8f955b9547d40ae86d1d3ea064378f61f841966c4f7e2ced4a23
+decision: ACCEPTED
+rationale: All original assertions plus full same-SHA six gates pass, bounded finite-state read-only reconstruction
+  only; no product, production Permit or external backup acceptance.
+finding_dispositions:
+- finding_id: AR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Historical raw bytes, dependency evidence and rebuilt snapshot identities verified.
+  remaining_work: Scene/Contract/Context indirect lineage remains at real compiler/consumer integration.
+  next_task: V2-017
+  owner_role: planning-maintainer
+  due_gate: G-P4
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+- finding_id: CA-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Finite WorldFact state at each accepted chapter and lawful UNKNOWN/retraction/no-change replay verified.
+  remaining_work: Full Belief/temporal-view/Retcon reprojection is beyond the finite accepted path; Context consumer
+    must preserve distinctions. This handoff is not an implicit Retcon implementation grant.
+  next_task: V2-018
+  owner_role: context-maintainer
+  due_gate: G-P5
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+- finding_id: CA-18
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Actual PostgreSQL schema, transactions/isolation and persisted old-version replay verified with all prior
+    tests.
+  remaining_work: P3 dual-anchor extension fixtures and later adopted retrieval components remain.
+  next_task: V2-015
+  owner_role: genre-maintainer
+  due_gate: G-P3
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+- finding_id: CA-19
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Damaged/disconnected read or projection fails clearly without claiming rollback of a committed Canon.
+  remaining_work: External backup/dump/truncation and isolation recovery still required before valuable persistent
+    use; staged028 then formal058 remain.
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P8
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+- finding_id: SUP-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Actual stored reducer/schema/encoding controls replay; unknown versions do not fall back.
+  remaining_work: Genre Pack and later model/policy changes require their own impact analysis/revalidation and certification.
+  next_task: V2-013
+  owner_role: genre-maintainer
+  due_gate: G-P3
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml
+- finding_id: DA-11
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Same-database immutable history and Artifact closure checked during read-only rebuild.
+  remaining_work: Database loss and external Artifact isolated restore not proven. Preserve operator prerequisite
+    before valuable data and028/036/058 responsibilities.
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P8
+  evidence_refs:
+  - validation/execution/V2-012/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-012/closure-20261110/ci-evidence.yaml

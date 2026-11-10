@@ -15,9 +15,9 @@ environment:
 implementer: Codex main with bounded delegated implementation/tests
 verifier: Same operator with bounded read-only technical cross-checks; not independent personnel review
 owner_role: canon-maintainer
-scope: 'Read-only immutable Canon event ancestry replay: root facts then finite chapter Deltas, compare
-  every historical snapshot digest and honor stored reducer/schema/encoding. Projection failure preserves
-  actual target receipt. No new writer, migrations/cache/service, model or production backup platform.'
+scope: 'Read-only immutable Canon event ancestry replay: root facts then finite chapter Deltas, compare every historical
+  snapshot digest and honor stored reducer/schema/encoding. Projection failure preserves actual target receipt.
+  No new writer, migrations/cache/service, model or production backup platform.'
 action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
@@ -85,15 +85,17 @@ stop_conditions:
 - Unsupported historical schema/reducer or inconsistent retained evidence
 review_notes:
 - Original three AT-V2-012 assertions unchanged; existing migrations and immutable evidence retained.
-- Only existing version1.0/ROOT-1/FACT_DELTA-1 supported; dispatch from retained versions, unknown versions
-  reject rather than latest fallback.
+- Only existing version1.0/ROOT-1/FACT_DELTA-1 supported; dispatch from retained versions, unknown versions reject
+  rather than latest fallback.
 - Rebuilt state comes from root/Delta, stored STATE_SNAPSHOT is a comparison oracle only. No fresh Permit/current
   authority required to read historical accepted commits.
-- Future valuable-data backup remains prerequisite; same-database replay is not disaster recovery or novel
-  generation.
+- Future valuable-data backup remains prerequisite; same-database replay is not disaster recovery or novel generation.
+- 'P2 closure path inventory correction: frozen scope-p2-closure adds only existing ci-gates registration path,
+  to bind actual PG atomic/CAS/dedupe/rebuild evidence. No check/activation/mode/allow_failure/workflow change.
+  Original scope retained; see SCOPE_RECONCILIATION.md.'
 handoff:
-  current_step: V2-012 CLOSED at416c4510f8d505a1701a2b6e0c1f8181b90418ec/run42774996789; six gates1525/0skip,
-    original assertions and P2/M2 exit coverage verified
+  current_step: V2-012 CLOSED at416c4510f8d505a1701a2b6e0c1f8181b90418ec/run42774996789; six gates1525/0skip, original
+    assertions and P2/M2 exit coverage verified
   completed_steps:
   - Read-only versioned event replay implemented, prior writer methods exact bytes/AST preserved
   - Current-SHA original six artifacts/digests/receipts/commands/JUnit verified
@@ -111,7 +113,5 @@ handoff:
       sha256: 699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996
     missing_artifact_reason: null
 change_review:
-  scope_revision: a6be8a2ce21105ebe13b5ad369e77ebc9d9da098
-  scope_ref: plan/validation/execution/V2-012/scope.json
-  review_revision: c8bddd33d44a87cc18f64f1097030bf1ce22b959
-  review_ref: plan/validation/execution/V2-012/implementation-review.json
+  scope_revision: e9427b1d0888c9350b8fc7ef0e5223551de2704e
+  scope_ref: plan/validation/execution/V2-012/scope-p2-closure.json
