@@ -63,6 +63,7 @@ allowed_paths:
 - README.md
 - AGENTS.md
 - plan/README.md
+- plan/machine/ci-gates.yaml
 required_decisions:
 - ADR-006
 claims: []
@@ -91,21 +92,23 @@ review_notes:
 - Future valuable-data backup remains prerequisite; same-database replay is not disaster recovery or novel
   generation.
 handoff:
-  current_step: Local read-only event reconstruction and all1525 engineering cases pass; final exact-SHA
-    CI pending
+  current_step: V2-012 CLOSED at416c4510f8d505a1701a2b6e0c1f8181b90418ec/run42774996789; six gates1525/0skip,
+    original assertions and P2/M2 exit coverage verified
   completed_steps:
-  - Existing Canon writer and immutable evidence retained
-  - New25 pure and26 PostgreSQL controls; full local1525/0skip
-  - Static, architecture, five governance checks and exact security consumption pass
+  - Read-only versioned event replay implemented, prior writer methods exact bytes/AST preserved
+  - Current-SHA original six artifacts/digests/receipts/commands/JUnit verified
+  - All009-012 accepted; original three phase exit assertions have actual same-SHA PG tests
   pending_items:
-  - One key same-SHA remote acceptance
-  - P2/M2 only if all original exit criteria proven; product/production recovery remain
-  next_action: IMPLEMENT
+  - P3 and product generation/readability remain
+  - Before valuable persistent use, external isolated backup/restore remains prerequisite
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-012/LOCAL_RESULTS.json
-      sha256: 49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437
+    - ref: validation/execution/V2-012/closure-20261110/REMOTE_VERIFICATION.json
+      sha256: 285237d38e93260e5908fbb98a1823a7fdc93f7bf08831f8fe59d9500ce938ea
+    - ref: validation/execution/P2/closure-20261110/CRITERIA_COVERAGE.json
+      sha256: 699994ce64901b9788ce1b9438845a725c3a896e0ff2b07be7acdcc51effc996
     missing_artifact_reason: null
 change_review:
   scope_revision: a6be8a2ce21105ebe13b5ad369e77ebc9d9da098
