@@ -1,0 +1,15 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-011
+revision: b716e7c2d416fdd5112b8d2e0ed6cafd91edd193
+status: PASS
+producer: Codex same implementing/verifying operator; bounded technical cross-checks, no independent personnel claim
+executed_at: '2026-11-10T02:14:10.876958+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11; repository1421585508/run42734728628/attempt1;
+  single-operator profile
+input_evidence_refs: []
+evidence_id: V2-011-code-b716e7c
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json
+  sha256: 41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6

@@ -1,0 +1,125 @@
+{
+  "total_count": 6,
+  "artifacts": [
+    {
+      "id": 13726776339,
+      "node_id": "MDg6QXJ0aWZhY3QxMzcyNjc3NjMzOQ==",
+      "name": "gate-schema_contract-42734728628-1",
+      "size_in_bytes": 30183,
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726776339",
+      "archive_download_url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726776339/zip",
+      "expired": false,
+      "digest": "sha256:c12e0a4add1121b74aa6533d4c30230f6bc325b7e7f09edc9e65dd71d1474b56",
+      "created_at": "2026-11-10T01:19:57Z",
+      "updated_at": "2026-11-10T01:19:57Z",
+      "expires_at": "2026-11-24T01:19:56Z",
+      "workflow_run": {
+        "id": 42734728628,
+        "repository_id": 1421585508,
+        "head_repository_id": 1421585508,
+        "head_branch": "main",
+        "head_sha": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193"
+      }
+    },
+    {
+      "id": 13726326864,
+      "node_id": "MDg6QXJ0aWZhY3QxMzcyNjMyNjg2NA==",
+      "name": "gate-secret_dependency-42734728628-1",
+      "size_in_bytes": 21449,
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726326864",
+      "archive_download_url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726326864/zip",
+      "expired": false,
+      "digest": "sha256:aca662696bd8c8d2d047aa58c0d9c662e0610b80399e9063225e4596e8018a46",
+      "created_at": "2026-11-10T01:18:28Z",
+      "updated_at": "2026-11-10T01:18:28Z",
+      "expires_at": "2026-11-24T01:18:27Z",
+      "workflow_run": {
+        "id": 42734728628,
+        "repository_id": 1421585508,
+        "head_repository_id": 1421585508,
+        "head_branch": "main",
+        "head_sha": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193"
+      }
+    },
+    {
+      "id": 13726298323,
+      "node_id": "MDg6QXJ0aWZhY3QxMzcyNjI5ODMyMw==",
+      "name": "gate-unit-42734728628-1",
+      "size_in_bytes": 18370,
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726298323",
+      "archive_download_url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726298323/zip",
+      "expired": false,
+      "digest": "sha256:4ff2068300cea0a512938615318d5580316d07a7a03fd6f8c4b5582cefd0dd93",
+      "created_at": "2026-11-10T01:22:07Z",
+      "updated_at": "2026-11-10T01:22:07Z",
+      "expires_at": "2026-11-24T01:22:06Z",
+      "workflow_run": {
+        "id": 42734728628,
+        "repository_id": 1421585508,
+        "head_repository_id": 1421585508,
+        "head_branch": "main",
+        "head_sha": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193"
+      }
+    },
+    {
+      "id": 13726257833,
+      "node_id": "MDg6QXJ0aWZhY3QxMzcyNjI1NzgzMw==",
+      "name": "gate-static-42734728628-1",
+      "size_in_bytes": 2857,
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726257833",
+      "archive_download_url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726257833/zip",
+      "expired": false,
+      "digest": "sha256:64de7827cce323411d6fb0bcdf03d409a135c18ed46e1bc04efe926ced110ba2",
+      "created_at": "2026-11-10T01:18:06Z",
+      "updated_at": "2026-11-10T01:18:06Z",
+      "expires_at": "2026-11-24T01:18:05Z",
+      "workflow_run": {
+        "id": 42734728628,
+        "repository_id": 1421585508,
+        "head_repository_id": 1421585508,
+        "head_branch": "main",
+        "head_sha": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193"
+      }
+    },
+    {
+      "id": 13726183011,
+      "node_id": "MDg6QXJ0aWZhY3QxMzcyNjE4MzAxMQ==",
+      "name": "gate-arch_fitness-42734728628-1",
+      "size_in_bytes": 179249,
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726183011",
+      "archive_download_url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13726183011/zip",
+      "expired": false,
+      "digest": "sha256:8afefd01b7fbb225bf17ea0e0b851522fb567345f32abf8a63fd29b6c28c2556",
+      "created_at": "2026-11-10T01:18:24Z",
+      "updated_at": "2026-11-10T01:18:24Z",
+      "expires_at": "2026-11-24T01:18:22Z",
+      "workflow_run": {
+        "id": 42734728628,
+        "repository_id": 1421585508,
+        "head_repository_id": 1421585508,
+        "head_branch": "main",
+        "head_sha": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193"
+      }
+    },
+    {
+      "id": 13725708676,
+      "node_id": "MDg6QXJ0aWZhY3QxMzcyNTcwODY3Ng==",
+      "name": "gate-postgres_env-42734728628-1",
+      "size_in_bytes": 4394,
+      "url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13725708676",
+      "archive_download_url": "https://api.github.com/repos/AY123/nocelgpt/actions/artifacts/13725708676/zip",
+      "expired": false,
+      "digest": "sha256:55994700c5263270d6cc612128f5f8045948eafa623a4cbf0b83fda845cf1597",
+      "created_at": "2026-11-10T01:18:33Z",
+      "updated_at": "2026-11-10T01:18:33Z",
+      "expires_at": "2026-11-24T01:18:32Z",
+      "workflow_run": {
+        "id": 42734728628,
+        "repository_id": 1421585508,
+        "head_repository_id": 1421585508,
+        "head_branch": "main",
+        "head_sha": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193"
+      }
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-011
+revision: b716e7c2d416fdd5112b8d2e0ed6cafd91edd193
+status: PASS
+producer: Codex same implementing/verifying operator; bounded technical cross-checks, no independent personnel claim
+executed_at: '2026-11-10T02:14:10.876958+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11; repository1421585508/run42734728628/attempt1;
+  single-operator profile
+input_evidence_refs:
+- validation/execution/V2-011/closure-20261110/code-evidence.yaml
+- validation/execution/V2-011/closure-20261110/tests-evidence.yaml
+- validation/execution/V2-011/closure-20261110/ci-evidence.yaml
+- validation/execution/V2-009/closure-20261019/acceptance-evidence.yaml
+- validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml
+evidence_id: V2-011-acceptance-b716e7c
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-011-01
+- AT-V2-011-02
+- AT-V2-011-03
+artifacts:
+- ref: validation/execution/V2-011/closure-20261110/ACCEPTANCE_SUMMARY.md
+  sha256: 5c9feed8389b6d1f78a04978027d252af905760ffe8f5de6c8aee3359854746d
+- ref: validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json
+  sha256: 18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e
+- ref: validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json
+  sha256: aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a
+- ref: validation/execution/V2-011/closure-20261110/SECURITY_RESULT.json
+  sha256: 7c5e5cdbc4b531f40df95a7441263e4109af037cdfd0c3853ed321d7fc2f6a25
+decision: ACCEPTED
+rationale: All three original assertions and same current-SHA six mandatory gates actually pass; safe chapter persistence
+  only. V2-012/P2/product loop not accepted.
+finding_dispositions:
+- finding_id: AR-09
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: Existing accepted009/010 short transactions contain no model wait; current actual independent-backend
+    competition, changed-payload rejection and real commit-ack loss recovery complete this finding scope.
+  evidence_refs:
+  - validation/execution/V2-011/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/ci-evidence.yaml
+  - validation/execution/V2-009/closure-20261019/acceptance-evidence.yaml
+  - validation/execution/V2-010/closure-20261109/acceptance-evidence.yaml
+- finding_id: AR-13
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Receipt replay rejects wrong actor/project/branch/parent through actual service.
+  remaining_work: Global/project Context and cache reuse isolation remain; no Context/cache product delivered.
+  next_task: V2-018
+  owner_role: context-maintainer
+  due_gate: G-P5
+  evidence_refs:
+  - validation/execution/V2-011/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/ci-evidence.yaml
+- finding_id: CA-04
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Real concurrent writes, duplicate delivery, committed response loss and transaction failure retry preserve
+    at-most-once Canon acceptance.
+  remaining_work: Full Workflow checkpoint/Worker restart, late results after cancellation and Provider unknown
+    execution/fees remain, including later recovery drills028.
+  next_task: V2-027
+  owner_role: workflow-maintainer
+  due_gate: G-P6
+  evidence_refs:
+  - validation/execution/V2-011/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/ci-evidence.yaml
+- finding_id: RR-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: Exact stable chapter request identity survives independent connections, replay conflicts and DBAPI acknowledgement
+    loss without a changing attempt ID.
+  remaining_work: Provider request/attempt and Workflow checkpoint identity remain019/027; Canon receipt alone does
+    not prove provider execution or billing.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+  evidence_refs:
+  - validation/execution/V2-011/closure-20261110/code-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/tests-evidence.yaml
+  - validation/execution/V2-011/closure-20261110/ci-evidence.yaml

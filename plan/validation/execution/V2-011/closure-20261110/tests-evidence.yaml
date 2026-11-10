@@ -1,0 +1,44 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-011
+revision: b716e7c2d416fdd5112b8d2e0ed6cafd91edd193
+status: PASS
+producer: Codex same implementing/verifying operator; bounded technical cross-checks, no independent personnel claim
+executed_at: '2026-11-10T02:14:10.876958+00:00'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11; repository1421585508/run42734728628/attempt1;
+  single-operator profile
+input_evidence_refs:
+- validation/execution/V2-011/closure-20261110/code-evidence.yaml
+- validation/execution/V2-011/closure-20261110/ci-evidence.yaml
+evidence_id: V2-011-tests-b716e7c
+evidence_type: TEST_RESULT
+check_ids:
+- AT-V2-011-01
+- AT-V2-011-02
+- AT-V2-011-03
+- STATIC
+- SCHEMA_CONTRACT
+- UNIT
+- ARCH_FITNESS
+- POSTGRES_ENV
+- SECRET_DEPENDENCY
+artifacts:
+- ref: validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json
+  sha256: 18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e
+- ref: validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json
+  sha256: aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a
+- ref: validation/execution/V2-011/closure-20261110/gate-arch_fitness-42734728628-1.zip
+  sha256: 8afefd01b7fbb225bf17ea0e0b851522fb567345f32abf8a63fd29b6c28c2556
+- ref: validation/execution/V2-011/closure-20261110/gate-postgres_env-42734728628-1.zip
+  sha256: 55994700c5263270d6cc612128f5f8045948eafa623a4cbf0b83fda845cf1597
+- ref: validation/execution/V2-011/closure-20261110/gate-schema_contract-42734728628-1.zip
+  sha256: c12e0a4add1121b74aa6533d4c30230f6bc325b7e7f09edc9e65dd71d1474b56
+- ref: validation/execution/V2-011/closure-20261110/gate-secret_dependency-42734728628-1.zip
+  sha256: aca662696bd8c8d2d047aa58c0d9c662e0610b80399e9063225e4596e8018a46
+- ref: validation/execution/V2-011/closure-20261110/gate-static-42734728628-1.zip
+  sha256: 64de7827cce323411d6fb0bcdf03d409a135c18ed46e1bc04efe926ced110ba2
+- ref: validation/execution/V2-011/closure-20261110/gate-unit-42734728628-1.zip
+  sha256: 4ff2068300cea0a512938615318d5580316d07a7a03fd6f8c4b5582cefd0dd93
+command: Actual six mandatory run_gate commands; original receipts, logs, artifact hashes and JUnit independently
+  read by same operator
+exit_code: 0

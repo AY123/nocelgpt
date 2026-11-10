@@ -1,0 +1,298 @@
+{
+  "task_id": "V2-011",
+  "baseline_pin": {
+    "revision": "d005283c728d21b78f263774e703a8afc7222856",
+    "ref": "plan/validation/execution/V2-011/scope.json",
+    "sha256": "37ba654b947fe3fbc8e0eb084ff2e189f3ea5624fea0e28cc76ae3f69388eb6c"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "626624a3f2a29149bff0239770a8567777091f9de3d25711ce55f75265a9a90f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-011 task readiness and artifact filename correction reuse the existing Canon repository instead of manufacturing a new module. Original task identity, phase, dependencies and three required assertions unchanged. CLOSED links only the new exact-SHA all-six-PASS evidence; V2-012/P2/product not accepted.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "89afc73dc629ad5190c8dae6102da433c1ee1fa87d25bae678a752c128a12682",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-011 task readiness and artifact filename correction reuse the existing Canon repository instead of manufacturing a new module. Original task identity, phase, dependencies and three required assertions unchanged. CLOSED links only the new exact-SHA all-six-PASS evidence; V2-012/P2/product not accepted.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "63f5b5d574cab37d44320c174ceca32a5fa098fab2047a1b285de76a8e7573f9",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-011 task readiness and artifact filename correction reuse the existing Canon repository instead of manufacturing a new module. Original task identity, phase, dependencies and three required assertions unchanged. CLOSED links only the new exact-SHA all-six-PASS evidence; V2-012/P2/product not accepted.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "287c7b408f4c5c190d36baf3c0d95f26b739bdb500c71bd0e3b56abca9e90cc5",
+      "new_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "97d78ef9daac7f582a23e64008ba1788c772325be6b060abd265b0c8c85e058b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-011 task readiness and artifact filename correction reuse the existing Canon repository instead of manufacturing a new module. Original task identity, phase, dependencies and three required assertions unchanged. CLOSED links only the new exact-SHA all-six-PASS evidence; V2-012/P2/product not accepted.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "ce4c2757445f1af5744df0fedff584babaee24d7f400a0095505d2701f91b778",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original command-contract and persistence test retain all previous service/009/010 arguments and assertions; add011 without filtering or skipped cases. No unchanged-byte ambiguity: actual accepted final run1474/0skip preserves1099unit+244arch+117oldPG and adds14PG. Driver/workflow and complete source identities verified.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "9157614a79b90bf5fba585628da0d93879d5bb1c4c503a4b313421f0d3d74655",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original command-contract and persistence test retain all previous service/009/010 arguments and assertions; add011 without filtering or skipped cases. No unchanged-byte ambiguity: actual accepted final run1474/0skip preserves1099unit+244arch+117oldPG and adds14PG. Driver/workflow and complete source identities verified.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "53775ef43352390588cec2e62d7ce4f6ee8e651c9fdd17882a613fbbf229d4ac",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original command-contract and persistence test retain all previous service/009/010 arguments and assertions; add011 without filtering or skipped cases. No unchanged-byte ambiguity: actual accepted final run1474/0skip preserves1099unit+244arch+117oldPG and adds14PG. Driver/workflow and complete source identities verified.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "2236337157273599de183b59427045309681409394bc403e671a8cc1ebdf9553",
+      "new_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "f09c8c53fc43caaa5d95306253a693857acbaa93e8498eef1d7801c3cc29880a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Original command-contract and persistence test retain all previous service/009/010 arguments and assertions; add011 without filtering or skipped cases. No unchanged-byte ambiguity: actual accepted final run1474/0skip preserves1099unit+244arch+117oldPG and adds14PG. Driver/workflow and complete source identities verified.",
+      "impact": "V2-011 acceptance and evidence metadata only. No source/schema/dependency/security approval or future-task change.",
+      "reviewer": "Same implementing/verifying operator with bounded read-only technical cross-checks; no independent personnel claim",
+      "replacement_validation": "Actual GitHub run42734728628/b716e7c, one attempt: six mandatory gates PASS,1474 tests/0failed/errors/skip; all six original artifacts, digest, receipt/commands and exact fourteen-case scenario map verified. CODE_MANIFEST binds current code bytes to tested SHA.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-011/authorization.txt",
+        "sha256": "180223a723875f22bbab3f6f58b07872592993baecb296eec15b2a7089e04c74"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json",
+          "sha256": "18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json",
+          "sha256": "aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/CODE_MANIFEST.json",
+          "sha256": "41fa7ce72fb177c02c60ded565dc8a3804598011ff317b64d44aefb37305e7b6"
+        },
+        {
+          "ref": "plan/validation/execution/V2-011/closure-20261110/acceptance-evidence.yaml",
+          "sha256": "ed46b9d18c0a047d6d5fe8e6f7546a8b2e796080a30cd6bd034aa50250d8d6c5"
+        }
+      ]
+    }
+  ]
+}

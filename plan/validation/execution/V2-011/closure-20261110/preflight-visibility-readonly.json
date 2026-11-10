@@ -1,0 +1,27 @@
+{
+  "observed_repository": "AY123/nocelgpt",
+  "repository_id": 1421585508,
+  "visibility": "public",
+  "private": false,
+  "initial_preflight_mutations": 0,
+  "pipeline_created": 0,
+  "decision": "Retain exact repository identity; visibility is not a normative task or mandatory gate requirement. No repository setting change. Temporary inherited V2-010 helper private-only assumption corrected before any POST.",
+  "initial_readonly_journal": [
+    {
+      "method": "GET",
+      "path": "/user",
+      "status": 200,
+      "request_id": "853C:40777:4603CA6:E048651:6AF26EF5",
+      "body_sha256": "d130406afc86fb4f58223d021cd503fe492c76f233d1990434a93adba6a58a1e",
+      "at": "2026-11-10T01:10:14.222658+00:00"
+    },
+    {
+      "method": "GET",
+      "path": "/repos/AY123/nocelgpt",
+      "status": 200,
+      "request_id": "8540:40777:460421D:E0497D5:6AF26EF6",
+      "body_sha256": "d1221e9b9309b7ae20bf97cf9831abd4831504db32b703fbb9e523751c06a0dd",
+      "at": "2026-11-10T01:10:15.028877+00:00"
+    }
+  ]
+}

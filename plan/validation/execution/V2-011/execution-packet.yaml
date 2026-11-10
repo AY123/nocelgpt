@@ -15,9 +15,9 @@ environment:
 implementer: Codex primary with bounded delegated contracts and acceptance tests
 verifier: Same Codex operator; delegated technical cross-checks are not independent personnel review
 owner_role: canon-maintainer
-scope: 'Safe consecutive chapter retries: original receipt for identical payload, conflict for changed
-  payload, one winner for competing parents, recovery after response loss. Reuse sole Canon service and
-  existing row-lock/CAS; no production generation or projection rebuild.'
+scope: 'Safe consecutive chapter retries: original receipt for identical payload, conflict for changed payload,
+  one winner for competing parents, recovery after response loss. Reuse sole Canon service and existing row-lock/CAS;
+  no production generation or projection rebuild.'
 action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
@@ -63,8 +63,8 @@ estimate:
   range: null
   unit: null
   assumptions:
-  - Reuse the locked SQLAlchemy/psycopg runtime and finite Delta; incremental SQL migration, no new framework
-    or dependency.
+  - Reuse the locked SQLAlchemy/psycopg runtime and finite Delta; incremental SQL migration, no new framework or
+    dependency.
   confidence: NOT_ESTIMATED
 budget:
   paid_calls_allowed: false
@@ -78,30 +78,32 @@ stop_conditions:
 - Unrelated user changes would be overwritten
 - Unresolved authority/Permit design would permit caller self-approval
 review_notes:
-- Original AT-V2-011 assertions unchanged. Existing V2-010 receipt recovery and branch row-lock/CAS are
-  reused, not reimplemented.
+- Original AT-V2-011 assertions unchanged. Existing V2-010 receipt recovery and branch row-lock/CAS are reused,
+  not reimplemented.
 - Test disposable PostgreSQL only. Concurrent tests use distinct actual backend sessions and bounded synchronization;
   transport response-loss injection occurs after actual database commit.
-- 'Product purpose: prevent duplicated chapters and continuation from wrong parent. This does not establish
-  novel generation or reading quality.'
-- 'Artifact path corrected from new idempotency.py to existing repository.py: replay/CAS already implemented;
-  avoid duplicated framework, preserve all acceptance assertions.'
+- 'Product purpose: prevent duplicated chapters and continuation from wrong parent. This does not establish novel
+  generation or reading quality.'
+- 'Artifact path corrected from new idempotency.py to existing repository.py: replay/CAS already implemented; avoid
+  duplicated framework, preserve all acceptance assertions.'
 handoff:
-  current_step: Local implementation and real PostgreSQL validation complete; exact candidate acceptance
-    pending
+  current_step: V2-011 CLOSED atb716e7c2d416fdd5112b8d2e0ed6cafd91edd193/run42734728628; all three assertions and
+    six mandatory gates1474/0skip
   completed_steps:
-  - V2-010 dependency CLOSED; ADR-006 accepted; clean main opening verified
-  - 14 new real PostgreSQL controls, original117 PG and244 architecture cases pass
-  - Static/governance/security pass; original service reused, no business rewrite
+  - Reused existing sole Canon service without business rewrite
+  - 14 actual PostgreSQL race/replay/recovery tests plus all old regressions pass
+  - One exact-SHA remote run, all six original artifacts/digests/receipt commands/JUnit verified
   pending_items:
-  - Final exact change/action entry check
-  - One key same-SHA remote acceptance; V2-012/P2/product loop not completed
-  next_action: IMPLEMENT
+  - V2-012/P2 not accepted
+  - Production issuer/model/Workflow/real reading quality and valuable-data backup remain
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-011/LOCAL_RESULTS.json
-      sha256: 0471aaebaee71cfe7893cc7c375e05c42fdd4a9801623dba40afa391c7a5ac7f
+    - ref: validation/execution/V2-011/closure-20261110/REMOTE_VERIFICATION.json
+      sha256: 18ef94ba03e9db31e68715b71fbeda51c5e7d7a381793392db47a837505d6e9e
+    - ref: validation/execution/V2-011/closure-20261110/SCENARIO_RESULTS.json
+      sha256: aa3aaed199cb982181f73ea9c5a6332410baaf9db59a8445c47d21df5c7bc63a
     missing_artifact_reason: null
 change_review:
   scope_revision: d005283c728d21b78f263774e703a8afc7222856

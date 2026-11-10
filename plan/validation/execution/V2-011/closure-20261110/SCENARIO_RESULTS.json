@@ -1,0 +1,37 @@
+{
+  "revision": "b716e7c2d416fdd5112b8d2e0ed6cafd91edd193",
+  "run_id": 42734728628,
+  "status": "PASS",
+  "source": "Original final current-SHA PostgreSQL JUnit; every named case actually executed and passed",
+  "scenario_tests": {
+    "AT-V2-011-01": {
+      "status": "PASS",
+      "tests": [
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[same-payload]",
+        "test_rolled_back_commit_can_retry_same_key_without_partial_story",
+        "test_receipt_recovery_does_not_cross_actor_scope_or_frozen_parent[actor]",
+        "test_receipt_recovery_does_not_cross_actor_scope_or_frozen_parent[project]",
+        "test_receipt_recovery_does_not_cross_actor_scope_or_frozen_parent[branch]",
+        "test_receipt_recovery_does_not_cross_actor_scope_or_frozen_parent[parent]"
+      ]
+    },
+    "AT-V2-011-02": {
+      "status": "PASS",
+      "tests": [
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[changed-payload]",
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[other-key]",
+        "test_committed_request_rejects_different_payload_without_touching_history[prose]",
+        "test_committed_request_rejects_different_payload_without_touching_history[delta]",
+        "test_committed_request_rejects_different_payload_without_touching_history[version]",
+        "test_committed_request_rejects_different_payload_without_touching_history[dependency-bytes]",
+        "test_committed_request_rejects_different_payload_without_touching_history[dependency-version]"
+      ]
+    },
+    "AT-V2-011-03": {
+      "status": "PASS",
+      "tests": [
+        "test_committed_but_lost_dbapi_ack_recovers_on_new_connection_and_continues"
+      ]
+    }
+  }
+}

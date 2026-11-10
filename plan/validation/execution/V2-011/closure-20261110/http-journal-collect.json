@@ -1,0 +1,42 @@
+[
+  {
+    "method": "GET",
+    "path": "/user",
+    "status": 200,
+    "request_id": "820A:1239CA:4D7DC21:FF9957D:6AF27DE3",
+    "body_sha256": "d256b0c6a2f613d91f7dcafa9fc6d8f3497c06dd20666794e948b1bbe41c0d13",
+    "at": "2026-11-10T02:13:56.015825+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt",
+    "status": 200,
+    "request_id": "821E:32D02B:46F52D8:EAF4FD3:6AF27DE4",
+    "body_sha256": "9bb0617ac6ea06eb7933566c0e8bd7af2a48ca5929f2ba16ca4bf560b434ade5",
+    "at": "2026-11-10T02:13:56.816299+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/actions/runs/42734728628",
+    "status": 200,
+    "request_id": "8228:1E6CEB:48DC09B:ED721FE:6AF27DE5",
+    "body_sha256": "2b8881137f11d3d3272481a4454de4fb321361aaafb8b91aca604985945e930e",
+    "at": "2026-11-10T02:13:57.761573+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/actions/runs/42734728628/jobs?per_page=100",
+    "status": 200,
+    "request_id": "8242:22C023:4D1A7C3:F948F4E:6AF27DE6",
+    "body_sha256": "6a59cbb5db59b7a233ab790776d389cde001ee7fdb24d503a98b0a0e23d578a8",
+    "at": "2026-11-10T02:13:58.830142+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/actions/runs/42734728628/artifacts?per_page=100",
+    "status": 200,
+    "request_id": "8244:2BE80A:451C2A3:E0F3F1D:6AF27DE7",
+    "body_sha256": "8dd58916d7d567919df7f9ed649d0e9cf27506f5ff73cf020e2506284a48cb4a",
+    "at": "2026-11-10T02:13:59.601114+00:00"
+  }
+]
