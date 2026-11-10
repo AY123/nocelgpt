@@ -1,0 +1,58 @@
+{
+  "task_id": "V2-012",
+  "baseline_pin": {
+    "revision": "a6be8a2ce21105ebe13b5ad369e77ebc9d9da098",
+    "ref": "plan/validation/execution/V2-012/scope.json",
+    "sha256": "cb723debe1cf0ff3a6fc9577ab84b9412460f84fa50290b7c2fcd61c36f92bb4"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "new_sha": "1e470d743bfd6a9912cd7008d1db1c5f8ef7baa8387145e150da021d59476579",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "b7bdf60a2dfcaa32daf8b1a2861303ed16d45e7567a5ff79d16bf50691090044",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-012 authorized READY_TO_START and actual task context; original task identity, phase, dependencies and all three acceptance assertions preserved. No future task or product completion claim.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Existing accepted009-011 and ADR-005/006 consumed; inspected immutable root/chapter loading and finite reducer. New actual PostgreSQL acceptance still required.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "new_sha": "1e470d743bfd6a9912cd7008d1db1c5f8ef7baa8387145e150da021d59476579",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ff233e1bef5609fd27b00c5e91895e9f74cd6a9c48f68fa262cb60673978b68a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-012 authorized READY_TO_START and actual task context; original task identity, phase, dependencies and all three acceptance assertions preserved. No future task or product completion claim.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Existing accepted009-011 and ADR-005/006 consumed; inspected immutable root/chapter loading and finite reducer. New actual PostgreSQL acceptance still required.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        }
+      ]
+    }
+  ]
+}

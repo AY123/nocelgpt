@@ -18,7 +18,7 @@ owner_role: canon-maintainer
 scope: 'Read-only immutable Canon event ancestry replay: root facts then finite chapter Deltas, compare
   every historical snapshot digest and honor stored reducer/schema/encoding. Projection failure preserves
   actual target receipt. No new writer, migrations/cache/service, model or production backup platform.'
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-012/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -99,9 +99,11 @@ handoff:
   - Freeze scope/review before source edits
   - Implement read-only event replay and real PostgreSQL controls
   - One key remote acceptance after local checks
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: a6be8a2ce21105ebe13b5ad369e77ebc9d9da098
+  scope_ref: plan/validation/execution/V2-012/scope.json
