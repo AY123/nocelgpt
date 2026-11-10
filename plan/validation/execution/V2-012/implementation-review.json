@@ -1,0 +1,178 @@
+{
+  "task_id": "V2-012",
+  "baseline_pin": {
+    "revision": "a6be8a2ce21105ebe13b5ad369e77ebc9d9da098",
+    "ref": "plan/validation/execution/V2-012/scope.json",
+    "sha256": "cb723debe1cf0ff3a6fc9577ab84b9412460f84fa50290b7c2fcd61c36f92bb4"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "new_sha": "1e470d743bfd6a9912cd7008d1db1c5f8ef7baa8387145e150da021d59476579",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "b7bdf60a2dfcaa32daf8b1a2861303ed16d45e7567a5ff79d16bf50691090044",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-012 authorized READY_TO_START and actual task context; original task identity, phase, dependencies and all three acceptance assertions preserved. No future task or product completion claim.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Actual local results and original artifact hashes in LOCAL_RESULTS; all original tests retained. Remote same-SHA acceptance still pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/LOCAL_RESULTS.json",
+          "sha256": "49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "88bbc9bf1932baf0b7753ce27c8fd191a83d5a7d7fe15d050d03ad196314341a",
+      "new_sha": "1e470d743bfd6a9912cd7008d1db1c5f8ef7baa8387145e150da021d59476579",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ff233e1bef5609fd27b00c5e91895e9f74cd6a9c48f68fa262cb60673978b68a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-012 authorized READY_TO_START and actual task context; original task identity, phase, dependencies and all three acceptance assertions preserved. No future task or product completion claim.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Actual local results and original artifact hashes in LOCAL_RESULTS; all original tests retained. Remote same-SHA acceptance still pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/LOCAL_RESULTS.json",
+          "sha256": "49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "690e4f159bb7f25fa9e50344cc52f243ac1ea471439841a3bd8c1348ab0c4dcf",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Append012 to the existing exact PostgreSQL command and presence assertions; retain service/009/010/011, no test exclusion, weakened assertion or optional gate.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Actual local results and original artifact hashes in LOCAL_RESULTS; all original tests retained. Remote same-SHA acceptance still pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/LOCAL_RESULTS.json",
+          "sha256": "49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "7299eb9252009fa92ddaea74458489dbe0d5f03777303e67c567ad435f57b245",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Append012 to the existing exact PostgreSQL command and presence assertions; retain service/009/010/011, no test exclusion, weakened assertion or optional gate.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Actual local results and original artifact hashes in LOCAL_RESULTS; all original tests retained. Remote same-SHA acceptance still pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/LOCAL_RESULTS.json",
+          "sha256": "49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "ca0b705817d563ac7e1ac28a332e92ec3c331a1297784f530145d7f50da4abb8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Append012 to the existing exact PostgreSQL command and presence assertions; retain service/009/010/011, no test exclusion, weakened assertion or optional gate.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Actual local results and original artifact hashes in LOCAL_RESULTS; all original tests retained. Remote same-SHA acceptance still pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/LOCAL_RESULTS.json",
+          "sha256": "49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "85f6a189324af7138e2cda1b461a3385938862b5490d5ab51e9a370d88e52ca1",
+      "new_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "063940537849934acee1a7bffd2bfdf7c07a288f676b1f320328119213fa88ae",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Append012 to the existing exact PostgreSQL command and presence assertions; retain service/009/010/011, no test exclusion, weakened assertion or optional gate.",
+      "impact": "Current V2-012 only; finite versioned read/replay, no production data/model/secret approval or gate downgrade.",
+      "reviewer": "Same Codex operator with bounded technical cross-checks; not independent personnel review",
+      "replacement_validation": "Actual local results and original artifact hashes in LOCAL_RESULTS; all original tests retained. Remote same-SHA acceptance still pending.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-012/authorization.txt",
+        "sha256": "b29fbc1f361f21d51c6764ea676bc74276ecfbdad8b9f0ab6ba24062ae2b22b1"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-012/IMPLEMENTATION_DESIGN.md",
+          "sha256": "96f66546d2260de7dd25e98c2c9c5b1b06ffe7da29f59bcc7abfcd8404dbf0a5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-012/LOCAL_RESULTS.json",
+          "sha256": "49b3e066e2eed4abd3dbbf20363361659ac3899b6aace27833e30366c7618437"
+        }
+      ]
+    }
+  ]
+}

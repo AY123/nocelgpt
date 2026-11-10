@@ -8,6 +8,7 @@ Provisioning/revocation and the separate issuer belong to trusted composition.
 
 from sqlalchemy import Engine
 
+from anovel.canon import projection
 from anovel.canon.chapter import ChapterCandidate, StoredChapter
 from anovel.canon.models import CommitReceipt, ExecutionTicket, RootSeed, StoredRoot
 from anovel.canon.repository import Repository, _test_database
@@ -91,6 +92,21 @@ class CanonCommitService:
 
     def load_baseline(self, project: str, branch: str, commit_id: str) -> FactBaseline:
         return self._repository.load_baseline(project, branch, commit_id)
+
+    def rebuild_snapshot(
+        self, project: str, branch: str, commit_id: str
+    ) -> projection.RebuiltSnapshot:
+        """Rebuild accepted history read-only; failure cannot roll back Canon."""
+        history = self._repository.load_history(project, branch, commit_id)
+        receipt = history[-1].content.receipt
+        try:
+            return projection.rebuild(history)
+        except Exception as error:
+            # Source verification happened above. An invalid/missing history
+            # never receives a fabricated successful target receipt here.
+            raise projection.ProjectionError(
+                "snapshot projection failed; original Canon remains committed", receipt
+            ) from error
 
     def review_submission(
         self, ticket: ExecutionTicket, candidate: ChapterCandidate

@@ -1,0 +1,55 @@
+{
+  "scope": "Local worktree engineering verification only; not remote CI or final immutable revision acceptance",
+  "verified_at": "2026-11-10T07:11:57.593880+00:00",
+  "counts": {
+    "unit": 1124,
+    "arch": 244,
+    "postgres": 157
+  },
+  "v2012_pure_contract": 25,
+  "v2012_postgres": 26,
+  "test_total": 1525,
+  "failed": 0,
+  "errors": 0,
+  "skipped": 0,
+  "static": "PASS",
+  "governance": "5/5 PASS",
+  "security": {
+    "known_detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "audited_packages": 51,
+    "vulnerabilities": 0
+  },
+  "environment_observations": [
+    "Initial sandbox dependency command produced SECURITY_AUDIT_REPORT_MISSING; kept original failure. Full normal-host re-execution passes, no scanner/approval/lock change."
+  ],
+  "original_receipt_hashes": [
+    {
+      "path": "dist/validation/v2012-local-20261110/unit/LOCAL_RECEIPT.json",
+      "sha256": "de0a78f5100c5f4754fcea20ecb3e6cea24f7972ee877b21721630f141829a26"
+    },
+    {
+      "path": "dist/validation/v2012-local-20261110/architecture-local/LOCAL_RECEIPT.json",
+      "sha256": "66db5a6f07e4d7f019e6b27e32693f4ad275ab95c88d166689cc7c1eb7d8c813"
+    },
+    {
+      "path": "dist/validation/v2012-local-20261110/postgres-final/LOCAL_RECEIPT.json",
+      "sha256": "1c419e5d5a3640cb0309d974d5ebc9f56ad25d6d822b8c507ef5903269dfd77e"
+    },
+    {
+      "path": "dist/validation/v2012-local-20261110/static-final/LOCAL_RECEIPT.json",
+      "sha256": "f3673a8e9cc49187d5da148b14c26f8b2ef52dc0d46b9dbb7a50443f590d8850"
+    },
+    {
+      "path": "dist/validation/v2012-local-20261110/schema_contract/LOCAL_RECEIPT.json",
+      "sha256": "7d0d8b72e59fb8c876975a914db641e9779f9070d615e210898f8115858900f7"
+    },
+    {
+      "path": "dist/validation/v2012-local-20261110/security-permitted/LOCAL_RECEIPT.json",
+      "sha256": "c9fb8d1b5b91c839cc1207452cbc17ab5b1fe9e951e96089a2a22575465fd8ba"
+    }
+  ],
+  "remote_ci": "NOT_RUN"
+}

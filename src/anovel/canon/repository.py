@@ -33,6 +33,7 @@ from anovel.canon.models import (
     StoredRoot,
     identifier,
 )
+from anovel.canon.projection import HistoryEntry
 from anovel.domain.delta import FactBaseline, preview_delta
 
 TEST_CHECKS = ["TEST_CANDIDATE_BINDING-1", "TEST_DELTA_PREVIEW-1"]
@@ -840,6 +841,78 @@ class Repository:
             )
         stored = self.load_commit(project, branch, commit_id)
         return FactBaseline(project, branch, commit_id, stored.state.facts)
+
+    def load_history(
+        self, project: str, branch: str, commit_id: str
+    ) -> tuple[HistoryEntry, ...]:
+        """Read and verify the fixed target's ancestry, never the moving HEAD.
+
+        All source bytes remain immutable evidence. This is not a repair path
+        for missing/damaged accepted snapshots, and it does not write a cache.
+        """
+        params = _scope(project, branch)
+        current = identifier(commit_id)
+        seen: set[str] = set()
+        chain: list[tuple[str, RowMapping]] = []
+        expected_sequence: int | None = None
+        with self._engine.connect() as conn:
+            while True:
+                if current in seen:
+                    raise CanonIntegrityError("historical ancestry contains a cycle")
+                seen.add(current)
+                row = _one(
+                    conn,
+                    """SELECT c.parent_id,c.sequence,c.canonical_bytes,
+                    e.event_type,e.reducer_version FROM anovel_canon.commits c
+                    LEFT JOIN anovel_canon.events e
+                        USING(project_id,branch_id,commit_id)
+                    WHERE c.project_id=:project AND c.branch_id=:branch
+                        AND c.commit_id=:commit""",
+                    {**params, "commit": current},
+                )
+                if row is None or row["event_type"] is None:
+                    raise CanonIntegrityError("scoped historical commit/event missing")
+                sequence = row["sequence"]
+                if (
+                    type(sequence) is not int
+                    or sequence < 0
+                    or (expected_sequence is not None and sequence != expected_sequence)
+                ):
+                    raise CanonIntegrityError("historical sequence is not continuous")
+                chain.append((current, row))
+                parent = row["parent_id"]
+                if parent is None:
+                    if sequence != 0:
+                        raise CanonIntegrityError("historical root has wrong sequence")
+                    break
+                if sequence == 0:
+                    raise CanonIntegrityError("historical root has a parent")
+                current = identifier(parent)
+                expected_sequence = sequence - 1
+        # Release the discovery connection before the existing readers acquire
+        # theirs. This also supports a single-connection pool without deadlock.
+        entries = []
+        for identity, row in reversed(chain):
+            content: StoredRoot | StoredChapter
+            if row["parent_id"] is None:
+                content = self.load_root(project, branch, identity)
+            else:
+                content = self.load_commit(project, branch, identity)
+            # The existing readers verify envelope schema1.0 and every retained
+            # structured artifact's exact CJSON1 encoding before this tagging.
+            envelope = _stored_json(bytes(row["canonical_bytes"]))
+            entries.append(
+                HistoryEntry(
+                    row["sequence"],
+                    row["parent_id"],
+                    row["event_type"],
+                    row["reducer_version"],
+                    envelope["schema_version"],
+                    "ANOVELOS-CJSON-1",
+                    content,
+                )
+            )
+        return tuple(entries)
 
     def _issue_permit(
         self,
