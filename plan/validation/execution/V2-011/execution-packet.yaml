@@ -15,9 +15,9 @@ environment:
 implementer: Codex primary with bounded delegated contracts and acceptance tests
 verifier: Same Codex operator; delegated technical cross-checks are not independent personnel review
 owner_role: canon-maintainer
-scope: 'Safe consecutive chapter retries: original receipt for identical payload, conflict for changed payload,
-  one winner for competing parents, recovery after response loss. Reuse sole Canon service and existing row-lock/CAS;
-  no production generation or projection rebuild.'
+scope: 'Safe consecutive chapter retries: original receipt for identical payload, conflict for changed
+  payload, one winner for competing parents, recovery after response loss. Reuse sole Canon service and
+  existing row-lock/CAS; no production generation or projection rebuild.'
 action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
@@ -63,8 +63,8 @@ estimate:
   range: null
   unit: null
   assumptions:
-  - Reuse the locked SQLAlchemy/psycopg runtime and finite Delta; incremental SQL migration, no new framework or
-    dependency.
+  - Reuse the locked SQLAlchemy/psycopg runtime and finite Delta; incremental SQL migration, no new framework
+    or dependency.
   confidence: NOT_ESTIMATED
 budget:
   paid_calls_allowed: false
@@ -78,17 +78,17 @@ stop_conditions:
 - Unrelated user changes would be overwritten
 - Unresolved authority/Permit design would permit caller self-approval
 review_notes:
-- Original AT-V2-011 assertions unchanged. Existing V2-010 receipt recovery and branch row-lock/CAS are reused,
-  not reimplemented.
+- Original AT-V2-011 assertions unchanged. Existing V2-010 receipt recovery and branch row-lock/CAS are
+  reused, not reimplemented.
 - Test disposable PostgreSQL only. Concurrent tests use distinct actual backend sessions and bounded synchronization;
   transport response-loss injection occurs after actual database commit.
-- 'Product purpose: prevent duplicated chapters and continuation from wrong parent. This does not establish novel
-  generation or reading quality.'
-- 'Artifact path corrected from new idempotency.py to existing repository.py: replay/CAS already implemented; avoid
-  duplicated framework, preserve all acceptance assertions.'
+- 'Product purpose: prevent duplicated chapters and continuation from wrong parent. This does not establish
+  novel generation or reading quality.'
+- 'Artifact path corrected from new idempotency.py to existing repository.py: replay/CAS already implemented;
+  avoid duplicated framework, preserve all acceptance assertions.'
 handoff:
-  current_step: V2-011 CLOSED atb716e7c2d416fdd5112b8d2e0ed6cafd91edd193/run42734728628; all three assertions and
-    six mandatory gates1474/0skip
+  current_step: V2-011 CLOSED atb716e7c2d416fdd5112b8d2e0ed6cafd91edd193/run42734728628; all three assertions
+    and six mandatory gates1474/0skip
   completed_steps:
   - Reused existing sole Canon service without business rewrite
   - 14 actual PostgreSQL race/replay/recovery tests plus all old regressions pass
@@ -108,5 +108,5 @@ handoff:
 change_review:
   scope_revision: d005283c728d21b78f263774e703a8afc7222856
   scope_ref: plan/validation/execution/V2-011/scope.json
-  review_revision: 330081961a798c90e02b0a14887961a9336cc539
-  review_ref: plan/validation/execution/V2-011/implementation-review.json
+  review_revision: 43ca35c5485d2426ab50536f4f1547415a05a853
+  review_ref: plan/validation/execution/V2-011/closure-review-20261110.json
