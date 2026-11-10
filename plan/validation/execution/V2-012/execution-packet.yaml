@@ -1,0 +1,107 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-012
+plan_version: 1.3.0
+repository_revision: 76daba590875841bd4e2a2c7ed12addd33049253
+worktree_dirty: false
+plan_manifest_sha256: 653ad1cc488b54132329be6abc699f32c78711e98dc20875d847cf71f5c35aa5
+environment:
+  fingerprint: Python3.12.14/uv0.12.17/PostgreSQL17.11 pinned; disposable isolated database only
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: postgres:17.11-bookworm@sha256:639ab7ceb90e13123085b741fb31ef493fba25463002f6da665352e7b534b652
+  ci_context: null
+implementer: Codex main with bounded delegated implementation/tests
+verifier: Same operator with bounded read-only technical cross-checks; not independent personnel review
+owner_role: canon-maintainer
+scope: 'Read-only immutable Canon event ancestry replay: root facts then finite chapter Deltas, compare
+  every historical snapshot digest and honor stored reducer/schema/encoding. Projection failure preserves
+  actual target receipt. No new writer, migrations/cache/service, model or production backup platform.'
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-012/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-012/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
+  sha256: f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-012/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-012/inputs/1e470d743bfd6a9912cd7008d1db1c5f8ef7baa8387145e150da021d59476579.txt
+  sha256: 1e470d743bfd6a9912cd7008d1db1c5f8ef7baa8387145e150da021d59476579
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-012/inputs/d1dc3c20dec4b3ce05c03220c3cc94247a9cfc8dcc256b7b1e262b2d19ca534d.txt
+  sha256: d1dc3c20dec4b3ce05c03220c3cc94247a9cfc8dcc256b7b1e262b2d19ca534d
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-012/inputs/a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e.txt
+  sha256: a8d1129142a987d7ddddc44b1ad525b5f31fe2f0f77176e723b7a8f7ce8a901e
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-012/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/canon/projection.py
+- tests/integration/test_v2_012.py
+allowed_paths:
+- src/anovel/canon/projection.py
+- src/anovel/canon/repository.py
+- src/anovel/canon/commit_service.py
+- tests/integration/test_v2_012.py
+- tests/contract/test_canon_projection.py
+- tests/contract/test_delivery_gates.py
+- scripts/ci/run_gate.py
+- plan/validation/execution/V2-012/
+- plan/validation/execution/P2/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/phase-gates.yaml
+- plan/machine/milestones.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-006
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Need valuable production data or paid Provider
+- Need a second Canon write path or weakened mandatory gate
+- Would overwrite user changes
+- Unsupported historical schema/reducer or inconsistent retained evidence
+review_notes:
+- Original three AT-V2-012 assertions unchanged; existing migrations and immutable evidence retained.
+- Only existing version1.0/ROOT-1/FACT_DELTA-1 supported; dispatch from retained versions, unknown versions
+  reject rather than latest fallback.
+- Rebuilt state comes from root/Delta, stored STATE_SNAPSHOT is a comparison oracle only. No fresh Permit/current
+  authority required to read historical accepted commits.
+- Future valuable-data backup remains prerequisite; same-database replay is not disaster recovery or novel
+  generation.
+handoff:
+  current_step: PREPARE inspected stored artifacts and actual read interfaces
+  completed_steps:
+  - Clean main and accepted009-011 dependencies verified
+  - ADR-005/006 and original acceptance consumed
+  pending_items:
+  - Freeze scope/review before source edits
+  - Implement read-only event replay and real PostgreSQL controls
+  - One key remote acceptance after local checks
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null
