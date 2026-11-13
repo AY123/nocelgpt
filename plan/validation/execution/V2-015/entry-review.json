@@ -1,0 +1,66 @@
+{
+  "task_id": "V2-015",
+  "baseline_pin": {
+    "revision": "09a3b7c8861385f22f85260576319256be58a187",
+    "ref": "plan/validation/execution/V2-015/scope.json",
+    "sha256": "4d91cf5c228a79e4c3aeaeb18d6bbcb325a6df19cf88f99838f4d1d76b5b43d9"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "new_sha": "51e1be417780017c9c5a2aec779a2f333d9eacef344a5705fd0c29366db4a058",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "d1a9329d5f99a07bde57dc955164e0b5cdb1e1f1fdd251b1b145189a1fd93d67",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "12de663142dc853cbb90a3afb40ccc5557f408adeae660a8ef7095667af9d637"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "new_sha": "51e1be417780017c9c5a2aec779a2f333d9eacef344a5705fd0c29366db4a058",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "fab55d513bf8e237d5307cf36c3e10bc203860efe2617a4a81f87693c1c06b74",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "12de663142dc853cbb90a3afb40ccc5557f408adeae660a8ef7095667af9d637"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        }
+      ]
+    }
+  ]
+}
