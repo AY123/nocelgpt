@@ -1,0 +1,94 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-014
+plan_version: 1.3.0
+repository_revision: 17b9f6c6c3822d438c1013b575adbf071d310680
+worktree_dirty: false
+plan_manifest_sha256: b63fdbab8618772ea561644c1b12f1806357d6981ab6488408707fe593416558
+environment:
+  fingerprint: Locked Python3.12.14/uv0.12.17; no new dependency
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded delegated contract tests and technical review
+verifier: Same operator; not independent personnel review
+owner_role: genre-maintainer
+scope: Evidence-bound deterministic genre rules for two frozen exact Packs; real-world vs quotation/dream/belief/uncertain
+  claims; optional strategy conflict/no-match. No prose semantic extractor, Q2 coverage certification, Canon writes,015/016
+  extensions, Provider or product certification.
+action: PREPARE
+inputs:
+- source_ref: 04_GENRE_AND_STORY_FIXTURES.md
+  ref: validation/execution/V2-014/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
+  sha256: 9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-014/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-014/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-014/inputs/8116d4c4a2de8e25c99692ae620dae8b858f63bc89620d9f4b9b9c7dffef2dce.txt
+  sha256: 8116d4c4a2de8e25c99692ae620dae8b858f63bc89620d9f4b9b9c7dffef2dce
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-014/inputs/c3a8e4023e185563ffa6e4ae67d659cc1bef953da7704372dd1e634a2b32110c.txt
+  sha256: c3a8e4023e185563ffa6e4ae67d659cc1bef953da7704372dd1e634a2b32110c
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-014/inputs/aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9.txt
+  sha256: aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-014/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/genre/policy.py
+- tests/contract/test_v2_014.py
+allowed_paths:
+- src/anovel/genre/policy.py
+- tests/contract/test_v2_014.py
+- plan/validation/execution/V2-014/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-007
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Would modify user changes
+- Need paid calls or production data
+- Need Canon writes,015/016 extension or policy change to frozen Packs
+- Need weakened gates or broader exceptions
+review_notes:
+- Original four assertions unchanged; ADR007 already accepted inV013 before implementation.
+- Structured claim interpretations are explicit inputs, not verified prose semantics. Uncertainty never PASS; no
+  extracted claims is UNKNOWN.
+handoff:
+  current_step: 'PREPARE: actual main/spec/ADR007/previous13 closure checked'
+  completed_steps:
+  - Clean main at17b9f6c; V013 actual1588 same-SHA six gates verified
+  pending_items:
+  - Freeze scope and check IMPLEMENT entry
+  - Implement bounded policy and positive/negative evidence tests
+  - One key remote six-gate run after all local checks
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null
