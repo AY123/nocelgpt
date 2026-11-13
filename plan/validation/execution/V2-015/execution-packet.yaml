@@ -1,0 +1,114 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-015
+plan_version: 1.3.0
+repository_revision: 727ded401228a0bc66165816f81d4bddcaa1eee0
+worktree_dirty: false
+plan_manifest_sha256: a6df94ca63e25e3458d5e313b590378f965f20a548832d56870633cde1ceef42
+environment:
+  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; no new runtime dependency
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded delegated domain adapter/business implementation and tests
+verifier: Same implementing/verifying operator; not independent personnel audit
+owner_role: genre-maintainer
+scope: Registered urban business scalar-fact extension with root-frozen Pack/Schema bindings; strict company/equity/cash/resource
+  state and atomic transfers; generic domain extension seam and existing Canon service/replay integration; versioned1.1
+  Pack, compatible old formats, tests and appended PG CI coverage. No second writer, dynamic ERP/issuance/FX,016
+  progression, Provider or prose-Q2 certification.
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-015/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 04_GENRE_AND_STORY_FIXTURES.md
+  ref: validation/execution/V2-015/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
+  sha256: 9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-015/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-015/inputs/51e1be417780017c9c5a2aec779a2f333d9eacef344a5705fd0c29366db4a058.txt
+  sha256: 51e1be417780017c9c5a2aec779a2f333d9eacef344a5705fd0c29366db4a058
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-015/inputs/f1558c1fb1ef23c9d39e5fe1eaa1c37be91e26b69be986c4587b1d4babf694fb.txt
+  sha256: f1558c1fb1ef23c9d39e5fe1eaa1c37be91e26b69be986c4587b1d4babf694fb
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-015/inputs/aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9.txt
+  sha256: aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-015/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- specs/genres/urban.business.realistic
+- src/anovel/genre/extensions/business.py
+- tests/contract/test_v2_015.py
+allowed_paths:
+- src/anovel/domain/extensions.py
+- src/anovel/domain/delta.py
+- src/anovel/canon/models.py
+- src/anovel/canon/chapter.py
+- src/anovel/canon/commit_service.py
+- src/anovel/canon/repository.py
+- src/anovel/canon/projection.py
+- src/anovel/genre/extensions/
+- src/anovel/genre/registry.py
+- src/anovel/genre/policy.py
+- specs/genres/registry.yaml
+- specs/genres/urban.business.realistic/
+- tests/contract/test_v2_015.py
+- tests/integration/test_v2_015.py
+- tests/contract/test_delivery_gates.py
+- scripts/ci/run_gate.py
+- plan/validation/execution/V2-015/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-007
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- Would overwrite user changes
+- Need new Canon writer or mutable historical data
+- Need disabled gate, removed test or broader secret approval
+- Need paid model, production chapter data or016 implementation
+review_notes:
+- ADR007 accepted before interfaces; task EXTENSION_CONTRACT refines bounded registration/storage without changing
+  approved direction.
+- No actual extension hook existed; minimal generic seam is required to avoid disconnected business skeleton or
+  unchecked JSON.
+- Old 1.0 bytes and four Delta operators retained; nonempty binding format explicitly1.1. CI only adds integration
+  coverage.
+handoff:
+  current_step: 'PREPARE: actual main/specs/acceptedADR and missing extension hooks verified'
+  completed_steps:
+  - V014 real1699 six gates accepted; existing core has no registered extension enforcement
+  - Bounded scalar-fact adapter chosen over new database/Canon/Delta language
+  pending_items:
+  - Freeze scope and IMPLEMENT gate
+  - Implement generic ports, business validators and existing Canon integration
+  - Real contract/PG tests then one key same-SHA CI
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null
