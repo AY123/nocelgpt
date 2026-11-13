@@ -33,3 +33,5 @@ Canonical root提交、root读回、Permit发行、review、chapter提交、stat
 新增契约与真实PostgreSQL测试：合法商业公司/股权/现金/资源交易、整数/比例/币种/单位/引用/余额负控、原生SetFact绕过负控、Pack/Schema/namespace不匹配、取消/幂等/失败不写入、冷连接读回及历史重放。PG六门driver仅追加本任务真实测试文件，保留所有旧检查；对应固定命令测试精确追加同一文件，不降低验收。
 
 所有旧回归继续执行。本地全部通过后正常main交付，并只触发一次关键同SHA六门CI；原始产物核验后才关闭V2-015。P3/V2-016、生产Q0–Q3签发、自动写作、阅读/市场质量、外部备份保持未完成。修正既有Canon路径不重新声称旧任务独立验收，也不启动付费模型或真实有价值小说持久运行。
+
+测试收集修正：真实PG用例文件采用tests/integration/test_v2_015_postgres.py，避免与contract/test_v2_015.py的默认pytest模块名冲突。仅补该精确新路径；不改全局收集规则、既有测试或门槛，CI仅追加此PG文件。

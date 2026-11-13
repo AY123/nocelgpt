@@ -72,6 +72,7 @@ allowed_paths:
 - AGENTS.md
 - plan/README.md
 - specs/genres/urban.business.realistic
+- tests/integration/test_v2_015_postgres.py
 required_decisions:
 - ADR-007
 claims: []
@@ -115,3 +116,5 @@ handoff:
 change_review:
   scope_revision: 09a3b7c8861385f22f85260576319256be58a187
   scope_ref: plan/validation/execution/V2-015/scope.json
+  review_revision: 7092aeba20635cdc5d1e5cecaa73528239498149
+  review_ref: plan/validation/execution/V2-015/entry-review.json

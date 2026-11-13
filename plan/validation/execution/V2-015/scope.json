@@ -29,7 +29,8 @@
     "README.md",
     "AGENTS.md",
     "plan/README.md",
-    "specs/genres/urban.business.realistic"
+    "specs/genres/urban.business.realistic",
+    "tests/integration/test_v2_015_postgres.py"
   ],
   "pre_existing": {
     ".claude/settings.local.json": {
