@@ -1,9 +1,9 @@
 {
   "task_id": "V2-015",
   "baseline_pin": {
-    "revision": "09a3b7c8861385f22f85260576319256be58a187",
+    "revision": "8b42f10389d377bd90a236642e2cf5d6ad64574e",
     "ref": "plan/validation/execution/V2-015/scope.json",
-    "sha256": "4d91cf5c228a79e4c3aeaeb18d6bbcb325a6df19cf88f99838f4d1d76b5b43d9"
+    "sha256": "67d74dbd6a0f4debf915f25d36ee6bffaf5d44e530b9ff2dcc2cc8f26787b287"
   },
   "dispositions": [
     {
@@ -26,7 +26,7 @@
       "verification_artifacts": [
         {
           "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
-          "sha256": "12de663142dc853cbb90a3afb40ccc5557f408adeae660a8ef7095667af9d637"
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
         },
         {
           "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
@@ -54,7 +54,7 @@
       "verification_artifacts": [
         {
           "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
-          "sha256": "12de663142dc853cbb90a3afb40ccc5557f408adeae660a8ef7095667af9d637"
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
         },
         {
           "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
