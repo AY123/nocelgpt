@@ -1,0 +1,54 @@
+{
+  "scope": "Local worktree verification only, not immutable revision or remote CI acceptance",
+  "counts": {
+    "unit": 1187,
+    "arch": 244,
+    "postgres_env": 157
+  },
+  "new_genre_cases": 63,
+  "total": 1588,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "static": "PASS",
+  "governance_checks": "5/5 PASS",
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "packages": 51,
+    "vulnerabilities": 0
+  },
+  "initial_failures_retained": [
+    "Initial focused two failures exposed None optional strategy query disagreement; implementation now returns NO_MATCH for omitted query.",
+    "Initial strict mypy two failures from reusing heterogeneous loop variable; renamed string loop variable, full static and63 focused cases rerun PASS. No checker weakened."
+  ],
+  "original_receipts": [
+    {
+      "path": "dist/validation/v2013-local-20261113/unit/RECEIPT.json",
+      "sha256": "63b8e59f4d483e47566f2942962aa867cbcc0255af35a08c222e8dd51fb48850"
+    },
+    {
+      "path": "dist/validation/v2013-local-20261113/arch/RECEIPT.json",
+      "sha256": "9b7ac4bbcf522b72c830e0f934df659e3a71f831430bcf87dbe178e3b07e0081"
+    },
+    {
+      "path": "dist/validation/v2013-local-20261113/postgres_env/RECEIPT.json",
+      "sha256": "c3e34d12e37a5bf6fce17dbe8d2bbe23ab65748c4ee946cfddd41c7d1a5a177d"
+    },
+    {
+      "path": "dist/validation/v2013-local-20261113/static-final/RECEIPT.json",
+      "sha256": "6e5134df8c5846869089e0f5a113db2ed55ccd0a20787318fbf19c524eb586c0"
+    },
+    {
+      "path": "dist/validation/v2013-local-20261113/schema_contract/RECEIPT.json",
+      "sha256": "4a6b96afeaad75b3029d4b3e7a869cca7f3290eee6391ea04604c51d7868c500"
+    },
+    {
+      "path": "dist/validation/v2013-local-20261113/secret_dependency/RECEIPT.json",
+      "sha256": "53e89b49ff8c4f71e154c98ec7a1a29650c0b835b5b6b0c99278e8ec3d2cd415"
+    }
+  ],
+  "remote_ci": "NOT_RUN"
+}
