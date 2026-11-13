@@ -1,9 +1,9 @@
 {
   "task_id": "V2-014",
   "baseline_pin": {
-    "revision": "0fe3fab36b07dedf41e7480ebecc7b68d6568d65",
+    "revision": "efede3200e6369bd90a4a323705531ba816fbf28",
     "ref": "plan/validation/execution/V2-014/scope.json",
-    "sha256": "3894adb816bea437a1cc089692cec643623da0b05acb04c5e432dbefb04b033d"
+    "sha256": "cb0cf4c2bf9187cfef342babcc388db61fbd2eb1f8b9b040bae66c25c357d8d1"
   },
   "dispositions": [
     {
@@ -26,7 +26,7 @@
       "verification_artifacts": [
         {
           "ref": "plan/validation/execution/V2-014/POLICY_CONTRACT.md",
-          "sha256": "6630714beea5cc04a7d90c3427cd07896667cd8cc34ed68505dc5837a5a7ff7a"
+          "sha256": "8aace8cd86f0eea42d505875e2c1aa338ee45ebf304b575b832357845a987210"
         },
         {
           "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
@@ -54,7 +54,7 @@
       "verification_artifacts": [
         {
           "ref": "plan/validation/execution/V2-014/POLICY_CONTRACT.md",
-          "sha256": "6630714beea5cc04a7d90c3427cd07896667cd8cc34ed68505dc5837a5a7ff7a"
+          "sha256": "8aace8cd86f0eea42d505875e2c1aa338ee45ebf304b575b832357845a987210"
         },
         {
           "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
