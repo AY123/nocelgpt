@@ -18,7 +18,7 @@ owner_role: genre-maintainer
 scope: ADR-007 and bounded two-Anchor immutable GenreProfile/Pack loading, exact identity/source trace,
   project binding, explicit no-match optional strategies. No policy engine, typed genre extension, Canon
   writes, Provider, persistent binding service or product certification.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 04_GENRE_AND_STORY_FIXTURES.md
   ref: validation/execution/V2-013/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
@@ -88,9 +88,11 @@ handoff:
   - Freeze scope and enter IMPLEMENT
   - Implement and test positive/negative loading controls
   - One key same-SHA CI after local validation
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: cdef1228ac783b4b10ca285d5405ed837b16f15c
+  scope_ref: plan/validation/execution/V2-013/scope.json

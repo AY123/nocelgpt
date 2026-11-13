@@ -1,0 +1,66 @@
+{
+  "task_id": "V2-013",
+  "baseline_pin": {
+    "revision": "cdef1228ac783b4b10ca285d5405ed837b16f15c",
+    "ref": "plan/validation/execution/V2-013/scope.json",
+    "sha256": "d694ea724edf6a18a7acb464047a03be733c5054501b32967f74168d9798181c"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "7bd1364a7eba6a23069131fa62d1d22c0a277f155a22628b90a020cb2f829cbe",
+      "new_sha": "07d01b3b4adb11e013d4981110ee2c05568e16d4b5afcab1e3566b85ca1d7272",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "bd6123c2b3f00571845546f9ab3ada582a2fe21a3f223366eff4ccc1c0d524b2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-013 authorized readiness and ADR007 acceptance before interfaces. Original identity/phase/dependency/four assertions and future014-016 boundaries retained; no gate, threshold, check or authority weakened. Code adds bounded two-Anchor immutable configuration loading only.",
+      "impact": "No Canon writer, Provider, production data, dependency, security exception, or future-task completion change.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-check; not independent personnel review",
+      "replacement_validation": "ADR007 exact identity/path/extension/no-match design accepted before implementation. Actual available local/remote artifacts are separately bound below; no template or old-SHA runtime result is treated as new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-013/authorization.txt",
+        "sha256": "6e859cbf46758d88490d538c6def7e9adbcb26ef52ab88cf5e454a9ad952d378"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/adr-007-decision.yaml",
+          "sha256": "adf39f9140164bc018185dc08e9373d80dd50361a195c93a8c6d89373c56136a"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "7bd1364a7eba6a23069131fa62d1d22c0a277f155a22628b90a020cb2f829cbe",
+      "new_sha": "07d01b3b4adb11e013d4981110ee2c05568e16d4b5afcab1e3566b85ca1d7272",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "346497aaee07168b03fefba2fd2defaf75b51a7cb51f2273418a9e8e7717371b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-013 authorized readiness and ADR007 acceptance before interfaces. Original identity/phase/dependency/four assertions and future014-016 boundaries retained; no gate, threshold, check or authority weakened. Code adds bounded two-Anchor immutable configuration loading only.",
+      "impact": "No Canon writer, Provider, production data, dependency, security exception, or future-task completion change.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-check; not independent personnel review",
+      "replacement_validation": "ADR007 exact identity/path/extension/no-match design accepted before implementation. Actual available local/remote artifacts are separately bound below; no template or old-SHA runtime result is treated as new acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-013/authorization.txt",
+        "sha256": "6e859cbf46758d88490d538c6def7e9adbcb26ef52ab88cf5e454a9ad952d378"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/adr-007-decision.yaml",
+          "sha256": "adf39f9140164bc018185dc08e9373d80dd50361a195c93a8c6d89373c56136a"
+        }
+      ]
+    }
+  ]
+}
