@@ -55,6 +55,7 @@ allowed_paths:
 - README.md
 - AGENTS.md
 - plan/README.md
+- plan/validation/execution/V2-013/execution-packet.yaml
 required_decisions:
 - ADR-007
 claims: []
@@ -94,3 +95,5 @@ handoff:
 change_review:
   scope_revision: 0fe3fab36b07dedf41e7480ebecc7b68d6568d65
   scope_ref: plan/validation/execution/V2-014/scope.json
+  review_revision: eb957505c3f34d443e0704e231ac58496e8856ad
+  review_ref: plan/validation/execution/V2-014/entry-review.json
