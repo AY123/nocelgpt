@@ -2,7 +2,7 @@
 
 唯一源：`machine/implementation-backlog.yaml` 与 `machine/phase-gates.yaml`。不要手工修改。
 
-共 60 个任务。当前任务状态：{"CLOSED": 12, "IN_PROGRESS": 1, "OPEN": 47}
+共 60 个任务。当前任务状态：{"CLOSED": 13, "OPEN": 47}
 
 ## P0 — Repository & Governance
 
@@ -43,7 +43,7 @@
 
 | ID | 名称 | 依赖 | 状态 |
 |---|---|---|---|
-| V2-013 | GenreProfile and GenrePack loader | V2-005 | IN_PROGRESS |
+| V2-013 | GenreProfile and GenrePack loader | V2-005 | CLOSED |
 | V2-014 | Genre hard policy engine | V2-013 | OPEN |
 | V2-015 | Urban Business canon extension | V2-014, V2-010 | OPEN |
 | V2-016 | Eastern Fantasy canon extension | V2-014, V2-010 | OPEN |

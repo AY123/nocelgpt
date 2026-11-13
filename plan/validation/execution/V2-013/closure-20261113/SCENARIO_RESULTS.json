@@ -1,0 +1,91 @@
+{
+  "revision": "b9cb604d14bfce0fc9d4ec105fbda975bdfca01b",
+  "run_id": 43424270308,
+  "status": "PASS",
+  "source": "Original final same-SHA UNIT JUnit; every named case executed/passed;63 new cases are part of1187 UNIT, not extra total",
+  "scenario_tests": {
+    "AT-V2-013-01": {
+      "status": "PASS",
+      "tests": [
+        "test_actual_anchor_loads_exact_version_content_profile_and_source_identity[fantasy.eastern.progression]",
+        "test_actual_anchor_loads_exact_version_content_profile_and_source_identity[urban.business.realistic]",
+        "test_catalog_has_only_the_two_frozen_anchors_and_distinct_profiles",
+        "test_changed_manifest_without_updated_hash_is_not_trusted",
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[examples-type]",
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[mechanics-type]",
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[missing-profile]",
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[profile-extra-field]",
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[unknown-field]",
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[wrong-anchor]",
+        "test_load_requires_all_three_exact_reference_components[content_hash-0000000000000000000000000000000000000000000000000000000000000000]",
+        "test_load_requires_all_three_exact_reference_components[id-missing.pack]",
+        "test_load_requires_all_three_exact_reference_components[version-999.0.0]",
+        "test_malformed_pack_reference_is_rejected[content_hash-True]",
+        "test_malformed_pack_reference_is_rejected[content_hash-short]",
+        "test_malformed_pack_reference_is_rejected[id-True]",
+        "test_malformed_pack_reference_is_rejected[id-]",
+        "test_malformed_pack_reference_is_rejected[version-True]",
+        "test_malformed_pack_reference_is_rejected[version-]",
+        "test_manifest_identity_must_match_catalog_even_when_content_hash_is_updated[id-fantasy.eastern.progression]",
+        "test_manifest_identity_must_match_catalog_even_when_content_hash_is_updated[version-2.0.0]"
+      ]
+    },
+    "AT-V2-013-02": {
+      "status": "PASS",
+      "tests": [
+        "test_catalog_accepts_only_strict_finite_duplicate_free_json_subset[[]]",
+        "test_catalog_accepts_only_strict_finite_duplicate_free_json_subset[\\xff]",
+        "test_catalog_accepts_only_strict_finite_duplicate_free_json_subset[null]",
+        "test_catalog_accepts_only_strict_finite_duplicate_free_json_subset[schema_version: \"1.0\"\\npacks: []\\n]",
+        "test_catalog_accepts_only_strict_finite_duplicate_free_json_subset[{\"schema_version\":\"1.0\",\"schema_version\":\"1.0\",\"packs\":[]}]",
+        "test_catalog_accepts_only_strict_finite_duplicate_free_json_subset[{\"schema_version\":NaN,\"packs\":[]}]",
+        "test_catalog_contract_rejects_ambiguous_or_malformed_metadata[duplicate-ref]",
+        "test_catalog_contract_rejects_ambiguous_or_malformed_metadata[missing-packs]",
+        "test_catalog_contract_rejects_ambiguous_or_malformed_metadata[packs-not-array]",
+        "test_catalog_contract_rejects_ambiguous_or_malformed_metadata[unknown-field]",
+        "test_catalog_contract_rejects_ambiguous_or_malformed_metadata[wrong-version]",
+        "test_manifest_parser_rejects_invalid_source_bytes[duplicate-key]",
+        "test_manifest_parser_rejects_invalid_source_bytes[invalid-utf8]",
+        "test_manifest_parser_rejects_invalid_source_bytes[nonfinite]",
+        "test_manifest_source_path_cannot_escape_or_hide_path_components[absolute]",
+        "test_manifest_source_path_cannot_escape_or_hide_path_components[dot-parent]",
+        "test_manifest_source_path_cannot_escape_or_hide_path_components[parent-escape]",
+        "test_missing_catalog_or_manifest_is_a_failure_without_default_pack",
+        "test_symlinked_catalog_sources_are_rejected[catalog]",
+        "test_symlinked_catalog_sources_are_rejected[manifest]",
+        "test_symlinked_catalog_sources_are_rejected[parent-directory]",
+        "test_symlinked_catalog_sources_are_rejected[root]",
+        "test_unimplemented_extension_cannot_be_enabled_by_manifest_declaration[extensions0]",
+        "test_unimplemented_extension_cannot_be_enabled_by_manifest_declaration[extensions1]"
+      ]
+    },
+    "AT-V2-013-03": {
+      "status": "PASS",
+      "tests": [
+        "test_binding_and_all_loaded_values_are_frozen_and_exports_are_independent",
+        "test_binding_survives_directory_version_change_without_implicit_upgrade",
+        "test_direct_registry_cannot_keep_mutable_or_duplicate_entries",
+        "test_project_binding_keeps_complete_global_source_and_distinct_project_scope",
+        "test_project_binding_requires_an_explicit_valid_project[None]",
+        "test_project_binding_requires_an_explicit_valid_project[True]",
+        "test_project_binding_requires_an_explicit_valid_project[]",
+        "test_retained_manifest_cannot_claim_a_different_catalog_source_path"
+      ]
+    },
+    "AT-V2-013-04": {
+      "status": "PASS",
+      "tests": [
+        "test_closed_manifest_and_nested_contracts_reject_malformed_data[strategy-purpose-type]",
+        "test_exact_optional_strategy_match_keeps_the_original_binding[fantasy.eastern.progression]",
+        "test_exact_optional_strategy_match_keeps_the_original_binding[urban.business.realistic]",
+        "test_malformed_strategy_query_is_not_an_implicit_default[1]",
+        "test_malformed_strategy_query_is_not_an_implicit_default[True]",
+        "test_malformed_strategy_query_is_not_an_implicit_default[]",
+        "test_malformed_strategy_query_is_not_an_implicit_default[query2]",
+        "test_optional_strategy_miss_keeps_explicit_pack_instead_of_first_neighbor[fantasy.eastern.progression]",
+        "test_optional_strategy_miss_keeps_explicit_pack_instead_of_first_neighbor[urban.business.realistic]",
+        "test_selection_cannot_claim_an_unbound_foreign_strategy"
+      ]
+    }
+  }
+}

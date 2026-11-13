@@ -1,0 +1,98 @@
+{
+  "task_id": "V2-013",
+  "baseline_pin": {
+    "revision": "cdef1228ac783b4b10ca285d5405ed837b16f15c",
+    "ref": "plan/validation/execution/V2-013/scope.json",
+    "sha256": "d694ea724edf6a18a7acb464047a03be733c5054501b32967f74168d9798181c"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "7bd1364a7eba6a23069131fa62d1d22c0a277f155a22628b90a020cb2f829cbe",
+      "new_sha": "ff4c4cc3312e3f1d40255e5fb28dd55a6bc7755ef324cb808d1edcb75ae81901",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "e03565161a4cf4704ece1ee2ec21e43f5a7f35dec046037a9518e90a612d9127",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-013 authorized readiness, ADR007 acceptance before interfaces and evidence-based task closure. Original identity/phase/dependency/four assertions and future014-016 boundaries retained; no gate, threshold, check or authority weakened. Code adds bounded two-Anchor immutable configuration loading only.",
+      "impact": "No Canon writer, Provider, production data, dependency, security exception, or future-task completion change.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-check; not independent personnel review",
+      "replacement_validation": "ADR007 accepted before implementation; same-SHA b9cb604/run43424270308 six gates PASS,1187unit+244arch+157PG=1588/0skip;63 new cases cover four unchanged assertions. Remote original artifacts and43-file exact code manifest bound below. Closure updates metadata only and does not claim P3/product completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-013/authorization.txt",
+        "sha256": "6e859cbf46758d88490d538c6def7e9adbcb26ef52ab88cf5e454a9ad952d378"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/adr-007-decision.yaml",
+          "sha256": "adf39f9140164bc018185dc08e9373d80dd50361a195c93a8c6d89373c56136a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/LOCAL_RESULTS.json",
+          "sha256": "3a835910a454928b279794717d98ab9caa650650149c07a5290b9de24d0bf0d2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/closure-20261113/REMOTE_VERIFICATION.json",
+          "sha256": "a3804f654af794e0f6de5134e2bcf563b56d3ea6673f213d33bf545bbd1250e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/closure-20261113/SCENARIO_RESULTS.json",
+          "sha256": "50832949b3b8a848b351e8bc82e412af378b6dd718979ef176ed4efc985e1cd2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/closure-20261113/CODE_MANIFEST.json",
+          "sha256": "427d3103b6b0f5adbfe2fbfb9a9accbaf2e65a992f25cde9422cf554beee66d5"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "7bd1364a7eba6a23069131fa62d1d22c0a277f155a22628b90a020cb2f829cbe",
+      "new_sha": "ff4c4cc3312e3f1d40255e5fb28dd55a6bc7755ef324cb808d1edcb75ae81901",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "e2b6d30c473c04509afcaa64661d66dd53071a49427af944a6b367745b2ab029",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-013 authorized readiness, ADR007 acceptance before interfaces and evidence-based task closure. Original identity/phase/dependency/four assertions and future014-016 boundaries retained; no gate, threshold, check or authority weakened. Code adds bounded two-Anchor immutable configuration loading only.",
+      "impact": "No Canon writer, Provider, production data, dependency, security exception, or future-task completion change.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-check; not independent personnel review",
+      "replacement_validation": "ADR007 accepted before implementation; same-SHA b9cb604/run43424270308 six gates PASS,1187unit+244arch+157PG=1588/0skip;63 new cases cover four unchanged assertions. Remote original artifacts and43-file exact code manifest bound below. Closure updates metadata only and does not claim P3/product completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-013/authorization.txt",
+        "sha256": "6e859cbf46758d88490d538c6def7e9adbcb26ef52ab88cf5e454a9ad952d378"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/adr-007-decision.yaml",
+          "sha256": "adf39f9140164bc018185dc08e9373d80dd50361a195c93a8c6d89373c56136a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/LOCAL_RESULTS.json",
+          "sha256": "3a835910a454928b279794717d98ab9caa650650149c07a5290b9de24d0bf0d2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/closure-20261113/REMOTE_VERIFICATION.json",
+          "sha256": "a3804f654af794e0f6de5134e2bcf563b56d3ea6673f213d33bf545bbd1250e7"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/closure-20261113/SCENARIO_RESULTS.json",
+          "sha256": "50832949b3b8a848b351e8bc82e412af378b6dd718979ef176ed4efc985e1cd2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-013/closure-20261113/CODE_MANIFEST.json",
+          "sha256": "427d3103b6b0f5adbfe2fbfb9a9accbaf2e65a992f25cde9422cf554beee66d5"
+        }
+      ]
+    }
+  ]
+}

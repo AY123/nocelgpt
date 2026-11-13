@@ -1,0 +1,34 @@
+[
+  {
+    "method": "GET",
+    "path": "/user",
+    "http_status": 200,
+    "request_id": "8A7C:56532:A6D254:B10FE7:6AF6BD82",
+    "body_sha256": "8d82a93f8d6b82dab8a67036a475fee9da2f9e9227f9356c193250b5a8a9d7d6",
+    "at": "2026-11-13T07:34:26.820224+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt",
+    "http_status": 200,
+    "request_id": "8A86:562D1:A6CB7A:B109CA:6AF6BD84",
+    "body_sha256": "829fa71020de1bb89173dae522da2693466b5f4c43dd078f4d8063d089533a5b",
+    "at": "2026-11-13T07:34:29.249099+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/branches/main",
+    "http_status": 200,
+    "request_id": "8AC6:282D3F:9F7F24:A9B70A:6AF6BD87",
+    "body_sha256": "4a0f2745ffd59815064e5536c84bea2271e1dd3c116b717218ffa041bb1d931b",
+    "at": "2026-11-13T07:34:31.967157+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/actions/runs?per_page=3",
+    "http_status": 200,
+    "request_id": "9FCA:299B78:9D4A4F:A783EB:6AF6BD88",
+    "body_sha256": "29371cefee2fcb51aa96bf3692329440a2b114906559853e61c60b2dfec648a8",
+    "at": "2026-11-13T07:34:33.694062+00:00"
+  }
+]

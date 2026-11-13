@@ -7,3 +7,5 @@
 使用入口：`GenreRegistry.from_directory(Path("specs/genres"))`，`load(PackRef(id,version,content_hash))`，`bind(project,ref)`，`binding.select_strategy(exact_id)`。调用方必须显式指定完整ref，不从packs[0]选择默认题材。`to_dict()`提供独立导出副本与可追溯bytes/hash；本轮不声称项目绑定已写入数据库。
 
 ADR-007先于接口接受。同操作者实施、验证及技术交叉检查，不冒称独立人员审计。extensions当前为空、所有未实现扩展拒绝；V2-014～016实际policy/类型扩展、模型写作、阅读质量及外部备份均未完成。下一步只在精确差异通过后进行一次关键同SHA六门CI。
+
+2026-11-13追加：已按b9cb604d14bfce0fc9d4ec105fbda975bdfca01b/run43424270308完成最终同SHA六门验收，见[正式验收](closure-20261113/ACCEPTANCE_SUMMARY.md)。上文本地结果与初始失败保留各原语义，不改写为远端事实。
