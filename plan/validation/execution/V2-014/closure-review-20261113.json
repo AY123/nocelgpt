@@ -1,0 +1,98 @@
+{
+  "task_id": "V2-014",
+  "baseline_pin": {
+    "revision": "efede3200e6369bd90a4a323705531ba816fbf28",
+    "ref": "plan/validation/execution/V2-014/scope.json",
+    "sha256": "cb0cf4c2bf9187cfef342babcc388db61fbd2eb1f8b9b040bae66c25c357d8d1"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ff4c4cc3312e3f1d40255e5fb28dd55a6bc7755ef324cb808d1edcb75ae81901",
+      "new_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "fb60e7b4dbc357de5343ed8668a716cbf7845ded01127fb3c83e8d6278d50cc0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-014 readiness and evidence-bound implementation/closure only. Identity,phase,dependencies,original four acceptance assertions and015/016 scope retained; no weakened gate or test.",
+      "impact": "Adds pure rules with exact Pack/evidence scope; no Canon writes, semantic extractor, dependency, CI change, security exception orP3/product completion.",
+      "reviewer": "Same implementing/verifying operator; bounded technical cross-checks, not independent personnel audit",
+      "replacement_validation": "ADR007 accepted before implementation; structured-only rules and fail/unknown precedence retained. Final e688ca0/run43435762543 six gates1699/0skip PASS,111 new cases included in1298 UNIT; original artifacts and45-file manifest verified. Closure only records evidence/navigation, not P3 or whole-prose Q2 acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-014/authorization.txt",
+        "sha256": "698fc13c40a5ff981602464c38cdcd542a8ee66e4d9fd2748c03014e14553b71"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-014/POLICY_CONTRACT.md",
+          "sha256": "8aace8cd86f0eea42d505875e2c1aa338ee45ebf304b575b832357845a987210"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/LOCAL_RESULTS.json",
+          "sha256": "a39f01b0456df0cb4261eea430623583420f73dce0b13a787955cf5a70db7e13"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/closure-20261113/REMOTE_VERIFICATION.json",
+          "sha256": "11b98bff7bfd90aecd1439f34c8a67ac633116e3a7613833115b28d407c9d9c5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/closure-20261113/SCENARIO_RESULTS.json",
+          "sha256": "f438058be0fd4a5cea519601b38a51fbdca25ea815ffc872de668411bd433ffc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/closure-20261113/CODE_MANIFEST.json",
+          "sha256": "020ea00915b69a6b8e21ed54fb81fb01f9cb4b2262f5c488a823b40edc7d8f83"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ff4c4cc3312e3f1d40255e5fb28dd55a6bc7755ef324cb808d1edcb75ae81901",
+      "new_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "120e30155733d080c9f298aa785123df736ab36a3c47b2a81c7c6d002c3b9ba0",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-014 readiness and evidence-bound implementation/closure only. Identity,phase,dependencies,original four acceptance assertions and015/016 scope retained; no weakened gate or test.",
+      "impact": "Adds pure rules with exact Pack/evidence scope; no Canon writes, semantic extractor, dependency, CI change, security exception orP3/product completion.",
+      "reviewer": "Same implementing/verifying operator; bounded technical cross-checks, not independent personnel audit",
+      "replacement_validation": "ADR007 accepted before implementation; structured-only rules and fail/unknown precedence retained. Final e688ca0/run43435762543 six gates1699/0skip PASS,111 new cases included in1298 UNIT; original artifacts and45-file manifest verified. Closure only records evidence/navigation, not P3 or whole-prose Q2 acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-014/authorization.txt",
+        "sha256": "698fc13c40a5ff981602464c38cdcd542a8ee66e4d9fd2748c03014e14553b71"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-014/POLICY_CONTRACT.md",
+          "sha256": "8aace8cd86f0eea42d505875e2c1aa338ee45ebf304b575b832357845a987210"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/LOCAL_RESULTS.json",
+          "sha256": "a39f01b0456df0cb4261eea430623583420f73dce0b13a787955cf5a70db7e13"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/closure-20261113/REMOTE_VERIFICATION.json",
+          "sha256": "11b98bff7bfd90aecd1439f34c8a67ac633116e3a7613833115b28d407c9d9c5"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/closure-20261113/SCENARIO_RESULTS.json",
+          "sha256": "f438058be0fd4a5cea519601b38a51fbdca25ea815ffc872de668411bd433ffc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/closure-20261113/CODE_MANIFEST.json",
+          "sha256": "020ea00915b69a6b8e21ed54fb81fb01f9cb4b2262f5c488a823b40edc7d8f83"
+        }
+      ]
+    }
+  ]
+}
