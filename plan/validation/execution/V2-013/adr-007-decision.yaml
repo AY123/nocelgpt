@@ -1,0 +1,18 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-007-20261113-local
+evidence_type: ADR_DECISION
+subject_id: ADR-007
+revision: af51bf24f2d556e0f4f7d799bb7076c462873779
+status: PASS
+producer: Codex same operator under V2-013 authorization with bounded technical cross-check; no independent personnel
+  claim
+executed_at: '2026-11-13T07:21:44.526293+00:00'
+environment_fingerprint: Existing locked Python3.12.14/uv0.12.17; design accepted before interface implementation
+artifacts:
+- ref: decisions/ADR-007_GENRE_PACK_IDENTITY.md
+  sha256: d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Two precise immutable Anchor manifests, source and canonical identities, explicit no-match strategy behavior,
+  closed future extension boundary; no runtime or future-task completion claim.

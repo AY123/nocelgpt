@@ -823,10 +823,10 @@ tasks:
   - 不绕过前置阶段门禁
   - 只实现两个冻结 Anchor，不扩展 30 个题材包
   - 不把关键词计数当事实硬裁判
-  status: OPEN
-  execution_packet_ref: null
+  status: IN_PROGRESS
+  execution_packet_ref: validation/execution/V2-013/execution-packet.yaml
   owner_role: genre-maintainer
-  readiness: PLANNED
+  readiness: READY_TO_START
   start_gate: G-P2
   required_decisions:
   - ADR-007

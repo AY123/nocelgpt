@@ -1,0 +1,96 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-013
+plan_version: 1.3.0
+repository_revision: af51bf24f2d556e0f4f7d799bb7076c462873779
+worktree_dirty: false
+plan_manifest_sha256: e0a844bd0d9971c792337eacffec72958d65ef217bd8edb1a7982beddabed969
+environment:
+  fingerprint: Python3.12.14/uv0.12.17 locked; stdlib runtime loader
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded delegated loader and contract tests
+verifier: Same operator with technical cross-checks; not independent personnel review
+owner_role: genre-maintainer
+scope: ADR-007 and bounded two-Anchor immutable GenreProfile/Pack loading, exact identity/source trace,
+  project binding, explicit no-match optional strategies. No policy engine, typed genre extension, Canon
+  writes, Provider, persistent binding service or product certification.
+action: PREPARE
+inputs:
+- source_ref: 04_GENRE_AND_STORY_FIXTURES.md
+  ref: validation/execution/V2-013/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
+  sha256: 9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-013/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-013/inputs/07d01b3b4adb11e013d4981110ee2c05568e16d4b5afcab1e3566b85ca1d7272.txt
+  sha256: 07d01b3b4adb11e013d4981110ee2c05568e16d4b5afcab1e3566b85ca1d7272
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-013/inputs/89a7d627e88f24de61542b8fd8c5f0f98a20e8604ce2d816f2c22c62d546c31e.txt
+  sha256: 89a7d627e88f24de61542b8fd8c5f0f98a20e8604ce2d816f2c22c62d546c31e
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-013/inputs/aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9.txt
+  sha256: aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-013/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/genre/registry.py
+- specs/genres/registry.yaml
+- tests/contract/test_v2_013.py
+allowed_paths:
+- src/anovel/genre/
+- specs/genres/
+- tests/contract/test_v2_013.py
+- plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md
+- plan/validation/execution/V2-013/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/decision-register.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-007
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 10
+  maximum_runtime: 14400
+stop_conditions:
+- Would modify user changes
+- Need paid model or production data
+- Need a second Canon writer or broadened security exception
+- Need future014-016 implementation
+review_notes:
+- Original four assertions preserved. Existing CJSON1 reused; no new dependency.
+- Only two anchors; extension manifests rejected until actual implementation. Profile and Pack are configuration,
+  not semantic fact verification or human reading evidence.
+handoff:
+  current_step: 'PREPARE: current main/goal/spec/task verified; ADR007 accepted before interface'
+  completed_steps:
+  - Existing P2/G-P2 verified; no genre implementation exists
+  - ADR007 defines minimal loading and future boundaries
+  pending_items:
+  - Freeze scope and enter IMPLEMENT
+  - Implement and test positive/negative loading controls
+  - One key same-SHA CI after local validation
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null
