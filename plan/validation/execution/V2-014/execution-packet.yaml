@@ -18,7 +18,7 @@ owner_role: genre-maintainer
 scope: Evidence-bound deterministic genre rules for two frozen exact Packs; real-world vs quotation/dream/belief/uncertain
   claims; optional strategy conflict/no-match. No prose semantic extractor, Q2 coverage certification, Canon writes,015/016
   extensions, Provider or product certification.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 04_GENRE_AND_STORY_FIXTURES.md
   ref: validation/execution/V2-014/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
@@ -79,16 +79,18 @@ review_notes:
 - Structured claim interpretations are explicit inputs, not verified prose semantics. Uncertainty never PASS; no
   extracted claims is UNKNOWN.
 handoff:
-  current_step: 'PREPARE: actual main/spec/ADR007/previous13 closure checked'
+  current_step: Scope and ADR007 frozen; implementation entry pending
   completed_steps:
   - Clean main at17b9f6c; V013 actual1588 same-SHA six gates verified
   pending_items:
   - Freeze scope and check IMPLEMENT entry
   - Implement bounded policy and positive/negative evidence tests
   - One key remote six-gate run after all local checks
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 0fe3fab36b07dedf41e7480ebecc7b68d6568d65
+  scope_ref: plan/validation/execution/V2-014/scope.json
