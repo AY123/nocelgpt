@@ -1,0 +1,74 @@
+{
+  "task_id": "V2-014",
+  "baseline_pin": {
+    "revision": "efede3200e6369bd90a4a323705531ba816fbf28",
+    "ref": "plan/validation/execution/V2-014/scope.json",
+    "sha256": "cb0cf4c2bf9187cfef342babcc388db61fbd2eb1f8b9b040bae66c25c357d8d1"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ff4c4cc3312e3f1d40255e5fb28dd55a6bc7755ef324cb808d1edcb75ae81901",
+      "new_sha": "8116d4c4a2de8e25c99692ae620dae8b858f63bc89620d9f4b9b9c7dffef2dce",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "7a0e54defed6aa798876b4bb285f1bd283a27a61aa49dd325ece5077221782bd",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-014 readiness and evidence-bound implementation/closure only. Identity,phase,dependencies,original four acceptance assertions and015/016 scope retained; no weakened gate or test.",
+      "impact": "Adds pure rules with exact Pack/evidence scope; no Canon writes, semantic extractor, dependency, CI change, security exception orP3/product completion.",
+      "reviewer": "Same implementing/verifying operator; bounded technical cross-checks, not independent personnel audit",
+      "replacement_validation": "ADR007 already accepted before implementation; task POLICY_CONTRACT specifies structured-only evidence scope and fail/unknown precedence. Actual local or same-SHA remote evidence, when available, bound below; no template or old result reused as new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-014/authorization.txt",
+        "sha256": "698fc13c40a5ff981602464c38cdcd542a8ee66e4d9fd2748c03014e14553b71"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-014/POLICY_CONTRACT.md",
+          "sha256": "8aace8cd86f0eea42d505875e2c1aa338ee45ebf304b575b832357845a987210"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/LOCAL_RESULTS.json",
+          "sha256": "a39f01b0456df0cb4261eea430623583420f73dce0b13a787955cf5a70db7e13"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ff4c4cc3312e3f1d40255e5fb28dd55a6bc7755ef324cb808d1edcb75ae81901",
+      "new_sha": "8116d4c4a2de8e25c99692ae620dae8b858f63bc89620d9f4b9b9c7dffef2dce",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "d0c2edbfeec9e24ac9301b496eb067ce5ab6e3b1e59dfa25b518230246e8cc9c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-014 readiness and evidence-bound implementation/closure only. Identity,phase,dependencies,original four acceptance assertions and015/016 scope retained; no weakened gate or test.",
+      "impact": "Adds pure rules with exact Pack/evidence scope; no Canon writes, semantic extractor, dependency, CI change, security exception orP3/product completion.",
+      "reviewer": "Same implementing/verifying operator; bounded technical cross-checks, not independent personnel audit",
+      "replacement_validation": "ADR007 already accepted before implementation; task POLICY_CONTRACT specifies structured-only evidence scope and fail/unknown precedence. Actual local or same-SHA remote evidence, when available, bound below; no template or old result reused as new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-014/authorization.txt",
+        "sha256": "698fc13c40a5ff981602464c38cdcd542a8ee66e4d9fd2748c03014e14553b71"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-014/POLICY_CONTRACT.md",
+          "sha256": "8aace8cd86f0eea42d505875e2c1aa338ee45ebf304b575b832357845a987210"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-014/LOCAL_RESULTS.json",
+          "sha256": "a39f01b0456df0cb4261eea430623583420f73dce0b13a787955cf5a70db7e13"
+        }
+      ]
+    }
+  ]
+}

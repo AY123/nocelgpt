@@ -1,0 +1,49 @@
+{
+  "status": "PASS",
+  "scope": "Actual local worktree checks, not exact-SHA or remote acceptance",
+  "completed_at": "2026-11-13T13:26:47.585001+00:00",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2014-local-20261113/unit/RECEIPT.json",
+      "receipt_sha256": "ccf95748dc1ac758c77d4ad675fae89bccad53dd2252919b652d5d4609bfc0f7",
+      "tests": 1298
+    },
+    "arch": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2014-local-20261113/arch/RECEIPT.json",
+      "receipt_sha256": "c02421d00c933c67236f8678b97dfebe0781b93c437feaabe9619dc80770f68c",
+      "tests": 244
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2014-local-20261113/postgres_env/RECEIPT.json",
+      "receipt_sha256": "0bb580a6188176ca16ddbbeb9884eccd786c6a408b10f7385554bf215fe83ed9",
+      "tests": 157
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2014-local-20261113/static-final/RECEIPT.json",
+      "receipt_sha256": "cda7e9fdcbdfc193dedad9270122bddc1b3708c19db6d0bc7e830b53e8d77285"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2014-local-20261113/schema_contract/RECEIPT.json",
+      "receipt_sha256": "5b5d8e8d5eb22729e239548a17c8dd0b895f773a38b1c55df904083f2a435b69"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2014-local-20261113/security-staged/RECEIPT.json",
+      "receipt_sha256": "ab9cb859c56729ccf1d681a1a941964663749354b3b923b52c338bb892b4568d"
+    }
+  },
+  "focused_tests": 111,
+  "tests": 1699,
+  "skipped": 0,
+  "producer": "Same implementing/verifying operator; technical cross-checks are not independent personnel review",
+  "initial_attempts_retained": [
+    "Initial task entry refused misspelled Git pin and missing repository-root plan/ review-ref prefix; corrected actual pins/refs then IMPLEMENT PASS; no gate weakened.",
+    "Initial extended static attempt preceded test-file creation and returned file-not-found; after file completion full static-final PASS. Original static receipt retained.",
+    "Implementation typing helper inference repaired before final source static and full tests; no runtime or gate bypass."
+  ]
+}
