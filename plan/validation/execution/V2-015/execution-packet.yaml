@@ -19,7 +19,7 @@ scope: Registered urban business scalar-fact extension with root-frozen Pack/Sch
   state and atomic transfers; generic domain extension seam and existing Canon service/replay integration; versioned1.1
   Pack, compatible old formats, tests and appended PG CI coverage. No second writer, dynamic ERP/issuance/FX,016
   progression, Provider or prose-Q2 certification.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-015/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -71,6 +71,7 @@ allowed_paths:
 - README.md
 - AGENTS.md
 - plan/README.md
+- specs/genres/urban.business.realistic
 required_decisions:
 - ADR-007
 claims: []
@@ -106,9 +107,11 @@ handoff:
   - Freeze scope and IMPLEMENT gate
   - Implement generic ports, business validators and existing Canon integration
   - Real contract/PG tests then one key same-SHA CI
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 8911905cd3cfaf69adeae8c2d4254d673970d278
+  scope_ref: plan/validation/execution/V2-015/scope.json
