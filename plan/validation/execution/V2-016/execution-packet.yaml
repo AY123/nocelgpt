@@ -1,0 +1,107 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-016
+plan_version: 1.3.0
+repository_revision: d0aaddd4f3c1d65bc028912a4fdfd6c02f09adf9
+worktree_dirty: false
+plan_manifest_sha256: b4dc3537bbab774c3167faa79ccdfa1937d4a7245c2d37721c2179fc15812d25
+environment:
+  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; no new dependency
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded delegated progression implementation and tests
+verifier: Same implementing/verifying operator; no independent personnel audit
+owner_role: genre-maintainer
+scope: Registered realm, ability learning/use, resource and exact cost state through existing generic extension
+  ports and sole Canon service. Explicit before-state preconditions, immutable root rules, spent/uses counters and
+  finite builders. New exact fantasy Pack1.1 and schema, old versions retained. Contract/PG tests, additive PG CI
+  coverage. No new Canon, SQL, Delta op, equipment engine, production Permit, paid calls or prose Q2.
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-016/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 04_GENRE_AND_STORY_FIXTURES.md
+  ref: validation/execution/V2-016/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
+  sha256: 9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-016/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-016/inputs/81bb6bae4a5256b24d40e015a143fd48906cf234d706551c8e138d9d1c73aed7.txt
+  sha256: 81bb6bae4a5256b24d40e015a143fd48906cf234d706551c8e138d9d1c73aed7
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-016/inputs/cab76358e7590379e1da5e0607209981824264ccffec04d0a7d6053fcca14c8c.txt
+  sha256: cab76358e7590379e1da5e0607209981824264ccffec04d0a7d6053fcca14c8c
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-016/inputs/aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9.txt
+  sha256: aeabad78633c215b19a44abd1a105d55f5034e1c2670dae1110b78ec82fa4aa9
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-016/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- specs/genres/fantasy.eastern.progression
+- src/anovel/genre/extensions/progression.py
+- tests/contract/test_v2_016.py
+allowed_paths:
+- src/anovel/genre/extensions/progression.py
+- src/anovel/genre/extensions/progression_contracts.py
+- src/anovel/genre/extensions/registration.py
+- src/anovel/genre/registry.py
+- src/anovel/genre/policy.py
+- specs/genres/registry.yaml
+- specs/genres/fantasy.eastern.progression
+- specs/genres/fantasy.eastern.progression/
+- tests/contract/test_v2_016.py
+- tests/integration/test_v2_016_postgres.py
+- tests/contract/test_delivery_gates.py
+- scripts/ci/run_gate.py
+- plan/validation/execution/V2-016/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-007
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- Would overwrite user changes
+- Need second Canon writer or mutable historical bytes
+- Need weakened gate/test or security approval expansion
+- Need paid Provider or out-of-scope production features
+review_notes:
+- ADR007 accepted; EXTENSION_CONTRACT refines registered fantasy rules in existing extension ports.
+- All three original assertions retained; old two1.0 Packs and urban1.1 remain byte-identical.
+- CI only appends exact new real PostgreSQL test file.
+handoff:
+  current_step: 'PREPARE: actual main/clean worktree/specs and existing extension integration read'
+  completed_steps:
+  - Verified V015 closure/source tree and reusable generic registry/Canon seam
+  - Selected root-frozen rules and exact spent/use accounting to prevent cost bypass
+  pending_items:
+  - Pin scope and pass IMPLEMENT entry
+  - Implement and verify contracts, generic SetFact enforcement and real PG flows
+  - One key exact-SHA CI after all local checks; P3/human story fixtures remain separate
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null
