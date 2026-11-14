@@ -1,0 +1,17 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-008-20261114-local
+evidence_type: ADR_DECISION
+subject_id: ADR-008
+revision: 0c6b5b12917403a5ec34e8f0f3f39dff68fe2bc3
+status: PASS
+producer: Same implementing/verifying operator under V2-017 authorization; not independent personnel audit
+executed_at: '2026-11-14T06:57:06.199105+00:00'
+environment_fingerprint: Existing locked Python3.12.14/uv0.12.17; design accepted before interface implementation
+artifacts:
+- ref: decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md
+  sha256: 88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Frozen plans and explicit supersession, read-only historical Canon input, original finite Delta templates,
+  source-bound continuation and scoped invalidation; actual human fixture approval remains separately required.

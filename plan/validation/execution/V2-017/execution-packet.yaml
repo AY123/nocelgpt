@@ -1,0 +1,121 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-017
+plan_version: 1.3.0
+repository_revision: 0c6b5b12917403a5ec34e8f0f3f39dff68fe2bc3
+worktree_dirty: false
+plan_manifest_sha256: 10700e5544bea5f610128bb80ea2ad4f0aa0235b48cd0eb24a3af2d63b74d13f
+environment:
+  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; no new dependency
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded planning/contracts/tests delegation
+verifier: Same implementing/verifying operator; not independent personnel audit
+owner_role: planning-maintainer
+scope: User requested P3 aggregate acceptance reusing existing results, then V2-017 Contract Compiler. Implement
+  bounded immutable planning/versions/replanning and deterministic compiled contracts on existing Canon read service
+  and Delta semantics; prepare two concrete DRAFT stories for actual Owner review, never fabricate human approval.
+  Existing main delivery authorized; no paid calls, new Canon writer/SQL or future Writer/Q3/Context implementation.
+  Do not trigger CI until key task ready and actual required authority inputs present. This is implementer scope
+  transcription, not verbatim human text.
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-017/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 04_GENRE_AND_STORY_FIXTURES.md
+  ref: validation/execution/V2-017/inputs/9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0.txt
+  sha256: 9263d85a9dfb0f1645253b1df22c4473210dc4ac9cf8ece0d56ae56cf394cae0
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-017/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: task-packets/V2-017_PLANNING_CONTRACT_PACKET.md
+  ref: validation/execution/V2-017/inputs/f0aa985aff4c34f1589bed8184c34ff932b470e05f557646c72e5e25a00d820d.txt
+  sha256: f0aa985aff4c34f1589bed8184c34ff932b470e05f557646c72e5e25a00d820d
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-017/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-017/inputs/459e4d6d9af4ccbce97f7abefc3ca36a08033a08d096e704c3cb0a450dd945f0.txt
+  sha256: 459e4d6d9af4ccbce97f7abefc3ca36a08033a08d096e704c3cb0a450dd945f0
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-017/inputs/43d01d42c03a1260c4d878d8bd44baab0835ce92854472a117de154d164d7fd3.txt
+  sha256: 43d01d42c03a1260c4d878d8bd44baab0835ce92854472a117de154d164d7fd3
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-017/inputs/154921196176bd32f42fa1824e35d1a7e2ea128c80802cd8dc8c15202f64573d.txt
+  sha256: 154921196176bd32f42fa1824e35d1a7e2ea128c80802cd8dc8c15202f64573d
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-017/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/contracts/compiler.py
+- specs/fixtures/stories
+- tests/contract/test_v2_017.py
+- src/anovel/planning/models.py
+- src/anovel/planning/versions.py
+- src/anovel/planning/replanning.py
+- src/anovel/contracts/models.py
+allowed_paths:
+- src/anovel/planning/
+- src/anovel/contracts/
+- specs/fixtures/stories
+- specs/fixtures/stories/
+- specs/contracts/
+- tests/contract/test_v2_017.py
+- tests/integration/test_v2_017_postgres.py
+- scripts/ci/run_gate.py
+- tests/contract/test_delivery_gates.py
+- plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md
+- plan/validation/execution/V2-017/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/decision-register.yaml
+- plan/machine/phase-gates.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-004
+- ADR-008
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- Would overwrite user changes
+- Need second Canon writer/SQL or new Delta operator
+- Need weakened gate/test or secret approval expansion
+- Need paid Provider or fictitious human fixture approval
+review_notes:
+- P3/G-P3/M3 verified from existing1960/0skip same-SHA evidence, no new CI
+- ADR008 accepted before interfaces; no persisted knowledge/goal/intent capability inferred
+- 'Human StoryFixture review missing: implementation may proceed, AT04/final closure may not'
+- Remote P3 documentation synchronization temporarily unknown due Git transport timeout; no remote success claim
+handoff:
+  current_step: 'PREPARE: P3 actual evidence accepted; ADR008 and bounded task inputs prepared'
+  completed_steps:
+  - Revalidated current source/60-file inventory and P3 exit conditions
+  - Designed pure compiler, immutable plan history and actual Canon read adapter
+  pending_items:
+  - Pin scope and pass IMPLEMENT action
+  - Implement/test two-Anchor contracts and prepare actual Owner story review
+  - Actual AT04 review and final same-SHA CI only when ready
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null
