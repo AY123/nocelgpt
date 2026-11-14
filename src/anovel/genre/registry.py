@@ -24,9 +24,19 @@ from anovel.genre.extensions.contracts import (
     BUSINESS_SCHEMA_ID,
     BUSINESS_VERSION,
 )
+from anovel.genre.extensions.progression_contracts import (
+    PROGRESSION_NAMESPACE,
+    PROGRESSION_SCHEMA_HASH,
+    PROGRESSION_SCHEMA_ID,
+    PROGRESSION_VERSION,
+)
 
 ANCHORS = frozenset({"urban.business.realistic", "fantasy.eastern.progression"})
 EXAMPLE_KINDS = frozenset({"LEGAL", "POLLUTION", "QUOTATION", "UNCERTAIN"})
+_EXTENSION_ANCHORS = {
+    BUSINESS_NAMESPACE: "urban.business.realistic",
+    PROGRESSION_NAMESPACE: "fantasy.eastern.progression",
+}
 
 
 class GenreError(ValueError):
@@ -215,11 +225,19 @@ class ExtensionRef:
     schema_hash: str
 
     def __post_init__(self) -> None:
-        if (self.namespace, self.version, self.schema_id, self.schema_hash) != (
-            BUSINESS_NAMESPACE,
-            BUSINESS_VERSION,
-            BUSINESS_SCHEMA_ID,
-            BUSINESS_SCHEMA_HASH,
+        if (self.namespace, self.version, self.schema_id, self.schema_hash) not in (
+            (
+                BUSINESS_NAMESPACE,
+                BUSINESS_VERSION,
+                BUSINESS_SCHEMA_ID,
+                BUSINESS_SCHEMA_HASH,
+            ),
+            (
+                PROGRESSION_NAMESPACE,
+                PROGRESSION_VERSION,
+                PROGRESSION_SCHEMA_ID,
+                PROGRESSION_SCHEMA_HASH,
+            ),
         ) or any(
             type(v) is not str
             for v in (self.namespace, self.version, self.schema_id, self.schema_hash)
@@ -276,7 +294,10 @@ class GenrePack:
             type(self.extensions) is not tuple
             or any(type(item) is not ExtensionRef for item in self.extensions)
             or len({item.namespace for item in self.extensions}) != len(self.extensions)
-            or (self.extensions and self.ref.id != "urban.business.realistic")
+            or any(
+                _EXTENSION_ANCHORS.get(item.namespace) != self.ref.id
+                for item in self.extensions
+            )
         ):
             raise GenreError(
                 "Pack has an unknown, duplicated or cross-Anchor extension"

@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "scope": "Actual local worktree checks; not immutable revision/remote acceptance",
+  "completed_at": "2026-11-14T05:57:42.592128+00:00",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2016-local-20261114/unit-final/RECEIPT.json",
+      "receipt_sha256": "7587e05ac78de7be61ef682aa966cf429cee8f3947264f984ec94e32bc50c5e2",
+      "tests": 1500
+    },
+    "arch": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2016-local-20261114/arch/RECEIPT.json",
+      "receipt_sha256": "799c6d342b92e030e3813a2f3dcc506d7e8b07c4b51b8fdfd14f86d3751ad86c",
+      "tests": 244
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2016-local-20261114/postgres-verified/RECEIPT.json",
+      "receipt_sha256": "d0d6d39a6b2b393562b857faf98a845455c7b8ae0dabc28ad44a24996626a172",
+      "tests": 216
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2016-local-20261114/static-final/RECEIPT.json",
+      "receipt_sha256": "3190c5ac440ae2c9ea6fcf8e1ae9537fa5b81e751514f32fce449105b2e3659a"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2016-local-20261114/schema_contract/RECEIPT.json",
+      "receipt_sha256": "2be5f4fc952cb0c549eca624cf4c2e7ef05e5973fdd11a0e8638ec5805eeba35"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2016-local-20261114/security-tracked/RECEIPT.json",
+      "receipt_sha256": "f34c0e7fc1da155fbc7a9715f3c15f10895df5c3079d6a9bdd1b2d99c9bfd275"
+    }
+  },
+  "new_contract_tests": 114,
+  "new_postgres_tests": 31,
+  "tests": 1960,
+  "skipped": 0,
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "packages": 51,
+    "vulnerabilities": 0
+  },
+  "producer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+  "earlier_failed_receipts": [
+    {
+      "receipt_ref": "dist/validation/v2016-local-20261114/postgres-final/RECEIPT.json",
+      "status": "FAIL",
+      "sha256": "e90878d11fe95d2224216c2577925ced1ee763ba27e44d1255b9a4f3da354f4c"
+    }
+  ]
+}

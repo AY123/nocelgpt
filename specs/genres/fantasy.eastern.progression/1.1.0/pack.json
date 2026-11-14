@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "id": "fantasy.eastern.progression",
+  "version": "1.1.0",
+  "profile": {
+    "anchor": "fantasy.eastern.progression",
+    "reality_model": "fantasy",
+    "setting_model": "eastern_secondary_world",
+    "world_mechanics": [
+      "东方幻想世界的能力、境界、资源和代价由显式世界设定约束。",
+      "宗门、势力、交易与竞争依照本世界声明的制度产生后果。"
+    ],
+    "forbidden_mechanics": [
+      "未声明地套用现代公司股权或财务制度。",
+      "缺少已声明前置条件、资源与代价的无条件进阶。"
+    ]
+  },
+  "extensions": [
+    {
+      "namespace": "fantasy.progression",
+      "version": "1.0.0",
+      "schema_id": "https://anovel.dev/genres/fantasy.progression/1.0.0/schema.json",
+      "schema_hash": "d61d432006c9398b1c1d0bb9d644bca639bad637dae4b3a8a387a4bdb680bcc6"
+    }
+  ],
+  "strategies": [
+    {
+      "id": "progression.costly_choice",
+      "purpose": "围绕有限资源、能力前提与代价设计选择，避免仅把境界数字变大。"
+    },
+    {
+      "id": "progression.faction.response",
+      "purpose": "让势力关系及对手应对影响后续行动；可使用安静或认知推进的场景。"
+    }
+  ],
+  "rubric": [
+    "因果连续：承接已接受的事实、前章结果和角色知情范围。",
+    "人物选择具有可理解的动机、阻力和代价。",
+    "冲突、关系或读者理解有所推进，不以单一财富或境界数字代替叙事。"
+  ],
+  "examples": [
+    {
+      "id": "fantasy.legal",
+      "kind": "LEGAL",
+      "text": "弟子为取得疗伤药向商会交换情报，付出代价并承担泄露秘密的风险。"
+    },
+    {
+      "id": "fantasy.pollution",
+      "kind": "POLLUTION",
+      "text": "故事未声明现代公司制度，却直接用现代股权会计规则决定宗门控制权。"
+    },
+    {
+      "id": "fantasy.quotation",
+      "kind": "QUOTATION",
+      "text": "角色谈论另一个幻想故事中的境界，引用不自动改变本世界境界设定。"
+    },
+    {
+      "id": "fantasy.uncertain",
+      "kind": "UNCERTAIN",
+      "text": "古籍声称此药能突破境界，但故事尚无证据确认药效及适用前提。"
+    }
+  ],
+  "consumers": [
+    "V2-014 genre hard policy",
+    "V2-016 registered realm ability resource cost validator",
+    "V2-017 Contract Compiler",
+    "V2-018 Context Compiler"
+  ]
+}

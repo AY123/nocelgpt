@@ -16,6 +16,7 @@ from anovel.canon.identity import canonical_bytes
 from anovel.domain.events import Occurrence
 from anovel.domain.identity import EntityId
 from anovel.genre.extensions.contracts import BUSINESS_PACK_IDENTITY
+from anovel.genre.extensions.progression_contracts import PROGRESSION_PACK_IDENTITY
 from anovel.genre.registry import (
     GenreError,
     PackRef,
@@ -155,9 +156,29 @@ BUSINESS_POLICY_HASH = sha256(
 ).hexdigest()
 
 
+PROGRESSION_PACK_REF = PackRef(*PROGRESSION_PACK_IDENTITY)
+PROGRESSION_POLICY_VERSION = "1.1.0"
+PROGRESSION_POLICY_HASH = sha256(
+    canonical_bytes(
+        {
+            "version": PROGRESSION_POLICY_VERSION,
+            "base_policy_hash": POLICY_HASH,
+            "pack_ref": PROGRESSION_PACK_REF.to_dict(),
+            "world_occurred_rules": [
+                {"mechanism": mechanism.value, "status": status.value}
+                for mechanism, status in _RULES[1][1]
+            ],
+            "scope": "Same bounded fantasy policy; typed progression invariants checked separately",
+        }
+    )
+).hexdigest()
+
+
 def _policy_identity(ref: PackRef) -> tuple[str, str]:
     if ref == BUSINESS_PACK_REF:
         return BUSINESS_POLICY_VERSION, BUSINESS_POLICY_HASH
+    if ref == PROGRESSION_PACK_REF:
+        return PROGRESSION_POLICY_VERSION, PROGRESSION_POLICY_HASH
     return POLICY_VERSION, POLICY_HASH
 
 
@@ -186,7 +207,7 @@ def _digest(value: object) -> str:
 def _binding(value: object) -> ProjectGenreBinding:
     if type(value) is not ProjectGenreBinding:
         raise PolicyError("policy needs an exact project GenrePack binding")
-    if value.ref not in (*SUPPORTED_PACK_REFS, BUSINESS_PACK_REF):
+    if value.ref not in (*SUPPORTED_PACK_REFS, BUSINESS_PACK_REF, PROGRESSION_PACK_REF):
         raise PolicyError("no policy is bound to this exact Pack ID/version/hash")
     return value
 
@@ -434,8 +455,10 @@ def _claim_decision(
             claim, PolicyStatus.PASS, "NOT_OCCURRED", "GENRE-NONOCCURRENCE-1"
         )
     for supported, rules in _RULES:
-        if supported == ref or (
-            ref == BUSINESS_PACK_REF and supported == SUPPORTED_PACK_REFS[0]
+        if (
+            supported == ref
+            or (ref == BUSINESS_PACK_REF and supported == SUPPORTED_PACK_REFS[0])
+            or (ref == PROGRESSION_PACK_REF and supported == SUPPORTED_PACK_REFS[1])
         ):
             for mechanism, status in rules:
                 if mechanism is claim.mechanism:

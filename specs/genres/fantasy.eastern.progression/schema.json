@@ -1,0 +1,278 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://anovel.dev/genres/fantasy.progression/1.0.0/schema.json",
+  "title": "Eastern fantasy progression state 1.0.0",
+  "description": "Closed structural input only. Strict integer types, registered references, consecutive realm ranks, immutable rules, before-state prerequisites and exact actor-specific costs require the compiled validator. This schema does not interpret prose or grant Canon write authority.",
+  "type": "object",
+  "required": [
+    "kind",
+    "schema_version",
+    "realms",
+    "cultivators",
+    "abilities",
+    "ability_states",
+    "resources"
+  ],
+  "properties": {
+    "kind": {
+      "const": "EASTERN_PROGRESSION_STATE"
+    },
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "realms": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/realm"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "cultivators": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/cultivator"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    },
+    "abilities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ability"
+      },
+      "uniqueItems": true
+    },
+    "ability_states": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/ability_state"
+      },
+      "uniqueItems": true
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/resource"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "entity_id": {
+      "type": "object",
+      "required": [
+        "project",
+        "local_id"
+      ],
+      "properties": {
+        "project": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$"
+        },
+        "local_id": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[^/]+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "realm": {
+      "type": "object",
+      "required": [
+        "id",
+        "rank",
+        "resource",
+        "unit",
+        "breakthrough_cost"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "rank": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resource": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "unit": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "breakthrough_cost": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "rank": {
+                "const": 0
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "breakthrough_cost": {
+                "const": 0
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "breakthrough_cost": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "cultivator": {
+      "type": "object",
+      "required": [
+        "id",
+        "realm"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "realm": {
+          "$ref": "#/$defs/entity_id"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ability": {
+      "type": "object",
+      "required": [
+        "id",
+        "minimum_realm",
+        "resource",
+        "unit",
+        "learning_cost",
+        "use_cost"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "minimum_realm": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "resource": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "unit": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "learning_cost": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "use_cost": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "ability_state": {
+      "type": "object",
+      "required": [
+        "id",
+        "owner",
+        "ability",
+        "learned",
+        "uses"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "owner": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "ability": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "learned": {
+          "type": "boolean"
+        },
+        "uses": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "learned": {
+                "const": false
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "uses": {
+                "const": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "resource": {
+      "type": "object",
+      "required": [
+        "id",
+        "owner",
+        "resource",
+        "unit",
+        "quantity",
+        "spent"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "owner": {
+          "$ref": "#/$defs/entity_id"
+        },
+        "resource": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "unit": {
+          "type": "string",
+          "pattern": "\\S"
+        },
+        "quantity": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "spent": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

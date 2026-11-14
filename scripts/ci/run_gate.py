@@ -268,6 +268,7 @@ def commands_for(job: str, output: Path) -> list[list[str]]:
                 "tests/integration/test_v2_011.py",
                 "tests/integration/test_v2_012.py",
                 "tests/integration/test_v2_015_postgres.py",
+                "tests/integration/test_v2_016_postgres.py",
                 "--junitxml=" + target + "/junit.xml",
             ]
         ]
