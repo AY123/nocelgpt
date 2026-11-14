@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "scope": "Actual local worktree verification; not immutable revision or remote acceptance",
+  "completed_at": "2026-11-14T01:11:45.769445+00:00",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2015-local-20261114/unit-final/RECEIPT.json",
+      "receipt_sha256": "29fc9b69e268364630fc6eac7615b03003b8d59a09bb38b50ffbbe6aaa14f9fa",
+      "tests": 1386
+    },
+    "arch": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2015-local-20261114/arch/RECEIPT.json",
+      "receipt_sha256": "7e34229bd713f420fc2e8cd3085c65a51e060b7737682bec6731f0a7fcba2cfe",
+      "tests": 244
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2015-local-20261114/postgres-final/RECEIPT.json",
+      "receipt_sha256": "3b1fe6d3824f287782748ca7c41bfb81f41bcd80159b1ba5c04dd9e92996e2bb",
+      "tests": 185
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2015-local-20261114/static-final/RECEIPT.json",
+      "receipt_sha256": "7bbe936ef45acb4ab05469d1c57955dcee03a29c06d7968620c36f90a73f0d69"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2015-local-20261114/schema_contract/RECEIPT.json",
+      "receipt_sha256": "8088012d235fe6b5d8b022b13c4225f198b2315ac83648bec10153a96ebd1354"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2015-local-20261114/secret_dependency/RECEIPT.json",
+      "receipt_sha256": "48906e052befe170fe0ad34bc53aaaede5b0d724aeb8de170771f33541a9ddac"
+    }
+  },
+  "new_contract_tests": 88,
+  "new_postgres_tests": 28,
+  "tests": 1815,
+  "skipped": 0,
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "packages": 51,
+    "vulnerabilities": 0
+  },
+  "producer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+  "initial_attempts_retained": [
+    "Opening PREPARE blocked missing directory-root output declaration; exact directory path added without broader file scope.",
+    "Current-scope entry observed concurrent writes (ENTRY_RACE); no permission or runtime conclusion drawn, later actual stable diff reviewed.",
+    "First full PG run3 failed182 passed: new tests compared unsorted input Entity tuple to canonical sorted readback. Production ordering was already correct. Replaced with complete canonical RootSeed bytes comparison, no validation dropped; all185 then passed.",
+    "New Schema currency newline boundary and unbound BusinessState reader guard tightened before final candidate; schema/Pack hashes explicitly recomputed while draft.",
+    "First complete UNIT3 failed1383 passed because sandbox denied existing uv cache; without source/test changes, required cache permission enabled and full UNIT1386 passed. Both original receipts retained."
+  ]
+}

@@ -15,6 +15,7 @@ from hashlib import sha256
 from anovel.canon.identity import canonical_bytes
 from anovel.domain.events import Occurrence
 from anovel.domain.identity import EntityId
+from anovel.genre.extensions.contracts import BUSINESS_PACK_IDENTITY
 from anovel.genre.registry import (
     GenreError,
     PackRef,
@@ -133,6 +134,32 @@ POLICY_HASH = sha256(
     )
 ).hexdigest()
 
+# Keep the accepted 1.0 policy fingerprint reproducible for existing books.
+# A registered business Pack has an explicit new policy, never an implicit
+# widening of the old supported-Pack set or its historical fingerprint.
+BUSINESS_PACK_REF = PackRef(*BUSINESS_PACK_IDENTITY)
+BUSINESS_POLICY_VERSION = "1.1.0"
+BUSINESS_POLICY_HASH = sha256(
+    canonical_bytes(
+        {
+            "version": BUSINESS_POLICY_VERSION,
+            "base_policy_hash": POLICY_HASH,
+            "pack_ref": BUSINESS_PACK_REF.to_dict(),
+            "world_occurred_rules": [
+                {"mechanism": mechanism.value, "status": status.value}
+                for mechanism, status in _RULES[0][1]
+            ],
+            "scope": "Same bounded reality policy; typed business invariants checked separately",
+        }
+    )
+).hexdigest()
+
+
+def _policy_identity(ref: PackRef) -> tuple[str, str]:
+    if ref == BUSINESS_PACK_REF:
+        return BUSINESS_POLICY_VERSION, BUSINESS_POLICY_HASH
+    return POLICY_VERSION, POLICY_HASH
+
 
 def _text(value: object, field: str) -> str:
     if type(value) is not str or not value.strip():
@@ -159,7 +186,7 @@ def _digest(value: object) -> str:
 def _binding(value: object) -> ProjectGenreBinding:
     if type(value) is not ProjectGenreBinding:
         raise PolicyError("policy needs an exact project GenrePack binding")
-    if value.ref not in SUPPORTED_PACK_REFS:
+    if value.ref not in (*SUPPORTED_PACK_REFS, BUSINESS_PACK_REF):
         raise PolicyError("no policy is bound to this exact Pack ID/version/hash")
     return value
 
@@ -309,6 +336,7 @@ class PolicyResult:
 
     def __post_init__(self) -> None:
         _binding(self.binding)
+        version, digest = _policy_identity(self.binding.ref)
         if (
             type(self.diagnostics) is not tuple
             or not self.diagnostics
@@ -317,9 +345,9 @@ class PolicyResult:
             raise PolicyError("results require immutable nonempty diagnostics")
         if (
             type(self.policy_hash) is not str
-            or self.policy_hash != POLICY_HASH
+            or self.policy_hash != digest
             or type(self.policy_version) is not str
-            or self.policy_version != POLICY_VERSION
+            or self.policy_version != version
             or type(self.scope) is not str
             or self.scope not in {"STRUCTURED_CLAIMS_ONLY", "OPTIONAL_STRATEGY"}
             or type(self.prose_coverage) is not str
@@ -406,7 +434,9 @@ def _claim_decision(
             claim, PolicyStatus.PASS, "NOT_OCCURRED", "GENRE-NONOCCURRENCE-1"
         )
     for supported, rules in _RULES:
-        if supported == ref:
+        if supported == ref or (
+            ref == BUSINESS_PACK_REF and supported == SUPPORTED_PACK_REFS[0]
+        ):
             for mechanism, status in rules:
                 if mechanism is claim.mechanism:
                     code = {
@@ -494,12 +524,13 @@ class GenrePolicy:
     ) -> PolicyResult:
         checked = _claims(claims)
         _source(self.binding, document, checked)
+        version, digest = _policy_identity(self.binding.ref)
         return PolicyResult(
             self.binding,
             document,
             _evaluate(self.binding.ref, checked),
-            POLICY_HASH,
-            POLICY_VERSION,
+            digest,
+            version,
             "STRUCTURED_CLAIMS_ONLY",
         )
 
@@ -511,12 +542,13 @@ class GenrePolicy:
     ) -> PolicyResult:
         checked = _claims(claims)
         diagnoses = _strategy_diagnostics(self.binding, selection, proposal, checked)
+        version, digest = _policy_identity(self.binding.ref)
         return PolicyResult(
             self.binding,
             proposal,
             diagnoses,
-            POLICY_HASH,
-            POLICY_VERSION,
+            digest,
+            version,
             "OPTIONAL_STRATEGY",
             selection=selection,
         )

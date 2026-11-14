@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import json
 import re
-from base64 import b64encode
+from base64 import b64decode, b64encode
+from binascii import Error as Base64Error
 from dataclasses import dataclass
 from enum import Enum
 from hashlib import sha256
@@ -17,6 +18,12 @@ from typing import cast
 
 from anovel.canon.identity import canonical_bytes
 from anovel.domain.identity import EntityId
+from anovel.genre.extensions.contracts import (
+    BUSINESS_NAMESPACE,
+    BUSINESS_SCHEMA_HASH,
+    BUSINESS_SCHEMA_ID,
+    BUSINESS_VERSION,
+)
 
 ANCHORS = frozenset({"urban.business.realistic", "fantasy.eastern.progression"})
 EXAMPLE_KINDS = frozenset({"LEGAL", "POLLUTION", "QUOTATION", "UNCERTAIN"})
@@ -201,10 +208,50 @@ class PackExample:
 
 
 @dataclass(frozen=True, slots=True)
+class ExtensionRef:
+    namespace: str
+    version: str
+    schema_id: str
+    schema_hash: str
+
+    def __post_init__(self) -> None:
+        if (self.namespace, self.version, self.schema_id, self.schema_hash) != (
+            BUSINESS_NAMESPACE,
+            BUSINESS_VERSION,
+            BUSINESS_SCHEMA_ID,
+            BUSINESS_SCHEMA_HASH,
+        ) or any(
+            type(v) is not str
+            for v in (self.namespace, self.version, self.schema_id, self.schema_hash)
+        ):
+            raise GenreError("extension has no exact compiled registration")
+
+    def to_dict(self) -> dict[str, str]:
+        return {
+            "namespace": self.namespace,
+            "version": self.version,
+            "schema_id": self.schema_id,
+            "schema_hash": self.schema_hash,
+        }
+
+    @classmethod
+    def from_dict(cls, value: object) -> ExtensionRef:
+        row = _record(
+            value, {"namespace", "version", "schema_id", "schema_hash"}, "extension"
+        )
+        return cls(
+            *(
+                _text(row[k], k)
+                for k in ("namespace", "version", "schema_id", "schema_hash")
+            )
+        )
+
+
+@dataclass(frozen=True, slots=True)
 class GenrePack:
     ref: PackRef
     profile: GenreProfile
-    extensions: tuple[str, ...]
+    extensions: tuple[ExtensionRef, ...]
     strategies: tuple[NarrativeStrategy, ...]
     rubric: tuple[str, ...]
     examples: tuple[PackExample, ...]
@@ -225,8 +272,15 @@ class GenrePack:
             or self.ref.version != self.profile.version
         ):
             raise GenreError("Pack and Profile identities differ")
-        if type(self.extensions) is not tuple or self.extensions:
-            raise GenreError("no runtime genre extensions are registered yet")
+        if (
+            type(self.extensions) is not tuple
+            or any(type(item) is not ExtensionRef for item in self.extensions)
+            or len({item.namespace for item in self.extensions}) != len(self.extensions)
+            or (self.extensions and self.ref.id != "urban.business.realistic")
+        ):
+            raise GenreError(
+                "Pack has an unknown, duplicated or cross-Anchor extension"
+            )
         for values, kind in (
             (self.strategies, NarrativeStrategy),
             (self.examples, PackExample),
@@ -278,7 +332,7 @@ class GenrePack:
             "id": self.ref.id,
             "version": self.ref.version,
             "profile": self.profile._manifest(),
-            "extensions": list(self.extensions),
+            "extensions": [item.to_dict() for item in self.extensions],
             "strategies": [s.to_dict() for s in self.strategies],
             "rubric": list(self.rubric),
             "examples": [e.to_dict() for e in self.examples],
@@ -340,6 +394,54 @@ class ProjectGenreBinding:
             ).decode("ascii"),
             "catalog_base64": b64encode(self.pack.catalog_bytes).decode("ascii"),
         }
+
+    @classmethod
+    def from_dict(cls, value: object) -> ProjectGenreBinding:
+        """Restore retained bytes offline; never select from the current catalog."""
+        row = _record(
+            value,
+            {
+                "project",
+                "pack_ref",
+                "profile",
+                "manifest",
+                "source_path",
+                "catalog_path",
+                "source_file_sha256",
+                "catalog_source_sha256",
+                "manifest_base64",
+                "canonical_manifest_base64",
+                "catalog_base64",
+            },
+            "project genre binding",
+        )
+        ref = _record(row["pack_ref"], {"id", "version", "content_hash"}, "Pack ref")
+
+        def raw(field: str) -> bytes:
+            encoded = _text(row[field], field)
+            try:
+                decoded = b64decode(encoded, validate=True)
+            except (ValueError, Base64Error) as error:
+                raise GenreError("invalid retained genre bytes") from error
+            if b64encode(decoded).decode("ascii") != encoded:
+                raise GenreError("noncanonical retained genre bytes")
+            return decoded
+
+        pack = _load_pack(
+            PackRef(
+                _text(ref["id"], "Pack ID"),
+                _text(ref["version"], "version"),
+                _text(ref["content_hash"], "hash"),
+            ),
+            raw("manifest_base64"),
+            _text(row["source_path"], "source path"),
+            _text(row["catalog_path"], "catalog path"),
+            raw("catalog_base64"),
+        )
+        result = cls(_text(row["project"], "project"), pack)
+        if result.to_dict() != row:
+            raise GenreError("retained genre identities or source bytes differ")
+        return result
 
 
 @dataclass(frozen=True, slots=True)
@@ -503,7 +605,10 @@ def _load_pack(
     return GenrePack(
         ref,
         profile,
-        _strings(manifest["extensions"], "extensions"),
+        tuple(
+            ExtensionRef.from_dict(item)
+            for item in _array(manifest["extensions"], "extensions")
+        ),
         tuple(strategies),
         _strings(manifest["rubric"], "rubric"),
         tuple(examples),

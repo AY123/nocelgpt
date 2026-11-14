@@ -1,0 +1,202 @@
+{
+  "task_id": "V2-015",
+  "baseline_pin": {
+    "revision": "8b42f10389d377bd90a236642e2cf5d6ad64574e",
+    "ref": "plan/validation/execution/V2-015/scope.json",
+    "sha256": "67d74dbd6a0f4debf915f25d36ee6bffaf5d44e530b9ff2dcc2cc8f26787b287"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "new_sha": "51e1be417780017c9c5a2aec779a2f333d9eacef344a5705fd0c29366db4a058",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "d1a9329d5f99a07bde57dc955164e0b5cdb1e1f1fdd251b1b145189a1fd93d67",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "new_sha": "51e1be417780017c9c5a2aec779a2f333d9eacef344a5705fd0c29366db4a058",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "fab55d513bf8e237d5307cf36c3e10bc203860efe2617a4a81f87693c1c06b74",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "49f8ff32c82967c7230a5a3e719ca67861fce2152dffb490783d9aab0385109d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "cf858ca6d7b8a89fbae3b736906d06640ceaa138d1bd69faaff070f82a81ad8d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "f8c918ec5c607f6f3c84c1bfb8d8158e35d98892ae1fc0394d91f136b58e426b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "100fe17c6330bfa8b622225f1d65c7bb462cd89929e7aa6a533aa3ac17a00d01",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; task EXTENSION_CONTRACT fixes exact root-frozen Pack/Schema metadata, strict scalar types, conservation, mandatory native-Delta/root/Permit/commit/replay checks and legacy compatibility. Actual local and remote results, when available, are independently bound as artifacts below; templates/history are not new runtime evidence.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        }
+      ]
+    }
+  ]
+}

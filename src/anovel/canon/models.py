@@ -8,6 +8,7 @@ from datetime import datetime
 
 from anovel.canon.identity import utc_timestamp
 from anovel.domain.character import Relationship
+from anovel.domain.extensions import ExtensionBinding
 from anovel.domain.identity import Entity, EntityId
 from anovel.domain.knowledge import WorldFact
 
@@ -44,6 +45,7 @@ class RootSeed:
     entities: tuple[Entity, ...]
     relationships: tuple[Relationship, ...]
     facts: tuple[WorldFact, ...]
+    extensions: tuple[ExtensionBinding, ...] = ()
 
     def __post_init__(self) -> None:
         groups = (
@@ -69,15 +71,25 @@ class RootSeed:
             raise CanonError("relationship endpoint is not registered in root")
         if any(item.proposition.subject not in entities for item in self.facts):
             raise CanonError("fact subject is not registered in root")
+        if type(self.extensions) is not tuple or any(
+            type(binding) is not ExtensionBinding for binding in self.extensions
+        ):
+            raise CanonError("root needs immutable exact extension bindings")
+        if len({binding.namespace for binding in self.extensions}) != len(
+            self.extensions
+        ):
+            raise CanonError("root repeats an extension namespace")
+        if any(set(binding.entity_ids) != entities for binding in self.extensions):
+            raise CanonError("extension binding differs from complete root entity set")
 
     @property
     def project(self) -> str:
         return self.entities[0].id.project
 
     def to_dict(self) -> dict[str, object]:
-        return {
+        result: dict[str, object] = {
             "kind": "ROOT_SEED",
-            "schema_version": "1.0",
+            "schema_version": "1.1" if self.extensions else "1.0",
             "entities": [
                 v.to_dict() for v in sorted(self.entities, key=lambda v: str(v.id))
             ],
@@ -86,28 +98,45 @@ class RootSeed:
             ],
             "facts": [v.to_dict() for v in sorted(self.facts, key=lambda v: str(v.id))],
         }
+        if self.extensions:
+            result["extensions"] = [binding.to_dict() for binding in self.extensions]
+        return result
 
     @classmethod
     def from_dict(cls, value: object) -> RootSeed:
-        if type(value) is not dict or set(value) != {
+        if type(value) is not dict:
+            raise CanonIntegrityError("invalid root seed record")
+        extended = value.get("schema_version") == "1.1"
+        if set(value) != {
             "kind",
             "schema_version",
             "entities",
             "relationships",
             "facts",
-        }:
+        } | ({"extensions"} if extended else set()):
             raise CanonIntegrityError("invalid root seed record")
-        if value["kind"] != "ROOT_SEED" or value["schema_version"] != "1.0":
+        if value["kind"] != "ROOT_SEED" or value["schema_version"] not in (
+            "1.0",
+            "1.1",
+        ):
             raise CanonIntegrityError("unknown root seed version")
         if any(
             type(value[key]) is not list
             for key in ("entities", "relationships", "facts")
         ):
             raise CanonIntegrityError("root members must be arrays")
+        bindings: tuple[ExtensionBinding, ...] = ()
+        if extended:
+            if type(value["extensions"]) is not list or not value["extensions"]:
+                raise CanonIntegrityError("extended root requires nonempty bindings")
+            bindings = tuple(
+                ExtensionBinding.from_dict(item) for item in value["extensions"]
+            )
         return cls(
             tuple(Entity.from_dict(v) for v in value["entities"]),
             tuple(Relationship.from_dict(v) for v in value["relationships"]),
             tuple(WorldFact.from_dict(v) for v in value["facts"]),
+            bindings,
         )
 
 

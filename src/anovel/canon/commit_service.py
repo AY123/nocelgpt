@@ -13,6 +13,7 @@ from anovel.canon.chapter import ChapterCandidate, StoredChapter
 from anovel.canon.models import CommitReceipt, ExecutionTicket, RootSeed, StoredRoot
 from anovel.canon.repository import Repository, _test_database
 from anovel.domain.delta import FactBaseline
+from anovel.genre.extensions.registration import registered_extensions
 
 
 class CanonCommitService:
@@ -20,7 +21,8 @@ class CanonCommitService:
         if test_database is not None:
             _test_database(engine, test_database)
         self._test_database = test_database
-        self._repository = Repository(engine)
+        self._extensions = registered_extensions()
+        self._repository = Repository(engine, extension_registry=self._extensions)
 
     def provision(self, project: str, branch: str, initializer: str) -> None:
         """Privileged composition: empty scope/grant only, never Canon contents."""
@@ -100,7 +102,7 @@ class CanonCommitService:
         history = self._repository.load_history(project, branch, commit_id)
         receipt = history[-1].content.receipt
         try:
-            return projection.rebuild(history)
+            return projection.rebuild(history, extension_registry=self._extensions)
         except Exception as error:
             # Source verification happened above. An invalid/missing history
             # never receives a fabricated successful target receipt here.
@@ -128,7 +130,9 @@ class ProtectedPermitIssuer:
 
         _test_database(engine, test_database)
         self._issuer_id = identifier(issuer_id)
-        self._repository = Repository(engine)
+        self._repository = Repository(
+            engine, extension_registry=registered_extensions()
+        )
 
     def issue(
         self,

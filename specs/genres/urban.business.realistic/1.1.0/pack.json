@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "id": "urban.business.realistic",
+  "version": "1.1.0",
+  "profile": {
+    "anchor": "urban.business.realistic",
+    "reality_model": "realistic",
+    "setting_model": "contemporary",
+    "world_mechanics": [
+      "现实社会的法律、市场、财产和组织关系约束人物行动。",
+      "能力和资源来自可解释的现实行动；信息受到知情范围限制。"
+    ],
+    "forbidden_mechanics": [
+      "世界事实中的修炼、法术及超自然能力。",
+      "未声明的重生、系统或其他超现实机制。"
+    ]
+  },
+  "extensions": [
+    {
+      "namespace": "urban.business",
+      "version": "1.0.0",
+      "schema_id": "https://anovel.dev/genres/urban.business/1.0.0/schema.json",
+      "schema_hash": "abbc0bcde13ca7550f5ae304adda74273dc7a41153bddbffa0925e5ec9f7c66b"
+    }
+  ],
+  "strategies": [
+    {
+      "id": "business.negotiation.tradeoff",
+      "purpose": "用谈判双方的信息差、选择与代价推进冲突；不保证主角必胜。"
+    },
+    {
+      "id": "business.rival.countermove",
+      "purpose": "让对手观察主角的行动并采取有动机的应对，形成新的问题。"
+    }
+  ],
+  "rubric": [
+    "因果连续：承接已接受的事实、前章结果和角色知情范围。",
+    "人物选择具有可理解的动机、阻力和代价。",
+    "冲突、关系或读者理解有所推进，不以单一财富或境界数字代替叙事。"
+  ],
+  "examples": [
+    {
+      "id": "urban.legal",
+      "kind": "LEGAL",
+      "text": "创业者为保住现金流接受更慢的交付条件，合作伙伴因此改变立场。"
+    },
+    {
+      "id": "urban.pollution",
+      "kind": "POLLUTION",
+      "text": "角色以现实存在的法术凭空复制资金；这是待后续规则验证器处理的污染样本。"
+    },
+    {
+      "id": "urban.quotation",
+      "kind": "QUOTATION",
+      "text": "角色阅读修仙小说并谈论渡劫，引用内容不自动成为故事世界事实。"
+    },
+    {
+      "id": "urban.uncertain",
+      "kind": "UNCERTAIN",
+      "text": "他觉得对手仿佛能预知一切；当前文本不足以认定世界存在预知能力。"
+    }
+  ],
+  "consumers": [
+    "V2-014 genre hard policy",
+    "V2-017 Contract Compiler",
+    "V2-018 Context Compiler"
+  ]
+}

@@ -35,6 +35,7 @@ from anovel.canon.models import (
 )
 from anovel.canon.projection import HistoryEntry
 from anovel.domain.delta import FactBaseline, preview_delta
+from anovel.domain.extensions import ExtensionRegistry
 
 TEST_CHECKS = ["TEST_CANDIDATE_BINDING-1", "TEST_DELTA_PREVIEW-1"]
 TEST_AUTHORIZATION = "TEST-AUTHORIZATION-1"
@@ -319,10 +320,26 @@ def _request(conn: Connection, params: dict[str, Any]) -> RowMapping:
 class Repository:
     """Scoped read API and service-internal transaction primitives."""
 
-    def __init__(self, engine: Engine) -> None:
+    def __init__(
+        self, engine: Engine, *, extension_registry: ExtensionRegistry | None = None
+    ) -> None:
         if engine.dialect.name != "postgresql":
             raise CanonError("Canon requires PostgreSQL")
         self._engine = engine
+        self._extensions = (
+            ExtensionRegistry() if extension_registry is None else extension_registry
+        )
+        if type(self._extensions) is not ExtensionRegistry:
+            raise CanonError("invalid compiled extension registry")
+
+    @staticmethod
+    def _check_extension_pack(
+        baseline: FactBaseline, candidate: ChapterCandidate
+    ) -> None:
+        if baseline.extensions:
+            raw = next(x.content for x in candidate.dependencies if x.kind == "PACK")
+            if any(binding.pack_bytes != raw for binding in baseline.extensions):
+                raise CanonIntegrityError("chapter Pack differs from frozen root Pack")
 
     def head(self, project: str, branch: str) -> str | None:
         with self._engine.connect() as conn:
@@ -448,6 +465,15 @@ class Repository:
             seed = RootSeed.from_dict(root_input["seed"])
             if seed.project != project:
                 raise CanonIntegrityError("seed crosses scope")
+            try:
+                self._extensions.validate_root(
+                    seed.project,
+                    seed.extensions,
+                    seed.facts,
+                    tuple(item.id for item in seed.entities),
+                )
+            except ValueError as error:
+                raise CanonIntegrityError("invalid frozen root extension") from error
             receipt = _receipt(conn, {**params, "request": commit["request_id"]})
             event = _one(
                 conn,
@@ -520,6 +546,12 @@ class Repository:
         ):
             raise CanonError("invalid root scope/types")
         # Serialization and full domain validation occur before the transaction.
+        self._extensions.validate_root(
+            seed.project,
+            seed.extensions,
+            seed.facts,
+            tuple(item.id for item in seed.entities),
+        )
         payload = canonical_bytes(
             {
                 "kind": "ROOT_INPUT",
@@ -837,10 +869,16 @@ class Repository:
         if row["parent_id"] is None:
             root = self.load_root(project, branch, commit_id)
             return FactBaseline.from_world_facts(
-                project, branch, commit_id, root.seed.facts
+                project,
+                branch,
+                commit_id,
+                root.seed.facts,
+                extensions=root.seed.extensions,
             )
         stored = self.load_commit(project, branch, commit_id)
-        return FactBaseline(project, branch, commit_id, stored.state.facts)
+        return FactBaseline(
+            project, branch, commit_id, stored.state.facts, stored.state.extensions
+        )
 
     def load_history(
         self, project: str, branch: str, commit_id: str
@@ -928,6 +966,7 @@ class Repository:
         baseline = self.load_baseline(
             ticket.project, ticket.branch, candidate.parent_ref
         )
+        self._check_extension_pack(baseline, candidate)
         params = {
             **_scope(ticket.project, ticket.branch),
             "actor": ticket.actor,
@@ -948,6 +987,7 @@ class Repository:
                 candidate.delta,
                 source_id=candidate.id,
                 authorization_refs=frozenset([TEST_AUTHORIZATION]),
+                extension_registry=self._extensions,
             )
             issued = (
                 conn.execute(text("SELECT clock_timestamp()"))
@@ -1081,11 +1121,13 @@ class Repository:
                 )
             if branch["head_id"] != candidate.parent_ref:
                 raise CanonConflict("chapter parent is not current HEAD")
+            self._check_extension_pack(baseline, candidate)
             preview = preview_delta(
                 baseline,
                 candidate.delta,
                 source_id=candidate.id,
                 authorization_refs=frozenset([TEST_AUTHORIZATION]),
+                extension_registry=self._extensions,
             )
             parent = _one(
                 conn,
@@ -1306,7 +1348,26 @@ class Repository:
                 or tuple(event.values()) != ("CHAPTER_COMMITTED", "FACT_DELTA-1")
             ):
                 raise CanonIntegrityError("chapter event/receipt mismatch")
-            return StoredChapter(receipt, candidate, state, docs["COMMIT_PERMIT"])
+            stored = StoredChapter(receipt, candidate, state, docs["COMMIT_PERMIT"])
+            root = _one(
+                conn,
+                "SELECT commit_id FROM anovel_canon.commits WHERE project_id=:project AND branch_id=:branch AND sequence=0",
+                params,
+            )
+            if root is None:
+                raise CanonIntegrityError("chapter has no scoped root")
+            root_id = root["commit_id"]
+        # Release this connection before the source reader acquires another;
+        # cold readback must also work with a single-connection pool.
+        seed = self.load_root(project, branch, root_id).seed
+        if state.extensions != seed.extensions:
+            raise CanonIntegrityError("snapshot changed frozen root extensions")
+        try:
+            self._extensions.validate_baseline(state)
+            self._check_extension_pack(state, candidate)
+        except ValueError as error:
+            raise CanonIntegrityError("invalid retained chapter extension") from error
+        return stored
 
     def review_submission(
         self, ticket: ExecutionTicket, candidate: ChapterCandidate
@@ -1317,6 +1378,7 @@ class Repository:
             baseline = self.load_baseline(
                 ticket.project, ticket.branch, candidate.parent_ref
             )
+            self._check_extension_pack(baseline, candidate)
             params = {
                 **_scope(ticket.project, ticket.branch),
                 "request": ticket.request_id,
@@ -1338,6 +1400,7 @@ class Repository:
                 candidate.delta,
                 source_id=candidate.id,
                 authorization_refs=frozenset([TEST_AUTHORIZATION]),
+                extension_registry=self._extensions,
             )
         except ValueError as exc:
             blockers.append(str(exc))

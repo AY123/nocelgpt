@@ -20,6 +20,7 @@ from anovel.canon.models import (
     identifier,
 )
 from anovel.domain.delta import FactBaseline, preview_delta
+from anovel.domain.extensions import ExtensionRegistry
 
 
 @dataclass(frozen=True, slots=True)
@@ -134,7 +135,11 @@ def _authorization_refs(stored: StoredChapter) -> frozenset[str]:
     return frozenset(refs)
 
 
-def rebuild(history: tuple[HistoryEntry, ...]) -> RebuiltSnapshot:
+def rebuild(
+    history: tuple[HistoryEntry, ...],
+    *,
+    extension_registry: ExtensionRegistry | None = None,
+) -> RebuiltSnapshot:
     """Replay every ancestor from its root; never bootstrap from a saved state.
 
     Version dispatch is deliberately limited to the actual retained v1 formats.
@@ -154,11 +159,24 @@ def rebuild(history: tuple[HistoryEntry, ...]) -> RebuiltSnapshot:
     ):
         raise CanonIntegrityError("history must start at its unique root")
     root = first.content
+    registry = ExtensionRegistry() if extension_registry is None else extension_registry
+    if type(registry) is not ExtensionRegistry:
+        raise CanonIntegrityError("invalid historical extension registry")
     project, branch = root.receipt.project, root.receipt.branch
     if root.seed.project != project:
         raise CanonIntegrityError("historical root crosses project scope")
+    registry.validate_root(
+        project,
+        root.seed.extensions,
+        root.seed.facts,
+        tuple(item.id for item in root.seed.entities),
+    )
     baseline = FactBaseline.from_world_facts(
-        project, branch, root.receipt.commit_id, root.seed.facts
+        project,
+        branch,
+        root.receipt.commit_id,
+        root.seed.facts,
+        extensions=root.seed.extensions,
     )
     root_hash = sha256(canonical_bytes(baseline.to_dict())).hexdigest()
     checkpoints = [
@@ -180,6 +198,17 @@ def rebuild(history: tuple[HistoryEntry, ...]) -> RebuiltSnapshot:
         if type(entry.content) is not StoredChapter:
             raise CanonIntegrityError("a second root is not chapter history")
         chapter = entry.content
+        pack_bytes = next(
+            value.content
+            for value in chapter.candidate.dependencies
+            if value.kind == "PACK"
+        )
+        if chapter.state.extensions != baseline.extensions or any(
+            binding.pack_bytes != pack_bytes for binding in baseline.extensions
+        ):
+            raise CanonIntegrityError(
+                "historical chapter changed frozen Pack/extensions"
+            )
         if (
             entry.sequence != index
             or entry.parent_ref != receipt.commit_id
@@ -194,6 +223,7 @@ def rebuild(history: tuple[HistoryEntry, ...]) -> RebuiltSnapshot:
             chapter.candidate.delta,
             source_id=chapter.candidate.id,
             authorization_refs=_authorization_refs(chapter),
+            extension_registry=registry,
         )
         rebuilt_bytes = canonical_bytes(preview.candidate.to_dict())
         expected_bytes = canonical_bytes(chapter.state.to_dict())
@@ -218,6 +248,10 @@ def rebuild(history: tuple[HistoryEntry, ...]) -> RebuiltSnapshot:
         # The stored comparison above belongs to the old parent. Only this
         # independently replayed state is re-anchored for the following event.
         baseline = FactBaseline(
-            project, branch, receipt.commit_id, preview.candidate.facts
+            project,
+            branch,
+            receipt.commit_id,
+            preview.candidate.facts,
+            preview.candidate.extensions,
         )
     return RebuiltSnapshot(baseline, receipt, tuple(checkpoints))

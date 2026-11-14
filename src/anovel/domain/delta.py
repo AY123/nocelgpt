@@ -13,6 +13,7 @@ from enum import Enum
 from typing import ClassVar
 
 from anovel.domain.events import NarrativePosition
+from anovel.domain.extensions import ExtensionBinding, ExtensionRegistry
 from anovel.domain.identity import EntityId, _record, _text
 from anovel.domain.knowledge import Scalar, WorldFact, _same_value, _scalar
 
@@ -197,6 +198,7 @@ class FactBaseline:
     branch: str
     parent_ref: str
     facts: tuple[FactSnapshot, ...]
+    extensions: tuple[ExtensionBinding, ...] = ()
 
     def __post_init__(self) -> None:
         _text(self.project, "project", identifier=True)
@@ -213,6 +215,20 @@ class FactBaseline:
             if fact_id in ids:
                 raise DeltaValidationError("baseline contains duplicate fact identity")
             ids.add(fact_id)
+        if type(self.extensions) is not tuple or any(
+            type(binding) is not ExtensionBinding for binding in self.extensions
+        ):
+            raise DeltaValidationError("baseline needs immutable extension bindings")
+        if len({binding.namespace for binding in self.extensions}) != len(
+            self.extensions
+        ):
+            raise DeltaValidationError("baseline repeats an extension namespace")
+        if any(
+            entity.project != self.project
+            for binding in self.extensions
+            for entity in binding.entity_ids
+        ):
+            raise DeltaValidationError("baseline extension crosses project")
 
     @classmethod
     def from_world_facts(
@@ -221,12 +237,15 @@ class FactBaseline:
         branch: str,
         parent_ref: str,
         facts: Iterable[WorldFact],
+        *,
+        extensions: tuple[ExtensionBinding, ...] = (),
     ) -> FactBaseline:
         return cls(
             project,
             branch,
             parent_ref,
             tuple(FactSnapshot(fact) for fact in facts),
+            extensions,
         )
 
     def get(self, fact_id: EntityId) -> FactSnapshot | None:
@@ -238,6 +257,9 @@ class FactBaseline:
 
     @classmethod
     def from_dict(cls, value: object) -> FactBaseline:
+        if not isinstance(value, dict):
+            raise DeltaValidationError("fact baseline must be an object")
+        extended = value.get("schema_version") == "1.1"
         record = _record(
             value,
             required={
@@ -247,33 +269,51 @@ class FactBaseline:
                 "branch",
                 "parent_ref",
                 "facts",
-            },
+            }
+            | ({"extensions"} if extended else set()),
             optional=set(),
             field="fact baseline",
         )
-        if record["kind"] != "FACT_BASELINE" or record["schema_version"] != "1.0":
+        if record["kind"] != "FACT_BASELINE" or record["schema_version"] not in (
+            "1.0",
+            "1.1",
+        ):
             raise DeltaValidationError(
                 "unsupported fact baseline kind or schema version"
             )
         facts = record["facts"]
         if not isinstance(facts, list):
             raise DeltaValidationError("facts must be an array")
+        bindings: tuple[ExtensionBinding, ...] = ()
+        if extended:
+            extension_values = record["extensions"]
+            if type(extension_values) is not list or not extension_values:
+                raise DeltaValidationError(
+                    "extended baseline requires nonempty bindings"
+                )
+            bindings = tuple(
+                ExtensionBinding.from_dict(item) for item in extension_values
+            )
         return cls(
             _text(record["project"], "project", identifier=True),
             _text(record["branch"], "branch"),
             _text(record["parent_ref"], "parent_ref"),
             tuple(FactSnapshot.from_dict(item) for item in facts),
+            bindings,
         )
 
     def to_dict(self) -> dict[str, object]:
-        return {
+        result: dict[str, object] = {
             "kind": "FACT_BASELINE",
-            "schema_version": "1.0",
+            "schema_version": "1.1" if self.extensions else "1.0",
             "project": self.project,
             "branch": self.branch,
             "parent_ref": self.parent_ref,
             "facts": [snapshot.to_dict() for snapshot in self.facts],
         }
+        if self.extensions:
+            result["extensions"] = [binding.to_dict() for binding in self.extensions]
+        return result
 
 
 @dataclass(frozen=True, slots=True)
@@ -617,6 +657,7 @@ def preview_delta(
     *,
     source_id: EntityId,
     authorization_refs: frozenset[str],
+    extension_registry: ExtensionRegistry | None = None,
 ) -> PreviewResult:
     """Validate against a frozen parent and return an uncommitted candidate.
 
@@ -626,6 +667,15 @@ def preview_delta(
     """
     if not isinstance(baseline, FactBaseline) or not isinstance(delta, NarrativeDelta):
         raise DeltaValidationError("preview requires FactBaseline and NarrativeDelta")
+    if (
+        extension_registry is not None
+        and type(extension_registry) is not ExtensionRegistry
+    ):
+        raise DeltaValidationError(
+            "extension_registry must be an actual compiled registry"
+        )
+    registry = ExtensionRegistry() if extension_registry is None else extension_registry
+    registry.validate_baseline(baseline)
     _id(source_id, "source_id")
     if source_id != delta.source_id:
         raise DeltaValidationError("source does not match caller-supplied source")
@@ -661,5 +711,7 @@ def preview_delta(
         baseline.branch,
         baseline.parent_ref,
         tuple(candidates[snapshot.seed_fact.id] for snapshot in baseline.facts),
+        baseline.extensions,
     )
+    registry.validate_transition(baseline, candidate)
     return PreviewResult(delta.id, candidate, tuple(changes))
