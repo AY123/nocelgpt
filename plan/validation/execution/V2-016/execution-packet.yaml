@@ -19,7 +19,7 @@ scope: Registered realm, ability learning/use, resource and exact cost state thr
   ports and sole Canon service. Explicit before-state preconditions, immutable root rules, spent/uses counters and
   finite builders. New exact fantasy Pack1.1 and schema, old versions retained. Contract/PG tests, additive PG CI
   coverage. No new Canon, SQL, Delta op, equipment engine, production Permit, paid calls or prose Q2.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-016/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -91,7 +91,7 @@ review_notes:
 - All three original assertions retained; old two1.0 Packs and urban1.1 remain byte-identical.
 - CI only appends exact new real PostgreSQL test file.
 handoff:
-  current_step: 'PREPARE: actual main/clean worktree/specs and existing extension integration read'
+  current_step: 'IMPLEMENT: scoped contract prepared; validating local action entry'
   completed_steps:
   - Verified V015 closure/source tree and reusable generic registry/Canon seam
   - Selected root-frozen rules and exact spent/use accounting to prevent cost bypass
@@ -99,9 +99,11 @@ handoff:
   - Pin scope and pass IMPLEMENT entry
   - Implement and verify contracts, generic SetFact enforcement and real PG flows
   - One key exact-SHA CI after all local checks; P3/human story fixtures remain separate
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 2b0e5032a15767518abe1d5c0a610eab559a5645
+  scope_ref: plan/validation/execution/V2-016/scope.json
