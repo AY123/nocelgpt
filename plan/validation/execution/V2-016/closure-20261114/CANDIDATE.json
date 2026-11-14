@@ -1,0 +1,11 @@
+{
+  "sha": "160a7e2a879441fa2867997a057a85872e0b45a2",
+  "counts": {
+    "unit": 1500,
+    "arch_fitness": 244,
+    "postgres_env": 216
+  },
+  "new_tests": 114,
+  "new_pg_tests": 31,
+  "scope": "One key exact-SHA six gate acceptance, no repeated dispatch"
+}

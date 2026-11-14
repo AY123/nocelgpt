@@ -9,7 +9,7 @@
 - AI 开发遵守 `plan/AI_EXECUTION_PROTOCOL.md`。正式开工通过任务的 `execution_packet_ref` 绑定非模板执行包；核对输入 hash、范围、验收、当前动作与未决事项。已有授权内的正常步骤自主推进，缺必要依据只阻断相关动作。
 - PREPARE 可调查未决方案；IMPLEMENT、LIVE_CALL、CERTIFY 在各自动作前检查适用 ADR 和权限/预算。事实、假设、未知分开记录，不编造 API、成本或运行结果。
 - 原 `.claude/convergence/` 已归档至 `plan/archive/convergence/`，根历史副本已按用户要求清除；历史内容不恢复为现行规范。工具配置单独保留，不因整理资料而停用或删除配置。
-- 当前 V2-001～015 CLOSED，P0/P1/P2及M0/M1/M2 VERIFIED（单人Owner工程模式）；P1最新工程验收绑定f611ba3/run39128464248。V2-009已按3d12f20/run39256589017完成六门验收（1318项0skip）；V2-010已按16259d1/run42632232950完成工程验收；P2已按下方最新汇总完成工程验收。以 `plan/machine/` 的任务、阶段和证据状态为准。
+- 当前 V2-001～016 CLOSED，P0/P1/P2及M0/M1/M2 VERIFIED（单人Owner工程模式）；P1最新工程验收绑定f611ba3/run39128464248。V2-009已按3d12f20/run39256589017完成六门验收（1318项0skip）；V2-010已按16259d1/run42632232950完成工程验收；P2已按下方最新汇总完成工程验收。以 `plan/machine/` 的任务、阶段和证据状态为准。
 - 用户请求修改规划时，完成必要的资料和验证器修改；不要据此自动创建业务内核、部署、调用付费 Provider 或关闭工程任务。
 - 保留用户已有改动。任务身份、阶段、依赖及架构范围变更需符合用户授权，并留下明确变更理由与影响记录。
 - 同步正文、机器源、任务/验收场景与生成视图。使用 `python3 -B plan/scripts/validate_plan.py --write-views`、`--check`、`--self-test` 和 `python3 -B plan/scripts/test_governance.py`。
@@ -45,4 +45,6 @@ V2-013已完成[工程验收](plan/validation/execution/V2-013/closure-20261113/
 
 V2-014已完成[工程验收](plan/validation/execution/V2-014/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定e688ca0/run43435762543，1699项0skip（新111项属于UNIT子集）。显式语义证据的世界规则冲突、梦境/引用区分、UNKNOWN和策略冲突已验证；不等于全文语义Q2。V2-015验收见下方最新记录，P3及自动写作/阅读质量/外部备份仍未完成。
 
-V2-015已完成[工程验收](plan/validation/execution/V2-015/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定e9a19d0/run43539261866，1815项0skip（新88契约+28PG为子集）。都市商业严格类型/守恒及唯一Canon提交和冷重放已验证；旧Pack/政策保留。下一任务V2-016，P3、自动写作/阅读质量/外部备份及人工标准测试书仍未完成。
+V2-015已完成[工程验收](plan/validation/execution/V2-015/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定e9a19d0/run43539261866，1815项0skip（新88契约+28PG为子集）。都市商业严格类型/守恒及唯一Canon提交和冷重放已验证；旧Pack/政策保留。V2-016验收见下方最新记录，P3、自动写作/阅读质量/外部备份及人工标准测试书仍未完成。
+
+V2-016已完成[工程验收](plan/validation/execution/V2-016/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定160a7e2/run43564108955，1960项0skip（新114契约+31PG为子集）。境界/能力/资源精确代价与正式Canon提交/重放已验证，旧Pack/政策保留。P3尚待汇总验收，之后V2-017；自动写作、阅读质量及外部备份仍未完成。

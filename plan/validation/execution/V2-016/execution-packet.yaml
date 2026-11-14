@@ -91,20 +91,22 @@ review_notes:
 - All three original assertions retained; old two1.0 Packs and urban1.1 remain byte-identical.
 - CI only appends exact new real PostgreSQL test file.
 handoff:
-  current_step: Local progression extension ready;1960tests pass, exact-SHA remote acceptance pending
+  current_step: V2-016 CLOSED at160a7e2a879441fa2867997a057a85872e0b45a2/run43564108955;1960cases/0skip verified
   completed_steps:
-  - Registered realm/ability/resource rules and exact costs implemented
-  - Existing sole Canon root/Permit/commit/read/replay reused without new writer
-  - Actual114new contract/31new PG plus all old regressions/static/governance/security pass
+  - Registered progression through existing generic ports/sole Canon delivered
+  - Original three assertions,114new contract+31new PG and all old regressions run at sameSHA
+  - Original six artifacts/source/driver/lock/JUnit/command exits/hashes verified
   pending_items:
-  - One key same-SHA six-gate CI
-  - P3/human Story Fixtures, prose Q2, writing/reading quality and external backup remain
-  next_action: IMPLEMENT
+  - P3 aggregate acceptance, then V2-017 and actual human Story Fixtures
+  - Prose Q2/production Permit,writing/reading quality and external backup remain
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-016/LOCAL_RESULTS.json
-      sha256: 375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701
+    - ref: validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json
+      sha256: 3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967
+    - ref: validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json
+      sha256: 91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870
     missing_artifact_reason: null
 change_review:
   scope_revision: 2b0e5032a15767518abe1d5c0a610eab559a5645

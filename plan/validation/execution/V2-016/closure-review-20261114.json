@@ -1,0 +1,274 @@
+{
+  "task_id": "V2-016",
+  "baseline_pin": {
+    "revision": "2b0e5032a15767518abe1d5c0a610eab559a5645",
+    "ref": "plan/validation/execution/V2-016/scope.json",
+    "sha256": "7b36422a44a99ace094b3323baa123041a44327cb587244cbce1c18ca11dda0c"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "a9b4ef2c91e452c7e1806344c126dfbbcaf62636ecdf8030ff10e8cc96a02ec1",
+      "new_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "1c90da328da111a8806eb12db0e4dc773aa5b9b4d21a34b30186f2b6951c32d8",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-016 preparation/implementation and bounded extension integration; all three original AT assertions, old versions and mandatory gates retained. Test/driver edits only append real PG coverage.",
+      "impact": "Registered fantasy realm/ability/resource cost invariants through existing sole Canon; no schema SQL, new writer, paid call or broader secret approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Contract pins immutable realm/ability rules and exact owner resource spent/uses deltas; checks before-state, original generic SetFact path, all old regression suites and additive real PG flow. Actual same-SHA160a7e2/run43564108955 six gates1960/0skip PASS;114 new contract+31 new PG are suite subsets. Original six artifacts,60-file inventory and all three assertions verified. Closure records only metadata; source/driver/workflow/lock remain equal to accepted SHA. P3/product/prose-Q2/backup/human fixture remain separately unverified.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-016/authorization.txt",
+        "sha256": "37ecf5d8cdee791fe9d78c902298fec28b2709b68e4c01255f837cb2c8eb21db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-016/EXTENSION_CONTRACT.md",
+          "sha256": "84e98c3594008ddf70cf02427317feec5d96e903ff8268214d6debd422711d54"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/LOCAL_RESULTS.json",
+          "sha256": "375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "d06ecfa52eaa0eb63bd7c02027fd40d40c87535478ca106ddca6a97c9f377ad8"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "a9b4ef2c91e452c7e1806344c126dfbbcaf62636ecdf8030ff10e8cc96a02ec1",
+      "new_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "597518070cf09aab7febc78a151bbca518895fc42ac71ae90480c59a3978565a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-016 preparation/implementation and bounded extension integration; all three original AT assertions, old versions and mandatory gates retained. Test/driver edits only append real PG coverage.",
+      "impact": "Registered fantasy realm/ability/resource cost invariants through existing sole Canon; no schema SQL, new writer, paid call or broader secret approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Contract pins immutable realm/ability rules and exact owner resource spent/uses deltas; checks before-state, original generic SetFact path, all old regression suites and additive real PG flow. Actual same-SHA160a7e2/run43564108955 six gates1960/0skip PASS;114 new contract+31 new PG are suite subsets. Original six artifacts,60-file inventory and all three assertions verified. Closure records only metadata; source/driver/workflow/lock remain equal to accepted SHA. P3/product/prose-Q2/backup/human fixture remain separately unverified.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-016/authorization.txt",
+        "sha256": "37ecf5d8cdee791fe9d78c902298fec28b2709b68e4c01255f837cb2c8eb21db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-016/EXTENSION_CONTRACT.md",
+          "sha256": "84e98c3594008ddf70cf02427317feec5d96e903ff8268214d6debd422711d54"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/LOCAL_RESULTS.json",
+          "sha256": "375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "d06ecfa52eaa0eb63bd7c02027fd40d40c87535478ca106ddca6a97c9f377ad8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "new_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "29b84162353bf366a76f8268ec0e71755179c82f3539acd36b444389bf7a8d12",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-016 preparation/implementation and bounded extension integration; all three original AT assertions, old versions and mandatory gates retained. Test/driver edits only append real PG coverage.",
+      "impact": "Registered fantasy realm/ability/resource cost invariants through existing sole Canon; no schema SQL, new writer, paid call or broader secret approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Contract pins immutable realm/ability rules and exact owner resource spent/uses deltas; checks before-state, original generic SetFact path, all old regression suites and additive real PG flow. Actual same-SHA160a7e2/run43564108955 six gates1960/0skip PASS;114 new contract+31 new PG are suite subsets. Original six artifacts,60-file inventory and all three assertions verified. Closure records only metadata; source/driver/workflow/lock remain equal to accepted SHA. P3/product/prose-Q2/backup/human fixture remain separately unverified.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-016/authorization.txt",
+        "sha256": "37ecf5d8cdee791fe9d78c902298fec28b2709b68e4c01255f837cb2c8eb21db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-016/EXTENSION_CONTRACT.md",
+          "sha256": "84e98c3594008ddf70cf02427317feec5d96e903ff8268214d6debd422711d54"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/LOCAL_RESULTS.json",
+          "sha256": "375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "d06ecfa52eaa0eb63bd7c02027fd40d40c87535478ca106ddca6a97c9f377ad8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "new_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "1569dda53f98a76fef9f3f525a4f00261df450fcf4ba44253e5767991add4393",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-016 preparation/implementation and bounded extension integration; all three original AT assertions, old versions and mandatory gates retained. Test/driver edits only append real PG coverage.",
+      "impact": "Registered fantasy realm/ability/resource cost invariants through existing sole Canon; no schema SQL, new writer, paid call or broader secret approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Contract pins immutable realm/ability rules and exact owner resource spent/uses deltas; checks before-state, original generic SetFact path, all old regression suites and additive real PG flow. Actual same-SHA160a7e2/run43564108955 six gates1960/0skip PASS;114 new contract+31 new PG are suite subsets. Original six artifacts,60-file inventory and all three assertions verified. Closure records only metadata; source/driver/workflow/lock remain equal to accepted SHA. P3/product/prose-Q2/backup/human fixture remain separately unverified.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-016/authorization.txt",
+        "sha256": "37ecf5d8cdee791fe9d78c902298fec28b2709b68e4c01255f837cb2c8eb21db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-016/EXTENSION_CONTRACT.md",
+          "sha256": "84e98c3594008ddf70cf02427317feec5d96e903ff8268214d6debd422711d54"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/LOCAL_RESULTS.json",
+          "sha256": "375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "d06ecfa52eaa0eb63bd7c02027fd40d40c87535478ca106ddca6a97c9f377ad8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "new_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "2fae57953fb11989bf054d67e07b8f151dd68e18fa58b2f43f4f1475ff905d30",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-016 preparation/implementation and bounded extension integration; all three original AT assertions, old versions and mandatory gates retained. Test/driver edits only append real PG coverage.",
+      "impact": "Registered fantasy realm/ability/resource cost invariants through existing sole Canon; no schema SQL, new writer, paid call or broader secret approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Contract pins immutable realm/ability rules and exact owner resource spent/uses deltas; checks before-state, original generic SetFact path, all old regression suites and additive real PG flow. Actual same-SHA160a7e2/run43564108955 six gates1960/0skip PASS;114 new contract+31 new PG are suite subsets. Original six artifacts,60-file inventory and all three assertions verified. Closure records only metadata; source/driver/workflow/lock remain equal to accepted SHA. P3/product/prose-Q2/backup/human fixture remain separately unverified.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-016/authorization.txt",
+        "sha256": "37ecf5d8cdee791fe9d78c902298fec28b2709b68e4c01255f837cb2c8eb21db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-016/EXTENSION_CONTRACT.md",
+          "sha256": "84e98c3594008ddf70cf02427317feec5d96e903ff8268214d6debd422711d54"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/LOCAL_RESULTS.json",
+          "sha256": "375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "d06ecfa52eaa0eb63bd7c02027fd40d40c87535478ca106ddca6a97c9f377ad8"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "new_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "32db20a961747c94ae57d4a7c05c31cbf91045e1a2c42d1003ece4ede2fcf41e",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Authorized V2-016 preparation/implementation and bounded extension integration; all three original AT assertions, old versions and mandatory gates retained. Test/driver edits only append real PG coverage.",
+      "impact": "Registered fantasy realm/ability/resource cost invariants through existing sole Canon; no schema SQL, new writer, paid call or broader secret approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Contract pins immutable realm/ability rules and exact owner resource spent/uses deltas; checks before-state, original generic SetFact path, all old regression suites and additive real PG flow. Actual same-SHA160a7e2/run43564108955 six gates1960/0skip PASS;114 new contract+31 new PG are suite subsets. Original six artifacts,60-file inventory and all three assertions verified. Closure records only metadata; source/driver/workflow/lock remain equal to accepted SHA. P3/product/prose-Q2/backup/human fixture remain separately unverified.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-016/authorization.txt",
+        "sha256": "37ecf5d8cdee791fe9d78c902298fec28b2709b68e4c01255f837cb2c8eb21db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-016/EXTENSION_CONTRACT.md",
+          "sha256": "84e98c3594008ddf70cf02427317feec5d96e903ff8268214d6debd422711d54"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/LOCAL_RESULTS.json",
+          "sha256": "375262e56e0f953aee949136dd0acb23ccd2746df1197bf97cd669920ca46701"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "3336eda9b704b29011c47cc41ac9c640a2f0aec9937708563f2c6cd146dca967"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "91d048fdd13ea1fd707a46d5ffea41f11d97db560da2d975c788587fc1df9870"
+        },
+        {
+          "ref": "plan/validation/execution/V2-016/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "d06ecfa52eaa0eb63bd7c02027fd40d40c87535478ca106ddca6a97c9f377ad8"
+        }
+      ]
+    }
+  ]
+}
