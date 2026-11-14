@@ -1,0 +1,1158 @@
+{
+  "record_type": "local_security_checks",
+  "status": "PASS",
+  "revision": "e9a19d0b105443374006807cda905d0c67caffd7",
+  "checks": {
+    "secret": {
+      "status": "PASS",
+      "raw_status": "FAIL",
+      "scanner": "gitleaks",
+      "version": "8.21.2",
+      "history_commits": 451,
+      "tracked_files": 2139,
+      "deleted_worktree_files": 0,
+      "scans": [
+        {
+          "target": "tracked_worktree",
+          "exit_code": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "7e7760c0db0e17b8a6f8e406084f7e855c5165250913823ca902d0cb579feb85",
+          "report_sha256": "bf102b5288d4e8776ab02d849c3c1246b2190725e536f692be9596ac35f10965",
+          "finding_count": 17,
+          "locations": [
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+              "line": 164,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+              "line": 165,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+              "line": 192,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+              "line": 48,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+              "line": 54,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/P0/closure-20261017/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+              "line": 49,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+              "line": 23,
+              "commit": ""
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/governance-probe-v1.2.json",
+              "line": 48,
+              "commit": ""
+            }
+          ],
+          "finding_fingerprints": [
+            "91a36145801732ebd652a6d588c84774e078c41490410f6d6efba65206c0366a",
+            "e63fb2d230ed0cc34641513d467cb77f844eaf34b3c2b344d79f0d767f876be4",
+            "d6a5ca4130a3c239e2439834d193288685d4aac62372d2615327f3bba7d12e81",
+            "0daa240677f1067fd878fdc1f005008d5face4f3241689c995d2d1c3e29f300b",
+            "4fb72cdbb27f24ccc5646648d421934a63939889309a13ed887f26f7a44393d4",
+            "bd01026c9b2ed4b28047c886a85b9a9defb3759daf35c6ecb8bf361bc3d69342",
+            "9a34722785d00de59d8cdc3a86b1a2e5c0fb7f1941f499b0975f6f3ce1c799d5",
+            "1ad1f3967b85658611bc2b812b3f8e2426adcee4168c53d0471f7735e95ff2ee",
+            "98f0b7c51f7886f617190a2ac744acefcb98fbe33b79acc0f659565884f0363d",
+            "94093399cf02f102ec890348863569172b4ad4c9d7ab43ac6f7e6e57c7244468",
+            "eb741460d632a596c739505177a00203a036bcdb27ab3348713da234edce454a",
+            "d0efd54521f4a098b67019e6bce6f20cad625cb2e972b4e771cf4acf79a006c4",
+            "87f1da844eae88e9a71923a00c6fe6714d5dcaf34c2c139428b4996db52ebe96",
+            "af85a5499e0954d65ce62e03a3795d72a42ba9db7316f8154de6ae5181e1cbf7",
+            "4092547caf3ffe498c6fc133ffb15dbd2d2e0a223d9e1f2451ecbef733775d8d",
+            "d228512ef5b300c55eb80c55df91115db97c78e8808921f10c4ee418e10b3618",
+            "51dc9f69a8bfab594cf2244e7052328f00a020d6fed3aca58eadf494e76fea14"
+          ],
+          "status": "FAIL"
+        },
+        {
+          "target": "git_history",
+          "exit_code": 1,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "93a075eb381e9faec3ecd4d4792bec5d0c0b06301a4d4b2cfa79a64bc829b9da",
+          "report_sha256": "1193019af53078aa98b8af4d2b9b464000087ed1e5f537a249a0ee60197439bb",
+          "finding_count": 37,
+          "locations": [
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/P0/closure-20261017/legacy.json",
+              "line": 49,
+              "commit": "9d71f91415dc71d17446db38201560efebcae311"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/FILE_MANIFEST.json",
+              "line": 56,
+              "commit": "4ccde42dc4208365175ee2bc71b8adba48c20ab4"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "docs/V2-005_AUTHORIZATION_EFFECTUATION_REPORT.md",
+              "line": 43,
+              "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "docs/V2-005_AUTHORIZATION_EFFECTUATION_REPORT.md",
+              "line": 255,
+              "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "docs/V2-005_AUTHORIZATION_FINAL_REPORT.md",
+              "line": 62,
+              "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "docs/V2-005_AUTHORIZATION_FINAL_REPORT.md",
+              "line": 141,
+              "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "docs/reports/P1_PRE_STEP3_SECURITY_HYGIENE_2026-10-06.md",
+              "line": 324,
+              "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc"
+            },
+            {
+              "rule_id": "gitlab-pat",
+              "path": "docs/reports/P1_PRE_STEP3_SECURITY_HYGIENE_2026-10-06.md",
+              "line": 324,
+              "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+              "line": 23,
+              "commit": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/revalidation-fd7667ec/local/legacy-governance.json",
+              "line": 49,
+              "commit": "6aa7c8ace2ac167757f79d53bc4aa8bf4bfc94b3"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+              "line": 49,
+              "commit": "416dfd5275d8767ebfa2dc88ae060107a29be48e"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+              "line": 49,
+              "commit": "416dfd5275d8767ebfa2dc88ae060107a29be48e"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+              "line": 49,
+              "commit": "f599dd821b61c2b7e347efc6834d63d54e7f0028"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+              "line": 49,
+              "commit": "f599dd821b61c2b7e347efc6834d63d54e7f0028"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+              "line": 49,
+              "commit": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+              "line": 49,
+              "commit": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+              "line": 49,
+              "commit": "a3ea77304f0c68967f21532adf3852bec3ea0a4d"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+              "line": 49,
+              "commit": "a3ea77304f0c68967f21532adf3852bec3ea0a4d"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+              "line": 49,
+              "commit": "0089eecc496b0c0b4039fb2b26c186fc437c032e"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+              "line": 48,
+              "commit": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan-review-2026-09-21/governance-probe-results.json",
+              "line": 48,
+              "commit": "b835d69821a6cad640b0db39fe76a15c2601a857"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/validation/governance-probe-v1.2.json",
+              "line": 48,
+              "commit": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+              "line": 164,
+              "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+              "line": 165,
+              "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+              "line": 192,
+              "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+              "line": 54,
+              "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "V1_REGRESSION_ASSET_REGISTER.md",
+              "line": 54,
+              "commit": "5b3814f63550dcb3db4b30a8580481d0eeb1d820"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/AI-Novel-Runtime/PHASE1-INTEGRATION-SESSION-SUMMARY.md",
+              "line": 188,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/AI-Novel-Runtime/PHASE1-INTEGRATION-SESSION-SUMMARY.md",
+              "line": 189,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/docs/archive/2026-08-history/BALANCE_ISSUE_REPORT.md",
+              "line": 17,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/docs/archive/2026-08-history/CC_VIBE_SUCCESS.md",
+              "line": 9,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/docs/archive/2026-08-history/RETRY_CC_VIBE.md",
+              "line": 9,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/docs/archive/2026-08-history/SWITCH_TO_CC_VIBE.md",
+              "line": 12,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ainovel/docs/archive/2026-09-genre-work/P0关键问题最终修复报告.md",
+              "line": 118,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ccdoc/19_API_SPECIFICATION.md",
+              "line": 164,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ccdoc/19_API_SPECIFICATION.md",
+              "line": 165,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            },
+            {
+              "rule_id": "generic-api-key",
+              "path": "ccdoc/19_API_SPECIFICATION.md",
+              "line": 192,
+              "commit": "63b60f74682f3efe8bb964d12fc092e2df162429"
+            }
+          ],
+          "finding_fingerprints": [
+            "e77084fc245734966c5af047b116e4cfc7658373e894c786019d642c7dda29fd",
+            "7dafcc256f9d322e4a9f52edd4518c6df667bfdc94aae40fefa582d114979e62",
+            "d9f6773cc5482b28336d07dddd624cdc7ee2903d6f4f35b7422b79cb2da5436c",
+            "9121c210c778434b8c16ae66abbb29942fa9a7070d8f8537e327f7d265b77a18",
+            "1307486ac166fd5856f01c870bc2e2b9e17d2155f3298e7ddfec0c67cc720d6f",
+            "36773c6da926a489bd56fce90297b564d5acd37e31bc5f275cf2002d97a151c3",
+            "01584ac9ebe2de1b345b08597faba211b211dd4e10668c4778fe6c8d06e527fd",
+            "27b79be9eabb577cd2179410056ac4858b2b6663f36a6839e215f7485e926175",
+            "873d3bfd1cc433ca48da8faa1a774abfb96b19c6f69ee3fd1632c05b643868b9",
+            "31aa799cd90325cae929a5691ee716adffe709eb860abcf2b9723086e6f2f613",
+            "5004050a6adbd2650f57503269d0b627857551c97440a681d4e86fc5aba8e0b2",
+            "17959442d5c7cbbd7b83e1c1d2e3e59b4bcb6db8f81d017a5a961853b13e05e9",
+            "addd0a010dea331ffa2358d1116b6e70c55db8de9df144980462e0bbd2197488",
+            "0abf64d494c16d00ed7b6ef47dbecbd7c113caec80026adca17251df3ca228f6",
+            "c43da95fac61f5dd7c843d51dcd456b79a97274fb57c11f9d794126f933982ba",
+            "7dfb253c65fdfe1d9e02d48cbbf3a2365d0d8b6a846facba00d7b6df3bee5438",
+            "1484cf91928aa49fac968764b8ef2aba29a481d552a7f45e3772ed461a39d703",
+            "6162b5474d242eb3f56109acde9e4d58be0337c93ebd35dc3be1fd14c5823548",
+            "5977be38d86c65d9e2c9978e09a6b8c440b816ca0f80d5a8480ba57ae715df73",
+            "4f6ff446441ae6326edcc47a15ef2469be51a983c29751027b0d437600ce6082",
+            "d13c33db3ae3206f18397b40b74d4a58f9113e7fc1e7f67fd4e386c789be22b0",
+            "9bce0176c65fdc339d73d27c1515ebba321c35e60a30ac5dc56972cfc9c23eb2",
+            "2ce57bb8fe82fec59aa2b78fc3e8eb4086a496bb85629a1167a2f87b793bb9dc",
+            "0a6238e593282038050420e917e5b18ad8c790d3b08a94c699aa9702a8c8172d",
+            "c4eaa1cf270b55ee67c85dd8645132ce6630127e50aad326424b44f57e0c87ea",
+            "f2d29a23c0ecb77639703d9ec475b471193b0e9f3ddb9f8df0951e2d3d4f773e",
+            "9e86c5784f1dc3888d948cfd2210537ac579c3a7e10adaf8ce3554b5629c8a14",
+            "94559751913f8f35ea552a54f5b3c3983f5c489d69b47a69a667ed12d83fc159",
+            "6caef56356ebba4cbec1a212330ff653c64775670889fe045c033e344a80998c",
+            "4617a0302b83045e232ed02cb7af1da3279df7936fdc7c7b531434a618b5b472",
+            "445a8a8652c0aa2f195045a42f82e73eeaffaa873bf2f6f6fb150bf2a3278a81",
+            "3e3a3e02d65cb0b34a4d6f65cf38497de770d8daecd2fe86db4f5f22de616579",
+            "7d0a1dd37c03ad8615463a82f9a18a5a1f999da12eacffc1d6f4f4c61f0cc23c",
+            "8c4e0eb3f3ef74188df84e9df384833927948fe8f7d870a21d21bb6d08856e9a",
+            "fc6c88e99aaf17f5a78ac3f1ff8e5d7392f162c97bdda432e7824e95a394a1a3",
+            "dcd5350b16a433983d80815e6dd5e76acae4b56dd3cf91f42764b261516dafe7",
+            "a0b143a49ef9ca288a7dbf1ecdc7f3838f4408393400545c6d8af24b2ab52c57"
+          ],
+          "status": "FAIL"
+        }
+      ],
+      "finding_identities": [
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+          "line": 164,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "7bc5d25fcd4c53f1c86f100f310abc291095d6fef0adf39109fc12f87179b973",
+          "scanner_fingerprint_sha256": "360ce472967254707965c377893234d39eb8d8afe75c734a26e57d94a6c1840b"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+          "line": 165,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "929f328e4c5d781c5de42c984f78f8576bbfed98ea03e486711642260a239893",
+          "scanner_fingerprint_sha256": "894f4a71c6e13c454b2172e7921b5716667622424a6829c02c459790814b4b34"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+          "line": 192,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "51d37b78bf67e76c82578f4e878ac4564b62a3b8c1e15e83aca7b5dbee085dbc",
+          "scanner_fingerprint_sha256": "3c152d9bd7d4729a0b8007840435b089fabe7f7773b0e9bfbf52b933b98e9ab0"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+          "line": 48,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+          "source_blob_oid": "ea019a40af3df75c5f20b327ca110dc7028bab00",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "6dce536d4d8e83a6c71670710d696f83f89cdfcc1a956eed07db83d3df6e3a94"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+          "line": 54,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+          "source_blob_oid": "3e6caf7fd1572dadf86774f1ede9070236e5b100",
+          "source_line_sha256": "4806535f2150a8a74a3c89a5b796e560698c797bdfc42ebe63144c0dc2f95eee",
+          "scanner_fingerprint_sha256": "0f84c257ce8f291716a4b6e4fb0aa0f018b463a81bbbf33b19960b03a2b21b02"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+          "source_blob_oid": "d5751ef99d7fb8cd8b97b16926af717569527dae",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "29ebd2435e683394684d5af0944b477c8f29dd0ae2ed2f428304e4b5479609e6"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/P0/closure-20261017/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "0b7045efb84d51b3dad3440f1c6185d4581cb79ed3882f6407cf324b38556070",
+          "source_blob_oid": "c18dbf790e184430263b34dfcc03f138b9046873",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "063acdf870ff71754a7b25bd02bda15d859a5f9d2efa21da00f22ce91e7493a2"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "b1504f25babcf7f08ad0d81cd732d6f2d899a0e73e73349b0ba561df6227272f",
+          "source_blob_oid": "938ab4114564a970863e77ece3b18f3c5caba1c4",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "d11c17e1515e3ecae37f8b267733d8f8843f9fe7ce394a7417552a2f339c568c"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f",
+          "source_blob_oid": "b2f275270ba91350343160a7081c805383d55048",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "3914f60b845e8d7f7749321a0acef8a86f0e0735014e7c012b9f03e75c31f5cb"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "a3816350ef8ca6e4ed1b30f891b388b8a4ff6c92c9c18ce932d277be1d91bd52",
+          "source_blob_oid": "f966be996c8e939426e9f8aa308935f396e9c292",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "4adbb10fb565ae5adc95691969478e2ebfa796a9337fbbe140a37d59a0df1fd8"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708",
+          "source_blob_oid": "8a463a30c76a0df93ef5816245b33fe7764a2e68",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "5eb352ef5eeb41d15aca5f486e4f9cf8a41e84c402247449bf37d6a9fea83ea9"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "4c9772e5b4ebe321a989a4f63ca606b8b1edeedb157cce7d595f8d136c692367",
+          "source_blob_oid": "62e0289916555921b72ea808cdd2cfcd60b8f073",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "10efaf03bde87ca3927db7e6bce311c9c52ddf9f52368011179c85da2914b0ca"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "2dd657e328282ce44e71dc7e864518f5960230b27db884f628a8d46acae9414b",
+          "source_blob_oid": "344a0a252ee1d76032746706883e2f168e05369a",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "9c39a30fa9905e8499292a3599d116df920a6ce867b800bb166d80adcbda5657"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896",
+          "source_blob_oid": "acbc394f8bd7680351e632289b9dae32aa0490ed",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "71eb57296d9eebfc39abf153b2fa94b5414f8d5b9f9d7dd55769ad4720990512"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+          "line": 49,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "de8be9a4e81dd575abbfbf6ea14d25ac5fbdc626be196052133c01775d601568",
+          "source_blob_oid": "0a9ec6fb51a11237630a7988e2c87f9e3495ecb2",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "a96bed9dc4707ed9f9ee6df067d346a32f3f70b16e4ddc8952405c68e14d17dc"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+          "line": 23,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
+          "source_blob_oid": "78ca86d8624fd3a62ead5c7006203825ae5d6758",
+          "source_line_sha256": "91d52b7a4d29da993dc0735ccaa977a5bc267191bba2d61ef018cbac56108ec2",
+          "scanner_fingerprint_sha256": "9ff4c4ba762b5fa7f0ce6728d5d1f8ef221ed48ca44c533690f185219b4cb1b8"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "tracked_worktree",
+          "path": "plan/validation/governance-probe-v1.2.json",
+          "line": 48,
+          "commit": "",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "bf71c79ff45ab67cd1bf1835034448142c62a82b787bdca7c2f98cbcc3373812",
+          "source_blob_oid": "db31ba3a66a9480bf6d045a0807cd9c6f654a083",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "a0265bc82610c4fcb128d786d9694ec4571f17e3b9b7729be69cece4e062401c"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/P0/closure-20261017/legacy.json",
+          "line": 49,
+          "commit": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_revision": "9d71f91415dc71d17446db38201560efebcae311",
+          "source_sha256": "0b7045efb84d51b3dad3440f1c6185d4581cb79ed3882f6407cf324b38556070",
+          "source_blob_oid": "c18dbf790e184430263b34dfcc03f138b9046873",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "e77084fc245734966c5af047b116e4cfc7658373e894c786019d642c7dda29fd"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/FILE_MANIFEST.json",
+          "line": 56,
+          "commit": "4ccde42dc4208365175ee2bc71b8adba48c20ab4",
+          "source_revision": "4ccde42dc4208365175ee2bc71b8adba48c20ab4",
+          "source_sha256": "29ffa0157199df502931f89637a877c80d3a319691d7d3f187ea0e144656c475",
+          "source_blob_oid": "78914922780cf31d8d215805a9c55c7d0f2ba7d1",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "7dafcc256f9d322e4a9f52edd4518c6df667bfdc94aae40fefa582d114979e62"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "docs/V2-005_AUTHORIZATION_EFFECTUATION_REPORT.md",
+          "line": 43,
+          "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_revision": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_sha256": "593eccdf9f596d641b0317df49f6bad47465ad2cc686fd873fabfc171767ba36",
+          "source_blob_oid": "111302ba8d1d8b157fcc7800a93b0c9026175734",
+          "source_line_sha256": "774622fc66e53b9039f305e3d7d65c08a6882388d43d37f9085c95a6ec236c3a",
+          "scanner_fingerprint_sha256": "d9f6773cc5482b28336d07dddd624cdc7ee2903d6f4f35b7422b79cb2da5436c"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "docs/V2-005_AUTHORIZATION_EFFECTUATION_REPORT.md",
+          "line": 255,
+          "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_revision": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_sha256": "593eccdf9f596d641b0317df49f6bad47465ad2cc686fd873fabfc171767ba36",
+          "source_blob_oid": "111302ba8d1d8b157fcc7800a93b0c9026175734",
+          "source_line_sha256": "774622fc66e53b9039f305e3d7d65c08a6882388d43d37f9085c95a6ec236c3a",
+          "scanner_fingerprint_sha256": "9121c210c778434b8c16ae66abbb29942fa9a7070d8f8537e327f7d265b77a18"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "docs/V2-005_AUTHORIZATION_FINAL_REPORT.md",
+          "line": 62,
+          "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_revision": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_sha256": "ded50cbb1a9988d7502e04357a699e76826cd71c008147c6ecf16fdce9364d29",
+          "source_blob_oid": "f9d1f986684fdfe8c296456d07ad93ad59751b88",
+          "source_line_sha256": "774622fc66e53b9039f305e3d7d65c08a6882388d43d37f9085c95a6ec236c3a",
+          "scanner_fingerprint_sha256": "1307486ac166fd5856f01c870bc2e2b9e17d2155f3298e7ddfec0c67cc720d6f"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "docs/V2-005_AUTHORIZATION_FINAL_REPORT.md",
+          "line": 141,
+          "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_revision": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_sha256": "ded50cbb1a9988d7502e04357a699e76826cd71c008147c6ecf16fdce9364d29",
+          "source_blob_oid": "f9d1f986684fdfe8c296456d07ad93ad59751b88",
+          "source_line_sha256": "774622fc66e53b9039f305e3d7d65c08a6882388d43d37f9085c95a6ec236c3a",
+          "scanner_fingerprint_sha256": "36773c6da926a489bd56fce90297b564d5acd37e31bc5f275cf2002d97a151c3"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "docs/reports/P1_PRE_STEP3_SECURITY_HYGIENE_2026-10-06.md",
+          "line": 324,
+          "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_revision": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_sha256": "ea44b0d9016fe0651d8c50e56307511c78cc6abc85319f69e6b6242ea5200187",
+          "source_blob_oid": "a0afeb37f6074d1c0c7a91af4aa8a034b9fd6fae",
+          "source_line_sha256": "ac89d20acffe6077b1ee1b56e4055c66846c4b58969e04277921ac801c218eaf",
+          "scanner_fingerprint_sha256": "01584ac9ebe2de1b345b08597faba211b211dd4e10668c4778fe6c8d06e527fd"
+        },
+        {
+          "rule_id": "gitlab-pat",
+          "target": "git_history",
+          "path": "docs/reports/P1_PRE_STEP3_SECURITY_HYGIENE_2026-10-06.md",
+          "line": 324,
+          "commit": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_revision": "69a787a8b83031b3845709faeb10d6f21591b2bc",
+          "source_sha256": "ea44b0d9016fe0651d8c50e56307511c78cc6abc85319f69e6b6242ea5200187",
+          "source_blob_oid": "a0afeb37f6074d1c0c7a91af4aa8a034b9fd6fae",
+          "source_line_sha256": "ac89d20acffe6077b1ee1b56e4055c66846c4b58969e04277921ac801c218eaf",
+          "scanner_fingerprint_sha256": "27b79be9eabb577cd2179410056ac4858b2b6663f36a6839e215f7485e926175"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-004/authority-controls-20261004/actual-pipeline-variable-controls.json",
+          "line": 23,
+          "commit": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+          "source_revision": "e927dbfb05f4b917e9f825cb9aae91c6caf64f9a",
+          "source_sha256": "6b36950ecc5c5d297f5b3bde2323d6ca3a8586fa4f660707f66668a30c162f29",
+          "source_blob_oid": "78ca86d8624fd3a62ead5c7006203825ae5d6758",
+          "source_line_sha256": "91d52b7a4d29da993dc0735ccaa977a5bc267191bba2d61ef018cbac56108ec2",
+          "scanner_fingerprint_sha256": "873d3bfd1cc433ca48da8faa1a774abfb96b19c6f69ee3fd1632c05b643868b9"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-002/revalidation-fd7667ec/local/legacy-governance.json",
+          "line": 49,
+          "commit": "6aa7c8ace2ac167757f79d53bc4aa8bf4bfc94b3",
+          "source_revision": "6aa7c8ace2ac167757f79d53bc4aa8bf4bfc94b3",
+          "source_sha256": "3e62a2a7ce76f84bdf124a7e97ef0f26f73de247e73f000c1205557003eb7c7d",
+          "source_blob_oid": "d13de2efc2d8d008b6ee82994ec54071cc4a91a3",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "31aa799cd90325cae929a5691ee716adffe709eb860abcf2b9723086e6f2f613"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-003/followup/final/governance/legacy.json",
+          "line": 49,
+          "commit": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+          "source_revision": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+          "source_sha256": "2dd657e328282ce44e71dc7e864518f5960230b27db884f628a8d46acae9414b",
+          "source_blob_oid": "344a0a252ee1d76032746706883e2f168e05369a",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "5004050a6adbd2650f57503269d0b627857551c97440a681d4e86fc5aba8e0b2"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-003/followup/postcommit/checks/governance/legacy.json",
+          "line": 49,
+          "commit": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+          "source_revision": "416dfd5275d8767ebfa2dc88ae060107a29be48e",
+          "source_sha256": "88396cdf79bd1fda842ca65e70fd1be98e9d8899dec6fdb475edc617bcfbf896",
+          "source_blob_oid": "acbc394f8bd7680351e632289b9dae32aa0490ed",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "17959442d5c7cbbd7b83e1c1d2e3e59b4bcb6db8f81d017a5a961853b13e05e9"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-003/final/governance/legacy.json",
+          "line": 49,
+          "commit": "f599dd821b61c2b7e347efc6834d63d54e7f0028",
+          "source_revision": "f599dd821b61c2b7e347efc6834d63d54e7f0028",
+          "source_sha256": "4c9772e5b4ebe321a989a4f63ca606b8b1edeedb157cce7d595f8d136c692367",
+          "source_blob_oid": "62e0289916555921b72ea808cdd2cfcd60b8f073",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "addd0a010dea331ffa2358d1116b6e70c55db8de9df144980462e0bbd2197488"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-003/postcommit/checks/governance/legacy.json",
+          "line": 49,
+          "commit": "f599dd821b61c2b7e347efc6834d63d54e7f0028",
+          "source_revision": "f599dd821b61c2b7e347efc6834d63d54e7f0028",
+          "source_sha256": "de8be9a4e81dd575abbfbf6ea14d25ac5fbdc626be196052133c01775d601568",
+          "source_blob_oid": "0a9ec6fb51a11237630a7988e2c87f9e3495ecb2",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "0abf64d494c16d00ed7b6ef47dbecbd7c113caec80026adca17251df3ca228f6"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-002/followup/bound-governance/legacy.json",
+          "line": 49,
+          "commit": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+          "source_revision": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+          "source_sha256": "a3816350ef8ca6e4ed1b30f891b388b8a4ff6c92c9c18ce932d277be1d91bd52",
+          "source_blob_oid": "f966be996c8e939426e9f8aa308935f396e9c292",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "c43da95fac61f5dd7c843d51dcd456b79a97274fb57c11f9d794126f933982ba"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-002/followup/postcommit/governance/legacy.json",
+          "line": 49,
+          "commit": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+          "source_revision": "c6f26c6188f0b6ad82ce73bf04024d1eab96e1cf",
+          "source_sha256": "b6de4d8214187081f27f1038bd88e94f995aff41fd68bab93467b068ff7bd708",
+          "source_blob_oid": "8a463a30c76a0df93ef5816245b33fe7764a2e68",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "7dfb253c65fdfe1d9e02d48cbbf3a2365d0d8b6a846facba00d7b6df3bee5438"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-002/checks/final-governance/legacy.json",
+          "line": 49,
+          "commit": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+          "source_revision": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+          "source_sha256": "b1504f25babcf7f08ad0d81cd732d6f2d899a0e73e73349b0ba561df6227272f",
+          "source_blob_oid": "938ab4114564a970863e77ece3b18f3c5caba1c4",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "1484cf91928aa49fac968764b8ef2aba29a481d552a7f45e3772ed461a39d703"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/execution/V2-002/checks/first-governance/legacy.json",
+          "line": 49,
+          "commit": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+          "source_revision": "a3ea77304f0c68967f21532adf3852bec3ea0a4d",
+          "source_sha256": "069221a6a6c48c736005c737c113a151a8021b6144583a6f06147a4094ed0d4f",
+          "source_blob_oid": "b2f275270ba91350343160a7081c805383d55048",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "6162b5474d242eb3f56109acde9e4d58be0337c93ebd35dc3be1fd14c5823548"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/ai-governance-1.3.0/legacy-governance-probes.json",
+          "line": 49,
+          "commit": "0089eecc496b0c0b4039fb2b26c186fc437c032e",
+          "source_revision": "0089eecc496b0c0b4039fb2b26c186fc437c032e",
+          "source_sha256": "463031bc2625085b05e98694bf9d05f80746dd983611d4a85c6aa1913225748c",
+          "source_blob_oid": "d5751ef99d7fb8cd8b97b16926af717569527dae",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "5977be38d86c65d9e2c9978e09a6b8c440b816ca0f80d5a8480ba57ae715df73"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/archive/plan-review-2026-09-21/governance-probe-results.json",
+          "line": 48,
+          "commit": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d",
+          "source_revision": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d",
+          "source_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+          "source_blob_oid": "ea019a40af3df75c5f20b327ca110dc7028bab00",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "4f6ff446441ae6326edcc47a15ef2469be51a983c29751027b0d437600ce6082"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan-review-2026-09-21/governance-probe-results.json",
+          "line": 48,
+          "commit": "b835d69821a6cad640b0db39fe76a15c2601a857",
+          "source_revision": "b835d69821a6cad640b0db39fe76a15c2601a857",
+          "source_sha256": "b9bf01f52686896b18951a1b02b044a9eb6a023ce6486709280926020c686901",
+          "source_blob_oid": "ea019a40af3df75c5f20b327ca110dc7028bab00",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "d13c33db3ae3206f18397b40b74d4a58f9113e7fc1e7f67fd4e386c789be22b0"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/validation/governance-probe-v1.2.json",
+          "line": 48,
+          "commit": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d",
+          "source_revision": "6a4f6bcd574064c66b2e9edd4c6ff1163873007d",
+          "source_sha256": "a53888ea109d251076297bb952048d20d36c20cc3aa5160df4cb8f38ada5d4ee",
+          "source_blob_oid": "74b87c16b04f4706b8357d2d2464f45129fe9011",
+          "source_line_sha256": "ecdc3297c633fc18b419301ca19f648f42ffeb0fc3713eae139bf3d76c70e4d3",
+          "scanner_fingerprint_sha256": "9bce0176c65fdc339d73d27c1515ebba321c35e60a30ac5dc56972cfc9c23eb2"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+          "line": 164,
+          "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_revision": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "7bc5d25fcd4c53f1c86f100f310abc291095d6fef0adf39109fc12f87179b973",
+          "scanner_fingerprint_sha256": "2ce57bb8fe82fec59aa2b78fc3e8eb4086a496bb85629a1167a2f87b793bb9dc"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+          "line": 165,
+          "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_revision": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "929f328e4c5d781c5de42c984f78f8576bbfed98ea03e486711642260a239893",
+          "scanner_fingerprint_sha256": "0a6238e593282038050420e917e5b18ad8c790d3b08a94c699aa9702a8c8172d"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/archive/ccdoc/19_API_SPECIFICATION.md",
+          "line": 192,
+          "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_revision": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "51d37b78bf67e76c82578f4e878ac4564b62a3b8c1e15e83aca7b5dbee085dbc",
+          "scanner_fingerprint_sha256": "c4eaa1cf270b55ee67c85dd8645132ce6630127e50aad326424b44f57e0c87ea"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "plan/archive/root_matrices/V1_REGRESSION_ASSET_REGISTER.md",
+          "line": 54,
+          "commit": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_revision": "4b7b54a0c6aa538d96831fdb84685b94ea187861",
+          "source_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+          "source_blob_oid": "3e6caf7fd1572dadf86774f1ede9070236e5b100",
+          "source_line_sha256": "4806535f2150a8a74a3c89a5b796e560698c797bdfc42ebe63144c0dc2f95eee",
+          "scanner_fingerprint_sha256": "f2d29a23c0ecb77639703d9ec475b471193b0e9f3ddb9f8df0951e2d3d4f773e"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "V1_REGRESSION_ASSET_REGISTER.md",
+          "line": 54,
+          "commit": "5b3814f63550dcb3db4b30a8580481d0eeb1d820",
+          "source_revision": "5b3814f63550dcb3db4b30a8580481d0eeb1d820",
+          "source_sha256": "746cb9009893f5b418ff069c57bd893ea67736fe4669660b21e57bf49da8bed5",
+          "source_blob_oid": "3e6caf7fd1572dadf86774f1ede9070236e5b100",
+          "source_line_sha256": "4806535f2150a8a74a3c89a5b796e560698c797bdfc42ebe63144c0dc2f95eee",
+          "scanner_fingerprint_sha256": "9e86c5784f1dc3888d948cfd2210537ac579c3a7e10adaf8ce3554b5629c8a14"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/AI-Novel-Runtime/PHASE1-INTEGRATION-SESSION-SUMMARY.md",
+          "line": 188,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "b0332c157d41dc33b25e0cc1f19d44e963f59747d17297858abc0de7c698fd23",
+          "source_blob_oid": "c4a1156aa71d508042e53dfa925e4c82a527e373",
+          "source_line_sha256": "614f5e5c7faaad55be87c4c499115b977b37230ba27cce6d71898dd332f5c56f",
+          "scanner_fingerprint_sha256": "94559751913f8f35ea552a54f5b3c3983f5c489d69b47a69a667ed12d83fc159"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/AI-Novel-Runtime/PHASE1-INTEGRATION-SESSION-SUMMARY.md",
+          "line": 189,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "b0332c157d41dc33b25e0cc1f19d44e963f59747d17297858abc0de7c698fd23",
+          "source_blob_oid": "c4a1156aa71d508042e53dfa925e4c82a527e373",
+          "source_line_sha256": "1c729c821be82fcfd03d536ee5167acbd027357237054033d30776850a8fb08e",
+          "scanner_fingerprint_sha256": "6caef56356ebba4cbec1a212330ff653c64775670889fe045c033e344a80998c"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/docs/archive/2026-08-history/BALANCE_ISSUE_REPORT.md",
+          "line": 17,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "8e651005d23a5bd6c1feb1b311260f212a672f5cf4e2e734befd059e4c7a4f94",
+          "source_blob_oid": "0fee547b7b1eafb3bc8323eba59cfb2ba2cd26d1",
+          "source_line_sha256": "7fd1bce3354dfdf0c75fc113ef9930e88db6f2a91c0a56ba876e237c05c547da",
+          "scanner_fingerprint_sha256": "4617a0302b83045e232ed02cb7af1da3279df7936fdc7c7b531434a618b5b472"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/docs/archive/2026-08-history/CC_VIBE_SUCCESS.md",
+          "line": 9,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "3ae8ca08a07c2ed1ab40ade7d60f7070ebbedaedf7995be1776974fb47969071",
+          "source_blob_oid": "a06a460df12fcf3089edf4bf4d99f81d044464f7",
+          "source_line_sha256": "ff09fa070f3a1a1f57945fe37b03d02369e9f1be600c9c12c6f7f0225dfef36e",
+          "scanner_fingerprint_sha256": "445a8a8652c0aa2f195045a42f82e73eeaffaa873bf2f6f6fb150bf2a3278a81"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/docs/archive/2026-08-history/RETRY_CC_VIBE.md",
+          "line": 9,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "35bbff4fefcff04e3f872a13532a57f2dd4a5f5e98427fcf423b519e598a8f65",
+          "source_blob_oid": "6246462a4d8f0f53b6e6f646116f1c79e6dcf4a2",
+          "source_line_sha256": "04a45657cd8929e0f05d35b6f9c386b26389606da2f3c3db4d4c50019f7b80ed",
+          "scanner_fingerprint_sha256": "3e3a3e02d65cb0b34a4d6f65cf38497de770d8daecd2fe86db4f5f22de616579"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/docs/archive/2026-08-history/SWITCH_TO_CC_VIBE.md",
+          "line": 12,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "c7c48e6489d979dbab44aa36a5086e0312e00b17b96f2a8a231bab588277bd0b",
+          "source_blob_oid": "a92d7989d12c2a5163e294d77557100e9f0e76a1",
+          "source_line_sha256": "04a45657cd8929e0f05d35b6f9c386b26389606da2f3c3db4d4c50019f7b80ed",
+          "scanner_fingerprint_sha256": "7d0a1dd37c03ad8615463a82f9a18a5a1f999da12eacffc1d6f4f4c61f0cc23c"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ainovel/docs/archive/2026-09-genre-work/P0关键问题最终修复报告.md",
+          "line": 118,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "822926f3242a0cc2aa5b2ebd181b87506b81b5b9794574d629c1479ff57481bd",
+          "source_blob_oid": "e5cd37e83efee8bdb8e68e0e876461442ff01447",
+          "source_line_sha256": "591767ecfe062272a02f68beb0fc23998df2f76e57fa424dcc3d679682e9ed5c",
+          "scanner_fingerprint_sha256": "8c4e0eb3f3ef74188df84e9df384833927948fe8f7d870a21d21bb6d08856e9a"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ccdoc/19_API_SPECIFICATION.md",
+          "line": 164,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "7bc5d25fcd4c53f1c86f100f310abc291095d6fef0adf39109fc12f87179b973",
+          "scanner_fingerprint_sha256": "fc6c88e99aaf17f5a78ac3f1ff8e5d7392f162c97bdda432e7824e95a394a1a3"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ccdoc/19_API_SPECIFICATION.md",
+          "line": 165,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "929f328e4c5d781c5de42c984f78f8576bbfed98ea03e486711642260a239893",
+          "scanner_fingerprint_sha256": "dcd5350b16a433983d80815e6dd5e76acae4b56dd3cf91f42764b261516dafe7"
+        },
+        {
+          "rule_id": "generic-api-key",
+          "target": "git_history",
+          "path": "ccdoc/19_API_SPECIFICATION.md",
+          "line": 192,
+          "commit": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_revision": "63b60f74682f3efe8bb964d12fc092e2df162429",
+          "source_sha256": "bf803a69e52ee7ecd09971e92a95d0484b17b1a3747c79e9c6bd8d885043e4a1",
+          "source_blob_oid": "b5f143047121d064e8bbe7f9b88801cfb420540d",
+          "source_line_sha256": "51d37b78bf67e76c82578f4e878ac4564b62a3b8c1e15e83aca7b5dbee085dbc",
+          "scanner_fingerprint_sha256": "a0b143a49ef9ca288a7dbf1ecdc7f3838f4408393400545c6d8af24b2ab52c57"
+        }
+      ],
+      "exception_consumption": {
+        "status": "PASS",
+        "detected": 54,
+        "known": 54,
+        "approved_and_consumed": [
+          "V2-004-SF-001",
+          "V2-004-SF-002",
+          "V2-004-SF-003",
+          "V2-004-SF-004",
+          "V2-004-SF-005",
+          "V2-004-SF-006",
+          "V2-004-SF-053",
+          "V2-004-SF-007",
+          "V2-004-SF-008",
+          "V2-004-SF-009",
+          "V2-004-SF-010",
+          "V2-004-SF-011",
+          "V2-004-SF-012",
+          "V2-004-SF-013",
+          "V2-004-SF-014",
+          "V2-004-SF-044",
+          "V2-004-SF-015",
+          "V2-004-SF-054",
+          "V2-004-SF-046",
+          "V2-004-SF-047",
+          "V2-004-SF-048",
+          "V2-004-SF-049",
+          "V2-004-SF-050",
+          "V2-004-SF-051",
+          "V2-004-SF-052",
+          "V2-004-SF-045",
+          "V2-004-SF-016",
+          "V2-004-SF-017",
+          "V2-004-SF-018",
+          "V2-004-SF-019",
+          "V2-004-SF-020",
+          "V2-004-SF-021",
+          "V2-004-SF-022",
+          "V2-004-SF-023",
+          "V2-004-SF-024",
+          "V2-004-SF-025",
+          "V2-004-SF-026",
+          "V2-004-SF-027",
+          "V2-004-SF-028",
+          "V2-004-SF-029",
+          "V2-004-SF-030",
+          "V2-004-SF-031",
+          "V2-004-SF-032",
+          "V2-004-SF-033",
+          "V2-004-SF-034",
+          "V2-004-SF-035",
+          "V2-004-SF-036",
+          "V2-004-SF-037",
+          "V2-004-SF-038",
+          "V2-004-SF-039",
+          "V2-004-SF-040",
+          "V2-004-SF-041",
+          "V2-004-SF-042",
+          "V2-004-SF-043"
+        ],
+        "unapproved": [],
+        "expired": [],
+        "unmatched_findings": [],
+        "unused_approvals": [],
+        "unmatched_approvals": [],
+        "identified": 54
+      }
+    },
+    "dependency": {
+      "scanner": "pip-audit",
+      "version": "2.10.1",
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "79d30422388543b2563e1dde76bb7e7857d7ef0c6fdf05c8c71598633ca07e1e",
+      "lock_sha256": "bace6abb4006900eb211d687734879b6c27616543282df0a6aca17861b32def4",
+      "requirements_sha256": "5bca03413818191409d67748d8193d5d19c95faf5f5e4b480cdacec08fe25752",
+      "expected_packages": 51,
+      "status": "PASS",
+      "audited_packages": 51,
+      "vulnerability_count": 0,
+      "unresolved": [],
+      "exemptions": [],
+      "report_sha256": "00f47dff7e5dfbbc6d523f068e7e1f8a4f5eaaf93a3ab14add2a9e717a2efb56"
+    }
+  },
+  "limitations": [
+    "Pinned local scanner execution; remote trust is not attested"
+  ]
+}

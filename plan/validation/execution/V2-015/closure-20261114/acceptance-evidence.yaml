@@ -1,0 +1,83 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-015
+revision: e9a19d0b105443374006807cda905d0c67caffd7
+status: PASS
+producer: Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit
+executed_at: '2026-11-14T01:28:28.371910+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11;repo1421585508/run43539261866/attempt1;single
+  operator
+input_evidence_refs:
+- validation/execution/V2-015/closure-20261114/code-evidence.yaml
+- validation/execution/V2-015/closure-20261114/tests-evidence.yaml
+- validation/execution/V2-015/closure-20261114/ci-evidence.yaml
+evidence_id: V2-015-acceptance-e9a19d0
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-015-01
+- AT-V2-015-02
+- AT-V2-015-03
+artifacts:
+- ref: validation/execution/V2-015/closure-20261114/ACCEPTANCE_SUMMARY.md
+  sha256: 0d19ed912e8a34e93a776dfe1521a367f7e5d0547f3ad243c14de80ae4ebc87c
+- ref: validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json
+  sha256: 5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa
+- ref: validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json
+  sha256: 990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b
+- ref: validation/execution/V2-015/closure-20261114/SECURITY_RESULT.json
+  sha256: b54d7802d2bb314f23639f67e18553691aa8ff183af1ce9ff8cc7a545a428fd4
+decision: ACCEPTED
+rationale: Original three assertions and actual same-SHA six gates1815/0skip pass; registered business Canon integration
+  only, not P3/product/prose-Q2/backup or human fixture acceptance.
+finding_dispositions:
+- finding_id: AR-15
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-015/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/ci-evidence.yaml
+  reason: Registered typed business Schema/validator, scalar projection and conserved transfer through actual Canon
+    verified.
+  remaining_work: Fantasy progression extension and later dual-genre certification remain.
+  next_task: V2-016
+  owner_role: genre-maintainer
+  due_gate: G-P3
+- finding_id: CA-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-015/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/ci-evidence.yaml
+  reason: Exact urban1.1 identity/profile and registered business fields share generic core; frozen history preserved.
+  remaining_work: Actual fantasy extension and dual-Anchor certification remain.
+  next_task: V2-016
+  owner_role: genre-maintainer
+  due_gate: G-P3
+- finding_id: RR-11
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-015/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/ci-evidence.yaml
+  reason: Actual legal/invalid business/resource/cross-project cases and recovery controls executed, without prose-quality
+    claims.
+  remaining_work: Natural generation/omissions and10/30chapter semantic denominators/certification remain.
+  next_task: V2-034
+  owner_role: certification-maintainer
+  due_gate: G-P8
+- finding_id: SUP-01
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-015/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-015/closure-20261114/ci-evidence.yaml
+  reason: Business initial facts use existing sole root path with frozen Pack/Schema and retained evidence.
+  remaining_work: Actual two human-approved Story Fixtures not collected; current AI-built transaction tests are
+    not approved standard books.
+  next_task: V2-017
+  owner_role: planning-maintainer
+  due_gate: G-P4

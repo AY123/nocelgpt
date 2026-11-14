@@ -262,7 +262,7 @@ suites:
 - id: AT-V2-015
   task_id: V2-015
   phase: P3
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/contract/test_v2_015.py
   scenarios:
   - id: AT-V2-015-01
@@ -271,7 +271,8 @@ suites:
     required_assertion: 禁止现实 Anchor 注入重生系统或修炼事实
   - id: AT-V2-015-03
     required_assertion: 合法商业样本通过且不会读取玄幻专属字段
-  execution_evidence: []
+  execution_evidence:
+  - validation/execution/V2-015/closure-20261114/tests-evidence.yaml
 - id: AT-V2-016
   task_id: V2-016
   phase: P3

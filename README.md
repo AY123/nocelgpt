@@ -2,7 +2,7 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-**阶段摘要（2026-11-13）：Plan v1.3.0；V2-001～014 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2及M0/M1/M2 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+**阶段摘要（2026-11-14）：Plan v1.3.0；V2-001～015 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2及M0/M1/M2 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
 当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已完成持久化和人工/测试根提交的工程验收，V2-010已完成有限事实章节Commit/Permit协议的工程验收（生产默认拒绝TEST Permit）；V2-011/012已验证章节安全重试、并发、断线恢复和有限事实历史重建；尚无正式生产issuer、模型调用或章节生产闭环。
 
@@ -22,7 +22,7 @@
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已完成工程验收；V2-010已完成工程验收；下一任务V2-015仍OPEN，须建立其专属执行包，已完成的任务不重新走IMPLEMENT。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已完成工程验收；V2-010已完成工程验收；下一任务V2-016仍OPEN，须建立其专属执行包，已完成的任务不重新走IMPLEMENT。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 
@@ -146,4 +146,6 @@ V2-012已完成[工程验收](plan/validation/execution/V2-012/closure-20261110/
 
 V2-013已完成[工程验收](plan/validation/execution/V2-013/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定b9cb604/run43424270308，1588项0skip（新63项题材契约属于UNIT子集）。ADR007已接受，两Anchor精确加载/项目快照/无匹配不改题材已验证；V2-014验收见下方最新记录，P3及自动写作/阅读质量/外部备份仍未完成。
 
-V2-014已完成[工程验收](plan/validation/execution/V2-014/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定e688ca0/run43435762543，1699项0skip（新111项属于UNIT子集）。显式语义证据的世界规则冲突、梦境/引用区分、UNKNOWN和策略冲突已验证；不等于全文语义Q2。下一任务V2-015，P3及自动写作/阅读质量/外部备份仍未完成。
+V2-014已完成[工程验收](plan/validation/execution/V2-014/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定e688ca0/run43435762543，1699项0skip（新111项属于UNIT子集）。显式语义证据的世界规则冲突、梦境/引用区分、UNKNOWN和策略冲突已验证；不等于全文语义Q2。V2-015验收见下方最新记录，P3及自动写作/阅读质量/外部备份仍未完成。
+
+V2-015已完成[工程验收](plan/validation/execution/V2-015/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定e9a19d0/run43539261866，1815项0skip（新88契约+28PG为子集）。都市商业严格类型/守恒及唯一Canon提交和冷重放已验证；旧Pack/政策保留。下一任务V2-016，P3、自动写作/阅读质量/外部备份及人工标准测试书仍未完成。

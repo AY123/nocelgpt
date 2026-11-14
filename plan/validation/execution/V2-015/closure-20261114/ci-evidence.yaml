@@ -1,0 +1,58 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-015
+revision: e9a19d0b105443374006807cda905d0c67caffd7
+status: PASS
+producer: Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit
+executed_at: '2026-11-14T01:28:28.371910+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11;repo1421585508/run43539261866/attempt1;single
+  operator
+input_evidence_refs: []
+evidence_id: V2-015-ci-e9a19d0
+evidence_type: CI_RUN
+check_ids:
+- AT-V2-015-01
+- AT-V2-015-02
+- AT-V2-015-03
+- STATIC
+- SCHEMA_CONTRACT
+- UNIT
+- ARCH_FITNESS
+- POSTGRES_ENV
+- SECRET_DEPENDENCY
+artifacts:
+- ref: validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json
+  sha256: 5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa
+- ref: validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json
+  sha256: 990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b
+- ref: validation/execution/V2-015/closure-20261114/gate-arch_fitness-43539261866-1.zip
+  sha256: f87323fa8bde0310dda43f29a480e7bb330e88ae4070581de24c52219eff1d7e
+- ref: validation/execution/V2-015/closure-20261114/gate-postgres_env-43539261866-1.zip
+  sha256: f4187ad0cba06a9d6e37a356669963909d1a10b244b667d2ed9fb330f70c2cc0
+- ref: validation/execution/V2-015/closure-20261114/gate-schema_contract-43539261866-1.zip
+  sha256: 6115b4e00fbc643d4bf31051d5a0ab60fa373dc74b6b32583070004d0bc5ad1e
+- ref: validation/execution/V2-015/closure-20261114/gate-secret_dependency-43539261866-1.zip
+  sha256: 258fe645c5949b04971da3502426daa52589ea7ef3ee22a426bafce922eac972
+- ref: validation/execution/V2-015/closure-20261114/gate-static-43539261866-1.zip
+  sha256: 8aad95647c1d3be8efb688f6c87643a1e90ad99c7d9fc3af26d803ea80c3bc02
+- ref: validation/execution/V2-015/closure-20261114/gate-unit-43539261866-1.zip
+  sha256: 517e381f0497ec86113b94419d970a6978d3f6e067ac7c56288fd8f6fe368b1a
+- ref: validation/execution/V2-015/closure-20261114/run.json
+  sha256: eca2db25a8c0ae8aa2a360fbb4261e3fcb434a750ae5de9494af276b69a319e3
+- ref: validation/execution/V2-015/closure-20261114/jobs.json
+  sha256: f43ebbb8c0b80e301c2c2c27fa3c7cfe203ce7a3bc6736ad6831467a011a80de
+- ref: validation/execution/V2-015/closure-20261114/artifacts-api.json
+  sha256: 599def7afc5e09e7dae608307fed7c86a4f5e8d2abe32495619a2a07483e0b67
+- ref: validation/execution/V2-015/closure-20261114/SECURITY_RESULT.json
+  sha256: b54d7802d2bb314f23639f67e18553691aa8ff183af1ce9ff8cc7a545a428fd4
+- ref: validation/execution/V2-015/closure-20261114/dispatch-claim.json
+  sha256: 2b7bae5c81ebfa2abd8cbc4fe61c9c6c03cb95258e7941126f763678344f5da7
+- ref: validation/execution/V2-015/closure-20261114/dispatch-result.json
+  sha256: 90f24db8d27f7f1210fa9007e69c774bd1954956850f9d4546fa8a13bbf8887c
+- ref: validation/execution/V2-015/closure-20261114/REPOSITORY.json
+  sha256: aaf505216595e494a9b37525169d9ec81e37fab1d19a4b5b25a77e0359583fe9
+command: Actual same-SHA six mandatory run_gate commands; original receipts/logs/artifact hashes/JUnit verified
+exit_code: 0
+pipeline_id: '43539261866'
+job_id: 132275711013,132275711246,132275711323,132275711583,132275711912,132275711337
+pipeline_url: https://github.com/AY123/nocelgpt/actions/runs/43539261866

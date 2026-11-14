@@ -2,7 +2,7 @@
 
 本目录的产品目标是中文长篇网文的可靠生产与真实阅读竞争力，详见[产品目标](01_PRODUCT_SCOPE_AND_SUCCESS.md)。工程验收不等于小说生产、真人阅读或市场验证。
 
-**阶段摘要（2026-11-13）：V2-001～014 CLOSED，P0/G-P0、P1/G-P1、P2/G-P2及M0/M1/M2 VERIFIED，其余46个任务OPEN。** 日常开发使用 `main`。V2-007已按 `a0ea8df` / run39119023861完成六门工程验收（1071项测试、0skip），见[验收记录](validation/execution/V2-007/closure-20261018/ACCEPTANCE_SUMMARY.md)。V2-008及P1汇总已按`f611ba3` / run39128464248完成六门工程验收（1173项测试0skip，含381项P1领域用例），见[P1汇总](validation/execution/P1/closure-20261018/ACCEPTANCE_SUMMARY.md)。V2-009已按3d12f20/run39256589017完成六门验收（1318项0skip），见[验收记录](validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)。V2-006已按 `e210078` / run39106725089完成六门验收（990项测试、0skip），见[验收记录](validation/execution/V2-006/closure-20261018/ACCEPTANCE_SUMMARY.md)。实际状态读取[任务表](machine/implementation-backlog.yaml)、[阶段门禁](machine/phase-gates.yaml)和[决策登记](machine/decision-register.yaml)，本文不是平行状态源。
+**阶段摘要（2026-11-14）：V2-001～015 CLOSED，P0/G-P0、P1/G-P1、P2/G-P2及M0/M1/M2 VERIFIED，其余45个任务OPEN。** 日常开发使用 `main`。V2-007已按 `a0ea8df` / run39119023861完成六门工程验收（1071项测试、0skip），见[验收记录](validation/execution/V2-007/closure-20261018/ACCEPTANCE_SUMMARY.md)。V2-008及P1汇总已按`f611ba3` / run39128464248完成六门工程验收（1173项测试0skip，含381项P1领域用例），见[P1汇总](validation/execution/P1/closure-20261018/ACCEPTANCE_SUMMARY.md)。V2-009已按3d12f20/run39256589017完成六门验收（1318项0skip），见[验收记录](validation/execution/V2-009/closure-20261019/ACCEPTANCE_SUMMARY.md)。V2-006已按 `e210078` / run39106725089完成六门验收（990项测试、0skip），见[验收记录](validation/execution/V2-006/closure-20261018/ACCEPTANCE_SUMMARY.md)。实际状态读取[任务表](machine/implementation-backlog.yaml)、[阶段门禁](machine/phase-gates.yaml)和[决策登记](machine/decision-register.yaml)，本文不是平行状态源。
 
 V2-005 工程验收绑定 `72219b4` / run39088653270，六门通过、889项测试0skip；见[验收记录](validation/execution/V2-005/closure-20261018/ACCEPTANCE_SUMMARY.md)。P0验收仍绑定历史 `611d777`，见[P0汇总验收](validation/execution/P0/closure-20261017/ACCEPTANCE_SUMMARY.md)。后续资料维护不冒称新提交已运行CI。
 
@@ -20,7 +20,7 @@ v1.3.0 将全 AI 推进的六项措施落实为[执行协议](AI_EXECUTION_PROTO
 
 1. 完整仓库先读根目录 `AGENTS.md` → 本页 → [产品目标](01_PRODUCT_SCOPE_AND_SUCCESS.md)与[架构边界](02_ARCHITECTURE_BASELINE.md)。单独导出的 `plan/` 不附带根目录文件，不据此执行仓库动作。
 2. 从[机器任务表](machine/implementation-backlog.yaml)选择本次任务，核对依赖、阶段、[验收场景](machine/test-catalog.yaml)、[ADR](machine/decision-register.yaml)和已有实现。生成的[阶段任务视图](generated/PHASE_TASK_REGISTRY.md)仅供阅读。
-3. 按该任务的 `normative_specs` 阅读现行规范，遵守[AI执行协议](AI_EXECUTION_PROTOCOL.md)和[任务执行规则](09_TASK_EXECUTION_GUIDE.md)。V2-008已完成[工程验收](validation/execution/V2-008/closure-20261018/ACCEPTANCE_SUMMARY.md)，其旧本地记录保留原语义；V2-009已完成根提交持久化工程验收，V2-010已完成工程验收，下一任务V2-015须建立自己的执行包；V2-007的[工程验收](validation/execution/V2-007/closure-20261018/ACCEPTANCE_SUMMARY.md)保留原SHA，不复用其IMPLEMENT入口；每次受限动作仍核验实际输入与差异，不能把已关闭任务的执行包或模板当作开工凭证。
+3. 按该任务的 `normative_specs` 阅读现行规范，遵守[AI执行协议](AI_EXECUTION_PROTOCOL.md)和[任务执行规则](09_TASK_EXECUTION_GUIDE.md)。V2-008已完成[工程验收](validation/execution/V2-008/closure-20261018/ACCEPTANCE_SUMMARY.md)，其旧本地记录保留原语义；V2-009已完成根提交持久化工程验收，V2-010已完成工程验收，下一任务V2-016须建立自己的执行包；V2-007的[工程验收](validation/execution/V2-007/closure-20261018/ACCEPTANCE_SUMMARY.md)保留原SHA，不复用其IMPLEMENT入口；每次受限动作仍核验实际输入与差异，不能把已关闭任务的执行包或模板当作开工凭证。
 4. 需要追溯时再读[资料权威](00_GOVERNANCE_AND_SOURCE_AUTHORITY.md)、对应任务验收、[P0历史执行方案](PHASE_0_REPOSITORY_BOOTSTRAP_EXECUTION.md)与 archive。无需每次重新证明已验收的P0，也不从历史报告继承新的执行指令。
 
 ## 现行规范
@@ -80,4 +80,6 @@ V2-012已完成[工程验收](validation/execution/V2-012/closure-20261110/ACCEP
 
 V2-013已完成[工程验收](validation/execution/V2-013/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定b9cb604/run43424270308，1588项0skip（新63项题材契约属于UNIT子集）。ADR007已接受，两Anchor精确加载/项目快照/无匹配不改题材已验证；V2-014验收见下方最新记录，P3及自动写作/阅读质量/外部备份仍未完成。
 
-V2-014已完成[工程验收](validation/execution/V2-014/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定e688ca0/run43435762543，1699项0skip（新111项属于UNIT子集）。显式语义证据的世界规则冲突、梦境/引用区分、UNKNOWN和策略冲突已验证；不等于全文语义Q2。下一任务V2-015，P3及自动写作/阅读质量/外部备份仍未完成。
+V2-014已完成[工程验收](validation/execution/V2-014/closure-20261113/ACCEPTANCE_SUMMARY.md)，绑定e688ca0/run43435762543，1699项0skip（新111项属于UNIT子集）。显式语义证据的世界规则冲突、梦境/引用区分、UNKNOWN和策略冲突已验证；不等于全文语义Q2。V2-015验收见下方最新记录，P3及自动写作/阅读质量/外部备份仍未完成。
+
+V2-015已完成[工程验收](validation/execution/V2-015/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定e9a19d0/run43539261866，1815项0skip（新88契约+28PG为子集）。都市商业严格类型/守恒及唯一Canon提交和冷重放已验证；旧Pack/政策保留。下一任务V2-016，P3、自动写作/阅读质量/外部备份及人工标准测试书仍未完成。

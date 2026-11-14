@@ -1,0 +1,34 @@
+[
+  {
+    "method": "GET",
+    "path": "/user",
+    "http_status": 200,
+    "request_id": "D591:42150:14D51A1:429FB12:6AF7B8B3",
+    "body_sha256": "645a7c78fb142b346d8266cd3fecbe8ab52428a4901efb21c38b64f899d77535",
+    "at": "2026-11-14T01:26:12.401204+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt",
+    "http_status": 200,
+    "request_id": "F8F6:2009DB:1631C99:46DE58F:6AF7B8B5",
+    "body_sha256": "27abbf525037604416c7f5e5b2f713dc33b7684609fd2b52f32206d7848f9408",
+    "at": "2026-11-14T01:26:13.953890+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/actions/runs?per_page=10",
+    "http_status": 200,
+    "request_id": "F99E:172032:158608A:44CD83F:6AF7B8B7",
+    "body_sha256": "f0d6b5b2a0e306852be57697d07f3b175035ddc753e5974c406a57ecb949bb7c",
+    "at": "2026-11-14T01:26:16.173404+00:00"
+  },
+  {
+    "method": "GET",
+    "path": "/repos/AY123/nocelgpt/actions/runs/43539261866/jobs?per_page=100",
+    "http_status": 200,
+    "request_id": "F17B:203771:160E9D6:46516AE:6AF7B8B9",
+    "body_sha256": "4165fdc482c7026b2b66912f008245ef3e75e72e2edf504870595479a85614a8",
+    "at": "2026-11-14T01:26:17.820535+00:00"
+  }
+]

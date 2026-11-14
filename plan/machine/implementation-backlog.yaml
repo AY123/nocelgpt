@@ -942,7 +942,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 只实现两个冻结 Anchor，不扩展 30 个题材包
   - 不把关键词计数当事实硬裁判
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-015/execution-packet.yaml
   owner_role: genre-maintainer
   readiness: READY_TO_START
@@ -950,10 +950,22 @@ tasks:
   required_decisions:
   - ADR-007
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-015/closure-20261114/code-evidence.yaml
+      revision: e9a19d0b105443374006807cda905d0c67caffd7
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-015/closure-20261114/tests-evidence.yaml
+      revision: e9a19d0b105443374006807cda905d0c67caffd7
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-015/closure-20261114/ci-evidence.yaml
+      revision: e9a19d0b105443374006807cda905d0c67caffd7
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-015/closure-20261114/acceptance-evidence.yaml
+      revision: e9a19d0b105443374006807cda905d0c67caffd7
+      status: PASS
   related_findings:
   - AR-15
   - CA-08

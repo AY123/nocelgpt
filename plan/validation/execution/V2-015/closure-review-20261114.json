@@ -1,0 +1,274 @@
+{
+  "task_id": "V2-015",
+  "baseline_pin": {
+    "revision": "8b42f10389d377bd90a236642e2cf5d6ad64574e",
+    "ref": "plan/validation/execution/V2-015/scope.json",
+    "sha256": "67d74dbd6a0f4debf915f25d36ee6bffaf5d44e530b9ff2dcc2cc8f26787b287"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "new_sha": "a9b4ef2c91e452c7e1806344c126dfbbcaf62636ecdf8030ff10e8cc96a02ec1",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "226889d7a89e9fcdd159113aacc5c825c67fc5163f2809eaeb6050a509d0e69c",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; same-SHA e9a19d0/run43539261866 six gates1815/0skip PASS,88 new contract+28 new PG are suite subsets. Original artifacts,54-file manifest and all three unchanged assertions verified. CI command contract retains all old assertions and appends the real PG suite. Closure records only metadata, not P3/production-Q2/product/backup completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "32dda397da4b007b0e711c31522a55e2786985964dd11f183cc0390d8c4ca488"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c8b848b1c61354f3f322c003132576b3933b98ce5c620cfcf8d9c09a11bfc565",
+      "new_sha": "a9b4ef2c91e452c7e1806344c126dfbbcaf62636ecdf8030ff10e8cc96a02ec1",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "76b9fb07d99f9bab8278796d93ba4714f5adf18d287ce3b40145aada3bf37076",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; same-SHA e9a19d0/run43539261866 six gates1815/0skip PASS,88 new contract+28 new PG are suite subsets. Original artifacts,54-file manifest and all three unchanged assertions verified. CI command contract retains all old assertions and appends the real PG suite. Closure records only metadata, not P3/production-Q2/product/backup completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "32dda397da4b007b0e711c31522a55e2786985964dd11f183cc0390d8c4ca488"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "49f8ff32c82967c7230a5a3e719ca67861fce2152dffb490783d9aab0385109d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; same-SHA e9a19d0/run43539261866 six gates1815/0skip PASS,88 new contract+28 new PG are suite subsets. Original artifacts,54-file manifest and all three unchanged assertions verified. CI command contract retains all old assertions and appends the real PG suite. Closure records only metadata, not P3/production-Q2/product/backup completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "32dda397da4b007b0e711c31522a55e2786985964dd11f183cc0390d8c4ca488"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "cf858ca6d7b8a89fbae3b736906d06640ceaa138d1bd69faaff070f82a81ad8d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; same-SHA e9a19d0/run43539261866 six gates1815/0skip PASS,88 new contract+28 new PG are suite subsets. Original artifacts,54-file manifest and all three unchanged assertions verified. CI command contract retains all old assertions and appends the real PG suite. Closure records only metadata, not P3/production-Q2/product/backup completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "32dda397da4b007b0e711c31522a55e2786985964dd11f183cc0390d8c4ca488"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "f8c918ec5c607f6f3c84c1bfb8d8158e35d98892ae1fc0394d91f136b58e426b",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; same-SHA e9a19d0/run43539261866 six gates1815/0skip PASS,88 new contract+28 new PG are suite subsets. Original artifacts,54-file manifest and all three unchanged assertions verified. CI command contract retains all old assertions and appends the real PG suite. Closure records only metadata, not P3/production-Q2/product/backup completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "32dda397da4b007b0e711c31522a55e2786985964dd11f183cc0390d8c4ca488"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "11fa607b94908e81af2d31fec71801efe9cd1468e5249595d9e8f050cbf7899d",
+      "new_sha": "e35f61708f5e8344c0cd76fa57a85bc77e4b7710750f983878bfdfa36b261d75",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "100fe17c6330bfa8b622225f1d65c7bb462cd89929e7aa6a533aa3ac17a00d01",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorizedV2-015 ready/implementation/closure and minimal actual extension integration. Preserve all three assertions, old formats/data/SQL, existing tests and mandatory six gates. Driver/command-contract changes only add V015 real PostgreSQL coverage.",
+      "impact": "Versioned registered business fields and generic enforcement through the sole Canon writer. No future016, second writer, paid model, production acceptance, lowered threshold or broad security approval.",
+      "reviewer": "Same implementing/verifying operator with bounded technical cross-checks; not independent personnel audit",
+      "replacement_validation": "ADR007 retained; same-SHA e9a19d0/run43539261866 six gates1815/0skip PASS,88 new contract+28 new PG are suite subsets. Original artifacts,54-file manifest and all three unchanged assertions verified. CI command contract retains all old assertions and appends the real PG suite. Closure records only metadata, not P3/production-Q2/product/backup completion.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-015/authorization.txt",
+        "sha256": "779fb5fb9686abe6b9c426a432c1f0beccb7ff154740af33c752f55923f0bf45"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-015/EXTENSION_CONTRACT.md",
+          "sha256": "0146dd556ac2becac038b4627be80246c3d9d76ae54e56bc9f6384db5bea3a22"
+        },
+        {
+          "ref": "plan/decisions/ADR-007_GENRE_PACK_IDENTITY.md",
+          "sha256": "d569cd28a7075106c0e2c5efc024df3d68c41136efa9699c9519318b655f2acc"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/LOCAL_RESULTS.json",
+          "sha256": "6b94f80cc15fea79206a94d27e63977eada044f04cdb36dd28e86ce4eb7aaf2e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "5b052ed462240c33fc742e9dad9a03564d0acc5128622f6447945613d1845cfa"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "990d59c787f98fd44b48444c0b5a2f779a6f6c12817da4c521c81c797b6fdf6b"
+        },
+        {
+          "ref": "plan/validation/execution/V2-015/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "32dda397da4b007b0e711c31522a55e2786985964dd11f183cc0390d8c4ca488"
+        }
+      ]
+    }
+  ]
+}
