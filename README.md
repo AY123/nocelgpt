@@ -2,7 +2,7 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-**阶段摘要（2026-11-14）：Plan v1.3.0；V2-001～016 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2及M0/M1/M2 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+**阶段摘要（2026-11-14）：Plan v1.3.0；V2-001～016 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2、P3/G-P3及M0/M1/M2/M3 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
 当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已完成持久化和人工/测试根提交的工程验收，V2-010已完成有限事实章节Commit/Permit协议的工程验收（生产默认拒绝TEST Permit）；V2-011/012已验证章节安全重试、并发、断线恢复和有限事实历史重建；尚无正式生产issuer、模型调用或章节生产闭环。
 
@@ -22,7 +22,7 @@
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已完成工程验收；V2-010已完成工程验收；P3汇总验收后V2-017须建立其专属执行包，已完成的任务不重新走IMPLEMENT。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-009已完成工程验收；V2-010已完成工程验收；V2-017须建立其专属执行包，已完成的任务不重新走IMPLEMENT。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 
@@ -150,4 +150,6 @@ V2-014已完成[工程验收](plan/validation/execution/V2-014/closure-20261113/
 
 V2-015已完成[工程验收](plan/validation/execution/V2-015/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定e9a19d0/run43539261866，1815项0skip（新88契约+28PG为子集）。都市商业严格类型/守恒及唯一Canon提交和冷重放已验证；旧Pack/政策保留。V2-016验收见下方最新记录，P3、自动写作/阅读质量/外部备份及人工标准测试书仍未完成。
 
-V2-016已完成[工程验收](plan/validation/execution/V2-016/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定160a7e2/run43564108955，1960项0skip（新114契约+31PG为子集）。境界/能力/资源精确代价与正式Canon提交/重放已验证，旧Pack/政策保留。P3尚待汇总验收，之后V2-017；自动写作、阅读质量及外部备份仍未完成。
+V2-016已完成[工程验收](plan/validation/execution/V2-016/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定160a7e2/run43564108955，1960项0skip（新114契约+31PG为子集）。境界/能力/资源精确代价与正式Canon提交/重放已验证，旧Pack/政策保留。P3汇总验收见下方；下一任务V2-017；自动写作、阅读质量及外部备份仍未完成。
+
+P3/G-P3/M3已完成[工程汇总验收](plan/validation/execution/P3/closure-20261114/ACCEPTANCE_SUMMARY.md)，复用160a7e2/run43564108955的1960项0skip及60文件来源一致性，不新增CI。V2-017待实施；双书人工审定、自然全文Q2、自动写作/阅读质量/外部备份仍未完成。

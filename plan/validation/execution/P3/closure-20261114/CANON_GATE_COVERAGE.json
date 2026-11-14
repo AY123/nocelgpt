@@ -1,0 +1,27 @@
+{
+  "id": "CANON_CAS_IDEMPOTENCY",
+  "status": "PASS",
+  "revision": "160a7e2a879441fa2867997a057a85872e0b45a2",
+  "run_id": 43564108955,
+  "actual_job": "POSTGRES_ENV",
+  "physical_jobs_unchanged": 6,
+  "source": "Original latest same-SHA PostgreSQL JUnit216; all unchanged atomic/CAS/dedupe/rebuild controls actually executed;6 physical jobs unchanged",
+  "checks": {
+    "atomic commit": [
+      "test_rolled_back_commit_can_retry_same_key_without_partial_story"
+    ],
+    "CAS": [
+      "test_two_real_connections_compete_for_exactly_one_root",
+      "test_real_concurrent_chapter_requests_have_one_durable_winner[other-key]"
+    ],
+    "same/different payload dedupe": [
+      "test_real_concurrent_chapter_requests_have_one_durable_winner[same-payload]",
+      "test_real_concurrent_chapter_requests_have_one_durable_winner[changed-payload]",
+      "test_committed_but_lost_dbapi_ack_recovers_on_new_connection_and_continues"
+    ],
+    "rebuild": [
+      "test_rebuild_replays_finite_history_and_matches_every_historical_snapshot",
+      "test_projection_failure_keeps_committed_receipt_head_and_original_bytes"
+    ]
+  }
+}

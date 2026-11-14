@@ -83,7 +83,7 @@ phases:
   name: Genre Kernel
   entry_gate: G-P2
   exit_gate: G-P3
-  status: NOT_VERIFIED
+  status: VERIFIED
   tasks:
   - V2-013
   - V2-014
@@ -93,8 +93,9 @@ phases:
   - 双 Anchor 版本化扩展和规则
   - 污染与合法语境对照
   - 无静默默认题材
-  evidence_refs: []
-  task_refinement: PLANNED
+  evidence_refs:
+  - validation/execution/P3/closure-20261114/P3-decision.yaml
+  task_refinement: READY
 - id: P4
   name: Planning & Contracts
   entry_gate: G-P3

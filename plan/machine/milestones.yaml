@@ -46,8 +46,9 @@ milestones:
   - V2-014
   - V2-015
   - V2-016
-  status: NOT_VERIFIED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/P3/closure-20261114/M3-decision.yaml
 - id: M4
   name: Single Chapter E2E
   introduced_phase: P6

@@ -1,0 +1,82 @@
+{
+  "revision": "160a7e2a879441fa2867997a057a85872e0b45a2",
+  "run_id": 43564108955,
+  "source": "Existing original same-SHA six artifacts; no new CI or test execution",
+  "source_inventory_files": 60,
+  "current_checkout_source_matches": true,
+  "suite_counts": {
+    "tests.contract.test_v2_013": 63,
+    "tests.contract.test_v2_014": 111,
+    "tests.contract.test_v2_015": 88,
+    "tests.contract.test_v2_016": 114,
+    "tests.integration.test_v2_015_postgres": 28,
+    "tests.integration.test_v2_016_postgres": 31
+  },
+  "P3_subset_tests": 435,
+  "gate_counts": {
+    "postgres_env": 216,
+    "arch_fitness": 244,
+    "unit": 1500
+  },
+  "total": 1960,
+  "skipped": 0,
+  "criteria": [
+    {
+      "criterion": "双 Anchor 版本化扩展和规则",
+      "status": "PASS",
+      "test_ids": [
+        "tests.contract.test_v2_013::test_actual_anchor_loads_exact_version_content_profile_and_source_identity[urban.business.realistic]",
+        "tests.contract.test_v2_013::test_actual_anchor_loads_exact_version_content_profile_and_source_identity[fantasy.eastern.progression]",
+        "tests.contract.test_v2_015::test_business_schema_and_types_accept_real_closed_sample_with_minor_units",
+        "tests.contract.test_v2_016::test_registered_schema_type_fact_and_binding_roundtrip_are_consistent",
+        "tests.integration.test_v2_015_postgres::test_registered_transfer_commits_reads_and_rebuilds_in_real_postgres[cash-accounts-balance_minor-expected0]",
+        "tests.integration.test_v2_015_postgres::test_registered_transfer_commits_reads_and_rebuilds_in_real_postgres[shares-holdings-parts-expected1]",
+        "tests.integration.test_v2_015_postgres::test_registered_transfer_commits_reads_and_rebuilds_in_real_postgres[resource-resources-quantity-expected2]",
+        "tests.integration.test_v2_016_postgres::test_frozen_fantasy_actions_commit_read_back_and_replay_in_real_postgres[advance-False-15-5]",
+        "tests.integration.test_v2_016_postgres::test_frozen_fantasy_actions_commit_read_back_and_replay_in_real_postgres[learn-False-17-3]",
+        "tests.integration.test_v2_016_postgres::test_frozen_fantasy_actions_commit_read_back_and_replay_in_real_postgres[use-True-18-2]",
+        "tests.integration.test_v2_016_postgres::test_frozen_fantasy_actions_commit_read_back_and_replay_in_real_postgres[trade-False-17-0]"
+      ]
+    },
+    {
+      "criterion": "污染与合法语境对照",
+      "status": "PASS",
+      "test_ids": [
+        "tests.contract.test_v2_014::test_realistic_actual_supernatural_world_facts_fail[CULTIVATION-\\u5979\\u95ed\\u5173\\u4fee\\u70bc\\u540e\\uff0c\\u786e\\u5b9e\\u4ee5\\u7075\\u529b\\u9694\\u7a7a\\u53d6\\u8d70\\u4e86\\u5408\\u540c\\u3002]",
+        "tests.contract.test_v2_014::test_realistic_actual_supernatural_world_facts_fail[MAGIC-\\u4ed6\\u5b9e\\u9645\\u65bd\\u5c55\\u6cd5\\u672f\\uff0c\\u5728\\u8d26\\u6237\\u4e2d\\u51ed\\u7a7a\\u590d\\u5236\\u4e86\\u4e00\\u7b14\\u8d44\\u91d1\\u3002]",
+        "tests.contract.test_v2_014::test_realistic_actual_supernatural_world_facts_fail[REBIRTH-\\u5979\\u786e\\u5b9e\\u56de\\u5230\\u5341\\u5e74\\u524d\\uff0c\\u5e26\\u7740\\u4e0a\\u4e00\\u4e16\\u8bb0\\u5fc6\\u6539\\u53d8\\u4e86\\u4ea4\\u6613\\u3002]",
+        "tests.contract.test_v2_014::test_realistic_actual_supernatural_world_facts_fail[SYSTEM-\\u65e0\\u6765\\u6e90\\u7684\\u7cfb\\u7edf\\u5b9e\\u9645\\u5411\\u4ed6\\u53d1\\u653e\\u4e86\\u8d85\\u73b0\\u5b9e\\u5956\\u52b1\\u3002]",
+        "tests.contract.test_v2_014::test_realistic_actual_supernatural_world_facts_fail[COST_FREE_CULTIVATION_ADVANCE-\\u4ed6\\u6ca1\\u6709\\u4efb\\u4f55\\u4ee3\\u4ef7\\u4fbf\\u5b9e\\u9645\\u7a81\\u7834\\u4e86\\u4fee\\u70bc\\u5883\\u754c\\u3002]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[ORDINARY_ACTION-\\u5f1f\\u5b50\\u51b3\\u5b9a\\u5148\\u627e\\u56de\\u5931\\u6563\\u7684\\u540c\\u4f34\\u3002-PASS]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[LOCAL_TRADE-\\u5f1f\\u5b50\\u5411\\u5546\\u4f1a\\u4ea4\\u6362\\u836f\\u8349\\uff0c\\u4ee3\\u4ef7\\u662f\\u4ea4\\u51fa\\u79d8\\u5bc6\\u60c5\\u62a5\\u3002-PASS]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[CULTIVATION-\\u5f1f\\u5b50\\u6309\\u5df2\\u58f0\\u660e\\u7684\\u4e16\\u754c\\u673a\\u5236\\u4fee\\u70bc\\uff0c\\u8017\\u5c3d\\u7075\\u77f3\\u540e\\u83b7\\u5f97\\u7a81\\u7834\\u3002-PASS]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[MODERN_CORPORATE_SCHEMA-\\u672a\\u58f0\\u660e\\u73b0\\u4ee3\\u516c\\u53f8\\u5236\\u5ea6\\u7684\\u5b97\\u95e8\\uff0c\\u76f4\\u63a5\\u6309\\u73b0\\u4ee3\\u80a1\\u6743\\u4f1a\\u8ba1\\u51b3\\u5b9a\\u638c\\u95e8\\u5f52\\u5c5e\\u3002-FAIL]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[COST_FREE_CULTIVATION_ADVANCE-\\u6ca1\\u6709\\u8d44\\u6e90\\u3001\\u524d\\u63d0\\u548c\\u4ee3\\u4ef7\\uff0c\\u5f1f\\u5b50\\u76f4\\u63a5\\u8de8\\u8d8a\\u5168\\u90e8\\u5883\\u754c\\u3002-FAIL]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[MAGIC-\\u4ed6\\u4f7f\\u7528\\u4e86\\u672c\\u4e66\\u5c1a\\u672a\\u58f0\\u660e\\u7684\\u6cd5\\u672f\\u673a\\u5236\\u3002-UNKNOWN]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[REBIRTH-\\u6545\\u4e8b\\u58f0\\u79f0\\u4ed6\\u91cd\\u751f\\u4e86\\uff0c\\u4f46\\u6ca1\\u6709\\u58f0\\u660e\\u6b64\\u4e16\\u754c\\u5177\\u5907\\u8fd9\\u4e00\\u673a\\u5236\\u3002-UNKNOWN]",
+        "tests.contract.test_v2_014::test_fantasy_rules_allow_local_trade_but_not_undeclared_systems[SYSTEM-\\u4ed6\\u6536\\u5230\\u4e00\\u4e2a\\u672a\\u5efa\\u7acb\\u4e16\\u754c\\u4f9d\\u636e\\u7684\\u7cfb\\u7edf\\u5956\\u52b1\\u3002-UNKNOWN]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[LOCAL_TRADE-WORLD-PASS]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[CULTIVATION-WORLD-PASS]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[MODERN_CORPORATE_SCHEMA-WORLD-FAIL]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[COST_FREE_CULTIVATION_ADVANCE-WORLD-FAIL]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[MODERN_CORPORATE_SCHEMA-DREAM-PASS]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[MODERN_CORPORATE_SCHEMA-QUOTATION-PASS]",
+        "tests.contract.test_v2_016::test_new_fantasy_policy_uses_explicit_world_evidence_not_business_keywords[UNKNOWN-WORLD-UNKNOWN]",
+        "tests.contract.test_v2_016::test_guild_trade_is_legal_and_does_not_claim_cultivation_cost"
+      ]
+    },
+    {
+      "criterion": "无静默默认题材",
+      "status": "PASS",
+      "test_ids": [
+        "tests.contract.test_v2_013::test_optional_strategy_miss_keeps_explicit_pack_instead_of_first_neighbor[urban.business.realistic]",
+        "tests.contract.test_v2_013::test_optional_strategy_miss_keeps_explicit_pack_instead_of_first_neighbor[fantasy.eastern.progression]",
+        "tests.contract.test_v2_014::test_no_match_cannot_inject_optional_strategy_proposal_or_claims[False]",
+        "tests.contract.test_v2_014::test_no_match_cannot_inject_optional_strategy_proposal_or_claims[True]",
+        "tests.contract.test_v2_013::test_load_requires_all_three_exact_reference_components[id-missing.pack]",
+        "tests.contract.test_v2_013::test_load_requires_all_three_exact_reference_components[version-999.0.0]",
+        "tests.contract.test_v2_013::test_load_requires_all_three_exact_reference_components[content_hash-0000000000000000000000000000000000000000000000000000000000000000]"
+      ]
+    }
+  ]
+}
