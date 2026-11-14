@@ -1,0 +1,74 @@
+{
+  "task_id": "V2-017",
+  "baseline_pin": {
+    "revision": "37da346d91dd09fc143d94bb4c8ca9d76493f163",
+    "ref": "plan/validation/execution/V2-017/scope.json",
+    "sha256": "9bf8e45c441ef2a43392f4f49d0c5dd1f53ed5efa3a0d64a3fc6ef2e8f6244e9"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "new_sha": "459e4d6d9af4ccbce97f7abefc3ca36a08033a08d096e704c3cb0a450dd945f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "e356be9565c78911e9169f9aba09635a8746ee06f230b3a3e6539f21232d47db",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Missing actual story review blocks AT04/final closure only. All new code still requires real positive/negative tests and appropriate final CI.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "new_sha": "459e4d6d9af4ccbce97f7abefc3ca36a08033a08d096e704c3cb0a450dd945f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "cbd44fd73630c5cef9a032f75f0d8b87416a5f78c915ae49a00dc3fce53445e5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Missing actual story review blocks AT04/final closure only. All new code still requires real positive/negative tests and appropriate final CI.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        }
+      ]
+    }
+  ]
+}

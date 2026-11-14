@@ -21,7 +21,7 @@ scope: User requested P3 aggregate acceptance reusing existing results, then V2-
   Existing main delivery authorized; no paid calls, new Canon writer/SQL or future Writer/Q3/Context implementation.
   Do not trigger CI until key task ready and actual required authority inputs present. This is implementer scope
   transcription, not verbatim human text.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-017/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -113,9 +113,11 @@ handoff:
   - Pin scope and pass IMPLEMENT action
   - Implement/test two-Anchor contracts and prepare actual Owner story review
   - Actual AT04 review and final same-SHA CI only when ready
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 37da346d91dd09fc143d94bb4c8ca9d76493f163
+  scope_ref: plan/validation/execution/V2-017/scope.json
