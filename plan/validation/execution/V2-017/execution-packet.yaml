@@ -102,22 +102,29 @@ stop_conditions:
 review_notes:
 - P3/G-P3/M3 verified from existing1960/0skip same-SHA evidence, no new CI
 - ADR008 accepted before interfaces; no persisted knowledge/goal/intent capability inferred
-- 'Human StoryFixture review missing: implementation may proceed, AT04/final closure may not'
-- Remote P3 documentation synchronization temporarily unknown due Git transport timeout; no remote success claim
+- Actual human adopted both complete story inputs at f1029cf8; receipt specs/fixtures/stories/OWNER_DECISION.json.
+  Typed representation must preserve the reviewed content; formal AT04 still needs real fixture tests.
 handoff:
-  current_step: 'PREPARE: P3 actual evidence accepted; ADR008 and bounded task inputs prepared'
+  current_step: Local V2-017 implementation and actual human input verification complete;2033 tests/0skip, immutable
+    candidate/remote CI pending
   completed_steps:
-  - Revalidated current source/60-file inventory and P3 exit conditions
-  - Designed pure compiler, immutable plan history and actual Canon read adapter
+  - P3/G-P3/M3 verified reusing existing1960 evidence without newCI
+  - ADR008 accepted before interfaces and all original8 assertions retained
+  - Both actual human-adopted story fixtures and real PG read/commit compatibility verified
+  - Current knowledge/frozen context/local-scene scope/nonrecursive long-form inputs validated
   pending_items:
-  - Pin scope and pass IMPLEMENT action
-  - Implement/test two-Anchor contracts and prepare actual Owner story review
-  - Actual AT04 review and final same-SHA CI only when ready
+  - Pin exact candidate and synchronize main; use configured working Git proxy path
+  - One key exact-SHA six-gate CI and original artifact verification
+  - Context/Provider/Writer/productionQ3/reader-quality/external-backup remain
   next_action: IMPLEMENT
   last_check:
-    status: NOT_RUN
-    artifacts: []
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-017/LOCAL_RESULTS.json
+      sha256: 199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314
     missing_artifact_reason: null
 change_review:
   scope_revision: 37da346d91dd09fc143d94bb4c8ca9d76493f163
   scope_ref: plan/validation/execution/V2-017/scope.json
+  review_revision: 948f90e72021d2fb89ba83eef9f6ec68af7da2f2
+  review_ref: plan/validation/execution/V2-017/entry-review.json

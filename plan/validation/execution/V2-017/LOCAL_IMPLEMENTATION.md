@@ -1,0 +1,13 @@
+# V2-017 本地实现
+
+已交付不可变Series/Arc/Chapter/Scene计划、显式supersession和冻结上下文、有限修订/失效分析、只读CanonView、四种Delta语义的BoundTransition以及确定性Contract Compiler。没有新Canon表/写口或新Delta操作，不调用模型/Writer/Q3/Context服务。现有公共读端口取得真实已接受历史目标，不冒称最新HEAD；真实parent/前章原始UTF8末段/hash和显式UNKNOWN保留。
+
+知识分为人工故事初始KnowledgeState与绑定当前parent/source的显式KnowledgeSnapshot；不假装Canon已有知识持久化，不从Belief升格KNOWN，不改初始root以更新知识。冻结章还绑定上层vision/arc意图，防止间接修改；未冻结未来章节仍可显式修订。场景保护/禁止作用于该场景，不扩大为全章禁令；同目标重复变化仍受原有限Delta约束。
+
+Contract保留完整输入和PlanHistory（含采用边/冻结），作者内容统一AUTHOR_REVIEW_ONLY。前章只保留编译所用的完整正文/身份/状态投影，完整原candidate/Permit/依赖仍保存在Canon，避免旧contract经base64递归进入新contract。30次组件编译体积稳定的回归只证明存储形状，不是生成30章或文学认证。
+
+实际本地1558 UNIT+244 ARCH+231 PG=2033项，0失败/error/skip；新58契约+15PG属于子集。STATIC、五治理、安全54/54精确消费、51依赖0漏洞通过；命令/日志/JUnit/hash见LOCAL_RESULTS。早期新视图2项顺序误拒已修，失败原文保留；最终以稳定源码完整结果为准。仍待精确SHA远程六门，不凭本地绿关闭。
+
+Owner已实际采用OWNER_REVIEW.md所列《灯下机床》《断脉渡》两书开发输入，sha=f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d。原DRAFT文本不倒写，当前批准见OWNER_DECISION.json；两个类型化fixture逐项派生并有INPUT_MANIFEST。组件测试的合成APPROVED不冒充这次真实人类审定。此批准不是成稿、读者或市场验证。
+
+能力边界：只编译已登记事实的有限变化，不实现事件/知识/Promise的Canon写操作；语义意图/结束状态由显式输入提供，未进行全文Q2/Q3/阅读质量或生产Permit签发。规划值对象可序列化，不声称已有规划数据库、自动滚动规划或持久Workflow。外部备份、自动写作、读者和市场质量仍未完成。后续ContextCompiler必须按角色筛选，不能原样发送AUTHOR_REVIEW_ONLY输入。

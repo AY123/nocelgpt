@@ -1,0 +1,274 @@
+{
+  "task_id": "V2-017",
+  "baseline_pin": {
+    "revision": "37da346d91dd09fc143d94bb4c8ca9d76493f163",
+    "ref": "plan/validation/execution/V2-017/scope.json",
+    "sha256": "9bf8e45c441ef2a43392f4f49d0c5dd1f53ed5efa3a0d64a3fc6ef2e8f6244e9"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "new_sha": "459e4d6d9af4ccbce97f7abefc3ca36a08033a08d096e704c3cb0a450dd945f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "e356be9565c78911e9169f9aba09635a8746ee06f230b3a3e6539f21232d47db",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Actual human adopted both complete inputs at f1029cf8; typed fixture source/knowledge/reveal bindings verified. Full local1558 UNIT/244 ARCH/231 PG=2033 cases0skip plus static/governance/security54/54 pass,58 new contract+15 PG are subsets; remote exact-SHA CI remains required before closure.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/LOCAL_RESULTS.json",
+          "sha256": "199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "new_sha": "459e4d6d9af4ccbce97f7abefc3ca36a08033a08d096e704c3cb0a450dd945f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "cbd44fd73630c5cef9a032f75f0d8b87416a5f78c915ae49a00dc3fce53445e5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Actual human adopted both complete inputs at f1029cf8; typed fixture source/knowledge/reveal bindings verified. Full local1558 UNIT/244 ARCH/231 PG=2033 cases0skip plus static/governance/security54/54 pass,58 new contract+15 PG are subsets; remote exact-SHA CI remains required before closure.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/LOCAL_RESULTS.json",
+          "sha256": "199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "22edf1b28b93c537243bef3cee337f1f4863a7b762f1041c65fac0b80e759c59",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Actual human adopted both complete inputs at f1029cf8; typed fixture source/knowledge/reveal bindings verified. Full local1558 UNIT/244 ARCH/231 PG=2033 cases0skip plus static/governance/security54/54 pass,58 new contract+15 PG are subsets; remote exact-SHA CI remains required before closure.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/LOCAL_RESULTS.json",
+          "sha256": "199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "d87254ff49ef44d760f22953133ae23dcf4526fd6f06ae947c04f9de737be3a5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Actual human adopted both complete inputs at f1029cf8; typed fixture source/knowledge/reveal bindings verified. Full local1558 UNIT/244 ARCH/231 PG=2033 cases0skip plus static/governance/security54/54 pass,58 new contract+15 PG are subsets; remote exact-SHA CI remains required before closure.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/LOCAL_RESULTS.json",
+          "sha256": "199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "150e67a1213895d58b532c5258f27e0046c0924292e72b6c067312aa37f88017",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Actual human adopted both complete inputs at f1029cf8; typed fixture source/knowledge/reveal bindings verified. Full local1558 UNIT/244 ARCH/231 PG=2033 cases0skip plus static/governance/security54/54 pass,58 new contract+15 PG are subsets; remote exact-SHA CI remains required before closure.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/LOCAL_RESULTS.json",
+          "sha256": "199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "18895607fa1be1439d8757283779f22827bdc932957e977d8480499f9b9bf415",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User-authorized V2-017 entry and ADR008 design before interfaces; all eight original assertions, dependencies and prior gates retained. P3 acceptance is independently source-bound to already accepted1960 cases, no new CI.",
+      "impact": "Only immutable planning, read-only Canon and finite contracts; no new writer/SQL/Delta, paid call or human approval fabrication.",
+      "reviewer": "Same implementing/verifying operator with technical cross-checks; not independent personnel audit",
+      "replacement_validation": "Original AT017-01..08 retained, real Canon read adapter and Delta/knowledge reuse; exact predecessor/continuity/freeze/plan identity checks. Actual human adopted both complete inputs at f1029cf8; typed fixture source/knowledge/reveal bindings verified. Full local1558 UNIT/244 ARCH/231 PG=2033 cases0skip plus static/governance/security54/54 pass,58 new contract+15 PG are subsets; remote exact-SHA CI remains required before closure.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        },
+        {
+          "ref": "plan/decisions/ADR-004_DELTA_OPERATION_CONTRACT.md",
+          "sha256": "6a315a422f86087b34df5b87f2fdf5b871866ccf67825998588a4a3360dc033e"
+        },
+        {
+          "ref": "plan/validation/execution/P3/closure-20261114/CRITERIA_COVERAGE.json",
+          "sha256": "4e6d0e8ff40af03cdcef16031613a494dd586736d673c065238ccedf36d75712"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/LOCAL_RESULTS.json",
+          "sha256": "199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        }
+      ]
+    }
+  ]
+}

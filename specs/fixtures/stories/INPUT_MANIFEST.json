@@ -1,0 +1,29 @@
+{
+  "record_type": "typed_story_input_derivation",
+  "review_source": {
+    "ref": "specs/fixtures/stories/OWNER_REVIEW.md",
+    "sha256": "f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d"
+  },
+  "decision_ref": "specs/fixtures/stories/OWNER_DECISION.json",
+  "note": "Typed representation of actual human-adopted AI draft; no claim of human authorship or reader/market acceptance. Future plans are intentions, not Canon events.",
+  "fixtures": [
+    {
+      "path": "specs/fixtures/stories/urban.json",
+      "content_hash": "3bf9ddb703a4c5d67f886356b91d17bfcb707a74e3e71807e2528b9d8f9a0365",
+      "file_sha256": "615436481a3ea0aa3e746440f8090c77e05bfa99d12630fadd61c5075ef405d9",
+      "project": "fixture-urban-lamp",
+      "human_review_ref": "specs/fixtures/stories/OWNER_DECISION.json",
+      "source_review_sha256": "f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d",
+      "status": "APPROVED_DEVELOPMENT_INPUT"
+    },
+    {
+      "path": "specs/fixtures/stories/fantasy.json",
+      "content_hash": "60f5b1e05d4437af4da3d9188b834b8ec819a5b99dbabbffeb2109ea1ade539d",
+      "file_sha256": "fd6aeca96aa7c50cddacc6571271a029340a6527a6fd9f4781b90e3cc717404a",
+      "project": "fixture-fantasy-ford",
+      "human_review_ref": "specs/fixtures/stories/OWNER_DECISION.json",
+      "source_review_sha256": "f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d",
+      "status": "APPROVED_DEVELOPMENT_INPUT"
+    }
+  ]
+}

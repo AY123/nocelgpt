@@ -1,0 +1,23 @@
+{
+  "record_type": "human_story_input_adoption",
+  "recorded_at_utc": "2026-11-14T07:14:00.616235+00:00",
+  "authority": "Current human project Owner in this conversation",
+  "source_kind": "DIRECT_USER_REPLY_TO_CONCRETE_REVIEW",
+  "response": "采用当前两份作为开发输入",
+  "decision": "APPROVED_FOR_DEVELOPMENT_INPUT",
+  "review_target": {
+    "ref": "specs/fixtures/stories/OWNER_REVIEW.md",
+    "sha256": "f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d"
+  },
+  "scope": [
+    "灯下机床: characters, initial facts, world mechanics, three-chapter intentions, knowledge/reveal boundaries",
+    "断脉渡: characters, initial facts, realm/ability/resource costs, three-chapter intentions, knowledge/reveal boundaries"
+  ],
+  "constraints": [
+    "AI-prepared source adopted by actual human; do not claim human authored every byte",
+    "Typed fixtures must preserve the reviewed story content; implementation representation may add no new plot facts",
+    "Not finished prose, literary/reader/market evaluation, production Permit, paid call or CI authorization"
+  ],
+  "source_timestamp": "Not independently supplied; recorded_at is receipt write time",
+  "provenance_note": "Implementer records the actual user reply; source review document remains unchanged in its original DRAFT state. No pre-review approval is backdated."
+}

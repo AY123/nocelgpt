@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "scope": "Actual stable local worktree, not immutable revision/remote acceptance",
+  "completed_at": "2026-11-14T14:06:34.878946+00:00",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2017-local-20261114/unit-final/RECEIPT.json",
+      "sha256": "e27a5ed095b1147a90d206649e05103f791dfa66348b503577e80cb745b8451b",
+      "tests": 1558
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2017-local-20261114/arch/RECEIPT.json",
+      "sha256": "877058a315dd36dd3d69ab279519543e79c68e5f60f6e12cee8770c9bfa48af5",
+      "tests": 244
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2017-local-20261114/postgres-verified/RECEIPT.json",
+      "sha256": "2e795f2906a3cf779953db76e36522d255420c786772ec9824507d11ab0bae53",
+      "tests": 231
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2017-local-20261114/static-final/RECEIPT.json",
+      "sha256": "f58288c1a273e336a67c7604eba7d706d8fadd9d0d607f3da4ca3941fbb305d1"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2017-local-20261114/schema_contract/RECEIPT.json",
+      "sha256": "da972bde39793f4757836cdae9226983d29b4510ac1c219269018ab4b9fd3090"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2017-local-20261114/security-tracked/RECEIPT.json",
+      "sha256": "e930d6463d816d8e646ee555fda528361431fca3b62303f1e1ed90570e83793a"
+    }
+  },
+  "tests": 2033,
+  "new_contract_tests": 58,
+  "new_postgres_tests": 15,
+  "skipped": 0,
+  "human_input": {
+    "source_sha256": "f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d",
+    "actual_decision_ref": "specs/fixtures/stories/OWNER_DECISION.json",
+    "adoption": "APPROVED_FOR_DEVELOPMENT_INPUT",
+    "not_reader_or_market_acceptance": true
+  },
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "packages": 51,
+    "vulnerabilities": 0
+  },
+  "earlier_attempts": [
+    {
+      "ref": "dist/validation/v2017-test-agent-20261114/component-first.xml",
+      "result": "44PASS/2FAIL; new CanonView root compare incorrectly required root-source list ordering, complete snapshot map validation fixes new view only; original Canon formats unchanged"
+    },
+    {
+      "ref": "dist/validation/v2017-test-agent-20261114/postgres-first.xml",
+      "result": "14PASS before current-knowledge and nonrecursive-source refinements; superseded by final231 PG from stable source"
+    }
+  ],
+  "producer": "Same implementing/verifying operator; not independent personnel audit"
+}
