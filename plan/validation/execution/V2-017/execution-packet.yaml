@@ -105,23 +105,24 @@ review_notes:
 - Actual human adopted both complete story inputs at f1029cf8; receipt specs/fixtures/stories/OWNER_DECISION.json.
   Typed representation must preserve the reviewed content; formal AT04 still needs real fixture tests.
 handoff:
-  current_step: Local V2-017 implementation and actual human input verification complete;2033 tests/0skip, immutable
-    candidate/remote CI pending
+  current_step: V2-017/P4 CLOSED/VERIFIED at376ffae16921e07dc5202b429b0a3246c7e1d5a2/run43604282005;2033cases0skip
+    actual artifacts verified
   completed_steps:
-  - P3/G-P3/M3 verified reusing existing1960 evidence without newCI
-  - ADR008 accepted before interfaces and all original8 assertions retained
-  - Both actual human-adopted story fixtures and real PG read/commit compatibility verified
-  - Current knowledge/frozen context/local-scene scope/nonrecursive long-form inputs validated
+  - P3 aggregation reused previous evidence; no extraCI
+  - Actual human adoption of both f1029cf8 story inputs and typed derivation verified
+  - Finite compiler/versions/current knowledge/nonrecursive history inputs delivered
+  - All8 assertions and same-SHA six gate original artifacts verified
   pending_items:
-  - Pin exact candidate and synchronize main; use configured working Git proxy path
-  - One key exact-SHA six-gate CI and original artifact verification
-  - Context/Provider/Writer/productionQ3/reader-quality/external-backup remain
-  next_action: IMPLEMENT
+  - V2-018 Context Compiler with ADR009
+  - M4/Writer/Provider/production Q0-Q3, reader/market quality and external backup remain
+  next_action: PREPARE
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-017/LOCAL_RESULTS.json
-      sha256: 199181b18af09d32ef5c9f55c8dddc7324450f3b2d94de8ac452d11c4abef314
+    - ref: validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json
+      sha256: 8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3
+    - ref: validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json
+      sha256: a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974
     missing_artifact_reason: null
 change_review:
   scope_revision: 37da346d91dd09fc143d94bb4c8ca9d76493f163

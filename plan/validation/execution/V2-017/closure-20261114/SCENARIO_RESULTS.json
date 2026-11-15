@@ -1,0 +1,121 @@
+{
+  "revision": "376ffae16921e07dc5202b429b0a3246c7e1d5a2",
+  "run_id": 43604282005,
+  "status": "PASS",
+  "source": "Original same-SHA58 UNIT/15 PG subset; Owner review bound to actual f1029cf8 source and adoption, not synthetic approval.30-iteration component test is storage shape only, not novel certification.",
+  "scenario_tests": {
+    "AT-V2-017-01": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_known_constraint_uses_actual_acquisition_not_just_world_truth_or_belief",
+        "tests.contract.test_v2_017::test_two_anchors_compile_without_genesis_and_retain_exact_inputs[fantasy.eastern.progression]",
+        "tests.contract.test_v2_017::test_two_anchors_compile_without_genesis_and_retain_exact_inputs[urban.business.realistic]"
+      ]
+    },
+    "AT-V2-017-02": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_bound_transition_cannot_use_unrelated_future_operation_metadata[wrong-revision]",
+        "tests.contract.test_v2_017::test_bound_transition_cannot_use_unrelated_future_operation_metadata[wrong-state]",
+        "tests.contract.test_v2_017::test_bound_transition_cannot_use_unrelated_future_operation_metadata[wrong-target]",
+        "tests.contract.test_v2_017::test_non_set_transitions_reject_hidden_value_payload[MARK_UNKNOWN]",
+        "tests.contract.test_v2_017::test_non_set_transitions_reject_hidden_value_payload[NO_CHANGE]",
+        "tests.contract.test_v2_017::test_non_set_transitions_reject_hidden_value_payload[RETRACT_FACT]",
+        "tests.contract.test_v2_017::test_required_set_requires_a_nonnull_finite_scalar[None]",
+        "tests.contract.test_v2_017::test_required_set_requires_a_nonnull_finite_scalar[inf]",
+        "tests.contract.test_v2_017::test_required_set_requires_a_nonnull_finite_scalar[nan]",
+        "tests.contract.test_v2_017::test_required_set_requires_a_nonnull_finite_scalar[value1]",
+        "tests.contract.test_v2_017::test_required_set_requires_a_nonnull_finite_scalar[value2]",
+        "tests.contract.test_v2_017::test_required_transition_materializes_existing_delta_with_full_precondition[MARK_UNKNOWN-None-MarkUnknown]",
+        "tests.contract.test_v2_017::test_required_transition_materializes_existing_delta_with_full_precondition[NO_CHANGE-None-NoChange]",
+        "tests.contract.test_v2_017::test_required_transition_materializes_existing_delta_with_full_precondition[RETRACT_FACT-None-RetractFact]",
+        "tests.contract.test_v2_017::test_required_transition_materializes_existing_delta_with_full_precondition[SET_FACT-20-SetFact]"
+      ]
+    },
+    "AT-V2-017-03": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_compiler_reuses_registered_extension_conservation_and_cost_rules[fantasy.eastern.progression]",
+        "tests.contract.test_v2_017::test_compiler_reuses_registered_extension_conservation_and_cost_rules[urban.business.realistic]",
+        "tests.contract.test_v2_017::test_conflicting_or_inapplicable_requirements_return_diagnostics_without_changing_canon[duplicate]",
+        "tests.contract.test_v2_017::test_conflicting_or_inapplicable_requirements_return_diagnostics_without_changing_canon[forbidden]",
+        "tests.contract.test_v2_017::test_conflicting_or_inapplicable_requirements_return_diagnostics_without_changing_canon[missing-target]",
+        "tests.contract.test_v2_017::test_conflicting_or_inapplicable_requirements_return_diagnostics_without_changing_canon[protected]",
+        "tests.contract.test_v2_017::test_conflicting_or_inapplicable_requirements_return_diagnostics_without_changing_canon[stale-state]",
+        "tests.contract.test_v2_017::test_conflicting_or_inapplicable_requirements_return_diagnostics_without_changing_canon[wrong-type]",
+        "tests.integration.test_v2_017_postgres::test_actual_read_adapter_has_only_three_read_methods_and_retains_no_service",
+        "tests.integration.test_v2_017_postgres::test_cross_project_plan_fixture_and_real_view_are_not_interchangeable",
+        "tests.integration.test_v2_017_postgres::test_nonexistent_historical_parent_is_not_accepted_as_a_real_read_view"
+      ]
+    },
+    "AT-V2-017-04": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_actual_adopted_development_fixture_and_owner_source_are_bound[fantasy]",
+        "tests.contract.test_v2_017::test_actual_adopted_development_fixture_and_owner_source_are_bound[urban]",
+        "tests.contract.test_v2_017::test_actual_owner_review_is_not_inferred_from_component_approval_label",
+        "tests.integration.test_v2_017_postgres::test_actual_adopted_fixture_compiles_from_real_root_and_only_explicit_delta_commits[fantasy]",
+        "tests.integration.test_v2_017_postgres::test_actual_adopted_fixture_compiles_from_real_root_and_only_explicit_delta_commits[urban]"
+      ]
+    },
+    "AT-V2-017-05": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_continuation_uses_actual_previous_utf8_ending_and_keeps_unknown_semantics",
+        "tests.contract.test_v2_017::test_first_chapter_explicitly_has_no_previous_prose",
+        "tests.contract.test_v2_017::test_previous_prose_identity_or_ending_mismatch_blocks_contract[candidate]",
+        "tests.contract.test_v2_017::test_previous_prose_identity_or_ending_mismatch_blocks_contract[commit]",
+        "tests.contract.test_v2_017::test_previous_prose_identity_or_ending_mismatch_blocks_contract[hash]",
+        "tests.contract.test_v2_017::test_previous_prose_identity_or_ending_mismatch_blocks_contract[not-ending]",
+        "tests.contract.test_v2_017::test_previous_prose_identity_or_ending_mismatch_blocks_contract[quote]",
+        "tests.integration.test_v2_017_postgres::test_actual_previous_source_mismatch_cannot_compile_or_change_real_canon[candidate]",
+        "tests.integration.test_v2_017_postgres::test_actual_previous_source_mismatch_cannot_compile_or_change_real_canon[commit]",
+        "tests.integration.test_v2_017_postgres::test_actual_previous_source_mismatch_cannot_compile_or_change_real_canon[hash]",
+        "tests.integration.test_v2_017_postgres::test_actual_previous_source_mismatch_cannot_compile_or_change_real_canon[missing-ending]",
+        "tests.integration.test_v2_017_postgres::test_actual_previous_source_mismatch_cannot_compile_or_change_real_canon[quote]",
+        "tests.integration.test_v2_017_postgres::test_actual_previous_source_mismatch_cannot_compile_or_change_real_canon[trimmed-ending]",
+        "tests.integration.test_v2_017_postgres::test_historical_read_target_is_explicit_and_does_not_claim_latest_head",
+        "tests.integration.test_v2_017_postgres::test_real_predecessor_ending_and_unknown_semantics_bind_second_quiet_contract[fantasy]",
+        "tests.integration.test_v2_017_postgres::test_real_predecessor_ending_and_unknown_semantics_bind_second_quiet_contract[urban]"
+      ]
+    },
+    "AT-V2-017-06": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_certain_knowledge_must_not_be_leaked_across_explicit_boundary",
+        "tests.contract.test_v2_017::test_scene_constraints_do_not_silently_become_whole_chapter_bans[forbidden]",
+        "tests.contract.test_v2_017::test_scene_constraints_do_not_silently_become_whole_chapter_bans[protected]"
+      ]
+    },
+    "AT-V2-017-07": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_adoption_requires_exact_next_revision_and_parent[identity]",
+        "tests.contract.test_v2_017::test_adoption_requires_exact_next_revision_and_parent[parent]",
+        "tests.contract.test_v2_017::test_adoption_requires_exact_next_revision_and_parent[revision-gap]",
+        "tests.contract.test_v2_017::test_frozen_chapter_cannot_be_changed_through_outer_context[arc]",
+        "tests.contract.test_v2_017::test_frozen_chapter_cannot_be_changed_through_outer_context[goal]",
+        "tests.contract.test_v2_017::test_frozen_chapter_cannot_be_changed_through_outer_context[premise]",
+        "tests.contract.test_v2_017::test_frozen_or_accepted_planning_content_cannot_be_rewritten_by_revision",
+        "tests.contract.test_v2_017::test_future_revision_preserves_frozen_bytes_and_retires_old_active_version",
+        "tests.contract.test_v2_017::test_planning_and_fixture_values_are_immutable_and_parsers_are_closed",
+        "tests.contract.test_v2_017::test_reader_reveal_must_respect_frozen_narrative_position"
+      ]
+    },
+    "AT-V2-017-08": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_017::test_compiled_contract_retains_complete_adoption_and_freeze_history",
+        "tests.contract.test_v2_017::test_current_knowledge_can_advance_without_rewriting_initial_fixture_or_canon",
+        "tests.contract.test_v2_017::test_current_knowledge_snapshot_cannot_claim_wrong_scope_or_world[parent]",
+        "tests.contract.test_v2_017::test_current_knowledge_snapshot_cannot_claim_wrong_scope_or_world[project]",
+        "tests.contract.test_v2_017::test_current_knowledge_snapshot_cannot_claim_wrong_scope_or_world[unregistered-character]",
+        "tests.contract.test_v2_017::test_current_knowledge_snapshot_cannot_claim_wrong_scope_or_world[world-value]",
+        "tests.contract.test_v2_017::test_dependency_change_marks_contracts_for_rebinding_without_canon_rewrite",
+        "tests.contract.test_v2_017::test_future_replan_proposal_is_not_automatic_adoption_or_contract_reuse",
+        "tests.contract.test_v2_017::test_thirty_compiled_chapters_do_not_recursively_embed_predecessor_contracts",
+        "tests.integration.test_v2_017_postgres::test_explicit_current_knowledge_snapshot_rebinds_without_new_canon_write"
+      ]
+    }
+  }
+}

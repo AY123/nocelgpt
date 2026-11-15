@@ -1,0 +1,188 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-017
+revision: 376ffae16921e07dc5202b429b0a3246c7e1d5a2
+status: PASS
+producer: Same implementing/verifying operator with technical cross-checks; not independent personnel audit
+executed_at: '2026-11-15T13:12:31.283596+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11;repo1421585508/run43604282005/attempt1;single
+  operator
+input_evidence_refs:
+- validation/execution/V2-017/closure-20261114/code-evidence.yaml
+- validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+- validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+evidence_id: V2-017-acceptance-376ffae
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-017-01
+- AT-V2-017-02
+- AT-V2-017-03
+- AT-V2-017-04
+- AT-V2-017-05
+- AT-V2-017-06
+- AT-V2-017-07
+- AT-V2-017-08
+artifacts:
+- ref: validation/execution/V2-017/closure-20261114/ACCEPTANCE_SUMMARY.md
+  sha256: 8cc13e571a700a52348ef175f3bae34aa3663b6342f640659108f145890c3587
+- ref: validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json
+  sha256: 8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3
+- ref: validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json
+  sha256: a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974
+- ref: validation/execution/V2-017/closure-20261114/SECURITY_RESULT.json
+  sha256: 31bcc9ff0a3b5184c15e49d1398bde622b944d51a022c2266029d29eb5e05615
+decision: ACCEPTED
+rationale: All original8 assertions, actual Owner story inputs, complete same-SHA2033/0skip six gates; finite engineering
+  contracts only.
+finding_dispositions:
+- finding_id: AR-04
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Existing four operations and complete preconditions are shared by real reducer and compiled templates;
+    unknown operators rejected.
+- finding_id: AR-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-048
+  owner_role: genesis-maintainer
+  due_gate: G-P10
+  remaining_work: Full Genesis remains.
+- finding_id: AR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-018
+  owner_role: context-maintainer
+  due_gate: G-P5
+  remaining_work: Context source/visibility/retention integration remains.
+- finding_id: AR-11
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-020
+  owner_role: workflow-maintainer
+  due_gate: G-P6
+  remaining_work: Runtime scene overlays and durable Workflow remain.
+- finding_id: CA-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-018
+  owner_role: context-maintainer
+  due_gate: G-P5
+  remaining_work: Actual role-specific Context selection/budget remains.
+- finding_id: CA-14
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-034
+  owner_role: certification-maintainer
+  due_gate: G-P8
+  remaining_work: Natural story certification and no-template literary calibration remain.
+- finding_id: CA-24
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-040
+  owner_role: certification-maintainer
+  due_gate: G-P9
+  remaining_work: Long-form automatic production/human contribution/debt metrics remain.
+- finding_id: RR-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-018
+  owner_role: context-maintainer
+  due_gate: G-P5
+  remaining_work: Actual Context/model production evidence closure remains.
+- finding_id: SUP-01
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Both actual human-adopted development fixtures, knowledge/reveal boundaries and same root initialization
+    verified; not literary quality.
+- finding_id: SUP-02
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-034
+  owner_role: certification-maintainer
+  due_gate: G-P8
+  remaining_work: Natural multi-chapter story continuity and reader evidence remain.
+- finding_id: SUP-04
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Current V2-017 finite planning/input/compiler portion verified without future production claim.
+  next_task: V2-025
+  owner_role: quality-maintainer
+  due_gate: G-P7
+  remaining_work: Actual prose Q3/repair must preserve creative freedom.
+- finding_id: PR-01
+  responsibility: FULL
+  disposition: RESOLVED
+  evidence_refs:
+  - validation/execution/V2-017/closure-20261114/code-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  reason: Planning versions/freeze/adoption/invalidation separated from pure compilation; no second writer.
+external_practice_results:
+- practice_id: EXT-002
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: Frozen local formal specifications adopted; no claim of current upstream repository/API verification
+  verification_refs:
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  conclusion: Actual predecessor raw bytes/hash/end-span binding and UNKNOWN ending semantics verified.
+  limitations: No full prose continuity semantics/Q3 or later chapter certification.
+- practice_id: EXT-005
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: Frozen local formal specifications adopted; no claim of current upstream repository/API verification
+  verification_refs:
+  - validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+  - validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+  conclusion: Existing goals/intent/acquired knowledge/false beliefs and creative freedom consumed by finite contracts.
+  limitations: No claim of semantic motive quality, actual generated story or reader calibration.

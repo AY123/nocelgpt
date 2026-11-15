@@ -1,0 +1,30 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: P4
+revision: 376ffae16921e07dc5202b429b0a3246c7e1d5a2
+status: PASS
+producer: Same implementing/verifying operator with technical cross-checks; not independent personnel audit
+executed_at: '2026-11-15T13:12:31.283596+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11;repo1421585508/run43604282005/attempt1;single
+  operator
+input_evidence_refs:
+- validation/execution/V2-017/closure-20261114/acceptance-evidence.yaml
+- validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+evidence_id: P4-engineering-376ffae
+evidence_type: PHASE_DECISION
+artifacts:
+- ref: validation/execution/V2-017/p4-closure-20261114/ACCEPTANCE_SUMMARY.md
+  sha256: 3bfef48052b927de28e9045f241892b013c5c72816a24e33a3217590a9d02912
+- ref: validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json
+  sha256: 8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3
+- ref: validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json
+  sha256: a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974
+- ref: validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json
+  sha256: 0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd
+- ref: validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json
+  sha256: 71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7
+decision: VERIFIED
+rationale: Sole taskV2-017 accepted with all8 assertions and actual human inputs; same-SHA2033/0skip mandatory six
+  gates and retained CAS controls. No M4/product claim.
+ci_evidence_refs:
+- validation/execution/V2-017/closure-20261114/ci-evidence.yaml

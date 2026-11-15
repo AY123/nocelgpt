@@ -11,3 +11,5 @@ Contract保留完整输入和PlanHistory（含采用边/冻结），作者内容
 Owner已实际采用OWNER_REVIEW.md所列《灯下机床》《断脉渡》两书开发输入，sha=f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d。原DRAFT文本不倒写，当前批准见OWNER_DECISION.json；两个类型化fixture逐项派生并有INPUT_MANIFEST。组件测试的合成APPROVED不冒充这次真实人类审定。此批准不是成稿、读者或市场验证。
 
 能力边界：只编译已登记事实的有限变化，不实现事件/知识/Promise的Canon写操作；语义意图/结束状态由显式输入提供，未进行全文Q2/Q3/阅读质量或生产Permit签发。规划值对象可序列化，不声称已有规划数据库、自动滚动规划或持久Workflow。外部备份、自动写作、读者和市场质量仍未完成。后续ContextCompiler必须按角色筛选，不能原样发送AUTHOR_REVIEW_ONLY输入。
+
+追加：已按376ffae16921e07dc5202b429b0a3246c7e1d5a2/run43604282005核验远程同SHA六门，见[正式验收](closure-20261114/ACCEPTANCE_SUMMARY.md)。本地早期结果保持原语义。

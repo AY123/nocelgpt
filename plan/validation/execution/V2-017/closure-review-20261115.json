@@ -1,0 +1,395 @@
+{
+  "task_id": "V2-017",
+  "baseline_pin": {
+    "revision": "37da346d91dd09fc143d94bb4c8ca9d76493f163",
+    "ref": "plan/validation/execution/V2-017/scope.json",
+    "sha256": "9bf8e45c441ef2a43392f4f49d0c5dd1f53ed5efa3a0d64a3fc6ef2e8f6244e9"
+  },
+  "recorded_at_utc": "2026-11-15T13:19:29.333321+00:00",
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "new_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "568a7aaa165d9b7e7899215da698b15e1db04de3f239b8d519c87dc447a82e2a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Readiness advanced from story-input preparation to READY_TO_START at implementation entry. Now CLOSED with original eight assertions and immutable same-SHA evidence. No dependencies or acceptance assertions removed.",
+      "impact": "Only V2-017 readiness/status/evidence change; no new task or relaxed success condition.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "ecb9c5cc02f83b033e5f2b8378f6c393465beea2364e13a52ccfb2409877855f",
+      "new_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "a54e2618b58082513116bde903bbf589a2da449579bca850b99eccde5a349db2",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Readiness advanced from story-input preparation to READY_TO_START at implementation entry. Now CLOSED with original eight assertions and immutable same-SHA evidence. No dependencies or acceptance assertions removed.",
+      "impact": "Only V2-017 readiness/status/evidence change; no new task or relaxed success condition.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "old_sha": "fc6deb3143fe0d4cffce5794786725914eef819d2efa359532fb78755a42dc2e",
+      "new_sha": "6d0eb3d26114764035dbe2c8947374716280e35db4fdcffdffabf14f5b6fb7a2",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "e464e0cc290353783b9d0c6963c08f43b96b1b4d6cbd3b5855ebe9f82d29f3e5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "P4 task refinement PLANNED to READY follows completed sole task V2-017; all three original exit criteria retained and source-bound to actual Owner adoption and current run.",
+      "impact": "No phase bypass: P3 aggregate already verified separately; M4 remains NOT_VERIFIED.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "old_sha": "fc6deb3143fe0d4cffce5794786725914eef819d2efa359532fb78755a42dc2e",
+      "new_sha": "6d0eb3d26114764035dbe2c8947374716280e35db4fdcffdffabf14f5b6fb7a2",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "0563ea8bf420b1ee28925ed37bbae5e1df39e640a437f7a445b0dc4fbc0f0549",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "P4 task refinement PLANNED to READY follows completed sole task V2-017; all three original exit criteria retained and source-bound to actual Owner adoption and current run.",
+      "impact": "No phase bypass: P3 aggregate already verified separately; M4 remains NOT_VERIFIED.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "22edf1b28b93c537243bef3cee337f1f4863a7b762f1041c65fac0b80e759c59",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Diff adds only test_v2_017_postgres.py to exact expected driver file set and one mandatory inclusion assertion; all prior assertions/control flow unchanged. Actual driver adds same file, no deselection or old coverage removal.",
+      "impact": "15 PostgreSQL cases added; original suite and all six mandatory gates preserved.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "d87254ff49ef44d760f22953133ae23dcf4526fd6f06ae947c04f9de737be3a5",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Diff adds only test_v2_017_postgres.py to exact expected driver file set and one mandatory inclusion assertion; all prior assertions/control flow unchanged. Actual driver adds same file, no deselection or old coverage removal.",
+      "impact": "15 PostgreSQL cases added; original suite and all six mandatory gates preserved.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "150e67a1213895d58b532c5258f27e0046c0924292e72b6c067312aa37f88017",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Diff adds only test_v2_017_postgres.py to exact expected driver file set and one mandatory inclusion assertion; all prior assertions/control flow unchanged. Actual driver adds same file, no deselection or old coverage removal.",
+      "impact": "15 PostgreSQL cases added; original suite and all six mandatory gates preserved.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "08c54b0576932738ef471fca42bdf1621e5b77114d3f5d88d2c0312f60ca7963",
+      "new_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "18895607fa1be1439d8757283779f22827bdc932957e977d8480499f9b9bf415",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Diff adds only test_v2_017_postgres.py to exact expected driver file set and one mandatory inclusion assertion; all prior assertions/control flow unchanged. Actual driver adds same file, no deselection or old coverage removal.",
+      "impact": "15 PostgreSQL cases added; original suite and all six mandatory gates preserved.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43604282005 attempt1 at376ffae16921e07dc5202b429b0a3246c7e1d5a2:1558 UNIT+244 ARCH+231 PostgreSQL=2033 tests,0 failures/errors/skips.58 contract+15 PG subsets cover original8 AT. Original6 ZIPs,GitHub digests,source/run/driver/lock/command/artifact identity verified. Human adopted both f1029cf8 story inputs; not generated prose or production/readability certification. All74 source/data/test files remain exact candidate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-017/authorization.txt",
+        "sha256": "f0e84c065468c89347c3265ccaf8c7ca063bdb5bdb647402302498c03b0d987a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/REMOTE_VERIFICATION.json",
+          "sha256": "8fd0303afa3f11d126602e1b7fa5a76c0c946366d6faea3e8bfd9039528633a3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/SCENARIO_RESULTS.json",
+          "sha256": "a88e4006c7f154e1eefb99b1d1390efabe680945fbad9806fa8870708e687974"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CODE_MANIFEST.json",
+          "sha256": "0e6d2fec32c6c70e7ca6f540d029a4ee98761924106b83277ea4b2809cb6dbcd"
+        },
+        {
+          "ref": "plan/validation/execution/V2-017/closure-20261114/CANON_GATE_COVERAGE.json",
+          "sha256": "71934fc865aea7957fc7e2d938ffe0b173f8be47f1ff5d47a43196f035456cf7"
+        },
+        {
+          "ref": "specs/fixtures/stories/OWNER_DECISION.json",
+          "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c"
+        },
+        {
+          "ref": "specs/fixtures/stories/INPUT_MANIFEST.json",
+          "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2"
+        },
+        {
+          "ref": "plan/decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md",
+          "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
+        }
+      ]
+    }
+  ]
+}

@@ -1067,7 +1067,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现完整多入口 Genesis 或作者富文本工作台
   - 不把固定套路升级为所有小说的硬规则
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-017/execution-packet.yaml
   owner_role: planning-maintainer
   readiness: READY_TO_START
@@ -1076,10 +1076,22 @@ tasks:
   - ADR-004
   - ADR-008
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-017/closure-20261114/code-evidence.yaml
+      revision: 376ffae16921e07dc5202b429b0a3246c7e1d5a2
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-017/closure-20261114/tests-evidence.yaml
+      revision: 376ffae16921e07dc5202b429b0a3246c7e1d5a2
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-017/closure-20261114/ci-evidence.yaml
+      revision: 376ffae16921e07dc5202b429b0a3246c7e1d5a2
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-017/closure-20261114/acceptance-evidence.yaml
+      revision: 376ffae16921e07dc5202b429b0a3246c7e1d5a2
+      status: PASS
   related_findings:
   - AR-04
   - AR-08
