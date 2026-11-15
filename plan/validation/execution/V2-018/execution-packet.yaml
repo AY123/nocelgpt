@@ -1,0 +1,105 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-018
+plan_version: 1.3.0
+repository_revision: e01aa2540b6ae5f1b9209b1c261dcd5999267be9
+worktree_dirty: false
+plan_manifest_sha256: 8e2497193b3dcfa4134c60e4adf9532a05326b6d86e6536f055318e9a9317f26
+environment:
+  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; no new dependency
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded context models/tests delegation
+verifier: Same implementing/verifying operator; not independent personnel audit
+owner_role: context-maintainer
+scope: 'User requested V2-018: prepare ADR009 then implement Context Compiler for suitable writing-model inputs.
+  Existing main delivery authority persists. Restrict to role-safe frozen context compilation, mandatory inputs
+  and explicit local budgets, source-bound continuity, explainable selection, offline recovery and isolated optional
+  cache. No paid Provider, Writer, new Canon path, broad secret exception or automatic extra CI. One key same-SHA
+  CI after local readiness. This is implementer scope transcription, not verbatim human message.'
+action: PREPARE
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-018/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-018/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: 02_ARCHITECTURE_BASELINE.md
+  ref: validation/execution/V2-018/inputs/14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0.txt
+  sha256: 14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-018/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-018/inputs/09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194.txt
+  sha256: 09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-018/inputs/68e1e78f1a7333f747ebc0336f1dd4b32f6dafc8d84464a97304ff2f6b2f4212.txt
+  sha256: 68e1e78f1a7333f747ebc0336f1dd4b32f6dafc8d84464a97304ff2f6b2f4212
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-018/inputs/02945a03a2682c246d8ac558a8853293a1f389b87f0f4c1c62b83c88e60ec526.txt
+  sha256: 02945a03a2682c246d8ac558a8853293a1f389b87f0f4c1c62b83c88e60ec526
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-018/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/context/compiler.py
+- tests/contract/test_v2_018.py
+allowed_paths:
+- src/anovel/context/
+- tests/contract/test_v2_018.py
+- tests/integration/test_v2_018_postgres.py
+- scripts/ci/run_gate.py
+- tests/contract/test_delivery_gates.py
+- plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md
+- plan/validation/execution/V2-018/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/decision-register.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-009
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- Would overwrite user changes
+- Need second Canon writer/SQL or new Delta operator
+- Need weakened gate/test or secret approval expansion
+- Need paid Provider or fictitious human fixture approval
+review_notes:
+- P4/G-P4 verified at376ffae/run43604282005; task17 CLOSED
+- ADR009 accepted before new context interfaces
+- No actual Provider tokenizer or semantic DLP claimed
+handoff:
+  current_step: 'PREPARE: actual V017 inputs and Context requirements inspected; ADR009 accepted'
+  completed_steps:
+  - Confirmed main clean and synchronized at e01aa25
+  - Designed role projections, complete mandatory inputs and offline budget/cache boundaries
+  pending_items:
+  - Pin scope and pass IMPLEMENT action
+  - Implement and verify all original5 AT with both adopted fixtures/real PG
+  - One key exact-SHA CI only when local gates ready
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null

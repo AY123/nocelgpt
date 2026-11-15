@@ -1370,6 +1370,11 @@
     "sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e"
   },
   {
+    "path": "decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+    "bytes": 5119,
+    "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+  },
+  {
     "path": "generated/EXTERNAL_PRACTICE_MAP.md",
     "bytes": 3287,
     "sha256": "3c70d810a1ab33bc22479584f433194122d4acd6c5e0e5916db32fd1eae3e94b"
@@ -1381,8 +1386,8 @@
   },
   {
     "path": "generated/PHASE_TASK_REGISTRY.md",
-    "bytes": 6160,
-    "sha256": "ccfd84e7db0c208761cafe1dfde4010bdf6ffbba911dbf46d702bfed8a3cbed3"
+    "bytes": 6185,
+    "sha256": "44e90dfc60036a81496c8028a3fcce23b56acd36400b4db4089d9301ffbbd642"
   },
   {
     "path": "machine/ai-execution-policy.yaml",
@@ -1401,8 +1406,8 @@
   },
   {
     "path": "machine/decision-register.yaml",
-    "bytes": 5590,
-    "sha256": "154921196176bd32f42fa1824e35d1a7e2ea128c80802cd8dc8c15202f64573d"
+    "bytes": 5635,
+    "sha256": "02945a03a2682c246d8ac558a8853293a1f389b87f0f4c1c62b83c88e60ec526"
   },
   {
     "path": "machine/external-practice-register.yaml",
@@ -1421,8 +1426,8 @@
   },
   {
     "path": "machine/implementation-backlog.yaml",
-    "bytes": 95411,
-    "sha256": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489"
+    "bytes": 95470,
+    "sha256": "09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194"
   },
   {
     "path": "machine/milestones.yaml",

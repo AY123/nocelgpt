@@ -1,0 +1,17 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-009-20261115-local
+evidence_type: ADR_DECISION
+subject_id: ADR-009
+revision: e01aa2540b6ae5f1b9209b1c261dcd5999267be9
+status: PASS
+producer: Same implementing/verifying operator under V2-018 authorization; not independent personnel audit
+executed_at: '2026-11-15T14:27:26.462715+00:00'
+environment_fingerprint: Existing locked Python3.12.14/uv0.12.17; design accepted before interface implementation
+artifacts:
+- ref: decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md
+  sha256: 72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Separate audit inputs from role-safe context, mandatory-first selection and honest offline byte budget,
+  exact continuity, scope and cache isolation; no model call or Canon write.
