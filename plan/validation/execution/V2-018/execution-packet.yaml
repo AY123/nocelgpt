@@ -20,7 +20,7 @@ scope: 'User requested V2-018: prepare ADR009 then implement Context Compiler fo
   and explicit local budgets, source-bound continuity, explainable selection, offline recovery and isolated optional
   cache. No paid Provider, Writer, new Canon path, broad secret exception or automatic extra CI. One key same-SHA
   CI after local readiness. This is implementer scope transcription, not verbatim human message.'
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
   ref: validation/execution/V2-018/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
@@ -97,9 +97,13 @@ handoff:
   - Pin scope and pass IMPLEMENT action
   - Implement and verify all original5 AT with both adopted fixtures/real PG
   - One key exact-SHA CI only when local gates ready
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 29b6f2b8f758fe2d8966a67428049828bb38e632
+  scope_ref: plan/validation/execution/V2-018/scope.json
+  review_revision: null
+  review_ref: null

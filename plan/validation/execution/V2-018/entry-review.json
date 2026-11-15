@@ -1,0 +1,58 @@
+{
+  "task_id": "V2-018",
+  "baseline_pin": {
+    "revision": "29b6f2b8f758fe2d8966a67428049828bb38e632",
+    "ref": "plan/validation/execution/V2-018/scope.json",
+    "sha256": "9e085f9b0d77b9f3c3d05db44455d108e6cb88d4493311f9b7e71b6e003bdffa"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "new_sha": "09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "f56bee9a6eaf8095bed8aaa6b2340bcfc380c4d97ac1b50ee72944e34e0d0f3d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User requested V2-018. Readiness advances to READY_TO_START after dependency V2-017/P4 verified and ADR009 accepted before interfaces. All original five assertions, task identity/dependency and six gates retained.",
+      "impact": "Only opens bounded context implementation; no Provider/Writer/Canon write or premature task closure.",
+      "reviewer": "Same implementing/verifying operator with design technical cross-check; not independent personnel audit",
+      "replacement_validation": "OriginalAT018-01..05 retained; ADR009 scope and current dependency evidence inspected. No implementation or CI result claimed at entry.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "new_sha": "09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "2d0799dd00ec4e328ea6760c24d686582821eaba6e2db36235919679a3d4e279",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User requested V2-018. Readiness advances to READY_TO_START after dependency V2-017/P4 verified and ADR009 accepted before interfaces. All original five assertions, task identity/dependency and six gates retained.",
+      "impact": "Only opens bounded context implementation; no Provider/Writer/Canon write or premature task closure.",
+      "reviewer": "Same implementing/verifying operator with design technical cross-check; not independent personnel audit",
+      "replacement_validation": "OriginalAT018-01..05 retained; ADR009 scope and current dependency evidence inspected. No implementation or CI result claimed at entry.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    }
+  ]
+}
