@@ -1,0 +1,58 @@
+{
+  "task_id": "V2-019",
+  "baseline_pin": {
+    "revision": "97779567fac92ce6b2acf3c01994ee934c0c8a11",
+    "ref": "plan/validation/execution/V2-019/scope.json",
+    "sha256": "4c6e3b25dd46b40d0d2e0de1b00029e612e5dae4b69aea83db78c5dddb6344f6"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+      "new_sha": "2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "c461ca586896ff19737a688631cd679f65b33f700f53f42227ef5f26914a1e2f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User authorized V2-019 and selected OpenAI; dependency V2-018 verified and ADR010 accepted before implementation. All five original assertions and six gates preserved.",
+      "impact": "Opens scoped Gateway implementation, not live/paid call or final acceptance; no Canon/Writer changes.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "Task/dependency/ADR/unchanged assertions inspected. Live credentials, capability and numeric authority remain separate. No tests or real Provider success claimed yet.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md",
+          "sha256": "5f2bcee736a1ccbf58fa2edb242806f1e8fca14a3189992dc4b944b079bfaafc"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+      "new_sha": "2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "453c37aba0930fb18c52c00fe2338a508ecc25039db22471ad73c829d5e385ae",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "User authorized V2-019 and selected OpenAI; dependency V2-018 verified and ADR010 accepted before implementation. All five original assertions and six gates preserved.",
+      "impact": "Opens scoped Gateway implementation, not live/paid call or final acceptance; no Canon/Writer changes.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "Task/dependency/ADR/unchanged assertions inspected. Live credentials, capability and numeric authority remain separate. No tests or real Provider success claimed yet.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md",
+          "sha256": "5f2bcee736a1ccbf58fa2edb242806f1e8fca14a3189992dc4b944b079bfaafc"
+        }
+      ]
+    }
+  ]
+}

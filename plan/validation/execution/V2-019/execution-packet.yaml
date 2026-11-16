@@ -21,7 +21,7 @@ scope: User requested V2-019 Model Gateway and selected OpenAI as first Provider
   authority persists; paid/live calls require concrete numeric budget, current capability and credential prerequisites.
   No Canon/Writer/Workflow or broad security bypass. Local implementation first; CI only at key readiness. This
   is implementer scope transcription, not verbatim human message.
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   ref: validation/execution/V2-019/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
@@ -104,9 +104,13 @@ handoff:
   - Implement/test without paid calls
   - Prepare concrete live request and collect missing numeric authorization/credential/capability before real Provider
     evidence
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: NOT_RUN
     artifacts: []
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 97779567fac92ce6b2acf3c01994ee934c0c8a11
+  scope_ref: plan/validation/execution/V2-019/scope.json
+  review_revision: null
+  review_ref: null
