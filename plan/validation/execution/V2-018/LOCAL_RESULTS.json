@@ -1,0 +1,180 @@
+{
+  "status": "PASS",
+  "scope": "Actual stable local worktree, not immutable revision/remote acceptance",
+  "completed_at": "2026-11-16T11:43:07.583601+00:00",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2018-local-20261115/unit-final/RECEIPT.json",
+      "sha256": "c1e260be56e0d29e00971880371a7d141b38d8309d7c31193b75daf7d4ec5bf0",
+      "tests": 1611
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2018-local-20261115/arch-final/RECEIPT.json",
+      "sha256": "8ec9e764cf412266ded3163120879109c30a0e3367a0e9693ba77158cbba8f94",
+      "tests": 244
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2018-local-20261115/postgres-final/RECEIPT.json",
+      "sha256": "d5019ce6db1d9fc14da366c58276e1d6601b72125b8465abf9c35aa4bfcbff4f",
+      "tests": 237
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2018-local-20261115/static-verified/RECEIPT.json",
+      "sha256": "9ed45e630dacff44b7ea074be51b4a5406180b7feac49d41e81a7a02693a75f3"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2018-local-20261115/schema-initial/RECEIPT.json",
+      "sha256": "d0c845240d55916a2b8bc03a61db736ebcec55763e74e45c9117cffb926dcb17"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2018-local-20261115/security-tracked/RECEIPT.json",
+      "sha256": "91b76306fad633ccff90c0b4b6b6cf2c8e78f2946dcdbd37dbb978c7c96d8a86"
+    }
+  },
+  "tests": 2092,
+  "new_contract_tests": 53,
+  "new_postgres_tests": 6,
+  "skipped": 0,
+  "source_files": [
+    {
+      "path": "scripts/ci/run_gate.py",
+      "sha256": "62ca0bd7907c4a84f9f723188939f8fc5bfdf04ec09d49f7cbab9e16c676d447"
+    },
+    {
+      "path": "src/anovel/context/__init__.py",
+      "sha256": "16f9170908828c63004e8dac8682ef7ca2ea6008c12c5436d015066f1f1a9e19"
+    },
+    {
+      "path": "src/anovel/context/cache.py",
+      "sha256": "a888f02763a9d919de34470f916540d9595be0630dab27fc90595cb9fdb835e9"
+    },
+    {
+      "path": "src/anovel/context/compiler.py",
+      "sha256": "b24cf041f370c65d5b7b5c9c4a203b6de175d59d972c26d85b2ee95de37f89a6"
+    },
+    {
+      "path": "src/anovel/context/models.py",
+      "sha256": "93bdf75a133c3aac484838948d8fd26255267c830ad2f921d7fe2674250e57bb"
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "sha256": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12"
+    },
+    {
+      "path": "tests/contract/test_v2_018.py",
+      "sha256": "eb07d2ad35693cfa44e047983cdacf6baf5f90a7118338e77e04bac4bec46810"
+    },
+    {
+      "path": "tests/integration/test_v2_018_postgres.py",
+      "sha256": "5e6b9367357e4d7e458d635c7e67f5458fdd62bd54a95c94e4c0a67e0cf739f4"
+    }
+  ],
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "packages": 51,
+    "vulnerabilities": 0
+  },
+  "earlier_focused_attempts": [
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-final-53.xml",
+      "tests": 53,
+      "non_pass_cases": [
+        "test_ordinary_required_summary_is_not_misidentified_as_scalar_author_blob[The invoice was annulled.]",
+        "test_ordinary_required_summary_is_not_misidentified_as_scalar_author_blob[{\"note\":null}]"
+      ],
+      "sha256": "1f860b39693be668e48718340280733d8f60601553db81c6d799ba90625903eb"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-final.xml",
+      "tests": 49,
+      "non_pass_cases": [
+        "test_contradictory_acquisition_is_preserved_as_observation_not_settled_knowledge[CHARACTER]"
+      ],
+      "sha256": "9211648bffbcac0a378de8161a25949b70a494df9bcbfa1ce03fc524c1fea25c"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-first.xml",
+      "tests": 42,
+      "non_pass_cases": [
+        "test_low_priority_old_required_fact_survives_high_priority_optional_crowding",
+        "test_derived_mandatory_fact_cannot_be_overridden_by_optional_source_claim",
+        "test_complete_final_model_format_and_reserve_are_counted_before_acceptance",
+        "test_reviewer_source_is_excluded_from_every_writer_export_and_reason",
+        "test_reference_or_future_plan_does_not_become_current_writer_fact[RAW_REFERENCE]",
+        "test_reference_or_future_plan_does_not_become_current_writer_fact[AUTHOR_FUTURE_PLAN]",
+        "test_future_optional_is_excluded_but_required_future_source_blocks",
+        "test_wrong_scope_optional_source_is_not_silently_retrieved[project-other-project]",
+        "test_wrong_scope_optional_source_is_not_silently_retrieved[branch-other-branch]",
+        "test_wrong_scope_optional_source_is_not_silently_retrieved[parent_ref-sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd]",
+        "test_reviewer_first_cached_result_does_not_leak_into_writer",
+        "test_character_cache_keys_include_actor_and_optional_actor_visibility",
+        "test_cache_identity_changes_with_budget_scene_and_candidate_content",
+        "test_prior_actual_ending_is_complete_mandatory_not_outline_substitute",
+        "test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[raw-retained]",
+        "test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[encoded-retained]",
+        "test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[whole-contract]",
+        "test_frozen_inputs_replay_without_network_catalog_or_cache",
+        "test_source_hash_closed_parser_and_immutable_exports_are_enforced"
+      ],
+      "sha256": "377051c0d589b0541bc058d5c5212416c8e6ae77c7667467dc26af6f21d446a1"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-fourth.xml",
+      "tests": 47,
+      "non_pass_cases": [],
+      "sha256": "1fc42e068452a6fd1eedabd7905d28cf812fc88e68a9cddb60b32d7e08b669d7"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-second.xml",
+      "tests": 42,
+      "non_pass_cases": [
+        "test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[raw-retained]",
+        "test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[encoded-retained]",
+        "test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[whole-contract]"
+      ],
+      "sha256": "70d5f7e8c199d69e8bad638ac7df1ce206a77f6253795854711c7b4dbfa509d4"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-third.xml",
+      "tests": 42,
+      "non_pass_cases": [],
+      "sha256": "d4120549a72554cd48a2c4624b7bf25eb6f85bea9b6842bcf9db7ae98dc250a7"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-verified-53.xml",
+      "tests": 53,
+      "non_pass_cases": [],
+      "sha256": "476b3f7c587b2fca80d315fc1abcda4719e5c490a7af802b28881cd2695c36df"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/component-verified.xml",
+      "tests": 49,
+      "non_pass_cases": [],
+      "sha256": "ea0ce8a631b257793be9298ec72f9087a154d8c5e22dc898cb8c6167b8dc53b8"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/postgres-final.xml",
+      "tests": 6,
+      "non_pass_cases": [],
+      "sha256": "5f24dad822ab719880c2808838abe2c4818aa7b02448aef185cf9f528ad8d391"
+    },
+    {
+      "ref": "dist/validation/v2018-test-agent-20261115/postgres-first.xml",
+      "tests": 6,
+      "non_pass_cases": [
+        "test_real_old_required_fact_and_complete_ending_survive_new_optional_retrieval[fantasy]"
+      ],
+      "sha256": "26347b2e364b2af48d5cea231e57bef977040d14d76986fdbc94200d6c3af105"
+    }
+  ],
+  "producer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit"
+}

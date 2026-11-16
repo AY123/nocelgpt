@@ -1,0 +1,202 @@
+{
+  "task_id": "V2-018",
+  "baseline_pin": {
+    "revision": "29b6f2b8f758fe2d8966a67428049828bb38e632",
+    "ref": "plan/validation/execution/V2-018/scope.json",
+    "sha256": "9e085f9b0d77b9f3c3d05db44455d108e6cb88d4493311f9b7e71b6e003bdffa"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "new_sha": "09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "f56bee9a6eaf8095bed8aaa6b2340bcfc380c4d97ac1b50ee72944e34e0d0f3d",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Readiness PLANNED to READY_TO_START after actual V2-017/P4 dependency evidence and ADR009 accepted before interfaces; original five assertions, task identity/dependencies and phase boundaries retained.",
+      "impact": "Role-safe bounded Context compilation only; no Canon/Contract/Genre/dependency change, model call, production Permit, approval expansion or P5 closure.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "All original5 AT retained. Actual stable local1611 UNIT+244 ARCH+237 PG=2092 tests/0skip;53 new contract+6 PG subsets. Full static/governance/security54/54 pass. Reader/actor boundaries, complete mandatory old facts/metadata, actual endings, whole-author-input rejection, honest byte budgets, offline replay and cache isolation verified. Remote exact-SHA six gates still pending; local result not remote acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_RESULTS.json",
+          "sha256": "2781f9ab249e85e5d6a8239dc63b977578307d1269c3ae34e4767c084c8ef7e0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f588e34c682c3cb5b342f265e794cc0948b9999b5f4d4249943e3e5aa0a2fbb9"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "new_sha": "09874d48028cd4d496e95288a0e4b358b8f2cd779ac75eb3a5563951cbc1b194",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "2d0799dd00ec4e328ea6760c24d686582821eaba6e2db36235919679a3d4e279",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Readiness PLANNED to READY_TO_START after actual V2-017/P4 dependency evidence and ADR009 accepted before interfaces; original five assertions, task identity/dependencies and phase boundaries retained.",
+      "impact": "Role-safe bounded Context compilation only; no Canon/Contract/Genre/dependency change, model call, production Permit, approval expansion or P5 closure.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "All original5 AT retained. Actual stable local1611 UNIT+244 ARCH+237 PG=2092 tests/0skip;53 new contract+6 PG subsets. Full static/governance/security54/54 pass. Reader/actor boundaries, complete mandatory old facts/metadata, actual endings, whole-author-input rejection, honest byte budgets, offline replay and cache isolation verified. Remote exact-SHA six gates still pending; local result not remote acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_RESULTS.json",
+          "sha256": "2781f9ab249e85e5d6a8239dc63b977578307d1269c3ae34e4767c084c8ef7e0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f588e34c682c3cb5b342f265e794cc0948b9999b5f4d4249943e3e5aa0a2fbb9"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "2c2ec85500628bed25fcf4af621777578938f8023252364344bc84e2ab9df2af",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only adds the V2-018 PG filename to the exact expected driver command and an inclusion assertion. No old test/assertion/deselection/gate removal. Actual driver appends the identical file.",
+      "impact": "Role-safe bounded Context compilation only; no Canon/Contract/Genre/dependency change, model call, production Permit, approval expansion or P5 closure.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "All original5 AT retained. Actual stable local1611 UNIT+244 ARCH+237 PG=2092 tests/0skip;53 new contract+6 PG subsets. Full static/governance/security54/54 pass. Reader/actor boundaries, complete mandatory old facts/metadata, actual endings, whole-author-input rejection, honest byte budgets, offline replay and cache isolation verified. Remote exact-SHA six gates still pending; local result not remote acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_RESULTS.json",
+          "sha256": "2781f9ab249e85e5d6a8239dc63b977578307d1269c3ae34e4767c084c8ef7e0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f588e34c682c3cb5b342f265e794cc0948b9999b5f4d4249943e3e5aa0a2fbb9"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "3528cba340780d648e49e5e9c591bc40726f045bff9fe9a1cb4edfda439f5936",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only adds the V2-018 PG filename to the exact expected driver command and an inclusion assertion. No old test/assertion/deselection/gate removal. Actual driver appends the identical file.",
+      "impact": "Role-safe bounded Context compilation only; no Canon/Contract/Genre/dependency change, model call, production Permit, approval expansion or P5 closure.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "All original5 AT retained. Actual stable local1611 UNIT+244 ARCH+237 PG=2092 tests/0skip;53 new contract+6 PG subsets. Full static/governance/security54/54 pass. Reader/actor boundaries, complete mandatory old facts/metadata, actual endings, whole-author-input rejection, honest byte budgets, offline replay and cache isolation verified. Remote exact-SHA six gates still pending; local result not remote acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_RESULTS.json",
+          "sha256": "2781f9ab249e85e5d6a8239dc63b977578307d1269c3ae34e4767c084c8ef7e0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f588e34c682c3cb5b342f265e794cc0948b9999b5f4d4249943e3e5aa0a2fbb9"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "13dda6479f321630186b7474d7f5550ded6a14ce9c51d3ab644070966f1ec0df",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only adds the V2-018 PG filename to the exact expected driver command and an inclusion assertion. No old test/assertion/deselection/gate removal. Actual driver appends the identical file.",
+      "impact": "Role-safe bounded Context compilation only; no Canon/Contract/Genre/dependency change, model call, production Permit, approval expansion or P5 closure.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "All original5 AT retained. Actual stable local1611 UNIT+244 ARCH+237 PG=2092 tests/0skip;53 new contract+6 PG subsets. Full static/governance/security54/54 pass. Reader/actor boundaries, complete mandatory old facts/metadata, actual endings, whole-author-input rejection, honest byte budgets, offline replay and cache isolation verified. Remote exact-SHA six gates still pending; local result not remote acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_RESULTS.json",
+          "sha256": "2781f9ab249e85e5d6a8239dc63b977578307d1269c3ae34e4767c084c8ef7e0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f588e34c682c3cb5b342f265e794cc0948b9999b5f4d4249943e3e5aa0a2fbb9"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "e5849c2acfa33d32154dd04c4bcaac92acd194d3750dc9678a75f7d77693a270",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only adds the V2-018 PG filename to the exact expected driver command and an inclusion assertion. No old test/assertion/deselection/gate removal. Actual driver appends the identical file.",
+      "impact": "Role-safe bounded Context compilation only; no Canon/Contract/Genre/dependency change, model call, production Permit, approval expansion or P5 closure.",
+      "reviewer": "Same implementing/verifying operator with technical cross-check; not independent personnel audit",
+      "replacement_validation": "All original5 AT retained. Actual stable local1611 UNIT+244 ARCH+237 PG=2092 tests/0skip;53 new contract+6 PG subsets. Full static/governance/security54/54 pass. Reader/actor boundaries, complete mandatory old facts/metadata, actual endings, whole-author-input rejection, honest byte budgets, offline replay and cache isolation verified. Remote exact-SHA six gates still pending; local result not remote acceptance.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_RESULTS.json",
+          "sha256": "2781f9ab249e85e5d6a8239dc63b977578307d1269c3ae34e4767c084c8ef7e0"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f588e34c682c3cb5b342f265e794cc0948b9999b5f4d4249943e3e5aa0a2fbb9"
+        }
+      ]
+    }
+  ]
+}
