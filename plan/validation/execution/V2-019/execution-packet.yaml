@@ -96,8 +96,8 @@ review_notes:
 - OpenAI selected; model/capability/key/numeric live budget not yet verified
 - jsonschema runtime move required for real production response validation; no package upgrade
 handoff:
-  current_step: Local implementation complete;2216 tests/0skip, production-only install,6 local checks pass.
-    Fixed source review/delivery in progress; real Provider and remote CI pending
+  current_step: Implementation pinned at6ab14746bda68310ba079a8c68a5d1352c3564d8;2216 local tests/0skip and
+    all local checks PASS. Await concrete live budget, API key and account model capability; paid calls0, CI0.
   completed_steps:
   - IMPLEMENT entry passed with fixed scope/review pins
   - Implemented closed request/model/result contracts, durable SQLite budgets and single-use dispatch
@@ -106,7 +106,6 @@ handoff:
     PASS
   - Actual official protocol/model/pricing pages fetched; candidate policy/probe prepared, no paid call
   pending_items:
-  - Pin exact implementation source/review and synchronize main without CI
   - Obtain explicit numeric live budget; verify model account access and API credential entry
   - Execute controlled external Provider probe only after LIVE_CALL prerequisites
   - One final exact-source six-gate CI, then V019 acceptance; no novel quality/P5 closure implied
@@ -120,5 +119,5 @@ handoff:
 change_review:
   scope_revision: 97779567fac92ce6b2acf3c01994ee934c0c8a11
   scope_ref: plan/validation/execution/V2-019/scope.json
-  review_revision: c163ee27fecad44bbd8d3c3ea2e86e7a860bd65c
-  review_ref: plan/validation/execution/V2-019/entry-review.json
+  review_revision: 6ab14746bda68310ba079a8c68a5d1352c3564d8
+  review_ref: plan/validation/execution/V2-019/implementation-review.json
