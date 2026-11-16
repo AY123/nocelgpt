@@ -1,0 +1,11 @@
+{
+  "scope": "Same operator execution observation, not independent network tracing",
+  "first_invocation": "Observed urllib PRE_HTTP_TLS_HANDSHAKE_SSLEOF; no accepted POST response",
+  "recovery": "Subsequent read-only console result NO_CANDIDATE_RUN_FOUND before separate POST; request preconditions checked no existing run",
+  "evidence_limit": "The status snapshot file was later updated; historical zero-result raw body is not retained. Do not present this note as a separately preserved raw zero-state API response.",
+  "accepted_run_id": 43862354086,
+  "candidate_sha": "5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5",
+  "actual_runs_for_candidate_currently_observed": 1,
+  "run_attempt": 1,
+  "ci_job_retry_requested": false
+}

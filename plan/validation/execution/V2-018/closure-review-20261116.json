@@ -1,0 +1,251 @@
+{
+  "task_id": "V2-018",
+  "baseline_pin": {
+    "revision": "29b6f2b8f758fe2d8966a67428049828bb38e632",
+    "ref": "plan/validation/execution/V2-018/scope.json",
+    "sha256": "9e085f9b0d77b9f3c3d05db44455d108e6cb88d4493311f9b7e71b6e003bdffa"
+  },
+  "recorded_at_utc": "2026-11-16T12:14:27.527996+00:00",
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "new_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "469490ef1d13e7f2aaf75d1cd3a6823c16a71d2cdf3e1e7a215854f76a08d1af",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-018 readiness advanced after verified V2-017/P4 and ADR009 accepted before interfaces; now CLOSED against original five unchanged assertions and actual same-SHA2092/0skip six gates. P5 and product capabilities not promoted.",
+      "impact": "No task identity/dependency/acceptance weakening; no Canon/Contract/Genre/Schema/dependency change. Context is finite typed offline compilation, not Writer/Provider/production or literary quality.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43862354086 attempt1 at5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5:1611 UNIT+244 ARCH+237 PG=2092 tests0skip;53+6 are subsets. All original5 AT map uniquely to actual JUnit. Six original ZIP digests/source/run/driver/lock/commands/artifact hashes verified;80 source/data/test files remain exact candidate bytes. Security54/54 unchanged approvals,51 packages0vulnerabilities.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json",
+          "sha256": "c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json",
+          "sha256": "21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CODE_MANIFEST.json",
+          "sha256": "21423409562b353a239deb1018ad6aebe8b704a33c6862786233aee2b437e763"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CANON_GATE_COVERAGE.json",
+          "sha256": "824b0609e4dbb53b752e582c7f165b9740824edfb21e322023b3f4185930f191"
+        },
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "721bdcc737b25ff28d5b9ba7916e4fed10910b2a9e191aca42e8832f5dbd3489",
+      "new_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "03a1c5d2fd60d9bcfed73a2082fc44d5a2ae57cbc6b5d20ec7d792e689fd9844",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-018 readiness advanced after verified V2-017/P4 and ADR009 accepted before interfaces; now CLOSED against original five unchanged assertions and actual same-SHA2092/0skip six gates. P5 and product capabilities not promoted.",
+      "impact": "No task identity/dependency/acceptance weakening; no Canon/Contract/Genre/Schema/dependency change. Context is finite typed offline compilation, not Writer/Provider/production or literary quality.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43862354086 attempt1 at5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5:1611 UNIT+244 ARCH+237 PG=2092 tests0skip;53+6 are subsets. All original5 AT map uniquely to actual JUnit. Six original ZIP digests/source/run/driver/lock/commands/artifact hashes verified;80 source/data/test files remain exact candidate bytes. Security54/54 unchanged approvals,51 packages0vulnerabilities.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json",
+          "sha256": "c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json",
+          "sha256": "21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CODE_MANIFEST.json",
+          "sha256": "21423409562b353a239deb1018ad6aebe8b704a33c6862786233aee2b437e763"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CANON_GATE_COVERAGE.json",
+          "sha256": "824b0609e4dbb53b752e582c7f165b9740824edfb21e322023b3f4185930f191"
+        },
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "2c2ec85500628bed25fcf4af621777578938f8023252364344bc84e2ab9df2af",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing delivery test only appends V2-018 PostgreSQL filename to exact expected driver command and one inclusion assertion. Every prior assertion and gate remains; original commands and complete237 PG cases verified.",
+      "impact": "No task identity/dependency/acceptance weakening; no Canon/Contract/Genre/Schema/dependency change. Context is finite typed offline compilation, not Writer/Provider/production or literary quality.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43862354086 attempt1 at5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5:1611 UNIT+244 ARCH+237 PG=2092 tests0skip;53+6 are subsets. All original5 AT map uniquely to actual JUnit. Six original ZIP digests/source/run/driver/lock/commands/artifact hashes verified;80 source/data/test files remain exact candidate bytes. Security54/54 unchanged approvals,51 packages0vulnerabilities.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json",
+          "sha256": "c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json",
+          "sha256": "21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CODE_MANIFEST.json",
+          "sha256": "21423409562b353a239deb1018ad6aebe8b704a33c6862786233aee2b437e763"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CANON_GATE_COVERAGE.json",
+          "sha256": "824b0609e4dbb53b752e582c7f165b9740824edfb21e322023b3f4185930f191"
+        },
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "3528cba340780d648e49e5e9c591bc40726f045bff9fe9a1cb4edfda439f5936",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing delivery test only appends V2-018 PostgreSQL filename to exact expected driver command and one inclusion assertion. Every prior assertion and gate remains; original commands and complete237 PG cases verified.",
+      "impact": "No task identity/dependency/acceptance weakening; no Canon/Contract/Genre/Schema/dependency change. Context is finite typed offline compilation, not Writer/Provider/production or literary quality.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43862354086 attempt1 at5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5:1611 UNIT+244 ARCH+237 PG=2092 tests0skip;53+6 are subsets. All original5 AT map uniquely to actual JUnit. Six original ZIP digests/source/run/driver/lock/commands/artifact hashes verified;80 source/data/test files remain exact candidate bytes. Security54/54 unchanged approvals,51 packages0vulnerabilities.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json",
+          "sha256": "c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json",
+          "sha256": "21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CODE_MANIFEST.json",
+          "sha256": "21423409562b353a239deb1018ad6aebe8b704a33c6862786233aee2b437e763"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CANON_GATE_COVERAGE.json",
+          "sha256": "824b0609e4dbb53b752e582c7f165b9740824edfb21e322023b3f4185930f191"
+        },
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "13dda6479f321630186b7474d7f5550ded6a14ce9c51d3ab644070966f1ec0df",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing delivery test only appends V2-018 PostgreSQL filename to exact expected driver command and one inclusion assertion. Every prior assertion and gate remains; original commands and complete237 PG cases verified.",
+      "impact": "No task identity/dependency/acceptance weakening; no Canon/Contract/Genre/Schema/dependency change. Context is finite typed offline compilation, not Writer/Provider/production or literary quality.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43862354086 attempt1 at5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5:1611 UNIT+244 ARCH+237 PG=2092 tests0skip;53+6 are subsets. All original5 AT map uniquely to actual JUnit. Six original ZIP digests/source/run/driver/lock/commands/artifact hashes verified;80 source/data/test files remain exact candidate bytes. Security54/54 unchanged approvals,51 packages0vulnerabilities.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json",
+          "sha256": "c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json",
+          "sha256": "21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CODE_MANIFEST.json",
+          "sha256": "21423409562b353a239deb1018ad6aebe8b704a33c6862786233aee2b437e763"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CANON_GATE_COVERAGE.json",
+          "sha256": "824b0609e4dbb53b752e582c7f165b9740824edfb21e322023b3f4185930f191"
+        },
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "e5849c2acfa33d32154dd04c4bcaac92acd194d3750dc9678a75f7d77693a270",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Existing delivery test only appends V2-018 PostgreSQL filename to exact expected driver command and one inclusion assertion. Every prior assertion and gate remains; original commands and complete237 PG cases verified.",
+      "impact": "No task identity/dependency/acceptance weakening; no Canon/Contract/Genre/Schema/dependency change. Context is finite typed offline compilation, not Writer/Provider/production or literary quality.",
+      "reviewer": "Same implementing/verifying operator with agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "Actual GitHub run43862354086 attempt1 at5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5:1611 UNIT+244 ARCH+237 PG=2092 tests0skip;53+6 are subsets. All original5 AT map uniquely to actual JUnit. Six original ZIP digests/source/run/driver/lock/commands/artifact hashes verified;80 source/data/test files remain exact candidate bytes. Security54/54 unchanged approvals,51 packages0vulnerabilities.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-018/authorization.txt",
+        "sha256": "38ff8f4ae84ad75faa0948970384be58f24a77baaa502feb932388904d7cedfa"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json",
+          "sha256": "c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json",
+          "sha256": "21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CODE_MANIFEST.json",
+          "sha256": "21423409562b353a239deb1018ad6aebe8b704a33c6862786233aee2b437e763"
+        },
+        {
+          "ref": "plan/validation/execution/V2-018/closure-20261116/CANON_GATE_COVERAGE.json",
+          "sha256": "824b0609e4dbb53b752e582c7f165b9740824edfb21e322023b3f4185930f191"
+        },
+        {
+          "ref": "plan/decisions/ADR-009_CONTEXT_SELECTION_AND_BUDGET.md",
+          "sha256": "72c140836a8e22a082ac0465cb2d46ca4c808cc13a4deb41961a7436e0c1d242"
+        }
+      ]
+    }
+  ]
+}

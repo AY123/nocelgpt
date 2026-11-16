@@ -1141,7 +1141,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现模型训练、Agent Swarm 或自动发布
   - 不靠省略强制上下文项降低成本
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-018/execution-packet.yaml
   owner_role: context-maintainer
   readiness: READY_TO_START
@@ -1149,10 +1149,22 @@ tasks:
   required_decisions:
   - ADR-009
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-018/closure-20261116/code-evidence.yaml
+      revision: 5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+      revision: 5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+      revision: 5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-018/closure-20261116/acceptance-evidence.yaml
+      revision: 5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5
+      status: PASS
   related_findings:
   - AR-10
   - AR-13

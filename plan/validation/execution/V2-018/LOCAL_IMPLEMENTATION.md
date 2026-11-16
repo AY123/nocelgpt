@@ -13,3 +13,5 @@ Writer保留当前章/场景意图、约束/前值、必要旧事实、真实前
 技术交叉检查中接受了实体显示名/别名、结构化作者整包识别、矛盾知识及扩展依赖闭包修正。对‘hidden protected必须公开真值’建议作MODIFY：ID guard足够时保留guard，不提前公开秘密。原null整包子串误拒已修，合法annulled和JSON null摘要可用；早期测试夹具/字段/预算假设错误及失败XML原样保留，不冒称首轮全绿。所有旧测试、原五AT和六门保留，PG仅追加新测试文件。
 
 当前只完成本地实现，尚待不可变candidate及同SHA远程六门验收，不据此关闭V2-018/P5。没有Provider/Writer/付费调用、生产Permit、自动小说生产、阅读质量或外部备份。下一任务V2-019仍独立实施。
+
+追加：已按5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5/run43862354086完成同SHA原始六门核验，见[正式验收](closure-20261116/ACCEPTANCE_SUMMARY.md)。早期本地记录保留原语义。

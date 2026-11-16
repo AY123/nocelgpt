@@ -1,0 +1,419 @@
+{
+  "revision": "5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5",
+  "scope": "80 source/data/test/driver/workflow/lock files;6 additions,2 additive PG command changes,72 previous files unchanged. No Canon/Contract/Genre/Schema or dependency change.",
+  "files": [
+    {
+      "path": ".github/workflows/v2-004.yml",
+      "sha256": "147fe4f9c1331f3564a989ad1e0b8ab44e70a637be727b1c7aec1163aa296e4a",
+      "bytes": 3430
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "b96889548bd2bad07d2438f9a2b504fcc33326c1d91124fc2bd2357591270c59",
+      "bytes": 766
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "sha256": "62ca0bd7907c4a84f9f723188939f8fc5bfdf04ec09d49f7cbab9e16c676d447",
+      "bytes": 15582
+    },
+    {
+      "path": "specs/fixtures/stories/INPUT_MANIFEST.json",
+      "sha256": "c1f7786266d2815cab7391a1a3d431ea9a4d2e0507f1b4a38498047b5400d5a2",
+      "bytes": 1467
+    },
+    {
+      "path": "specs/fixtures/stories/OWNER_DECISION.json",
+      "sha256": "d3cc323ea4a9b957fd4f1e0a335d68392f932503f2738ba01cf43a08e99bd75c",
+      "bytes": 1363
+    },
+    {
+      "path": "specs/fixtures/stories/OWNER_REVIEW.md",
+      "sha256": "f1029cf8456a5332172bb4abe430922f19e7a990a656bafa01ce6a97b3776c3d",
+      "bytes": 6633
+    },
+    {
+      "path": "specs/fixtures/stories/fantasy.json",
+      "sha256": "fd6aeca96aa7c50cddacc6571271a029340a6527a6fd9f4781b90e3cc717404a",
+      "bytes": 57869
+    },
+    {
+      "path": "specs/fixtures/stories/urban.json",
+      "sha256": "615436481a3ea0aa3e746440f8090c77e05bfa99d12630fadd61c5075ef405d9",
+      "bytes": 47021
+    },
+    {
+      "path": "specs/genres/fantasy.eastern.progression/1.1.0/pack.json",
+      "sha256": "e6f144d6b175e15f97f06cbd520c8b934e14632969ad3321e2ec457ad431c71d",
+      "bytes": 2446
+    },
+    {
+      "path": "specs/genres/fantasy.eastern.progression/pack.json",
+      "sha256": "b8324179d539feaef683c1498334e3fd1179f696fcd7a010b7a0d68f12502ed9",
+      "bytes": 2126
+    },
+    {
+      "path": "specs/genres/fantasy.eastern.progression/schema.json",
+      "sha256": "158433d0373418a6208628de2069e5b95dd1c211533bb483aae0614b69fefacb",
+      "bytes": 5879
+    },
+    {
+      "path": "specs/genres/registry.yaml",
+      "sha256": "c9b01997e6f9ac3113e076119bf406ad6ddfea562ca6447f8a6603b0f070ce99",
+      "bytes": 951
+    },
+    {
+      "path": "specs/genres/urban.business.realistic/1.1.0/pack.json",
+      "sha256": "a2cd3d15dd7b5f6b8fc4714961ca5fc904fd5dc57238cea33ac7f155a16c9642",
+      "bytes": 2325
+    },
+    {
+      "path": "specs/genres/urban.business.realistic/pack.json",
+      "sha256": "89714b33fc020bb3844c8511632757b4c74cdb598d7a1112f9b7c987a90af152",
+      "bytes": 2078
+    },
+    {
+      "path": "specs/genres/urban.business.realistic/schema.json",
+      "sha256": "abbc0bcde13ca7550f5ae304adda74273dc7a41153bddbffa0925e5ec9f7c66b",
+      "bytes": 2361
+    },
+    {
+      "path": "specs/schemas/character.schema.json",
+      "sha256": "afe3d656a65902bf2a07d66874550378efea80be6b37dbb1e9699fa21a338c7b",
+      "bytes": 2886
+    },
+    {
+      "path": "specs/schemas/commit-receipt.schema.json",
+      "sha256": "49a9519664046d11d04a9ff5be6bea704c5815a77c4bc6ed6975710f731cd2a9",
+      "bytes": 1532
+    },
+    {
+      "path": "specs/schemas/entity.schema.json",
+      "sha256": "49a3f6bd2c2ede90ffe1a4d682ea31eced606cf3b43d0453d3dd9114e91547fb",
+      "bytes": 1440
+    },
+    {
+      "path": "specs/schemas/events.schema.json",
+      "sha256": "db9d9f1ab48d9095f95c126550f271ac635474593c9a4e02828ab0ff514c20e1",
+      "bytes": 4711
+    },
+    {
+      "path": "specs/schemas/knowledge.schema.json",
+      "sha256": "710b533a69064a9df9531636e055838e26a93533cf941fa0d572d6c5921b2501",
+      "bytes": 10241
+    },
+    {
+      "path": "specs/schemas/narrative-delta.schema.json",
+      "sha256": "8f55dd81a89a767436bec289c151b19415707c3029696ab5ee1ad2acaabf62c5",
+      "bytes": 10987
+    },
+    {
+      "path": "specs/schemas/promises.schema.json",
+      "sha256": "0df05e7c77aea4a2b3a386754caddbd8d657ed19cf0d343dfdbd519424867f94",
+      "bytes": 8339
+    },
+    {
+      "path": "src/anovel/__init__.py",
+      "sha256": "e519341f3ee46ba145ea994a5ddab86dbdc0d7bc74d11b5b2bf797a85a59f724",
+      "bytes": 104
+    },
+    {
+      "path": "src/anovel/canon/__init__.py",
+      "sha256": "5c24e3c3d481b6d6d2f4e3b829caea32602f00f94d4f27e208d5e781aae10235",
+      "bytes": 72
+    },
+    {
+      "path": "src/anovel/canon/chapter.py",
+      "sha256": "a3dd04ee21b55f4fa0612f532be4b8a8c2757520b95e8864304f5b505e1e2880",
+      "bytes": 9146
+    },
+    {
+      "path": "src/anovel/canon/commit_service.py",
+      "sha256": "158dcd22f9b77d780eafea1c6d27c2107cf02128e99d7b63a3214917904945a2",
+      "bytes": 6217
+    },
+    {
+      "path": "src/anovel/canon/identity.py",
+      "sha256": "c44b61270c1eea49c68a55091a727194c75e2a855328dad93a9f8c6073d02af6",
+      "bytes": 6564
+    },
+    {
+      "path": "src/anovel/canon/migrations.py",
+      "sha256": "338600521571da15667acca7c6c310673bcd85143d5427e2023c36359f9ec89a",
+      "bytes": 2473
+    },
+    {
+      "path": "src/anovel/canon/models.py",
+      "sha256": "15a8cf8a27d61e67ceaf22ea299c15669ad193aef866dc508b85581b53833629",
+      "bytes": 8563
+    },
+    {
+      "path": "src/anovel/canon/projection.py",
+      "sha256": "9f7ea2fe532fb0f58e117a5a764ae3e4f5aa11742f7422855deebfff5011e33a",
+      "bytes": 9084
+    },
+    {
+      "path": "src/anovel/canon/repository.py",
+      "sha256": "ffb7223ab52e805ce215f6aac5a5a20b417e3f64c2e410d4fe8ad31e88765ce8",
+      "bytes": 59556
+    },
+    {
+      "path": "src/anovel/canon/sql/0001_root.sql",
+      "sha256": "4babd3c9859913a1cabb57fca7d375fd27c533dbe3a1d4bc87208971cb1f5064",
+      "bytes": 7527
+    },
+    {
+      "path": "src/anovel/canon/sql/0002_chapter.sql",
+      "sha256": "39f9c736c5c3ad62a4eb5af1f4ef858301ae5093c4183c6d3b0eaf8f67aa3a97",
+      "bytes": 4117
+    },
+    {
+      "path": "src/anovel/context/__init__.py",
+      "sha256": "16f9170908828c63004e8dac8682ef7ca2ea6008c12c5436d015066f1f1a9e19",
+      "bytes": 80
+    },
+    {
+      "path": "src/anovel/context/cache.py",
+      "sha256": "a888f02763a9d919de34470f916540d9595be0630dab27fc90595cb9fdb835e9",
+      "bytes": 2670
+    },
+    {
+      "path": "src/anovel/context/compiler.py",
+      "sha256": "b24cf041f370c65d5b7b5c9c4a203b6de175d59d972c26d85b2ee95de37f89a6",
+      "bytes": 25844
+    },
+    {
+      "path": "src/anovel/context/models.py",
+      "sha256": "93bdf75a133c3aac484838948d8fd26255267c830ad2f921d7fe2674250e57bb",
+      "bytes": 30525
+    },
+    {
+      "path": "src/anovel/contracts/__init__.py",
+      "sha256": "b7c0d6fe0aef7af9f6b5c1048671a5ff37f00da659675ecb0162ad245a0bd824",
+      "bytes": 84
+    },
+    {
+      "path": "src/anovel/contracts/compiler.py",
+      "sha256": "04fa2ede62ef225d78b9d94779bfc697b87cf8a578e9df051cdb620d7372e205",
+      "bytes": 18742
+    },
+    {
+      "path": "src/anovel/contracts/models.py",
+      "sha256": "21123d056d8bdad88d4c9ddc242d081b75b60ff00581b3c1d2a44f0cad583337",
+      "bytes": 39251
+    },
+    {
+      "path": "src/anovel/domain/__init__.py",
+      "sha256": "f21f7b915fcd4f0203adb9f1dd719ce6bd7672517bfb69eec797748ddbcf64c6",
+      "bytes": 81
+    },
+    {
+      "path": "src/anovel/domain/character.py",
+      "sha256": "8394f88384a562257600532c305ffb444567886ed701c60b667c2b2ebaa59dda",
+      "bytes": 9473
+    },
+    {
+      "path": "src/anovel/domain/delta.py",
+      "sha256": "86c1846ff6f7793c13d7799946b95825910e22bc5d2ec9f17e72537ec44d0dc2",
+      "bytes": 24918
+    },
+    {
+      "path": "src/anovel/domain/events.py",
+      "sha256": "8709af25bfc49adb64ae3feb5cf343ad19569b8e45f12b15e402e1a3269c46e3",
+      "bytes": 14502
+    },
+    {
+      "path": "src/anovel/domain/extensions.py",
+      "sha256": "62d9378c292c7a728089e96de0b9060906443507cca149a4faa0489f64b18ac7",
+      "bytes": 14673
+    },
+    {
+      "path": "src/anovel/domain/identity.py",
+      "sha256": "cbacb2cec0edc99e8ef3c9be29443a1c4a14218493798d00f6093055e7a15342",
+      "bytes": 7532
+    },
+    {
+      "path": "src/anovel/domain/knowledge.py",
+      "sha256": "a9e471529ecd7ba62398b34a647f2afcd4ca5acf15219341fba83d18bdb4552b",
+      "bytes": 24020
+    },
+    {
+      "path": "src/anovel/domain/promises.py",
+      "sha256": "4dcb070a98378a308bd4406a5d9a99fa27411365ac08c4ca34ae1c64646ec596",
+      "bytes": 12991
+    },
+    {
+      "path": "src/anovel/genre/__init__.py",
+      "sha256": "8d89ecb2ad7e825b1e80231b29431597c6c2fdea35892a8e9dbb49f5bd925794",
+      "bytes": 78
+    },
+    {
+      "path": "src/anovel/genre/extensions/__init__.py",
+      "sha256": "80b4294b0648f6111159da1d1f50589afbeab5f50ac0d9d3da4538c5e9918569",
+      "bytes": 79
+    },
+    {
+      "path": "src/anovel/genre/extensions/business.py",
+      "sha256": "52ba3d66b839cada96b2f32a3695e1b08887a2f58f292f34c81bbd91976f0bff",
+      "bytes": 24877
+    },
+    {
+      "path": "src/anovel/genre/extensions/contracts.py",
+      "sha256": "8c38bc7efb3f47486f53a45b215c7d72764955902636e7e6c82a04f179fcebf0",
+      "bytes": 3506
+    },
+    {
+      "path": "src/anovel/genre/extensions/progression.py",
+      "sha256": "5fdab7495479c0ccb0779620772615fab6ee599721a01fbc15f41f8548a2c7e3",
+      "bytes": 32867
+    },
+    {
+      "path": "src/anovel/genre/extensions/progression_contracts.py",
+      "sha256": "935e40734648e365d26bc1890d93ad2c49fbf5f1fcbbc4ef918463204822a2c4",
+      "bytes": 4613
+    },
+    {
+      "path": "src/anovel/genre/extensions/registration.py",
+      "sha256": "ee20e6df07756a4a16c8c2fc04ce829c72294b5dbca1dc956f1ff542b7642acb",
+      "bytes": 396
+    },
+    {
+      "path": "src/anovel/genre/policy.py",
+      "sha256": "f8e52f7cbabe04f0f582c89972ad421c355cb083571feaec1c41d07316212da1",
+      "bytes": 20149
+    },
+    {
+      "path": "src/anovel/genre/registry.py",
+      "sha256": "fd58763a36908c2f999de92706983226d67f598ec4abd3dd7334a56872908e3e",
+      "bytes": 22305
+    },
+    {
+      "path": "src/anovel/planning/__init__.py",
+      "sha256": "17971eb7a620191883eb640b1e6b080f85baab989561f220e107dd10828bcf70",
+      "bytes": 86
+    },
+    {
+      "path": "src/anovel/planning/models.py",
+      "sha256": "9e4034a10518ca89122e50697d169ae45e135c773df8414b8a16d6fb90865e34",
+      "bytes": 27544
+    },
+    {
+      "path": "src/anovel/planning/replanning.py",
+      "sha256": "18f7a3f90d43fdea99a6b7d5f35d382c5970ab17296d2b8d619131a86d0aa0ee",
+      "bytes": 13145
+    },
+    {
+      "path": "src/anovel/planning/versions.py",
+      "sha256": "7d39afa6fce1c8f20036fea428085fd36004434a04e93d1ef78109f42b05e1d8",
+      "bytes": 10417
+    },
+    {
+      "path": "tests/contract/test_canon_commit.py",
+      "sha256": "050f49392195f3177074d4d931b7ea37362d602466e9bd16cb8d5241bc2f1ed2",
+      "bytes": 14589
+    },
+    {
+      "path": "tests/contract/test_canon_projection.py",
+      "sha256": "f17505c21e7a63866a76b8c545e1cf84ee99b6ae59cdac35c26dcb4dfeb0ae92",
+      "bytes": 5893
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "sha256": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "bytes": 75252
+    },
+    {
+      "path": "tests/contract/test_v2_013.py",
+      "sha256": "af5e3f4027a827730b6c4513240abb8cfc092341db690916f49186a253a222a9",
+      "bytes": 17995
+    },
+    {
+      "path": "tests/contract/test_v2_014.py",
+      "sha256": "19f8bf897e578a872bd86c9cc85e6e342afdf3ba056be0c197c40ee8641e46f5",
+      "bytes": 25332
+    },
+    {
+      "path": "tests/contract/test_v2_015.py",
+      "sha256": "cf1ed596d5355f4454544889e26c5639745625ccf5151e13baecfd553e3bbfdc",
+      "bytes": 20726
+    },
+    {
+      "path": "tests/contract/test_v2_016.py",
+      "sha256": "39500e0da0147e90cbb6abe03591bb57ac26167e26a640e9d599d00f910c1962",
+      "bytes": 27651
+    },
+    {
+      "path": "tests/contract/test_v2_017.py",
+      "sha256": "b918b4592203ce4e53e8e4f9002bc88e00f5388e6e048202b3edf171a87be877",
+      "bytes": 40348
+    },
+    {
+      "path": "tests/contract/test_v2_018.py",
+      "sha256": "eb07d2ad35693cfa44e047983cdacf6baf5f90a7118338e77e04bac4bec46810",
+      "bytes": 30354
+    },
+    {
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "sha256": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "bytes": 9330
+    },
+    {
+      "path": "tests/integration/test_v2_009.py",
+      "sha256": "dc8ec4650277997443b917a351cba5dd160c8a360b4910a3628f714e9f2e1673",
+      "bytes": 22924
+    },
+    {
+      "path": "tests/integration/test_v2_010.py",
+      "sha256": "ee54c2e693055eaa114d187e0594b86d4637ddc8c18e4cb3ccfabfbd95a9bcfe",
+      "bytes": 35469
+    },
+    {
+      "path": "tests/integration/test_v2_011.py",
+      "sha256": "698895fdce8db6b4d6c2029f9ef858d7f6a1514a543e8bbc0faa862d9e7a87ee",
+      "bytes": 17088
+    },
+    {
+      "path": "tests/integration/test_v2_012.py",
+      "sha256": "4f0d0f5b59ab82cda6d5e312a4e43d7d4d8bd1ea8c64eecae4735d6c7fb9d32e",
+      "bytes": 19129
+    },
+    {
+      "path": "tests/integration/test_v2_015_postgres.py",
+      "sha256": "32724a33ee772c32d21eeb91d241df414d2ce4c3672fce5976e85873953c9a3e",
+      "bytes": 19785
+    },
+    {
+      "path": "tests/integration/test_v2_016_postgres.py",
+      "sha256": "9e257f6aa0fe1459075fea07c33d558921399fb2ee3b7a449c240334613a722d",
+      "bytes": 20050
+    },
+    {
+      "path": "tests/integration/test_v2_017_postgres.py",
+      "sha256": "e2e3897bb850be92164df31cad3d37ab8f36113b3f88760b283628d58718ad84",
+      "bytes": 16305
+    },
+    {
+      "path": "tests/integration/test_v2_018_postgres.py",
+      "sha256": "5e6b9367357e4d7e458d635c7e67f5458fdd62bd54a95c94e4c0a67e0cf739f4",
+      "bytes": 9106
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "bace6abb4006900eb211d687734879b6c27616543282df0a6aca17861b32def4",
+      "bytes": 82336
+    }
+  ],
+  "changed_from_previous": [
+    {
+      "path": "scripts/ci/run_gate.py",
+      "old_sha256": "043ae1fcb5f30caf7f441f60b9296adbe731bd28b97bc508bcfddb8d5454d744",
+      "new_sha256": "62ca0bd7907c4a84f9f723188939f8fc5bfdf04ec09d49f7cbab9e16c676d447"
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha256": "8de1cb7a7c00f06513949a365098df42b7117abea9d4f6e4b7d949d563fb185f",
+      "new_sha256": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12"
+    }
+  ],
+  "previous_unchanged": 72
+}

@@ -1,0 +1,92 @@
+{
+  "revision": "5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5",
+  "run_id": 43862354086,
+  "status": "PASS",
+  "source": "Original same-SHA53 contract+6 PG subset of2092, no duplicate addition. Explicit structured context scope, not semantic DLP or generated prose/Provider token verification.",
+  "scenario_tests": {
+    "AT-V2-018-01": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_018::test_actual_extension_quantity_keeps_subject_metadata_under_tight_budget[fantasy]",
+        "tests.contract.test_v2_018::test_actual_extension_quantity_keeps_subject_metadata_under_tight_budget[urban]",
+        "tests.contract.test_v2_018::test_derived_mandatory_fact_cannot_be_overridden_by_optional_source_claim",
+        "tests.contract.test_v2_018::test_low_priority_old_required_fact_survives_high_priority_optional_crowding",
+        "tests.contract.test_v2_018::test_ordinary_required_summary_is_not_misidentified_as_scalar_author_blob[The invoice was annulled.]",
+        "tests.contract.test_v2_018::test_ordinary_required_summary_is_not_misidentified_as_scalar_author_blob[{\"note\":null}]",
+        "tests.contract.test_v2_018::test_visible_guard_fact_stays_complete_when_high_priority_optional_does_not_fit[forbidden]",
+        "tests.contract.test_v2_018::test_visible_guard_fact_stays_complete_when_high_priority_optional_does_not_fit[protected]",
+        "tests.contract.test_v2_018::test_writer_entity_identity_has_real_display_name_not_only_opaque_identifier"
+      ]
+    },
+    "AT-V2-018-02": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[-1]",
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[0]",
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[1.5]",
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[100]",
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[False]",
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[None]",
+        "tests.contract.test_v2_018::test_budget_capacity_requires_positive_exact_integer[True]",
+        "tests.contract.test_v2_018::test_complete_final_model_format_and_reserve_are_counted_before_acceptance",
+        "tests.contract.test_v2_018::test_framing_reserve_is_explicit_nonnegative_integer[-1]",
+        "tests.contract.test_v2_018::test_framing_reserve_is_explicit_nonnegative_integer[0]",
+        "tests.contract.test_v2_018::test_framing_reserve_is_explicit_nonnegative_integer[1.5]",
+        "tests.contract.test_v2_018::test_framing_reserve_is_explicit_nonnegative_integer[None]",
+        "tests.contract.test_v2_018::test_framing_reserve_is_explicit_nonnegative_integer[True]",
+        "tests.contract.test_v2_018::test_too_small_mandatory_budget_returns_no_executable_partial_artifact"
+      ]
+    },
+    "AT-V2-018-03": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_018::test_character_requires_real_actor_and_cannot_receive_author_plan_or_other_goals",
+        "tests.contract.test_v2_018::test_contradictory_acquisition_is_preserved_as_observation_not_settled_knowledge[CHARACTER]",
+        "tests.contract.test_v2_018::test_contradictory_acquisition_is_preserved_as_observation_not_settled_knowledge[WRITER]",
+        "tests.contract.test_v2_018::test_future_optional_is_excluded_but_required_future_source_blocks",
+        "tests.contract.test_v2_018::test_hidden_fact_knower_may_know_earlier_than_reader_without_teaching_protagonist[fantasy]",
+        "tests.contract.test_v2_018::test_hidden_fact_knower_may_know_earlier_than_reader_without_teaching_protagonist[urban]",
+        "tests.contract.test_v2_018::test_hidden_value_required_by_transition_cannot_be_forced_into_writer",
+        "tests.contract.test_v2_018::test_reference_or_future_plan_does_not_become_current_writer_fact[AUTHOR_FUTURE_PLAN]",
+        "tests.contract.test_v2_018::test_reference_or_future_plan_does_not_become_current_writer_fact[RAW_REFERENCE]",
+        "tests.contract.test_v2_018::test_request_cannot_relabel_a_frozen_contract_scope[branch-other-branch]",
+        "tests.contract.test_v2_018::test_request_cannot_relabel_a_frozen_contract_scope[contract_hash-0000000000000000000000000000000000000000000000000000000000000000]",
+        "tests.contract.test_v2_018::test_request_cannot_relabel_a_frozen_contract_scope[parent_ref-sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd]",
+        "tests.contract.test_v2_018::test_request_cannot_relabel_a_frozen_contract_scope[project-other-project]",
+        "tests.contract.test_v2_018::test_wrong_scope_optional_source_is_not_silently_retrieved[branch-other-branch]",
+        "tests.contract.test_v2_018::test_wrong_scope_optional_source_is_not_silently_retrieved[parent_ref-sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd]",
+        "tests.contract.test_v2_018::test_wrong_scope_optional_source_is_not_silently_retrieved[project-other-project]"
+      ]
+    },
+    "AT-V2-018-04": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_018::test_prior_actual_ending_is_complete_mandatory_not_outline_substitute",
+        "tests.integration.test_v2_018_postgres::test_real_old_required_fact_and_complete_ending_survive_new_optional_retrieval[fantasy]",
+        "tests.integration.test_v2_018_postgres::test_real_old_required_fact_and_complete_ending_survive_new_optional_retrieval[urban]",
+        "tests.integration.test_v2_018_postgres::test_real_predecessor_cannot_be_replaced_by_hook_or_partial_budget_artifact"
+      ]
+    },
+    "AT-V2-018-05": {
+      "status": "PASS",
+      "tests": [
+        "tests.contract.test_v2_018::test_actual_adopted_books_produce_safe_writer_and_reviewer_views[fantasy]",
+        "tests.contract.test_v2_018::test_actual_adopted_books_produce_safe_writer_and_reviewer_views[urban]",
+        "tests.contract.test_v2_018::test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[encoded-retained]",
+        "tests.contract.test_v2_018::test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[raw-retained]",
+        "tests.contract.test_v2_018::test_author_review_bundle_cannot_be_laundered_by_writer_source_labels[whole-contract]",
+        "tests.contract.test_v2_018::test_cache_identity_changes_with_budget_scene_and_candidate_content",
+        "tests.contract.test_v2_018::test_character_cache_keys_include_actor_and_optional_actor_visibility",
+        "tests.contract.test_v2_018::test_frozen_inputs_replay_without_network_catalog_or_cache",
+        "tests.contract.test_v2_018::test_known_whole_author_subtree_cannot_be_forwarded_by_json_reformatting[pretty-wrapper]",
+        "tests.contract.test_v2_018::test_known_whole_author_subtree_cannot_be_forwarded_by_json_reformatting[pretty]",
+        "tests.contract.test_v2_018::test_reviewer_first_cached_result_does_not_leak_into_writer",
+        "tests.contract.test_v2_018::test_reviewer_source_is_excluded_from_every_writer_export_and_reason",
+        "tests.contract.test_v2_018::test_source_hash_closed_parser_and_immutable_exports_are_enforced",
+        "tests.integration.test_v2_018_postgres::test_real_adopted_root_context_is_safe_and_compatible_with_existing_candidate_evidence[fantasy]",
+        "tests.integration.test_v2_018_postgres::test_real_adopted_root_context_is_safe_and_compatible_with_existing_candidate_evidence[urban]",
+        "tests.integration.test_v2_018_postgres::test_real_context_frozen_replay_and_role_cache_do_not_write_or_teach_characters"
+      ]
+    }
+  }
+}

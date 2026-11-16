@@ -2,7 +2,7 @@
 
 面向中文网文的自动创作与可靠生产项目。最终目标是提升作品的阅读竞争力；工程通过、真人阅读结果与市场成绩分别验证，不承诺爆款。
 
-**阶段摘要（2026-11-15）：Plan v1.3.0；V2-001～017 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2、P3/G-P3、P4/G-P4及M0/M1/M2/M3 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
+**阶段摘要（2026-11-16）：Plan v1.3.0；V2-001～018 CLOSED；P0/G-P0、P1/G-P1、P2/G-P2、P3/G-P3、P4/G-P4及M0/M1/M2/M3 VERIFIED。** 日常开发使用 `main`，远程为 [AY123/nocelgpt](https://github.com/AY123/nocelgpt)。任务状态以[机器任务表](plan/machine/implementation-backlog.yaml)及其实际证据为准，本文只提供导航。
 
 当前业务能力包括内存中的项目隔离实体、稳定 ID、改名、别名歧义解析，以及人物、关系、显式观察取得知识、误信与目标/计划分离；现已增加事件双顺序与有依据的Promise生命周期。**V2-008 NarrativeDelta 已完成工程验收，P1内存Narrative Kernel退出条件已通过**；V2-009已完成持久化和人工/测试根提交的工程验收，V2-010已完成有限事实章节Commit/Permit协议的工程验收（生产默认拒绝TEST Permit）；V2-011/012已验证章节安全重试、并发、断线恢复和有限事实历史重建；尚无正式生产issuer、模型调用或章节生产闭环。
 
@@ -22,7 +22,7 @@
 ## 从这里开始
 
 1. [AGENTS.md](AGENTS.md) → [plan/README.md](plan/README.md)：确认目录、目标和有效资料入口。
-2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-001～017已完成工程验收；下一任务V2-018须建立其专属执行包，已完成的任务不重新走IMPLEMENT。
+2. 从[任务清单](plan/machine/implementation-backlog.yaml)读取本次任务，再核对[阶段门禁](plan/machine/phase-gates.yaml)、[验收场景](plan/machine/test-catalog.yaml)和[ADR 登记](plan/machine/decision-register.yaml)。V2-001～017已完成工程验收；下一任务V2-019须建立其专属执行包，已完成的任务不重新走IMPLEMENT。
 3. 按任务的 `normative_specs` 阅读适用规范，遵守[AI 开发执行协议](plan/AI_EXECUTION_PROTOCOL.md)，建立并核对本任务执行包后实施。
 4. 需要追溯时再读对应验收、历史报告和 archive；不要求每次开发重新遍历已完成的 P0 工作。历史报告中的“当前”仅指其记录时点，不能覆盖机器源。
 
@@ -154,4 +154,6 @@ V2-016已完成[工程验收](plan/validation/execution/V2-016/closure-20261114/
 
 P3/G-P3/M3已完成[工程汇总验收](plan/validation/execution/P3/closure-20261114/ACCEPTANCE_SUMMARY.md)，复用160a7e2/run43564108955的1960项0skip及60文件来源一致性，不新增CI。V2-017与双书输入验收见下方；自然全文Q2、自动写作/阅读质量/外部备份仍未完成。
 
-V2-017与[P4/G-P4](plan/validation/execution/V2-017/p4-closure-20261114/ACCEPTANCE_SUMMARY.md)已完成[工程验收](plan/validation/execution/V2-017/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定376ffae/run43604282005，2033项0skip（新58契约+15PG为子集）。双书真实Owner输入、版本/冻结/知识/接续与有界编译已验证；不等于Writer/全文Q3/文学质量。下一任务V2-018 Context Compiler；M4、自动写作/阅读质量/外部备份仍未完成。
+V2-017与[P4/G-P4](plan/validation/execution/V2-017/p4-closure-20261114/ACCEPTANCE_SUMMARY.md)已完成[工程验收](plan/validation/execution/V2-017/closure-20261114/ACCEPTANCE_SUMMARY.md)，绑定376ffae/run43604282005，2033项0skip（新58契约+15PG为子集）。双书真实Owner输入、版本/冻结/知识/接续与有界编译已验证；不等于Writer/全文Q3/文学质量。V2-018验收见下方；M4、自动写作/阅读质量/外部备份仍未完成。
+
+V2-018已完成[工程验收](plan/validation/execution/V2-018/closure-20261116/ACCEPTANCE_SUMMARY.md)，绑定5b2cc08/run43862354086，2092项0skip（新53契约+6PG为子集）。角色化上下文、必需事实/扩展元数据/真实末段、显式字节预算及离线恢复/缓存隔离已验证，不代表Provider实际tokens或写作/阅读质量。下一任务V2-019 Model Gateway；P5、M4、自动写作及外部备份仍未完成。

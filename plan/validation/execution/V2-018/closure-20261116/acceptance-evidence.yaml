@@ -1,0 +1,143 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-018
+revision: 5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5
+status: PASS
+producer: Same implementing/verifying operator with technical cross-checks; not independent personnel audit
+executed_at: '2026-11-16T12:06:31.579714+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11;repo1421585508/run43862354086/attempt1;single
+  operator
+input_evidence_refs:
+- validation/execution/V2-018/closure-20261116/code-evidence.yaml
+- validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+- validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+evidence_id: V2-018-acceptance-5b2cc08
+evidence_type: ACCEPTANCE_RECORD
+check_ids:
+- AT-V2-018-01
+- AT-V2-018-02
+- AT-V2-018-03
+- AT-V2-018-04
+- AT-V2-018-05
+artifacts:
+- ref: validation/execution/V2-018/closure-20261116/ACCEPTANCE_SUMMARY.md
+  sha256: 1fc1675ea28c0207784a7139c91b773493546ecbfdcff0522bae5b459ff8c772
+- ref: validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json
+  sha256: c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d
+- ref: validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json
+  sha256: 21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572
+- ref: validation/execution/V2-018/closure-20261116/SECURITY_RESULT.json
+  sha256: be042a8047df3d39abd9e2054ea7c3e4bea2fead938f0ba3d0818dedd4c8cb53
+decision: ACCEPTED
+rationale: All five original assertions and same-SHA2092/0skip mandatory six gates; no P5/product/Provider claim.
+finding_dispositions:
+- finding_id: AR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+  remaining_work: Actual Provider/runtime request bindings remain.
+- finding_id: AR-13
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+  remaining_work: Actual Provider/network/cache scope integration remains.
+- finding_id: CA-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+  remaining_work: Runtime Provider request isolation beyond current frozen context remains.
+- finding_id: CA-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+  remaining_work: Actual Provider tokenizer/model-switch budgets remain; no semantic compression implemented.
+- finding_id: RR-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-019
+  owner_role: gateway-maintainer
+  due_gate: G-P5
+  remaining_work: Later task ADRs still require decisions before interfaces.
+- finding_id: RR-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-020
+  owner_role: workflow-maintainer
+  due_gate: G-P6
+  remaining_work: Durable Workflow must preserve full frozen input dependencies; in-memory cache is disposable.
+- finding_id: SUP-03
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  evidence_refs:
+  - validation/execution/V2-018/closure-20261116/code-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  reason: Current frozen context/compiler portion verified at exact revision; does not close unrelated production/runtime
+    work.
+  next_task: V2-021
+  owner_role: quality-maintainer
+  due_gate: G-P6
+  remaining_work: Actual prose extraction/quality knowledge-vs-belief/intent integration remains.
+external_practice_results:
+- practice_id: EXT-002
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: Frozen local formal specifications consumed; no claim of current upstream API/repository
+    verification
+  verification_refs:
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  conclusion: Actual predecessor full frozen ending and continuity prioritized over optional context.
+  limitations: No generated multi-chapter continuity or reader quality evidence.
+- practice_id: EXT-003
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: Frozen local formal specifications consumed; no claim of current upstream API/repository
+    verification
+  verification_refs:
+  - validation/execution/V2-018/closure-20261116/tests-evidence.yaml
+  - validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+  conclusion: Mandatory-first explainable role projection with full audit/source retention and offline replay verified.
+  limitations: No embedding service, semantic DLP, model tokenizer or actual production Writer.

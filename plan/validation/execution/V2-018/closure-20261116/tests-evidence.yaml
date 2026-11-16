@@ -1,0 +1,46 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-018
+revision: 5b2cc08e21f311716ebbd6b9a43a093fe4ba4dd5
+status: PASS
+producer: Same implementing/verifying operator with technical cross-checks; not independent personnel audit
+executed_at: '2026-11-16T12:06:31.579714+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11;repo1421585508/run43862354086/attempt1;single
+  operator
+input_evidence_refs:
+- validation/execution/V2-018/closure-20261116/code-evidence.yaml
+- validation/execution/V2-018/closure-20261116/ci-evidence.yaml
+evidence_id: V2-018-tests-5b2cc08
+evidence_type: TEST_RESULT
+check_ids:
+- AT-V2-018-01
+- AT-V2-018-02
+- AT-V2-018-03
+- AT-V2-018-04
+- AT-V2-018-05
+- STATIC
+- SCHEMA_CONTRACT
+- UNIT
+- ARCH_FITNESS
+- POSTGRES_ENV
+- SECRET_DEPENDENCY
+- CANON_CAS_IDEMPOTENCY
+artifacts:
+- ref: validation/execution/V2-018/closure-20261116/REMOTE_VERIFICATION.json
+  sha256: c7dcea49d8075cf5aeab61eb0713a73f9aa5bb2ba3c5fe91d15dabffec5c159d
+- ref: validation/execution/V2-018/closure-20261116/SCENARIO_RESULTS.json
+  sha256: 21b6a4c919a8feefd1e0bd094b375fc5c4afb51d02632e334d3fdaa7a42b9572
+- ref: validation/execution/V2-018/closure-20261116/gate-arch_fitness-43862354086-1.zip
+  sha256: a5193d6940d47dfd6c26ab3c566c086e169cb18dfebe65c90c7240e24cb2e641
+- ref: validation/execution/V2-018/closure-20261116/gate-postgres_env-43862354086-1.zip
+  sha256: f3aa9b61ef82ef586c9e8bb7e88438109835087689f3c3f6ee579880934954b8
+- ref: validation/execution/V2-018/closure-20261116/gate-schema_contract-43862354086-1.zip
+  sha256: 06fd7897871d783b5c94bf5e5a3d9e5d324e2368085e307d2701398144525f40
+- ref: validation/execution/V2-018/closure-20261116/gate-secret_dependency-43862354086-1.zip
+  sha256: 425f60f582b77d39c13585c68677fef185ab7d48d27e260fcaa70294f227e4f3
+- ref: validation/execution/V2-018/closure-20261116/gate-static-43862354086-1.zip
+  sha256: 3e69f34e8a1da0895ca4acbd1c143482fa5fe7d57e7dc3fc1bf8a73600e03cda
+- ref: validation/execution/V2-018/closure-20261116/gate-unit-43862354086-1.zip
+  sha256: ebf2eda9516dded5327d8f18bae160b2e7b92a0e4984f48ef4453af3397528e0
+command: Actual same-SHA six run_gate commands; original receipts/logs/source hashes/JUnit verified
+exit_code: 0
