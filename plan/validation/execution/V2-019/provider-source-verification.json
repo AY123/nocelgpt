@@ -1,0 +1,59 @@
+{
+  "scope": "Public official documentation, not actual Provider/account/live-call evidence",
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/guides/structured-outputs",
+      "artifact_ref": "dist/validation/v2019-openai-docs-20261116/structured.html",
+      "sha256": "b7a6ca51b18122b37716138e916209ebb954f0e7eb2adf6b1682cd285955082d",
+      "bytes": 3411966,
+      "fetched_at_utc": "2026-11-16T12:45:47.737540+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models",
+      "artifact_ref": "dist/validation/v2019-openai-docs-20261116/models.html",
+      "sha256": "e00a2ecb0767fd971ae1af2e460e15c993faac06b083e321c5c87a4820b8f912",
+      "bytes": 422890,
+      "fetched_at_utc": "2026-11-16T12:44:06.502684+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "artifact_ref": "dist/validation/v2019-openai-docs-20261116/pricing.html",
+      "sha256": "5371b458615a402018826a78ca32e1aaa552b656a7c7cab6c5c77774d72e044f",
+      "bytes": 602234,
+      "fetched_at_utc": "2026-11-16T12:44:04.814208+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/reference/resources/responses/methods/create",
+      "artifact_ref": "dist/validation/v2019-openai-docs-20261116/responses-ref.html",
+      "sha256": "3ae68b30afb28e229b65731f17f31e540aa5555314e2c331435772570a018b19",
+      "bytes": 10092532,
+      "fetched_at_utc": "2026-11-16T12:53:29.729483+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/reference/resources/responses/subresources/input_tokens/methods/count",
+      "artifact_ref": "dist/validation/v2019-openai-docs-20261116/input-count.html",
+      "sha256": "3a4753989ca162fad5d0296ef0bed671877142a6061cf0e93c9376d9767180c6",
+      "bytes": 3747401,
+      "fetched_at_utc": "2026-11-16T12:50:07.154456+00:00"
+    }
+  ],
+  "verified_protocol": [
+    "POST /v1/responses; text.format strict json_schema",
+    "POST /v1/responses/input_tokens returns response.input_tokens/input_tokens",
+    "service_tier=default selects standard pricing; response tier may differ",
+    "ordinary JSON may include refusal, incomplete, reasoning, usage and x-request-id",
+    "gpt-6-luna catalog supports reasoning none and advertises1.05M context/128K output"
+  ],
+  "candidate_policy": {
+    "model": "gpt-6-luna",
+    "selection_role": "Low-cost protocol probe proposal; not Owner model approval or literary-quality recommendation",
+    "configured_context_cap": 16384,
+    "context_basis": "Application cap below published1.05M; actual count+1024 output must fit before generation",
+    "input_rate_basis": "USD0.25/1M conservative upper rate among published ordinary input0.10/cache-write0.125/0.25; input cache discount ignored",
+    "output_rate_basis": "USD0.50/1M published standard output",
+    "per_attempt_reserve_microUSD": 5608,
+    "actual_usage": "NOT_OBSERVED",
+    "account_access": "NOT_VERIFIED",
+    "paid_authorization": "NOT_PROVIDED"
+  }
+}

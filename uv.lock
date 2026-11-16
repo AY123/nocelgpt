@@ -7,13 +7,13 @@ name = "anovelos"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "jsonschema" },
     { name = "psycopg", extra = ["binary"] },
     { name = "sqlalchemy" },
 ]
 
 [package.dev-dependencies]
 dev = [
-    { name = "jsonschema" },
     { name = "mypy" },
     { name = "pip-audit" },
     { name = "pytest" },
@@ -24,13 +24,13 @@ dev = [
 
 [package.metadata]
 requires-dist = [
+    { name = "jsonschema", specifier = "==4.26.0" },
     { name = "psycopg", extras = ["binary"], specifier = "==3.3.6" },
     { name = "sqlalchemy", specifier = "==2.0.54" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "jsonschema", specifier = ">=4,<5" },
     { name = "mypy", specifier = "==1.20.2" },
     { name = "pip-audit", specifier = "==2.10.1" },
     { name = "pytest", specifier = ">=8,<10" },

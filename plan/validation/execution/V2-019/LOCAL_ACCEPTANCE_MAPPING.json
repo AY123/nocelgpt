@@ -1,0 +1,35 @@
+{
+  "task_id": "V2-019",
+  "scope": "Local control mapping, not actual external Provider acceptance",
+  "scenarios": [
+    {
+      "id": "AT-V2-019-01",
+      "local": "Actual loopback count/Responses protocol, structured output/refusal/incomplete/HTTP/usage classification",
+      "external": "NOT_VERIFIED; no OpenAI call"
+    },
+    {
+      "id": "AT-V2-019-02",
+      "local": "PASS: disconnect/timeout/slowdrip/restart UNKNOWN retains liability; no response has no fabricated hash",
+      "external": "NOT_CLAIMED"
+    },
+    {
+      "id": "AT-V2-019-03",
+      "local": "PASS: closed DTO identities, exact body/model/usage, stable logical/attempt and durable pending costs",
+      "external": "Actual OpenAI metadata/usage pending"
+    },
+    {
+      "id": "AT-V2-019-04",
+      "local": "PASS: unprovisioned/exhausted budget and missing dispatch permit cause zero HTTP",
+      "external": "Live authorization remains absent"
+    },
+    {
+      "id": "AT-V2-019-05",
+      "local": "PASS: concurrent spending/duplicates, durable restart, explicit retry/fallback and spent/inflight/UNKNOWN admission",
+      "external": "No verified vendor bill claimed"
+    }
+  ],
+  "new_tests": 124,
+  "subset_of": "full integration361, not extra to total2216",
+  "source": "tests/integration/test_v2_019.py",
+  "product_limit": "No Writer, semantic quality gate, production Canon acceptance, automatic long novel or reader evidence"
+}

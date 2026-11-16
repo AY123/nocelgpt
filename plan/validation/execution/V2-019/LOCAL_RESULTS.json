@@ -1,0 +1,145 @@
+{
+  "status": "PASS",
+  "scope": "Stable local source bytes, not remote CI or real OpenAI acceptance",
+  "completed_at": "2026-11-16T13:59:45.815789+00:00",
+  "checks": {
+    "unit": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2019-local-20261116/full-unit-1/RECEIPT.json",
+      "sha256": "b4fb725773cc0b134e75503d95db595f78070d105ebf7d303d6ef1a8eeec3cb5",
+      "tests": 1611
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2019-local-20261116/full-arch-1/RECEIPT.json",
+      "sha256": "648dc8945ca4be4f95e2d8ee1de61cdb3fb016fd4230e8eb6cd2fd4bb5a0b331",
+      "tests": 244
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2019-local-20261116/full-integration-1/RECEIPT.json",
+      "sha256": "baee346579ff7d5445d1bbc25bf0a7830f3ddae24217ca022908d324dc42a105",
+      "tests": 361
+    },
+    "static": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2019-local-20261116/full-static-1/RECEIPT.json",
+      "sha256": "f0f5e0791e20d9290394b6f37390631db32e7c018118d1664929e21558eff61c"
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2019-local-20261116/governance-manifest-final/RECEIPT.json",
+      "sha256": "1f53960702ea5fd802be29e52fef3af4bdb4d1c6399e1c2e6e3cb3652ff35e95"
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "receipt_ref": "dist/validation/v2019-local-20261116/security-reproducible-source/RECEIPT.json",
+      "sha256": "d0d6f8c61ecf08ea1d016a8cd1d3bde8b1f3ad2d5f436876a2237e6f50926f3b"
+    }
+  },
+  "tests": 2216,
+  "new_gateway_tests": 124,
+  "new_gateway_tests_are_subset_of": "postgres_env361; SQLite/loopback/CLI, not allPostgreSQL",
+  "skipped": 0,
+  "source_files": [
+    {
+      "path": "model-policy.yaml",
+      "sha256": "e3765fd2d7e2d41a665b544599af0b44da67ddba2bcc4d15574decfce7ba3bb4"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "e9c4475f8916b1d238e87a4b62b9e9e1a376c19aaa9979a73162800daf34af95"
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "sha256": "184d048534e7606b3128f6cc7f567139d8b38eed75bf3dd8907f9bcc0c7843a4"
+    },
+    {
+      "path": "scripts/run_gateway_probe.py",
+      "sha256": "7600de7873b35618d172b71104b5d4df0d94068260fd568c116be61ad1298355"
+    },
+    {
+      "path": "src/anovel/gateway/__init__.py",
+      "sha256": "75ce7bdab6373bd5ee82232f851e8a3a4c0a30ac67cb785e1e7dce208585e807"
+    },
+    {
+      "path": "src/anovel/gateway/ledger.py",
+      "sha256": "76e8656328343cd21a02e7042e8c9bc91d9a63b4b6efd1e22a7c6e82c0c87b58"
+    },
+    {
+      "path": "src/anovel/gateway/models.py",
+      "sha256": "efb605a6937acc713b7642fb3f84b5b687ba2414256324c01666c4e9b72a43ae"
+    },
+    {
+      "path": "src/anovel/gateway/provider.py",
+      "sha256": "68924f6354c6206bfcfa2dc428750cb05b3469f3c6ca4587906bdae0c77243a1"
+    },
+    {
+      "path": "src/anovel/gateway/service.py",
+      "sha256": "49cc7ba3219334347e85df6ed6da204e8594ae20ecaa6aa8feabf53a30dfb84e"
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "sha256": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0"
+    },
+    {
+      "path": "tests/integration/test_v2_019.py",
+      "sha256": "2ebd55f4d33c2d955a6be0ef1b044109a3ac173bfbbd4f5b98349fd7075ebc58"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "460ac1ac44a1f9ccd4fce9d354ea31179d337fbca52b82e4fda6b1580a994d76"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/probe/prepare_request.py",
+      "sha256": "0bbe8714e713a98b358ebfaa00e862a6a3fcdd9759fb96f727549c00643d9eb3"
+    }
+  ],
+  "security": {
+    "detected": 54,
+    "consumed": 54,
+    "unmatched": 0,
+    "unused": 0,
+    "packages": 51,
+    "vulnerabilities": 0,
+    "scope_note": "Final scan includes actually staged new source files and full Git history; generated Context snapshots kept as runtime evidence in ignored dist, no rule/approval expansion"
+  },
+  "production_install": {
+    "command": "UV_PROJECT_ENVIRONMENT=dist/validation/v2019-production-install-20261116/env uv sync --locked --offline --no-dev",
+    "status": "PASS",
+    "installed_packages": 10,
+    "jsonschema": "4.26.0",
+    "pytest_installed": false,
+    "schema_validation": "PASS",
+    "dry_run_ref": "dist/validation/v2019-production-install-20261116/dry-run-result.json",
+    "dry_run_sha256": "e544573ee361f1314d722b963987359719c62e56ae866a2e99c720eb74982db3",
+    "ledger_created": false,
+    "network_requests": 0
+  },
+  "actual_external_provider_calls": 0,
+  "remote_ci_runs_created": 0,
+  "limitations": [
+    "Loopback HTTP is not OpenAI evidence",
+    "Model/account capability, API key and numerical live authorization pending",
+    "UNKNOWN still may incur real vendor charges; no inferred zero bill",
+    "No Writer/novel reading quality or P5/M4 acceptance"
+  ],
+  "earlier_attempts": "Raw focused attempts retained under current dist/validation; initial sandbox loopback denied and one usage-expectation mismatch corrected; only final124 and full suite used for PASS",
+  "reproducible_probe": {
+    "status": "PASS",
+    "ref": "dist/validation/v2019-probe-20261116/reproduced-request.json",
+    "request_hash": "2d4e236313a0f2dc7e48a6512ddf69143a077cc35c89711c684e9c9ab75a3a7c",
+    "matches_original_dry_run_request": true,
+    "network_requests": 0
+  },
+  "intermediate_failed_checks": [
+    {
+      "ref": "dist/validation/v2019-local-20261116/security-actual-staged/RECEIPT.json",
+      "reason": "Generated probe Context source_key/cache_key SHA values flagged; kept complete snapshot in dist and replaced tracked runtime output with reproducible prepare script; no new exception or scanner change"
+    },
+    {
+      "ref": "dist/validation/v2019-local-20261116/governance-final/RECEIPT.json",
+      "reason": "README change needed explicit manifest regeneration; regenerated and final five governance checks pass"
+    }
+  ]
+}

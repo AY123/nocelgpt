@@ -1,0 +1,18 @@
+{
+  "kind": "MODEL_POLICY",
+  "schema_version": "1.0",
+  "id": "openai-protocol-probe-20261116",
+  "model": "gpt-6-luna",
+  "endpoint": "https://api.openai.com/v1/responses",
+  "context_window": 16384,
+  "max_output_tokens": 1024,
+  "input_rate": 250000,
+  "output_rate": 500000,
+  "price_ref": "https://developers.openai.com/api/docs/pricing",
+  "price_expires_at": "2026-11-17T00:00:00.000000Z",
+  "timeout_seconds": 30,
+  "params_base64": "eyJyZWFzb25pbmciOnsiZWZmb3J0Ijoibm9uZSJ9fQ==",
+  "accepted_models": ["gpt-6-luna"],
+  "margin_microusd": 1000,
+  "test_mode": false
+}

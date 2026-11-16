@@ -1,0 +1,226 @@
+{
+  "task_id": "V2-019",
+  "baseline_pin": {
+    "revision": "97779567fac92ce6b2acf3c01994ee934c0c8a11",
+    "ref": "plan/validation/execution/V2-019/scope.json",
+    "sha256": "4c6e3b25dd46b40d0d2e0de1b00029e612e5dae4b69aea83db78c5dddb6344f6"
+  },
+  "dispositions": [
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+      "new_sha": "2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "finding_id": "c461ca586896ff19737a688631cd679f65b33f700f53f42227ef5f26914a1e2f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Readiness opens V019 after verified V018/P4 and accepted ADR010; original5 AT, task phase/dependencies and live authorization separation preserved.",
+      "impact": "Gateway/provider/durable accounting only; no Writer/Canon/Workflow, broad scan suppression or scope/AT weakening.124 new SQLite/localHTTP/CLI cases are integration361 subset, not external OpenAI.",
+      "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "1611 UNIT+244 ARCH+361 integration=2216/0skip,static,5 governance and actually-staged security54/54+51packages0vulnerabilities PASS.Production-only locked install and exact probe reproduction PASS. No actualProvider or remoteCI claim.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+          "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f5656bae44ee943e2a8b8b788859facaab1b00df569ff601fa3c0179926c277e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/TECHNICAL_REVIEW.md",
+          "sha256": "785b1f803fd1a96a8526956be2c784a9fc25c0c4657bbe2a81b3700b59bc8ee3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_ACCEPTANCE_MAPPING.json",
+          "sha256": "400c180c3204e937591833ab16c9000f802f1e4c4f8e68c154807ee87d6107f0"
+        }
+      ]
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+      "new_sha": "2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "finding_id": "453c37aba0930fb18c52c00fe2338a508ecc25039db22471ad73c829d5e385ae",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Readiness opens V019 after verified V018/P4 and accepted ADR010; original5 AT, task phase/dependencies and live authorization separation preserved.",
+      "impact": "Gateway/provider/durable accounting only; no Writer/Canon/Workflow, broad scan suppression or scope/AT weakening.124 new SQLite/localHTTP/CLI cases are integration361 subset, not external OpenAI.",
+      "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "1611 UNIT+244 ARCH+361 integration=2216/0skip,static,5 governance and actually-staged security54/54+51packages0vulnerabilities PASS.Production-only locked install and exact probe reproduction PASS. No actualProvider or remoteCI claim.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+          "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f5656bae44ee943e2a8b8b788859facaab1b00df569ff601fa3c0179926c277e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/TECHNICAL_REVIEW.md",
+          "sha256": "785b1f803fd1a96a8526956be2c784a9fc25c0c4657bbe2a81b3700b59bc8ee3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_ACCEPTANCE_MAPPING.json",
+          "sha256": "400c180c3204e937591833ab16c9000f802f1e4c4f8e68c154807ee87d6107f0"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "finding_id": "991317f7651fe3a05fa5a547b0cf9a9a4700729197fbeea9dda7863bc7f41a87",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends V019 integration filename to the exact expected driver list and an inclusion assertion; no removed old file/assertion/gate/deselection. Driver appends identical file to mandatory POSTGRES_ENV.",
+      "impact": "Gateway/provider/durable accounting only; no Writer/Canon/Workflow, broad scan suppression or scope/AT weakening.124 new SQLite/localHTTP/CLI cases are integration361 subset, not external OpenAI.",
+      "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "1611 UNIT+244 ARCH+361 integration=2216/0skip,static,5 governance and actually-staged security54/54+51packages0vulnerabilities PASS.Production-only locked install and exact probe reproduction PASS. No actualProvider or remoteCI claim.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+          "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f5656bae44ee943e2a8b8b788859facaab1b00df569ff601fa3c0179926c277e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/TECHNICAL_REVIEW.md",
+          "sha256": "785b1f803fd1a96a8526956be2c784a9fc25c0c4657bbe2a81b3700b59bc8ee3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_ACCEPTANCE_MAPPING.json",
+          "sha256": "400c180c3204e937591833ab16c9000f802f1e4c4f8e68c154807ee87d6107f0"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "finding_id": "d2f45183c89e03e33a329d3bea056ca9683e67b50e19b99d5f906439c914a109",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends V019 integration filename to the exact expected driver list and an inclusion assertion; no removed old file/assertion/gate/deselection. Driver appends identical file to mandatory POSTGRES_ENV.",
+      "impact": "Gateway/provider/durable accounting only; no Writer/Canon/Workflow, broad scan suppression or scope/AT weakening.124 new SQLite/localHTTP/CLI cases are integration361 subset, not external OpenAI.",
+      "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "1611 UNIT+244 ARCH+361 integration=2216/0skip,static,5 governance and actually-staged security54/54+51packages0vulnerabilities PASS.Production-only locked install and exact probe reproduction PASS. No actualProvider or remoteCI claim.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+          "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f5656bae44ee943e2a8b8b788859facaab1b00df569ff601fa3c0179926c277e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/TECHNICAL_REVIEW.md",
+          "sha256": "785b1f803fd1a96a8526956be2c784a9fc25c0c4657bbe2a81b3700b59bc8ee3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_ACCEPTANCE_MAPPING.json",
+          "sha256": "400c180c3204e937591833ab16c9000f802f1e4c4f8e68c154807ee87d6107f0"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "finding_id": "8e090c956fab0d0f5c3783e7c4678aaa27968962786d95e459b7c160b44a427a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends V019 integration filename to the exact expected driver list and an inclusion assertion; no removed old file/assertion/gate/deselection. Driver appends identical file to mandatory POSTGRES_ENV.",
+      "impact": "Gateway/provider/durable accounting only; no Writer/Canon/Workflow, broad scan suppression or scope/AT weakening.124 new SQLite/localHTTP/CLI cases are integration361 subset, not external OpenAI.",
+      "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "1611 UNIT+244 ARCH+361 integration=2216/0skip,static,5 governance and actually-staged security54/54+51packages0vulnerabilities PASS.Production-only locked install and exact probe reproduction PASS. No actualProvider or remoteCI claim.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+          "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f5656bae44ee943e2a8b8b788859facaab1b00df569ff601fa3c0179926c277e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/TECHNICAL_REVIEW.md",
+          "sha256": "785b1f803fd1a96a8526956be2c784a9fc25c0c4657bbe2a81b3700b59bc8ee3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_ACCEPTANCE_MAPPING.json",
+          "sha256": "400c180c3204e937591833ab16c9000f802f1e4c4f8e68c154807ee87d6107f0"
+        }
+      ]
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+      "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "finding_id": "c2e744853d5f14c3faafa6dd29611edec8f26a20f1ff9370a155e9a7e36eb5f9",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Only appends V019 integration filename to the exact expected driver list and an inclusion assertion; no removed old file/assertion/gate/deselection. Driver appends identical file to mandatory POSTGRES_ENV.",
+      "impact": "Gateway/provider/durable accounting only; no Writer/Canon/Workflow, broad scan suppression or scope/AT weakening.124 new SQLite/localHTTP/CLI cases are integration361 subset, not external OpenAI.",
+      "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+      "replacement_validation": "1611 UNIT+244 ARCH+361 integration=2216/0skip,static,5 governance and actually-staged security54/54+51packages0vulnerabilities PASS.Production-only locked install and exact probe reproduction PASS. No actualProvider or remoteCI claim.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/authorization.txt",
+        "sha256": "6fd6faf739fc12831ea3692bfaaecc66e39e7ed67620faed13b78f0ffd3ae61a"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+          "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_IMPLEMENTATION.md",
+          "sha256": "f5656bae44ee943e2a8b8b788859facaab1b00df569ff601fa3c0179926c277e"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/TECHNICAL_REVIEW.md",
+          "sha256": "785b1f803fd1a96a8526956be2c784a9fc25c0c4657bbe2a81b3700b59bc8ee3"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/LOCAL_ACCEPTANCE_MAPPING.json",
+          "sha256": "400c180c3204e937591833ab16c9000f802f1e4c4f8e68c154807ee87d6107f0"
+        }
+      ]
+    }
+  ]
+}
