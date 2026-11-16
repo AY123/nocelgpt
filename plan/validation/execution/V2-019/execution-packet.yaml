@@ -1,0 +1,112 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-019
+plan_version: 1.3.0
+repository_revision: 3845dfe3d639d43de74cecdfb9124c95c47ffb0f
+worktree_dirty: false
+plan_manifest_sha256: d7703dc942d715034c0c05435d0f527ff39953e492df2bf9b3b73a6254fb046c
+environment:
+  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; no new dependency
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex with bounded gateway models/tests delegation
+verifier: Same implementing/verifying operator; not independent personnel audit
+owner_role: gateway-maintainer
+scope: User requested V2-019 Model Gateway and selected OpenAI as first Provider. Implement bounded provider adapter,
+  stable logical requests/attempts, durable budget and unknown liabilities, structured responses and safe Context
+  integration. Move already locked jsonschema4.26.0 to runtime without package upgrades. Existing main delivery
+  authority persists; paid/live calls require concrete numeric budget, current capability and credential prerequisites.
+  No Canon/Writer/Workflow or broad security bypass. Local implementation first; CI only at key readiness. This
+  is implementer scope transcription, not verbatim human message.
+action: PREPARE
+inputs:
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-019/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: 07_PLATFORM_SECURITY_AND_DELIVERY.md
+  ref: validation/execution/V2-019/inputs/f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033.txt
+  sha256: f0d4e4d6fae522c43808ca4ef898cac62b431acb181039dbe7261911e5b81033
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-019/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-019/inputs/2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0.txt
+  sha256: 2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-019/inputs/eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a.txt
+  sha256: eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-019/inputs/0e695578102cfe30018916d301af64cdcfc06c34ed6c4f6e48f92dd62a45c9b9.txt
+  sha256: 0e695578102cfe30018916d301af64cdcfc06c34ed6c4f6e48f92dd62a45c9b9
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-019/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+expected_outputs:
+- src/anovel/gateway
+- model-policy.yaml
+- tests/integration/test_v2_019.py
+allowed_paths:
+- src/anovel/gateway
+- src/anovel/gateway/
+- model-policy.yaml
+- tests/contract/test_v2_019.py
+- tests/integration/test_v2_019.py
+- tests/live_provider/test_v2_019_live.py
+- scripts/run_gateway_probe.py
+- scripts/ci/run_gate.py
+- tests/contract/test_delivery_gates.py
+- pyproject.toml
+- uv.lock
+- plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md
+- plan/validation/execution/V2-019/
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/machine/decision-register.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- AGENTS.md
+- plan/README.md
+required_decisions:
+- ADR-010
+claims: []
+estimate:
+  range: null
+  unit: null
+  assumptions: []
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- Would overwrite user changes
+- Need second Canon writer/SQL or new Delta operator
+- Need weakened gate/test or secret approval expansion
+- Need paid Provider or fictitious human fixture approval
+review_notes:
+- Dependency V2-018 closed at5b2cc08/run43862354086
+- ADR010 accepted before Gateway interfaces; mandatory before live
+- OpenAI selected; model/capability/key/numeric live budget not yet verified
+- jsonschema runtime move required for real production response validation; no package upgrade
+handoff:
+  current_step: 'PREPARE: OpenAI chosen, current requirements and provider structured-output docs inspected'
+  completed_steps:
+  - Confirmed main clean at3845dfe
+  - Defined scoped durable budget/UNKNOWN and no implicit retries
+  pending_items:
+  - Pin scope and pass IMPLEMENT action
+  - Implement/test without paid calls
+  - Prepare concrete live request and collect missing numeric authorization/credential/capability before real Provider
+    evidence
+  next_action: PREPARE
+  last_check:
+    status: NOT_RUN
+    artifacts: []
+    missing_artifact_reason: null
+change_review: null

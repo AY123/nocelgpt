@@ -1,0 +1,17 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-010-20261116-local
+evidence_type: ADR_DECISION
+subject_id: ADR-010
+revision: 3845dfe3d639d43de74cecdfb9124c95c47ffb0f
+status: PASS
+producer: Same implementing/verifying operator under V2-019 authorization; not independent personnel audit
+executed_at: '2026-11-16T12:55:14.111515+00:00'
+environment_fingerprint: Existing locked Python3.12.14/uv0.12.17; design accepted before interface implementation
+artifacts:
+- ref: decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md
+  sha256: 5f2bcee736a1ccbf58fa2edb242806f1e8fca14a3189992dc4b944b079bfaafc
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: Stable scoped logical requests and attempts, durable reserve/UNKNOWN/settlement, explicit model policy
+  and no implicit retries. OpenAI chosen; no live call without numeric authority/capability/credential.

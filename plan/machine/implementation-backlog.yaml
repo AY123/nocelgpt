@@ -1207,10 +1207,10 @@ tasks:
   - 不绕过前置阶段门禁
   - 不实现模型训练、Agent Swarm 或自动发布
   - 不靠省略强制上下文项降低成本
-  status: OPEN
-  execution_packet_ref: null
+  status: IN_PROGRESS
+  execution_packet_ref: validation/execution/V2-019/execution-packet.yaml
   owner_role: gateway-maintainer
-  readiness: PLANNED
+  readiness: READY_TO_START
   start_gate: G-P4
   required_decisions:
   - ADR-010

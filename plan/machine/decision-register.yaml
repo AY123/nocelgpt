@@ -107,14 +107,14 @@ decisions:
   verification_refs: []
 - id: ADR-010
   title: Provider UNKNOWN 预算与逻辑请求身份
-  status: REQUIRED
+  status: ACCEPTED
   owner_role: gateway-maintainer
   related_tasks:
   - V2-019
   - V2-027
   decision_due_task: V2-019
   timing: before_live_call
-  decision_record: null
+  decision_record: validation/execution/V2-019/adr-010-decision.yaml
   verification_refs: []
   required_refinements:
   - 补充调用前预算预留、UNKNOWN 待核、重启/fallback/修复共享上限
