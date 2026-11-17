@@ -21,7 +21,7 @@ scope: 'User-authorized V2-019 recovery: reconcile committed differences and fre
   Preserve original implementation evidence and exact allowed_paths. Current window changes only V2-019 recovery/context
   records and model-policy.yaml. No paid Provider calls, numerical live authority, V2-020 implementation, Gateway
   interface changes or CI dispatch.'
-action: PREPARE
+action: IMPLEMENT
 inputs:
 - source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
   ref: validation/execution/V2-019/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
@@ -132,14 +132,14 @@ review_notes:
 - Recovery authority is the exact user message in resume-20261117/authorization.txt.
 - Original 9777956 scope and 6ab1474 implementation review retained; committed changes through cefeaaf individually
   reconciled in DIFF_ATTRIBUTION.json.
-- PREPARE bootstrap only until new scope/review Git pins and the actual action entry are valid; old pins do
-  not authorize this recovery.
+- Recovery scope fixed at9f80d0a; actual index/worktree check and separate review pin required before policy
+  refresh. Historical pins remain in DIFF_ATTRIBUTION.json.
 - Existing allowed_paths retained exactly; V2-020 and plan/validation/plan-validation.json are not added.
 - No paid calls, credential reading, remote CI or V2-020 implementation. Account capability and final acceptance
   remain unverified.
 handoff:
-  current_step: 'PREPARE: committed-difference attribution complete; freezing recovery scope before policy
-    refresh. Prior 2216 tests/0skip are historical local evidence, not rerun results.'
+  current_step: Recovery scope fixed at9f80d0a; completing actual difference review before refreshing the public-source
+    probe policy. No paid calls or remote CI.
   completed_steps:
   - IMPLEMENT entry passed with fixed scope/review pins
   - Implemented closed request/model/result contracts, durable SQLite budgets and single-use dispatch
@@ -152,11 +152,13 @@ handoff:
   - Verify current public pricing/model capability and refresh bounded probe policy without paid calls.
   - Await explicit numerical live budget and secure credential/account capability prerequisites.
   - Controlled Provider evidence and final exact-source six-gate CI/acceptance remain future work.
-  next_action: PREPARE
+  next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
     - ref: validation/execution/V2-019/LOCAL_RESULTS.json
       sha256: 851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600
     missing_artifact_reason: null
-change_review: null
+change_review:
+  scope_revision: 9f80d0ad7433ff00f19701f8ce53504f9ff90ecd
+  scope_ref: plan/validation/execution/V2-019/resume-20261117/scope.json

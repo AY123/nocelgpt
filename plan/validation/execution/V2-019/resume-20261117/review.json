@@ -1,0 +1,22 @@
+{
+  "task_id": "V2-019",
+  "baseline_pin": {
+    "revision": "9f80d0ad7433ff00f19701f8ce53504f9ff90ecd",
+    "ref": "plan/validation/execution/V2-019/resume-20261117/scope.json",
+    "sha256": "7a01dec597e5da7e62506cad0075f877dd38a876ede502c6e4d09d8311cd482a"
+  },
+  "dispositions": [],
+  "review_scope": "Resumed window only. Original implementation/backlog findings separately preserved and reconciled in DIFF_ATTRIBUTION.json; zero current findings is not historical implementation acceptance.",
+  "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+  "observed_report": {
+    "ref": "dist/recovery/v2019-20261117-01/scope-before-review.json",
+    "sha256": "ca78aa9b58beb6711a886eb72480ed5390b4be8f22f807358ab0407f68e54e22",
+    "changes": 8,
+    "findings": 0,
+    "status": "PASS"
+  },
+  "authorization_limits": [
+    "No new scope path, exception grant, paid Provider dispatch, remote CI or V2-020 implementation.",
+    "Subsequent actual differences must pass the pinned scope and weakening check again."
+  ]
+}
