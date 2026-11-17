@@ -1,0 +1,23 @@
+# ADR-008 — 不可变规划版本与有限 Contract 编译
+
+2026-11-14；V2-017。依据用户“复用现有结果完成P3汇总验收，随后进入Contract Compiler”授权，由同一实施/验证操作者作设计决定和技术交叉检查，不称独立人员审核。
+
+## 决定
+
+1. Planning只保存人工输入或人工审定的故事意图，不写Canon。SeriesVision→ArcPlan→ChapterPlan→ScenePlan均为封闭冻结值；只有PlanVersion统一版本化，保留完整规范字节。Goal/Intent/KnowledgeState使用现有domain类型的显式快照，不假设当前Canon已经持久化它们。快照必须绑定项目、事实及来源；错误Belief不能变为KNOWN。
+2. RequiredTransition是既有四种Delta操作的有限意图模板：target_id、operation、SET时的非null标量value及可选expected_state；path/version固定为原VALUE/1.0。编译读取真实baseline生成完整Precondition。BoundTransition.materialize只接受与目标/path/前值一致的未来真实OperationMeta。编译前不捏造正文证据，可明确HYPOTHETICAL_PLAN_ONLY纯预演复用preview_delta及已登记扩展，临时meta不输出为正文事实/Permit。无required的安静章节合法，不制造空Delta。
+3. 必需/禁止转移、保护事实、知识/揭示边界和创作偏好分开。相同目标重复、required/forbidden冲突、protected冲突、过期前值、错误类型或未完整表达扩展代价等返回具体诊断；只判断当前有限提议可执行性，不冒称普遍可满足性证明。不改Canon来满足计划，不自动补资源或启用Genesis。
+4. CanonView.from_service通过仅有rebuild_snapshot/load_root/load_commit的只读端口取得真实已接受历史目标，随后不持有service/engine。checkpoint数给出下一章号；不使用不存在的sequence字段，也不声称该历史parent一定是最新HEAD，最终新鲜度/CAS由既有提交边界负责。生产不新增DB表、写入口或Delta操作。
+5. 第一章明确无前章；后续ContinuationEvidence绑定真实前章commit、candidate ID、原始prose hash和末段Unicode范围/引用文本，并保存本章起点意图与接续方式。前章/parent变化使旧合约失效；结束时间/地点/视角/未完成动作可以显式UNKNOWN，不能由章纲钩子代替实际正文证据。编译不声称验证所有语义结束状态。
+6. PlanVersion有ID/revision/parent_hash/fixture_hash/完整vision。旧版本不回写superseded_by；PlanHistory用独立Supersession(old_hash,new_hash,reason,authority_ref)边和FrozenChapter(chapter_id,payload_hash)记录冻结边界。只允许显式采用未冻结未来内容的修订，不能编辑已冻结/接受部分；拒绝失效版本编译。所有旧字节保留。
+7. 依赖变化按显式输入身份/内容比较生成有范围的Invalidation/PlanDiff/ReplanProposal；提议没有采用权或Canon写权。不做自动循环。未改变内容可据payload hash列为可复用，但必须重绑定编译新合约，旧contract不能冒充新版本。未来章节在真实parent可用前只保留计划，不假编译未来Canon。
+8. CompiledContract完整绑定并保留fixture/plan/Canon/Pack/knowledge/continuity规范输入及hash、编译器/政策版本和逐scene约束。完整作者输入标AUTHOR_REVIEW_ONLY，不能直接当Writer上下文；V2-018后续按角色裁剪。纯编译结果不授予Permit，不实现Q3评分、Writer、ContextCompiler或生产放行。
+9. StoryFixture由显式Pack、RootSeed、KnowledgeState规范bytes、vision和知识/揭示边界构成，另有可读世界/冲突/选择代价/对手应对/承诺说明。AI生成的两书基线保持DRAFT，只有实际Owner审定才能形成AT-V2-017-04证据。结构化review_ref/status不是独立身份认证或生产授权；单元测试的合成审定不能代替真实人工审定。缺真实输入只阻断该项和最终验收，不阻断正确性实现。
+
+## 实施接口与范围
+
+planning/models.py拥有SeriesVision、ArcPlan、ChapterPlan、ScenePlan、RequiredTransition、ForbiddenTransition、KnowledgeBoundary、RevealBoundary和StoryFixture；planning/versions.py拥有PlanVersion、PlanHistory、FrozenChapter、Supersession及显式adopt_revision；planning/replanning.py仅消费通用输入身份/plan版本生成提议，不反向import contracts。
+
+contracts/models.py拥有CanonReadPort/CanonView、BoundTransition、ContinuationEvidence、CompiledContract及CompilationResult；contracts/compiler.py提供确定性compile_contract（或Compiler.compile同一入口），返回contract或诊断/重规划提示，不持写能力。JSON边界精确闭集，所有输出为新副本/完整canonical bytes，复用ADR005，不新增依赖；实际Python类型/封闭序列化是本轮唯一运行数据源，若提供Schema必须用正反例对账。
+
+保留原八项AT断言。测试需覆盖两Anchor、真实PG只读输入、原四操作和扩展组合、错误belief/安静章节、真实末段hash/UNKNOWN、冻结未来修订及有范围失效、完整序列化/确定性、拒绝后Canon不变。人工双书审定单独核实，未取得前不关闭任务/P4，不用Mock代替人类或市场证据。

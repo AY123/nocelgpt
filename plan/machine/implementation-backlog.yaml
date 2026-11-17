@@ -1268,7 +1268,7 @@ tasks:
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
   status: OPEN
-  execution_packet_ref: null
+  execution_packet_ref: validation/execution/V2-020/execution-packet.yaml
   owner_role: workflow-maintainer
   readiness: PLANNED
   start_gate: G-P5

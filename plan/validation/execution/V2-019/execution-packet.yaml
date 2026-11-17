@@ -4,7 +4,7 @@ task_id: V2-019
 plan_version: 1.3.0
 repository_revision: 3845dfe3d639d43de74cecdfb9124c95c47ffb0f
 worktree_dirty: false
-plan_manifest_sha256: 9e81d886b0ead6ab7806e04afcaf391b1a03f49fae1f1074026cd586df036e1b
+plan_manifest_sha256: fd0c2f4c3bf5afd9419f4649a3fe6e313cbb9884da8e4e8670943ee434705d07
 environment:
   fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; existing jsonschema4.26.0 moved to runtime,
     package versions unchanged
@@ -34,8 +34,8 @@ inputs:
   ref: validation/execution/V2-019/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-019/inputs/2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0.txt
-  sha256: 2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0
+  ref: validation/execution/V2-019/inputs/240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230.txt
+  sha256: 240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230
 - source_ref: machine/test-catalog.yaml
   ref: validation/execution/V2-019/inputs/eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a.txt
   sha256: eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a
@@ -95,6 +95,9 @@ review_notes:
 - ADR010 accepted before Gateway interfaces; mandatory before live
 - OpenAI selected; model/capability/key/numeric live budget not yet verified
 - jsonschema runtime move required for real production response validation; no package upgrade
+- Context reconciliation only; V020 OPEN/PREPARE replay packet added by user request.
+  V019 implementation/live-call scope, source pins, local test receipt and task status unchanged.
+  Before resuming V019 restricted action/final CI, reconcile actual changes with its fixed scope/review pins.
 handoff:
   current_step: Implementation pinned at6ab14746bda68310ba079a8c68a5d1352c3564d8;2216 local tests/0skip and
     all local checks PASS. Await concrete live budget, API key and account model capability; paid calls0, CI0.

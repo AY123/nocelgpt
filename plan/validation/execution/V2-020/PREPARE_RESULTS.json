@@ -1,0 +1,139 @@
+{
+  "kind": "V2_020_PREPARE_LOCAL_RESULTS",
+  "base_sha": "18a4d750baa256ae6e72f31f5f93dd2aba30d3d0",
+  "source_kind": "LOCAL_WORKTREE_NOT_REMOTE_CI",
+  "task_status": "OPEN",
+  "action": "PREPARE",
+  "replay": "STRUCTURAL_REPLAY_PASS",
+  "chapters": 3,
+  "tests": {
+    "passed": 54,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_files": [
+    {
+      "path": "plan/validation/execution/V2-020/prepare/replay.py",
+      "sha256": "38ccb7fcf626ed3582bb100e1aeb4c5103c24b65119defef9ba90b410271c024"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/chapter1.txt",
+      "sha256": "1b1fb6a8577b22f24eab89e5484298599b081309ceb66e9fc428fbd0d765542c"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/chapter2.txt",
+      "sha256": "155030a44b0e8723348019b9e1619d5b637195c3e9ff7885cd12f0d01e5a765d"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/chapter3.txt",
+      "sha256": "81965d5bea747e81f7b6df9e03785b8de0617f489414ef3fd0dbbd859fdf0b84"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/provenance.json",
+      "sha256": "7edfc691de7e38e0bfdf78485c0b88beecf2a06b4112efb4ee587f8861d7450c"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/replay.json",
+      "sha256": "489746dac2239f7fff2aa0c89c3d510eff2ecc4fb376495e9a596d9c01864df4"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/review.json",
+      "sha256": "0cf6660d21ffec1920d289837977f17f9e06d84e8a126af69793317c17311ade"
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/test_replay.py",
+      "sha256": "0115effd4aae2396bf2349822d5b86369be045a12c23dffd6cd4ff436314d81c"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "dist/validation/v2020-prepare-20261117/replay-junit.xml",
+      "sha256": "0a491d989480cf7430eee138618e382f622705848700d835bf6e961bd6f879a4"
+    },
+    {
+      "path": "dist/experiments/window-urban-replay-20261117/final/replay-report.json",
+      "sha256": "9130fa9682501d064e81cd9fe9b769164c30f77179653d108679e4c4f047c3eb"
+    },
+    {
+      "path": "dist/experiments/window-urban-replay-20261117/final/next-writer-input.json",
+      "sha256": "6b1ae9c1a711491e345a7ca555614f84af89245be216cebd9c70fc8419ae0339"
+    },
+    {
+      "path": "dist/validation/v2020-prepare-20261117/static/receipt.json",
+      "sha256": "6f1cc017eb6f7f2bedf2981daa3cfc5c3e150c7100730e97e57e7d5526a953ed"
+    },
+    {
+      "path": "dist/validation/v2020-prepare-20261117/architecture.json",
+      "sha256": "cbb86b15373790e5f561168b6a11e9b809b07c7ba2f4ac4a36acf75bc25f4b39"
+    },
+    {
+      "path": "dist/validation/v2020-prepare-20261117/governance-final/governance-summary.json",
+      "sha256": "2559a7d3ac62a9af96aad2b030c482d1ae46af37cae82af9968760fb9e06a623"
+    },
+    {
+      "path": "dist/validation/v2020-prepare-20261117/replay-entry.json",
+      "sha256": "26c68f92089e4968c96220c5f4876222f45284f6d424ebb83263b66f0e9c3a86"
+    },
+    {
+      "path": "dist/validation/v2020-prepare-20261117/secret-final/secret-scan.json",
+      "sha256": "ee9e81065dacd1d1b372f74054fc586338a801e8193215b4716156218209661f"
+    }
+  ],
+  "command_results": [
+    {
+      "command": ".venv/bin/pytest -q plan/validation/execution/V2-020/prepare/test_replay.py",
+      "exit_code": 0,
+      "result": "54 passed, 0 failed/error/skip"
+    },
+    {
+      "command": ".venv/bin/python -B scripts/task_execution.py run --task V2-020 --action PREPARE ... -- .venv/bin/python -B plan/validation/execution/V2-020/prepare/replay.py ...",
+      "exit_code": 0,
+      "result": "Three chapter structural replay PASS; outputs under dist/experiments/window-urban-replay-20261117/final"
+    },
+    {
+      "command": ".venv/bin/python -B scripts/ci/run_gate.py static --output-dir .../static",
+      "exit_code": 0,
+      "result": "All five STATIC commands PASS; local only"
+    },
+    {
+      "command": "Ruff format/check and MYPYPATH=src mypy for preparation tool",
+      "exit_code": 0,
+      "result": "PASS"
+    },
+    {
+      "command": ".venv/bin/python -B scripts/check_architecture.py --output .../architecture.json",
+      "exit_code": 0,
+      "result": "42 production files, 0 finding"
+    },
+    {
+      "command": ".venv/bin/python -B scripts/check_governance.py --output-dir .../governance-final",
+      "exit_code": 0,
+      "result": "5/5 checks PASS including positive legacy control; no validator or threshold changes"
+    },
+    {
+      "command": "scripts/ci/check_security.scan_secrets with pinned cached gitleaks8.21.2, full history+tracked worktree",
+      "exit_code": 0,
+      "result": "54 detected/54 existing decisions consumed; no new/unapproved/unused approval. Dependency audit not rerun: no dependency changes."
+    }
+  ],
+  "review": "Same implementing/verifying operator with delegated AI technical cross-checks; no independent personnel or human reader review.",
+  "limits": [
+    "Existing finite facts are pure-previewed; knowledge/message/qualification prose annotations are explicitly reviewed candidate notes, not an automatic semantic extractor.",
+    "Hash consistency is not evidence of reviewer authority or prose truth. Historical provenance citations were manually checked; runtime does not authenticate old dist artifacts.",
+    "No production Workflow, Canon writer, Permit, accepted transition, Provider call or remote CI.",
+    "V019 actual Provider/P5 prerequisites remain unresolved; V020 OPEN/PREPARE and acceptance scenarios unchanged."
+  ],
+  "observed_utc": "2026-11-17T03:11:54.050724+00:00",
+  "preparation_fixes": [
+    "Initial legacy positive control exposed incidental copied-input hash interactions with duplicate claims/shared CLOSED packet snapshots. Removed a new redundant task-state claim (existing machine/task-entry checks retained); reused active V019 snapshots only and kept separate copies from CLOSED records. Old failed probe outputs retained; final five-check aggregate PASS."
+  ],
+  "remaining": [
+    "V019 real OpenAI account/key/capability and approved numeric budget/evidence are still pending. No paid call.",
+    "Before any V019 restricted action/final CI, reconcile current authorized preparation changes with its fixed historical scope/review pins.",
+    "V020 production Workflow and Q0-Q3 integration are not implemented or accepted by this PREPARE experiment.",
+    "AI-reviewed candidate annotations are not general semantic extraction or human literary-quality evidence."
+  ],
+  "remote_ci_triggered_by_this_task": 0,
+  "remote_main_observed_before_delivery": "18a4d750baa256ae6e72f31f5f93dd2aba30d3d0 (git ls-remote, no CI dispatch)"
+}

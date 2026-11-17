@@ -1,0 +1,188 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-020
+plan_version: 1.3.0
+repository_revision: 18a4d750baa256ae6e72f31f5f93dd2aba30d3d0
+worktree_dirty: false
+plan_manifest_sha256: fd0c2f4c3bf5afd9419f4649a3fe6e313cbb9884da8e4e8670943ee434705d07
+environment:
+  fingerprint: Local Darwin; existing locked Python 3.12.14 and uv 0.12.17; offline PREPARE prototype only
+  runtime_versions:
+    python: 3.12.14
+    uv: 0.12.17
+  database_image: null
+  ci_context: null
+implementer: Codex primary operator with bounded delegated PREPARE work
+verifier: Same implementing/verifying operator with AI cross-checks; not independent personnel audit
+owner_role: workflow-maintainer
+scope: 'User explicitly requested V2-020 PREPARE: an offline draft continuation replay tool turning the three existing
+  trial chapters into repeatable checks. Create only the isolated preparation prototype, fixtures, tests and reports
+  under plan/validation/execution/V2-020/prepare/, plus this packet/input binding and the backlog execution_packet_ref.
+  Keep V2-020 OPEN/PREPARE, its dependencies/start gate/acceptance unchanged, and V2-019 IN_PROGRESS with live Provider
+  evidence unresolved. Read existing experiment sources without changing them; reuse existing pure public APIs.
+  No production Workflow implementation, new business/approval model, Canon/Permit/accepted/published transition,
+  DB writes, runtime network/API/paid call or CI trigger. Existing main delivery authority is unchanged. The two
+  task artifact paths in expected_outputs/allowed_paths are future IMPLEMENT deliverables required by the unchanged
+  packet checker, not current PREPARE write authorization; creation or modification of those production files is
+  prohibited in this action. The main operator coordinates any necessary generated-view/manifest synchronization.'
+action: PREPARE
+inputs:
+- source_ref: 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
+  ref: validation/execution/V2-020/inputs/710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9.txt
+  sha256: 710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-020/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-019/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: 02_ARCHITECTURE_BASELINE.md
+  ref: validation/execution/V2-020/inputs/14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0.txt
+  sha256: 14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-019/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-019/inputs/240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230.txt
+  sha256: 240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-019/inputs/eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a.txt
+  sha256: eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-019/inputs/0e695578102cfe30018916d301af64cdcfc06c34ed6c4f6e48f92dd62a45c9b9.txt
+  sha256: 0e695578102cfe30018916d301af64cdcfc06c34ed6c4f6e48f92dd62a45c9b9
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-019/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+- source_ref: decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md
+  ref: validation/execution/V2-020/inputs/88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e.txt
+  sha256: 88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e
+- source_ref: validation/execution/V2-017/adr-008-decision.yaml
+  ref: validation/execution/V2-020/inputs/8736e66c2203a172052bdb7ff6b14f070cfe01a6a417c76c8625de0425d23362.txt
+  sha256: 8736e66c2203a172052bdb7ff6b14f070cfe01a6a417c76c8625de0425d23362
+- source_ref: validation/execution/V2-020/authorization.txt
+  ref: validation/execution/V2-020/inputs/049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922.txt
+  sha256: 049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922
+expected_outputs:
+- src/anovel/workflow/chapter.py
+- tests/contract/test_v2_020.py
+- plan/validation/execution/V2-020/prepare/
+- plan/validation/execution/V2-020/execution-packet.yaml
+- plan/validation/execution/V2-020/authorization.txt
+- plan/validation/execution/V2-020/inputs/
+allowed_paths:
+- src/anovel/workflow/chapter.py
+- tests/contract/test_v2_020.py
+- plan/validation/execution/V2-020/
+- plan/machine/implementation-backlog.yaml
+- plan/generated/
+- plan/FILE_MANIFEST.json
+- README.md
+- plan/README.md
+- plan/validation/execution/V2-019/execution-packet.yaml
+- plan/validation/execution/V2-019/inputs/
+required_decisions:
+- ADR-008
+claims:
+- id: PREPARE_AUTHORIZATION_BOUNDARY
+  kind: FACT
+  statement: The current user requested bounded V2-020 PREPARE; the recorded transcription limits this action to
+    an isolated offline draft replay prototype and does not authorize production Workflow implementation.
+  sources:
+  - ref: validation/execution/V2-020/inputs/049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922.txt
+    sha256: 049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922
+  blocks_actions: []
+  verification_plan: Compare actual changes and commands with the recorded current PREPARE scope before running;
+    stop any production/network/CI/Canon action.
+- id: DRAFT_REPLAY_SEMANTIC_LIMIT
+  kind: UNKNOWN
+  statement: Offline structure/provenance checks and typed finite previews do not establish complete prose semantics,
+    production acceptance, Provider evidence, human reading quality or independent review.
+  sources: []
+  blocks_actions:
+  - IMPLEMENT
+  - LIVE_CALL
+  - CERTIFY
+  verification_plan: Report the exact local checks and limits; preserve unknowns and require the later task action
+    prerequisites and genuine applicable evidence instead of promoting draft replay results.
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - Existing three chapter draft artifacts and locked local Python environment are available; no Provider or database
+    is required.
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- Actual changes exceed isolated PREPARE paths or would overwrite existing user changes or historical experiment
+  artifacts.
+- Need to create/modify production Workflow or formal AT-V2-020 tests, alter task identity/dependencies/stage/acceptance
+  or weaken a gate.
+- Need runtime network, paid Provider/API, CI trigger, production database write or Canon/Permit/accepted/published
+  transition.
+- Required input hash or final draft/review/mapping binding changes; invalidate affected derived results before
+  continuing.
+- Evidence is missing or contradictory; preserve UNKNOWN and do not self-declare semantic review or production acceptance.
+review_notes:
+- PREPARE permits isolated investigation and execution refinement. The offline prototype is a bounded preparation
+  artifact and cannot implement production interfaces under another name.
+- Existing execution_checks.py requires all task artifacts in expected_outputs and covered by allowed_paths even
+  for OPEN/PREPARE. The two production artifact entries are full-task future deliverable bookkeeping only; current
+  scope expressly forbids writing them. The checker is unchanged.
+- ADR-008 is already ACCEPTED; this preparation consumes its frozen-parent/finite-overlay/source-bound continuation
+  limits without fabricating accepted predecessor receipts.
+- The prepare fixture must bind final draft bytes, reviewed Delta/stateNotes mappings and exact source quotations;
+  previous candidate after must equal next before exactly. No numeric threshold substitute or notes-only reviewed
+  claim.
+- Unprovided role-private state is preserved, not cleared; sent/received/accepted and stock quantity/release qualification
+  remain separate. Hashes bind bytes and do not prove semantic truth.
+- No formal AT-V2-020 result, P6/G-P6 closure, novel quality, real Provider success or independent personnel review
+  is claimed.
+- Opening branch/HEAD/clean worktree were observed locally. No fetch was performed; origin/main is the local tracking
+  ref only.
+- Initial plan_manifest_sha256 binds the existing manifest; the main operator must refresh it after coordinated
+  view/manifest updates and reconcile active input snapshots.
+- Only necessary V019 active source/manifest context reconciliation is included; existing V019 local test receipts,
+  scope pins and task state are not promoted or expanded. Main delivery follows existing user authorization; no
+  CI dispatch.
+- Task/dependency state is checked from the existing machine-source input and PREPARE entry; no redundant FACT artifact
+  binding to that same mutable-input snapshot is added. The legacy fixture normalizer refreshes copied inputs, not
+  duplicate claims. Machine dependency/status checks are unchanged.
+- 'Reuse identical active V019 input snapshots to avoid duplicate large machine records. Keep separate copies from
+  CLOSED historical packets: the unchanged legacy synthetic probe rewrites copied active inputs and must not invalidate
+  historical artifact hashes.'
+handoff:
+  current_step: Three-chapter offline preparation replay and54/54 tests/0skip PASS; STATIC, architecture,5 governance
+    checks and full-history/worktree secret scan PASS. Main delivery next; V020 remains OPEN/PREPARE. No actual
+    Provider or remote CI.
+  completed_steps:
+  - Observed main at 18a4d750baa256ae6e72f31f5f93dd2aba30d3d0 with clean opening worktree and local origin/main
+    tracking alignment.
+  - Read current task, AT-V2-020 scenarios, required specifications, packet schema and ADR-008; recorded PREPARE
+    versus future IMPLEMENT scope.
+  - Created task-specific authorization transcription and recoverable current normative/control-input snapshots;
+    added only the V2-020 backlog packet reference.
+  - Read all three final prose files and normalized mappings; byte-bound AI technical review recorded with explicit
+    limits.
+  - Three chapter replay produced next-writer input;54 local positive/negative preparation controls PASS.
+  - V020 PREPARE task check and static production architecture check PASS; no production changes.
+  - Final5-check governance aggregate PASS after source-context reconciliation; fixed gates/validators unchanged.
+  - Local STATIC,42-file architecture scan and tracked-worktree/full-history secret scan54/54 existing decisions
+    PASS; no dependency changes.
+  pending_items:
+  - V019 real Provider/P5 evidence and formal V020 Workflow integration remain pending.
+  - Reconcile V019 fixed action/review pins before future restricted action/final CI; no scope expansion or task
+    status promotion performed here.
+  next_action: PREPARE
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-020/PREPARE_RESULTS.json
+      sha256: 961fae946a3f6dad8800d680d3a28a538078d0fa86f43fa98995d2b6192dd033
+    missing_artifact_reason: null
+change_review: null

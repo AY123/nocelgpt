@@ -1,0 +1,98 @@
+{
+  "kind": "DRAFT_REPLAY_PROVENANCE",
+  "schema_version": "1.0",
+  "review_sources": [
+    {
+      "path": "dist/experiments/window-urban-scene1-20261116/REVIEW_V2.json",
+      "sha256": "d135806bf0db62e63e7200ed19f399f8ca04ff27b5c6ef6bf0448a7a912b0e16",
+      "role": "Final chapter1 body cross-check; directly bound to DRAFT_V2."
+    },
+    {
+      "path": "dist/experiments/window-urban-scene1-20261116/WRITER_NOTES_V2.json",
+      "sha256": "e991fe0570f8fabc5419a050a30878d39ded0203bf2ca967a2e535aa86157f31",
+      "role": "Reviewed candidate continuity/cash notes; only selected explicit notes retained."
+    },
+    {
+      "path": "dist/experiments/window-urban-scene1-20261116/DELTA_PREVIEW.json",
+      "sha256": "e7cb10abcc9ea3d9f1a9314de1ad97b4269b57ccf63c5d94c8350cf7e09c97ac",
+      "role": "Historical paired cash component preview; source trace only, not a new run claim."
+    },
+    {
+      "path": "dist/experiments/window-urban-scene1-20261116/CONTINUATION_FOR_WRITER.json",
+      "sha256": "8f36a41a1e5542b3e180b8a5692cde882edae8f2fedb3d659801fd706e0a279d",
+      "role": "Writer-safe actual chapter1 ending and candidate continuation."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter2-20261116/REVIEW_V1.json",
+      "sha256": "1f7c16b4c60973bbfb54a3acd576275d69ba5b3e087cb7ecbbed618d8aa0a75b",
+      "role": "Final chapter2 body cross-check; directly bound to CHAPTER2_V1."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter2-20261116/METADATA_REVIEW.json",
+      "sha256": "f2cd37bdc0e4ac25fda92ca1b0334d7b20f13ab65869a7eebe64f0c62bbc459e",
+      "role": "Accepted correction: unprovided Writer input must not clear Zhao preexisting knowledge."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter2-20261116/METADATA_CORRECTION.json",
+      "sha256": "86bf1e96ab8b653ad7936fca3614227ddbb111eff03d27f4c304ffb9bfe86000",
+      "role": "Original chapter2 notes retained historically; only reviewed correction consumed."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter2-20261116/WRITER_NOTES_REVIEWED.json",
+      "sha256": "1daecf9dbe673a6f8da8a9dfd0251418c6ab88df6d6db6d770bbf044f79c1b38",
+      "role": "Corrected chapter2 candidate notes; raw WRITER_NOTES_V1 is not consumed."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter2-20261116/CONTINUATION_FOR_WRITER.json",
+      "sha256": "54f91318fd9c97597180533e05815842332631c246a8afbd9d3837e3f06d59d2",
+      "role": "Safe chapter2 continuation; sent inquiry does not establish receive/read/accept."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/REVIEW_V1.json",
+      "sha256": "3795f50c80fe4304eaf4cc10d3b8c85bd203106eb9741dae0cb54f7f1dde4cd2",
+      "role": "Chapter3 V1 technical body cross-check with one mandatory inference restriction."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/REVISION.json",
+      "sha256": "bedc0da3698aa7b7db538cfc464c7af5b274da8e359b7fdd21ea78522113744c",
+      "role": "Exact one-paragraph replacement maps V1 to final V2; all other prose unchanged."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/REVIEW_V2.json",
+      "sha256": "8a4b584573be1af9bbfa633a1a6c5d13166758578952388419a2bdb3682e1c91",
+      "role": "Narrow final V2 correction/hash receipt; inherits V1 checks, not a new whole-body review."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/WRITER_NOTES_REVIEWED.json",
+      "sha256": "b47dc0b98dd9ac4a988e4db884322a15aa2fdcebc00886ed055a8e008e225dfc",
+      "role": "Final V2 notes with receipt-time correction; raw V1 notes are not consumed."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/COMPONENT_PREVIEW.json",
+      "sha256": "94c8a532944902e27f4c45b67d2cf8f7a3c97e12f82f72bb81117bd164e40d40",
+      "role": "Historical finite component mapping; old belief persists and quantity is not quality."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/CONTINUATION_FOR_WRITER.json",
+      "sha256": "cae7f62acb839191b230ee07866cf312ca03cae6417002ea1d0b5f25a7a727d4",
+      "role": "Final chapter3 continuation and limited publication/credit/stance semantics."
+    },
+    {
+      "path": "dist/experiments/window-urban-chapter3-20261117/PRODUCT_REGRESSION_CANDIDATES.json",
+      "sha256": "0e714edd1887c1e02c8b0afddd1e9c98760594b64537484c9eb5bcd582ab7958",
+      "role": "AI-reviewed product cases; explicitly not human Gold or an automated suite."
+    }
+  ],
+  "extraction_notes": [
+    "PREPARE offline sample only. Three final bodies are exact byte copies. No prior experiment artifact is modified.",
+    "Notes are explicit reviewed candidate annotations, not automatic semantic extraction, accepted Canon, independent human review, human Gold, reader/market evidence or formal Workflow certification.",
+    "Chapter1/2 notes do not export hidden true values or infer character UNKNOWN from unprovided Writer input. Private author-side knowledge/sources are preserved.",
+    "Chapter3 truth visibility requires the explicit revealed_facts body evidence. A scheduled chapter boundary alone does not establish actual acquisition or authorize disclosure.",
+    "Each changed note and each typed operation has one current-body Unicode half-open span; unchanged notes are carried. Ending includes the exact final paragraph and trailing newline.",
+    "Initial and sequential baseline hashes are canonical_bytes(FactBaseline.to_dict()) hashes. Deltas are existing PROPOSED_DELTA objects and previewed only with registered extensions and user-authorized-local-preview-not-commit.",
+    "Original delta evidence_ref values remain historical references. Current copied body hash plus exact quote spans are the local replay evidence, not proof that historical APIs or CI ran again.",
+    "Chapter2 original WRITER_NOTES_V1 and chapter3 original WRITER_NOTES_V1 are provenance only and must not supply current notes; chapter3 final review is V1 review plus exact revision plus V2 narrow check.",
+    "No large Writer Context, base64 Contract, reviewer-only baseline, full author hidden input or source_key material is copied. No secret-scanner exclusions or thresholds are changed.",
+    "Historical belief retention is distinguished from current narrative stance; a new true acquisition does not claim automatic old-belief deletion. Received material is distinguished from reading, agreement and acceptance."
+  ]
+}

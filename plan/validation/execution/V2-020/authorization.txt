@@ -1,0 +1,16 @@
+V2-020 PREPARE 授权与范围记录（2026-11-17）
+
+当前用户直接授权的原句：
+“下一步做 V2-020 PREPARE：草稿接续回放工具，把三章试写转成可重复验证的产品能力”
+
+本记录由实施操作者转录当前会话授权和本次执行边界；不是独立身份认证、生产许可或工程验收。
+
+本次可执行范围：在 plan/validation/execution/V2-020/prepare/ 内形成隔离、离线、无数据库写入的草稿接续回放准备原型，包含工具、固定三章来源的 fixtures、正反例测试及本地报告。复用现有公开的纯值对象和 preview API；不引入生产 Workflow 内核、业务模型、批准框架或第二 Canon 写路径。不更改 dist/experiments/ 的原始试写产物。
+
+可维护 V2-020 执行包、输入快照及 backlog 的 execution_packet_ref；必要生成视图/manifest 同步由主操作者统一处理。本次 V2-020 保持 OPEN/PREPARE，任务身份、P6阶段、V2-019/V2-011依赖、G-P5准入和AT-V2-020正式验收场景保持不变。V2-019保持IN_PROGRESS，真实Provider调用、账户能力/数值预算及最终CI尚未验证。
+
+禁止本次创建或修改 src/anovel/workflow/chapter.py、tests/contract/test_v2_020.py 及任何其他生产源码。现有执行包检查器要求 OPEN/PREPARE 也登记完整任务 artifacts，并要求这些 expected_outputs 由 allowed_paths 覆盖；包内保留上述两个路径仅供全任务未来 IMPLEMENT 产物登记和现有检查器结构兼容，绝不表达本次可执行的写授权。不能以此把 PREPARE 改称 IMPLEMENT 或绕过依赖/阶段门禁。
+
+原型运行不进行网络、Provider API、付费调用、GitHub Actions触发、Canon/Permit/accepted/published生产状态变更、生产数据库写入。日常main提交/同步继续服从既有用户授权，不属于原型的运行能力。本次报告只陈述离线结构/来源绑定和有限组件回放结果；hash不证明语义真实、来源授权或审核者独立，不以notes自称reviewed替代实际来源绑定，不宣称自动全文语义校验、真人读稿或工程验收。
+
+开工实际核对：main，HEAD 18a4d750baa256ae6e72f31f5f93dd2aba30d3d0；git status --short --branch 显示 main...origin/main，工作区干净。未联网fetch，本记录仅据本地远程跟踪引用说明同步状态。实施和验证可由同一操作者承担，多个AI角色不构成独立人员审核。
