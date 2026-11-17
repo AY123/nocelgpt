@@ -1,0 +1,426 @@
+{
+  "record_type": "v2019_resume_change_attribution",
+  "schema_version": "1.0",
+  "task_id": "V2-019",
+  "base_revision": "6ab14746bda68310ba079a8c68a5d1352c3564d8",
+  "target_revision": "cefeaaf4a1889fdaf9c19a55de6621a1e1daa3c9",
+  "original_opening_revision": "3845dfe3d639d43de74cecdfb9124c95c47ffb0f",
+  "previous_scope_pin": {
+    "revision": "97779567fac92ce6b2acf3c01994ee934c0c8a11",
+    "ref": "plan/validation/execution/V2-019/scope.json"
+  },
+  "previous_review_pin": {
+    "revision": "6ab14746bda68310ba079a8c68a5d1352c3564d8",
+    "ref": "plan/validation/execution/V2-019/implementation-review.json"
+  },
+  "previous_packet_pin": {
+    "revision": "cefeaaf4a1889fdaf9c19a55de6621a1e1daa3c9",
+    "ref": "plan/validation/execution/V2-019/execution-packet.yaml",
+    "sha256": "9240a78189c42b5cab88cc85a1f9676c22ac5e2fea52ddd32bdfdbfac2752195"
+  },
+  "commits": [
+    {
+      "revision": "18a4d750baa256ae6e72f31f5f93dd2aba30d3d0",
+      "owner": "V2-019",
+      "purpose": "Implementation-review pin and handoff only"
+    },
+    {
+      "revision": "cefeaaf4a1889fdaf9c19a55de6621a1e1daa3c9",
+      "owner": "V2-020/PREPARE and V2-019 input reconciliation",
+      "purpose": "Offline replay preparation and synchronized context; no formal Workflow implementation"
+    }
+  ],
+  "file_changes": [
+    {
+      "path": "README.md",
+      "status": "M",
+      "owner": "V2-020/planning-synchronization",
+      "old_sha256": "ab19c781559f23f777e383eb0214a1709827a259ea6dd259b03f9d2aa53ffd28",
+      "new_sha256": "65eeab0cf1da3853021ec5ea6f45a6468ee65af39cb0ad6bbe23f877b3418681",
+      "reason": "Existing PREPARE pointer/documentation/manifest/local report synchronization; not V2-019 implementation."
+    },
+    {
+      "path": "plan/FILE_MANIFEST.json",
+      "status": "M",
+      "owner": "V2-020/planning-synchronization",
+      "old_sha256": "9e81d886b0ead6ab7806e04afcaf391b1a03f49fae1f1074026cd586df036e1b",
+      "new_sha256": "fd0c2f4c3bf5afd9419f4649a3fe6e313cbb9884da8e4e8670943ee434705d07",
+      "reason": "Existing PREPARE pointer/documentation/manifest/local report synchronization; not V2-019 implementation."
+    },
+    {
+      "path": "plan/README.md",
+      "status": "M",
+      "owner": "V2-020/planning-synchronization",
+      "old_sha256": "14a0b1bcf872bf6e2771e31f94168c7c4d8199652c28d42a5e60140079fe4209",
+      "new_sha256": "0a04e93d882716b9bf3d77873857560bcd93d62ac5b3b4fe00c5e0804ef85761",
+      "reason": "Existing PREPARE pointer/documentation/manifest/local report synchronization; not V2-019 implementation."
+    },
+    {
+      "path": "plan/machine/implementation-backlog.yaml",
+      "status": "M",
+      "owner": "V2-020/planning-synchronization",
+      "old_sha256": "2f0ed15375cfdc31f7357e90c0a720200c3861017ab09679dd3446bf522326f0",
+      "new_sha256": "240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230",
+      "reason": "Existing PREPARE pointer/documentation/manifest/local report synchronization; not V2-019 implementation."
+    },
+    {
+      "path": "plan/validation/execution/V2-019/execution-packet.yaml",
+      "status": "M",
+      "owner": "V2-019/context-reconciliation",
+      "old_sha256": "1554817be7b827bf9272cac433a3fe3372f87428c4b2cfad29ab338d7f057b46",
+      "new_sha256": "9240a78189c42b5cab88cc85a1f9676c22ac5e2fea52ddd32bdfdbfac2752195",
+      "reason": "Existing handoff/pin binding or current backlog input snapshot; no Gateway implementation change."
+    },
+    {
+      "path": "plan/validation/execution/V2-019/inputs/240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230.txt",
+      "status": "A",
+      "owner": "V2-019/context-reconciliation",
+      "old_sha256": null,
+      "new_sha256": "240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230",
+      "reason": "Existing handoff/pin binding or current backlog input snapshot; no Gateway implementation change."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/PREPARE_RESULTS.json",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "961fae946a3f6dad8800d680d3a28a538078d0fa86f43fa98995d2b6192dd033",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/authorization.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/execution-packet.yaml",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "4b7bc6f5549c79d328a4f8f4310225eed7406da22de3df0383f0aec584cce676",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/inputs/049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/inputs/14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/inputs/710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/inputs/8736e66c2203a172052bdb7ff6b14f070cfe01a6a417c76c8625de0425d23362.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "8736e66c2203a172052bdb7ff6b14f070cfe01a6a417c76c8625de0425d23362",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/inputs/88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/README.md",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "1ceed9034af505dbbb85faaedda1e0330ca505f1cd88e0e9baf8eb497f6ee37e",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/replay.py",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "38ccb7fcf626ed3582bb100e1aeb4c5103c24b65119defef9ba90b410271c024",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/chapter1.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "1b1fb6a8577b22f24eab89e5484298599b081309ceb66e9fc428fbd0d765542c",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/chapter2.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "155030a44b0e8723348019b9e1619d5b637195c3e9ff7885cd12f0d01e5a765d",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/chapter3.txt",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "81965d5bea747e81f7b6df9e03785b8de0617f489414ef3fd0dbbd859fdf0b84",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/provenance.json",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "7edfc691de7e38e0bfdf78485c0b88beecf2a06b4112efb4ee587f8861d7450c",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/replay.json",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "489746dac2239f7fff2aa0c89c3d510eff2ecc4fb376495e9a596d9c01864df4",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/samples/urban/review.json",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "0cf6660d21ffec1920d289837977f17f9e06d84e8a126af69793317c17311ade",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/execution/V2-020/prepare/test_replay.py",
+      "status": "A",
+      "owner": "V2-020/PREPARE",
+      "old_sha256": null,
+      "new_sha256": "0115effd4aae2396bf2349822d5b86369be045a12c23dffd6cd4ff436314d81c",
+      "reason": "Already committed offline replay preparation; excluded from resumed V2-019 modification scope."
+    },
+    {
+      "path": "plan/validation/plan-validation.json",
+      "status": "M",
+      "owner": "V2-020/planning-synchronization",
+      "old_sha256": "59be3c2de955812429da633da6f33747d4b971f218e7ba000ac4ad93ae18317a",
+      "new_sha256": "3d5afc17083545b143f90b85a5026dc860c96441403d32a5a8618904d896e491",
+      "reason": "Existing PREPARE pointer/documentation/manifest/local report synchronization; not V2-019 implementation."
+    }
+  ],
+  "unchanged_controls": [
+    {
+      "path": "src/anovel/gateway",
+      "implementation_object": "35c17d7a194d535dabfd3864aab49fe50dcc5714",
+      "recovery_opening_object": "35c17d7a194d535dabfd3864aab49fe50dcc5714",
+      "unchanged": true
+    },
+    {
+      "path": "tests",
+      "implementation_object": "d8d1d19d4602b3ec02f89ddbc2bf7c8f9125bb8d",
+      "recovery_opening_object": "d8d1d19d4602b3ec02f89ddbc2bf7c8f9125bb8d",
+      "unchanged": true
+    },
+    {
+      "path": "scripts",
+      "implementation_object": "321454d7ac8a2c08ba52004e361d2df0fecf7432",
+      "recovery_opening_object": "321454d7ac8a2c08ba52004e361d2df0fecf7432",
+      "unchanged": true
+    },
+    {
+      "path": ".github",
+      "implementation_object": "ed2a47aad4bae6d05348427908640b5d6ac800bb",
+      "recovery_opening_object": "ed2a47aad4bae6d05348427908640b5d6ac800bb",
+      "unchanged": true
+    },
+    {
+      "path": "model-policy.yaml",
+      "implementation_object": "94b63f2f8038d5a5f2c7e720050d84b6b511b3ef",
+      "recovery_opening_object": "94b63f2f8038d5a5f2c7e720050d84b6b511b3ef",
+      "unchanged": true
+    },
+    {
+      "path": "pyproject.toml",
+      "implementation_object": "9469af30314e675f9405c43f25e8b3c7d2419ace",
+      "recovery_opening_object": "9469af30314e675f9405c43f25e8b3c7d2419ace",
+      "unchanged": true
+    },
+    {
+      "path": "uv.lock",
+      "implementation_object": "2e303c55893b7ca1d8cd23a6ba377e3b858ebdce",
+      "recovery_opening_object": "2e303c55893b7ca1d8cd23a6ba377e3b858ebdce",
+      "unchanged": true
+    },
+    {
+      "path": "plan/machine/test-catalog.yaml",
+      "implementation_object": "b8d113350f5c0c5c8612f7f4ffe292fe73c740bb",
+      "recovery_opening_object": "b8d113350f5c0c5c8612f7f4ffe292fe73c740bb",
+      "unchanged": true
+    },
+    {
+      "path": "plan/machine/phase-gates.yaml",
+      "implementation_object": "088dc237a470c158719b62dfe08508073a8a23bb",
+      "recovery_opening_object": "088dc237a470c158719b62dfe08508073a8a23bb",
+      "unchanged": true
+    },
+    {
+      "path": "plan/machine/decision-register.yaml",
+      "implementation_object": "6eefb55efa33e0c0058d98be64df3f356d6792c7",
+      "recovery_opening_object": "6eefb55efa33e0c0058d98be64df3f356d6792c7",
+      "unchanged": true
+    },
+    {
+      "path": "plan/machine/governance-baseline.yaml",
+      "implementation_object": "772cbc27832e6cc7767d846f94d4193512030400",
+      "recovery_opening_object": "772cbc27832e6cc7767d846f94d4193512030400",
+      "unchanged": true
+    },
+    {
+      "path": "plan/machine/ai-execution-policy.yaml",
+      "implementation_object": "7b5751fef5fd1e6a390f42e68f16a79427435c67",
+      "recovery_opening_object": "7b5751fef5fd1e6a390f42e68f16a79427435c67",
+      "unchanged": true
+    },
+    {
+      "path": "plan/AI_EXECUTION_PROTOCOL.md",
+      "implementation_object": "f3348df6ba08ba66d507e7bce4221f5c07bd2514",
+      "recovery_opening_object": "f3348df6ba08ba66d507e7bce4221f5c07bd2514",
+      "unchanged": true
+    }
+  ],
+  "historical_weakening_review": {
+    "scope": "Committed original opening tree to recovery opening tree; not a substitute for current full worktree/index scope entry",
+    "findings": [
+      {
+        "id": "d2c132e14714a0b95d1d63e44efdf0fc6a98eba2b15966bde4dcfbb8a49a3dff",
+        "code": "MACHINE_POLICY_CHANGED",
+        "path": "plan/machine/implementation-backlog.yaml",
+        "layer": "index",
+        "pointer": "/tasks/V2-019/readiness",
+        "old_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+        "new_sha": "240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230",
+        "reason": "Re-reviewed entire old-opening to current backlog: original V2-019 readiness change remains; post-implementation delta only binds V2-020 execution_packet_ref to its PREPARE packet. No status/phase/dependency/acceptance/minimum/gate reduction.",
+        "severity_kind": "REVIEW",
+        "disposition": "REVIEWED_NO_WEAKENING",
+        "impact": "Historical backlog/pinned-test review only; no new V2-020 implementation or paid-call authority.",
+        "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+        "previous_disposition_retained": false
+      },
+      {
+        "id": "cc4f762f61d596fda47f078431d698b1e7bc33853655fc623e350b822f5afd03",
+        "code": "MACHINE_POLICY_CHANGED",
+        "path": "plan/machine/implementation-backlog.yaml",
+        "layer": "worktree",
+        "pointer": "/tasks/V2-019/readiness",
+        "old_sha": "71c9dd623ffa15609de5723115e8a388b8ccb3f913e3fbd68aafbac7229b4759",
+        "new_sha": "240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230",
+        "reason": "Re-reviewed entire old-opening to current backlog: original V2-019 readiness change remains; post-implementation delta only binds V2-020 execution_packet_ref to its PREPARE packet. No status/phase/dependency/acceptance/minimum/gate reduction.",
+        "severity_kind": "REVIEW",
+        "disposition": "REVIEWED_NO_WEAKENING",
+        "impact": "Historical backlog/pinned-test review only; no new V2-020 implementation or paid-call authority.",
+        "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+        "previous_disposition_retained": false
+      },
+      {
+        "id": "991317f7651fe3a05fa5a547b0cf9a9a4700729197fbeea9dda7863bc7f41a87",
+        "code": "TEST_LOGIC_CHANGED",
+        "path": "tests/contract/test_delivery_gates.py",
+        "layer": "index",
+        "pointer": "/",
+        "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+        "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+        "reason": "Exact original finding identity is unchanged; original technical disposition retained at the historical review pin.",
+        "severity_kind": "REVIEW",
+        "disposition": "REVIEWED_NO_WEAKENING",
+        "impact": "Historical backlog/pinned-test review only; no new V2-020 implementation or paid-call authority.",
+        "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+        "previous_disposition_retained": true
+      },
+      {
+        "id": "d2f45183c89e03e33a329d3bea056ca9683e67b50e19b99d5f906439c914a109",
+        "code": "TEST_ASSERTION_CHANGED",
+        "path": "tests/contract/test_delivery_gates.py",
+        "layer": "index",
+        "pointer": "/assertions",
+        "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+        "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+        "reason": "Exact original finding identity is unchanged; original technical disposition retained at the historical review pin.",
+        "severity_kind": "REVIEW",
+        "disposition": "REVIEWED_NO_WEAKENING",
+        "impact": "Historical backlog/pinned-test review only; no new V2-020 implementation or paid-call authority.",
+        "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+        "previous_disposition_retained": true
+      },
+      {
+        "id": "8e090c956fab0d0f5c3783e7c4678aaa27968962786d95e459b7c160b44a427a",
+        "code": "TEST_LOGIC_CHANGED",
+        "path": "tests/contract/test_delivery_gates.py",
+        "layer": "worktree",
+        "pointer": "/",
+        "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+        "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+        "reason": "Exact original finding identity is unchanged; original technical disposition retained at the historical review pin.",
+        "severity_kind": "REVIEW",
+        "disposition": "REVIEWED_NO_WEAKENING",
+        "impact": "Historical backlog/pinned-test review only; no new V2-020 implementation or paid-call authority.",
+        "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+        "previous_disposition_retained": true
+      },
+      {
+        "id": "c2e744853d5f14c3faafa6dd29611edec8f26a20f1ff9370a155e9a7e36eb5f9",
+        "code": "TEST_ASSERTION_CHANGED",
+        "path": "tests/contract/test_delivery_gates.py",
+        "layer": "worktree",
+        "pointer": "/assertions",
+        "old_sha": "230d755992bc93a467cbef54c8dcace65bb67b27d742916c669aaa78d7c6bb12",
+        "new_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+        "reason": "Exact original finding identity is unchanged; original technical disposition retained at the historical review pin.",
+        "severity_kind": "REVIEW",
+        "disposition": "REVIEWED_NO_WEAKENING",
+        "impact": "Historical backlog/pinned-test review only; no new V2-020 implementation or paid-call authority.",
+        "reviewer": "Same implementing/verifying operator with Agent technical cross-check; not independent personnel audit",
+        "previous_disposition_retained": true
+      }
+    ],
+    "assertions": {
+      "test_controls_preserved": true,
+      "all_findings_review_only": true,
+      "no_minimum_weakened": true
+    }
+  },
+  "recovery_decision": {
+    "opening_revision": "cefeaaf4a1889fdaf9c19a55de6621a1e1daa3c9",
+    "allowed_paths_change": "NONE: exact original V2-019 allowed_paths retained",
+    "scope_reason": "New user-authorized recovery window after individually attributing already committed changes. Does not erase original implementation review or authorize edits to V2-020.",
+    "paid_calls_allowed": false,
+    "v2020_action": "PREPARE only; no implementation in this recovery"
+  },
+  "limitations": [
+    "Local Git/hash checks do not authenticate remote service provenance or independent reviewer identity.",
+    "Historical local test receipts are not new execution or current Provider/CI acceptance."
+  ]
+}
