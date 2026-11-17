@@ -1,0 +1,226 @@
+{
+  "record_type": "v2019_local_recovery_results",
+  "schema_version": "1.0",
+  "task_id": "V2-019",
+  "status": "PASS",
+  "completed_at_utc": "2026-11-17T04:00:46.447343+00:00",
+  "scope": "Local recovery/policy/source checks; not complete regression, remote CI or real Provider/account acceptance",
+  "validation_checkout": "ae047be144fd08c005355f7e090eb450ad6fc149",
+  "source_identity_note": "Exact source bytes and report hashes; checkout does not certify uncommitted files or remote execution",
+  "action_entries": {
+    "prepare": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/prepare-entry.json",
+      "sha256": "3fcd262cd8bb8558bc236978b7230a38a4693217041b34f6dae5cb20f732b46f"
+    },
+    "implementation-entry-before-review": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/implementation-entry-before-review.json",
+      "sha256": "e32642003122d8a827bae662c7fddc0b9b2dd54bad7c6bdbc9fe494d84692bba"
+    },
+    "policy-refresh": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/policy-refresh-entry.json",
+      "sha256": "abcb874eb573c6783c91aa8cd8f965717fbfc09c17689a17c8dcbccee1a657fd"
+    },
+    "governance": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/governance-entry.json",
+      "sha256": "2f2bbf613041e1a528632bba5880141414015222648b9f7709af1345c8d45ef7"
+    },
+    "architecture": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/architecture-entry.json",
+      "sha256": "2630974a876ee3bf40e409deca6979690ef0cac49658ab9a51ade09a46a12e5a"
+    },
+    "gateway-tests": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/gateway-tests-entry.json",
+      "sha256": "c647f20e464d45b0f9c941ae3c1a26fa96187bee7f7abe8cc8badba5bcc8acd1"
+    },
+    "request-prepare": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/request-prepare-entry.json",
+      "sha256": "3d62f835852b6897fbd1862c5b88c3a97c0bf45f2ddfc6893ac867a14174c152"
+    },
+    "write-views": {
+      "status": "PASS",
+      "ref": "dist/recovery/v2019-20261117-01/write-views-entry.json",
+      "sha256": "7f0379ee4a1afee3714c6b0e0a2d810d2e21f85c47d2f11c0e670d3f75eea50f"
+    }
+  },
+  "checks": {
+    "gateway": {
+      "status": "PASS",
+      "tests": 124,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "ref": "dist/recovery/v2019-20261117-01/gateway-junit.xml",
+      "sha256": "bde080eafbedb1044bb15232a42b4fe1d244167f05de227220ff6d98a449a4e2"
+    },
+    "governance": {
+      "status": "PASS",
+      "commands": 5,
+      "ref": "dist/recovery/v2019-20261117-01/governance/governance-summary.json",
+      "sha256": "afe6b8b48677edb5396bb9f8ece9b340ceceff7ba2a7d5d6e5ab8d9a6083c899"
+    },
+    "governance_cases": {
+      "validator_self_test": {
+        "status": "PASS",
+        "cases": 32,
+        "ref": "dist/recovery/v2019-20261117-01/governance/self-test/validator-self-test.json",
+        "sha256": "42def11453f10607e66d72731d333d4c9837c42e8cbc2c35db5665c77d6f024a"
+      },
+      "governance_regression": {
+        "status": "PASS",
+        "cases": 39,
+        "ref": "dist/recovery/v2019-20261117-01/governance/governance/governance-regression.json",
+        "sha256": "3bcf3ec34025af540da55337b172a86edc493453be01094e3e460f13b222108d"
+      },
+      "ai_execution_regression": {
+        "status": "PASS",
+        "cases": 36,
+        "ref": "dist/recovery/v2019-20261117-01/governance/ai/ai-execution-regression.json",
+        "sha256": "da51999aaa37483be5da8c25331d49fec34416db1fa2f6f0d357d89e3207f8ca"
+      },
+      "legacy_probes": {
+        "status": "PASS",
+        "cases": 13,
+        "ref": "dist/recovery/v2019-20261117-01/governance/legacy.json",
+        "sha256": "553f27e0b5a3112144a012ef98ba185da76e17720af1c6df90f61815ab7c354f"
+      }
+    },
+    "architecture": {
+      "status": "PASS",
+      "findings": 0,
+      "ref": "dist/recovery/v2019-20261117-01/architecture.json",
+      "sha256": "cbb86b15373790e5f561168b6a11e9b809b07c7ba2f4ac4a36acf75bc25f4b39"
+    },
+    "current_policy": {
+      "status": "PASS",
+      "changed_fields": [
+        "id",
+        "price_expires_at"
+      ],
+      "reserve_microusd": 5608,
+      "price_expires_at": "2026-11-18T03:49:58.347947Z"
+    },
+    "offline_request": {
+      "status": "PREPARED_NO_NETWORK",
+      "ref": "dist/recovery/v2019-20261117-01/prepared-request.json",
+      "sha256": "7aed04d7f26e14817bd69ad33d010f66da49342f7ebb5e05caa4a971362c45e9"
+    },
+    "live_dispatch_negative": {
+      "status": "EXPECTED_BLOCKED",
+      "reason": [
+        "ENTRY_ACTION: requested task/action does not match the bound packet"
+      ],
+      "command_dispatched": false,
+      "ref": "dist/recovery/v2019-20261117-01/live-call-denial.json",
+      "sha256": "b1f86a22cee4bf6a4169a3e811f1b2c5ea23029babb9e94508c8cd519dfa063e"
+    }
+  },
+  "source_files": [
+    {
+      "path": "model-policy.yaml",
+      "sha256": "6ca2fa3ac0ef34deebf5c78179336a7df196dd0af7e74318d35f74aa9e55a3c0"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/resume-20261117/authorization.txt",
+      "sha256": "8c52caa237a8f84f91a8cce6531de2761daec64a584e31b1b02f9f3fe9806c4a"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/resume-20261117/DIFF_ATTRIBUTION.json",
+      "sha256": "eeb73fab3d30d68ad2b785ff15fee6ce9a4c3145b2747ed662a1dadaa608836b"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/resume-20261117/scope.json",
+      "sha256": "7a01dec597e5da7e62506cad0075f877dd38a876ede502c6e4d09d8311cd482a"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/resume-20261117/review.json",
+      "sha256": "d7adfbf6097fee8f1b2b9b5cd37313a4ad683c7e0b2c4b9dec412c91d719c58d"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/resume-20261117/provider-source-verification.json",
+      "sha256": "bfb3d9436f2d4fe1d47b15b972fa08eb897970ec3d35985175de52d1e5a78da6"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/resume-20261117/README.md",
+      "sha256": "ee6e15b5884f0098f59c02c621cebb95d6c85a90427023d732b911306aaf10b1"
+    }
+  ],
+  "historical_source_files_unchanged": [
+    {
+      "path": "pyproject.toml",
+      "sha256": "e9c4475f8916b1d238e87a4b62b9e9e1a376c19aaa9979a73162800daf34af95"
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "sha256": "184d048534e7606b3128f6cc7f567139d8b38eed75bf3dd8907f9bcc0c7843a4"
+    },
+    {
+      "path": "scripts/run_gateway_probe.py",
+      "sha256": "7600de7873b35618d172b71104b5d4df0d94068260fd568c116be61ad1298355"
+    },
+    {
+      "path": "src/anovel/gateway/__init__.py",
+      "sha256": "75ce7bdab6373bd5ee82232f851e8a3a4c0a30ac67cb785e1e7dce208585e807"
+    },
+    {
+      "path": "src/anovel/gateway/ledger.py",
+      "sha256": "76e8656328343cd21a02e7042e8c9bc91d9a63b4b6efd1e22a7c6e82c0c87b58"
+    },
+    {
+      "path": "src/anovel/gateway/models.py",
+      "sha256": "efb605a6937acc713b7642fb3f84b5b687ba2414256324c01666c4e9b72a43ae"
+    },
+    {
+      "path": "src/anovel/gateway/provider.py",
+      "sha256": "68924f6354c6206bfcfa2dc428750cb05b3469f3c6ca4587906bdae0c77243a1"
+    },
+    {
+      "path": "src/anovel/gateway/service.py",
+      "sha256": "49cc7ba3219334347e85df6ed6da204e8594ae20ecaa6aa8feabf53a30dfb84e"
+    },
+    {
+      "path": "tests/contract/test_delivery_gates.py",
+      "sha256": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0"
+    },
+    {
+      "path": "tests/integration/test_v2_019.py",
+      "sha256": "2ebd55f4d33c2d955a6be0ef1b044109a3ac173bfbbd4f5b98349fd7075ebc58"
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "460ac1ac44a1f9ccd4fce9d354ea31179d337fbca52b82e4fda6b1580a994d76"
+    },
+    {
+      "path": "plan/validation/execution/V2-019/probe/prepare_request.py",
+      "sha256": "0bbe8714e713a98b358ebfaa00e862a6a3fcdd9759fb96f727549c00643d9eb3"
+    }
+  ],
+  "historical_full_suite": {
+    "tests": 2216,
+    "skipped": 0,
+    "rerun_this_window": false,
+    "ref": "plan/validation/execution/V2-019/LOCAL_RESULTS.json",
+    "sha256": "851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600"
+  },
+  "plan_manifest_sha256": "fd0c2f4c3bf5afd9419f4649a3fe6e313cbb9884da8e4e8670943ee434705d07",
+  "non_actions": {
+    "paid_provider_calls": 0,
+    "authenticated_api_requests": 0,
+    "credential_reads": 0,
+    "remote_ci_runs_created": 0,
+    "v2020_implementation": false
+  },
+  "remaining": [
+    "Explicit numeric live authority, secure credential entry and account capability",
+    "Applicable authorized LIVE_CALL dispatch path (local run entry rejects live child commands)",
+    "Policy revalidation and new frozen request before live",
+    "Real Provider evidence and final exact-source six-gate CI/acceptance"
+  ],
+  "roles": "Same implementing/verifying operator; Agent technical cross-check, not independent personnel audit"
+}

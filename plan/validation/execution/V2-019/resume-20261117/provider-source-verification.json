@@ -1,0 +1,93 @@
+{
+  "record_type": "v2019_public_provider_reverification",
+  "task_id": "V2-019",
+  "verified_at_utc": "2026-11-17T03:49:58.347947+00:00",
+  "scope": "Public official documentation only; not account/API access or live Provider acceptance",
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/pricing",
+      "resolved_url": "https://developers.openai.com/api/docs/pricing",
+      "http_status": 200,
+      "artifact_ref": "dist/recovery/v2019-20261117-01/official-docs/pricing.html",
+      "sha256": "3a43ce47beea0998ac588072e9ccde9e3d0c14245b2e26da1eb7f0d86242cc22",
+      "bytes": 602715,
+      "fetched_at_utc": "2026-11-17T03:49:57.906191+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "resolved_url": "https://developers.openai.com/api/docs/models/gpt-6-luna",
+      "http_status": 200,
+      "artifact_ref": "dist/recovery/v2019-20261117-01/official-docs/gpt-6-luna.html",
+      "sha256": "d92bd5cbd9675b27fa286e5f06a8c049fd90fab944e1964432a88ac1e01ea5cb",
+      "bytes": 499047,
+      "fetched_at_utc": "2026-11-17T03:49:57.851769+00:00"
+    },
+    {
+      "url": "https://developers.openai.com/api/reference/resources/responses/subresources/input_tokens/methods/count",
+      "resolved_url": "https://developers.openai.com/api/reference/resources/responses/subresources/input_tokens/methods/count",
+      "http_status": 200,
+      "artifact_ref": "dist/recovery/v2019-20261117-01/official-docs/input-tokens.html",
+      "sha256": "de1a1c74761620a6853590fbfef467f4b73ee97666e7af18bb5c2ed7cbd732a9",
+      "bytes": 3748688,
+      "fetched_at_utc": "2026-11-17T03:49:58.347947+00:00"
+    }
+  ],
+  "documented_model_capabilities": {
+    "model": "gpt-6-luna",
+    "context_window": 1050000,
+    "max_output_tokens": 128000,
+    "responses_api": true,
+    "structured_outputs": true,
+    "reasoning_effort_none": true,
+    "input_tokens_endpoint": "/v1/responses/input_tokens",
+    "count_response_object": "response.input_tokens",
+    "account_access": "NOT_VERIFIED",
+    "actual_tokens_or_output_quality": "NOT_OBSERVED"
+  },
+  "documented_standard_usd_per_million_tokens": {
+    "ordinary_input": "0.10",
+    "output": "0.50",
+    "cached_input": "0.01",
+    "cache_write_30_minutes": "0.125",
+    "cache_write_12_hours": "0.25"
+  },
+  "pricing_applicability": {
+    "request_profile": "Direct api.openai.com, standard/default tier, text only, no tools",
+    "application_context_window": 16384,
+    "application_max_output": 1024,
+    "long_context_premium": "Catalog says >272K input has 2x input/cache and 1.5x output; current cap is below threshold",
+    "regional_or_fedramp_premium": "Published 10 percent uplift is not applicable to the configured direct nonregional endpoint",
+    "future_changes": "Different model, endpoint, tier, context cap, tools or pricing requires a new applicable check"
+  },
+  "policy_decision": {
+    "id": "openai-protocol-probe-20261117",
+    "old_policy_sha256": "e3765fd2d7e2d41a665b544599af0b44da67ddba2bcc4d15574decfce7ba3bb4",
+    "new_policy_sha256": "6ca2fa3ac0ef34deebf5c78179336a7df196dd0af7e74318d35f74aa9e55a3c0",
+    "changed_fields": [
+      "id",
+      "price_expires_at"
+    ],
+    "input_rate_basis": "Keep USD0.25/1M conservative upper rate; do not replace with discounted or ordinary observed price",
+    "output_rate_basis": "Keep USD0.50/1M standard output",
+    "margin_microusd": 1000,
+    "per_attempt_reserve_microusd": 5608,
+    "price_expires_at": "2026-11-18T03:49:58.347947Z",
+    "expiry_basis": "Local 24-hour maximum revalidation interval from this public-source capture; not a vendor price guarantee",
+    "model_role": "Unchanged protocol probe candidate; no novel-writing quality selection or account approval"
+  },
+  "authority": {
+    "paid_calls_allowed": false,
+    "model_cost_cap": 0,
+    "credential_read": false,
+    "authenticated_api_requests": 0,
+    "generation_requests": 0,
+    "remote_ci_runs_created": 0
+  },
+  "pending": [
+    "Explicit numerical live budget/attempt/runtime authorization",
+    "Secure credential entry and actual account capability evidence",
+    "Revalidate policy before live if expired or applicable price/capability changed",
+    "Recreate frozen live request with the current policy; do not send historical request snapshots",
+    "Controlled real Provider evidence and final exact-source six-gate CI/acceptance"
+  ]
+}

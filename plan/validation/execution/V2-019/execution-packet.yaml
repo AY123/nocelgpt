@@ -112,6 +112,16 @@ claims:
   - CERTIFY
   verification_plan: Wait for explicit user budget and stop limits; existing local-test runtime/attempt fields
     do not grant paid dispatch.
+- id: current-public-provider-docs
+  kind: FACT
+  statement: Current official public pages support the configured probe model capabilities and conservative
+    rates; account access and live result remain unknown.
+  sources:
+  - ref: validation/execution/V2-019/resume-20261117/provider-source-verification.json
+    sha256: bfb3d9436f2d4fe1d47b15b972fa08eb897970ec3d35985175de52d1e5a78da6
+  blocks_actions: []
+  verification_plan: Retain captured page hashes and bounded policy expiry; test offline policy behavior without
+    credentials or Provider requests.
 estimate:
   range: null
   unit: null
@@ -132,14 +142,19 @@ review_notes:
 - Recovery authority is the exact user message in resume-20261117/authorization.txt.
 - Original 9777956 scope and 6ab1474 implementation review retained; committed changes through cefeaaf individually
   reconciled in DIFF_ATTRIBUTION.json.
-- Recovery scope fixed at9f80d0a; actual index/worktree check and separate review pin required before policy
-  refresh. Historical pins remain in DIFF_ATTRIBUTION.json.
+- Replacement scope/review pins are fixed; restricted actions check current index/worktree before and after
+  each command. Original implementation pins remain in DIFF_ATTRIBUTION.json.
 - Existing allowed_paths retained exactly; V2-020 and plan/validation/plan-validation.json are not added.
 - No paid calls, credential reading, remote CI or V2-020 implementation. Account capability and final acceptance
   remain unverified.
+- Public pricing/model/count documentation refreshed on 2026-11-17; only policy id/expiry changed, conservative
+  rates/caps/reserve preserved. Account capability and paid authority remain unknown.
+- Local recovery RESULTS.json replaces historical LOCAL_RESULTS only as the current handoff check; old original
+  bytes remain unchanged. No remote/Provider/independent-audit claim.
 handoff:
-  current_step: Recovery scope fixed at9f80d0a; completing actual difference review before refreshing the public-source
-    probe policy. No paid calls or remote CI.
+  current_step: Recovery scope/review and public policy refresh complete. This window:124 Gateway tests/0skip,5
+    governance commands and explicit architecture PASS. Historical2216 not rerun. Await live authority/account/dispatch
+    prerequisites; paid calls0, remoteCI0; V020 remainsPREPARE.
   completed_steps:
   - IMPLEMENT entry passed with fixed scope/review pins
   - Implemented closed request/model/result contracts, durable SQLite budgets and single-use dispatch
@@ -147,18 +162,28 @@ handoff:
   - Full stable local1611 UNIT+244 ARCH+361 integration=2216/0skip;124 new Gateway cases subset;static/governance/security
     PASS
   - Actual official protocol/model/pricing pages fetched; candidate policy/probe prepared, no paid call
+  - '2026-11-17: Attributed25 committed files and reconciled6 historical REVIEW findings; froze recovery scope9f80d0a/reviewae047be
+    without widening allowed_paths.'
+  - '2026-11-17: Refetched official public pricing/model/count pages; policy onlyid/expiry changed; conservative5608microUSD
+    reserve unchanged, account accessNOT_VERIFIED.'
+  - 2026-11-17:124 Gateway tests/0skip,32 validator/39 governance/36 AI/13 legacy cases,5 governance commands,
+    architecture42files/0finding and offline request PASS; LIVE_CALL entry refuses the unbound action.
   pending_items:
-  - Freeze new scope/review pins and pass exact action/difference entry.
-  - Verify current public pricing/model capability and refresh bounded probe policy without paid calls.
-  - Await explicit numerical live budget and secure credential/account capability prerequisites.
-  - Controlled Provider evidence and final exact-source six-gate CI/acceptance remain future work.
+  - Await explicit positive live budget, attempts/runtime stop limits and secure credential/account capability.
+  - Before paid work, establish applicable authorized LIVE_CALL dispatch path; local run entry rejects live
+    child commands, direct bypass is not authorized.
+  - Revalidate current policy if expired/changed and prepare a new exactly bound live request.
+  - Controlled real Provider evidence and final exact-source six-gate CI/acceptance; V019 stays IN_PROGRESS,
+    V020 stays OPEN/PREPARE.
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-019/LOCAL_RESULTS.json
-      sha256: 851367390687c16c397bcb102cf8617d4b125e363946af9b7ae14397025ad600
+    - ref: validation/execution/V2-019/resume-20261117/RESULTS.json
+      sha256: 7d59f092003e7fc33380675f9f246db548b342af692aa56f32519cb9405ece2a
     missing_artifact_reason: null
 change_review:
   scope_revision: 9f80d0ad7433ff00f19701f8ce53504f9ff90ecd
   scope_ref: plan/validation/execution/V2-019/resume-20261117/scope.json
+  review_revision: ae047be144fd08c005355f7e090eb450ad6fc149
+  review_ref: plan/validation/execution/V2-019/resume-20261117/review.json
