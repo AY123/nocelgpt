@@ -1,0 +1,51 @@
+# Draft for .github/workflows/v2-019-live-provider-hosted.yml.
+# This preflight uses the runner's stock Python and GitHub CLI.
+name: V2-019 hosted approval preflight
+'on':
+  workflow_dispatch:
+    inputs:
+      candidate_revision:
+        description: Exact reviewed main revision
+        required: true
+        type: string
+permissions:
+  actions: read
+  contents: read
+concurrency:
+  group: anovelos-live-provider-hosted-${{ github.repository_id }}
+  cancel-in-progress: false
+jobs:
+  hosted_preflight:
+    name: LIVE_PROVIDER_HOSTED_PREFLIGHT
+    if: >-
+      github.repository == 'AY123/nocelgpt' &&
+      github.repository_id == '1421585508' &&
+      github.actor_id == '20210118' &&
+      github.ref == 'refs/heads/main' &&
+      github.event_name == 'workflow_dispatch' &&
+      github.run_attempt == '1' &&
+      inputs.candidate_revision == github.sha
+    environment: anovelos-live-provider-hosted
+    runs-on: ubuntu-24.04
+    continue-on-error: false
+    timeout-minutes: 10
+    steps:
+    - name: Checkout exact revision and complete history
+      uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      with:
+        ref: ${{ github.sha }}
+        fetch-depth: 0
+        persist-credentials: false
+    - name: Verify the exact hosted approval
+      env:
+        GH_TOKEN: ${{ github.token }}
+      run: |
+        umask 077
+        python3 -I -B scripts/ci/verify_live_provider.py --hosted-approval-preflight > "$RUNNER_TEMP/anovelos-hosted-preflight.json"
+    - name: Upload approval preflight metadata
+      uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      with:
+        name: hosted-approval-preflight-${{ github.run_id }}-1
+        path: ${{ runner.temp }}/anovelos-hosted-preflight.json
+        if-no-files-found: error
+        retention-days: 14
