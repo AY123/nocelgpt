@@ -1,0 +1,37 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-019",
+  "opening_revision": "400d68e3d32dba3e658a1a2b39b509ffe8f8b230",
+  "packet_ref": "plan/validation/execution/V2-019/execution-packet.yaml",
+  "allowed_paths": [
+    "model-policy.yaml",
+    "plan/FILE_MANIFEST.json",
+    "plan/decisions/ADR-010_KIMI_FIRST_PROVIDER.md",
+    "plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md",
+    "plan/machine/decision-register.yaml",
+    "plan/schemas/execution-packet.schema.json",
+    "plan/scripts/probe_dispatch.py",
+    "plan/scripts/task_entry.py",
+    "plan/validation/execution/V2-019/",
+    "plan/validation/execution/V2-020/execution-packet.yaml",
+    "scripts/run_gateway_probe.py",
+    "src/anovel/gateway",
+    "src/anovel/gateway/ledger.py",
+    "src/anovel/gateway/models.py",
+    "src/anovel/gateway/probe_runtime.py",
+    "src/anovel/gateway/provider.py",
+    "src/anovel/gateway/service.py",
+    "tests/contract/test_v2_019_probe_dispatch.py",
+    "tests/integration/test_v2_019.py",
+    "tests/integration/test_v2_019_kimi.py"
+  ],
+  "pre_existing": {},
+  "protected_paths": [],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-019/kimi-offline-20261122/authorization.txt",
+    "sha256": "a7a55259ddb5b948299cee5a45e56bf979641c0a28c8cb37ff91c047c3a61fa4"
+  },
+  "exception_authorizations": []
+}
