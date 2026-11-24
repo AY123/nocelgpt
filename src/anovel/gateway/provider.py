@@ -1,4 +1,4 @@
-"""OpenAI Responses HTTP adapter; exactly one count and one generation at most.
+"""Bounded OpenAI Responses and Kimi Chat Completions HTTP adapters.
 
 No SDK retries, redirects, tools, history sessions, or Canon capabilities.
 The local loopback transport is explicitly test-only, never live evidence.
@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import re
+from collections.abc import Callable
 from dataclasses import replace
 from datetime import UTC, datetime
 from queue import Empty, Queue
@@ -20,6 +21,8 @@ from anovel.canon.identity import canonical_bytes
 
 from .ledger import DispatchPermit
 from .models import (
+    KIMI_CHAT_PATH,
+    KIMI_PROBE_WINDOW,
     GatewayError,
     GatewayRequest,
     ModelPolicy,
@@ -27,6 +30,8 @@ from .models import (
     Usage,
     validate_output,
 )
+
+KIMI_FIRST_GENERATION_TEMPLATE = "gateway-kimi-first-generation-v1"
 
 
 class ProviderAdapter(Protocol):
@@ -66,6 +71,8 @@ def strict_json(raw: bytes) -> dict[str, object]:
 
 
 def response_payload(request: GatewayRequest, policy: ModelPolicy) -> bytes:
+    if policy.is_kimi:
+        raise GatewayError("OpenAI Responses policy required")
     if policy not in request.policies:
         raise GatewayError("Policy not frozen in logical request")
     params = strict_json(policy.params_bytes)
@@ -102,7 +109,7 @@ def response_payload(request: GatewayRequest, policy: ModelPolicy) -> bytes:
     )
 
 
-class OpenAIResponsesAdapter:
+class _BoundedHTTPAdapter:
     def __init__(self, api_key: str, *, allow_test_transport: bool = False) -> None:
         if type(api_key) is not str or not api_key.strip():
             raise GatewayError("Credential entry missing")
@@ -172,46 +179,67 @@ class OpenAIResponsesAdapter:
                 request_id = None
             return response.code, raw, request_id
 
-    def send(
+    def _consume_permit(
         self,
         request: GatewayRequest,
         policy: ModelPolicy,
         attempt_id: str,
-        permit: DispatchPermit | None = None,
-    ) -> ProviderReply:
+        permit: DispatchPermit | None,
+    ) -> DispatchPermit:
         if type(permit) is not DispatchPermit:
             raise GatewayError("Durable budget dispatch permit required")
         permit.consume(request, policy, attempt_id)
-
-        def timeout() -> float:
-            remaining = (
-                min(
-                    datetime.fromisoformat(permit.deadline_at),
-                    datetime.fromisoformat(policy.price_expires_at),
-                )
-                - datetime.now(UTC)
-            ).total_seconds()
-            if remaining <= 0:
-                raise TimeoutError("Frozen run deadline elapsed")
-            return min(float(policy.timeout_seconds), remaining)
-
         if policy.test_mode and not self._allow_test_transport:
             raise GatewayError("Explicit loopback test transport required")
-        payload = response_payload(request, policy)
-        count_payload = canonical_bytes(
-            {
-                k: v
-                for k, v in strict_json(payload).items()
-                if k
-                in {"model", "instructions", "input", "text", "reasoning", "truncation"}
-            }
+        return permit
+
+    @staticmethod
+    def _remaining_timeout(policy: ModelPolicy, permit: DispatchPermit) -> float:
+        remaining = (
+            min(
+                datetime.fromisoformat(permit.deadline_at),
+                datetime.fromisoformat(policy.price_expires_at),
+            )
+            - datetime.now(UTC)
+        ).total_seconds()
+        if remaining <= 0:
+            raise TimeoutError("Frozen run deadline elapsed")
+        return min(float(policy.timeout_seconds), remaining)
+
+    def _generate(
+        self, policy: ModelPolicy, permit: DispatchPermit, payload: bytes
+    ) -> ProviderReply:
+        try:
+            code, raw, request_id = self._post(
+                policy.endpoint, payload, self._remaining_timeout(policy, permit)
+            )
+        except (URLError, TimeoutError, OSError, ValueError):
+            return ProviderReply("UNKNOWN", error_code="GENERATION_TRANSPORT_UNPROVEN")
+        return ProviderReply(
+            "UNKNOWN" if code >= 500 else "FAILED",
+            response_body=raw,
+            provider_request_id=request_id,
+            http_status=code,
+            error_code=None if code == 200 else "HTTP_" + str(code),
         )
+
+    def _count_and_generate(
+        self,
+        policy: ModelPolicy,
+        permit: DispatchPermit,
+        *,
+        count_endpoint: str,
+        count_payload: bytes,
+        parse_count: Callable[[dict[str, object]], int | None],
+        generation_payload: bytes,
+        context_window: int,
+    ) -> ProviderReply:
         count_raw = None
         count_id = None
         count = None
         try:
             code, count_raw, count_id = self._post(
-                policy.endpoint + "/input_tokens", count_payload, timeout()
+                count_endpoint, count_payload, self._remaining_timeout(policy, permit)
             )
             if code != 200:
                 return ProviderReply(
@@ -220,21 +248,15 @@ class OpenAIResponsesAdapter:
                     count_body=count_raw,
                     count_request_id=count_id,
                 )
-            data = strict_json(count_raw)
-            number = data.get("input_tokens")
-            if (
-                data.get("object") != "response.input_tokens"
-                or type(number) is not int
-                or number < 0
-            ):
+            count = parse_count(strict_json(count_raw))
+            if count is None:
                 return ProviderReply(
                     "FAILED",
                     error_code="INVALID_TOKEN_COUNT",
                     count_body=count_raw,
                     count_request_id=count_id,
                 )
-            count = number
-            if count + policy.max_output_tokens > policy.context_window:
+            if count + policy.max_output_tokens > context_window:
                 return ProviderReply(
                     "FAILED",
                     error_code="INPUT_WINDOW_EXCEEDED",
@@ -252,33 +274,59 @@ class OpenAIResponsesAdapter:
                 count_request_id=count_id,
                 input_token_count=count,
             )
-        try:
-            code, raw, request_id = self._post(policy.endpoint, payload, timeout())
-        except (URLError, TimeoutError, OSError, ValueError):
-            return ProviderReply(
-                "UNKNOWN",
-                error_code="GENERATION_TRANSPORT_UNPROVEN",
-                count_body=count_raw,
-                count_request_id=count_id,
-                input_token_count=count,
-            )
-        base = ProviderReply(
-            "FAILED",
-            response_body=raw,
-            provider_request_id=request_id,
-            http_status=code,
+        return replace(
+            self._generate(policy, permit, generation_payload),
             count_body=count_raw,
             count_request_id=count_id,
             input_token_count=count,
         )
-        if code != 200:
-            return replace(
-                base,
-                outcome="UNKNOWN" if code >= 500 else "FAILED",
-                error_code="HTTP_" + str(code),
-            )
+
+
+def _openai_count(data: dict[str, object]) -> int | None:
+    number = data.get("input_tokens")
+    if (
+        data.get("object") == "response.input_tokens"
+        and type(number) is int
+        and number >= 0
+    ):
+        return number
+    return None
+
+
+class OpenAIResponsesAdapter(_BoundedHTTPAdapter):
+    def send(
+        self,
+        request: GatewayRequest,
+        policy: ModelPolicy,
+        attempt_id: str,
+        permit: DispatchPermit | None = None,
+    ) -> ProviderReply:
+        if policy.is_kimi:
+            raise GatewayError("OpenAI Responses policy required")
+        dispatch = self._consume_permit(request, policy, attempt_id, permit)
+        payload = response_payload(request, policy)
+        count_payload = canonical_bytes(
+            {
+                key: value
+                for key, value in strict_json(payload).items()
+                if key
+                in {"model", "instructions", "input", "text", "reasoning", "truncation"}
+            }
+        )
+        base = self._count_and_generate(
+            policy,
+            dispatch,
+            count_endpoint=policy.endpoint + "/input_tokens",
+            count_payload=count_payload,
+            parse_count=_openai_count,
+            generation_payload=payload,
+            context_window=policy.context_window,
+        )
+        if base.http_status != 200:
+            return base
+        assert base.response_body is not None
         try:
-            data = strict_json(raw)
+            data = strict_json(base.response_body)
         except ValueError:
             return replace(base, error_code="INVALID_RESPONSE_JSON")
         model = data.get("model")
@@ -335,3 +383,191 @@ class OpenAIResponsesAdapter:
             )
         except ValueError:
             return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+
+
+def _kimi_count(data: dict[str, object]) -> int | None:
+    estimate = data.get("data")
+    if type(estimate) is dict:
+        number = estimate.get("total_tokens")
+        if type(number) is int and number > 0:
+            return number
+    return None
+
+
+def _kimi_usage(data: object) -> Usage | None:
+    if type(data) is not dict:
+        return None
+    prompt_tokens = data.get("prompt_tokens")
+    completion_tokens = data.get("completion_tokens")
+    total_tokens = data.get("total_tokens")
+    if (
+        type(prompt_tokens) is not int
+        or prompt_tokens <= 0
+        or type(completion_tokens) is not int
+        or type(total_tokens) is not int
+    ):
+        return None
+    prompt_details = data.get("prompt_tokens_details", {})
+    completion_details = data.get("completion_tokens_details", {})
+    if type(prompt_details) is not dict or type(completion_details) is not dict:
+        return None
+    legacy_cached = data.get("cached_tokens", 0)
+    cached = prompt_details.get("cached_tokens", legacy_cached)
+    cache_write = prompt_details.get("cache_write_tokens", 0)
+    reasoning = completion_details.get("reasoning_tokens", 0)
+    if (
+        type(legacy_cached) is not int
+        or legacy_cached < 0
+        or type(cached) is not int
+        or cached < 0
+        or ("cached_tokens" in data and legacy_cached != cached)
+        or type(cache_write) is not int
+        or cache_write < 0
+        or cached + cache_write > prompt_tokens
+        or type(reasoning) is not int
+        or not 0 <= reasoning <= completion_tokens
+    ):
+        return None
+    try:
+        # Kimi includes cache classes in prompt_tokens and reasoning in
+        # completion_tokens. The frozen rate bounds every input class.
+        return Usage(prompt_tokens, completion_tokens, total_tokens)
+    except GatewayError:
+        return None
+
+
+class KimiChatCompletionsAdapter(_BoundedHTTPAdapter):
+    def __init__(
+        self,
+        api_key: str,
+        *,
+        allow_test_transport: bool = False,
+        generation_only: bool = False,
+    ) -> None:
+        super().__init__(api_key, allow_test_transport=allow_test_transport)
+        if type(generation_only) is not bool:
+            raise GatewayError("Generation-only probe mode must be explicit")
+        self._generation_only = generation_only
+
+    def send(
+        self,
+        request: GatewayRequest,
+        policy: ModelPolicy,
+        attempt_id: str,
+        permit: DispatchPermit | None = None,
+    ) -> ProviderReply:
+        if not policy.is_kimi:
+            raise GatewayError("Kimi Chat Completions policy required")
+        dispatch = self._consume_permit(request, policy, attempt_id, permit)
+        if policy not in request.policies:
+            raise GatewayError("Policy not frozen in logical request")
+        inputs = {
+            "model": policy.model,
+            "messages": [
+                {"role": "system", "content": request.instructions},
+                {
+                    "role": "user",
+                    "content": request.context.model_bytes.decode("utf-8"),
+                },
+            ],
+        }
+        payload = canonical_bytes(
+            {
+                **inputs,
+                "reasoning_effort": policy.params["reasoning_effort"],
+                "max_completion_tokens": policy.max_output_tokens,
+                "prompt_cache_options": {"mode": "implicit", "ttl": "5m"},
+                "response_format": {
+                    "type": "json_schema",
+                    "json_schema": {
+                        "name": "anovel_output",
+                        "schema": request.schema,
+                        "strict": True,
+                    },
+                },
+                "stream": False,
+            }
+        )
+        context_window = min(policy.context_window, KIMI_PROBE_WINDOW)
+        if self._generation_only:
+            if (
+                request.template_version != KIMI_FIRST_GENERATION_TEMPLATE
+                or len(payload) > KIMI_PROBE_WINDOW
+            ):
+                raise GatewayError(
+                    "Generation-only mode requires a bounded first probe"
+                )
+            base = self._generate(policy, dispatch, payload)
+        else:
+            base = self._count_and_generate(
+                policy,
+                dispatch,
+                count_endpoint=policy.endpoint.removesuffix(KIMI_CHAT_PATH)
+                + "/v1/tokenizers/estimate-token-count",
+                count_payload=canonical_bytes(inputs),
+                parse_count=_kimi_count,
+                generation_payload=payload,
+                context_window=context_window,
+            )
+        if base.http_status != 200:
+            return base
+        assert base.response_body is not None
+        try:
+            data = strict_json(base.response_body)
+        except ValueError:
+            return replace(base, error_code="INVALID_RESPONSE_JSON")
+        model = data.get("model")
+        model = model if type(model) is str and model.strip() else None
+        usage = _kimi_usage(data.get("usage"))
+        base = replace(base, observed_model=model, usage=usage)
+        if model not in policy.accepted_models:
+            return replace(base, error_code="UNEXPECTED_MODEL")
+        if usage is not None:
+            if usage.output_tokens > policy.max_output_tokens:
+                return replace(base, error_code="OUTPUT_TOKEN_LIMIT_EXCEEDED")
+            if usage.total_tokens > context_window:
+                return replace(base, error_code="INPUT_WINDOW_EXCEEDED")
+        choices = data.get("choices")
+        if (
+            data.get("object") != "chat.completion"
+            or type(choices) is not list
+            or len(choices) != 1
+        ):
+            return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+        choice = choices[0]
+        if (
+            type(choice) is not dict
+            or type(choice.get("index")) is not int
+            or choice["index"] != 0
+        ):
+            return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+        message = choice.get("message")
+        if type(message) is not dict or message.get("role") != "assistant":
+            return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+        if (
+            choice.get("finish_reason") == "content_filter"
+            or message.get("refusal") is not None
+        ):
+            return replace(base, error_code="MODEL_REFUSAL")
+        if (
+            choice.get("finish_reason") != "stop"
+            or message.get("tool_calls")
+            not in (
+                None,
+                [],
+            )
+            or message.get("function_call") is not None
+        ):
+            return replace(base, error_code="RESPONSE_NOT_COMPLETED")
+        content = message.get("content")
+        if type(content) is not str:
+            return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+        try:
+            output = strict_json(content.encode("utf-8"))
+            validate_output(request.schema, output)
+        except ValueError:
+            return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+        if usage is not None and usage.output_tokens == 0:
+            # A nonempty JSON answer cannot substantiate zero completion usage.
+            base = replace(base, usage=None)
+        return replace(base, outcome="SUCCESS", output_bytes=canonical_bytes(output))

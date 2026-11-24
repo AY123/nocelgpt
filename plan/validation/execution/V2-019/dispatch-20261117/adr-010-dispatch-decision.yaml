@@ -1,0 +1,21 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-010-20261117-bounded-dispatch-local
+evidence_type: ADR_DECISION
+subject_id: ADR-010
+revision: 3abe6ad784525b1cb4720cbcc0657926f73f6598
+status: PASS
+producer: Same implementing/verifying operator under V2-019 authorization; not independent personnel audit
+executed_at: '2026-11-17T04:54:04.089353+00:00'
+environment_fingerprint: Existing locked local runtime; accepted typed first-probe dispatch contract before
+  interface implementation
+artifacts:
+- ref: decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md
+  sha256: 2f9d5adcffff7733618b22a85089e299b1e560457e6e3221008f39e5bcf537bb
+- ref: validation/execution/V2-019/dispatch-20261117/authorization.txt
+  sha256: 87aac33142f37f7a3f3329b98ad6782044185c0b4dc40c9883f792beb39b3668
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: User explicitly authorizes narrow dispatch/TTY/private-ledger/first-capability rules and local tests.
+  Retain generic LIVE/CERTIFY denial and unknown budget/price/count-cost stops; no real live authority. Local
+  same-Owner decision, not independent audit.

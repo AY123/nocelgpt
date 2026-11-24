@@ -114,7 +114,7 @@ decisions:
   - V2-027
   decision_due_task: V2-019
   timing: before_live_call
-  decision_record: validation/execution/V2-019/adr-010-decision.yaml
+  decision_record: validation/execution/V2-019/kimi-offline-20261122/adr-010-kimi-decision.yaml
   verification_refs: []
   required_refinements:
   - 补充调用前预算预留、UNKNOWN 待核、重启/fallback/修复共享上限

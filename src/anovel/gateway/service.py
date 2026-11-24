@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .ledger import BudgetLedger
 from .models import (
+    EstimateFeeBound,
     GatewayError,
     GatewayRequest,
     GatewayResult,
@@ -24,11 +25,15 @@ class ModelGateway:
         policy_id: str,
         attempt_id: str,
         decision: RetryDecision | None = None,
+        *,
+        estimate_fee: EstimateFeeBound | None = None,
     ) -> GatewayResult:
         policy = next((p for p in request.policies if p.id == policy_id), None)
         if policy is None:
             raise GatewayError("Model policy not frozen in request")
-        replay = self.ledger.reserve(request, policy, attempt_id, decision)
+        replay = self.ledger.reserve(
+            request, policy, attempt_id, decision, estimate_fee=estimate_fee
+        )
         if replay is not None:
             return replay
         permit = self.ledger.mark_dispatch(request.run_id, attempt_id)

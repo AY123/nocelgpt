@@ -5,14 +5,18 @@ require local diff checks for restricted actions before and after dispatch; they
 remote provenance or credential enforcement (V2-004).
 """
 from datetime import datetime, timezone
+from contextlib import contextmanager, nullcontext
 from pathlib import Path
 import argparse
+import fcntl
 import hashlib
 import json
 import os
 import platform
 import subprocess
 import sys
+import termios
+import unicodedata
 
 import yaml
 import validate_plan as validator
@@ -136,9 +140,53 @@ def bind_change_review(packet, action, args):
         raise ValueError('ENTRY_DIFF_BINDING: packet review revision and ref must be paired')
 
 
+@contextmanager
+def probe_terminal_guard():
+    """Restore terminal state even if the fixed child is killed at its deadline.
+
+    This parent observes terminal settings only. Secret input remains in the
+    authorized child, which separately requires hidden controlling-TTY input.
+    """
+    descriptor = None
+    attributes = None
+    try:
+        try:
+            descriptor = os.open('/dev/tty', os.O_RDWR | os.O_NOCTTY | os.O_CLOEXEC)
+            if not os.isatty(descriptor):
+                raise ValueError('ENTRY_PROBE_TTY: controlling terminal required')
+            # Parent and fixed child share this open file description. A
+            # duplicate invocation cannot restore echo while another owns it.
+            fcntl.flock(descriptor, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            attributes = termios.tcgetattr(descriptor)
+        except (OSError, termios.error):
+            raise ValueError('ENTRY_PROBE_TTY: controlling terminal unavailable') from None
+        yield descriptor
+    finally:
+        if descriptor is not None:
+            try:
+                if attributes is not None:
+                    try:
+                        termios.tcsetattr(descriptor, termios.TCSAFLUSH, attributes)
+                    except (OSError, termios.error):
+                        raise ValueError('ENTRY_PROBE_TTY: terminal restore failed') from None
+            finally:
+                os.close(descriptor)
+
+
+def probe_receipt_conflicts(output, config):
+    """A task receipt cannot overwrite any fixed probe or SQLite sidecar path."""
+    ledger = config.ledger
+    reserved = [ledger, config.output, config.claim_path,
+                *(ledger.with_name(ledger.name + suffix) for suffix in ('-wal', '-shm', '-journal'))]
+    # The canonical parent is already frozen; casefold also prevents aliases on
+    # the default case-insensitive macOS filesystem.
+    candidate = unicodedata.normalize('NFC', str(output)).casefold()
+    return any(candidate == unicodedata.normalize('NFC', str(path)).casefold() for path in reserved)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('mode', choices=['check', 'run', 'resume'])
+    parser.add_argument('mode', choices=['check', 'run', 'resume', 'probe'])
     parser.add_argument('--task', required=True)
     parser.add_argument('--action', required=True, choices=['PREPARE', 'IMPLEMENT', 'LIVE_CALL', 'CERTIFY'])
     parser.add_argument('--output', type=Path, required=True)
@@ -147,6 +195,16 @@ def main(argv=None):
     parser.add_argument('--scope-ref', help='Repository-relative baseline JSON at scope-revision')
     parser.add_argument('--review-revision', help='Optional separately pinned technical review commit')
     parser.add_argument('--review-ref', help='Repository-relative review record at review-revision')
+    # The fixed probe is a typed operation, never a caller-selected command or
+    # an exception to the generic LIVE_CALL/CERTIFY command refusal below.
+    parser.add_argument('--request', dest='probe_request', type=Path)
+    parser.add_argument('--budget', dest='probe_budget', type=Path)
+    parser.add_argument('--policy-file', dest='probe_policy_file', type=Path)
+    parser.add_argument('--policy-id', dest='probe_policy_id')
+    parser.add_argument('--ledger', dest='probe_ledger', type=Path)
+    parser.add_argument('--probe-output', type=Path)
+    parser.add_argument('--attempt-id', dest='probe_attempt_id')
+    parser.add_argument('--prompt-key', action='store_true')
     # argparse REMAINDER after a positional consumes options too; separate the
     # explicit command delimiter so normal options can occur after mode.
     raw = list(sys.argv[1:] if argv is None else argv)
@@ -168,6 +226,15 @@ def main(argv=None):
     command_started = False
     try:
         output = safe_output(root, args.output)
+        probe_fields = ('probe_request', 'probe_budget', 'probe_policy_file',
+                        'probe_policy_id', 'probe_ledger', 'probe_output', 'probe_attempt_id')
+        if args.mode == 'probe':
+            if (args.task != 'V2-019' or args.action != 'LIVE_CALL' or command
+                    or args.checkpoint or not args.prompt_key
+                    or not all(getattr(args, key) for key in probe_fields)):
+                raise ValueError('ENTRY_PROBE: only a fully bound V2-019 LIVE_CALL probe with hidden TTY input is supported; arbitrary commands/checkpoints are forbidden')
+        elif args.prompt_key or any(getattr(args, key) is not None for key in probe_fields):
+            raise ValueError('ENTRY_PROBE: typed probe options are valid only in probe mode')
         if args.mode == 'run' and not command:
             raise ValueError('ENTRY_COMMAND: run requires a command after --')
         if args.mode == 'check' and (command or args.checkpoint):
@@ -218,13 +285,50 @@ def main(argv=None):
             if observe(root) != after_validation:
                 errors.append('ENTRY_RACE: validated inputs changed before command dispatch; reconcile and retry')
         report['change_review_requested'] = bool(args.scope_revision)
+        probe_config = None
+        if args.mode == 'probe' and not errors:
+            from probe_dispatch import validate_probe
+            probe_config = validate_probe(
+                root, request_path=args.probe_request, budget_path=args.probe_budget,
+                policy_path=args.probe_policy_file, ledger=args.probe_ledger,
+                output=args.probe_output, policy_id=args.probe_policy_id,
+                attempt_id=args.probe_attempt_id)
+            if probe_receipt_conflicts(output, probe_config):
+                # Do not write even the rejection report into a reserved file.
+                output = None
+                raise ValueError('ENTRY_PROBE_OUTPUT: task receipt conflicts with a fixed probe/ledger path')
+            command = [sys.executable, '-B', str(root / 'scripts/run_gateway_probe.py'),
+                       '--request', str(args.probe_request), '--budget', str(args.probe_budget),
+                       '--policy-file', str(args.probe_policy_file), '--policy-id', args.probe_policy_id,
+                       '--ledger', str(args.probe_ledger), '--output', str(args.probe_output),
+                       '--attempt-id', args.probe_attempt_id, '--execute-live', '--prompt-key']
+            report['command'] = command
+            report['probe_authorization_id'] = probe_config.authorization_id
+            report['probe_environment'] = 'LOOPBACK_FIXTURE' if probe_config.allow_test_transport else 'LIVE_PROVIDER'
         report['errors'] = errors
         if not errors:
             code = 0
             if command:
-                command_started = True
-                result = subprocess.run(command, cwd=root, capture_output=True, text=True,
-                                        timeout=packet['budget']['maximum_runtime'])
+                timeout_seconds = packet['budget']['maximum_runtime']
+                if probe_config is not None:
+                    # The child rechecks the same grant/inputs and atomically
+                    # consumes it before credentials. Waiting at a TTY never
+                    # extends the original run deadline or permits a retry.
+                    probe_config.revalidate()
+                    remaining = (datetime.fromisoformat(probe_config.deadline_at)
+                                 - datetime.now(timezone.utc)).total_seconds()
+                    timeout_seconds = min(timeout_seconds, probe_config.maximum_runtime, remaining)
+                    if timeout_seconds <= 0:
+                        raise ValueError('ENTRY_PROBE: frozen deadline has elapsed')
+                terminal = probe_terminal_guard() if probe_config is not None else nullcontext()
+                with terminal as terminal_descriptor:
+                    pass_fds = ()
+                    if probe_config is not None:
+                        command += ['--parent-tty-fd', str(terminal_descriptor)]
+                        pass_fds = (terminal_descriptor,)
+                    command_started = True
+                    result = subprocess.run(command, cwd=root, capture_output=True, text=True,
+                                            timeout=timeout_seconds, pass_fds=pass_fds)
                 report['command_result'] = {'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr}
                 code = result.returncode if result.returncode >= 0 else 128 - result.returncode
             report['status'] = 'PASS' if code == 0 else 'FAIL'
@@ -238,6 +342,12 @@ def main(argv=None):
                     report['status'] = 'FAIL'
                     code = code or 2
         report['after'] = observe(root)
+    except KeyboardInterrupt:
+        report['status'] = 'UNKNOWN' if command_started else 'BLOCKED'
+        report['errors'].append('ENTRY_INTERRUPTED: inspect the same claim/ledger before any further action')
+        if command_started:
+            report['command_result'] = {'exit_code': None, 'stdout': '', 'stderr': ''}
+        code = 130
     except subprocess.TimeoutExpired as exc:
         report['status'] = 'UNKNOWN'
         report['errors'].append('ENTRY_TIMEOUT: command interrupted; inspect effects before a fresh check')
@@ -252,7 +362,9 @@ def main(argv=None):
     report['finished_at'] = datetime.now(timezone.utc).isoformat()
     if output is not None:
         output.parent.mkdir(parents=True, exist_ok=True)
-        with output.open('x') as stream:
+        mode = 0o600 if args.mode == 'probe' else 0o666
+        descriptor = os.open(output, os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW, mode)
+        with os.fdopen(descriptor, 'w') as stream:
             json.dump(report, stream, ensure_ascii=False, indent=2)
             stream.write('\n')
     print(json.dumps({key: report[key] for key in ('status', 'task_id', 'action', 'errors')}, ensure_ascii=False))

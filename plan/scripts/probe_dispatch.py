@@ -1,0 +1,781 @@
+"""Exact, local Owner-authorized dispatch validation for one V2-019 probe.
+
+Git records and byte bindings are audit inputs in the accepted single-Owner
+mode. Human review of the original numerical approval and pricing evidence is
+still required: hashes do not interpret approval text, certify chat provenance,
+authenticate an external approver or resist shared writers.
+This module reads no credentials, makes no HTTP request and claims no run.
+"""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import os
+import re
+import stat
+import subprocess
+import sys
+from collections.abc import Callable
+from dataclasses import dataclass, field
+from datetime import UTC, datetime
+from decimal import Decimal, InvalidOperation
+from pathlib import Path
+from types import SimpleNamespace
+from urllib.parse import urlsplit
+
+from anovel.context.models import ContextRole
+from anovel.gateway.models import (
+    KIMI_CHAT_ENDPOINT,
+    KIMI_CHAT_PATH,
+    KIMI_CONTEXT_WINDOW,
+    KIMI_MODEL,
+    KIMI_PROBE_WINDOW,
+    BudgetLimit,
+    EstimateFeeBound,
+    GatewayRequest,
+    ModelPolicy,
+)
+from anovel.gateway.provider import KIMI_FIRST_GENERATION_TEMPLATE, strict_json
+
+
+class ProbeAuthorizationError(ValueError):
+    """A bounded probe has no applicable, current dispatch authorization."""
+
+
+_SOURCE_DIRS = ("src", "scripts", "plan/scripts", "plan/schemas")
+_SOURCE_FILES = ("pyproject.toml", "uv.lock", ".python-version", "model-policy.yaml")
+_PIN_KEYS = {"scope_revision", "scope_ref", "review_revision", "review_ref"}
+_KIMI_COUNT_PATH = "/v1/tokenizers/estimate-token-count"
+_PAID_COUNT_STATUS = "VERIFIED_BOUNDED_CHARGE"
+_GENERATION_ONLY_TEMPLATE = KIMI_FIRST_GENERATION_TEMPLATE
+_GENERATION_ONLY_INSTRUCTIONS = (
+    'Return exactly this JSON object: {"text":"ANovelOS Kimi probe OK"}.'
+)
+_SCHEMA = {
+    "type": "object",
+    "properties": {"text": {"type": "string"}},
+    "required": ["text"],
+    "additionalProperties": False,
+}
+_PLAN_MODULES = {
+    "probe_dispatch",
+    "task_entry",
+    "validate_plan",
+    "change_review",
+    "execution_checks",
+    "weakening_checks",
+    "governance_checks",
+    "evidence_checks",
+}
+
+
+def _fail(code: str) -> None:
+    # Do not include untrusted JSON, file contents or exception messages.
+    raise ProbeAuthorizationError("PROBE_" + code)
+
+
+def _digest(raw: bytes) -> str:
+    return hashlib.sha256(raw).hexdigest()
+
+
+def _text(value: object) -> str:
+    if type(value) is not str or not value.strip():
+        _fail("STRING")
+    return value
+
+
+def _object(value: object, keys: set[str]) -> dict:
+    if type(value) is not dict or set(value) != keys:
+        _fail("FIELDS")
+    return value
+
+
+def _hash(value: object) -> str:
+    value = _text(value)
+    if re.fullmatch(r"[0-9a-f]{64}", value) is None:
+        _fail("HASH")
+    return value
+
+
+def _integer(value: object, minimum: int = 1, maximum: int | None = None) -> int:
+    if (
+        type(value) is not int
+        or value < minimum
+        or (maximum is not None and value > maximum)
+    ):
+        _fail("INTEGER_LIMIT")
+    return value
+
+
+def _instant(value: object) -> datetime:
+    try:
+        result = datetime.fromisoformat(_text(value))
+    except ValueError:
+        _fail("TIME")
+    if result.tzinfo is None or result.utcoffset() != UTC.utcoffset(result):
+        _fail("UTC_TIME_REQUIRED")
+    return result.astimezone(UTC)
+
+
+def _paid_estimate_fee(
+    raw: bytes, source: str, read_pin: Callable[[str], bytes]
+) -> tuple[EstimateFeeBound, str]:
+    tariff = _object(
+        strict_json(raw),
+        {
+            "record_type",
+            "schema_version",
+            "currency",
+            "model",
+            "endpoint",
+            "source",
+            "maximum_microusd",
+            "expires_at",
+            "source_ref",
+            "source_sha256",
+            "source_quote",
+        },
+    )
+    if (
+        tariff["record_type"] != "kimi_estimate_fee_bound"
+        or tariff["schema_version"] != "1.0"
+        or tariff["currency"] != "USD"
+        or tariff["model"] != KIMI_MODEL
+        or tariff["source"] != source
+    ):
+        _fail("COUNT_COST_TARIFF")
+    original = read_pin(_text(tariff["source_ref"]))
+    quote = _text(tariff["source_quote"]).encode("utf-8")
+    if _digest(original) != _hash(tariff["source_sha256"]) or quote not in original:
+        _fail("COUNT_COST_EVIDENCE")
+    bound = EstimateFeeBound(
+        _integer(tariff["maximum_microusd"]),
+        _digest(raw),
+        _text(tariff["expires_at"]),
+    )
+    return bound, _text(tariff["endpoint"])
+
+
+def _git(root: Path, *args: str) -> bytes:
+    return subprocess.check_output(
+        ["git", "-C", str(root), *args], stderr=subprocess.PIPE
+    )
+
+
+def _source_name(name: str) -> bool:
+    return name in _SOURCE_FILES or any(
+        name.startswith(directory + "/") for directory in _SOURCE_DIRS
+    )
+
+
+def _included(name: str) -> bool:
+    # Only generated bytecode and the OS metadata file are excluded. A new .py
+    # even inside a cache directory still changes the runtime source identity.
+    return not name.endswith((".pyc", ".pyo")) and Path(name).name != ".DS_Store"
+
+
+def _regular_bytes(path: Path) -> bytes:
+    for component in (path, *path.parents):
+        if component.is_symlink():
+            _fail("SYMLINK")
+    before = path.stat()
+    if not stat.S_ISREG(before.st_mode):
+        _fail("REGULAR_FILE_REQUIRED")
+    raw = path.read_bytes()
+    after = path.stat()
+    if (before.st_dev, before.st_ino, before.st_size, before.st_mtime_ns) != (
+        after.st_dev,
+        after.st_ino,
+        after.st_size,
+        after.st_mtime_ns,
+    ):
+        _fail("INPUT_CHANGED")
+    return raw
+
+
+def _pinned_blob_digests(root: Path, oids: list[str]) -> dict[str, str]:
+    """Read immutable source objects in one process without weakening framing.
+
+    --batch emits a size-framed binary body after each exact object header. Do
+    not split bodies on newlines: source may contain arbitrary binary bytes.
+    """
+    ordered = list(dict.fromkeys(oids))
+    if not ordered:
+        return {}
+    if any(
+        re.fullmatch(r"[0-9a-f]{40}(?:[0-9a-f]{24})?", oid) is None for oid in ordered
+    ):
+        _fail("SOURCE_OBJECT_ID")
+    completed = subprocess.run(
+        ["git", "-C", str(root), "cat-file", "--batch"],
+        input="".join(oid + "\n" for oid in ordered).encode("ascii"),
+        capture_output=True,
+        check=True,
+    )
+    raw = completed.stdout
+    offset = 0
+    digests = {}
+    for oid in ordered:
+        header_end = raw.find(b"\n", offset)
+        if header_end < 0:
+            _fail("SOURCE_BATCH_HEADER")
+        header = raw[offset:header_end].split(b" ")
+        if (
+            len(header) != 3
+            or header[0] != oid.encode("ascii")
+            or header[1] != b"blob"
+            or re.fullmatch(rb"0|[1-9][0-9]*", header[2]) is None
+        ):
+            _fail("SOURCE_BATCH_HEADER")
+        size = int(header[2])
+        body_start = header_end + 1
+        body_end = body_start + size
+        if body_end >= len(raw) or raw[body_end : body_end + 1] != b"\n":
+            _fail("SOURCE_BATCH_BODY")
+        body = raw[body_start:body_end]
+        algorithm = "sha1" if len(oid) == 40 else "sha256"
+        object_header = b"blob " + str(size).encode("ascii") + b"\0"
+        if hashlib.new(algorithm, object_header + body).hexdigest() != oid:
+            _fail("SOURCE_OBJECT_CONTENT")
+        digests[oid] = _digest(body)
+        offset = body_end + 1
+    if offset != len(raw):
+        _fail("SOURCE_BATCH_TRAILING_DATA")
+    return digests
+
+
+def fingerprint_source(root: Path, revision: str | None = None) -> str:
+    """Hash complete runtime/tool/schema inventories, including new source files.
+
+    A revision selects committed bytes; None selects actual regular files. No
+    candidate ignore policy controls the latter inventory. Authorization and
+    task records are excluded to avoid self-reference and bind separately.
+    """
+    root = root.resolve()
+    inventory = []
+    if revision is not None:
+        from change_review import require_revision
+
+        require_revision(root, revision)
+        entries = []
+        for entry in _git(root, "ls-tree", "-rz", "--full-tree", revision).split(b"\0"):
+            if not entry:
+                continue
+            metadata, raw_name = entry.split(b"\t", 1)
+            name = os.fsdecode(raw_name)
+            if not _source_name(name) or not _included(name):
+                continue
+            mode, kind, oid = metadata.decode().split()
+            if kind != "blob" or mode not in {"100644", "100755"}:
+                _fail("SOURCE_TYPE")
+            entries.append((name, mode, oid))
+        digests = _pinned_blob_digests(root, [oid for _, _, oid in entries])
+        inventory.extend((name, mode, digests[oid]) for name, mode, oid in entries)
+    else:
+        names = set()
+        for directory in _SOURCE_DIRS:
+            start = root / directory
+            if start.is_symlink():
+                _fail("SOURCE_SYMLINK")
+            if not start.exists():
+                continue
+            for current, dirs, files in os.walk(start, followlinks=False):
+                for name in dirs:
+                    if (Path(current) / name).is_symlink():
+                        _fail("SOURCE_SYMLINK")
+                names.update(
+                    str((Path(current) / name).relative_to(root)) for name in files
+                )
+        names.update(name for name in _SOURCE_FILES if (root / name).exists())
+        for name in sorted(names):
+            if not _included(name):
+                continue
+            path = root / name
+            raw = _regular_bytes(path)
+            mode = "100755" if path.stat().st_mode & 0o111 else "100644"
+            inventory.append((name, mode, _digest(raw)))
+    return _digest(json.dumps(sorted(inventory), separators=(",", ":")).encode())
+
+
+def _absolute(value: object) -> Path:
+    path = Path(_text(value))
+    if not path.is_absolute() or path != path.resolve():
+        _fail("CANONICAL_ABSOLUTE_PATH")
+    for component in (path, *path.parents):
+        if component.is_symlink():
+            _fail("SYMLINK")
+    return path
+
+
+def _argument_path(path: Path) -> Path:
+    if not isinstance(path, Path):
+        _fail("PATH")
+    return _absolute(str(path.absolute()))
+
+
+def _check_module_origins(root: Path) -> None:
+    """Reject accidentally imported code from another checkout or installation.
+
+    This checks actual paths, not resistance to a shared writer/process forging
+    module metadata. Installed third-party dependencies retain the lock policy.
+    """
+    for name, module in tuple(sys.modules.items()):
+        if name == "anovel" or name.startswith("anovel."):
+            expected = root / "src"
+        elif name in _PLAN_MODULES:
+            expected = root / "plan/scripts"
+        else:
+            continue
+        origin = getattr(module, "__file__", None)
+        if not isinstance(origin, str) or not Path(origin).resolve().is_relative_to(
+            expected
+        ):
+            _fail("MODULE_ORIGIN")
+
+
+@dataclass(frozen=True, slots=True)
+class AuthorizedProbe:
+    request: GatewayRequest = field(repr=False)
+    budget: BudgetLimit
+    policy: ModelPolicy
+    estimate_fee: EstimateFeeBound | None
+    generation_only: bool
+    ledger: Path
+    output: Path
+    claim_path: Path
+    authorization_id: str
+    deadline_at: str
+    allow_test_transport: bool
+    maximum_runtime: int
+    revalidate: Callable[[], None] = field(repr=False, compare=False)
+
+
+def _validate(
+    root: Path,
+    *,
+    request_path: Path,
+    budget_path: Path,
+    policy_path: Path,
+    ledger: Path,
+    output: Path,
+    policy_id: str,
+    attempt_id: str,
+) -> tuple[dict, bytes]:
+    from change_review import pinned_file, require_revision, review_changes
+    from task_entry import bind_change_review, validate_context, validator
+
+    root = root.resolve()
+    if (
+        root
+        != Path(
+            os.fsdecode(_git(root, "rev-parse", "--show-toplevel")).strip()
+        ).resolve()
+    ):
+        _fail("ROOT")
+    if root != validator.PLAN.parent.resolve():
+        _fail("CONTEXT_ROOT")
+    _check_module_origins(root)
+    errors, packet = validate_context(root, "V2-019", "LIVE_CALL")
+    if errors or not isinstance(packet, dict):
+        _fail("LIVE_CONTEXT")
+    task = next(
+        t
+        for t in validator.load()["implementation-backlog"]["tasks"]
+        if t["task_id"] == "V2-019"
+    )
+    packet_bytes = _regular_bytes(root / "plan" / task["execution_packet_ref"])
+    if packet.get("task_id") != "V2-019" or packet.get("action") != "LIVE_CALL":
+        _fail("TASK_ACTION")
+    approval = _object(packet.get("probe_authorization"), {"revision", "ref", "sha256"})
+    revision = _text(approval["revision"])
+    require_revision(root, revision)
+    raw = pinned_file(root, revision, _text(approval["ref"]))
+    if _digest(raw) != _hash(approval["sha256"]):
+        _fail("GRANT_HASH")
+    grant = _object(
+        strict_json(raw),
+        {
+            "record_type",
+            "schema_version",
+            "task_id",
+            "purpose",
+            "environment",
+            "authorization_id",
+            "source_revision",
+            "source_sha256",
+            "scope_review",
+            "owner_authorization",
+            "inputs",
+            "identity",
+            "paths",
+            "issued_at",
+            "expires_at",
+            "deadline_at",
+            "limits",
+            "count_cost",
+            "automatic_retry",
+            "fallback",
+            "stop_on_unknown",
+            "stop_on_pending",
+        },
+    )
+    for key, value in {
+        "record_type": "controlled_probe_authorization",
+        "schema_version": "1.0",
+        "task_id": "V2-019",
+        "purpose": "FIRST_CAPABILITY_PROBE",
+        "automatic_retry": False,
+        "fallback": False,
+        "stop_on_unknown": True,
+        "stop_on_pending": True,
+    }.items():
+        if type(grant[key]) is not type(value) or grant[key] != value:
+            _fail("GRANT_PURPOSE")
+    authorization_id = _text(grant["authorization_id"])
+    if re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{0,127}", authorization_id) is None:
+        _fail("AUTHORIZATION_ID")
+    environment = grant["environment"]
+    if environment not in {"LIVE_PROVIDER", "LOOPBACK_FIXTURE"}:
+        _fail("ENVIRONMENT")
+    source_revision = _text(grant["source_revision"])
+    require_revision(root, source_revision)
+    ancestor = subprocess.run(
+        [
+            "git",
+            "-C",
+            str(root),
+            "merge-base",
+            "--is-ancestor",
+            source_revision,
+            revision,
+        ],
+        capture_output=True,
+        check=False,
+    )
+    if ancestor.returncode:
+        _fail("SOURCE_PROVENANCE")
+    expected_source = _hash(grant["source_sha256"])
+    if (
+        fingerprint_source(root, source_revision) != expected_source
+        or fingerprint_source(root) != expected_source
+    ):
+        _fail("SOURCE_CHANGED")
+    binding = _object(packet.get("change_review"), _PIN_KEYS)
+    if _object(grant["scope_review"], _PIN_KEYS) != binding:
+        _fail("SCOPE_REVIEW_BINDING")
+    args = SimpleNamespace(**{key: None for key in _PIN_KEYS})
+    bind_change_review(packet, "LIVE_CALL", args)
+    review = review_changes(root, task_id="V2-019", **vars(args))
+    if review["status"] != "PASS":
+        _fail("ACTUAL_CHANGES")
+    owner = _object(grant["owner_authorization"], {"kind", "source", "ref", "sha256"})
+    if owner["kind"] != "owner_numeric_live_authorization":
+        _fail("OWNER_AUTHORIZATION_KIND")
+    _text(owner["source"])
+    if not pinned_file(root, revision, _text(owner["ref"])).strip() or (
+        _digest(pinned_file(root, revision, owner["ref"])) != _hash(owner["sha256"])
+    ):
+        _fail("OWNER_AUTHORIZATION")
+    count = _object(grant["count_cost"], {"status", "source", "ref", "sha256"})
+    generation_only = count["status"] == "NOT_REQUESTED"
+    paid_count = count["status"] == _PAID_COUNT_STATUS
+    estimate_fee: EstimateFeeBound | None = None
+    estimate_endpoint: str | None = None
+    if generation_only:
+        if any(count[name] is not None for name in ("source", "ref", "sha256")):
+            _fail("COUNT_NOT_REQUESTED_FIELDS")
+    else:
+        if not paid_count and count["status"] != "VERIFIED_ZERO_COST":
+            _fail("COUNT_COST_UNRESOLVED")
+        count_source = _text(count["source"])
+        url = urlsplit(count_source)
+        allowed_hosts = {"platform.kimi.com"}
+        if environment == "LOOPBACK_FIXTURE":
+            allowed_hosts.add("example.invalid")
+            if not paid_count:
+                allowed_hosts.update({"developers.openai.com", "platform.openai.com"})
+        if (
+            url.scheme != "https"
+            or url.hostname not in allowed_hosts
+            or url.username
+            or url.password
+            or (paid_count and url.netloc != url.hostname)
+        ):
+            _fail("COUNT_COST_SOURCE")
+        cost_evidence = pinned_file(root, revision, _text(count["ref"]))
+        if not cost_evidence.strip() or _digest(cost_evidence) != _hash(
+            count["sha256"]
+        ):
+            _fail("COUNT_COST_EVIDENCE")
+        if paid_count:
+            estimate_fee, estimate_endpoint = _paid_estimate_fee(
+                cost_evidence,
+                count_source,
+                lambda ref: pinned_file(root, revision, ref),
+            )
+    inputs = _object(grant["inputs"], {"request", "budget", "policy"})
+    values = {}
+    for name, path, factory in (
+        ("request", request_path, GatewayRequest),
+        ("budget", budget_path, BudgetLimit),
+        ("policy", policy_path, ModelPolicy),
+    ):
+        bound = _object(inputs[name], {"path", "sha256", "content_hash"})
+        path = _argument_path(path)
+        if path != _absolute(bound["path"]):
+            _fail("INPUT_PATH")
+        data = _regular_bytes(path)
+        if _digest(data) != _hash(bound["sha256"]):
+            _fail("INPUT_HASH")
+        value = factory.from_dict(strict_json(data))
+        if value.content_hash != _hash(bound["content_hash"]):
+            _fail("INPUT_CONTENT_HASH")
+        values[name] = value
+    request, budget, policy = (values[name] for name in ("request", "budget", "policy"))
+    identity = _object(
+        grant["identity"],
+        {
+            "project",
+            "branch",
+            "run_id",
+            "logical_id",
+            "attempt_id",
+            "policy_id",
+            "model",
+        },
+    )
+    expected_identity = {
+        "project": request.project,
+        "branch": request.branch,
+        "run_id": request.run_id,
+        "logical_id": request.logical_id,
+        "attempt_id": _text(attempt_id),
+        "policy_id": _text(policy_id),
+        "model": policy.model,
+    }
+    if identity != expected_identity or any(
+        type(v) is not str for v in identity.values()
+    ):
+        _fail("IDENTITY")
+    if (budget.project, budget.branch, budget.run_id) != (
+        request.project,
+        request.branch,
+        request.run_id,
+    ):
+        _fail("BUDGET_IDENTITY")
+    template = (
+        _GENERATION_ONLY_TEMPLATE if generation_only else "gateway-protocol-probe-v1"
+    )
+    if request.template_version != template or request.schema != _SCHEMA:
+        _fail("PROBE_CONTRACT")
+    if (
+        request.context.role != ContextRole.WRITER
+        or request.policies != (policy,)
+        or policy.id != policy_id
+    ):
+        _fail("PROBE_POLICY")
+    window_limit = (
+        KIMI_CONTEXT_WINDOW if environment == "LIVE_PROVIDER" else KIMI_PROBE_WINDOW
+    )
+    if (
+        policy.context_window > window_limit
+        or policy.max_output_tokens > 1024
+        or policy.timeout_seconds > 30
+    ):
+        _fail("MODEL_LIMITS")
+    if policy.accepted_models != (policy.model,):
+        _fail("MODEL_FALLBACK")
+    if environment == "LIVE_PROVIDER":
+        if (
+            policy.test_mode
+            or policy.endpoint != KIMI_CHAT_ENDPOINT
+            or policy.context_window != KIMI_CONTEXT_WINDOW
+        ):
+            _fail("LIVE_MODEL")
+        if policy.input_rate <= 0 or policy.output_rate <= 0:
+            _fail("LIVE_PRICE")
+    elif not policy.test_mode or urlsplit(policy.endpoint).hostname not in {
+        "127.0.0.1",
+        "localhost",
+    }:
+        _fail("LOOPBACK_MODEL")
+    if policy.is_kimi and (
+        policy.model != KIMI_MODEL or policy.params != {"reasoning_effort": "high"}
+    ):
+        _fail("KIMI_MODEL")
+    if generation_only and (
+        not policy.is_kimi
+        or request.instructions != _GENERATION_ONLY_INSTRUCTIONS
+        or request.context.items
+        or request.context.selections
+        or request.context.actor_id is not None
+        or request.context.scene_id is not None
+        or len(request.context.model_bytes) > 1024
+    ):
+        _fail("GENERATION_ONLY_REQUEST")
+    if estimate_fee is not None and (
+        not policy.is_kimi
+        or estimate_endpoint
+        != policy.endpoint.removesuffix(KIMI_CHAT_PATH) + _KIMI_COUNT_PATH
+    ):
+        _fail("COUNT_COST_TARIFF_ENDPOINT")
+    paths = _object(grant["paths"], {"private_root", "ledger", "output", "claim"})
+    private_root = _absolute(paths["private_root"])
+    if private_root.is_relative_to(root):
+        relative = private_root.relative_to(root)
+        # Inside the checkout, only the fixed ignored build-output area may
+        # contain runtime files. A candidate/global ignore cannot turn source
+        # or plan directories into an authorized private ledger destination.
+        if not relative.parts or relative.parts[0] != "dist":
+            _fail("PRIVATE_ROOT_SOURCE")
+        if _git(root, "ls-files", "--", str(relative)).strip():
+            _fail("PRIVATE_ROOT_TRACKED")
+        ignored = subprocess.run(
+            ["git", "-C", str(root), "check-ignore", "--quiet", "--", str(relative)],
+            capture_output=True,
+            check=False,
+        )
+        if ignored.returncode:
+            _fail("PRIVATE_ROOT_NOT_IGNORED")
+    ledger, output = _argument_path(ledger), _argument_path(output)
+    claim_path = _absolute(paths["claim"])
+    if ledger != _absolute(paths["ledger"]) or output != _absolute(paths["output"]):
+        _fail("OUTPUT_PATH")
+    if (
+        ledger.parent != private_root
+        or output.parent != private_root
+        or claim_path != private_root / "dispatch.claim"
+    ):
+        _fail("PRIVATE_PATHS")
+    if len({ledger, output, claim_path}) != 3:
+        _fail("PATH_ALIAS")
+    limits = _object(
+        grant["limits"],
+        {
+            "total_microusd",
+            "max_attempts",
+            "max_inflight",
+            "max_unknown",
+            "maximum_runtime_seconds",
+            "max_http_requests",
+            "per_post_timeout_seconds",
+        },
+    )
+    total = _integer(limits["total_microusd"])
+    for name in ("max_attempts", "max_inflight", "max_unknown"):
+        if _integer(limits[name], maximum=1) != getattr(budget, name):
+            _fail("BUDGET_LIMITS")
+    maximum_runtime = _integer(limits["maximum_runtime_seconds"], maximum=120)
+    if _integer(limits["max_http_requests"], maximum=2) != (
+        1 if generation_only else 2
+    ):
+        _fail("HTTP_LIMIT")
+    post_timeout = _integer(limits["per_post_timeout_seconds"], maximum=30)
+    reserve = policy.reserve_microusd + (
+        estimate_fee.maximum_microusd if estimate_fee is not None else 0
+    )
+    if (
+        policy.timeout_seconds > post_timeout
+        or budget.total_microusd != total
+        or reserve > total
+    ):
+        _fail("BUDGET_BOUND")
+    declared = packet["budget"]
+    try:
+        cap = Decimal(str(declared["model_cost_cap"])) * 1_000_000
+        runtime = Decimal(str(declared["maximum_runtime"]))
+    except InvalidOperation:
+        _fail("DECLARED_BUDGET")
+    if declared["paid_calls_allowed"] is not True or type(
+        declared["model_cost_cap"]
+    ) not in (int, float):
+        _fail("PAID_AUTHORITY")
+    if (
+        not cap.is_finite()
+        or cap != total
+        or type(declared["maximum_attempts"]) is not int
+        or declared["maximum_attempts"] != 1
+    ):
+        _fail("DECLARED_BUDGET")
+    if (
+        type(declared["maximum_runtime"]) not in (int, float)
+        or not runtime.is_finite()
+        or runtime <= 0
+        or runtime > maximum_runtime
+        or runtime != runtime.to_integral_value()
+    ):
+        _fail("DECLARED_RUNTIME")
+    issued, expires, deadline = (
+        _instant(grant[key]) for key in ("issued_at", "expires_at", "deadline_at")
+    )
+    now = datetime.now(UTC)
+    if (
+        not issued <= now < deadline <= expires
+        or (expires - issued).total_seconds() > maximum_runtime
+    ):
+        _fail("AUTHORIZATION_EXPIRED")
+    if (
+        _instant(budget.deadline_at) != deadline
+        or _instant(policy.price_expires_at) < deadline
+    ):
+        _fail("DEADLINE_BINDING")
+    if estimate_fee is not None and _instant(estimate_fee.expires_at) < deadline:
+        _fail("COUNT_COST_TARIFF_EXPIRED")
+    # Scope/plan checking may lazily import additional shared checker modules.
+    _check_module_origins(root)
+    return {
+        "request": request,
+        "budget": budget,
+        "policy": policy,
+        "estimate_fee": estimate_fee,
+        "generation_only": generation_only,
+        "ledger": ledger,
+        "output": output,
+        "claim_path": claim_path,
+        "authorization_id": authorization_id,
+        "deadline_at": budget.deadline_at,
+        "allow_test_transport": environment == "LOOPBACK_FIXTURE",
+        "maximum_runtime": int(runtime),
+    }, packet_bytes
+
+
+def validate_probe(
+    root: Path,
+    *,
+    request_path: Path,
+    budget_path: Path,
+    policy_path: Path,
+    ledger: Path,
+    output: Path,
+    policy_id: str,
+    attempt_id: str,
+) -> AuthorizedProbe:
+    """Validate exactly one pinned capability investigation without side effects."""
+    arguments = {
+        "request_path": request_path,
+        "budget_path": budget_path,
+        "policy_path": policy_path,
+        "ledger": ledger,
+        "output": output,
+        "policy_id": policy_id,
+        "attempt_id": attempt_id,
+    }
+    try:
+        values, packet_bytes = _validate(root, **arguments)
+    except ProbeAuthorizationError:
+        raise
+    except (OSError, ValueError, TypeError, KeyError, subprocess.SubprocessError):
+        _fail("INVALID_AUTHORIZATION")
+
+    def revalidate() -> None:
+        try:
+            current, current_packet = _validate(root, **arguments)
+            if current_packet != packet_bytes or current != values:
+                _fail("CONTEXT_CHANGED")
+        except ProbeAuthorizationError:
+            raise
+        except (OSError, ValueError, TypeError, KeyError, subprocess.SubprocessError):
+            _fail("INVALID_AUTHORIZATION")
+
+    return AuthorizedProbe(**values, revalidate=revalidate)

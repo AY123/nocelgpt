@@ -22,6 +22,7 @@ from anovel.canon.identity import canonical_bytes, decode_canonical
 from .models import (
     BudgetBlocked,
     BudgetLimit,
+    EstimateFeeBound,
     GatewayError,
     GatewayRequest,
     GatewayResult,
@@ -68,6 +69,13 @@ CREATE TABLE IF NOT EXISTS attempts (
     PRIMARY KEY (run_id, attempt_id),
     FOREIGN KEY (run_id, logical_id)
         REFERENCES logical_requests(run_id, logical_id)
+);
+CREATE TABLE IF NOT EXISTS estimate_fee_bounds (
+    run_id TEXT NOT NULL,
+    attempt_id TEXT NOT NULL,
+    fee_record BLOB NOT NULL,
+    PRIMARY KEY (run_id, attempt_id),
+    FOREIGN KEY (run_id, attempt_id) REFERENCES attempts(run_id, attempt_id)
 );
 """
 
@@ -279,6 +287,33 @@ class BudgetLedger:
         return row
 
     @staticmethod
+    def _estimate_fee(
+        connection: sqlite3.Connection, run_id: str, attempt_id: str
+    ) -> EstimateFeeBound | None:
+        row = connection.execute(
+            "SELECT fee_record FROM estimate_fee_bounds WHERE run_id=? AND attempt_id=?",
+            (run_id, attempt_id),
+        ).fetchone()
+        if row is None:
+            return None
+        return EstimateFeeBound.from_dict(decode_canonical(_bytes(row["fee_record"])))
+
+    def _reservation(
+        self,
+        connection: sqlite3.Connection,
+        row: sqlite3.Row,
+        policy: ModelPolicy,
+    ) -> tuple[int, EstimateFeeBound | None]:
+        estimate_fee = self._estimate_fee(connection, row["run_id"], row["attempt_id"])
+        count_maximum = 0 if estimate_fee is None else estimate_fee.maximum_microusd
+        reserved = _money(row["reserved_microusd"])
+        if reserved != policy.reserve_microusd + count_maximum or (
+            estimate_fee is not None and not policy.is_kimi
+        ):
+            raise GatewayError("corrupt persisted estimate or generation reservation")
+        return reserved, estimate_fee
+
+    @staticmethod
     def _totals(connection: sqlite3.Connection, run_id: str) -> dict[str, int]:
         totals = {
             "spent_microusd": 0,
@@ -335,11 +370,17 @@ class BudgetLedger:
         attempt_id: str,
         decision: RetryDecision | None = None,
         now: datetime | None = None,
+        *,
+        estimate_fee: EstimateFeeBound | None = None,
     ) -> GatewayResult | None:
         if type(request) is not GatewayRequest or type(policy) is not ModelPolicy:
             raise GatewayError("reservation requires exact request and model policy")
         if decision is not None and type(decision) is not RetryDecision:
             raise GatewayError("retry needs an exact RetryDecision")
+        if estimate_fee is not None and (
+            type(estimate_fee) is not EstimateFeeBound or not policy.is_kimi
+        ):
+            raise GatewayError("estimate fee requires an exact Kimi fee bound")
         _text(attempt_id, "attempt ID")
         instant = _now(now)
         if not any(p.to_bytes() == policy.to_bytes() for p in request.policies):
@@ -348,6 +389,15 @@ class BudgetLedger:
             budget, limit = self._budget(connection, request.run_id)
             if (limit.project, limit.branch) != (request.project, request.branch):
                 raise IdentityConflict("request changed its frozen budget scope")
+            if estimate_fee is not None:
+                if limit.max_attempts != 1 or decision is not None:
+                    raise BudgetBlocked("paid estimate requires a one-attempt budget")
+                if datetime.fromisoformat(
+                    estimate_fee.expires_at
+                ) < datetime.fromisoformat(limit.deadline_at):
+                    raise BudgetBlocked(
+                        "estimate fee bound expires before the run deadline"
+                    )
             logical = connection.execute(
                 "SELECT * FROM logical_requests WHERE run_id=? AND logical_id=?",
                 (request.run_id, request.logical_id),
@@ -357,6 +407,13 @@ class BudgetLedger:
                     raise IdentityConflict("logical request changed its frozen input")
                 success = logical["first_success_attempt"]
                 if success is not None:
+                    if (
+                        self._estimate_fee(connection, request.run_id, success)
+                        != estimate_fee
+                    ):
+                        raise IdentityConflict(
+                            "replay changed the frozen estimate fee bound"
+                        )
                     stored = _result(self._attempt(connection, request.run_id, success))
                     if stored is None or stored.status != "SUCCESS":
                         raise GatewayError("corrupt successful logical request pointer")
@@ -407,7 +464,10 @@ class BudgetLedger:
                 totals[name]
                 for name in ("spent_microusd", "inflight_microusd", "unknown_microusd")
             )
-            if liability + policy.reserve_microusd > limit.total_microusd:
+            reserve_amount = policy.reserve_microusd + (
+                0 if estimate_fee is None else estimate_fee.maximum_microusd
+            )
+            if liability + reserve_amount > limit.total_microusd:
                 raise BudgetBlocked(
                     "the original run budget cannot cover this reservation"
                 )
@@ -434,10 +494,15 @@ class BudgetLedger:
                     policy.to_bytes(),
                     None if decision is None else decision.to_bytes(),
                     _stamp(instant),
-                    str(policy.reserve_microusd),
-                    str(policy.reserve_microusd),
+                    str(reserve_amount),
+                    str(reserve_amount),
                 ),
             )
+            if estimate_fee is not None:
+                connection.execute(
+                    "INSERT INTO estimate_fee_bounds(run_id,attempt_id,fee_record) VALUES (?,?,?)",
+                    (request.run_id, attempt_id, estimate_fee.to_bytes()),
+                )
         return None
 
     def mark_dispatch(
@@ -454,10 +519,17 @@ class BudgetLedger:
             policy = ModelPolicy.from_dict(
                 decode_canonical(_bytes(row["policy_record"]))
             )
+            _, estimate_fee = self._reservation(connection, row, policy)
             if instant >= datetime.fromisoformat(limit.deadline_at):
                 raise BudgetBlocked("the frozen run deadline has expired")
             if instant >= datetime.fromisoformat(policy.price_expires_at):
                 raise BudgetBlocked("the frozen price snapshot has expired")
+            if estimate_fee is not None and datetime.fromisoformat(
+                estimate_fee.expires_at
+            ) < datetime.fromisoformat(limit.deadline_at):
+                raise BudgetBlocked(
+                    "estimate fee bound expires before the run deadline"
+                )
             connection.execute(
                 "UPDATE attempts SET state='DISPATCHED',dispatched_at=? "
                 "WHERE run_id=? AND attempt_id=? AND state='PREPARED'",
@@ -498,6 +570,7 @@ class BudgetLedger:
             raise IdentityConflict(
                 "reply does not belong to the reserved request and policy"
             )
+        reserved, estimate_fee = self._reservation(connection, row, policy)
         previous = _result(row)
         if previous is not None:
             if previous.reply.to_bytes() == reply.to_bytes():
@@ -516,7 +589,7 @@ class BudgetLedger:
                 )
         elif row["state"] != "DISPATCHED":
             raise IdentityConflict("only a dispatched attempt can receive a result")
-        reserved = _money(row["reserved_microusd"])
+        generation_reserved = policy.reserve_microusd
         observed_cost = None if reply.usage is None else reply.usage.cost(policy)
         valid_model = reply.observed_model in policy.accepted_models
         valid_usage = reply.usage is not None and (
@@ -528,14 +601,23 @@ class BudgetLedger:
             reply.error_code == "UNEXPECTED_SERVICE_TIER"
             or (reply.observed_model is not None and not valid_model)
             or (reply.usage is not None and not valid_usage)
-            or (observed_cost is not None and observed_cost > reserved)
+            or (observed_cost is not None and observed_cost > generation_reserved)
         )
         estimated = (
             observed_cost is not None
             and valid_model
             and valid_usage
-            and observed_cost <= reserved
+            and observed_cost <= generation_reserved
         )
+        if estimated:
+            assert observed_cost is not None
+            liability = observed_cost
+        else:
+            liability = max(generation_reserved, observed_cost or 0)
+        if estimate_fee is not None:
+            liability += estimate_fee.maximum_microusd
+            # The successful generation usage cannot settle the tokenizer fee.
+            estimated = False
         result = GatewayResult(
             request.project,
             request.branch,
@@ -551,7 +633,6 @@ class BudgetLedger:
             observed_cost if estimated else None,
             reserved,
         )
-        liability = observed_cost if estimated else max(reserved, observed_cost or 0)
         connection.execute(
             """UPDATE attempts SET state='FINISHED',finished_at=?,reply_record=?,
                 result_record=?,liability_microusd=? WHERE run_id=? AND attempt_id=?""",
@@ -666,21 +747,37 @@ class BudgetLedger:
         amount_microusd: int,
         evidence_ref: str,
         authority_ref: str,
+        *,
+        estimate_charge_microusd: int | None = None,
     ) -> GatewayResult:
         if type(amount_microusd) is not int or amount_microusd < 0:
             raise GatewayError("reconciliation requires exact nonnegative micro-USD")
         _text(evidence_ref, "reconciliation evidence")
         _text(authority_ref, "reconciliation authority")
-        reconciliation = canonical_bytes(
-            {
-                "amount_microusd": amount_microusd,
-                "evidence_ref": evidence_ref,
-                "authority_ref": authority_ref,
-            }
-        )
+        if estimate_charge_microusd is not None and (
+            type(estimate_charge_microusd) is not int
+            or not 0 <= estimate_charge_microusd <= amount_microusd
+        ):
+            raise GatewayError("estimate charge must be an exact part of the total")
+        settlement: dict[str, object] = {
+            "amount_microusd": amount_microusd,
+            "evidence_ref": evidence_ref,
+            "authority_ref": authority_ref,
+        }
+        if estimate_charge_microusd is not None:
+            settlement["estimate_charge_microusd"] = estimate_charge_microusd
+        reconciliation = canonical_bytes(settlement)
         with self._transaction() as connection:
             self._budget(connection, run_id)
             row = self._attempt(connection, run_id, attempt_id)
+            policy = ModelPolicy.from_dict(
+                decode_canonical(_bytes(row["policy_record"]))
+            )
+            reserved, estimate_fee = self._reservation(connection, row, policy)
+            if (estimate_fee is None) != (estimate_charge_microusd is None):
+                raise GatewayError(
+                    "reconciliation must account for the original estimate separately"
+                )
             result = _result(row)
             if result is None:
                 raise GatewayError("unfinished attempt cannot be reconciled")
@@ -707,9 +804,27 @@ class BudgetLedger:
                     attempt_id,
                 ),
             )
-            if amount_microusd > result.reserved_microusd:
+            if estimate_fee is None:
+                exceeds_reservation = amount_microusd > reserved
+            else:
+                assert estimate_charge_microusd is not None
+                exceeds_reservation = (
+                    estimate_charge_microusd > estimate_fee.maximum_microusd
+                    or amount_microusd - estimate_charge_microusd
+                    > policy.reserve_microusd
+                )
+            if exceeds_reservation:
                 self._freeze(connection, run_id, "RECONCILED_COST_EXCEEDS_RESERVATION")
             return verified
+
+    def estimate_fee_bound(
+        self, run_id: str, attempt_id: str
+    ) -> EstimateFeeBound | None:
+        """Read the frozen estimate fee independently of its settlement state."""
+        with self._transaction() as connection:
+            self._budget(connection, run_id)
+            self._attempt(connection, run_id, attempt_id)
+            return self._estimate_fee(connection, run_id, attempt_id)
 
     def summary(self, run_id: str) -> dict[str, object]:
         with self._transaction() as connection:

@@ -1,0 +1,22 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-010-20261122-kimi-first-provider
+evidence_type: ADR_DECISION
+subject_id: ADR-010
+revision: 2ac1cae45fa418ab499171544ba1c0c77157ab0e
+status: PASS
+producer: Owner selection recorded by the implementing and verifying operator
+executed_at: '2026-11-22T02:09:14.325016+00:00'
+environment_fingerprint: PREPARE on the existing locked local runtime before Kimi
+  interface edits
+artifacts:
+- ref: decisions/ADR-010_KIMI_FIRST_PROVIDER.md
+  sha256: f65c0bffd6445625ab1fe970e0c0ac97b15371f5ccea5669e5f81ee358cfcbc8
+- ref: validation/execution/V2-019/kimi-offline-20261122/authorization.txt
+  sha256: a7a55259ddb5b948299cee5a45e56bf979641c0a28c8cb37ff91c047c3a61fa4
+input_evidence_refs:
+- validation/execution/V2-019/dispatch-20261117/adr-010-dispatch-decision.yaml
+decision: ACCEPTED
+rationale: Owner selected Kimi for the first real V2-019 acceptance. This authorizes
+  the bounded offline adapter and tests. Actual paid authority and remote acceptance
+  are pending.

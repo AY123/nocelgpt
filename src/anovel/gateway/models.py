@@ -21,6 +21,13 @@ from urllib.parse import urlsplit
 from anovel.canon.identity import canonical_bytes, decode_canonical
 from anovel.context.models import ContextArtifact
 
+OPENAI_RESPONSES_ENDPOINT = "https://api.openai.com/v1/responses"
+KIMI_CHAT_PATH = "/v1/chat/completions"
+KIMI_CHAT_ENDPOINT = "https://api.moonshot.cn" + KIMI_CHAT_PATH
+KIMI_MODEL = "kimi-k3.1-pro"
+KIMI_CONTEXT_WINDOW = 1_048_576
+KIMI_PROBE_WINDOW = 16_384
+
 
 class GatewayError(ValueError):
     """Malformed, inconsistent or unsupported Gateway input."""
@@ -307,7 +314,7 @@ class ModelPolicy(_Value):
             or url.password is not None
             or url.query
             or url.fragment
-            or url.path != "/v1/responses"
+            or url.path not in {"/v1/responses", KIMI_CHAT_PATH}
         ):
             raise GatewayError(
                 "Provider endpoint cannot carry credentials, query or another path"
@@ -328,11 +335,34 @@ class ModelPolicy(_Value):
                 raise GatewayError(
                     "test transport accepts only HTTP loopback endpoints"
                 )
-        elif self.endpoint != "https://api.openai.com/v1/responses":
+        elif self.endpoint not in {OPENAI_RESPONSES_ENDPOINT, KIMI_CHAT_ENDPOINT}:
             raise GatewayError(
-                "only the exact configured OpenAI Responses endpoint is supported"
+                "only the exact configured OpenAI and Kimi endpoints are supported"
             )
         _canonical(self.params_bytes, "model parameters")
+        _members(self.accepted_models, str, "accepted models")
+        for model in self.accepted_models:
+            _text(model, "accepted model")
+        if len(set(self.accepted_models)) != len(self.accepted_models):
+            raise GatewayError("accepted model identities repeat")
+        if not self.accepted_models:
+            object.__setattr__(self, "accepted_models", (self.model,))
+        if self.is_kimi:
+            if self.model != KIMI_MODEL or self.accepted_models != (KIMI_MODEL,):
+                raise GatewayError("Kimi policy requires the selected model identity")
+            if self.params != {"reasoning_effort": "high"}:
+                raise GatewayError("Kimi policy requires frozen high reasoning effort")
+            if not self.test_mode and self.context_window != KIMI_CONTEXT_WINDOW:
+                raise GatewayError(
+                    "Kimi live policy must reserve the full model window"
+                )
+        else:
+            self._validate_openai_parameters()
+        object.__setattr__(
+            self, "price_expires_at", _utc(self.price_expires_at, "price expiry")
+        )
+
+    def _validate_openai_parameters(self) -> None:
         params = self.params
         if not set(params) <= {"temperature", "top_p", "reasoning"}:
             raise GatewayError(
@@ -347,16 +377,10 @@ class ModelPolicy(_Value):
                     raise GatewayError(f"{name} must be a finite number, not bool")
         if "reasoning" in params and type(params["reasoning"]) is not dict:
             raise GatewayError("reasoning parameters must be an explicit object")
-        _members(self.accepted_models, str, "accepted models")
-        for model in self.accepted_models:
-            _text(model, "accepted model")
-        if len(set(self.accepted_models)) != len(self.accepted_models):
-            raise GatewayError("accepted model identities repeat")
-        if not self.accepted_models:
-            object.__setattr__(self, "accepted_models", (self.model,))
-        object.__setattr__(
-            self, "price_expires_at", _utc(self.price_expires_at, "price expiry")
-        )
+
+    @property
+    def is_kimi(self) -> bool:
+        return urlsplit(self.endpoint).path == KIMI_CHAT_PATH
 
     @property
     def params(self) -> dict[str, object]:
@@ -542,6 +566,45 @@ class GatewayRequest(_Value):
             _text(row["template_version"], "template version"),
             _required_decoded(row["schema_base64"], "Schema"),
             tuple(ModelPolicy.from_dict(v) for v in _array(row["policies"])),
+        )
+
+
+@dataclass(frozen=True, slots=True)
+class EstimateFeeBound(_Value):
+    """A positive bound for a single estimate, backed by frozen tariff evidence."""
+
+    maximum_microusd: int
+    evidence_sha256: str
+    expires_at: str
+
+    def __post_init__(self) -> None:
+        _int(self.maximum_microusd, "estimate fee upper bound", 1)
+        _digest(self.evidence_sha256)
+        object.__setattr__(
+            self, "expires_at", _utc(self.expires_at, "estimate fee expiry")
+        )
+
+    def to_dict(self) -> dict[str, object]:
+        return _data(
+            "ESTIMATE_FEE_BOUND",
+            {
+                "maximum_microusd": self.maximum_microusd,
+                "evidence_sha256": self.evidence_sha256,
+                "expires_at": self.expires_at,
+            },
+        )
+
+    @classmethod
+    def from_dict(cls, value: object) -> EstimateFeeBound:
+        row = _record(
+            value,
+            "ESTIMATE_FEE_BOUND",
+            {"maximum_microusd", "evidence_sha256", "expires_at"},
+        )
+        return cls(
+            _int(row["maximum_microusd"], "estimate fee upper bound", 1),
+            _digest(row["evidence_sha256"]),
+            _text(row["expires_at"], "estimate fee expiry"),
         )
 
 

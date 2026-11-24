@@ -2,12 +2,12 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-019
 plan_version: 1.3.0
-repository_revision: cefeaaf4a1889fdaf9c19a55de6621a1e1daa3c9
+repository_revision: 400d68e3d32dba3e658a1a2b39b509ffe8f8b230
 worktree_dirty: false
-plan_manifest_sha256: fd0c2f4c3bf5afd9419f4649a3fe6e313cbb9884da8e4e8670943ee434705d07
+plan_manifest_sha256: dc243f76574e1bd8e288f7a331b0a515ed9d716a74452748004c69851ced4e0f
 environment:
-  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; existing jsonschema4.26.0 moved to runtime,
-    package versions unchanged
+  fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; existing jsonschema4.26.0
+    moved to runtime, package versions unchanged
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
@@ -16,11 +16,7 @@ environment:
 implementer: Codex with bounded gateway models/tests delegation
 verifier: Same implementing/verifying operator; not independent personnel audit
 owner_role: gateway-maintainer
-scope: 'User-authorized V2-019 recovery: reconcile committed differences and freeze replacement scope/review
-  bindings; verify current official OpenAI pricing/model capabilities and refresh the bounded probe policy.
-  Preserve original implementation evidence and exact allowed_paths. Current window changes only V2-019 recovery/context
-  records and model-policy.yaml. No paid Provider calls, numerical live authority, V2-020 implementation, Gateway
-  interface changes or CI dispatch.'
+scope: 在远端预检提交上离线组装 V2-019 的 Kimi 一次生成代码和原有门禁。无 Provider 调用、CI 或发布权限。
 action: IMPLEMENT
 inputs:
 - source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
@@ -39,8 +35,8 @@ inputs:
   ref: validation/execution/V2-019/inputs/eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a.txt
   sha256: eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a
 - source_ref: machine/decision-register.yaml
-  ref: validation/execution/V2-019/inputs/0e695578102cfe30018916d301af64cdcfc06c34ed6c4f6e48f92dd62a45c9b9.txt
-  sha256: 0e695578102cfe30018916d301af64cdcfc06c34ed6c4f6e48f92dd62a45c9b9
+  ref: validation/execution/V2-019/inputs/e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c.txt
+  sha256: e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c
 - source_ref: machine/ai-execution-policy.yaml
   ref: validation/execution/V2-019/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
   sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
@@ -49,79 +45,81 @@ expected_outputs:
 - model-policy.yaml
 - tests/integration/test_v2_019.py
 allowed_paths:
-- src/anovel/gateway
-- src/anovel/gateway/
 - model-policy.yaml
-- tests/contract/test_v2_019.py
-- tests/integration/test_v2_019.py
-- tests/live_provider/test_v2_019_live.py
-- scripts/run_gateway_probe.py
-- scripts/ci/run_gate.py
-- tests/contract/test_delivery_gates.py
-- pyproject.toml
-- uv.lock
-- plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md
-- plan/validation/execution/V2-019/
-- plan/machine/implementation-backlog.yaml
-- plan/machine/test-catalog.yaml
-- plan/machine/decision-register.yaml
-- plan/generated/
 - plan/FILE_MANIFEST.json
-- README.md
-- AGENTS.md
-- plan/README.md
+- plan/decisions/ADR-010_KIMI_FIRST_PROVIDER.md
+- plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md
+- plan/machine/decision-register.yaml
+- plan/schemas/execution-packet.schema.json
+- plan/scripts/probe_dispatch.py
+- plan/scripts/task_entry.py
+- plan/validation/execution/V2-019/
+- plan/validation/execution/V2-020/execution-packet.yaml
+- scripts/run_gateway_probe.py
+- src/anovel/gateway
+- src/anovel/gateway/ledger.py
+- src/anovel/gateway/models.py
+- src/anovel/gateway/probe_runtime.py
+- src/anovel/gateway/provider.py
+- src/anovel/gateway/service.py
+- tests/contract/test_v2_019_probe_dispatch.py
+- tests/integration/test_v2_019.py
+- tests/integration/test_v2_019_kimi.py
 required_decisions:
 - ADR-010
 claims:
 - id: resume-diff-attribution
   kind: FACT
-  statement: The 25 committed post-implementation file changes are individually attributed; historical six
-    REVIEW findings are reconciled without weakening requirements. Original scope/review and implementation
-    evidence remain preserved.
+  statement: The 25 committed post-implementation file changes are individually attributed;
+    historical six REVIEW findings are reconciled without weakening requirements.
+    Original scope/review and implementation evidence remain preserved.
   sources:
   - ref: validation/execution/V2-019/resume-20261117/DIFF_ATTRIBUTION.json
     sha256: eeb73fab3d30d68ad2b785ff15fee6ce9a4c3145b2747ed662a1dadaa608836b
   blocks_actions: []
-  verification_plan: Freeze the new recovery scope and separately review its actual index/worktree differences
-    before IMPLEMENT.
+  verification_plan: Freeze the new recovery scope and separately review its actual
+    index/worktree differences before IMPLEMENT.
 - id: resume-paid-authority
   kind: FACT
-  statement: User authorizes this recovery and public documentation check, explicitly defers paid calls and
-    excludes V2-020 implementation.
+  statement: User authorizes this recovery and public documentation check, explicitly
+    defers paid calls and excludes V2-020 implementation.
   sources:
   - ref: validation/execution/V2-019/resume-20261117/authorization.txt
     sha256: 8c52caa237a8f84f91a8cce6531de2761daec64a584e31b1b02f9f3fe9806c4a
   blocks_actions: []
-  verification_plan: Keep paid_calls_allowed=false and model_cost_cap=0; no API/credential access in this window.
+  verification_plan: Keep paid_calls_allowed=false and model_cost_cap=0; no API/credential
+    access in this window.
 - id: account-capability
   kind: UNKNOWN
-  statement: Account access to gpt-6-luna and configured endpoint/schema/count behavior are not verified by
-    public documentation.
+  statement: Account access to gpt-6-luna and configured endpoint/schema/count behavior
+    are not verified by public documentation.
   sources: []
   blocks_actions:
   - LIVE_CALL
   - CERTIFY
-  verification_plan: After separate user-approved live budget and secure credential entry, verify actual account
-    capability with controlled evidence; do not infer from catalog.
+  verification_plan: After separate user-approved live budget and secure credential
+    entry, verify actual account capability with controlled evidence; do not infer
+    from catalog.
 - id: live-budget
   kind: UNKNOWN
-  statement: No positive numerical live budget/attempt/runtime authorization has been supplied.
+  statement: No positive numerical live budget/attempt/runtime authorization has been
+    supplied.
   sources: []
   blocks_actions:
   - LIVE_CALL
   - CERTIFY
-  verification_plan: Wait for explicit user budget and stop limits; existing local-test runtime/attempt fields
-    do not grant paid dispatch.
+  verification_plan: Wait for explicit user budget and stop limits; existing local-test
+    runtime/attempt fields do not grant paid dispatch.
 - id: current-public-provider-docs
   kind: FACT
-  statement: Current official public pages support the configured probe model capabilities and conservative
-    rates; account access and live result remain unknown.
+  statement: Current official public pages support the configured probe model capabilities
+    and conservative rates; account access and live result remain unknown.
   sources:
   - ref: validation/execution/V2-019/resume-20261117/provider-source-verification.json
     sha256: bfb3d9436f2d4fe1d47b15b972fa08eb897970ec3d35985175de52d1e5a78da6
   blocks_actions: []
-  verification_plan: Retain captured page hashes and bounded policy expiry; test offline policy behavior without
-    credentials or Provider requests.
+  verification_plan: Retain captured page hashes and bounded policy expiry; test offline
+    policy behavior without credentials or Provider requests.
 estimate:
   range: null
   unit: null
@@ -140,41 +138,48 @@ stop_conditions:
 - Need paid Provider or fictitious human fixture approval
 review_notes:
 - Recovery authority is the exact user message in resume-20261117/authorization.txt.
-- Original 9777956 scope and 6ab1474 implementation review retained; committed changes through cefeaaf individually
-  reconciled in DIFF_ATTRIBUTION.json.
-- Replacement scope/review pins are fixed; restricted actions check current index/worktree before and after
-  each command. Original implementation pins remain in DIFF_ATTRIBUTION.json.
-- Existing allowed_paths retained exactly; V2-020 and plan/validation/plan-validation.json are not added.
-- No paid calls, credential reading, remote CI or V2-020 implementation. Account capability and final acceptance
-  remain unverified.
-- Public pricing/model/count documentation refreshed on 2026-11-17; only policy id/expiry changed, conservative
-  rates/caps/reserve preserved. Account capability and paid authority remain unknown.
-- Local recovery RESULTS.json replaces historical LOCAL_RESULTS only as the current handoff check; old original
-  bytes remain unchanged. No remote/Provider/independent-audit claim.
+- Original 9777956 scope and 6ab1474 implementation review retained; committed changes
+  through cefeaaf individually reconciled in DIFF_ATTRIBUTION.json.
+- Replacement scope/review pins are fixed; restricted actions check current index/worktree
+  before and after each command. Original implementation pins remain in DIFF_ATTRIBUTION.json.
+- Existing allowed_paths retained exactly; V2-020 and plan/validation/plan-validation.json
+  are not added.
+- No paid calls, credential reading, remote CI or V2-020 implementation. Account capability
+  and final acceptance remain unverified.
+- Public pricing/model/count documentation refreshed on 2026-11-17; only policy id/expiry
+  changed, conservative rates/caps/reserve preserved. Account capability and paid
+  authority remain unknown.
+- Local recovery RESULTS.json replaces historical LOCAL_RESULTS only as the current
+  handoff check; old original bytes remain unchanged. No remote/Provider/independent-audit
+  claim.
 handoff:
-  current_step: Recovery scope/review and public policy refresh complete. This window:124 Gateway tests/0skip,5
-    governance commands and explicit architecture PASS. Historical2216 not rerun. Await live authority/account/dispatch
-    prerequisites; paid calls0, remoteCI0; V020 remainsPREPARE.
+  current_step: 离线组装候选。正式发布、常规六门与 LIVE_PROVIDER 均待相应授权和验证。
   completed_steps:
   - IMPLEMENT entry passed with fixed scope/review pins
-  - Implemented closed request/model/result contracts, durable SQLite budgets and single-use dispatch
+  - Implemented closed request/model/result contracts, durable SQLite budgets and
+    single-use dispatch
   - Implemented OpenAI Responses/input_tokens transport and bounded UNKNOWN accounting
-  - Full stable local1611 UNIT+244 ARCH+361 integration=2216/0skip;124 new Gateway cases subset;static/governance/security
-    PASS
-  - Actual official protocol/model/pricing pages fetched; candidate policy/probe prepared, no paid call
-  - '2026-11-17: Attributed25 committed files and reconciled6 historical REVIEW findings; froze recovery scope9f80d0a/reviewae047be
-    without widening allowed_paths.'
-  - '2026-11-17: Refetched official public pricing/model/count pages; policy onlyid/expiry changed; conservative5608microUSD
-    reserve unchanged, account accessNOT_VERIFIED.'
-  - 2026-11-17:124 Gateway tests/0skip,32 validator/39 governance/36 AI/13 legacy cases,5 governance commands,
-    architecture42files/0finding and offline request PASS; LIVE_CALL entry refuses the unbound action.
+  - Full stable local1611 UNIT+244 ARCH+361 integration=2216/0skip;124 new Gateway
+    cases subset;static/governance/security PASS
+  - Actual official protocol/model/pricing pages fetched; candidate policy/probe prepared,
+    no paid call
+  - '2026-11-17: Attributed25 committed files and reconciled6 historical REVIEW findings;
+    froze recovery scope9f80d0a/reviewae047be without widening allowed_paths.'
+  - '2026-11-17: Refetched official public pricing/model/count pages; policy onlyid/expiry
+    changed; conservative5608microUSD reserve unchanged, account accessNOT_VERIFIED.'
+  - 2026-11-17:124 Gateway tests/0skip,32 validator/39 governance/36 AI/13 legacy
+    cases,5 governance commands, architecture42files/0finding and offline request
+    PASS; LIVE_CALL entry refuses the unbound action.
   pending_items:
-  - Await explicit positive live budget, attempts/runtime stop limits and secure credential/account capability.
-  - Before paid work, establish applicable authorized LIVE_CALL dispatch path; local run entry rejects live
-    child commands, direct bypass is not authorized.
-  - Revalidate current policy if expired/changed and prepare a new exactly bound live request.
-  - Controlled real Provider evidence and final exact-source six-gate CI/acceptance; V019 stays IN_PROGRESS,
-    V020 stays OPEN/PREPARE.
+  - 托管 LIVE_PROVIDER 生产者和一次性凭据消费尚未就绪。
+  - Await explicit positive live budget, attempts/runtime stop limits and secure credential/account
+    capability.
+  - Before paid work, establish applicable authorized LIVE_CALL dispatch path; local
+    run entry rejects live child commands, direct bypass is not authorized.
+  - Revalidate current policy if expired/changed and prepare a new exactly bound live
+    request.
+  - Controlled real Provider evidence and final exact-source six-gate CI/acceptance;
+    V019 stays IN_PROGRESS, V020 stays OPEN/PREPARE.
   next_action: IMPLEMENT
   last_check:
     status: PASS
@@ -187,3 +192,4 @@ change_review:
   scope_ref: plan/validation/execution/V2-019/resume-20261117/scope.json
   review_revision: ae047be144fd08c005355f7e090eb450ad6fc149
   review_ref: plan/validation/execution/V2-019/resume-20261117/review.json
+probe_authorization: null
