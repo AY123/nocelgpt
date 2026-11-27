@@ -2,115 +2,113 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-020
 plan_version: 1.3.0
-repository_revision: 18a4d750baa256ae6e72f31f5f93dd2aba30d3d0
+repository_revision: 2098627c608c222cd6267dbd9c2a8c7bef8bddaf
 worktree_dirty: false
-plan_manifest_sha256: a2e49cce7b109180a89eb2402ddb7972489e63508af27c77154abb160d7d0921
+plan_manifest_sha256: 80b174bb0504c6636b3d398fe40ebc71aa0a3ecf47a6f2e9e7c20038a4c80dab
 environment:
-  fingerprint: Local Darwin; existing locked Python 3.12.14 and uv 0.12.17; offline PREPARE prototype only
+  fingerprint: Local and ordinary GitHub CI; locked Python 3.12.14; no Provider use
+    in this packet
   runtime_versions:
     python: 3.12.14
     uv: 0.12.17
   database_image: null
   ci_context: null
-implementer: Codex primary operator with bounded delegated PREPARE work
-verifier: Same implementing/verifying operator with AI cross-checks; not independent personnel audit
+implementer: Codex
+verifier: Same implementing/verifying operator
 owner_role: workflow-maintainer
-scope: 'User explicitly requested V2-020 PREPARE: an offline draft continuation replay tool turning the three existing
-  trial chapters into repeatable checks. Create only the isolated preparation prototype, fixtures, tests and reports
-  under plan/validation/execution/V2-020/prepare/, plus this packet/input binding and the backlog execution_packet_ref.
-  Keep V2-020 OPEN/PREPARE, its dependencies/start gate/acceptance unchanged, and V2-019 IN_PROGRESS with live Provider
-  evidence unresolved. Read existing experiment sources without changing them; reuse existing pure public APIs.
-  No production Workflow implementation, new business/approval model, Canon/Permit/accepted/published transition,
-  DB writes, runtime network/API/paid call or CI trigger. Existing main delivery authority is unchanged. The two
-  task artifact paths in expected_outputs/allowed_paths are future IMPLEMENT deliverables required by the unchanged
-  packet checker, not current PREPARE write authorization; creation or modification of those production files is
-  prohibited in this action. The main operator coordinates any necessary generated-view/manifest synchronization.'
-action: PREPARE
+scope: V2-020 same-source Draft workflow candidate with verified G-P5 prerequisites
+  and existing ordinary six-gate CI.
+action: IMPLEMENT
 inputs:
 - source_ref: 06_CERTIFICATION_AND_PRODUCT_EVALUATION.md
-  ref: validation/execution/V2-020/inputs/710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9.txt
   sha256: 710b1d4ec054f6c4273480a69294724457dc144326492a8fafff4bc0eba937d9
 - source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
-  ref: validation/execution/V2-020/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
   sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
 - source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
-  ref: validation/execution/V2-019/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
   sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
 - source_ref: 02_ARCHITECTURE_BASELINE.md
-  ref: validation/execution/V2-020/inputs/14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0.txt
   sha256: 14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0
 - source_ref: AI_EXECUTION_PROTOCOL.md
-  ref: validation/execution/V2-019/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-019/inputs/c1e2588c78e93aa58e1730c5fcf27f034f0e2c8aefc650e4465bd5c30f4dab88.txt
-  sha256: c1e2588c78e93aa58e1730c5fcf27f034f0e2c8aefc650e4465bd5c30f4dab88
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0.txt
+  sha256: 41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-019/inputs/d6c9901d653d6b646c7dfce73ddfc1fd5924f8640844379554ccf8b21239c725.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/d6c9901d653d6b646c7dfce73ddfc1fd5924f8640844379554ccf8b21239c725.txt
   sha256: d6c9901d653d6b646c7dfce73ddfc1fd5924f8640844379554ccf8b21239c725
 - source_ref: machine/decision-register.yaml
-  ref: validation/execution/V2-019/inputs/e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c.txt
   sha256: e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c
 - source_ref: machine/ai-execution-policy.yaml
-  ref: validation/execution/V2-019/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  ref: validation/execution/V2-020/local-acceptance-20261127/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
   sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
-- source_ref: decisions/ADR-008_PLAN_AND_CONTRACT_BINDING.md
-  ref: validation/execution/V2-020/inputs/88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e.txt
-  sha256: 88ad48dfa8bae4af20ed1c65fa62756b5062dce144832261a46ad6d4eed3e25e
-- source_ref: validation/execution/V2-017/adr-008-decision.yaml
-  ref: validation/execution/V2-020/inputs/8736e66c2203a172052bdb7ff6b14f070cfe01a6a417c76c8625de0425d23362.txt
-  sha256: 8736e66c2203a172052bdb7ff6b14f070cfe01a6a417c76c8625de0425d23362
-- source_ref: validation/execution/V2-020/authorization.txt
-  ref: validation/execution/V2-020/inputs/049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922.txt
-  sha256: 049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922
 expected_outputs:
 - src/anovel/workflow/chapter.py
 - tests/contract/test_v2_020.py
-- plan/validation/execution/V2-020/prepare/
-- plan/validation/execution/V2-020/execution-packet.yaml
-- plan/validation/execution/V2-020/authorization.txt
-- plan/validation/execution/V2-020/inputs/
 allowed_paths:
+- src/anovel/quality/__init__.py
+- src/anovel/quality/q0.py
+- src/anovel/quality/q1.py
+- src/anovel/quality/q2.py
+- src/anovel/quality/q3.py
+- src/anovel/quality/revision_q0.py
+- src/anovel/quality/revision_q123.py
+- src/anovel/workflow/__init__.py
+- src/anovel/workflow/__main__.py
+- src/anovel/workflow/assembly.py
+- src/anovel/workflow/assembly_io.py
+- src/anovel/workflow/candidate_control.py
 - src/anovel/workflow/chapter.py
+- src/anovel/workflow/chapter_revision.py
+- src/anovel/workflow/extractor.py
+- src/anovel/workflow/gateway_binding.py
+- src/anovel/workflow/generation.py
+- src/anovel/workflow/interfaces.py
+- src/anovel/workflow/ledger_pin.py
+- src/anovel/workflow/models.py
+- src/anovel/workflow/openai_settings.py
+- src/anovel/workflow/run.py
+- src/anovel/workflow/run_observer.py
+- src/anovel/workflow/scene.py
+- src/anovel/workflow/store.py
+- src/anovel/workflow/written_draft.py
 - tests/contract/test_v2_020.py
-- plan/validation/execution/V2-020/
-- plan/machine/implementation-backlog.yaml
-- plan/generated/
+- tests/contract/test_v2_020_assembly.py
+- tests/contract/test_v2_020_run.py
+- tests/contract/test_v2_020_scene.py
+- tests/contract/test_v2_020_scene_generation.py
+- tests/contract/test_v2_021.py
+- tests/contract/test_v2_022.py
+- src/anovel/canon/identity.py
 - plan/FILE_MANIFEST.json
-- README.md
-- plan/README.md
-- plan/validation/execution/V2-019/execution-packet.yaml
-- plan/validation/execution/V2-019/inputs/
+- plan/generated/PHASE_TASK_REGISTRY.md
+- plan/machine/implementation-backlog.yaml
+- plan/validation/execution/V2-020/execution-packet.yaml
+- plan/validation/execution/V2-020/local-acceptance-20261127/
 required_decisions:
 - ADR-008
 claims:
-- id: PREPARE_AUTHORIZATION_BOUNDARY
+- id: RETAINED_REAL_CHAPTER_READBACK
   kind: FACT
-  statement: The current user requested bounded V2-020 PREPARE; the recorded transcription limits this action to
-    an isolated offline draft replay prototype and does not authorize production Workflow implementation.
+  statement: One actual chapter Draft was generated and recovered; subsequent edited
+    Draft and adjacent Writer context were verified.
   sources:
-  - ref: validation/execution/V2-020/inputs/049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922.txt
-    sha256: 049b065b0f2510ff00c07a241ce6f030e1952415b79f79f5332ba66e4f59d922
+  - ref: validation/execution/V2-020/local-acceptance-20261127/LOCAL_PRODUCT_READBACK.json
+    sha256: 3d8aa28354ecd4e6486a1b144399b820bfbdccc86027adc770bf8cdc9a951f35
   blocks_actions: []
-  verification_plan: Compare actual changes and commands with the recorded current PREPARE scope before running;
-    stop any production/network/CI/Canon action.
-- id: DRAFT_REPLAY_SEMANTIC_LIMIT
-  kind: UNKNOWN
-  statement: Offline structure/provenance checks and typed finite previews do not establish complete prose semantics,
-    production acceptance, Provider evidence, human reading quality or independent review.
-  sources: []
-  blocks_actions:
-  - IMPLEMENT
-  - LIVE_CALL
-  - CERTIFY
-  verification_plan: Report the exact local checks and limits; preserve unknowns and require the later task action
-    prerequisites and genuine applicable evidence instead of promoting draft replay results.
+  verification_plan: Compare real receipt and current compiled context to their original
+    retained hashes.
 estimate:
   range: null
   unit: null
   assumptions:
-  - Existing three chapter draft artifacts and locked local Python environment are available; no Provider or database
-    is required.
+  - Existing three chapter draft artifacts and locked local Python environment are
+    available; no Provider or database is required.
   confidence: NOT_ESTIMATED
 budget:
   paid_calls_allowed: false
@@ -119,70 +117,26 @@ budget:
   maximum_attempts: 12
   maximum_runtime: 21600
 stop_conditions:
-- Actual changes exceed isolated PREPARE paths or would overwrite existing user changes or historical experiment
-  artifacts.
-- Need to create/modify production Workflow or formal AT-V2-020 tests, alter task identity/dependencies/stage/acceptance
-  or weaken a gate.
-- Need runtime network, paid Provider/API, CI trigger, production database write or Canon/Permit/accepted/published
-  transition.
-- Required input hash or final draft/review/mapping binding changes; invalidate affected derived results before
-  continuing.
-- Evidence is missing or contradictory; preserve UNKNOWN and do not self-declare semantic review or production acceptance.
+- Stop if a checked input, mandatory test or integrity check fails.
+- No Provider, Canon, publication or production acceptance under this action.
 review_notes:
-- PREPARE permits isolated investigation and execution refinement. The offline prototype is a bounded preparation
-  artifact and cannot implement production interfaces under another name.
-- Existing execution_checks.py requires all task artifacts in expected_outputs and covered by allowed_paths even
-  for OPEN/PREPARE. The two production artifact entries are full-task future deliverable bookkeeping only; current
-  scope expressly forbids writing them. The checker is unchanged.
-- ADR-008 is already ACCEPTED; this preparation consumes its frozen-parent/finite-overlay/source-bound continuation
-  limits without fabricating accepted predecessor receipts.
-- The prepare fixture must bind final draft bytes, reviewed Delta/stateNotes mappings and exact source quotations;
-  previous candidate after must equal next before exactly. No numeric threshold substitute or notes-only reviewed
-  claim.
-- Unprovided role-private state is preserved, not cleared; sent/received/accepted and stock quantity/release qualification
-  remain separate. Hashes bind bytes and do not prove semantic truth.
-- No formal AT-V2-020 result, P6/G-P6 closure, novel quality, real Provider success or independent personnel review
-  is claimed.
-- Opening branch/HEAD/clean worktree were observed locally. No fetch was performed; origin/main is the local tracking
-  ref only.
-- Initial plan_manifest_sha256 binds the existing manifest; the main operator must refresh it after coordinated
-  view/manifest updates and reconcile active input snapshots.
-- Only necessary V019 active source/manifest context reconciliation is included; existing V019 local test receipts,
-  scope pins and task state are not promoted or expanded. Main delivery follows existing user authorization; no
-  CI dispatch.
-- Task/dependency state is checked from the existing machine-source input and PREPARE entry; no redundant FACT artifact
-  binding to that same mutable-input snapshot is added. The legacy fixture normalizer refreshes copied inputs, not
-  duplicate claims. Machine dependency/status checks are unchanged.
-- 'Reuse identical active V019 input snapshots to avoid duplicate large machine records. Keep separate copies from
-  CLOSED historical packets: the unchanged legacy synthetic probe rewrites copied active inputs and must not invalidate
-  historical artifact hashes.'
+- V2-020 only is active in this candidate. Other task states follow the verified P5
+  baseline.
+- Workflow-required Quality modules and extraction test fixtures are copied unchanged
+  from the local implementation. No production authority or later task certification
+  is added.
+- Historical G-P5 evidence remains bound to f45d289. The encoding optimization requires
+  separate byte parity, and exact stored hashes must remain reproducible.
 handoff:
-  current_step: Three-chapter offline preparation replay and54/54 tests/0skip PASS; STATIC, architecture,5 governance
-    checks and full-history/worktree secret scan PASS. Main delivery next; V020 remains OPEN/PREPARE. No actual
-    Provider or remote CI.
+  current_step: 已组装独立 V2-020 候选，待核对当前源码的常规 CI。
   completed_steps:
-  - Observed main at 18a4d750baa256ae6e72f31f5f93dd2aba30d3d0 with clean opening worktree and local origin/main
-    tracking alignment.
-  - Read current task, AT-V2-020 scenarios, required specifications, packet schema and ADR-008; recorded PREPARE
-    versus future IMPLEMENT scope.
-  - Created task-specific authorization transcription and recoverable current normative/control-input snapshots;
-    added only the V2-020 backlog packet reference.
-  - Read all three final prose files and normalized mappings; byte-bound AI technical review recorded with explicit
-    limits.
-  - Three chapter replay produced next-writer input;54 local positive/negative preparation controls PASS.
-  - V020 PREPARE task check and static production architecture check PASS; no production changes.
-  - Final5-check governance aggregate PASS after source-context reconciliation; fixed gates/validators unchanged.
-  - Local STATIC,42-file architecture scan and tracked-worktree/full-history secret scan54/54 existing decisions
-    PASS; no dependency changes.
+  - 核对 G-P5 既有验收、现行工作流源码和五条本地 DRAFT 验收。
   pending_items:
-  - V019 real Provider/P5 evidence and formal V020 Workflow integration remain pending.
-  - Reconcile V019 fixed action/review pins before future restricted action/final CI; no scope expansion or task
-    status promotion performed here.
-  next_action: PREPARE
+  - 用同版本常规 CI 完成工程验收。
+  next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
-    - ref: validation/execution/V2-020/PREPARE_RESULTS.json
-      sha256: 961fae946a3f6dad8800d680d3a28a538078d0fa86f43fa98995d2b6192dd033
+    - ref: validation/execution/V2-020/local-acceptance-20261127/LOCAL_PRODUCT_READBACK.json
+      sha256: 3d8aa28354ecd4e6486a1b144399b820bfbdccc86027adc770bf8cdc9a951f35
     missing_artifact_reason: null
-change_review: null

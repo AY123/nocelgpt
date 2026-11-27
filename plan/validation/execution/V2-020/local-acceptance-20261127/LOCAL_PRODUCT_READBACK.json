@@ -1,0 +1,30 @@
+{
+  "record_type": "v2_020_retained_private_workflow_readback",
+  "artifact_state": "DRAFT",
+  "source_model": "gpt-6.2-astra",
+  "http_status": 200,
+  "chapter": 7,
+  "provider_writer_attempts": 1,
+  "provider_prose_retained_privately": true,
+  "first_prose_sha256": "86eb37b5a9ae1bae3ed15d5d4af2e5f2b0878333ee8d4fa5f6e5857af5bf62e6",
+  "edited_prose_sha256": "2d2e7ef07a199549422c5b2550b04fa2a57c257ffa27d9771eccf9a619f91752",
+  "provider_response_sha256": "ef3d0937cb38b48e345a4c507970ebe88eb60e444f5d92ee1d74b75c66bb4526",
+  "first_receipt_recovers_after_edit": true,
+  "continuation_verified": {
+    "choice": true,
+    "facts_and_consequences": true,
+    "four_commitments": true,
+    "revised_ending": true
+  },
+  "chapter8_prose_generated": false,
+  "local_actual_scenarios": [
+    "AT-V2-020-01",
+    "AT-V2-020-02",
+    "AT-V2-020-03",
+    "AT-V2-020-04",
+    "AT-V2-020-05"
+  ],
+  "completed_regression_cases": 71,
+  "full_local_regression_completed": false,
+  "formal_ci_evidence": false
+}

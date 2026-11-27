@@ -10,21 +10,15 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import re
 from datetime import UTC, datetime
+from json.encoder import encode_basestring
 from typing import cast
 
 CANONICAL_ENCODING = "ANOVELOS-CJSON-1"
 MAX_NESTING_DEPTH = 64
 _INTEGER_BASE = 1_000_000_000
-_ESCAPES = {
-    '"': '\\"',
-    "\\": "\\\\",
-    "\b": "\\b",
-    "\f": "\\f",
-    "\n": "\\n",
-    "\r": "\\r",
-    "\t": "\\t",
-}
+_SURROGATE = re.compile("[\ud800-\udfff]")
 
 
 def _integer_text(value: int) -> str:
@@ -68,19 +62,9 @@ def _number_text(value: float) -> str:
 
 
 def _string_text(value: str) -> str:
-    parts = ['"']
-    for character in value:
-        point = ord(character)
-        if 0xD800 <= point <= 0xDFFF:
-            raise ValueError("canonical strings cannot contain surrogates")
-        if character in _ESCAPES:
-            parts.append(_ESCAPES[character])
-        elif point < 0x20:
-            parts.append(f"\\u{point:04x}")
-        else:
-            parts.append(character)
-    parts.append('"')
-    return "".join(parts)
+    if not value.isascii() and _SURROGATE.search(value):
+        raise ValueError("canonical strings cannot contain surrogates")
+    return encode_basestring(value)
 
 
 def _encode(value: object, depth: int, ancestors: set[int]) -> str:

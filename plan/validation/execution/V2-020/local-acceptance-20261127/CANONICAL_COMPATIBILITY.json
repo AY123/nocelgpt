@@ -1,0 +1,10 @@
+{
+  "record_type": "canonical_string_compatibility_local",
+  "encoding": "ANOVELOS-CJSON-1",
+  "replacement_scope": "String quoting only; numeric and structural encodings use their existing paths.",
+  "checked_unicode_scalar_values": 1112064,
+  "rejected_surrogate_code_points": 2048,
+  "persistence_records_compared": 4,
+  "encoding_contract_tests_passed": 84,
+  "identity_source_sha256": "95530613c1d2573f063877757aab1ca21ed53a6f7c30c47173bc7bf441d02c83"
+}
