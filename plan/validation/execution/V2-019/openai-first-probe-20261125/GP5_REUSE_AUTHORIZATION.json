@@ -1,0 +1,13 @@
+{
+  "record_type": "gp5_openai_receipt_reuse_authorization",
+  "schema_version": "1.0",
+  "date": "2026-11-27",
+  "phase": "P5",
+  "task_id": "V2-019",
+  "owner_response": "批准复用回执和一次常规 CI",
+  "maximum_routine_ci_runs": 1,
+  "provider_requests_allowed": false,
+  "observation_sha256": "225bd3899ca70e8667834ef29659e2012cdbff29ff20a2ef8d7a1a6460b22493",
+  "regression_sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623",
+  "observed_component_sha256": "10dd38cd85546c71af22cf2ee7a99494a6b93db1fa4bac45725c2bc119f24d78"
+}
