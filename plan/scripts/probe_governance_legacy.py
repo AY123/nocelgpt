@@ -123,6 +123,11 @@ def main():
     baseline = validator.load()
     baseline_errors = validator.validate_objects(baseline) + validator.check_files(baseline, validator.expected_views(baseline))
     original_self_tests = validator.self_test(baseline)
+    needs_git = (
+        any('implementation_admission' in t for t in baseline['implementation-backlog']['tasks'])
+        or any(g['id'] == 'LIVE_PROVIDER' and g['status'] == 'VERIFIED'
+               for g in baseline['ci-gates']['gates'])
+    )
     cases = [
         ('CONTROL-VALID', 'Unmodified current plan', 'ACCEPT', lambda d: None),
         ('CONTROL-CI-FAIL', 'A hard CI gate is changed to allow_failure=true', 'REJECT',
@@ -150,6 +155,9 @@ def main():
         with tempfile.TemporaryDirectory(prefix='anovel-plan-audit-') as tmp:
             sandbox = Path(tmp)/'plan'
             shutil.copytree(source, sandbox, ignore=shutil.ignore_patterns('__pycache__', '.DS_Store'))
+            if needs_git:
+                from test_governance import attach_git_authority_context
+                attach_git_authority_context(Path(tmp), source=source.parent)
             for name in validator.NAMES:
                 (sandbox/'machine'/f'{name}.yaml').write_text(yaml.safe_dump(data[name], allow_unicode=True, sort_keys=False))
             # Explicit regeneration is the documented way to submit intentional edits.

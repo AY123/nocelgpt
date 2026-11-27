@@ -22,14 +22,15 @@ from execution_checks import execution_checks, CONTROL_INPUTS
 REVISION = 'a' * 40
 
 
-def attach_git_authority_context(target):
+def attach_git_authority_context(target, *, source=None):
     """Give a copied current plan its real read-only Git ancestry, never a grant.
 
     Object alternates are read only. The temporary repo owns all refs/config;
     the source checkout is not modified and no network operation is performed.
     Pinned admission/current-source checks still run against the copied bytes.
     """
-    source = validator.PLAN.parent
+    if source is None:
+        source = validator.PLAN.parent
     def run(*args):
         return subprocess.check_output(['git', *args], text=True, stderr=subprocess.PIPE).strip()
     objects = run('-C', str(source), 'rev-parse', '--path-format=absolute', '--git-path', 'objects')

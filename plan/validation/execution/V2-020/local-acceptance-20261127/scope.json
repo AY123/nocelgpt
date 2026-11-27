@@ -44,7 +44,9 @@
     "plan/generated/PHASE_TASK_REGISTRY.md",
     "plan/machine/implementation-backlog.yaml",
     "plan/validation/execution/V2-020/execution-packet.yaml",
-    "plan/validation/execution/V2-020/local-acceptance-20261127/"
+    "plan/validation/execution/V2-020/local-acceptance-20261127/",
+    "plan/scripts/probe_governance_legacy.py",
+    "plan/scripts/test_governance.py"
   ],
   "pre_existing": {},
   "exception_authorizations": [],

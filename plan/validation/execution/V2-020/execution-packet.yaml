@@ -4,7 +4,7 @@ task_id: V2-020
 plan_version: 1.3.0
 repository_revision: 2098627c608c222cd6267dbd9c2a8c7bef8bddaf
 worktree_dirty: false
-plan_manifest_sha256: 80b174bb0504c6636b3d398fe40ebc71aa0a3ecf47a6f2e9e7c20038a4c80dab
+plan_manifest_sha256: 3d70f874face66db04eefb41f1fc87018ece079434f820c219a74c677418ff81
 environment:
   fingerprint: Local and ordinary GitHub CI; locked Python 3.12.14; no Provider use
     in this packet
@@ -91,6 +91,8 @@ allowed_paths:
 - plan/machine/implementation-backlog.yaml
 - plan/validation/execution/V2-020/execution-packet.yaml
 - plan/validation/execution/V2-020/local-acceptance-20261127/
+- plan/scripts/probe_governance_legacy.py
+- plan/scripts/test_governance.py
 required_decisions:
 - ADR-008
 claims:
@@ -144,5 +146,3 @@ handoff:
 change_review:
   scope_revision: 92b52b097a2a9e5ceea9ec192632bbbdd1fd33af
   scope_ref: plan/validation/execution/V2-020/local-acceptance-20261127/scope.json
-  review_revision: c1a62618a4ff05d322925fb2d75b9a834751f1cf
-  review_ref: plan/validation/execution/V2-020/local-acceptance-20261127/review.json
