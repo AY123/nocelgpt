@@ -1,0 +1,17 @@
+{
+  "original_collection": 2073,
+  "parallel_collection": 2074,
+  "removed": [],
+  "added_test": "tests/contract/test_delivery_gates.py::test_remote_source_rejects_command_plan_changes[parallel_options]",
+  "command_contract_passed": 14,
+  "command_contract_skipped": 0,
+  "dev_added_versions": {
+    "execnet": "2.1.2",
+    "pytest-xdist": "3.8.0"
+  },
+  "unchanged_existing_package_entries": true,
+  "workers": 4,
+  "worker_restart_limit": 0,
+  "distribution": "worksteal",
+  "proven_scope": "local command and collection checks only"
+}

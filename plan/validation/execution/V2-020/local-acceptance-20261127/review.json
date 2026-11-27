@@ -1,9 +1,9 @@
 {
   "task_id": "V2-020",
   "baseline_pin": {
-    "revision": "2af742918afe98acd0264977863cb59c45697208",
+    "revision": "98da718df7f6e93c86e74b6cf0232e2789d86b3c",
     "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/scope.json",
-    "sha256": "f6e6ff1cb93c83c914a375dc195a1f620040ff9d08eaef3be5797e0f249671b0"
+    "sha256": "fd80fd0d0f3b1a1b40da46a49dfda7a65b194287f45ff6a9544bc3b39126b288"
   },
   "dispositions": [
     {
@@ -259,6 +259,78 @@
         {
           "ref": "plan/machine/ci-gates.yaml",
           "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
+        }
+      ]
+    },
+    {
+      "finding_id": "120df49404ba2b26348867c9ca90a0f090f932b1121a0b3195be6d3f5c66da05",
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+      "new_sha": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The Owner approved worker scheduling for current UNIT. The historical GitLab verifier and independently fixed serial receipt fixture keep their original argument contract.",
+      "impact": "Every original case and core argv constraint remains in the collection. Add a rejection for injecting current parallel parameters into historical evidence. A worker crash cannot silently retry.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Replay 14 delivery command checks, including historical acceptance and tamper rejection. Compare all collected node IDs and only permit the new negative case.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/UNIT_SCHEDULING_READBACK.json",
+          "sha256": "98d8f597062e4f4dfd72ee73c6f6e4d7e4f42c45ad78382057e04f1d8b79f5e4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-parallel-authorization.txt",
+          "sha256": "ad30874e25e01bdb8a5c68116488d45cc8baae6208a7448ef1d7cbb9c3600f15"
+        },
+        {
+          "ref": "scripts/ci/run_gate.py",
+          "sha256": "7bef5cb50dc27cf84c53f7fd065edb3c826257a81e25fd1258800a5ba76ff667"
+        },
+        {
+          "ref": "tests/contract/test_delivery_gates.py",
+          "sha256": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37"
+        }
+      ]
+    },
+    {
+      "finding_id": "e2c7aaff6e02509667346b7c4f0737da9bb1f2200907a36bc6d1979ea8863169",
+      "path": "tests/contract/test_delivery_gates.py",
+      "old_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
+      "new_sha": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The Owner approved worker scheduling for current UNIT. The historical GitLab verifier and independently fixed serial receipt fixture keep their original argument contract.",
+      "impact": "Every original case and core argv constraint remains in the collection. Add a rejection for injecting current parallel parameters into historical evidence. A worker crash cannot silently retry.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Replay 14 delivery command checks, including historical acceptance and tamper rejection. Compare all collected node IDs and only permit the new negative case.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/UNIT_SCHEDULING_READBACK.json",
+          "sha256": "98d8f597062e4f4dfd72ee73c6f6e4d7e4f42c45ad78382057e04f1d8b79f5e4"
+        },
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-parallel-authorization.txt",
+          "sha256": "ad30874e25e01bdb8a5c68116488d45cc8baae6208a7448ef1d7cbb9c3600f15"
+        },
+        {
+          "ref": "scripts/ci/run_gate.py",
+          "sha256": "7bef5cb50dc27cf84c53f7fd065edb3c826257a81e25fd1258800a5ba76ff667"
+        },
+        {
+          "ref": "tests/contract/test_delivery_gates.py",
+          "sha256": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37"
         }
       ]
     }
