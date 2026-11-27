@@ -79,6 +79,12 @@ def seed(tmp_path_factory):
     for phase in phases['phases']:
         phase.update(status='NOT_VERIFIED', evidence_refs=[])
     save(phases_path, phases)
+    gates_path = repo / 'plan/machine/ci-gates.yaml'
+    gates = load(gates_path)
+    for gate in gates['gates']:
+        if gate['id'] == 'LIVE_PROVIDER':
+            gate.update(status='NOT_IMPLEMENTED', evidence_refs=[])
+    save(gates_path, gates)
     milestones_path = repo / 'plan/machine/milestones.yaml'
     milestones = load(milestones_path)
     for milestone in milestones['milestones']:

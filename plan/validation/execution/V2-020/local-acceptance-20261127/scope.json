@@ -46,7 +46,8 @@
     "plan/validation/execution/V2-020/execution-packet.yaml",
     "plan/validation/execution/V2-020/local-acceptance-20261127/",
     "plan/scripts/probe_governance_legacy.py",
-    "plan/scripts/test_governance.py"
+    "plan/scripts/test_governance.py",
+    "tests/contract/test_task_execution.py"
   ],
   "pre_existing": {},
   "exception_authorizations": [],
