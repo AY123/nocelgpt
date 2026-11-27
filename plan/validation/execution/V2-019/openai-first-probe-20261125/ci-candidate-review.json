@@ -1,0 +1,138 @@
+{
+  "task_id": "V2-019",
+  "baseline_pin": {
+    "revision": "b1820f475b07c72f1ab1cc6a91c02d6f14a9c1d2",
+    "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-scope.json",
+    "sha256": "ec6860e0793e62c02547f24835bdf96a339e6b102677fd16bc33f7b8a4b81af0"
+  },
+  "dispositions": [
+    {
+      "finding_id": "441171c7a3e0d690156db29671482d3fa7456494c5f89f81c38dc9c53b99e8ec",
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c",
+      "new_sha": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "All 39 existing tests and their assertions remain. The existing CLI external-output case adds the Git ancestry fixture required by the reproducible source check. Eleven added tests exercise receipt admission, revision binding, matching ordinary CI and CAS evidence, malformed and tampered receipts and other phase rejection.",
+      "impact": "The original trust path and failure coverage remain. The local receipt is a G-P5 input and never impersonates a CI_RUN.",
+      "reviewer": "Codex (same implementation and verification operator)",
+      "replacement_validation": "Compared existing tests with the baseline and ran 12 targeted candidate tests. The genuine receipt was independently read back from retained bytes, the local ledger and the executed source by the same operator.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+        "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/scripts/test_governance.py",
+          "sha256": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json",
+          "sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+          "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+        }
+      ]
+    },
+    {
+      "finding_id": "b3b07527dae55066b19f2e6ffb4e95bc5beceddaed2947a7044bd0c7b010c9b7",
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c",
+      "new_sha": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "All 39 existing tests and their assertions remain. The existing CLI external-output case adds the Git ancestry fixture required by the reproducible source check. Eleven added tests exercise receipt admission, revision binding, matching ordinary CI and CAS evidence, malformed and tampered receipts and other phase rejection.",
+      "impact": "The original trust path and failure coverage remain. The local receipt is a G-P5 input and never impersonates a CI_RUN.",
+      "reviewer": "Codex (same implementation and verification operator)",
+      "replacement_validation": "Compared existing tests with the baseline and ran 12 targeted candidate tests. The genuine receipt was independently read back from retained bytes, the local ledger and the executed source by the same operator.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+        "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/scripts/test_governance.py",
+          "sha256": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json",
+          "sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+          "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+        }
+      ]
+    },
+    {
+      "finding_id": "11bfc2d4f0a7f542fb15d45209f31834994f85361821c5b13177affbecd544b1",
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "old_sha": "86a44b53ce14c4af45777afa0baf2adf43a515cd26f339493e5fecc626ac6bbe",
+      "new_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "All 20 existing test functions and decorators are AST-identical. The new Responses contract assertions cover success, a wrong marker, a disconnect and HTTP 429. The test checks one local POST, a durable result and secret-free output.",
+      "impact": "Existing dispatch and retry guards stay in force. The new fixture uses a loopback server and touches no live Provider.",
+      "reviewer": "Codex (same implementation and verification operator)",
+      "replacement_validation": "Compared existing functions with the baseline and ran all four new parameter cases on the candidate, plus 124 Gateway integration regressions.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+        "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+          "sha256": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json",
+          "sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+          "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+        }
+      ]
+    },
+    {
+      "finding_id": "3b17ca48d9ed173810c4690652d4df3e3efda72481fb0c83f0451a4e138cff8e",
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "old_sha": "86a44b53ce14c4af45777afa0baf2adf43a515cd26f339493e5fecc626ac6bbe",
+      "new_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "All 20 existing test functions and decorators are AST-identical. The new Responses contract assertions cover success, a wrong marker, a disconnect and HTTP 429. The test checks one local POST, a durable result and secret-free output.",
+      "impact": "Existing dispatch and retry guards stay in force. The new fixture uses a loopback server and touches no live Provider.",
+      "reviewer": "Codex (same implementation and verification operator)",
+      "replacement_validation": "Compared existing functions with the baseline and ran all four new parameter cases on the candidate, plus 124 Gateway integration regressions.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+        "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+          "sha256": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json",
+          "sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623"
+        },
+        {
+          "ref": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+          "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3"
+        }
+      ]
+    }
+  ]
+}
