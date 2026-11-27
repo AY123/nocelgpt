@@ -1,9 +1,9 @@
 {
   "task_id": "V2-020",
   "baseline_pin": {
-    "revision": "9fcaed441473e5747a73007da138040e392c3a98",
+    "revision": "2af742918afe98acd0264977863cb59c45697208",
     "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/scope.json",
-    "sha256": "d8975d99843a765765d2d9d7f2f5cb0626c83a93ee1fbb4bcd2a279ad0ad7667"
+    "sha256": "f6e6ff1cb93c83c914a375dc195a1f620040ff9d08eaef3be5797e0f249671b0"
   },
   "dispositions": [
     {
@@ -195,6 +195,70 @@
         {
           "ref": "plan/scripts/test_governance.py",
           "sha256": "074cb4c381aeef0b3b0d29d0952463bb6d20f4425113e81ac6c86789d3cd6dd1"
+        }
+      ]
+    },
+    {
+      "finding_id": "de953ac4301929bb5eb65a3054512a6ddf726a917e8b8423adc4eb68e0eb9b9e",
+      "path": "tests/contract/test_task_execution.py",
+      "old_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
+      "new_sha": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The disposable early task fixture reopens all phases and must reset the inherited LIVE_PROVIDER record to match its synthetic history.",
+      "impact": "All 39 original action-entry cases and their assertions remain. Real phase data, the source receipt and admission checks retain their existing values.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Reproduce the earlier valid-command setup failure, then exercise all 39 existing task-entry cases against the corrected isolated fixture.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/LEGACY_TASK_FIXTURE_READBACK.json",
+          "sha256": "40ebddd5bf494b6bd84a7eee17322106b98cbac0150d86e2297b93e84cc0d440"
+        },
+        {
+          "ref": "tests/contract/test_task_execution.py",
+          "sha256": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87"
+        },
+        {
+          "ref": "plan/machine/ci-gates.yaml",
+          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
+        }
+      ]
+    },
+    {
+      "finding_id": "085ff1f953cf7618ad11714a61ff280956642de64e115f818224528256b98c35",
+      "path": "tests/contract/test_task_execution.py",
+      "old_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
+      "new_sha": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The disposable early task fixture reopens all phases and must reset the inherited LIVE_PROVIDER record to match its synthetic history.",
+      "impact": "All 39 original action-entry cases and their assertions remain. Real phase data, the source receipt and admission checks retain their existing values.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Reproduce the earlier valid-command setup failure, then exercise all 39 existing task-entry cases against the corrected isolated fixture.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/LEGACY_TASK_FIXTURE_READBACK.json",
+          "sha256": "40ebddd5bf494b6bd84a7eee17322106b98cbac0150d86e2297b93e84cc0d440"
+        },
+        {
+          "ref": "tests/contract/test_task_execution.py",
+          "sha256": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87"
+        },
+        {
+          "ref": "plan/machine/ci-gates.yaml",
+          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
         }
       ]
     }

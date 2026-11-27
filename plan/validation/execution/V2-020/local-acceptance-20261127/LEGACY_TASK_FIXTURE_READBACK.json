@@ -1,0 +1,14 @@
+{
+  "task": "V2-020",
+  "before": {
+    "errors": 1,
+    "observed": "GP5_CANDIDATE_GIT"
+  },
+  "after": {
+    "passed": 39,
+    "failed": 0,
+    "skipped": 0
+  },
+  "actual_verified_live_provider_gate_changed": false,
+  "remote_ci": false
+}
