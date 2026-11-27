@@ -143,6 +143,9 @@ for suite in data['test-catalog']['suites']:
         suite.update(status='PLANNED', execution_evidence=[])
 for phase in phases[probe_index:]:
     phase.update(status='NOT_VERIFIED', evidence_refs=[])
+for gate in data['ci-gates']['gates']:
+    if gate['id'] == 'LIVE_PROVIDER':
+        gate.update(status='NOT_IMPLEMENTED', evidence_refs=[])
 for milestone in data['milestones']['milestones']:
     if reopened.intersection(milestone['required_tasks']):
         milestone.update(status='NOT_VERIFIED', evidence_refs=[])
@@ -152,7 +155,7 @@ for finding in data['remediation-register']['findings']:
 for practice in data['external-practice-register']['practices']:
     if practice['status'] == 'VERIFIED' and reopened.intersection(practice['related_tasks']):
         practice.update(status='PLANNED', verification_refs=[])
-for name in ('implementation-backlog', 'test-catalog', 'phase-gates', 'milestones',
+for name in ('implementation-backlog', 'test-catalog', 'phase-gates', 'ci-gates', 'milestones',
              'remediation-register', 'external-practice-register'):
     (plan / 'machine' / (name + '.yaml')).write_text(
         yaml.safe_dump(data[name], allow_unicode=True, sort_keys=False)
