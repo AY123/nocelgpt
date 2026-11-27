@@ -98,6 +98,7 @@ def _projection(
     fixture = StoryFixture.from_dict(decode_canonical(retained["fixture"].content))
     plan = PlanVersion.from_dict(decode_canonical(retained["plan"].content))
     view = CanonView.from_dict(decode_canonical(retained["canon"].content))
+    baseline = view.baseline
     knowledge = KnowledgeSnapshot.from_dict(
         decode_canonical(retained["knowledge"].content)
     ).knowledge
@@ -107,6 +108,15 @@ def _projection(
     )
     if not scenes:
         raise _Blocked("SCENE_NOT_IN_CONTRACT")
+    candidate = inputs.candidate
+    changed: frozenset[EntityId] = frozenset()
+    if candidate is not None:
+        if r.role is not ContextRole.WRITER or r.scene_id != candidate.target_scene_id:
+            raise _Blocked("SCENE_CANDIDATE_ROLE_OR_TARGET_MISMATCH")
+        baseline = candidate.replay(contract)
+        changed = candidate.changed_ids(contract)
+        if changed & {v.target_id for v in scenes[0].required}:
+            raise _Blocked("SCENE_PRECONDITION_STALE")
     if r.role is ContextRole.CHARACTER and r.actor_id not in {
         v.id for v in knowledge.characters
     }:
@@ -121,15 +131,22 @@ def _projection(
         if r.role is ContextRole.WRITER
         else set()
     )
+    if candidate is not None:
+        delta = candidate.binding.delta
+        mentioned = (
+            set() if delta is None else {v.meta.target_id for v in delta.operations}
+        )
+        if (changed | mentioned | set(candidate.ending_fact_ids)) & hidden:
+            raise _Blocked("SCENE_CANDIDATE_VISIBILITY_CONFLICT")
     acquired = {
         fid for holder, fid, _source in knowledge.knowledge if holder == r.actor_id
     }
     if r.role is ContextRole.CHARACTER:
-        hidden = {v.seed_fact.id for v in view.baseline.facts} - acquired
+        hidden = {v.seed_fact.id for v in baseline.facts} - acquired
     mandatory: list[ContextItem] = []
     optional: list[ContextItem] = []
     exclusions: list[SelectionRecord] = []
-    for name, source in retained.items():
+    for source in retained.values():
         exclusions.append(
             SelectionRecord(
                 source.content_hash,
@@ -161,6 +178,47 @@ def _projection(
             )
         )
 
+    def add_candidate(id: str, kind: str, value: object, reason: str) -> None:
+        assert candidate is not None
+        mandatory.append(
+            _item(
+                id,
+                kind,
+                value,
+                "draft-scene/" + candidate.content_hash,
+                candidate.content_hash,
+                reason,
+            )
+        )
+
+    if candidate is not None:
+        add_candidate(
+            "candidate-scene-provenance",
+            "DRAFT_CANDIDATE_PROVENANCE",
+            {
+                "meaning": "UNCOMMITTED_SCENE_CANDIDATE",
+                "source_run_id": candidate.source_run_id,
+                "source_revision": candidate.source_revision,
+                "source_record_hash": candidate.source_record_hash,
+                "projection_hash": candidate.content_hash,
+                "before_hash": candidate.before_hash,
+                "after_hash": candidate.after_hash,
+                "source_scene_id": candidate.source_scene_id.to_dict(),
+                "target_scene_id": candidate.target_scene_id.to_dict(),
+                "knowledge_rule": "Candidate world changes do not grant knowledge or settle beliefs.",
+            },
+            "SOURCE_BOUND_UNCOMMITTED_SCENE",
+        )
+        add_candidate(
+            "candidate-scene-ending",
+            "ACTUAL_PRECEDING_SCENE_ENDING",
+            {
+                "text": candidate.ending_span.quote,
+                "meaning": "DRAFT_PROSE_NOT_CANON_OR_ACQUISITION",
+            },
+            "EXPLICIT_ACTUAL_SCENE_ENDING",
+        )
+
     add(
         "role-policy",
         "ROLE_POLICY",
@@ -173,9 +231,68 @@ def _projection(
         "knowledge",
         "ROLE_AND_KNOWLEDGE_BOUNDARY",
     )
-    needed: set[EntityId] = set()
+    needed: set[EntityId] = set(changed)
     intents = {v.id: v for v in knowledge.intents}
     beliefs = {v.id: v for v in knowledge.beliefs}
+    if candidate is not None:
+        for scene in scenes:
+            dependencies = {
+                fid
+                for boundary in scene.plan.knowledge_boundaries
+                for fid in (*boundary.must_know, *boundary.must_not_know)
+            }
+            dependencies.update(
+                fid
+                for iid in scene.plan.intent_ids
+                for fid in intents[iid].based_on
+                if fid not in beliefs
+            )
+            if dependencies & changed:
+                raise _Blocked("SCENE_KNOWLEDGE_OR_INTENT_STALE")
+            # Frozen transition feasibility also depends on extension siblings
+            # (owner/unit/cost) and referenced entities, not just target IDs.
+            dependencies.update(v.target_id for v in scene.required)
+            keys: list[tuple[str, EntityId]] = []
+            grouped_dependencies: dict[tuple[str, EntityId], list[FactSnapshot]] = {}
+            extension_entities = {
+                v.namespace: v.entity_ids for v in baseline.extensions
+            }
+            for source_baseline in (view.baseline, baseline):
+                for fact in source_baseline.facts:
+                    ns = predicate_namespace(fact.seed_fact.proposition.predicate)
+                    if ns is not None:
+                        key = (ns, fact.seed_fact.proposition.subject)
+                        grouped_dependencies.setdefault(key, []).append(fact)
+                        if fact.seed_fact.id in dependencies:
+                            keys.append(key)
+            for required in scene.required:
+                target_snapshot = baseline.get(required.target_id)
+                if target_snapshot is not None:
+                    ns = predicate_namespace(
+                        target_snapshot.seed_fact.proposition.predicate
+                    )
+                    if ns is not None:
+                        keys.extend(
+                            (ns, entity)
+                            for entity in extension_entities[ns]
+                            if entity.local_id == required.spec.value
+                        )
+            visited_dependencies: set[tuple[str, EntityId]] = set()
+            while keys:
+                key = keys.pop()
+                if key in visited_dependencies:
+                    continue
+                visited_dependencies.add(key)
+                for fact in grouped_dependencies.get(key, []):
+                    dependencies.add(fact.seed_fact.id)
+                    if type(fact.state.value) is str:
+                        keys.extend(
+                            (key[0], entity)
+                            for entity in extension_entities[key[0]]
+                            if entity.local_id == fact.state.value
+                        )
+            if dependencies & changed:
+                raise _Blocked("SCENE_EXTENSION_DEPENDENCY_STALE")
     actor_ids: set[EntityId] = {r.actor_id} if r.actor_id is not None else set()
     if r.role is not ContextRole.CHARACTER:
         add(
@@ -290,8 +407,8 @@ def _projection(
         # incomplete writing context. Close only over existing registered
         # extension subjects and exact entity references, not arbitrary prose.
         grouped: dict[tuple[str, EntityId], list[FactSnapshot]] = {}
-        bindings = {v.namespace: v for v in view.baseline.extensions}
-        for group_snapshot in view.baseline.facts:
+        bindings = {v.namespace: v for v in baseline.extensions}
+        for group_snapshot in baseline.facts:
             namespace = predicate_namespace(
                 group_snapshot.seed_fact.proposition.predicate
             )
@@ -301,7 +418,7 @@ def _projection(
                 ).append(group_snapshot)
         pending: list[tuple[str, EntityId]] = []
         for fid in needed:
-            snapshot = view.baseline.get(fid)
+            snapshot = baseline.get(fid)
             if snapshot is not None:
                 namespace = predicate_namespace(
                     snapshot.seed_fact.proposition.predicate
@@ -310,7 +427,7 @@ def _projection(
                     pending.append((namespace, snapshot.seed_fact.proposition.subject))
         for scene in scenes:
             for change in scene.required:
-                snapshot = view.baseline.get(change.target_id)
+                snapshot = baseline.get(change.target_id)
                 if snapshot is not None and type(change.spec.value) is str:
                     namespace = predicate_namespace(
                         snapshot.seed_fact.proposition.predicate
@@ -349,12 +466,12 @@ def _projection(
 
     if needed & hidden:
         raise _Blocked("VISIBILITY_REQUIRED_CONFLICT")
-    fact_ids = {v.seed_fact.id for v in view.baseline.facts}
+    fact_ids = {v.seed_fact.id for v in baseline.facts}
     if not needed <= fact_ids:
         raise _Blocked("REQUIRED_FACT_MISSING")
     # Current values only: FactSnapshot.seed_fact retains historical seed values,
     # which must not be misreported as the current authoritative value.
-    for fact in sorted(view.baseline.facts, key=lambda v: v.seed_fact.id.local_id):
+    for fact in sorted(baseline.facts, key=lambda v: v.seed_fact.id.local_id):
         fid = fact.seed_fact.id
         if fid in hidden:
             exclusions.append(
@@ -390,14 +507,25 @@ def _projection(
             if r.actor_id is not None
             else "WORLD_FACT_NOT_EVERY_ACTORS_KNOWLEDGE",
         }
-        add(
-            "fact:" + fid.local_id,
-            "FACT",
-            data,
-            "canon",
-            "REQUIRED_FACT_DEPENDENCY" if fid in needed else "OPTIONAL_CURRENT_FACT",
-            fid in needed,
-        )
+        if fid in changed:
+            data["epistemic_kind"] = "DRAFT_CANDIDATE_NOT_ACTOR_KNOWLEDGE"
+            add_candidate(
+                "fact:" + fid.local_id,
+                "DRAFT_CANDIDATE_FACT",
+                data,
+                "REQUIRED_CURRENT_CANDIDATE_FACT",
+            )
+        else:
+            add(
+                "fact:" + fid.local_id,
+                "FACT",
+                data,
+                "canon",
+                "REQUIRED_FACT_DEPENDENCY"
+                if fid in needed
+                else "OPTIONAL_CURRENT_FACT",
+                fid in needed,
+            )
     # For Writer, expose explicit known/believed cards for relevant actors, with
     # secret propositions removed even when a different actor legitimately knows.
     # Never include raw KnowledgeState.facts or its full source export.
@@ -420,6 +548,13 @@ def _projection(
                     "proposition": known_fact.proposition.to_dict(),
                     "level": level.value,
                 }
+                if fid in changed:
+                    entry["applies_to"] = "FROZEN_PARENT"
+                    entry["level"] = (
+                        "KNOWN_AT_FROZEN_PARENT"
+                        if level is KnowledgeLevel.KNOWN
+                        else "CONTRADICTORY_AT_FROZEN_PARENT"
+                    )
                 if level is KnowledgeLevel.KNOWN:
                     known.append(entry)
                 else:
@@ -444,7 +579,7 @@ def _projection(
         )
     entities = {v.id: v for v in view.root.seed.entities}
     for fid in needed:
-        snapshot = view.baseline.get(fid)
+        snapshot = baseline.get(fid)
         if snapshot is not None:
             actor_ids.add(snapshot.seed_fact.proposition.subject)
     for eid in sorted(actor_ids, key=lambda x: x.local_id):
@@ -507,6 +642,10 @@ def _source_exclusion(
     view = CanonView.from_dict(decode_canonical(retained["canon"].content))
     if any(view.baseline.get(fid) is None for fid in source.fact_ids):
         return "UNREGISTERED_FACT_SOURCE"
+    if inputs.candidate is not None and set(
+        source.fact_ids
+    ) & inputs.candidate.changed_ids(contract):
+        return "SCENE_SOURCE_FACT_DEPENDENCY_STALE"
     if r.role is not ContextRole.REVIEWER:
         # Do not launder complete frozen author blobs through a new label or a
         # base64 wrapper. This is exact-content checking, not semantic DLP.
@@ -518,7 +657,11 @@ def _source_exclusion(
             ]
             if type(decode_canonical(raw)) in (dict, list)
         ]
-        for raw in author_bytes:
+        candidate_bytes: list[bytes] = []
+        if inputs.candidate is not None:
+            author_bytes.append(inputs.candidate.payload)
+            candidate_bytes = [inputs.candidate.payload, inputs.candidate.source_prose]
+        for raw in [*author_bytes, *candidate_bytes]:
             if raw in source.content or b64encode(raw) in source.content:
                 return "UNFILTERED_AUTHOR_INPUT"
         # Whitespace, JSON object ordering and a wrapper object do not turn a
@@ -538,6 +681,10 @@ def _source_exclusion(
                     if sha256(canonical_bytes(value)).hexdigest() in hashes:
                         return "UNFILTERED_AUTHOR_INPUT"
                     pending.extend(value.values() if isinstance(value, dict) else value)
+                elif isinstance(value, str) and any(
+                    raw in value.encode("utf-8") for raw in candidate_bytes
+                ):
+                    return "UNFILTERED_AUTHOR_INPUT"
         except (ValueError, UnicodeError, RecursionError):
             pass
 

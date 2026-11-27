@@ -13,12 +13,15 @@ from base64 import b64decode, b64encode
 from dataclasses import dataclass
 from enum import Enum
 from hashlib import sha256
-from typing import cast
+from typing import TYPE_CHECKING, cast
 
 from anovel.canon.identity import canonical_bytes, decode_canonical
 from anovel.contracts.models import CompiledContract
 from anovel.domain.events import NarrativePosition
 from anovel.domain.identity import EntityId
+
+if TYPE_CHECKING:
+    from .scene import CandidateSceneProjection
 
 POLICY_VERSION = "1.0.0"
 COMPILER_VERSION = "1.0.0"
@@ -437,10 +440,11 @@ class FrozenContextInputs(_Value):
     contract_bytes: bytes
     request: ContextRequest
     sources: tuple[ContextSource, ...] = ()
+    candidate: CandidateSceneProjection | None = None
 
     def __post_init__(self) -> None:
         _canonical(self.contract_bytes, "frozen contract")
-        self.contract
+        _ = self.contract
         if type(self.request) is not ContextRequest:
             raise ContextError("frozen input requires an actual request")
         _members(self.sources, ContextSource, "frozen sources")
@@ -449,6 +453,12 @@ class FrozenContextInputs(_Value):
         object.__setattr__(
             self, "sources", tuple(sorted(self.sources, key=lambda v: v.id))
         )
+        if self.candidate is not None:
+            from .scene import CandidateSceneProjection
+
+            if type(self.candidate) is not CandidateSceneProjection:
+                raise ContextError("candidate requires an actual scene projection")
+            self.candidate.replay(self.contract)
 
     @property
     def contract(self) -> CompiledContract:
@@ -460,10 +470,11 @@ class FrozenContextInputs(_Value):
         contract: CompiledContract,
         request: ContextRequest,
         sources: tuple[ContextSource, ...] = (),
+        candidate: CandidateSceneProjection | None = None,
     ) -> FrozenContextInputs:
         if type(contract) is not CompiledContract:
             raise ContextError("an actual immutable compiled contract is required")
-        return cls(canonical_bytes(contract.to_dict()), request, sources)
+        return cls(canonical_bytes(contract.to_dict()), request, sources, candidate)
 
     def to_dict(self) -> dict[str, object]:
         return _data(
@@ -474,14 +485,23 @@ class FrozenContextInputs(_Value):
                 "contract_hash": self.contract.content_hash,
                 "request": self.request.to_dict(),
                 "sources": [v.to_dict() for v in self.sources],
+                **(
+                    {"candidate": self.candidate.to_dict()}
+                    if self.candidate is not None
+                    else {}
+                ),
             },
         )
 
     @classmethod
     def from_dict(cls, value: object) -> FrozenContextInputs:
+        from .scene import CandidateSceneProjection
+
+        has_candidate = type(value) is dict and "candidate" in value
         row = _record(
             value,
-            {"visibility", "contract_base64", "contract_hash", "request", "sources"},
+            {"visibility", "contract_base64", "contract_hash", "request", "sources"}
+            | ({"candidate"} if has_candidate else set()),
             kind="FROZEN_CONTEXT_INPUTS",
         )
         if row["visibility"] != "AUDIT_ONLY":
@@ -490,6 +510,9 @@ class FrozenContextInputs(_Value):
             _decoded(row["contract_base64"]),
             ContextRequest.from_dict(row["request"]),
             tuple(ContextSource.from_dict(v) for v in _array(row["sources"])),
+            CandidateSceneProjection.from_dict(row["candidate"])
+            if has_candidate
+            else None,
         )
         if _digest(row["contract_hash"]) != result.contract.content_hash:
             raise ContextError("frozen contract identity mismatch")

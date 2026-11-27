@@ -1,0 +1,60 @@
+{
+  "task_id": "V2-019",
+  "purpose": "GP5_LOCAL_SAME_SOURCE_READBACK",
+  "live_observation_path": "plan/validation/execution/V2-019/openai-first-probe-20261125/LOCAL_OBSERVATION.json",
+  "live_observation_sha256": "225bd3899ca70e8667834ef29659e2012cdbff29ff20a2ef8d7a1a6460b22493",
+  "observed_model": "gpt-6.2-sol",
+  "http_status": 200,
+  "real_response_sha256": "2c24c21ae192cf7431cc6d358599465b66e0e6406c291b484d21c820f7817538",
+  "ledger_attempts": 1,
+  "source_revision": "c3f4892e1701f552ee6a8e65db25281e25ea298e",
+  "action_revision": "068c151bfc44df2c0f6ef68bf6c89aca17910177",
+  "runtime_fingerprint": "438f295db8fbd10196a8e7dbd15146f17531c9ecc2fa9e8b8512666c64211575",
+  "source_bytes_match_pinned_probe": true,
+  "source_unchanged_during_regressions": true,
+  "current_gateway_python_files_match": true,
+  "local_tests": {
+    "paths": [
+      "tests/integration/test_v2_019.py",
+      "tests/contract/test_v2_019_live_provider.py"
+    ],
+    "tests": 184,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "junit_sha256": "ee51ec804c3764fd3cfe8b584859bf2b76c3f0b2b003cfd2fe502ae345622cf7"
+  },
+  "formal_gate_verified": false,
+  "local_assertion_examples": {
+    "AT-V2-019-01": [
+      "test_loopback_http_success_exact_protocol_context_and_pre_send_durable_reservation",
+      "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries"
+    ],
+    "AT-V2-019-02": [
+      "test_no_body_unknown_has_no_fabricated_hash_and_received_empty_body_is_distinct",
+      "test_loopback_sent_but_unreceived_generation_is_unknown_without_response_hash",
+      "test_loopback_slow_drip_has_total_wait_bound_and_late_body_cannot_settle_unknown"
+    ],
+    "AT-V2-019-03": [
+      "test_gateway_closed_records_roundtrip_and_reject_extra_fields",
+      "test_pending_known_failure_reconciles_once_with_evidence_and_keeps_outcome"
+    ],
+    "AT-V2-019-04": [
+      "test_unprovisioned_budget_blocks_before_adapter_is_invoked",
+      "test_loopback_unfunded_or_unauthorized_policy_has_zero_http_requests"
+    ],
+    "AT-V2-019-05": [
+      "test_dispatched_recovery_is_unknown_and_cannot_release_by_cancelling",
+      "test_unknown_retry_needs_explicit_risk_acceptance_and_preserves_first_liability",
+      "test_late_actual_reply_replaces_synthetic_recovery_but_not_first_success_pointer",
+      "test_fallback_requires_frozen_policy_and_shares_original_attempt_budget",
+      "test_loopback_success_replay_after_restart_performs_no_additional_http"
+    ]
+  },
+  "private_readback": {
+    "path": "dist/recovery/v2019-gp5-same-source-20261127-zbebp13_/READBACK.json",
+    "sha256": "dbe9bdeb004246ab05cbe1c0d9637fdfffd6c9f0047c15f95f38e234846949ef"
+  },
+  "formal_phase_status": "NOT_VERIFIED",
+  "formal_live_provider_status": "NOT_IMPLEMENTED"
+}

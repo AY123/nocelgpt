@@ -18,11 +18,15 @@ from urllib.error import HTTPError, URLError
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from anovel.canon.identity import canonical_bytes
+from anovel.context.models import ContextRole
 
 from .ledger import DispatchPermit
 from .models import (
     KIMI_CHAT_PATH,
     KIMI_PROBE_WINDOW,
+    OPENAI_RESPONSES_ENDPOINT,
+    OPENAI_SOL_CONTEXT_WINDOW,
+    OPENAI_SOL_MODEL,
     GatewayError,
     GatewayRequest,
     ModelPolicy,
@@ -32,6 +36,53 @@ from .models import (
 )
 
 KIMI_FIRST_GENERATION_TEMPLATE = "gateway-kimi-first-generation-v1"
+OPENAI_FIRST_GENERATION_TEMPLATE = "gateway-openai-first-generation-v1"
+OPENAI_FIRST_GENERATION_TEXT = "ANovelOS OpenAI probe OK"
+OPENAI_FIRST_GENERATION_INSTRUCTIONS = (
+    'Return exactly this JSON object: {"text":"ANovelOS OpenAI probe OK"}.'
+)
+_PROBE_SCHEMA = canonical_bytes(
+    {
+        "type": "object",
+        "properties": {"text": {"type": "string"}},
+        "required": ["text"],
+        "additionalProperties": False,
+    }
+)
+
+
+def is_openai_first_generation_probe(
+    request: GatewayRequest, policy: ModelPolicy
+) -> bool:
+    """Bind the uncounted request to the fixed, fiction-free Sol probe."""
+    return (
+        request.template_version == OPENAI_FIRST_GENERATION_TEMPLATE
+        and request.instructions == OPENAI_FIRST_GENERATION_INSTRUCTIONS
+        and request.schema_bytes == _PROBE_SCHEMA
+        and request.policies == (policy,)
+        and request.context.role is ContextRole.WRITER
+        and not request.context.items
+        and not request.context.selections
+        and request.context.actor_id is None
+        and request.context.scene_id is None
+        and len(request.context.model_bytes) <= 1024
+        and not policy.is_kimi
+        and policy.model == OPENAI_SOL_MODEL
+        and policy.accepted_models == (OPENAI_SOL_MODEL,)
+        and policy.params == {"reasoning": {"effort": "low"}}
+        and policy.max_output_tokens <= 1024
+        and policy.timeout_seconds <= 30
+        and (
+            (policy.test_mode and policy.context_window <= KIMI_PROBE_WINDOW)
+            or (
+                not policy.test_mode
+                and policy.endpoint == OPENAI_RESPONSES_ENDPOINT
+                and policy.context_window == OPENAI_SOL_CONTEXT_WINDOW
+                and policy.input_rate > 0
+                and policy.output_rate > 0
+            )
+        )
+    )
 
 
 class ProviderAdapter(Protocol):
@@ -110,7 +161,16 @@ def response_payload(request: GatewayRequest, policy: ModelPolicy) -> bytes:
 
 
 class _BoundedHTTPAdapter:
-    def __init__(self, api_key: str, *, allow_test_transport: bool = False) -> None:
+    def __init__(
+        self,
+        api_key: str,
+        *,
+        allow_test_transport: bool = False,
+        generation_only: bool = False,
+    ) -> None:
+        if type(generation_only) is not bool:
+            raise GatewayError("Generation-only probe mode must be explicit")
+        self._generation_only = generation_only
         if type(api_key) is not str or not api_key.strip():
             raise GatewayError("Credential entry missing")
         self._credential = api_key
@@ -305,84 +365,116 @@ class OpenAIResponsesAdapter(_BoundedHTTPAdapter):
             raise GatewayError("OpenAI Responses policy required")
         dispatch = self._consume_permit(request, policy, attempt_id, permit)
         payload = response_payload(request, policy)
-        count_payload = canonical_bytes(
-            {
-                key: value
-                for key, value in strict_json(payload).items()
-                if key
-                in {"model", "instructions", "input", "text", "reasoning", "truncation"}
-            }
-        )
-        base = self._count_and_generate(
-            policy,
-            dispatch,
-            count_endpoint=policy.endpoint + "/input_tokens",
-            count_payload=count_payload,
-            parse_count=_openai_count,
-            generation_payload=payload,
-            context_window=policy.context_window,
-        )
-        if base.http_status != 200:
-            return base
-        assert base.response_body is not None
-        try:
-            data = strict_json(base.response_body)
-        except ValueError:
-            return replace(base, error_code="INVALID_RESPONSE_JSON")
-        model = data.get("model")
-        model = model if type(model) is str and model else None
-        usage = None
-        usage_data = data.get("usage")
-        if type(usage_data) is dict:
-            try:
-                i = usage_data.get("input_tokens")
-                o = usage_data.get("output_tokens")
-                t = usage_data.get("total_tokens")
-                if type(i) is not int or type(o) is not int or type(t) is not int:
-                    raise ValueError()
-                usage = Usage(i, o, t)
-            except ValueError:
-                pass
-        base = replace(base, observed_model=model, usage=usage)
-        if data.get("service_tier") not in (None, "default"):
-            return replace(base, usage=None, error_code="UNEXPECTED_SERVICE_TIER")
-        if data.get("status") != "completed":
-            return replace(base, error_code="RESPONSE_NOT_COMPLETED")
-        if model not in policy.accepted_models:
-            return replace(base, error_code="UNEXPECTED_MODEL")
-        try:
-            outputs = data.get("output")
-            if type(outputs) is not list:
-                raise ValueError()
-            texts = []
-            for item in outputs:
-                if type(item) is not dict:
-                    raise ValueError()
-                if item.get("type") == "reasoning":
-                    continue
-                if item.get("type") != "message" or item.get("role") != "assistant":
-                    raise ValueError()
-                content = item.get("content")
-                if type(content) is not list:
-                    raise ValueError()
-                for part in content:
-                    if type(part) is not dict:
-                        raise ValueError()
-                    if part.get("type") == "refusal":
-                        return replace(base, error_code="MODEL_REFUSAL")
-                    if (
-                        part.get("type") != "output_text"
-                        or type(part.get("text")) is not str
-                    ):
-                        raise ValueError()
-                    texts.append(part["text"])
-            output = strict_json("".join(texts).encode("utf-8"))
-            validate_output(request.schema, output)
-            return replace(
-                base, outcome="SUCCESS", output_bytes=canonical_bytes(output)
+        if self._generation_only:
+            if not is_openai_first_generation_probe(request, policy):
+                raise GatewayError(
+                    "Generation-only mode requires the fixed OpenAI probe"
+                )
+            base = self._generate(policy, dispatch, payload)
+        else:
+            count_payload = canonical_bytes(
+                {
+                    key: value
+                    for key, value in strict_json(payload).items()
+                    if key
+                    in {
+                        "model",
+                        "instructions",
+                        "input",
+                        "text",
+                        "reasoning",
+                        "truncation",
+                    }
+                }
             )
+            base = self._count_and_generate(
+                policy,
+                dispatch,
+                count_endpoint=policy.endpoint + "/input_tokens",
+                count_payload=count_payload,
+                parse_count=_openai_count,
+                generation_payload=payload,
+                context_window=policy.context_window,
+            )
+        reply = parse_openai_response(request, policy, base)
+        if (
+            self._generation_only
+            and reply.outcome == "SUCCESS"
+            and reply.output_bytes
+            != canonical_bytes({"text": OPENAI_FIRST_GENERATION_TEXT})
+        ):
+            return replace(
+                reply,
+                outcome="FAILED",
+                output_bytes=None,
+                error_code="PROBE_MARKER_MISMATCH",
+            )
+        return reply
+
+
+def parse_openai_response(
+    request: GatewayRequest, policy: ModelPolicy, base: ProviderReply
+) -> ProviderReply:
+    """Validate a Responses reply from wire bytes, also used for receipt readback."""
+    if base.http_status != 200:
+        return base
+    assert base.response_body is not None
+    try:
+        data = strict_json(base.response_body)
+    except ValueError:
+        return replace(base, error_code="INVALID_RESPONSE_JSON")
+    model = data.get("model")
+    model = model if type(model) is str and model else None
+    usage = None
+    usage_data = data.get("usage")
+    if type(usage_data) is dict:
+        try:
+            i = usage_data.get("input_tokens")
+            o = usage_data.get("output_tokens")
+            t = usage_data.get("total_tokens")
+            if type(i) is not int or type(o) is not int or type(t) is not int:
+                raise ValueError()
+            usage = Usage(i, o, t)
         except ValueError:
-            return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
+            pass
+    base = replace(base, observed_model=model, usage=usage)
+    if data.get("service_tier") not in (None, "default"):
+        return replace(base, usage=None, error_code="UNEXPECTED_SERVICE_TIER")
+    if data.get("status") != "completed":
+        return replace(base, error_code="RESPONSE_NOT_COMPLETED")
+    if model not in policy.accepted_models:
+        return replace(base, error_code="UNEXPECTED_MODEL")
+    try:
+        outputs = data.get("output")
+        if type(outputs) is not list:
+            raise ValueError()
+        texts = []
+        for item in outputs:
+            if type(item) is not dict:
+                raise ValueError()
+            if item.get("type") == "reasoning":
+                continue
+            if item.get("type") != "message" or item.get("role") != "assistant":
+                raise ValueError()
+            content = item.get("content")
+            if type(content) is not list:
+                raise ValueError()
+            for part in content:
+                if type(part) is not dict:
+                    raise ValueError()
+                if part.get("type") == "refusal":
+                    return replace(base, error_code="MODEL_REFUSAL")
+                if (
+                    part.get("type") != "output_text"
+                    or type(part.get("text")) is not str
+                ):
+                    raise ValueError()
+                texts.append(part["text"])
+        output = strict_json("".join(texts).encode("utf-8"))
+        validate_output(request.schema, output)
+        return replace(base, outcome="SUCCESS", output_bytes=canonical_bytes(output))
+    except ValueError:
+        return replace(base, error_code="OUTPUT_SCHEMA_INVALID")
 
 
 def _kimi_count(data: dict[str, object]) -> int | None:
@@ -437,18 +529,6 @@ def _kimi_usage(data: object) -> Usage | None:
 
 
 class KimiChatCompletionsAdapter(_BoundedHTTPAdapter):
-    def __init__(
-        self,
-        api_key: str,
-        *,
-        allow_test_transport: bool = False,
-        generation_only: bool = False,
-    ) -> None:
-        super().__init__(api_key, allow_test_transport=allow_test_transport)
-        if type(generation_only) is not bool:
-            raise GatewayError("Generation-only probe mode must be explicit")
-        self._generation_only = generation_only
-
     def send(
         self,
         request: GatewayRequest,

@@ -1466,8 +1466,8 @@
   },
   {
     "path": "schemas/evidence-record.schema.json",
-    "bytes": 9162,
-    "sha256": "eb02fd165516fa9f12a7f547b639a87146ef1d04cca9890263d2d92e3ed12925"
+    "bytes": 10469,
+    "sha256": "aeb9be973e9c19b260c2446bb6036f8e624e251cdb2a93bd8e34a924b4721635"
   },
   {
     "path": "schemas/execution-packet.schema.json",
@@ -1496,13 +1496,18 @@
   },
   {
     "path": "scripts/governance_checks.py",
-    "bytes": 14320,
-    "sha256": "24641296bad37a281aed21b758427a97c205ad3d156998a789cf58d2293fcae9"
+    "bytes": 15914,
+    "sha256": "8d66a23cb55c453670b7c371072a51235942f583b7aba6e38bd9c99b71df11cc"
+  },
+  {
+    "path": "scripts/local_provider_receipt.py",
+    "bytes": 10079,
+    "sha256": "ca4f97e2072d6762ccced200d2e69ccf78a7f819646a929ab2a21fa3fb19da55"
   },
   {
     "path": "scripts/probe_dispatch.py",
-    "bytes": 26967,
-    "sha256": "3c9d6d99d07b9a2c6f2f7a9849eed9064def1e85babbabe57abd14902d170490"
+    "bytes": 27477,
+    "sha256": "fcd3fca59b5655778d9334da3e2d789d971909cbcf42f4064f4a4f56f16b2879"
   },
   {
     "path": "scripts/probe_governance_legacy.py",
@@ -1521,8 +1526,8 @@
   },
   {
     "path": "scripts/test_governance.py",
-    "bytes": 21219,
-    "sha256": "9525388ddc9458d420a247f9a111b17a7496326573d44e90db9f24564739870c"
+    "bytes": 29680,
+    "sha256": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2"
   },
   {
     "path": "scripts/validate_plan.py",

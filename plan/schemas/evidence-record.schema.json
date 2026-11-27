@@ -33,6 +33,7 @@
         "CODE",
         "TEST_RESULT",
         "CI_RUN",
+        "LIVE_PROVIDER_RECEIPT",
         "ACCEPTANCE_RECORD",
         "ADR_DECISION",
         "PHASE_DECISION",
@@ -316,6 +317,57 @@
           "job_id",
           "pipeline_url"
         ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "evidence_type": {
+            "const": "LIVE_PROVIDER_RECEIPT"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "check_ids"
+        ],
+        "properties": {
+          "subject_id": {
+            "const": "LIVE_PROVIDER"
+          },
+          "check_ids": {
+            "const": [
+              "LIVE_PROVIDER"
+            ]
+          },
+          "pipeline_id": false,
+          "job_id": false,
+          "pipeline_url": false,
+          "artifacts": {
+            "minItems": 2,
+            "maxItems": 2,
+            "allOf": [
+              {
+                "contains": {
+                  "properties": {
+                    "ref": {
+                      "const": "validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json"
+                    }
+                  }
+                }
+              },
+              {
+                "contains": {
+                  "properties": {
+                    "ref": {
+                      "const": "validation/execution/V2-019/openai-first-probe-20261125/GP5_RECEIPT_READBACK.json"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
       }
     },
     {

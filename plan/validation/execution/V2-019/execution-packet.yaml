@@ -2,9 +2,9 @@ record_type: task_execution_packet
 schema_version: '1.0'
 task_id: V2-019
 plan_version: 1.3.0
-repository_revision: 400d68e3d32dba3e658a1a2b39b509ffe8f8b230
+repository_revision: 4b9cd4788a616dae4ad2e1457d983daa1b559f38
 worktree_dirty: false
-plan_manifest_sha256: dc243f76574e1bd8e288f7a331b0a515ed9d716a74452748004c69851ced4e0f
+plan_manifest_sha256: 9d1c3a6692170f6c2f81304d4992ab7c11f42e906f7e844c120f101d56327889
 environment:
   fingerprint: Locked Python3.12.14/uv0.12.17/PostgreSQL17.11; existing jsonschema4.26.0
     moved to runtime, package versions unchanged
@@ -44,6 +44,7 @@ expected_outputs:
 - src/anovel/gateway
 - model-policy.yaml
 - tests/integration/test_v2_019.py
+- plan/scripts/local_provider_receipt.py
 allowed_paths:
 - model-policy.yaml
 - plan/FILE_MANIFEST.json
@@ -65,6 +66,24 @@ allowed_paths:
 - tests/contract/test_v2_019_probe_dispatch.py
 - tests/integration/test_v2_019.py
 - tests/integration/test_v2_019_kimi.py
+- plan/schemas/evidence-record.schema.json
+- plan/scripts/governance_checks.py
+- plan/scripts/local_provider_receipt.py
+- plan/scripts/test_governance.py
+- plan/validation/execution/V2-019/execution-packet.yaml
+- plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json
+- plan/validation/execution/V2-019/openai-first-probe-20261125/LOCAL_OBSERVATION.json
+- plan/validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json
+- plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-review.json
+- plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-scope.json
+- scripts/ci/run_live_provider.py
+- scripts/ci/verify_live_provider.py
+- src/anovel/context/compiler.py
+- src/anovel/context/models.py
+- src/anovel/context/scene.py
+- tests/contract/test_v2_019_live_provider.py
+- plan/validation/execution/V2-019/p5-evidence-20261122/workflow.draft.yaml
+- plan/validation/execution/V2-019/one-generation-20261123/workflow.hosted-preflight.draft.yaml
 required_decisions:
 - ADR-010
 claims:
@@ -120,6 +139,14 @@ claims:
   blocks_actions: []
   verification_plan: Retain captured page hashes and bounded policy expiry; test offline
     policy behavior without credentials or Provider requests.
+- id: gp5-openai-receipt-reuse-owner
+  kind: FACT
+  statement: Owner 批准本次 G-P5 复用既有 OpenAI 真实成功回执并对核定候选运行一次常规 CI。
+  sources:
+  - ref: validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json
+    sha256: 2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3
+  blocks_actions: []
+  verification_plan: 本机只读核对原始回执与唯一账本记录，核对候选组件并复核真实常规 CI 原始结果。
 estimate:
   range: null
   unit: null
@@ -153,7 +180,7 @@ review_notes:
   handoff check; old original bytes remain unchanged. No remote/Provider/independent-audit
   claim.
 handoff:
-  current_step: 离线组装候选。正式发布、常规六门与 LIVE_PROVIDER 均待相应授权和验证。
+  current_step: OpenAI 真实成功回执已复核，按本次 Owner 授权准备同一验收候选的常规 CI。
   completed_steps:
   - IMPLEMENT entry passed with fixed scope/review pins
   - Implemented closed request/model/result contracts, durable SQLite budgets and
@@ -170,20 +197,17 @@ handoff:
   - 2026-11-17:124 Gateway tests/0skip,32 validator/39 governance/36 AI/13 legacy
     cases,5 governance commands, architecture42files/0finding and offline request
     PASS; LIVE_CALL entry refuses the unbound action.
+  - 已复核既有 OpenAI 回执与同源码 184 项本地回归。
   pending_items:
-  - 托管 LIVE_PROVIDER 生产者和一次性凭据消费尚未就绪。
-  - Await explicit positive live budget, attempts/runtime stop limits and secure credential/account
-    capability.
-  - Before paid work, establish applicable authorized LIVE_CALL dispatch path; local
-    run entry rejects live child commands, direct bypass is not authorized.
-  - Revalidate current policy if expired/changed and prepare a new exactly bound live
-    request.
-  - Controlled real Provider evidence and final exact-source six-gate CI/acceptance;
-    V019 stays IN_PROGRESS, V020 stays OPEN/PREPARE.
+  - 对本次验收候选运行一次常规 CI，按真实运行及已有 Provider 回执验收。
   next_action: IMPLEMENT
   last_check:
     status: PASS
     artifacts:
+    - ref: validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json
+      sha256: eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623
+    - ref: validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json
+      sha256: 2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3
     - ref: validation/execution/V2-019/resume-20261117/RESULTS.json
       sha256: 7d59f092003e7fc33380675f9f246db548b342af692aa56f32519cb9405ece2a
     missing_artifact_reason: null

@@ -36,7 +36,12 @@ from anovel.gateway.models import (
     GatewayRequest,
     ModelPolicy,
 )
-from anovel.gateway.provider import KIMI_FIRST_GENERATION_TEMPLATE, strict_json
+from anovel.gateway.provider import (
+    KIMI_FIRST_GENERATION_TEMPLATE,
+    OPENAI_FIRST_GENERATION_TEMPLATE,
+    is_openai_first_generation_probe,
+    strict_json,
+)
 
 
 class ProbeAuthorizationError(ValueError):
@@ -564,10 +569,12 @@ def _validate(
         request.run_id,
     ):
         _fail("BUDGET_IDENTITY")
-    template = (
-        _GENERATION_ONLY_TEMPLATE if generation_only else "gateway-protocol-probe-v1"
+    templates = (
+        {_GENERATION_ONLY_TEMPLATE, OPENAI_FIRST_GENERATION_TEMPLATE}
+        if generation_only
+        else {"gateway-protocol-probe-v1"}
     )
-    if request.template_version != template or request.schema != _SCHEMA:
+    if request.template_version not in templates or request.schema != _SCHEMA:
         _fail("PROBE_CONTRACT")
     if (
         request.context.role != ContextRole.WRITER
@@ -575,11 +582,14 @@ def _validate(
         or policy.id != policy_id
     ):
         _fail("PROBE_POLICY")
+    openai_first_probe = generation_only and is_openai_first_generation_probe(
+        request, policy
+    )
     window_limit = (
         KIMI_CONTEXT_WINDOW if environment == "LIVE_PROVIDER" else KIMI_PROBE_WINDOW
     )
     if (
-        policy.context_window > window_limit
+        (not openai_first_probe and policy.context_window > window_limit)
         or policy.max_output_tokens > 1024
         or policy.timeout_seconds > 30
     ):
@@ -587,10 +597,12 @@ def _validate(
     if policy.accepted_models != (policy.model,):
         _fail("MODEL_FALLBACK")
     if environment == "LIVE_PROVIDER":
-        if (
-            policy.test_mode
-            or policy.endpoint != KIMI_CHAT_ENDPOINT
-            or policy.context_window != KIMI_CONTEXT_WINDOW
+        if policy.test_mode or (
+            not openai_first_probe
+            and (
+                policy.endpoint != KIMI_CHAT_ENDPOINT
+                or policy.context_window != KIMI_CONTEXT_WINDOW
+            )
         ):
             _fail("LIVE_MODEL")
         if policy.input_rate <= 0 or policy.output_rate <= 0:
@@ -604,14 +616,19 @@ def _validate(
         policy.model != KIMI_MODEL or policy.params != {"reasoning_effort": "high"}
     ):
         _fail("KIMI_MODEL")
-    if generation_only and (
-        not policy.is_kimi
-        or request.instructions != _GENERATION_ONLY_INSTRUCTIONS
-        or request.context.items
-        or request.context.selections
-        or request.context.actor_id is not None
-        or request.context.scene_id is not None
-        or len(request.context.model_bytes) > 1024
+    if (
+        generation_only
+        and not openai_first_probe
+        and (
+            not policy.is_kimi
+            or request.template_version != _GENERATION_ONLY_TEMPLATE
+            or request.instructions != _GENERATION_ONLY_INSTRUCTIONS
+            or request.context.items
+            or request.context.selections
+            or request.context.actor_id is not None
+            or request.context.scene_id is not None
+            or len(request.context.model_bytes) > 1024
+        )
     ):
         _fail("GENERATION_ONLY_REQUEST")
     if estimate_fee is not None and (

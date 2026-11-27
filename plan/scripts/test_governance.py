@@ -11,6 +11,8 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from types import SimpleNamespace
+from unittest.mock import Mock, patch
 
 import yaml
 import validate_plan as validator
@@ -18,6 +20,25 @@ from governance_checks import evidence_checks
 from execution_checks import execution_checks, CONTROL_INPUTS
 
 REVISION = 'a' * 40
+
+
+def attach_git_authority_context(target):
+    """Give a copied current plan its real read-only Git ancestry, never a grant.
+
+    Object alternates are read only. The temporary repo owns all refs/config;
+    the source checkout is not modified and no network operation is performed.
+    Pinned admission/current-source checks still run against the copied bytes.
+    """
+    source = validator.PLAN.parent
+    def run(*args):
+        return subprocess.check_output(['git', *args], text=True, stderr=subprocess.PIPE).strip()
+    objects = run('-C', str(source), 'rev-parse', '--path-format=absolute', '--git-path', 'objects')
+    head = run('-C', str(source), 'rev-parse', 'HEAD')
+    run('init', '--quiet', '-b', 'main', str(target))
+    info = target / '.git/objects/info'
+    info.mkdir(parents=True, exist_ok=True)
+    (info / 'alternates').write_text(objects + '\n')
+    run('-C', str(target), 'update-ref', 'refs/heads/main', head)
 
 
 class GovernanceTests(unittest.TestCase):
@@ -32,6 +53,7 @@ class GovernanceTests(unittest.TestCase):
         p0_tasks = {t['task_id'] for t in self.data['implementation-backlog']['tasks'] if t['phase'] == 'P0'}
         for task in self.data['implementation-backlog']['tasks']:
             if task['task_id'] not in p0_tasks:
+                task.pop('implementation_admission', None)
                 task.update(status='OPEN', readiness='PLANNED', execution_packet_ref=None,
                             evidence={kind:[] for kind in ('code', 'tests', 'ci', 'acceptance')})
         for suite in self.data['test-catalog']['suites']:
@@ -41,6 +63,9 @@ class GovernanceTests(unittest.TestCase):
         # Live P1 completion must not invalidate this old-P0 positive fixture.
         for phase in self.data['phase-gates']['phases'][1:]:
             phase.update(status='NOT_VERIFIED', evidence_refs=[])
+        for gate in self.data['ci-gates']['gates']:
+            if gate['id'] == 'LIVE_PROVIDER':
+                gate.update(status='NOT_IMPLEMENTED', evidence_refs=[])
         for milestone in self.data['milestones']['milestones'][1:]:
             milestone.update(status='NOT_VERIFIED', evidence_refs=[])
         # Real finding closures cannot serve as synthetic task attestations.
@@ -283,6 +308,9 @@ class GovernanceTests(unittest.TestCase):
                 self.reject('EVIDENCE_RECORD')
 
     def test_cli_external_reports_do_not_change_plan(self):
+        # This case checks the actual current plan, including its fixed Git
+        # development authority, rather than the synthetic P0 object fixture.
+        attach_git_authority_context(self.plan.parent)
         def inventory():
             return {str(p.relative_to(self.plan)):hashlib.sha256(p.read_bytes()).hexdigest()
                     for p in self.plan.rglob('*') if p.is_file()}
@@ -299,6 +327,123 @@ class GovernanceTests(unittest.TestCase):
 
     def test_phase_input_binding(self):
         self.mutate_record('PHASE_DECISION','P0',lambda r:r.update(input_evidence_refs=['validation/fixture/CI_RUN-P0.json'])); self.reject('PHASE_INPUTS')
+
+    def make_provider_phase(self, phase_id='P5', *, use_receipt=True):
+        gates = [g for g in self.data['ci-gates']['gates']
+                 if int(g['activation_phase'][1:]) <= int(phase_id[1:])]
+        checks = [g['id'] for g in gates if not use_receipt or g['id'] != 'LIVE_PROVIDER']
+        ci = self.record('CI_RUN', phase_id, check_ids=checks)
+        if use_receipt:
+            artifacts = []
+            for name in ('GP5_REUSE_AUTHORIZATION.json', 'GP5_RECEIPT_READBACK.json'):
+                ref = f'validation/execution/V2-019/openai-first-probe-20261125/{name}'
+                path = self.plan/ref
+                path.write_text('Synthetic fixture for governance checks; not a real Provider receipt.\n')
+                artifacts.append({'ref':ref,'sha256':hashlib.sha256(path.read_bytes()).hexdigest()})
+            receipt = self.record('LIVE_PROVIDER_RECEIPT', 'LIVE_PROVIDER',
+                                  check_ids=['LIVE_PROVIDER'], artifacts=artifacts)
+        else:
+            receipt = None
+        for g in gates:
+            g.update(status='VERIFIED', evidence_refs=[receipt if g['id'] == 'LIVE_PROVIDER' and receipt else ci])
+        phase = next(p for p in self.data['phase-gates']['phases'] if p['id'] == phase_id)
+        decision = self.record('PHASE_DECISION', phase_id,
+                               input_evidence_refs=[ci,receipt] if receipt else [ci], ci_evidence_refs=[ci])
+        phase.update(status='VERIFIED', evidence_refs=[decision])
+        return ci, receipt
+
+    def provider_phase_errors(self, validate=None):
+        helper = SimpleNamespace(validate_gp5_receipt=Mock() if validate is None else validate)
+        with patch.dict(sys.modules, {'local_provider_receipt':helper}):
+            return evidence_checks(self.data, self.plan)
+
+    def test_p5_accepts_owner_provider_receipt_alongside_same_revision_ci(self):
+        _, receipt = self.make_provider_phase()
+        validate = Mock()
+        self.assertEqual(self.provider_phase_errors(validate), [])
+        validate.assert_called_once_with(self.plan.resolve(), json.loads((self.plan/receipt).read_text()))
+
+    def test_p5_accepts_existing_same_revision_provider_ci_path(self):
+        self.make_provider_phase(use_receipt=False)
+        validate = Mock()
+        self.assertEqual(self.provider_phase_errors(validate), [])
+        validate.assert_not_called()
+
+    def test_future_phases_cannot_reuse_p5_receipt(self):
+        for phase_id in ('P8','P9'):
+            with self.subTest(phase=phase_id):
+                self.make_provider_phase(phase_id)
+                errors = self.provider_phase_errors()
+                self.assertTrue(any(e.startswith(f'PHASE_PROVIDER_RECEIPT {phase_id}') for e in errors), errors)
+                self.assertTrue(any(e.startswith(f'EVIDENCE_COVERAGE {phase_id} CI') for e in errors), errors)
+
+    def test_p5_receipt_cannot_stand_in_for_regular_ci(self):
+        self.make_provider_phase()
+        self.mutate_record('CI_RUN','P5',lambda r:r['check_ids'].remove('CANON_CAS_IDEMPOTENCY'))
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith('EVIDENCE_COVERAGE P5 CI') for e in errors), errors)
+
+    def test_p5_receipt_and_regular_ci_must_match_decision_revision(self):
+        self.make_provider_phase()
+        self.mutate_record('LIVE_PROVIDER_RECEIPT','LIVE_PROVIDER',lambda r:r.update(revision='b'*40))
+        self.mutate_record('CI_RUN','P5',lambda r:r.update(revision='b'*40))
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith('PHASE_PROVIDER_RECEIPT P5') for e in errors), errors)
+        self.assertTrue(any(e.startswith('EVIDENCE_REVISION validation/fixture/CI_RUN-P5.json') for e in errors), errors)
+
+    def test_p5_receipt_must_be_a_bound_input_and_registered_at_gate(self):
+        ci, receipt = self.make_provider_phase()
+        self.mutate_record('PHASE_DECISION','P5',lambda r:r['input_evidence_refs'].remove(receipt))
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith('EVIDENCE_COVERAGE P5 CI') for e in errors), errors)
+        self.mutate_record('PHASE_DECISION','P5',lambda r:r['input_evidence_refs'].append(receipt))
+        live = next(g for g in self.data['ci-gates']['gates'] if g['id'] == 'LIVE_PROVIDER')
+        live['evidence_refs'] = [ci]
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith('PHASE_PROVIDER_RECEIPT P5') for e in errors), errors)
+
+    def test_p5_receipt_cannot_be_listed_as_a_ci_run(self):
+        _, receipt = self.make_provider_phase()
+        self.mutate_record('PHASE_DECISION','P5',lambda r:r['ci_evidence_refs'].append(receipt))
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith(f'EVIDENCE_TYPE {receipt}') for e in errors), errors)
+
+    def test_p5_receipt_cannot_verify_any_other_gate(self):
+        _, receipt = self.make_provider_phase()
+        gate = next(g for g in self.data['ci-gates']['gates'] if g['id'] == 'STATIC')
+        gate['evidence_refs'] = [receipt]
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith(f'EVIDENCE_TYPE {receipt}') for e in errors), errors)
+        self.assertTrue(any(e.startswith('EVIDENCE_COVERAGE STATIC') for e in errors), errors)
+
+    def test_p5_receipt_requires_valid_owner_approval_and_readback(self):
+        _, receipt = self.make_provider_phase()
+        errors = self.provider_phase_errors(Mock(side_effect=ValueError('invalid Owner approval or readback')))
+        self.assertTrue(any(e.startswith(f'EVIDENCE_RECORD {receipt}') for e in errors), errors)
+        self.assertTrue(any(e.startswith('EVIDENCE_COVERAGE P5 CI') for e in errors), errors)
+
+    def test_provider_receipt_schema_has_exact_checks_artifacts_and_no_ci_identity(self):
+        _, receipt = self.make_provider_phase()
+        path = self.plan/receipt
+        valid = json.loads(path.read_text())
+        for mutation in (
+            {'subject_id':'P5'}, {'check_ids':['LIVE_PROVIDER','STATIC']},
+            {'pipeline_id':'claimed-remote-run'}, {'job_id':'claimed-remote-job'},
+            {'pipeline_url':'https://ci.example.invalid/fixture'},
+            {'artifacts':[valid['artifacts'][1]]},
+            {'artifacts':[valid['artifacts'][0],self.artifact]},
+        ):
+            with self.subTest(mutation=mutation):
+                path.write_text(json.dumps(valid | mutation)+'\n')
+                errors = self.provider_phase_errors()
+                self.assertTrue(any(e.startswith(f'EVIDENCE_RECORD {receipt}') for e in errors), errors)
+
+    def test_p5_receipt_artifact_tampering_rejected(self):
+        _, receipt = self.make_provider_phase()
+        approval = json.loads((self.plan/receipt).read_text())['artifacts'][0]['ref']
+        (self.plan/approval).write_text('Changed after registration.\n')
+        errors = self.provider_phase_errors()
+        self.assertTrue(any(e.startswith(f'EVIDENCE_ARTIFACT {receipt}') for e in errors), errors)
 
     def test_evidence_cycle(self):
         self.mutate_record('TEST_RESULT','V2-001',lambda r:r.update(input_evidence_refs=['validation/fixture/TEST_RESULT-V2-001.json'])); self.reject('EVIDENCE_CYCLE')

@@ -200,7 +200,9 @@ def main(argv: list[str] | None = None) -> int:
             )
             if policy.is_kimi
             else OpenAIResponsesAdapter(
-                key, allow_test_transport=config.allow_test_transport
+                key,
+                allow_test_transport=config.allow_test_transport,
+                generation_only=config.generation_only,
             )
         )
         del key
@@ -218,6 +220,9 @@ def main(argv: list[str] | None = None) -> int:
         private.verify_files()
         summary.update(
             status=result.status,
+            http_status=result.reply.http_status,
+            error_code=result.reply.error_code,
+            automatic_retry=False,
             response_hash=result.reply.response_hash,
             count_hash=result.reply.count_hash,
             provider_request_id=result.reply.provider_request_id,

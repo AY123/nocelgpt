@@ -8,17 +8,20 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import socket
+import sqlite3
 import subprocess
 import sys
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 from dataclasses import dataclass, replace
 from datetime import UTC, datetime, timedelta
 from hashlib import sha256
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from threading import Thread
+from urllib.parse import unquote, urlsplit
 
 import pytest
 import yaml
@@ -44,6 +47,7 @@ ROOT = Path(__file__).resolve().parents[2]
 PACKET = "plan/validation/execution/V2-019/execution-packet.yaml"
 RECORDS = "plan/validation/execution/V2-019/synthetic-dispatch-fixture"
 SYNTHETIC_CREDENTIAL = "not-a-key"
+SYNTHETIC_RATE_LIMIT_MESSAGE = "Private loopback error detail."
 SCHEMA = canonical_bytes(
     {
         "type": "object",
@@ -175,6 +179,28 @@ for task in data['implementation-backlog']['tasks']:
     call(repo, sys.executable, "-B", "-c", code, check=True)
 
 
+def copy_linked_replay_inputs(repo):
+    """Preserve external assets the current planning check reads in this fixture."""
+    files = set()
+    for document in (repo / "plan").rglob("*.md"):
+        if "archive" in document.relative_to(repo / "plan").parts:
+            continue
+        for reference in re.findall(r"\]\(([^)]+)\)", document.read_text()):
+            if reference.startswith("#") or urlsplit(reference).scheme:
+                continue
+            target = (document.parent / unquote(reference.split("#")[0])).resolve()
+            if target.exists() or not (
+                target.is_relative_to(repo / "drafts")
+                or target.is_relative_to(repo / "dist/recovery")
+            ):
+                continue
+            relative = target.relative_to(repo)
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / relative, target)
+            files.add(str(relative))
+    return sorted(files)
+
+
 @pytest.fixture(scope="module")
 def seed(tmp_path_factory):
     """A real source checkout; no caller/context validation is mocked."""
@@ -203,8 +229,20 @@ def seed(tmp_path_factory):
             shutil.copyfile(source, repo / name)
     git(repo, "init", "-b", "main")
     reconcile_fixture(repo)
+    replay_inputs = copy_linked_replay_inputs(repo)
     # Preserve ignored-but-tracked historical plan artifacts in the clone too.
-    git(repo, "add", "-f", "plan", "scripts", "src", "specs", "tests", ".github")
+    git(
+        repo,
+        "add",
+        "-f",
+        "plan",
+        "scripts",
+        "src",
+        "specs",
+        "tests",
+        ".github",
+        *replay_inputs,
+    )
     commit(repo, "synthetic source fixture; no Provider or Owner evidence")
     return repo
 
@@ -218,7 +256,7 @@ class LocalProbe:
 
 
 @contextmanager
-def local_server(mode="success", *, kimi=False):
+def local_server(mode="success", *, kimi=False, openai_probe=False):
     state = LocalProbe(mode)
     count_path = (
         "/v1/tokenizers/estimate-token-count" if kimi else "/v1/responses/input_tokens"
@@ -244,6 +282,9 @@ def local_server(mode="success", *, kimi=False):
                     if kimi
                     else {"object": "response.input_tokens", "input_tokens": 30}
                 )
+            elif state.mode == "http_429":
+                status = 429
+                body = {"error": {"message": SYNTHETIC_RATE_LIMIT_MESSAGE}}
             elif kimi:
                 body = {
                     "id": "synthetic-kimi-completion",
@@ -268,7 +309,7 @@ def local_server(mode="success", *, kimi=False):
             else:
                 body = {
                     "status": "completed",
-                    "model": "gpt-6-luna",
+                    "model": "gpt-6.2-sol" if openai_probe else "gpt-6-luna",
                     "service_tier": "default",
                     "output": [
                         {
@@ -277,7 +318,9 @@ def local_server(mode="success", *, kimi=False):
                             "content": [
                                 {
                                     "type": "output_text",
-                                    "text": '{"text":"Synthetic local HTTP only."}',
+                                    "text": '{"text":"ANovelOS OpenAI probe OK"}'
+                                    if openai_probe and mode == "success"
+                                    else '{"text":"Synthetic local HTTP only."}',
                                 }
                             ],
                         }
@@ -315,7 +358,7 @@ def local_server(mode="success", *, kimi=False):
         thread.join(timeout=3)
 
 
-def make_request(endpoint):
+def make_request(endpoint, *, openai_probe=False):
     kimi = endpoint.endswith(KIMI_CHAT_PATH)
     context_budget = ContextBudget(100000)
     identity = ContextRequest(
@@ -367,14 +410,26 @@ def make_request(endpoint):
         margin_microusd=1000,
         test_mode=True,
     )
+    if openai_probe:
+        context = replace(context, items=())
+        policy = replace(
+            policy,
+            model="gpt-6.2-sol",
+            accepted_models=("gpt-6.2-sol",),
+            params_bytes=canonical_bytes({"reasoning": {"effort": "low"}}),
+        )
     return GatewayRequest(
         context.project,
         context.branch,
         "synthetic-probe-run",
         "synthetic-probe-logical",
         context,
-        "Synthetic local protocol probe only.",
-        "gateway-protocol-probe-v1",
+        'Return exactly this JSON object: {"text":"ANovelOS OpenAI probe OK"}.'
+        if openai_probe
+        else "Synthetic local protocol probe only.",
+        "gateway-openai-first-generation-v1"
+        if openai_probe
+        else "gateway-protocol-probe-v1",
         SCHEMA,
         (policy,),
     )
@@ -476,7 +531,7 @@ class Fixture:
         )
 
 
-def freeze_fixture(seed, tmp_path, endpoint):
+def freeze_fixture(seed, tmp_path, endpoint, *, openai_probe=False):
     repo = (tmp_path / "repo").resolve()
     call(
         tmp_path.resolve(),
@@ -491,7 +546,7 @@ def freeze_fixture(seed, tmp_path, endpoint):
     private = (repo / "dist/synthetic-probe").resolve()
     private.mkdir(parents=True, mode=0o700)
     private.chmod(0o700)
-    request = make_request(endpoint)
+    request = make_request(endpoint, openai_probe=openai_probe)
     (repo / "model-policy.yaml").write_bytes(request.policies[0].to_bytes())
     source_revision = commit(repo, "freeze synthetic loopback source policy")
     fingerprint = call(
@@ -976,6 +1031,74 @@ def test_kimi_generation_only_grant_sends_one_reserved_post(seed, tmp_path):
     assert (fixture.private / "ledger.sqlite3").exists()
     assert output.stat().st_mode & 0o777 == 0o600
     assert SYNTHETIC_CREDENTIAL not in output.read_text()
+
+
+@pytest.mark.parametrize(
+    ("mode", "outcome", "http_status", "error_code"),
+    [
+        ("success", "SUCCESS", 200, None),
+        ("wrong_marker", "FAILED", 200, "PROBE_MARKER_MISMATCH"),
+        ("disconnect", "UNKNOWN", None, "GENERATION_TRANSPORT_UNPROVEN"),
+        ("http_429", "FAILED", 429, "HTTP_429"),
+    ],
+)
+def test_openai_first_generation_uses_one_post_and_checks_marker(
+    seed, tmp_path, mode, outcome, http_status, error_code
+):
+    with local_server(mode, openai_probe=True) as server:
+        fixture = freeze_fixture(seed, tmp_path, server.endpoint, openai_probe=True)
+        fixture.grant["count_cost"] = {
+            "status": "NOT_REQUESTED",
+            "source": None,
+            "ref": None,
+            "sha256": None,
+        }
+        fixture.grant["limits"]["max_http_requests"] = 1
+        fixture.freeze_grant()
+        code, transcript, sent = run_with_terminal(fixture)
+        assert sent and SYNTHETIC_CREDENTIAL.encode() not in transcript
+        assert b"response_base64" not in transcript
+        assert SYNTHETIC_RATE_LIMIT_MESSAGE.encode() not in transcript
+        assert (code == 0) == (outcome == "SUCCESS"), transcript.decode(
+            errors="replace"
+        )
+        refused, _, repeated_input = run_with_terminal(fixture, typed=False)
+        assert refused != 0 and not repeated_input
+
+    ((path, payload),) = server.requests
+    assert path == "/v1/responses"
+    assert payload["model"] == "gpt-6.2-sol" and payload["store"] is False
+    assert payload["text"]["format"]["strict"] is True
+    result = json.loads((fixture.private / "result.json").read_text())
+    summary = result["summary"]
+    assert summary["provider"] == "OPENAI" and summary["count_hash"] is None
+    assert summary["token_estimate"] == "NOT_REQUESTED"
+    assert summary["response_hash"] == (
+        sha256(server.responses[0]).hexdigest() if server.responses else None
+    )
+    assert (summary["status"], summary["http_status"], summary["error_code"]) == (
+        outcome,
+        http_status,
+        error_code,
+    )
+    assert summary["automatic_retry"] is False
+    assert summary["budget_summary"]["attempts"] == 1
+    reply = result["result"]["reply"]
+    for field in ("http_status", "error_code", "response_hash", "count_hash"):
+        assert summary[field] == reply[field]
+    assert "response_base64" not in summary
+    if mode in {"disconnect", "http_429"}:
+        assert summary["charge_status"] == "PENDING"
+
+    ledger_uri = (fixture.private / "ledger.sqlite3").as_uri() + "?mode=ro"
+    with closing(sqlite3.connect(ledger_uri, uri=True)) as reopened:
+        attempts = reopened.execute(
+            "SELECT attempt_id, state, result_record FROM attempts WHERE run_id=?",
+            (fixture.request.run_id,),
+        ).fetchall()
+    assert attempts == [
+        (fixture.arguments["attempt_id"], "FINISHED", canonical_bytes(result["result"]))
+    ]
 
 
 @pytest.mark.parametrize(

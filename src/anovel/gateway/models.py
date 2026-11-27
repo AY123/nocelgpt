@@ -22,6 +22,8 @@ from anovel.canon.identity import canonical_bytes, decode_canonical
 from anovel.context.models import ContextArtifact
 
 OPENAI_RESPONSES_ENDPOINT = "https://api.openai.com/v1/responses"
+OPENAI_SOL_MODEL = "gpt-6.2-sol"
+OPENAI_SOL_CONTEXT_WINDOW = 1_050_000
 KIMI_CHAT_PATH = "/v1/chat/completions"
 KIMI_CHAT_ENDPOINT = "https://api.moonshot.cn" + KIMI_CHAT_PATH
 KIMI_MODEL = "kimi-k3.1-pro"

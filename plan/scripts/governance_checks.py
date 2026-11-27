@@ -108,6 +108,10 @@ class EvidenceReader:
                         self.errors.append(f'EVIDENCE_ARTIFACT {ref}: missing/changed {artifact["ref"]}')
                     elif p.relative_to(self.plan).parts[0] == 'templates':
                         self.errors.append(f'EVIDENCE_ARTIFACT {ref}: a template is not an execution result')
+                if record['evidence_type'] == 'LIVE_PROVIDER_RECEIPT':
+                    from local_provider_receipt import validate_gp5_receipt
+
+                    validate_gp5_receipt(self.plan, record)
                 for child in record['input_evidence_refs']:
                     self.read(child)
             except (OSError, ValueError, TypeError, yaml.YAMLError) as exc:
@@ -186,11 +190,20 @@ def evidence_checks(data, plan):
         for ref in a.get('verification_refs', []):
             reader.read(ref)
     gates = data['ci-gates']['gates']
+    gp5_receipt_refs = set()
     for g in gates:
         require(g.get('status') in {'NOT_IMPLEMENTED','IMPLEMENTED','VERIFIED'}, f'CI_STATUS {g["id"]}: invalid')
-        records = [reader.read(ref, {'CI_RUN'}) for ref in g.get('evidence_refs', [])]
+        refs = g.get('evidence_refs', [])
+        types = {'CI_RUN', 'LIVE_PROVIDER_RECEIPT'} if g['id'] == 'LIVE_PROVIDER' else {'CI_RUN'}
+        records = [reader.read(ref, types) for ref in refs]
+        if g['id'] == 'LIVE_PROVIDER':
+            gp5_receipt_refs.update(
+                ref for ref, record in zip(refs, records, strict=True)
+                if record and record['evidence_type'] == 'LIVE_PROVIDER_RECEIPT'
+            )
         if g['status'] == 'VERIFIED':
             covers(records, [g['id']], g['id'])
+    require(len(gp5_receipt_refs) <= 1, 'GP5_PROVIDER_RECEIPT: multiple receipt attestations')
     for p in phases.values():
         records = [reader.read(ref, {'PHASE_DECISION'}, p['id']) for ref in p['evidence_refs']]
         if p['status'] != 'VERIFIED':
@@ -205,7 +218,23 @@ def evidence_checks(data, plan):
             require(required_acceptance.issubset(record['input_evidence_refs']), f'PHASE_INPUTS {p["id"]}: missing task acceptance')
             ci_records = [reader.read(ref, {'CI_RUN'}, revision=record['revision']) for ref in record['ci_evidence_refs']]
             require(set(record['ci_evidence_refs']).issubset(record['input_evidence_refs']), f'PHASE_CI {p["id"]}: unbound run')
-            covers(ci_records, [g['id'] for g in applicable], p['id']+' CI')
+            required_ci_checks = {g['id'] for g in applicable}
+            provider_receipts = {}
+            for ref in record['input_evidence_refs']:
+                evidence = reader.read(ref)
+                if evidence and evidence['evidence_type'] == 'LIVE_PROVIDER_RECEIPT':
+                    provider_receipts[ref] = evidence
+            if provider_receipts:
+                receipt_bound = (
+                    p['id'] == 'P5'
+                    and len(provider_receipts) == 1
+                    and provider_receipts.keys() <= gp5_receipt_refs
+                    and all(e['revision'] == record['revision'] for e in provider_receipts.values())
+                )
+                require(receipt_bound, f'PHASE_PROVIDER_RECEIPT {p["id"]}: requires one registered G-P5 receipt for the decision revision')
+                if receipt_bound:
+                    required_ci_checks.discard('LIVE_PROVIDER')
+            covers(ci_records, required_ci_checks, p['id']+' CI')
     for m in data['milestones']['milestones']:
         for ref in m['evidence_refs']:
             record = reader.read(ref, {'MILESTONE_DECISION'}, m['id'])
