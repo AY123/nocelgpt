@@ -1,0 +1,25 @@
+{
+  "previous_ci": {
+    "run": 46024372941,
+    "revision": "34fe102fa67b2c097c59f217409cad6741b43796",
+    "full_pass": false,
+    "passed_gates": 5,
+    "unit_exit_code": 124,
+    "time_limit_seconds": 1100,
+    "unit_pass_marks": 2045,
+    "complete_junit": false
+  },
+  "same_retained_scene": {
+    "calls": 340,
+    "before_seconds_median": 5.552481000020634,
+    "after_seconds_median": 0.0018081250018440187,
+    "retained_step_id_identical": true,
+    "retained_row_byte_equal": true
+  },
+  "targeted_local_passed": {
+    "fixture": 6,
+    "scene": 4
+  },
+  "targeted_local_skipped": 0,
+  "ci_test_collection_and_limits_unchanged": true
+}

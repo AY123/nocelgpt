@@ -142,6 +142,9 @@ def seed(tmp_path_factory):
         packet = load(path)
         packet['change_review'] = {'scope_revision':pin, 'scope_ref':f'plan/validation/fixture-gates/{task_id}.json'}
         save(path, packet)
+    result, report, output = entry(repo, output=repo / 'dist' / 'seed-check.json')
+    assert result.returncode == 0 and report['status'] == 'PASS', report.get('errors')
+    output.unlink()
     return repo
 
 
@@ -173,8 +176,6 @@ def entry(repo, mode='check', *, action='IMPLEMENT', task='V2-002', command=None
 def repo(seed, tmp_path):
     destination = tmp_path / 'repo'
     shutil.copytree(seed, destination)
-    result, report, _ = entry(destination)
-    assert result.returncode == 0 and report['status'] == 'PASS', report.get('errors')
     return destination
 
 

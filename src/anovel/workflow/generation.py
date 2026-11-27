@@ -225,12 +225,14 @@ class SceneGenerationSnapshot:
 
     @property
     def step_id(self) -> str:
+        # Construction verifies both source fields against the retained snapshot.
+        candidate = self.projection.candidate
         return sha256(
             canonical_bytes(
                 {
-                    "run_id": self.source.run_id,
-                    "source_record_hash": self.source.record_hash,
-                    "target_scene_id": self.projection.candidate.target_scene_id.to_dict(),
+                    "run_id": candidate.source_run_id,
+                    "source_record_hash": candidate.source_record_hash,
+                    "target_scene_id": candidate.target_scene_id.to_dict(),
                 }
             )
         ).hexdigest()

@@ -349,7 +349,9 @@ def local_server(mode="success", *, kimi=False, openai_probe=False):
             self.wfile.write(encoded)
 
     server = ThreadingHTTPServer(("127.0.0.1", 0), Handler)
-    thread = Thread(target=server.serve_forever, daemon=True)
+    thread = Thread(
+        target=server.serve_forever, kwargs={"poll_interval": 0.05}, daemon=True
+    )
     thread.start()
     path = KIMI_CHAT_PATH if kimi else "/v1/responses"
     state.endpoint = f"http://127.0.0.1:{server.server_port}{path}"

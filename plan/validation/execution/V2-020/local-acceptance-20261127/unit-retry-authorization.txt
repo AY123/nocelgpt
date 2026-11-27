@@ -1,0 +1,2 @@
+Owner reply: 授权修复后再运行一次
+After the first ordinary CI timed out, continue with Workflow serialization and test-fixture performance fixes. Publish the corrected candidate only after local preflight and run ordinary CI once more. Keep every existing gate, timeout and acceptance requirement.

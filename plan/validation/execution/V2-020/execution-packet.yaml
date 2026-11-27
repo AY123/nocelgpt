@@ -138,6 +138,9 @@ review_notes:
 - Owner approved UNIT-only parallel scheduling. Run every existing test under the
   original process and job limits, fail if a worker crashes, and preserve the historical
   GitLab command contract.
+- First same-head ordinary CI recorded UNIT exit 124 after 1100 seconds. Reduce repeated
+  serialization of an already verified scene source and repeated disposable fixture
+  setup. The owner authorized one retry after local preflight.
 handoff:
   current_step: 已组装独立 V2-020 候选，待核对当前源码的常规 CI。
   completed_steps:
@@ -154,5 +157,3 @@ handoff:
 change_review:
   scope_revision: 98da718df7f6e93c86e74b6cf0232e2789d86b3c
   scope_ref: plan/validation/execution/V2-020/local-acceptance-20261127/scope.json
-  review_revision: 029dd3712ff9a0049abb17dc7e697e35f4fb631b
-  review_ref: plan/validation/execution/V2-020/local-acceptance-20261127/review.json
