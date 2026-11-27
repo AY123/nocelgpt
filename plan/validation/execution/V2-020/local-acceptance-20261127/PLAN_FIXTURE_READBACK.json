@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "source_manifest_sha256": "3d70f874face66db04eefb41f1fc87018ece079434f820c219a74c677418ff81",
+  "source_plan_unchanged": true,
+  "existing_self_tests": {
+    "count": 32,
+    "all_pass": true
+  },
+  "case_count": 13,
+  "cases": [
+    {
+      "id": "CONTROL-VALID",
+      "expected": "ACCEPT",
+      "actual": "ACCEPT"
+    },
+    {
+      "id": "CONTROL-CI-FAIL",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "CONTROL-LOCAL-REF",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-01",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-02",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-03",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-04",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-05",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-06",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-07",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-08",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-09",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    },
+    {
+      "id": "PROBE-10",
+      "expected": "REJECT",
+      "actual": "REJECT"
+    }
+  ],
+  "remote_ci": false
+}

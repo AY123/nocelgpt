@@ -1,9 +1,9 @@
 {
   "task_id": "V2-020",
   "baseline_pin": {
-    "revision": "92b52b097a2a9e5ceea9ec192632bbbdd1fd33af",
+    "revision": "9fcaed441473e5747a73007da138040e392c3a98",
     "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/scope.json",
-    "sha256": "e4d3a2bf13311bed0669356449c585b87713effff7c9f295612f0dccfb9a1c10"
+    "sha256": "d8975d99843a765765d2d9d7f2f5cb0626c83a93ee1fbb4bcd2a279ad0ad7667"
   },
   "dispositions": [
     {
@@ -131,6 +131,70 @@
         {
           "ref": "plan/machine/ci-gates.yaml",
           "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
+        }
+      ]
+    },
+    {
+      "finding_id": "12004be3cfc88a08e1a1bb55eb81e6e22f862715a037cf2e492f4de6468082fe",
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2",
+      "new_sha": "074cb4c381aeef0b3b0d29d0952463bb6d20f4425113e81ac6c86789d3cd6dd1",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Permit the disposable plan audit to use its selected source checkout for read-only Git ancestry.",
+      "impact": "Existing fixture callers still use the same default repository. Mutation cases and actual Provider proof verification are unchanged.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Confirm the unmodified plan succeeds from a temporary copy with its actual immutable receipt source. Verify all 12 invalid variations still fail and all 32 existing validator self-checks match.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PLAN_FIXTURE_READBACK.json",
+          "sha256": "03a7bfc25990347e4d1891695bca875d7870c0570361538ff9b04aea52169958"
+        },
+        {
+          "ref": "plan/scripts/probe_governance_legacy.py",
+          "sha256": "f5cb3ad389decb9bc38212ce4d32168f82000bb15141615e1b6f4ec719c5b8d6"
+        },
+        {
+          "ref": "plan/scripts/test_governance.py",
+          "sha256": "074cb4c381aeef0b3b0d29d0952463bb6d20f4425113e81ac6c86789d3cd6dd1"
+        }
+      ]
+    },
+    {
+      "finding_id": "6ce052b0b9a44de0f9d0d1f77a006f320d2a1e91bb522116ad27e9e27b78ef19",
+      "path": "plan/scripts/test_governance.py",
+      "old_sha": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2",
+      "new_sha": "074cb4c381aeef0b3b0d29d0952463bb6d20f4425113e81ac6c86789d3cd6dd1",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Permit the disposable plan audit to use its selected source checkout for read-only Git ancestry.",
+      "impact": "Existing fixture callers still use the same default repository. Mutation cases and actual Provider proof verification are unchanged.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Confirm the unmodified plan succeeds from a temporary copy with its actual immutable receipt source. Verify all 12 invalid variations still fail and all 32 existing validator self-checks match.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PLAN_FIXTURE_READBACK.json",
+          "sha256": "03a7bfc25990347e4d1891695bca875d7870c0570361538ff9b04aea52169958"
+        },
+        {
+          "ref": "plan/scripts/probe_governance_legacy.py",
+          "sha256": "f5cb3ad389decb9bc38212ce4d32168f82000bb15141615e1b6f4ec719c5b8d6"
+        },
+        {
+          "ref": "plan/scripts/test_governance.py",
+          "sha256": "074cb4c381aeef0b3b0d29d0952463bb6d20f4425113e81ac6c86789d3cd6dd1"
         }
       ]
     }
