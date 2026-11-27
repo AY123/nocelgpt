@@ -71,70 +71,6 @@
       ]
     },
     {
-      "finding_id": "3a554114c7b35fcc265e088cd729c2d2f09cc1f876e2362735a203c58b98134d",
-      "path": "tests/contract/test_v2_019_probe_dispatch.py",
-      "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
-      "new_sha": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02",
-      "code": "TEST_LOGIC_CHANGED",
-      "layer": "index",
-      "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "The synthetic pre-P5 authority checkout has its own history. It must clear the inherited real LIVE_PROVIDER record when reconstructing pre-P5 plan state.",
-      "impact": "The change is confined to fixture setup. The real plan retains its verified G-P5 evidence, and test assertions and production checks remain intact.",
-      "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Replay the existing positive authority case and 20 existing invalid authority cases. Their assertions verify acceptance and denial before any credential read or dispatch as applicable.",
-      "authorization_source": {
-        "kind": "existing_user_task_authorization",
-        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
-        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
-      },
-      "verification_artifacts": [
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PRE_P5_FIXTURE_READBACK.json",
-          "sha256": "090babcbe8c71f27f7ac73405ac1bbddf7f2f3c5e3a0efdc52383a6e08b4ec3c"
-        },
-        {
-          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
-          "sha256": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02"
-        },
-        {
-          "ref": "plan/machine/ci-gates.yaml",
-          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
-        }
-      ]
-    },
-    {
-      "finding_id": "25e09e9a72d8de0ffdae2b9a2f67de85b58ff8fae3e38b000c983f1bff6409be",
-      "path": "tests/contract/test_v2_019_probe_dispatch.py",
-      "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
-      "new_sha": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02",
-      "code": "TEST_LOGIC_CHANGED",
-      "layer": "worktree",
-      "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "The synthetic pre-P5 authority checkout has its own history. It must clear the inherited real LIVE_PROVIDER record when reconstructing pre-P5 plan state.",
-      "impact": "The change is confined to fixture setup. The real plan retains its verified G-P5 evidence, and test assertions and production checks remain intact.",
-      "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Replay the existing positive authority case and 20 existing invalid authority cases. Their assertions verify acceptance and denial before any credential read or dispatch as applicable.",
-      "authorization_source": {
-        "kind": "existing_user_task_authorization",
-        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
-        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
-      },
-      "verification_artifacts": [
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PRE_P5_FIXTURE_READBACK.json",
-          "sha256": "090babcbe8c71f27f7ac73405ac1bbddf7f2f3c5e3a0efdc52383a6e08b4ec3c"
-        },
-        {
-          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
-          "sha256": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02"
-        },
-        {
-          "ref": "plan/machine/ci-gates.yaml",
-          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
-        }
-      ]
-    },
-    {
       "finding_id": "12004be3cfc88a08e1a1bb55eb81e6e22f862715a037cf2e492f4de6468082fe",
       "path": "plan/scripts/test_governance.py",
       "old_sha": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2",
@@ -195,70 +131,6 @@
         {
           "ref": "plan/scripts/test_governance.py",
           "sha256": "074cb4c381aeef0b3b0d29d0952463bb6d20f4425113e81ac6c86789d3cd6dd1"
-        }
-      ]
-    },
-    {
-      "finding_id": "de953ac4301929bb5eb65a3054512a6ddf726a917e8b8423adc4eb68e0eb9b9e",
-      "path": "tests/contract/test_task_execution.py",
-      "old_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
-      "new_sha": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87",
-      "code": "TEST_LOGIC_CHANGED",
-      "layer": "index",
-      "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "The disposable early task fixture reopens all phases and must reset the inherited LIVE_PROVIDER record to match its synthetic history.",
-      "impact": "All 39 original action-entry cases and their assertions remain. Real phase data, the source receipt and admission checks retain their existing values.",
-      "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Reproduce the earlier valid-command setup failure, then exercise all 39 existing task-entry cases against the corrected isolated fixture.",
-      "authorization_source": {
-        "kind": "existing_user_task_authorization",
-        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
-        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
-      },
-      "verification_artifacts": [
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/LEGACY_TASK_FIXTURE_READBACK.json",
-          "sha256": "40ebddd5bf494b6bd84a7eee17322106b98cbac0150d86e2297b93e84cc0d440"
-        },
-        {
-          "ref": "tests/contract/test_task_execution.py",
-          "sha256": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87"
-        },
-        {
-          "ref": "plan/machine/ci-gates.yaml",
-          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
-        }
-      ]
-    },
-    {
-      "finding_id": "085ff1f953cf7618ad11714a61ff280956642de64e115f818224528256b98c35",
-      "path": "tests/contract/test_task_execution.py",
-      "old_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
-      "new_sha": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87",
-      "code": "TEST_LOGIC_CHANGED",
-      "layer": "worktree",
-      "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "The disposable early task fixture reopens all phases and must reset the inherited LIVE_PROVIDER record to match its synthetic history.",
-      "impact": "All 39 original action-entry cases and their assertions remain. Real phase data, the source receipt and admission checks retain their existing values.",
-      "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Reproduce the earlier valid-command setup failure, then exercise all 39 existing task-entry cases against the corrected isolated fixture.",
-      "authorization_source": {
-        "kind": "existing_user_task_authorization",
-        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
-        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
-      },
-      "verification_artifacts": [
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/LEGACY_TASK_FIXTURE_READBACK.json",
-          "sha256": "40ebddd5bf494b6bd84a7eee17322106b98cbac0150d86e2297b93e84cc0d440"
-        },
-        {
-          "ref": "tests/contract/test_task_execution.py",
-          "sha256": "c1e583c7ed55439f037d475a8d232d81e2fdeb97ccfef9b319cc48c6921f2f87"
-        },
-        {
-          "ref": "plan/machine/ci-gates.yaml",
-          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
         }
       ]
     },
@@ -331,6 +203,134 @@
         {
           "ref": "tests/contract/test_delivery_gates.py",
           "sha256": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37"
+        }
+      ]
+    },
+    {
+      "finding_id": "42c40af6c425e7a41e17698d7e1a8a2906e54efe413247db414d8e4bdd6ac474",
+      "path": "tests/contract/test_task_execution.py",
+      "old_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
+      "new_sha": "05bdf0353928b612e4c87af5b06f3a333ce9187c83550591f7ec817a2047ea9c",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Validate the shared disposable seed once before copying it into isolated task-entry cases.",
+      "impact": "Per-case real CLI checks, individually copied worktrees, resume detection and negative assertions are preserved.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Existing positive and negative fixture cases passed with zero skips. Verify the entire original collection in ordinary UNIT at the existing deadline.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/REMOTE_UNIT_RETRY_READBACK.json",
+          "sha256": "f3ef7f07262b55b9f596fecb32ea6cbb1e5794e59724d4045736a7befc379804"
+        },
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
+          "sha256": "0b1705b97c6702eec2a8f039ec519e9be6406f2df3fb55b156b3605ea22f2bc0"
+        },
+        {
+          "ref": "tests/contract/test_task_execution.py",
+          "sha256": "05bdf0353928b612e4c87af5b06f3a333ce9187c83550591f7ec817a2047ea9c"
+        }
+      ]
+    },
+    {
+      "finding_id": "1353201322bc3adf368814bcfda7598cd8983634115702327e49b114dd34038f",
+      "path": "tests/contract/test_task_execution.py",
+      "old_sha": "eec01d34febdd36198d94433012b146bb87b0f8dee6422f157363e9bc019fd9c",
+      "new_sha": "05bdf0353928b612e4c87af5b06f3a333ce9187c83550591f7ec817a2047ea9c",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Validate the shared disposable seed once before copying it into isolated task-entry cases.",
+      "impact": "Per-case real CLI checks, individually copied worktrees, resume detection and negative assertions are preserved.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Existing positive and negative fixture cases passed with zero skips. Verify the entire original collection in ordinary UNIT at the existing deadline.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/REMOTE_UNIT_RETRY_READBACK.json",
+          "sha256": "f3ef7f07262b55b9f596fecb32ea6cbb1e5794e59724d4045736a7befc379804"
+        },
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
+          "sha256": "0b1705b97c6702eec2a8f039ec519e9be6406f2df3fb55b156b3605ea22f2bc0"
+        },
+        {
+          "ref": "tests/contract/test_task_execution.py",
+          "sha256": "05bdf0353928b612e4c87af5b06f3a333ce9187c83550591f7ec817a2047ea9c"
+        }
+      ]
+    },
+    {
+      "finding_id": "9644d3d51c6a401714182c60e09dddae6a40c734fc219da4d58fda786a9c83bc",
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "new_sha": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Reduce the local loopback server idle interval used for shutdown.",
+      "impact": "Every assertion uses the same synthetic request/response, Gateway paths, Git pins, credential checks and real PTY.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Existing positive and negative fixture cases passed with zero skips. Verify the entire original collection in ordinary UNIT at the existing deadline.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/REMOTE_UNIT_RETRY_READBACK.json",
+          "sha256": "f3ef7f07262b55b9f596fecb32ea6cbb1e5794e59724d4045736a7befc379804"
+        },
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
+          "sha256": "0b1705b97c6702eec2a8f039ec519e9be6406f2df3fb55b156b3605ea22f2bc0"
+        },
+        {
+          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+          "sha256": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847"
+        }
+      ]
+    },
+    {
+      "finding_id": "97ca7e74d8be3dc5c754372963416775bcf0e5ef34061a7f6dc0dddbb3dbce30",
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "new_sha": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Reduce the local loopback server idle interval used for shutdown.",
+      "impact": "Every assertion uses the same synthetic request/response, Gateway paths, Git pins, credential checks and real PTY.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Existing positive and negative fixture cases passed with zero skips. Verify the entire original collection in ordinary UNIT at the existing deadline.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/REMOTE_UNIT_RETRY_READBACK.json",
+          "sha256": "f3ef7f07262b55b9f596fecb32ea6cbb1e5794e59724d4045736a7befc379804"
+        },
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
+          "sha256": "0b1705b97c6702eec2a8f039ec519e9be6406f2df3fb55b156b3605ea22f2bc0"
+        },
+        {
+          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+          "sha256": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847"
         }
       ]
     }
