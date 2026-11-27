@@ -1,0 +1,24 @@
+{
+  "task": "V2-020",
+  "plan_readiness_diff": {
+    "task": "V2-020",
+    "status": [
+      "OPEN",
+      "IN_PROGRESS"
+    ],
+    "readiness": [
+      "PLANNED",
+      "READY_TO_START"
+    ]
+  },
+  "gates_identical_to_opening": true,
+  "fixture_regression": {
+    "before_status": "PROBE_LIVE_CONTEXT",
+    "after_passed": 21,
+    "after_skipped": 0,
+    "positive": 1,
+    "negative": 20
+  },
+  "fixture_network": "synthetic test server only",
+  "remote_ci": false
+}

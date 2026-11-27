@@ -1,0 +1,138 @@
+{
+  "task_id": "V2-020",
+  "baseline_pin": {
+    "revision": "92b52b097a2a9e5ceea9ec192632bbbdd1fd33af",
+    "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/scope.json",
+    "sha256": "e4d3a2bf13311bed0669356449c585b87713effff7c9f295612f0dccfb9a1c10"
+  },
+  "dispositions": [
+    {
+      "finding_id": "9949d0214c952f4d2d6dc54ea79d95f1203240c5f809d28a2facc77c59b3f09e",
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c1e2588c78e93aa58e1730c5fcf27f034f0e2c8aefc650e4465bd5c30f4dab88",
+      "new_sha": "41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-020 becomes ready following the existing G-P5 acceptance on the opening revision.",
+      "impact": "Only the V2-020 status and readiness fields changed. Its prerequisites, acceptance scenarios, and all CI gates are identical.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Compare the parsed backlog with the opening revision after only these two field updates and compare the exact CI gate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PRE_P5_FIXTURE_READBACK.json",
+          "sha256": "090babcbe8c71f27f7ac73405ac1bbddf7f2f3c5e3a0efdc52383a6e08b4ec3c"
+        },
+        {
+          "ref": "plan/machine/implementation-backlog.yaml",
+          "sha256": "41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0"
+        },
+        {
+          "ref": "plan/validation/execution/P5/closure-20261127/P5-decision.yaml",
+          "sha256": "53eb86a3c57f630094647231103210f9892f3e8f86cc14aa5617f1b774fa3523"
+        }
+      ]
+    },
+    {
+      "finding_id": "432a59838d8ebf9cd18635e02dd00f6f0582f64b72dfb5506a7f992402d56973",
+      "path": "plan/machine/implementation-backlog.yaml",
+      "old_sha": "c1e2588c78e93aa58e1730c5fcf27f034f0e2c8aefc650e4465bd5c30f4dab88",
+      "new_sha": "41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0",
+      "code": "MACHINE_POLICY_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "V2-020 becomes ready following the existing G-P5 acceptance on the opening revision.",
+      "impact": "Only the V2-020 status and readiness fields changed. Its prerequisites, acceptance scenarios, and all CI gates are identical.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Compare the parsed backlog with the opening revision after only these two field updates and compare the exact CI gate bytes.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PRE_P5_FIXTURE_READBACK.json",
+          "sha256": "090babcbe8c71f27f7ac73405ac1bbddf7f2f3c5e3a0efdc52383a6e08b4ec3c"
+        },
+        {
+          "ref": "plan/machine/implementation-backlog.yaml",
+          "sha256": "41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0"
+        },
+        {
+          "ref": "plan/validation/execution/P5/closure-20261127/P5-decision.yaml",
+          "sha256": "53eb86a3c57f630094647231103210f9892f3e8f86cc14aa5617f1b774fa3523"
+        }
+      ]
+    },
+    {
+      "finding_id": "3a554114c7b35fcc265e088cd729c2d2f09cc1f876e2362735a203c58b98134d",
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "new_sha": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The synthetic pre-P5 authority checkout has its own history. It must clear the inherited real LIVE_PROVIDER record when reconstructing pre-P5 plan state.",
+      "impact": "The change is confined to fixture setup. The real plan retains its verified G-P5 evidence, and test assertions and production checks remain intact.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Replay the existing positive authority case and 20 existing invalid authority cases. Their assertions verify acceptance and denial before any credential read or dispatch as applicable.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PRE_P5_FIXTURE_READBACK.json",
+          "sha256": "090babcbe8c71f27f7ac73405ac1bbddf7f2f3c5e3a0efdc52383a6e08b4ec3c"
+        },
+        {
+          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+          "sha256": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02"
+        },
+        {
+          "ref": "plan/machine/ci-gates.yaml",
+          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
+        }
+      ]
+    },
+    {
+      "finding_id": "25e09e9a72d8de0ffdae2b9a2f67de85b58ff8fae3e38b000c983f1bff6409be",
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "new_sha": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "The synthetic pre-P5 authority checkout has its own history. It must clear the inherited real LIVE_PROVIDER record when reconstructing pre-P5 plan state.",
+      "impact": "The change is confined to fixture setup. The real plan retains its verified G-P5 evidence, and test assertions and production checks remain intact.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Replay the existing positive authority case and 20 existing invalid authority cases. Their assertions verify acceptance and denial before any credential read or dispatch as applicable.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/PRE_P5_FIXTURE_READBACK.json",
+          "sha256": "090babcbe8c71f27f7ac73405ac1bbddf7f2f3c5e3a0efdc52383a6e08b4ec3c"
+        },
+        {
+          "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+          "sha256": "9c644dff14cdd7711a8d8857c47365c4cd2748401c48e95d1474e2547665dd02"
+        },
+        {
+          "ref": "plan/machine/ci-gates.yaml",
+          "sha256": "6607a9aae1e4111b038b571cbcd7c1781682413520d3b855c0d48096ea8c13c6"
+        }
+      ]
+    }
+  ]
+}

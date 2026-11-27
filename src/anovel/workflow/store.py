@@ -327,8 +327,12 @@ def _snapshot(snapshot: WorkflowSnapshot) -> tuple[WorkflowSnapshot, bytes, str]
 
 
 def _decode_workflow_payload(raw: bytes) -> tuple[WorkflowSnapshot, str]:
-    snapshot, canonical, value_hash = _snapshot(WorkflowSnapshot.from_bytes(raw))
-    if canonical != raw:
+    snapshot = WorkflowSnapshot.from_bytes(raw)
+    if type(snapshot) is not WorkflowSnapshot or snapshot.state not in WORKFLOW_STATES:
+        raise ValueError
+    _identity(snapshot.project, snapshot.branch, snapshot.run_id)
+    value_hash = hashlib.sha256(raw).hexdigest()
+    if snapshot.payload_bytes() != raw or snapshot.record_hash != value_hash:
         raise ValueError
     return snapshot, value_hash
 
