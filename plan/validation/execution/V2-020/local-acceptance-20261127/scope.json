@@ -47,7 +47,11 @@
     "plan/validation/execution/V2-020/local-acceptance-20261127/",
     "plan/scripts/probe_governance_legacy.py",
     "plan/scripts/test_governance.py",
-    "tests/contract/test_task_execution.py"
+    "tests/contract/test_task_execution.py",
+    "pyproject.toml",
+    "uv.lock",
+    "scripts/ci/run_gate.py",
+    "tests/contract/test_delivery_gates.py"
   ],
   "pre_existing": {},
   "exception_authorizations": [],

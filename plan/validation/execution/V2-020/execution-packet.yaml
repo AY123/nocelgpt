@@ -94,6 +94,10 @@ allowed_paths:
 - plan/scripts/probe_governance_legacy.py
 - plan/scripts/test_governance.py
 - tests/contract/test_task_execution.py
+- pyproject.toml
+- uv.lock
+- scripts/ci/run_gate.py
+- tests/contract/test_delivery_gates.py
 required_decisions:
 - ADR-008
 claims:
@@ -131,6 +135,9 @@ review_notes:
   is added.
 - Historical G-P5 evidence remains bound to f45d289. The encoding optimization requires
   separate byte parity, and exact stored hashes must remain reproducible.
+- Owner approved UNIT-only parallel scheduling. Run every existing test under the
+  original process and job limits, fail if a worker crashes, and preserve the historical
+  GitLab command contract.
 handoff:
   current_step: 已组装独立 V2-020 候选，待核对当前源码的常规 CI。
   completed_steps:
@@ -147,5 +154,3 @@ handoff:
 change_review:
   scope_revision: 2af742918afe98acd0264977863cb59c45697208
   scope_ref: plan/validation/execution/V2-020/local-acceptance-20261127/scope.json
-  review_revision: b3a5775a770fe78cb9a9c21c730d6afd868b147b
-  review_ref: plan/validation/execution/V2-020/local-acceptance-20261127/review.json

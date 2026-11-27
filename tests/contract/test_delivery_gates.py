@@ -494,6 +494,27 @@ SOURCE_LOCK_HASH = "d" * 64
 SOURCE_PIPELINE_ID = 91
 SOURCE_RUNNER_TAG = "anovel-protected-acceptance"
 SOURCE_PYTHON = "/builds/ayitnovel/ainovelos/.venv/bin/python"
+LEGACY_UNIT_COMMAND_TAILS = [
+    [
+        "-B",
+        "scripts/ci/bootstrap_scanners.py",
+        "--output-dir",
+        "dist/tools/gitleaks-8.21.2",
+        "--reuse-verified",
+    ],
+    [
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/contract",
+        "tests/integration/test_repository_bootstrap.py",
+        "--junitxml=dist/ci/unit/junit.xml",
+    ],
+]
+UNIT_SCHEDULING = ["-n", "4", "--dist=worksteal", "--max-worker-restart=0"]
 SOURCE_RESULT_PATHS = {
     "static": [],
     "unit": ["junit.xml"],
@@ -591,7 +612,11 @@ def source_fixture():
             artifacts.append(descriptor)
             return descriptor
 
-        if name == "arch_fitness":
+        if name == "unit":
+            source_commands = [
+                [sys.executable, *tail] for tail in LEGACY_UNIT_COMMAND_TAILS
+            ]
+        elif name == "arch_fitness":
             # This synthetic GitLab source models the historical implementation
             # receipt, not the now-completed task in the live working copy.
             source_commands = [
@@ -787,7 +812,16 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
     # Preserve the historical GitLab implementation receipt contract separately
     # from the completed-task audit path tested above.
     actual = runner.commands_for(name, runner.ROOT / "dist/ci" / name)
-    if name == "postgres_env":
+    if name == "unit":
+        assert remote.command_tails(name) == LEGACY_UNIT_COMMAND_TAILS
+        bootstrap, unit = actual
+        scheduling_start = 4  # Immediately after "python -B -m pytest".
+        scheduling_end = scheduling_start + len(UNIT_SCHEDULING)
+        assert unit[scheduling_start:scheduling_end] == UNIT_SCHEDULING
+        assert [bootstrap, unit[:scheduling_start] + unit[scheduling_end:]] == [
+            [sys.executable, *tail] for tail in LEGACY_UNIT_COMMAND_TAILS
+        ]
+    elif name == "postgres_env":
         legacy = [
             "-B",
             "-m",
@@ -820,7 +854,8 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
 
 
 @pytest.mark.parametrize(
-    "mutation", ["replace", "delete", "append", "reorder", "option", "output"]
+    "mutation",
+    ["replace", "delete", "append", "reorder", "option", "parallel_options", "output"],
 )
 def test_remote_source_rejects_command_plan_changes(mutation):
     policy, responses, _ = source_fixture()
@@ -838,6 +873,8 @@ def test_remote_source_rejects_command_plan_changes(mutation):
             commands.reverse()
         elif mutation == "option":
             commands[1]["argv"].remove("no:cacheprovider")
+        elif mutation == "parallel_options":
+            commands[1]["argv"][4:4] = UNIT_SCHEDULING
         else:
             commands[1]["argv"][-1] = "--junitxml=dist/ci/unit/other.xml"
 

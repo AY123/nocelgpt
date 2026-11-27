@@ -1,0 +1,2 @@
+Owner reply: 授权并行化 UNIT 测试
+Scope: lock the test-only pytest-xdist dependency and run the same UNIT cases on multiple workers. The six gates, test assertions, time limits, and acceptance requirements remain in force. The separate Owner grant for a single ordinary CI run is conditional on local preflight.
