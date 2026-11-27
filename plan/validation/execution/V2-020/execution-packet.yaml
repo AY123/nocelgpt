@@ -140,3 +140,6 @@ handoff:
     - ref: validation/execution/V2-020/local-acceptance-20261127/LOCAL_PRODUCT_READBACK.json
       sha256: 3d8aa28354ecd4e6486a1b144399b820bfbdccc86027adc770bf8cdc9a951f35
     missing_artifact_reason: null
+change_review:
+  scope_revision: 3f1543a8906cb5ebbb1bcb8bed217b3a434416c8
+  scope_ref: plan/validation/execution/V2-020/local-acceptance-20261127/scope.json
