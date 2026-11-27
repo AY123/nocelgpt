@@ -1,0 +1,92 @@
+{
+  "status": "PASS",
+  "source": "GITHUB_API",
+  "repository_id": 1421585508,
+  "revision": "f45d289147f5fcf0008918d8f03116edc14bfd41",
+  "workflow_id": 386414344,
+  "workflow_sha256": "147fe4f9c1331f3564a989ad1e0b8ab44e70a637be727b1c7aec1163aa296e4a",
+  "run_id": 45997034697,
+  "run_attempt": 1,
+  "url": "https://github.com/AY123/nocelgpt/actions/runs/45997034697",
+  "verified_at": "2026-11-27T12:29:57.180002+00:00",
+  "gates": {
+    "static": {
+      "status": "PASS",
+      "tests": 0,
+      "artifact": "gate-static-45997034697-1.zip",
+      "sha256": "77ec20ee72ddc56eb8d49b3c0be8914d0fea3de629c807a4c59bec7a8dae0fe0",
+      "commands": 5,
+      "job_id": 140498911925,
+      "artifact_id": 15196920696
+    },
+    "unit": {
+      "status": "PASS",
+      "tests": 1678,
+      "artifact": "gate-unit-45997034697-1.zip",
+      "sha256": "93d33dafb17e4b4e5271b981c8ad0016f13c8f5fdd8ff3494b69e50d65e1c9ac",
+      "commands": 2,
+      "job_id": 140498911748,
+      "artifact_id": 15196773630
+    },
+    "schema_contract": {
+      "status": "PASS",
+      "tests": 0,
+      "artifact": "gate-schema_contract-45997034697-1.zip",
+      "sha256": "49caa606001f1cfb2ffc8a21685965c5ec78024c2b3a0c4af924a2292f9728c9",
+      "commands": 1,
+      "job_id": 140498911766,
+      "artifact_id": 15196666514
+    },
+    "arch_fitness": {
+      "status": "PASS",
+      "tests": 244,
+      "artifact": "gate-arch_fitness-45997034697-1.zip",
+      "sha256": "2cd7f2dccb0bb3111b6d0136280b1dc8a4aa28322903c9d267742baa9d2af9c8",
+      "commands": 3,
+      "job_id": 140498911690,
+      "artifact_id": 15196691121
+    },
+    "secret_dependency": {
+      "status": "PASS",
+      "tests": 0,
+      "artifact": "gate-secret_dependency-45997034697-1.zip",
+      "sha256": "2d0bca804dfcc55da36cc0528d91842a0b3b62b833d2107958de7f71ba9f59ed",
+      "commands": 2,
+      "job_id": 140498911863,
+      "artifact_id": 15196591254
+    },
+    "postgres_env": {
+      "status": "PASS",
+      "tests": 361,
+      "artifact": "gate-postgres_env-45997034697-1.zip",
+      "sha256": "dd8ed32290a606ce68eebe7f6e5df3f26f18720ec2251baa9b7c49734f6a1061",
+      "commands": 1,
+      "job_id": 140498911264,
+      "artifact_id": 15197290001
+    }
+  },
+  "tests": 2283,
+  "skipped": 0,
+  "canon_cas": {
+    "status": "PASS",
+    "actual_job": "POSTGRES_ENV",
+    "checks": {
+      "atomic commit": [
+        "test_rolled_back_commit_can_retry_same_key_without_partial_story"
+      ],
+      "CAS": [
+        "test_two_real_connections_compete_for_exactly_one_root",
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[other-key]"
+      ],
+      "same/different payload dedupe": [
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[same-payload]",
+        "test_real_concurrent_chapter_requests_have_one_durable_winner[changed-payload]",
+        "test_committed_but_lost_dbapi_ack_recovers_on_new_connection_and_continues"
+      ],
+      "rebuild": [
+        "test_rebuild_replays_finite_history_and_matches_every_historical_snapshot",
+        "test_projection_failure_keeps_committed_receipt_head_and_original_bytes"
+      ]
+    }
+  }
+}

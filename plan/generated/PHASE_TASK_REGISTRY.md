@@ -2,7 +2,7 @@
 
 唯一源：`machine/implementation-backlog.yaml` 与 `machine/phase-gates.yaml`。不要手工修改。
 
-共 60 个任务。当前任务状态：{"CLOSED": 18, "IN_PROGRESS": 1, "OPEN": 41}
+共 60 个任务。当前任务状态：{"CLOSED": 19, "OPEN": 41}
 
 ## P0 — Repository & Governance
 
@@ -63,7 +63,7 @@
 | ID | 名称 | 依赖 | 状态 |
 |---|---|---|---|
 | V2-018 | Context Compiler | V2-017 | CLOSED |
-| V2-019 | Model Gateway and provider abstraction | V2-018 | IN_PROGRESS |
+| V2-019 | Model Gateway and provider abstraction | V2-018 | CLOSED |
 
 ## P6 — Single-Chapter Production
 

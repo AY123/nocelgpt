@@ -92,6 +92,6 @@ V2-017与[P4/G-P4](validation/execution/V2-017/p4-closure-20261114/ACCEPTANCE_SU
 
 V2-018已完成[工程验收](validation/execution/V2-018/closure-20261116/ACCEPTANCE_SUMMARY.md)，绑定5b2cc08/run43862354086，2092项0skip（新53契约+6PG为子集）。角色化上下文、必需事实/扩展元数据/真实末段、显式字节预算及离线恢复/缓存隔离已验证，不代表Provider实际tokens或写作/阅读质量。下一任务V2-019 Model Gateway；P5、M4、自动写作及外部备份仍未完成。
 
-V2-019已按用户选择推进OpenAI Gateway本地实现，见[实现与边界](validation/execution/V2-019/LOCAL_IMPLEMENTATION.md)。具备持久预算/UNKNOWN、角色安全输入、结构化响应及本地HTTP验证；真实Provider调用、数值预算/账户能力和最终CI尚未完成，保持IN_PROGRESS。下一动作收口本地回归后取得受控真实Provider证据；P5/M4、自动写作、阅读质量及外部备份仍未完成。
+V2-019 已完成 Gateway 工程验收，G-P5 已通过。已核验既有 OpenAI 成功回执和候选 `f45d289` 的常规 CI（run45997034697，2283 项，0 跳过）。详见[验收记录](validation/execution/V2-019/closure-20261127/ACCEPTANCE_SUMMARY.md)。
 
-V2-020 PREPARE：已将《灯下机床》三章窗口试写转为[离线草稿接续回放样本与工具](validation/execution/V2-020/prepare/README.md)，可核对来源/完整候选状态并导出下一章Writer输入。本地54项专项通过；不是自动正文语义验证或正式Workflow验收。V2-020仍OPEN/PREPARE，V2-019真实API/P5尚待验证，本轮不触发CI。
+V2-020 PREPARE：已将《灯下机床》三章窗口试写转为[离线草稿接续回放样本与工具](validation/execution/V2-020/prepare/README.md)，可核对来源/完整候选状态并导出下一章Writer输入。本地54项专项通过；不是自动正文语义验证或正式Workflow验收。此历史候选中的 V2-020 仍为 OPEN/PREPARE。日常工作区另行推进本地整章工作流。

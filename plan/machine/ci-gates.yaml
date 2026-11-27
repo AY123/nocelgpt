@@ -94,8 +94,9 @@ gates:
   checks:
   - actual provider schema and error contract
   - budget and UNKNOWN
-  status: NOT_IMPLEMENTED
-  evidence_refs: []
+  status: VERIFIED
+  evidence_refs:
+  - validation/execution/V2-019/openai-first-probe-20261125/provider-receipt-evidence.yaml
 live_required_at:
 - first model seam verification
 - P8/P9 certification with applicable actual model

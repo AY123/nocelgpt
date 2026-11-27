@@ -1,0 +1,215 @@
+{
+  "revision": "f45d289147f5fcf0008918d8f03116edc14bfd41",
+  "files": [
+    {
+      "path": ".github/workflows/v2-004.yml",
+      "sha256": "147fe4f9c1331f3564a989ad1e0b8ab44e70a637be727b1c7aec1163aa296e4a",
+      "bytes": 3430
+    },
+    {
+      "path": "model-policy.yaml",
+      "sha256": "6ca2fa3ac0ef34deebf5c78179336a7df196dd0af7e74318d35f74aa9e55a3c0",
+      "bytes": 585
+    },
+    {
+      "path": "plan/FILE_MANIFEST.json",
+      "sha256": "9d1c3a6692170f6c2f81304d4992ab7c11f42e906f7e844c120f101d56327889",
+      "bytes": 60658
+    },
+    {
+      "path": "plan/decisions/ADR-010_KIMI_FIRST_PROVIDER.md",
+      "sha256": "f65c0bffd6445625ab1fe970e0c0ac97b15371f5ccea5669e5f81ee358cfcbc8",
+      "bytes": 2343
+    },
+    {
+      "path": "plan/decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md",
+      "sha256": "2f9d5adcffff7733618b22a85089e299b1e560457e6e3221008f39e5bcf537bb",
+      "bytes": 8615
+    },
+    {
+      "path": "plan/machine/decision-register.yaml",
+      "sha256": "e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c",
+      "bytes": 5707
+    },
+    {
+      "path": "plan/schemas/evidence-record.schema.json",
+      "sha256": "aeb9be973e9c19b260c2446bb6036f8e624e251cdb2a93bd8e34a924b4721635",
+      "bytes": 10469
+    },
+    {
+      "path": "plan/schemas/execution-packet.schema.json",
+      "sha256": "6e71e57242a19bc2d332fd5f050068c30631b5104d145496e1cf83ce86a44848",
+      "bytes": 9479
+    },
+    {
+      "path": "plan/scripts/governance_checks.py",
+      "sha256": "8d66a23cb55c453670b7c371072a51235942f583b7aba6e38bd9c99b71df11cc",
+      "bytes": 15914
+    },
+    {
+      "path": "plan/scripts/local_provider_receipt.py",
+      "sha256": "ca4f97e2072d6762ccced200d2e69ccf78a7f819646a929ab2a21fa3fb19da55",
+      "bytes": 10079
+    },
+    {
+      "path": "plan/scripts/probe_dispatch.py",
+      "sha256": "fcd3fca59b5655778d9334da3e2d789d971909cbcf42f4064f4a4f56f16b2879",
+      "bytes": 27477
+    },
+    {
+      "path": "plan/scripts/task_entry.py",
+      "sha256": "befdf07ce9c908c4de856e32f944d734b27aa36974a11fdfcd19a01fb4390d34",
+      "bytes": 21652
+    },
+    {
+      "path": "plan/scripts/test_governance.py",
+      "sha256": "2903bfc172bd9b882d43f4d087554388e451e5894a04d885cfe877e7748388a2",
+      "bytes": 29680
+    },
+    {
+      "path": "plan/validation/execution/V2-019/dispatch-20261117/adr-010-dispatch-decision.yaml",
+      "sha256": "eec69096d31937ae24e202489c62ada07950acd7aaf8937574956976b2d646a3",
+      "bytes": 1123
+    },
+    {
+      "path": "plan/validation/execution/V2-019/dispatch-20261117/authorization.txt",
+      "sha256": "87aac33142f37f7a3f3329b98ad6782044185c0b4dc40c9883f792beb39b3668",
+      "bytes": 304
+    },
+    {
+      "path": "plan/validation/execution/V2-019/execution-packet.yaml",
+      "sha256": "b42f93e51127d1f8978bad3a4ccd34ee59ab3804fadb076e137dd2a7b9e82e56",
+      "bytes": 11178
+    },
+    {
+      "path": "plan/validation/execution/V2-019/inputs/e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c.txt",
+      "sha256": "e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c",
+      "bytes": 5707
+    },
+    {
+      "path": "plan/validation/execution/V2-019/isolated-assembly-20261124/review.json",
+      "sha256": "d34f58089d6b9b285cd403181774212fca1a1591197fd0c5a34af156ee4bf1d6",
+      "bytes": 299
+    },
+    {
+      "path": "plan/validation/execution/V2-019/isolated-assembly-20261124/scope.json",
+      "sha256": "8592ccbe0eb3ec13bc2e5fead1548df19fcf5971abf5845446babec8791468fb",
+      "bytes": 1425
+    },
+    {
+      "path": "plan/validation/execution/V2-019/kimi-offline-20261122/adr-010-kimi-decision.yaml",
+      "sha256": "a7f505c6c25853e6e679bc00ac5fae2143d152d773c40f4fe12a4b6eae44dd9d",
+      "bytes": 1035
+    },
+    {
+      "path": "plan/validation/execution/V2-019/kimi-offline-20261122/authorization.txt",
+      "sha256": "a7a55259ddb5b948299cee5a45e56bf979641c0a28c8cb37ff91c047c3a61fa4",
+      "bytes": 55
+    },
+    {
+      "path": "plan/validation/execution/V2-019/openai-first-probe-20261125/GP5_REUSE_AUTHORIZATION.json",
+      "sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3",
+      "bytes": 565
+    },
+    {
+      "path": "plan/validation/execution/V2-019/openai-first-probe-20261125/LOCAL_OBSERVATION.json",
+      "sha256": "225bd3899ca70e8667834ef29659e2012cdbff29ff20a2ef8d7a1a6460b22493",
+      "bytes": 1773
+    },
+    {
+      "path": "plan/validation/execution/V2-019/openai-first-probe-20261125/SAME_SOURCE_READBACK.json",
+      "sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623",
+      "bytes": 2778
+    },
+    {
+      "path": "plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-review.json",
+      "sha256": "18f952c9522dbec12328fda18eb4a6d0a30ceaaa094fec603f880074f448b52d",
+      "bytes": 8653
+    },
+    {
+      "path": "plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-scope.json",
+      "sha256": "ec6860e0793e62c02547f24835bdf96a339e6b102677fd16bc33f7b8a4b81af0",
+      "bytes": 2568
+    },
+    {
+      "path": "plan/validation/execution/V2-019/probe/prepare_request.py",
+      "sha256": "b686866188d848fdbe720e836579e1c8d33df3e1ac036aad4af2fb6f78b2daa0",
+      "bytes": 7246
+    },
+    {
+      "path": "plan/validation/execution/V2-020/execution-packet.yaml",
+      "sha256": "9263d1ccfe7195d819c498b4cec782dd64dcd6ecaefd1e79886614e743f5c695",
+      "bytes": 11757
+    },
+    {
+      "path": "scripts/ci/run_gate.py",
+      "sha256": "184d048534e7606b3128f6cc7f567139d8b38eed75bf3dd8907f9bcc0c7843a4",
+      "bytes": 15634
+    },
+    {
+      "path": "scripts/run_gateway_probe.py",
+      "sha256": "4efce6c48991e2cd8ab76110b4b3bc4f84132e254048105e5cf466e4cbfc99ca",
+      "bytes": 10837
+    },
+    {
+      "path": "src/anovel/context/compiler.py",
+      "sha256": "f29a305f7e0080fbb2c9f4b9bd74faf5f8cb634b28f2b44c279cea9899bab2b5",
+      "bytes": 32414
+    },
+    {
+      "path": "src/anovel/context/models.py",
+      "sha256": "ce0b217157bfcbdce2635d51934e8982b957b9c719f7152e9feffe5c38ed87dc",
+      "bytes": 31507
+    },
+    {
+      "path": "src/anovel/context/scene.py",
+      "sha256": "7bb9a9ef3f5590280253bc57c1d5607a4e7b4c05dbc93eecc10fbe942a1ab297",
+      "bytes": 21902
+    },
+    {
+      "path": "src/anovel/gateway/ledger.py",
+      "sha256": "615306a200e4c4d836b5d5dff432f1505a63ed95e9e8c30fe1cb9a9e8c0ed04f",
+      "bytes": 33944
+    },
+    {
+      "path": "src/anovel/gateway/models.py",
+      "sha256": "04796463d06d5caf615efcc4e779b745213d033bca101bd4bf9e1791d5bdb405",
+      "bytes": 36173
+    },
+    {
+      "path": "src/anovel/gateway/probe_runtime.py",
+      "sha256": "3d6d7d0741c368b04a82612ad9de72fdfd9e96e13aeaf2c425114cc017af887b",
+      "bytes": 8886
+    },
+    {
+      "path": "src/anovel/gateway/provider.py",
+      "sha256": "cfbe72041a6683b32a3608b281106a152800e463bf28b66f624272c004414708",
+      "bytes": 24221
+    },
+    {
+      "path": "src/anovel/gateway/service.py",
+      "sha256": "9001a7a43eb636958a2c06d18b1dd01c84fe1329ae4c0f81161af2be141dbf4b",
+      "bytes": 1722
+    },
+    {
+      "path": "tests/contract/test_v2_019_probe_dispatch.py",
+      "sha256": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
+      "bytes": 56060
+    },
+    {
+      "path": "tests/integration/test_v2_019.py",
+      "sha256": "2ebd55f4d33c2d955a6be0ef1b044109a3ac173bfbbd4f5b98349fd7075ebc58",
+      "bytes": 58435
+    },
+    {
+      "path": "tests/integration/test_v2_019_kimi.py",
+      "sha256": "932ad3da3aa0f75f79f1fbf719e9508927547a83511d1ed83bcc7d2f0a9ac55b",
+      "bytes": 32612
+    },
+    {
+      "path": "uv.lock",
+      "sha256": "460ac1ac44a1f9ccd4fce9d354ea31179d337fbca52b82e4fda6b1580a994d76",
+      "bytes": 82338
+    }
+  ]
+}

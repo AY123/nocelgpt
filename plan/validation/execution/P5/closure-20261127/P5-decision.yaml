@@ -1,0 +1,27 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+revision: f45d289147f5fcf0008918d8f03116edc14bfd41
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-27T12:29:57.180002+00:00'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14/uv0.12.17/PostgreSQL17.11
+  repo1421585508 run45997034697 attempt1
+subject_id: P5
+evidence_id: P5-engineering-f45d289
+evidence_type: PHASE_DECISION
+artifacts:
+- ref: validation/execution/V2-019/closure-20261127/ACCEPTANCE_SUMMARY.md
+  sha256: ef4aebfc8272bf60810d7258fb803dd54d721446dd5a30e40510480d8fc3990a
+- ref: validation/execution/V2-019/closure-20261127/REMOTE_VERIFICATION.json
+  sha256: a8dc7d3770a4580daab137165d36a6b814377ca288f79decc036d4def6f44e56
+- ref: validation/execution/V2-019/closure-20261127/SCENARIO_RESULTS.json
+  sha256: 8f2b8d92d7c3dddbc3191df042394aa2f324c01cce6ce850d90d831babe41cc9
+input_evidence_refs:
+- validation/execution/V2-018/closure-20261116/acceptance-evidence.yaml
+- validation/execution/V2-019/closure-20261127/acceptance-evidence.yaml
+- validation/execution/V2-019/closure-20261127/ci-evidence.yaml
+- validation/execution/V2-019/openai-first-probe-20261125/provider-receipt-evidence.yaml
+decision: VERIFIED
+rationale: V2-018 和 V2-019 已验收。新增真实 Provider 回执仅用于本次 G-P5。常规六门及 CAS 来自实际同版本 CI。
+ci_evidence_refs:
+- validation/execution/V2-019/closure-20261127/ci-evidence.yaml

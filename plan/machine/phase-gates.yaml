@@ -114,7 +114,7 @@ phases:
   name: Context & Model Gateway
   entry_gate: G-P4
   exit_gate: G-P5
-  status: NOT_VERIFIED
+  status: VERIFIED
   tasks:
   - V2-018
   - V2-019
@@ -122,8 +122,9 @@ phases:
   - Context 必需集合与预算失败正确
   - 真实 Provider 接缝证据与预算
   - UNKNOWN 和费用模型可追踪
-  evidence_refs: []
-  task_refinement: PLANNED
+  evidence_refs:
+  - validation/execution/P5/closure-20261127/P5-decision.yaml
+  task_refinement: READY
 - id: P6
   name: Single-Chapter Production
   entry_gate: G-P5

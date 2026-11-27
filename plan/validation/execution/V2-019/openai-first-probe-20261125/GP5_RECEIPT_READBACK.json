@@ -1,0 +1,19 @@
+{
+  "record_type": "gp5_openai_private_receipt_readback",
+  "schema_version": "1.0",
+  "source": "OWNER_APPROVED_LOCAL_RECEIPT",
+  "candidate_revision": "f45d289147f5fcf0008918d8f03116edc14bfd41",
+  "component_sha256": "10dd38cd85546c71af22cf2ee7a99494a6b93db1fa4bac45725c2bc119f24d78",
+  "approval_sha256": "2a9e05a3bbbe77c8e5d9eea810b8af90fb8e0ed75027b3ffcb8b0134b8fe0db3",
+  "original_source_revision": "c3f4892e1701f552ee6a8e65db25281e25ea298e",
+  "original_runtime_sha256": "438f295db8fbd10196a8e7dbd15146f17531c9ecc2fa9e8b8512666c64211575",
+  "original_action_revision": "068c151bfc44df2c0f6ef68bf6c89aca17910177",
+  "original_response_sha256": "2c24c21ae192cf7431cc6d358599465b66e0e6406c291b484d21c820f7817538",
+  "private_manifest_sha256": "afc9eff7fbc2cdb9fbadfad2a8e68d5419877ccab8eeb76b1e57f812efb2da08",
+  "observation_sha256": "225bd3899ca70e8667834ef29659e2012cdbff29ff20a2ef8d7a1a6460b22493",
+  "regression_sha256": "eca977f526531cba93088fc40c8e1aa0dee2d30cbc66f98faa0ae79165b75623",
+  "observed_model": "gpt-6.2-sol",
+  "http_status": 200,
+  "ledger_attempts": 1,
+  "provider_requests": 0
+}

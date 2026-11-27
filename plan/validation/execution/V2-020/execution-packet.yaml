@@ -4,7 +4,7 @@ task_id: V2-020
 plan_version: 1.3.0
 repository_revision: 18a4d750baa256ae6e72f31f5f93dd2aba30d3d0
 worktree_dirty: false
-plan_manifest_sha256: 9d1c3a6692170f6c2f81304d4992ab7c11f42e906f7e844c120f101d56327889
+plan_manifest_sha256: a2e49cce7b109180a89eb2402ddb7972489e63508af27c77154abb160d7d0921
 environment:
   fingerprint: Local Darwin; existing locked Python 3.12.14 and uv 0.12.17; offline PREPARE prototype only
   runtime_versions:
@@ -43,11 +43,11 @@ inputs:
   ref: validation/execution/V2-019/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
   sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
 - source_ref: machine/implementation-backlog.yaml
-  ref: validation/execution/V2-019/inputs/240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230.txt
-  sha256: 240cc4995f961acec8adae6f8bed7c2085291cf0e0d04c66a6927edd35477230
+  ref: validation/execution/V2-019/inputs/c1e2588c78e93aa58e1730c5fcf27f034f0e2c8aefc650e4465bd5c30f4dab88.txt
+  sha256: c1e2588c78e93aa58e1730c5fcf27f034f0e2c8aefc650e4465bd5c30f4dab88
 - source_ref: machine/test-catalog.yaml
-  ref: validation/execution/V2-019/inputs/eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a.txt
-  sha256: eebc45484300cd05fffa043289613fccdb6c01106b6e0361e57e228c272f795a
+  ref: validation/execution/V2-019/inputs/d6c9901d653d6b646c7dfce73ddfc1fd5924f8640844379554ccf8b21239c725.txt
+  sha256: d6c9901d653d6b646c7dfce73ddfc1fd5924f8640844379554ccf8b21239c725
 - source_ref: machine/decision-register.yaml
   ref: validation/execution/V2-019/inputs/e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c.txt
   sha256: e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c

@@ -1,0 +1,71 @@
+{
+  "revision": "f45d289147f5fcf0008918d8f03116edc14bfd41",
+  "run_id": 45997034697,
+  "scenarios": {
+    "AT-V2-019-01": {
+      "status": "PASS",
+      "job": "POSTGRES_ENV",
+      "cases": [
+        "test_loopback_http_success_exact_protocol_context_and_pre_send_durable_reservation",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[schema-FAILED-OUTPUT_SCHEMA_INVALID]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[duplicate_output_key-FAILED-OUTPUT_SCHEMA_INVALID]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[malformed-FAILED-INVALID_RESPONSE_JSON]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[duplicate_json-FAILED-INVALID_RESPONSE_JSON]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[nonfinite_json-FAILED-INVALID_RESPONSE_JSON]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[list_json-FAILED-INVALID_RESPONSE_JSON]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[invalid_utf8-FAILED-INVALID_RESPONSE_JSON]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[empty-FAILED-INVALID_RESPONSE_JSON]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[refusal-FAILED-MODEL_REFUSAL]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[incomplete-FAILED-RESPONSE_NOT_COMPLETED]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[wrong_model-FAILED-UNEXPECTED_MODEL]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[missing_model-FAILED-UNEXPECTED_MODEL]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[wrong_role-FAILED-OUTPUT_SCHEMA_INVALID]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[empty_output-FAILED-OUTPUT_SCHEMA_INVALID]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[http_400-FAILED-HTTP_400]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[http_401-FAILED-HTTP_401]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[http_429-FAILED-HTTP_429]",
+        "test_loopback_response_classification_keeps_actual_body_and_never_blind_retries[http_500-UNKNOWN-HTTP_500]"
+      ],
+      "provider_receipt": "validation/execution/V2-019/openai-first-probe-20261125/provider-receipt-evidence.yaml"
+    },
+    "AT-V2-019-02": {
+      "status": "PASS",
+      "job": "POSTGRES_ENV",
+      "cases": [
+        "test_no_body_unknown_has_no_fabricated_hash_and_received_empty_body_is_distinct",
+        "test_dispatched_recovery_is_unknown_and_cannot_release_by_cancelling",
+        "test_loopback_sent_but_unreceived_generation_is_unknown_without_response_hash[disconnect]",
+        "test_loopback_sent_but_unreceived_generation_is_unknown_without_response_hash[timeout]"
+      ]
+    },
+    "AT-V2-019-03": {
+      "status": "PASS",
+      "job": "POSTGRES_ENV",
+      "cases": [
+        "test_request_scope_and_semantics_bind_safe_context_and_model_policy",
+        "test_pending_known_failure_reconciles_once_with_evidence_and_keeps_outcome",
+        "test_loopback_valid_output_without_valid_usage_retains_full_pending_responsibility[missing_usage]",
+        "test_loopback_valid_output_without_valid_usage_retains_full_pending_responsibility[invalid_usage]"
+      ]
+    },
+    "AT-V2-019-04": {
+      "status": "PASS",
+      "job": "POSTGRES_ENV",
+      "cases": [
+        "test_unprovisioned_budget_blocks_before_adapter_is_invoked",
+        "test_loopback_unfunded_or_unauthorized_policy_has_zero_http_requests"
+      ]
+    },
+    "AT-V2-019-05": {
+      "status": "PASS",
+      "job": "POSTGRES_ENV",
+      "cases": [
+        "test_durable_budget_cannot_be_reset_or_moved_to_another_scope",
+        "test_concurrent_reservations_cannot_duplicate_attempt_or_double_spend[True]",
+        "test_concurrent_reservations_cannot_duplicate_attempt_or_double_spend[False]",
+        "test_unknown_retry_needs_explicit_risk_acceptance_and_preserves_first_liability",
+        "test_fallback_requires_frozen_policy_and_shares_original_attempt_budget"
+      ]
+    }
+  }
+}
