@@ -212,8 +212,8 @@ handoff:
       sha256: 7d59f092003e7fc33380675f9f246db548b342af692aa56f32519cb9405ece2a
     missing_artifact_reason: null
 change_review:
-  scope_revision: 5ab3d520ae05d850b29cbbee8a28d7255b4ee115
-  scope_ref: plan/validation/execution/V2-019/isolated-assembly-20261124/scope.json
-  review_revision: 156e771cc298edd4dac6eb710a6aaea572280c68
-  review_ref: plan/validation/execution/V2-019/isolated-assembly-20261124/review.json
+  scope_revision: b1820f475b07c72f1ab1cc6a91c02d6f14a9c1d2
+  scope_ref: plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-scope.json
+  review_revision: ac3b27903b965117f7c71aca7a24efc1a0d43d20
+  review_ref: plan/validation/execution/V2-019/openai-first-probe-20261125/ci-candidate-review.json
 probe_authorization: null
