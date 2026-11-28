@@ -24,6 +24,8 @@ from test_v2_020 import (
     CountingLocalAdapter,
     SimulatedProcessExit,
     harness,
+    recovery_database_bytes,
+    recovery_result_metadata,
     run_cli,
     start,
 )
@@ -35,9 +37,9 @@ from anovel.gateway.ledger import BudgetLedger
 from anovel.gateway.models import BudgetLimit, ProviderReply, Usage
 from anovel.gateway.provider import OpenAIResponsesAdapter
 from anovel.gateway.service import ModelGateway
-from anovel.workflow.chapter import ChapterWorkflow, WorkflowError
+from anovel.workflow.chapter import ChapterWorkflow, FrozenChapterInput, WorkflowError
 from anovel.workflow.generation import SceneGenerationSnapshot
-from anovel.workflow.interfaces import WorkflowTaskAdapter
+from anovel.workflow.interfaces import WorkflowTaskAdapter, snapshot_summary
 from anovel.workflow.store import WorkflowStore
 
 CHILD_ATTEMPT = "offline-second-scene-attempt"
@@ -398,10 +400,7 @@ def test_foreign_child_attempt_binding_is_rejected_before_marking_unknown(
     assert before[0] == "DISPATCHED" and env.adapter.calls == 2
 
 
-def test_ledger_success_survives_child_publication_failure_and_recovers_without_send(
-    tmp_path, monkeypatch
-):
-    case, env, source, projection = ready(tmp_path)
+def unpublished_child_success(case, env, source, projection, monkeypatch):
     original = env.store.publish_scene
     failed = False
 
@@ -419,6 +418,68 @@ def test_ledger_success_survives_child_publication_failure_and_recovers_without_
     child = inspect_child(env.workflow, expected_step(source, projection))
     assert child.state == "DISPATCHING" and child.result is None
     assert env.ledger.lookup(RUN, child.request.logical_id).status == "SUCCESS"
+    return child
+
+
+@pytest.mark.parametrize("changed_source", ["contract", "pack", "parent"])
+def test_recovery_rejects_changed_chapter_inputs_before_using_retained_receipt(
+    tmp_path, monkeypatch, changed_source
+):
+    case, env, source, projection = ready(tmp_path)
+    child = unpublished_child_success(case, env, source, projection, monkeypatch)
+    if changed_source == "contract":
+        changed = scene_case(target_required=True).frozen
+    elif changed_source == "pack":
+        changed = scene_case(anchor="fantasy.eastern.progression").frozen
+    else:
+        parent_ref = "sha256:" + "c" * 64
+        root = case.view.root
+        view = replace(
+            case.view,
+            root=replace(root, receipt=replace(root.receipt, commit_id=parent_ref)),
+            baseline=replace(case.view.baseline, parent_ref=parent_ref),
+        )
+        changed = FrozenChapterInput.from_dict(
+            case.frozen.to_dict() | {"view": view.to_dict()}
+        )
+
+    compiled, _, _ = changed.request(RUN, LOGICAL)
+    assert (compiled.scenes != source.contract.scenes) == (changed_source == "contract")
+    assert (compiled.pack_hash != source.contract.pack_hash) == (
+        changed_source == "pack"
+    )
+    assert (compiled.parent_ref != source.contract.parent_ref) == (
+        changed_source == "parent"
+    )
+
+    adapter = CountingLocalAdapter()
+    reopened = ChapterWorkflow(
+        WorkflowStore(env.store_path),
+        ModelGateway(BudgetLedger(env.ledger_path), adapter),
+    )
+    scope = {"project": PROJECT, "branch": BRANCH, "run_id": RUN}
+    ledger_before = dump_database(env.ledger_path)
+    with pytest.raises(WorkflowError, match="^WORKFLOW_INPUT_CHANGED$"):
+        reopened.recover(changed, **scope)
+    with pytest.raises(WorkflowError, match="^WORKFLOW_INPUT_CHANGED$"):
+        reopened.recover_scene(changed, **scope, step_id=child.step_id)
+
+    assert reopened.inspect(**scope).record_hash == source.record_hash
+    assert inspect_child(reopened, child.step_id).record_hash == child.record_hash
+    assert dump_database(env.ledger_path) == ledger_before
+    assert reopened.recover(case.frozen, **scope).record_hash == source.record_hash
+    recovered = recover_child(reopened, case, child.step_id)
+    assert recovered.state == "DRAFT_SAVED" and recovered.prose == CHILD_PROSE
+    assert recovered.result.attempt_id == CHILD_ATTEMPT
+    assert dump_database(env.ledger_path) == ledger_before
+    assert env.adapter.calls == 2 and adapter.calls == 0
+
+
+def test_ledger_success_survives_child_publication_failure_and_recovers_without_send(
+    tmp_path, monkeypatch
+):
+    case, env, source, projection = ready(tmp_path)
+    child = unpublished_child_success(case, env, source, projection, monkeypatch)
     recovered = recover_child(env.workflow, case, child.step_id)
     assert recovered.state == "DRAFT_SAVED" and recovered.prose == CHILD_PROSE
     assert env.adapter.calls == env.ledger.summary(RUN)["attempts"] == 2
@@ -533,6 +594,137 @@ def test_late_original_ledger_evidence_is_retained_after_edit_without_restoring_
         env.workflow.inspect(project=PROJECT, branch=BRANCH, run_id=RUN).record_hash
         == edited.record_hash
     )
+
+
+def finish_late_scene_receipt(case, env, child):
+    return env.ledger.finish(
+        child.request,
+        case.policies[0],
+        CHILD_ATTEMPT,
+        ProviderReply(
+            "SUCCESS",
+            response_body=canonical_bytes({"synthetic-late": True}),
+            provider_request_id="synthetic-late-scene-diagnostic",
+            observed_model=case.policies[0].model,
+            usage=Usage(20, 10, 30),
+            output_bytes=canonical_bytes({"text": CHILD_PROSE.decode()}),
+            http_status=200,
+        ),
+    )
+
+
+def test_recovery_diagnostic_reads_late_attempt_after_scene_source_edit(tmp_path):
+    case, env, source, projection = ready(tmp_path)
+    child = interrupt_after_dispatch(case, env, source, projection)
+    pending = recover_child(env.workflow, case, child.step_id)
+    assert pending.state == "UNKNOWN" and pending.result.charge_status == "PENDING"
+    edited = edit_source(env, case, source)
+    stale = inspect_child(env.workflow, child.step_id)
+    assert stale.state == "STALE_SOURCE" and stale.prose is None
+    assert stale.result.to_bytes() == pending.result.to_bytes()
+
+    late = finish_late_scene_receipt(case, env, child)
+    assert late.status == "SUCCESS" and late.attempt_id == CHILD_ATTEMPT
+    task = WorkflowTaskAdapter(ChapterWorkflow(WorkflowStore(env.store_path)))
+    input_path = tmp_path / "current-scene-input.json"
+    input_path.write_bytes(case.frozen.payload)
+    before = recovery_database_bytes(env.store_path, env.ledger_path)
+    report = snapshot_summary(
+        task.execute(
+            {
+                "operation": "INSPECT_RECOVERY",
+                "project": PROJECT,
+                "branch": BRANCH,
+                "run_id": RUN,
+                "step_id": child.step_id,
+                "current_input": case.frozen.to_dict(),
+                "gateway_ledger": str(env.ledger_path),
+            }
+        )
+    )
+    assert report["state"] == "STALE_SOURCE" and report["source_current"] is False
+    assert report["attempt_id"] == CHILD_ATTEMPT
+    assert report["record_hash"] == stale.record_hash
+    assert report["stored_result"] == recovery_result_metadata(pending.result)
+    assert report["ledger_result"] == recovery_result_metadata(late)
+    assert all(
+        report[key] is False
+        for key in (
+            "can_dispatch",
+            "can_commit",
+            "can_issue_permit",
+            "accepted",
+            "published",
+        )
+    )
+    cli = run_cli(
+        env,
+        "recover-scene",
+        "--step-id",
+        child.step_id,
+        "--input",
+        input_path,
+        "--gateway-ledger",
+        env.ledger_path,
+        "--diagnose-only",
+    )
+    assert cli.returncode == 0, cli.stdout + cli.stderr
+    assert json.loads(cli.stdout) == report
+    assert CHILD_PROSE.decode() not in cli.stdout
+    blocked = run_cli(
+        env,
+        "recover-scene",
+        "--step-id",
+        child.step_id,
+        "--input",
+        input_path,
+        "--gateway-ledger",
+        env.ledger_path,
+        "--save-late-success",
+    )
+    assert blocked.returncode == 2, blocked.stdout + blocked.stderr
+    assert json.loads(blocked.stdout)["code"] == "SCENE_SOURCE_CHANGED"
+    assert inspect_child(env.workflow, child.step_id).record_hash == stale.record_hash
+    assert (
+        env.workflow.inspect(project=PROJECT, branch=BRANCH, run_id=RUN).record_hash
+        == edited.record_hash
+    )
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == before
+    assert env.ledger.summary(RUN)["attempts"] == env.adapter.calls == 2
+
+
+def test_save_late_scene_success_reopens_and_preserves_the_same_receipt(tmp_path):
+    case, env, source, projection = ready(tmp_path)
+    child = interrupt_after_dispatch(case, env, source, projection)
+    pending = recover_child(env.workflow, case, child.step_id)
+    assert pending.state == "UNKNOWN" and pending.prose is None
+    late = finish_late_scene_receipt(case, env, child)
+    input_path = tmp_path / "frozen.json"
+    input_path.write_bytes(case.frozen.payload)
+    args = (
+        "recover-scene",
+        "--input",
+        input_path,
+        "--step-id",
+        child.step_id,
+        "--gateway-ledger",
+        env.ledger_path,
+        "--save-late-success",
+    )
+    ledger_before = dump_database(env.ledger_path)
+    first = run_cli(env, *args)
+    assert first.returncode == 0, first.stdout + first.stderr
+    saved = inspect_child(env.workflow, child.step_id)
+    assert saved.state == "DRAFT_SAVED" and saved.prose == CHILD_PROSE
+    assert saved.result.to_bytes() == late.to_bytes() and not saved.accepted
+    assert saved.source.record_hash == source.record_hash
+    again = run_cli(env, *args)
+    assert again.returncode == 0, again.stdout + again.stderr
+    assert json.loads(again.stdout) == json.loads(first.stdout)
+    assert inspect_child(env.workflow, child.step_id).record_hash == saved.record_hash
+    assert env.workflow.inspect(project=PROJECT, branch=BRANCH, run_id=RUN) == source
+    assert dump_database(env.ledger_path) == ledger_before
+    assert env.ledger.summary(RUN)["attempts"] == env.adapter.calls == 2
 
 
 def test_child_cas_rejects_stale_writer_without_changing_parent(tmp_path, monkeypatch):

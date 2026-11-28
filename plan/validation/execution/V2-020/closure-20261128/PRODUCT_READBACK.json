@@ -1,0 +1,43 @@
+{
+  "tested_revision": "97054449bf9c3995113651713cb8d09b25405696",
+  "protected_product_revision": "514b0f85315531d80d7de0b572d23201923d3b57",
+  "protected_product_paths": [
+    "src",
+    "specs",
+    "model-policy.yaml",
+    ":(glob)tests/contract/test_v2_020*.py",
+    "tests/contract/test_v2_021.py",
+    "tests/contract/test_v2_022.py"
+  ],
+  "earlier_readback_sha256": "0f72e428796eccbfa8c64f55266c0f9ad5e4ab4567ded0c836ad355128968046",
+  "earlier_readback": {
+    "candidate": "514b0f85315531d80d7de0b572d23201923d3b57",
+    "artifact_state": "DRAFT",
+    "export_versions_byte_identical": [
+      1,
+      2
+    ],
+    "handoff_byte_identical": true,
+    "writer_request_byte_identical": true,
+    "old_handoff_rejection": "NEXT_CHAPTER_INPUT_CHANGED",
+    "source_database_unchanged": true,
+    "writer_provider_called": false
+  },
+  "retained_artifact_sha256": {
+    "chapter-7-v1.txt": "86eb37b5a9ae1bae3ed15d5d4af2e5f2b0878333ee8d4fa5f6e5857af5bf62e6",
+    "chapter-7-v2.txt": "2d2e7ef07a199549422c5b2550b04fa2a57c257ffa27d9771eccf9a619f91752",
+    "chapter-8-handoff.json": "a56674e1b2db2148e761a553abfcc2ce051587a5cb2eb3c9f311501e9fe47850",
+    "chapter-8-prepared-request.json": "8056c18dd834563431244f508189a01ac6945382d50612bef2d46a961dabd808"
+  },
+  "verified_model": "gpt-6.2-astra",
+  "provider_attempts": 1,
+  "chapter": 7,
+  "provider_response_sha256": "ef3d0937cb38b48e345a4c507970ebe88eb60e444f5d92ee1d74b75c66bb4526",
+  "chapter8_prose_generated": false,
+  "continuation_verified": {
+    "choice": true,
+    "facts_and_consequences": true,
+    "four_commitments": true,
+    "revised_ending": true
+  }
+}

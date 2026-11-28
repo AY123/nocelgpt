@@ -1,0 +1,15 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-020
+revision: 97054449bf9c3995113651713cb8d09b25405696
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T05:24:47Z'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14 repo1421585508 run46110686650
+  attempt1; local retained DRAFT readback
+evidence_id: V2-020-code-9705444
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-020/closure-20261128/CODE_MANIFEST.json
+  sha256: 84c74c8dedfae70c555e2d084db785c9abcbed9f08dd6550e80c4eb707b4559b
+input_evidence_refs: []

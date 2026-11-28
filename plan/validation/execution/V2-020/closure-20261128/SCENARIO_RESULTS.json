@@ -1,0 +1,108 @@
+{
+  "revision": "97054449bf9c3995113651713cb8d09b25405696",
+  "run_id": 46110686650,
+  "scenarios": {
+    "AT-V2-020-01": {
+      "status": "PASS",
+      "scope": "缺少合约、上下文、场景草稿或抽取时按原步骤停止。账本成功不可代替未落库场景。",
+      "unit_testcases": [
+        {
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_real_contract_or_context_failure_stops_before_gateway[options0]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_real_contract_or_context_failure_stops_before_gateway[options1]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_run",
+          "name": "test_complete_real_graph_is_current_but_stops_before_unimplemented_quality_and_authority"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_assembly",
+          "name": "test_real_unpublished_child_cut_is_rejected_despite_finished_ledger_result"
+        }
+      ]
+    },
+    "AT-V2-020-02": {
+      "status": "PASS",
+      "scope": "两类题材的章内候选事实进入第二场，失败和结果未知仍可追溯且无可用草稿。第 7 章到第 8 章另有真实跨章读回。",
+      "unit_testcases": [
+        {
+          "classname": "tests.contract.test_v2_020_scene",
+          "name": "test_changed_fact_reaches_real_second_scene_without_canon_or_draft_publication[urban.business.realistic]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_scene",
+          "name": "test_changed_fact_reaches_real_second_scene_without_canon_or_draft_publication[fantasy.eastern.progression]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_non_publishable_second_scene_result_is_durable_but_has_no_draft[FAILED-FAILED]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_non_publishable_second_scene_result_is_durable_but_has_no_draft[UNKNOWN-UNKNOWN]"
+        }
+      ]
+    },
+    "AT-V2-020-03": {
+      "status": "PASS",
+      "scope": "草稿与接受、发布隔离。观察入口拒绝伪造门禁和 Permit。真实章仅保留 DRAFT，未开展真人试读。",
+      "unit_testcases": [
+        {
+          "classname": "tests.contract.test_v2_020_run",
+          "name": "test_task_and_real_cli_only_observe_and_reject_all_caller_supplied_gate_claims"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_assembly",
+          "name": "test_pure_assembly_rejects_false_hash_segment_or_acceptance_claims"
+        }
+      ]
+    },
+    "AT-V2-020-04": {
+      "status": "PASS",
+      "scope": "任务入口与 CLI 共享服务，缺持久场景或回执时拒绝。真实首稿和改稿均可逐字节导出。",
+      "unit_testcases": [
+        {
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_actual_cli_recovery_uses_the_original_gateway_receipt_without_dispatch"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_task_start_and_real_cli_inspect_recover_share_one_persistent_child"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_assembly",
+          "name": "test_missing_persistent_child_is_not_replaced_by_existing_gateway_success"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_assembly",
+          "name": "test_missing_actual_child_receipt_blocks_assembly_without_recovery_or_mutation"
+        }
+      ]
+    },
+    "AT-V2-020-05": {
+      "status": "PASS",
+      "scope": "旧抽取、检查、交接与外部改写产物被拒绝。第 8 章冻结输入只使用第 7 章改稿，未生成第 8 章正文。",
+      "unit_testcases": [
+        {
+          "classname": "tests.contract.test_v2_020_run",
+          "name": "test_current_quality_chain_selects_exact_annotations_and_invalidates_on_edit[finite-extraction]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_assembly",
+          "name": "test_tampered_bundle_is_rejected_and_never_repaired_from_expected_content[chapter.txt]"
+        },
+        {
+          "classname": "tests.contract.test_v2_020_scene",
+          "name": "test_changed_supplied_source_content_invalidates_old_projection_before_cache"
+        },
+        {
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_written_draft_commitment_review_checks_exact_current_excerpts"
+        }
+      ]
+    }
+  }
+}

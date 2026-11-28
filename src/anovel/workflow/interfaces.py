@@ -41,6 +41,7 @@ from .chapter_revision import ChapterRevision
 from .extractor import ExtractionObservation
 from .generation import SceneGenerationSnapshot
 from .models import FrozenChapterInput, WorkflowError, WorkflowSnapshot
+from .recovery import RecoveryReadback, WrittenDraftCancellation
 from .run import RunAssessment
 from .scene import SceneProjection
 from .written_draft import (
@@ -87,6 +88,7 @@ _REPLACE_DRAFT_FIELDS = {
 
 _FIELDS = {
     "SAVE_NEXT_CHAPTER_DRAFT": _NEXT_CHAPTER_FIELDS | {"draft"},
+    "CANCEL_NEXT_CHAPTER_DRAFT": _NEXT_CHAPTER_FIELDS | {"handoff"},
     "INSPECT_WRITTEN_DRAFT": (_NEXT_CHAPTER_FIELDS - {"expected_revision_hash"})
     | {"chapter_id"},
     "INSPECT_WRITTEN_DRAFT_IMPACT": _NEXT_CHAPTER_FIELDS | {"source_chapter_id"},
@@ -104,7 +106,7 @@ _FIELDS = {
     "PREPARE_NEXT_CHAPTER_MODEL_REQUEST": _NEXT_CHAPTER_WRITE_FIELDS | {"policy"},
     "WRITE_NEXT_CHAPTER_DRAFT": _NEXT_CHAPTER_WRITE_FIELDS,
     "REWRITE_NEXT_CHAPTER_DRAFT": _NEXT_CHAPTER_WRITE_FIELDS
-    | {"source_chapter_id", "expected_target_revision_hash"},
+    | {"expected_target_revision_hash"},
     "INSPECT_CHAPTER_REVISION": {
         "operation",
         "current_input",
@@ -290,6 +292,22 @@ _FIELDS = {
     },
     "INSPECT": {"operation", "project", "branch", "run_id"},
     "RECOVER": {"operation", "current_input", "project", "branch", "run_id"},
+    "INSPECT_RECOVERY": {
+        "operation",
+        "current_input",
+        "project",
+        "branch",
+        "run_id",
+        "gateway_ledger",
+    },
+    "SAVE_LATE_RECOVERY_SUCCESS": {
+        "operation",
+        "current_input",
+        "project",
+        "branch",
+        "run_id",
+        "gateway_ledger",
+    },
     "REPLACE_DRAFT": _REPLACE_DRAFT_FIELDS,
     "REPLACE_DRAFT_AND_PROJECT_SCENE": _REPLACE_DRAFT_FIELDS | {"fact_edits"},
     "EXPORT": {"operation", "project", "branch", "run_id", "output"},
@@ -338,10 +356,6 @@ def _author_annotation_input(
         raise WorkflowError("INVALID_Q1_AUTHOR_INPUT") from None
 
 
-class _WrittenDraftInspectionOptions(TypedDict, total=False):
-    version: int
-
-
 class _WrittenDraftEditOptions(TypedDict, total=False):
     continuity: tuple[DraftContinuity, ...]
 
@@ -365,6 +379,8 @@ class WorkflowTaskAdapter:
         | DraftCommitmentReview
         | WrittenDraftImpact
         | WrittenDraftRevision
+        | RecoveryReadback
+        | WrittenDraftCancellation
         | RunAssessment
         | RevisionAnnotationBinding
         | RevisionQualityReadback
@@ -381,11 +397,16 @@ class WorkflowTaskAdapter:
         fields = set(row)
         if operation == "ASSESS_RUN":
             fields.discard("q1_annotations_hash")
+        if operation in {"INSPECT_RECOVERY", "SAVE_LATE_RECOVERY_SUCCESS"}:
+            fields.discard("step_id")
         if operation == "INSPECT_WRITTEN_DRAFT":
             fields.discard("output")
             fields.discard("version")
         if operation == "REVIEW_WRITTEN_DRAFT_COMMITMENTS":
             fields.discard("output")
+            fields.discard("brief")
+            fields.discard("save_observations")
+            fields.discard("version")
         if operation == "EDIT_WRITTEN_DRAFT":
             if "preserve_unprovided_annotations" in row:
                 if row["preserve_unprovided_annotations"] is not True:
@@ -402,12 +423,17 @@ class WorkflowTaskAdapter:
             "VERIFY_NEXT_CHAPTER",
             "PREPARE_NEXT_CHAPTER_MODEL_REQUEST",
             "WRITE_NEXT_CHAPTER_DRAFT",
+            "REWRITE_NEXT_CHAPTER_DRAFT",
+            "CANCEL_NEXT_CHAPTER_DRAFT",
         }:
             fields.discard("source_chapter_id")
+        if operation == "PREPARE_NEXT_CHAPTER_MODEL_REQUEST":
+            fields.discard("expected_target_revision_hash")
         if operation in {
             "PREPARE_NEXT_CHAPTER_MODEL_REQUEST",
             "WRITE_NEXT_CHAPTER_DRAFT",
             "REWRITE_NEXT_CHAPTER_DRAFT",
+            "CANCEL_NEXT_CHAPTER_DRAFT",
         }:
             fields.discard("brief")
         if (
@@ -451,6 +477,15 @@ class WorkflowTaskAdapter:
                 policy_id=_text(row, "policy_id"),
             )
         project, branch = _text(row, "project"), _text(row, "branch")
+        draft_version = None
+        if (
+            operation in {"INSPECT_WRITTEN_DRAFT", "REVIEW_WRITTEN_DRAFT_COMMITMENTS"}
+            and "version" in row
+        ):
+            selected_version = row["version"]
+            if type(selected_version) is not int or selected_version < 1:
+                raise WorkflowError("INVALID_WORKFLOW_TASK_REQUEST")
+            draft_version = selected_version
         if operation == "SAVE_NEXT_CHAPTER_DRAFT":
             return self.service.save_next_chapter_draft(
                 FrozenChapterInput.from_dict(row["current_input"]),
@@ -461,12 +496,6 @@ class WorkflowTaskAdapter:
                 draft_payload=canonical_bytes(row["draft"]),
             )
         if operation == "INSPECT_WRITTEN_DRAFT":
-            options: _WrittenDraftInspectionOptions = {}
-            if "version" in row:
-                inspection_version = row["version"]
-                if type(inspection_version) is not int or inspection_version < 1:
-                    raise WorkflowError("INVALID_WORKFLOW_TASK_REQUEST")
-                options["version"] = inspection_version
             return self.service.inspect_written_draft(
                 FrozenChapterInput.from_dict(row["current_input"]),
                 project=project,
@@ -474,7 +503,7 @@ class WorkflowTaskAdapter:
                 run_id=run_id,
                 chapter_id=EntityId.from_dict(row["chapter_id"]),
                 output=Path(_text(row, "output")) if "output" in row else None,
-                **options,
+                version=draft_version,
             )
         if operation == "INSPECT_WRITTEN_DRAFT_IMPACT":
             return self.service.inspect_written_draft_impact(
@@ -494,7 +523,12 @@ class WorkflowTaskAdapter:
                 chapter_id=EntityId.from_dict(row["chapter_id"]),
                 expected_revision_hash=_text(row, "expected_revision_hash"),
                 review=row["review"],
+                brief=DraftChapterBrief.from_dict(row["brief"])
+                if "brief" in row
+                else None,
                 output=Path(_text(row, "output")) if "output" in row else None,
+                save_observations=cast(bool, row.get("save_observations", False)),
+                version=draft_version,
             )
         if operation == "PREVIEW_WRITTEN_DRAFT_EDIT":
             return self.service.preview_written_draft_edit(
@@ -564,6 +598,19 @@ class WorkflowTaskAdapter:
                 **edit_options,
             )
         brief = DraftChapterBrief.from_dict(row["brief"]) if "brief" in row else None
+        if operation == "CANCEL_NEXT_CHAPTER_DRAFT":
+            return self.service.cancel_next_chapter_draft(
+                FrozenChapterInput.from_dict(row["current_input"]),
+                project=project,
+                branch=branch,
+                run_id=run_id,
+                expected_revision_hash=_text(row, "expected_revision_hash"),
+                retained_payload=canonical_bytes(row["handoff"]),
+                source_chapter_id=EntityId.from_dict(row["source_chapter_id"])
+                if "source_chapter_id" in row
+                else None,
+                brief=brief,
+            )
         if operation == "PREPARE_NEXT_CHAPTER_MODEL_REQUEST":
             try:
                 policy = ModelPolicy.from_dict(row["policy"])
@@ -582,6 +629,11 @@ class WorkflowTaskAdapter:
                 if "source_chapter_id" in row
                 else None,
                 brief=brief,
+                expected_target_revision_hash=_text(
+                    row, "expected_target_revision_hash"
+                )
+                if "expected_target_revision_hash" in row
+                else None,
             )
         if operation == "WRITE_NEXT_CHAPTER_DRAFT":
             return self.service.write_next_chapter_draft(
@@ -604,7 +656,9 @@ class WorkflowTaskAdapter:
                 branch=branch,
                 run_id=run_id,
                 expected_revision_hash=_text(row, "expected_revision_hash"),
-                source_chapter_id=EntityId.from_dict(row["source_chapter_id"]),
+                source_chapter_id=EntityId.from_dict(row["source_chapter_id"])
+                if "source_chapter_id" in row
+                else None,
                 expected_target_revision_hash=_text(
                     row, "expected_target_revision_hash"
                 ),
@@ -892,6 +946,24 @@ class WorkflowTaskAdapter:
                 output=Path(_text(row, "output")),
             )
         current = FrozenChapterInput.from_dict(row["current_input"])
+        if operation == "INSPECT_RECOVERY":
+            return self.service.inspect_recovery(
+                current,
+                project=project,
+                branch=branch,
+                run_id=run_id,
+                gateway_ledger=Path(_text(row, "gateway_ledger")),
+                step_id=_text(row, "step_id") if "step_id" in row else None,
+            )
+        if operation == "SAVE_LATE_RECOVERY_SUCCESS":
+            return self.service.save_late_recovery_success(
+                current,
+                project=project,
+                branch=branch,
+                run_id=run_id,
+                gateway_ledger=Path(_text(row, "gateway_ledger")),
+                step_id=_text(row, "step_id") if "step_id" in row else None,
+            )
         if operation == "RECOVER":
             return self.service.recover(
                 current, project=project, branch=branch, run_id=run_id
@@ -958,6 +1030,8 @@ def snapshot_summary(
     | DraftCommitmentReview
     | WrittenDraftImpact
     | WrittenDraftRevision
+    | RecoveryReadback
+    | WrittenDraftCancellation
     | RunAssessment
     | RevisionAnnotationBinding
     | RevisionQualityReadback
@@ -968,7 +1042,9 @@ def snapshot_summary(
     | Q3Run,
 ) -> dict[str, object]:
     """Display metadata and grounded quality values without printing prose."""
-    if isinstance(saved, DraftCommitmentReview):
+    if isinstance(
+        saved, (DraftCommitmentReview, RecoveryReadback, WrittenDraftCancellation)
+    ):
         return saved.summary()
     if isinstance(saved, GatewayRequest):
         return {

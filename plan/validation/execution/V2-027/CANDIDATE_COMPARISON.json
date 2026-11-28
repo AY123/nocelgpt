@@ -1,0 +1,43 @@
+{
+  "comparison_revision": "97054449bf9c3995113651713cb8d09b25405696",
+  "candidate_scope_ref": "plan/validation/execution/V2-027/scope.json",
+  "scope_findings": 0,
+  "machine_comparison": "V2-020 prior acceptance is recorded and V2-027 is active. Dependencies, gate, ADR and acceptance criteria agree byte-for-value.",
+  "command_comparison": "The accepted workflow driver is unchanged apart from the added V2-027 PostgreSQL suite.",
+  "test_assertions": {
+    "tests/contract/test_delivery_gates.py": {
+      "before": 175,
+      "after": 176,
+      "new_test_functions": [],
+      "removed_test_functions": []
+    },
+    "tests/contract/test_v2_020.py": {
+      "before": 529,
+      "after": 714,
+      "new_test_functions": [
+        "test_legacy_fulfillment_handoff_recovers_only_exact_retained_receipt",
+        "test_next_chapter_brief_defers_only_open_commitments",
+        "test_next_chapter_writer_cancellation_fences_draft_not_receipt",
+        "test_recovery_diagnostic_reads_late_attempt_without_promoting_unknown",
+        "test_saved_commitment_review_updates_next_chapter_handoff"
+      ],
+      "removed_test_functions": []
+    },
+    "tests/contract/test_v2_020_scene_generation.py": {
+      "before": 99,
+      "after": 140,
+      "new_test_functions": [
+        "test_recovery_diagnostic_reads_late_attempt_after_scene_source_edit",
+        "test_recovery_rejects_changed_chapter_inputs_before_using_retained_receipt",
+        "test_save_late_scene_success_reopens_and_preserves_the_same_receipt"
+      ],
+      "removed_test_functions": []
+    }
+  },
+  "preserved_assertions": [
+    "Original chapter commitment rows and hashes remain tested alongside earlier unpaid commitments.",
+    "The original rewrite path remains a local variant; the second variant checks OpenAI receipt-only restart.",
+    "Existing delivery argv and history expectations retain all prior checks.",
+    "The scene test assertions are retained and extended for independently changed Contract, Pack and parent."
+  ]
+}

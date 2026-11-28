@@ -1279,7 +1279,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-020/execution-packet.yaml
   owner_role: workflow-maintainer
   readiness: READY_TO_START
@@ -1287,10 +1287,22 @@ tasks:
   required_decisions:
   - ADR-008
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-020/closure-20261128/code-evidence.yaml
+      revision: 97054449bf9c3995113651713cb8d09b25405696
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+      revision: 97054449bf9c3995113651713cb8d09b25405696
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+      revision: 97054449bf9c3995113651713cb8d09b25405696
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-020/closure-20261128/acceptance-evidence.yaml
+      revision: 97054449bf9c3995113651713cb8d09b25405696
+      status: PASS
   related_findings:
   - AR-07
   - AR-11
@@ -1631,10 +1643,10 @@ tasks:
   - 不绕过前置阶段门禁
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
-  status: OPEN
-  execution_packet_ref: null
+  status: IN_PROGRESS
+  execution_packet_ref: validation/execution/V2-027/execution-packet.yaml
   owner_role: workflow-maintainer
-  readiness: PLANNED
+  readiness: READY_TO_START
   start_gate: G-P5
   required_decisions:
   - ADR-010

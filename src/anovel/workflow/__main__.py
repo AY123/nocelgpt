@@ -38,6 +38,7 @@ _REVISION_SCHEMA_CHECKS = (
     ("revision_q0_executions", "chapter_revisions", "_revision_q0_table"),
     ("revision_q123_executions", "chapter_revisions", "_revision_q123_table"),
     ("written_draft_revisions", "runs", "_written_draft_table"),
+    ("written_draft_cancellations", "runs", "_written_draft_cancellation_table"),
 )
 
 
@@ -270,7 +271,10 @@ def _require_existing_run(
                     ("payload_hash", "TEXT"),
                 ] or columns[0]["pk"] != 1:
                     raise WorkflowError("WORKFLOW_RUN_UNAVAILABLE")
-                if revision_tables.keys() - {"written_draft_revisions"} and (
+                if revision_tables.keys() - {
+                    "written_draft_revisions",
+                    "written_draft_cancellations",
+                } and (
                     not WorkflowStore._scene_table(connection, create=False)
                     or not WorkflowStore._extraction_table(connection, create=False)
                 ):
@@ -324,6 +328,18 @@ def main(argv: list[str] | None = None) -> int:
     scene_recover.add_argument("--step-id", required=True)
     scene_recover.add_argument("--input", type=Path, required=True)
     scene_recover.add_argument("--gateway-ledger", type=Path, required=True)
+    for recovery_command in (recover, scene_recover):
+        recovery_mode = recovery_command.add_mutually_exclusive_group()
+        recovery_mode.add_argument(
+            "--diagnose-only",
+            action="store_true",
+            help="Compare the saved checkpoint and its original attempt without writing a Draft",
+        )
+        recovery_mode.add_argument(
+            "--save-late-success",
+            action="store_true",
+            help="Save the original attempt's late success to the current Draft",
+        )
     scene_project = commands.add_parser("project-scene")
     scene_project.add_argument("--input", type=Path, required=True)
     scene_project.add_argument("--expected-record-hash", required=True)
@@ -353,6 +369,7 @@ def main(argv: list[str] | None = None) -> int:
     for name in (
         "project-next-chapter",
         "verify-next-chapter",
+        "cancel-next-chapter-draft",
         "prepare-next-chapter-model-request",
         *sorted(_CHAPTER_RECEIPT_OPERATIONS),
     ):
@@ -360,10 +377,18 @@ def main(argv: list[str] | None = None) -> int:
         next_chapter.add_argument("--input", type=Path, required=True)
         next_chapter.add_argument("--expected-revision-hash", required=True)
         next_chapter.add_argument("--source-chapter-id")
-        if name != "verify-next-chapter":
+        if name not in {"verify-next-chapter", "cancel-next-chapter-draft"}:
             next_chapter.add_argument("--output", type=Path, required=True)
         if name != "project-next-chapter":
             next_chapter.add_argument("--handoff", type=Path, required=True)
+        if (
+            name == "prepare-next-chapter-model-request"
+            or name in _CHAPTER_RECEIPT_OPERATIONS
+        ):
+            next_chapter.add_argument(
+                "--expected-target-revision-hash",
+                help="Revision of the existing Draft being rewritten",
+            )
         if name == "prepare-next-chapter-model-request":
             next_chapter.add_argument(
                 "--policy", type=Path, required=True, help="Canonical ModelPolicy JSON"
@@ -392,6 +417,10 @@ def main(argv: list[str] | None = None) -> int:
                 required=True,
                 help="Absolute path to the existing private writer ledger",
             )
+        elif name == "cancel-next-chapter-draft":
+            next_chapter.add_argument(
+                "--brief", type=Path, help="Canonical DraftChapterBrief JSON"
+            )
     inspect_impact = commands.add_parser(
         "inspect-written-draft-impact", help="List downstream Drafts needing rewrite"
     )
@@ -400,16 +429,29 @@ def main(argv: list[str] | None = None) -> int:
     inspect_impact.add_argument("--expected-revision-hash", required=True)
     review_commitments = commands.add_parser(
         "review-written-draft-commitments",
-        help="Review what the current Draft does with inherited open commitments",
+        help="Review inherited commitments in the current or selected Draft",
     )
     review_commitments.add_argument("--input", type=Path, required=True)
     review_commitments.add_argument("--chapter-id", required=True)
     review_commitments.add_argument("--expected-revision-hash", required=True)
     review_commitments.add_argument(
+        "--version",
+        type=int,
+        help="Review a retained revision without saving observations",
+    )
+    review_commitments.add_argument(
         "--review", type=Path, help="JSON of editorial observations"
     )
     review_commitments.add_argument(
+        "--brief", type=Path, help="Reuse the chapter brief's deferred commitments"
+    )
+    review_commitments.add_argument(
         "--output", type=Path, help="Private JSON report with excerpts"
+    )
+    review_commitments.add_argument(
+        "--save-observations",
+        action="store_true",
+        help="Save the reviewed excerpts to the current Draft",
     )
     save_written = commands.add_parser("save-next-chapter-draft")
     save_written.add_argument("--input", type=Path, required=True)
@@ -522,19 +564,23 @@ def main(argv: list[str] | None = None) -> int:
         command.add_argument("--annotations", type=Path, required=True)
     args = parser.parse_args(argv)
     try:
+        read_original_recovery = args.operation in {"recover", "recover-scene"} and (
+            args.diagnose_only or args.save_late_success
+        )
         if args.operation == "replace" and (args.fact_edits is None) != (
             args.projection_output is None
         ):
             raise WorkflowError("SCENE_FACT_EDITS_AND_PROJECTION_OUTPUT_REQUIRED")
         if not args.db.is_file():
             raise WorkflowError("WORKFLOW_RUN_UNAVAILABLE")
-        if args.operation in {
+        if read_original_recovery or args.operation in {
             "inspect-run",
             "project-scene",
             "inspect-chapter-revision",
             "export-chapter-revision",
             "project-next-chapter",
             "verify-next-chapter",
+            "cancel-next-chapter-draft",
             "prepare-next-chapter-model-request",
             *_CHAPTER_RECEIPT_OPERATIONS,
             "save-next-chapter-draft",
@@ -584,6 +630,28 @@ def main(argv: list[str] | None = None) -> int:
             else None
         )
         store = WorkflowStore(args.db)
+        if read_original_recovery:
+            recovery_request = {
+                "operation": (
+                    "SAVE_LATE_RECOVERY_SUCCESS"
+                    if args.save_late_success
+                    else "INSPECT_RECOVERY"
+                ),
+                "current_input": _canonical_input(
+                    args.input, "INVALID_WORKFLOW_CLI_INPUT"
+                ),
+                "project": args.project,
+                "branch": args.branch,
+                "run_id": args.run_id,
+                "gateway_ledger": str(args.gateway_ledger),
+            }
+            if args.operation == "recover-scene":
+                recovery_request["step_id"] = args.step_id
+            report = WorkflowTaskAdapter(ChapterWorkflow(store)).execute(
+                recovery_request
+            )
+            print(json.dumps(snapshot_summary(report), ensure_ascii=False))
+            return 0
         saved = store.load(project=args.project, branch=args.branch, run_id=args.run_id)
         gateway = None
         if args.operation == "recover":
@@ -648,14 +716,20 @@ def main(argv: list[str] | None = None) -> int:
             "export-chapter-revision",
             "project-next-chapter",
             "verify-next-chapter",
+            "cancel-next-chapter-draft",
             "prepare-next-chapter-model-request",
             *_CHAPTER_RECEIPT_OPERATIONS,
             "inspect-written-draft-impact",
         }:
+            operation = args.operation.replace("-", "_").upper()
+            if args.operation in _CHAPTER_RECEIPT_OPERATIONS:
+                operation = (
+                    "WRITE_NEXT_CHAPTER_DRAFT"
+                    if args.expected_target_revision_hash is None
+                    else "REWRITE_NEXT_CHAPTER_DRAFT"
+                )
             chapter_revision_request = {
-                "operation": "WRITE_NEXT_CHAPTER_DRAFT"
-                if args.operation in _CHAPTER_RECEIPT_OPERATIONS
-                else args.operation.replace("-", "_").upper(),
+                "operation": operation,
                 "current_input": decode_canonical(
                     _regular_input_bytes(
                         args.input, "INVALID_CHAPTER_REVISION_INPUT_FILE"
@@ -679,14 +753,14 @@ def main(argv: list[str] | None = None) -> int:
                 )
             if args.operation in {
                 "prepare-next-chapter-model-request",
+                "cancel-next-chapter-draft",
                 *_CHAPTER_RECEIPT_OPERATIONS,
             }:
-                chapter_revision_request.update(
-                    handoff=_canonical_input(
-                        args.handoff, "INVALID_NEXT_CHAPTER_INPUT_FILE"
-                    ),
-                    output=str(args.output),
+                chapter_revision_request["handoff"] = _canonical_input(
+                    args.handoff, "INVALID_NEXT_CHAPTER_INPUT_FILE"
                 )
+                if args.operation != "cancel-next-chapter-draft":
+                    chapter_revision_request["output"] = str(args.output)
                 if args.brief is not None:
                     chapter_revision_request["brief"] = _canonical_input(
                         args.brief, "INVALID_NEXT_CHAPTER_BRIEF"
@@ -700,9 +774,18 @@ def main(argv: list[str] | None = None) -> int:
                 chapter_revision_request["policy"] = policy_row
             if (
                 args.operation
+                in {"prepare-next-chapter-model-request", *_CHAPTER_RECEIPT_OPERATIONS}
+                and args.expected_target_revision_hash is not None
+            ):
+                chapter_revision_request["expected_target_revision_hash"] = (
+                    args.expected_target_revision_hash
+                )
+            if (
+                args.operation
                 in {
                     "project-next-chapter",
                     "verify-next-chapter",
+                    "cancel-next-chapter-draft",
                     "prepare-next-chapter-model-request",
                     *_CHAPTER_RECEIPT_OPERATIONS,
                     "inspect-written-draft-impact",
@@ -777,8 +860,16 @@ def main(argv: list[str] | None = None) -> int:
                         )
                     except (OSError, ValueError):
                         raise WorkflowError(diagnostic) from None
+                    if args.brief is not None:
+                        written_request["brief"] = _canonical_input(
+                            args.brief, "INVALID_NEXT_CHAPTER_BRIEF"
+                        )
                     if args.output is not None:
                         written_request["output"] = str(args.output)
+                    if args.version is not None:
+                        written_request["version"] = args.version
+                    if args.save_observations:
+                        written_request["save_observations"] = True
                 elif args.operation == "edit-written-draft":
                     written_request["preserve_unprovided_annotations"] = True
                     if args.choice is not None:

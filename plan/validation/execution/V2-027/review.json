@@ -1,0 +1,298 @@
+{
+  "task_id": "V2-027",
+  "baseline_pin": {
+    "revision": "8cae7bd77a873c970488eccebc2bae10b5e15fbd",
+    "ref": "plan/validation/execution/V2-027/scope.json",
+    "sha256": "124baf3ae6a1af436aa7c3374dc79e9cd0aa79a28f8970fba1ed62952c3e701c"
+  },
+  "dispositions": [
+    {
+      "finding_id": "ca21262f5f85ff4bda3aa01a088a6c8ff34ecfb9eda26a6a467f5c46242f5999",
+      "code": "MACHINE_POLICY_CHANGED",
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "index",
+      "old_sha": "41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0",
+      "new_sha": "00c00db0e59a848293c27f221c2566a2b779d5c1e85d159f7a4868edcee032bf",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "V2-027 readiness advances after the formal predecessor acceptance; the five scenarios, phase and dependencies are identical.",
+      "impact": "The original G-P5 and ADR requirements apply.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "5fc6f7e6a5d4a245fe3557c71d9094b2a1a4af7978e69d89480994f00947f23a",
+      "code": "MACHINE_POLICY_CHANGED",
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "worktree",
+      "old_sha": "41272cf9c53675be347916e24a6657477c76a8d124977440bf5b1c11b964ccb0",
+      "new_sha": "00c00db0e59a848293c27f221c2566a2b779d5c1e85d159f7a4868edcee032bf",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "V2-027 readiness advances after the formal predecessor acceptance; the five scenarios, phase and dependencies are identical.",
+      "impact": "The original G-P5 and ADR requirements apply.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "bf77f5a1b6c98fd404f15280b14d1c6ad095311510fcbd943eff7852b0978aa5",
+      "code": "TEST_LOGIC_CHANGED",
+      "path": "tests/contract/test_delivery_gates.py",
+      "layer": "index",
+      "old_sha": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6",
+      "new_sha": "c8bb4d6f0b2f2d73c1dc047749a78a4a134615bd60a5d5ab2648097c49462624",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The actual PostgreSQL argv assertion and direct membership assertion both require the added V2-027 file while retaining prior arguments.",
+      "impact": "Coverage increases without changing times, permissions, or test selections.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "c47b12d60e3ca657be99a11f21873ea34da7bb6356ef1e9d5b3f6973fab91717",
+      "code": "TEST_ASSERTION_CHANGED",
+      "path": "tests/contract/test_delivery_gates.py",
+      "layer": "index",
+      "old_sha": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6",
+      "new_sha": "c8bb4d6f0b2f2d73c1dc047749a78a4a134615bd60a5d5ab2648097c49462624",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The actual PostgreSQL argv assertion and direct membership assertion both require the added V2-027 file while retaining prior arguments.",
+      "impact": "Coverage increases without changing times, permissions, or test selections.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "2d11155d001e35333b3be6f201be20ae9c631057bf22de94a802c25f06c153bb",
+      "code": "TEST_LOGIC_CHANGED",
+      "path": "tests/contract/test_delivery_gates.py",
+      "layer": "worktree",
+      "old_sha": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6",
+      "new_sha": "c8bb4d6f0b2f2d73c1dc047749a78a4a134615bd60a5d5ab2648097c49462624",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The actual PostgreSQL argv assertion and direct membership assertion both require the added V2-027 file while retaining prior arguments.",
+      "impact": "Coverage increases without changing times, permissions, or test selections.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "7f55768186a98d0e2f3e1bc17760bc3b609f5548fb0e3d43ac6274058b408d9d",
+      "code": "TEST_ASSERTION_CHANGED",
+      "path": "tests/contract/test_delivery_gates.py",
+      "layer": "worktree",
+      "old_sha": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6",
+      "new_sha": "c8bb4d6f0b2f2d73c1dc047749a78a4a134615bd60a5d5ab2648097c49462624",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The actual PostgreSQL argv assertion and direct membership assertion both require the added V2-027 file while retaining prior arguments.",
+      "impact": "Coverage increases without changing times, permissions, or test selections.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "5493a9f15968127832091c52731afb557e065934d0d80f291b3212430971ca89",
+      "code": "TEST_LOGIC_CHANGED",
+      "path": "tests/contract/test_v2_020.py",
+      "layer": "index",
+      "old_sha": "8bdde0e8f84051ed41b99ddca831a586d4a1d1e29b3687b7bbdb112721681f2b",
+      "new_sha": "1513eea562768d36073808ae284c44d192dea12a8398c49e7267651560c3731a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The original commitment assertions retain the same recorded call-home observations alongside a distinct promise; one CLI argument list is factored without dropping its assertions and the rewrite adds a separate receipt variant.",
+      "impact": "Existing draft, failure and source identity checks are retained.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "8ff050b0928db2cd9bb65a97cfc7b14891afdba145bf0e2690c68290e4da4c05",
+      "code": "TEST_ASSERTION_CHANGED",
+      "path": "tests/contract/test_v2_020.py",
+      "layer": "index",
+      "old_sha": "8bdde0e8f84051ed41b99ddca831a586d4a1d1e29b3687b7bbdb112721681f2b",
+      "new_sha": "1513eea562768d36073808ae284c44d192dea12a8398c49e7267651560c3731a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The original commitment assertions retain the same recorded call-home observations alongside a distinct promise; one CLI argument list is factored without dropping its assertions and the rewrite adds a separate receipt variant.",
+      "impact": "Existing draft, failure and source identity checks are retained.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "965451687d7c5cc8ee6c6bd8c6d7536468913fcbbef501511b96bc0dd4266111",
+      "code": "TEST_LOGIC_CHANGED",
+      "path": "tests/contract/test_v2_020.py",
+      "layer": "worktree",
+      "old_sha": "8bdde0e8f84051ed41b99ddca831a586d4a1d1e29b3687b7bbdb112721681f2b",
+      "new_sha": "1513eea562768d36073808ae284c44d192dea12a8398c49e7267651560c3731a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The original commitment assertions retain the same recorded call-home observations alongside a distinct promise; one CLI argument list is factored without dropping its assertions and the rewrite adds a separate receipt variant.",
+      "impact": "Existing draft, failure and source identity checks are retained.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "e5a8bf8cf1db5fa390a1411b71668f47a96b15f41004d6c1990d5f233bf808bc",
+      "code": "TEST_ASSERTION_CHANGED",
+      "path": "tests/contract/test_v2_020.py",
+      "layer": "worktree",
+      "old_sha": "8bdde0e8f84051ed41b99ddca831a586d4a1d1e29b3687b7bbdb112721681f2b",
+      "new_sha": "1513eea562768d36073808ae284c44d192dea12a8398c49e7267651560c3731a",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The original commitment assertions retain the same recorded call-home observations alongside a distinct promise; one CLI argument list is factored without dropping its assertions and the rewrite adds a separate receipt variant.",
+      "impact": "Existing draft, failure and source identity checks are retained.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "8475e961c4d2c80c9d0123b3f215b0fd621ee9e2cbf9440f197e94a5ab3b0928",
+      "code": "TEST_LOGIC_CHANGED",
+      "path": "tests/contract/test_v2_020_scene_generation.py",
+      "layer": "index",
+      "old_sha": "fbba5e87e792ffc8b947ebe919f58880cfbf65babfcf4b82e34a379b25c83b0f",
+      "new_sha": "f923c36c91ee47659fb9f7315eb4b1c6afece416c0fb44b269a22daf9ea42637",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The existing scene assertions are retained, adding the late-result and independently recompiled stale-input matrix.",
+      "impact": "Adds negative and positive coverage for each new recovery seam.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    },
+    {
+      "finding_id": "db6e32ad6da191832642434cbfb90a2f7ab088cb1eb4518875cc0104bd4d17cd",
+      "code": "TEST_LOGIC_CHANGED",
+      "path": "tests/contract/test_v2_020_scene_generation.py",
+      "layer": "worktree",
+      "old_sha": "fbba5e87e792ffc8b947ebe919f58880cfbf65babfcf4b82e34a379b25c83b0f",
+      "new_sha": "f923c36c91ee47659fb9f7315eb4b1c6afece416c0fb44b269a22daf9ea42637",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-027/authorization.txt",
+        "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+      },
+      "reason": "The existing scene assertions are retained, adding the late-result and independently recompiled stale-input matrix.",
+      "impact": "Adds negative and positive coverage for each new recovery seam.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare existing command, task and test assertions against the accepted baseline.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-027/CANDIDATE_COMPARISON.json",
+          "sha256": "60611c3501f924e3b5e9f3158ec9533544b6d91a74e0aad0b4af6b845d9ff6b9"
+        }
+      ]
+    }
+  ]
+}

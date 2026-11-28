@@ -137,6 +137,14 @@ CREATE TABLE IF NOT EXISTS written_draft_revisions (
     FOREIGN KEY (run_id) REFERENCES runs(run_id)
 )
 """
+_WRITTEN_DRAFT_CANCELLATION_SCHEMA = """
+CREATE TABLE written_draft_cancellations (
+    run_id TEXT NOT NULL,
+    writer_input_hash TEXT NOT NULL,
+    PRIMARY KEY (run_id, writer_input_hash),
+    FOREIGN KEY (run_id) REFERENCES runs(run_id)
+)
+"""
 _REVISION_Q0_SCHEMA = """
 CREATE TABLE IF NOT EXISTS revision_q0_executions (
     project TEXT NOT NULL,
@@ -372,7 +380,32 @@ def _request_binding(
     )
 
 
-def _transition(before: WorkflowSnapshot, after: WorkflowSnapshot) -> None:
+def _require_late_success(
+    before: WorkflowSnapshot | SceneGenerationSnapshot,
+    after: WorkflowSnapshot | SceneGenerationSnapshot,
+) -> None:
+    pending, success = before.result, after.result
+    if (
+        before.state != "UNKNOWN"
+        or pending is None
+        or pending.status != "UNKNOWN"
+        or pending.charge_status != "PENDING"
+        or pending.reply.error_code != "INTERRUPTED_AFTER_DISPATCH"
+        or pending.reply.response_hash is not None
+        or after.state != "DRAFT_SAVED"
+        or success is None
+        or success.status != "SUCCESS"
+        or success.replayed
+        or success.reply.response_hash is None
+        or success.started_at != pending.started_at
+        or success.reserved_microusd != pending.reserved_microusd
+    ):
+        raise WorkflowError("RECOVERY_LATE_SUCCESS_NOT_APPLICABLE")
+
+
+def _transition(
+    before: WorkflowSnapshot, after: WorkflowSnapshot, *, late_success: bool = False
+) -> None:
     if (before.project, before.branch, before.run_id) != (
         after.project,
         after.branch,
@@ -381,7 +414,9 @@ def _transition(before: WorkflowSnapshot, after: WorkflowSnapshot) -> None:
         raise WorkflowError("WORKFLOW_SCOPE_MISMATCH")
     if _request_binding(before) != _request_binding(after):
         raise WorkflowError("WORKFLOW_FROZEN_INPUT_CHANGED")
-    if after.state not in _TRANSITIONS[before.state]:
+    if late_success:
+        _require_late_success(before, after)
+    elif after.state not in _TRANSITIONS[before.state]:
         raise WorkflowError("INVALID_WORKFLOW_TRANSITION")
     if (
         before.state == "PREPARED"
@@ -391,7 +426,11 @@ def _transition(before: WorkflowSnapshot, after: WorkflowSnapshot) -> None:
         raise WorkflowError("INVALID_WORKFLOW_TRANSITION")
     if before.state == "BLOCKED" and before.result_bytes is not None:
         raise WorkflowError("WORKFLOW_RESULT_ALREADY_RETAINED")
-    if before.result_bytes is not None and after.result_bytes != before.result_bytes:
+    if (
+        not late_success
+        and before.result_bytes is not None
+        and after.result_bytes != before.result_bytes
+    ):
         raise WorkflowError("WORKFLOW_RESULT_CHANGED")
     if after.revision not in {before.revision, before.revision + 1}:
         raise WorkflowError("INVALID_DRAFT_REVISION")
@@ -496,14 +535,19 @@ def _scene_binding(
 
 
 def _scene_transition(
-    before: SceneGenerationSnapshot, after: SceneGenerationSnapshot
+    before: SceneGenerationSnapshot,
+    after: SceneGenerationSnapshot,
+    *,
+    late_success: bool = False,
 ) -> None:
     if _scene_binding(before) != _scene_binding(after) or (
         before.run_id,
         before.step_id,
     ) != (after.run_id, after.step_id):
         raise WorkflowError("SCENE_GENERATION_CONFLICT")
-    if after.state not in _SCENE_TRANSITIONS[before.state]:
+    if late_success:
+        _require_late_success(before, after)
+    elif after.state not in _SCENE_TRANSITIONS[before.state]:
         raise WorkflowError("INVALID_SCENE_GENERATION_TRANSITION")
     if (
         before.state == "PREPARED"
@@ -517,7 +561,11 @@ def _scene_transition(
         and after.state != "STALE_SOURCE"
     ):
         raise WorkflowError("SCENE_GENERATION_RESULT_ALREADY_RETAINED")
-    if before.result_bytes is not None and before.result_bytes != after.result_bytes:
+    if (
+        not late_success
+        and before.result_bytes is not None
+        and before.result_bytes != after.result_bytes
+    ):
         raise WorkflowError("SCENE_GENERATION_RESULT_CHANGED")
 
 
@@ -560,6 +608,7 @@ class WorkflowStore:
                     "SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'"
                 ).fetchall()
                 names = {row["name"] for row in tables}
+                names.discard("written_draft_cancellations")
                 if "written_draft_revisions" in names:
                     if "runs" not in names:
                         raise WorkflowError("INVALID_WORKFLOW_STORE_SCHEMA")
@@ -715,6 +764,7 @@ class WorkflowStore:
                 self._q3_table(connection, create=False)
                 self._chapter_revision_table(connection, create=False)
                 self._written_draft_table(connection, create=False)
+                self._written_draft_cancellation_table(connection, create=False)
                 self._revision_q0_table(connection, create=False)
                 self._revision_q123_table(connection, create=False)
         except WorkflowError:
@@ -750,11 +800,13 @@ class WorkflowStore:
             _private_file(info)
 
     @contextmanager
-    def _connection(self) -> Iterator[sqlite3.Connection]:
+    def _connection(self, *, timeout: float = 0) -> Iterator[sqlite3.Connection]:
         connection: sqlite3.Connection | None = None
         try:
             self._verify()
-            connection = sqlite3.connect(self.path, timeout=0, isolation_level=None)
+            connection = sqlite3.connect(
+                self.path, timeout=timeout, isolation_level=None
+            )
             connection.row_factory = sqlite3.Row
             connection.execute("PRAGMA foreign_keys=ON")
             connection.execute("PRAGMA synchronous=FULL")
@@ -770,8 +822,8 @@ class WorkflowStore:
                 connection.close()
 
     @contextmanager
-    def _transaction(self) -> Iterator[sqlite3.Connection]:
-        with self._connection() as connection:
+    def _transaction(self, *, timeout: float = 0) -> Iterator[sqlite3.Connection]:
+        with self._connection(timeout=timeout) as connection:
             try:
                 connection.execute("BEGIN IMMEDIATE")
                 yield connection
@@ -911,9 +963,19 @@ class WorkflowStore:
     def publish(
         self, before: WorkflowSnapshot, after: WorkflowSnapshot
     ) -> WorkflowSnapshot:
+        return self._publish_run(before, after, late_success=False)
+
+    def publish_late_success(
+        self, before: WorkflowSnapshot, after: WorkflowSnapshot
+    ) -> WorkflowSnapshot:
+        return self._publish_run(before, after, late_success=True)
+
+    def _publish_run(
+        self, before: WorkflowSnapshot, after: WorkflowSnapshot, *, late_success: bool
+    ) -> WorkflowSnapshot:
         before, _, expected_hash = _snapshot(before)
         after, raw, value_hash = _snapshot(after)
-        _transition(before, after)
+        _transition(before, after, late_success=late_success)
         with self._transaction() as connection:
             row: sqlite3.Row | None = connection.execute(
                 "SELECT * FROM runs WHERE project=? AND branch=? AND run_id=?",
@@ -1004,10 +1066,33 @@ class WorkflowStore:
         *,
         expected_parent_hash: str,
     ) -> SceneGenerationSnapshot:
+        return self._publish_scene(
+            before, after, expected_parent_hash=expected_parent_hash, late_success=False
+        )
+
+    def publish_scene_late_success(
+        self,
+        before: SceneGenerationSnapshot,
+        after: SceneGenerationSnapshot,
+        *,
+        expected_parent_hash: str,
+    ) -> SceneGenerationSnapshot:
+        return self._publish_scene(
+            before, after, expected_parent_hash=expected_parent_hash, late_success=True
+        )
+
+    def _publish_scene(
+        self,
+        before: SceneGenerationSnapshot,
+        after: SceneGenerationSnapshot,
+        *,
+        expected_parent_hash: str,
+        late_success: bool,
+    ) -> SceneGenerationSnapshot:
         before, _, expected_hash = _scene_snapshot(before)
         after, raw, value_hash = _scene_snapshot(after)
         _scene_hash(expected_parent_hash)
-        _scene_transition(before, after)
+        _scene_transition(before, after, late_success=late_success)
         with self._transaction() as connection:
             parent = self._scene_parent(
                 connection, before.project, before.branch, before.run_id
@@ -1577,6 +1662,54 @@ class WorkflowStore:
                 raise WorkflowError("CHAPTER_REVISION_UNAVAILABLE")
             return self._decode_chapter_revision(connection, scope, selected)
 
+    def load_retained_root_observation(
+        self,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        chapter_id: EntityId,
+        source_revision_hash: str,
+        retained_step_id: str | None = None,
+    ) -> ExtractionObservation:
+        """Find the original root of a saved Draft by its immutable source hash."""
+        from anovel.domain.identity import EntityId
+
+        if type(chapter_id) is not EntityId or chapter_id.project != project:
+            raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
+        scope = _identity(project, branch, chapter_id.local_id)
+        _scene_hash(source_revision_hash)
+        with self._connection() as connection:
+            connection.execute("BEGIN")
+            if self._chapter_revision_table(connection, create=False):
+                rows = connection.execute(
+                    "SELECT version FROM chapter_revisions "
+                    "WHERE project=? AND branch=? AND chapter_id=? AND run_id=? AND payload_hash=? LIMIT 2",
+                    (*scope, run_id, source_revision_hash),
+                ).fetchall()
+                if rows:
+                    if len(rows) != 1:
+                        raise WorkflowError("CORRUPT_CHAPTER_REVISION")
+                    self._chapter_revision_lineage(connection, scope)
+                    _, observation = self._chapter_revision_with_observation(
+                        connection, scope, rows[0]["version"]
+                    )
+                    return observation
+            if self._extraction_table(connection, create=False):
+                rows = connection.execute(
+                    "SELECT * FROM extraction_observations "
+                    "WHERE project=? AND branch=? AND run_id=? AND payload_hash=? LIMIT 2",
+                    (project, branch, run_id, source_revision_hash),
+                ).fetchall()
+                if len(rows) == 1:
+                    observation = self._decode_extraction(rows[0])
+                    if observation.chapter_id == chapter_id and (
+                        retained_step_id is None
+                        or observation.step_id == retained_step_id
+                    ):
+                        return observation
+        raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
+
     @staticmethod
     def _written_draft_table(connection: sqlite3.Connection, *, create: bool) -> bool:
         exists = connection.execute(
@@ -1716,14 +1849,19 @@ class WorkflowStore:
         branch: str,
         chapter_id: EntityId,
         version: int | None = None,
+        revision_hash: str | None = None,
     ) -> WrittenDraftRevision:
-        """Read the requested revision or the current head of a local Draft."""
+        """Read the exact version, exact hash, or current head of a local Draft."""
         from anovel.domain.identity import EntityId
 
         if type(chapter_id) is not EntityId or chapter_id.project != project:
             raise WorkflowError("WRITTEN_DRAFT_UNAVAILABLE")
         if version is not None and (type(version) is not int or version < 1):
             raise WorkflowError("INVALID_WRITTEN_DRAFT")
+        if revision_hash is not None:
+            if version is not None:
+                raise WorkflowError("INVALID_WRITTEN_DRAFT")
+            _scene_hash(revision_hash)
         scope = _identity(project, branch, chapter_id.local_id)
         with self._connection() as connection:
             connection.execute("BEGIN")
@@ -1731,7 +1869,11 @@ class WorkflowStore:
                 raise WorkflowError("WRITTEN_DRAFT_UNAVAILABLE")
             selected = None
             for revision in self._written_draft_lineage(connection, scope):
-                if version is None or revision.version == version:
+                if (
+                    revision.record_hash == revision_hash
+                    if revision_hash is not None
+                    else version is None or revision.version == version
+                ):
                     selected = revision
             if selected is None:
                 raise WorkflowError("WRITTEN_DRAFT_UNAVAILABLE")
@@ -1774,7 +1916,7 @@ class WorkflowStore:
         raw = revision.payload_bytes()
         saved = WrittenDraftRevision.from_bytes(raw)
         scope = _identity(saved.project, saved.branch, saved.chapter_id.local_id)
-        with self._transaction() as connection:
+        with self._transaction(timeout=5) as connection:
             self._written_draft_table(connection, create=True)
             if (
                 connection.execute(
@@ -1812,6 +1954,10 @@ class WorkflowStore:
                 if existing.payload_bytes() != raw:
                     raise WorkflowError("WRITTEN_DRAFT_REVISION_CONFLICT")
                 return existing
+            if prior is None or rewrite:
+                self._require_written_draft_active(
+                    connection, saved.run_id, saved.writer_input_hash
+                )
             connection.execute(
                 "INSERT INTO written_draft_revisions "
                 "(project, branch, chapter_id, version, run_id, previous_revision_hash, payload, payload_hash) "
@@ -1819,6 +1965,81 @@ class WorkflowStore:
                 (*scope, saved.version, saved.run_id, expected, raw, saved.record_hash),
             )
             return saved
+
+    @staticmethod
+    def _written_draft_cancellation_table(
+        connection: sqlite3.Connection, *, create: bool
+    ) -> bool:
+        columns = connection.execute(
+            "PRAGMA table_info(written_draft_cancellations)"
+        ).fetchall()
+        if not columns:
+            if not create:
+                return False
+            connection.execute(_WRITTEN_DRAFT_CANCELLATION_SCHEMA)
+            return True
+        foreign = connection.execute(
+            "PRAGMA foreign_key_list(written_draft_cancellations)"
+        ).fetchall()
+        if [
+            (row["name"], row["type"].upper(), row["pk"], row["notnull"])
+            for row in columns
+        ] != [("run_id", "TEXT", 1, 1), ("writer_input_hash", "TEXT", 2, 1)] or [
+            (row["table"], row["from"], row["to"]) for row in foreign
+        ] != [("runs", "run_id", "run_id")]:
+            raise WorkflowError("INVALID_WRITTEN_DRAFT_CANCELLATION_SCHEMA")
+        return True
+
+    @classmethod
+    def _require_written_draft_active(
+        cls, connection: sqlite3.Connection, run_id: str, writer_input_hash: str
+    ) -> None:
+        if cls._written_draft_cancellation_table(connection, create=False) and (
+            connection.execute(
+                "SELECT 1 FROM written_draft_cancellations WHERE run_id=? AND writer_input_hash=?",
+                (run_id, writer_input_hash),
+            ).fetchone()
+            is not None
+        ):
+            raise WorkflowError("NEXT_CHAPTER_WRITE_CANCELLED")
+
+    def require_written_draft_active(self, run_id: str, writer_input_hash: str) -> None:
+        with self._connection(timeout=5) as connection:
+            self._require_written_draft_active(connection, run_id, writer_input_hash)
+
+    def cancel_written_draft(
+        self,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        chapter_id: EntityId,
+        writer_input_hash: str,
+    ) -> str | None:
+        """Serialize cancellation against Draft publication; return a winning revision."""
+        scope = _identity(project, branch, chapter_id.local_id)
+        with self._transaction(timeout=5) as connection:
+            if (
+                connection.execute(
+                    "SELECT 1 FROM runs WHERE project=? AND branch=? AND run_id=?",
+                    _identity(project, branch, run_id),
+                ).fetchone()
+                is None
+            ):
+                raise WorkflowError("WORKFLOW_RUN_UNAVAILABLE")
+            if self._written_draft_table(connection, create=False):
+                for revision in self._written_draft_lineage(connection, scope):
+                    if (
+                        revision.run_id == run_id
+                        and revision.writer_input_hash == writer_input_hash
+                    ):
+                        return revision.record_hash
+            self._written_draft_cancellation_table(connection, create=True)
+            connection.execute(
+                "INSERT INTO written_draft_cancellations VALUES (?,?) ON CONFLICT DO NOTHING",
+                (run_id, writer_input_hash),
+            )
+            return None
 
     @staticmethod
     def _revision_q0_table(connection: sqlite3.Connection, *, create: bool) -> bool:

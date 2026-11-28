@@ -103,6 +103,49 @@ def _require_gateway_schema(connection: sqlite3.Connection) -> None:
             raise WorkflowError("INVALID_GATEWAY_LEDGER")
 
 
+def _gateway_ledger_path(path: Path, store: WorkflowStore) -> Path:
+    info = path.lstat()
+    candidate = path.resolve(strict=True)
+    database = store.path.resolve()
+    identity = unicodedata.normalize("NFC", str(candidate)).casefold()
+    reserved = {
+        unicodedata.normalize(
+            "NFC", str(database.with_name(database.name + s))
+        ).casefold()
+        for s in ("", "-wal", "-shm", "-journal")
+    }
+    lock = unicodedata.normalize("NFC", str(store.lock_directory.resolve())).casefold()
+    if (
+        not stat.S_ISREG(info.st_mode)
+        or info.st_nlink != 1
+        or info.st_uid != os.getuid()
+        or identity in reserved
+        or identity == lock
+        or identity.startswith(lock + os.sep)
+        or os.path.samefile(candidate, database)
+    ):
+        raise WorkflowError("INVALID_GATEWAY_LEDGER")
+    return candidate
+
+
+def _gateway_limit(
+    connection: sqlite3.Connection, saved: WorkflowSnapshot
+) -> BudgetLimit:
+    row = connection.execute(
+        "SELECT limit_record FROM budgets WHERE run_id=?", (saved.run_id,)
+    ).fetchone()
+    if row is None:
+        raise WorkflowError("GATEWAY_LEDGER_RUN_UNAVAILABLE")
+    budget = BudgetLimit.from_dict(decode_canonical(row["limit_record"]))
+    if (budget.project, budget.branch, budget.run_id) != (
+        saved.project,
+        saved.branch,
+        saved.run_id,
+    ):
+        raise WorkflowError("GATEWAY_SCOPE_MISMATCH")
+    return budget
+
+
 def existing_gateway_ledger(
     path: Path, store: WorkflowStore, saved: WorkflowSnapshot
 ) -> Path:
@@ -113,44 +156,11 @@ def existing_gateway_ledger(
     """
     connection: sqlite3.Connection | None = None
     try:
-        info = path.lstat()
-        candidate = path.resolve(strict=True)
-        database = store.path.resolve()
-        identity = unicodedata.normalize("NFC", str(candidate)).casefold()
-        reserved = {
-            unicodedata.normalize(
-                "NFC", str(database.with_name(database.name + s))
-            ).casefold()
-            for s in ("", "-wal", "-shm", "-journal")
-        }
-        lock = unicodedata.normalize(
-            "NFC", str(store.lock_directory.resolve())
-        ).casefold()
-        if (
-            not stat.S_ISREG(info.st_mode)
-            or info.st_nlink != 1
-            or info.st_uid != os.getuid()
-            or identity in reserved
-            or identity == lock
-            or identity.startswith(lock + os.sep)
-            or os.path.samefile(candidate, database)
-        ):
-            raise WorkflowError("INVALID_GATEWAY_LEDGER")
+        candidate = _gateway_ledger_path(path, store)
         connection = sqlite3.connect(candidate.as_uri() + "?mode=ro", uri=True)
         connection.row_factory = sqlite3.Row
         _require_gateway_schema(connection)
-        row = connection.execute(
-            "SELECT limit_record FROM budgets WHERE run_id=?", (saved.run_id,)
-        ).fetchone()
-        if row is None:
-            raise WorkflowError("GATEWAY_LEDGER_RUN_UNAVAILABLE")
-        budget = BudgetLimit.from_dict(decode_canonical(row["limit_record"]))
-        if (budget.project, budget.branch, budget.run_id) != (
-            saved.project,
-            saved.branch,
-            saved.run_id,
-        ):
-            raise WorkflowError("GATEWAY_SCOPE_MISMATCH")
+        _gateway_limit(connection, saved)
         attempt = connection.execute(
             "SELECT logical_id,request_record,policy_record FROM attempts WHERE run_id=? AND attempt_id=?",
             (saved.run_id, saved.attempt_id),
@@ -357,6 +367,129 @@ def read_kimi_writer_receipt(
 def _parent_result_bytes(result: GatewayResult) -> bytes:
     # A replay is an observation of the same original result, not a new receipt.
     return replace(result, replayed=False).to_bytes()
+
+
+def _checkpoint_attempt_result(
+    connection: sqlite3.Connection,
+    checkpoint: WorkflowSnapshot | SceneGenerationSnapshot,
+) -> GatewayResult | None:
+    request = checkpoint.request
+    policy = next(p for p in request.policies if p.id == checkpoint.policy_id)
+    row = connection.execute(
+        "SELECT logical_id,request_record,policy_record,state,result_record "
+        "FROM attempts WHERE run_id=? AND attempt_id=?",
+        (checkpoint.run_id, checkpoint.attempt_id),
+    ).fetchone()
+    if row is None:
+        return None
+    if (
+        row["logical_id"] != request.logical_id
+        or row["request_record"] != checkpoint.request_bytes
+        or row["policy_record"] != policy.to_bytes()
+    ):
+        raise WorkflowError("GATEWAY_REQUEST_BINDING_MISMATCH")
+    raw = row["result_record"]
+    if raw is None and row["state"] in {"PREPARED", "DISPATCHED", "CANCELLED"}:
+        return None
+    if row["state"] != "FINISHED" or type(raw) is not bytes:
+        raise WorkflowError("RECOVERY_LEDGER_RESULT_INVALID")
+    result = GatewayResult.from_dict(decode_canonical(raw))
+    if (
+        result.to_bytes() != raw
+        or result.replayed
+        or (
+            result.project,
+            result.branch,
+            result.run_id,
+            result.logical_id,
+            result.attempt_id,
+            result.request_hash,
+            result.policy_hash,
+        )
+        != (
+            request.project,
+            request.branch,
+            request.run_id,
+            request.logical_id,
+            checkpoint.attempt_id,
+            request.content_hash,
+            policy.content_hash,
+        )
+    ):
+        raise WorkflowError("RECOVERY_LEDGER_RESULT_MISMATCH")
+    return result
+
+
+def _checkpoint_sidecars(path: Path) -> dict[str, tuple[Path, int, int]]:
+    files = {}
+    for suffix in ("-wal", "-shm", "-journal"):
+        try:
+            files[suffix] = _scene_file_identity(path.with_name(path.name + suffix))
+        except FileNotFoundError:
+            continue
+    if files.keys() not in (set(), {"-wal", "-shm"}):
+        raise WorkflowError("RECOVERY_LEDGER_NOT_STABLE")
+    return files
+
+
+def read_checkpoint_attempt(
+    path: Path,
+    store: WorkflowStore,
+    source: WorkflowSnapshot,
+    child: SceneGenerationSnapshot | None = None,
+) -> GatewayResult | None:
+    """Read only the exact attempt; never create a ledger or recover a dispatch."""
+    connection: sqlite3.Connection | None = None
+    try:
+        candidate = _gateway_ledger_path(path, store)
+        identity = _scene_file_identity(path)
+        if identity[0] != candidate:
+            raise WorkflowError("RECOVERY_LEDGER_NOT_STABLE")
+        info = candidate.stat()
+        sidecars = _checkpoint_sidecars(candidate)
+        if child is not None and identity != (
+            Path(child.ledger_pin.path),
+            child.ledger_pin.device,
+            child.ledger_pin.inode,
+        ):
+            raise WorkflowError("SCENE_LEDGER_PIN_CHANGED")
+
+        query = "?mode=ro" if sidecars else "?mode=ro&immutable=1"
+        connection = sqlite3.connect(candidate.as_uri() + query, uri=True)
+        connection.row_factory = sqlite3.Row
+        connection.execute("BEGIN")
+        _require_gateway_schema(connection)
+        limit = _gateway_limit(connection, source)
+        if child is None:
+            result = _checkpoint_attempt_result(connection, source)
+        else:
+            parent = _checkpoint_attempt_result(connection, source)
+            if parent is None or source.result is None:
+                raise WorkflowError("SCENE_PARENT_RECEIPT_UNAVAILABLE")
+            normalized = _parent_result_bytes(parent)
+            if normalized != _parent_result_bytes(source.result):
+                raise WorkflowError("SCENE_PARENT_RECEIPT_MISMATCH")
+            if (
+                limit.to_bytes() != child.ledger_pin.limit_bytes
+                or sha256(normalized).hexdigest() != child.ledger_pin.parent_result_hash
+            ):
+                raise WorkflowError("SCENE_LEDGER_PIN_CHANGED")
+            result = _checkpoint_attempt_result(connection, child)
+        actual = candidate.stat()
+        if (
+            _scene_file_identity(path) != identity
+            or _checkpoint_sidecars(candidate) != sidecars
+            or (actual.st_mtime_ns, actual.st_size) != (info.st_mtime_ns, info.st_size)
+        ):
+            raise WorkflowError("RECOVERY_LEDGER_NOT_STABLE")
+        return result
+    except WorkflowError:
+        raise
+    except (OSError, ValueError, TypeError, sqlite3.Error, RuntimeError, StopIteration):
+        raise WorkflowError("INVALID_GATEWAY_LEDGER") from None
+    finally:
+        if connection is not None:
+            connection.close()
 
 
 def _child_policy(

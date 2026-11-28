@@ -1,0 +1,133 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-027
+plan_version: 1.3.0
+repository_revision: 97054449bf9c3995113651713cb8d09b25405696
+worktree_dirty: false
+plan_manifest_sha256: 3ab23173e5918340d11929a5f3525e1b01cf903074fed1d8e7d4ef8c0ca0fcc4
+environment:
+  fingerprint: Locked Python 3.12.14, local SQLite and disposable PostgreSQL; ordinary
+    CI candidate.
+  runtime_versions:
+    python: 3.12.14
+  database_image: null
+  ci_context: null
+implementer: Codex
+verifier: Codex, same implementation and verification operator
+owner_role: workflow-maintainer
+scope: V2-027 恢复、取消、检查点失效、留存 DRAFT 和隔离 PostgreSQL 的五项验收。
+action: IMPLEMENT
+inputs:
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-027/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: 02_ARCHITECTURE_BASELINE.md
+  ref: validation/execution/V2-027/inputs/14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0.txt
+  sha256: 14f3d21a074c3a498643376b7d66339bb7fe8c16ee0c3277aab3dde8b063caf0
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-027/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-027/inputs/00c00db0e59a848293c27f221c2566a2b779d5c1e85d159f7a4868edcee032bf.txt
+  sha256: 00c00db0e59a848293c27f221c2566a2b779d5c1e85d159f7a4868edcee032bf
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-027/inputs/26b1b53fd349c6a2a4c72c0577318ef272933d0c63bb08eff47ad10b93c500cf.txt
+  sha256: 26b1b53fd349c6a2a4c72c0577318ef272933d0c63bb08eff47ad10b93c500cf
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-027/inputs/e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c.txt
+  sha256: e1c4c301ab1e7391e9580cab85e8c7620251a41d8a8975ad2b3592043a11bf6c
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-027/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-027/inputs/4908e42eace48572ee85e22093ae4ed242fddb75ce6490d660c9ceca913899e8.txt
+  sha256: 4908e42eace48572ee85e22093ae4ed242fddb75ce6490d660c9ceca913899e8
+- source_ref: decisions/ADR-010_PROVIDER_BUDGET_AND_REQUEST_IDENTITY.md
+  ref: validation/execution/V2-027/inputs/2f9d5adcffff7733618b22a85089e299b1e560457e6e3221008f39e5bcf537bb.txt
+  sha256: 2f9d5adcffff7733618b22a85089e299b1e560457e6e3221008f39e5bcf537bb
+expected_outputs:
+- src/anovel/workflow/recovery.py
+- tests/integration/test_v2_027.py
+- plan/validation/execution/V2-027/LOCAL_WORKFLOW.md
+allowed_paths:
+- src/anovel/workflow/__main__.py
+- src/anovel/workflow/chapter.py
+- src/anovel/workflow/gateway_binding.py
+- src/anovel/workflow/interfaces.py
+- src/anovel/workflow/recovery.py
+- src/anovel/workflow/store.py
+- src/anovel/canon/commit_service.py
+- src/anovel/canon/models.py
+- src/anovel/canon/repository.py
+- tests/contract/test_v2_020.py
+- tests/contract/test_v2_020_scene_generation.py
+- tests/integration/test_v2_027.py
+- plan/validation/execution/V2-027/LOCAL_WORKFLOW.md
+- plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/run_chapter.py
+- plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/run_openai_chapter.py
+- plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/writer_authorization.py
+- plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/test_writer_dispatch.py
+- scripts/ci/run_gate.py
+- tests/contract/test_delivery_gates.py
+- plan/machine/implementation-backlog.yaml
+- plan/machine/test-catalog.yaml
+- plan/generated/PHASE_TASK_REGISTRY.md
+- plan/FILE_MANIFEST.json
+- plan/validation/execution/V2-027/
+- plan/validation/execution/V2-020/closure-20261128/
+required_decisions:
+- ADR-010
+claims:
+- id: V027_ACCEPTED_PREREQUISITES
+  kind: FACT
+  statement: V2-020 的认证候选和 P5 验收已核对；保留原依赖与启动门禁。
+  sources:
+  - ref: validation/execution/V2-020/closure-20261128/ACCEPTANCE_SUMMARY.md
+    sha256: d3601d66f1d0aab56bcd734618cc3cec8659ae1ffb12181cbfa45ef2247a56d6
+  - ref: validation/execution/P5/closure-20261127/P5-decision.yaml
+    sha256: 53eb86a3c57f630094647231103210f9892f3e8f86cc14aa5617f1b774fa3523
+  blocks_actions: []
+  verification_plan: 核对前置记录与本候选机器任务表。
+- id: V027_LOCAL_RECOVERY_EVIDENCE
+  kind: FACT
+  statement: 日常本地 DRAFT 工作区已验证五项恢复场景，隔离候选按相同入口复跑。
+  sources:
+  - ref: validation/execution/V2-027/LOCAL_WORKFLOW.md
+    sha256: 3c7726f5a5eb2bbe6d64bd3bba8d61db1d24bc130d3d73479956920010bf97ef
+  blocks_actions: []
+  verification_plan: 核对候选的 Writer、续场、已有集成服务及常规 CI。
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - 复用既有常规 CI 和锁定依赖。
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- 冻结输入或证据不匹配时停止相应恢复。
+- 实际 Provider、生产 Canon 和自动发表均不在本轮测试范围内。
+review_notes:
+- 保留原五项验收、必跑检查和阶段顺序。
+- 只携带 V2-027 产品与回归及已通过的 V2-020 结项记录。
+- 续章恢复保留既有交接格式的兼容校验与历史版本原句。
+handoff:
+  current_step: 核对从已验收基线整理的 V2-027 候选。
+  completed_steps:
+  - 已读回 V2-020/G-P5 验收及 V2-027 的日常本地测试。
+  pending_items:
+  - 用隔离候选复跑必要回归，完成同候选常规 CI 核对。
+  next_action: IMPLEMENT
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-027/LOCAL_WORKFLOW.md
+      sha256: 3c7726f5a5eb2bbe6d64bd3bba8d61db1d24bc130d3d73479956920010bf97ef
+    missing_artifact_reason: null
+change_review:
+  scope_revision: 8cae7bd77a873c970488eccebc2bae10b5e15fbd
+  scope_ref: plan/validation/execution/V2-027/scope.json

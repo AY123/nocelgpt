@@ -1,0 +1,169 @@
+{
+  "revision": "97054449bf9c3995113651713cb8d09b25405696",
+  "files": [
+    {
+      "ref": ".github/workflows/v2-004.yml",
+      "sha256": "147fe4f9c1331f3564a989ad1e0b8ab44e70a637be727b1c7aec1163aa296e4a"
+    },
+    {
+      "ref": "plan/validation/execution/V2-020/execution-packet.yaml",
+      "sha256": "26bce00ce84e147babc71e9e9368f55426bae063458b701c5913889cf5314995"
+    },
+    {
+      "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/review.json",
+      "sha256": "f7fe2163d399e2dc3d8d95d0579c298e6ff6a5e9283af22c06909da9ed9515af"
+    },
+    {
+      "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/scope.json",
+      "sha256": "8a8ed7ecae33c4a6de1719f378c1efe6afc204ef68eb4320ab3462253a59c17e"
+    },
+    {
+      "ref": "pyproject.toml",
+      "sha256": "9c46c3559cadb699630ba600126fe286603ef642863c78f9b334b768fd0bc42a"
+    },
+    {
+      "ref": "scripts/ci/run_gate.py",
+      "sha256": "a5a50c4c2087eff2cd85fa8a4daffcf8a7154b73f22ef72554f2a4637d46c220"
+    },
+    {
+      "ref": "src/anovel/quality/__init__.py",
+      "sha256": "032e31ce9b16a7eed7a9306216405d4c877ff741d89992eb5721321c35d7f083"
+    },
+    {
+      "ref": "src/anovel/quality/q0.py",
+      "sha256": "da39e8a4f47dd40f5a7439918b812a815ee9135a8d8fd5d3e66f27df7cb15c07"
+    },
+    {
+      "ref": "src/anovel/quality/q1.py",
+      "sha256": "aafb1bb26480c155046ede5a52336df1212212d978cbb3b0c3ad26674bed17bc"
+    },
+    {
+      "ref": "src/anovel/quality/q2.py",
+      "sha256": "d6ce494f3d77ed5444e476cfcef8719b8adf7f5c225936c2291e26441a96ce7f"
+    },
+    {
+      "ref": "src/anovel/quality/q3.py",
+      "sha256": "2008d8c5e26b0529e2ffc5f7bf960f10391fd3f72c3e4464d16ae6dd17c93733"
+    },
+    {
+      "ref": "src/anovel/quality/revision_q0.py",
+      "sha256": "ef2682313577e037542baf3533ade51440164efab19f4fde8534787dff668c99"
+    },
+    {
+      "ref": "src/anovel/quality/revision_q123.py",
+      "sha256": "d250d1ce15b47f4275f5d92c24875fd584503eb5ff5ba7bcb5c638333bd2de98"
+    },
+    {
+      "ref": "src/anovel/workflow/__init__.py",
+      "sha256": "b41008f7f5440bfffecb9767d69f9d030c347c6e02c7ca25019ce496574331ba"
+    },
+    {
+      "ref": "src/anovel/workflow/__main__.py",
+      "sha256": "a57b45d778ae45341555faac355ed35eb5db6f78377209e49e88691657a046f9"
+    },
+    {
+      "ref": "src/anovel/workflow/assembly.py",
+      "sha256": "8c65055fb5a63e9ad52985ed210e5fd467769a45850ce72794f68de62e7e8cca"
+    },
+    {
+      "ref": "src/anovel/workflow/assembly_io.py",
+      "sha256": "091a5aca32a75f2dafc1c49f563e725a2acd732443c4ead68ab6eb62b3c71c85"
+    },
+    {
+      "ref": "src/anovel/workflow/candidate_control.py",
+      "sha256": "55a75e62713bcf268005163f1ffb038bd36e4b0817dad56a15f1676f306003f4"
+    },
+    {
+      "ref": "src/anovel/workflow/chapter.py",
+      "sha256": "dfc1c06e6ebacb016f9f4fcb17102310acc9c1e4403167049a75799259fb2a13"
+    },
+    {
+      "ref": "src/anovel/workflow/chapter_revision.py",
+      "sha256": "ba48530fe2aed64b0176682a1b23f2ac08313ac3cae2ae81cffaf425827fffe3"
+    },
+    {
+      "ref": "src/anovel/workflow/extractor.py",
+      "sha256": "0f7e1e98c0ff17321bb440e9eb560d516fa1dacdef3a7e787dfcddc989776ff9"
+    },
+    {
+      "ref": "src/anovel/workflow/gateway_binding.py",
+      "sha256": "d4eedb2dff7036771a70ba485a60b5c1cf06897a83f462cd71c3e48a5b7a83b0"
+    },
+    {
+      "ref": "src/anovel/workflow/generation.py",
+      "sha256": "2a73d395065e5f3309e6e4cb4e37a6181a6e540f4cb9b1e7be39fd42b8003110"
+    },
+    {
+      "ref": "src/anovel/workflow/interfaces.py",
+      "sha256": "0fbceadaedd9dc2e5252fe27a69232facf99d20094c722f6d87e05312b27e1db"
+    },
+    {
+      "ref": "src/anovel/workflow/ledger_pin.py",
+      "sha256": "d5b5a2e93a26b7bc04a2160e139d8b26ccb7c28e376300ba357a0bd45bb4d7c0"
+    },
+    {
+      "ref": "src/anovel/workflow/models.py",
+      "sha256": "dfb58e26d8d34e302e1b0db9947cd1362c6249f99e2a7eb6f31b7b045740faa3"
+    },
+    {
+      "ref": "src/anovel/workflow/openai_settings.py",
+      "sha256": "5ac25a8767c053b51241b3dd74248b3a3c9e15fd10caf436956df77c386ffe03"
+    },
+    {
+      "ref": "src/anovel/workflow/run.py",
+      "sha256": "ff7cc419bc58d186acfdec2bdb480fcde4dc516bbe1338c746c93f990fdba9e4"
+    },
+    {
+      "ref": "src/anovel/workflow/run_observer.py",
+      "sha256": "9e48f27c9c1f277d39260a87f672db600186b479ce2261ac95b05b0c82f5b9a8"
+    },
+    {
+      "ref": "src/anovel/workflow/scene.py",
+      "sha256": "dfab0f515a78db340fd603eeb064d882bbc3501ae3401b4db9817dc011fd4fc9"
+    },
+    {
+      "ref": "src/anovel/workflow/store.py",
+      "sha256": "b729f38fe896684b74c27b3cf57c47afdf4ac5aeefcd96a2c589a2624010abef"
+    },
+    {
+      "ref": "src/anovel/workflow/written_draft.py",
+      "sha256": "5757352360dadcb9da2ec2e609340359821299be5bb9b21ee11b87231f53a693"
+    },
+    {
+      "ref": "tests/contract/test_delivery_gates.py",
+      "sha256": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6"
+    },
+    {
+      "ref": "tests/contract/test_v2_019_probe_dispatch.py",
+      "sha256": "c06c266cc27c1cf2cf607aa57891deec1825aa1df78c162015c2712a24dc2380"
+    },
+    {
+      "ref": "tests/contract/test_v2_020.py",
+      "sha256": "8bdde0e8f84051ed41b99ddca831a586d4a1d1e29b3687b7bbdb112721681f2b"
+    },
+    {
+      "ref": "tests/contract/test_v2_020_assembly.py",
+      "sha256": "9209783aae289cc1bebf37513e4899fb9283c67221b92e7e56e0dcbe95e23437"
+    },
+    {
+      "ref": "tests/contract/test_v2_020_run.py",
+      "sha256": "f37b818e4b055097edf9361e4be1cb05609557128d3e848a649c73380c53a0ff"
+    },
+    {
+      "ref": "tests/contract/test_v2_020_scene.py",
+      "sha256": "3cb4c92b71ecdff9eb8ef131b69204e2bcdcf732a259ed58a11b0ed7ca2474e4"
+    },
+    {
+      "ref": "tests/contract/test_v2_020_scene_generation.py",
+      "sha256": "fbba5e87e792ffc8b947ebe919f58880cfbf65babfcf4b82e34a379b25c83b0f"
+    },
+    {
+      "ref": "tests/integration/test_repository_bootstrap.py",
+      "sha256": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4"
+    },
+    {
+      "ref": "uv.lock",
+      "sha256": "54b2bb0753d86790bd70de182de4a623a8bcd3c4cdf0f15a289d1d381b3ca5d4"
+    }
+  ]
+}

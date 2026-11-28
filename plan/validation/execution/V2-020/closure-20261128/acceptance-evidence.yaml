@@ -1,0 +1,132 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-020
+revision: 97054449bf9c3995113651713cb8d09b25405696
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T05:24:47Z'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14 repo1421585508 run46110686650
+  attempt1; local retained DRAFT readback
+evidence_id: V2-020-acceptance-9705444
+evidence_type: ACCEPTANCE_RECORD
+artifacts:
+- ref: validation/execution/V2-020/closure-20261128/ACCEPTANCE_SUMMARY.md
+  sha256: d3601d66f1d0aab56bcd734618cc3cec8659ae1ffb12181cbfa45ef2247a56d6
+- ref: validation/execution/V2-020/closure-20261128/SCENARIO_RESULTS.json
+  sha256: 86e68837a64e193aeb8c48f742fbefc641b7128fe082893f545f978afe56ba65
+- ref: validation/execution/V2-020/closure-20261128/PRODUCT_READBACK.json
+  sha256: f07058c4430adbccf045a23e0b5c3d77d8efb49d578a8d3ac2a8104495e8c579
+input_evidence_refs:
+- validation/execution/V2-020/closure-20261128/code-evidence.yaml
+- validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+- validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+check_ids:
+- AT-V2-020-01
+- AT-V2-020-02
+- AT-V2-020-03
+- AT-V2-020-04
+- AT-V2-020-05
+decision: ACCEPTED
+rationale: 五项场景、真实草稿读回与同一候选 CI 均已核验。
+finding_dispositions:
+- finding_id: AR-07
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: V2-020 依赖既有 G-P5，缺前置产物时流程停止。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P8
+  remaining_work: 后续恢复演练及认证门槛。
+- finding_id: AR-11
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 双题材的章内候选、失败隔离和改稿失效已验证。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-027
+  owner_role: workflow-maintainer
+  due_gate: G-P6
+  remaining_work: 迟到结果及工作流恢复边界。
+- finding_id: CA-02
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: V2-020 范围内 CLI、任务和改稿均仅保留 DRAFT，未增加 Canon 写路径。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+- finding_id: CA-03
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 失败和未知保留诊断，草稿、接受及发布边界分开。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-026
+  owner_role: quality-maintainer
+  due_gate: G-P7
+  remaining_work: 真实 Q0–Q3 与生产 Permit 集成。
+- finding_id: RR-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: V2-020 归属及已接受的 ADR-008 与实际接口相符。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-031
+  owner_role: quality-maintainer
+  due_gate: G-P7
+  remaining_work: 后续 Repair 接口按自己的 ADR 核验。
+- finding_id: RR-10
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 当前 Workflow 五场景已绑定原输入、具体测试和运行结果。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P8
+  remaining_work: 后续历史工件恢复回归的来源与覆盖。
+- finding_id: RR-12
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 保留两版正文和编辑行为的本地可追溯证据，记录实际工程边界。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-034
+  owner_role: certification-maintainer
+  due_gate: G-P8
+  remaining_work: 同条件基线、真人读稿和完整生产成本仍待认证。
+- finding_id: SUP-06
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 真实 Astra 成功的第 7 章与保留账本已核对。
+  evidence_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  next_task: V2-034
+  owner_role: certification-maintainer
+  due_gate: G-P8
+  remaining_work: 同条件基线、真人读稿和完整生产成本仍待认证。
+external_practice_results:
+- practice_id: EXT-004
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: 沿用计划记录的设计做法，未引入上游代码。
+  verification_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  conclusion: CLI 和任务入口共用 Workflow，回执与实际工件绑定。
+  limitations: 后续任务的恢复边界另行验证。
+- practice_id: EXT-006
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: 沿用计划记录的设计做法，未引入上游代码。
+  verification_refs:
+  - validation/execution/V2-020/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+  conclusion: 改稿保留版本并使旧检查及交接失效。
+  limitations: 限 DRAFT，生产更正及发布另行验证。

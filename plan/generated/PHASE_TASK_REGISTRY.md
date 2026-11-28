@@ -2,7 +2,7 @@
 
 唯一源：`machine/implementation-backlog.yaml` 与 `machine/phase-gates.yaml`。不要手工修改。
 
-共 60 个任务。当前任务状态：{"CLOSED": 19, "IN_PROGRESS": 1, "OPEN": 40}
+共 60 个任务。当前任务状态：{"CLOSED": 20, "OPEN": 39, "IN_PROGRESS": 1}
 
 ## P0 — Repository & Governance
 
@@ -71,9 +71,9 @@
 
 | ID | 名称 | 依赖 | 状态 |
 |---|---|---|---|
-| V2-020 | Single Chapter Workflow | V2-019, V2-011 | IN_PROGRESS |
+| V2-020 | Single Chapter Workflow | V2-019, V2-011 | CLOSED |
 | V2-021 | NarrativeDelta extractor | V2-020 | OPEN |
-| V2-027 | Workflow retry and checkpoint | V2-020 | OPEN |
+| V2-027 | Workflow retry and checkpoint | V2-020 | IN_PROGRESS |
 
 ## P7 — Quality & Repair
 

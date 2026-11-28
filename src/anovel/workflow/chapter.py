@@ -113,6 +113,7 @@ from .extractor import (
 from .gateway_binding import (
     existing_gateway_ledger,
     freeze_scene_ledger,
+    read_checkpoint_attempt,
     read_provider_writer_receipt,
     require_private_writer_ledger_path,
     verify_scene_ledger,
@@ -128,6 +129,7 @@ from .models import (
     checked_prose,
     result_prose,
 )
+from .recovery import RecoveryReadback, WrittenDraftCancellation
 from .run import RunAssessment
 from .run_observer import assess_workflow_run
 from .scene import SceneProjection
@@ -175,6 +177,7 @@ _MODEL_HANDOFF_FIELDS = frozenset(
         "continuity",
         "earlier_continuity",
         "open_commitments",
+        "fulfilled_commitments",
     }
 )
 
@@ -377,7 +380,7 @@ class RevisionAnnotationBinding:
     annotations: BoundQ1Annotations
 
 
-def _open_draft_commitments(
+def _draft_commitments(
     sources: tuple[WrittenDraftRevision, ...],
 ) -> list[dict[str, object]]:
     """Project the latest reviewed status while retaining the original anchor."""
@@ -406,7 +409,7 @@ def _open_draft_commitments(
                 "origin": latest if previous is None else previous["origin"],
                 "latest": latest,
             }
-    return [value for value in commitments.values() if value["status"] != "FULFILLED"]
+    return list(commitments.values())
 
 
 @dataclass(frozen=True, slots=True)
@@ -415,9 +418,10 @@ class DraftCommitmentReview:
 
     revision: WrittenDraftRevision = field(repr=False)
     commitments: tuple[dict[str, object], ...] = field(repr=False)
+    saved_revision: WrittenDraftRevision | None = field(default=None, repr=False)
 
     def summary(self) -> dict[str, object]:
-        return {
+        result: dict[str, object] = {
             "state": "DRAFT_COMMITMENTS_REVIEWED",
             "artifact_state": "DRAFT",
             "chapter_id": self.revision.chapter_id.to_dict(),
@@ -441,9 +445,21 @@ class DraftCommitmentReview:
             "accepted": False,
             "published": False,
         }
+        if self.saved_revision is not None:
+            result["saved_revision_hash"] = self.saved_revision.record_hash
+            result["saved_version"] = self.saved_revision.version
+        return result
 
     def payload_bytes(self) -> bytes:
         return canonical_bytes(self.summary() | {"commitments": list(self.commitments)})
+
+
+def _draft_source_prose_hash(
+    source: ChapterRevision | WrittenDraftRevision | ExtractionObservation,
+) -> str:
+    if isinstance(source, (WrittenDraftRevision, ExtractionObservation)):
+        return source.prose_hash
+    return sha256(source.candidate.prose).hexdigest()
 
 
 @dataclass(frozen=True, slots=True)
@@ -457,6 +473,7 @@ class NextChapterDraftInput:
     plan_hash: str
     ending: SceneSpan = field(repr=False)
     earlier_sources: tuple[WrittenDraftRevision, ...] = field(default=(), repr=False)
+    include_fulfilled_commitments: bool = field(default=True, repr=False)
 
     @property
     def source_version(self) -> int:
@@ -476,13 +493,7 @@ class NextChapterDraftInput:
             "source_chapter_number": self.target.number - 1,
             "source_revision_hash": self.source.record_hash,
             "source_version": self.source_version,
-            "source_prose_hash": (
-                self.source.prose_hash
-                if isinstance(
-                    self.source, (WrittenDraftRevision, ExtractionObservation)
-                )
-                else sha256(self.source.candidate.prose).hexdigest()
-            ),
+            "source_prose_hash": _draft_source_prose_hash(self.source),
             "plan_hash": self.plan_hash,
             "ending": self.ending.to_dict(),
             "target_chapter_id": self.target.id.to_dict(),
@@ -522,9 +533,24 @@ class NextChapterDraftInput:
                 )
         if earlier_continuity:
             payload["earlier_continuity"] = earlier_continuity
-        open_commitments = _open_draft_commitments(commitment_sources)
+        commitments = _draft_commitments(commitment_sources)
+        open_commitments = [
+            item for item in commitments if item["status"] != "FULFILLED"
+        ]
         if open_commitments:
             payload["open_commitments"] = open_commitments
+        if self.include_fulfilled_commitments and isinstance(
+            self.source, WrittenDraftRevision
+        ):
+            fulfilled = [
+                item
+                for item in commitments
+                if item["status"] == "FULFILLED"
+                and cast(dict[str, object], item["latest"])["source_revision_hash"]
+                == payload["source_revision_hash"]
+            ]
+            if fulfilled:
+                payload["fulfilled_commitments"] = fulfilled
         return payload
 
     def payload_bytes(self) -> bytes:
@@ -546,7 +572,7 @@ class DraftChapterBrief:
             row = decode_canonical(self.payload)
             if (
                 type(row) is not dict
-                or row.keys()
+                or row.keys() - {"defer_commitments"}
                 != _BRIEF_SOURCE_FIELDS
                 | _BRIEF_TEXT_FIELDS
                 | _BRIEF_LIST_FIELDS
@@ -577,6 +603,12 @@ class DraftChapterBrief:
                     or any(type(item) is not str or not item.strip() for item in items)
                 ):
                     raise ValueError
+            deferred = row.get("defer_commitments", [])
+            if type(deferred) is not list:
+                raise ValueError
+            commitment_keys = [identifier(key) for key in deferred]
+            if len(set(commitment_keys)) != len(commitment_keys):
+                raise ValueError
         except (KeyError, TypeError, ValueError):
             raise WorkflowError("INVALID_NEXT_CHAPTER_BRIEF") from None
 
@@ -591,7 +623,16 @@ class DraftChapterBrief:
         row = cast(dict[str, object], decode_canonical(self.payload))
         if any(row[key] != handoff[key] for key in _BRIEF_SOURCE_FIELDS):
             raise WorkflowError("NEXT_CHAPTER_BRIEF_SOURCE_CHANGED")
-        return {key: row[key] for key in _BRIEF_TEXT_FIELDS | _BRIEF_LIST_FIELDS}
+        fields = {key: row[key] for key in _BRIEF_TEXT_FIELDS | _BRIEF_LIST_FIELDS}
+        if "defer_commitments" in row:
+            deferred = cast(list[str], row["defer_commitments"])
+            open_commitments = cast(
+                list[dict[str, object]], handoff.get("open_commitments", [])
+            )
+            if not set(deferred) <= {item["key"] for item in open_commitments}:
+                raise WorkflowError("UNKNOWN_INCOMING_DRAFT_COMMITMENT")
+            fields["defer_commitments"] = deferred
+        return fields
 
 
 def _next_chapter_model_request(
@@ -599,13 +640,23 @@ def _next_chapter_model_request(
     packet: bytes,
     root_context: ContextArtifact,
     policy: ModelPolicy,
+    *,
+    expected_target_revision_hash: str | None = None,
 ) -> GatewayRequest:
     # The retained root supplies scope. An author brief supplies the target
     # story setting in place of any world rules inherited from the root fixture.
     row = cast(dict[str, object], decode_canonical(packet))
     fields = cast(dict[str, object], row["handoff"])
     source = handoff.source
-    packet_hash = sha256(packet).hexdigest()
+    # Bind the selected target repair to the request without exposing its
+    # revision hash as writing context or changing the author's input identity.
+    packet_hash = sha256(
+        packet
+        if expected_target_revision_hash is None
+        else canonical_bytes(
+            row | {"rewrite_target_revision_hash": expected_target_revision_hash}
+        )
+    ).hexdigest()
     has_brief = "chapter_brief" in row
     content: dict[str, object] = {
         "artifact_state": "DRAFT",
@@ -670,6 +721,17 @@ def _next_chapter_model_request(
         instructions += (
             "chapter_brief 是当前章写作简报。按人物动机写出选择和代价。"
             "事件安排属于待写内容，通过此章行动呈现，不提前透露后章结果。"
+        )
+        if cast(dict[str, object], row["chapter_brief"]).get("defer_commitments"):
+            instructions += (
+                "chapter_brief.defer_commitments 指定本章继续留待后续的未结约定。"
+                "本章可以写拖延的代价、人物的反应或为结果作准备。"
+                "按暂缓安排推进，约定仍保持未结，后续结果留到后章。"
+            )
+    if "fulfilled_commitments" in fields:
+        instructions += (
+            "handoff.fulfilled_commitments 是前章已兑现的约定。"
+            "让这些结果影响接下来的选择和关系，避免把同一次兑现当成新事件重演。"
         )
     return GatewayRequest(
         source.project,
@@ -1134,6 +1196,114 @@ class ChapterWorkflow:
             saved = self.store.load(project=project, branch=branch, run_id=run_id)
             self._current(saved, current)
             return self._recover(saved)
+
+    @WorkflowStore.reuse_observation_decodes()
+    def inspect_recovery(
+        self,
+        current: FrozenChapterInput,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        gateway_ledger: Path,
+        step_id: str | None = None,
+    ) -> RecoveryReadback:
+        """Compare original attempt evidence with the saved Draft checkpoint."""
+        parent = self.store.load(project=project, branch=branch, run_id=run_id)
+        self._current(parent, current)
+        child = None
+        source_current = True
+        if step_id is not None:
+            child = self.store.load_scene(
+                project=project, branch=branch, run_id=run_id, step_id=step_id
+            )
+            source_current = (
+                child.state != "STALE_SOURCE"
+                and child.source.record_hash == parent.record_hash
+            )
+            if source_current:
+                self._scene_context(parent, current, child.projection)
+        result = read_checkpoint_attempt(
+            gateway_ledger, self.store, parent if child is None else child.source, child
+        )
+        latest = self.store.load(project=project, branch=branch, run_id=run_id)
+        if latest.record_hash != parent.record_hash:
+            raise WorkflowError("RECOVERY_CHECKPOINT_CHANGED")
+        if child is not None:
+            latest_child = self.store.load_scene(
+                project=project, branch=branch, run_id=run_id, step_id=child.step_id
+            )
+            if latest_child.record_hash != child.record_hash:
+                raise WorkflowError("RECOVERY_CHECKPOINT_CHANGED")
+        return RecoveryReadback.from_checkpoint(
+            parent if child is None else child,
+            result,
+            step_id=step_id,
+            source_current=source_current,
+        )
+
+    @WorkflowStore.reuse_observation_decodes()
+    def save_late_recovery_success(
+        self,
+        current: FrozenChapterInput,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        gateway_ledger: Path,
+        step_id: str | None = None,
+    ) -> WorkflowSnapshot | SceneGenerationSnapshot:
+        """Save a verified late receipt for the current Draft's original attempt."""
+        with self.store.exclusive(project=project, branch=branch, run_id=run_id):
+            parent = self.store.load(project=project, branch=branch, run_id=run_id)
+            self._current(parent, current)
+            child = None
+            if step_id is not None:
+                child = self.store.load_scene(
+                    project=project, branch=branch, run_id=run_id, step_id=step_id
+                )
+                if (
+                    child.state == "STALE_SOURCE"
+                    or child.source.record_hash != parent.record_hash
+                ):
+                    raise WorkflowError("SCENE_SOURCE_CHANGED")
+                context = self._scene_context(parent, current, child.projection)
+                if context.to_bytes() != child.projection.context.to_bytes():
+                    raise WorkflowError("SCENE_CONTEXT_CHANGED")
+            checkpoint = parent if child is None else child
+            if checkpoint.state not in {"UNKNOWN", "DRAFT_SAVED"}:
+                raise WorkflowError("RECOVERY_LATE_SUCCESS_NOT_APPLICABLE")
+            result = read_checkpoint_attempt(gateway_ledger, self.store, parent, child)
+            if result is None or result.status != "SUCCESS":
+                raise WorkflowError("RECOVERY_LATE_SUCCESS_UNAVAILABLE")
+            result_bytes = result.to_bytes()
+            prose = result_prose(checkpoint.request, result)
+            if checkpoint.state == "DRAFT_SAVED":
+                if checkpoint.result_bytes != result_bytes or checkpoint.prose != prose:
+                    raise WorkflowError("RECOVERY_LATE_SUCCESS_NOT_APPLICABLE")
+                return checkpoint
+            if child is None:
+                return self.store.publish_late_success(
+                    parent,
+                    replace(
+                        parent,
+                        state="DRAFT_SAVED",
+                        result_bytes=result_bytes,
+                        versions=(DraftRevision(1, prose, "MODEL", None),),
+                        diagnostic=None,
+                    ),
+                )
+            return self.store.publish_scene_late_success(
+                child,
+                replace(
+                    child,
+                    state="DRAFT_SAVED",
+                    result_bytes=result_bytes,
+                    prose=prose,
+                    diagnostic=None,
+                ),
+                expected_parent_hash=parent.record_hash,
+            )
 
     def inspect(self, *, project: str, branch: str, run_id: str) -> WorkflowSnapshot:
         return self.store.load(project=project, branch=branch, run_id=run_id)
@@ -2156,6 +2326,7 @@ class ChapterWorkflow:
         chapter_id: EntityId,
         version: int | None = None,
         earlier_sources: list[WrittenDraftRevision] | None = None,
+        include_immediate_source: bool = False,
     ) -> tuple[WrittenDraftRevision, ExtractionObservation]:
         saved = self.store.load_written_draft(
             project=project, branch=branch, chapter_id=chapter_id, version=version
@@ -2187,10 +2358,16 @@ class ChapterWorkflow:
             if (
                 earlier_sources is not None
                 and ancestor is not saved
-                and any(
-                    item.commitment is not None
-                    or item.carry_to_chapter == saved.chapter_number + 1
-                    for item in ancestor.continuity
+                and (
+                    (
+                        include_immediate_source
+                        and ancestor.chapter_id == saved.source_chapter_id
+                    )
+                    or any(
+                        item.commitment is not None
+                        or item.carry_to_chapter == saved.chapter_number + 1
+                        for item in ancestor.continuity
+                    )
                 )
             ):
                 earlier_sources.append(ancestor)
@@ -2205,6 +2382,61 @@ class ChapterWorkflow:
                 raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
             ancestor = parent
 
+    def _read_retained_written_draft(
+        self,
+        current: FrozenChapterInput,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        chapter_id: EntityId,
+        version: int,
+        earlier_sources: list[WrittenDraftRevision] | None = None,
+    ) -> tuple[WrittenDraftRevision, ExtractionObservation]:
+        """Read a comparison version and its originally saved predecessors."""
+        run = self.store.load(project=project, branch=branch, run_id=run_id)
+        self._current(run, current)
+        root_id = EntityId.from_dict(current.to_dict()["chapter_id"])
+        chapters = PlanHistory.from_dict(
+            current.to_dict()["history"]
+        ).active.vision.chapters
+        numbers = {chapter.id: chapter.number for chapter in chapters}
+        root_number = numbers[root_id]
+        saved = self.store.load_written_draft(
+            project=project, branch=branch, chapter_id=chapter_id, version=version
+        )
+        ancestor = saved
+        while True:
+            if (
+                ancestor.run_id != run_id
+                or ancestor.input_hash != current.content_hash
+                or ancestor.chapter_number <= root_number
+                or numbers.get(ancestor.chapter_id) != ancestor.chapter_number
+                or numbers.get(ancestor.source_chapter_id)
+                != ancestor.chapter_number - 1
+            ):
+                raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
+            if earlier_sources is not None and ancestor is not saved:
+                earlier_sources.append(ancestor)
+            if ancestor.source_chapter_id == root_id:
+                break
+            ancestor = self.store.load_written_draft(
+                project=project,
+                branch=branch,
+                chapter_id=ancestor.source_chapter_id,
+                revision_hash=ancestor.source_revision_hash,
+            )
+        observation = self.store.load_retained_root_observation(
+            project=project,
+            branch=branch,
+            run_id=run_id,
+            chapter_id=root_id,
+            source_revision_hash=ancestor.source_revision_hash,
+            retained_step_id=self.draft_handoff_step_id,
+        )
+        self._current(observation.assembly.child.source, current)
+        return saved, observation
+
     @WorkflowStore.reuse_observation_decodes()
     def inspect_written_draft(
         self,
@@ -2218,14 +2450,29 @@ class ChapterWorkflow:
         version: int | None = None,
     ) -> WrittenDraftRevision:
         with self.store.exclusive(project=project, branch=branch, run_id=run_id):
-            saved, observation = self._read_written_draft(
-                current,
-                project=project,
-                branch=branch,
-                run_id=run_id,
-                chapter_id=chapter_id,
-                version=version,
-            )
+            try:
+                saved, observation = self._read_written_draft(
+                    current,
+                    project=project,
+                    branch=branch,
+                    run_id=run_id,
+                    chapter_id=chapter_id,
+                    version=version,
+                )
+            except WorkflowError as error:
+                if version is None or str(error) not in {
+                    "CHAPTER_ASSEMBLY_NOT_READY",
+                    "CHAPTER_REVISION_UNAVAILABLE",
+                }:
+                    raise
+                saved, observation = self._read_retained_written_draft(
+                    current,
+                    project=project,
+                    branch=branch,
+                    run_id=run_id,
+                    chapter_id=chapter_id,
+                    version=version,
+                )
             if output is not None:
                 self._write_private_draft_artifact(
                     output,
@@ -2248,9 +2495,16 @@ class ChapterWorkflow:
         chapter_id: EntityId,
         expected_revision_hash: str,
         review: object,
+        brief: DraftChapterBrief | None = None,
         output: Path | None = None,
+        save_observations: bool = False,
+        version: int | None = None,
     ) -> DraftCommitmentReview:
-        """Compare current, exact editorial evidence with the inherited open items."""
+        """Compare exact editorial evidence with the items inherited by this revision."""
+        if type(save_observations) is not bool or (
+            save_observations and (output is not None or version is not None)
+        ):
+            raise WorkflowError("INVALID_DRAFT_COMMITMENT_REVIEW_SAVE")
         if type(review) is not dict or not review.keys() <= {"defer", "observations"}:
             raise WorkflowError("INVALID_DRAFT_COMMITMENT_REVIEW")
         defer = review.get("defer", [])
@@ -2264,20 +2518,68 @@ class ChapterWorkflow:
             raise WorkflowError("INVALID_DRAFT_COMMITMENT_REVIEW")
         with self.store.exclusive(project=project, branch=branch, run_id=run_id):
             ancestors: list[WrittenDraftRevision] = []
-            saved, observation = self._read_written_draft(
-                current,
-                project=project,
-                branch=branch,
-                run_id=run_id,
-                chapter_id=chapter_id,
-                earlier_sources=ancestors,
-            )
+            if version is None:
+                saved, observation = self._read_written_draft(
+                    current,
+                    project=project,
+                    branch=branch,
+                    run_id=run_id,
+                    chapter_id=chapter_id,
+                    earlier_sources=ancestors,
+                    include_immediate_source=brief is not None,
+                )
+            else:
+                saved, observation = self._read_retained_written_draft(
+                    current,
+                    project=project,
+                    branch=branch,
+                    run_id=run_id,
+                    chapter_id=chapter_id,
+                    version=version,
+                    earlier_sources=ancestors,
+                )
             if saved.record_hash != expected_revision_hash:
                 raise WorkflowError("CHAPTER_REVISION_CHANGED")
             incoming = {
                 cast(str, item["key"]): item
-                for item in _open_draft_commitments(tuple(ancestors))
+                for item in _draft_commitments(tuple(ancestors))
+                if item["status"] != "FULFILLED"
             }
+            if brief is not None:
+                if type(brief) is not DraftChapterBrief:
+                    raise WorkflowError("INVALID_NEXT_CHAPTER_BRIEF")
+                if version is not None and not ancestors:
+                    # The retained root was matched by hash. Its revision and
+                    # extraction contain the same whole-chapter prose bytes.
+                    source_prose_hash = observation.prose_hash
+                else:
+                    source = (
+                        ancestors[0]
+                        if ancestors
+                        else self._current_handoff_root(
+                            current, project=project, branch=branch, run_id=run_id
+                        )[0]
+                    )
+                    if (
+                        source.chapter_id != saved.source_chapter_id
+                        or source.record_hash != saved.source_revision_hash
+                    ):
+                        raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
+                    source_prose_hash = _draft_source_prose_hash(source)
+                fields = brief.for_handoff(
+                    {
+                        "project": project,
+                        "branch": branch,
+                        "source_chapter_id": saved.source_chapter_id.to_dict(),
+                        "target_chapter_id": saved.chapter_id.to_dict(),
+                        "source_prose_hash": source_prose_hash,
+                        "open_commitments": list(incoming.values()),
+                    }
+                )
+                planned = cast(list[str], fields.get("defer_commitments", []))
+                if "defer" in review and set(defer) != set(planned):
+                    raise WorkflowError("DRAFT_COMMITMENT_TIMING_CONFLICT")
+                defer = planned
             if not set(defer) <= incoming.keys():
                 raise WorkflowError("UNKNOWN_INCOMING_DRAFT_COMMITMENT")
             notes = []
@@ -2344,7 +2646,16 @@ class ChapterWorkflow:
                         "evidence": None if evidence is None else evidence.to_dict(),
                     }
                 )
-            result = DraftCommitmentReview(saved, tuple(rows))
+            updated = None
+            if save_observations:
+                updated = saved
+                if len(continuity) != len(saved.continuity) or set(continuity) != set(
+                    saved.continuity
+                ):
+                    updated = self._save_written_draft_edit(
+                        current, saved, saved.prose, saved.choice, continuity
+                    )
+            result = DraftCommitmentReview(saved, tuple(rows), updated)
             if output is not None:
                 self._write_private_draft_artifact(
                     output,
@@ -2731,6 +3042,51 @@ class ChapterWorkflow:
                 )
             return handoff
 
+    @WorkflowStore.reuse_observation_decodes()
+    def cancel_next_chapter_draft(
+        self,
+        current: FrozenChapterInput,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        expected_revision_hash: str,
+        retained_payload: bytes,
+        source_chapter_id: EntityId | None = None,
+        brief: DraftChapterBrief | None = None,
+    ) -> WrittenDraftCancellation:
+        """Stop publication of the Draft from this exact writing input."""
+        # The Writer can hold its run lock while waiting on the model. The
+        # cancellation and final append instead share one SQLite write boundary.
+        if source_chapter_id is not None and source_chapter_id == EntityId.from_dict(
+            current.to_dict()["chapter_id"]
+        ):
+            source_chapter_id = None
+        handoff, observation = self._current_next_chapter_draft_input(
+            current,
+            project=project,
+            branch=branch,
+            run_id=run_id,
+            expected_revision_hash=expected_revision_hash,
+            source_chapter_id=source_chapter_id,
+        )
+        if handoff.payload_bytes() != retained_payload:
+            handoff = replace(handoff, include_fulfilled_commitments=False)
+            if handoff.payload_bytes() != retained_payload:
+                raise WorkflowError("NEXT_CHAPTER_INPUT_CHANGED")
+        packet = self._next_chapter_writer_request(current, handoff, observation, brief)
+        writer_input_hash = sha256(packet).hexdigest()
+        revision_hash = self.store.cancel_written_draft(
+            project=project,
+            branch=branch,
+            run_id=run_id,
+            chapter_id=handoff.target.id,
+            writer_input_hash=writer_input_hash,
+        )
+        return WrittenDraftCancellation(
+            handoff.target.id, writer_input_hash, revision_hash
+        )
+
     def _next_chapter_writer_request(
         self,
         current: FrozenChapterInput,
@@ -2800,6 +3156,7 @@ class ChapterWorkflow:
         output: Path,
         source_chapter_id: EntityId | None = None,
         brief: DraftChapterBrief | None = None,
+        expected_target_revision_hash: str | None = None,
     ) -> GatewayRequest:
         """Freeze a reviewable model request without reserving or invoking a model."""
         with self.store.exclusive(project=project, branch=branch, run_id=run_id):
@@ -2813,12 +3170,19 @@ class ChapterWorkflow:
             )
             if handoff.payload_bytes() != retained_payload:
                 raise WorkflowError("NEXT_CHAPTER_INPUT_CHANGED")
+            if expected_target_revision_hash is not None:
+                target = self._rewrite_target(current, handoff)
+                if target.record_hash != expected_target_revision_hash:
+                    raise WorkflowError("WRITTEN_DRAFT_REVISION_CONFLICT")
+                if target.source_revision_hash == expected_revision_hash:
+                    raise WorkflowError("WRITTEN_DRAFT_SOURCE_UNCHANGED")
             child = observation.assembly.child
             request = _next_chapter_model_request(
                 handoff,
                 self._next_chapter_writer_request(current, handoff, observation, brief),
                 child.source.context,
                 policy,
+                expected_target_revision_hash=expected_target_revision_hash,
             )
             self._write_private_draft_artifact(
                 output,
@@ -2835,6 +3199,7 @@ class ChapterWorkflow:
         observation: ExtractionObservation,
         *,
         recover_only: bool = False,
+        expected_target_revision_hash: str | None = None,
     ) -> bytes:
         if self.next_chapter_writer is not None:
             return checked_prose(self.next_chapter_writer(packet))
@@ -2846,7 +3211,11 @@ class ChapterWorkflow:
             raise WorkflowError("NEXT_CHAPTER_WRITER_NOT_CONFIGURED")
         child = observation.assembly.child
         request = _next_chapter_model_request(
-            handoff, packet, child.source.context, policy
+            handoff,
+            packet,
+            child.source.context,
+            policy,
+            expected_target_revision_hash=expected_target_revision_hash,
         )
         attempt_id = request.logical_id + "-attempt-1"
         result: GatewayResult | None
@@ -2995,7 +3364,13 @@ class ChapterWorkflow:
                 source_chapter_id=source_chapter_id,
             )
             if retained_payload != handoff.payload_bytes():
-                raise WorkflowError("NEXT_CHAPTER_INPUT_CHANGED")
+                if not recover_original:
+                    raise WorkflowError("NEXT_CHAPTER_INPUT_CHANGED")
+                # Recompile pre-fulfillment receipts against the same current source.
+                legacy = replace(handoff, include_fulfilled_commitments=False)
+                if retained_payload != legacy.payload_bytes():
+                    raise WorkflowError("NEXT_CHAPTER_INPUT_CHANGED")
+                handoff = legacy
             child = observation.assembly.child
             reserved_databases = (Path(child.ledger_pin.path),)
             self._require_unreserved_draft_path(
@@ -3007,6 +3382,7 @@ class ChapterWorkflow:
                 current, handoff, observation, brief
             )
             request_hash = sha256(request).hexdigest()
+            self.store.require_written_draft_active(run_id, request_hash)
             saved = None
             persist = (
                 source_chapter_id is not None
@@ -3061,6 +3437,8 @@ class ChapterWorkflow:
                     self.store.append_written_draft(
                         self._initial_written_revision(current, result)
                     )
+                else:
+                    self.store.require_written_draft_active(run_id, request_hash)
             else:
                 result = NextChapterWrittenDraft(handoff, request_hash, saved.prose)
                 if saved != self._initial_written_revision(current, result):
@@ -3079,6 +3457,22 @@ class ChapterWorkflow:
             )
             return result
 
+    def _rewrite_target(
+        self, current: FrozenChapterInput, handoff: NextChapterDraftInput
+    ) -> WrittenDraftRevision:
+        source = handoff.source
+        target = self.store.load_written_draft(
+            project=source.project, branch=source.branch, chapter_id=handoff.target.id
+        )
+        if (
+            target.run_id != source.run_id
+            or target.input_hash != current.content_hash
+            or target.chapter_number != handoff.target.number
+            or target.source_chapter_id != source.chapter_id
+        ):
+            raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
+        return target
+
     @WorkflowStore.reuse_observation_decodes()
     def rewrite_next_chapter_draft(
         self,
@@ -3087,22 +3481,32 @@ class ChapterWorkflow:
         project: str,
         branch: str,
         run_id: str,
-        source_chapter_id: EntityId,
         expected_revision_hash: str,
         expected_target_revision_hash: str,
         retained_payload: bytes,
         output: Path,
+        source_chapter_id: EntityId | None = None,
         brief: DraftChapterBrief | None = None,
     ) -> WrittenDraftRevision:
         """Regenerate an existing local Draft from its current predecessor."""
         if (
-            type(source_chapter_id) is not EntityId
+            (source_chapter_id is not None and type(source_chapter_id) is not EntityId)
             or type(expected_target_revision_hash) is not str
             or re.fullmatch(r"[0-9a-f]{64}", expected_target_revision_hash) is None
         ):
             raise WorkflowError("INVALID_CHAPTER_REVISION_SELECTION")
-        if self.next_chapter_writer is None and self.next_chapter_policy is None:
+        provider_writer = self._provider_writer
+        use_provider = provider_writer is not None and (
+            provider_writer.budget is None or type(provider_writer) is OpenAIDraftWriter
+        )
+        if (
+            self.next_chapter_writer is None
+            and self.next_chapter_policy is None
+            and not use_provider
+        ):
             raise WorkflowError("NEXT_CHAPTER_WRITER_NOT_CONFIGURED")
+        receipt_only = provider_writer is not None and provider_writer.budget is None
+        bound_target = expected_target_revision_hash if use_provider else None
         source_selection = (
             None
             if source_chapter_id == EntityId.from_dict(current.to_dict()["chapter_id"])
@@ -3125,25 +3529,23 @@ class ChapterWorkflow:
             )
             if output.exists() or output.is_symlink():
                 raise WorkflowError("NEXT_CHAPTER_DRAFT_EXPORT_FAILED")
-            target = self.store.load_written_draft(
-                project=project, branch=branch, chapter_id=handoff.target.id
-            )
-            if (
-                target.run_id != run_id
-                or target.input_hash != current.content_hash
-                or target.chapter_number != handoff.target.number
-                or target.source_chapter_id != source_chapter_id
-            ):
-                raise WorkflowError("WRITTEN_DRAFT_SOURCE_CHANGED")
+            target = self._rewrite_target(current, handoff)
 
             request = self._next_chapter_writer_request(
                 current, handoff, observation, brief
             )
             request_hash = sha256(request).hexdigest()
+            self.store.require_written_draft_active(run_id, request_hash)
             if target.record_hash == expected_target_revision_hash:
                 if target.source_revision_hash == expected_revision_hash:
                     raise WorkflowError("WRITTEN_DRAFT_SOURCE_UNCHANGED")
-                prose = self._write_next_chapter_prose(handoff, request, observation)
+                prose = self._write_next_chapter_prose(
+                    handoff,
+                    request,
+                    observation,
+                    recover_only=receipt_only,
+                    expected_target_revision_hash=bound_target,
+                )
                 latest, _ = self._current_next_chapter_draft_input(
                     current,
                     project=project,
@@ -3183,12 +3585,14 @@ class ChapterWorkflow:
                 if previous.source_revision_hash == target.source_revision_hash:
                     raise WorkflowError("WRITTEN_DRAFT_REVISION_CONFLICT")
                 if (
-                    self.next_chapter_policy is not None
-                    and self._write_next_chapter_prose(
-                        handoff, request, observation, recover_only=True
-                    )
-                    != target.prose
-                ):
+                    self.next_chapter_policy is not None or use_provider
+                ) and self._write_next_chapter_prose(
+                    handoff,
+                    request,
+                    observation,
+                    recover_only=True,
+                    expected_target_revision_hash=bound_target,
+                ) != target.prose:
                     raise WorkflowError("NEXT_CHAPTER_MODEL_RECEIPT_CHANGED")
             self._write_private_draft_artifact(
                 output,

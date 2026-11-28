@@ -27,6 +27,7 @@ from anovel.canon.models import (
     CanonError,
     CanonIntegrityError,
     CanonPermissionError,
+    ChapterSubmissionReadback,
     CommitReceipt,
     ExecutionTicket,
     RootSeed,
@@ -359,6 +360,41 @@ class Repository:
             return _receipt(
                 conn, {**_scope(project, branch), "request": identifier(request_id)}
             )
+
+    def inspect_chapter_submission(
+        self, ticket: ExecutionTicket, candidate: ChapterCandidate
+    ) -> ChapterSubmissionReadback:
+        binding = _binding(ticket, candidate)
+        params = {
+            **_scope(ticket.project, ticket.branch),
+            "request": ticket.request_id,
+            "actor": ticket.actor,
+        }
+        with self._engine.connect() as conn:
+            conn.execution_options(isolation_level="REPEATABLE READ")
+            with conn.begin():
+                conn.exec_driver_sql("SET TRANSACTION READ ONLY")
+                request = _chapter_request(conn, params, candidate.parent_ref)
+                cancelled = request["cancelled"]
+                if request[
+                    "authorization_version"
+                ] != ticket.authorization_version or request[
+                    "execution_version"
+                ] != ticket.execution_version + int(cancelled):
+                    raise CanonPermissionError(
+                        "submission recovery ticket version mismatch"
+                    )
+                receipt = _receipt(conn, params)
+                if receipt is not None:
+                    if cancelled:
+                        raise CanonIntegrityError(
+                            "cancelled request has a commit receipt"
+                        )
+                    if receipt.payload_hash != binding["candidate_hash"]:
+                        raise CanonConflict(
+                            "request already accepted a different candidate"
+                        )
+                return ChapterSubmissionReadback(cancelled, receipt)
 
     def load_root(self, project: str, branch: str, commit_id: str) -> StoredRoot:
         params = {**_scope(project, branch), "commit": identifier(commit_id)}

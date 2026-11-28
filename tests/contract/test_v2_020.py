@@ -12,6 +12,7 @@ import sqlite3
 import subprocess
 import sys
 import unicodedata
+from contextlib import closing
 from dataclasses import replace
 from hashlib import sha256
 from pathlib import Path
@@ -31,7 +32,13 @@ from anovel.context.models import (
 )
 from anovel.contracts.compiler import compile_contract
 from anovel.gateway.ledger import BudgetLedger
-from anovel.gateway.models import BudgetLimit, ModelPolicy, ProviderReply, Usage
+from anovel.gateway.models import (
+    BudgetLimit,
+    ModelPolicy,
+    ProviderReply,
+    RetryDecision,
+    Usage,
+)
 from anovel.gateway.provider import OpenAIResponsesAdapter
 from anovel.gateway.service import ModelGateway
 from anovel.workflow.chapter import ChapterWorkflow, FrozenChapterInput, WorkflowError
@@ -200,6 +207,24 @@ def reopen(env):
 
 def recover(workflow, case):
     return workflow.recover(case.frozen, project=PROJECT, branch=BRANCH, run_id=RUN)
+
+
+def recovery_database_bytes(*paths):
+    return {
+        candidate: candidate.read_bytes()
+        for path in paths
+        for candidate in path.parent.glob(path.name + "*")
+        if candidate.is_file()
+    }
+
+
+def recovery_result_metadata(result):
+    return {
+        "status": result.status,
+        "charge_status": result.charge_status,
+        "result_hash": sha256(result.to_bytes()).hexdigest(),
+        "response_hash": result.reply.response_hash,
+    }
 
 
 @pytest.mark.parametrize(
@@ -439,8 +464,176 @@ def test_dispatched_process_interruption_recovers_unknown_without_freeing_liabil
         recovered.result.status == "UNKNOWN"
         and recovered.result.charge_status == "PENDING"
     )
+    assert recovered.result.charge_microusd is None
+    assert start(env, case).record_hash == recovered.record_hash
+    assert recover(workflow, case).record_hash == recovered.record_hash
+    assert env.adapter.calls == 1
     assert ledger.summary(RUN)["unknown_microusd"] == case.policies[0].reserve_microusd
     assert ledger.summary(RUN)["attempts"] == 1 and adapter.calls == 0
+
+
+def test_recovery_diagnostic_reads_late_attempt_without_promoting_unknown(tmp_path):
+    from anovel.workflow.interfaces import snapshot_summary
+
+    case = source_case()
+    env = harness(tmp_path, adapter=CountingLocalAdapter(crash=True), provision=False)
+    env.ledger.provision(
+        BudgetLimit(PROJECT, BRANCH, RUN, 100000, 3, FUTURE, max_unknown=2)
+    )
+    with pytest.raises(SimulatedProcessExit):
+        start(env, case)
+    workflow, ledger, adapter = reopen(env)
+    pending = recover(workflow, case)
+    assert pending.state == "UNKNOWN" and pending.prose is None
+    assert pending.result.charge_status == "PENDING"
+    source_input = case.frozen.to_dict()
+    request = {
+        "operation": "INSPECT_RECOVERY",
+        "project": PROJECT,
+        "branch": BRANCH,
+        "run_id": RUN,
+        "current_input": source_input,
+        "gateway_ledger": str(env.ledger_path),
+    }
+    save_request = request | {"operation": "SAVE_LATE_RECOVERY_SUCCESS"}
+    task = WorkflowTaskAdapter(ChapterWorkflow(WorkflowStore(env.store_path)))
+    before = recovery_database_bytes(env.store_path, env.ledger_path)
+    initial = snapshot_summary(task.execute(request))
+    assert (
+        initial["stored_result"]
+        == initial["ledger_result"]
+        == recovery_result_metadata(pending.result)
+    )
+    assert initial["stored_result"]["response_hash"] is None
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == before
+
+    other = ModelGateway(ledger, adapter).submit(
+        env.adapter.requests[0],
+        case.policies[0].id,
+        "explicit-offline-retry",
+        RetryDecision(
+            "offline-test", "Different attempt for the same logical request", True
+        ),
+    )
+    assert other.status == "SUCCESS" and ledger.lookup(RUN, LOGICAL) == other
+    before = recovery_database_bytes(env.store_path, env.ledger_path)
+    assert snapshot_summary(task.execute(request)) == initial
+    with pytest.raises(WorkflowError, match="^RECOVERY_LATE_SUCCESS_UNAVAILABLE$"):
+        task.execute(save_request)
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == before
+
+    late_prose = "晚到正文不进入恢复诊断。"
+    late_response = "合成响应体只留在原账本。"
+    late = ledger.finish(
+        env.adapter.requests[0],
+        case.policies[0],
+        ATTEMPT,
+        ProviderReply(
+            "SUCCESS",
+            response_body=canonical_bytes({"synthetic": late_response}),
+            provider_request_id="synthetic-late-recovery-reply",
+            observed_model=case.policies[0].model,
+            usage=Usage(20, 10, 30),
+            output_bytes=canonical_bytes({"text": late_prose}),
+            http_status=200,
+        ),
+    )
+    assert late.status == "SUCCESS" and late.attempt_id == ATTEMPT
+    assert ledger.lookup(RUN, LOGICAL) == other
+    input_path = tmp_path / "current.json"
+    input_path.write_bytes(case.frozen.payload)
+    before = recovery_database_bytes(env.store_path, env.ledger_path)
+    result = snapshot_summary(task.execute(request))
+    assert result["state"] == "UNKNOWN" and result["source_current"] is True
+    assert result["attempt_id"] == ATTEMPT
+    assert result["record_hash"] == pending.record_hash
+    assert result["stored_result"] == initial["stored_result"]
+    assert result["ledger_result"] == recovery_result_metadata(late)
+    assert all(
+        result[key] is False
+        for key in (
+            "can_dispatch",
+            "can_commit",
+            "can_issue_permit",
+            "accepted",
+            "published",
+        )
+    )
+    cli = run_cli(
+        env,
+        "recover",
+        "--input",
+        input_path,
+        "--gateway-ledger",
+        env.ledger_path,
+        "--diagnose-only",
+    )
+    assert cli.returncode == 0, cli.stdout + cli.stderr
+    assert json.loads(cli.stdout) == result
+    assert late_prose not in cli.stdout and late_response not in cli.stdout
+    with pytest.raises(WorkflowError, match="^WORKFLOW_INPUT_CHANGED$"):
+        task.execute(
+            request
+            | {"current_input": source_input | {"instructions": "新的写作要求。"}}
+        )
+    assert recover(workflow, case).record_hash == pending.record_hash
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == before
+    assert ledger.summary(RUN)["attempts"] == 2
+    assert env.adapter.calls == adapter.calls == 1
+
+    forged = replace(late, attempt_id="some-other-attempt")
+    with closing(sqlite3.connect(env.ledger_path)) as connection, connection:
+        connection.execute(
+            "UPDATE attempts SET result_record=? WHERE run_id=? AND attempt_id=?",
+            (forged.to_bytes(), RUN, ATTEMPT),
+        )
+    corrupted = recovery_database_bytes(env.store_path, env.ledger_path)
+    with pytest.raises(WorkflowError, match="^RECOVERY_LEDGER_RESULT_MISMATCH$"):
+        task.execute(request)
+    with pytest.raises(WorkflowError, match="^RECOVERY_LEDGER_RESULT_MISMATCH$"):
+        task.execute(save_request)
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == corrupted
+
+    wrong_start = replace(late, started_at="2000-01-01T00:00:00.000000Z")
+    with closing(sqlite3.connect(env.ledger_path)) as connection, connection:
+        connection.execute(
+            "UPDATE attempts SET result_record=? WHERE run_id=? AND attempt_id=?",
+            (wrong_start.to_bytes(), RUN, ATTEMPT),
+        )
+    unbound = recovery_database_bytes(env.store_path, env.ledger_path)
+    with pytest.raises(WorkflowError, match="^RECOVERY_LATE_SUCCESS_NOT_APPLICABLE$"):
+        task.execute(save_request)
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == unbound
+
+    with closing(sqlite3.connect(env.ledger_path)) as connection, connection:
+        connection.execute(
+            "UPDATE attempts SET result_record=? WHERE run_id=? AND attempt_id=?",
+            (late.to_bytes(), RUN, ATTEMPT),
+        )
+    ledger_before = recovery_database_bytes(env.ledger_path)
+    cli = run_cli(
+        env,
+        "recover",
+        "--input",
+        input_path,
+        "--gateway-ledger",
+        env.ledger_path,
+        "--save-late-success",
+    )
+    assert cli.returncode == 0, cli.stdout + cli.stderr
+    saved = workflow.inspect(project=PROJECT, branch=BRANCH, run_id=RUN)
+    assert saved.state == "DRAFT_SAVED" and saved.revision == 1
+    assert saved.prose == late_prose.encode() and saved.result == late
+    assert saved.accepted is False
+    assert json.loads(cli.stdout) == snapshot_summary(saved)
+    assert late_prose not in cli.stdout and late_response not in cli.stdout
+    after = recovery_database_bytes(env.store_path, env.ledger_path)
+    assert task.execute(save_request).record_hash == saved.record_hash
+    assert recovery_database_bytes(env.store_path, env.ledger_path) == after
+    assert recovery_database_bytes(env.ledger_path) == ledger_before
+    assert ledger.lookup(RUN, LOGICAL) == other
+    assert ledger.summary(RUN)["attempts"] == 2
+    assert env.adapter.calls == adapter.calls == 1
 
 
 def test_manual_edit_preserves_both_versions_and_invalidates_future_evidence(tmp_path):
@@ -1966,6 +2159,181 @@ def test_next_chapter_model_gateway_prepares_and_saves_the_same_request(
     assert cold_adapter.calls == 0 and cold_ledger.summary(RUN)["attempts"] == 3
 
 
+@pytest.mark.parametrize(
+    "cancel_first", [True, False], ids=["cancel-wins", "save-wins"]
+)
+def test_next_chapter_writer_cancellation_fences_draft_not_receipt(
+    tmp_path, monkeypatch, cancel_first
+):
+    from concurrent.futures import ThreadPoolExecutor
+    from threading import Event
+
+    from test_v2_021 import make_extraction_seed
+
+    from anovel.workflow.chapter import NextChapterWrittenDraft
+    from anovel.workflow.interfaces import snapshot_summary
+
+    seed = make_extraction_seed(tmp_path, False)
+    env, current, policy = seed.env, seed.case.frozen, seed.case.policies[0]
+    step_id = seed.child.step_id
+    scope = {"project": PROJECT, "branch": BRANCH, "run_id": RUN}
+    observation = env.workflow.extract_chapter(current, **scope, step_id=step_id)
+    reader = ChapterWorkflow(env.store, draft_handoff_step_id=step_id)
+    selection = scope | {"expected_revision_hash": observation.record_hash}
+    handoff = reader.next_chapter_draft_input(current, **selection)
+    source_path = tmp_path / "current.json"
+    source_path.write_bytes(current.payload)
+    handoff_path = tmp_path / "handoff.json"
+    handoff_path.write_bytes(handoff.payload_bytes())
+    source_args = selection | {"current_input": current.to_dict()}
+    task_args = source_args | {"handoff": handoff.to_dict()}
+    cancel = task_args | {"operation": "CANCEL_NEXT_CHAPTER_DRAFT"}
+    draft_path = tmp_path / "next-chapter.json"
+    write = task_args | {
+        "operation": "WRITE_NEXT_CHAPTER_DRAFT",
+        "output": str(draft_path),
+    }
+    writer = WorkflowTaskAdapter(
+        ChapterWorkflow(
+            env.store,
+            env.gateway,
+            next_chapter_policy=policy,
+            draft_handoff_step_id=step_id,
+        )
+    )
+    env.adapter.output = {"text": BODY.decode()}
+
+    def cancel_from_cli():
+        cli = run_cli(
+            env,
+            "--draft-handoff-step-id",
+            step_id,
+            "cancel-next-chapter-draft",
+            "--input",
+            source_path,
+            "--expected-revision-hash",
+            observation.record_hash,
+            "--handoff",
+            handoff_path,
+        )
+        assert cli.returncode == 0, cli.stdout + cli.stderr
+        return json.loads(cli.stdout)
+
+    entered, release = Event(), Event()
+
+    def wait_for_cancel():
+        entered.set()
+        assert release.wait(60), (
+            "the cancellation CLI did not finish while the Writer paused"
+        )
+
+    if cancel_first:
+        send = env.adapter.send
+
+        def paused_send(*args):
+            wait_for_cancel()
+            return send(*args)
+
+        monkeypatch.setattr(env.adapter, "send", paused_send)
+    else:
+        append = env.store.append_written_draft
+
+        def paused_append(*args, **kwargs):
+            saved = append(*args, **kwargs)
+            wait_for_cancel()
+            return saved
+
+        monkeypatch.setattr(env.store, "append_written_draft", paused_append)
+
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        active = pool.submit(writer.execute, write)
+        try:
+            assert entered.wait(30), (
+                active.exception()
+                if active.done()
+                else "Writer did not reach the pause"
+            )
+            assert not draft_path.exists()
+            summary = cancel_from_cli()
+            assert summary["state"] == ("CANCELLED" if cancel_first else "DRAFT_SAVED")
+            assert (summary["revision_hash"] is None) == cancel_first
+        finally:
+            release.set()
+        if cancel_first:
+            with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_WRITE_CANCELLED$"):
+                active.result(timeout=15)
+        else:
+            written = active.result(timeout=15)
+            assert (
+                written.prose == BODY
+                and draft_path.read_bytes() == written.payload_bytes()
+            )
+
+    cold_store = WorkflowStore(env.store_path)
+    cold_reader = WorkflowTaskAdapter(
+        ChapterWorkflow(cold_store, draft_handoff_step_id=step_id)
+    )
+    assert snapshot_summary(cold_reader.execute(cancel)) == summary
+    writer_request = env.adapter.requests[-1]
+    receipt = env.ledger.lookup(RUN, writer_request.logical_id)
+    assert (
+        receipt.status == "SUCCESS"
+        and receipt.request_hash == writer_request.semantic_hash
+        and receipt.attempt_id == writer_request.logical_id + "-attempt-1"
+    )
+    attempts = env.ledger.summary(RUN)["attempts"]
+    assert attempts == env.adapter.calls == 3
+
+    saved_scope = {
+        "project": PROJECT,
+        "branch": BRANCH,
+        "chapter_id": handoff.target.id,
+    }
+    cold_adapter = CountingLocalAdapter(outcome="UNKNOWN")
+    cold_writer = WorkflowTaskAdapter(
+        ChapterWorkflow(
+            cold_store,
+            ModelGateway(BudgetLedger(env.ledger_path), cold_adapter),
+            next_chapter_policy=policy,
+            draft_handoff_step_id=step_id,
+        )
+    )
+    retry_path = tmp_path / "retry-next-chapter.json"
+    retry = write | {"output": str(retry_path)}
+    before = env.store_path.read_bytes(), env.ledger_path.read_bytes()
+    if cancel_first:
+        with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_WRITE_CANCELLED$"):
+            cold_writer.execute(retry)
+        packet = reader._next_chapter_writer_request(current, handoff, observation)
+        manual_draft = NextChapterWrittenDraft(
+            handoff, sha256(packet).hexdigest(), BODY
+        )
+        with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_WRITE_CANCELLED$"):
+            cold_reader.execute(
+                source_args
+                | {
+                    "operation": "SAVE_NEXT_CHAPTER_DRAFT",
+                    "draft": manual_draft.to_dict(),
+                }
+            )
+        with pytest.raises(WorkflowError, match="^WRITTEN_DRAFT_UNAVAILABLE$"):
+            cold_store.load_written_draft(**saved_scope)
+        assert not draft_path.exists() and not retry_path.exists()
+    else:
+        retained = cold_store.load_written_draft(**saved_scope)
+        assert (
+            retained.version == 1 and retained.record_hash == summary["revision_hash"]
+        )
+        assert cold_writer.execute(retry) == written
+        assert retry_path.read_bytes() == draft_path.read_bytes()
+    assert (env.store_path.read_bytes(), env.ledger_path.read_bytes()) == before
+    assert (
+        env.ledger.lookup(RUN, writer_request.logical_id).to_bytes()
+        == receipt.to_bytes()
+    )
+    assert cold_adapter.calls == 0 and env.ledger.summary(RUN)["attempts"] == attempts
+
+
 def test_next_chapter_kimi_writer_saves_and_recovers_exact_receipt(
     tmp_path, monkeypatch, capsys
 ):
@@ -2239,7 +2607,10 @@ def test_next_chapter_model_gateway_never_publishes_or_resends_bad_responses(
         ChapterWorkflow(env.store, env.gateway, next_chapter_policy=live_policy)
 
 
-def test_next_chapter_model_gateway_rewrites_with_the_edited_source(tmp_path):
+@pytest.mark.parametrize("receipt_only", [False, True], ids=["local", "openai-receipt"])
+def test_next_chapter_model_gateway_rewrites_with_the_edited_source(
+    tmp_path, receipt_only
+):
     from test_v2_020_scene import scene_case
     from test_v2_020_scene_generation import start_child
     from test_v2_021 import ACTUAL, QUIET
@@ -2308,6 +2679,75 @@ def test_next_chapter_model_gateway_rewrites_with_the_edited_source(tmp_path):
         expected_prose_hash=source.prose_hash,
         prose=revised_choice.encode(),
     )
+    if not receipt_only:
+        input_path = tmp_path / "historical-input.json"
+        input_path.write_bytes(current.payload)
+        history_path = tmp_path / "chapter-2-v1-historical.txt"
+        inspect = (
+            "inspect-written-draft",
+            "--input",
+            input_path,
+            "--chapter-id",
+            old_target.chapter_id.local_id,
+        )
+        before = env.store_path.read_bytes(), env.ledger_path.read_bytes()
+        archived = run_cli(env, *inspect, "--version", 1, "--output", history_path)
+        assert archived.returncode == 0, archived.stdout + archived.stderr
+        summary = json.loads(archived.stdout)
+        assert summary["candidate_version"] == 1
+        assert summary["revision_hash"] == old_target.record_hash
+        assert summary["source_revision_hash"] == first.record_hash
+        assert all(
+            summary[key] is False
+            for key in (
+                "can_dispatch",
+                "can_commit",
+                "can_issue_permit",
+                "accepted",
+                "published",
+            )
+        )
+        assert history_path.read_bytes() == old_target.prose == first_result.encode()
+        assert history_path.stat().st_mode & 0o777 == 0o600
+
+        refused = tmp_path / "refused-historical.txt"
+        for flags, branch, diagnostic in (
+            ((), BRANCH, "CHAPTER_ASSEMBLY_NOT_READY"),
+            (("--version", 99), BRANCH, "WRITTEN_DRAFT_UNAVAILABLE"),
+            (("--version", 1), "another-branch", "WORKFLOW_RUN_UNAVAILABLE"),
+        ):
+            blocked = run_cli(env, *inspect, *flags, "--output", refused, branch=branch)
+            assert blocked.returncode == 2, blocked.stdout + blocked.stderr
+            assert json.loads(blocked.stdout)["code"] == diagnostic
+        assert not refused.exists()
+        reserved = env.ledger_path.with_name(env.ledger_path.name + "-journal")
+        reserved_output = run_cli(env, *inspect, "--version", 1, "--output", reserved)
+        assert reserved_output.returncode == 2, (
+            reserved_output.stdout + reserved_output.stderr
+        )
+        assert (
+            json.loads(reserved_output.stdout)["code"]
+            == "WRITTEN_DRAFT_EXPORT_RESERVED_PATH"
+        )
+        assert not reserved.exists()
+
+        handoff_path = tmp_path / "old-handoff.json"
+        handoff_path.write_bytes(old_handoff.payload_bytes())
+        continuation = run_cli(
+            env,
+            "verify-next-chapter",
+            "--input",
+            input_path,
+            "--expected-revision-hash",
+            first.record_hash,
+            "--handoff",
+            handoff_path,
+        )
+        assert continuation.returncode == 2, continuation.stdout + continuation.stderr
+        assert json.loads(continuation.stdout)["code"] == "CHAPTER_ASSEMBLY_NOT_READY"
+        assert (env.store_path.read_bytes(), env.ledger_path.read_bytes()) == before
+        assert env.adapter.calls == env.ledger.summary(RUN)["attempts"] == 3
+
     selected = SceneSpan(0, len(revised_choice), revised_choice)
     next_projection = env.workflow.project_scene(
         current,
@@ -2339,6 +2779,153 @@ def test_next_chapter_model_gateway_rewrites_with_the_edited_source(tmp_path):
             current, **request, retained_payload=old_handoff.payload_bytes()
         )
     assert env.adapter.calls == 4 and not request["output"].exists()
+    if receipt_only:
+        from anovel.gateway.models import OPENAI_RESPONSES_ENDPOINT, GatewayRequest
+        from anovel.workflow.chapter import DraftChapterBrief, OpenAIDraftWriter
+
+        openai_policy = policy_for(endpoint=OPENAI_RESPONSES_ENDPOINT, test_mode=False)
+        brief = _commitment_timing_brief(
+            second.chapter_id,
+            new_handoff.target.id,
+            new_handoff.to_dict()["source_prose_hash"],
+        )
+        pinned = {
+            "retained_payload": new_handoff.payload_bytes(),
+            "policy": openai_policy,
+            "brief": DraftChapterBrief.from_dict(brief),
+        }
+        unbound = workflow.prepare_next_chapter_model_request(
+            current, **new_selection, **pinned, output=tmp_path / "unbound-request.json"
+        )
+        paths = {
+            key: tmp_path / f"{key}.json"
+            for key in ("input", "handoff", "brief", "policy", "request")
+        }
+        paths["input"].write_bytes(current.payload)
+        paths["handoff"].write_bytes(new_handoff.payload_bytes())
+        paths["brief"].write_bytes(canonical_bytes(brief))
+        paths["policy"].write_bytes(openai_policy.to_bytes())
+        arguments = (
+            "--input",
+            paths["input"],
+            "--handoff",
+            paths["handoff"],
+            "--brief",
+            paths["brief"],
+            "--expected-revision-hash",
+            second.record_hash,
+            "--expected-target-revision-hash",
+            old_target.record_hash,
+        )
+        prepared = run_cli(
+            env,
+            "prepare-next-chapter-model-request",
+            *arguments,
+            "--policy",
+            paths["policy"],
+            "--output",
+            paths["request"],
+        )
+        assert prepared.returncode == 0, prepared.stdout + prepared.stderr
+        model_request = GatewayRequest.from_dict(
+            json.loads(paths["request"].read_bytes())
+        )
+        assert model_request.semantic_hash != unbound.semantic_hash
+        assert model_request.context.model_bytes == unbound.context.model_bytes
+        model_context = model_request.context.model_bytes.decode()
+        assert revised_choice in model_context and revised_ending in model_context
+        assert ACTUAL not in model_context
+
+        private = tmp_path.resolve() / "openai-ledger"
+        private.mkdir(mode=0o700)
+        ledger_path = private / "writer.sqlite"
+        ledger_path.touch(mode=0o600)
+        writer_ledger = BudgetLedger(ledger_path)
+        writer_ledger.provision(
+            BudgetLimit(PROJECT, BRANCH, RUN, 100_000, 1, FUTURE, 1, 1)
+        )
+        synthetic = CountingLocalAdapter(output={"text": second_result})
+        receipt = ModelGateway(writer_ledger, synthetic).submit(
+            model_request, openai_policy.id, model_request.logical_id + "-attempt-1"
+        )
+        assert receipt.status == "SUCCESS"
+        readback = OpenAIDraftWriter(model_request, ledger_path)
+        reopen_task = WorkflowTaskAdapter(
+            ChapterWorkflow(env.store, openai_writer=readback)
+        )
+        rewrite = new_selection | {
+            "operation": "REWRITE_NEXT_CHAPTER_DRAFT",
+            "current_input": current.to_dict(),
+            "source_chapter_id": second.chapter_id.to_dict(),
+            "expected_target_revision_hash": old_target.record_hash,
+            "handoff": new_handoff.to_dict(),
+            "brief": brief,
+            "output": str(request["output"]),
+        }
+        for override, diagnostic in (
+            ({"expected_revision_hash": first.record_hash}, "CHAPTER_REVISION_CHANGED"),
+            ({"handoff": old_handoff.to_dict()}, "NEXT_CHAPTER_INPUT_CHANGED"),
+            (
+                {"expected_target_revision_hash": "0" * 64},
+                "WRITTEN_DRAFT_REVISION_CONFLICT",
+            ),
+        ):
+            with pytest.raises(WorkflowError, match=f"^{diagnostic}$"):
+                reopen_task.execute(rewrite | override)
+        for stale_writer, diagnostic in (
+            (replace(readback, request=unbound), "OPENAI_DRAFT_REQUEST_CHANGED"),
+            (
+                replace(readback, ledger_path=private / "missing.sqlite"),
+                "OPENAI_DRAFT_RECEIPT_UNAVAILABLE",
+            ),
+        ):
+            with pytest.raises(WorkflowError, match=f"^{diagnostic}$"):
+                WorkflowTaskAdapter(
+                    ChapterWorkflow(env.store, openai_writer=stale_writer)
+                ).execute(rewrite)
+        assert (
+            not request["output"].exists() and not (private / "missing.sqlite").exists()
+        )
+        assert env.store.load_written_draft(**target_scope) == old_target
+
+        recovery_args = (
+            "recover-next-chapter-openai",
+            *arguments,
+            "--request",
+            paths["request"],
+            "--writer-ledger",
+            ledger_path,
+        )
+        recovered = run_cli(env, *recovery_args, "--output", request["output"])
+        assert recovered.returncode == 0, recovered.stdout + recovered.stderr
+        cold = WorkflowStore(env.store_path)
+        rewritten = cold.load_written_draft(**target_scope)
+        assert rewritten.version == 2 and rewritten.prose == second_result.encode()
+        assert rewritten.source_revision_hash == second.record_hash
+        assert rewritten.previous_revision_hash == old_target.record_hash
+        assert cold.load_written_draft(**target_scope, version=1) == old_target
+        assert request["output"].read_bytes() == rewritten.payload_bytes()
+        summary = json.loads(recovered.stdout)
+        assert (
+            summary["artifact_state"] == "DRAFT"
+            and summary["revision_hash"] == rewritten.record_hash
+        )
+
+        before = env.store_path.read_bytes(), ledger_path.read_bytes()
+        replay_path = tmp_path / "chapter-2-v2-recovered.json"
+        replayed = run_cli(env, *recovery_args, "--output", replay_path)
+        assert replayed.returncode == 0, replayed.stdout + replayed.stderr
+        assert json.loads(replayed.stdout) == summary
+        assert replay_path.read_bytes() == request["output"].read_bytes()
+        assert (env.store_path.read_bytes(), ledger_path.read_bytes()) == before
+        assert (
+            writer_ledger.lookup(RUN, model_request.logical_id).to_bytes()
+            == receipt.to_bytes()
+        )
+        assert writer_ledger.summary(RUN)["attempts"] == synthetic.calls == 1
+        assert env.adapter.calls == env.ledger.summary(RUN)["attempts"] == 4
+        return
+
     rewritten = workflow.rewrite_next_chapter_draft(
         current,
         **request,
@@ -2418,6 +3005,7 @@ def _written_draft_setup(tmp_path, monkeypatch, *start_intents, template_version
         "SET_FACT",
         canonical_bytes(30),
     )
+    contract, context, request = current.request(RUN, LOGICAL)
     observation = SimpleNamespace(
         record_hash="3" * 64,
         coverage=(root_fact,),
@@ -2425,6 +3013,7 @@ def _written_draft_setup(tmp_path, monkeypatch, *start_intents, template_version
         assembly=SimpleNamespace(
             child=SimpleNamespace(
                 prose=root_ending.encode(),
+                source=SimpleNamespace(context=context),
                 ledger_pin=SimpleNamespace(path=str(tmp_path / "gateway.sqlite")),
                 projection=SimpleNamespace(
                     candidate=SimpleNamespace(
@@ -2445,7 +3034,6 @@ def _written_draft_setup(tmp_path, monkeypatch, *start_intents, template_version
         ChapterWorkflow, "load_chapter_revision", lambda _self, **_scope: root_revision
     )
     store = WorkflowStore(tmp_path / "workflow.sqlite")
-    contract, context, request = current.request(RUN, LOGICAL)
     assert store.create(
         WorkflowSnapshot(
             current,
@@ -2457,6 +3045,301 @@ def _written_draft_setup(tmp_path, monkeypatch, *start_intents, template_version
         )
     )
     return current, store, root_revision, fact_id, chapters
+
+
+def _commitment_timing_brief(source_id, target_id, source_prose_hash):
+    return {
+        "record_type": "draft_chapter_brief",
+        "schema_version": "1.0",
+        "artifact_state": "DRAFT",
+        "project": PROJECT,
+        "branch": BRANCH,
+        "source_chapter_id": source_id.to_dict(),
+        "target_chapter_id": target_id.to_dict(),
+        "source_prose_hash": source_prose_hash,
+        "story_title": "本地写作测试",
+        "setting": "校园摄影社。",
+        "arc_goal": "完成第一场试拍。",
+        "character_motives": ["甲想保住原来的场地。"],
+        "chapter_title": "借用机位",
+        "chapter_goal": "让人物选择带来可见后果。",
+        "opening": "从上一章散场接起。",
+        "causal_beats": ["甲留下来争取场地。"],
+        "constraints": ["按本章安排写。"],
+    }
+
+
+def test_next_chapter_brief_defers_only_open_commitments(tmp_path, monkeypatch):
+    from anovel.context.scene import SceneSpan
+    from anovel.workflow.written_draft import (
+        DraftCommitment,
+        DraftContinuity,
+        WrittenDraftRevision,
+    )
+
+    current, store, root, _, (_, chapter2, chapter3) = _written_draft_setup(
+        tmp_path,
+        monkeypatch,
+        "承接上一章。",
+        template_version="local-commitment-timing",
+    )
+    events = (
+        ("答应周一给家里回电话。", "call-home", "周一", "DUE_UNEXPLAINED"),
+        ("约好周三交试片。", "send-clip", "周三", "NOT_DUE"),
+        ("上周已经分完账。", "split-payment", "上周五", "FULFILLED"),
+    )
+    prose = "\n".join(event[0] for event in events)
+    notes = []
+    for quote, key, due, status in events:
+        start = prose.index(quote)
+        notes.append(
+            DraftContinuity(
+                "COMMITMENT",
+                SceneSpan(start, start + len(quote), quote),
+                commitment=DraftCommitment(key, due, status),
+            )
+        )
+    saved = store.append_written_draft(
+        WrittenDraftRevision(
+            chapter_id=chapter2.id,
+            chapter_number=chapter2.number,
+            branch=BRANCH,
+            run_id=RUN,
+            input_hash=current.content_hash,
+            source_chapter_id=root.chapter_id,
+            source_revision_hash=root.record_hash,
+            writer_input_hash="3" * 64,
+            version=1,
+            previous_revision_hash=None,
+            prose=prose.encode(),
+            continuity=tuple(notes),
+        )
+    )
+    workflow = ChapterWorkflow(store)
+    selection = {
+        "project": PROJECT,
+        "branch": BRANCH,
+        "run_id": RUN,
+        "expected_revision_hash": saved.record_hash,
+    }
+    handoff = workflow.next_chapter_draft_input(
+        current, **selection, source_chapter_id=chapter2.id
+    ).to_dict()
+    assert [(item["key"], item["status"]) for item in handoff["open_commitments"]] == [
+        ("call-home", "DUE_UNEXPLAINED"),
+        ("send-clip", "NOT_DUE"),
+    ]
+    evidence = {
+        "source_chapter_id": chapter2.id.to_dict(),
+        "source_chapter_number": chapter2.number,
+        "source_revision_hash": saved.record_hash,
+        "source_prose_hash": saved.prose_hash,
+        "span": notes[-1].span.to_dict(),
+    }
+    fulfilled = [
+        {
+            "key": "split-payment",
+            "due": "上周五",
+            "status": "FULFILLED",
+            "origin": evidence,
+            "latest": evidence,
+        }
+    ]
+    assert handoff["fulfilled_commitments"] == fulfilled
+    brief = _commitment_timing_brief(chapter2.id, chapter3.id, saved.prose_hash)
+    task = WorkflowTaskAdapter(workflow)
+    destination = tmp_path / "model-request.json"
+    request = selection | {
+        "operation": "PREPARE_NEXT_CHAPTER_MODEL_REQUEST",
+        "current_input": current.to_dict(),
+        "source_chapter_id": chapter2.id.to_dict(),
+        "handoff": handoff,
+        "policy": policy_for().to_dict(),
+        "output": str(destination),
+    }
+    before = store.path.read_bytes()
+    for incorrect in ("call-home", ["call-home", "call-home"], [" "], [1]):
+        with pytest.raises(WorkflowError, match="^INVALID_NEXT_CHAPTER_BRIEF$"):
+            task.execute(request | {"brief": brief | {"defer_commitments": incorrect}})
+    for key in ("unknown", "split-payment"):
+        with pytest.raises(WorkflowError, match="^UNKNOWN_INCOMING_DRAFT_COMMITMENT$"):
+            task.execute(request | {"brief": brief | {"defer_commitments": [key]}})
+    assert not destination.exists()
+
+    legacy = task.execute(
+        request | {"brief": brief, "output": str(tmp_path / "legacy-request.json")}
+    )
+    deferred = ["send-clip", "call-home"]
+    prepared = task.execute(
+        request | {"brief": brief | {"defer_commitments": deferred}}
+    )
+    payload = next(
+        item["content"]
+        for item in json.loads(prepared.context.model_bytes)["items"]
+        if item["kind"] == "DRAFT_HANDOFF"
+    )
+    assert payload["chapter_brief"]["defer_commitments"] == deferred
+    assert payload["handoff"]["open_commitments"] == handoff["open_commitments"]
+    assert payload["handoff"]["fulfilled_commitments"] == fulfilled
+    assert b"defer_commitments" not in legacy.to_bytes()
+    assert "fulfilled_commitments" in legacy.instructions
+    assert "fulfilled_commitments" in prepared.instructions
+    assert "让这些结果影响接下来的选择和关系" in prepared.instructions
+    assert "避免把同一次兑现当成新事件重演" in prepared.instructions
+    assert "chapter_brief.defer_commitments" in prepared.instructions
+    assert "约定仍保持未结" in prepared.instructions
+    assert destination.read_bytes() == prepared.to_bytes()
+    assert store.path.read_bytes() == before
+
+
+def test_legacy_fulfillment_handoff_recovers_only_exact_retained_receipt(
+    tmp_path, monkeypatch
+):
+    from anovel.context.scene import SceneSpan
+    from anovel.gateway.models import OPENAI_RESPONSES_ENDPOINT
+    from anovel.workflow.chapter import (
+        DraftChapterBrief,
+        OpenAIDraftWriter,
+        _next_chapter_model_request,
+    )
+    from anovel.workflow.written_draft import (
+        DraftCommitment,
+        DraftContinuity,
+        WrittenDraftRevision,
+    )
+
+    current, store, root, _, (_, chapter2, chapter3) = _written_draft_setup(
+        tmp_path, monkeypatch, "承接兑现后的局面。", template_version="legacy-payoff"
+    )
+    quote = "上周已经分完账。"
+    earlier = store.append_written_draft(
+        WrittenDraftRevision(
+            chapter2.id,
+            chapter2.number,
+            BRANCH,
+            RUN,
+            current.content_hash,
+            root.chapter_id,
+            root.record_hash,
+            "3" * 64,
+            1,
+            None,
+            quote.encode(),
+            continuity=(
+                DraftContinuity(
+                    "COMMITMENT",
+                    SceneSpan(0, len(quote), quote),
+                    commitment=DraftCommitment("split-payment", "上周五", "FULFILLED"),
+                ),
+            ),
+        )
+    )
+    reader = ChapterWorkflow(store)
+    scope = {
+        "project": PROJECT,
+        "branch": BRANCH,
+        "run_id": RUN,
+        "expected_revision_hash": earlier.record_hash,
+    }
+    handoff, observation = reader._current_next_chapter_draft_input(
+        current, **scope, source_chapter_id=chapter2.id
+    )
+    current_handoff = handoff.to_dict()
+    assert current_handoff["fulfilled_commitments"][0]["key"] == "split-payment"
+    legacy = replace(handoff, include_fulfilled_commitments=False)
+    legacy_handoff = legacy.to_dict()
+    assert legacy_handoff == {
+        key: value
+        for key, value in current_handoff.items()
+        if key != "fulfilled_commitments"
+    }
+    brief = _commitment_timing_brief(chapter2.id, chapter3.id, earlier.prose_hash)
+    legacy_packet = reader._next_chapter_writer_request(
+        current, legacy, observation, DraftChapterBrief.from_dict(brief)
+    )
+    policy = policy_for(endpoint=OPENAI_RESPONSES_ENDPOINT, test_mode=False)
+    legacy_request = _next_chapter_model_request(
+        legacy, legacy_packet, observation.assembly.child.source.context, policy
+    )
+    assert b"fulfilled_commitments" not in legacy_request.to_bytes()
+    request = scope | {
+        "current_input": current.to_dict(),
+        "source_chapter_id": chapter2.id.to_dict(),
+        "handoff": current_handoff,
+    }
+    task = WorkflowTaskAdapter(reader)
+    verify = request | {"operation": "VERIFY_NEXT_CHAPTER"}
+    assert task.execute(verify).payload_bytes() == handoff.payload_bytes()
+    prepared_path = tmp_path / "model-request.json"
+    prepare = request | {
+        "operation": "PREPARE_NEXT_CHAPTER_MODEL_REQUEST",
+        "policy": policy.to_dict(),
+        "brief": brief,
+        "output": str(prepared_path),
+    }
+    for operation in (verify, prepare):
+        with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_INPUT_CHANGED$"):
+            task.execute(operation | {"handoff": legacy_handoff})
+    assert not prepared_path.exists()
+    assert task.execute(prepare).to_bytes() != legacy_request.to_bytes()
+
+    private = tmp_path.resolve() / "writer-ledger"
+    private.mkdir(mode=0o700)
+    ledger_path = private / "ledger.sqlite"
+    ledger_path.touch(mode=0o600)
+    ledger = BudgetLedger(ledger_path)
+    budget = BudgetLimit(PROJECT, BRANCH, RUN, 100_000, 1, FUTURE, 1, 1)
+    ledger.provision(budget)
+    adapter = CountingLocalAdapter()
+    result = ModelGateway(ledger, adapter).submit(
+        legacy_request, policy.id, legacy_request.logical_id + "-attempt-1"
+    )
+    assert result.status == "SUCCESS" and adapter.calls == 1
+
+    def forbidden(*_args):
+        pytest.fail("Retained receipt recovery must not authorize or read credentials")
+
+    output = tmp_path / "recovered.json"
+    write = request | {
+        "operation": "WRITE_NEXT_CHAPTER_DRAFT",
+        "handoff": legacy_handoff,
+        "brief": brief,
+        "output": str(output),
+    }
+    reader_writer = OpenAIDraftWriter(legacy_request, ledger_path)
+    budgeted = WorkflowTaskAdapter(
+        ChapterWorkflow(
+            store,
+            openai_writer=replace(
+                reader_writer, budget=budget, authorize=forbidden, credential=forbidden
+            ),
+        )
+    )
+    with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_INPUT_CHANGED$"):
+        budgeted.execute(write)
+    missing_ledger = private / "missing.sqlite"
+    missing_receipt = WorkflowTaskAdapter(
+        ChapterWorkflow(
+            store, openai_writer=replace(reader_writer, ledger_path=missing_ledger)
+        )
+    )
+    with pytest.raises(WorkflowError, match="^OPENAI_DRAFT_RECEIPT_UNAVAILABLE$"):
+        missing_receipt.execute(write)
+    assert not missing_ledger.exists()
+    recovery = WorkflowTaskAdapter(ChapterWorkflow(store, openai_writer=reader_writer))
+    with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_INPUT_CHANGED$"):
+        recovery.execute(
+            write | {"handoff": legacy_handoff | {"start_intent": "替换开场。"}}
+        )
+    assert not output.exists()
+    ledger_before = ledger_path.read_bytes()
+    recovered = recovery.execute(write)
+    assert recovered.handoff.payload_bytes() == legacy.payload_bytes()
+    assert recovered.writer_input_hash == sha256(legacy_packet).hexdigest()
+    assert recovered.prose == BODY
+    assert output.read_bytes() == recovered.payload_bytes()
+    assert ledger_path.read_bytes() == ledger_before
+    assert ledger.summary(RUN)["attempts"] == adapter.calls == 1
 
 
 def test_written_draft_annotations_bind_unique_quotes_and_preserve_existing_notes():
@@ -2518,6 +3401,8 @@ def test_written_draft_commitment_review_checks_exact_current_excerpts(
         tmp_path, monkeypatch, "承接约定。", template_version="local-commitment-review"
     )
     earlier_quote = "说好周一给家里回电话。"
+    clip_quote = "答应周三交试片。"
+    earlier_prose = f"{earlier_quote}\n{clip_quote}"
     earlier = store.append_written_draft(
         WrittenDraftRevision(
             chapter2.id,
@@ -2530,12 +3415,17 @@ def test_written_draft_commitment_review_checks_exact_current_excerpts(
             "3" * 64,
             1,
             None,
-            earlier_quote.encode(),
+            earlier_prose.encode(),
             continuity=(
                 DraftContinuity(
                     "COMMITMENT",
                     SceneSpan(0, len(earlier_quote), earlier_quote),
                     commitment=DraftCommitment("call-home", "周一", "DUE_UNEXPLAINED"),
+                ),
+                DraftContinuity(
+                    "COMMITMENT",
+                    SceneSpan(len(earlier_quote) + 1, len(earlier_prose), clip_quote),
+                    commitment=DraftCommitment("send-clip", "周三", "NOT_DUE"),
                 ),
             ),
         )
@@ -2556,36 +3446,59 @@ def test_written_draft_commitment_review_checks_exact_current_excerpts(
             quote.encode(),
         )
     )
-    request = {
-        "operation": "REVIEW_WRITTEN_DRAFT_COMMITMENTS",
+    selection = {
         "project": PROJECT,
         "branch": BRANCH,
         "run_id": RUN,
         "current_input": current.to_dict(),
         "chapter_id": chapter3.id.to_dict(),
         "expected_revision_hash": draft.record_hash,
+    }
+    request = selection | {
+        "operation": "REVIEW_WRITTEN_DRAFT_COMMITMENTS",
         "review": {},
     }
     task = WorkflowTaskAdapter(ChapterWorkflow(store))
     unchanged = store.path.read_bytes()
+    root_brief = _commitment_timing_brief(
+        root.chapter_id, chapter2.id, sha256(root.candidate.prose).hexdigest()
+    ) | {"defer_commitments": []}
+    direct_root = task.execute(
+        request
+        | {
+            "chapter_id": chapter2.id.to_dict(),
+            "expected_revision_hash": earlier.record_hash,
+            "brief": root_brief,
+        }
+    )
+    assert direct_root.commitments == ()
+    unobserved_clip = {
+        "key": "send-clip",
+        "incoming_status": "NOT_DUE",
+        "observed_status": None,
+        "review_status": "REVIEW_REQUIRED",
+    }
     assert snapshot_summary(task.execute(request))["commitments"] == [
         {
             "key": "call-home",
             "incoming_status": "DUE_UNEXPLAINED",
             "observed_status": None,
             "review_status": "REVIEW_REQUIRED",
-        }
+        },
+        unobserved_clip,
     ]
     observations = [{"key": "call-home", "status": "FULFILLED", "quote": quote}]
-    review = {"defer": ["call-home"], "observations": observations}
-    expected = snapshot_summary(task.execute(request | {"review": review}))
+    review = {"defer": ["call-home", "send-clip"], "observations": observations}
+    manual = task.execute(request | {"review": review})
+    expected = snapshot_summary(manual)
     assert expected["commitments"] == [
         {
             "key": "call-home",
             "incoming_status": "DUE_UNEXPLAINED",
             "observed_status": "FULFILLED",
             "review_status": "FULFILLED_BEFORE_PLANNED_CHAPTER",
-        }
+        },
+        unobserved_clip,
     ]
     assert not any(
         expected[flag]
@@ -2612,43 +3525,403 @@ def test_written_draft_commitment_review_checks_exact_current_excerpts(
     with pytest.raises(WorkflowError, match="^INVALID_DRAFT_COMMITMENT_REVIEW$"):
         task.execute(request | {"review": review | {"observations": observations * 2}})
 
+    brief = _commitment_timing_brief(chapter2.id, chapter3.id, earlier.prose_hash) | {
+        "defer_commitments": ["send-clip", "call-home"],
+    }
+    implicit = request | {"review": {"observations": observations}, "brief": brief}
+    assert task.execute(implicit) == manual
+    assert task.execute(implicit | {"review": review}) == manual
+    brief_report = tmp_path / "brief-report.json"
+    export = implicit | {"output": str(brief_report)}
+    with pytest.raises(WorkflowError, match="^DRAFT_COMMITMENT_TIMING_CONFLICT$"):
+        task.execute(export | {"review": review | {"defer": ["call-home"]}})
+    stale = brief | {"source_prose_hash": "0" * 64}
+    with pytest.raises(WorkflowError, match="^NEXT_CHAPTER_BRIEF_SOURCE_CHANGED$"):
+        task.execute(export | {"brief": stale})
+    with pytest.raises(WorkflowError, match="^UNKNOWN_INCOMING_DRAFT_COMMITMENT$"):
+        task.execute(export | {"brief": brief | {"defer_commitments": ["other"]}})
+    assert not brief_report.exists()
+
     input_path = tmp_path / "current.json"
     input_path.write_bytes(current.payload)
     review_path = tmp_path / "review.json"
     review_path.write_bytes(canonical_bytes(review))
     report = tmp_path / "private-report.json"
-    assert (
-        workflow_cli.main(
-            [
-                "--db",
-                str(store.path),
-                "--project",
-                PROJECT,
-                "--branch",
-                BRANCH,
-                "--run-id",
-                RUN,
-                "review-written-draft-commitments",
-                "--input",
-                str(input_path),
-                "--chapter-id",
-                chapter3.id.local_id,
-                "--expected-revision-hash",
-                draft.record_hash,
-                "--review",
-                str(review_path),
-                "--output",
-                str(report),
-            ]
-        )
-        == 0
-    )
+    cli = [
+        "--db",
+        str(store.path),
+        "--project",
+        PROJECT,
+        "--branch",
+        BRANCH,
+        "--run-id",
+        RUN,
+        "review-written-draft-commitments",
+        "--input",
+        str(input_path),
+        "--chapter-id",
+        chapter3.id.local_id,
+        "--expected-revision-hash",
+        draft.record_hash,
+        "--review",
+        str(review_path),
+    ]
+    assert workflow_cli.main(cli + ["--output", str(report)]) == 0
     assert json.loads(capsys.readouterr().out) == expected
     rows = json.loads(report.read_bytes())["commitments"]
     assert rows[0]["evidence"]["span"]["quote"] == quote
     assert rows[0]["incoming"]["latest"]["span"]["quote"] == earlier_quote
     assert report.stat().st_mode & 0o777 == 0o600
+    brief_path = tmp_path / "brief.json"
+    brief_path.write_bytes(canonical_bytes(stale))
+    review_path.write_bytes(canonical_bytes({"observations": observations}))
+    with_brief = cli + ["--brief", str(brief_path), "--output", str(brief_report)]
+    assert workflow_cli.main(with_brief) == 2
+    assert (
+        json.loads(capsys.readouterr().out)["code"]
+        == "NEXT_CHAPTER_BRIEF_SOURCE_CHANGED"
+    )
+    assert not brief_report.exists()
+    brief_path.write_bytes(canonical_bytes(brief))
+    assert workflow_cli.main(with_brief) == 0
+    assert json.loads(capsys.readouterr().out) == expected
+    assert brief_report.read_bytes() == report.read_bytes()
+    assert brief_report.stat().st_mode & 0o777 == 0o600
     assert store.path.read_bytes() == unchanged
+
+    new_quote = "甲答应晚些再拨回去。"
+    revised = task.execute(
+        selection
+        | {"operation": "EDIT_WRITTEN_DRAFT", "text": new_quote, "choice": None}
+    )
+    after_edit = store.path.read_bytes()
+    latest = implicit | {"expected_revision_hash": revised.record_hash}
+    with pytest.raises(WorkflowError, match="^DRAFT_ANNOTATION_QUOTE_MISSING$"):
+        task.execute(latest)
+    revised_review = {
+        "observations": [
+            observations[0] | {"status": "DUE_UNEXPLAINED", "quote": new_quote}
+        ],
+    }
+    current_review = task.execute(latest | {"review": revised_review})
+    assert current_review.commitments[0]["review_status"] == "REVIEWED"
+    assert current_review.commitments[0]["observed_status"] == "DUE_UNEXPLAINED"
+    assert current_review.commitments[0]["deferred"] is True
+    assert current_review.commitments[0]["evidence"]["span"]["quote"] == new_quote
+    assert store.path.read_bytes() == after_edit
+
+    # The synthetic root has no retained extraction row. Keep the real
+    # archived child lineage while supplying its one original observation.
+    scope = {"project": PROJECT, "branch": BRANCH, "run_id": RUN}
+    _, observation = task.service._current_chapter_revision(current, **scope)
+    observation.assembly.child.source = store.load(**scope)
+    observation.prose_hash = sha256(root.candidate.prose).hexdigest()
+
+    def retained_root(_store, **lookup):
+        assert lookup == scope | {
+            "chapter_id": root.chapter_id,
+            "source_revision_hash": root.record_hash,
+            "retained_step_id": None,
+        }
+        return observation
+
+    monkeypatch.setattr(WorkflowStore, "load_retained_root_observation", retained_root)
+    new_predecessor = store.append_written_draft(
+        replace(
+            earlier,
+            version=2,
+            previous_revision_hash=earlier.record_hash,
+            prose="她改了原定安排。".encode(),
+            continuity=(),
+        )
+    )
+    before_history = store.path.read_bytes()
+    with pytest.raises(WorkflowError, match="^WRITTEN_DRAFT_SOURCE_CHANGED$"):
+        task.execute(latest | {"review": revised_review})
+    historical = implicit | {"version": 1}
+    archived = task.execute(historical)
+    assert archived.payload_bytes() == manual.payload_bytes()
+    assert archived.commitments[0]["evidence"]["span"]["quote"] == quote
+    latest_archived = task.execute(latest | {"review": revised_review, "version": 2})
+    assert latest_archived.payload_bytes() == current_review.payload_bytes()
+    assert (
+        task.execute(
+            request
+            | {
+                "version": 1,
+                "chapter_id": chapter2.id.to_dict(),
+                "expected_revision_hash": earlier.record_hash,
+                "brief": root_brief,
+            }
+        )
+        == direct_root
+    )
+    for invalid, diagnostic in (
+        ({"expected_revision_hash": revised.record_hash}, "CHAPTER_REVISION_CHANGED"),
+        ({"review": revised_review}, "DRAFT_ANNOTATION_QUOTE_MISSING"),
+        (
+            {"brief": brief | {"source_prose_hash": new_predecessor.prose_hash}},
+            "NEXT_CHAPTER_BRIEF_SOURCE_CHANGED",
+        ),
+        ({"save_observations": True}, "INVALID_DRAFT_COMMITMENT_REVIEW_SAVE"),
+        ({"version": True}, "INVALID_WORKFLOW_TASK_REQUEST"),
+    ):
+        with pytest.raises(WorkflowError, match=f"^{diagnostic}$"):
+            task.execute(historical | invalid)
+
+    historical_args = cli + ["--brief", str(brief_path), "--version", "1"]
+    historical_report = tmp_path / "historical-review.json"
+    assert (
+        workflow_cli.main(historical_args + ["--output", str(historical_report)]) == 0
+    )
+    assert json.loads(capsys.readouterr().out) == snapshot_summary(archived)
+    assert historical_report.read_bytes() == report.read_bytes()
+    assert historical_report.stat().st_mode & 0o777 == 0o600
+    assert workflow_cli.main(historical_args + ["--save-observations"]) == 2
+    assert (
+        json.loads(capsys.readouterr().out)["code"]
+        == "INVALID_DRAFT_COMMITMENT_REVIEW_SAVE"
+    )
+    assert store.path.read_bytes() == before_history
+
+
+def test_saved_commitment_review_updates_next_chapter_handoff(
+    tmp_path, monkeypatch, capsys
+):
+    from anovel.context.scene import SceneSpan
+    from anovel.workflow.written_draft import (
+        DraftCommitment,
+        DraftContinuity,
+        WrittenDraftRevision,
+    )
+
+    current, store, root, _, (_, chapter2, chapter3, chapter4) = _written_draft_setup(
+        tmp_path,
+        monkeypatch,
+        "承接约定。",
+        "处理试片。",
+        template_version="commitment-save",
+    )
+
+    def locate(prose, quote):
+        start = prose.index(quote)
+        return SceneSpan(start, start + len(quote), quote)
+
+    home_quote = "约好周一给家里回电话。"
+    clip_quote = "约好周三交试片。"
+    old_payoff_quote = "上周已经分完账。"
+    earlier_prose = f"{home_quote}\n{clip_quote}\n{old_payoff_quote}"
+    open_home = DraftCommitment("call-home", "周一", "DUE_UNEXPLAINED")
+    open_clip = DraftCommitment("send-clip", "周三", "NOT_DUE")
+    earlier = store.append_written_draft(
+        WrittenDraftRevision(
+            chapter2.id,
+            2,
+            BRANCH,
+            RUN,
+            current.content_hash,
+            root.chapter_id,
+            root.record_hash,
+            "3" * 64,
+            1,
+            None,
+            earlier_prose.encode(),
+            continuity=(
+                DraftContinuity(
+                    "COMMITMENT",
+                    locate(earlier_prose, home_quote),
+                    commitment=open_home,
+                ),
+                DraftContinuity(
+                    "COMMITMENT",
+                    locate(earlier_prose, clip_quote),
+                    commitment=open_clip,
+                ),
+                DraftContinuity(
+                    "COMMITMENT",
+                    locate(earlier_prose, old_payoff_quote),
+                    commitment=DraftCommitment("split-payment", "上周五", "FULFILLED"),
+                ),
+            ),
+        )
+    )
+    choice_quote = "甲决定先给家里回电话。"
+    fulfilment_quote = "母亲接听了电话。"
+    fact_quote = "试片仍在桌上。"
+    prose = f"{choice_quote}\n{fulfilment_quote}\n{fact_quote}"
+    choice = locate(prose, choice_quote)
+    fact = DraftContinuity("FACT", locate(prose, fact_quote))
+    draft = store.append_written_draft(
+        WrittenDraftRevision(
+            chapter3.id,
+            3,
+            BRANCH,
+            RUN,
+            current.content_hash,
+            chapter2.id,
+            earlier.record_hash,
+            "4" * 64,
+            1,
+            None,
+            prose.encode(),
+            choice=choice,
+            continuity=(
+                DraftContinuity("COMMITMENT", choice, commitment=open_home),
+                fact,
+            ),
+        )
+    )
+    common = {
+        "project": PROJECT,
+        "branch": BRANCH,
+        "run_id": RUN,
+        "current_input": current.to_dict(),
+        "expected_revision_hash": draft.record_hash,
+    }
+    review = {
+        "observations": [
+            {"key": "call-home", "status": "FULFILLED", "quote": fulfilment_quote},
+        ],
+    }
+    brief = _commitment_timing_brief(chapter2.id, chapter3.id, earlier.prose_hash) | {
+        "defer_commitments": ["call-home", "send-clip"],
+    }
+    request = common | {
+        "operation": "REVIEW_WRITTEN_DRAFT_COMMITMENTS",
+        "chapter_id": chapter3.id.to_dict(),
+        "brief": brief,
+        "review": review,
+    }
+    projection = common | {
+        "operation": "PROJECT_NEXT_CHAPTER",
+        "source_chapter_id": chapter3.id.to_dict(),
+        "output": str(tmp_path / "handoff-before.json"),
+    }
+    task = WorkflowTaskAdapter(ChapterWorkflow(store))
+    old_handoff = task.execute(projection).to_dict()
+    assert {item["key"] for item in old_handoff["open_commitments"]} == {
+        "call-home",
+        "send-clip",
+    }
+    assert "fulfilled_commitments" not in old_handoff
+    before_model = task.execute(
+        projection
+        | {
+            "operation": "PREPARE_NEXT_CHAPTER_MODEL_REQUEST",
+            "handoff": old_handoff,
+            "policy": policy_for().to_dict(),
+            "output": str(tmp_path / "request-before.json"),
+        }
+    )
+    assert b"fulfilled_commitments" not in before_model.to_bytes()
+    before = store.path.read_bytes()
+    preview = task.execute(request)
+    assert preview.saved_revision is None
+    assert preview.commitments[0]["review_status"] == "FULFILLED_BEFORE_PLANNED_CHAPTER"
+
+    input_path = tmp_path / "current.json"
+    input_path.write_bytes(current.payload)
+    review_path = tmp_path / "review.json"
+    review_path.write_bytes(canonical_bytes(review))
+    brief_path = tmp_path / "brief.json"
+    brief_path.write_bytes(canonical_bytes(brief))
+    report_path = tmp_path / "refused-report.json"
+    save = request | {"save_observations": True}
+    with pytest.raises(WorkflowError, match="^INVALID_DRAFT_COMMITMENT_REVIEW_SAVE$"):
+        task.execute(save | {"output": str(report_path)})
+    cli = [
+        "--db",
+        str(store.path),
+        "--project",
+        PROJECT,
+        "--branch",
+        BRANCH,
+        "--run-id",
+        RUN,
+        "review-written-draft-commitments",
+        "--input",
+        str(input_path),
+        "--chapter-id",
+        chapter3.id.local_id,
+        "--expected-revision-hash",
+        draft.record_hash,
+        "--brief",
+        str(brief_path),
+        "--review",
+        str(review_path),
+        "--save-observations",
+    ]
+    assert workflow_cli.main(cli + ["--output", str(report_path)]) == 2
+    assert (
+        json.loads(capsys.readouterr().out)["code"]
+        == "INVALID_DRAFT_COMMITMENT_REVIEW_SAVE"
+    )
+    assert not report_path.exists()
+    assert store.path.read_bytes() == before
+
+    assert workflow_cli.main(cli) == 0
+    summary = json.loads(capsys.readouterr().out)
+    assert summary["artifact_state"] == "DRAFT"
+    assert summary["revision_hash"] == draft.record_hash
+    assert summary["saved_version"] == 2
+    assert summary["commitments"] == preview.summary()["commitments"]
+    cold = WorkflowStore(store.path)
+    scope = {"project": PROJECT, "branch": BRANCH, "chapter_id": chapter3.id}
+    saved = cold.load_written_draft(**scope)
+    assert saved.record_hash == summary["saved_revision_hash"]
+    assert saved.previous_revision_hash == draft.record_hash
+    assert saved.prose == draft.prose and saved.choice == choice
+    assert fact in saved.continuity
+    assert [note for note in saved.continuity if note.commitment is not None] == [
+        DraftContinuity(
+            "COMMITMENT",
+            locate(prose, fulfilment_quote),
+            commitment=replace(open_home, status="FULFILLED"),
+        ),
+    ]
+    assert cold.load_written_draft(**scope, version=1) == draft
+
+    after = store.path.read_bytes()
+    with pytest.raises(WorkflowError, match="^CHAPTER_REVISION_CHANGED$"):
+        task.execute(save)
+    latest = save | {"expected_revision_hash": saved.record_hash}
+    assert task.execute(latest).saved_revision == saved
+    assert task.execute(latest | {"review": {}}).saved_revision == saved
+    assert store.path.read_bytes() == after
+
+    new_handoff = task.execute(
+        projection
+        | {
+            "expected_revision_hash": saved.record_hash,
+            "output": str(tmp_path / "handoff-after.json"),
+        }
+    ).to_dict()
+    assert new_handoff["artifact_state"] == "DRAFT"
+    assert new_handoff["target_chapter_id"] == chapter4.id.to_dict()
+    assert new_handoff["source_revision_hash"] == saved.record_hash
+    assert new_handoff["source_prose_hash"] == old_handoff["source_prose_hash"]
+    assert new_handoff["ending"] == old_handoff["ending"]
+    assert new_handoff["open_commitments"] == [
+        item for item in old_handoff["open_commitments"] if item["key"] == "send-clip"
+    ]
+    original_home = next(
+        item for item in old_handoff["open_commitments"] if item["key"] == "call-home"
+    )
+    assert new_handoff["fulfilled_commitments"] == [
+        {
+            "key": "call-home",
+            "due": "周一",
+            "status": "FULFILLED",
+            "origin": original_home["origin"],
+            "latest": {
+                "source_chapter_id": chapter3.id.to_dict(),
+                "source_chapter_number": chapter3.number,
+                "source_revision_hash": saved.record_hash,
+                "source_prose_hash": saved.prose_hash,
+                "span": locate(prose, fulfilment_quote).to_dict(),
+            },
+        }
+    ]
 
 
 def test_written_draft_cli_relocates_unprovided_annotations(

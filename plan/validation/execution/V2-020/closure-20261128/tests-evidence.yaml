@@ -1,0 +1,29 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-020
+revision: 97054449bf9c3995113651713cb8d09b25405696
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T05:24:47Z'
+environment_fingerprint: GitHub Ubuntu24.04/Python3.12.14 repo1421585508 run46110686650
+  attempt1; local retained DRAFT readback
+evidence_id: V2-020-tests-9705444
+evidence_type: TEST_RESULT
+artifacts:
+- ref: validation/execution/V2-020/closure-20261128/SCENARIO_RESULTS.json
+  sha256: 86e68837a64e193aeb8c48f742fbefc641b7128fe082893f545f978afe56ba65
+- ref: validation/execution/V2-020/closure-20261128/PRODUCT_READBACK.json
+  sha256: f07058c4430adbccf045a23e0b5c3d77d8efb49d578a8d3ac2a8104495e8c579
+- ref: validation/execution/V2-020/closure-20261128/gate-unit-46110686650-1.zip
+  sha256: 31852c680d6dde79f890c4f0e86a3fd2867620741efd558b0456df8eb74ddef8
+input_evidence_refs:
+- validation/execution/V2-020/closure-20261128/code-evidence.yaml
+- validation/execution/V2-020/closure-20261128/ci-evidence.yaml
+check_ids:
+- AT-V2-020-01
+- AT-V2-020-02
+- AT-V2-020-03
+- AT-V2-020-04
+- AT-V2-020-05
+exit_code: 0
+command: Actual GitHub UNIT JUnit comparison and retained private DRAFT readback

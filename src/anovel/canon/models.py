@@ -233,6 +233,18 @@ class CommitReceipt:
 
 
 @dataclass(frozen=True, slots=True)
+class ChapterSubmissionReadback:
+    cancelled: bool
+    receipt: CommitReceipt | None
+
+    @property
+    def state(self) -> str:
+        if self.receipt is not None:
+            return "COMMITTED"
+        return "CANCELLED" if self.cancelled else "UNKNOWN"
+
+
+@dataclass(frozen=True, slots=True)
 class StoredRoot:
     receipt: CommitReceipt
     seed: RootSeed

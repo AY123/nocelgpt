@@ -10,7 +10,13 @@ from sqlalchemy import Engine
 
 from anovel.canon import projection
 from anovel.canon.chapter import ChapterCandidate, StoredChapter
-from anovel.canon.models import CommitReceipt, ExecutionTicket, RootSeed, StoredRoot
+from anovel.canon.models import (
+    ChapterSubmissionReadback,
+    CommitReceipt,
+    ExecutionTicket,
+    RootSeed,
+    StoredRoot,
+)
 from anovel.canon.repository import Repository, _test_database
 from anovel.domain.delta import FactBaseline
 from anovel.genre.extensions.registration import registered_extensions
@@ -84,6 +90,12 @@ class CanonCommitService:
         return self._repository._commit_chapter(
             ticket, candidate, permit_ref, accept_test=self._test_database is not None
         )
+
+    def inspect_chapter_submission(
+        self, ticket: ExecutionTicket, candidate: ChapterCandidate
+    ) -> ChapterSubmissionReadback:
+        """Read the original request outcome from one snapshot, without submitting it."""
+        return self._repository.inspect_chapter_submission(ticket, candidate)
 
     def revoke_chapter_authority(self, project: str, branch: str, actor: str) -> int:
         self._require_test()

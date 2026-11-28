@@ -849,6 +849,7 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
                 "tests/integration/test_v2_017_postgres.py",
                 "tests/integration/test_v2_018_postgres.py",
                 "tests/integration/test_v2_019.py",
+                "tests/integration/test_v2_027.py",
                 legacy[-1],
             ]
         ]
@@ -2106,6 +2107,7 @@ def test_postgres_gate_runs_canon_persistence_without_dropping_service_check():
     assert "tests/integration/test_v2_017_postgres.py" in command
     assert "tests/integration/test_v2_018_postgres.py" in command
     assert "tests/integration/test_v2_019.py" in command
+    assert "tests/integration/test_v2_027.py" in command
     assert not {"--ignore", "--deselect", "-k", "-m"}.intersection(
         command[command.index("pytest") + 1 :]
     )
