@@ -6,6 +6,7 @@ fixture approval and cost evidence apply only to the loopback server.
 
 from __future__ import annotations
 
+import fcntl
 import json
 import os
 import re
@@ -740,7 +741,7 @@ def prepared(seed, tmp_path):
         yield fixture, server
 
 
-def terminal_process(repo, command, *, send_credential):
+def _terminal_process(repo, command, *, send_credential):
     environment = clean_environment(repo)
     # forkpty runs in a new single-threaded helper, not the HTTP-server process.
     helper = """
@@ -807,10 +808,28 @@ finally:
     return result["code"], result["transcript"].encode(), result["sent"]
 
 
-def run_with_terminal(fixture, *, typed=True):
-    return terminal_process(
-        fixture.repo, fixture.command(typed=typed), send_credential=True
-    )
+@pytest.fixture(scope="module")
+def terminal_process(tmp_path_factory, worker_id):
+    # On macOS, independent controlling PTYs share /dev/tty's flock.
+    base = tmp_path_factory.getbasetemp()
+    lock_path = (base if worker_id == "master" else base.parent) / "probe-tty.lock"
+
+    def run(repo, command, *, send_credential):
+        with lock_path.open("ab") as lock:
+            fcntl.flock(lock, fcntl.LOCK_EX)
+            return _terminal_process(repo, command, send_credential=send_credential)
+
+    return run
+
+
+@pytest.fixture(scope="module")
+def run_with_terminal(terminal_process):
+    def run(fixture, *, typed=True):
+        return terminal_process(
+            fixture.repo, fixture.command(typed=typed), send_credential=True
+        )
+
+    return run
 
 
 def test_exact_frozen_fixture_authority_passes_real_context_scope_and_source(prepared):
@@ -899,7 +918,7 @@ def test_invalid_or_unapproved_authority_refuses_before_credential_or_network(
 
 
 def test_qualified_typed_probe_uses_hidden_synthetic_input_and_durable_loopback_receipt(
-    prepared,
+    prepared, run_with_terminal
 ):
     fixture, server = prepared
     code, transcript, sent = run_with_terminal(fixture)
@@ -934,7 +953,7 @@ def test_qualified_typed_probe_uses_hidden_synthetic_input_and_durable_loopback_
 
 
 def test_kimi_typed_probe_preserves_frozen_dispatch_and_hidden_credential(
-    seed, tmp_path
+    seed, tmp_path, run_with_terminal
 ):
     with local_server(kimi=True) as server:
         fixture = freeze_fixture(seed, tmp_path, server.endpoint)
@@ -1008,7 +1027,9 @@ def configure_kimi_generation_only(fixture, **request_changes):
     fixture.grant["limits"]["max_http_requests"] = 1
 
 
-def test_kimi_generation_only_grant_sends_one_reserved_post(seed, tmp_path):
+def test_kimi_generation_only_grant_sends_one_reserved_post(
+    seed, tmp_path, run_with_terminal
+):
     with local_server(kimi=True) as server:
         fixture = freeze_fixture(seed, tmp_path, server.endpoint)
         configure_kimi_generation_only(fixture)
@@ -1048,7 +1069,7 @@ def test_kimi_generation_only_grant_sends_one_reserved_post(seed, tmp_path):
     ],
 )
 def test_openai_first_generation_uses_one_post_and_checks_marker(
-    seed, tmp_path, mode, outcome, http_status, error_code
+    seed, tmp_path, mode, outcome, http_status, error_code, run_with_terminal
 ):
     with local_server(mode, openai_probe=True) as server:
         fixture = freeze_fixture(seed, tmp_path, server.endpoint, openai_probe=True)
@@ -1179,7 +1200,7 @@ def bind_paid_estimate(fixture, **tariff_changes):
 
 
 def test_kimi_paid_estimate_reservation_survives_success_and_refuses_replay(
-    seed, tmp_path
+    seed, tmp_path, run_with_terminal
 ):
     with local_server(kimi=True) as server:
         fixture = freeze_fixture(seed, tmp_path, server.endpoint)
@@ -1248,7 +1269,7 @@ def test_kimi_paid_estimate_rejects_bad_bound_before_claim(
     "mode", ["success", "disconnect", "missing_usage", "count_denied"]
 )
 def test_finished_unknown_or_pending_claim_never_sends_a_second_attempt(
-    seed, tmp_path, mode
+    seed, tmp_path, mode, run_with_terminal
 ):
     with local_server(mode) as server:
         fixture = freeze_fixture(seed, tmp_path, server.endpoint)
@@ -1279,7 +1300,7 @@ def test_finished_unknown_or_pending_claim_never_sends_a_second_attempt(
     ],
 )
 def test_private_path_or_terminal_failure_never_reads_input_or_sends(
-    prepared, condition
+    prepared, condition, run_with_terminal
 ):
     fixture, server = prepared
     if condition == "directory_mode":
@@ -1371,7 +1392,9 @@ def test_actual_import_outside_bound_source_is_rejected(prepared):
     assert server.requests == []
 
 
-def test_parent_terminal_guard_restores_echo_after_killed_synthetic_child():
+def test_parent_terminal_guard_restores_echo_after_killed_synthetic_child(
+    terminal_process,
+):
     child = (
         "import sys,termios,time;fd=sys.stdin.fileno();a=termios.tcgetattr(fd);"
         "a[3]&=~termios.ECHO;termios.tcsetattr(fd,termios.TCSANOW,a);"
@@ -1447,7 +1470,9 @@ print(json.dumps({'conflict':probe_receipt_conflicts(directory/'task-receipt.jso
     assert json.loads(completed.stdout) == {"conflict": False}
 
 
-def test_competing_parent_guard_cannot_enter_or_change_active_hidden_terminal():
+def test_competing_parent_guard_cannot_enter_or_change_active_hidden_terminal(
+    terminal_process,
+):
     contender = """
 import sys
 sys.path.insert(0,'plan/scripts')

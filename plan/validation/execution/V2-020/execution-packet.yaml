@@ -141,6 +141,8 @@ review_notes:
 - First same-head ordinary CI recorded UNIT exit 124 after 1100 seconds. Reduce repeated
   serialization of an already verified scene source and repeated disposable fixture
   setup. The owner authorized one retry after local preflight.
+- Serialize only synthetic PTY helper invocations across UNIT workers on macOS. The
+  actual no-TTY, same-terminal contention, and no-replay cases remain covered.
 handoff:
   current_step: 已组装独立 V2-020 候选，待核对当前源码的常规 CI。
   completed_steps:
@@ -157,5 +159,3 @@ handoff:
 change_review:
   scope_revision: 98da718df7f6e93c86e74b6cf0232e2789d86b3c
   scope_ref: plan/validation/execution/V2-020/local-acceptance-20261127/scope.json
-  review_revision: dadc25f6aad374637256c55e51f95b717e6421d7
-  review_ref: plan/validation/execution/V2-020/local-acceptance-20261127/review.json
