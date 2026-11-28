@@ -135,17 +135,17 @@
       ]
     },
     {
-      "finding_id": "a87699506f9a7f0cd41a0e32c45eabbaae190bc13a784e983f6dcdff8cb1c040",
+      "finding_id": "ad1878c252276ddea4e1e7fabcac072f47ae4b94402abf913be673ac03b807ab",
       "path": "tests/contract/test_delivery_gates.py",
       "old_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
-      "new_sha": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7",
+      "new_sha": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "index",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "Preserve the earlier serial receipt contract while asserting that the current UNIT command emits case identities.",
-      "impact": "UNIT arguments differ only in verbosity. Existing comparisons still check the earlier command, worker settings, input paths, and required report.",
+      "reason": "Run only the three cases unfinished in 46106837681 earlier through the ordinary UNIT plugin. Preserve argv for historical GitLab receipts.",
+      "impact": "The stable sort does not filter, duplicate or mutate test items. Four workers, worksteal, timeout, discovery paths and JUnit reporting still apply.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Compare the tested command against the approved parallel command with only -q replaced by -v and verify the full 2074-case JUnit identity set.",
+      "replacement_validation": "Compare the full 2074-case multiset, verify the first-three order and stable order of all other cases, and verify the legacy receipt command contract.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -154,26 +154,26 @@
       "verification_artifacts": [
         {
           "ref": "scripts/ci/run_gate.py",
-          "sha256": "4f7d3dab2aeee3ffc61efe97723ff4edb0b857c3af7f9c4d6f49357da3c0a1c5"
+          "sha256": "a5a50c4c2087eff2cd85fa8a4daffcf8a7154b73f22ef72554f2a4637d46c220"
         },
         {
           "ref": "tests/contract/test_delivery_gates.py",
-          "sha256": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7"
+          "sha256": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6"
         }
       ]
     },
     {
-      "finding_id": "51eaddb5b958c2404983ee28b9d0558d818e2f150a99e560ee247ac63daa4d74",
+      "finding_id": "cb862eeea923dbdc2e9a86457e572fc4f6358ac5f497d20a1552b9ddc4602949",
       "path": "tests/contract/test_delivery_gates.py",
       "old_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
-      "new_sha": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7",
+      "new_sha": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "worktree",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "Preserve the earlier serial receipt contract while asserting that the current UNIT command emits case identities.",
-      "impact": "UNIT arguments differ only in verbosity. Existing comparisons still check the earlier command, worker settings, input paths, and required report.",
+      "reason": "Run only the three cases unfinished in 46106837681 earlier through the ordinary UNIT plugin. Preserve argv for historical GitLab receipts.",
+      "impact": "The stable sort does not filter, duplicate or mutate test items. Four workers, worksteal, timeout, discovery paths and JUnit reporting still apply.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Compare the tested command against the approved parallel command with only -q replaced by -v and verify the full 2074-case JUnit identity set.",
+      "replacement_validation": "Compare the full 2074-case multiset, verify the first-three order and stable order of all other cases, and verify the legacy receipt command contract.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -182,11 +182,11 @@
       "verification_artifacts": [
         {
           "ref": "scripts/ci/run_gate.py",
-          "sha256": "4f7d3dab2aeee3ffc61efe97723ff4edb0b857c3af7f9c4d6f49357da3c0a1c5"
+          "sha256": "a5a50c4c2087eff2cd85fa8a4daffcf8a7154b73f22ef72554f2a4637d46c220"
         },
         {
           "ref": "tests/contract/test_delivery_gates.py",
-          "sha256": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7"
+          "sha256": "644ef725e703832e00ea47a2298f268df6644817595eca309a0eca865bb23cf6"
         }
       ]
     },

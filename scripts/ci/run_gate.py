@@ -13,12 +13,23 @@ import sys
 from collections.abc import Mapping
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import urlsplit
 
 import yaml
 
+if TYPE_CHECKING:
+    import pytest
+
 ROOT = Path(__file__).resolve().parents[2]
+_EARLY_UNIT_CASES = (
+    "tests/contract/test_v2_020_run.py"
+    "::test_current_quality_chain_selects_exact_annotations_and_invalidates_on_edit"
+    "[finite-extraction]",
+    "tests/contract/test_v2_020_run.py"
+    "::test_observe_persisted_q0_without_inferring_q1_q3[ERROR-finite-extraction]",
+    "tests/contract/test_v2_020_run.py::test_final_reread_rejects_extraction_changes[appears]",
+)
 GATES = {
     "static": "STATIC",
     "unit": "UNIT",
@@ -79,6 +90,12 @@ def digest(value: bytes) -> str:
 
 def git(*args: str) -> str:
     return subprocess.check_output(["git", "-C", str(ROOT), *args], text=True).strip()
+
+
+def pytest_collection_modifyitems(items: list[pytest.Item]) -> None:
+    """Start the cases previously left unfinished before workers run out of work."""
+    priority = {nodeid: index for index, nodeid in enumerate(_EARLY_UNIT_CASES)}
+    items.sort(key=lambda item: priority.get(item.nodeid, len(priority)))
 
 
 def architecture_entry(python: list[str], target: str) -> list[str]:
@@ -207,6 +224,8 @@ def commands_for(job: str, output: Path) -> list[list[str]]:
             + [
                 "-m",
                 "pytest",
+                "-p",
+                "scripts.ci.run_gate",
                 "-n",
                 "4",
                 "--dist=worksteal",

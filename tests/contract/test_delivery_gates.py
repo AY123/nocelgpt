@@ -815,11 +815,12 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
     if name == "unit":
         assert remote.command_tails(name) == LEGACY_UNIT_COMMAND_TAILS
         bootstrap, unit = actual
-        scheduling_start = 4  # Immediately after "python -B -m pytest".
+        plugin_start, scheduling_start = 4, 6
+        assert unit[plugin_start:scheduling_start] == ["-p", "scripts.ci.run_gate"]
         scheduling_end = scheduling_start + len(UNIT_SCHEDULING)
         assert unit[scheduling_start:scheduling_end] == UNIT_SCHEDULING
         assert unit[scheduling_end] == "-v"  # Preserve case names if UNIT times out.
-        legacy_unit = unit[:scheduling_start] + ["-q"] + unit[scheduling_end + 1 :]
+        legacy_unit = unit[:plugin_start] + ["-q"] + unit[scheduling_end + 1 :]
         assert [bootstrap, legacy_unit] == [
             [sys.executable, *tail] for tail in LEGACY_UNIT_COMMAND_TAILS
         ]
