@@ -1,0 +1,29 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-021",
+  "opening_revision": "5b927fd5739b49a6a5556f993a8c8d39ed186c29",
+  "packet_ref": "plan/validation/execution/V2-021/execution-packet.yaml",
+  "allowed_paths": [
+    "src/anovel/workflow/__main__.py",
+    "src/anovel/workflow/chapter.py",
+    "src/anovel/workflow/extractor.py",
+    "src/anovel/workflow/interfaces.py",
+    "src/anovel/workflow/written_extraction.py",
+    "tests/contract/test_v2_021.py",
+    "tests/contract/test_v2_021_written.py",
+    "plan/decisions/ADR-011_REQUIRED_CHECKS_AND_PERMIT_AUTHORITY.md",
+    "plan/machine/decision-register.yaml",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/generated/PHASE_TASK_REGISTRY.md",
+    "plan/FILE_MANIFEST.json",
+    "plan/validation/execution/V2-021/"
+  ],
+  "pre_existing": {},
+  "exception_authorizations": [],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-021/authorization.txt",
+    "sha256": "f42540d64ba2bc533bdbea7932ff714249478b40b71a92e014f7a76c07415964"
+  }
+}
