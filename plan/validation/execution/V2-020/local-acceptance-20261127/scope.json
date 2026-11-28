@@ -51,7 +51,8 @@
     "pyproject.toml",
     "uv.lock",
     "scripts/ci/run_gate.py",
-    "tests/contract/test_delivery_gates.py"
+    "tests/contract/test_delivery_gates.py",
+    "tests/integration/test_repository_bootstrap.py"
   ],
   "pre_existing": {},
   "exception_authorizations": [],

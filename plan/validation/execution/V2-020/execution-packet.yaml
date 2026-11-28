@@ -98,6 +98,7 @@ allowed_paths:
 - uv.lock
 - scripts/ci/run_gate.py
 - tests/contract/test_delivery_gates.py
+- tests/integration/test_repository_bootstrap.py
 required_decisions:
 - ADR-008
 claims:
@@ -128,6 +129,7 @@ stop_conditions:
 - Stop if a checked input, mandatory test or integrity check fails.
 - No Provider, Canon, publication or production acceptance under this action.
 review_notes:
+- Owner continued after the 2026-11-28 request to include these three records with the four tested fixes in one ordinary CI run. The existing acceptance checks and time limits still apply.
 - V2-020 only is active in this candidate. Other task states follow the verified P5
   baseline.
 - Workflow-required Quality modules and extraction test fixtures are copied unchanged
