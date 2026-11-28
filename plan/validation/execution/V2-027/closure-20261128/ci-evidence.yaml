@@ -1,0 +1,46 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-027
+revision: f6efe20a49937b806b887cc4570e6587b513c19d
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T11:02:27.114846Z'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14 repo1421585508 run46135304329
+  attempt1; isolated PostgreSQL
+evidence_id: V2-027-ci-f6efe20
+evidence_type: CI_RUN
+artifacts:
+- ref: validation/execution/V2-027/closure-20261128/REMOTE_VERIFICATION.json
+  sha256: 3db424b417beafdd43bf27689a890ec6f9a5e91660e3b09a19ce5afdee5d4aff
+- ref: validation/execution/V2-027/closure-20261128/run.json
+  sha256: d34cc4ca3e97d4da551b8ac99506f52c4a9571f0db3af71764f0bd502250684c
+- ref: validation/execution/V2-027/closure-20261128/jobs.json
+  sha256: e5da455e8ed6345d877ffee2860b2d9d04586726e534490d31f51cd2f748fd72
+- ref: validation/execution/V2-027/closure-20261128/artifacts-api.json
+  sha256: b775a01f2f034c4de08932be9167c2989db0f3de40d354d3722fc4a37bb2767f
+- ref: validation/execution/V2-027/closure-20261128/gate-unit-46135304329-1.zip
+  sha256: b747a339743811ca215be4d3fbb011b0bfe7f6e70266dcfe3be90bb6486418e2
+- ref: validation/execution/V2-027/closure-20261128/gate-schema_contract-46135304329-1.zip
+  sha256: 9688a5fc0abc6733b4cb727e08928561ffd18ec97bbb0c501adaf273b9ebc8a5
+- ref: validation/execution/V2-027/closure-20261128/gate-secret_dependency-46135304329-1.zip
+  sha256: 8880f1a9a208d6007d5ece6027693bbc9a8f1429bc6a3786dd4d8f459e36b682
+- ref: validation/execution/V2-027/closure-20261128/gate-static-46135304329-1.zip
+  sha256: 459ea7c773760bba95254cbbd8fe2925ec4b9551b495c9856c55ff269dc72e19
+- ref: validation/execution/V2-027/closure-20261128/gate-postgres_env-46135304329-1.zip
+  sha256: 222d363e78169a96573d522de07d470dda2bd2b338f2e0339deecd2f8ed01902
+- ref: validation/execution/V2-027/closure-20261128/gate-arch_fitness-46135304329-1.zip
+  sha256: c72f56b20f959e981c949cf3c486d5cafd9370428febc34603d5058753b73b84
+input_evidence_refs: []
+check_ids:
+- STATIC
+- UNIT
+- SCHEMA_CONTRACT
+- ARCH_FITNESS
+- SECRET_DEPENDENCY
+- POSTGRES_ENV
+exit_code: 0
+command: Verified original GitHub Actions receipts, artifacts and JUnit for six ordinary
+  gates.
+pipeline_id: '46135304329'
+pipeline_url: https://github.com/AY123/nocelgpt/actions/runs/46135304329
+job_id: 140949169560,140949169746,140949169748,140949169758,140949169792,140949169803

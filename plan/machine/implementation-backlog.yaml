@@ -1643,7 +1643,7 @@ tasks:
   - 不绕过前置阶段门禁
   - 不在 Q0–Q3 正式集成前宣称生产提交通过
   - 不实现自动发表或多个编排入口
-  status: IN_PROGRESS
+  status: CLOSED
   execution_packet_ref: validation/execution/V2-027/execution-packet.yaml
   owner_role: workflow-maintainer
   readiness: READY_TO_START
@@ -1651,10 +1651,22 @@ tasks:
   required_decisions:
   - ADR-010
   evidence:
-    code: []
-    tests: []
-    ci: []
-    acceptance: []
+    code:
+    - ref: validation/execution/V2-027/closure-20261128/code-evidence.yaml
+      revision: f6efe20a49937b806b887cc4570e6587b513c19d
+      status: PASS
+    tests:
+    - ref: validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+      revision: f6efe20a49937b806b887cc4570e6587b513c19d
+      status: PASS
+    ci:
+    - ref: validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+      revision: f6efe20a49937b806b887cc4570e6587b513c19d
+      status: PASS
+    acceptance:
+    - ref: validation/execution/V2-027/closure-20261128/acceptance-evidence.yaml
+      revision: f6efe20a49937b806b887cc4570e6587b513c19d
+      status: PASS
   related_findings:
   - AR-11
   - AR-14

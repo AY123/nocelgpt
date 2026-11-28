@@ -460,7 +460,7 @@ suites:
 - id: AT-V2-027
   task_id: V2-027
   phase: P6
-  status: PLANNED
+  status: VERIFIED
   target_path: tests/integration/test_v2_027.py
   scenarios:
   - id: AT-V2-027-01
@@ -473,7 +473,8 @@ suites:
     required_assertion: 人工改稿或 Contract/Pack/parent 改变后，旧检查点不得跳过重验继续提交
   - id: AT-V2-027-05
     required_assertion: 取消与提交并发覆盖双方先赢、已发许可、重启旧执行和已提交收据恢复
-  execution_evidence: []
+  execution_evidence:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
 - id: AT-V2-028
   task_id: V2-028
   phase: P8

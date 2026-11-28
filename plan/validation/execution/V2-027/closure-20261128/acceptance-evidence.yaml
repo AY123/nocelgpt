@@ -1,0 +1,127 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-027
+revision: f6efe20a49937b806b887cc4570e6587b513c19d
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T11:02:27.114846Z'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14 repo1421585508 run46135304329
+  attempt1; isolated PostgreSQL
+evidence_id: V2-027-acceptance-f6efe20
+evidence_type: ACCEPTANCE_RECORD
+artifacts:
+- ref: validation/execution/V2-027/closure-20261128/ACCEPTANCE_SUMMARY.md
+  sha256: 92ae4c4c1b30fb92555621f24f526203fca995fd13dc1a9996dd713bfc75d99e
+- ref: validation/execution/V2-027/closure-20261128/SCENARIO_RESULTS.json
+  sha256: 73858598131cb4f8d3b3c6b4b670b59e3f275283d84e5bf45e57fc65b79c365f
+- ref: validation/execution/V2-027/closure-20261128/REMOTE_VERIFICATION.json
+  sha256: 3db424b417beafdd43bf27689a890ec6f9a5e91660e3b09a19ce5afdee5d4aff
+input_evidence_refs:
+- validation/execution/V2-027/closure-20261128/code-evidence.yaml
+- validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+- validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+check_ids:
+- AT-V2-027-01
+- AT-V2-027-02
+- AT-V2-027-03
+- AT-V2-027-04
+- AT-V2-027-05
+decision: ACCEPTED
+rationale: 五个验收场景与同一候选的六项常规 CI 已通过，原始用例零跳过。
+finding_dispositions:
+- finding_id: AR-11
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 改稿使旧场景失效，新旧稿可按各自版本读回。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  next_task: V2-026
+  owner_role: quality-maintainer
+  due_gate: G-P7
+  remaining_work: 继续接入生产资格及正式 Permit 检查。
+- finding_id: AR-14
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 未知响应保留原尝试、账本责任和原回执。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P8
+  remaining_work: 扩展进程退出及丢失应答的故障点覆盖。
+- finding_id: AR-18
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 恢复仍由原持久化入口完成，迟到或取消不会合成第二条提交路径。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  next_task: V2-058
+  owner_role: reliability-maintainer
+  due_gate: G-P12
+  remaining_work: 完成跨环境冷恢复和备份恢复验收。
+- finding_id: CA-04
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 原提交服务在真实事务中验证了两种竞态和重启收据。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  next_task: V2-028
+  owner_role: reliability-maintainer
+  due_gate: G-P8
+  remaining_work: 用既定故障注入工具扩大持久化边界覆盖。
+- finding_id: CA-15
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 原尝试、冻结请求、策略与原始响应身份经过复核，UNKNOWN 保留账本责任。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+- finding_id: RR-08
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 恢复沿用同一请求与尝试标识，同键同载荷返回原收据，异载荷冲突。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+- finding_id: SUP-05
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 过期检查点停止恢复并保留诊断。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  next_task: V2-030
+  owner_role: quality-maintainer
+  due_gate: G-P7
+  remaining_work: 落实连续修复无改善时的诊断和升级。
+- finding_id: DA-06
+  responsibility: FULL
+  disposition: RESOLVED
+  reason: 隔离测试覆盖取消先赢、提交先赢、已发 TEST Permit、旧执行与失去应答后的确切原收据。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+- finding_id: DA-08
+  responsibility: PARTIAL
+  disposition: PARTIALLY_RESOLVED
+  reason: 重复投递及 UNKNOWN 不释放旧尝试的账本责任。
+  evidence_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  next_task: V2-031
+  owner_role: quality-maintainer
+  due_gate: G-P7
+  remaining_work: 验证修复与 fallback 使用既有预算和重试边界。
+external_practice_results:
+- practice_id: EXT-004
+  adoption_mode: LOCAL_REFINEMENT_SCOPE_ONLY
+  source_version_note: 沿用现行规划内的恢复做法。
+  verification_refs:
+  - validation/execution/V2-027/closure-20261128/tests-evidence.yaml
+  - validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+  conclusion: 任务与 CLI 共用原回执恢复。改稿和合约、Pack、父提交变化后的过期检查点被拒绝。
+  limitations: V2-028 的长流程故障注入沿用原规划验收。

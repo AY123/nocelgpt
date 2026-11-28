@@ -1,0 +1,15 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-027
+revision: f6efe20a49937b806b887cc4570e6587b513c19d
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T11:02:27.114846Z'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14 repo1421585508 run46135304329
+  attempt1; isolated PostgreSQL
+evidence_id: V2-027-code-f6efe20
+evidence_type: CODE
+artifacts:
+- ref: validation/execution/V2-027/closure-20261128/CODE_MANIFEST.json
+  sha256: ea121f7463c1ea0e74840758148d7f439759f25ff59a7c60cad76d7d399c2169
+input_evidence_refs: []

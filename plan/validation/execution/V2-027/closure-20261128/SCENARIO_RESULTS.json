@@ -1,0 +1,150 @@
+{
+  "revision": "f6efe20a49937b806b887cc4570e6587b513c19d",
+  "run_id": 46135304329,
+  "scenarios": [
+    {
+      "id": "AT-V2-027-01",
+      "status": "PASS",
+      "testcases": [
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_actual_cli_recovery_uses_the_original_gateway_receipt_without_dispatch",
+          "time_seconds": 3.763
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_publish_failure_after_ledger_success_recovers_original_result_without_send",
+          "time_seconds": 2.861
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_ledger_success_survives_child_publication_failure_and_recovers_without_send",
+          "time_seconds": 8.659
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_save_late_scene_success_reopens_and_preserves_the_same_receipt",
+          "time_seconds": 14.482
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_next_chapter_model_gateway_rewrites_with_the_edited_source[openai-receipt]",
+          "time_seconds": 128.359
+        }
+      ]
+    },
+    {
+      "id": "AT-V2-027-02",
+      "status": "PASS",
+      "testcases": [
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_next_chapter_writer_cancellation_fences_draft_not_receipt[cancel-wins]",
+          "time_seconds": 47.73
+        },
+        {
+          "gate": "postgres_env",
+          "classname": "tests.integration.test_v2_027",
+          "name": "test_canon_cancel_commit_race_and_restart_with_issued_permit[cancel]",
+          "time_seconds": 0.158
+        }
+      ]
+    },
+    {
+      "id": "AT-V2-027-03",
+      "status": "PASS",
+      "testcases": [
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_identical_start_and_reopened_recovery_never_resubmit",
+          "time_seconds": 3.482
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_dispatched_process_interruption_recovers_unknown_without_freeing_liability",
+          "time_seconds": 3.793
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020",
+          "name": "test_recovery_diagnostic_reads_late_attempt_without_promoting_unknown",
+          "time_seconds": 9.208
+        },
+        {
+          "gate": "postgres_env",
+          "classname": "tests.integration.test_v2_019",
+          "name": "test_dispatched_recovery_is_unknown_and_cannot_release_by_cancelling",
+          "time_seconds": 0.012
+        }
+      ]
+    },
+    {
+      "id": "AT-V2-027-04",
+      "status": "PASS",
+      "testcases": [
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_recovery_diagnostic_reads_late_attempt_after_scene_source_edit",
+          "time_seconds": 15.152
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_recovery_rejects_changed_chapter_inputs_before_using_retained_receipt[contract]",
+          "time_seconds": 10.136
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_recovery_rejects_changed_chapter_inputs_before_using_retained_receipt[pack]",
+          "time_seconds": 10.105
+        },
+        {
+          "gate": "unit",
+          "classname": "tests.contract.test_v2_020_scene_generation",
+          "name": "test_recovery_rejects_changed_chapter_inputs_before_using_retained_receipt[parent]",
+          "time_seconds": 10.116
+        },
+        {
+          "gate": "postgres_env",
+          "classname": "tests.integration.test_v2_010",
+          "name": "test_stale_parent_cannot_become_new_head_even_with_earlier_valid_permit",
+          "time_seconds": 0.08
+        }
+      ]
+    },
+    {
+      "id": "AT-V2-027-05",
+      "status": "PASS",
+      "testcases": [
+        {
+          "gate": "postgres_env",
+          "classname": "tests.integration.test_v2_027",
+          "name": "test_canon_cancel_commit_race_and_restart_with_issued_permit[cancel]",
+          "time_seconds": 0.158
+        },
+        {
+          "gate": "postgres_env",
+          "classname": "tests.integration.test_v2_027",
+          "name": "test_canon_cancel_commit_race_and_restart_with_issued_permit[commit]",
+          "time_seconds": 0.14
+        },
+        {
+          "gate": "postgres_env",
+          "classname": "tests.integration.test_v2_011",
+          "name": "test_committed_but_lost_dbapi_ack_recovers_on_new_connection_and_continues",
+          "time_seconds": 0.157
+        }
+      ]
+    }
+  ]
+}

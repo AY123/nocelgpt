@@ -1,0 +1,30 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+subject_id: V2-027
+revision: f6efe20a49937b806b887cc4570e6587b513c19d
+status: PASS
+producer: Codex, same implementation and verification operator
+executed_at: '2026-11-28T11:02:27.114846Z'
+environment_fingerprint: GitHub Actions Ubuntu24.04/Python3.12.14 repo1421585508 run46135304329
+  attempt1; isolated PostgreSQL
+evidence_id: V2-027-tests-f6efe20
+evidence_type: TEST_RESULT
+artifacts:
+- ref: validation/execution/V2-027/closure-20261128/SCENARIO_RESULTS.json
+  sha256: 73858598131cb4f8d3b3c6b4b670b59e3f275283d84e5bf45e57fc65b79c365f
+- ref: validation/execution/V2-027/closure-20261128/gate-unit-46135304329-1.zip
+  sha256: b747a339743811ca215be4d3fbb011b0bfe7f6e70266dcfe3be90bb6486418e2
+- ref: validation/execution/V2-027/closure-20261128/gate-postgres_env-46135304329-1.zip
+  sha256: 222d363e78169a96573d522de07d470dda2bd2b338f2e0339deecd2f8ed01902
+input_evidence_refs:
+- validation/execution/V2-027/closure-20261128/code-evidence.yaml
+- validation/execution/V2-027/closure-20261128/ci-evidence.yaml
+check_ids:
+- AT-V2-027-01
+- AT-V2-027-02
+- AT-V2-027-03
+- AT-V2-027-04
+- AT-V2-027-05
+exit_code: 0
+command: Checked the five V2-027 scenarios against exact UNIT and POSTGRES_ENV testcase
+  identities.
