@@ -7,6 +7,8 @@
   "allowed_paths": [
     "src/anovel/workflow/__main__.py",
     "src/anovel/workflow/chapter.py",
+    "src/anovel/workflow/assembly.py",
+    "src/anovel/workflow/models.py",
     "src/anovel/workflow/extractor.py",
     "src/anovel/workflow/interfaces.py",
     "src/anovel/workflow/written_extraction.py",
