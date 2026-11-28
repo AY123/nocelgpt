@@ -1,9 +1,9 @@
 {
   "task_id": "V2-020",
   "baseline_pin": {
-    "revision": "98da718df7f6e93c86e74b6cf0232e2789d86b3c",
+    "revision": "4dbf4ced37d58bf937d989db5ccb66f65feb3ce5",
     "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/scope.json",
-    "sha256": "fd80fd0d0f3b1a1b40da46a49dfda7a65b194287f45ff6a9544bc3b39126b288"
+    "sha256": "8a8ed7ecae33c4a6de1719f378c1efe6afc204ef68eb4320ab3462253a59c17e"
   },
   "dispositions": [
     {
@@ -135,17 +135,17 @@
       ]
     },
     {
-      "finding_id": "120df49404ba2b26348867c9ca90a0f090f932b1121a0b3195be6d3f5c66da05",
+      "finding_id": "a87699506f9a7f0cd41a0e32c45eabbaae190bc13a784e983f6dcdff8cb1c040",
       "path": "tests/contract/test_delivery_gates.py",
       "old_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
-      "new_sha": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37",
+      "new_sha": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "index",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "The Owner approved worker scheduling for current UNIT. The historical GitLab verifier and independently fixed serial receipt fixture keep their original argument contract.",
-      "impact": "Every original case and core argv constraint remains in the collection. Add a rejection for injecting current parallel parameters into historical evidence. A worker crash cannot silently retry.",
+      "reason": "Preserve the earlier serial receipt contract while asserting that the current UNIT command emits case identities.",
+      "impact": "UNIT arguments differ only in verbosity. Existing comparisons still check the earlier command, worker settings, input paths, and required report.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Replay 14 delivery command checks, including historical acceptance and tamper rejection. Compare all collected node IDs and only permit the new negative case.",
+      "replacement_validation": "Compare the tested command against the approved parallel command with only -q replaced by -v and verify the full 2074-case JUnit identity set.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -153,35 +153,27 @@
       },
       "verification_artifacts": [
         {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/UNIT_SCHEDULING_READBACK.json",
-          "sha256": "98d8f597062e4f4dfd72ee73c6f6e4d7e4f42c45ad78382057e04f1d8b79f5e4"
-        },
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-parallel-authorization.txt",
-          "sha256": "ad30874e25e01bdb8a5c68116488d45cc8baae6208a7448ef1d7cbb9c3600f15"
-        },
-        {
           "ref": "scripts/ci/run_gate.py",
-          "sha256": "7bef5cb50dc27cf84c53f7fd065edb3c826257a81e25fd1258800a5ba76ff667"
+          "sha256": "4f7d3dab2aeee3ffc61efe97723ff4edb0b857c3af7f9c4d6f49357da3c0a1c5"
         },
         {
           "ref": "tests/contract/test_delivery_gates.py",
-          "sha256": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37"
+          "sha256": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7"
         }
       ]
     },
     {
-      "finding_id": "e2c7aaff6e02509667346b7c4f0737da9bb1f2200907a36bc6d1979ea8863169",
+      "finding_id": "51eaddb5b958c2404983ee28b9d0558d818e2f150a99e560ee247ac63daa4d74",
       "path": "tests/contract/test_delivery_gates.py",
       "old_sha": "53e68d10832408daa93c85be6962f28542ed1a7d345e7c1f3a32e3a5a964bda0",
-      "new_sha": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37",
+      "new_sha": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "worktree",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "The Owner approved worker scheduling for current UNIT. The historical GitLab verifier and independently fixed serial receipt fixture keep their original argument contract.",
-      "impact": "Every original case and core argv constraint remains in the collection. Add a rejection for injecting current parallel parameters into historical evidence. A worker crash cannot silently retry.",
+      "reason": "Preserve the earlier serial receipt contract while asserting that the current UNIT command emits case identities.",
+      "impact": "UNIT arguments differ only in verbosity. Existing comparisons still check the earlier command, worker settings, input paths, and required report.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Replay 14 delivery command checks, including historical acceptance and tamper rejection. Compare all collected node IDs and only permit the new negative case.",
+      "replacement_validation": "Compare the tested command against the approved parallel command with only -q replaced by -v and verify the full 2074-case JUnit identity set.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -189,20 +181,12 @@
       },
       "verification_artifacts": [
         {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/UNIT_SCHEDULING_READBACK.json",
-          "sha256": "98d8f597062e4f4dfd72ee73c6f6e4d7e4f42c45ad78382057e04f1d8b79f5e4"
-        },
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-parallel-authorization.txt",
-          "sha256": "ad30874e25e01bdb8a5c68116488d45cc8baae6208a7448ef1d7cbb9c3600f15"
-        },
-        {
           "ref": "scripts/ci/run_gate.py",
-          "sha256": "7bef5cb50dc27cf84c53f7fd065edb3c826257a81e25fd1258800a5ba76ff667"
+          "sha256": "4f7d3dab2aeee3ffc61efe97723ff4edb0b857c3af7f9c4d6f49357da3c0a1c5"
         },
         {
           "ref": "tests/contract/test_delivery_gates.py",
-          "sha256": "1ea0d5cbdad5c0ff9eed1716e175ba914bb03d911b4a17d2ddc52e72256aae37"
+          "sha256": "0bcd9032c8601a1518d4fa8b4077df7ba9eb0b70ec546a304ce9f3c2ff0bbfc7"
         }
       ]
     },
@@ -271,17 +255,17 @@
       ]
     },
     {
-      "finding_id": "04d0d9b30f391c3a722b097ff7148778828baf5aeec9b8d9bd7df2a5e4c01635",
+      "finding_id": "166a8ba2f6a8537f1e51b17f5d273292c15e8f0913bb57533e2120cd9df4a5ea",
       "path": "tests/contract/test_v2_019_probe_dispatch.py",
       "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
-      "new_sha": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603",
+      "new_sha": "c06c266cc27c1cf2cf607aa57891deec1825aa1df78c162015c2712a24dc2380",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "index",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "Keep independent synthetic terminal sessions from competing for the macOS device lock.",
-      "impact": "Only synthetic PTY invocations share an outer fixture lock. The real task entry, same-terminal contender, no-TTY refusal, and prior network and accounting assertions all remain exercised.",
+      "reason": "Take the shared synthetic terminal lock before each terminal test creates its time-limited grant.",
+      "impact": "Scope is the test fixture. The same terminal contention, no-terminal refusal, credentials, original grant deadline and exact loopback assertions still apply.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "The two previously failing cases, no-TTY refusal, and real same-terminal contention all passed under four workers.",
+      "replacement_validation": "The 67 probe cases and one complete 2074-case UNIT run passed, including the formerly timed-out OpenAI and Kimi synthetic cases.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -289,31 +273,27 @@
       },
       "verification_artifacts": [
         {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/SYNTHETIC_PTY_ISOLATION_READBACK.json",
-          "sha256": "d612f263661de47dbe6c8f2dca4c95681372e0e4ad0d45095254b353213a1514"
-        },
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
-          "sha256": "0b1705b97c6702eec2a8f039ec519e9be6406f2df3fb55b156b3605ea22f2bc0"
-        },
-        {
           "ref": "tests/contract/test_v2_019_probe_dispatch.py",
-          "sha256": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603"
+          "sha256": "c06c266cc27c1cf2cf607aa57891deec1825aa1df78c162015c2712a24dc2380"
+        },
+        {
+          "ref": "plan/scripts/task_entry.py",
+          "sha256": "befdf07ce9c908c4de856e32f944d734b27aa36974a11fdfcd19a01fb4390d34"
         }
       ]
     },
     {
-      "finding_id": "d3e7a400a79e353adc8a8a1f573647b021b1d98cd12e4bf4f07909b8f5eddffc",
+      "finding_id": "6133402d426f3d216e8de87276b80f55c6504b2f47756365145b2d6659e20f68",
       "path": "tests/contract/test_v2_019_probe_dispatch.py",
       "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
-      "new_sha": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603",
+      "new_sha": "c06c266cc27c1cf2cf607aa57891deec1825aa1df78c162015c2712a24dc2380",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "worktree",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "Keep independent synthetic terminal sessions from competing for the macOS device lock.",
-      "impact": "Only synthetic PTY invocations share an outer fixture lock. The real task entry, same-terminal contender, no-TTY refusal, and prior network and accounting assertions all remain exercised.",
+      "reason": "Take the shared synthetic terminal lock before each terminal test creates its time-limited grant.",
+      "impact": "Scope is the test fixture. The same terminal contention, no-terminal refusal, credentials, original grant deadline and exact loopback assertions still apply.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "The two previously failing cases, no-TTY refusal, and real same-terminal contention all passed under four workers.",
+      "replacement_validation": "The 67 probe cases and one complete 2074-case UNIT run passed, including the formerly timed-out OpenAI and Kimi synthetic cases.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -321,16 +301,124 @@
       },
       "verification_artifacts": [
         {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/SYNTHETIC_PTY_ISOLATION_READBACK.json",
-          "sha256": "d612f263661de47dbe6c8f2dca4c95681372e0e4ad0d45095254b353213a1514"
-        },
-        {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
-          "sha256": "0b1705b97c6702eec2a8f039ec519e9be6406f2df3fb55b156b3605ea22f2bc0"
-        },
-        {
           "ref": "tests/contract/test_v2_019_probe_dispatch.py",
-          "sha256": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603"
+          "sha256": "c06c266cc27c1cf2cf607aa57891deec1825aa1df78c162015c2712a24dc2380"
+        },
+        {
+          "ref": "plan/scripts/task_entry.py",
+          "sha256": "befdf07ce9c908c4de856e32f944d734b27aa36974a11fdfcd19a01fb4390d34"
+        }
+      ]
+    },
+    {
+      "finding_id": "b74429200d1670c6fc411d4e68279a44863df52ad263d04d46d97a2d6310d7ed",
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "new_sha": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Normalize terminal line breaks before matching the expected uv locked refusal.",
+      "impact": "The negative command still requires nonzero locked rejection, the exact diagnostic words, refusal unrelated to network availability, and an unchanged lockfile.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Read the same locked refusal under narrow-terminal output and verify the bootstrap cases in the complete 2074-case UNIT run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "tests/integration/test_repository_bootstrap.py",
+          "sha256": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4"
+        },
+        {
+          "ref": "uv.lock",
+          "sha256": "54b2bb0753d86790bd70de182de4a623a8bcd3c4cdf0f15a289d1d381b3ca5d4"
+        }
+      ]
+    },
+    {
+      "finding_id": "03fbfa450e249283ff688bd71c8db009ff7a83e6d027673201455f8abc499fa9",
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "new_sha": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "index",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Normalize terminal line breaks before matching the expected uv locked refusal.",
+      "impact": "The negative command still requires nonzero locked rejection, the exact diagnostic words, refusal unrelated to network availability, and an unchanged lockfile.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Read the same locked refusal under narrow-terminal output and verify the bootstrap cases in the complete 2074-case UNIT run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "tests/integration/test_repository_bootstrap.py",
+          "sha256": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4"
+        },
+        {
+          "ref": "uv.lock",
+          "sha256": "54b2bb0753d86790bd70de182de4a623a8bcd3c4cdf0f15a289d1d381b3ca5d4"
+        }
+      ]
+    },
+    {
+      "finding_id": "98b19ad567352ee7caac557bb29d918dfff4e452c9b090cc27d72403f0097979",
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "new_sha": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4",
+      "code": "TEST_LOGIC_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Normalize terminal line breaks before matching the expected uv locked refusal.",
+      "impact": "The negative command still requires nonzero locked rejection, the exact diagnostic words, refusal unrelated to network availability, and an unchanged lockfile.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Read the same locked refusal under narrow-terminal output and verify the bootstrap cases in the complete 2074-case UNIT run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "tests/integration/test_repository_bootstrap.py",
+          "sha256": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4"
+        },
+        {
+          "ref": "uv.lock",
+          "sha256": "54b2bb0753d86790bd70de182de4a623a8bcd3c4cdf0f15a289d1d381b3ca5d4"
+        }
+      ]
+    },
+    {
+      "finding_id": "9e0a31ea59257bc9d0cf9974e07f2c96d3aed3291ce858fc505febf4443aeb20",
+      "path": "tests/integration/test_repository_bootstrap.py",
+      "old_sha": "eec75d66d99a0ef79e22a0cb4635fb97b049284ba2ff369b31676d696a92acf9",
+      "new_sha": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4",
+      "code": "TEST_ASSERTION_CHANGED",
+      "layer": "worktree",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "reason": "Normalize terminal line breaks before matching the expected uv locked refusal.",
+      "impact": "The negative command still requires nonzero locked rejection, the exact diagnostic words, refusal unrelated to network availability, and an unchanged lockfile.",
+      "reviewer": "Codex (same implementing and verifying operator)",
+      "replacement_validation": "Read the same locked refusal under narrow-terminal output and verify the bootstrap cases in the complete 2074-case UNIT run.",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
+        "sha256": "9715b57b3e5338208b304f073fa7fe3974a2c2514a4dbf85b582e12c8d0370db"
+      },
+      "verification_artifacts": [
+        {
+          "ref": "tests/integration/test_repository_bootstrap.py",
+          "sha256": "6921946d0857c171c5172f5e892c67c97705556d43095c4276ef39d0d136b3c4"
+        },
+        {
+          "ref": "uv.lock",
+          "sha256": "54b2bb0753d86790bd70de182de4a623a8bcd3c4cdf0f15a289d1d381b3ca5d4"
         }
       ]
     }
