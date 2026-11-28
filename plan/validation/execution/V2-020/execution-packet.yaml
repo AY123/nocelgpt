@@ -129,6 +129,7 @@ stop_conditions:
 - Stop if a checked input, mandatory test or integrity check fails.
 - No Provider, Canon, publication or production acceptance under this action.
 review_notes:
+- Owner continued on 2026-11-28 after the request to order the three unfinished UNIT cases earlier and run one ordinary CI. A collection comparison preserves all 2074 case identities and the original time limit.
 - Owner continued after the 2026-11-28 request to include these three records with the four tested fixes in one ordinary CI run. The existing acceptance checks and time limits still apply.
 - V2-020 only is active in this candidate. Other task states follow the verified P5
   baseline.
@@ -161,5 +162,5 @@ handoff:
 change_review:
   scope_revision: 4dbf4ced37d58bf937d989db5ccb66f65feb3ce5
   scope_ref: plan/validation/execution/V2-020/local-acceptance-20261127/scope.json
-  review_revision: 42b401280a9120f107bd8ca185f7b31308982774
+  review_revision: 25ce32d82bcdfc276f27acccf0df52359db42b86
   review_ref: plan/validation/execution/V2-020/local-acceptance-20261127/review.json
