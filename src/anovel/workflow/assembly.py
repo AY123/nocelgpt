@@ -54,6 +54,7 @@ _DERIVED = {
 @dataclass(frozen=True, slots=True)
 class ChapterAssembly:
     child: SceneGenerationSnapshot = field(repr=False)
+    _payload: bytes | None = field(default=None, init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
         try:
@@ -241,14 +242,20 @@ class ChapterAssembly:
             assembly = cls(child)
             # Re-derive every hash, metadata constant and segment. Canonical
             # comparison preserves exact types (False is not numeric zero).
-            if canonical_bytes(assembly.to_dict()) != canonical_bytes(row):
+            if assembly.payload_bytes() != canonical_bytes(row):
                 raise ValueError
             return assembly
         except Exception:
             raise WorkflowError("INVALID_CHAPTER_ASSEMBLY") from None
 
     def payload_bytes(self) -> bytes:
-        return canonical_bytes(self.to_dict())
+        payload = self._payload
+        if payload is None:
+            # The child and its validated sources are frozen. Fresh records
+            # still rederive and compare their own exact canonical bytes.
+            payload = canonical_bytes(self.to_dict())
+            object.__setattr__(self, "_payload", payload)
+        return payload
 
     @classmethod
     def from_bytes(cls, raw: bytes) -> ChapterAssembly:

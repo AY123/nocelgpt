@@ -1902,6 +1902,7 @@ class ChapterWorkflow:
             raise WorkflowError("Q0_SOURCE_CHANGED")
         return saved
 
+    @WorkflowStore.reuse_observation_decodes()
     def check_q0(
         self,
         current: FrozenChapterInput,
@@ -1959,6 +1960,7 @@ class ChapterWorkflow:
         except (OSError, sqlite3.Error):
             raise WorkflowError("Q0_PERSISTENCE_FAILED") from None
 
+    @WorkflowStore.reuse_observation_decodes()
     def inspect_q0(
         self,
         current: FrozenChapterInput,
@@ -4092,6 +4094,7 @@ class ChapterWorkflow:
         validate_bindings(saved.annotations, observation)
         return saved
 
+    @WorkflowStore.reuse_observation_decodes()
     def check_q1(
         self,
         current: FrozenChapterInput,
@@ -4155,6 +4158,7 @@ class ChapterWorkflow:
         except (OSError, sqlite3.Error):
             raise WorkflowError("Q1_PERSISTENCE_FAILED") from None
 
+    @WorkflowStore.reuse_observation_decodes()
     def inspect_q1(
         self,
         current: FrozenChapterInput,
@@ -4207,6 +4211,7 @@ class ChapterWorkflow:
             raise WorkflowError("Q2_METHOD_POLICY_CHANGED")
         return saved
 
+    @WorkflowStore.reuse_observation_decodes()
     def check_q2(
         self,
         current: FrozenChapterInput,
@@ -4266,6 +4271,7 @@ class ChapterWorkflow:
         except (OSError, sqlite3.Error):
             raise WorkflowError("Q2_PERSISTENCE_FAILED") from None
 
+    @WorkflowStore.reuse_observation_decodes()
     def inspect_q2(
         self,
         current: FrozenChapterInput,
@@ -4314,6 +4320,7 @@ class ChapterWorkflow:
             raise WorkflowError("Q3_METHOD_POLICY_CHANGED")
         return saved
 
+    @WorkflowStore.reuse_observation_decodes()
     def check_q3(
         self,
         current: FrozenChapterInput,
@@ -4373,6 +4380,7 @@ class ChapterWorkflow:
         except (OSError, sqlite3.Error):
             raise WorkflowError("Q3_PERSISTENCE_FAILED") from None
 
+    @WorkflowStore.reuse_observation_decodes()
     def inspect_q3(
         self,
         current: FrozenChapterInput,

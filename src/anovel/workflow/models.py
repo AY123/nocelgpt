@@ -340,6 +340,10 @@ class WorkflowSnapshot:
     result_bytes: bytes | None = field(default=None, repr=False)
     versions: tuple[DraftRevision, ...] = field(default=(), repr=False)
     diagnostic: str | None = None
+    _request: GatewayRequest = field(init=False, repr=False, compare=False)
+    _contract: CompiledContract = field(init=False, repr=False, compare=False)
+    _context: ContextArtifact = field(init=False, repr=False, compare=False)
+    _result: GatewayResult | None = field(init=False, repr=False, compare=False)
 
     def __post_init__(self) -> None:
         try:
@@ -350,7 +354,7 @@ class WorkflowSnapshot:
                 raise WorkflowError("INVALID_WORKFLOW_SNAPSHOT")
             _text(self.attempt_id)
             _text(self.policy_id)
-            request = self.request
+            request = GatewayRequest.from_dict(decode_canonical(self.request_bytes))
             contract, context, expected = self.frozen_input.request(
                 request.run_id, request.logical_id
             )
@@ -361,7 +365,11 @@ class WorkflowSnapshot:
                 or self.policy_id not in {p.id for p in request.policies}
             ):
                 raise WorkflowError("WORKFLOW_INPUT_BINDING_MISMATCH")
-            result = self.result
+            result = (
+                None
+                if self.result_bytes is None
+                else GatewayResult.from_dict(decode_canonical(self.result_bytes))
+            )
             if result is not None:
                 policy = next(p for p in request.policies if p.id == self.policy_id)
                 if (
@@ -411,6 +419,11 @@ class WorkflowSnapshot:
                 raise WorkflowError("STOP_STATE_RESULT_MISMATCH")
             if self.diagnostic is not None:
                 _text(self.diagnostic)
+            # Each instance has verified these immutable values against its raw bytes.
+            object.__setattr__(self, "_request", request)
+            object.__setattr__(self, "_contract", contract)
+            object.__setattr__(self, "_context", context)
+            object.__setattr__(self, "_result", result)
         except WorkflowError:
             raise
         except (TypeError, ValueError, StopIteration):
@@ -418,23 +431,19 @@ class WorkflowSnapshot:
 
     @property
     def request(self) -> GatewayRequest:
-        return GatewayRequest.from_dict(decode_canonical(self.request_bytes))
+        return self._request
 
     @property
     def contract(self) -> CompiledContract:
-        return CompiledContract.from_dict(decode_canonical(self.contract_bytes))
+        return self._contract
 
     @property
     def context(self) -> ContextArtifact:
-        return ContextArtifact.from_dict(decode_canonical(self.context_bytes))
+        return self._context
 
     @property
     def result(self) -> GatewayResult | None:
-        return (
-            None
-            if self.result_bytes is None
-            else GatewayResult.from_dict(decode_canonical(self.result_bytes))
-        )
+        return self._result
 
     @property
     def project(self) -> str:
