@@ -271,17 +271,17 @@
       ]
     },
     {
-      "finding_id": "9644d3d51c6a401714182c60e09dddae6a40c734fc219da4d58fda786a9c83bc",
+      "finding_id": "04d0d9b30f391c3a722b097ff7148778828baf5aeec9b8d9bd7df2a5e4c01635",
       "path": "tests/contract/test_v2_019_probe_dispatch.py",
       "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
-      "new_sha": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847",
+      "new_sha": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "index",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "Reduce the local loopback server idle interval used for shutdown.",
-      "impact": "Every assertion uses the same synthetic request/response, Gateway paths, Git pins, credential checks and real PTY.",
+      "reason": "Keep independent synthetic terminal sessions from competing for the macOS device lock.",
+      "impact": "Only synthetic PTY invocations share an outer fixture lock. The real task entry, same-terminal contender, no-TTY refusal, and prior network and accounting assertions all remain exercised.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Existing positive and negative fixture cases passed with zero skips. Verify the entire original collection in ordinary UNIT at the existing deadline.",
+      "replacement_validation": "The two previously failing cases, no-TTY refusal, and real same-terminal contention all passed under four workers.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -289,8 +289,8 @@
       },
       "verification_artifacts": [
         {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/REMOTE_UNIT_RETRY_READBACK.json",
-          "sha256": "f3ef7f07262b55b9f596fecb32ea6cbb1e5794e59724d4045736a7befc379804"
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/SYNTHETIC_PTY_ISOLATION_READBACK.json",
+          "sha256": "d612f263661de47dbe6c8f2dca4c95681372e0e4ad0d45095254b353213a1514"
         },
         {
           "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
@@ -298,22 +298,22 @@
         },
         {
           "ref": "tests/contract/test_v2_019_probe_dispatch.py",
-          "sha256": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847"
+          "sha256": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603"
         }
       ]
     },
     {
-      "finding_id": "97ca7e74d8be3dc5c754372963416775bcf0e5ef34061a7f6dc0dddbb3dbce30",
+      "finding_id": "d3e7a400a79e353adc8a8a1f573647b021b1d98cd12e4bf4f07909b8f5eddffc",
       "path": "tests/contract/test_v2_019_probe_dispatch.py",
       "old_sha": "8a48bc6407f9e171d5386deb81664435bcaa28d8f506e2b8b13c16ecb0822f0a",
-      "new_sha": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847",
+      "new_sha": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603",
       "code": "TEST_LOGIC_CHANGED",
       "layer": "worktree",
       "disposition": "REVIEWED_NO_WEAKENING",
-      "reason": "Reduce the local loopback server idle interval used for shutdown.",
-      "impact": "Every assertion uses the same synthetic request/response, Gateway paths, Git pins, credential checks and real PTY.",
+      "reason": "Keep independent synthetic terminal sessions from competing for the macOS device lock.",
+      "impact": "Only synthetic PTY invocations share an outer fixture lock. The real task entry, same-terminal contender, no-TTY refusal, and prior network and accounting assertions all remain exercised.",
       "reviewer": "Codex (same implementing and verifying operator)",
-      "replacement_validation": "Existing positive and negative fixture cases passed with zero skips. Verify the entire original collection in ordinary UNIT at the existing deadline.",
+      "replacement_validation": "The two previously failing cases, no-TTY refusal, and real same-terminal contention all passed under four workers.",
       "authorization_source": {
         "kind": "existing_user_task_authorization",
         "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/authorization.txt",
@@ -321,8 +321,8 @@
       },
       "verification_artifacts": [
         {
-          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/REMOTE_UNIT_RETRY_READBACK.json",
-          "sha256": "f3ef7f07262b55b9f596fecb32ea6cbb1e5794e59724d4045736a7befc379804"
+          "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/SYNTHETIC_PTY_ISOLATION_READBACK.json",
+          "sha256": "d612f263661de47dbe6c8f2dca4c95681372e0e4ad0d45095254b353213a1514"
         },
         {
           "ref": "plan/validation/execution/V2-020/local-acceptance-20261127/unit-retry-authorization.txt",
@@ -330,7 +330,7 @@
         },
         {
           "ref": "tests/contract/test_v2_019_probe_dispatch.py",
-          "sha256": "c8ae9ab379fb90e9365e59f0216cfa37f56add2adcc7825d1096ce8407b68847"
+          "sha256": "dd573dce7b18d82a40847c161b795b580793eff1046f49e0e55c27d96c43a603"
         }
       ]
     }

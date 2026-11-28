@@ -1,0 +1,25 @@
+{
+  "prior_local_runs": [
+    {
+      "revision": "514b0f85315531d80d7de0b572d23201923d3b57",
+      "failed_case": "test_finished_unknown_or_pending_claim_never_sends_a_second_attempt[missing_usage]",
+      "tests_collected": 2074,
+      "isolated_session_contention": true
+    },
+    {
+      "revision": "514b0f85315531d80d7de0b572d23201923d3b57",
+      "failed_case": "test_finished_unknown_or_pending_claim_never_sends_a_second_attempt[disconnect]",
+      "tests_collected": 2074,
+      "isolated_session_contention": true
+    }
+  ],
+  "reproduction": "Two independent pseudo terminals resolved to the same macOS /dev/tty flock identity; the second received EAGAIN.",
+  "local_recheck": {
+    "workers": 4,
+    "tests": 4,
+    "failures": 0,
+    "skipped": 0
+  },
+  "scope": "Serialize real pseudo-terminal invocations only within this synthetic test session.",
+  "production_terminal_guard_changed": false
+}
