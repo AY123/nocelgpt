@@ -1,0 +1,31 @@
+record_type: plan_execution_evidence
+schema_version: '1.0'
+evidence_id: ADR-011-20261118-design-v1
+evidence_type: ADR_DECISION
+subject_id: ADR-011
+revision: f5ae5f3ca18da4af702b06704f3093734028ad3f
+status: PASS
+producer: Codex same implementing/verifying operator during user-continued ADR011/V021 preparation, with
+  read-only AI technical cross-checks; not independent personnel audit or a quotation of explicit user
+  ADR acceptance
+executed_at: '2026-11-18T06:05:26.095260+00:00'
+environment_fingerprint: Locked Python3.12.14/uv0.12.17, local technical design decision only; no runtime/Provider/CI
+  qualification
+artifacts:
+- ref: decisions/ADR-011_REQUIRED_CHECKS_AND_PERMIT_AUTHORITY.md
+  sha256: 1e8161bd3b135669c7a7ea803f3953de36e851c5f00b2ed3817efb1ab0421c61
+- ref: validation/execution/V2-021/design-resolution-20261118/DESIGN_RESOLUTION.md
+  sha256: 6e66431ec4f4e4ca26f5d498f8a67d9d192f9bee585fb014ce2bbf519897cb3f
+- ref: validation/execution/V2-021/design-resolution-20261118/TECHNICAL_REVIEW.json
+  sha256: 47034a7adcb1d67f9a2659dad0a37f754151517c1ac557411abbfa7745d0d922
+- ref: validation/execution/V2-021/design-resolution-20261118/authorization.txt
+  sha256: 8a47371c81d201d1101c1cd70f7f2483152848d5daef55b52ddcd2c799c6d4b7
+input_evidence_refs: []
+decision: ACCEPTED
+rationale: 'Accept the bounded technical contract: independent zero-proposal extraction observations preserve
+  existing nonempty Delta/Candidate/P2; raw-only discovery and separately sealed claim inventory exclude
+  gold/intent leakage; unknown/unsupported semantics and unproven coverage never grant production PASS;
+  controlled grants/current actor/role/version fencing and persistent opaque Permit use explicit no-default
+  expiry. Actual P7 implementation/configuration remains a later runtime prerequisite. This decision does
+  not start V021, inherit V020 admission, change dependencies/minimum assertions or authorize API/CI/Canon/Permit
+  actions.'

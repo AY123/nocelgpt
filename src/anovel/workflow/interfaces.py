@@ -50,6 +50,7 @@ from .written_draft import (
     DraftEditPreview,
     WrittenDraftRevision,
 )
+from .written_extraction import WrittenDraftExtraction
 
 _REVISION_QUALITY_FIELDS = {
     "operation",
@@ -61,6 +62,11 @@ _REVISION_QUALITY_FIELDS = {
 }
 
 _DRAFT_SELECTION_FIELDS = {"version", "request_id", "expected_revision_hash"}
+_WRITTEN_DRAFT_READ_OPERATIONS = {
+    "INSPECT_WRITTEN_DRAFT",
+    "INSPECT_WRITTEN_DRAFT_EXTRACTION",
+    "REVIEW_WRITTEN_DRAFT_COMMITMENTS",
+}
 _FINISH_DRAFT_FIELDS = {
     "operation",
     "current_input",
@@ -91,6 +97,7 @@ _FIELDS = {
     "CANCEL_NEXT_CHAPTER_DRAFT": _NEXT_CHAPTER_FIELDS | {"handoff"},
     "INSPECT_WRITTEN_DRAFT": (_NEXT_CHAPTER_FIELDS - {"expected_revision_hash"})
     | {"chapter_id"},
+    "INSPECT_WRITTEN_DRAFT_EXTRACTION": _NEXT_CHAPTER_FIELDS | {"chapter_id"},
     "INSPECT_WRITTEN_DRAFT_IMPACT": _NEXT_CHAPTER_FIELDS | {"source_chapter_id"},
     "REVIEW_WRITTEN_DRAFT_COMMITMENTS": _NEXT_CHAPTER_FIELDS | {"chapter_id", "review"},
     "PREVIEW_WRITTEN_DRAFT_EDIT": _NEXT_CHAPTER_FIELDS
@@ -379,6 +386,7 @@ class WorkflowTaskAdapter:
         | DraftCommitmentReview
         | WrittenDraftImpact
         | WrittenDraftRevision
+        | WrittenDraftExtraction
         | RecoveryReadback
         | WrittenDraftCancellation
         | RunAssessment
@@ -399,14 +407,12 @@ class WorkflowTaskAdapter:
             fields.discard("q1_annotations_hash")
         if operation in {"INSPECT_RECOVERY", "SAVE_LATE_RECOVERY_SUCCESS"}:
             fields.discard("step_id")
-        if operation == "INSPECT_WRITTEN_DRAFT":
+        if type(operation) is str and operation in _WRITTEN_DRAFT_READ_OPERATIONS:
             fields.discard("output")
             fields.discard("version")
         if operation == "REVIEW_WRITTEN_DRAFT_COMMITMENTS":
-            fields.discard("output")
             fields.discard("brief")
             fields.discard("save_observations")
-            fields.discard("version")
         if operation == "EDIT_WRITTEN_DRAFT":
             if "preserve_unprovided_annotations" in row:
                 if row["preserve_unprovided_annotations"] is not True:
@@ -478,10 +484,7 @@ class WorkflowTaskAdapter:
             )
         project, branch = _text(row, "project"), _text(row, "branch")
         draft_version = None
-        if (
-            operation in {"INSPECT_WRITTEN_DRAFT", "REVIEW_WRITTEN_DRAFT_COMMITMENTS"}
-            and "version" in row
-        ):
+        if operation in _WRITTEN_DRAFT_READ_OPERATIONS and "version" in row:
             selected_version = row["version"]
             if type(selected_version) is not int or selected_version < 1:
                 raise WorkflowError("INVALID_WORKFLOW_TASK_REQUEST")
@@ -502,6 +505,17 @@ class WorkflowTaskAdapter:
                 branch=branch,
                 run_id=run_id,
                 chapter_id=EntityId.from_dict(row["chapter_id"]),
+                output=Path(_text(row, "output")) if "output" in row else None,
+                version=draft_version,
+            )
+        if operation == "INSPECT_WRITTEN_DRAFT_EXTRACTION":
+            return self.service.inspect_written_draft_extraction(
+                FrozenChapterInput.from_dict(row["current_input"]),
+                project=project,
+                branch=branch,
+                run_id=run_id,
+                chapter_id=EntityId.from_dict(row["chapter_id"]),
+                expected_revision_hash=_text(row, "expected_revision_hash"),
                 output=Path(_text(row, "output")) if "output" in row else None,
                 version=draft_version,
             )
@@ -1030,6 +1044,7 @@ def snapshot_summary(
     | DraftCommitmentReview
     | WrittenDraftImpact
     | WrittenDraftRevision
+    | WrittenDraftExtraction
     | RecoveryReadback
     | WrittenDraftCancellation
     | RunAssessment
@@ -1043,7 +1058,13 @@ def snapshot_summary(
 ) -> dict[str, object]:
     """Display metadata and grounded quality values without printing prose."""
     if isinstance(
-        saved, (DraftCommitmentReview, RecoveryReadback, WrittenDraftCancellation)
+        saved,
+        (
+            DraftCommitmentReview,
+            RecoveryReadback,
+            WrittenDraftCancellation,
+            WrittenDraftExtraction,
+        ),
     ):
         return saved.summary()
     if isinstance(saved, GatewayRequest):

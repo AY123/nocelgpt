@@ -140,6 +140,7 @@ from .written_draft import (
     DraftEditPreview,
     WrittenDraftRevision,
 )
+from .written_extraction import WrittenDraftExtraction, extract_written_draft
 
 if TYPE_CHECKING:
     from anovel.context.cache import ContextCache
@@ -2485,6 +2486,57 @@ class ChapterWorkflow:
             return saved
 
     @WorkflowStore.reuse_observation_decodes()
+    def inspect_written_draft_extraction(
+        self,
+        current: FrozenChapterInput,
+        *,
+        project: str,
+        branch: str,
+        run_id: str,
+        chapter_id: EntityId,
+        expected_revision_hash: str,
+        version: int | None = None,
+        output: Path | None = None,
+    ) -> WrittenDraftExtraction:
+        """Audit the selected chapter's exact saved text without changing the Draft."""
+        if (version is not None and (type(version) is not int or version < 1)) or (
+            type(expected_revision_hash) is not str
+            or re.fullmatch(r"[0-9a-f]{64}", expected_revision_hash) is None
+        ):
+            raise WorkflowError("INVALID_CHAPTER_REVISION_SELECTION")
+        with self.store.exclusive(project=project, branch=branch, run_id=run_id):
+            if version is None:
+                saved, observation = self._read_written_draft(
+                    current,
+                    project=project,
+                    branch=branch,
+                    run_id=run_id,
+                    chapter_id=chapter_id,
+                )
+            else:
+                saved, observation = self._read_retained_written_draft(
+                    current,
+                    project=project,
+                    branch=branch,
+                    run_id=run_id,
+                    chapter_id=chapter_id,
+                    version=version,
+                )
+            if saved.record_hash != expected_revision_hash:
+                raise WorkflowError("CHAPTER_REVISION_CHANGED")
+            extraction = extract_written_draft(saved, observation)
+            if output is not None:
+                self._write_private_draft_artifact(
+                    output,
+                    extraction.payload_bytes(),
+                    kind="WRITTEN_DRAFT_EXTRACTION",
+                    reserved_databases=(
+                        Path(observation.assembly.child.ledger_pin.path),
+                    ),
+                )
+            return extraction
+
+    @WorkflowStore.reuse_observation_decodes()
     def review_written_draft_commitments(
         self,
         current: FrozenChapterInput,
@@ -3104,16 +3156,13 @@ class ChapterWorkflow:
             handoff_fields["start_intent"] = brief_fields["opening"]
         child = observation.assembly.child
         if isinstance(handoff.source, WrittenDraftRevision):
-            inventory = blind_inventory(handoff.source.prose, observation.catalog)
-            row = cast(dict[str, object], decode_canonical(inventory))
-            latest_facts: dict[EntityId, ExtractionSegment] = {}
-            for item in cast(list[object], row["segments"]):
-                segment = ExtractionSegment.from_dict(item)
-                if segment.kind == "ACTUAL" and segment.fact_id is not None:
-                    latest_facts[segment.fact_id] = segment
-            facts = tuple(latest_facts.values())
+            extraction = extract_written_draft(handoff.source, observation)
+            if extraction.correspondence_status in {"FAIL", "ERROR"}:
+                raise WorkflowError("WRITTEN_DRAFT_EXTRACTION_UNRECONCILED")
+            facts = extraction.facts
             choice = handoff.source.choice
-            observation_hash = sha256(inventory).hexdigest()
+            # Preserve the identity of prior requests that used the same facts.
+            observation_hash = extraction.inventory_hash
         else:
             facts = observation.coverage
             choice = child.projection.candidate.ending_span

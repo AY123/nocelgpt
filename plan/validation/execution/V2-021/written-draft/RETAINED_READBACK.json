@@ -1,0 +1,49 @@
+{
+  "artifact_state": "DRAFT",
+  "chapter_7": [
+    {
+      "version": 1,
+      "revision_hash": "d587180736617aa93173d08127cc310f2fc4baf1cd831b8e5401e3eef98cf250",
+      "prose_hash": "86eb37b5a9ae1bae3ed15d5d4af2e5f2b0878333ee8d4fa5f6e5857af5bf62e6",
+      "observation_hash": "6729dfd5dc8edcbcaf98fb369fe83c1a67e23529c1d42ace8abecfe8587b060d",
+      "inventory_hash": "d6006e6f572f684aba6968ee7b84c836ef15d3bfdba73ef4c321570806ac9ba1",
+      "semantic_status": "UNKNOWN",
+      "coverage_segments": 112,
+      "diagnostics": 81,
+      "editorial_choice_present": false,
+      "editorial_notes": 0,
+      "call_cue": "CALL_RESPONSE",
+      "late_belief_grounded": true,
+      "late_unsupported_prose_reported": true
+    },
+    {
+      "version": 2,
+      "revision_hash": "cd3eddd2fce3c09887af49da5c38c53dc70c8b9424f42623de38b9745d3dd5cc",
+      "prose_hash": "2d2e7ef07a199549422c5b2550b04fa2a57c257ffa27d9771eccf9a619f91752",
+      "observation_hash": "6f8a9005636429ccebcedea7b6a180cde94cf03a97838ab73e6a063edd00b3d1",
+      "inventory_hash": "db1a2832d3296a1c05c2cedda436f40f5ba72381fcd023bfce0f9cb7c86132ef",
+      "semantic_status": "UNKNOWN",
+      "coverage_segments": 110,
+      "diagnostics": 79,
+      "editorial_choice_present": true,
+      "editorial_notes": 5,
+      "call_cue": "CALL_DEFERRAL",
+      "late_belief_grounded": true,
+      "late_unsupported_prose_reported": true
+    }
+  ],
+  "chapter_7_writer_input": {
+    "source_version": 3,
+    "handoff_hash": "6e366814d69a1b9105beef4577d4ec28f44ffd5c6edce16ddbcbb66c57f7c414",
+    "request_hash": "45ee73b0c61dc4864d7cd383322d64e9d1cffeaee93b30207c71f8e03617c723",
+    "byte_identical": true
+  },
+  "chapter_8_writer_input": {
+    "source_version": 2,
+    "handoff_hash": "a56674e1b2db2148e761a553abfcc2ce051587a5cb2eb3c9f311501e9fe47850",
+    "request_hash": "8056c18dd834563431244f508189a01ac6945382d50612bef2d46a961dabd808",
+    "byte_identical": true
+  },
+  "cross_revision_evidence_rejected": true,
+  "archive_unchanged": true
+}

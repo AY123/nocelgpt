@@ -1,0 +1,58 @@
+{
+  "task_id": "V2-021",
+  "baseline_pin": {
+    "revision": "89468de1dcbe3a3266816132d2d6712e43428048",
+    "ref": "plan/validation/execution/V2-021/scope.json",
+    "sha256": "076c24997a5ba94c3f018d056c4df1f8e93be62700980eb4df9c4443dfa6f59e"
+  },
+  "dispositions": [
+    {
+      "code": "MACHINE_POLICY_CHANGED",
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "index",
+      "old_sha": "8f3bf5c551c753af1173fc864d28b4911d4686a9e782485a99a9ffbfa62d9801",
+      "new_sha": "5a4d7459b71dbb6c2c8b7eeded521912c984a0d398e966d0bb06f036b7497353",
+      "finding_id": "08defccc4d689a5250d54641ff993418e0b4a47cf9acd65b80fd8b94563d504f",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-021/authorization.txt",
+        "sha256": "f42540d64ba2bc533bdbea7932ff714249478b40b71a92e014f7a76c07415964"
+      },
+      "reason": "Activate V2-021 after the verified V2-020 predecessor and G-P5. Only status, readiness and packet reference differ.",
+      "impact": "Original dependencies, gates, four acceptance criteria, scenario catalog and CI configuration are preserved.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare actual machine entries and scenario catalog against accepted base; rerun both extractor and persisted Writer contracts.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-021/CANDIDATE_COMPARISON.json",
+          "sha256": "f2938a3d3b5ba40f3445f1c93542c2f6713ce02929a990295bde80984f14c228"
+        }
+      ]
+    },
+    {
+      "code": "MACHINE_POLICY_CHANGED",
+      "path": "plan/machine/implementation-backlog.yaml",
+      "layer": "worktree",
+      "old_sha": "8f3bf5c551c753af1173fc864d28b4911d4686a9e782485a99a9ffbfa62d9801",
+      "new_sha": "5a4d7459b71dbb6c2c8b7eeded521912c984a0d398e966d0bb06f036b7497353",
+      "finding_id": "7f948388656251e91be0902db8840984a5c88cd68ee60eee06f42263ba785225",
+      "disposition": "REVIEWED_NO_WEAKENING",
+      "authorization_source": {
+        "kind": "existing_user_task_authorization",
+        "ref": "plan/validation/execution/V2-021/authorization.txt",
+        "sha256": "f42540d64ba2bc533bdbea7932ff714249478b40b71a92e014f7a76c07415964"
+      },
+      "reason": "Activate V2-021 after the verified V2-020 predecessor and G-P5. Only status, readiness and packet reference differ.",
+      "impact": "Original dependencies, gates, four acceptance criteria, scenario catalog and CI configuration are preserved.",
+      "reviewer": "Codex, same implementation and verification operator",
+      "replacement_validation": "Compare actual machine entries and scenario catalog against accepted base; rerun both extractor and persisted Writer contracts.",
+      "verification_artifacts": [
+        {
+          "ref": "plan/validation/execution/V2-021/CANDIDATE_COMPARISON.json",
+          "sha256": "f2938a3d3b5ba40f3445f1c93542c2f6713ce02929a990295bde80984f14c228"
+        }
+      ]
+    }
+  ]
+}

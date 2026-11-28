@@ -427,6 +427,19 @@ def main(argv: list[str] | None = None) -> int:
     inspect_impact.add_argument("--input", type=Path, required=True)
     inspect_impact.add_argument("--source-chapter-id", required=True)
     inspect_impact.add_argument("--expected-revision-hash", required=True)
+    inspect_extraction = commands.add_parser(
+        "inspect-written-draft-extraction",
+        help="Read narrative evidence in the current or selected saved Draft",
+    )
+    inspect_extraction.add_argument("--input", type=Path, required=True)
+    inspect_extraction.add_argument("--chapter-id", required=True)
+    inspect_extraction.add_argument("--expected-revision-hash", required=True)
+    inspect_extraction.add_argument(
+        "--version", type=int, help="Inspect a saved version"
+    )
+    inspect_extraction.add_argument(
+        "--output", type=Path, help="Private JSON report with source excerpts"
+    )
     review_commitments = commands.add_parser(
         "review-written-draft-commitments",
         help="Review inherited commitments in the current or selected Draft",
@@ -585,6 +598,7 @@ def main(argv: list[str] | None = None) -> int:
             *_CHAPTER_RECEIPT_OPERATIONS,
             "save-next-chapter-draft",
             "inspect-written-draft",
+            "inspect-written-draft-extraction",
             "inspect-written-draft-impact",
             "review-written-draft-commitments",
             "edit-written-draft",
@@ -802,6 +816,7 @@ def main(argv: list[str] | None = None) -> int:
         if args.operation in {
             "save-next-chapter-draft",
             "inspect-written-draft",
+            "inspect-written-draft-extraction",
             "review-written-draft-commitments",
             "edit-written-draft",
             "annotate-written-draft",
@@ -833,6 +848,7 @@ def main(argv: list[str] | None = None) -> int:
                 }
                 if args.operation not in {
                     "inspect-written-draft",
+                    "inspect-written-draft-extraction",
                     "annotate-written-draft",
                     "review-written-draft-commitments",
                 }:
@@ -843,6 +859,7 @@ def main(argv: list[str] | None = None) -> int:
                     "edit-written-draft",
                     "annotate-written-draft",
                     "preview-written-draft-edit",
+                    "inspect-written-draft-extraction",
                     "review-written-draft-commitments",
                 }:
                     written_request["expected_revision_hash"] = (

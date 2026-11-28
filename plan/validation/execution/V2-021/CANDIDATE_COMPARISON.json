@@ -1,0 +1,73 @@
+{
+  "base_revision": "5b927fd5739b49a6a5556f993a8c8d39ed186c29",
+  "original_gates": [
+    "G-P5",
+    "G-P6"
+  ],
+  "original_dependencies": [
+    "V2-020"
+  ],
+  "unchanged_ci_configuration": true,
+  "unchanged_acceptance_scenario_catalog": true,
+  "unchanged_accepted_prerequisites": true,
+  "historical_adr_source_revision": "f5ae5f3ca18da4af702b06704f3093734028ad3f",
+  "historical_adr_artifacts_verified": true,
+  "candidate_changes": [
+    {
+      "path": "src/anovel/workflow/__main__.py",
+      "sha256": "c9ac179ee352d8512fea9d80f9c07860a79e57a4dabc3834fce6900b0768a909"
+    },
+    {
+      "path": "src/anovel/workflow/chapter.py",
+      "sha256": "3ec6b7443645e6e12debd8022ec62a5cf27860870c7c34b6abf7d1b9b701e955"
+    },
+    {
+      "path": "src/anovel/workflow/extractor.py",
+      "sha256": "fa6af8aba41917f6093924d597f48d46729e67881861c0824c4c350187de8795"
+    },
+    {
+      "path": "src/anovel/workflow/interfaces.py",
+      "sha256": "ec71eb36cdaa3dc74d070522d4339c244f55ef1b85f9fa0eac95c789a04f6ae8"
+    },
+    {
+      "path": "src/anovel/workflow/written_extraction.py",
+      "sha256": "e9b20ede0101167d19fbe7efff277ebe74df18712dcfd7c5142188d4bfc29bad"
+    },
+    {
+      "path": "tests/contract/test_v2_021_written.py",
+      "sha256": "1f0b39d09da35d32921a1dab5baf56d02abdc059e5138a0f921dc12e8e615ef4"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/design-resolution-20261118/adr-011-decision.yaml",
+      "sha256": "1739b7cb732e357ea7b02fd9f5c604a02ac6de2e753a5c43808402e5aa8e515f"
+    },
+    {
+      "path": "plan/decisions/ADR-011_REQUIRED_CHECKS_AND_PERMIT_AUTHORITY.md",
+      "sha256": "1e8161bd3b135669c7a7ea803f3953de36e851c5f00b2ed3817efb1ab0421c61"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/design-resolution-20261118/DESIGN_RESOLUTION.md",
+      "sha256": "6e66431ec4f4e4ca26f5d498f8a67d9d192f9bee585fb014ce2bbf519897cb3f"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/design-resolution-20261118/TECHNICAL_REVIEW.json",
+      "sha256": "47034a7adcb1d67f9a2659dad0a37f754151517c1ac557411abbfa7745d0d922"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/design-resolution-20261118/authorization.txt",
+      "sha256": "8a47371c81d201d1101c1cd70f7f2483152848d5daef55b52ddcd2c799c6d4b7"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/written-draft/LOCAL_WORKFLOW.md",
+      "sha256": "d7b59a13c21e1ba850076a84760c2077db9396a2a0ddcb3a951efc92665a0594"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/written-draft/RETAINED_READBACK.json",
+      "sha256": "126ef751aacc08e0bcc4245db27990899e20e94e152f4e9bb4481739a0d87287"
+    },
+    {
+      "path": "plan/validation/execution/V2-021/written-draft/verify_retained_drafts.py",
+      "sha256": "48efaddd5f6e3399919f138f0a4e710971720e5bd189d21ad0525a718c207b5f"
+    }
+  ]
+}

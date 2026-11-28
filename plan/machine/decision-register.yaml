@@ -120,7 +120,7 @@ decisions:
   - 补充调用前预算预留、UNKNOWN 待核、重启/fallback/修复共享上限
 - id: ADR-011
   title: 必跑检查集与 Permit 授权
-  status: REQUIRED
+  status: ACCEPTED
   owner_role: quality-maintainer
   related_tasks:
   - V2-021
@@ -132,7 +132,7 @@ decisions:
   - V2-029
   decision_due_task: V2-021
   timing: before_interface_implementation
-  decision_record: null
+  decision_record: validation/execution/V2-021/design-resolution-20261118/adr-011-decision.yaml
   verification_refs: []
   required_refinements:
   - 补充逐检查语义证据判定表、授权裁决与提交端执行权限核验

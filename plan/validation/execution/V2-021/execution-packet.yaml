@@ -1,0 +1,126 @@
+record_type: task_execution_packet
+schema_version: '1.0'
+task_id: V2-021
+plan_version: 1.3.0
+repository_revision: 5b927fd5739b49a6a5556f993a8c8d39ed186c29
+worktree_dirty: false
+plan_manifest_sha256: 8d3083729896af66de8024aa672a48756338adab135870d1b9f172fc6afe70ae
+environment:
+  fingerprint: Locked Python 3.12.14; private retained SQLite inputs and local contract tests.
+  runtime_versions:
+    python: 3.12.14
+  database_image: null
+  ci_context: null
+implementer: Codex
+verifier: Codex, same implementation and verification operator
+owner_role: quality-maintainer
+scope: V2-021 读取实际保存的 Writer 整章 DRAFT、原文独立覆盖与证据比较、下一章读取当前版本。
+action: IMPLEMENT
+inputs:
+- source_ref: 03_DOMAIN_CANON_AND_ARTIFACT_CONTRACTS.md
+  ref: validation/execution/V2-021/inputs/5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75.txt
+  sha256: 5e7dcb3c3cc6a8220171a7b48b9fed718c075611f79ec81e2ef58899ea4e2f75
+- source_ref: 05_PRODUCTION_CONTEXT_QUALITY_REPAIR.md
+  ref: validation/execution/V2-021/inputs/b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281.txt
+  sha256: b1f8d4cfae960fce8223e93cebbf30189742bf0945f8cc79fe7b550eedbc8281
+- source_ref: AI_EXECUTION_PROTOCOL.md
+  ref: validation/execution/V2-021/inputs/186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676.txt
+  sha256: 186a8eae3cd76a2947f9af20e778352571b493f76ece93188defdf4a3d5df676
+- source_ref: machine/implementation-backlog.yaml
+  ref: validation/execution/V2-021/inputs/5a4d7459b71dbb6c2c8b7eeded521912c984a0d398e966d0bb06f036b7497353.txt
+  sha256: 5a4d7459b71dbb6c2c8b7eeded521912c984a0d398e966d0bb06f036b7497353
+- source_ref: machine/test-catalog.yaml
+  ref: validation/execution/V2-021/inputs/9394b2ea7e54013f55bf35f704ea5ac389455fe8edaf68061e1c545cd952e42c.txt
+  sha256: 9394b2ea7e54013f55bf35f704ea5ac389455fe8edaf68061e1c545cd952e42c
+- source_ref: machine/decision-register.yaml
+  ref: validation/execution/V2-021/inputs/fa6085fe5f3502bb65ebe0a2990d1caa9f05dea78442dc518183c985fc374699.txt
+  sha256: fa6085fe5f3502bb65ebe0a2990d1caa9f05dea78442dc518183c985fc374699
+- source_ref: machine/ai-execution-policy.yaml
+  ref: validation/execution/V2-021/inputs/3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781.txt
+  sha256: 3ff69dd5bef6467e34ef7aa7184725e2a3784e6d53e481268133fa3d9b23f781
+- source_ref: machine/phase-gates.yaml
+  ref: validation/execution/V2-021/inputs/4908e42eace48572ee85e22093ae4ed242fddb75ce6490d660c9ceca913899e8.txt
+  sha256: 4908e42eace48572ee85e22093ae4ed242fddb75ce6490d660c9ceca913899e8
+- source_ref: decisions/ADR-011_REQUIRED_CHECKS_AND_PERMIT_AUTHORITY.md
+  ref: validation/execution/V2-021/inputs/1e8161bd3b135669c7a7ea803f3953de36e851c5f00b2ed3817efb1ab0421c61.txt
+  sha256: 1e8161bd3b135669c7a7ea803f3953de36e851c5f00b2ed3817efb1ab0421c61
+- source_ref: validation/execution/V2-021/design-resolution-20261118/adr-011-decision.yaml
+  ref: validation/execution/V2-021/inputs/1739b7cb732e357ea7b02fd9f5c604a02ac6de2e753a5c43808402e5aa8e515f.txt
+  sha256: 1739b7cb732e357ea7b02fd9f5c604a02ac6de2e753a5c43808402e5aa8e515f
+expected_outputs:
+- src/anovel/workflow/extractor.py
+- tests/contract/test_v2_021.py
+- src/anovel/workflow/written_extraction.py
+- tests/contract/test_v2_021_written.py
+- plan/validation/execution/V2-021/written-draft/LOCAL_WORKFLOW.md
+allowed_paths:
+- src/anovel/workflow/__main__.py
+- src/anovel/workflow/chapter.py
+- src/anovel/workflow/extractor.py
+- src/anovel/workflow/interfaces.py
+- src/anovel/workflow/written_extraction.py
+- tests/contract/test_v2_021.py
+- tests/contract/test_v2_021_written.py
+- plan/decisions/ADR-011_REQUIRED_CHECKS_AND_PERMIT_AUTHORITY.md
+- plan/machine/decision-register.yaml
+- plan/machine/implementation-backlog.yaml
+- plan/generated/PHASE_TASK_REGISTRY.md
+- plan/FILE_MANIFEST.json
+- plan/validation/execution/V2-021/
+required_decisions:
+- ADR-011
+claims:
+- id: V021_ACCEPTED_PREREQUISITES
+  kind: FACT
+  statement: 既有 V2-020 和 P5 已验收，ADR-011 沿用已冻结的技术决定。
+  sources:
+  - ref: validation/execution/V2-020/closure-20261128/ACCEPTANCE_SUMMARY.md
+    sha256: d3601d66f1d0aab56bcd734618cc3cec8659ae1ffb12181cbfa45ef2247a56d6
+  - ref: validation/execution/P5/closure-20261127/P5-decision.yaml
+    sha256: 53eb86a3c57f630094647231103210f9892f3e8f86cc14aa5617f1b774fa3523
+  - ref: validation/execution/V2-021/design-resolution-20261118/adr-011-decision.yaml
+    sha256: 1739b7cb732e357ea7b02fd9f5c604a02ac6de2e753a5c43808402e5aa8e515f
+  blocks_actions: []
+  verification_plan: 核对基线记录、ADR 内容和当前任务登记。
+- id: V021_RETAINED_WRITER_READBACK
+  kind: FACT
+  statement: 原写作流程留存的两版 DRAFT 已完成只读回放，保留历史请求字节和原文证据。
+  sources:
+  - ref: validation/execution/V2-021/written-draft/RETAINED_READBACK.json
+    sha256: 126ef751aacc08e0bcc4245db27990899e20e94e152f4e9bb4481739a0d87287
+  blocks_actions: []
+  verification_plan: 复核脱敏回放及本地整章回归。
+estimate:
+  range: null
+  unit: null
+  assumptions:
+  - 复用已有 Writer 留存稿与锁定依赖。
+  confidence: NOT_ESTIMATED
+budget:
+  paid_calls_allowed: false
+  model_cost_cap: 0
+  infrastructure_cap: 0
+  maximum_attempts: 12
+  maximum_runtime: 21600
+stop_conditions:
+- 正文、修订或来源不一致时拒绝继续。
+- 只在现有 DRAFT 服务读取并准备下一章。
+review_notes:
+- 保留原四项 AT-V2-021、V2-020 前置、G-P5 和 G-P6。
+- 保持生产语义 UNKNOWN 及已有 Canon、Permit 和发布权限边界。
+handoff:
+  current_step: 验证隔离本地候选的现有四项验收和保存稿接续。
+  completed_steps:
+  - 已读回留存 Writer 章稿、源正文、已冻结请求和原 ADR 设计。
+  pending_items:
+  - 核对精确候选本地回归及正式验收证据。
+  next_action: IMPLEMENT
+  last_check:
+    status: PASS
+    artifacts:
+    - ref: validation/execution/V2-021/written-draft/RETAINED_READBACK.json
+      sha256: 126ef751aacc08e0bcc4245db27990899e20e94e152f4e9bb4481739a0d87287
+    missing_artifact_reason: null
+change_review:
+  scope_revision: 89468de1dcbe3a3266816132d2d6712e43428048
+  scope_ref: plan/validation/execution/V2-021/scope.json

@@ -755,19 +755,13 @@ def _materialize(
     return delta, ()
 
 
-def _audit(
-    assembly: ChapterAssembly,
+def audit_extraction_evidence(
+    prose: bytes,
     catalog: tuple[FactAlias, ...],
     proposal_raw: bytes,
     inventory_raw: bytes,
-) -> tuple[
-    tuple[ExtractionSegment, ...],
-    NarrativeDelta | None,
-    tuple[ExtractionDiagnostic, ...],
-    str,
-]:
-    catalog = make_catalog(assembly, aliases=catalog)
-    prose = assembly.prose
+) -> tuple[tuple[ExtractionSegment, ...], tuple[ExtractionDiagnostic, ...]]:
+    """Compare independent discovery with the proposal on the same raw text."""
     # An invalid inventory is not retained as a fabricated zero observation.
     inventory = _read_discovery(
         inventory_raw, prose, catalog, INVENTORY_PRODUCER, inventory=True
@@ -778,12 +772,7 @@ def _audit(
             proposal_raw, prose, catalog, PROPOSAL_PRODUCER, inventory=False
         )
     except (TypeError, ValueError, KeyError, UnicodeError):
-        return (
-            inventory,
-            None,
-            (ExtractionDiagnostic("PROPOSAL_RESULT_INVALID", "ERROR"),),
-            "ERROR",
-        )
+        return inventory, (ExtractionDiagnostic("PROPOSAL_RESULT_INVALID", "ERROR"),)
     if not _complete(proposed, prose):
         diagnostics.append(ExtractionDiagnostic("PROPOSAL_COVERAGE_GAP", "FAIL"))
     proposed_by_span = {(v.span.start, v.span.end): v for v in proposed}
@@ -813,18 +802,40 @@ def _audit(
             diagnostics.append(
                 ExtractionDiagnostic("UNGROUNDED_PROPOSITION", "FAIL", found.span)
             )
+    return inventory, tuple(diagnostics)
+
+
+def _audit(
+    assembly: ChapterAssembly,
+    catalog: tuple[FactAlias, ...],
+    proposal_raw: bytes,
+    inventory_raw: bytes,
+) -> tuple[
+    tuple[ExtractionSegment, ...],
+    NarrativeDelta | None,
+    tuple[ExtractionDiagnostic, ...],
+    str,
+]:
+    inventory, diagnostics = audit_extraction_evidence(
+        assembly.prose,
+        make_catalog(assembly, aliases=catalog),
+        proposal_raw,
+        inventory_raw,
+    )
     delta = None
-    if not any(v.state == "FAIL" for v in diagnostics):
+    if not any(v.state in {"FAIL", "ERROR"} for v in diagnostics):
         delta, materialization = _materialize(assembly, inventory)
-        diagnostics.extend(materialization)
+        diagnostics += materialization
     status = (
-        "FAIL"
+        "ERROR"
+        if any(v.state == "ERROR" for v in diagnostics)
+        else "FAIL"
         if any(v.state == "FAIL" for v in diagnostics)
         else "UNKNOWN"
         if diagnostics
         else "PASS"
     )
-    return inventory, delta, tuple(diagnostics), status
+    return inventory, delta, diagnostics, status
 
 
 def _observation_record(
@@ -1063,16 +1074,24 @@ def reconcile(
         raise WorkflowError("INVALID_EXTRACTION_OBSERVATION") from None
 
 
-def extract_assembly(
-    assembly: ChapterAssembly, *, aliases: tuple[FactAlias, ...] | None = None
-) -> ExtractionObservation:
-    catalog = make_catalog(assembly, aliases=aliases)
+def discover_extraction_evidence(
+    prose: bytes, catalog: tuple[FactAlias, ...]
+) -> tuple[bytes, bytes]:
     # Seal independent discovery before exposing proposal output to comparison.
-    inventory_raw = blind_inventory(assembly.prose, catalog)
+    inventory_raw = blind_inventory(prose, catalog)
     try:
-        proposal_raw = proposal_backend(assembly.prose, catalog)
+        proposal_raw = proposal_backend(prose, catalog)
     except (TypeError, ValueError, RuntimeError, OSError):
         proposal_raw = canonical_bytes(
             {"record_type": "finite_proposal_execution_error", "code": "PRODUCER_ERROR"}
         )
-    return reconcile(assembly, catalog, proposal_raw, inventory_raw)
+    return proposal_raw, inventory_raw
+
+
+def extract_assembly(
+    assembly: ChapterAssembly, *, aliases: tuple[FactAlias, ...] | None = None
+) -> ExtractionObservation:
+    catalog = make_catalog(assembly, aliases=aliases)
+    return reconcile(
+        assembly, catalog, *discover_extraction_evidence(assembly.prose, catalog)
+    )
