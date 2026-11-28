@@ -96,7 +96,9 @@ def test_locked_install_rejects_manifest_drift(clean_project):
     result = run([uv, "sync", "--locked", "--offline"], cwd=source, env=env, check=False)
     assert result.returncode != 0
     assert "lock" in result.stderr.lower()
-    assert "The lockfile at `uv.lock` needs to be updated, but `--locked` was provided." in result.stderr
+    # uv wraps its diagnostic to the terminal width.
+    message = " ".join(result.stderr.split())
+    assert "The lockfile at `uv.lock` needs to be updated, but `--locked` was provided." in message
     assert "network was disabled" not in result.stderr
     assert (source / "uv.lock").read_bytes() == lock
 

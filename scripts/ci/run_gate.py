@@ -211,7 +211,7 @@ def commands_for(job: str, output: Path) -> list[list[str]]:
                 "4",
                 "--dist=worksteal",
                 "--max-worker-restart=0",
-                "-q",
+                "-v",
                 "-p",
                 "no:cacheprovider",
                 "tests/contract",

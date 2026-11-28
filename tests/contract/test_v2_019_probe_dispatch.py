@@ -808,18 +808,23 @@ finally:
     return result["code"], result["transcript"].encode(), result["sent"]
 
 
-@pytest.fixture(scope="module")
-def terminal_process(tmp_path_factory, worker_id):
+@pytest.fixture(autouse=True)
+def isolate_terminal_case(request, tmp_path_factory, worker_id):
+    if "terminal_process" not in request.fixturenames:
+        yield
+        return
     # On macOS, independent controlling PTYs share /dev/tty's flock.
+    # Take the lock before the test creates an expiring synthetic grant.
     base = tmp_path_factory.getbasetemp()
     lock_path = (base if worker_id == "master" else base.parent) / "probe-tty.lock"
+    with lock_path.open("ab") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        yield
 
-    def run(repo, command, *, send_credential):
-        with lock_path.open("ab") as lock:
-            fcntl.flock(lock, fcntl.LOCK_EX)
-            return _terminal_process(repo, command, send_credential=send_credential)
 
-    return run
+@pytest.fixture(scope="module")
+def terminal_process():
+    return _terminal_process
 
 
 @pytest.fixture(scope="module")

@@ -818,7 +818,9 @@ def test_remote_source_fixed_command_contract_matches_actual_driver(
         scheduling_start = 4  # Immediately after "python -B -m pytest".
         scheduling_end = scheduling_start + len(UNIT_SCHEDULING)
         assert unit[scheduling_start:scheduling_end] == UNIT_SCHEDULING
-        assert [bootstrap, unit[:scheduling_start] + unit[scheduling_end:]] == [
+        assert unit[scheduling_end] == "-v"  # Preserve case names if UNIT times out.
+        legacy_unit = unit[:scheduling_start] + ["-q"] + unit[scheduling_end + 1 :]
+        assert [bootstrap, legacy_unit] == [
             [sys.executable, *tail] for tail in LEGACY_UNIT_COMMAND_TAILS
         ]
     elif name == "postgres_env":
