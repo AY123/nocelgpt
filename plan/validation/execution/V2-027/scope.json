@@ -1,0 +1,41 @@
+{
+  "record_type": "local_change_baseline",
+  "schema_version": "1.0",
+  "task_id": "V2-027",
+  "opening_revision": "97054449bf9c3995113651713cb8d09b25405696",
+  "packet_ref": "plan/validation/execution/V2-027/execution-packet.yaml",
+  "allowed_paths": [
+    "src/anovel/workflow/__main__.py",
+    "src/anovel/workflow/chapter.py",
+    "src/anovel/workflow/gateway_binding.py",
+    "src/anovel/workflow/interfaces.py",
+    "src/anovel/workflow/recovery.py",
+    "src/anovel/workflow/store.py",
+    "src/anovel/canon/commit_service.py",
+    "src/anovel/canon/models.py",
+    "src/anovel/canon/repository.py",
+    "tests/contract/test_v2_020.py",
+    "tests/contract/test_v2_020_scene_generation.py",
+    "tests/integration/test_v2_027.py",
+    "plan/validation/execution/V2-027/LOCAL_WORKFLOW.md",
+    "plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/run_chapter.py",
+    "plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/run_openai_chapter.py",
+    "plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/writer_authorization.py",
+    "plan/validation/execution/V2-020/revision-inspection-20261122/kimi-chapter-dispatch-20261124/test_writer_dispatch.py",
+    "scripts/ci/run_gate.py",
+    "tests/contract/test_delivery_gates.py",
+    "plan/machine/implementation-backlog.yaml",
+    "plan/machine/test-catalog.yaml",
+    "plan/generated/PHASE_TASK_REGISTRY.md",
+    "plan/FILE_MANIFEST.json",
+    "plan/validation/execution/V2-027/",
+    "plan/validation/execution/V2-020/closure-20261128/"
+  ],
+  "pre_existing": {},
+  "exception_authorizations": [],
+  "authorization_source": {
+    "kind": "existing_user_task_authorization",
+    "ref": "plan/validation/execution/V2-027/authorization.txt",
+    "sha256": "48db3867a1dec69cb1be0b4b977363ff0d94c08c0697ce7c19059926d849a84c"
+  }
+}
